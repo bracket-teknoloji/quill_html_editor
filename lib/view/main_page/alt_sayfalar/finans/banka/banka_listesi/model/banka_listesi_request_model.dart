@@ -9,6 +9,7 @@ class BankaListesiRequestModel with _$BankaListesiRequestModel {
   factory BankaListesiRequestModel({
     String? bakiye,
     String? arrHesapTipi,
+    String? haricBankalarArray,
     String? sirala,
     String? ekranTipi,
     String? menuKodu,

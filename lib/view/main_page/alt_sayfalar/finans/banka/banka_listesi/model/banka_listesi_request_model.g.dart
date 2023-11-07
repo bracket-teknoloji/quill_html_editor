@@ -11,6 +11,7 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
     _$BankaListesiRequestModelImpl(
       bakiye: json['Bakiye'] as String?,
       arrHesapTipi: json['ArrHesapTipi'] as String?,
+      haricBankalarArray: json['HaricBankalarArray'] as String?,
       sirala: json['Sirala'] as String?,
       ekranTipi: json['EkranTipi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
 
   writeNotNull('Bakiye', instance.bakiye);
   writeNotNull('ArrHesapTipi', instance.arrHesapTipi);
+  writeNotNull('HaricBankalarArray', instance.haricBankalarArray);
   writeNotNull('Sirala', instance.sirala);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('MenuKodu', instance.menuKodu);

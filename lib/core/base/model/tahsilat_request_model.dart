@@ -39,6 +39,13 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? krediKartNo,
     String? hedefAciklama,
     int? vadeGunu,
+    double? bsmvTutari,
+    String? dekontIslemTuru,
+    String? dekontBelgeNo,
+    String? hedefHesapKodu,
+    String? islemModulu,
+    String? masrafMuhKodu,
+    double? masrafTutari,
   }) = _TahsilatRequestModel;
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);

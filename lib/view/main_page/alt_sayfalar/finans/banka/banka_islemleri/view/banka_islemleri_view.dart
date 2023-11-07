@@ -115,7 +115,13 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async => await dialogManager.showBankaGridViewDialog(null),
+          onPressed: () async {
+            final result = await dialogManager.showBankaGridViewDialog(null);
+            if (result != null) {
+              viewModel.resetPage();
+            }
+
+          },
         ),
       );
 

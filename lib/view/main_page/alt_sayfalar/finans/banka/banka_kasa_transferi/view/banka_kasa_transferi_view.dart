@@ -96,7 +96,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     final result = await viewModel.saveTahsilat();
                     if (result?.success ?? false) {
                       dialogManager.showSuccessSnackBar(result?.message ?? "");
-                      Get.back();
+                      Get.back(result: true);
                     }
                   });
                 }
@@ -170,6 +170,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                   ),
                   Observer(
                     builder: (_) => Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: CustomTextField(
@@ -209,6 +210,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     ),
                   ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: CustomTextField(
@@ -254,6 +256,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     ],
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: CustomTextField(

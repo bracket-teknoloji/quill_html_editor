@@ -90,6 +90,8 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(bankaHareketleri);
       }
       islemlerList.add(bankaKasaTransferi);
+      islemlerList.add(hesaplarArasiVirman);
+      islemlerList.add(hesaplarArasiEftHavale);
     }
   }
 
@@ -428,6 +430,10 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? get bankaKasaTransferi =>
       GridItemModel.islemler(title: "Banka Kasa Transferi", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaKasaTransferi", arguments: model));
+  GridItemModel? get hesaplarArasiVirman =>
+      GridItemModel.islemler(title: "Hesaplar Arası Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiVirman"));
+  GridItemModel? get hesaplarArasiEftHavale =>
+      GridItemModel.islemler(title: "Hesaplar Arası EFT/Havale", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiEftHavale"));
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));

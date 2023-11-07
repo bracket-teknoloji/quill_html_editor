@@ -84,6 +84,20 @@ mixin _$TahsilatRequestModel {
   set hedefAciklama(String? value) => throw _privateConstructorUsedError;
   int? get vadeGunu => throw _privateConstructorUsedError;
   set vadeGunu(int? value) => throw _privateConstructorUsedError;
+  double? get bsmvTutari => throw _privateConstructorUsedError;
+  set bsmvTutari(double? value) => throw _privateConstructorUsedError;
+  String? get dekontIslemTuru => throw _privateConstructorUsedError;
+  set dekontIslemTuru(String? value) => throw _privateConstructorUsedError;
+  String? get dekontBelgeNo => throw _privateConstructorUsedError;
+  set dekontBelgeNo(String? value) => throw _privateConstructorUsedError;
+  String? get hedefHesapKodu => throw _privateConstructorUsedError;
+  set hedefHesapKodu(String? value) => throw _privateConstructorUsedError;
+  String? get islemModulu => throw _privateConstructorUsedError;
+  set islemModulu(String? value) => throw _privateConstructorUsedError;
+  String? get masrafMuhKodu => throw _privateConstructorUsedError;
+  set masrafMuhKodu(String? value) => throw _privateConstructorUsedError;
+  double? get masrafTutari => throw _privateConstructorUsedError;
+  set masrafTutari(double? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -127,7 +141,14 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       String? sozlesmeKodu,
       String? krediKartNo,
       String? hedefAciklama,
-      int? vadeGunu});
+      int? vadeGunu,
+      double? bsmvTutari,
+      String? dekontIslemTuru,
+      String? dekontBelgeNo,
+      String? hedefHesapKodu,
+      String? islemModulu,
+      String? masrafMuhKodu,
+      double? masrafTutari});
 }
 
 /// @nodoc
@@ -174,6 +195,13 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? krediKartNo = freezed,
     Object? hedefAciklama = freezed,
     Object? vadeGunu = freezed,
+    Object? bsmvTutari = freezed,
+    Object? dekontIslemTuru = freezed,
+    Object? dekontBelgeNo = freezed,
+    Object? hedefHesapKodu = freezed,
+    Object? islemModulu = freezed,
+    Object? masrafMuhKodu = freezed,
+    Object? masrafTutari = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -296,6 +324,34 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.vadeGunu
           : vadeGunu // ignore: cast_nullable_to_non_nullable
               as int?,
+      bsmvTutari: freezed == bsmvTutari
+          ? _value.bsmvTutari
+          : bsmvTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dekontIslemTuru: freezed == dekontIslemTuru
+          ? _value.dekontIslemTuru
+          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontBelgeNo: freezed == dekontBelgeNo
+          ? _value.dekontBelgeNo
+          : dekontBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefHesapKodu: freezed == hedefHesapKodu
+          ? _value.hedefHesapKodu
+          : hedefHesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      masrafMuhKodu: freezed == masrafMuhKodu
+          ? _value.masrafMuhKodu
+          : masrafMuhKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      masrafTutari: freezed == masrafTutari
+          ? _value.masrafTutari
+          : masrafTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -338,7 +394,14 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       String? sozlesmeKodu,
       String? krediKartNo,
       String? hedefAciklama,
-      int? vadeGunu});
+      int? vadeGunu,
+      double? bsmvTutari,
+      String? dekontIslemTuru,
+      String? dekontBelgeNo,
+      String? hedefHesapKodu,
+      String? islemModulu,
+      String? masrafMuhKodu,
+      double? masrafTutari});
 }
 
 /// @nodoc
@@ -382,6 +445,13 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? krediKartNo = freezed,
     Object? hedefAciklama = freezed,
     Object? vadeGunu = freezed,
+    Object? bsmvTutari = freezed,
+    Object? dekontIslemTuru = freezed,
+    Object? dekontBelgeNo = freezed,
+    Object? hedefHesapKodu = freezed,
+    Object? islemModulu = freezed,
+    Object? masrafMuhKodu = freezed,
+    Object? masrafTutari = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -504,6 +574,34 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.vadeGunu
           : vadeGunu // ignore: cast_nullable_to_non_nullable
               as int?,
+      bsmvTutari: freezed == bsmvTutari
+          ? _value.bsmvTutari
+          : bsmvTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dekontIslemTuru: freezed == dekontIslemTuru
+          ? _value.dekontIslemTuru
+          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontBelgeNo: freezed == dekontBelgeNo
+          ? _value.dekontBelgeNo
+          : dekontBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefHesapKodu: freezed == hedefHesapKodu
+          ? _value.hedefHesapKodu
+          : hedefHesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      masrafMuhKodu: freezed == masrafMuhKodu
+          ? _value.masrafMuhKodu
+          : masrafMuhKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      masrafTutari: freezed == masrafTutari
+          ? _value.masrafTutari
+          : masrafTutari // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -541,7 +639,14 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.sozlesmeKodu,
       this.krediKartNo,
       this.hedefAciklama,
-      this.vadeGunu})
+      this.vadeGunu,
+      this.bsmvTutari,
+      this.dekontIslemTuru,
+      this.dekontBelgeNo,
+      this.hedefHesapKodu,
+      this.islemModulu,
+      this.masrafMuhKodu,
+      this.masrafTutari})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -609,6 +714,20 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   String? hedefAciklama;
   @override
   int? vadeGunu;
+  @override
+  double? bsmvTutari;
+  @override
+  String? dekontIslemTuru;
+  @override
+  String? dekontBelgeNo;
+  @override
+  String? hedefHesapKodu;
+  @override
+  String? islemModulu;
+  @override
+  String? masrafMuhKodu;
+  @override
+  double? masrafTutari;
 
   @JsonKey(ignore: true)
   @override
@@ -657,7 +776,14 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? sozlesmeKodu,
       String? krediKartNo,
       String? hedefAciklama,
-      int? vadeGunu}) = _$TahsilatRequestModelImpl;
+      int? vadeGunu,
+      double? bsmvTutari,
+      String? dekontIslemTuru,
+      String? dekontBelgeNo,
+      String? hedefHesapKodu,
+      String? islemModulu,
+      String? masrafMuhKodu,
+      double? masrafTutari}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -757,6 +883,27 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   int? get vadeGunu;
   set vadeGunu(int? value);
+  @override
+  double? get bsmvTutari;
+  set bsmvTutari(double? value);
+  @override
+  String? get dekontIslemTuru;
+  set dekontIslemTuru(String? value);
+  @override
+  String? get dekontBelgeNo;
+  set dekontBelgeNo(String? value);
+  @override
+  String? get hedefHesapKodu;
+  set hedefHesapKodu(String? value);
+  @override
+  String? get islemModulu;
+  set islemModulu(String? value);
+  @override
+  String? get masrafMuhKodu;
+  set masrafMuhKodu(String? value);
+  @override
+  double? get masrafTutari;
+  set masrafTutari(double? value);
   @override
   @JsonKey(ignore: true)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>

@@ -41,6 +41,13 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       krediKartNo: json['KREDI_KART_NO'] as String?,
       hedefAciklama: json['HEDEF_ACIKLAMA'] as String?,
       vadeGunu: json['VADE_GUNU'] as int?,
+      bsmvTutari: (json['BSMV_TUTARI'] as num?)?.toDouble(),
+      dekontIslemTuru: json['DEKONT_ISLEM_TURU'] as String?,
+      dekontBelgeNo: json['DEKONT_BELGE_NO'] as String?,
+      hedefHesapKodu: json['HEDEF_HESAP_KODU'] as String?,
+      islemModulu: json['ISLEM_MODULU'] as String?,
+      masrafMuhKodu: json['MASRAF_MUH_KODU'] as String?,
+      masrafTutari: (json['MASRAF_TUTARI'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -83,5 +90,12 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('KREDI_KART_NO', instance.krediKartNo);
   writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
   writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('BSMV_TUTARI', instance.bsmvTutari);
+  writeNotNull('DEKONT_ISLEM_TURU', instance.dekontIslemTuru);
+  writeNotNull('DEKONT_BELGE_NO', instance.dekontBelgeNo);
+  writeNotNull('HEDEF_HESAP_KODU', instance.hedefHesapKodu);
+  writeNotNull('ISLEM_MODULU', instance.islemModulu);
+  writeNotNull('MASRAF_MUH_KODU', instance.masrafMuhKodu);
+  writeNotNull('MASRAF_TUTARI', instance.masrafTutari);
   return val;
 }

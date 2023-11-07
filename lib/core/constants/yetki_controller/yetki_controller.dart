@@ -149,7 +149,9 @@ final class YetkiController {
   bool get siparisMSKosulSatirdaSor => _isTrue(_paramModel?.satisKosulSatirdaSor, skipAdmin: true);
   bool get siparisMSFarkliTeslimCariAktif => _isTrue(_paramModel?.satisFarkliTeslimCariAktif, skipAdmin: true);
   bool get siparisMSMiktar2Sor => _isTrue(_paramModel?.satisMiktar2Sor, skipAdmin: true);
-  bool get siparisMSISk1YuzdeSor => _isTrue((_paramModel?.satisSatirIsk1YuzdeSor ?? false) && StaticVariables.instance.isMusteriSiparisleri, skipAdmin: true);
+  bool get siparisMSISk1YuzdeSor => _isTrue(
+        (_paramModel?.satisSatirIsk1YuzdeSor ?? false) && StaticVariables.instance.isMusteriSiparisleri,
+      );
   bool get siparisMSsatirdaKDVSor => _isTrue(_paramModel?.satisSatirdaKdvSor, skipAdmin: true);
   bool get siparisMSSatisHizmetAktifMi => _isTrue(_paramModel?.satisHizmetAktif, skipAdmin: true);
   bool get siparisMSEkMaliyet2AktifMi => _isTrue(_paramModel?.satisEkMaliyet2Aktif, skipAdmin: true);
@@ -160,14 +162,14 @@ final class YetkiController {
 
   // bool get siparisMSbelgeKopyala => _isTrue(_yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
-  bool siparisMSBosGecilecekAlanMi(String alan) => !_isTrue(_yetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(alan));
+  bool siparisMSBosGecilecekAlanMi(String alan) => _isTrue(!(_yetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(alan) ?? false));
 
   ///? Eğer içeriyorsa gizlenecek
-  bool siparisMSGizlenecekAlanMi(String alan) => !_isTrue(_yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan));
+  bool siparisMSGizlenecekAlanMi(String alan) => _isTrue(!(_yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan) ?? false));
   bool get siparisMSKontrolAciklamasiAktifMi => _isTrue(_paramModel?.fatuKontrolAciklamasiAktif?.contains("MS"), skipAdmin: true);
 
   ///? Eğer içeriyorsa değiştirilemeyecek
-  bool siparisMSDegismeyecekAlanMi(String alan) => !_isTrue(_yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan));
+  bool siparisMSDegismeyecekAlanMi(String alan) => _isTrue(!(_yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan) ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
   bool siparisMSAciklamaAlanlari(int? index) => (index == null
@@ -244,9 +246,6 @@ final class YetkiController {
   bool get musteriSenetHareketler => _isTrue(_yetkiModel?.finansMsenHareketler);
   bool get borcCekHareketler => _isTrue(_yetkiModel?.finansBcekHareketler);
   bool get borcSenetHareketler => _isTrue(_yetkiModel?.finansBsenHareketler);
-
-
-
 
   //! SEVKİYAT
 

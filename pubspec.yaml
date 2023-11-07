@@ -108,14 +108,14 @@ flutter_launcher_icons:
   remove_alpha_ios: true
   web:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu512.png"
+    image_path: "assets/splash/pickerLogoTuruncu1024.png"
   windows:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu512.png"
+    image_path: "assets/splash/pickerLogoTuruncu1024.png"
     icon_size: 48
   macos:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu512.png"
+    image_path: "assets/splash/pickerLogoTuruncu1024.png"
 
 dev_dependencies:
   flutter_test:
@@ -137,8 +137,8 @@ dev_dependencies:
 flutter_native_splash:
   color: "#fffbff"
   color_dark: "#201A19"
-  image: "assets/splash/pickerLogoTuruncu1024.png"
-  image_dark: "assets/splash/pickerLogoTuruncu1024.png"
+  image: "assets/splash/pickerLogoTuruncu512.png"
+  image_dark: "assets/splash/pickerLogoTuruncu512.png"
   fill: false
   android: true
   ios: true

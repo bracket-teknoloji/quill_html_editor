@@ -13,6 +13,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
+import "package:picker/core/constants/enum/hesaplar_arasi_enum.dart";
 import "package:picker/view/auth/entry_company/view/entry_company_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
@@ -20,6 +21,7 @@ import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_be
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/hesaplar_arasi/view/hesaplar_arasi_islem_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
@@ -175,6 +177,8 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
               GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
               GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
+              GetPage(name: "/hesaplarArasiVirman", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman)),
+              GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),
 
               //* * Kasa
               GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),

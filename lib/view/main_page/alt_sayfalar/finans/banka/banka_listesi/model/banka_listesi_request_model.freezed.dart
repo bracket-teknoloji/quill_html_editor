@@ -25,6 +25,8 @@ mixin _$BankaListesiRequestModel {
   set bakiye(String? value) => throw _privateConstructorUsedError;
   String? get arrHesapTipi => throw _privateConstructorUsedError;
   set arrHesapTipi(String? value) => throw _privateConstructorUsedError;
+  String? get haricBankalarArray => throw _privateConstructorUsedError;
+  set haricBankalarArray(String? value) => throw _privateConstructorUsedError;
   String? get sirala => throw _privateConstructorUsedError;
   set sirala(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
@@ -49,6 +51,7 @@ abstract class $BankaListesiRequestModelCopyWith<$Res> {
   $Res call(
       {String? bakiye,
       String? arrHesapTipi,
+      String? haricBankalarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
@@ -71,6 +74,7 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? bakiye = freezed,
     Object? arrHesapTipi = freezed,
+    Object? haricBankalarArray = freezed,
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
@@ -84,6 +88,10 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
       arrHesapTipi: freezed == arrHesapTipi
           ? _value.arrHesapTipi
           : arrHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      haricBankalarArray: freezed == haricBankalarArray
+          ? _value.haricBankalarArray
+          : haricBankalarArray // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -117,6 +125,7 @@ abstract class _$$BankaListesiRequestModelImplCopyWith<$Res>
   $Res call(
       {String? bakiye,
       String? arrHesapTipi,
+      String? haricBankalarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
@@ -138,6 +147,7 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? bakiye = freezed,
     Object? arrHesapTipi = freezed,
+    Object? haricBankalarArray = freezed,
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
@@ -151,6 +161,10 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
       arrHesapTipi: freezed == arrHesapTipi
           ? _value.arrHesapTipi
           : arrHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      haricBankalarArray: freezed == haricBankalarArray
+          ? _value.haricBankalarArray
+          : haricBankalarArray // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -179,6 +193,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   _$BankaListesiRequestModelImpl(
       {this.bakiye,
       this.arrHesapTipi,
+      this.haricBankalarArray,
       this.sirala,
       this.ekranTipi,
       this.menuKodu,
@@ -192,6 +207,8 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @override
   String? arrHesapTipi;
   @override
+  String? haricBankalarArray;
+  @override
   String? sirala;
   @override
   String? ekranTipi;
@@ -202,7 +219,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
 
   @override
   String toString() {
-    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi)';
+    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, haricBankalarArray: $haricBankalarArray, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi)';
   }
 
   @JsonKey(ignore: true)
@@ -224,6 +241,7 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   factory _BankaListesiRequestModel(
       {String? bakiye,
       String? arrHesapTipi,
+      String? haricBankalarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
@@ -238,6 +256,9 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   @override
   String? get arrHesapTipi;
   set arrHesapTipi(String? value);
+  @override
+  String? get haricBankalarArray;
+  set haricBankalarArray(String? value);
   @override
   String? get sirala;
   set sirala(String? value);
