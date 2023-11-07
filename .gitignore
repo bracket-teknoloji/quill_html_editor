@@ -81,7 +81,6 @@ build/
 
 # Generated files
 bin/
-gen/
 out/
 
 # Gradle files
@@ -344,7 +343,6 @@ DerivedData/
 
 # Generated files
 bin/
-gen/
 out/
 
 # Gradle files
