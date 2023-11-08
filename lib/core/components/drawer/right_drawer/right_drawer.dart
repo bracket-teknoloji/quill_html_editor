@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/gen/assets.gen.dart";
+import "package:picker/core/gen/assets.gen.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";

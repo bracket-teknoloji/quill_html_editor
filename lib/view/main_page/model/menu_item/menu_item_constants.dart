@@ -358,7 +358,7 @@ class MenuItemConstants {
 
     //* Üretim
     //*
-    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory", color: ColorPalette.outerSpace, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory_2", color: ColorPalette.outerSpace, altMenuler: <GridItemModel>[]),
     GridItemModel.anamenu(
       name: "GNEL_SRAP",
       title: "Serbest Raporlar",

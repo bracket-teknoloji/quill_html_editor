@@ -16,7 +16,7 @@ publish_to: "none"
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.3.2+43
+version: 1.3.2+45
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -102,20 +102,20 @@ dependencies:
   number_text_input_formatter: ^1.0.0+7
 
 flutter_launcher_icons:
-  image_path: "assets/splash/pickerLogoTuruncu1024.png"
+  image_path: "assets/app_icon/beyaz_1024.png"
   android: true
   ios: true
   remove_alpha_ios: true
   web:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu1024.png"
+    image_path: "assets/app_icon/beyaz_1024.png"
   windows:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu1024.png"
+    image_path: "assets/app_icon/beyaz_1024.png"
     icon_size: 48
   macos:
     generate: true
-    image_path: "assets/splash/pickerLogoTuruncu1024.png"
+    image_path: "assets/app_icon/beyaz_1024.png"
 
 dev_dependencies:
   flutter_test:
@@ -137,8 +137,8 @@ dev_dependencies:
 flutter_native_splash:
   color: "#ffffff"
   color_dark: "#201A19"
-  image: "assets/splash/pickerLogoTuruncu.png"
-  image_dark: "assets/splash/pickerLogoTuruncu.png"
+  image: "assets/app_icon/beyaz_400.png"
+  image_dark: "assets/app_icon/beyaz_400.png"
   fill: false
   android: true
   ios: true
@@ -156,6 +156,8 @@ flutter:
     - assets/icons/PickerSvgIcon/
     - assets/icons/PickerSvgIcon/AnaMenu/
     - assets/lotties/
+    - assets/icons/
+    - assets/app_icon/
 
 
 flutter_gen:

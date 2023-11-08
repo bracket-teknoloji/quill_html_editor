@@ -12,6 +12,38 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
+class $AssetsAppIconGen {
+  const $AssetsAppIconGen();
+
+  /// File path: assets/app_icon/PickerLogoBeyaz.svg
+  SvgGenImage get pickerLogoBeyaz =>
+      const SvgGenImage('assets/app_icon/PickerLogoBeyaz.svg');
+
+  /// File path: assets/app_icon/app_icon.png
+  AssetGenImage get appIcon =>
+      const AssetGenImage('assets/app_icon/app_icon.png');
+
+  /// File path: assets/app_icon/beyaz_1024.png
+  AssetGenImage get beyaz1024 =>
+      const AssetGenImage('assets/app_icon/beyaz_1024.png');
+
+  /// File path: assets/app_icon/beyaz_200.png
+  AssetGenImage get beyaz200 =>
+      const AssetGenImage('assets/app_icon/beyaz_200.png');
+
+  /// File path: assets/app_icon/beyaz_400.png
+  AssetGenImage get beyaz400 =>
+      const AssetGenImage('assets/app_icon/beyaz_400.png');
+
+  /// File path: assets/app_icon/splash.json
+  LottieGenImage get splash =>
+      const LottieGenImage('assets/app_icon/splash.json');
+
+  /// List of all assets
+  List<dynamic> get values =>
+      [pickerLogoBeyaz, appIcon, beyaz1024, beyaz200, beyaz400, splash];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -185,9 +217,9 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
   SvgGenImage get eBelge =>
       const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/e_belge.svg');
 
-  /// File path: assets/icons/PickerSvgIcon/AnaMenu/factory.svg
-  SvgGenImage get factory =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/factory.svg');
+  /// File path: assets/icons/PickerSvgIcon/AnaMenu/factory_2.svg
+  SvgGenImage get factory2 =>
+      const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/factory_2.svg');
 
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/forklift.svg
   SvgGenImage get forklift =>
@@ -242,7 +274,7 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
         atmDollar,
         counter,
         eBelge,
-        factory,
+        factory2,
         forklift,
         inventory,
         monitoring,
@@ -261,6 +293,7 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
 class Assets {
   Assets._();
 
+  static const $AssetsAppIconGen appIcon = $AssetsAppIconGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();

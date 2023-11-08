@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/gen/assets.gen.dart";
+import "package:picker/core/gen/assets.gen.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
@@ -103,7 +103,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Assets.splash.pickerLogoTuruncuSvg.svg(height: height * 0.1),
+                      Assets.appIcon.pickerLogoBeyaz.svg(height: height * 0.1),
                       // SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
                       const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
                       Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
