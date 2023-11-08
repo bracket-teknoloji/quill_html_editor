@@ -36,7 +36,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
   @override
   void initState() {
     scrollController = ScrollController();
-    if ((widget.showBugunFirst ?? false) && widget.baslangicTarihiController.text == "" && widget.bitisTarihiController.text == "") {
+    if (widget.showBugunFirst ?? false) {
       widget.baslangicTarihiController.text = DateTime.now().toDateString;
       widget.bitisTarihiController.text = DateTime.now().toDateString;
       viewModel.changeGroupValue(1);

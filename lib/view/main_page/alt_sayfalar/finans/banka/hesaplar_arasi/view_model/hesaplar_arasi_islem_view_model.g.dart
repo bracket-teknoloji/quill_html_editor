@@ -25,21 +25,39 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
     });
   }
 
-  late final _$bankaListesiRequestModelAtom = Atom(
-      name: '_HesaplarArasiIslemViewModelBase.bankaListesiRequestModel',
+  late final _$cikisBankaListesiRequestModelAtom = Atom(
+      name: '_HesaplarArasiIslemViewModelBase.cikisBankaListesiRequestModel',
       context: context);
 
   @override
-  BankaListesiRequestModel get bankaListesiRequestModel {
-    _$bankaListesiRequestModelAtom.reportRead();
-    return super.bankaListesiRequestModel;
+  BankaListesiRequestModel get cikisBankaListesiRequestModel {
+    _$cikisBankaListesiRequestModelAtom.reportRead();
+    return super.cikisBankaListesiRequestModel;
   }
 
   @override
-  set bankaListesiRequestModel(BankaListesiRequestModel value) {
-    _$bankaListesiRequestModelAtom
-        .reportWrite(value, super.bankaListesiRequestModel, () {
-      super.bankaListesiRequestModel = value;
+  set cikisBankaListesiRequestModel(BankaListesiRequestModel value) {
+    _$cikisBankaListesiRequestModelAtom
+        .reportWrite(value, super.cikisBankaListesiRequestModel, () {
+      super.cikisBankaListesiRequestModel = value;
+    });
+  }
+
+  late final _$girisBankaListesiRequestModelAtom = Atom(
+      name: '_HesaplarArasiIslemViewModelBase.girisBankaListesiRequestModel',
+      context: context);
+
+  @override
+  BankaListesiRequestModel get girisBankaListesiRequestModel {
+    _$girisBankaListesiRequestModelAtom.reportRead();
+    return super.girisBankaListesiRequestModel;
+  }
+
+  @override
+  set girisBankaListesiRequestModel(BankaListesiRequestModel value) {
+    _$girisBankaListesiRequestModelAtom
+        .reportWrite(value, super.girisBankaListesiRequestModel, () {
+      super.girisBankaListesiRequestModel = value;
     });
   }
 
@@ -57,6 +75,23 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   set dovizKurlariListesi(ObservableList<DovizKurlariModel>? value) {
     _$dovizKurlariListesiAtom.reportWrite(value, super.dovizKurlariListesi, () {
       super.dovizKurlariListesi = value;
+    });
+  }
+
+  late final _$bankaDovizliMiAtom = Atom(
+      name: '_HesaplarArasiIslemViewModelBase.bankaDovizliMi',
+      context: context);
+
+  @override
+  bool get bankaDovizliMi {
+    _$bankaDovizliMiAtom.reportRead();
+    return super.bankaDovizliMi;
+  }
+
+  @override
+  set bankaDovizliMi(bool value) {
+    _$bankaDovizliMiAtom.reportWrite(value, super.bankaDovizliMi, () {
+      super.bankaDovizliMi = value;
     });
   }
 
@@ -81,6 +116,31 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   late final _$_HesaplarArasiIslemViewModelBaseActionController =
       ActionController(
           name: '_HesaplarArasiIslemViewModelBase', context: context);
+
+  @override
+  void setBankaDovizliMi(bool value) {
+    final _$actionInfo =
+        _$_HesaplarArasiIslemViewModelBaseActionController.startAction(
+            name: '_HesaplarArasiIslemViewModelBase.setBankaDovizliMi');
+    try {
+      return super.setBankaDovizliMi(value);
+    } finally {
+      _$_HesaplarArasiIslemViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeBelgeTipi(HesaplarArasiEnum value) {
+    final _$actionInfo = _$_HesaplarArasiIslemViewModelBaseActionController
+        .startAction(name: '_HesaplarArasiIslemViewModelBase.changeBelgeTipi');
+    try {
+      return super.changeBelgeTipi(value);
+    } finally {
+      _$_HesaplarArasiIslemViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setTarih(DateTime? tarih) {
@@ -269,8 +329,10 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
   String toString() {
     return '''
 model: ${model},
-bankaListesiRequestModel: ${bankaListesiRequestModel},
-dovizKurlariListesi: ${dovizKurlariListesi}
+cikisBankaListesiRequestModel: ${cikisBankaListesiRequestModel},
+girisBankaListesiRequestModel: ${girisBankaListesiRequestModel},
+dovizKurlariListesi: ${dovizKurlariListesi},
+bankaDovizliMi: ${bankaDovizliMi}
     ''';
   }
 }

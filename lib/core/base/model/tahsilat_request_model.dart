@@ -53,3 +53,9 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   @override
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 }
+
+
+extension TahsilatRequestExtensions on TahsilatRequestModel{
+
+  bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
+}

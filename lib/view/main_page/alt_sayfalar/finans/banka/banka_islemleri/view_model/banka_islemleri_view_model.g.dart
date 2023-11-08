@@ -229,6 +229,28 @@ mixin _$BankaIslemleriViewModel on _BankaIslemleriViewModelBase, Store {
   }
 
   @override
+  void setHesapKodu(String? value) {
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setHesapKodu');
+    try {
+      return super.setHesapKodu(value);
+    } finally {
+      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHesapTipi(List<int>? value) {
+    final _$actionInfo = _$_BankaIslemleriViewModelBaseActionController
+        .startAction(name: '_BankaIslemleriViewModelBase.setHesapTipi');
+    try {
+      return super.setHesapTipi(value);
+    } finally {
+      _$_BankaIslemleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 bankaIslemleriRequestModel: ${bankaIslemleriRequestModel},

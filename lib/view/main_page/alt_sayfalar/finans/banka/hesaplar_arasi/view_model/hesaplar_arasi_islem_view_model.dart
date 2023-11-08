@@ -6,6 +6,7 @@ import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/hesaplar_arasi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
@@ -17,14 +18,30 @@ class HesaplarArasiIslemViewModel = _HesaplarArasiIslemViewModelBase with _$Hesa
 
 abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tag: "DekontModel", yeniKayit: true);
+  TahsilatRequestModel model = TahsilatRequestModel(tag: "DekontModel", yeniKayit: true, islemModulu: "B");
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHE", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel cikisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
-    @observable
+  @observable
+  BankaListesiRequestModel girisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+
+  @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
+  @observable
+  bool bankaDovizliMi = false;
+
+  @action
+  void setBankaDovizliMi(bool value) => bankaDovizliMi = value;
+
+  @action
+  void changeBelgeTipi(HesaplarArasiEnum value) {
+    final String belgeTipi = value.belgeAdi;
+    cikisBankaListesiRequestModel = cikisBankaListesiRequestModel.copyWith(belgeTipi: belgeTipi);
+    girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(belgeTipi: belgeTipi);
+    model = model.copyWith(dekontIslemTuru: belgeTipi);
+  }
 
   @action
   void setTarih(DateTime? tarih) => model = model.copyWith(tarih: tarih);
@@ -36,13 +53,20 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   void setGuid(String? value) => model = model.copyWith(guid: value);
 
   @action
-  void setCikisHesabi(BankaListesiModel? bankaListesiModel) => model = model.copyWith(hesapKodu: bankaListesiModel?.hesapKodu);
+  void setCikisHesabi(BankaListesiModel? bankaListesiModel) {
+    model = model.copyWith(hesapKodu: bankaListesiModel?.hesapKodu);
+    if (model.dekontIslemTuru == "DHV") {
+      girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(bankaKodu: bankaListesiModel?.bankaKodu);
+    }
+    girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(haricHesaplarArray: jsonEncode([bankaListesiModel?.hesapKodu]));
+    setBankaDovizliMi(bankaListesiModel?.dovizAdi != null);
+  }
 
   @action
   void setGirisHesabi(BankaListesiModel? bankaListesiModel) => model = model.copyWith(hedefHesapKodu: bankaListesiModel?.hesapKodu);
 
   @action
-  void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi);
+  void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi != 0 ? dovizTipi : null);
 
   @action
   void setDovizTutari(double? dovizTutari) => model = model.copyWith(dovizTutari: dovizTutari);
@@ -68,29 +92,26 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   @action
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
 
-
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) => dovizKurlariListesi = value?.asObservable();
 
   @action
   Future<void> getDovizler() async {
-    if (model.dovizTipi == 0) {
-      setDovizKurlariListesi(null);
+    if (model.dovizTipi == null) {
       return;
     }
     final result = await networkManager.dioGet<DovizKurlariModel>(
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
       showLoading: true,
-      queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},
+      queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi ?? "", "tarih": model.tarih.toDateString},
     );
     if (result.data is List) {
       setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
     }
   }
 
-
   @action
   Future<GenericResponseModel<NetworkManagerMixin>?> saveTahsilat() async =>
-      await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveTahsilat, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
+      await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveDekont, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
 }

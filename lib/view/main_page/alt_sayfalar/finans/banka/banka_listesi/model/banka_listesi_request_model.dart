@@ -9,11 +9,13 @@ class BankaListesiRequestModel with _$BankaListesiRequestModel {
   factory BankaListesiRequestModel({
     String? bakiye,
     String? arrHesapTipi,
-    String? haricBankalarArray,
+    String? haricHesaplarArray,
     String? sirala,
     String? ekranTipi,
     String? menuKodu,
     String? belgeTipi,
+    String? bankaKodu,
+    String? islemModulu,
   }) = _BankaListesiRequestModel;
 
   factory BankaListesiRequestModel.fromJson(Map<String, dynamic> json) => _$BankaListesiRequestModelFromJson(json);

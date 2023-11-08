@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -205,7 +206,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
                         onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                       ),
-                    ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                    ).yetkiVarMi(viewModel.model.dovizliMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Döviz Kuru",
@@ -227,7 +228,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                           icon: const Icon(Icons.more_horiz_outlined),
                         ),
                       ),
-                    ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                    ).yetkiVarMi(viewModel.model.dovizliMi),
                   ],
                 ),
               ),
@@ -248,7 +249,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                           tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                         },
                       ),
-                    ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                    ).yetkiVarMi(viewModel.model.dovizliMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Tutar",
@@ -258,7 +259,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         isFormattedString: true,
                         onChanged: (value) {
                           viewModel.setTutar(value.toDoubleWithFormattedString);
-                          if (viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null) {
+                          if (viewModel.model.dovizliMi) {
                             viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
                             dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {

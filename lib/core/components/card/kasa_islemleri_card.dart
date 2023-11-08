@@ -146,7 +146,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       }
       if (dizaynList != null) {
         Get.back();
-        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+        await Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
       }
     } else {
       Get.back();

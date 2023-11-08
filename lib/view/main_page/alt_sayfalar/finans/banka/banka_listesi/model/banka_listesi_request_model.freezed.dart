@@ -25,8 +25,8 @@ mixin _$BankaListesiRequestModel {
   set bakiye(String? value) => throw _privateConstructorUsedError;
   String? get arrHesapTipi => throw _privateConstructorUsedError;
   set arrHesapTipi(String? value) => throw _privateConstructorUsedError;
-  String? get haricBankalarArray => throw _privateConstructorUsedError;
-  set haricBankalarArray(String? value) => throw _privateConstructorUsedError;
+  String? get haricHesaplarArray => throw _privateConstructorUsedError;
+  set haricHesaplarArray(String? value) => throw _privateConstructorUsedError;
   String? get sirala => throw _privateConstructorUsedError;
   set sirala(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
@@ -35,6 +35,10 @@ mixin _$BankaListesiRequestModel {
   set menuKodu(String? value) => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
   set belgeTipi(String? value) => throw _privateConstructorUsedError;
+  String? get bankaKodu => throw _privateConstructorUsedError;
+  set bankaKodu(String? value) => throw _privateConstructorUsedError;
+  String? get islemModulu => throw _privateConstructorUsedError;
+  set islemModulu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,11 +55,13 @@ abstract class $BankaListesiRequestModelCopyWith<$Res> {
   $Res call(
       {String? bakiye,
       String? arrHesapTipi,
-      String? haricBankalarArray,
+      String? haricHesaplarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
-      String? belgeTipi});
+      String? belgeTipi,
+      String? bankaKodu,
+      String? islemModulu});
 }
 
 /// @nodoc
@@ -74,11 +80,13 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? bakiye = freezed,
     Object? arrHesapTipi = freezed,
-    Object? haricBankalarArray = freezed,
+    Object? haricHesaplarArray = freezed,
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
     Object? belgeTipi = freezed,
+    Object? bankaKodu = freezed,
+    Object? islemModulu = freezed,
   }) {
     return _then(_value.copyWith(
       bakiye: freezed == bakiye
@@ -89,9 +97,9 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
           ? _value.arrHesapTipi
           : arrHesapTipi // ignore: cast_nullable_to_non_nullable
               as String?,
-      haricBankalarArray: freezed == haricBankalarArray
-          ? _value.haricBankalarArray
-          : haricBankalarArray // ignore: cast_nullable_to_non_nullable
+      haricHesaplarArray: freezed == haricHesaplarArray
+          ? _value.haricHesaplarArray
+          : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -108,6 +116,14 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
       belgeTipi: freezed == belgeTipi
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -125,11 +141,13 @@ abstract class _$$BankaListesiRequestModelImplCopyWith<$Res>
   $Res call(
       {String? bakiye,
       String? arrHesapTipi,
-      String? haricBankalarArray,
+      String? haricHesaplarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
-      String? belgeTipi});
+      String? belgeTipi,
+      String? bankaKodu,
+      String? islemModulu});
 }
 
 /// @nodoc
@@ -147,11 +165,13 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? bakiye = freezed,
     Object? arrHesapTipi = freezed,
-    Object? haricBankalarArray = freezed,
+    Object? haricHesaplarArray = freezed,
     Object? sirala = freezed,
     Object? ekranTipi = freezed,
     Object? menuKodu = freezed,
     Object? belgeTipi = freezed,
+    Object? bankaKodu = freezed,
+    Object? islemModulu = freezed,
   }) {
     return _then(_$BankaListesiRequestModelImpl(
       bakiye: freezed == bakiye
@@ -162,9 +182,9 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.arrHesapTipi
           : arrHesapTipi // ignore: cast_nullable_to_non_nullable
               as String?,
-      haricBankalarArray: freezed == haricBankalarArray
-          ? _value.haricBankalarArray
-          : haricBankalarArray // ignore: cast_nullable_to_non_nullable
+      haricHesaplarArray: freezed == haricHesaplarArray
+          ? _value.haricHesaplarArray
+          : haricHesaplarArray // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -182,6 +202,14 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
               as String?,
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -193,11 +221,13 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   _$BankaListesiRequestModelImpl(
       {this.bakiye,
       this.arrHesapTipi,
-      this.haricBankalarArray,
+      this.haricHesaplarArray,
       this.sirala,
       this.ekranTipi,
       this.menuKodu,
-      this.belgeTipi});
+      this.belgeTipi,
+      this.bankaKodu,
+      this.islemModulu});
 
   factory _$BankaListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankaListesiRequestModelImplFromJson(json);
@@ -207,7 +237,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @override
   String? arrHesapTipi;
   @override
-  String? haricBankalarArray;
+  String? haricHesaplarArray;
   @override
   String? sirala;
   @override
@@ -216,10 +246,14 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   String? menuKodu;
   @override
   String? belgeTipi;
+  @override
+  String? bankaKodu;
+  @override
+  String? islemModulu;
 
   @override
   String toString() {
-    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, haricBankalarArray: $haricBankalarArray, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi)';
+    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, haricHesaplarArray: $haricHesaplarArray, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi, bankaKodu: $bankaKodu, islemModulu: $islemModulu)';
   }
 
   @JsonKey(ignore: true)
@@ -241,11 +275,13 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   factory _BankaListesiRequestModel(
       {String? bakiye,
       String? arrHesapTipi,
-      String? haricBankalarArray,
+      String? haricHesaplarArray,
       String? sirala,
       String? ekranTipi,
       String? menuKodu,
-      String? belgeTipi}) = _$BankaListesiRequestModelImpl;
+      String? belgeTipi,
+      String? bankaKodu,
+      String? islemModulu}) = _$BankaListesiRequestModelImpl;
 
   factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) =
       _$BankaListesiRequestModelImpl.fromJson;
@@ -257,8 +293,8 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   String? get arrHesapTipi;
   set arrHesapTipi(String? value);
   @override
-  String? get haricBankalarArray;
-  set haricBankalarArray(String? value);
+  String? get haricHesaplarArray;
+  set haricHesaplarArray(String? value);
   @override
   String? get sirala;
   set sirala(String? value);
@@ -271,6 +307,12 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   @override
   String? get belgeTipi;
   set belgeTipi(String? value);
+  @override
+  String? get bankaKodu;
+  set bankaKodu(String? value);
+  @override
+  String? get islemModulu;
+  set islemModulu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>

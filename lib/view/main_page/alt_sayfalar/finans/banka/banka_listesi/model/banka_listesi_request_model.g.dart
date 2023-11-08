@@ -11,11 +11,13 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
     _$BankaListesiRequestModelImpl(
       bakiye: json['Bakiye'] as String?,
       arrHesapTipi: json['ArrHesapTipi'] as String?,
-      haricBankalarArray: json['HaricBankalarArray'] as String?,
+      haricHesaplarArray: json['HaricHesaplarArray'] as String?,
       sirala: json['Sirala'] as String?,
       ekranTipi: json['EkranTipi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
+      bankaKodu: json['BankaKodu'] as String?,
+      islemModulu: json['IslemModulu'] as String?,
     );
 
 Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
@@ -30,10 +32,12 @@ Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
 
   writeNotNull('Bakiye', instance.bakiye);
   writeNotNull('ArrHesapTipi', instance.arrHesapTipi);
-  writeNotNull('HaricBankalarArray', instance.haricBankalarArray);
+  writeNotNull('HaricHesaplarArray', instance.haricHesaplarArray);
   writeNotNull('Sirala', instance.sirala);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('MenuKodu', instance.menuKodu);
   writeNotNull('BelgeTipi', instance.belgeTipi);
+  writeNotNull('BankaKodu', instance.bankaKodu);
+  writeNotNull('IslemModulu', instance.islemModulu);
   return val;
 }

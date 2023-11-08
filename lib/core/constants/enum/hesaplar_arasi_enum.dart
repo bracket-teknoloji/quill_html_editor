@@ -12,4 +12,15 @@ extension HesaplarArasiExtensions on HesaplarArasiEnum {
         return "";
     }
   }
+
+  String get belgeAdi {
+    switch (this) {
+      case HesaplarArasiEnum.virman:
+        return "DHV";
+      case HesaplarArasiEnum.eftHavale:
+        return "DHE";
+      default:
+        return "";
+    }
+  }
 }

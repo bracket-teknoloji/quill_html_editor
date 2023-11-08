@@ -131,7 +131,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
       }
       if (dizaynList != null) {
         Get.back();
-        Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
+        await Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
       }
     } else {
       Get.back();

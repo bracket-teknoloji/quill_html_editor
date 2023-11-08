@@ -3,9 +3,11 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -207,11 +209,13 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             controller: hesapController,
             readOnly: true,
             suffixMore: true,
+            onClear: () => viewModel.setHesapKodu(null),
+            valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.hesapKodu ?? "")),
             onTap: () async {
-              final result = await Get.toNamed("/mainPage/kasaListesi", arguments: true);
+              final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"));
               if (result != null) {
-                hesapController.text = result.kasaAdi ?? "";
-                // viewModel.changeKasaKodu(result.kasaKodu ?? "");
+                hesapController.text = result.hesapAdi ?? "";
+                viewModel.setHesapKodu(result.hesapKodu ?? "");
               }
             },
           ),
@@ -220,11 +224,21 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             controller: hesapTipiController,
             readOnly: true,
             suffixMore: true,
+            onClear: () => viewModel.setHesapTipi(null),
             onTap: () async {
-              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-              if (result != null) {
-                hesapTipiController.text = result.cariAdi ?? "";
-                // viewModel.changeCariKodu(result.cariKodu ?? "");
+              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                context,
+                title: "Hesap Tipi Seçiniz",
+                children: List.generate(viewModel.hesapTipiList.length, (index) => BottomSheetModel(title: viewModel.hesapTipiList[index], value: index)),
+              );
+              if (result is List) {
+                if (result.isNotEmpty && result.every((element) => element is int)) {
+                  hesapTipiController.text = viewModel.hesapTipiList.whereIndexed((index, element) => result.contains(index)).join(", ");
+                  viewModel.setHesapTipi(result.map((e) => e as int).toList().cast<int>());
+                } else {
+                  hesapTipiController.text = "";
+                  viewModel.setHesapTipi(null);
+                }
               }
             },
           ),
@@ -239,6 +253,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                   ),
                   onPressed: () {
                     viewModel.clearFilters();
+                    hesapController.clear();
+                    hesapTipiController.clear();
                     Get.back();
                     viewModel.resetPage();
                   },

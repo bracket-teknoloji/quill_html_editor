@@ -118,7 +118,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
                         title: "Sil",
-                        iconWidget: Icons.delete_outline,
+                        iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();
                           return dialogManager.showAreYouSureDialog(() async {
@@ -128,7 +128,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
                               } catch (e) {
-                                dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                                await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                               }
                               return;
                             }

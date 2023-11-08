@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:mobx/mobx.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 
@@ -11,6 +13,32 @@ part "banka_islemleri_view_model.g.dart";
 class BankaIslemleriViewModel = _BankaIslemleriViewModelBase with _$BankaIslemleriViewModel;
 
 abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
+
+
+  final List<String> hesapTipiList = [
+    "Vadesiz Mevduat",
+    "Vadeli Mevduat",
+    "Repo",
+    "Teminat Çekleri",
+    "Teminat Senetleri",
+    "Tahsil Çekleri",
+    "Tahsil Senetleri",
+    "Nak.Krd-Borç.Cari Krd.(Rot.)",
+    "Nakit Kredi - Spot",
+    "Nakit Kredi İskonto (İştira)",
+    "Gayri Nakdi Krd.(Tem.Mek.)",
+    "Gayri Nakdi Krd.(Harici Garanti)",
+    "Gayri Nakdi Krd.(İthalat Akreditifi)",
+    "Gayri Nakdi Krd.(Kabul ve Aval)",
+    "Gayri Nakdi Krd.(Kredi Kartı Hesabı)",
+    "Kredi kartı Hesabı",
+    "Taksitli Kredi",
+    "Uzun/Orta Vadeli Kredi",
+    "Borç Çekleri",
+    "Borç Senetleri",
+    "Firma Kredi Kartı",
+  ];
+
   //* Observables
   @observable
   BankaIslemleriRequestModel bankaIslemleriRequestModel = BankaIslemleriRequestModel(menuKodu: "YONE_BISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString);
@@ -67,6 +95,12 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   void clearFilters() {
     bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapKodu: null, hesapTipi: null);
   }
+
+  @action
+  void setHesapKodu(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapKodu: value);
+
+  @action
+  void setHesapTipi(List<int>? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapTipi: jsonEncode(value));
 
   @action
   Future<void> resetPage() async {

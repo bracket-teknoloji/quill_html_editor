@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -190,7 +191,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                                 }
                               }
                             },
-                          ),
+                          ).yetkiVarMi(viewModel.model.dovizliMi || viewModel.bankaDovizliMi),
                         ),
                         Expanded(
                           child: CustomTextField(
@@ -205,10 +206,10 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                               _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),
-                        ),
+                        ).yetkiVarMi(viewModel.model.dovizliMi),
                       ],
                     ),
-                  ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -233,7 +234,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                             icon: const Icon(Icons.more_horiz_outlined),
                           ),
                         ),
-                      ).yetkiVarMi(viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null),
+                      ).yetkiVarMi(viewModel.model.dovizliMi),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Tutar",
@@ -243,7 +244,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                           isFormattedString: true,
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);
-                            if (viewModel.model.dovizTipi != 0 && viewModel.model.dovizTipi != null) {
+                            if (viewModel.model.dovizliMi) {
                               viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
                               _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
