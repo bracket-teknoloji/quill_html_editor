@@ -561,7 +561,7 @@ class BottomSheetDialogManager {
 
   Future<KasaList?> showKasaBottomSheetDialog(BuildContext context) async {
     final List<KasaList> list = CacheManager.getAnaVeri?.paramModel?.kasaList ?? <KasaList>[];
-    
+
     return await showRadioBottomSheetDialog(context, title: "Kasa Seçiniz", children: list.map((KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e)).toList());
   }
 
@@ -680,8 +680,6 @@ class BottomSheetDialogManager {
       if (result.success == true) {
         DialogManager().showSuccessSnackBar("Yazdırıldı.");
         return true;
-      } else {
-        DialogManager().showErrorSnackBar(result.message ?? "Yazdırma işlemi başarısız.");
       }
     }
     return null;

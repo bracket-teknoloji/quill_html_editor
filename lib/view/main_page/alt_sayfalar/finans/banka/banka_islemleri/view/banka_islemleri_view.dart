@@ -118,9 +118,8 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
           onPressed: () async {
             final result = await dialogManager.showBankaGridViewDialog(null);
             if (result != null) {
-              viewModel.resetPage();
+              await viewModel.resetPage();
             }
-
           },
         ),
       );

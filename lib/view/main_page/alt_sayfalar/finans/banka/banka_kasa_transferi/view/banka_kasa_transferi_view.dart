@@ -91,7 +91,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
             IconButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  dialogManager.showAreYouSureDialog(() async {
+                  await dialogManager.showAreYouSureDialog(() async {
                     viewModel.setGuid(const Uuid().v4());
                     final result = await viewModel.saveTahsilat();
                     if (result?.success ?? false) {
@@ -377,7 +377,10 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   }
 
   Future<void> getKasaListesi() async {
-    final List<KasaList> list = parametreModel.kasaList?.where((element) => CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.yetkiliKasalar?.contains(element.kasaKodu) ?? true).toList() ?? [];
+    final List<KasaList> list = parametreModel.kasaList
+            ?.where((element) => CacheManager.getAnaVeri?.userModel?.adminMi ?? CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.yetkiliKasalar?.contains(element.kasaKodu) ?? false)
+            .toList() ??
+        [];
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",

@@ -53,7 +53,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     Future.delayed(Duration.zero, () async {
       final bool result = await widget.filterBottomSheet?.call() ?? true;
       if (result) {
-        getData();
+        await getData();
       }
     });
     //* Sayfa
@@ -95,7 +95,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     final bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
 
                     if (result) {
-                      getData();
+                      await getData();
                     }
                   },
                   child: const Text("Filtrele"),
@@ -115,7 +115,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 child: const Text("PDF Görüntüle"),
                 onPressed: () async {
                   if (await getFile != null) {
-                    OpenFile.open((await getFile)!.path);
+                    await OpenFile.open((await getFile)!.path);
                   }
                 },
               ),
@@ -162,7 +162,6 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       );
 
   BottomAppBar bottomAppBar() => BottomAppBar(
-    
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
@@ -193,7 +192,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Future<void> fileChecker() async {
     if (await getFile != null) {
-      Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
+      await Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
     } else {
       dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }

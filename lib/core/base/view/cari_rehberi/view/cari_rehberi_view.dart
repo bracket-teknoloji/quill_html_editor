@@ -142,7 +142,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
-            Get.toNamed(
+            await Get.toNamed(
               "/mainPage/cariEdit",
               arguments: BaseEditModel(
                 baseEditEnum: BaseEditEnum.ekle,

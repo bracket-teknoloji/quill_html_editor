@@ -83,11 +83,11 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                           ),
                         ),
                       );
-                      getData();
+                      await getData();
                     }
                   } else {
                     Get.back();
-                    dialogManager.showAlertDialog(
+                    await dialogManager.showAlertDialog(
                       "Döviz kuru girişi için en fazla 2 kayıt olabilir",
                     );
                   }
@@ -132,7 +132,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                     if (result != null) {
                       viewModel.changeTarih(result);
                       _controller.text = viewModel.tarih.toDateString;
-                      getData();
+                      await getData();
                     }
                   },
                 ),
@@ -233,7 +233,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                             dovizKurlariModel: model,
                                           ),
                                         );
-                                        getData();
+                                        await getData();
                                       },
                                     ),
                                     BottomSheetModel(
@@ -254,7 +254,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                             dialogManager.showSuccessSnackBar(
                                               "Başarıyla Silindi",
                                             );
-                                            getData();
+                                            await getData();
                                           }
                                         });
                                       },
@@ -303,7 +303,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         );
         if (result.success == true) {
           dialogManager.showSuccessSnackBar("Başarıyla Güncellendi");
-          getData();
+          await getData();
         }
       },
       body: Column(

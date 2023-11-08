@@ -85,7 +85,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
             IconButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  dialogManager.showAreYouSureDialog(() async {
+                  await dialogManager.showAreYouSureDialog(() async {
                     viewModel.setGuid(const Uuid().v4());
                     final result = await viewModel.saveTahsilat();
                     if (result?.success ?? false) {

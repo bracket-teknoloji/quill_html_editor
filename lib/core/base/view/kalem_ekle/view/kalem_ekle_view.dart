@@ -71,7 +71,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
       viewModel.setIskonto1OranMi(widget.kalemModel?.iskonto1OranMi ?? true);
-      controllerFiller();
+      await controllerFiller();
     });
 
     super.initState();
@@ -548,7 +548,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     viewModel.kalemModel.dovizTipi = result.dovizKodu;
                                     viewModel.setDovizAdi(result.isim ?? "");
                                     dovizTipiController.text = result.isim ?? "";
-                                    getDovizData();
+                                    await getDovizData();
                                   }
                                 },
                               ),
