@@ -45,17 +45,9 @@ class $AssetsSplashGen {
   AssetGenImage get pickerLogoTuruncu1024 =>
       const AssetGenImage('assets/splash/PickerLogoTuruncu1024.png');
 
-  /// File path: assets/splash/PickerLogoTuruncu512.png
-  AssetGenImage get pickerLogoTuruncu512 =>
-      const AssetGenImage('assets/splash/PickerLogoTuruncu512.png');
-
   /// List of all assets
-  List<dynamic> get values => [
-        pickerLogoTuruncuPng,
-        pickerLogoTuruncuSvg,
-        pickerLogoTuruncu1024,
-        pickerLogoTuruncu512
-      ];
+  List<dynamic> get values =>
+      [pickerLogoTuruncuPng, pickerLogoTuruncuSvg, pickerLogoTuruncu1024];
 }
 
 class $AssetsIconsPickerSvgIconGen {

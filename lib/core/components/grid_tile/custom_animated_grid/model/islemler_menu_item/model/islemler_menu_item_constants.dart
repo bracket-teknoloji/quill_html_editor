@@ -89,6 +89,7 @@ class IslemlerMenuItemConstants<T> {
       if (model != null) {
         islemlerList.add(bankaHareketleri);
       }
+      islemlerList.add(bankaCariEFTHavale);
       islemlerList.add(bankaKasaTransferi);
       islemlerList.add(hesaplarArasiVirman);
       islemlerList.add(hesaplarArasiEftHavale);
@@ -425,6 +426,7 @@ class IslemlerMenuItemConstants<T> {
       );
 
   //* Banka
+  GridItemModel? get bankaCariEFTHavale => GridItemModel.islemler(title: "Cari EFT/Havale", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale"));
   GridItemModel? get bankaHareketleri =>
       GridItemModel.islemler(title: "Banka Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaHareketleri", arguments: model));
 
