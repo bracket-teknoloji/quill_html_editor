@@ -113,7 +113,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
 
   Future<void> deleteData() async {
     Get.back();
-    dialogManager.showAreYouSureDialog(
+    await dialogManager.showAreYouSureDialog(
       () async {
         final result = await networkManager.dioPost<BankaHareketleriModel>(
           path: ApiUrls.deleteBankaHareket,

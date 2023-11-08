@@ -108,7 +108,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
     // yapilandirmaProfilList?[page - 1] = yapilandirmaProfilList?[page - 1]
     //     ?.copyWith(deger: [...yapilandirmaProfilList?[page - 1]?.deger ?? [], ...yapilandirmaList?.where((element) => element.kod == yapilandirmaProfilList?[page - 1]?.ozellikKodu).toList() ?? []]);
     page++;
-    altKodlariGetir();
+    await altKodlariGetir();
   }
 
   @action

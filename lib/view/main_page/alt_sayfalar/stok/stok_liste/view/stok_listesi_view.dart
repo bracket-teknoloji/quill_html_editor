@@ -201,7 +201,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       viewModel.setStokListesi(null);
                       viewModel.resetSayfa();
                       viewModel.setSearchValue(result);
-                      getData();
+                      await getData();
                     }
                   },
                 ),
@@ -214,8 +214,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
                       if (grupKodlari.data != null) {
                         viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
-                      } else {
-                        return;
                       }
                     }
                     // ignore: use_build_context_synchronously
@@ -483,7 +481,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                       viewModel.setStokListesi(null);
                       viewModel.setSiralama(result);
                       viewModel.resetSayfa();
-                      getData();
+                      await getData();
                     }
                   },
                 ),
@@ -760,7 +758,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       if (response.success ?? false) {
         dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();
-        getData();
+        await getData();
       }
     });
   }
