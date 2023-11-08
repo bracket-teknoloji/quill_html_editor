@@ -279,7 +279,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         suffixMore: true,
                                       ),
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "0")),
                                   Expanded(
                                     child: CustomTextField(
                                       labelText: "Kod 1",
@@ -299,7 +299,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         }
                                       },
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "1")),
                                 ],
                               ),
                               Row(
@@ -323,7 +323,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         }
                                       },
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "2")),
                                   Expanded(
                                     child: CustomTextField(
                                       labelText: "Kod 3",
@@ -343,7 +343,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         }
                                       },
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "3")),
                                 ],
                               ),
                               Row(
@@ -380,7 +380,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         }
                                       },
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "4")),
                                   Expanded(
                                     child: CustomTextField(
                                       labelText: "Kod 5",
@@ -413,7 +413,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         }
                                       },
                                     ),
-                                  ),
+                                  ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupKodu == "5")),
                                 ],
                               ),
                               Row(
