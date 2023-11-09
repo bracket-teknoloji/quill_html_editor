@@ -262,7 +262,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                     ),
                   ),
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk1Tipi);
                     if (result != null) {
                       viewModel.setIskTipi1(result.iskontoTipi);
                       iskontoTipi1Controller.text = result.aciklama ?? "";
@@ -311,7 +311,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   ),
                   controller: iskontoTipi2Controller,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk2Tipi);
                     if (result != null) {
                       viewModel.setIskTipi2(result.iskontoTipi);
                       iskontoTipi2Controller.text = result.aciklama ?? "";
@@ -360,7 +360,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                     ),
                   ),
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk3Tipi);
                     if (result != null) {
                       viewModel.setIskTipi3(result.iskontoTipi);
                       iskontoTipi3Controller.text = result.aciklama ?? "";

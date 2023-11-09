@@ -141,7 +141,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
         dizaynList = result.first;
       } else {
         dizaynList =
-            await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Dizayn Seçiniz", children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+            await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, pdfModel.dizaynId);
         pdfModel.dizaynId = dizaynList?.id;
       }
       if (dizaynList != null) {

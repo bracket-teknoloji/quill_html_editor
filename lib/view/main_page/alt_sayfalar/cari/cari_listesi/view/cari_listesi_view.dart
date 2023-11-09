@@ -224,10 +224,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       );
 
   Future<void> siralaDialog(BuildContext context) async {
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Sıralama Türünü Seçiniz",
-      children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+      groupValue: viewModel.cariRequestModel.siralama,
+      children: List.generate(
+        viewModel.siralaMap.length,
+        (index) => BottomSheetModel(
+          title: viewModel.siralaMap.keys.toList()[index],
+          value: viewModel.siralaMap.values.toList()[index],
+          groupValue: viewModel.siralaMap.values.toList()[index],
+        ),
+      ),
     );
     if (result != viewModel.cariRequestModel.siralama && result != null) {
       viewModel.changeSiralama(result);
@@ -568,7 +576,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       viewModel.changeCariTipi(null);
                     },
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariRequestModel.cariTipi);
                       if (result != null) {
                         tipiController.text = result;
                         viewModel.changeCariTipi(result != "Komisyoncu" ? result[0] : "I");

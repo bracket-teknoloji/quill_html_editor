@@ -182,7 +182,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                             suffixMore: true,
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi?.toStringIfNotNull ?? "")),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
                               if (result != null) {
                                 if (result.dovizKodu != viewModel.model.dovizTipi) {
                                   _dovizTipiController.text = result.isim ?? "";
@@ -277,7 +277,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                           suffixMore: true,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                             if (result != null) {
                               _plasiyerController.text = result.plasiyerAciklama ?? "";
                               viewModel.setPlasiyerKodu(result.plasiyerKodu);
@@ -295,7 +295,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                       if (result != null) {
                         _projeController.text = result.projeAciklama ?? "";
                         viewModel.setProjeKodu(result.projeKodu);
@@ -323,7 +323,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
       // ignore: use_build_context_synchronously
-      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",
         children: [
@@ -366,7 +366,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   }
 
   Future<void> getHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel);
+    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
     if (result != null) {
       _hesapController.text = result.hesapAdi ?? "";
       _dovizTipiController.text = result.dovizAdi ?? "";
@@ -385,7 +385,16 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",
-      children: list.map((KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e)).toList(),
+      groupValue: viewModel.model.kasaKodu,
+      children: list
+          .map(
+            (KasaList e) => BottomSheetModel(
+              title: e.kasaTanimi ?? e.kasaKodu ?? "",
+              value: e,
+              groupValue: e.kasaKodu,
+            ),
+          )
+          .toList(),
     );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";

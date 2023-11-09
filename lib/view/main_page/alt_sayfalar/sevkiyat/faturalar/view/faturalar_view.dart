@@ -386,7 +386,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                     readOnly: true,
                     controller: _projeController,
                     onTap: () async {
-                      final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                      final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
                       if (result != null) {
                         _projeController.text = result.projeAdi ?? "";
                         viewModel.setProjeKodu(result.projeKodu ?? "");
@@ -427,7 +427,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                     onChanged: (String value) => viewModel.setOzelKod2(value),
                     suffix: IconButton(
                       onPressed: () async {
-                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
                         if (result != null) {
                           _ozelKod2Controller.text = result.kod ?? "";
                           viewModel.setOzelKod2(result.kod);

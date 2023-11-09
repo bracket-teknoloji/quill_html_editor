@@ -147,7 +147,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.cikisKasa?.kasaKodu ?? "")),
                       onTap: () async {
-                        final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+                        final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel.model.kasaKodu);
                         if (result is KasaList) {
                           await viewModel.setCikisKasa(result);
                           cikisKasaController.text = result.kasaTanimi ?? "";
@@ -170,7 +170,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.girisKasa?.kasaKodu ?? "")),
                       onTap: () async {
-                        final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+                        final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel..model.hesapKodu);
                         if (result is KasaList) {
                           await viewModel.setGirisKasa(result);
                           girisKasaController.text = result.kasaTanimi ?? "";
@@ -284,7 +284,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                         if (result != null) {
                           viewModel.setPlasiyerKodu(result);
                           plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -301,7 +301,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                         if (result != null) {
                           viewModel.setProjekodu(result.projeKodu);
                           projeController.text = result.projeAdi ?? result.projeAciklama ?? "";
@@ -327,7 +327,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
       dovizKuruController.text = "";
       dovizTutariController.text = "";
       // ignore: use_build_context_synchronously
-      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",
         children: [

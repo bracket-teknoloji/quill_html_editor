@@ -186,7 +186,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
                             _plasiyerController.text = result.projeAciklama ?? "";
                             viewModel.setProje(result);
@@ -204,7 +204,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                           if (result != null) {
                             _plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.setPlasiyer(result);
@@ -278,7 +278,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                         onClear: () => viewModel.setTopluDepoKodu(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
                           if (result != null) {
                             _topluDepoController.text = result.depoTanimi ?? "";
                             viewModel.setTopluDepoKodu(result.depoKodu);
@@ -296,7 +296,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
                         onClear: () => viewModel.setOzelKod2(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
                           if (result != null) {
                             _ozelKod2Controller.text = result.aciklama ?? "";
                             viewModel.setOzelKod2(result.kod);

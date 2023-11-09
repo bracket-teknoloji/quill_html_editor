@@ -8,12 +8,10 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../../../siparisler/model/siparisler_widget_model.dart";
 import "../view_model/siparis_karlilik_raporu_view_model.dart";
 
 class SiparisKarlilikRaporuView extends StatefulWidget {
@@ -108,10 +106,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
               onTap: () async {
                 final result = await Get.toNamed(
                   "/mainPage/siparisMusteriSiparisi",
-                  arguments: SiparislerWidgetModel(
-                    siparisTipiEnum: SiparisTipiEnum.musteri,
-                    isGetData: true,
-                  ),
+                  arguments: true,
                 );
                 if (result is BaseSiparisEditModel) {
                   belgeNoController.text = result.belgeNo ?? "";
@@ -172,7 +167,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                       plasiyerController.clear();
                     },
                     onTap: () async {
-                      final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                      final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
                       if (result != null) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
                         viewModel.setPlasiyer(result.plasiyerKodu);

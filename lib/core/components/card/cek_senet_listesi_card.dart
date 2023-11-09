@@ -125,12 +125,21 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         dizaynList = await bottomSheetDialogManager.showRadioBottomSheetDialog(
           context,
           title: "Dizayn Seçiniz",
-          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
+          groupValue: pdfModel.dizaynId,
+          children: result
+              .map(
+                (e) => BottomSheetModel(
+                  title: e.dizaynAdi ?? "",
+                  value: e,
+                  groupValue: e.id,
+                ),
+              )
+              .toList(),
         );
         pdfModel.dizaynId = dizaynList?.id;
       }
       if (dizaynList != null) {
-        Get.back();
+        // Get.back();
         await Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));
       }
     } else {

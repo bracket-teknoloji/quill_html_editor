@@ -205,7 +205,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                               cariTipiController.clear();
                             },
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariTipi);
                               if (result != null) {
                                 cariTipiController.text = result;
                                 //😳 Bunu düzenle
@@ -249,7 +249,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                               projeController.clear();
                             },
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                              final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.projeKodu);
                               if (result != null) {
                                 projeController.text = result.projeAciklama ?? "";
                                 viewModel.setProjeKodu(result.projeKodu);
@@ -268,9 +268,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             onChanged: (value) => viewModel.setOzelKod1(value),
                             suffix: IconButton(
                               onPressed: () async {
-                                final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                                final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.ozelKod1);
                                 if (result != null) {
-                                  ozelKod1Controller.text = result.kod ?? "";
+                                  ozelKod1Controller.text = result.aciklama ?? "";
                                   viewModel.setOzelKod1(result.kod);
                                 }
                               },
@@ -285,9 +285,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             onChanged: (value) => viewModel.setOzelKod2(value),
                             suffix: IconButton(
                               onPressed: () async {
-                                final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                                final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.ozelKod2);
                                 if (result != null) {
-                                  ozelKod2Controller.text = result.kod ?? "";
+                                  ozelKod2Controller.text = result.aciklama ?? "";
                                   viewModel.setOzelKod2(result.kod);
                                 }
                               },
@@ -458,10 +458,18 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Sıralama",
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+                  groupValue: viewModel.siralama,
+                  children: List.generate(
+                    viewModel.siralaMap.length,
+                    (index) => BottomSheetModel(
+                      title: viewModel.siralaMap.keys.toList()[index],
+                      value: viewModel.siralaMap.values.toList()[index],
+                      groupValue: viewModel.siralaMap.values.toList()[index],
+                    ),
+                  ),
                 );
                 if (result != null) {
                   viewModel.setSiralama(result);

@@ -386,7 +386,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.kosulKodu ?? "")),
                               controller: kosulController,
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
+                                final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.kalemModel.kosulKodu);
                                 if (result != null) {
                                   kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                                   viewModel.setKosul(result.kosulKodu ?? "");
@@ -409,7 +409,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               onClear: () => viewModel.setDepoKodu(null),
                               valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.depoKodu.toStringIfNotNull ?? "")),
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                                final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.kalemModel.depoKodu);
                                 if (result != null) {
                                   depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                                   viewModel.kalemModel.depoTanimi = result.depoTanimi;
@@ -429,7 +429,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               suffixMore: true,
                               valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.projeKodu ?? "")),
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                                final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalemModel.projeKodu);
                                 if (result != null) {
                                   projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                                   viewModel.setProjeKodu(result.projeKodu ?? "");
@@ -538,7 +538,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 suffixMore: true,
                                 onClear: () => viewModel.kalemModel.dovizTipi = null,
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                                  final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.kalemModel.dovizKodu);
                                   if (result != null) {
                                     if (result.dovizTipi == 0) {
                                       viewModel.setShowDovizBilgileri(false);
@@ -599,7 +599,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               suffix: IconButton(
                                 icon: const Icon(Icons.more_horiz_outlined),
                                 onPressed: () async {
-                                  final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context);
+                                  final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context, viewModel.kalemModel.kdvOrani);
                                   if (result != null) {
                                     viewModel.setKdvOrani(result);
                                     kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
@@ -658,7 +658,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 controller: iskontoTipiController(index + 1),
                                 onClear: () => iskontoFiller(index + 1, null),
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                                  final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context,getIskontoWithIndex(index + 1));
                                   if (result != null) {
                                     iskontoFiller(index + 1, result);
                                   }
@@ -899,6 +899,25 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         isk6TipiController?.text = iskTip?.aciklama ?? "";
         viewModel.kalemModel.isk6Tipi = iskTip?.iskontoTipi;
       default:
+    }
+  }
+
+  int? getIskontoWithIndex(int index){
+    switch (index) {
+      case 1:
+        return viewModel.kalemModel.isk1Tipi;
+      case 2:
+        return viewModel.kalemModel.isk2Tipi;
+      case 3:
+        return viewModel.kalemModel.isk3Tipi;
+      case 4:
+        return viewModel.kalemModel.isk4Tipi;
+      case 5:
+        return viewModel.kalemModel.isk5Tipi;
+      case 6:
+        return viewModel.kalemModel.isk6Tipi;
+      default:
+        return null;
     }
   }
 

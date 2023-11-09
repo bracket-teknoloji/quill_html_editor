@@ -90,16 +90,15 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                   : IconButton(
                       icon: const Icon(Icons.sort_by_alpha_outlined),
                       onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                           context,
                           title: "Sırala",
+                          groupValue: viewModel.model.sirala,
                           children: List.generate(
                             viewModel.siralaTitleList.length,
                             (index) => BottomSheetModel(
                               title: viewModel.siralaTitleList[index].title,
-                              onTap: () => Get.back(
-                                result: viewModel.siralaTitleList[index].value,
-                              ),
+                              value: viewModel.siralaTitleList[index].value,
                             ),
                           ),
                         );

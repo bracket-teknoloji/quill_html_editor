@@ -52,7 +52,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan);
+                final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.pdfModel.dicParams?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan);
                 if (result is StokMuhasebeKoduModel) {
                   viewModel.changeMuhasebeKodu(result.hesapKodu);
                   muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";

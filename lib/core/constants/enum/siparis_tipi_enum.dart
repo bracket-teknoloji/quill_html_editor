@@ -211,5 +211,16 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
     }
   }
 
+  String get getRoute{
+    switch (this) {
+      case SiparisTipiEnum.musteri:
+        return "/mainPage/siparisMusteriSiparisi";
+      case SiparisTipiEnum.satici:
+        return "/mainPage/siparisSaticiSiparisi";
+        default:
+        return "/mainPage/siparisSaticiSiparisi";
+    }
+  }
+
   SiparisTipiEnum? getSiparisTipiEnumWithRawValue(String? rawValue) => SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 }

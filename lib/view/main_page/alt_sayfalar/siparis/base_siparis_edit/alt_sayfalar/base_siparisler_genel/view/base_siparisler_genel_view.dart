@@ -201,7 +201,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           suffixMore: true,
                           controller: belgeTipiController,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
                             if (result != null) {
                               model.belgeTipi = result.belgeTipiId;
                               belgeTipiController.text = result.belgeTipi ?? "";
@@ -224,7 +224,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             model.plasiyerAciklama = null;
                           },
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                             if (result != null) {
                               viewModel.setPlasiyer(result);
                               model.plasiyerKodu = result.plasiyerKodu;
@@ -288,7 +288,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                           onClear: () => viewModel.setTopluDepoKodu(null),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model.topluDepo);
                             if (result is DepoList) {
                               viewModel.setTopluDepoKodu(result.depoKodu);
                               topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
@@ -306,7 +306,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           controller: projeController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                           onTap: () async {
-                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                             if (result is BaseProjeModel) {
                               viewModel.setProjeKodu(result);
                               projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
@@ -328,7 +328,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           controller: odemeKoduController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context, viewModel.model.odemeKodu);
                             if (result is ListCariOdemeKodu) {
                               viewModel.setOdemeKodu(result.odemeKodu);
                               odemeKoduController.text = result.aciklama ?? "";
@@ -345,7 +345,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           controller: kosulController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model.kosulKodu);
                             if (result != null) {
                               viewModel.setKosulKodu(result.kosulKodu);
                               kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
@@ -369,7 +369,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           onClear: () => model.ozelKod2 = null,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                           onTap: () async {
-                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
                             if (result != null) {
                               viewModel.setOzelKod1(result.kod);
                               ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
@@ -388,7 +388,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
                           onClear: () => viewModel.setOzelKod2(null),
                           onTap: () async {
-                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context);
+                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
                             if (result != null) {
                               viewModel.setOzelKod2(result.kod);
                               ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";

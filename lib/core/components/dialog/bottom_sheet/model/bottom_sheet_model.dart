@@ -5,6 +5,7 @@ class BottomSheetModel {
   final String? description;
   final String? icon;
   final dynamic value;
+  final dynamic groupValue;
   Function()? onTap;
   final IconData? iconWidget;
 
@@ -15,5 +16,6 @@ class BottomSheetModel {
     this.value,
     this.onTap,
     this.iconWidget,
+    this.groupValue,
   });
 }

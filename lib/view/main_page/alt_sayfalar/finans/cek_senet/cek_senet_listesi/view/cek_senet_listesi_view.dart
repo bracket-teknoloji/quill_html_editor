@@ -250,6 +250,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
                               menuKodu: "YONE_BHRE",
                             ),
+                            viewModel.cekSenetListesiRequestModel.verilenKodu,
                           );
                           if (result != null) {
                             viewModel.setBanka(result.hesapKodu);

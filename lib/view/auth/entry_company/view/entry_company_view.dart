@@ -225,11 +225,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Şube Seçiniz",
+      groupValue: viewModel.selected["Şube"],
       children: List.generate(
         viewModel.subeList?.length ?? 0,
         (index) => BottomSheetModel(
           title: viewModel.subeList?[index].subeAdi ?? "",
           value: viewModel.subeList?[index],
+          groupValue: viewModel.subeList?[index].subeKodu,
           // onTap: () {
           //   setState(() {
           //     subeController.text = "${viewModel.subeList?[index].subeAdi} ${viewModel.subeList?[index].subeKodu ?? 0}";
@@ -266,9 +268,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Şirket Seçiniz",
+      groupValue: viewModel.selected["Şirket"],
       children: List.generate(
         viewModel.sirketList?.length ?? 0,
-        (index) => BottomSheetModel(iconWidget: Icons.storage_outlined, title: viewModel.sirketList?[index].company ?? "", value: viewModel.sirketList?[index]),
+        (index) => BottomSheetModel(
+          iconWidget: Icons.storage_outlined,
+          title: viewModel.sirketList?[index].company ?? "",
+          value: viewModel.sirketList?[index],
+          groupValue: viewModel.sirketList?[index].company,
+        ),
       ),
     );
     if (result is CompanyModel) {
@@ -303,12 +311,14 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "İşletme Seçiniz",
+      groupValue: viewModel.selected["İşletme"],
       children: List.generate(
         viewModel.isletmeList?.length ?? 0,
         (index) => BottomSheetModel(
           iconWidget: Icons.data_array_outlined,
           title: viewModel.isletmeList?[index].isletmeAdi ?? "",
           value: viewModel.isletmeList?[index],
+          groupValue: viewModel.isletmeList?[index].isletmeKodu,
           // onTap: () {
           //   isletmeController.text = "${viewModel.isletmeList?[index].isletmeAdi} ${viewModel.isletmeList?[index].isletmeKodu ?? 0}";
           //   subeController.text = "";

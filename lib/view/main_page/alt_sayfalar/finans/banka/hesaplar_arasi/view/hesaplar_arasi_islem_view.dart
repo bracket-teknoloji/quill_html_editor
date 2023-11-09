@@ -167,7 +167,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                           suffixMore: true,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi?.toStringIfNotNull ?? "")),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                            final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
                             if (result != null) {
                               if (result.dovizKodu != viewModel.model.dovizTipi) {
                                 _dovizTipiController.text = result.isim ?? "";
@@ -289,6 +289,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                           }
                           final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
                             context,
+                            viewModel.model.masrafMuhKodu,
                             hesapTipi: "M",
                             belgeTipi: widget.hesaplarArasiEnum == HesaplarArasiEnum.eftHavale ? MuhasebeBelgeTipiEnum.hesaplarArasiEft : MuhasebeBelgeTipiEnum.hesaplarArasiVirman,
                           );
@@ -308,7 +309,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                           if (result != null) {
                             _plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.setPlasiyerKodu(result.plasiyerKodu);
@@ -326,7 +327,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                   readOnly: true,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                     if (result != null) {
                       _projeController.text = result.projeAciklama ?? "";
                       viewModel.setProjeKodu(result.projeKodu);
@@ -350,7 +351,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
       // ignore: use_build_context_synchronously
-      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",
         children: [
@@ -393,7 +394,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   }
 
   Future<void> getCikisHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.cikisBankaListesiRequestModel);
+    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.cikisBankaListesiRequestModel, viewModel.model.hesapKodu);
     if (result != null) {
       _cikisHesabiController.text = result.hesapAdi ?? "";
       viewModel.setCikisHesabi(result);
@@ -408,7 +409,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
       dialogManager.showErrorSnackBar("Çıkış hesabını seçiniz.");
       return;
     }
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.girisBankaListesiRequestModel);
+    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.girisBankaListesiRequestModel, viewModel.model.hedefHesapKodu);
     if (result != null) {
       _girisHesabiController.text = result.hesapAdi ?? "";
       viewModel.setGirisHesabi(result);

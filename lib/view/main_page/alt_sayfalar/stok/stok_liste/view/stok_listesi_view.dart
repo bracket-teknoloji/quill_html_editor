@@ -468,6 +468,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
                       title: "Sırala",
+                      groupValue: viewModel.siralama,
                       children: [
                         BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", onTap: () => Get.back(result: "AZ")),
                         BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", onTap: () => Get.back(result: "ZA")),

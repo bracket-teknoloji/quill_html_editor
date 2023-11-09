@@ -200,7 +200,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                           if (viewModel.kasa?.dovizli == "E") {
                             return;
                           }
-                          final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
                           if (result is DovizList) {
                             _dovizTipiController.text = result.isim ?? "";
                             viewModel.setDovizTipi(result.dovizTipi);
@@ -287,7 +287,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                           if (result is PlasiyerList) {
                             _plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.setPlasiyerKodu(result);
@@ -304,7 +304,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
                             _projekoduController.text = result.projeAdi ?? result.projeAciklama ?? "";
                             // viewModel.setPlasiyerKodu(result);
@@ -346,7 +346,12 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                           final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                             context,
                             title: "Referans Kodu",
-                            children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList(),
+                            groupValue: viewModel.model.refKod,
+                            children: viewModel.muhaRefList!
+                                .map(
+                                  (e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu),
+                                )
+                                .toList(),
                           );
                           if (result is MuhasebeReferansModel) {
                             _referansKoduController.text = result.tanimi ?? "";
@@ -369,7 +374,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
       );
 
   Future<void> getMuhKodu() async {
-    final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
+    final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
       viewModel.setHesapTipi(result.agm);
@@ -379,7 +384,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   Future<void> getKasa() async {
-    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel.model.kasaKodu);
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result);
@@ -401,7 +406,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
-      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",
         children: [

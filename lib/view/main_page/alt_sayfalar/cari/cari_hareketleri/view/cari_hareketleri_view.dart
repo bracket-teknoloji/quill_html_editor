@@ -144,9 +144,10 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                     final siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
                       title: "Sıralama seçiniz",
+                      groupValue: viewModel.siralama,
                       children: [
-                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", onTap: () => Get.back(result: "TARIH_AZ")),
-                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", onTap: () => Get.back(result: "TARIH_ZA")),
+                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", groupValue: "TARIH_AZ", onTap: () => Get.back(result: "TARIH_AZ")),
+                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", groupValue: "TARIH_ZA", onTap: () => Get.back(result: "TARIH_ZA")),
                       ],
                     );
                     if (siralama != viewModel.siralama && siralama != null) {

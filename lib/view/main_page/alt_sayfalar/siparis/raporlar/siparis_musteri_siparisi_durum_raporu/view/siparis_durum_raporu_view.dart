@@ -22,7 +22,6 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparisler/model/siparis_edit_request_model.dart";
-import "../../../siparisler/model/siparisler_widget_model.dart";
 import "../view_model/siparis_durum_raporu_view_model.dart";
 
 class SiparisDurumRaporuView extends StatefulWidget {
@@ -258,7 +257,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   controller: belgeNoController,
                   valueWidget: Observer(builder: (_) => Text(viewModel.siparislerRequestModel.belgeNo ?? "")),
                   onTap: () async {
-                    final result = await Get.toNamed("/mainPage/siparisMusteriSiparisi", arguments: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: true));
+                    final result = await Get.toNamed(widget.siparisTipiEnum.getRoute, arguments: true);
                     if (result is BaseSiparisEditModel) {
                       belgeNoController.text = result.belgeNo ?? "";
                       viewModel.setBelgeNo(result.belgeNo);

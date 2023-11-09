@@ -199,7 +199,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: iskontoTipi1Controller,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk1Tipi.toStringIfNotNull ?? "")),
                   onTap: () async {
-                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk1Tipi);
                     if (result != null) {
                       viewModel.setIskTipi1(result.iskontoTipi);
                       iskontoTipi1Controller.text = result.aciklama ?? "";
@@ -238,7 +238,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi.toStringIfNotNull ?? "")),
                   controller: iskontoTipi2Controller,
                   onTap: () async {
-                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk2Tipi);
                     if (result != null) {
                       viewModel.setIskTipi2(result.iskontoTipi);
                       iskontoTipi2Controller.text = result.aciklama ?? "";
@@ -277,7 +277,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: iskontoTipi3Controller,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk3Tipi.toStringIfNotNull ?? "")),
                   onTap: () async {
-                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context);
+                    final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk3Tipi);
                     if (result != null) {
                       viewModel.setIskTipi3(result.iskontoTipi);
                       iskontoTipi3Controller.text = result.aciklama ?? "";

@@ -125,7 +125,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children}) async {
+  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
@@ -167,16 +167,15 @@ class BottomSheetDialogManager {
                                     children: [
                                       RadioListTile(
                                         activeColor: UIHelper.primaryColor,
-                                        onChanged: (String? value) {
-                                          viewModel.changeRadioGroupValue(title);
+                                        onChanged: (dynamic value) {
                                           if (children?[index]?.onTap != null) {
                                             children?[index]?.onTap!();
                                           } else {
                                             Get.back(result: children![index]?.value);
                                           }
                                         },
-                                        value: children?[index]?.title ?? "",
-                                        groupValue: viewModel.radioGroupValue,
+                                        value: children?[index]?.groupValue ?? "",
+                                        groupValue: groupValue,
                                         title: Text(children![index]!.title),
                                         subtitle: children[index]?.description != null
                                             ? Text(children[index]!.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
@@ -325,40 +324,68 @@ class BottomSheetDialogManager {
     viewModel.deleteIsSelectedListMap();
   }
 
-  Future<DepoList?> showDepoBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
+  Future<DepoList?> showDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
         context,
         title: "Depo seç",
-        children: CacheManager.getAnaVeri?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
+        groupValue: groupValue,
+        children: CacheManager.getAnaVeri?.paramModel?.depoList
+            ?.map(
+              (DepoList e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
+            .toList(),
       );
 
-  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context) async {
+  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
     final List<DepoList> depoList = CacheManager.getAnaVeri?.paramModel?.depoList ?? <DepoList>[];
     final List<DepoList> filteredDepoList = depoList.where((DepoList element) => onayList?.contains(element.depoKodu) ?? true).toList();
     return await showRadioBottomSheetDialog(
       context,
       title: "Depo seç",
-      children: filteredDepoList.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: filteredDepoList
+          .map(
+            (DepoList e) => BottomSheetModel(
+              title: e.depoTanimi ?? "",
+              value: e,
+              groupValue: e.depoKodu,
+            ),
+          )
+          .toList(),
       // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
     );
   }
 
-  Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
+  Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
         context,
         title: "Ödeme Kodu seç",
-        children: CacheManager.getAnaVeri?.paramModel?.listCariOdemeKodu?.map((ListCariOdemeKodu e) => BottomSheetModel(title: e.aciklama ?? "", value: e)).toList(),
+        groupValue: groupValue,
+        children: CacheManager.getAnaVeri?.paramModel?.listCariOdemeKodu
+            ?.map(
+              (ListCariOdemeKodu e) => BottomSheetModel(
+                title: e.aciklama ?? "",
+                value: e,
+                groupValue: e.odemeKodu,
+              ),
+            )
+            .toList(),
       );
-  Future<String?> showCariTipiBottomSheetDialog(BuildContext context) async => await showRadioBottomSheetDialog(
+  Future<String?> showCariTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
         context,
         title: "Tipi seç",
+        groupValue: groupValue,
         children: <BottomSheetModel?>[
-          BottomSheetModel(title: "Alıcı", value: "A", onTap: () => Get.back(result: "Alıcı")),
-          BottomSheetModel(title: "Satıcı", value: "S", onTap: () => Get.back(result: "Satıcı")),
-          BottomSheetModel(title: "Toptancı", value: "T", onTap: () => Get.back(result: "Toptancı")),
-          BottomSheetModel(title: "Kefil", value: "K", onTap: () => Get.back(result: "Kefil")),
-          BottomSheetModel(title: "Müstahsil", value: "M", onTap: () => Get.back(result: "Müstahsil")),
-          BottomSheetModel(title: "Diğer", value: "D", onTap: () => Get.back(result: "Diğer")),
-          BottomSheetModel(title: "Komisyoncu", value: "I", onTap: () => Get.back(result: "Komisyoncu")),
+          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "Alıcı", onTap: () => Get.back(result: "Alıcı")),
+          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "Satıcı", onTap: () => Get.back(result: "Satıcı")),
+          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "Toptancı", onTap: () => Get.back(result: "Toptancı")),
+          BottomSheetModel(title: "Kefil", value: "K", groupValue: "Kefil", onTap: () => Get.back(result: "Kefil")),
+          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "Müstahsil", onTap: () => Get.back(result: "Müstahsil")),
+          BottomSheetModel(title: "Diğer", value: "D", groupValue: "Diğer", onTap: () => Get.back(result: "Diğer")),
+          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "Komsiyoncu", onTap: () => Get.back(result: "Komisyoncu")),
         ],
       );
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context) async {
@@ -389,7 +416,7 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
+  Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
       viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
     }
@@ -397,7 +424,16 @@ class BottomSheetDialogManager {
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Grup Kodu Seçiniz",
-      children: viewModel.filteredGrupKoduList?.map((BaseGrupKoduModel e) => BottomSheetModel(title: e.grupAdi ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: viewModel.filteredGrupKoduList
+          ?.map(
+            (BaseGrupKoduModel e) => BottomSheetModel(
+              title: e.grupAdi ?? "",
+              value: e,
+              groupValue: e.grupKodu,
+            ),
+          )
+          .toList(),
     );
     if (result != null) {
       return result;
@@ -418,56 +454,98 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": belgeTipi.value, "HesapTipi": hesapTipi ?? "A", "MuhRefKodGelsin": "H", "EkranTipi": "R"};
       viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
     }
-    return await showBottomSheetDialog(
+    return await showRadioBottomSheetDialog(
       context,
       title: "Muhasebe Kodu Seçiniz",
-      children: viewModel.muhasebeKoduList?.map((StokMuhasebeKoduModel e) => BottomSheetModel(title: e.hesapAdi ?? e.hesapKodu ?? "", description: e.hesapKodu, value: e)).toList(),
+      groupValue: groupValue,
+      children: viewModel.muhasebeKoduList
+          ?.map(
+            (StokMuhasebeKoduModel e) => BottomSheetModel(
+              title: e.hesapAdi ?? e.hesapKodu ?? "",
+              description: e.hesapKodu,
+              value: e,
+              groupValue: e.hesapKodu,
+            ),
+          )
+          .toList(),
     );
   }
 
-  Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context) async {
+  Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
-      children: plasiyerList.map((PlasiyerList e) => BottomSheetModel(title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "", description: e.plasiyerKodu, value: e)).toList(),
+      groupValue: groupValue,
+      children: plasiyerList
+          .map(
+            (PlasiyerList e) => BottomSheetModel(
+              title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
+              description: e.plasiyerKodu,
+              value: e,
+              groupValue: e.plasiyerKodu,
+            ),
+          )
+          .toList(),
     );
   }
 
-  Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context) async {
+  Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? <BaseProjeModel>[];
     final BaseProjeModel? proje = await showRadioBottomSheetDialog(
       context,
       title: "Proje Seçiniz",
-      children: projeList.map((BaseProjeModel e) => BottomSheetModel(title: e.projeAciklama ?? e.projeKodu ?? "", description: e.projeKodu, value: e)).toList(),
+      groupValue: groupValue,
+      children: projeList
+          .map(
+            (BaseProjeModel e) => BottomSheetModel(
+              title: e.projeAciklama ?? e.projeKodu ?? "",
+              description: e.projeKodu,
+              value: e,
+              groupValue: e.projeKodu,
+            ),
+          )
+          .toList(),
     );
     return proje;
   }
 
-  Future<DovizList?> showDovizBottomSheetDialog(BuildContext context) async {
+  Future<DovizList?> showDovizBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<DovizList> dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList ?? <DovizList>[];
     final DovizList? doviz = await showRadioBottomSheetDialog(
       context,
       title: "Döviz Seçiniz",
-      children: dovizList.map((DovizList e) => BottomSheetModel(title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: dovizList
+          .map(
+            (DovizList e) => BottomSheetModel(
+              title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.dovizKodu,
+            ),
+          )
+          .toList(),
     );
     return doviz;
   }
 
-  Future<YaziciList?> showYaziciBottomSheetDialog(BuildContext context) async {
+  Future<YaziciList?> showYaziciBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<YaziciList>? yaziciList = CacheManager.getAnaVeri?.paramModel?.yaziciList;
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Yazıcı Seçiniz",
+      groupValue: groupValue,
       children: yaziciList
               ?.map(
                 (YaziciList e) => BottomSheetModel(
                   title: e.yaziciAdi ?? e.aciklama ?? "",
+                  value: e,
+                  groupValue: e.yaziciAdi,
                   onTap: () {
                     Get.back(result: e);
                   },
@@ -482,38 +560,66 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context) async {
+  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,
       title: "Dizayn Seçiniz",
-      children: netFectDizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? e.detayKod ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: netFectDizaynList
+          .map(
+            (NetFectDizaynList e) => BottomSheetModel(
+              title: e.dizaynAdi ?? e.detayKod ?? "",
+              value: e,
+              groupValue: e.detayKod,
+            ),
+          )
+          .toList(),
     );
     return dizayn;
   }
 
-  Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model) async {
+  Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model, dynamic groupValue) async {
     List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
     final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson());
     if (result.data is List) {
       bankaHesaplariList = result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>();
     }
     if (bankaHesaplariList.ext.isNotNullOrEmpty) {
-      return await showBottomSheetDialog(
+      return await showRadioBottomSheetDialog(
         context,
         title: "Banka Hesapları",
-        children: bankaHesaplariList.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),
+        groupValue: groupValue,
+        children: bankaHesaplariList
+            .map(
+              (e) => BottomSheetModel(
+                title: e.hesapAdi ?? "",
+                description: e.hesapKodu,
+                value: e,
+                groupValue: e.hesapKodu,
+              ),
+            )
+            .toList(),
       );
     }
     return null;
   }
 
-  Future<BelgeTipiModel?> showBelgeTipiBottomSheetDialog(BuildContext context) async {
+  Future<BelgeTipiModel?> showBelgeTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<BelgeTipiModel> belgeTipiList = <BelgeTipiModel>[BelgeTipiModel(belgeTipi: "Yurt İçi", belgeTipiId: 2), BelgeTipiModel(belgeTipi: "Yurt Dışı", belgeTipiId: 6)];
     return await showRadioBottomSheetDialog(
       context,
       title: "Belge Tipi Seçiniz",
-      children: belgeTipiList.map((BelgeTipiModel e) => BottomSheetModel(title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: belgeTipiList
+          .map(
+            (BelgeTipiModel e) => BottomSheetModel(
+              title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.belgeTipiId,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -523,46 +629,100 @@ class BottomSheetDialogManager {
     //     await showRadioBottomSheetDialog(context, title: "Ölçü Birimi Seçiniz", children: olcuBirimleriList.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", value: e)).toList());
     // return olcuBirimi;
   }
-  Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context) async {
+  Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri?.paramModel?.listIskTip ?? <ListIskTip>[];
     final ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(
       context,
       title: "İskonto Tipi Seçiniz",
-      children: iskontoTipiList.map((ListIskTip e) => BottomSheetModel(title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: iskontoTipiList
+          .map(
+            (ListIskTip e) => BottomSheetModel(
+              title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "",
+              value: e,
+              groupValue: e.iskontoTipi,
+            ),
+          )
+          .toList(),
     );
     return iskontoTipi;
   }
 
-  Future<CariKosullarModel?> showKosullarBottomSheetDialog(BuildContext context) async {
+  Future<CariKosullarModel?> showKosullarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<CariKosullarModel>? data = await CariNetworkManager.getkosullar();
     return await showRadioBottomSheetDialog(
       context,
       title: "Koşullar Seçiniz",
-      children: data?.map((CariKosullarModel e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e)).toList(),
+      groupValue: groupValue,
+      children: data
+          ?.map(
+            (CariKosullarModel e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu),
+          )
+          .toList(),
     );
   }
 
-  Future<double?> showKdvOranlariBottomSheetDialog(BuildContext context) async {
+  Future<double?> showKdvOranlariBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List? list = await NetworkManager().getKDVOrani();
-    return await showRadioBottomSheetDialog(context, title: "KDV Oranı Seçiniz", children: list?.map((e) => BottomSheetModel(title: e.toString(), value: e)).toList());
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "KDV Oranı Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.toString(), value: e, groupValue: e),
+          )
+          .toList(),
+    );
   }
 
-  Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context) async {
+  Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListOzelKodTum> list =
         CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
-    return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Özel Kod Seçiniz",
+      groupValue: groupValue,
+      children: list
+          .map(
+            (ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod),
+          )
+          .toList(),
+    );
   }
 
-  Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context) async {
+  Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListOzelKodTum> list =
         CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
-    return await showRadioBottomSheetDialog(context, title: "Özel Kod Seçiniz", children: list.map((ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e)).toList());
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Özel Kod Seçiniz",
+      groupValue: groupValue,
+      children: list
+          .map(
+            (ListOzelKodTum e) => BottomSheetModel(
+              title: e.aciklama ?? e.kod ?? "",
+              value: e,
+              groupValue: e.kod,
+            ),
+          )
+          .toList(),
+    );
   }
 
-  Future<KasaList?> showKasaBottomSheetDialog(BuildContext context) async {
+  Future<KasaList?> showKasaBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<KasaList> list = CacheManager.getAnaVeri?.paramModel?.kasaList ?? <KasaList>[];
 
-    return await showRadioBottomSheetDialog(context, title: "Kasa Seçiniz", children: list.map((KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e)).toList());
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Kasa Seçiniz",
+      groupValue: groupValue,
+      children: list
+          .map(
+            (KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu),
+          )
+          .toList(),
+    );
   }
 
   Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar) async {
@@ -578,7 +738,7 @@ class BottomSheetDialogManager {
           return null;
         }
       } else {
-        final YaziciList? yaziciList = await showYaziciBottomSheetDialog(context);
+        final YaziciList? yaziciList = await showYaziciBottomSheetDialog(context, null);
         if (yaziciList != null) {
           printModel = printModel.copyWith(yaziciAdi: yaziciList.yaziciAdi, yaziciTipi: yaziciList.yaziciTipi);
         } else {
@@ -600,7 +760,7 @@ class BottomSheetDialogManager {
           return null;
         }
       } else {
-        final NetFectDizaynList? dizaynList = await showDizaynBottomSheetDialog(context);
+        final NetFectDizaynList? dizaynList = await showDizaynBottomSheetDialog(context, null);
         if (dizaynList != null) {
           printModel = printModel.copyWith(dizaynId: dizaynList.id);
         } else {

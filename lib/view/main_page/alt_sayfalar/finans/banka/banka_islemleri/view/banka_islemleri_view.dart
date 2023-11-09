@@ -212,7 +212,11 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             onClear: () => viewModel.setHesapKodu(null),
             valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.hesapKodu ?? "")),
             onTap: () async {
-              final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"));
+              final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+                context,
+                BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"),
+                viewModel.bankaIslemleriRequestModel.hesapKodu,
+              );
               if (result != null) {
                 hesapController.text = result.hesapAdi ?? "";
                 viewModel.setHesapKodu(result.hesapKodu ?? "");

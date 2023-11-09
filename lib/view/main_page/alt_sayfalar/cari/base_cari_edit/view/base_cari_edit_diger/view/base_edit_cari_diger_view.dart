@@ -360,7 +360,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.muhasebeKodu ?? "")),
               onClear: () => viewModel.changeMuhaseKodu(null),
               onTap: () async {
-                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.model?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   muhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeMuhaseKodu(result);
@@ -376,7 +376,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkiborcKodu ?? "")),
               onClear: () => viewModel.changeKurFarkiBorc(null),
               onTap: () async {
-                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.model?.kurfarkiborcKodu,  belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   kurFarkiBorcMuhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeKurFarkiBorc(result);
@@ -392,7 +392,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkialacakKodu ?? "")),
               onClear: () => viewModel.changeKurFarkiAlacak(null),
               onTap: () async {
-                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.model?.kurfarkialacakKodu,  belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   kurFarkiAlacakMuhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeKurFarkiAlacak(result);
@@ -411,8 +411,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onClear: () => viewModel.changeSubeKodu(null),
               onTap: () async {
                 final List<BottomSheetModel> children2 =
-                    List.generate(subeList.length, (int index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", value: subeList[index]));
-                final IsletmeModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Şube", children: children2);
+                    List.generate(subeList.length, (int index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", value: subeList[index], groupValue: subeList[index].subeKodu));
+                final IsletmeModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Şube", children: children2, groupValue: viewModel.model?.subeKodu);
                 if (result is IsletmeModel) {
                   subeController.text = result.subeAdi ?? "";
                   viewModel.changeSubeKodu(result.subeKodu);
@@ -466,7 +466,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.kosulKodu ?? "")),
               onClear: () => viewModel.changeKosul(null),
               onTap: () async {
-                final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context);
+                final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context,viewModel.model?.kosulKodu);
                 if (result is CariKosullarModel) {
                   kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
                   viewModel.model?.kosulKoduAciklama = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";

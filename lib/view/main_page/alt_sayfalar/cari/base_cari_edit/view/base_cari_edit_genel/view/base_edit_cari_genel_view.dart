@@ -265,8 +265,9 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                           context,
                           title: "Şehirler",
+                          groupValue: viewModel.model?.sehir,
                           children:
-                              List.generate(viewModel.sehirler?.length ?? 0, (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])),
+                              List.generate(viewModel.sehirler?.length ?? 0, (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index], groupValue: viewModel.sehirler?[index].sehirAdi ?? "")),
                         );
                         if (result is CariSehirlerModel) {
                           ilController.text = result.sehirAdi ?? "";
@@ -405,7 +406,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context);
+                      final DovizList? result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model?.dovizKodu);
                       if (result is DovizList) {
                         dovizController.text = result.isim ?? "";
                         viewModel.changeDovizTipi(result);
@@ -441,10 +442,11 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         final BaseBottomSheetResponseModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                           context,
                           title: "Ödeme Tipi",
+                          groupValue: viewModel.model?.odemeTipi,
                           children: <BottomSheetModel?>[
-                            BottomSheetModel(title: "Nakit", value: "0", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Nakit", value: "0"))),
-                            BottomSheetModel(title: "Havale", value: "1", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Havale", value: "1"))),
-                            BottomSheetModel(title: "Çek", value: "2", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Çek", value: "2"))),
+                            BottomSheetModel(title: "Nakit",value: BaseBottomSheetResponseModel(title: "Nakit", value: "0"), groupValue: "0"),
+                            BottomSheetModel(title: "Havale", value:BaseBottomSheetResponseModel(title: "Havale", value: "1"), groupValue: "1"),
+                            BottomSheetModel(title: "Çek", value: BaseBottomSheetResponseModel(title: "Çek", value: "2"), groupValue: "2"),
                           ],
                         );
                         if (result != null) {

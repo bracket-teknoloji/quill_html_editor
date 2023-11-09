@@ -287,7 +287,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context);
+                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                         if (result is PlasiyerList) {
                           _plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyerKodu(result);
@@ -308,7 +308,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context);
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                         if (result is BaseProjeModel) {
                           _projekoduController.text = result.projeAciklama ?? "";
                           viewModel.setProjekodu(result.projeKodu);
@@ -331,7 +331,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                         final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                           context,
                           title: "Referans Kodu",
-                          children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e)).toList(),
+                          groupValue: viewModel.model.refKod,
+                          children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
                         );
                         if (result is MuhasebeReferansModel) {
                           _referansKoduController.text = result.tanimi ?? "";
@@ -389,7 +390,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   }
 
   Future<void> getKasa() async {
-    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel.model.kasaKodu);
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result.kasaKodu);
@@ -404,7 +405,17 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Banka Sözleşmesi",
-        children: viewModel.bankaSozlesmesiList!.map((e) => BottomSheetModel(title: e.sozlesmeAdi ?? "", description: e.bankaTanimi, value: e)).toList(),
+        groupValue: viewModel.model.sozlesmeKodu,
+        children: viewModel.bankaSozlesmesiList!
+            .map(
+              (e) => BottomSheetModel(
+                title: e.sozlesmeAdi ?? "",
+                description: e.bankaTanimi,
+                value: e,
+                groupValue: e.sozlesmeKodu,
+              ),
+            )
+            .toList(),
       );
       if (result is BankaSozlesmesiModel) {
         _sozlesmeController.text = result.sozlesmeAdi ?? "";
@@ -421,7 +432,17 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Banka Hesapları",
-        children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e)).toList(),
+        groupValue: viewModel.model.hesapKodu,
+        children: viewModel.bankaHesaplariList!
+            .map(
+              (e) => BottomSheetModel(
+                title: e.hesapAdi ?? "",
+                description: e.hesapKodu,
+                value: e,
+                groupValue: e.hesapKodu,
+              ),
+            )
+            .toList(),
       );
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
@@ -440,7 +461,17 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Seri",
-        children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e)).toList(),
+        groupValue: viewModel.model.dekontSeri,
+        children: viewModel.seriList!
+            .map(
+              (e) => BottomSheetModel(
+                title: e.aciklama ?? "",
+                description: e.seriNo,
+                value: e,
+                groupValue: e.seriNo,
+              ),
+            )
+            .toList(),
       );
       if (result != null) {
         _seriController.text = (result as SeriModel).aciklama ?? "";

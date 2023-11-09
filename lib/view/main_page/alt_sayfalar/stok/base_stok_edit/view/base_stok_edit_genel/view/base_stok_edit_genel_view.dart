@@ -585,7 +585,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     olcuBirimleriList ??= await getOlcuBirimleri();
     dialogManager.hideAlertDialog;
     filteredList = olcuBirimleriList?.where((element) => element.birimNo == controller).toList();
-    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Ölçü Birimi $controller",
       children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList(),
