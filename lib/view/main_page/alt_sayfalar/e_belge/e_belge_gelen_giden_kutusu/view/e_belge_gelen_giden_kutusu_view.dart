@@ -155,9 +155,9 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                       return EFaturaListesiCard(
                         eBelgeListesiModel: viewModel.eBelgeListesi![index],
                         eBelgeEnum: widget.eBelgeEnum,
-                        onRefresh: (value)async{
-                          if (value){
-                          await viewModel.resetPage();
+                        onRefresh: (value) async {
+                          if (value) {
+                            await viewModel.resetPage();
                           }
                         },
                       );
@@ -221,6 +221,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 text: "E-Belge Türü",
                 child: Observer(
                   builder: (_) => SlideControllerWidget(
+                    scroll: false,
                     childrenTitleList: viewModel.eBelgeTuru.map((e) => e.name).toList(),
                     childrenValueList: viewModel.eBelgeTuru.map((e) => e.value).toList(),
                     filterOnChanged: (index) {
@@ -282,6 +283,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     text: "Senaryo",
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
+                        scroll: false,
                         childrenTitleList: viewModel.senaryoMap.keys.toList(),
                         childrenValueList: viewModel.senaryoMap.values.toList(),
                         filterOnChanged: (index) => viewModel.changeSenaryo(viewModel.senaryoMap.values.toList()[index ?? 0]),
@@ -315,6 +317,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     text: "Netsis'e İşlenme Durumu",
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
+                        scroll: false,
                         childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
                         childrenValueList: viewModel.netsisIslenmeMap.values.toList(),
                         filterOnChanged: (index) => viewModel.changeNetsisIslenme(viewModel.netsisIslenmeMap.values.toList()[index ?? 0]),
@@ -326,6 +329,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     text: "Kontrol Edildi",
                     child: Observer(
                       builder: (_) => SlideControllerWidget(
+                        scroll: false,
                         childrenTitleList: viewModel.kontrolMap.keys.toList(),
                         childrenValueList: viewModel.kontrolMap.values.toList(),
                         filterOnChanged: (index) => viewModel.changeKontrol(viewModel.kontrolMap.values.toList()[index ?? 0]),

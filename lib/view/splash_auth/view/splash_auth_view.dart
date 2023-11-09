@@ -51,7 +51,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
             ],
           ),
         ),
-        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
         body: Stack(
           children: [
             WaveWidget(

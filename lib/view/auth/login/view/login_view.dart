@@ -78,7 +78,7 @@ class _LoginViewState extends BaseState<LoginView> {
 
               //TODO BUNU FAB'DAN ÇIKART. SPLASH'E BAK.
               floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
-              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
               primary: true,
               backgroundColor: Colors.transparent,
               extendBodyBehindAppBar: true,
