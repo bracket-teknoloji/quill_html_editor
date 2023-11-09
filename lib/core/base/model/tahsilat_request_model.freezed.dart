@@ -98,6 +98,16 @@ mixin _$TahsilatRequestModel {
   set masrafMuhKodu(String? value) => throw _privateConstructorUsedError;
   double? get masrafTutari => throw _privateConstructorUsedError;
   set masrafTutari(double? value) => throw _privateConstructorUsedError;
+  bool? get cariyiBorclandir => throw _privateConstructorUsedError;
+  set cariyiBorclandir(bool? value) => throw _privateConstructorUsedError;
+  String? get hesapNo => throw _privateConstructorUsedError;
+  set hesapNo(String? value) => throw _privateConstructorUsedError;
+  String? get iban => throw _privateConstructorUsedError;
+  set iban(String? value) => throw _privateConstructorUsedError;
+  String? get tcmbBankaKodu => throw _privateConstructorUsedError;
+  set tcmbBankaKodu(String? value) => throw _privateConstructorUsedError;
+  String? get tcmbSubeKodu => throw _privateConstructorUsedError;
+  set tcmbSubeKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -148,7 +158,12 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       String? hedefHesapKodu,
       String? islemModulu,
       String? masrafMuhKodu,
-      double? masrafTutari});
+      double? masrafTutari,
+      bool? cariyiBorclandir,
+      String? hesapNo,
+      String? iban,
+      String? tcmbBankaKodu,
+      String? tcmbSubeKodu});
 }
 
 /// @nodoc
@@ -202,6 +217,11 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? islemModulu = freezed,
     Object? masrafMuhKodu = freezed,
     Object? masrafTutari = freezed,
+    Object? cariyiBorclandir = freezed,
+    Object? hesapNo = freezed,
+    Object? iban = freezed,
+    Object? tcmbBankaKodu = freezed,
+    Object? tcmbSubeKodu = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -352,6 +372,26 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.masrafTutari
           : masrafTutari // ignore: cast_nullable_to_non_nullable
               as double?,
+      cariyiBorclandir: freezed == cariyiBorclandir
+          ? _value.cariyiBorclandir
+          : cariyiBorclandir // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iban: freezed == iban
+          ? _value.iban
+          : iban // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tcmbBankaKodu: freezed == tcmbBankaKodu
+          ? _value.tcmbBankaKodu
+          : tcmbBankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tcmbSubeKodu: freezed == tcmbSubeKodu
+          ? _value.tcmbSubeKodu
+          : tcmbSubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -401,7 +441,12 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       String? hedefHesapKodu,
       String? islemModulu,
       String? masrafMuhKodu,
-      double? masrafTutari});
+      double? masrafTutari,
+      bool? cariyiBorclandir,
+      String? hesapNo,
+      String? iban,
+      String? tcmbBankaKodu,
+      String? tcmbSubeKodu});
 }
 
 /// @nodoc
@@ -452,6 +497,11 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? islemModulu = freezed,
     Object? masrafMuhKodu = freezed,
     Object? masrafTutari = freezed,
+    Object? cariyiBorclandir = freezed,
+    Object? hesapNo = freezed,
+    Object? iban = freezed,
+    Object? tcmbBankaKodu = freezed,
+    Object? tcmbSubeKodu = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -602,6 +652,26 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.masrafTutari
           : masrafTutari // ignore: cast_nullable_to_non_nullable
               as double?,
+      cariyiBorclandir: freezed == cariyiBorclandir
+          ? _value.cariyiBorclandir
+          : cariyiBorclandir // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      iban: freezed == iban
+          ? _value.iban
+          : iban // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tcmbBankaKodu: freezed == tcmbBankaKodu
+          ? _value.tcmbBankaKodu
+          : tcmbBankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tcmbSubeKodu: freezed == tcmbSubeKodu
+          ? _value.tcmbSubeKodu
+          : tcmbSubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -646,7 +716,12 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.hedefHesapKodu,
       this.islemModulu,
       this.masrafMuhKodu,
-      this.masrafTutari})
+      this.masrafTutari,
+      this.cariyiBorclandir,
+      this.hesapNo,
+      this.iban,
+      this.tcmbBankaKodu,
+      this.tcmbSubeKodu})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -728,6 +803,16 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   String? masrafMuhKodu;
   @override
   double? masrafTutari;
+  @override
+  bool? cariyiBorclandir;
+  @override
+  String? hesapNo;
+  @override
+  String? iban;
+  @override
+  String? tcmbBankaKodu;
+  @override
+  String? tcmbSubeKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -783,7 +868,12 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? hedefHesapKodu,
       String? islemModulu,
       String? masrafMuhKodu,
-      double? masrafTutari}) = _$TahsilatRequestModelImpl;
+      double? masrafTutari,
+      bool? cariyiBorclandir,
+      String? hesapNo,
+      String? iban,
+      String? tcmbBankaKodu,
+      String? tcmbSubeKodu}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -904,6 +994,21 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   double? get masrafTutari;
   set masrafTutari(double? value);
+  @override
+  bool? get cariyiBorclandir;
+  set cariyiBorclandir(bool? value);
+  @override
+  String? get hesapNo;
+  set hesapNo(String? value);
+  @override
+  String? get iban;
+  set iban(String? value);
+  @override
+  String? get tcmbBankaKodu;
+  set tcmbBankaKodu(String? value);
+  @override
+  String? get tcmbSubeKodu;
+  set tcmbSubeKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>

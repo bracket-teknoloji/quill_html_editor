@@ -21,6 +21,7 @@ import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_be
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_havale_eft/view/cari_havale_eft_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/hesaplar_arasi/view/hesaplar_arasi_islem_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
@@ -102,7 +103,9 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async => await firebaseInitialized());
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async {
+    await firebaseInitialized();
+  });
 
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
@@ -176,7 +179,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/bankaListesi", page: BankaListesiView.new),
               GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
               GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
-              // GetPage(name: "/cariEFTHavale", page: CariEFTHavaleView.new),
+              GetPage(name: "/cariEFTHavale", page: CariHavaleEftView.new),
               GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
               GetPage(name: "/hesaplarArasiVirman", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman)),
               GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),

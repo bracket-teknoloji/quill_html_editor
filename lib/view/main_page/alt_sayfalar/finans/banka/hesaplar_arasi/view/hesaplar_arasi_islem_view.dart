@@ -47,7 +47,8 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   void initState() {
     viewModel = HesaplarArasiIslemViewModel();
     viewModel.changeBelgeTipi(widget.hesaplarArasiEnum);
-    _tarihController = TextEditingController();
+    viewModel.setTarih(DateTime.now());
+    _tarihController = TextEditingController(text: DateTime.now().toDateString);
     _dekontNoController = TextEditingController();
     _cikisHesabiController = TextEditingController();
     _girisHesabiController = TextEditingController();
@@ -63,7 +64,6 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
     _aciklamaController = TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await getTarih();
       await getCikisHesapListesi();
     });
     super.initState();
@@ -171,7 +171,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                             if (result != null) {
                               if (result.dovizKodu != viewModel.model.dovizTipi) {
                                 _dovizTipiController.text = result.isim ?? "";
-                                viewModel.setDovizTipi(result.dovizKodu );
+                                viewModel.setDovizTipi(result.dovizKodu);
                                 await getDovizDialog();
                               }
                             }

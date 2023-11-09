@@ -48,6 +48,11 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       islemModulu: json['ISLEM_MODULU'] as String?,
       masrafMuhKodu: json['MASRAF_MUH_KODU'] as String?,
       masrafTutari: (json['MASRAF_TUTARI'] as num?)?.toDouble(),
+      cariyiBorclandir: json['CARIYI_BORCLANDIR'] as bool?,
+      hesapNo: json['HESAP_NO'] as String?,
+      iban: json['IBAN'] as String?,
+      tcmbBankaKodu: json['TCMB_BANKA_KODU'] as String?,
+      tcmbSubeKodu: json['TCMB_SUBE_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -97,5 +102,10 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('ISLEM_MODULU', instance.islemModulu);
   writeNotNull('MASRAF_MUH_KODU', instance.masrafMuhKodu);
   writeNotNull('MASRAF_TUTARI', instance.masrafTutari);
+  writeNotNull('CARIYI_BORCLANDIR', instance.cariyiBorclandir);
+  writeNotNull('HESAP_NO', instance.hesapNo);
+  writeNotNull('IBAN', instance.iban);
+  writeNotNull('TCMB_BANKA_KODU', instance.tcmbBankaKodu);
+  writeNotNull('TCMB_SUBE_KODU', instance.tcmbSubeKodu);
   return val;
 }

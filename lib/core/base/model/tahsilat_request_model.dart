@@ -46,6 +46,11 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? islemModulu,
     String? masrafMuhKodu,
     double? masrafTutari,
+    bool? cariyiBorclandir,
+    String? hesapNo,
+    String? iban,
+    String? tcmbBankaKodu,
+    String? tcmbSubeKodu,
   }) = _TahsilatRequestModel;
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
@@ -54,8 +59,6 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 }
 
-
-extension TahsilatRequestExtensions on TahsilatRequestModel{
-
+extension TahsilatRequestExtensions on TahsilatRequestModel {
   bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
 }

@@ -62,7 +62,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
 
   @action
-  void setTarih(DateTime? value) => model = model.copyWith(tarih: value);
+  void setTarih(DateTime? value) => model = model.copyWith(tarih: value.dateTimeWithoutTime);
 
   @action
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);

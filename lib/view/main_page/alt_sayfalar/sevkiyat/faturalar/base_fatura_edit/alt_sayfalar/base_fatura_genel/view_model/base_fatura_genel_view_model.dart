@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../model/param_model.dart";
@@ -55,7 +56,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
 
   @action
   void setTarih(DateTime? value) {
-    model = model.copyWith(tarih: value);
+    model = model.copyWith(tarih: value.dateTimeWithoutTime);
     BaseSiparisEditModel.setInstance(model);
   }
 

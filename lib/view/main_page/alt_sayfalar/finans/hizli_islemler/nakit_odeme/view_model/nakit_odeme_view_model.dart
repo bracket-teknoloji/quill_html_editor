@@ -69,7 +69,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
 
   @action
-  void setTarih(DateTime? value) => model = model.copyWith(tarih: value);
+  void setTarih(DateTime? value) => model = model.copyWith(tarih: value.dateTimeWithoutTime);
 
   @action
   void setKasa(KasaList? value) {

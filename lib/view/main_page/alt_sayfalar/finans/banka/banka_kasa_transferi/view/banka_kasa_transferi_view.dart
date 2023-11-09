@@ -179,18 +179,6 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                             controller: _dovizTipiController,
                             readOnly: true,
                             isMust: true,
-                            suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi?.toStringIfNotNull ?? "")),
-                            onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
-                              if (result != null) {
-                                if (result.dovizKodu != viewModel.model.dovizTipi) {
-                                  _dovizTipiController.text = result.isim ?? "";
-                                  viewModel.setDovizTipi(result.dovizKodu);
-                                  await getDovizDialog();
-                                }
-                              }
-                            },
                           ).yetkiVarMi(viewModel.model.dovizliMi || viewModel.bankaDovizliMi),
                         ),
                         Expanded(

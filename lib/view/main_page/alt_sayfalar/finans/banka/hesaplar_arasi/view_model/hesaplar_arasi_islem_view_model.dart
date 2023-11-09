@@ -44,7 +44,7 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setTarih(DateTime? tarih) => model = model.copyWith(tarih: tarih);
+  void setTarih(DateTime? tarih) => model = model.copyWith(tarih: tarih.dateTimeWithoutTime);
 
   @action
   void setDekontNo(String? dekontNo) => model = model.copyWith(belgeNo: dekontNo);

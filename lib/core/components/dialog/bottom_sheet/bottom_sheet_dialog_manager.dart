@@ -7,6 +7,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
@@ -710,9 +711,54 @@ class BottomSheetDialogManager {
     );
   }
 
+  Future<TcmbBankalarModel?> showTcmbBankalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbBankalar, bodyModel: TcmbBankalarModel());
+    if (result.data is List) {
+      final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
+      return await showRadioBottomSheetDialog(
+        context,
+        title: "Banka Seçiniz",
+        groupValue: groupValue,
+        children: list
+            .map(
+              (TcmbBankalarModel e) => BottomSheetModel(
+                title: e.bankaadi ?? "",
+                description: e.bankakodu ?? "",
+                value: e,
+                groupValue: e.bankakodu,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
+  Future<TcmbBankalarModel?> showTcmbSubelerBottomSheetDialog(BuildContext context, String? bankaKodu, dynamic groupValue) async {
+    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), queryParameters: {"BankaKodu": bankaKodu});
+    if (result.data is List) {
+      final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
+      return await showRadioBottomSheetDialog(
+        context,
+        title: "Şube Seçiniz",
+        groupValue: groupValue,
+        children: list
+            .map(
+              (TcmbBankalarModel e) => BottomSheetModel(
+                title: e.subeadi ?? "",
+                description: e.subekodu ?? "",
+                value: e,
+                groupValue: e.subekodu,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
   Future<KasaList?> showKasaBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<KasaList> list = CacheManager.getAnaVeri?.paramModel?.kasaList ?? <KasaList>[];
-
     return await showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",
