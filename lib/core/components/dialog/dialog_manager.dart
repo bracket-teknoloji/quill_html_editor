@@ -138,9 +138,9 @@ class DialogManager {
   Future showAreYouSureDialog(void Function() onYes, {String? title}) async => await _areYouSureDialog(onYes, title).show();
 
   void showInfoDialog(String? description) => _baseDialog(
-        desc: description,
         dialogType: DialogType.info,
         btnOkText: "Tamam",
+        body: Text(description ?? "", textAlign: TextAlign.center),
         onOk: () {},
       ).show();
 
@@ -183,7 +183,7 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-      Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.bankaIslemleri, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",

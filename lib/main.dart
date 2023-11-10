@@ -244,7 +244,7 @@ class PickerApp extends StatelessWidget {
                   cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,
                 ),
               ),
-              GetPage(name: "/StokYeniKayitView", page: () => StokYeniKayitView(model: Get.arguments)),
+              GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
 
               //* Stok Raporları
               GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),

@@ -276,24 +276,4 @@ class _LoginViewState extends BaseState<LoginView> {
       dialogManager.showErrorSnackBar("Lütfen boş alan bırakmayınız.");
     }
   }
-
-  // Future<GenericResponseModel> getUyeBilgileri() async {
-  //   final result = await networkManager.dioPost<AccountResponseModel>(
-  //       bodyModel: AccountResponseModel(), showError: false, data: AccountModel.instance.toJson(), addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-  //   if (result.success == true) {
-  //     CacheManager.setIsLicenseVerified(verifiedUser.account?.email ?? "", true);
-  //     CacheManager.setAccounts(result.data.first..parola = verifiedUser.account?.parola);
-  //   } else {
-  //     if (result.errorCode == 5) {
-  //       CacheManager.setIsLicenseVerified(verifiedUser.account?.email ?? "", false);
-  //     }
-  //     dialogManager.hideAlertDialog;
-  //     dialogManager.showAlertDialog(result.message ?? "");
-  //   }
-  //   if (CacheManager.getIsLicenseVerified(verifiedUser.account?.email ?? "") == false) {
-  //     dialogManager.hideAlertDialog;
-  //     dialogManager.showAlertDialog("Lisansınızın yenilenmesi gerekiyor.");
-  //   }
-  //   return result;
-  // }
 }

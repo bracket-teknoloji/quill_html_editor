@@ -529,8 +529,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 : const Center(child: CircularProgressIndicator.adaptive())
             : ListView.builder(
                 primary: false,
-                controller: scrollController,
                 padding: UIHelper.lowPadding,
+                controller: scrollController,
                 itemCount: (viewModel.stokListesi?.length ?? 0) + 1,
                 itemBuilder: (context, index) {
                   if (index < (viewModel.stokListesi?.length ?? 0)) {
@@ -646,7 +646,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     await getData();
                                   }
                                 },
-                        ).paddingAll(10),
+                        ).paddingAll(UIHelper.midSize),
                       ),
                     );
                   } else {

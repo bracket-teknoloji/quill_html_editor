@@ -212,6 +212,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   builder: (_) => ListView.builder(
                     primary: false,
                     controller: scrollController,
+                    padding: UIHelper.lowPadding,
                     itemCount: viewModel.cariHareketleriList != null ? viewModel.cariHareketleriList!.length : 0,
                     itemBuilder: (context, index) {
                       final CariHareketleriModel model = viewModel.cariHareketleriList![index];

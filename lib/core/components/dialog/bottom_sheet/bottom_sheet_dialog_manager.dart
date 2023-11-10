@@ -167,6 +167,7 @@ class BottomSheetDialogManager {
                                   (int index) => Wrap(
                                     children: [
                                       RadioListTile(
+                                        toggleable: true,
                                         activeColor: UIHelper.primaryColor,
                                         onChanged: (dynamic value) {
                                           if (children?[index]?.onTap != null) {

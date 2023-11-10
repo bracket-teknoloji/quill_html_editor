@@ -36,7 +36,8 @@ StokHareketleriModel _$StokHareketleriModelFromJson(
       ..ekalan1 = json['EKALAN1'] as String?
       ..projeKodu = json['PROJE_KODU'] as String?
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
-      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?;
+      ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
+      ..cariAdi = json['CARI_ADI'] as String?;
 
 Map<String, dynamic> _$StokHareketleriModelToJson(
     StokHareketleriModel instance) {
@@ -74,5 +75,6 @@ Map<String, dynamic> _$StokHareketleriModelToJson(
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('CARI_ADI', instance.cariAdi);
   return val;
 }

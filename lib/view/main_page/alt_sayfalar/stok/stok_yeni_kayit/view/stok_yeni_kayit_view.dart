@@ -276,7 +276,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   },
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
-            ),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ),
       );
