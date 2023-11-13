@@ -370,7 +370,14 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
       context,
       title: "Sırala",
       groupValue: viewModel.eBelgeRequestModel.sirala,
-      children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+      children: List.generate(
+        viewModel.siralaMap.length,
+        (index) => BottomSheetModel(
+          title: viewModel.siralaMap.keys.toList()[index],
+          value: viewModel.siralaMap.values.toList()[index],
+          groupValue: viewModel.siralaMap.values.toList()[index],
+        ),
+      ),
     );
     if (result != null) {
       viewModel.changeSiralama(result);

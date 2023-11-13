@@ -181,10 +181,18 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
       );
 
   Future<void> sirala() async {
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Sırala",
-      children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+      groupValue: viewModel.sirala,
+      children: List.generate(
+        viewModel.siralaMap.length,
+        (index) => BottomSheetModel(
+          title: viewModel.siralaMap.keys.toList()[index],
+          value: viewModel.siralaMap.values.toList()[index],
+          groupValue: viewModel.siralaMap.values.toList()[index],
+        ),
+      ),
     );
     if (result != null) {
       viewModel.setSirala(result);

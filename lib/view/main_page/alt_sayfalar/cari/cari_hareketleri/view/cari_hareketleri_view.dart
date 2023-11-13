@@ -146,8 +146,8 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       title: "Sıralama seçiniz",
                       groupValue: viewModel.siralama,
                       children: [
-                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", groupValue: "TARIH_AZ", onTap: () => Get.back(result: "TARIH_AZ")),
-                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", groupValue: "TARIH_ZA", onTap: () => Get.back(result: "TARIH_ZA")),
+                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", groupValue: "TARIH_AZ", value: "TARIH_AZ"),
+                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", groupValue: "TARIH_ZA", value: "TARIH_ZA"),
                       ],
                     );
                     if (siralama != viewModel.siralama && siralama != null) {

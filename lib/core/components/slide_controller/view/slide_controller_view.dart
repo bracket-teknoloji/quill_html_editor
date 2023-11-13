@@ -46,8 +46,9 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   @override
   Widget build(BuildContext context) => CustomWidgetWithLabel(
         text: widget.title,
+        addPadding: false,
         child: SizedBox(
-          height: 30,
+          height: UIHelper.midSize * 3,
           width: double.infinity,
           child: ListView.builder(
             controller: scrollController,

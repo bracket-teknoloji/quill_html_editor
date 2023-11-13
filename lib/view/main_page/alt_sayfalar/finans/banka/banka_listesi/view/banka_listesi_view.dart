@@ -134,15 +134,16 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
               icon: Icons.sort_by_alpha_outlined,
               child: const Text("Sırala"),
               onPressed: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Sıralama",
+                  groupValue: viewModel.model.sirala,
                   children: List.generate(
                     viewModel.siralaMap.length,
                     (index) => BottomSheetModel(
                       title: viewModel.siralaMap.keys.toList()[index],
-                      description: viewModel.siralaMap.values.toList()[index],
                       value: viewModel.siralaMap.values.toList()[index],
+                      groupValue: viewModel.siralaMap.values.toList()[index],
                     ),
                   ),
                 );
