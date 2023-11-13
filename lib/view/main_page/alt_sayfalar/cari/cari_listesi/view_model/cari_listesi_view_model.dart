@@ -157,7 +157,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeFilterBakiye(String? value) => cariRequestModel = cariRequestModel.copyWith(filterBakiye: value ?? "");
 
   @action
-  void changeArrPlasiyerKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrPlasiyerKodu: value);
+  void changeArrPlasiyerKodu(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrPlasiyerKodu: value);
 
   @action
   void changeArrGrupKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);

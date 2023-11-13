@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -106,7 +108,15 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                           context,
                           title: "Hesap Tipi Seçiniz",
-                          children: List.generate(viewModel.hesapTipiList.length, (index) => BottomSheetModel(title: viewModel.hesapTipiList[index], value: index)),
+                          groupValues: jsonDecode(viewModel.model.arrHesapTipi ?? "[]"),
+                          children: List.generate(
+                            viewModel.hesapTipiList.length,
+                            (index) => BottomSheetModel(
+                              title: viewModel.hesapTipiList[index],
+                              value: index,
+                              groupValue: index,
+                            ),
+                          ),
                         );
                         if (result is List) {
                           if (result.isNotEmpty && result.every((element) => element is int)) {

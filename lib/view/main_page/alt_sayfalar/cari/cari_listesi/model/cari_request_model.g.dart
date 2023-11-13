@@ -40,7 +40,7 @@ _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
           ?.map((e) => e as String?)
           .toList(),
       arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)
-          ?.map((e) => e as String?)
+          ?.map((e) => e as String)
           .toList(),
     );
 

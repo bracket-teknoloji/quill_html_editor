@@ -126,7 +126,7 @@ class CacheManager {
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
   static Map getVeriTabani() => veriTabaniBox.get(getVerifiedUser.username) ?? {};
   static Map get getIsletmeSube => isletmeSubeBox.get(getVerifiedUser.username) ?? {};
-  static Map<String, FavoritesModel> getFavoriler() => favorilerBox.toMap().cast<String, FavoritesModel>();
+  static Map<String, FavoritesModel> get getFavoriler => favorilerBox.toMap().cast<String, FavoritesModel>();
   static AccountModel? get getHesapBilgileri => hesapBilgileriBox.get("value") ?? AccountModel();
   static CariSehirlerModel getCariSehirler() => cariSehirBox.get("value");
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];

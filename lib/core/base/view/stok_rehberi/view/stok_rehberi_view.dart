@@ -106,7 +106,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: grupKoduController,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 0);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 0, groupValues: viewModel.stokBottomSheetModel.arrGrupKodu);
                               if (result != null) {
                                 viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
                                 grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
@@ -121,7 +121,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: kod1Controller,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 1);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 1, groupValues: viewModel.stokBottomSheetModel.arrKod1);
                               if (result != null) {
                                 viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
                                 kod1Controller.text = viewModel.stokBottomSheetModel.arrKod1?.map((e) => e.grupAdi).join(",") ?? "";
@@ -140,7 +140,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: kod2Controller,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 2);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 2, groupValues: viewModel.stokBottomSheetModel.arrKod2);
                               if (result != null) {
                                 viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
                                 kod2Controller.text = viewModel.stokBottomSheetModel.arrKod2?.map((e) => e.grupAdi).join(",") ?? "";
@@ -155,7 +155,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: kod3Controller,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 3);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 3, groupValues: viewModel.stokBottomSheetModel.arrKod3);
                               if (result != null) {
                                 viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
                                 kod3Controller.text = viewModel.stokBottomSheetModel.arrKod3?.map((e) => e.grupAdi).join(",") ?? "";
@@ -174,7 +174,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: kod4Controller,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 4);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 4, groupValues: viewModel.stokBottomSheetModel.arrKod4);
                               if (result != null) {
                                 viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
                                 kod4Controller.text = viewModel.stokBottomSheetModel.arrKod4?.map((e) => e.grupAdi).join(",") ?? "";
@@ -189,7 +189,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             controller: kod5Controller,
                             readOnly: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 5);
+                              final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(context, modul: GrupKoduEnum.stok, grupKodu: 5, groupValues: viewModel.stokBottomSheetModel.arrKod5);
                               if (result != null) {
                                 viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
                                 kod5Controller.text = viewModel.stokBottomSheetModel.arrKod5?.map((e) => e.grupAdi).join(",") ?? "";

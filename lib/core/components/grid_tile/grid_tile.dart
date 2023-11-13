@@ -32,7 +32,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler().values.any((element) => element.title == widget.title)) {
+      if (CacheManager.getFavoriler.values.any((element) => element.title == widget.title)) {
         return const Icon(Icons.star, size: 20, color: Colors.white);
       } else {
         return const Icon(Icons.star_border, size: 20, color: Colors.white);

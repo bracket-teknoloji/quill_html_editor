@@ -17,7 +17,7 @@ class LeftDrawer extends StatefulWidget {
 
 class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
-  List<FavoritesModel> list = CacheManager.getFavoriler().values.toList();
+  List<FavoritesModel> list = CacheManager.getFavoriler.values.toList();
   List get liste => list.where((element) => element.yetkiKontrol).toList();
   @override
   Widget build(BuildContext context) => Drawer(
@@ -33,6 +33,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ListTile(
+                style: ListTileStyle.drawer,
                 title: Text("Favoriler", style: theme.textTheme.titleMedium),
                 trailing: IconButton(
                   onPressed: () {
@@ -42,7 +43,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                   },
                   icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
                 ),
-                contentPadding: EdgeInsets.only(left: 12, top: UIHelper.midSize, bottom: UIHelper.midSize),
+                contentPadding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
               ),
               const Divider(),
               if (list.ext.isNullOrEmpty)
@@ -50,7 +51,12 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                   flex: 2,
                   child: Column(
                     children: [
-                      IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
+                      Icon(
+                        Icons.star_border_outlined,
+                        size: 100,
+                        color: theme.colorScheme.onSurface.withOpacity(0.5),
+                      ).marginSymmetric(vertical: 20),
+                      // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
                       Text("Favori menü yok.", style: theme.textTheme.bodyMedium),
                       Padding(
                         padding: UIHelper.midPadding,

@@ -74,14 +74,19 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       style: theme.textTheme.bodyMedium,
                     ),
                     horizontalTitleGap: 0,
-                    leading: DrawerMenuItems().items[index].iconWidget != null
-                        ? Icon(DrawerMenuItems().items[index].iconWidget, size: 20, color: theme.colorScheme.primary)
-                        : IconHelper.smallIcon(DrawerMenuItems().items[index].icon.toString(), color: theme.colorScheme.primary).marginZero,
+                    leading: Icon(DrawerMenuItems().items[index].iconWidget, size: 20, color: theme.colorScheme.primary),
                   ),
                   separatorBuilder: (context, index) => const Divider(),
                   itemCount: DrawerMenuItems().items.length,
                 ),
               ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     Expanded(child: OutlinedButton.icon(onPressed: () {}, icon: const Icon(Icons.change_circle_outlined), label: const Text("Şirket Değiştir")).paddingAll(UIHelper.lowSize)),
+              //     Expanded(child: OutlinedButton.icon(onPressed: () {}, icon: const Icon(Icons.logout_outlined), label: const Text("Çıkış")).paddingAll(UIHelper.lowSize)),
+              //   ],
+              // ),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
@@ -107,6 +112,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                // Icon(Icons.rule_s)
                                 IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
                                 Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
                               ],

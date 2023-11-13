@@ -57,9 +57,9 @@ mixin _$CariRequestModel {
   List<String?>? get arrSehir => throw _privateConstructorUsedError;
   set arrSehir(List<String?>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "ArrPlasiyerKodu")
-  List<String?>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
+  List<String>? get arrPlasiyerKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "ArrPlasiyerKodu")
-  set arrPlasiyerKodu(List<String?>? value) =>
+  set arrPlasiyerKodu(List<String>? value) =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -91,7 +91,7 @@ abstract class $CariRequestModelCopyWith<$Res> {
       List<String?>? arrKod4,
       List<String?>? arrKod5,
       List<String?>? arrSehir,
-      @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu});
+      @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu});
 }
 
 /// @nodoc
@@ -193,7 +193,7 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
       arrPlasiyerKodu: freezed == arrPlasiyerKodu
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String?>?,
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -223,7 +223,7 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
       List<String?>? arrKod4,
       List<String?>? arrKod5,
       List<String?>? arrSehir,
-      @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu});
+      @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu});
 }
 
 /// @nodoc
@@ -323,7 +323,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
       arrPlasiyerKodu: freezed == arrPlasiyerKodu
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as List<String?>?,
+              as List<String>?,
     ));
   }
 }
@@ -391,7 +391,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   List<String?>? arrSehir;
   @override
   @JsonKey(name: "ArrPlasiyerKodu")
-  List<String?>? arrPlasiyerKodu;
+  List<String>? arrPlasiyerKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -426,7 +426,7 @@ abstract class _CariRequestModel extends CariRequestModel {
           List<String?>? arrKod4,
           List<String?>? arrKod5,
           List<String?>? arrSehir,
-          @JsonKey(name: "ArrPlasiyerKodu") List<String?>? arrPlasiyerKodu}) =
+          @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu}) =
       _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
@@ -487,9 +487,9 @@ abstract class _CariRequestModel extends CariRequestModel {
   set arrSehir(List<String?>? value);
   @override
   @JsonKey(name: "ArrPlasiyerKodu")
-  List<String?>? get arrPlasiyerKodu;
+  List<String>? get arrPlasiyerKodu;
   @JsonKey(name: "ArrPlasiyerKodu")
-  set arrPlasiyerKodu(List<String?>? value);
+  set arrPlasiyerKodu(List<String>? value);
   @override
   @JsonKey(ignore: true)
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>

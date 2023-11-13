@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -378,7 +380,8 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                     readOnly: true,
                     controller: _plasiyerController,
                     onTap: () async {
-                      final List<PlasiyerList?>? result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context);
+                      final List<PlasiyerList?>? result =
+                          await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? ""));
                       if (result != null) {
                         _plasiyerController.text = result.map((PlasiyerList? e) => e?.plasiyerAciklama).join(", ");
                         viewModel.setPlasiyerArr(result.map((PlasiyerList? e) => e?.plasiyerKodu).toList());
@@ -475,11 +478,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod0?.length ?? 0,
                                   (int index) => BottomSheetModel(
                                     title: viewModel.getGrupKod0?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod0?[index],
+                                    groupValue: viewModel.getGrupKod0?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -502,9 +507,14 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod1?.length ?? 0,
-                                  (int index) => BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index]),
+                                  (int index) => BottomSheetModel(
+                                    title: viewModel.getGrupKod1?[index].grupAdi ?? "",
+                                    value: viewModel.getGrupKod1?[index],
+                                    groupValue: viewModel.getGrupKod1?[index].grupKodu,
+                                  ),
                                 ),
                               );
                               if (result is List) {
@@ -530,11 +540,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod2?.length ?? 0,
                                   (int index) => BottomSheetModel(
                                     title: viewModel.getGrupKod2?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod2?[index],
+                                    groupValue: viewModel.getGrupKod2?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -557,11 +569,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod3?.length ?? 0,
                                   (int index) => BottomSheetModel(
                                     title: viewModel.getGrupKod3?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod3?[index],
+                                    groupValue: viewModel.getGrupKod3?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -588,11 +602,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod4?.length ?? 0,
                                   (int index) => BottomSheetModel(
                                     title: viewModel.getGrupKod4?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod4?[index],
+                                    groupValue: viewModel.getGrupKod4?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -615,11 +631,13 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod5?.length ?? 0,
                                   (int index) => BottomSheetModel(
                                     title: viewModel.getGrupKod5?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod5?[index],
+                                    groupValue: viewModel.getGrupKod5?[index].grupKodu,
                                   ),
                                 ),
                               );

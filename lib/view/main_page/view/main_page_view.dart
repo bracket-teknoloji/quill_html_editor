@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:flutter/material.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
@@ -100,55 +102,76 @@ class _MainPageViewState extends BaseState<MainPageView> {
       );
 
   SafeArea body(BuildContext context) => SafeArea(
-        child: GridView.builder(
-          padding: UIHelper.lowPadding,
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
-            childAspectRatio: 0.9,
-          ),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            //* indexteki itemi burada alıyoruz
-            final item = items[index];
-            return AnimationConfiguration.staggeredList(
-              position: index,
-              duration: const Duration(milliseconds: 500),
-              delay: const Duration(milliseconds: 50),
-              child: FadeInAnimation(
-                child: CustomGridTile(
-                  iconWidget: item.iconData,
-                  menuTipi: item.menuTipi,
-                  route: item.route,
-                  arguments: item.arguments,
-                  altMenuler: item.altMenuler,
-                  color: item.color,
-                  icon: item.icon,
-                  name: item.name.toString(),
-                  title: item.title.toString(),
-                  onTap: () {
-                    if (item.altMenuVarMi) {
-                      item.altMenuler?.length == 1
-                          ? item.altMenuler?.first.onTap?.call()
-                          : setState(() {
-                              lastItems.add(items);
-                              title2.add(item.title.toString());
-                              items = item.altMenuler!.where((element) {
-                                element.color ??= item.color;
-                                if (element.icon.ext.isNullOrEmpty) {
-                                  element.icon = item.icon;
-                                }
-                                return element.yetkiKontrol;
-                              }).toList();
-                            });
-                    } else {
-                      items[index].onTap?.call();
+        child: Stack(
+          children: [
+            GridView.builder(
+              padding: UIHelper.lowPadding,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+                childAspectRatio: 0.9,
+              ),
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                //* indexteki itemi burada alıyoruz
+                final item = items[index];
+                return AnimationConfiguration.staggeredList(
+                  position: index,
+                  duration: const Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 50),
+                  child: FadeInAnimation(
+                    child: CustomGridTile(
+                      iconWidget: item.iconData,
+                      menuTipi: item.menuTipi,
+                      route: item.route,
+                      arguments: item.arguments,
+                      altMenuler: item.altMenuler,
+                      color: item.color,
+                      icon: item.icon,
+                      name: item.name.toString(),
+                      title: item.title.toString(),
+                      onTap: () {
+                        if (item.altMenuVarMi) {
+                          item.altMenuler?.length == 1
+                              ? item.altMenuler?.first.onTap?.call()
+                              : setState(() {
+                                  lastItems.add(items);
+                                  title2.add(item.title.toString());
+                                  items = item.altMenuler!.where((element) {
+                                    element.color ??= item.color;
+                                    if (element.icon.ext.isNullOrEmpty) {
+                                      element.icon = item.icon;
+                                    }
+                                    return element.yetkiKontrol;
+                                  }).toList();
+                                });
+                        } else {
+                          items[index].onTap?.call();
+                        }
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+            Visibility(
+              visible: Platform.isIOS && lastItems.isNotEmpty,
+              child: SizedBox(
+                width: UIHelper.highSize * 2,
+                child: GestureDetector(
+                  onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity! > 0) {
+                      setState(() {
+                        items = lastItems.last;
+                        title2.removeLast();
+                        lastItems.removeLast();
+                      });
                     }
                   },
                 ),
               ),
-            );
-          },
+            ),
+          ],
         ),
       );
 

@@ -252,14 +252,16 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                             true),
                                   )
                                   .toList();
-                              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Dizayn",
+                                groupValue: viewModel.printModel.dizaynId,
                                 children: List.generate(
                                   dizaynList?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: dizaynList?[index].dizaynAdi ?? "",
                                     value: dizaynList?[index],
+                                    groupValue: dizaynList?[index].id,
                                   ),
                                 ),
                               );
@@ -289,14 +291,16 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                         true,
                                   )
                                   .toList();
-                              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Yazıcı",
+                                groupValue: viewModel.printModel.yaziciAdi,
                                 children: List.generate(
                                   yaziciList?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: yaziciList?[index].yaziciAdi ?? "",
                                     value: yaziciList?[index],
+                                    groupValue: yaziciList?[index].yaziciAdi,
                                   ),
                                 ),
                               );

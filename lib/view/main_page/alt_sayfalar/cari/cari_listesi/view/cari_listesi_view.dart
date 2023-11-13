@@ -516,11 +516,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       viewModel.changeArrPlasiyerKodu(null);
                     },
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: viewModel.cariRequestModel.arrPlasiyerKodu);
                       if (result != null) {
-                        viewModel.changeArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu).toList());
+                        viewModel.changeArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu).toList().nullCheckWithGeneric);
                         plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
-                        viewModel.resetPage();
                       }
                     },
                   ),
@@ -543,13 +542,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                         context,
                         title: "Şehirler",
-                        children: List.generate(viewModel.sehirler?.length ?? 0, (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index])),
+                        groupValues: viewModel.cariRequestModel.arrSehir,
+                        children: List.generate(
+                          viewModel.sehirler?.length ?? 0,
+                          (index) => BottomSheetModel(
+                            title: viewModel.sehirler?[index].sehirAdi ?? "",
+                            value: viewModel.sehirler?[index],
+                            groupValue: viewModel.sehirler?[index].sehirAdi,
+                          ),
+                        ),
                       );
                       if (result is List) {
                         final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
                         viewModel.changeArrSehir(list.map((e) => e?.sehirAdi).toList());
                         sehirController.text = list.map((e) => e?.sehirAdi).join(", ");
-                        viewModel.resetPage();
                       }
                     },
                   ),
@@ -610,11 +616,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrGrupKodu,
                                 children: List.generate(
                                   viewModel.getGrupKod0?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod0?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod0?[index],
+                                    groupValue: viewModel.getGrupKod0?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -622,7 +630,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod0(list.map((e) => e?.grupKodu).toList());
                                 kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -637,16 +644,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrKod1,
                                 children: List.generate(
                                   viewModel.getGrupKod1?.length ?? 0,
-                                  (index) => BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index]),
+                                  (index) => BottomSheetModel(
+                                    title: viewModel.getGrupKod1?[index].grupAdi ?? "",
+                                    value: viewModel.getGrupKod1?[index],
+                                    groupValue: viewModel.getGrupKod1?[index].grupKodu,
+                                  ),
                                 ),
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod1(list.map((e) => e?.grupKodu).toList());
                                 kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -665,11 +676,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrKod2,
                                 children: List.generate(
                                   viewModel.getGrupKod2?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod2?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod2?[index],
+                                    groupValue: viewModel.getGrupKod2?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -677,7 +690,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod2(list.map((e) => e?.grupKodu).toList());
                                 kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -692,11 +704,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrKod3,
                                 children: List.generate(
                                   viewModel.getGrupKod3?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod3?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod3?[index],
+                                    groupValue: viewModel.getGrupKod3?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -704,7 +718,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod3(list.map((e) => e?.grupKodu).toList());
                                 kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -723,11 +736,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrKod4,
                                 children: List.generate(
                                   viewModel.getGrupKod4?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod4?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod4?[index],
+                                    groupValue: viewModel.getGrupKod4?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -735,7 +750,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod4(list.map((e) => e?.grupKodu).toList());
                                 kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -750,11 +764,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                                 context,
                                 title: "Kod Seçiniz",
+                                groupValues: viewModel.cariRequestModel.arrKod5,
                                 children: List.generate(
                                   viewModel.getGrupKod5?.length ?? 0,
                                   (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod5?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod5?[index],
+                                    groupValue: viewModel.getGrupKod5?[index].grupKodu,
                                   ),
                                 ),
                               );
@@ -762,7 +778,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod5(list.map((e) => e?.grupKodu).toList());
                                 kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
-                                viewModel.resetPage();
                               }
                             },
                           ),
@@ -785,6 +800,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       sehirController.text = "";
                       ilceController.text = "";
                       tipiController.text = "";
+                      kod0Controller.text = "";
                       kod1Controller.text = "";
                       kod2Controller.text = "";
                       kod3Controller.text = "";

@@ -12,15 +12,16 @@ class AppThemeDark extends AppTheme {
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
 
   AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2), brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
         cupertinoOverrideTheme: CupertinoThemeData(
           primaryColor: UIHelper.primaryColor,
           applyThemeToAll: true,
         ),
+        // scaffoldBackgroundColor: colorManager.onInverseSurface,
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
-        datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
+        datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
         radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,

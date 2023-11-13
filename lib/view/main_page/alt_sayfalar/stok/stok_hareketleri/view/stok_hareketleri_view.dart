@@ -9,6 +9,8 @@ import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
@@ -140,6 +142,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Hareket Türü",
+                              groupValues: viewModel.arrHareketTuru,
                               children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),
                             );
                             if (result != null) {
@@ -265,125 +268,141 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                       onRefresh: () async {
                         viewModel.setStokHareketleri(await getData()!);
                       },
-                      child: ListView.builder(
-                        primary: false,
-                        padding: UIHelper.lowPadding,
-                        itemCount: viewModel.stokHareketleri?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          final StokHareketleriModel model = viewModel.stokHareketleri![index];
-                          final List<Widget> children2 = [];
-                          if (model.hareketTuruAciklama == "Devir") {
-                            final Widget slidableAction = SlidableAction(
-                              onPressed: (context) async {
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await networkManager.dioPost<StokHareketleriModel>(
-                                    path: ApiUrls.deleteStokHareket,
-                                    bodyModel: StokHareketleriModel(),
-                                    addCKey: true,
-                                    addSirketBilgileri: true,
-                                    queryParameters: {"INCKEYNO": model.inckeyno.toString()},
-                                  );
-                                  if (result.success == true) {
-                                    dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
-                                    viewModel.setStokHareketleri(await getData()!);
-                                  } else {
-                                    dialogManager.showErrorSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
-                                  }
-                                });
-                              },
-                              icon: Icons.delete_forever,
-                              backgroundColor: UIHelper.primaryColor,
-                              foregroundColor: theme.colorScheme.primary,
-                              label: "Sil",
-                            ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
-                            if (slidableAction != const SizedBox()) {
-                              children2.add(slidableAction);
-                            }
-                          }
-                          //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
-                          //😳 "Muhtelif"
-                          if (model.hareketTuruAciklama == "Devir") {
-                            children2.add(
-                              SlidableAction(
+                      child: SlidableAutoCloseBehavior(
+                        child: ListView.builder(
+                          primary: false,
+                          padding: UIHelper.lowPadding,
+                          itemCount: viewModel.stokHareketleri?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            final StokHareketleriModel model = viewModel.stokHareketleri![index];
+                            final List<Widget> children2 = [];
+                            if (model.hareketTuruAciklama == "Devir" && yetkiController.stokHareketleriStokSilme) {
+                              final Widget slidableAction = SlidableAction(
                                 onPressed: (context) async {
-                                  await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
-                                  viewModel.setStokHareketleri(await getData()!);
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    final result = await networkManager.dioPost<StokHareketleriModel>(
+                                      path: ApiUrls.deleteStokHareket,
+                                      bodyModel: StokHareketleriModel(),
+                                      addCKey: true,
+                                      addSirketBilgileri: true,
+                                      queryParameters: {"INCKEYNO": model.inckeyno.toString()},
+                                    );
+                                    if (result.success == true) {
+                                      dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
+                                      viewModel.setStokHareketleri(await getData()!);
+                                    } else {
+                                      dialogManager.showErrorSnackBar("Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}");
+                                    }
+                                  });
                                 },
-                                icon: Icons.directions_walk_outlined,
+                                icon: Icons.delete_forever,
                                 backgroundColor: UIHelper.primaryColor,
                                 foregroundColor: theme.colorScheme.primary,
-                                label: "Hareket\nDetayı",
-                              ),
-                            );
-                          }
-                          if (model.hareketTuruAciklama == "İrsaliye" || model.hareketTuruAciklama == "Açık Fatura") {
-                            children2.add(
-                              SlidableAction(
-                                onPressed: (context) async {
-                                  await Get.toNamed(
-                                    "mainPage/faturaEdit",
-                                    arguments: BaseEditModel<SiparisEditRequestModel>(
-                                      baseEditEnum: BaseEditEnum.goruntule,
-                                      model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                      siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
-                                    ),
-                                  );
-                                  viewModel.setStokHareketleri(await getData()!);
-                                },
-                                icon: Icons.directions_walk_outlined,
-                                backgroundColor: UIHelper.primaryColor,
-                                foregroundColor: theme.colorScheme.primary,
-                                label: "Hareket\nDetayı",
-                              ),
-                            );
-                          }
-                          return InkWell(
-                            onTap: () async {
-                              if (widget.model != null) {
-                                await bottomSheetDialogManager.showBottomSheetDialog(
-                                  context,
-                                  title: "Seçenekler",
-                                  children: [
-                                    //TODO Bunları unutma 😳
-                                    // BottomSheetModel(title: "Belgeyi Göster"),
-                                    BottomSheetModel(
-                                      title: "Stok İşlemleri",
-                                      iconWidget: Icons.list_alt_outlined,
-                                      onTap: () {
-                                        Get.back();
-                                        dialogManager.showStokGridViewDialog(widget.model);
-                                      },
-                                    ),
-                                  ],
-                                );
+                                label: "Sil",
+                              ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
+                              if (slidableAction != const SizedBox()) {
+                                children2.add(slidableAction);
                               }
-                            },
-                            child: IntrinsicHeight(
-                              child: Card(
-                                child: Slidable(
-                                  enabled: children2.ext.isNotNullOrEmpty,
-                                  endActionPane: ActionPane(
-                                    motion: const BehindMotion(),
-                                    children: children2,
-                                  ),
-                                  child: Row(
-                                    // crossAxisAlignment: CrossAxisAlignment.stretch,
+                            }
+                            //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
+                            //😳 "Muhtelif"
+                            if (model.hareketTuruAciklama == "Devir") {
+                              children2.add(
+                                SlidableAction(
+                                  onPressed: (context) async {
+                                    await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                                    viewModel.setStokHareketleri(await getData()!);
+                                  },
+                                  icon: Icons.directions_walk_outlined,
+                                  backgroundColor: UIHelper.primaryColor,
+                                  foregroundColor: theme.colorScheme.primary,
+                                  label: "Hareket\nDetayı",
+                                ),
+                              );
+                            }
+                            if ((model.hareketTuruAciklama == "İrsaliye" || model.hareketTuruAciklama == "Açık Fatura") && !yetkiController.stokHareketDetayiniGizle) {
+                              children2.add(
+                                SlidableAction(
+                                  onPressed: (context) async {
+                                    await Get.toNamed(
+                                      "mainPage/faturaEdit",
+                                      arguments: BaseEditModel<SiparisEditRequestModel>(
+                                        baseEditEnum: BaseEditEnum.goruntule,
+                                        model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                        siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                      ),
+                                    );
+                                    viewModel.setStokHareketleri(await getData()!);
+                                  },
+                                  icon: Icons.directions_walk_outlined,
+                                  backgroundColor: UIHelper.primaryColor,
+                                  foregroundColor: theme.colorScheme.primary,
+                                  label: "Hareket Detayı",
+                                ),
+                              );
+                            }
+                            return InkWell(
+                              onTap: () async {
+                                if (widget.model != null) {
+                                  await bottomSheetDialogManager.showBottomSheetDialog(
+                                    context,
+                                    title: "Seçenekler",
                                     children: [
-                                      listTile(model),
-                                      Container(
-                                        width: UIHelper.lowSize,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          color: UIHelper.primaryColor,
-                                        ),
-                                      ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
-                                    ],
+                                      //TODO Bunları unutma 😳
+                                      BottomSheetModel(
+                                        title: "Belgeyi Görüntüle",
+                                        iconWidget: Icons.preview_outlined,
+                                        onTap: () async {
+                                          await Get.toNamed(
+                                            "mainPage/faturaEdit",
+                                            arguments: BaseEditModel<SiparisEditRequestModel>(
+                                              baseEditEnum: BaseEditEnum.goruntule,
+                                              model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                              siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                            ),
+                                          );
+                                          viewModel.setStokHareketleri(await getData()!);
+                                        },
+                                      ).yetkiKontrol(!yetkiController.stokHareketDetayiniGizle),
+                                      BottomSheetModel(
+                                        title: "Stok İşlemleri",
+                                        iconWidget: Icons.list_alt_outlined,
+                                        onTap: () {
+                                          Get.back();
+                                          dialogManager.showStokGridViewDialog(widget.model);
+                                        },
+                                      ),
+                                    ].nullCheckWithGeneric,
+                                  );
+                                }
+                              },
+                              child: IntrinsicHeight(
+                                child: Card(
+                                  child: Slidable(
+                                    enabled: children2.ext.isNotNullOrEmpty,
+                                    endActionPane: ActionPane(
+                                      motion: const BehindMotion(),
+                                      children: children2,
+                                    ),
+                                    child: Row(
+                                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                                      children: [
+                                        listTile(model),
+                                        Container(
+                                          width: UIHelper.lowSize,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            color: UIHelper.primaryColor,
+                                          ),
+                                        ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
             );

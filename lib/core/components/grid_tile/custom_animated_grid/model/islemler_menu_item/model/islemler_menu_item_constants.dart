@@ -308,16 +308,17 @@ class IslemlerMenuItemConstants<T> {
           final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
             context,
             title: "Paylaş",
+            groupValues: List.generate(7, (index) => true),
             children: [
-              BottomSheetModel(title: "Ünvan", value: (model as CariListesiModel).cariAdi).yetkiKontrol((model as CariListesiModel).cariAdi != null),
-              BottomSheetModel(title: "Adres", value: (model as CariListesiModel).cariAdres).yetkiKontrol((model as CariListesiModel).cariAdres != null),
-              BottomSheetModel(title: "İl/ İlçe", value: "${(model as CariListesiModel).cariIl ?? ""} / ${(model as CariListesiModel).cariIlce ?? ""}")
+              BottomSheetModel(title: "Ünvan", value: (model as CariListesiModel).cariAdi, groupValue: true).yetkiKontrol((model as CariListesiModel).cariAdi != null),
+              BottomSheetModel(title: "Adres", value: (model as CariListesiModel).cariAdres, groupValue: true).yetkiKontrol((model as CariListesiModel).cariAdres != null),
+              BottomSheetModel(title: "İl/ İlçe", value: "${(model as CariListesiModel).cariIl ?? ""} / ${(model as CariListesiModel).cariIlce ?? ""}", groupValue: true)
                   .yetkiKontrol((model as CariListesiModel).cariIl != null || (model as CariListesiModel).cariIlce != null),
-              BottomSheetModel(title: "Vergi Bilgileri", value: "${(model as CariListesiModel).vergiDairesi ?? ""} ${(model as CariListesiModel).vergiNumarasi ?? ""}")
+              BottomSheetModel(title: "Vergi Bilgileri", value: "${(model as CariListesiModel).vergiDairesi ?? ""} ${(model as CariListesiModel).vergiNumarasi ?? ""}", groupValue: true)
                   .yetkiKontrol((model as CariListesiModel).vergiDairesi != null || (model as CariListesiModel).vergiNumarasi != null),
-              BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel).yetkiKontrol((model as CariListesiModel).cariTel != null),
-              BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web).yetkiKontrol((model as CariListesiModel).web != null),
-              BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email).yetkiKontrol((model as CariListesiModel).email != null),
+              BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel, groupValue: true).yetkiKontrol((model as CariListesiModel).cariTel != null),
+              BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web, groupValue: true).yetkiKontrol((model as CariListesiModel).web != null),
+              BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email, groupValue: true).yetkiKontrol((model as CariListesiModel).email != null),
             ].nullCheckWithGeneric,
           );
           if ((result as List?).ext.isNotNullOrEmpty) {

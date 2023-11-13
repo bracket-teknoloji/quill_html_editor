@@ -329,6 +329,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                     final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                       context,
                       title: "Görünecek Alanlar",
+                      groupValues: viewModel.gorunecekAlanlarMap.values.toList(),
                       children: List.generate(
                         viewModel.gorunecekAlanlarMap.length,
                         (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index]),

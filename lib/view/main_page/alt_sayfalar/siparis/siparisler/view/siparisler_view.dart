@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -224,12 +226,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             controller: plasiyerController,
                             suffixMore: true,
                             readOnly: true,
-                            onClear: () {
-                              viewModel.setArrPlasiyerKodu(null);
-                              plasiyerController.clear();
-                            },
+                            onClear: () => viewModel.setArrPlasiyerKodu(null),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context);
+                              final result =
+                                  await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]"));
                               if (result.ext.isNotNullOrEmpty) {
                                 plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
 
@@ -244,10 +244,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             controller: projeController,
                             suffixMore: true,
                             readOnly: true,
-                            onClear: () {
-                              viewModel.setProjeKodu(null);
-                              projeController.clear();
-                            },
+                            onClear: () => viewModel.setProjeKodu(null),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.projeKodu);
                               if (result != null) {
@@ -675,10 +672,20 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
-    final List<BottomSheetModel> bottomSheetList =
-        viewModel.grupKodList.where((e) => e.grupNo == grupNo).toList().cast<BaseGrupKoduModel>().map((e) => BottomSheetModel(title: e.grupKodu ?? "")).toList().cast<BottomSheetModel>();
+    final List<BottomSheetModel> bottomSheetList = viewModel.grupKodList
+        .where((e) => e.grupNo == grupNo)
+        .toList()
+        .cast<BaseGrupKoduModel>()
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "",groupValue: e.grupKodu))
+        .toList()
+        .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Grup Kodu $grupNo", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+      context,
+      title: "Grup Kodu $grupNo",
+      groupValues: grupKodList(grupNo),
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.join(", ");
       switch (grupNo) {
@@ -697,5 +704,24 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       }
     }
     return null;
+  }
+
+  List grupKodList(int index) {
+    switch (index) {
+      case 0:
+        return viewModel.grupKodList.where((e) => e.grupNo == 0).map((e) => e.grupKodu).toList();
+      case 1:
+        return viewModel.grupKodList.where((e) => e.grupNo == 1).map((e) => e.grupKodu).toList();
+      case 2:
+        return viewModel.grupKodList.where((e) => e.grupNo == 2).map((e) => e.grupKodu).toList();
+      case 3:
+        return viewModel.grupKodList.where((e) => e.grupNo == 3).map((e) => e.grupKodu).toList();
+      case 4:
+        return viewModel.grupKodList.where((e) => e.grupNo == 4).map((e) => e.grupKodu).toList();
+      case 5:
+        return viewModel.grupKodList.where((e) => e.grupNo == 5).map((e) => e.grupKodu).toList();
+      default:
+        return [];
+    }
   }
 }

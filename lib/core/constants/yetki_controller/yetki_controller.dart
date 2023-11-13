@@ -81,7 +81,7 @@ final class YetkiController {
   bool get stokHareketleriStokDuzenleme => _isTrue(_yetkiModel?.stokStokHarDuzelt);
   bool get stokHareketleriStokSilme => _isTrue(_yetkiModel?.stokStokHarSil);
   bool get stokHareketleriPlasiyerKendiniGorsun => _isTrue(_yetkiModel?.stokStokHarPlasiyerKendiniGorsun);
-  bool get stokHareketDetayiniGizle => _isTrue(_yetkiModel?.stokHareketDetayiniGizle);
+  bool get stokHareketDetayiniGizle => _isTrue(_yetkiModel?.stokHareketDetayiniGizle ?? false, skipAdmin: true);
 
   //* Stok Resim
   bool get stokResimGoster => _isTrue(_yetkiModel?.stokResimGoster);

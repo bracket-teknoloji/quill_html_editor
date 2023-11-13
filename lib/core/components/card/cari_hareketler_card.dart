@@ -60,7 +60,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
         backgroundColor: UIHelper.primaryColor,
         foregroundColor: theme.colorScheme.primary,
         label: "Belgeye Git",
-      ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont"),
+      ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun),
     ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric;
     return InkWell(
       onTap: widget.onTap ?? () {},
@@ -68,7 +68,8 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
       child: IntrinsicHeight(
         child: Card(
           child: Slidable(
-            enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont",
+            groupTag: 1,
+            enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun,
             endActionPane: ActionPane(
               motion: const BehindMotion(),
               children: slidableList.whereType<SlidableAction>().toList(),
@@ -83,7 +84,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                     shape: BoxShape.rectangle,
                     color: UIHelper.primaryColor,
                   ),
-                ).yetkiVarMi(slidableList.ext.isNotNullOrEmpty),
+                ).yetkiVarMi(slidableList.ext.isNotNullOrEmpty && yetkiController.cariHareketleriHarDetayGorsun),
               ],
             ),
           ),

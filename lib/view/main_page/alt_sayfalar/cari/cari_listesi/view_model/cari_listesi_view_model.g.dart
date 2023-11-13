@@ -417,7 +417,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrPlasiyerKodu(List<String?>? value) {
+  void changeArrPlasiyerKodu(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrPlasiyerKodu');
     try {

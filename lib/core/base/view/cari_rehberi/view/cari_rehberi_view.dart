@@ -314,11 +314,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Kod 1 Seçiniz",
+                              groupValues: viewModel.cariListesiRequestModel?.arrKod1,
                               children: List.generate(
                                 viewModel.grupKodlari1?.length ?? 0,
                                 (index) => BottomSheetModel(
                                   title: viewModel.grupKodlari1?[index].grupAdi ?? "",
                                   value: viewModel.grupKodlari1?[index].grupKodu,
+                                  groupValue: viewModel.grupKodlari1?[index].grupKodu,
                                 ),
                               ),
                             );
@@ -346,11 +348,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Kod 2 Seçiniz",
+                              groupValues: viewModel.cariListesiRequestModel?.arrKod2,
                               children: List.generate(
                                 viewModel.grupKodlari2?.length ?? 0,
                                 (index) => BottomSheetModel(
                                   title: viewModel.grupKodlari2?[index].grupAdi ?? "",
                                   value: viewModel.grupKodlari2?[index].grupKodu,
+                                  groupValue: viewModel.grupKodlari2?[index].grupKodu,
                                 ),
                               ),
                             );
@@ -374,11 +378,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Kod 3 Seçiniz",
+                              groupValues: viewModel.cariListesiRequestModel?.arrKod3,
                               children: List.generate(
                                 viewModel.grupKodlari3?.length ?? 0,
                                 (index) => BottomSheetModel(
                                   title: viewModel.grupKodlari3?[index].grupAdi ?? "",
                                   value: viewModel.grupKodlari3?[index].grupKodu,
+                                  groupValue: viewModel.grupKodlari3?[index].grupKodu,
                                 ),
                               ),
                             );
@@ -406,11 +412,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Kod 4 Seçiniz",
+                              groupValues: viewModel.cariListesiRequestModel?.arrKod4,
                               children: List.generate(
                                 viewModel.grupKodlari4?.length ?? 0,
                                 (index) => BottomSheetModel(
                                   title: viewModel.grupKodlari4?[index].grupAdi ?? "",
                                   value: viewModel.grupKodlari4?[index].grupKodu,
+                                  groupValue: viewModel.grupKodlari4?[index].grupKodu,
                                 ),
                               ),
                             );
@@ -434,11 +442,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Kod 5 Seçiniz",
+                              groupValues: viewModel.cariListesiRequestModel?.arrKod5,
                               children: List.generate(
                                 viewModel.grupKodlari5?.length ?? 0,
                                 (index) => BottomSheetModel(
                                   title: viewModel.grupKodlari5?[index].grupAdi ?? "",
                                   value: viewModel.grupKodlari5?[index].grupKodu,
+                                  groupValue: viewModel.grupKodlari5?[index].grupKodu,
                                 ),
                               ),
                             );
