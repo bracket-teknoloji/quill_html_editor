@@ -154,11 +154,18 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
               icon: Icons.sort_by_alpha_outlined,
               child: const Text("Sırala"),
               onPressed: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Sıralama",
-                  children:
-                      List.generate(viewModel.siralaMap.length, (int index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+                  groupValue: viewModel.faturaRequestModel.siralama,
+                  children: List.generate(
+                    viewModel.siralaMap.length,
+                    (int index) => BottomSheetModel(
+                      title: viewModel.siralaMap.keys.toList()[index],
+                      value: viewModel.siralaMap.values.toList()[index],
+                      groupValue: viewModel.siralaMap.values.toList()[index],
+                    ),
+                  ),
                 );
                 if (result != null) {
                   viewModel.setSiralama(result);
