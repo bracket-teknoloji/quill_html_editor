@@ -520,11 +520,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     cariController.text = model.cariAdi ?? "";
     teslimCariController.text = model.teslimCariAdi ?? "";
     belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
-    plasiyerController.text = model.plasiyerAciklama ?? "";
+    plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
     topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ? model.topluDepo.toStringIfNotNull ?? "" : "";
-    projeController.text = model.projeAciklama ?? "";
+    projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
     ozelKod2Controller.text = model.ozelKod2 ?? "";

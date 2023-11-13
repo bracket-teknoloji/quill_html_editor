@@ -366,7 +366,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   EirsBilgiModel? eirsBilgiModel;
   @HiveField(144)
   String? uetdsBildirildi;
-  
+
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -522,10 +522,13 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
+  double get dovizliKdv => kalemList?.map((e) => e.dovizAdi != null ? e.dovizKdvTutari : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+
   double get sumGenIsk1 => kalemList?.map((e) => e.iskonto1).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk3 => kalemList?.map((e) => e.iskonto3).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get malFazlasiTutar => kalemList?.map((e) => e.mfTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get malFazlasiDovizTutari => kalemList?.map((e) => e.mfTutari / (e.dovizKuru ?? 1)).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get kdvTutari {
     kdv = iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
     return kdv ?? 0;
@@ -553,10 +556,23 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return result;
   }
 
+  String get kdvTutarlariVeOranlari {
+    String result = "";
+    kalemList?.forEach((element) {
+      if (element.kdvTutari != 0) {
+        result += "${element.stokAdi ?? ""} %${element.kdvOrani} : ${element.kdvTutari}\n";
+      }
+    });
+    return result;
+  }
+
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get satirDovizIskonto => kalemList?.map((e) => e.dovizIskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   int toplamKalemMiktari([bool miktar2EklensinMi = false]) => (kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => a + b) ?? 0).toInt();
 
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+
+  double get toplamDovizBrutTutar => kalemList?.map((e) => e.getDovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get genelToplamTutar {
     genelToplam = getAraToplam + kdvTutari;
     return genelToplam ?? 0;
@@ -566,6 +582,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
     return araToplam ?? 0;
   }
+
+  double get getDovizliAraToplam => kalemList?.map((e) => e.getDovizAraToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
   double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
@@ -605,6 +623,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
   double get getToplamIskonto => toplamBrutTutar - getAraToplam;
+
+  double get getDovizliToplamIskonto => toplamDovizBrutTutar - getDovizliAraToplam;
 
   double get genelIskontoToplami => (genIsk1t ?? 0) + (genIsk2t ?? 0) + (genIsk3t ?? 0);
 
@@ -914,6 +934,8 @@ class KalemModel with NetworkManagerMixin {
 
   double get brutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (brutFiyat ?? 0);
 
+  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? 0);
+
   double get koliTutar => kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
   double get araToplamTutari => ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - iskontoTutari;
@@ -951,15 +973,17 @@ class KalemModel with NetworkManagerMixin {
     return ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? 0);
+  double get dovizBrutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
+  double get getDovizBrutTutar => dovizFiyati ?? (brutTutar / (dovizKuru ?? 1));
 
-  double get dovizAraToplamTutari => ((getSelectedMiktar ?? 0) * (dovizFiyati ?? 0)) - dovizIskontoTutari;
+  double get dovizAraToplamTutari => ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
+  double get getDovizAraToplamTutari => (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari;
 
   double get dovizGenelToplamTutari => dovizAraToplamTutari + dovizKdvTutari;
 
   double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
 
-  double get dovizKdvTutari => dovizAraToplamTutari * ((kdvOrani ?? 0) / 100);
+  double get dovizKdvTutari => (araToplamTutari / (dovizKuru ?? 1)) * ((kdvOrani ?? 0) / 100);
 
   double get dovizIskontoTutari {
     if (iskonto1OranMi ?? true) {

@@ -393,73 +393,71 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         },
       );
 
-  Expanded listTile(StokHareketleriModel model) {
-    return Expanded(
-                                      child: ListTile(
-                                        contentPadding: UIHelper.midPaddingHorizontal,
-                                        title: Row(
-                                          children: [
-                                            Expanded(
-                                              child: Wrap(
-                                                children: [
-                                                  Text(model.stharTarih.toDateString).yetkiVarMi(model.stharTarih != null),
-                                                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizTipi == 1),
-                                                  // model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
-                                                ],
-                                              ),
-                                            ),
-                                            Text(model.fisno ?? ""),
-                                            Icon(
-                                              model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp,
-                                              color: model.cikisIslemi ?? false ? ColorPalette.persianRed : ColorPalette.mantis,
-                                            ),
-                                          ],
-                                        ),
-                                        subtitle: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(model.cariAdi ?? "").yetkiVarMi(model.cariAdi != null),
-                                            Text.rich(
-                                              TextSpan(
-                                                children: [
-                                                  TextSpan(
-                                                    text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
-                                                    style: TextStyle(color: (model.cikisIslemi ?? false) ? ColorPalette.persianRed : ColorPalette.mantis),
-                                                  ),
-                                                  TextSpan(text: "(${model.hareketTuruAciklama})", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.3))),
-                                                ],
-                                              ),
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-                                                Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
-                                                Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
-                                                Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
-                                                Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ).paddingOnly(bottom: UIHelper.highSize),
-                                    );
-  }
+  Expanded listTile(StokHareketleriModel model) => Expanded(
+        child: ListTile(
+          contentPadding: UIHelper.midPaddingHorizontal,
+          title: Row(
+            children: [
+              Expanded(
+                child: Wrap(
+                  children: [
+                    Text(model.stharTarih.toDateString).yetkiVarMi(model.stharTarih != null),
+                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizTipi == 1),
+                    // model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
+                  ],
+                ),
+              ),
+              Text(model.fisno ?? ""),
+              Icon(
+                model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp,
+                color: model.cikisIslemi ?? false ? ColorPalette.persianRed : ColorPalette.mantis,
+              ),
+            ],
+          ),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(model.cariAdi ?? "").yetkiVarMi(model.cariAdi != null),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
+                      style: TextStyle(color: (model.cikisIslemi ?? false) ? ColorPalette.persianRed : ColorPalette.mantis),
+                    ),
+                    TextSpan(text: "(${model.hareketTuruAciklama})", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.3))),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
+                  Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
+                  Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                  Expanded(child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(child: Text("Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                  Expanded(child: Text("Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}")),
+                ],
+              ),
+            ],
+          ),
+        ).paddingOnly(bottom: UIHelper.highSize),
+      );
 
   Future<List<StokHareketleriModel>>? getData() async {
     viewModel.setFuture(null);
