@@ -159,6 +159,7 @@ flutter:
     - assets/lotties/
     - assets/icons/
     - assets/app_icon/
+    - shorebird.yaml
 
 
 flutter_gen:

@@ -252,7 +252,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               controller: tabController,
               tabs: [
                 const Tab(child: Text("Genel")),
-                if (yetkiController.siparisDigerSekmesiGoster) const Tab(child: Text("Diğer")) else null,
+                if (yetkiController.siparisDigerSekmesiGoster) const Tab(child: Text("Diğer")),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
@@ -272,7 +272,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     }
                   },
                 ),
-                if (yetkiController.siparisDigerSekmesiGoster) BaseSiparislerDigerView(model: model) else null,
+                if (yetkiController.siparisDigerSekmesiGoster) BaseSiparislerDigerView(model: model),
                 BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
               ].whereType<Widget>().toList(),

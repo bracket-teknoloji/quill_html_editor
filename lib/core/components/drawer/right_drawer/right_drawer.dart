@@ -87,67 +87,65 @@ class _EndDrawerState extends BaseState<EndDrawer> {
               //     Expanded(child: OutlinedButton.icon(onPressed: () {}, icon: const Icon(Icons.logout_outlined), label: const Text("Çıkış")).paddingAll(UIHelper.lowSize)),
               //   ],
               // ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
+                        ),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                            ),
                           ),
-                          child: TextButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Get.toNamed("/entryCompany");
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                // Icon(Icons.rule_s)
-                                IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                                Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
-                              ],
-                            ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Get.toNamed("/entryCompany", arguments: false);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Icon(Icons.rule_s)
+                              IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                              Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
+                            ],
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
+                        ),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                            ),
                           ),
-                          child: TextButton(
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                              dialogManager.showExitDialog();
-                            },
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                                Text("Çıkış", style: theme.textTheme.bodySmall),
-                              ],
-                            ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                            dialogManager.showExitDialog();
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                              Text("Çıkış", style: theme.textTheme.bodySmall),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

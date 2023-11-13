@@ -228,8 +228,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             readOnly: true,
                             onClear: () => viewModel.setArrPlasiyerKodu(null),
                             onTap: () async {
-                              final result =
-                                  await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]"));
+                              final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+                                context,
+                                groupValues: jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]"),
+                              );
                               if (result.ext.isNotNullOrEmpty) {
                                 plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
 
@@ -676,7 +678,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "",groupValue: e.grupKodu))
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", groupValue: e.grupKodu))
         .toList()
         .cast<BottomSheetModel>();
     // ignore: use_build_context_synchronously
@@ -709,17 +711,17 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   List grupKodList(int index) {
     switch (index) {
       case 0:
-        return viewModel.grupKodList.where((e) => e.grupNo == 0).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrGrupKodu ?? "[]").toList();
       case 1:
-        return viewModel.grupKodList.where((e) => e.grupNo == 1).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod1 ?? "[]").toList();
       case 2:
-        return viewModel.grupKodList.where((e) => e.grupNo == 2).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod2 ?? "[]").toList();
       case 3:
-        return viewModel.grupKodList.where((e) => e.grupNo == 3).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod3 ?? "[]").toList();
       case 4:
-        return viewModel.grupKodList.where((e) => e.grupNo == 4).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod4 ?? "[]").toList();
       case 5:
-        return viewModel.grupKodList.where((e) => e.grupNo == 5).map((e) => e.grupKodu).toList();
+        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod5 ?? "[]").toList();
       default:
         return [];
     }
