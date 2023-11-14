@@ -295,10 +295,18 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
               icon: Icons.sort_by_alpha_outlined,
               child: const Text("Sırala"),
               onPressed: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Sırala",
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
+                  groupValue: viewModel.cekSenetListesiRequestModel.sirala,
+                  children: List.generate(
+                    viewModel.siralaMap.length,
+                    (index) => BottomSheetModel(
+                      title: viewModel.siralaMap.keys.toList()[index],
+                      value: viewModel.siralaMap.values.toList()[index],
+                      groupValue: viewModel.siralaMap.values.toList()[index],
+                    ),
+                  ),
                 );
                 if (result != null) {
                   viewModel.setSirala(result);
@@ -330,7 +338,13 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
               itemCount: viewModel.cekSenetListesiListesi?.length ?? 0,
               itemBuilder: (context, index) {
                 final model = viewModel.cekSenetListesiListesi![index];
-                return CekSenetListesiCard(model: model, cekSenetListesiEnum: widget.cekSenetListesiEnum);
+                return CekSenetListesiCard(
+                  model: model,
+                  cekSenetListesiEnum: widget.cekSenetListesiEnum,
+                  onUpdate: (value) async {
+                    await viewModel.getData();
+                  },
+                );
               },
             );
           },

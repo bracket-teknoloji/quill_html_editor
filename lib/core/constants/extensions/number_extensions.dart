@@ -1,5 +1,4 @@
 // an extension on int to separate the digits with commas
-import "package:get/get.dart";
 import "package:intl/intl.dart";
 import "package:kartal/kartal.dart";
 
@@ -10,7 +9,7 @@ extension NumExtensionWithFixedDigits on num? {
   String commaSeparatedWithDecimalDigits(OndalikEnum decimalDigits) {
     if (this != null) {
       final f = NumberFormat.decimalPatternDigits(
-        locale: Get.locale!.languageCode,
+        locale: "TR",
         decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,
       );
       return f.format(this!);

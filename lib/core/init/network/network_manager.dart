@@ -314,6 +314,7 @@ class NetworkManager {
       data: data2,
       addTokenKey: false,
       addCKey: false,
+      showLoading: !getFromCache,
       addSirketBilgileri: false,
       path: ApiUrls.getUyeBilgileri,
     );

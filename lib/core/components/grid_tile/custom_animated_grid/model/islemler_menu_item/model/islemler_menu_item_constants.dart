@@ -74,10 +74,11 @@ class IslemlerMenuItemConstants<T> {
       if (model != null) {
         islemlerList.add(kasaHareketleri);
       }
-      islemlerList.add(kasaTransferi);
+      islemlerList.add(bankaKasaTransferi);
       islemlerList.add(nakitTahsilat(null));
       islemlerList.add(nakitOdeme(null));
       islemlerList.add(krediKartiTahsilati(null));
+      islemlerList.add(kasaTransferi);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
       islemlerList.addAll(raporlar ?? []);
@@ -93,6 +94,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(bankaKasaTransferi);
       islemlerList.add(hesaplarArasiVirman);
       islemlerList.add(hesaplarArasiEftHavale);
+      islemlerList.add(bankaMuhtelifTahsilat);
+      islemlerList.add(bnkaMuhtelifOdeme);
     }
   }
 
@@ -437,6 +440,9 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Hesaplar Arası Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiVirman"));
   GridItemModel? get hesaplarArasiEftHavale =>
       GridItemModel.islemler(title: "Hesaplar Arası EFT/Havale", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiEftHavale"));
+  GridItemModel? get bankaMuhtelifTahsilat =>
+      GridItemModel.islemler(title: "Muhtelif Tahsilat", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaMuhtelifTahsilat"));
+  GridItemModel? get bnkaMuhtelifOdeme => GridItemModel.islemler(title: "Muhtelif Ödeme", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaMuhtelifOdeme"));
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));

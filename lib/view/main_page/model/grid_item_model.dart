@@ -29,7 +29,7 @@ class GridItemModel {
     required this.title,
     required this.color,
     required this.altMenuler,
-     this.icon,
+    this.icon,
     this.iconData,
     this.yetkiListesi,
   }) {
@@ -113,6 +113,9 @@ class GridItemModel {
     } else if (menuTipi == "SR") {
       return true;
     } else {
+      if (name == null) {
+        return true;
+      }
       final result = route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
       return result ?? false;
     }

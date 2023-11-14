@@ -11,6 +11,7 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
+import "package:picker/core/constants/enum/banka_muhtelif_islemler_enum.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
 import "package:picker/core/constants/enum/hesaplar_arasi_enum.dart";
@@ -21,6 +22,7 @@ import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_be
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_muhtelif_islemler/view/banka_muhtelif/banka_muhtelif_islemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_havale_eft/view/cari_havale_eft_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/hesaplar_arasi/view/hesaplar_arasi_islem_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
@@ -183,6 +185,8 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
               GetPage(name: "/hesaplarArasiVirman", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman)),
               GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),
+              GetPage(name: "/bankaMuhtelifTahsilat", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.tahsilat)),
+              GetPage(name: "/bankaMuhtelifOdeme", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.odeme)),
 
               //* * Kasa
               GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),

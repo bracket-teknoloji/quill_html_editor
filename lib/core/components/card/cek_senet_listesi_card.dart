@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
@@ -20,12 +21,14 @@ import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/delete_cek_senet_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 class CekSenetListesiCard extends StatefulWidget {
   final CekSenetListesiModel model;
   final CekSenetListesiEnum cekSenetListesiEnum;
-  const CekSenetListesiCard({super.key, required this.model, required this.cekSenetListesiEnum});
+  final ValueChanged<bool>? onUpdate;
+  const CekSenetListesiCard({super.key, required this.model, required this.cekSenetListesiEnum, this.onUpdate});
 
   @override
   State<CekSenetListesiCard> createState() => _CekSenetListesiCardState();
@@ -42,7 +45,25 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
               title: model.belgeNo ?? "",
               children: [
                 BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-                BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
+                BottomSheetModel(
+                  title: "Sil",
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    await dialogManager.showAreYouSureDialog(() async {
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.deleteCekSenet,
+                        bodyModel: const EditFaturaModel(),
+                        showLoading: true,
+                        data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
+                      );
+                      if (result.success ?? false) {
+                        dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+                        widget.onUpdate?.call(result.success ?? false);
+                      }
+                    });
+                  },
+                ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
                 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
                 BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model))
                     .yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),

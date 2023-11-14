@@ -182,6 +182,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                 children: [
                                   CustomWidgetWithLabel(
                                     isVertical: true,
+                                    addPadding: false,
                                     text: "Alış",
                                     child: Text(
                                       model.dovAlis.commaSeparatedWithDecimalDigits(
@@ -191,6 +192,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                   ),
                                   CustomWidgetWithLabel(
                                     isVertical: true,
+                                    addPadding: false,
                                     text: "Satış",
                                     child: Text(
                                       model.dovSatis.commaSeparatedWithDecimalDigits(
@@ -200,6 +202,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                   ),
                                   CustomWidgetWithLabel(
                                     isVertical: true,
+                                    addPadding: false,
                                     text: "Ef. Alış",
                                     child: Text(
                                       model.effAlis.commaSeparatedWithDecimalDigits(
@@ -209,6 +212,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                   ),
                                   CustomWidgetWithLabel(
                                     isVertical: true,
+                                    addPadding: false,
                                     text: "Ef. Satış",
                                     child: Text(
                                       model.effSatis.commaSeparatedWithDecimalDigits(

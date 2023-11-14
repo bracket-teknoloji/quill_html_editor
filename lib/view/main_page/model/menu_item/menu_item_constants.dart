@@ -1,5 +1,5 @@
-import "package:collection/collection.dart";
 import "package:flutter/material.dart";
+import "package:kartal/kartal.dart";
 
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
@@ -17,10 +17,13 @@ class MenuItemConstants {
       _serbestRapor!.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
 
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
-    final List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.value).toList();
+    final List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
+    if (serbestRaporList.ext.isNullOrEmpty) {
+      return [];
+    }
     return List.generate(
-      _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.value).length ?? 0,
-      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList![index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: ColorPalette.asparagus),
+      _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).length ?? 0,
+      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList?[index].dizaynAdi ?? "", arguments: serbestRaporList?[index], color: ColorPalette.asparagus),
     );
   }
 
@@ -95,7 +98,7 @@ class MenuItemConstants {
             GridItemModel.item(name: "finans_Kasa_Islemleri", title: "İşlemler", route: "/mainPage/kasaIslemleri"),
             GridItemModel.item(name: "finans_KasalarArasiTransfer", title: "Kasa Transferi", route: "/mainPage/kasaTransferi"),
             GridItemModel.altmenu(
-              name: "finans_Raporlar_KasaEkstre",
+              name: null,
               title: "Raporlar",
               icon: "monitoring",
               altMenuler: <GridItemModel>[
@@ -116,9 +119,7 @@ class MenuItemConstants {
               name: null,
               title: "Raporlar",
               icon: "monitoring",
-              altMenuler: <GridItemModel>[
-                ..._getSerbestRapor(SerbestRaporDetayKodEnum.cek),
-              ],
+              altMenuler: _getSerbestRapor(SerbestRaporDetayKodEnum.cek),
             ),
           ],
         ),
@@ -128,6 +129,12 @@ class MenuItemConstants {
           altMenuler: <GridItemModel>[
             GridItemModel.item(name: "finans_Senet_Musteri", title: "Müşteri Senetleri", route: "/mainPage/musteriSenetleri"),
             GridItemModel.item(name: "finans_Senet_Borc", title: "Borç Senetleri", route: "/mainPage/borcSenetleri"),
+            GridItemModel.altmenu(
+              name: null,
+              title: "Raporlar",
+              icon: "monitoring",
+              altMenuler: _getSerbestRapor(SerbestRaporDetayKodEnum.senet),
+            ),
           ],
         ),
         GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
@@ -164,12 +171,15 @@ class MenuItemConstants {
     //* Genel
     //*
     GridItemModel.anamenu(
-      name: "GNEL",
+      //TODO BUNUN ADINA BAK
+      name: "GNEL_BEKO",
       title: "Genel",
       icon: "settings",
       color: ColorPalette.tomato,
       altMenuler: <GridItemModel>[
-        // GridItemModel.item(name: "", title: "Firmalar", route: "/addCompany"),
+        GridItemModel.item(name: null, title: "Döviz Kurları", route: "/dovizKurlari"),
+        GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
+        GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
       ],
     ),
 

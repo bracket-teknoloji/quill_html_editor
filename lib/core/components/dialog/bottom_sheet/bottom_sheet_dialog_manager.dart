@@ -607,7 +607,7 @@ class BottomSheetDialogManager {
 
   Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model, dynamic groupValue) async {
     List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
-    final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson());
+    final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson(), showLoading: true);
     if (result.data is List) {
       bankaHesaplariList = result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>();
     }

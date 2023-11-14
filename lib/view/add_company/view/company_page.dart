@@ -28,9 +28,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
 
   AppBar appBar() => AppBar(
         leading: IconButton(
-          onPressed: () {
-            Get.offAndToNamed("/");
-          },
+          onPressed: Get.back,
           icon: const Icon(Icons.arrow_back),
         ),
         title: const Text("Hesaplar"),

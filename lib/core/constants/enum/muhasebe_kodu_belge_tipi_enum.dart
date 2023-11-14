@@ -1,4 +1,13 @@
-enum MuhasebeBelgeTipiEnum { aylikMizan, muo, cari, hesaplarArasiVirman, hesaplarArasiEft, cariHavaleEft}
+enum MuhasebeBelgeTipiEnum {
+  aylikMizan,
+  muo,
+  cari,
+  hesaplarArasiVirman,
+  hesaplarArasiEft,
+  cariHavaleEft,
+  muhtelifTahsilat,
+  muhtelifOdeme,
+}
 
 extension MuhasebeBelgeExtensions on MuhasebeBelgeTipiEnum? {
   String get value {
@@ -15,6 +24,10 @@ extension MuhasebeBelgeExtensions on MuhasebeBelgeTipiEnum? {
         return "DHE";
       case MuhasebeBelgeTipiEnum.cariHavaleEft:
         return "DCE";
+      case MuhasebeBelgeTipiEnum.muhtelifTahsilat:
+        return "BMT";
+      case MuhasebeBelgeTipiEnum.muhtelifOdeme:
+        return "BMO";
       default:
         throw Exception("Böyle bir değer yok");
     }
