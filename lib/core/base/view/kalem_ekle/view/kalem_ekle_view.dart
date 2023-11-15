@@ -115,7 +115,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
                   BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
-                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi ?? (viewModel.koliMi ? "E" : "H");
+                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi ?? (viewModel.koliMi ? "K" : null);
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }

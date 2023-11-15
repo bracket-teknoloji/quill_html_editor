@@ -6,7 +6,7 @@ import "../../../init/cache/cache_manager.dart";
 import "drawer_model.dart";
 
 class DrawerMenuItems {
-  final List<DrawerModel> items = [
+  static final List<DrawerModel> items = [
     DrawerModel(
       title: "${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})",
       iconWidget: Icons.storage_outlined,
@@ -23,6 +23,10 @@ class DrawerMenuItems {
       title: "v${AppInfoModel.instance.version}",
       iconWidget: Icons.route_outlined,
     ),
+    // DrawerModel(
+    //   title: AccountModel.instance.localIp,
+    //   iconWidget: Icons.link_outlined,
+    // ),
     DrawerModel(
       title: "Sürüm Yenilikleri",
       iconWidget: Icons.new_releases_outlined,

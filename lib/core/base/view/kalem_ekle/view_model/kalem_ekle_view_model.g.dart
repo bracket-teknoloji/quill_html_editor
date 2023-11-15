@@ -33,7 +33,7 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   Computed<bool>? _$koliMiComputed;
 
   @override
-  bool get koliMi => (_$koliMiComputed ??= Computed<bool>(() => super.koliMi,
+  bool get  koliMi => (_$koliMiComputed ??= Computed<bool>(() => super.koliMi,
           name: '_KalemEkleViewModelBase.koliMi'))
       .value;
 

@@ -68,16 +68,16 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   padding: UIHelper.zeroPadding,
                   itemBuilder: (context, index) => ListTile(
                     dense: true,
-                    onTap: DrawerMenuItems().items[index].onTap,
+                    onTap: DrawerMenuItems.items[index].onTap,
                     title: Text(
-                      "${DrawerMenuItems().items[index]}",
+                      "${DrawerMenuItems.items[index]}",
                       style: theme.textTheme.bodyMedium,
                     ),
                     horizontalTitleGap: 0,
-                    leading: Icon(DrawerMenuItems().items[index].iconWidget, size: 20, color: theme.colorScheme.primary),
+                    leading: Icon(DrawerMenuItems.items[index].iconWidget, size: 20, color: theme.colorScheme.primary),
                   ),
                   separatorBuilder: (context, index) => const Divider(),
-                  itemCount: DrawerMenuItems().items.length,
+                  itemCount: DrawerMenuItems.items.length,
                 ),
               ),
               // Row(
