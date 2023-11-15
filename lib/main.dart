@@ -10,24 +10,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
-import "package:picker/core/constants/enum/banka_muhtelif_islemler_enum.dart";
-import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
-import "package:picker/core/constants/enum/e_belge_enum.dart";
-import "package:picker/core/constants/enum/hesaplar_arasi_enum.dart";
-import "package:picker/view/auth/entry_company/view/entry_company_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_muhtelif_islemler/view/banka_muhtelif/banka_muhtelif_islemler_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_havale_eft/view/cari_havale_eft_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/hesaplar_arasi/view/hesaplar_arasi_islem_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -35,7 +17,12 @@ import "core/base/view/kalem_ekle/model/kalem_ekle_model.dart";
 import "core/base/view/kalem_ekle/view/kalem_ekle_view.dart";
 import "core/base/view/qr/view/qr_view.dart";
 import "core/base/view/stok_rehberi/view/stok_rehberi_view.dart";
+import "core/base/view/surum_yenilikleri/view/surum_yenilikleri_view.dart";
 import "core/base/view/yapilandirma_rehberi/view/yapilandirma_rehberi_view.dart";
+import "core/constants/enum/banka_muhtelif_islemler_enum.dart";
+import "core/constants/enum/cek_senet_listesi_enum.dart";
+import "core/constants/enum/e_belge_enum.dart";
+import "core/constants/enum/hesaplar_arasi_enum.dart";
 import "core/constants/enum/siparis_tipi_enum.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
@@ -45,12 +32,14 @@ import "firebase_options.dart";
 import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
+import "view/auth/entry_company/view/entry_company_view.dart";
 import "view/auth/login/view/login_view.dart";
 import "view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareket_yeni_kayit/view/cari_hareket_yeni_kayit_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_hareketleri/view/cari_hareketleri_view.dart";
 import "view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "view/main_page/alt_sayfalar/cari/cari_listesi/view/cari_listesi_view.dart";
+import "view/main_page/alt_sayfalar/cari/raporlar/borc_alacak_dokumu_raporu/view/cari_borc_alacak_dokumu_raporu_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/cari_dovizli_ekstre/view/cari_dovizli_ekstre_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/cari_ekstre/view/cari_ekstre_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/cari_hareket_raporu/view/cari_hareket_raporu_view.dart";
@@ -59,11 +48,24 @@ import "view/main_page/alt_sayfalar/cari/raporlar/doviz_bakiye_raporu/view/doviz
 import "view/main_page/alt_sayfalar/cari/raporlar/hareket_detayli_yapilandirma_raporu/view/hareket_detayli_yapilandirma_raporu_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/stok_ekstre/view/stok_ekstre_view.dart";
 import "view/main_page/alt_sayfalar/cari/raporlar/yaslandirma_raporu/view/yaslandirma_raporu_view.dart";
+import "view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/view/e_belge_gelen_giden_kutusu_view.dart";
+import "view/main_page/alt_sayfalar/e_belge/e_belge_pdf/view/e_belge_pdf_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/view/banka_hareketleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/banka/banka_islemleri/view/banka_islemleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view/banka_kasa_transferi_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_listesi/view/banka_listesi_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/banka_muhtelif_islemler/view/banka_muhtelif/banka_muhtelif_islemler_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/cari_havale_eft/view/cari_havale_eft_view.dart";
+import "view/main_page/alt_sayfalar/finans/banka/hesaplar_arasi/view/hesaplar_arasi_islem_view.dart";
+import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/cek_senet_hareketleri_view.dart";
+import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
+import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilat_ekle/view/cek_senet_tahsilat_ekle_view.dart";
+import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/view/cek_senet_tahsilati_view.dart";
 import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view/nakit_odeme_view.dart";
+import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareket_detayi/view/kasa_hareket_detay_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_hareketleri/view/kasa_hareketleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/view/kasa_islemleri_view.dart";
 import "view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/view/kasa_listesi_view.dart";
@@ -203,6 +205,11 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/borcCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
               GetPage(name: "/borcSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
               GetPage(name: "/cekSenetHareketleri", page: () => CekSenetHareketleriView(model: Get.arguments)),
+              GetPage(name: "/cekBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
+              GetPage(name: "/cekMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
+              GetPage(name: "/senetBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
+              GetPage(name: "/senetMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
+              GetPage(name: "/cekSenetTahsilatEkle", page: CekSenetTahsilatEkleView.new),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

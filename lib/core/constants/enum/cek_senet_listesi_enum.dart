@@ -68,4 +68,17 @@ extension CekSenetExtensions on CekSenetListesiEnum {
         return _yetkiController.borcSenetHareketler;
     }
   }
+
+  String get tahsilatRoute {
+    switch (this) {
+      case CekSenetListesiEnum.cekMusteri:
+        return "/mainPage/cekMusteriTahsilat";
+      case CekSenetListesiEnum.senetMusteri:
+        return "/mainPage/senetMusteriTahsilat";
+      case CekSenetListesiEnum.cekBorc:
+        return "/mainPage/cekBorcTahsilat";
+      case CekSenetListesiEnum.senetBorc:
+        return "/mainPage/senetBorcTahsilat";
+    }
+  }
 }

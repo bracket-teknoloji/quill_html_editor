@@ -321,7 +321,12 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
       );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(isScrolledDown: !viewModel.isScrollDown).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: !viewModel.isScrollDown,
+          onPressed: () async {
+            await Get.toNamed(widget.cekSenetListesiEnum.tahsilatRoute);
+          },
+        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
       );
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
