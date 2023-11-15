@@ -9,8 +9,7 @@ part of 'cari_hareket_raporu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
-  late final _$pdfModelAtom =
-      Atom(name: '_CariHareketRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(name: '_CariHareketRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -25,9 +24,7 @@ mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(
-      name: '_CariHareketRaporuViewModelBase.futureController',
-      context: context);
+  late final _$futureControllerAtom = Atom(name: '_CariHareketRaporuViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -42,14 +39,11 @@ mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_CariHareketRaporuViewModelBaseActionController =
-      ActionController(
-          name: '_CariHareketRaporuViewModelBase', context: context);
+  late final _$_CariHareketRaporuViewModelBaseActionController = ActionController(name: '_CariHareketRaporuViewModelBase', context: context);
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController
-        .startAction(name: '_CariHareketRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController.startAction(name: '_CariHareketRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -59,8 +53,7 @@ mixin _$CariHareketRaporuViewModel on _CariHareketRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController
-        .startAction(name: '_CariHareketRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_CariHareketRaporuViewModelBaseActionController.startAction(name: '_CariHareketRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

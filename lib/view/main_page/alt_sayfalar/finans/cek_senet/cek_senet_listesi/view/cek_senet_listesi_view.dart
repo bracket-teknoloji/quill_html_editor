@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";

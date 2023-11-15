@@ -21,8 +21,7 @@ extension DateTimeExtensionWithTime on DateTime {
     return monday;
   }
 
-
-  /// First one 
+  /// First one
   List<String> getWeekOfYear(int weekOfYear) {
     // get datetime of week of year
     final weekOfYearDateTime = subtract(Duration(days: weekday - 1)).add(Duration(days: weekOfYear * 7));

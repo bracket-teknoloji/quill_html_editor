@@ -1,12 +1,13 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../model/cek_senet_hareketleri_model.dart";
 import "../view_model/cek_senet_hareketleri_view_model.dart";
-import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 class CekSenetHareketleriView extends StatefulWidget {
   final CekSenetListesiModel model;

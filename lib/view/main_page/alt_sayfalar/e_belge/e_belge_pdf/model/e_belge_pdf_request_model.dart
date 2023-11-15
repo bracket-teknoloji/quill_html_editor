@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 part "e_belge_pdf_request_model.freezed.dart";

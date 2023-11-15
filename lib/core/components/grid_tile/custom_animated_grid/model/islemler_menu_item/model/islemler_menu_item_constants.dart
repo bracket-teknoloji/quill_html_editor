@@ -3,7 +3,6 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../init/theme/app_theme_dark.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -27,6 +26,7 @@ import "../../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../../../init/cache/cache_manager.dart";
 import "../../../../../../init/network/login/api_urls.dart";
 import "../../../../../../init/network/network_manager.dart";
+import "../../../../../../init/theme/app_theme_dark.dart";
 import "../../../../../dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../dialog/dialog_manager.dart";

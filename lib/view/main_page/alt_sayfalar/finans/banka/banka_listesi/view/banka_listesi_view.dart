@@ -4,10 +4,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
-import "../../../../../../../core/components/badge/colorful_badge.dart";
-import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
@@ -22,6 +18,11 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view_model/banka_listesi_view_model.dart";
+
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../../../../core/components/badge/colorful_badge.dart";
+import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 
 class BankaListesiView extends StatefulWidget {
   const BankaListesiView({super.key});

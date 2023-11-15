@@ -2,14 +2,14 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+
 import "../../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../model/stok_detay_model.dart";
-
-import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../view_model/base_stok_edit_seriler_view_model.dart";
 
 class BaseStokEditSerilerView extends StatefulWidget {

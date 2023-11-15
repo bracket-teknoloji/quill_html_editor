@@ -1,5 +1,4 @@
 import "package:mobx/mobx.dart";
-import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
@@ -16,6 +15,7 @@ import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 
 part "kredi_karti_tahsilati_view_model.g.dart";
 

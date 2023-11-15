@@ -3,8 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../core/constants/color_palette.dart";
-import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -17,6 +15,8 @@ import "../../../../../../../core/components/slide_controller/view/slide_control
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/color_palette.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";

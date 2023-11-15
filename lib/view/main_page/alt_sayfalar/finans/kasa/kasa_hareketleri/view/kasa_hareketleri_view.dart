@@ -3,7 +3,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/badge/colorful_badge.dart";
@@ -11,6 +10,7 @@ import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";

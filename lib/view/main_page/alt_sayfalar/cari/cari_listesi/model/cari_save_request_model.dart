@@ -166,8 +166,6 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? kurfarkiborcAdi;
   String? kurfarkialacakAdi;
   String? muhAdi;
-  
-
 
   @override
   CariSaveRequestModel fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
@@ -240,6 +238,5 @@ class CariSaveRequestModel with NetworkManagerMixin {
         kosulKoduAciklama: model?.kosulKodu,
         ulkeKoduAciklama: model?.ulkeAdi,
         dovizKoduAciklama: model?.dovizAdi,
-        
       );
 }

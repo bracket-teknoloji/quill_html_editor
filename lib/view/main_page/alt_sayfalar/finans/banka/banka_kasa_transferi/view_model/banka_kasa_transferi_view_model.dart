@@ -1,9 +1,6 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "../../../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
-import "../../../../../../../core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -11,6 +8,10 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
 
 part "banka_kasa_transferi_view_model.g.dart";
 

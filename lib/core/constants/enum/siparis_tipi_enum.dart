@@ -1,8 +1,8 @@
 import "package:collection/collection.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "../../init/cache/cache_manager.dart";
-import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../init/cache/cache_manager.dart";
 import "../yetki_controller/yetki_controller.dart";
 
 part "siparis_tipi_enum.g.dart";
@@ -42,7 +42,6 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
     }
   }
 
- 
   String get getName {
     switch (this) {
       case SiparisTipiEnum.musteri:
@@ -211,13 +210,13 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
     }
   }
 
-  String get getRoute{
+  String get getRoute {
     switch (this) {
       case SiparisTipiEnum.musteri:
         return "/mainPage/siparisMusteriSiparisi";
       case SiparisTipiEnum.satici:
         return "/mainPage/siparisSaticiSiparisi";
-        default:
+      default:
         return "/mainPage/siparisSaticiSiparisi";
     }
   }

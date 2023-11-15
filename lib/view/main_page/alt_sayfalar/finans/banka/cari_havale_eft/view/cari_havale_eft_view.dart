@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:uuid/uuid.dart";
+
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -15,7 +17,6 @@ import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_havale_eft_view_model.dart";
-import "package:uuid/uuid.dart";
 
 class CariHavaleEftView extends StatefulWidget {
   const CariHavaleEftView({super.key});

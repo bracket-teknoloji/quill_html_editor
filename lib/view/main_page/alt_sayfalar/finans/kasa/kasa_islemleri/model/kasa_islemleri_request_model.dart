@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 
 part "kasa_islemleri_request_model.freezed.dart";

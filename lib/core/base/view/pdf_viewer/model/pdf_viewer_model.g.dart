@@ -6,13 +6,10 @@ part of 'pdf_viewer_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) =>
-    _$PdfModelImpl(
+_$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) => _$PdfModelImpl(
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String?,
       standart: json['STANDART'] as bool?,
-      dicParams: json['DIC_PARAMS'] == null
-          ? null
-          : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+      dicParams: json['DIC_PARAMS'] == null ? null : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
       dizaynId: json['DIZAYN_ID'] as int?,
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
     );
@@ -34,8 +31,7 @@ Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) {
   return val;
 }
 
-_$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
-    _$DicParamsImpl(
+_$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) => _$DicParamsImpl(
       cariKodu: json['CARI_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       sifirHaric: json['SIFIR_HARIC'] as String?,

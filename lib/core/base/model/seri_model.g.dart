@@ -6,8 +6,7 @@ part of 'seri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
-    _$SeriModelImpl(
+_$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) => _$SeriModelImpl(
       seriNo: json['SERI_NO'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
     );

@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../../kasa_islemleri/model/kasa_islemleri_model.dart";
@@ -28,8 +29,12 @@ abstract class _KasaHareketDetayViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     message = null;
-    final result = await networkManager
-        .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(),showLoading: true, queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
+    final result = await networkManager.dioGet<KasaIslemleriModel>(
+      path: ApiUrls.getKasaHareketleri,
+      bodyModel: KasaIslemleriModel(),
+      showLoading: true,
+      queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())},
+    ;
     if (result.data is List) {
       setKasaIslemleriModel((result.data as List).firstOrNull);
     } else {

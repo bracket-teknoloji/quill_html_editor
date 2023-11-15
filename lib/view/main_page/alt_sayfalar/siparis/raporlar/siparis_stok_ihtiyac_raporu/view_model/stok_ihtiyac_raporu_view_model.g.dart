@@ -9,9 +9,7 @@ part of 'stok_ihtiyac_raporu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
-  late final _$sadeceIhtiyaclarMiAtom = Atom(
-      name: '_StokIhtiyacRaporuViewModelBase.sadeceIhtiyaclarMi',
-      context: context);
+  late final _$sadeceIhtiyaclarMiAtom = Atom(name: '_StokIhtiyacRaporuViewModelBase.sadeceIhtiyaclarMi', context: context);
 
   @override
   bool get sadeceIhtiyaclarMi {
@@ -26,8 +24,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_StokIhtiyacRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(name: '_StokIhtiyacRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -42,9 +39,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(
-      name: '_StokIhtiyacRaporuViewModelBase.futureController',
-      context: context);
+  late final _$futureControllerAtom = Atom(name: '_StokIhtiyacRaporuViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -59,15 +54,11 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_StokIhtiyacRaporuViewModelBaseActionController =
-      ActionController(
-          name: '_StokIhtiyacRaporuViewModelBase', context: context);
+  late final _$_StokIhtiyacRaporuViewModelBaseActionController = ActionController(name: '_StokIhtiyacRaporuViewModelBase', context: context);
 
   @override
   void setSadeceIhtiyaclarMi(bool value) {
-    final _$actionInfo =
-        _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(
-            name: '_StokIhtiyacRaporuViewModelBase.setSadeceIhtiyaclarMi');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setSadeceIhtiyaclarMi');
     try {
       return super.setSadeceIhtiyaclarMi(value);
     } finally {
@@ -77,8 +68,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void setSirala(String? value) {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.setSirala');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setSirala');
     try {
       return super.setSirala(value);
     } finally {
@@ -88,8 +78,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.setStokKodu');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setStokKodu');
     try {
       return super.setStokKodu(value);
     } finally {
@@ -99,8 +88,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.setCariKodu');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
@@ -110,8 +98,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -121,8 +108,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -132,8 +118,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
-        .startAction(name: '_StokIhtiyacRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController.startAction(name: '_StokIhtiyacRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

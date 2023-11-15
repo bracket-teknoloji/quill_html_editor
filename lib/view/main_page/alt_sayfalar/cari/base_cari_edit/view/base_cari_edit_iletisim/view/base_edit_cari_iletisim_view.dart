@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../../core/constants/color_palette.dart";
 
+import "../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
 

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../../../../core/init/network/login/api_urls.dart";
@@ -11,10 +12,10 @@ class EntryCompanyViewModel = _EntryCompanyViewModelBase with _$EntryCompanyView
 
 abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
   @observable
-  ObservableMap<dynamic,dynamic> selected = {"Şirket": "", "İşletme": 0, "Şube": null}.asObservable();
+  ObservableMap<dynamic, dynamic> selected = {"Şirket": "", "İşletme": 0, "Şube": null}.asObservable();
 
   @observable
-  ObservableMap<dynamic,dynamic> userData = {"Şirket": "", "İşletme": 0, "Şube": null}.asObservable();
+  ObservableMap<dynamic, dynamic> userData = {"Şirket": "", "İşletme": 0, "Şube": null}.asObservable();
 
   @observable
   List<CompanyModel>? sirketList;

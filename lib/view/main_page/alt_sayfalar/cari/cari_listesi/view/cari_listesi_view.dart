@@ -5,7 +5,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/constants/color_palette.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -25,6 +24,7 @@ import "../../../../../../core/components/slide_controller/view/slide_controller
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
@@ -584,7 +584,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariRequestModel.cariTipi);
                       if (result != null) {
-                        tipiController.text = result.title??"";
+                        tipiController.text = result.title ?? "";
                         viewModel.changeCariTipi(result.value);
                       }
                     },

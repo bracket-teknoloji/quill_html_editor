@@ -1,6 +1,4 @@
-
-
-enum EBelgeEnum {gelen, giden}
+enum EBelgeEnum { gelen, giden }
 
 extension EBelgeEnumExtension on EBelgeEnum {
   String get appBarTitle {
@@ -20,5 +18,4 @@ extension EBelgeEnumExtension on EBelgeEnum {
         return "GIK";
     }
   }
-
 }

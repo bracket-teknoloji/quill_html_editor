@@ -1,9 +1,10 @@
 import "package:get/get.dart";
 import "package:mobx/mobx.dart";
-import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
-import "../../../../../../../core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_islemleri/model/banka_islemleri_request_model.dart";
+
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
 
 part "banka_hareketleri_view_model.g.dart";
 

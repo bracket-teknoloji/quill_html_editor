@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../constants/color_palette.dart";
 
+import "../../constants/color_palette.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";

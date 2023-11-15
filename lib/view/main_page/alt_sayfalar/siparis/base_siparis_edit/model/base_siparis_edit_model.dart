@@ -5,14 +5,14 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 
 part "base_siparis_edit_model.g.dart";

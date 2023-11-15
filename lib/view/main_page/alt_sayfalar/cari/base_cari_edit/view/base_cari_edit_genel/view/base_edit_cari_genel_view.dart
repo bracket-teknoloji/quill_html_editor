@@ -266,8 +266,10 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           context,
                           title: "Şehirler",
                           groupValue: viewModel.model?.sehir,
-                          children:
-                              List.generate(viewModel.sehirler?.length ?? 0, (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index], groupValue: viewModel.sehirler?[index].sehirAdi ?? "")),
+                          children: List.generate(
+                            viewModel.sehirler?.length ?? 0,
+                            (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index], groupValue: viewModel.sehirler?[index].sehirAdi ?? ""),
+                          ),
                         );
                         if (result is CariSehirlerModel) {
                           ilController.text = result.sehirAdi ?? "";
@@ -444,8 +446,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           title: "Ödeme Tipi",
                           groupValue: viewModel.model?.odemeTipi,
                           children: <BottomSheetModel?>[
-                            BottomSheetModel(title: "Nakit",value: BaseBottomSheetResponseModel(title: "Nakit", value: "0"), groupValue: "0"),
-                            BottomSheetModel(title: "Havale", value:BaseBottomSheetResponseModel(title: "Havale", value: "1"), groupValue: "1"),
+                            BottomSheetModel(title: "Nakit", value: BaseBottomSheetResponseModel(title: "Nakit", value: "0"), groupValue: "0"),
+                            BottomSheetModel(title: "Havale", value: BaseBottomSheetResponseModel(title: "Havale", value: "1"), groupValue: "1"),
                             BottomSheetModel(title: "Çek", value: BaseBottomSheetResponseModel(title: "Çek", value: "2"), groupValue: "2"),
                           ],
                         );

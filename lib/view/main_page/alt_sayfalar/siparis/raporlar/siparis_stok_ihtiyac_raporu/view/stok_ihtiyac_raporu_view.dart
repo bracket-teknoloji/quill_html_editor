@@ -173,7 +173,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
   }
 
   Future<String?> getGrupKodu(BuildContext context, int grupNo, TextEditingController? controller) async {
-    final result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(context,getKodWithIndex(grupNo), grupKodu: grupNo, modul: GrupKoduEnum.stok, kullanimda: true);
+    final result = await bottomSheetDialogManager.showGrupKoduBottomSheetDialog(context, getKodWithIndex(grupNo), grupKodu: grupNo, modul: GrupKoduEnum.stok, kullanimda: true);
     if (result != null) {
       switch (grupNo) {
         case 0:
@@ -199,7 +199,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
     return null;
   }
 
-  String? getKodWithIndex( int? index){
+  String? getKodWithIndex(int? index) {
     switch (index) {
       case 0:
         return viewModel.pdfModel.dicParams?.grupKodu;

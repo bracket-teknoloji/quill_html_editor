@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+
+import "../../../view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
+import "../../base/state/base_state.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../../view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
-
-import "../../base/state/base_state.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";

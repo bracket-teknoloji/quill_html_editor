@@ -23,7 +23,6 @@ class EBelgeRequestModel with _$EBelgeRequestModel {
     bool? sorgulanmasin,
     String? searchText,
     String? taslak,
-    
   }) = _EBelgeRequestModel;
 
   factory EBelgeRequestModel.fromJson(Map<String, dynamic> json) => _$EBelgeRequestModelFromJson(json);

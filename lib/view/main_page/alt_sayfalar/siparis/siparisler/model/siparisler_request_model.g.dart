@@ -6,9 +6,7 @@ part of 'siparisler_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SiparislerRequestModelImpl(
+_$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(Map<String, dynamic> json) => _$SiparislerRequestModelImpl(
       pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       iadeMi: json['IadeMi'] as bool?,
       cariKodu: json['CariKodu'] as String? ?? "",
@@ -18,8 +16,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       siralama: json['SIRALAMA'] as String?,
       siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
       ozelKod1: json['OzelKod1'] as String?,
-      kapaliBelgelerListelenmesin:
-          json['KapaliBelgelerListelenmesin'] as String?,
+      kapaliBelgelerListelenmesin: json['KapaliBelgelerListelenmesin'] as String?,
       projeKodu: json['ProjeKodu'] as String?,
       faturalasmaGoster: json['FaturalasmaGoster'] as bool?,
       arrKod5: json['ArrKod5'] as String?,
@@ -40,8 +37,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       referansStokKodu: json['ReferansStokKodu'] as String?,
     );
 
-Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
-    _$SiparislerRequestModelImpl instance) {
+Map<String, dynamic> _$$SiparislerRequestModelImplToJson(_$SiparislerRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -59,8 +55,7 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('SIRALAMA', instance.siralama);
   writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
   writeNotNull('OzelKod1', instance.ozelKod1);
-  writeNotNull(
-      'KapaliBelgelerListelenmesin', instance.kapaliBelgelerListelenmesin);
+  writeNotNull('KapaliBelgelerListelenmesin', instance.kapaliBelgelerListelenmesin);
   writeNotNull('ProjeKodu', instance.projeKodu);
   writeNotNull('FaturalasmaGoster', instance.faturalasmaGoster);
   writeNotNull('ArrKod5', instance.arrKod5);

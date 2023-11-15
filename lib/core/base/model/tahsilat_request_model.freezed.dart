@@ -111,15 +111,12 @@ mixin _$TahsilatRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TahsilatRequestModelCopyWith<TahsilatRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $TahsilatRequestModelCopyWith<TahsilatRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TahsilatRequestModelCopyWith<$Res> {
-  factory $TahsilatRequestModelCopyWith(TahsilatRequestModel value,
-          $Res Function(TahsilatRequestModel) then) =
-      _$TahsilatRequestModelCopyWithImpl<$Res, TahsilatRequestModel>;
+  factory $TahsilatRequestModelCopyWith(TahsilatRequestModel value, $Res Function(TahsilatRequestModel) then) = _$TahsilatRequestModelCopyWithImpl<$Res, TahsilatRequestModel>;
   @useResult
   $Res call(
       {String? aciklama,
@@ -167,9 +164,7 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TahsilatRequestModelCopyWithImpl<$Res,
-        $Val extends TahsilatRequestModel>
-    implements $TahsilatRequestModelCopyWith<$Res> {
+class _$TahsilatRequestModelCopyWithImpl<$Res, $Val extends TahsilatRequestModel> implements $TahsilatRequestModelCopyWith<$Res> {
   _$TahsilatRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -397,11 +392,8 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
-    implements $TahsilatRequestModelCopyWith<$Res> {
-  factory _$$TahsilatRequestModelImplCopyWith(_$TahsilatRequestModelImpl value,
-          $Res Function(_$TahsilatRequestModelImpl) then) =
-      __$$TahsilatRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$TahsilatRequestModelImplCopyWith<$Res> implements $TahsilatRequestModelCopyWith<$Res> {
+  factory _$$TahsilatRequestModelImplCopyWith(_$TahsilatRequestModelImpl value, $Res Function(_$TahsilatRequestModelImpl) then) = __$$TahsilatRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -450,12 +442,8 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
-    extends _$TahsilatRequestModelCopyWithImpl<$Res, _$TahsilatRequestModelImpl>
-    implements _$$TahsilatRequestModelImplCopyWith<$Res> {
-  __$$TahsilatRequestModelImplCopyWithImpl(_$TahsilatRequestModelImpl _value,
-      $Res Function(_$TahsilatRequestModelImpl) _then)
-      : super(_value, _then);
+class __$$TahsilatRequestModelImplCopyWithImpl<$Res> extends _$TahsilatRequestModelCopyWithImpl<$Res, _$TahsilatRequestModelImpl> implements _$$TahsilatRequestModelImplCopyWith<$Res> {
+  __$$TahsilatRequestModelImplCopyWithImpl(_$TahsilatRequestModelImpl _value, $Res Function(_$TahsilatRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -724,8 +712,7 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.tcmbSubeKodu})
       : super._();
 
-  factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TahsilatRequestModelImplFromJson(json);
+  factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$TahsilatRequestModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -817,10 +804,7 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
-      get copyWith =>
-          __$$TahsilatRequestModelImplCopyWithImpl<_$TahsilatRequestModelImpl>(
-              this, _$identity);
+  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl> get copyWith => __$$TahsilatRequestModelImplCopyWithImpl<_$TahsilatRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -876,8 +860,7 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? tcmbSubeKodu}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
-  factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
-      _$TahsilatRequestModelImpl.fromJson;
+  factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) = _$TahsilatRequestModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -1011,6 +994,5 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   set tcmbSubeKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

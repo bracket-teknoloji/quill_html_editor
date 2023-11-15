@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:kartal/kartal.dart";
 import "package:permission_handler/permission_handler.dart";
-import "../../../../constants/color_palette.dart";
 import "package:qr_code_scanner/qr_code_scanner.dart";
 
+import "../../../../constants/color_palette.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/qr_view_model.dart";

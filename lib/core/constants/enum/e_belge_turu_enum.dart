@@ -1,5 +1,5 @@
-import "e_belge_enum.dart";
 import "../yetki_controller/yetki_controller.dart";
+import "e_belge_enum.dart";
 
 enum EBelgeTuruEnum { fatura, arsiv, irsaliye }
 

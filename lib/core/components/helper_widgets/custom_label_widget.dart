@@ -32,7 +32,7 @@ class CustomWidgetWithLabel extends StatelessWidget {
                         color: (isMust ?? false) ? UIHelper.primaryColor : null,
                       )
                   : null,
-            ).paddingOnly(left:addPadding? UIHelper.lowSize : 0).yetkiVarMi(text != null),
+            ).paddingOnly(left: addPadding ? UIHelper.lowSize : 0).yetkiVarMi(text != null),
             child,
           ],
         ),

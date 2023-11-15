@@ -1,7 +1,7 @@
 class BankaConstants {
   static const int vadesizMevduat = 0;
   static const int vadeliMevduat = 1;
-  static const int repo= 2;
+  static const int repo = 2;
   static const int teminatCekleri = 3;
   static const int teminatSenetleri = 4;
   static const int tahsilCekleri = 5;

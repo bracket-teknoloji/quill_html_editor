@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../base/state/base_state.dart";
+import "../../constants/color_palette.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -63,7 +63,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                   Wrap(
                     direction: Axis.vertical,
                     children: [
-                       Text("Stok Kodu", style: TextStyleHelper.captionWhite),
+                      Text("Stok Kodu", style: TextStyleHelper.captionWhite),
                       Text(widget.model?.stokKodu ?? ""),
                     ],
                   ),
@@ -77,7 +77,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                   Wrap(
                     direction: Axis.vertical,
                     children: [
-                       Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
+                      Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
                       Text(widget.model?.tarih?.toDateString ?? ""),
                     ],
                   ),

@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
@@ -10,9 +11,9 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../model/banka_hareketleri_model.dart";
 import "../view_model/banka_hareketleri_view_model.dart";
-import "../../banka_listesi/model/banka_listesi_model.dart";
 
 class BankaHareketleriView extends StatefulWidget {
   final BankaListesiModel model;

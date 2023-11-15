@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
@@ -9,8 +10,8 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
-import "../view_model/kasa_hareket_detay_view_model.dart";
 import "../../kasa_islemleri/model/kasa_islemleri_request_model.dart";
+import "../view_model/kasa_hareket_detay_view_model.dart";
 
 class KasaHareketDetayiView extends StatefulWidget {
   final CariHareketleriModel cariListesiModel;

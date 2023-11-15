@@ -21,7 +21,8 @@ extension BankaMuhtelifIslemlerExtensions on BankaMuhtelifIslemlerEnum {
         return "Banka Muhtelif Ödeme";
     }
   }
-  String get belgeTuru{
+
+  String get belgeTuru {
     switch (this) {
       case BankaMuhtelifIslemlerEnum.tahsilat:
         return "BMT";

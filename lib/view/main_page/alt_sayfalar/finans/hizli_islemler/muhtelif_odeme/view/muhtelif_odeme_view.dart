@@ -374,7 +374,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
       );
 
   Future<void> getMuhKodu() async {
-    final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context,viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
+    final result =
+        await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.muo, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
       viewModel.setHesapTipi(result.agm);

@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cek_senet_listesi_model.freezed.dart";
@@ -68,7 +69,7 @@ extension CekSenetExtensions on CekSenetListesiModel {
         return "Bekliyor";
       case "O":
         return "Ödendi";
-        case "K":
+      case "K":
         return "Karşılıksız";
       default:
         return "Onaylandı";

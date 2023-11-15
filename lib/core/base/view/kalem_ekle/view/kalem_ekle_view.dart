@@ -115,7 +115,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
                   BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
-                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi ?? (viewModel.koliMi ? "E":"H");
+                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi ?? (viewModel.koliMi ? "E" : "H");
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
                 }
@@ -658,7 +658,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 controller: iskontoTipiController(index + 1),
                                 onClear: () => iskontoFiller(index + 1, null),
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context,getIskontoWithIndex(index + 1));
+                                  final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, getIskontoWithIndex(index + 1));
                                   if (result != null) {
                                     iskontoFiller(index + 1, result);
                                   }
@@ -902,7 +902,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     }
   }
 
-  int? getIskontoWithIndex(int index){
+  int? getIskontoWithIndex(int index) {
     switch (index) {
       case 1:
         return viewModel.kalemModel.isk1Tipi;

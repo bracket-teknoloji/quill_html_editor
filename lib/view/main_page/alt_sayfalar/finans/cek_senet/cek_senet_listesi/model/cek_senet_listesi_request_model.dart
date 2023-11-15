@@ -23,4 +23,3 @@ class CekSenetListesiRequestModel with _$CekSenetListesiRequestModel {
 
   factory CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CekSenetListesiRequestModelFromJson(json);
 }
-

@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BankaListesiRequestModel _$BankaListesiRequestModelFromJson(
-    Map<String, dynamic> json) {
+BankaListesiRequestModel _$BankaListesiRequestModelFromJson(Map<String, dynamic> json) {
   return _BankaListesiRequestModel.fromJson(json);
 }
 
@@ -42,32 +41,18 @@ mixin _$BankaListesiRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaListesiRequestModelCopyWith<BankaListesiRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaListesiRequestModelCopyWith<BankaListesiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaListesiRequestModelCopyWith<$Res> {
-  factory $BankaListesiRequestModelCopyWith(BankaListesiRequestModel value,
-          $Res Function(BankaListesiRequestModel) then) =
-      _$BankaListesiRequestModelCopyWithImpl<$Res, BankaListesiRequestModel>;
+  factory $BankaListesiRequestModelCopyWith(BankaListesiRequestModel value, $Res Function(BankaListesiRequestModel) then) = _$BankaListesiRequestModelCopyWithImpl<$Res, BankaListesiRequestModel>;
   @useResult
-  $Res call(
-      {String? bakiye,
-      String? arrHesapTipi,
-      String? haricHesaplarArray,
-      String? sirala,
-      String? ekranTipi,
-      String? menuKodu,
-      String? belgeTipi,
-      String? bankaKodu,
-      String? islemModulu});
+  $Res call({String? bakiye, String? arrHesapTipi, String? haricHesaplarArray, String? sirala, String? ekranTipi, String? menuKodu, String? belgeTipi, String? bankaKodu, String? islemModulu});
 }
 
 /// @nodoc
-class _$BankaListesiRequestModelCopyWithImpl<$Res,
-        $Val extends BankaListesiRequestModel>
-    implements $BankaListesiRequestModelCopyWith<$Res> {
+class _$BankaListesiRequestModelCopyWithImpl<$Res, $Val extends BankaListesiRequestModel> implements $BankaListesiRequestModelCopyWith<$Res> {
   _$BankaListesiRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -130,35 +115,16 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BankaListesiRequestModelImplCopyWith<$Res>
-    implements $BankaListesiRequestModelCopyWith<$Res> {
-  factory _$$BankaListesiRequestModelImplCopyWith(
-          _$BankaListesiRequestModelImpl value,
-          $Res Function(_$BankaListesiRequestModelImpl) then) =
-      __$$BankaListesiRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaListesiRequestModelImplCopyWith<$Res> implements $BankaListesiRequestModelCopyWith<$Res> {
+  factory _$$BankaListesiRequestModelImplCopyWith(_$BankaListesiRequestModelImpl value, $Res Function(_$BankaListesiRequestModelImpl) then) = __$$BankaListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? bakiye,
-      String? arrHesapTipi,
-      String? haricHesaplarArray,
-      String? sirala,
-      String? ekranTipi,
-      String? menuKodu,
-      String? belgeTipi,
-      String? bankaKodu,
-      String? islemModulu});
+  $Res call({String? bakiye, String? arrHesapTipi, String? haricHesaplarArray, String? sirala, String? ekranTipi, String? menuKodu, String? belgeTipi, String? bankaKodu, String? islemModulu});
 }
 
 /// @nodoc
-class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$BankaListesiRequestModelCopyWithImpl<$Res,
-        _$BankaListesiRequestModelImpl>
-    implements _$$BankaListesiRequestModelImplCopyWith<$Res> {
-  __$$BankaListesiRequestModelImplCopyWithImpl(
-      _$BankaListesiRequestModelImpl _value,
-      $Res Function(_$BankaListesiRequestModelImpl) _then)
-      : super(_value, _then);
+class __$$BankaListesiRequestModelImplCopyWithImpl<$Res> extends _$BankaListesiRequestModelCopyWithImpl<$Res, _$BankaListesiRequestModelImpl> implements _$$BankaListesiRequestModelImplCopyWith<$Res> {
+  __$$BankaListesiRequestModelImplCopyWithImpl(_$BankaListesiRequestModelImpl _value, $Res Function(_$BankaListesiRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -218,19 +184,9 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
-  _$BankaListesiRequestModelImpl(
-      {this.bakiye,
-      this.arrHesapTipi,
-      this.haricHesaplarArray,
-      this.sirala,
-      this.ekranTipi,
-      this.menuKodu,
-      this.belgeTipi,
-      this.bankaKodu,
-      this.islemModulu});
+  _$BankaListesiRequestModelImpl({this.bakiye, this.arrHesapTipi, this.haricHesaplarArray, this.sirala, this.ekranTipi, this.menuKodu, this.belgeTipi, this.bankaKodu, this.islemModulu});
 
-  factory _$BankaListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaListesiRequestModelImplFromJson(json);
+  factory _$BankaListesiRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaListesiRequestModelImplFromJson(json);
 
   @override
   String? bakiye;
@@ -259,9 +215,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
-      get copyWith => __$$BankaListesiRequestModelImplCopyWithImpl<
-          _$BankaListesiRequestModelImpl>(this, _$identity);
+  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl> get copyWith => __$$BankaListesiRequestModelImplCopyWithImpl<_$BankaListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -283,8 +237,7 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
       String? bankaKodu,
       String? islemModulu}) = _$BankaListesiRequestModelImpl;
 
-  factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$BankaListesiRequestModelImpl.fromJson;
+  factory _BankaListesiRequestModel.fromJson(Map<String, dynamic> json) = _$BankaListesiRequestModelImpl.fromJson;
 
   @override
   String? get bakiye;
@@ -315,6 +268,5 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   set islemModulu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

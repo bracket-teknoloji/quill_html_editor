@@ -5,6 +5,9 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:open_file_plus/open_file_plus.dart";
+import "package:share_plus/share_plus.dart";
+import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
+
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
@@ -14,8 +17,6 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";
-import "package:share_plus/share_plus.dart";
-import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
 class EBelgePdfView extends StatefulWidget {
   final EBelgeListesiModel model;

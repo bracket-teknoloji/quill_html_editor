@@ -3,8 +3,7 @@ import "../yetki_controller/yetki_controller.dart";
 enum CekSenetListesiEnum { cekMusteri, senetMusteri, cekBorc, senetBorc }
 
 extension CekSenetExtensions on CekSenetListesiEnum {
-
-     YetkiController get _yetkiController => YetkiController();
+  YetkiController get _yetkiController => YetkiController();
   String get title {
     switch (this) {
       case CekSenetListesiEnum.cekMusteri:
@@ -32,7 +31,6 @@ extension CekSenetExtensions on CekSenetListesiEnum {
   }
 
   bool get silebilirMi {
-    
     switch (this) {
       case CekSenetListesiEnum.cekMusteri:
         return _yetkiController.musteriCekSil;

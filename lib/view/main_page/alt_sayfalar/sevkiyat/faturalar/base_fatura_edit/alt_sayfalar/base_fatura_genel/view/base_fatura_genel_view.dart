@@ -2,7 +2,6 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "../../../../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -16,6 +15,7 @@ import "../../../../../../../../../core/constants/extensions/number_extensions.d
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../model/param_model.dart";
+import "../../../../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_fatura_genel_view_model.dart";

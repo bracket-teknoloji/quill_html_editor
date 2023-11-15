@@ -1,8 +1,9 @@
 import "package:mobx/mobx.dart";
-import "../model/surum_yenilikleri_model.dart";
-import "../../../view_model/mobx_network_mixin.dart";
-import "../../../../init/network/login/api_urls.dart";
+
 import "../../../../../view/add_company/model/account_model.dart";
+import "../../../../init/network/login/api_urls.dart";
+import "../../../view_model/mobx_network_mixin.dart";
+import "../model/surum_yenilikleri_model.dart";
 
 part "surum_yenilikleri_view_model.g.dart";
 

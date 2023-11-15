@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BankaHareketleriModel _$BankaHareketleriModelFromJson(
-    Map<String, dynamic> json) {
+BankaHareketleriModel _$BankaHareketleriModelFromJson(Map<String, dynamic> json) {
   return _BankaHareketleriModel.fromJson(json);
 }
 
@@ -62,15 +61,12 @@ mixin _$BankaHareketleriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaHareketleriModelCopyWith<BankaHareketleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaHareketleriModelCopyWith<BankaHareketleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaHareketleriModelCopyWith<$Res> {
-  factory $BankaHareketleriModelCopyWith(BankaHareketleriModel value,
-          $Res Function(BankaHareketleriModel) then) =
-      _$BankaHareketleriModelCopyWithImpl<$Res, BankaHareketleriModel>;
+  factory $BankaHareketleriModelCopyWith(BankaHareketleriModel value, $Res Function(BankaHareketleriModel) then) = _$BankaHareketleriModelCopyWithImpl<$Res, BankaHareketleriModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -95,9 +91,7 @@ abstract class $BankaHareketleriModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BankaHareketleriModelCopyWithImpl<$Res,
-        $Val extends BankaHareketleriModel>
-    implements $BankaHareketleriModelCopyWith<$Res> {
+class _$BankaHareketleriModelCopyWithImpl<$Res, $Val extends BankaHareketleriModel> implements $BankaHareketleriModelCopyWith<$Res> {
   _$BankaHareketleriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -210,12 +204,8 @@ class _$BankaHareketleriModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$BankaHareketleriModelImplCopyWith<$Res>
-    implements $BankaHareketleriModelCopyWith<$Res> {
-  factory _$$BankaHareketleriModelImplCopyWith(
-          _$BankaHareketleriModelImpl value,
-          $Res Function(_$BankaHareketleriModelImpl) then) =
-      __$$BankaHareketleriModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaHareketleriModelImplCopyWith<$Res> implements $BankaHareketleriModelCopyWith<$Res> {
+  factory _$$BankaHareketleriModelImplCopyWith(_$BankaHareketleriModelImpl value, $Res Function(_$BankaHareketleriModelImpl) then) = __$$BankaHareketleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -241,13 +231,8 @@ abstract class _$$BankaHareketleriModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BankaHareketleriModelImplCopyWithImpl<$Res>
-    extends _$BankaHareketleriModelCopyWithImpl<$Res,
-        _$BankaHareketleriModelImpl>
-    implements _$$BankaHareketleriModelImplCopyWith<$Res> {
-  __$$BankaHareketleriModelImplCopyWithImpl(_$BankaHareketleriModelImpl _value,
-      $Res Function(_$BankaHareketleriModelImpl) _then)
-      : super(_value, _then);
+class __$$BankaHareketleriModelImplCopyWithImpl<$Res> extends _$BankaHareketleriModelCopyWithImpl<$Res, _$BankaHareketleriModelImpl> implements _$$BankaHareketleriModelImplCopyWith<$Res> {
+  __$$BankaHareketleriModelImplCopyWithImpl(_$BankaHareketleriModelImpl _value, $Res Function(_$BankaHareketleriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -378,8 +363,7 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
       this.dovizAdi})
       : super._();
 
-  factory _$BankaHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaHareketleriModelImplFromJson(json);
+  factory _$BankaHareketleriModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaHareketleriModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -423,9 +407,7 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaHareketleriModelImplCopyWith<_$BankaHareketleriModelImpl>
-      get copyWith => __$$BankaHareketleriModelImplCopyWithImpl<
-          _$BankaHareketleriModelImpl>(this, _$identity);
+  _$$BankaHareketleriModelImplCopyWith<_$BankaHareketleriModelImpl> get copyWith => __$$BankaHareketleriModelImplCopyWithImpl<_$BankaHareketleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -458,8 +440,7 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
       String? dovizAdi}) = _$BankaHareketleriModelImpl;
   _BankaHareketleriModel._() : super._();
 
-  factory _BankaHareketleriModel.fromJson(Map<String, dynamic> json) =
-      _$BankaHareketleriModelImpl.fromJson;
+  factory _BankaHareketleriModel.fromJson(Map<String, dynamic> json) = _$BankaHareketleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -520,6 +501,5 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
   set dovizAdi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaHareketleriModelImplCopyWith<_$BankaHareketleriModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaHareketleriModelImplCopyWith<_$BankaHareketleriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

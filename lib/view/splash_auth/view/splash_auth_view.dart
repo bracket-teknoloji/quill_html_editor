@@ -5,13 +5,13 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../core/gen/assets.gen.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../core/gen/assets.gen.dart";
 import "../../../core/init/app_info/app_info.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../../../core/init/network/login/api_urls.dart";

@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "../../../gen/assets.gen.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
+import "../../../gen/assets.gen.dart";
 import "../../../init/cache/cache_manager.dart";
 import "drawer_constants.dart";
 

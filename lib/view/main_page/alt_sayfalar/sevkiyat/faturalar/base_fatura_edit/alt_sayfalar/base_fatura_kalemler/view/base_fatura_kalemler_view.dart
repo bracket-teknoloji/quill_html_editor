@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -14,6 +13,7 @@ import "../../../../../../../../../core/constants/extensions/date_time_extension
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";

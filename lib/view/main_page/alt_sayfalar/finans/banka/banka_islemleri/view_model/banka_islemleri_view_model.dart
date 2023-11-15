@@ -1,11 +1,11 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "../../banka_hareketleri/model/banka_hareketleri_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../banka_hareketleri/model/banka_hareketleri_model.dart";
 import "../model/banka_islemleri_request_model.dart";
 
 part "banka_islemleri_view_model.g.dart";
@@ -13,8 +13,6 @@ part "banka_islemleri_view_model.g.dart";
 class BankaIslemleriViewModel = _BankaIslemleriViewModelBase with _$BankaIslemleriViewModel;
 
 abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
-
-
   final List<String> hesapTipiList = [
     "Vadesiz Mevduat",
     "Vadeli Mevduat",

@@ -7,16 +7,16 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
-import "../../constants/color_palette.dart";
-import "../../../view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/model/kasa_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../base/model/login_dialog_model.dart";
+import "../../constants/color_palette.dart";
 import "../../constants/enum/islem_tipi_enum.dart";
 import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";

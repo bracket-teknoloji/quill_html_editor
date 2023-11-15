@@ -1,8 +1,9 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
-import "../model/cek_senet_hareketleri_model.dart";
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../model/cek_senet_hareketleri_model.dart";
 
 part "cek_senet_hareketleri_view_model.g.dart";
 

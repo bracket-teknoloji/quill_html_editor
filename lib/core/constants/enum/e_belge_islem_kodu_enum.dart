@@ -1,9 +1,6 @@
-
-
-enum EBelgeIslemKoduEnum {eBelgeBirlestir, eBelgeEslestirmeIptali, eBelgeSil, eBelgeZarfSil,eBelgeYazdir, eBelgeHariciYollaFaturaIptali}
+enum EBelgeIslemKoduEnum { eBelgeBirlestir, eBelgeEslestirmeIptali, eBelgeSil, eBelgeZarfSil, eBelgeYazdir, eBelgeHariciYollaFaturaIptali }
 
 extension EBelgeIslemKoduExtensions on EBelgeIslemKoduEnum {
-  
   int get value {
     switch (this) {
       case EBelgeIslemKoduEnum.eBelgeEslestirmeIptali:

@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "../../constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../constants/color_palette.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
@@ -140,8 +140,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
         pdfModel.dizaynId = result.first.id;
         dizaynList = result.first;
       } else {
-        dizaynList =
-            await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, pdfModel.dizaynId);
+        dizaynList = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, pdfModel.dizaynId);
         pdfModel.dizaynId = dizaynList?.id;
       }
       if (dizaynList != null) {

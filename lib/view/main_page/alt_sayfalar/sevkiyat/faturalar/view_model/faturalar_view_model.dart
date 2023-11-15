@@ -217,7 +217,6 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-
   @action
   void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
         searchText: null,

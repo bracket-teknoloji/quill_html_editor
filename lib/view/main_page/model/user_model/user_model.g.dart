@@ -77,11 +77,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is UserModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  bool operator ==(Object other) => identical(this, other) || other is UserModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -98,11 +94,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..erpParola = json['ERP_PAROLA'] as String?
   ..profilKodu = json['PROFIL_KODU'] as int?
   ..profilAdi = json['PROFIL_ADI'] as String?
-  ..profilYetki = json['PROFIL_YETKI'] == null
-      ? null
-      : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
-  ..kullaniciYetki =
-      KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
+  ..profilYetki = json['PROFIL_YETKI'] == null ? null : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
+  ..kullaniciYetki = KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
   ..pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()

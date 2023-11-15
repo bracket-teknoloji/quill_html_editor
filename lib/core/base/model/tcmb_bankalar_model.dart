@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "base_network_mixin.dart";
 
 part "tcmb_bankalar_model.freezed.dart";

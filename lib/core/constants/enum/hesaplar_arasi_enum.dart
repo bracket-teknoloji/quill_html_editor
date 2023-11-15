@@ -1,6 +1,5 @@
 enum HesaplarArasiEnum { virman, eftHavale }
 
-
 extension HesaplarArasiExtensions on HesaplarArasiEnum {
   String get name {
     switch (this) {
