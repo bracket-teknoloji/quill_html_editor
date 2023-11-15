@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_bottom_sheet_response_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
@@ -376,18 +377,18 @@ class BottomSheetDialogManager {
             )
             .toList(),
       );
-  Future<String?> showCariTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
+  Future<BaseBottomSheetResponseModel?> showCariTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
         context,
         title: "Tipi seç",
         groupValue: groupValue,
         children: <BottomSheetModel?>[
-          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "A", onTap: () => Get.back(result: "Alıcı")),
-          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "S", onTap: () => Get.back(result: "Satıcı")),
-          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "T", onTap: () => Get.back(result: "Toptancı")),
-          BottomSheetModel(title: "Kefil", value: "K", groupValue: "K", onTap: () => Get.back(result: "Kefil")),
-          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "M", onTap: () => Get.back(result: "Müstahsil")),
-          BottomSheetModel(title: "Diğer", value: "D", groupValue: "D", onTap: () => Get.back(result: "Diğer")),
-          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: "Komisyoncu")),
+          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
+          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
+          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),
+          BottomSheetModel(title: "Kefil", value: "K", groupValue: "K", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kefil", value: "K"))),
+          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "M", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M"))),
+          BottomSheetModel(title: "Diğer", value: "D", groupValue: "D", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Diğer", value: "D"))),
+          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
         ],
       );
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List<String>? groupValues}) async {

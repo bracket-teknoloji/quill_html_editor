@@ -82,7 +82,10 @@ SeriList _$SeriListFromJson(Map<String, dynamic> json) => SeriList()
   ..stokKodu = json['STOK_KODU'] as String?
   ..depoKodu = json['DEPO_KODU'] as int?
   ..miktar = (json['MIKTAR'] as num?)?.toDouble()
-  ..seriNo = json['SERI_NO'] as String?;
+  ..seriNo = json['SERI_NO'] as String?
+  ..inckeyno = json['INCKEYNO'] as int?
+  ..depoTanimi = json['DEPO_TANIMI'] as String?
+  ..hareketId = json['HAREKET_ID'] as int?;
 
 Map<String, dynamic> _$SeriListToJson(SeriList instance) {
   final val = <String, dynamic>{};
@@ -97,5 +100,8 @@ Map<String, dynamic> _$SeriListToJson(SeriList instance) {
   writeNotNull('DEPO_KODU', instance.depoKodu);
   writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('SERI_NO', instance.seriNo);
+  writeNotNull('INCKEYNO', instance.inckeyno);
+  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
+  writeNotNull('HAREKET_ID', instance.hareketId);
   return val;
 }

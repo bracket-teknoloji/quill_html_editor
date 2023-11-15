@@ -584,8 +584,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariRequestModel.cariTipi);
                       if (result != null) {
-                        tipiController.text = result;
-                        viewModel.changeCariTipi(result != "Komisyoncu" ? result[0] : "I");
+                        tipiController.text = result.title??"";
+                        viewModel.changeCariTipi(result.value);
                       }
                     },
                   ),

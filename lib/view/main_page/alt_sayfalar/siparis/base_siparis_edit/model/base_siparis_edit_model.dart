@@ -5,6 +5,8 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -45,9 +47,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
       // final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
       // if (_instance != otherInstance) {
-        const uuid = Uuid();
-        _instance?.uuid = uuid.v4();
-        CacheManager.addSiparisEditListItem(_instance!);
+      const uuid = Uuid();
+      _instance?.uuid = uuid.v4();
+      CacheManager.addSiparisEditListItem(_instance!);
       // }
     }
     return _instance!;
@@ -673,7 +675,8 @@ class KalemModel with NetworkManagerMixin {
   @HiveField(10)
   List<StokList>? kalemModelHucreList;
   @HiveField(11)
-  List<dynamic>? seriList;
+  @JsonKey(name: "SeriList")
+  List<SeriList>? seriList;
   @HiveField(12)
   List<dynamic>? tempBarkodList;
   @HiveField(13)
@@ -926,7 +929,8 @@ class KalemModel with NetworkManagerMixin {
     this.kalemListHucreList,
   });
 
-  String get faturaKalemAciklama => "Seriler(${seriList?.length ?? 0}) (Miktar: ${miktar ?? ""}";
+  String get faturaKalemAciklama =>
+      "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.first.seriNo ?? ""}";
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 

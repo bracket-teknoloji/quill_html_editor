@@ -84,7 +84,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                     dialogManager.showCariGridViewDialog(result.data.first);
                   },
                 ),
-              ].nullCheckWithGeneric,
+              ].where((element) => element?.onTap != null).toList().nullCheckWithGeneric,
             );
           },
           title: Column(

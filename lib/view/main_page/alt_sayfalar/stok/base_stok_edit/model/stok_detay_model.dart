@@ -59,6 +59,9 @@ class SeriList {
   int? depoKodu;
   double? miktar;
   String? seriNo;
+  int? inckeyno;
+  String? depoTanimi;
+  int? hareketId;
 
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
 

@@ -141,7 +141,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     title: Text(eBelgeButtonText),
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
-                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
+                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E" && (model.efaturaDurumu == "TMM" || model.efaturaDurumu == "TAS")),
                 CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
                 CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(

@@ -209,9 +209,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariTipi);
                               if (result != null) {
-                                cariTipiController.text = result;
+                                cariTipiController.text = result.title ?? "";
                                 //😳 Bunu düzenle
-                                viewModel.setCariTipi(result);
+                                viewModel.setCariTipi(result.value);
                               }
                             },
                           ),
@@ -230,7 +230,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
                                 context,
-                                groupValues: jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]"),
+                                groupValues: ((jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
                               );
                               if (result.ext.isNotNullOrEmpty) {
                                 plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");

@@ -1710,7 +1710,7 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kalemModelHucreList(List<StokList>? kalemModelHucreList);
 
-  KalemModel seriList(List<dynamic>? seriList);
+  KalemModel seriList(List<SeriList>? seriList);
 
   KalemModel tempBarkodList(List<dynamic>? tempBarkodList);
 
@@ -1886,7 +1886,7 @@ abstract class _$KalemModelCWProxy {
     int? sira,
     List<dynamic>? hucreList,
     List<StokList>? kalemModelHucreList,
-    List<dynamic>? seriList,
+    List<SeriList>? seriList,
     List<dynamic>? tempBarkodList,
     String? belgeNo,
     String? belgeTipi,
@@ -2012,7 +2012,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(kalemModelHucreList: kalemModelHucreList);
 
   @override
-  KalemModel seriList(List<dynamic>? seriList) => this(seriList: seriList);
+  KalemModel seriList(List<SeriList>? seriList) => this(seriList: seriList);
 
   @override
   KalemModel tempBarkodList(List<dynamic>? tempBarkodList) =>
@@ -2421,7 +2421,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       seriList: seriList == const $CopyWithPlaceholder()
           ? _value.seriList
           // ignore: cast_nullable_to_non_nullable
-          : seriList as List<dynamic>?,
+          : seriList as List<SeriList>?,
       tempBarkodList: tempBarkodList == const $CopyWithPlaceholder()
           ? _value.tempBarkodList
           // ignore: cast_nullable_to_non_nullable
@@ -3271,7 +3271,7 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       sira: fields[8] as int?,
       hucreList: (fields[9] as List?)?.cast<dynamic>(),
       kalemModelHucreList: (fields[10] as List?)?.cast<StokList>(),
-      seriList: (fields[11] as List?)?.cast<dynamic>(),
+      seriList: (fields[11] as List?)?.cast<SeriList>(),
       tempBarkodList: (fields[12] as List?)?.cast<dynamic>(),
       belgeNo: fields[13] as String?,
       belgeTipi: fields[14] as String?,
@@ -3911,7 +3911,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       kalemModelHucreList: (json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?)
           ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
           .toList(),
-      seriList: json['SERI_LIST'] as List<dynamic>?,
+      seriList: (json['SeriList'] as List<dynamic>?)
+          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+          .toList(),
       tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
@@ -4015,7 +4017,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('HUCRE_LIST', instance.hucreList);
   writeNotNull('KALEM_MODEL_HUCRE_LIST',
       instance.kalemModelHucreList?.map((e) => e.toJson()).toList());
-  writeNotNull('SERI_LIST', instance.seriList);
+  writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
   writeNotNull('TEMP_BARKOD_LIST', instance.tempBarkodList);
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BelgeTipi', instance.belgeTipi);

@@ -98,7 +98,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: "Düzelt",
+                        title: "Düzenle",
                         iconWidget: Icons.edit_outlined,
                         onTap: () async {
                           if (widget.model.isNew == true) {
