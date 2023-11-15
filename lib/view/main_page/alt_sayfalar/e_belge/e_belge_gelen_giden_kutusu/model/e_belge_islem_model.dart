@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "e_belge_listesi_model.dart";
 
 part "e_belge_islem_model.freezed.dart";
 part "e_belge_islem_model.g.dart";

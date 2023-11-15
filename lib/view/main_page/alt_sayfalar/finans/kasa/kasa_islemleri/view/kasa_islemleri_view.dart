@@ -3,8 +3,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/color_palette.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";

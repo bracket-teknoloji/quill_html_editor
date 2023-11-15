@@ -1,7 +1,7 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "cari_detay_model.dart";

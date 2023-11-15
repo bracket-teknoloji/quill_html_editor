@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/constants/color_palette.dart";
+import "../../constants/color_palette.dart";
 
 import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_listesi/model/kasa_listesi_model.dart";
 import "../../base/state/base_state.dart";

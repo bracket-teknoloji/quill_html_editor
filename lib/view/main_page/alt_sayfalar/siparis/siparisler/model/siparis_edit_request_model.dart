@@ -1,8 +1,8 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_hareketleri/model/stok_hareketleri_model.dart";
+import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "../../../stok/stok_hareketleri/model/stok_hareketleri_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";

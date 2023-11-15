@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/color_palette.dart";
+import "../../constants/color_palette.dart";
 
 import "../../../view/main_page/model/grid_item_model.dart";
 import "../../base/state/base_state.dart";

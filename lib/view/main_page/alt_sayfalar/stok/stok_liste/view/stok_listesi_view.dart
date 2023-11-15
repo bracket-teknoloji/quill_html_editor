@@ -4,8 +4,8 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
-import "package:picker/core/constants/color_palette.dart";
+import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
+import "../../../../../../core/constants/color_palette.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";

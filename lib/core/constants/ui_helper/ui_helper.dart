@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/constants/color_palette.dart";
+import "../color_palette.dart";
 
 class UIHelper {
   //* Radius

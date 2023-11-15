@@ -1,5 +1,5 @@
-import "package:picker/core/constants/enum/e_belge_enum.dart";
-import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "e_belge_enum.dart";
+import "../yetki_controller/yetki_controller.dart";
 
 enum EBelgeTuruEnum { fatura, arsiv, irsaliye }
 

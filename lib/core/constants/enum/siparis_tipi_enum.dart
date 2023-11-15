@@ -1,7 +1,7 @@
 import "package:collection/collection.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../init/cache/cache_manager.dart";
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../yetki_controller/yetki_controller.dart";
 

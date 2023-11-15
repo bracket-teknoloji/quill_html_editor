@@ -5,7 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/gen/assets.gen.dart";
+import "../../../core/gen/assets.gen.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 

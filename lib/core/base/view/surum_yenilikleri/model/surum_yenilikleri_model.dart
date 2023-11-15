@@ -1,6 +1,6 @@
 
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../model/base_network_mixin.dart";
 
 part "surum_yenilikleri_model.freezed.dart";
 part "surum_yenilikleri_model.g.dart";

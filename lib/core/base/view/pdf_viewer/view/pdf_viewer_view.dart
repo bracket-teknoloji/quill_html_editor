@@ -6,7 +6,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:open_file_plus/open_file_plus.dart";
 import "package:path_provider/path_provider.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
+import "../../../../components/wrap/appbar_title.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 

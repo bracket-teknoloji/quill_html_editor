@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/model/cek_senet_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view_model/cek_senet_hareketleri_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/cek_senet_hareketleri_model.dart";
+import "../view_model/cek_senet_hareketleri_view_model.dart";
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 class CekSenetHareketleriView extends StatefulWidget {
   final CekSenetListesiModel model;

@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/auth/model/companies.dart";
-import "package:picker/view/auth/model/isletme_model.dart";
+import "../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../core/init/cache/cache_manager.dart";
+import "../../../../core/init/network/login/api_urls.dart";
+import "../../model/companies.dart";
+import "../../model/isletme_model.dart";
 
 part "entry_company_view_model.g.dart";
 

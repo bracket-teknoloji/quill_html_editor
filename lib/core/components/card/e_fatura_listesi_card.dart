@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
+import "../../base/model/base_edit_model.dart";
+import "../../base/state/base_state.dart";
+import "../badge/colorful_badge.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../textfield/custom_text_field.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";

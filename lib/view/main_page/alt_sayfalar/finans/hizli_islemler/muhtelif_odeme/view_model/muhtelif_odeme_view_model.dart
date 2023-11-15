@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
+import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 

@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
 
 part "e_belge_pdf_model.freezed.dart";
 part "e_belge_pdf_model.g.dart";

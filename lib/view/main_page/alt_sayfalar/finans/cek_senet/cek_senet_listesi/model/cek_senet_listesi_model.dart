@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "cek_senet_listesi_model.freezed.dart";
 part "cek_senet_listesi_model.g.dart";

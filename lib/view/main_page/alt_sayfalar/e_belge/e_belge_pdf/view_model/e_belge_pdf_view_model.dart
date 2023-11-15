@@ -3,10 +3,10 @@ import "dart:io";
 
 import "package:mobx/mobx.dart";
 import "package:path_provider/path_provider.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/model/e_belge_pdf_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_pdf/model/e_belge_pdf_request_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/e_belge_pdf_model.dart";
+import "../model/e_belge_pdf_request_model.dart";
 
 part "e_belge_pdf_view_model.g.dart";
 

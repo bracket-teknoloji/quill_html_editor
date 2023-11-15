@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/surum_yenilikleri/model/surum_yenilikleri_model.dart";
-import "package:picker/core/base/view/surum_yenilikleri/view_model/surum_yenilikleri_view_model.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/add_company/model/account_model.dart";
+import "../../../state/base_state.dart";
+import "../model/surum_yenilikleri_model.dart";
+import "../view_model/surum_yenilikleri_view_model.dart";
+import "../../../../components/textfield/custom_app_bar_text_field.dart";
+import "../../../../components/wrap/appbar_title.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../../view/add_company/model/account_model.dart";
 
 class SurumYenilikleriView extends StatefulWidget {
   const SurumYenilikleriView({super.key});

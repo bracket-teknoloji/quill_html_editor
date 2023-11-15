@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/init/theme/app_theme_dark.dart";
+import "../../init/theme/app_theme_dark.dart";
 
 import "ui_helper.dart";
 

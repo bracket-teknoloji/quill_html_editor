@@ -1,7 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
+import "../../banka_hareketleri/model/banka_hareketleri_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";

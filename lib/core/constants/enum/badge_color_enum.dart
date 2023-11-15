@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/constants/color_palette.dart";
+import "../color_palette.dart";
 
 enum BadgeColorEnum { dovizli, kapali, cari, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap, konum, kilitli, irsaliye, tipAciklama, karmaKoli, eFatura, basarili, taslak, uyari, hata }
 

@@ -1,4 +1,4 @@
-import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "../yetki_controller/yetki_controller.dart";
 
 enum CekSenetListesiEnum { cekMusteri, senetMusteri, cekBorc, senetBorc }
 

@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../model/param_model.dart";

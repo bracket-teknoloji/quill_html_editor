@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 
 part "cari_borc_alacak_dokumu_raporu_view_model.g.dart";
 
