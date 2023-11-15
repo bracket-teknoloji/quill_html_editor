@@ -47,13 +47,25 @@ class StokHareketleriView extends StatefulWidget {
 
 class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   StokHareketleriViewModel viewModel = StokHareketleriViewModel();
+  late final TextEditingController _hareketTuruController;
+  late final TextEditingController _cariController;
+
   @override
   void initState() {
+    _hareketTuruController = TextEditingController();
+    _cariController = TextEditingController();
     super.initState();
     if (widget.cariModel != null) {
       viewModel.setCariListesiModel(widget.cariModel!);
     }
     viewModel.setFuture(getData());
+  }
+
+  @override
+  void dispose() {
+    _hareketTuruController.dispose();
+    _cariController.dispose();
+    super.dispose();
   }
 
   @override
@@ -135,17 +147,18 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         builder: (_) => CustomTextField(
                           labelText: "Hareket Türü",
                           readOnly: true,
+                          controller: _hareketTuruController,
                           controllerText: viewModel.arrHareketTuru?.join(", "),
                           onTap: () async {
                             bottomSheetDialogManager.clearSelectedData();
-                            viewModel.clearArrHareketTuru();
                             final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Hareket Türü",
                               groupValues: viewModel.arrHareketTuru,
-                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key)).toList(),
+                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key, groupValue: e.key)).toList(),
                             );
                             if (result != null) {
+                              _hareketTuruController.text = result.join(", ");
                               viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
                               // setState(() {});
                             }
@@ -421,7 +434,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 child: Wrap(
                   children: [
                     Text(model.stharTarih.toDateString).yetkiVarMi(model.stharTarih != null),
-                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizTipi == 1),
+                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(left: UIHelper.lowSize).yetkiVarMi(model.dovizTipi == 1),
                     // model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
                   ],
                 ),

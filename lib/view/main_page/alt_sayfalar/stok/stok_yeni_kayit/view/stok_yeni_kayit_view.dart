@@ -43,7 +43,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Stok Yeni Kayıt"),
+          title: const Text("Yeni Stok hareket Kaydı"),
           actions: [
             IconButton(
               onPressed: () async {

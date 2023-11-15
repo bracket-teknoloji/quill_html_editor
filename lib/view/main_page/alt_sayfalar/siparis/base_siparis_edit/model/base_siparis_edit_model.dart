@@ -43,12 +43,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
-      final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
-      if (_instance != otherInstance) {
+      // final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
+      // if (_instance != otherInstance) {
         const uuid = Uuid();
         _instance?.uuid = uuid.v4();
         CacheManager.addSiparisEditListItem(_instance!);
-      }
+      // }
     }
     return _instance!;
   }
@@ -925,6 +925,8 @@ class KalemModel with NetworkManagerMixin {
     this.dovizAdi,
     this.kalemListHucreList,
   });
+
+  String get faturaKalemAciklama => "Seriler(${seriList?.length ?? 0}) (Miktar: ${miktar ?? ""}";
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 

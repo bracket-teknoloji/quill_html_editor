@@ -381,13 +381,13 @@ class BottomSheetDialogManager {
         title: "Tipi seç",
         groupValue: groupValue,
         children: <BottomSheetModel?>[
-          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "Alıcı", onTap: () => Get.back(result: "Alıcı")),
-          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "Satıcı", onTap: () => Get.back(result: "Satıcı")),
-          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "Toptancı", onTap: () => Get.back(result: "Toptancı")),
-          BottomSheetModel(title: "Kefil", value: "K", groupValue: "Kefil", onTap: () => Get.back(result: "Kefil")),
-          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "Müstahsil", onTap: () => Get.back(result: "Müstahsil")),
-          BottomSheetModel(title: "Diğer", value: "D", groupValue: "Diğer", onTap: () => Get.back(result: "Diğer")),
-          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "Komsiyoncu", onTap: () => Get.back(result: "Komisyoncu")),
+          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "A", onTap: () => Get.back(result: "Alıcı")),
+          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "S", onTap: () => Get.back(result: "Satıcı")),
+          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "T", onTap: () => Get.back(result: "Toptancı")),
+          BottomSheetModel(title: "Kefil", value: "K", groupValue: "K", onTap: () => Get.back(result: "Kefil")),
+          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "M", onTap: () => Get.back(result: "Müstahsil")),
+          BottomSheetModel(title: "Diğer", value: "D", groupValue: "D", onTap: () => Get.back(result: "Diğer")),
+          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: "Komisyoncu")),
         ],
       );
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List<String>? groupValues}) async {

@@ -172,18 +172,18 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
     }
   }
 
-  BaseSiparisEditModel? get getEditModel {
-    switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satici:
-        return CacheManager.getSiparisEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
-      case SiparisTipiEnum.satisFatura:
-      case SiparisTipiEnum.satisIrsaliye:
-      case SiparisTipiEnum.alisFatura:
-      case SiparisTipiEnum.alisIrsaliye:
-        return CacheManager.getFaturaEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
-    }
-  }
+  // BaseSiparisEditModel? get getEditModel {
+  //   switch (this) {
+  //     case SiparisTipiEnum.musteri:
+  //     case SiparisTipiEnum.satici:
+  //       return CacheManager.getSiparisEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
+  //     case SiparisTipiEnum.satisFatura:
+  //     case SiparisTipiEnum.satisIrsaliye:
+  //     case SiparisTipiEnum.alisFatura:
+  //     case SiparisTipiEnum.alisIrsaliye:
+  //       return CacheManager.getFaturaEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
+  //   }
+  // }
 
   void setEditModel() {
     switch (this) {
