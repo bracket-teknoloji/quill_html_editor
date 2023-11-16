@@ -1,6 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
+import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -26,6 +34,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   late final TextEditingController _girisTarihiController;
   late final TextEditingController _cariController;
   late final TextEditingController _plasiyerController;
+  late final TextEditingController _projeController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -33,6 +42,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
     _girisTarihiController = TextEditingController(text: DateTime.now().toDateString);
     _cariController = TextEditingController();
     _plasiyerController = TextEditingController();
+    _projeController = TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       viewModel.setGirisTarihi(DateTime.now());
@@ -46,6 +56,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
     _girisTarihiController.dispose();
     _cariController.dispose();
     _plasiyerController.dispose();
+    _projeController.dispose();
     super.dispose();
   }
 
@@ -63,9 +74,18 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
           IconButton(
             onPressed: () {
+              if (viewModel.model.kalemler.ext.isNullOrEmpty) {
+                dialogManager.showInfoSnackBar("Lütfen en az 1 adet belge ekleyiniz");
+                return;
+              }
               if (_formKey.currentState?.validate() ?? false) {
-                dialogManager.showAreYouSureDialog(() {
-                  dialogManager.showInfoSnackBar("Henüz eklemedim :(");
+                dialogManager.showAreYouSureDialog(() async {
+                  viewModel.model.guid = const Uuid().v4();
+                  final result = await viewModel.postData();
+                  if (result.success ?? false) {
+                    dialogManager.showInfoSnackBar("Kaydedildi");
+                    Get.back(result: true);
+                  }
                 });
               }
             },
@@ -107,21 +127,97 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
               ),
               onTap: getCari,
             ),
-            CustomTextField(
-              labelText: "Plasiyer",
-              controller: _plasiyerController,
-              isMust: true,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-              onTap: getPlasiyer,
-            ),
-            const Column(
+            Row(
               children: [
-                Icon(Icons.refresh_outlined),
-                Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın."),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: _plasiyerController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                    onTap: getPlasiyer,
+                  ),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Proje",
+                    controller: _projeController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                    onTap: getProje,
+                  ),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
-            ).paddingOnly(top: UIHelper.highSize * 5),
+            ),
+            Observer(
+              builder: (_) {
+                if (viewModel.model.kalemler.ext.isNullOrEmpty) {
+                  return const Column(
+                    children: [
+                      Icon(Icons.refresh_outlined),
+                      Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın."),
+                    ],
+                  ).paddingOnly(top: UIHelper.highSize * 5);
+                } else {
+                  return ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: viewModel.model.kalemler?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final CekSenetKalemlerModel item = viewModel.model.kalemler![index];
+                      return Card(
+                        child: ListTile(
+                          title: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                              Text("Vade Günü: ${item.vadeTarihi?.difference(DateTime.now()).inDays} (${item.vadeTarihi.toDateString})"),
+                            ],
+                          ),
+                          subtitle: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
+                              Text(item.cekBanka ?? "").yetkiVarMi(item.cekBanka != null),
+                            ],
+                          ),
+                          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Seçenekler",
+                            children: [
+                              BottomSheetModel(
+                                title: "Düzenle",
+                                iconWidget: Icons.edit_outlined,
+                                onTap: () {
+                                  Get.back();
+                                  duzenle(item);
+                                },
+                              ),
+                              BottomSheetModel(
+                                title: "Sil",
+                                iconWidget: Icons.delete_outline,
+                                onTap: () {
+                                  Get.back();
+                                  viewModel.removeCekSenetKalemlerModel(item);
+                                  dialogManager.showInfoSnackBar("Silindi");
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+              },
+            ),
           ],
         ),
       );
@@ -161,5 +257,25 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
     }
   }
 
-  Future<void> add() async => Get.toNamed("/mainPage/cekSenetTahsilatEkle");
+  Future<void> getProje() async {
+    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+    if (result is BaseProjeModel) {
+      viewModel.setProjeKodu(result.projeKodu);
+      _projeController.text = result.projeAciklama ?? "";
+    }
+  }
+
+  Future<void> add() async {
+    final result = await Get.toNamed("/mainPage/cekSenetTahsilatEkle");
+    if (result is CekSenetKalemlerModel) {
+      viewModel.addCekSenetKalemlerModel(result);
+    }
+  }
+
+  Future<void> duzenle(CekSenetKalemlerModel? oldModel) async {
+    final result = await Get.toNamed("/mainPage/cekSenetTahsilatEkle", arguments: oldModel);
+    if (result is CekSenetKalemlerModel) {
+      viewModel.replaceCekSenetKalemlerModel(oldModel, result);
+    }
+  }
 }

@@ -16,7 +16,7 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
       islemKodu: json['ISLEM_KODU'] as int?,
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map(
-              (e) => CekSenetkalemlerModel.fromJson(e as Map<String, dynamic>))
+              (e) => CekSenetKalemlerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       pickerTahsilatTuru: json['PICKER_TAHSILAT_TURU'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
@@ -25,6 +25,7 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['YENI_KAYIT'] as bool?,
+      projeKodu: json['PROJE_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
@@ -48,12 +49,13 @@ Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('YENI_KAYIT', instance.yeniKayit);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
   return val;
 }
 
-_$CekSenetkalemlerModelImpl _$$CekSenetkalemlerModelImplFromJson(
+_$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$CekSenetkalemlerModelImpl(
+    _$CekSenetKalemlerModelImpl(
       cariRaporKodu: json['CARI_RAPOR_KODU'] as String?,
       cekBanka: json['CEK_BANKA'] as String?,
       seriNo: json['SERI_NO'] as String?,
@@ -68,6 +70,7 @@ _$CekSenetkalemlerModelImpl _$$CekSenetkalemlerModelImplFromJson(
       raporKodu: json['RAPOR_KODU'] as String?,
       sehir: json['SEHIR'] as String?,
       sira: json['SIRA'] as int?,
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
       tag: json['TAG'] as String?,
       tarih: json['TARIH'] == null
           ? null
@@ -76,10 +79,20 @@ _$CekSenetkalemlerModelImpl _$$CekSenetkalemlerModelImplFromJson(
       vadeTarihi: json['VADE_TARIHI'] == null
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String),
+      dovizKuru: (json['DOVIZ_KURU'] as num?)?.toDouble(),
+      dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
+      asilCari: json['ASIL_CARI'] as String?,
+      refKod: json['REF_KOD'] as String?,
+      refTanimi: json['REF_TANIMI'] as String?,
+      aciklama1: json['ACIKLAMA1'] as String?,
+      aciklama2: json['ACIKLAMA2'] as String?,
+      aciklama3: json['ACIKLAMA3'] as String?,
+      projeAdi: json['PROJE_ADI'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetkalemlerModelImplToJson(
-    _$CekSenetkalemlerModelImpl instance) {
+Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
+    _$CekSenetKalemlerModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -102,9 +115,20 @@ Map<String, dynamic> _$$CekSenetkalemlerModelImplToJson(
   writeNotNull('RAPOR_KODU', instance.raporKodu);
   writeNotNull('SEHIR', instance.sehir);
   writeNotNull('SIRA', instance.sira);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('TUTAR', instance.tutar);
   writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
+  writeNotNull('DOVIZ_KURU', instance.dovizKuru);
+  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
+  writeNotNull('ASIL_CARI', instance.asilCari);
+  writeNotNull('REF_KOD', instance.refKod);
+  writeNotNull('REF_TANIMI', instance.refTanimi);
+  writeNotNull('ACIKLAMA1', instance.aciklama1);
+  writeNotNull('ACIKLAMA2', instance.aciklama2);
+  writeNotNull('ACIKLAMA3', instance.aciklama3);
+  writeNotNull('PROJE_ADI', instance.projeAdi);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
   return val;
 }

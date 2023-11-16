@@ -12,10 +12,10 @@ final class YetkiController {
   YetkiController();
   MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
-  UserModel? get _userModel => _anaVeri?.userModel;
+  UserModel? get userModel => _anaVeri?.userModel;
   ParamModel? get _paramModel => _anaVeri?.paramModel;
 
-  ProfilYetkiModel? get _yetkiModel => _userModel?.profilYetki;
+  ProfilYetkiModel? get _yetkiModel => userModel?.profilYetki;
 
   /// Verilen değer `null` ise `false` döndürür
   ///
@@ -23,9 +23,9 @@ final class YetkiController {
   /// Bunu yapma sebebim `null` gelen verilerin admin sebepli mi yoksa yetki sebepli mi olduğunu anlamak
   ///
   /// ! EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı
-  // bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (_userModel?.adminMi ?? false));
+  // bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
   // * Adminse artık her şeye erişiyor 1.3.0
-  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (_userModel?.adminMi ?? false));
+  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
 
   //! GENEL
 

@@ -46,29 +46,8 @@ class NetworkManager {
       responseType: ResponseType.json,
     ),
   );
-  // ..interceptors.add(
-  //     InterceptorsWrapper(
-  //       onRequest: (options, handler) => handler.next(options),
-  //       onError: (e, handler) {
-  //         // print(e);
-  //         if (e.type == DioExceptionType.connectionError) {
-  //           return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-  //         } else if (e.type == DioExceptionType.unknown) {
-  //           return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-  //         } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
-  //           if (e.requestOptions.path == ApiUrls.token) {
-  //             return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
-  //           } else {
-  //             return handler.next(e);
-  //           }
-  //         } else {
-  //           handler.next(e);
-  //         }
-  //       },
-  //     ),
-  //   );
+ 
   NetworkManager() {
-    // final talker = Talker();
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) => handler.next(options),

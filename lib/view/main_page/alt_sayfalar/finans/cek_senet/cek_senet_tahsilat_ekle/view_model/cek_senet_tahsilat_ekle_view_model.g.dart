@@ -14,21 +14,71 @@ mixin _$CekSenetTahsilatEkleViewModel
       Atom(name: '_CekSenetTahsilatEkleViewModelBase.model', context: context);
 
   @override
-  CekSenetkalemlerModel get model {
+  CekSenetKalemlerModel get model {
     _$modelAtom.reportRead();
     return super.model;
   }
 
   @override
-  set model(CekSenetkalemlerModel value) {
+  set model(CekSenetKalemlerModel value) {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
     });
   }
 
+  late final _$dovizKurlariListesiAtom = Atom(
+      name: '_CekSenetTahsilatEkleViewModelBase.dovizKurlariListesi',
+      context: context);
+
+  @override
+  ObservableList<DovizKurlariModel>? get dovizKurlariListesi {
+    _$dovizKurlariListesiAtom.reportRead();
+    return super.dovizKurlariListesi;
+  }
+
+  @override
+  set dovizKurlariListesi(ObservableList<DovizKurlariModel>? value) {
+    _$dovizKurlariListesiAtom.reportWrite(value, super.dovizKurlariListesi, () {
+      super.dovizKurlariListesi = value;
+    });
+  }
+
+  late final _$getDovizlerAsyncAction = AsyncAction(
+      '_CekSenetTahsilatEkleViewModelBase.getDovizler',
+      context: context);
+
+  @override
+  Future<void> getDovizler() {
+    return _$getDovizlerAsyncAction.run(() => super.getDovizler());
+  }
+
   late final _$_CekSenetTahsilatEkleViewModelBaseActionController =
       ActionController(
           name: '_CekSenetTahsilatEkleViewModelBase', context: context);
+
+  @override
+  void setModel(CekSenetKalemlerModel value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setModel');
+    try {
+      return super.setModel(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAsilCari(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setAsilCari');
+    try {
+      return super.setAsilCari(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCiroTipi(String? value) {
@@ -55,11 +105,23 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
-  void setDovizTipi(String? value) {
+  void setDovizTipi(int? value) {
     final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setDovizTipi');
     try {
       return super.setDovizTipi(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDovizTutari(double? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setDovizTutari');
+    try {
+      return super.setDovizTutari(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -127,18 +189,6 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
-  void setPlasiyer(PlasiyerList? value) {
-    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
-        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setPlasiyer');
-    try {
-      return super.setPlasiyer(value);
-    } finally {
-      _$_CekSenetTahsilatEkleViewModelBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setIl(String? value) {
     final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setIl');
@@ -188,9 +238,59 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
+            name: '_CekSenetTahsilatEkleViewModelBase.setDovizKurlariListesi');
+    try {
+      return super.setDovizKurlariListesi(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama1(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setAciklama1');
+    try {
+      return super.setAciklama1(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama2(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setAciklama2');
+    try {
+      return super.setAciklama2(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama3(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setAciklama3');
+    try {
+      return super.setAciklama3(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-model: ${model}
+model: ${model},
+dovizKurlariListesi: ${dovizKurlariListesi}
     ''';
   }
 }

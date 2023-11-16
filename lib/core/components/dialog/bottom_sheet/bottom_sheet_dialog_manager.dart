@@ -738,7 +738,7 @@ class BottomSheetDialogManager {
   }
 
   Future<TcmbBankalarModel?> showTcmbBankalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbBankalar, bodyModel: TcmbBankalarModel());
+    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbBankalar, showLoading: true, bodyModel: TcmbBankalarModel());
     if (result.data is List) {
       final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
       return await showRadioBottomSheetDialog(
@@ -761,7 +761,7 @@ class BottomSheetDialogManager {
   }
 
   Future<TcmbBankalarModel?> showTcmbSubelerBottomSheetDialog(BuildContext context, String? bankaKodu, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), queryParameters: {"BankaKodu": bankaKodu});
+    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), showLoading: true, queryParameters: {"BankaKodu": bankaKodu});
     if (result.data is List) {
       final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
       return await showRadioBottomSheetDialog(

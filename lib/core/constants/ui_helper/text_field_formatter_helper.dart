@@ -8,4 +8,5 @@ class TextFieldFormatterHelper {
     allowNegative: true,
     overrideDecimalPoint: true,
   );
+
 }

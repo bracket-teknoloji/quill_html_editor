@@ -6,8 +6,7 @@ part "save_cek_senet_model.freezed.dart";
 part "save_cek_senet_model.g.dart";
 
 @unfreezed
-class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin{
-  
+class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
   SaveCekSenetModel._();
   factory SaveCekSenetModel({
     String? belgeTipi,
@@ -15,12 +14,13 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin{
     String? cariKodu,
     String? guid,
     int? islemKodu,
-    List<CekSenetkalemlerModel>? kalemler,
+    List<CekSenetKalemlerModel>? kalemler,
     String? pickerTahsilatTuru,
     String? plasiyerKodu,
     String? tag,
     DateTime? tarih,
     bool? yeniKayit,
+    String? projeKodu,
   }) = _SaveCekSenetModel;
 
   factory SaveCekSenetModel.fromJson(Map<String, dynamic> json) => _$SaveCekSenetModelFromJson(json);
@@ -30,8 +30,8 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin{
 }
 
 @unfreezed
-class  CekSenetkalemlerModel with _$CekSenetkalemlerModel {
-   factory CekSenetkalemlerModel({
+class CekSenetKalemlerModel with _$CekSenetKalemlerModel {
+  factory CekSenetKalemlerModel({
     String? cariRaporKodu,
     String? cekBanka,
     String? seriNo,
@@ -46,11 +46,28 @@ class  CekSenetkalemlerModel with _$CekSenetkalemlerModel {
     String? raporKodu,
     String? sehir,
     int? sira,
+    int? dovizTipi,
     String? tag,
     DateTime? tarih,
     double? tutar,
     DateTime? vadeTarihi,
-  }) = _CekSenetkalemlerModel;
+    double? dovizKuru,
+    double? dovizTutari,
+    String? asilCari,
+    String? refKod,
+    String? refTanimi,
+    String? aciklama1,
+    String? aciklama2,
+    String? aciklama3,
+    String? projeAdi,
+    String? projeKodu,
+  }) = _CekSenetKalemlerModel;
 
-  factory CekSenetkalemlerModel.fromJson(Map<String, dynamic> json) => _$CekSenetkalemlerModelFromJson(json);
+  factory CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) => _$CekSenetKalemlerModelFromJson(json);
+}
+
+extension CekSenetExtensions on CekSenetKalemlerModel {
+  bool get ciroMu => ciroTipi == "C";
+
+  bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
 }

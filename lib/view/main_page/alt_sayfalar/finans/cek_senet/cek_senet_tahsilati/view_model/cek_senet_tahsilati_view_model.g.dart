@@ -25,6 +25,14 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
     });
   }
 
+  late final _$postDataAsyncAction =
+      AsyncAction('_CekSenetTahsilatiViewModelBase.postData', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+    return _$postDataAsyncAction.run(() => super.postData());
+  }
+
   late final _$_CekSenetTahsilatiViewModelBaseActionController =
       ActionController(
           name: '_CekSenetTahsilatiViewModelBase', context: context);
@@ -57,6 +65,56 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
         .startAction(name: '_CekSenetTahsilatiViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
+    } finally {
+      _$_CekSenetTahsilatiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setProjeKodu(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatiViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(value);
+    } finally {
+      _$_CekSenetTahsilatiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addCekSenetKalemlerModel(CekSenetKalemlerModel? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
+            name: '_CekSenetTahsilatiViewModelBase.addCekSenetKalemlerModel');
+    try {
+      return super.addCekSenetKalemlerModel(value);
+    } finally {
+      _$_CekSenetTahsilatiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeCekSenetKalemlerModel(CekSenetKalemlerModel? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
+            name:
+                '_CekSenetTahsilatiViewModelBase.removeCekSenetKalemlerModel');
+    try {
+      return super.removeCekSenetKalemlerModel(value);
+    } finally {
+      _$_CekSenetTahsilatiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void replaceCekSenetKalemlerModel(
+      CekSenetKalemlerModel? oldValue, CekSenetKalemlerModel? newValue) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatiViewModelBaseActionController.startAction(
+            name:
+                '_CekSenetTahsilatiViewModelBase.replaceCekSenetKalemlerModel');
+    try {
+      return super.replaceCekSenetKalemlerModel(oldValue, newValue);
     } finally {
       _$_CekSenetTahsilatiViewModelBaseActionController.endAction(_$actionInfo);
     }

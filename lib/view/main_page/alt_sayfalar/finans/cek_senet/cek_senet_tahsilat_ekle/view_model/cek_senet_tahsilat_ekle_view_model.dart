@@ -1,5 +1,7 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
@@ -8,9 +10,18 @@ part "cek_senet_tahsilat_ekle_view_model.g.dart";
 
 class CekSenetTahsilatEkleViewModel = _CekSenetTahsilatEkleViewModelBase with _$CekSenetTahsilatEkleViewModel;
 
-abstract class _CekSenetTahsilatEkleViewModelBase with Store {
+abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   @observable
-  CekSenetkalemlerModel model = CekSenetkalemlerModel();
+  CekSenetKalemlerModel model = CekSenetKalemlerModel(ciroTipi: "A");
+
+  @observable
+  ObservableList<DovizKurlariModel>? dovizKurlariListesi;
+
+  @action
+  void setModel(CekSenetKalemlerModel value) => model = value;
+
+  @action
+  void setAsilCari(String? value) => model = model.copyWith(asilCari: value);
 
   @action
   void setCiroTipi(String? value) => model = model.copyWith(ciroTipi: value);
@@ -19,7 +30,10 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store {
   void setVadeTarihi(DateTime? value) => model = model.copyWith(vadeTarihi: value.dateTimeWithoutTime);
 
   @action
-  void setDovizTipi(String? value) => model = model.copyWith();
+  void setDovizTipi(int? value) => model = model.copyWith(dovizTipi: value);
+
+  @action
+  void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
 
   @action
   void setTutar(double? value) => model = model.copyWith(tutar: value);
@@ -36,9 +50,6 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store {
   @action
   void setHesapNo(String? value) => model = model.copyWith(hesapNo: value);
 
-  @action
-  void setPlasiyer(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama);
-
   // @action
   // void setIBAN(String? value) => model = model.copyWith(iban: value)
 
@@ -54,4 +65,32 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store {
   @action
   void setCariRaporKodu(String? value) => model = model.copyWith(cariRaporKodu: value);
 
+  @action
+  void setDovizKurlariListesi(List<DovizKurlariModel>? value) => dovizKurlariListesi = value?.asObservable();
+
+  @action
+  void setAciklama1(String? value) => model = model.copyWith(aciklama1: value);
+
+  @action
+  void setAciklama2(String? value) => model = model.copyWith(aciklama2: value);
+
+  @action
+  void setAciklama3(String? value) => model = model.copyWith(aciklama3: value);
+
+  @action
+  Future<void> getDovizler() async {
+    if (model.dovizTipi == 0) {
+      setDovizKurlariListesi(null);
+      return;
+    }
+    final result = await networkManager.dioGet<DovizKurlariModel>(
+      path: ApiUrls.getDovizKurlari,
+      bodyModel: DovizKurlariModel(),
+      showLoading: true,
+      queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},
+    );
+    if (result.data is List) {
+      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    }
+  }
 }

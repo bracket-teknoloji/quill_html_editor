@@ -209,7 +209,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cekMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
               GetPage(name: "/senetBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
               GetPage(name: "/senetMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
-              GetPage(name: "/cekSenetTahsilatEkle", page: CekSenetTahsilatEkleView.new),
+              GetPage(name: "/cekSenetTahsilatEkle", page: () => CekSenetTahsilatEkleView(model:  Get.arguments)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
