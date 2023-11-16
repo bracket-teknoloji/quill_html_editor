@@ -89,6 +89,7 @@ _$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(
       aciklama3: json['ACIKLAMA3'] as String?,
       projeAdi: json['PROJE_ADI'] as String?,
       projeKodu: json['PROJE_KODU'] as String?,
+      verenKodu: json['VEREN_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
@@ -130,5 +131,6 @@ Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
   writeNotNull('ACIKLAMA3', instance.aciklama3);
   writeNotNull('PROJE_ADI', instance.projeAdi);
   writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('VEREN_KODU', instance.verenKodu);
   return val;
 }

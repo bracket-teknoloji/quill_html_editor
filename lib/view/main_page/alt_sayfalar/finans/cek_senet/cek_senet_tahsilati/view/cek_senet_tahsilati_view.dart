@@ -75,7 +75,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
           IconButton(
             onPressed: () {
               if (viewModel.model.kalemler.ext.isNullOrEmpty) {
-                dialogManager.showInfoSnackBar("Lütfen en az 1 adet belge ekleyiniz");
+                dialogManager.showInfoSnackBar("Lütfen en az 1 adet kayıt ekleyiniz");
                 return;
               }
               if (_formKey.currentState?.validate() ?? false) {
@@ -206,7 +206,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                                 onTap: () {
                                   Get.back();
                                   viewModel.removeCekSenetKalemlerModel(item);
-                                  dialogManager.showInfoSnackBar("Silindi");
+                                  dialogManager.showSuccessSnackBar("Silindi");
                                 },
                               ),
                             ],
@@ -235,8 +235,10 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   Future<void> getCari() async {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
-      viewModel.setCariKodu(result.cariKodu);
+      viewModel.setCariKodu(result);
       _cariController.text = result.cariAdi ?? "";
+      viewModel.setPlasiyerKodu(result.plasiyerKodu);
+      _plasiyerController.text = result.plasiyerAciklama ?? "";
     }
   }
 
@@ -260,13 +262,13 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   Future<void> getProje() async {
     final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
     if (result is BaseProjeModel) {
-      viewModel.setProjeKodu(result.projeKodu);
+      viewModel.setProjeKodu(result);
       _projeController.text = result.projeAciklama ?? "";
     }
   }
 
   Future<void> add() async {
-    final result = await Get.toNamed("/mainPage/cekSenetTahsilatEkle");
+    final result = await Get.toNamed(widget.cekSenetListesiEnum.tahsilatEkleRoute);
     if (result is CekSenetKalemlerModel) {
       viewModel.addCekSenetKalemlerModel(result);
     }

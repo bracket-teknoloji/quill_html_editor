@@ -49,7 +49,7 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   }
 
   @override
-  void setCariKodu(String? value) {
+  void setCariKodu(CariListesiModel? value) {
     final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatiViewModelBase.setCariKodu');
     try {
@@ -71,7 +71,7 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   }
 
   @override
-  void setProjeKodu(String? value) {
+  void setProjeKodu(BaseProjeModel? value) {
     final _$actionInfo = _$_CekSenetTahsilatiViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatiViewModelBase.setProjeKodu');
     try {

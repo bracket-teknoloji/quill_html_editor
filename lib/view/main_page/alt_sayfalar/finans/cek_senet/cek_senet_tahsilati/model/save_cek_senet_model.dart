@@ -61,6 +61,7 @@ class CekSenetKalemlerModel with _$CekSenetKalemlerModel {
     String? aciklama3,
     String? projeAdi,
     String? projeKodu,
+    String? verenKodu,
   }) = _CekSenetKalemlerModel;
 
   factory CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) => _$CekSenetKalemlerModelFromJson(json);

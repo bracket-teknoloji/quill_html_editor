@@ -81,4 +81,28 @@ extension CekSenetExtensions on CekSenetListesiEnum {
         return "/mainPage/senetBorcTahsilat";
     }
   }
+
+  bool get cekMi {
+    switch (this) {
+      case CekSenetListesiEnum.cekMusteri:
+      case CekSenetListesiEnum.cekBorc:
+        return true;
+      case CekSenetListesiEnum.senetMusteri:
+      case CekSenetListesiEnum.senetBorc:
+        return false;
+    }
+  }
+
+  String get tahsilatEkleRoute {
+    switch (this) {
+      case CekSenetListesiEnum.cekMusteri:
+        return "/mainPage/cekMusteriTahsilatEkle";
+      case CekSenetListesiEnum.senetMusteri:
+        return "/mainPage/senetMusteriTahsilatEkle";
+      case CekSenetListesiEnum.cekBorc:
+        return "/mainPage/cekBorcTahsilatEkle";
+      case CekSenetListesiEnum.senetBorc:
+        return "/mainPage/senetBorcTahsilatEkle";
+    }
+  }
 }

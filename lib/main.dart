@@ -209,7 +209,10 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cekMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
               GetPage(name: "/senetBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
               GetPage(name: "/senetMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
-              GetPage(name: "/cekSenetTahsilatEkle", page: () => CekSenetTahsilatEkleView(model:  Get.arguments)),
+              GetPage(name: "/cekMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
+              GetPage(name: "/senetMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
+              GetPage(name: "/cekBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
+              GetPage(name: "/senetBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

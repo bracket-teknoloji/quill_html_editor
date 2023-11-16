@@ -1,8 +1,10 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../model/save_cek_senet_model.dart";
 
@@ -12,24 +14,36 @@ class CekSenetTahsilatiViewModel = _CekSenetTahsilatiViewModelBase with _$CekSen
 
 abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 3);
+  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 3, yeniKayit: true, belgeTipi: "MCEK");
 
   @action
   void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value);
 
   @action
-  void setCariKodu(String? value) => model = model.copyWith(cariKodu: value);
+  void setCariKodu(CariListesiModel? value) {
+    final List<CekSenetKalemlerModel> list = [];
+    for (CekSenetKalemlerModel item in model.kalemler ?? []) {
+      list.add(item.copyWith(plasiyerAdi: value?.plasiyerAciklama, plasiyerKodu: value?.plasiyerKodu));
+    }
+    model = model.copyWith(cariKodu: value?.cariKodu, cariAdi: value?.cariAdi, kalemler: list);
+  }
 
   @action
   void setPlasiyerKodu(String? value) => model = model.copyWith(plasiyerKodu: value);
 
   @action
-  void setProjeKodu(String? value) => model = model.copyWith(projeKodu: value);
+  void setProjeKodu(BaseProjeModel? value) {
+    final List<CekSenetKalemlerModel> list = [];
+    for (CekSenetKalemlerModel item in model.kalemler ?? []) {
+      list.add(item.copyWith(projeAdi: value?.projeAciklama, projeKodu: value?.projeKodu));
+    }
+    model = model.copyWith(projeKodu: value?.projeKodu, kalemler: list);
+  }
 
   @action
   void addCekSenetKalemlerModel(CekSenetKalemlerModel? value) {
     if (value != null) {
-      model = model.copyWith(kalemler: [...model.kalemler ?? [], value]);
+      model = model.copyWith(kalemler: [...model.kalemler ?? [], value..sira = (model.kalemler?.length ?? 0) + 1]);
     }
   }
 
@@ -49,5 +63,5 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<SaveCekSenetModel>(path: ApiUrls.saveCekSenetler, bodyModel: SaveCekSenetModel(), data: model.toJson());
+      await networkManager.dioPost<SaveCekSenetModel>(path: ApiUrls.saveCekSenetler, bodyModel: SaveCekSenetModel(), data: model.toJson(), showLoading: true);
 }

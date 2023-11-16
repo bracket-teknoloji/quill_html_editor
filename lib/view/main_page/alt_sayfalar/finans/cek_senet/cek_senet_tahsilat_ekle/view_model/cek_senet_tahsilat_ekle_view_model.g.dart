@@ -43,6 +43,31 @@ mixin _$CekSenetTahsilatEkleViewModel
     });
   }
 
+  late final _$muhaRefListAtom = Atom(
+      name: '_CekSenetTahsilatEkleViewModelBase.muhaRefList', context: context);
+
+  @override
+  ObservableList<MuhasebeReferansModel>? get muhaRefList {
+    _$muhaRefListAtom.reportRead();
+    return super.muhaRefList;
+  }
+
+  @override
+  set muhaRefList(ObservableList<MuhasebeReferansModel>? value) {
+    _$muhaRefListAtom.reportWrite(value, super.muhaRefList, () {
+      super.muhaRefList = value;
+    });
+  }
+
+  late final _$getMuhaRefListAsyncAction = AsyncAction(
+      '_CekSenetTahsilatEkleViewModelBase.getMuhaRefList',
+      context: context);
+
+  @override
+  Future<void> getMuhaRefList() {
+    return _$getMuhaRefListAsyncAction.run(() => super.getMuhaRefList());
+  }
+
   late final _$getDovizlerAsyncAction = AsyncAction(
       '_CekSenetTahsilatEkleViewModelBase.getDovizler',
       context: context);
@@ -287,10 +312,35 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
+  void setReferans(MuhasebeReferansModel? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setReferans');
+    try {
+      return super.setReferans(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMuhaRefList(List<MuhasebeReferansModel>? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setMuhaRefList');
+    try {
+      return super.setMuhaRefList(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},
-dovizKurlariListesi: ${dovizKurlariListesi}
+dovizKurlariListesi: ${dovizKurlariListesi},
+muhaRefList: ${muhaRefList}
     ''';
   }
 }

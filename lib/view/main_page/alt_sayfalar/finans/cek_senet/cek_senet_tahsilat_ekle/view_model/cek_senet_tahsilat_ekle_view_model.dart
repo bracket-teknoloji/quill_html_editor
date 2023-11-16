@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
+import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 
@@ -12,10 +13,12 @@ class CekSenetTahsilatEkleViewModel = _CekSenetTahsilatEkleViewModelBase with _$
 
 abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   @observable
-  CekSenetKalemlerModel model = CekSenetKalemlerModel(ciroTipi: "A");
+  CekSenetKalemlerModel model = CekSenetKalemlerModel(ciroTipi: "A", tag: "CekSenetModel");
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
+  @observable
+  ObservableList<MuhasebeReferansModel>? muhaRefList;
 
   @action
   void setModel(CekSenetKalemlerModel value) => model = value;
@@ -76,6 +79,20 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setAciklama3(String? value) => model = model.copyWith(aciklama3: value);
+
+  @action
+  void setReferans(MuhasebeReferansModel? value) => model = model.copyWith(refKod: value?.kodu, refTanimi: value?.tanimi);
+
+  @action
+  void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();
+
+  @action
+  Future<void> getMuhaRefList() async {
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    if (result.data is List) {
+      setMuhaRefList(result.data.cast<MuhasebeReferansModel>());
+    }
+  }
 
   @action
   Future<void> getDovizler() async {

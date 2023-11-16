@@ -1,14 +1,19 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -19,7 +24,8 @@ import "../view_model/cek_senet_tahsilat_ekle_view_model.dart";
 
 class CekSenetTahsilatEkleView extends StatefulWidget {
   final CekSenetKalemlerModel? model;
-  const CekSenetTahsilatEkleView({super.key, this.model});
+  final CekSenetListesiEnum cekSenetListesiEnum;
+  const CekSenetTahsilatEkleView({super.key, this.model, required this.cekSenetListesiEnum});
 
   @override
   State<CekSenetTahsilatEkleView> createState() => _CekSenetTahsilatEkleViewState();
@@ -28,6 +34,7 @@ class CekSenetTahsilatEkleView extends StatefulWidget {
 class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView> {
   final CekSenetTahsilatEkleViewModel viewModel = CekSenetTahsilatEkleViewModel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final TextEditingController _bankaHesapKoduController;
   late final TextEditingController _asilBorcluController;
   late final TextEditingController _vadeTarihiController;
   late final TextEditingController _seriNoController;
@@ -35,6 +42,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
   late final TextEditingController _dovizTutariController;
   late final TextEditingController _dovizKuruController;
   late final TextEditingController _tutarController;
+  late final TextEditingController _referansKoduController;
   late final TextEditingController _bankaController;
   late final TextEditingController _subeController;
   late final TextEditingController _hesapNoController;
@@ -57,6 +65,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
     _dovizTutariController = TextEditingController();
     _dovizKuruController = TextEditingController();
     _tutarController = TextEditingController();
+    _referansKoduController = TextEditingController();
     _bankaController = TextEditingController();
     _subeController = TextEditingController();
     _hesapNoController = TextEditingController();
@@ -87,6 +96,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
     _dovizTutariController.dispose();
     _dovizKuruController.dispose();
     _tutarController.dispose();
+    _referansKoduController.dispose();
     _bankaController.dispose();
     _subeController.dispose();
     _hesapNoController.dispose();
@@ -134,7 +144,16 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                       }
                     },
                     title: const Text("Ciro"),
-                  ),
+                  ).yetkiVarMi(widget.cekSenetListesiEnum.cekMi),
+                ),
+                Observer(
+                  builder: (_) => CustomTextField(
+                    labelText: "Banka Hesap Kodu",
+                    controller: _bankaHesapKoduController,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: getAsilBorclu,
+                  ).yetkiVarMi(viewModel.model.ciroMu && widget.cekSenetListesiEnum.cekMi),
                 ),
                 Observer(
                   builder: (_) => CustomTextField(
@@ -143,7 +162,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                     readOnly: true,
                     suffixMore: true,
                     onTap: getAsilBorclu,
-                  ).yetkiVarMi(viewModel.model.ciroMu),
+                  ).yetkiVarMi(viewModel.model.ciroMu && widget.cekSenetListesiEnum.cekMi),
                 ),
                 Row(
                   children: [
@@ -241,6 +260,37 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                       ),
                     ],
                   ),
+                ),
+                CustomTextField(
+                  labelText: "Referans Kodu",
+                  controller: _referansKoduController,
+                  isMust: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                  onTap: () async {
+                    if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                      await viewModel.getMuhaRefList();
+                    }
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                      context,
+                      title: "Referans Kodu",
+                      groupValue: viewModel.model.refKod,
+                      children: viewModel.muhaRefList!
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: e.tanimi ?? "",
+                              description: e.kodu,
+                              value: e,
+                              groupValue: e.kodu,
+                            ),
+                          )
+                          .toList(),
+                    );
+                    if (result is MuhasebeReferansModel) {
+                      _referansKoduController.text = result.tanimi ?? "";
+                      viewModel.setReferans(result);
+                    }
+                  },
                 ),
                 CustomTextField(
                   labelText: "Banka",
@@ -370,6 +420,14 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
     if (result != null) {
       _subeController.text = result.subeadi ?? "";
       viewModel.setSube(result.subekodu);
+    }
+  }
+
+  Future<void> getBankaHesapKodu() async {
+    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(), viewModel.model.verenKodu);
+    if (result is CariListesiModel) {
+      // _asilBorcluController.text = result.cariAdi ?? "";
+      // viewModel.setAsilCari(result.cariAdi);
     }
   }
 
