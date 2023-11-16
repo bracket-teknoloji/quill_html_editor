@@ -54,9 +54,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                     ),
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Döviz Tipi",
-                        readOnly: true,
-                        suffixMore: true,
+                        labelText: "Seri No",
                       ),
                     ),
                   ],
@@ -65,13 +63,32 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                   children: [
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Tutar",
-                        isMust: true,
+                        labelText: "Döviz Tipi",
+                        readOnly: true,
+                        suffixMore: true,
                       ),
                     ),
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Seri No",
+                        labelText: "Döviz Tutarı",
+                        isMust: true,
+                      ),
+                    ),
+                  ],
+                ),
+                const Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Döviz Kuru",
+                        readOnly: true,
+                        suffixMore: true,
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Tutar",
+                        isMust: true,
                       ),
                     ),
                   ],

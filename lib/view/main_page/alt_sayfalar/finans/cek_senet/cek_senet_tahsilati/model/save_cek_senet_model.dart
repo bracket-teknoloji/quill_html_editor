@@ -48,7 +48,7 @@ class  CekSenetkalemlerModel with _$CekSenetkalemlerModel {
     int? sira,
     String? tag,
     DateTime? tarih,
-    int? tutar,
+    double? tutar,
     DateTime? vadeTarihi,
   }) = _CekSenetkalemlerModel;
 

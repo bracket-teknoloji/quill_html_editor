@@ -20,7 +20,7 @@ abstract class _LoginViewModelBase with Store {
   @action
   void checkDebug() {
     isDebug = AccountModel.instance.isDebug;
-    baseUrl = NetworkManager().getBaseUrl;
+    baseUrl = NetworkManager.getBaseUrl;
   }
 
   @action

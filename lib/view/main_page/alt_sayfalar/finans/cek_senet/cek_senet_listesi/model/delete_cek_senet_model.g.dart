@@ -6,7 +6,9 @@ part of 'delete_cek_senet_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DeleteCekSenetModelImpl _$$DeleteCekSenetModelImplFromJson(Map<String, dynamic> json) => _$DeleteCekSenetModelImpl(
+_$DeleteCekSenetModelImpl _$$DeleteCekSenetModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DeleteCekSenetModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
@@ -14,7 +16,8 @@ _$DeleteCekSenetModelImpl _$$DeleteCekSenetModelImplFromJson(Map<String, dynamic
       tag: json['TAG'] as String?,
     );
 
-Map<String, dynamic> _$$DeleteCekSenetModelImplToJson(_$DeleteCekSenetModelImpl instance) {
+Map<String, dynamic> _$$DeleteCekSenetModelImplToJson(
+    _$DeleteCekSenetModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

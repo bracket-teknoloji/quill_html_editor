@@ -393,8 +393,8 @@ mixin _$CekSenetkalemlerModel {
   set tag(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
-  int? get tutar => throw _privateConstructorUsedError;
-  set tutar(int? value) => throw _privateConstructorUsedError;
+  double? get tutar => throw _privateConstructorUsedError;
+  set tutar(double? value) => throw _privateConstructorUsedError;
   DateTime? get vadeTarihi => throw _privateConstructorUsedError;
   set vadeTarihi(DateTime? value) => throw _privateConstructorUsedError;
 
@@ -427,7 +427,7 @@ abstract class $CekSenetkalemlerModelCopyWith<$Res> {
       int? sira,
       String? tag,
       DateTime? tarih,
-      int? tutar,
+      double? tutar,
       DateTime? vadeTarihi});
 }
 
@@ -532,7 +532,7 @@ class _$CekSenetkalemlerModelCopyWithImpl<$Res,
       tutar: freezed == tutar
           ? _value.tutar
           : tutar // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       vadeTarihi: freezed == vadeTarihi
           ? _value.vadeTarihi
           : vadeTarihi // ignore: cast_nullable_to_non_nullable
@@ -567,7 +567,7 @@ abstract class _$$CekSenetkalemlerModelImplCopyWith<$Res>
       int? sira,
       String? tag,
       DateTime? tarih,
-      int? tutar,
+      double? tutar,
       DateTime? vadeTarihi});
 }
 
@@ -670,7 +670,7 @@ class __$$CekSenetkalemlerModelImplCopyWithImpl<$Res>
       tutar: freezed == tutar
           ? _value.tutar
           : tutar // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       vadeTarihi: freezed == vadeTarihi
           ? _value.vadeTarihi
           : vadeTarihi // ignore: cast_nullable_to_non_nullable
@@ -738,7 +738,7 @@ class _$CekSenetkalemlerModelImpl implements _CekSenetkalemlerModel {
   @override
   DateTime? tarih;
   @override
-  int? tutar;
+  double? tutar;
   @override
   DateTime? vadeTarihi;
 
@@ -780,7 +780,7 @@ abstract class _CekSenetkalemlerModel implements CekSenetkalemlerModel {
       int? sira,
       String? tag,
       DateTime? tarih,
-      int? tutar,
+      double? tutar,
       DateTime? vadeTarihi}) = _$CekSenetkalemlerModelImpl;
 
   factory _CekSenetkalemlerModel.fromJson(Map<String, dynamic> json) =
@@ -835,8 +835,8 @@ abstract class _CekSenetkalemlerModel implements CekSenetkalemlerModel {
   DateTime? get tarih;
   set tarih(DateTime? value);
   @override
-  int? get tutar;
-  set tutar(int? value);
+  double? get tutar;
+  set tutar(double? value);
   @override
   DateTime? get vadeTarihi;
   set vadeTarihi(DateTime? value);

@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(Map<String, dynamic> json) {
+YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(
+    Map<String, dynamic> json) {
   return _YapilandirmaProfilModel.fromJson(json);
 }
 
@@ -26,23 +27,34 @@ mixin _$YapilandirmaProfilModel {
   set ozellikKodu(String? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
-  List<YapilandirmaRehberiModel?>? get deger => throw _privateConstructorUsedError;
-  set deger(List<YapilandirmaRehberiModel?>? value) => throw _privateConstructorUsedError;
+  List<YapilandirmaRehberiModel?>? get deger =>
+      throw _privateConstructorUsedError;
+  set deger(List<YapilandirmaRehberiModel?>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith => throw _privateConstructorUsedError;
+  $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $YapilandirmaProfilModelCopyWith<$Res> {
-  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value, $Res Function(YapilandirmaProfilModel) then) = _$YapilandirmaProfilModelCopyWithImpl<$Res, YapilandirmaProfilModel>;
+  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value,
+          $Res Function(YapilandirmaProfilModel) then) =
+      _$YapilandirmaProfilModelCopyWithImpl<$Res, YapilandirmaProfilModel>;
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
+  $Res call(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger});
 }
 
 /// @nodoc
-class _$YapilandirmaProfilModelCopyWithImpl<$Res, $Val extends YapilandirmaProfilModel> implements $YapilandirmaProfilModelCopyWith<$Res> {
+class _$YapilandirmaProfilModelCopyWithImpl<$Res,
+        $Val extends YapilandirmaProfilModel>
+    implements $YapilandirmaProfilModelCopyWith<$Res> {
   _$YapilandirmaProfilModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -80,16 +92,30 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res, $Val extends YapilandirmaProfi
 }
 
 /// @nodoc
-abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res> implements $YapilandirmaProfilModelCopyWith<$Res> {
-  factory _$$YapilandirmaProfilModelImplCopyWith(_$YapilandirmaProfilModelImpl value, $Res Function(_$YapilandirmaProfilModelImpl) then) = __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
+abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res>
+    implements $YapilandirmaProfilModelCopyWith<$Res> {
+  factory _$$YapilandirmaProfilModelImplCopyWith(
+          _$YapilandirmaProfilModelImpl value,
+          $Res Function(_$YapilandirmaProfilModelImpl) then) =
+      __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
+  $Res call(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger});
 }
 
 /// @nodoc
-class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res> extends _$YapilandirmaProfilModelCopyWithImpl<$Res, _$YapilandirmaProfilModelImpl> implements _$$YapilandirmaProfilModelImplCopyWith<$Res> {
-  __$$YapilandirmaProfilModelImplCopyWithImpl(_$YapilandirmaProfilModelImpl _value, $Res Function(_$YapilandirmaProfilModelImpl) _then) : super(_value, _then);
+class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
+    extends _$YapilandirmaProfilModelCopyWithImpl<$Res,
+        _$YapilandirmaProfilModelImpl>
+    implements _$$YapilandirmaProfilModelImplCopyWith<$Res> {
+  __$$YapilandirmaProfilModelImplCopyWithImpl(
+      _$YapilandirmaProfilModelImpl _value,
+      $Res Function(_$YapilandirmaProfilModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -123,9 +149,12 @@ class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res> extends _$YapilandirmaPr
 /// @nodoc
 @JsonSerializable()
 class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
-  _$YapilandirmaProfilModelImpl({this.sira, this.ozellikKodu, this.aciklama, this.deger}) : super._();
+  _$YapilandirmaProfilModelImpl(
+      {this.sira, this.ozellikKodu, this.aciklama, this.deger})
+      : super._();
 
-  factory _$YapilandirmaProfilModelImpl.fromJson(Map<String, dynamic> json) => _$$YapilandirmaProfilModelImplFromJson(json);
+  factory _$YapilandirmaProfilModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$YapilandirmaProfilModelImplFromJson(json);
 
   @override
   int? sira;
@@ -139,7 +168,9 @@ class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith => __$$YapilandirmaProfilModelImplCopyWithImpl<_$YapilandirmaProfilModelImpl>(this, _$identity);
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
+      get copyWith => __$$YapilandirmaProfilModelImplCopyWithImpl<
+          _$YapilandirmaProfilModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -150,10 +181,15 @@ class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
 }
 
 abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
-  factory _YapilandirmaProfilModel({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger}) = _$YapilandirmaProfilModelImpl;
+  factory _YapilandirmaProfilModel(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger}) = _$YapilandirmaProfilModelImpl;
   _YapilandirmaProfilModel._() : super._();
 
-  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) = _$YapilandirmaProfilModelImpl.fromJson;
+  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =
+      _$YapilandirmaProfilModelImpl.fromJson;
 
   @override
   int? get sira;
@@ -169,5 +205,6 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   set deger(List<YapilandirmaRehberiModel?>? value);
   @override
   @JsonKey(ignore: true)
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

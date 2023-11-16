@@ -6,38 +6,43 @@ part of 'kalem_list_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) => KalemListModel()
-  ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
-  ..sira = json['SIRA'] as int?
-  ..tarih = json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
-  ..teslimTarihi = json['TESLIM_TARIHI'] == null ? null : DateTime.parse(json['TESLIM_TARIHI'] as String)
-  ..belgeTipi = json['BELGE_TIPI'] as String?
-  ..stokKodu = json['STOK_KODU'] as String?
-  ..stokAdi = json['STOK_ADI'] as String?
-  ..cariKodu = json['CARI_KODU'] as String?
-  ..depoKodu = json['DEPO_KODU'] as int?
-  ..depoTanimi = json['DEPO_TANIMI'] as String?
-  ..miktar = (json['MIKTAR'] as num?)?.toDouble()
-  ..seriList = json['SERI_LIST'] as List<dynamic>?
-  ..kdvOrani = (json['KDV_ORANI'] as num?)?.toDouble()
-  ..brutFiyat = (json['BRUT_FIYAT'] as num?)?.toDouble()
-  ..dipFiyat = (json['DIP_FIYAT'] as num?)?.toDouble()
-  ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
-  ..stokSatDovTip = json['STOK_SAT_DOV_TIP'] as int?
-  ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
-  ..stokSatDovizAdi = json['STOK_SAT_DOVIZ_ADI'] as String?
-  ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
-  ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
-  ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
-  ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?
-  ..projeKodu = json['PROJE_KODU'] as String?
-  ..kalemListHucreList = json['KALEM_LIST_HUCRE_LIST'] as List<dynamic>?
-  ..hucreList = json['HUCRE_LIST'] as List<dynamic>?
-  ..stokBakiye = (json['STOK_BAKIYE'] as num?)?.toDouble()
-  ..kosulKodu = json['KOSUL_KODU'] as String?
-  ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble();
+KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
+    KalemListModel()
+      ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
+      ..sira = json['SIRA'] as int?
+      ..tarih =
+          json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
+      ..teslimTarihi = json['TESLIM_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['TESLIM_TARIHI'] as String)
+      ..belgeTipi = json['BELGE_TIPI'] as String?
+      ..stokKodu = json['STOK_KODU'] as String?
+      ..stokAdi = json['STOK_ADI'] as String?
+      ..cariKodu = json['CARI_KODU'] as String?
+      ..depoKodu = json['DEPO_KODU'] as int?
+      ..depoTanimi = json['DEPO_TANIMI'] as String?
+      ..miktar = (json['MIKTAR'] as num?)?.toDouble()
+      ..seriList = json['SERI_LIST'] as List<dynamic>?
+      ..kdvOrani = (json['KDV_ORANI'] as num?)?.toDouble()
+      ..brutFiyat = (json['BRUT_FIYAT'] as num?)?.toDouble()
+      ..dipFiyat = (json['DIP_FIYAT'] as num?)?.toDouble()
+      ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
+      ..stokSatDovTip = json['STOK_SAT_DOV_TIP'] as int?
+      ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
+      ..stokSatDovizAdi = json['STOK_SAT_DOVIZ_ADI'] as String?
+      ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
+      ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
+      ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
+      ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?
+      ..projeKodu = json['PROJE_KODU'] as String?
+      ..kalemListHucreList = json['KALEM_LIST_HUCRE_LIST'] as List<dynamic>?
+      ..hucreList = json['HUCRE_LIST'] as List<dynamic>?
+      ..stokBakiye = (json['STOK_BAKIYE'] as num?)?.toDouble()
+      ..kosulKodu = json['KOSUL_KODU'] as String?
+      ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble();
 
-Map<String, dynamic> _$KalemListModelToJson(KalemListModel instance) => <String, dynamic>{
+Map<String, dynamic> _$KalemListModelToJson(KalemListModel instance) =>
+    <String, dynamic>{
       'TEMP_BARKOD_LIST': instance.tempBarkodList,
       'SIRA': instance.sira,
       'TARIH': instance.tarih?.toIso8601String(),

@@ -8,13 +8,18 @@ part of 'cari_hareket_yeni_kayit_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CariHareketYeniKayitViewModel on _CariHareketYeniKayitViewModelBase, Store {
+mixin _$CariHareketYeniKayitViewModel
+    on _CariHareketYeniKayitViewModelBase, Store {
   Computed<String>? _$getHareketKoduComputed;
 
   @override
-  String get getHareketKodu => (_$getHareketKoduComputed ??= Computed<String>(() => super.getHareketKodu, name: '_CariHareketYeniKayitViewModelBase.getHareketKodu')).value;
+  String get getHareketKodu =>
+      (_$getHareketKoduComputed ??= Computed<String>(() => super.getHareketKodu,
+              name: '_CariHareketYeniKayitViewModelBase.getHareketKodu'))
+          .value;
 
-  late final _$projeListAtom = Atom(name: '_CariHareketYeniKayitViewModelBase.projeList', context: context);
+  late final _$projeListAtom = Atom(
+      name: '_CariHareketYeniKayitViewModelBase.projeList', context: context);
 
   @override
   List<BaseProjeModel> get projeList {
@@ -29,7 +34,8 @@ mixin _$CariHareketYeniKayitViewModel on _CariHareketYeniKayitViewModelBase, Sto
     });
   }
 
-  late final _$modelAtom = Atom(name: '_CariHareketYeniKayitViewModelBase.model', context: context);
+  late final _$modelAtom =
+      Atom(name: '_CariHareketYeniKayitViewModelBase.model', context: context);
 
   @override
   CariHareketYeniKayitModel get model {
@@ -44,7 +50,8 @@ mixin _$CariHareketYeniKayitViewModel on _CariHareketYeniKayitViewModelBase, Sto
     });
   }
 
-  late final _$isSelectedAtom = Atom(name: '_CariHareketYeniKayitViewModelBase.isSelected', context: context);
+  late final _$isSelectedAtom = Atom(
+      name: '_CariHareketYeniKayitViewModelBase.isSelected', context: context);
 
   @override
   List<bool> get isSelected {
@@ -59,35 +66,44 @@ mixin _$CariHareketYeniKayitViewModel on _CariHareketYeniKayitViewModelBase, Sto
     });
   }
 
-  late final _$_CariHareketYeniKayitViewModelBaseActionController = ActionController(name: '_CariHareketYeniKayitViewModelBase', context: context);
+  late final _$_CariHareketYeniKayitViewModelBaseActionController =
+      ActionController(
+          name: '_CariHareketYeniKayitViewModelBase', context: context);
 
   @override
   void setProjeList(List<BaseProjeModel>? value) {
-    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController.startAction(name: '_CariHareketYeniKayitViewModelBase.setProjeList');
+    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController
+        .startAction(name: '_CariHareketYeniKayitViewModelBase.setProjeList');
     try {
       return super.setProjeList(value);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setModelHareketKodu(String value) {
-    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController.startAction(name: '_CariHareketYeniKayitViewModelBase.setModelHareketKodu');
+    final _$actionInfo =
+        _$_CariHareketYeniKayitViewModelBaseActionController.startAction(
+            name: '_CariHareketYeniKayitViewModelBase.setModelHareketKodu');
     try {
       return super.setModelHareketKodu(value);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void setIsSelected(int index) {
-    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController.startAction(name: '_CariHareketYeniKayitViewModelBase.setIsSelected');
+    final _$actionInfo = _$_CariHareketYeniKayitViewModelBaseActionController
+        .startAction(name: '_CariHareketYeniKayitViewModelBase.setIsSelected');
     try {
       return super.setIsSelected(index);
     } finally {
-      _$_CariHareketYeniKayitViewModelBaseActionController.endAction(_$actionInfo);
+      _$_CariHareketYeniKayitViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

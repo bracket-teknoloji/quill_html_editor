@@ -6,21 +6,34 @@ part of 'cari_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(Map<String, dynamic> json) => _$CariListesiRequestModelImpl(
+_$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CariListesiRequestModelImpl(
       eFaturaGoster: json['EFaturaGoster'] as bool?,
       siralama: json['SIRALAMA'] as String?,
       sayfa: json['Sayfa'] as int?,
       menuKodu: json['MenuKodu'] as String? ?? "CARI_CREH",
       filterText: json['FilterText'] as String? ?? "",
       kod: json['Kod'] as String? ?? "",
-      arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod1: (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod2: (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod3: (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod4: (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrKod5: (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrSehir: (json['ArrSehir'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrKod1:
+          (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod2:
+          (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod3:
+          (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod4:
+          (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod5:
+          (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrSehir: (json['ArrSehir'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       ilce: json['Ilce'] as String?,
       cariTipi: json['CariTipi'] as String?,
       filterBakiye: json['FILTER_BAKIYE'] as String?,
@@ -30,7 +43,8 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(Map<String,
       sehir: json['Sehir'] as String?,
     );
 
-Map<String, dynamic> _$$CariListesiRequestModelImplToJson(_$CariListesiRequestModelImpl instance) {
+Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
+    _$CariListesiRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

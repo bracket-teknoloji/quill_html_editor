@@ -29,18 +29,27 @@ mixin _$DeleteCekSenetModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith => throw _privateConstructorUsedError;
+  $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DeleteCekSenetModelCopyWith<$Res> {
-  factory $DeleteCekSenetModelCopyWith(DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) then) = _$DeleteCekSenetModelCopyWithImpl<$Res, DeleteCekSenetModel>;
+  factory $DeleteCekSenetModelCopyWith(
+          DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) then) =
+      _$DeleteCekSenetModelCopyWithImpl<$Res, DeleteCekSenetModel>;
   @useResult
-  $Res call({String? belgeNo, String? belgeTipi, int? islemKodu, @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru, String? tag});
+  $Res call(
+      {String? belgeNo,
+      String? belgeTipi,
+      int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
+      String? tag});
 }
 
 /// @nodoc
-class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel> implements $DeleteCekSenetModelCopyWith<$Res> {
+class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel>
+    implements $DeleteCekSenetModelCopyWith<$Res> {
   _$DeleteCekSenetModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -83,16 +92,28 @@ class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel> 
 }
 
 /// @nodoc
-abstract class _$$DeleteCekSenetModelImplCopyWith<$Res> implements $DeleteCekSenetModelCopyWith<$Res> {
-  factory _$$DeleteCekSenetModelImplCopyWith(_$DeleteCekSenetModelImpl value, $Res Function(_$DeleteCekSenetModelImpl) then) = __$$DeleteCekSenetModelImplCopyWithImpl<$Res>;
+abstract class _$$DeleteCekSenetModelImplCopyWith<$Res>
+    implements $DeleteCekSenetModelCopyWith<$Res> {
+  factory _$$DeleteCekSenetModelImplCopyWith(_$DeleteCekSenetModelImpl value,
+          $Res Function(_$DeleteCekSenetModelImpl) then) =
+      __$$DeleteCekSenetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? belgeNo, String? belgeTipi, int? islemKodu, @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru, String? tag});
+  $Res call(
+      {String? belgeNo,
+      String? belgeTipi,
+      int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
+      String? tag});
 }
 
 /// @nodoc
-class __$$DeleteCekSenetModelImplCopyWithImpl<$Res> extends _$DeleteCekSenetModelCopyWithImpl<$Res, _$DeleteCekSenetModelImpl> implements _$$DeleteCekSenetModelImplCopyWith<$Res> {
-  __$$DeleteCekSenetModelImplCopyWithImpl(_$DeleteCekSenetModelImpl _value, $Res Function(_$DeleteCekSenetModelImpl) _then) : super(_value, _then);
+class __$$DeleteCekSenetModelImplCopyWithImpl<$Res>
+    extends _$DeleteCekSenetModelCopyWithImpl<$Res, _$DeleteCekSenetModelImpl>
+    implements _$$DeleteCekSenetModelImplCopyWith<$Res> {
+  __$$DeleteCekSenetModelImplCopyWithImpl(_$DeleteCekSenetModelImpl _value,
+      $Res Function(_$DeleteCekSenetModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -131,9 +152,15 @@ class __$$DeleteCekSenetModelImplCopyWithImpl<$Res> extends _$DeleteCekSenetMode
 /// @nodoc
 @JsonSerializable()
 class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
-  const _$DeleteCekSenetModelImpl({this.belgeNo, this.belgeTipi, this.islemKodu, @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru, this.tag});
+  const _$DeleteCekSenetModelImpl(
+      {this.belgeNo,
+      this.belgeTipi,
+      this.islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru,
+      this.tag});
 
-  factory _$DeleteCekSenetModelImpl.fromJson(Map<String, dynamic> json) => _$$DeleteCekSenetModelImplFromJson(json);
+  factory _$DeleteCekSenetModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeleteCekSenetModelImplFromJson(json);
 
   @override
   final String? belgeNo;
@@ -158,20 +185,26 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
         (other.runtimeType == runtimeType &&
             other is _$DeleteCekSenetModelImpl &&
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi) &&
-            (identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu) &&
-            (identical(other.pickerTahsilatTuru, pickerTahsilatTuru) || other.pickerTahsilatTuru == pickerTahsilatTuru) &&
+            (identical(other.belgeTipi, belgeTipi) ||
+                other.belgeTipi == belgeTipi) &&
+            (identical(other.islemKodu, islemKodu) ||
+                other.islemKodu == islemKodu) &&
+            (identical(other.pickerTahsilatTuru, pickerTahsilatTuru) ||
+                other.pickerTahsilatTuru == pickerTahsilatTuru) &&
             (identical(other.tag, tag) || other.tag == tag));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
+  int get hashCode => Object.hash(
+      runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith => __$$DeleteCekSenetModelImplCopyWithImpl<_$DeleteCekSenetModelImpl>(this, _$identity);
+  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
+      __$$DeleteCekSenetModelImplCopyWithImpl<_$DeleteCekSenetModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -182,10 +215,15 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
 }
 
 abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
-  const factory _DeleteCekSenetModel({final String? belgeNo, final String? belgeTipi, final int? islemKodu, @JsonKey(name: "PickerTahsilatTuru") final String? pickerTahsilatTuru, final String? tag}) =
-      _$DeleteCekSenetModelImpl;
+  const factory _DeleteCekSenetModel(
+      {final String? belgeNo,
+      final String? belgeTipi,
+      final int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") final String? pickerTahsilatTuru,
+      final String? tag}) = _$DeleteCekSenetModelImpl;
 
-  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) = _$DeleteCekSenetModelImpl.fromJson;
+  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) =
+      _$DeleteCekSenetModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -200,5 +238,6 @@ abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
   String? get tag;
   @override
   @JsonKey(ignore: true)
-  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

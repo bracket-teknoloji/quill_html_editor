@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BankaIslemleriRequestModel _$BankaIslemleriRequestModelFromJson(Map<String, dynamic> json) {
+BankaIslemleriRequestModel _$BankaIslemleriRequestModelFromJson(
+    Map<String, dynamic> json) {
   return _BankaIslemleriRequestModel.fromJson(json);
 }
 
@@ -33,19 +34,29 @@ mixin _$BankaIslemleriRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaIslemleriRequestModelCopyWith<BankaIslemleriRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $BankaIslemleriRequestModelCopyWith<BankaIslemleriRequestModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaIslemleriRequestModelCopyWith<$Res> {
-  factory $BankaIslemleriRequestModelCopyWith(BankaIslemleriRequestModel value, $Res Function(BankaIslemleriRequestModel) then) =
-      _$BankaIslemleriRequestModelCopyWithImpl<$Res, BankaIslemleriRequestModel>;
+  factory $BankaIslemleriRequestModelCopyWith(BankaIslemleriRequestModel value,
+          $Res Function(BankaIslemleriRequestModel) then) =
+      _$BankaIslemleriRequestModelCopyWithImpl<$Res,
+          BankaIslemleriRequestModel>;
   @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, String? hesapTipi, String? hesapKodu});
+  $Res call(
+      {String? baslamaTarihi,
+      String? bitisTarihi,
+      String? menuKodu,
+      String? hesapTipi,
+      String? hesapKodu});
 }
 
 /// @nodoc
-class _$BankaIslemleriRequestModelCopyWithImpl<$Res, $Val extends BankaIslemleriRequestModel> implements $BankaIslemleriRequestModelCopyWith<$Res> {
+class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
+        $Val extends BankaIslemleriRequestModel>
+    implements $BankaIslemleriRequestModelCopyWith<$Res> {
   _$BankaIslemleriRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -88,18 +99,31 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res, $Val extends BankaIslemleri
 }
 
 /// @nodoc
-abstract class _$$BankaIslemleriRequestModelImplCopyWith<$Res> implements $BankaIslemleriRequestModelCopyWith<$Res> {
-  factory _$$BankaIslemleriRequestModelImplCopyWith(_$BankaIslemleriRequestModelImpl value, $Res Function(_$BankaIslemleriRequestModelImpl) then) =
+abstract class _$$BankaIslemleriRequestModelImplCopyWith<$Res>
+    implements $BankaIslemleriRequestModelCopyWith<$Res> {
+  factory _$$BankaIslemleriRequestModelImplCopyWith(
+          _$BankaIslemleriRequestModelImpl value,
+          $Res Function(_$BankaIslemleriRequestModelImpl) then) =
       __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, String? hesapTipi, String? hesapKodu});
+  $Res call(
+      {String? baslamaTarihi,
+      String? bitisTarihi,
+      String? menuKodu,
+      String? hesapTipi,
+      String? hesapKodu});
 }
 
 /// @nodoc
-class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res> extends _$BankaIslemleriRequestModelCopyWithImpl<$Res, _$BankaIslemleriRequestModelImpl>
+class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>
+    extends _$BankaIslemleriRequestModelCopyWithImpl<$Res,
+        _$BankaIslemleriRequestModelImpl>
     implements _$$BankaIslemleriRequestModelImplCopyWith<$Res> {
-  __$$BankaIslemleriRequestModelImplCopyWithImpl(_$BankaIslemleriRequestModelImpl _value, $Res Function(_$BankaIslemleriRequestModelImpl) _then) : super(_value, _then);
+  __$$BankaIslemleriRequestModelImplCopyWithImpl(
+      _$BankaIslemleriRequestModelImpl _value,
+      $Res Function(_$BankaIslemleriRequestModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -139,9 +163,16 @@ class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res> extends _$BankaIsleml
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
-  _$BankaIslemleriRequestModelImpl({this.baslamaTarihi, this.bitisTarihi, this.menuKodu, this.hesapTipi, this.hesapKodu});
+  _$BankaIslemleriRequestModelImpl(
+      {this.baslamaTarihi,
+      this.bitisTarihi,
+      this.menuKodu,
+      this.hesapTipi,
+      this.hesapKodu});
 
-  factory _$BankaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaIslemleriRequestModelImplFromJson(json);
+  factory _$BankaIslemleriRequestModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$BankaIslemleriRequestModelImplFromJson(json);
 
   @override
   String? baslamaTarihi;
@@ -162,7 +193,9 @@ class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl> get copyWith => __$$BankaIslemleriRequestModelImplCopyWithImpl<_$BankaIslemleriRequestModelImpl>(this, _$identity);
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
+      get copyWith => __$$BankaIslemleriRequestModelImplCopyWithImpl<
+          _$BankaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -172,10 +205,17 @@ class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
   }
 }
 
-abstract class _BankaIslemleriRequestModel implements BankaIslemleriRequestModel {
-  factory _BankaIslemleriRequestModel({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, String? hesapTipi, String? hesapKodu}) = _$BankaIslemleriRequestModelImpl;
+abstract class _BankaIslemleriRequestModel
+    implements BankaIslemleriRequestModel {
+  factory _BankaIslemleriRequestModel(
+      {String? baslamaTarihi,
+      String? bitisTarihi,
+      String? menuKodu,
+      String? hesapTipi,
+      String? hesapKodu}) = _$BankaIslemleriRequestModelImpl;
 
-  factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) = _$BankaIslemleriRequestModelImpl.fromJson;
+  factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
+      _$BankaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -194,5 +234,6 @@ abstract class _BankaIslemleriRequestModel implements BankaIslemleriRequestModel
   set hesapKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

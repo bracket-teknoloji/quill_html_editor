@@ -13,13 +13,21 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
 
   @override
   BaseSiparisEditModel get baseSiparisEditModel =>
-      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(() => super.baseSiparisEditModel, name: '_BaseSiparisEditingViewModelBase.baseSiparisEditModel')).value;
+      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
+              () => super.baseSiparisEditModel,
+              name: '_BaseSiparisEditingViewModelBase.baseSiparisEditModel'))
+          .value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
-  int get getKalemCount => (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount, name: '_BaseSiparisEditingViewModelBase.getKalemCount')).value;
+  int get getKalemCount =>
+      (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
+              name: '_BaseSiparisEditingViewModelBase.getKalemCount'))
+          .value;
 
-  late final _$updateKalemlerAtom = Atom(name: '_BaseSiparisEditingViewModelBase.updateKalemler', context: context);
+  late final _$updateKalemlerAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.updateKalemler',
+      context: context);
 
   @override
   bool get updateKalemler {
@@ -34,7 +42,8 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$pageIndexAtom = Atom(name: '_BaseSiparisEditingViewModelBase.pageIndex', context: context);
+  late final _$pageIndexAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.pageIndex', context: context);
 
   @override
   int get pageIndex {
@@ -49,7 +58,8 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$isValidAtom = Atom(name: '_BaseSiparisEditingViewModelBase.isValid', context: context);
+  late final _$isValidAtom =
+      Atom(name: '_BaseSiparisEditingViewModelBase.isValid', context: context);
 
   @override
   bool get isValid {
@@ -64,7 +74,8 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$isLastPageAtom = Atom(name: '_BaseSiparisEditingViewModelBase.isLastPage', context: context);
+  late final _$isLastPageAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.isLastPage', context: context);
 
   @override
   bool get isLastPage {
@@ -79,7 +90,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$isBaseSiparisEmptyAtom = Atom(name: '_BaseSiparisEditingViewModelBase.isBaseSiparisEmpty', context: context);
+  late final _$isBaseSiparisEmptyAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.isBaseSiparisEmpty',
+      context: context);
 
   @override
   bool get isBaseSiparisEmpty {
@@ -94,7 +107,9 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$yeniKaydaHazirlaMiAtom = Atom(name: '_BaseSiparisEditingViewModelBase.yeniKaydaHazirlaMi', context: context);
+  late final _$yeniKaydaHazirlaMiAtom = Atom(
+      name: '_BaseSiparisEditingViewModelBase.yeniKaydaHazirlaMi',
+      context: context);
 
   @override
   bool get yeniKaydaHazirlaMi {
@@ -109,75 +124,94 @@ mixin _$BaseSiparisEditingViewModel on _BaseSiparisEditingViewModelBase, Store {
     });
   }
 
-  late final _$_BaseSiparisEditingViewModelBaseActionController = ActionController(name: '_BaseSiparisEditingViewModelBase', context: context);
+  late final _$_BaseSiparisEditingViewModelBaseActionController =
+      ActionController(
+          name: '_BaseSiparisEditingViewModelBase', context: context);
 
   @override
   void changeUpdateKalemler() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeUpdateKalemler');
+    final _$actionInfo =
+        _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+            name: '_BaseSiparisEditingViewModelBase.changeUpdateKalemler');
     try {
       return super.changeUpdateKalemler();
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeIsValid() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeIsValid');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsValid');
     try {
       return super.changeIsValid();
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changePageIndex(int value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changePageIndex');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changePageIndex');
     try {
       return super.changePageIndex(value);
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeIsLastPage(bool value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeIsLastPage');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changeIsLastPage');
     try {
       return super.changeIsLastPage(value);
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeIsBaseSiparisEmpty(bool value) {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeIsBaseSiparisEmpty');
+    final _$actionInfo =
+        _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+            name: '_BaseSiparisEditingViewModelBase.changeIsBaseSiparisEmpty');
     try {
       return super.changeIsBaseSiparisEmpty(value);
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeFuture() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeFuture');
+    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController
+        .startAction(name: '_BaseSiparisEditingViewModelBase.changeFuture');
     try {
       return super.changeFuture();
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeYeniKaydaHazirlaMi() {
-    final _$actionInfo = _$_BaseSiparisEditingViewModelBaseActionController.startAction(name: '_BaseSiparisEditingViewModelBase.changeYeniKaydaHazirlaMi');
+    final _$actionInfo =
+        _$_BaseSiparisEditingViewModelBaseActionController.startAction(
+            name: '_BaseSiparisEditingViewModelBase.changeYeniKaydaHazirlaMi');
     try {
       return super.changeYeniKaydaHazirlaMi();
     } finally {
-      _$_BaseSiparisEditingViewModelBaseActionController.endAction(_$actionInfo);
+      _$_BaseSiparisEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

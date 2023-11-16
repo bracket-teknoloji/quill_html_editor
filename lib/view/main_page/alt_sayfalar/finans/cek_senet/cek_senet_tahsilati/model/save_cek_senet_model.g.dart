@@ -72,7 +72,7 @@ _$CekSenetkalemlerModelImpl _$$CekSenetkalemlerModelImplFromJson(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      tutar: json['TUTAR'] as int?,
+      tutar: (json['TUTAR'] as num?)?.toDouble(),
       vadeTarihi: json['VADE_TARIHI'] == null
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String),

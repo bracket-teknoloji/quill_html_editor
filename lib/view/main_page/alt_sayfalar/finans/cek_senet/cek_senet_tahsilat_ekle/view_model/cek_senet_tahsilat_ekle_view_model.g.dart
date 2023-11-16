@@ -67,6 +67,127 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
+  void setTutar(double? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setTutar');
+    try {
+      return super.setTutar(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSeriNo(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setSeriNo');
+    try {
+      return super.setSeriNo(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBanka(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setBanka');
+    try {
+      return super.setBanka(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSube(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setSube');
+    try {
+      return super.setSube(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHesapNo(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setHesapNo');
+    try {
+      return super.setHesapNo(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPlasiyer(PlasiyerList? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setPlasiyer');
+    try {
+      return super.setPlasiyer(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIl(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setIl');
+    try {
+      return super.setIl(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIlce(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setIlce');
+    try {
+      return super.setIlce(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRaporKodu(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setRaporKodu');
+    try {
+      return super.setRaporKodu(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCariRaporKodu(String? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
+            name: '_CekSenetTahsilatEkleViewModelBase.setCariRaporKodu');
+    try {
+      return super.setCariRaporKodu(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model}

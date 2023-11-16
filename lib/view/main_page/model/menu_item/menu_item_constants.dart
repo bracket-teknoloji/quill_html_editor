@@ -223,7 +223,7 @@ class MenuItemConstants {
       icon: "forklift",
       color: ColorPalette.mountbattenPink,
       altMenuler: <GridItemModel>[
-        GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturaları", route: "/mainPage/sevkiyatSatisFaturasi"),
+        GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturası", route: "/mainPage/sevkiyatSatisFaturasi"),
         GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
         GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama"),
       ],

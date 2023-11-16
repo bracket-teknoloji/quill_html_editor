@@ -6,14 +6,17 @@ part of 'print_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) => _$PrintModelImpl(
+_$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
+    _$PrintModelImpl(
       dizaynId: json['DIZAYN_ID'] as int?,
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String,
       yazdir: json['YAZDIR'] as bool? ?? true,
       yaziciAdi: json['YAZICI_ADI'] as String?,
       yaziciTipi: json['YAZICI_TIPI'] as String?,
-      dicParams: json['DIC_PARAMS'] == null ? null : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+      dicParams: json['DIC_PARAMS'] == null
+          ? null
+          : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
       standart: json['STANDART'] as bool?,
     );
 

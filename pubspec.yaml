@@ -100,6 +100,7 @@ dependencies:
   get_it: ^7.6.0
   uuid: ^4.1.0
   number_text_input_formatter: ^1.0.0+7
+  talker_dio_logger: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -159,7 +160,7 @@ flutter:
     - assets/lotties/
     - assets/icons/
     - assets/app_icon/
-    - shorebird.yaml
+    # - shorebird.yaml
 
 
 flutter_gen:

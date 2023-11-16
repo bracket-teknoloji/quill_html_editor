@@ -9,7 +9,8 @@ part of 'kasa_ekstre_raporu_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
-  late final _$pdfModelAtom = Atom(name: '_KasaEkstreRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom =
+      Atom(name: '_KasaEkstreRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -24,7 +25,9 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(name: '_KasaEkstreRaporuViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(
+      name: '_KasaEkstreRaporuViewModelBase.futureController',
+      context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -39,11 +42,14 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_KasaEkstreRaporuViewModelBaseActionController = ActionController(name: '_KasaEkstreRaporuViewModelBase', context: context);
+  late final _$_KasaEkstreRaporuViewModelBaseActionController =
+      ActionController(
+          name: '_KasaEkstreRaporuViewModelBase', context: context);
 
   @override
   void setBittar(String? value) {
-    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController.startAction(name: '_KasaEkstreRaporuViewModelBase.setBittar');
+    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController
+        .startAction(name: '_KasaEkstreRaporuViewModelBase.setBittar');
     try {
       return super.setBittar(value);
     } finally {
@@ -53,7 +59,8 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
 
   @override
   void setBastar(String? value) {
-    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController.startAction(name: '_KasaEkstreRaporuViewModelBase.setBastar');
+    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController
+        .startAction(name: '_KasaEkstreRaporuViewModelBase.setBastar');
     try {
       return super.setBastar(value);
     } finally {
@@ -63,7 +70,8 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
 
   @override
   void setKasaKodu(String? value) {
-    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController.startAction(name: '_KasaEkstreRaporuViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController
+        .startAction(name: '_KasaEkstreRaporuViewModelBase.setKasaKodu');
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -73,7 +81,8 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController.startAction(name: '_KasaEkstreRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController
+        .startAction(name: '_KasaEkstreRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -83,7 +92,8 @@ mixin _$KasaEkstreRaporuViewModel on _KasaEkstreRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController.startAction(name: '_KasaEkstreRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_KasaEkstreRaporuViewModelBaseActionController
+        .startAction(name: '_KasaEkstreRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

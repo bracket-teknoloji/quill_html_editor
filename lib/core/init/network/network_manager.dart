@@ -16,6 +16,8 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
+// import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
+// import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
@@ -31,63 +33,70 @@ import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
 class NetworkManager {
-  Dio get dio => Dio(
-        BaseOptions(
-          baseUrl: getBaseUrl,
-          followRedirects: false,
-          validateStatus: (status) => status! < 500,
-          receiveTimeout: const Duration(minutes: 2),
-          connectTimeout: const Duration(seconds: 20),
-          sendTimeout: const Duration(minutes: 2),
-          receiveDataWhenStatusError: true,
-          contentType: "application/json",
-          responseType: ResponseType.json,
-        ),
-      )..interceptors.add(
-          InterceptorsWrapper(
-            onRequest: (options, handler) => handler.next(options),
-            onError: (e, handler) {
-              // print(e);
-              if (e.type == DioExceptionType.connectionError) {
-                return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-              } else if (e.type == DioExceptionType.unknown) {
-                return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-              } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
-                if (e.requestOptions.path == ApiUrls.token) {
-                  return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
-                } else {
-                  return handler.next(e);
-                }
-              } else {
-                handler.next(e);
-              }
-            },
-          ),
-        );
+  Dio dio = Dio(
+    BaseOptions(
+      baseUrl: getBaseUrl,
+      followRedirects: false,
+      validateStatus: (status) => status! < 500,
+      receiveTimeout: const Duration(minutes: 2),
+      connectTimeout: const Duration(seconds: 20),
+      sendTimeout: const Duration(minutes: 2),
+      receiveDataWhenStatusError: true,
+      contentType: "application/json",
+      responseType: ResponseType.json,
+    ),
+  );
+  // ..interceptors.add(
+  //     InterceptorsWrapper(
+  //       onRequest: (options, handler) => handler.next(options),
+  //       onError: (e, handler) {
+  //         // print(e);
+  //         if (e.type == DioExceptionType.connectionError) {
+  //           return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+  //         } else if (e.type == DioExceptionType.unknown) {
+  //           return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+  //         } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+  //           if (e.requestOptions.path == ApiUrls.token) {
+  //             return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
+  //           } else {
+  //             return handler.next(e);
+  //           }
+  //         } else {
+  //           handler.next(e);
+  //         }
+  //       },
+  //     ),
+  //   );
   NetworkManager() {
+    // final talker = Talker();
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) => handler.next(options),
+        onError: (e, handler) {
+          // print(e);
+          if (e.type == DioExceptionType.connectionError) {
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
+          } else if (e.type == DioExceptionType.unknown) {
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+          } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
+            if (e.requestOptions.path == ApiUrls.token) {
+              return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
+            } else {
+              return handler.next(e);
+            }
+          } else {
+            handler.next(e);
+          }
+        },
+      ),
+    );
     // dio.interceptors.add(
-    //   InterceptorsWrapper(
-    //     onRequest: (options, handler) {
-    //       return handler.next(options);
-    //     },
-    //     onError: (e, handler) {
-    //       print(e);
-    //       if (e.type == DioExceptionType.connectionError) {
-    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
-    //       } else if (e.type == DioExceptionType.connectionTimeout) {
-    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
-    //       } else if (e.type == DioExceptionType.unknown) {
-    //         return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
-    //       } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
-    //         if (e.requestOptions.path == ApiUrls.token) {
-    //           return handler.resolve(Response(requestOptions: RequestOptions(), data: {"success": false, "message": "Bağlantı zaman aşımına uğradı."}));
-    //         } else {
-    //           return handler.next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı."));
-    //         }
-    //       } else {
-    //         handler.next(e);
-    //       }
-    //     },
+    //   TalkerDioLogger(
+    //     settings: const TalkerDioLoggerSettings(
+    //       printResponseMessage: true,
+    //       // printRequestHeaders: ,
+    //       printResponseData: false,
+    //     ),
     //   ),
     // );
   }
@@ -354,7 +363,7 @@ class NetworkManager {
     return null;
   }
 
-  String get getBaseUrl {
+  static String get getBaseUrl {
     String result;
     if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan != null) {
       result = "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}/";

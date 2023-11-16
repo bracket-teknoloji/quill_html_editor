@@ -53,12 +53,15 @@ mixin _$BaseGrupKoduModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BaseGrupKoduModelCopyWith<BaseGrupKoduModel> get copyWith => throw _privateConstructorUsedError;
+  $BaseGrupKoduModelCopyWith<BaseGrupKoduModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BaseGrupKoduModelCopyWith<$Res> {
-  factory $BaseGrupKoduModelCopyWith(BaseGrupKoduModel value, $Res Function(BaseGrupKoduModel) then) = _$BaseGrupKoduModelCopyWithImpl<$Res, BaseGrupKoduModel>;
+  factory $BaseGrupKoduModelCopyWith(
+          BaseGrupKoduModel value, $Res Function(BaseGrupKoduModel) then) =
+      _$BaseGrupKoduModelCopyWithImpl<$Res, BaseGrupKoduModel>;
   @useResult
   $Res call(
       {String? modul,
@@ -79,7 +82,8 @@ abstract class $BaseGrupKoduModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BaseGrupKoduModelCopyWithImpl<$Res, $Val extends BaseGrupKoduModel> implements $BaseGrupKoduModelCopyWith<$Res> {
+class _$BaseGrupKoduModelCopyWithImpl<$Res, $Val extends BaseGrupKoduModel>
+    implements $BaseGrupKoduModelCopyWith<$Res> {
   _$BaseGrupKoduModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -172,8 +176,11 @@ class _$BaseGrupKoduModelCopyWithImpl<$Res, $Val extends BaseGrupKoduModel> impl
 }
 
 /// @nodoc
-abstract class _$$BaseGrupKoduModelImplCopyWith<$Res> implements $BaseGrupKoduModelCopyWith<$Res> {
-  factory _$$BaseGrupKoduModelImplCopyWith(_$BaseGrupKoduModelImpl value, $Res Function(_$BaseGrupKoduModelImpl) then) = __$$BaseGrupKoduModelImplCopyWithImpl<$Res>;
+abstract class _$$BaseGrupKoduModelImplCopyWith<$Res>
+    implements $BaseGrupKoduModelCopyWith<$Res> {
+  factory _$$BaseGrupKoduModelImplCopyWith(_$BaseGrupKoduModelImpl value,
+          $Res Function(_$BaseGrupKoduModelImpl) then) =
+      __$$BaseGrupKoduModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -195,8 +202,12 @@ abstract class _$$BaseGrupKoduModelImplCopyWith<$Res> implements $BaseGrupKoduMo
 }
 
 /// @nodoc
-class __$$BaseGrupKoduModelImplCopyWithImpl<$Res> extends _$BaseGrupKoduModelCopyWithImpl<$Res, _$BaseGrupKoduModelImpl> implements _$$BaseGrupKoduModelImplCopyWith<$Res> {
-  __$$BaseGrupKoduModelImplCopyWithImpl(_$BaseGrupKoduModelImpl _value, $Res Function(_$BaseGrupKoduModelImpl) _then) : super(_value, _then);
+class __$$BaseGrupKoduModelImplCopyWithImpl<$Res>
+    extends _$BaseGrupKoduModelCopyWithImpl<$Res, _$BaseGrupKoduModelImpl>
+    implements _$$BaseGrupKoduModelImplCopyWith<$Res> {
+  __$$BaseGrupKoduModelImplCopyWithImpl(_$BaseGrupKoduModelImpl _value,
+      $Res Function(_$BaseGrupKoduModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -287,10 +298,25 @@ class __$$BaseGrupKoduModelImplCopyWithImpl<$Res> extends _$BaseGrupKoduModelCop
 @JsonSerializable(createFactory: true)
 class _$BaseGrupKoduModelImpl extends _BaseGrupKoduModel {
   _$BaseGrupKoduModelImpl(
-      {this.modul, this.grupNo, this.grupKodu, this.grupAdi, this.tip, this.kod1, this.kod2, this.kod3, this.kod4, this.kod5, this.kod1Adi, this.kod2Adi, this.kod3Adi, this.kod4Adi, this.kod5Adi})
+      {this.modul,
+      this.grupNo,
+      this.grupKodu,
+      this.grupAdi,
+      this.tip,
+      this.kod1,
+      this.kod2,
+      this.kod3,
+      this.kod4,
+      this.kod5,
+      this.kod1Adi,
+      this.kod2Adi,
+      this.kod3Adi,
+      this.kod4Adi,
+      this.kod5Adi})
       : super._();
 
-  factory _$BaseGrupKoduModelImpl.fromJson(Map<String, dynamic> json) => _$$BaseGrupKoduModelImplFromJson(json);
+  factory _$BaseGrupKoduModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BaseGrupKoduModelImplFromJson(json);
 
   @override
   String? modul;
@@ -326,7 +352,9 @@ class _$BaseGrupKoduModelImpl extends _BaseGrupKoduModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith => __$$BaseGrupKoduModelImplCopyWithImpl<_$BaseGrupKoduModelImpl>(this, _$identity);
+  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
+      __$$BaseGrupKoduModelImplCopyWithImpl<_$BaseGrupKoduModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -355,7 +383,8 @@ abstract class _BaseGrupKoduModel extends BaseGrupKoduModel {
       String? kod5Adi}) = _$BaseGrupKoduModelImpl;
   _BaseGrupKoduModel._() : super._();
 
-  factory _BaseGrupKoduModel.fromJson(Map<String, dynamic> json) = _$BaseGrupKoduModelImpl.fromJson;
+  factory _BaseGrupKoduModel.fromJson(Map<String, dynamic> json) =
+      _$BaseGrupKoduModelImpl.fromJson;
 
   @override
   String? get modul;
@@ -404,5 +433,6 @@ abstract class _BaseGrupKoduModel extends BaseGrupKoduModel {
   set kod5Adi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
