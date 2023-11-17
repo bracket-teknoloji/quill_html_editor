@@ -46,7 +46,7 @@ class NetworkManager {
       responseType: ResponseType.json,
     ),
   );
- 
+
   NetworkManager() {
     dio.interceptors.add(
       InterceptorsWrapper(
@@ -198,10 +198,12 @@ class NetworkManager {
   Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true, bool showLoading = true}) =>
       dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
 
-  Future<MemoryImage?> getImage(String path) async {
+  Future<MemoryImage?> getImage(String? path) async {
+    if (path == null) {
+      return null;
+    }
     final Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
-    log(response.data.toString());
     // response is a png file
     try {
       if (response.data is Uint8List) {

@@ -374,6 +374,30 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
+  void setPhotoFront(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setPhotoFront');
+    try {
+      return super.setPhotoFront(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPhotoBack(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setPhotoBack');
+    try {
+      return super.setPhotoBack(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setMuhaRefList(List<MuhasebeReferansModel>? value) {
     final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setMuhaRefList');

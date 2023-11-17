@@ -21,7 +21,6 @@ import "../../../../../../../../core/components/helper_widgets/custom_label_widg
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
@@ -180,7 +179,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             //image picker
                             if (sourceType != null) {
                               final ImagePicker picker = ImagePicker();
-                              final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30);
+                              final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
                               if (result != null) {
                                 setState(() => image = File(result.path));
                                 if (image != null) {
@@ -188,10 +187,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                   try {
                                     compressedImage = await FlutterImageCompress.compressWithFile(
                                       image!.path,
-                                      format: CompressFormat.jpeg,
+                                      format: CompressFormat.png,
+                                      keepExif: true,
                                       numberOfRetries: 10,
                                       quality: 30,
-                                      keepExif: true,
                                       autoCorrectionAngle: true,
                                     );
                                   } catch (e) {
@@ -207,7 +206,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                           icon: const Icon(Icons.add),
                         ),
                         //TODO resim göstermeyi ekleyince aç
-                      ).yetkiVarMi(false),
+                      ),
                       Expanded(
                         flex: 4,
                         child: CustomTextField(

@@ -1,8 +1,13 @@
 // ignore_for_file: use_build_context_synchronously
 
+import "dart:convert";
+import "dart:typed_data";
+
 import "package:flutter/material.dart";
+import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
@@ -386,15 +391,61 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                   ),
                 ],
               ),
-              const Row(
-                children: [
-                  Expanded(
-                    child: Icon(Icons.camera_alt_outlined),
-                  ),
-                  Expanded(
-                    child: Icon(Icons.camera_alt_outlined),
-                  ),
-                ],
+              LayoutBuilder(
+                builder: (context, constraints) => Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const Text("Ön Taraf").paddingAll(UIHelper.lowSize),
+                          InkWell(
+                            onTap: () async => await takeImage(1),
+                            child: Card(
+                              child: SizedBox(
+                                height: (constraints.maxWidth - UIHelper.midSize) / 2,
+                                child: Observer(
+                                  builder: (_) {
+                                    if (viewModel.model.gorsel1 != null) {
+                                      return Image.memory(base64Decode(viewModel.model.gorsel1!), fit: BoxFit.scaleDown);
+                                    }
+                                    return const Icon(Icons.camera_alt_outlined);
+                                  },
+                                ).paddingAll(UIHelper.lowSize),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const Text("Arka Taraf").paddingAll(UIHelper.lowSize),
+                          InkWell(
+                            onTap: () async => await takeImage(2),
+                            child: Card(
+                              child: SizedBox(
+                                height: (constraints.maxWidth - UIHelper.midSize) / 2,
+                                child: Observer(
+                                  builder: (_) {
+                                    if (viewModel.model.gorsel2 != null) {
+                                      return Image.memory(base64Decode(viewModel.model.gorsel2!), fit: BoxFit.scaleDown);
+                                    }
+                                    return const Icon(Icons.camera_alt_outlined);
+                                  },
+                                ).paddingAll(UIHelper.lowSize),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
+                  ],
+                ).paddingSymmetric(vertical: UIHelper.highSize * 2),
               ),
             ],
           ).paddingAll(UIHelper.lowSize),
@@ -504,6 +555,75 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
     } else {
       _dovizKuruController.text = "";
       _dovizTutariController.text = "";
+    }
+  }
+
+  Future<void> takeImage(int index) async {
+    if ((index == 1 && viewModel.model.gorsel1 != null) || (index == 2 && viewModel.model.gorsel2 != null)) {
+      return await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Kaynak tipi",
+        children: [
+          BottomSheetModel(
+            title: "Düzenle",
+            iconWidget: Icons.photo_library_outlined,
+            onTap: () async {
+              Get.back();
+              if (index == 1) {
+                viewModel.setPhotoFront(null);
+              } else {
+                viewModel.setPhotoBack(null);
+              }
+              await takeImage(index);
+            },
+          ),
+          BottomSheetModel(
+            title: "Sil",
+            iconWidget: Icons.camera_alt_outlined,
+            onTap: () {
+              Get.back();
+              if (index == 1) {
+                viewModel.setPhotoFront(null);
+              } else {
+                viewModel.setPhotoBack(null);
+              }
+              dialogManager.showInfoSnackBar("Fotoğraf silindi");
+            },
+          ),
+        ],
+      );
+    } else {
+      final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Kaynak tipi",
+        children: [
+          BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, onTap: () => Get.back(result: ImageSource.gallery)),
+          BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, onTap: () => Get.back(result: ImageSource.camera)),
+        ],
+      );
+      //image picker
+      if (sourceType != null) {
+        final ImagePicker picker = ImagePicker();
+        final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
+        if (result != null) {
+          Uint8List? compressedImage;
+          compressedImage = await FlutterImageCompress.compressWithFile(
+            result.path,
+            format: CompressFormat.png,
+            keepExif: true,
+            numberOfRetries: 10,
+            quality: 30,
+            autoCorrectionAngle: true,
+          );
+          if (compressedImage != null) {
+            if (index == 1) {
+              viewModel.setPhotoFront(base64Encode(compressedImage));
+            } else {
+              viewModel.setPhotoBack(base64Encode(compressedImage));
+            }
+          }
+        }
+      }
     }
   }
 

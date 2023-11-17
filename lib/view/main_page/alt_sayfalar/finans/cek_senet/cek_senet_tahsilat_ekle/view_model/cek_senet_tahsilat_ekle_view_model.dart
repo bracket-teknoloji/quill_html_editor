@@ -93,6 +93,12 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   void setReferans(MuhasebeReferansModel? value) => model = model.copyWith(refKod: value?.kodu, refTanimi: value?.tanimi);
 
   @action
+  void setPhotoFront(String? value) => model = model.copyWith(gorsel1: value);
+
+  @action
+  void setPhotoBack(String? value) => model = model.copyWith(gorsel2: value);
+
+  @action
   void setMuhaRefList(List<MuhasebeReferansModel>? value) => muhaRefList = value?.asObservable();
 
   @action

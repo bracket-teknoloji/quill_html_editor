@@ -157,7 +157,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
             Visibility(
               visible: Platform.isIOS && lastItems.isNotEmpty,
               child: SizedBox(
-                width: UIHelper.highSize * 2,
+                width: UIHelper.highSize * 3,
                 child: GestureDetector(
                   onHorizontalDragEnd: (details) {
                     if (details.primaryVelocity! > 0) {

@@ -21,6 +21,8 @@ class ApiUrls {
   static const String deleteDovizKuru = "General/DeleteDovizKuru";
   static const String saveDovizKuru = "General/SaveDovizKuru";
   static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
+  static const String getEvraklar = "General/GetEvraklar";
+  static const String saveEvrak = "General/SaveEvrak";
   //*Cariler
   static const String getCariler = "Cari/GetCariler";
   static const String getCariKayitliSehirler = "Cari/GetCariKayitliSehirler";

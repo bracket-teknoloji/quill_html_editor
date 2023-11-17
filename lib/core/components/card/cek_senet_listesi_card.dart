@@ -44,54 +44,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
             await bottomSheetDialogManager.showBottomSheetDialog(
               context,
               title: model.belgeNo ?? "",
-              children: [
-                BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-                BottomSheetModel(
-                  title: "Sil",
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await dialogManager.showAreYouSureDialog(() async {
-                      final result = await networkManager.dioPost(
-                        path: ApiUrls.deleteCekSenet,
-                        bodyModel: const EditFaturaModel(),
-                        showLoading: true,
-                        data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
-                      );
-                      if (result.success ?? false) {
-                        dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-                        widget.onUpdate?.call(result.success ?? false);
-                      }
-                    });
-                  },
-                ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
-                BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-                BottomSheetModel(
-                  title: "Hareketler",
-                  iconWidget: Icons.sync_alt_outlined,
-                  onTap: () {
-                    Get.back();
-                    return Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
-                  },
-                ).yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
-                BottomSheetModel(title: "Evraklar", iconWidget: Icons.description_outlined),
-                BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
-                BottomSheetModel(
-                  title: "Cari İşlemleri",
-                  iconWidget: Icons.person_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await networkManager.dioGet(
-                      path: ApiUrls.getCariler,
-                      bodyModel: CariListesiModel(),
-                      showLoading: true,
-                      queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
-                    );
-
-                    dialogManager.showCariGridViewDialog(result.data.first);
-                  },
-                ),
-              ].where((element) => element?.onTap != null).toList().nullCheckWithGeneric,
+              children: bottomSheetItems.where((element) => element?.onTap != null).toList().nullCheckWithGeneric,
             );
           },
           title: Column(
@@ -101,7 +54,19 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(model.belgeNo ?? ""),
+                  Wrap(
+                    alignment: WrapAlignment.start,
+                    runAlignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: UIHelper.lowSize,
+                    children: [
+                      Text(model.belgeNo ?? ""),
+                      Icon(
+                        Icons.camera_alt_outlined,
+                        size: UIHelper.highSize,
+                      ).yetkiVarMi((model.evrakSayisi ?? 0) > 0),
+                    ],
+                  ),
                   Text(model.yerAciklamaDurum, style: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -137,6 +102,62 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           ),
         ),
       );
+
+  List<BottomSheetModel?> get bottomSheetItems => [
+        BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
+        BottomSheetModel(
+          title: "Sil",
+          iconWidget: Icons.delete_outline_outlined,
+          onTap: () async {
+            Get.back();
+            await dialogManager.showAreYouSureDialog(() async {
+              final result = await networkManager.dioPost(
+                path: ApiUrls.deleteCekSenet,
+                bodyModel: const EditFaturaModel(),
+                showLoading: true,
+                data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
+              );
+              if (result.success ?? false) {
+                dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+                widget.onUpdate?.call(result.success ?? false);
+              }
+            });
+          },
+        ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
+        BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+        BottomSheetModel(
+          title: "Hareketler",
+          iconWidget: Icons.sync_alt_outlined,
+          onTap: () {
+            Get.back();
+            return Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
+          },
+        ).yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
+        BottomSheetModel(
+          title: "Evraklar",
+          iconWidget: Icons.description_outlined,
+          onTap: () {
+            Get.back();
+            return Get.toNamed("/mainPage/cekSenetEvraklari", arguments: model);
+          },
+        ),
+        BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
+        BottomSheetModel(
+          title: "Cari İşlemleri",
+          iconWidget: Icons.person_outline_outlined,
+          onTap: () async {
+            Get.back();
+            final result = await networkManager.dioGet(
+              path: ApiUrls.getCariler,
+              bodyModel: CariListesiModel(),
+              showLoading: true,
+              queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
+            );
+
+            dialogManager.showCariGridViewDialog(result.data.first);
+          },
+        ),
+      ];
 
   Future<void> showTahsilatMakbuzu() async {
     Get.back();
