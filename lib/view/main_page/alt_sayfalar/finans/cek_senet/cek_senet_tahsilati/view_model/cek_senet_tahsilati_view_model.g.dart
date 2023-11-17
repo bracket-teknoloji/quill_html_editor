@@ -9,6 +9,21 @@ part of 'cek_senet_tahsilati_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
+  Computed<double>? _$toplamTutarComputed;
+
+  @override
+  double get toplamTutar =>
+      (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
+              name: '_CekSenetTahsilatiViewModelBase.toplamTutar'))
+          .value;
+  Computed<int>? _$ortalamaVadeGunuComputed;
+
+  @override
+  int get ortalamaVadeGunu => (_$ortalamaVadeGunuComputed ??= Computed<int>(
+          () => super.ortalamaVadeGunu,
+          name: '_CekSenetTahsilatiViewModelBase.ortalamaVadeGunu'))
+      .value;
+
   late final _$modelAtom =
       Atom(name: '_CekSenetTahsilatiViewModelBase.model', context: context);
 
@@ -141,7 +156,9 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   String toString() {
     return '''
 model: ${model},
-cariListesiModel: ${cariListesiModel}
+cariListesiModel: ${cariListesiModel},
+toplamTutar: ${toplamTutar},
+ortalamaVadeGunu: ${ortalamaVadeGunu}
     ''';
   }
 }

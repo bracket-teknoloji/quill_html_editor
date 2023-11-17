@@ -58,8 +58,15 @@ class $AssetsLottiesGen {
   LottieGenImage get chartLottie =>
       const LottieGenImage('assets/lotties/chart_lottie.json');
 
+  /// File path: assets/lotties/person.lottie
+  String get person => 'assets/lotties/person.lottie';
+
+  /// File path: assets/lotties/person_lottie.json
+  LottieGenImage get personLottie =>
+      const LottieGenImage('assets/lotties/person_lottie.json');
+
   /// List of all assets
-  List<LottieGenImage> get values => [chartLottie];
+  List<dynamic> get values => [chartLottie, person, personLottie];
 }
 
 class $AssetsSplashGen {

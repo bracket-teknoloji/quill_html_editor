@@ -229,12 +229,34 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
         ),
       );
 
-  BottomBarWidget bottomBar() => const BottomBarWidget(
+  BottomBarWidget bottomBar() => BottomBarWidget(
         isScrolledDown: true,
         children: [
           FooterButton(
             children: [
-              Text("Toplam Tutar:"),
+              Observer(
+                builder: (_) => Text(
+                  "Kalem Adedi: ${viewModel.model.kalemler?.length ?? 0}",
+                ),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              Observer(
+                builder: (_) => Text(
+                  "Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                ),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              Observer(
+                builder: (_) => Text(
+                  "Ort. Vade: ${viewModel.ortalamaVadeGunu}",
+                ),
+              ),
             ],
           ),
         ],

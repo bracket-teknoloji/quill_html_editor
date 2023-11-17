@@ -19,6 +19,12 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @observable
   CariListesiModel? cariListesiModel;
 
+  @computed
+  double get toplamTutar => model.kalemler?.map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+
+  @computed
+  int get ortalamaVadeGunu => model.kalemler?.map((e) => e.vadeTarihi?.difference(DateTime.now()).inDays ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+
   @action
   void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value);
 
