@@ -19,7 +19,7 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
     String? plasiyerKodu,
     String? tag,
     DateTime? tarih,
-    bool? yeniKayit,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
     String? projeKodu,
   }) = _SaveCekSenetModel;
 
@@ -62,6 +62,10 @@ class CekSenetKalemlerModel with _$CekSenetKalemlerModel {
     String? projeAdi,
     String? projeKodu,
     String? verenKodu,
+    String? ibanNo,
+    String? duzenlendigiYer,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) bool? refKodSorulsunMu,
   }) = _CekSenetKalemlerModel;
 
   factory CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) => _$CekSenetKalemlerModelFromJson(json);

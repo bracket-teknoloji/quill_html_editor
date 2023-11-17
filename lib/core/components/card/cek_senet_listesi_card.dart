@@ -66,8 +66,14 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                   },
                 ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
                 BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
-                BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model))
-                    .yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
+                BottomSheetModel(
+                  title: "Hareketler",
+                  iconWidget: Icons.sync_alt_outlined,
+                  onTap: () {
+                    Get.back();
+                    return Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
+                  },
+                ).yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
                 BottomSheetModel(title: "Evraklar", iconWidget: Icons.description_outlined),
                 BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
                 BottomSheetModel(
@@ -111,16 +117,19 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                     Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                     Text("İşlem Tarihi: ${model.tarih.toDateString}"),
                     Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
-                    Text("Asıl/Ciro: ${model.ciroTipiString}"),
-                    Text("Seri No: ${model.seriNo ?? ""}"),
+                    Text("Asıl/Ciro: ${model.ciroTipiString}").yetkiVarMi(!widget.cekSenetListesiEnum.borcMu),
+                    Text("Seri No: ${model.seriNo ?? ""}").yetkiVarMi(widget.cekSenetListesiEnum.cekMi),
                   ]
                       .map(
-                        (e) => SizedBox(
-                          width: constraints.maxWidth / 2,
-                          child: e,
-                        ),
+                        (e) => e is! SizedBox
+                            ? SizedBox(
+                                width: constraints.maxWidth / 2,
+                                child: e,
+                              )
+                            : null,
                       )
-                      .toList(),
+                      .toList()
+                      .nullCheckWithGeneric,
                 ),
               ),
               Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),

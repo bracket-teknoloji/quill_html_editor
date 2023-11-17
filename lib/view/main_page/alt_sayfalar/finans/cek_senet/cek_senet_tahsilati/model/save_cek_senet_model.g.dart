@@ -24,7 +24,7 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      yeniKayit: json['YENI_KAYIT'] as bool?,
+      yeniKayit: json['_YeniKayit'] as bool?,
       projeKodu: json['PROJE_KODU'] as String?,
     );
 
@@ -48,7 +48,7 @@ Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('YENI_KAYIT', instance.yeniKayit);
+  writeNotNull('_YeniKayit', instance.yeniKayit);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   return val;
 }
@@ -90,6 +90,8 @@ _$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(
       projeAdi: json['PROJE_ADI'] as String?,
       projeKodu: json['PROJE_KODU'] as String?,
       verenKodu: json['VEREN_KODU'] as String?,
+      ibanNo: json['IBAN_NO'] as String?,
+      duzenlendigiYer: json['DUZENLENDIGI_YER'] as String?,
     );
 
 Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
@@ -132,5 +134,7 @@ Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
   writeNotNull('PROJE_ADI', instance.projeAdi);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('VEREN_KODU', instance.verenKodu);
+  writeNotNull('IBAN_NO', instance.ibanNo);
+  writeNotNull('DUZENLENDIGI_YER', instance.duzenlendigiYer);
   return val;
 }

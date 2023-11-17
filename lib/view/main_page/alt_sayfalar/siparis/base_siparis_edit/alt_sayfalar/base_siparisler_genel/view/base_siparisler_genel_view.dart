@@ -527,6 +527,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
+    ozelKod1Controller.text = model.ozelKod1 ?? "";
     ozelKod2Controller.text = model.ozelKod2 ?? "";
     teslimEdilecekKisiController.text = model.acik1 ?? "";
     b2bEmailController.text = model.acik2 ?? "";

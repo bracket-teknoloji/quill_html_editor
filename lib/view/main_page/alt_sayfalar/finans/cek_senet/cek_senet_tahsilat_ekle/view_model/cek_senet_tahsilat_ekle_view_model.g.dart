@@ -94,11 +94,37 @@ mixin _$CekSenetTahsilatEkleViewModel
   }
 
   @override
+  void setBankaHesapKodu(String? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
+            name: '_CekSenetTahsilatEkleViewModelBase.setBankaHesapKodu');
+    try {
+      return super.setBankaHesapKodu(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAsilCari(String? value) {
     final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setAsilCari');
     try {
       return super.setAsilCari(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDuzenlendigiYer(String? value) {
+    final _$actionInfo =
+        _$_CekSenetTahsilatEkleViewModelBaseActionController.startAction(
+            name: '_CekSenetTahsilatEkleViewModelBase.setDuzenlendigiYer');
+    try {
+      return super.setDuzenlendigiYer(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -135,6 +161,18 @@ mixin _$CekSenetTahsilatEkleViewModel
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setDovizTipi');
     try {
       return super.setDovizTipi(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDovizAdi(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setDovizAdi');
+    try {
+      return super.setDovizAdi(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -207,6 +245,18 @@ mixin _$CekSenetTahsilatEkleViewModel
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setHesapNo');
     try {
       return super.setHesapNo(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIBAN(String? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setIBAN');
+    try {
+      return super.setIBAN(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);

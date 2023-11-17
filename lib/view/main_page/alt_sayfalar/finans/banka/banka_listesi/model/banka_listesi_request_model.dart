@@ -11,7 +11,7 @@ class BankaListesiRequestModel with _$BankaListesiRequestModel {
     String? arrHesapTipi,
     String? haricHesaplarArray,
     String? sirala,
-    String? ekranTipi,
+    @Default("R") String? ekranTipi,
     String? menuKodu,
     String? belgeTipi,
     String? bankaKodu,

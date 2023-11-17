@@ -13,7 +13,7 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
       arrHesapTipi: json['ArrHesapTipi'] as String?,
       haricHesaplarArray: json['HaricHesaplarArray'] as String?,
       sirala: json['Sirala'] as String?,
-      ekranTipi: json['EkranTipi'] as String?,
+      ekranTipi: json['EkranTipi'] as String? ?? "R",
       menuKodu: json['MenuKodu'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
       bankaKodu: json['BankaKodu'] as String?,

@@ -42,7 +42,9 @@ mixin _$SaveCekSenetModel {
   set tag(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "_YeniKayit")
   bool? get yeniKayit => throw _privateConstructorUsedError;
+  @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
   set projeKodu(String? value) => throw _privateConstructorUsedError;
@@ -70,7 +72,7 @@ abstract class $SaveCekSenetModelCopyWith<$Res> {
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
-      bool? yeniKayit,
+      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       String? projeKodu});
 }
 
@@ -172,7 +174,7 @@ abstract class _$$SaveCekSenetModelImplCopyWith<$Res>
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
-      bool? yeniKayit,
+      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       String? projeKodu});
 }
 
@@ -267,7 +269,7 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
       this.plasiyerKodu,
       this.tag,
       this.tarih,
-      this.yeniKayit,
+      @JsonKey(name: "_YeniKayit") this.yeniKayit,
       this.projeKodu})
       : super._();
 
@@ -295,6 +297,7 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
   @override
   DateTime? tarih;
   @override
+  @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
   @override
   String? projeKodu;
@@ -326,7 +329,7 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
-      bool? yeniKayit,
+      @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       String? projeKodu}) = _$SaveCekSenetModelImpl;
   _SaveCekSenetModel._() : super._();
 
@@ -364,7 +367,9 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
   DateTime? get tarih;
   set tarih(DateTime? value);
   @override
+  @JsonKey(name: "_YeniKayit")
   bool? get yeniKayit;
+  @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value);
   @override
   String? get projeKodu;
@@ -442,6 +447,18 @@ mixin _$CekSenetKalemlerModel {
   set projeKodu(String? value) => throw _privateConstructorUsedError;
   String? get verenKodu => throw _privateConstructorUsedError;
   set verenKodu(String? value) => throw _privateConstructorUsedError;
+  String? get ibanNo => throw _privateConstructorUsedError;
+  set ibanNo(String? value) => throw _privateConstructorUsedError;
+  String? get duzenlendigiYer => throw _privateConstructorUsedError;
+  set duzenlendigiYer(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get dovizAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set dovizAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? get refKodSorulsunMu => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set refKodSorulsunMu(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -485,7 +502,12 @@ abstract class $CekSenetKalemlerModelCopyWith<$Res> {
       String? aciklama3,
       String? projeAdi,
       String? projeKodu,
-      String? verenKodu});
+      String? verenKodu,
+      String? ibanNo,
+      String? duzenlendigiYer,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu});
 }
 
 /// @nodoc
@@ -532,6 +554,10 @@ class _$CekSenetKalemlerModelCopyWithImpl<$Res,
     Object? projeAdi = freezed,
     Object? projeKodu = freezed,
     Object? verenKodu = freezed,
+    Object? ibanNo = freezed,
+    Object? duzenlendigiYer = freezed,
+    Object? dovizAdi = freezed,
+    Object? refKodSorulsunMu = freezed,
   }) {
     return _then(_value.copyWith(
       cariRaporKodu: freezed == cariRaporKodu
@@ -654,6 +680,22 @@ class _$CekSenetKalemlerModelCopyWithImpl<$Res,
           ? _value.verenKodu
           : verenKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duzenlendigiYer: freezed == duzenlendigiYer
+          ? _value.duzenlendigiYer
+          : duzenlendigiYer // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refKodSorulsunMu: freezed == refKodSorulsunMu
+          ? _value.refKodSorulsunMu
+          : refKodSorulsunMu // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -697,7 +739,12 @@ abstract class _$$CekSenetKalemlerModelImplCopyWith<$Res>
       String? aciklama3,
       String? projeAdi,
       String? projeKodu,
-      String? verenKodu});
+      String? verenKodu,
+      String? ibanNo,
+      String? duzenlendigiYer,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu});
 }
 
 /// @nodoc
@@ -742,6 +789,10 @@ class __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>
     Object? projeAdi = freezed,
     Object? projeKodu = freezed,
     Object? verenKodu = freezed,
+    Object? ibanNo = freezed,
+    Object? duzenlendigiYer = freezed,
+    Object? dovizAdi = freezed,
+    Object? refKodSorulsunMu = freezed,
   }) {
     return _then(_$CekSenetKalemlerModelImpl(
       cariRaporKodu: freezed == cariRaporKodu
@@ -864,6 +915,22 @@ class __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>
           ? _value.verenKodu
           : verenKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      duzenlendigiYer: freezed == duzenlendigiYer
+          ? _value.duzenlendigiYer
+          : duzenlendigiYer // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refKodSorulsunMu: freezed == refKodSorulsunMu
+          ? _value.refKodSorulsunMu
+          : refKodSorulsunMu // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -901,7 +968,12 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
       this.aciklama3,
       this.projeAdi,
       this.projeKodu,
-      this.verenKodu});
+      this.verenKodu,
+      this.ibanNo,
+      this.duzenlendigiYer,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.dovizAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.refKodSorulsunMu});
 
   factory _$CekSenetKalemlerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CekSenetKalemlerModelImplFromJson(json);
@@ -966,10 +1038,20 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
   String? projeKodu;
   @override
   String? verenKodu;
+  @override
+  String? ibanNo;
+  @override
+  String? duzenlendigiYer;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? dovizAdi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? refKodSorulsunMu;
 
   @override
   String toString() {
-    return 'CekSenetKalemlerModel(cariRaporKodu: $cariRaporKodu, cekBanka: $cekBanka, seriNo: $seriNo, cekSube: $cekSube, ciroTipi: $ciroTipi, gorsel1: $gorsel1, gorsel2: $gorsel2, hesapNo: $hesapNo, ilce: $ilce, plasiyerAdi: $plasiyerAdi, plasiyerKodu: $plasiyerKodu, raporKodu: $raporKodu, sehir: $sehir, sira: $sira, dovizTipi: $dovizTipi, tag: $tag, tarih: $tarih, tutar: $tutar, vadeTarihi: $vadeTarihi, dovizKuru: $dovizKuru, dovizTutari: $dovizTutari, asilCari: $asilCari, refKod: $refKod, refTanimi: $refTanimi, aciklama1: $aciklama1, aciklama2: $aciklama2, aciklama3: $aciklama3, projeAdi: $projeAdi, projeKodu: $projeKodu, verenKodu: $verenKodu)';
+    return 'CekSenetKalemlerModel(cariRaporKodu: $cariRaporKodu, cekBanka: $cekBanka, seriNo: $seriNo, cekSube: $cekSube, ciroTipi: $ciroTipi, gorsel1: $gorsel1, gorsel2: $gorsel2, hesapNo: $hesapNo, ilce: $ilce, plasiyerAdi: $plasiyerAdi, plasiyerKodu: $plasiyerKodu, raporKodu: $raporKodu, sehir: $sehir, sira: $sira, dovizTipi: $dovizTipi, tag: $tag, tarih: $tarih, tutar: $tutar, vadeTarihi: $vadeTarihi, dovizKuru: $dovizKuru, dovizTutari: $dovizTutari, asilCari: $asilCari, refKod: $refKod, refTanimi: $refTanimi, aciklama1: $aciklama1, aciklama2: $aciklama2, aciklama3: $aciklama3, projeAdi: $projeAdi, projeKodu: $projeKodu, verenKodu: $verenKodu, ibanNo: $ibanNo, duzenlendigiYer: $duzenlendigiYer, dovizAdi: $dovizAdi, refKodSorulsunMu: $refKodSorulsunMu)';
   }
 
   @JsonKey(ignore: true)
@@ -1018,7 +1100,12 @@ abstract class _CekSenetKalemlerModel implements CekSenetKalemlerModel {
       String? aciklama3,
       String? projeAdi,
       String? projeKodu,
-      String? verenKodu}) = _$CekSenetKalemlerModelImpl;
+      String? verenKodu,
+      String? ibanNo,
+      String? duzenlendigiYer,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu}) = _$CekSenetKalemlerModelImpl;
 
   factory _CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) =
       _$CekSenetKalemlerModelImpl.fromJson;
@@ -1113,6 +1200,22 @@ abstract class _CekSenetKalemlerModel implements CekSenetKalemlerModel {
   @override
   String? get verenKodu;
   set verenKodu(String? value);
+  @override
+  String? get ibanNo;
+  set ibanNo(String? value);
+  @override
+  String? get duzenlendigiYer;
+  set duzenlendigiYer(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get dovizAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set dovizAdi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? get refKodSorulsunMu;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set refKodSorulsunMu(bool? value);
   @override
   @JsonKey(ignore: true)
   _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl>

@@ -223,7 +223,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
       this.arrHesapTipi,
       this.haricHesaplarArray,
       this.sirala,
-      this.ekranTipi,
+      this.ekranTipi = "R",
       this.menuKodu,
       this.belgeTipi,
       this.bankaKodu,
@@ -241,6 +241,7 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @override
   String? sirala;
   @override
+  @JsonKey()
   String? ekranTipi;
   @override
   String? menuKodu;

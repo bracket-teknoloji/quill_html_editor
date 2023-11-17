@@ -75,8 +75,6 @@ class _LoginViewState extends BaseState<LoginView> {
             ),
             Scaffold(
               // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-
-              //TODO BUNU FAB'DAN ÇIKART. SPLASH'E BAK.
               floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
               floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
               primary: true,

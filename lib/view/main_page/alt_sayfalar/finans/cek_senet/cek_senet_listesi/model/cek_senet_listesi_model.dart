@@ -79,8 +79,8 @@ extension CekSenetExtensions on CekSenetListesiModel {
   String get aciklamalar {
     String aciklama = "";
     if (aciklama1 != null) aciklama += aciklama1 ?? "";
-    if (aciklama2 != null) aciklama += ", ${aciklama2!}";
-    if (aciklama3 != null) aciklama += ", ${aciklama3!}";
+    if (aciklama2 != null) aciklama += ",\n${aciklama2!}";
+    if (aciklama3 != null) aciklama += ",\n${aciklama3!}";
     return aciklama;
   }
 }

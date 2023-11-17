@@ -15,6 +15,10 @@ class DrawerMenuItems {
       title: CacheManager.getIsletmeSube["İşletme"],
       iconWidget: Icons.home_outlined,
     ),
+    // DrawerModel(
+    //   title: "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}",
+    //   iconWidget: Icons.router_outlined,
+    // ),
     DrawerModel(
       title: "${CacheManager.getVeriTabani()["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
       iconWidget: Icons.location_on_outlined,

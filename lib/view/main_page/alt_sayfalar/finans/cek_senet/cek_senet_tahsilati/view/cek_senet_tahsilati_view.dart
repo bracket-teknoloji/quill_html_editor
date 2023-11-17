@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -45,6 +46,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
     _projeController = TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      viewModel.model.belgeTipi = widget.cekSenetListesiEnum.belgeTipi;
       viewModel.setGirisTarihi(DateTime.now());
       await getCari();
     });
@@ -99,130 +101,143 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
         onPressed: add,
       );
 
-  Form body() => Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            CustomTextField(
-              labelText: "Giriş Tarihi",
-              controller: _girisTarihiController,
-              isDateTime: true,
-              isMust: true,
-              readOnly: true,
-              onTap: getTarih,
-            ),
-            CustomTextField(
-              labelText: "Cari",
-              controller: _cariController,
-              isMust: true,
-              readOnly: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-              suffix: IconButton(
-                onPressed: getCariIslemleri,
-                icon: Icon(
-                  Icons.open_in_new_outlined,
-                  color: UIHelper.primaryColor,
-                ),
+  WillPopScope body() => WillPopScope(
+        onWillPop: () async {
+          bool result = false;
+          await dialogManager.showAreYouSureDialog(() async => result = true);
+          return result;
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              CustomTextField(
+                labelText: "Giriş Tarihi",
+                controller: _girisTarihiController,
+                isDateTime: true,
+                isMust: true,
+                readOnly: true,
+                onTap: getTarih,
               ),
-              onTap: getCari,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: _plasiyerController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                    onTap: getPlasiyer,
-                  ),
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Proje",
-                    controller: _projeController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                    onTap: getProje,
-                  ),
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-              ],
-            ),
-            Observer(
-              builder: (_) {
-                if (viewModel.model.kalemler.ext.isNullOrEmpty) {
-                  return const Column(
-                    children: [
-                      Icon(Icons.refresh_outlined),
-                      Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın."),
-                    ],
-                  ).paddingOnly(top: UIHelper.highSize * 5);
-                } else {
-                  return ListView.builder(
-                    primary: false,
-                    shrinkWrap: true,
-                    itemCount: viewModel.model.kalemler?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      final CekSenetKalemlerModel item = viewModel.model.kalemler![index];
-                      return Card(
-                        child: ListTile(
-                          title: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                              Text("Vade Günü: ${item.vadeTarihi?.difference(DateTime.now()).inDays} (${item.vadeTarihi.toDateString})"),
-                            ],
+              CustomTextField(
+                labelText: "Cari",
+                controller: _cariController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                suffix: IconButton(
+                  onPressed: getCariIslemleri,
+                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                ),
+                onTap: getCari,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Plasiyer",
+                      controller: _plasiyerController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                      onTap: getPlasiyer,
+                    ),
+                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Proje",
+                      controller: _projeController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                      onTap: getProje,
+                    ),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                ],
+              ),
+              Observer(
+                builder: (_) {
+                  if (viewModel.model.kalemler.ext.isNullOrEmpty) {
+                    return const Column(
+                      children: [
+                        Icon(Icons.refresh_outlined),
+                        Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın."),
+                      ],
+                    ).paddingOnly(top: UIHelper.highSize * 5);
+                  } else {
+                    return ListView.builder(
+                      primary: false,
+                      shrinkWrap: true,
+                      itemCount: viewModel.model.kalemler?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final CekSenetKalemlerModel item = viewModel.model.kalemler![index];
+                        return Card(
+                          child: ListTile(
+                            title: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                                Text("Vade Günü: ${item.vadeTarihi?.difference(DateTime.now()).inDays} (${item.vadeTarihi.toDateString})"),
+                              ],
+                            ),
+                            subtitle: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
+                                Text(item.cekBanka ?? "").yetkiVarMi(item.cekBanka != null),
+                              ],
+                            ),
+                            onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: "Seçenekler",
+                              children: [
+                                BottomSheetModel(
+                                  title: "Düzenle",
+                                  iconWidget: Icons.edit_outlined,
+                                  onTap: () {
+                                    Get.back();
+                                    duzenle(item);
+                                  },
+                                ),
+                                BottomSheetModel(
+                                  title: "Sil",
+                                  iconWidget: Icons.delete_outline,
+                                  onTap: () {
+                                    Get.back();
+                                    viewModel.removeCekSenetKalemlerModel(item);
+                                    dialogManager.showSuccessSnackBar("Silindi");
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                          subtitle: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
-                              Text(item.cekBanka ?? "").yetkiVarMi(item.cekBanka != null),
-                            ],
-                          ),
-                          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: "Seçenekler",
-                            children: [
-                              BottomSheetModel(
-                                title: "Düzenle",
-                                iconWidget: Icons.edit_outlined,
-                                onTap: () {
-                                  Get.back();
-                                  duzenle(item);
-                                },
-                              ),
-                              BottomSheetModel(
-                                title: "Sil",
-                                iconWidget: Icons.delete_outline,
-                                onTap: () {
-                                  Get.back();
-                                  viewModel.removeCekSenetKalemlerModel(item);
-                                  dialogManager.showSuccessSnackBar("Silindi");
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                }
-              },
-            ),
-          ],
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       );
 
-  BottomBarWidget bottomBar() => const BottomBarWidget(isScrolledDown: true, children: []);
+  BottomBarWidget bottomBar() => const BottomBarWidget(
+        isScrolledDown: true,
+        children: [
+          FooterButton(
+            children: [
+              Text("Toplam Tutar:"),
+            ],
+          ),
+        ],
+      );
 
   Future<void> getTarih() async {
     final result = await dialogManager.showDateTimePicker();
@@ -268,14 +283,26 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   }
 
   Future<void> add() async {
-    final result = await Get.toNamed(widget.cekSenetListesiEnum.tahsilatEkleRoute);
-    if (result is CekSenetKalemlerModel) {
-      viewModel.addCekSenetKalemlerModel(result);
+    if (viewModel.cariListesiModel != null) {
+      final result = await Get.toNamed(
+        widget.cekSenetListesiEnum.tahsilatEkleRoute,
+        arguments: CekSenetKalemlerModel(
+          refKodSorulsunMu: yetkiController.referansKodu(viewModel.cariListesiModel?.muhHesapTipi) && viewModel.cariListesiModel?.muhKodu != null,
+        ),
+      );
+      if (result is CekSenetKalemlerModel) {
+        viewModel.addCekSenetKalemlerModel(result);
+      }
+    } else {
+      dialogManager.showInfoSnackBar("Lütfen cari seçiniz");
     }
   }
 
   Future<void> duzenle(CekSenetKalemlerModel? oldModel) async {
-    final result = await Get.toNamed("/mainPage/cekSenetTahsilatEkle", arguments: oldModel);
+    final result = await Get.toNamed(
+      widget.cekSenetListesiEnum.tahsilatEkleRoute,
+      arguments: oldModel,
+    );
     if (result is CekSenetKalemlerModel) {
       viewModel.replaceCekSenetKalemlerModel(oldModel, result);
     }

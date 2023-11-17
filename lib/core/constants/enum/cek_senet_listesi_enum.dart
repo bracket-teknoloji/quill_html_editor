@@ -69,6 +69,17 @@ extension CekSenetExtensions on CekSenetListesiEnum {
     }
   }
 
+  bool get borcMu {
+    switch (this) {
+      case CekSenetListesiEnum.cekMusteri:
+      case CekSenetListesiEnum.senetMusteri:
+        return false;
+      case CekSenetListesiEnum.cekBorc:
+      case CekSenetListesiEnum.senetBorc:
+        return true;
+    }
+  }
+
   String get tahsilatRoute {
     switch (this) {
       case CekSenetListesiEnum.cekMusteri:
@@ -81,6 +92,7 @@ extension CekSenetExtensions on CekSenetListesiEnum {
         return "/mainPage/senetBorcTahsilat";
     }
   }
+  
 
   bool get cekMi {
     switch (this) {

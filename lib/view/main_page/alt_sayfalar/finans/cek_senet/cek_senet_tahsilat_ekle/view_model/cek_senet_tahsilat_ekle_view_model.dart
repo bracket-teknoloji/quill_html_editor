@@ -24,7 +24,13 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   void setModel(CekSenetKalemlerModel value) => model = value;
 
   @action
+  void setBankaHesapKodu(String? value) => model = model.copyWith(verenKodu: value);
+
+  @action
   void setAsilCari(String? value) => model = model.copyWith(asilCari: value);
+
+  @action
+  void setDuzenlendigiYer(String? value) => model = model.copyWith(duzenlendigiYer: value);
 
   @action
   void setCiroTipi(String? value) => model = model.copyWith(ciroTipi: value);
@@ -33,7 +39,10 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   void setVadeTarihi(DateTime? value) => model = model.copyWith(vadeTarihi: value.dateTimeWithoutTime);
 
   @action
-  void setDovizTipi(int? value) => model = model.copyWith(dovizTipi: value);
+  void setDovizTipi(int? value) => model = model.copyWith(dovizTipi: (value ?? 0) > 0 ? value : 0);
+
+  @action
+  void setDovizAdi(String? value) => model = model.copyWith(dovizAdi: value);
 
   @action
   void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
@@ -53,8 +62,8 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void setHesapNo(String? value) => model = model.copyWith(hesapNo: value);
 
-  // @action
-  // void setIBAN(String? value) => model = model.copyWith(iban: value)
+  @action
+  void setIBAN(String? value) => model = model.copyWith(ibanNo: value);
 
   @action
   void setIl(String? value) => model = model.copyWith(sehir: value);

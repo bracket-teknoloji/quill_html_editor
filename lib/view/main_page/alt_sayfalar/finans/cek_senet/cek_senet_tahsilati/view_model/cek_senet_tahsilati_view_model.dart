@@ -14,13 +14,17 @@ class CekSenetTahsilatiViewModel = _CekSenetTahsilatiViewModelBase with _$CekSen
 
 abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 3, yeniKayit: true, belgeTipi: "MCEK");
+  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 3, yeniKayit: true, tag: "CekSenetBordroModel");
+
+  @observable
+  CariListesiModel? cariListesiModel;
 
   @action
   void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value);
 
   @action
   void setCariKodu(CariListesiModel? value) {
+    cariListesiModel = value;
     final List<CekSenetKalemlerModel> list = [];
     for (CekSenetKalemlerModel item in model.kalemler ?? []) {
       list.add(item.copyWith(plasiyerAdi: value?.plasiyerAciklama, plasiyerKodu: value?.plasiyerKodu));

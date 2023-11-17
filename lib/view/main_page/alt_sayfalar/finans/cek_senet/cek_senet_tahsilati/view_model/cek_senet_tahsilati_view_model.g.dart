@@ -25,6 +25,23 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
     });
   }
 
+  late final _$cariListesiModelAtom = Atom(
+      name: '_CekSenetTahsilatiViewModelBase.cariListesiModel',
+      context: context);
+
+  @override
+  CariListesiModel? get cariListesiModel {
+    _$cariListesiModelAtom.reportRead();
+    return super.cariListesiModel;
+  }
+
+  @override
+  set cariListesiModel(CariListesiModel? value) {
+    _$cariListesiModelAtom.reportWrite(value, super.cariListesiModel, () {
+      super.cariListesiModel = value;
+    });
+  }
+
   late final _$postDataAsyncAction =
       AsyncAction('_CekSenetTahsilatiViewModelBase.postData', context: context);
 
@@ -123,7 +140,8 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
   @override
   String toString() {
     return '''
-model: ${model}
+model: ${model},
+cariListesiModel: ${cariListesiModel}
     ''';
   }
 }

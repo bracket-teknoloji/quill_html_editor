@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -325,8 +326,9 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
           isScrolledDown: !viewModel.isScrollDown,
           onPressed: () async {
             await Get.toNamed(widget.cekSenetListesiEnum.tahsilatRoute);
+            await viewModel.getData();
           },
-        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
+        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi && AccountModel.instance.isDebug),
       );
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
