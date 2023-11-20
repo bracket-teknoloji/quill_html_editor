@@ -78,7 +78,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
                   child: ListTile(
                     contentPadding: UIHelper.midPadding,
                     leading: InkWell(
-                      onTap: () => Get.to(ImageView(path: model.resimUrl)),
+                      onTap: () => Get.to(ImageView(path: model.resimUrl ?? "", title: model.aciklama ?? "")),
                       child: SizedBox(
                         height: UIHelper.highSize * 3,
                         width: UIHelper.highSize * 3,
@@ -104,7 +104,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
             iconWidget: Icons.preview_outlined,
             onTap: () {
               Get.back();
-              return Get.to(ImageView(path: model?.resimUrl));
+              return Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? ""));
             },
           ),
           BottomSheetModel(

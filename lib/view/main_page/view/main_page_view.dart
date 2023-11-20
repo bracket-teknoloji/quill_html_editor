@@ -27,54 +27,59 @@ class MainPageView extends StatefulWidget {
 class _MainPageViewState extends BaseState<MainPageView> {
   List<GridItemModel> items = MenuItemConstants().getList();
   List<List<GridItemModel>> lastItems = [];
+  bool? yetkiVarMi;
   MainPageModel? model = CacheManager.getAnaVeri;
-  List<String?> title2 = ["Picker"];
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+  List<String> title2 = ["Picker"];
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          if (lastItems.isNotEmpty) {
-            setState(() {
-              items = lastItems.last;
+  Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
+    return WillPopScope(
+      onWillPop: () async {
+        if (lastItems.isNotEmpty) {
+          setState(() {
+            items = lastItems.last;
 
-              title2.removeLast();
-              lastItems.removeLast();
-            });
-            return false;
+            title2.removeLast();
+            lastItems.removeLast();
+          });
+          return false;
+        } else {
+          if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
+            scaffoldKey.currentState!.closeDrawer();
+            scaffoldKey.currentState!.closeEndDrawer();
+            dialogManager.showExitDialog();
           } else {
-            if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
-              scaffoldKey.currentState!.closeDrawer();
-              scaffoldKey.currentState!.closeEndDrawer();
-              dialogManager.showExitDialog();
-            } else {
-              dialogManager.showExitDialog();
-            }
-            return false;
+            dialogManager.showExitDialog();
           }
-        },
-        child: Scaffold(
-          appBar: appBar(context),
-          key: scaffoldKey,
-          drawerEnableOpenDragGesture: lastItems.isEmpty,
-          drawer: const SafeArea(child: LeftDrawer()),
-          endDrawer: const SafeArea(child: EndDrawer()),
-          body: body(context),
-          bottomNavigationBar: bottomBar(),
-        ),
-      );
+          return false;
+        }
+      },
+      child: Scaffold(
+        appBar: appBar(scaffoldKey, context),
+        key: scaffoldKey,
+        drawerEnableOpenDragGesture: lastItems.isEmpty,
+        drawer: const SafeArea(child: LeftDrawer()),
+        endDrawer: const SafeArea(child: EndDrawer()),
+        body: body(context),
+        bottomNavigationBar: bottomBar(scaffoldKey),
+      ),
+    );
+  }
 
-  AppBar appBar(BuildContext context) => AppBar(
+  AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
         title: AppBarTitle(title: title2.last),
         centerTitle: true,
         leading: anaSayfaMi
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => setState(() {
-                  items = lastItems.last;
-                  title2.removeLast();
-                  lastItems.removeLast();
-                }),
+                onPressed: () {
+                  setState(() {
+                    items = lastItems.last;
+                    title2.removeLast();
+                    lastItems.removeLast();
+                  });
+                },
               )
             : IconButton(
                 icon: const Icon(Icons.star_border_outlined),
@@ -88,7 +93,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
               ),
         actions: [
           IconButton(
-            onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+            onPressed: () {
+              scaffoldKey.currentState!.openEndDrawer();
+            },
             icon: const Icon(Icons.person_outline_outlined),
           ),
         ],
@@ -114,7 +121,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                   delay: const Duration(milliseconds: 50),
                   child: FadeInAnimation(
                     child: CustomGridTile(
+                      // color: item.color,
                       model: item,
+                      // title: item.title.toString(),
                       onTap: () {
                         if (item.altMenuVarMi) {
                           setState(() {
@@ -137,50 +146,50 @@ class _MainPageViewState extends BaseState<MainPageView> {
                 );
               },
             ),
-            goBack(),
+            Visibility(
+              visible: Platform.isIOS && lastItems.isNotEmpty,
+              child: SizedBox(
+                width: UIHelper.highSize * 3,
+                child: GestureDetector(
+                  onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity! > 0) {
+                      setState(() {
+                        items = lastItems.last;
+                        title2.removeLast();
+                        lastItems.removeLast();
+                      });
+                    }
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       );
 
-  Visibility goBack() => Visibility(
-        visible: Platform.isIOS && lastItems.isNotEmpty,
-        child: SizedBox(
-          width: UIHelper.highSize * 3,
-          child: GestureDetector(
-            onHorizontalDragEnd: (details) {
-              if (details.primaryVelocity! > 0) {
-                setState(() {
-                  items = lastItems.last;
-                  title2.removeLast();
-                  lastItems.removeLast();
-                });
-              }
-            },
-          ),
-        ),
-      );
-
-  SafeArea bottomBar() => SafeArea(
+  SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
               child: Row(
                 children: [
-                  (CacheManager.getAnaVeri!.userModel!.admin == "E"
-                          ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: UIHelper.midSize * 2)
-                          : IconHelper.smallIcon("User-Account"))
-                      .marginOnly(right: UIHelper.lowSize),
+                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                      .marginOnly(right: 5),
                   Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
                 ],
               ),
             ),
             TextButton(
-              onPressed: () => Get.toNamed("/entryCompany", arguments: false),
+              onPressed: () {
+                Get.toNamed("/entryCompany", arguments: false);
+              },
               child: Row(
                 children: [
-                  Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: UIHelper.midSize * 2).marginOnly(right: UIHelper.lowSize),
+                  Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
                   Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
                 ],
               ),

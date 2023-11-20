@@ -1,11 +1,13 @@
 import "package:flutter/material.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:share_plus/share_plus.dart";
 
 class ImageView extends StatefulWidget {
-  final String? path;
-  const ImageView({super.key, required this.path});
+  final String path;
+  final String title;
+  const ImageView({super.key, required this.path, required this.title});
 
   @override
   State<ImageView> createState() => _ImageViewState();
@@ -16,7 +18,10 @@ class _ImageViewState extends BaseState<ImageView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Resimler"),
+          title: AppBarTitle(
+            title: "Görüntüle",
+            subtitle: widget.title,
+          ),
           actions: [
             IconButton(
               onPressed: () async {
@@ -26,16 +31,20 @@ class _ImageViewState extends BaseState<ImageView> {
             ),
           ],
         ),
-        body: FutureBuilder<MemoryImage?>(
-          future: networkManager.getImage(widget.path),
-          builder: (BuildContext context, AsyncSnapshot<MemoryImage?> snapshot) {
-            if (snapshot.hasData) {
-              xfile = XFile.fromData(snapshot.data!.bytes);
-              return InteractiveViewer(child: Image.memory(snapshot.data!.bytes));
-            } else {
-              return const Center(child: CircularProgressIndicator.adaptive());
-            }
-          },
+        body: InteractiveViewer(
+          child: Center(
+            child: FutureBuilder<MemoryImage?>(
+              future: networkManager.getImage(widget.path),
+              builder: (BuildContext context, AsyncSnapshot<MemoryImage?> snapshot) {
+                if (snapshot.hasData) {
+                  xfile = XFile.fromData(snapshot.data!.bytes);
+                  return Image.memory(snapshot.data!.bytes);
+                } else {
+                  return const Center(child: CircularProgressIndicator.adaptive());
+                }
+              },
+            ),
+          ),
         ),
       );
 }
