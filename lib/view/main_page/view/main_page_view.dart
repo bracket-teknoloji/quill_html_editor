@@ -121,15 +121,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
                   delay: const Duration(milliseconds: 50),
                   child: FadeInAnimation(
                     child: CustomGridTile(
-                      iconWidget: item.iconData,
-                      menuTipi: item.menuTipi,
-                      route: item.route,
-                      arguments: item.arguments,
-                      altMenuler: item.altMenuler,
-                      color: item.color,
-                      icon: item.icon,
-                      name: item.name.toString(),
-                      title: item.title.toString(),
+                      // color: item.color,
+                      model: item,
+                      // title: item.title.toString(),
                       onTap: () {
                         if (item.altMenuVarMi) {
                           setState(() {

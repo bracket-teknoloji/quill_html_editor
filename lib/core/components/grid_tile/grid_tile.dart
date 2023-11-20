@@ -11,18 +11,11 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
 
 class CustomGridTile extends StatefulWidget {
-  final String? name;
-  final String? title;
-  final String? icon;
-  final Color? color;
-  final String? route;
-  final dynamic arguments;
-  final List<GridItemModel>? altMenuler;
   final Function()? onTap;
-  final String? menuTipi;
-  final IconData? iconWidget;
+  // final String? menuTipi;
+  final GridItemModel? model;
 
-  const CustomGridTile({super.key, this.name, this.title, this.icon, this.color, this.onTap, this.altMenuler, this.menuTipi, this.iconWidget, this.route, this.arguments});
+  const CustomGridTile({super.key, this.onTap, this.model});
 
   @override
   CustomGridTileState createState() => CustomGridTileState();
@@ -32,7 +25,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) {
     Icon yetkiKontrol() {
-      if (CacheManager.getFavoriler.values.any((element) => element.title == widget.title)) {
+      if (CacheManager.getFavoriler.values.any((element) => element.title == widget.model?.title)) {
         return const Icon(Icons.star, size: 20, color: Colors.white);
       } else {
         return const Icon(Icons.star_border, size: 20, color: Colors.white);
@@ -47,72 +40,48 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
       onLongPress: () {
-        if (widget.menuTipi == "I" || widget.menuTipi == "SR") {
+        if (widget.model?.menuTipi == "I" || widget.model?.menuTipi == "SR") {
           if (icon.icon == Icons.star) {
             icon = const Icon(Icons.star_border, size: 20, color: Colors.white);
-            CacheManager.removeFavoriler(widget.title.toString());
+            CacheManager.removeFavoriler(widget.model?.title ?? "");
             dialogManager.hideSnackBar;
             dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
           } else {
             icon = const Icon(Icons.star, size: 20, color: Colors.white);
             CacheManager.setFavoriler(
-              FavoritesModel(name: widget.name, title: widget.title, icon: widget.icon, onTap: widget.route, color: widget.color?.value, arguments: widget.arguments, menuTipi: widget.menuTipi),
+              FavoritesModel(
+                name: widget.model?.name,
+                title: widget.model?.title,
+                icon: widget.model?.icon,
+                onTap: widget.model?.route,
+                color: widget.model?.color?.value,
+                arguments: widget.model?.arguments,
+                menuTipi: widget.model?.menuTipi,
+              ),
             );
             dialogManager.hideSnackBar;
-            dialogManager.showColorfulSnackBar("Favorilere eklendi", widget.color ?? ColorPalette.blueGray);
+            dialogManager.showColorfulSnackBar("Favorilere eklendi", widget.model?.color ?? ColorPalette.blueGray);
           }
           setState(() {});
         }
       },
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
-        color: widget.color,
+        color: widget.model?.color,
         semanticContainer: true,
         child: GridTile(
-          header: (widget.menuTipi == "I" || widget.menuTipi == "SR")
-              ? Align(
-                  alignment: Alignment.centerRight,
-                  child: InkWell(
-                    child: yetkiKontrol(),
-                    onTap: () {
-                      if (icon.icon == Icons.star) {
-                        icon = const Icon(Icons.star_border, size: 20, color: Colors.white);
-                        CacheManager.removeFavoriler(widget.title.toString());
-                        dialogManager.hideSnackBar;
-                        dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
-                      } else {
-                        icon = const Icon(Icons.star, size: 20, color: Colors.white);
-                        CacheManager.setFavoriler(
-                          FavoritesModel(
-                            name: widget.name,
-                            title: widget.title,
-                            icon: widget.icon,
-                            onTap: widget.route,
-                            color: widget.color?.value,
-                            arguments: widget.arguments,
-                            menuTipi: widget.menuTipi,
-                          ),
-                        );
-                        dialogManager.hideSnackBar;
-                        dialogManager.showInfoSnackBar("Favorilere eklendi");
-                      }
-                      setState(() {});
-                    },
-                  ),
-                )
-              : null,
-          footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox(),
-          child: widget.menuTipi == "I"
+          header: header(yetkiKontrol, icon),
+          footer: footer(),
+          child: widget.model?.menuTipi == "I"
               ? Center(
                   child: Container(
                     margin: UIHelper.lowPaddingHorizontal,
                     child: Text(
-                      widget.title ?? "",
+                      widget.model?.title ?? "",
                       textAlign: TextAlign.center,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
-                      
                       style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
                     ),
                   ),
@@ -123,21 +92,21 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                   children: [
                     AnimatedContainer(
                       duration: const Duration(milliseconds: 500),
-                      child: widget.iconWidget == null
+                      child: widget.model?.iconData == null
                           ? IconHelper.bigMenuIcon(
-                              widget.icon ?? "",
+                              widget.model?.icon ?? "",
                             )
                           : IconTheme(
                               data: const IconThemeData(weight: 0.1, size: 30, color: Colors.white),
                               child: Icon(
-                                widget.iconWidget,
+                                widget.model?.iconData,
                                 size: 30,
                                 grade: 0.1,
                               ),
                             ),
                     ).marginOnly(bottom: UIHelper.lowSize),
                     Text(
-                      widget.menuTipi != "I" ? widget.title.toString() : "",
+                      widget.model?.menuTipi != "I" ? (widget.model?.title ?? "") : "",
                       textAlign: TextAlign.center,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
@@ -150,6 +119,41 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
       ),
     );
   }
+
+  Align? header(Icon Function() yetkiKontrol, Icon icon) => (widget.model?.menuTipi == "I" || widget.model?.menuTipi == "SR")
+      ? Align(
+          alignment: Alignment.centerRight,
+          child: InkWell(
+            child: yetkiKontrol(),
+            onTap: () {
+              if (icon.icon == Icons.star) {
+                icon = const Icon(Icons.star_border, size: 20, color: Colors.white);
+                CacheManager.removeFavoriler(widget.model?.title ?? "");
+                dialogManager.hideSnackBar;
+                dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
+              } else {
+                icon = const Icon(Icons.star, size: 20, color: Colors.white);
+                CacheManager.setFavoriler(
+                  FavoritesModel(
+                    name: widget.model?.name,
+                    title: widget.model?.title,
+                    icon: widget.model?.icon,
+                    onTap: widget.model?.route,
+                    color: widget.model?.color?.value,
+                    arguments: widget.model?.arguments,
+                    menuTipi: widget.model?.menuTipi,
+                  ),
+                );
+                dialogManager.hideSnackBar;
+                dialogManager.showInfoSnackBar("Favorilere eklendi");
+              }
+              setState(() {});
+            },
+          ),
+        )
+      : null;
+
+  Widget footer() => (widget.model?.menuTipi == "S" && (widget.model?.altMenuler.ext.isNotNullOrEmpty ?? false)) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox();
 
   //
 }
