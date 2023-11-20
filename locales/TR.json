@@ -1,6 +1,9 @@
 {
-  "main": {
+  "rightDrawer": {
     "save": "Kaydet",
-    "profile": "Profil"
+    "profile": "Profil",
+    "yetkiliKullanici": "Yetkili Kullanıcı",
+    "exit": "Çıkış",
+    "changeCompany": "Şirket Değiştir"
   }
 }

@@ -1,0 +1,37 @@
+import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evrak_ekle/model/cek_senet_evrak_ekle_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+
+part "cek_senet_evrak_ekle_view_model.g.dart";
+
+class CekSenetEvrakEkleViewModel = _CekSenetEvrakEkleViewModelBase with _$CekSenetEvrakEkleViewModel;
+
+abstract class _CekSenetEvrakEkleViewModelBase with Store, MobxNetworkMixin {
+  _CekSenetEvrakEkleViewModelBase({required this.model}) {
+    model.islemKodu = 1;
+  }
+  @observable
+  late CekSenetEvrakEkleModel model;
+
+  @observable
+  String? base64Data;
+
+  @action
+  void setBase64Data(String? base64Data) {
+    this.base64Data = base64Data;
+    model = model.copyWith(base64Data: base64Data);
+  }
+
+  @action
+  void setBoyutByte(int? boyutByte) => model = model.copyWith(boyutByte: boyutByte);
+
+  @action
+  void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
+
+  @action
+  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async => await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: CekSenetListesiModel(), data: model.toJson());
+}

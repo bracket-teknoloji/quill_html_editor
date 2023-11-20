@@ -12,6 +12,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 
+class $LocalesGen {
+  const $LocalesGen();
+
+  /// File path: locales/EN_US.json
+  String get enUs => 'locales/EN_US.json';
+
+  /// File path: locales/TR.json
+  String get tr => 'locales/TR.json';
+
+  /// List of all assets
+  List<String> get values => [enUs, tr];
+}
+
 class $AssetsAppIconGen {
   const $AssetsAppIconGen();
 
@@ -304,6 +317,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
+  static const $LocalesGen locales = $LocalesGen();
 }
 
 class AssetGenImage {

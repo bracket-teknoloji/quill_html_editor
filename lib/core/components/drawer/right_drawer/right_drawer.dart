@@ -38,7 +38,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Assets.lotties.personLottie.lottie(height: height * 0.2),
                   Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
-                  Text(loc(context).main.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
+                  Text(loc(context).rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +48,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       else
                         const SizedBox(),
                       Text(
-                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? "Yetkili Kullanıcı",
+                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc(context).rightDrawer.yetkiliKullanici,
                         style: CacheManager.getAnaVeri!.userModel?.admin == "E"
                             ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
                             : theme.textTheme.bodySmall,
@@ -111,7 +111,12 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             children: [
                               // Icon(Icons.rule_s)
                               IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                              Text("Şirket Değiştir", style: theme.textTheme.bodySmall),
+                              Text(
+                                loc(context).rightDrawer.changeCompany,
+                                style: theme.textTheme.bodySmall,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ],
                           ),
                         ),
@@ -137,7 +142,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                              Text("Çıkış", style: theme.textTheme.bodySmall),
+                              Text(loc(context).rightDrawer.exit, style: theme.textTheme.bodySmall),
                             ],
                           ),
                         ),

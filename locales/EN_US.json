@@ -1,7 +1,10 @@
 {
-  "main": {
+  "rightDrawer": {
     "sample": "Example",
     "save": "Save",
-    "profile": "Profile"
+    "profile": "Profile",
+    "yetkiliKullanici": "Executive User",
+    "exit": "Exit",
+    "changeCompany": "Change Company"
   }
 }

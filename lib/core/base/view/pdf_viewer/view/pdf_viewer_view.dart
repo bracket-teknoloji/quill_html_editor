@@ -84,50 +84,47 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
           //     },
           //     icon: const Icon(Icons.more_vert_outlined)),
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
-          child: AppBarPreferedSizedBottom(
-            children: [
-              if (widget.filterBottomSheet != null)
-                AppBarButton(
-                  icon: Icons.filter_alt_outlined,
-                  onPressed: () async {
-                    final bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
+        bottom: AppBarPreferedSizedBottom(
+          children: [
+            if (widget.filterBottomSheet != null)
+              AppBarButton(
+                icon: Icons.filter_alt_outlined,
+                onPressed: () async {
+                  final bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
 
-                    if (result) {
-                      await getData();
-                    }
-                  },
-                  child: const Text("Filtrele"),
-                )
-              else
-                null,
-              AppBarButton(
-                icon: Icons.print_outlined,
-                child: const Text("Yazdır"),
-                onPressed: () async {
-                  final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
-                  await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
-                },
-              ),
-              AppBarButton(
-                icon: Icons.picture_as_pdf_outlined,
-                child: const Text("PDF Görüntüle"),
-                onPressed: () async {
-                  if (await getFile != null) {
-                    await OpenFile.open((await getFile)!.path);
+                  if (result) {
+                    await getData();
                   }
                 },
-              ),
-              // AppBarButton(
-              //     icon: Icons.mail_outline_outlined,
-              //     child: const Text("Mail Gönder"),
-              //     onPressed: () async {
-              //       //! EKLENECEK
-              //       await fileChecker();
-              //     }),
-            ],
-          ),
+                child: const Text("Filtrele"),
+              )
+            else
+              null,
+            AppBarButton(
+              icon: Icons.print_outlined,
+              child: const Text("Yazdır"),
+              onPressed: () async {
+                final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
+                await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
+              },
+            ),
+            AppBarButton(
+              icon: Icons.picture_as_pdf_outlined,
+              child: const Text("PDF Görüntüle"),
+              onPressed: () async {
+                if (await getFile != null) {
+                  await OpenFile.open((await getFile)!.path);
+                }
+              },
+            ),
+            // AppBarButton(
+            //     icon: Icons.mail_outline_outlined,
+            //     child: const Text("Mail Gönder"),
+            //     onPressed: () async {
+            //       //! EKLENECEK
+            //       await fileChecker();
+            //     }),
+          ],
         ),
       );
 

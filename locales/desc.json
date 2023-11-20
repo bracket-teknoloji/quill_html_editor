@@ -1,7 +1,10 @@
 {
-  "main": {
+  "rightDrawer": {
     "sample": "This is sample description",
     "save": "Use to save document",
-    "profile": "profil"
+    "profile": "profil",
+    "yetkiliKullanici": "Yetkili Kullancı",
+    "exit": "Çıkış yapma butonu",
+    "changeCompany": "Şirket değiştirme butonu"
   }
 }

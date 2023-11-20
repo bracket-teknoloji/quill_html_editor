@@ -4,9 +4,7 @@ import "package:flutter/services.dart" show rootBundle;
 
 class LocaleBase {
   late Map<String, dynamic> _data;
-  late Localemain _main;
   late String _path;
-
   Future<void> load(String path) async {
     _path = path;
     final strJson = await rootBundle.loadString(path);
@@ -18,23 +16,24 @@ class LocaleBase {
 
   String getPath() => _path;
 
-  Localemain get main => _main;
+  late LocalerightDrawer _rightDrawer;
+  LocalerightDrawer get rightDrawer => _rightDrawer;
 
   void initAll() {
-    _main = Localemain(Map<String, String>.from(_data["main"]));
+    _rightDrawer = LocalerightDrawer(Map<String, String>.from(_data["rightDrawer"]));
   }
 }
 
-class Localemain {
-  Localemain(this._data);
-
+class LocalerightDrawer {
   late final Map<String, String> _data;
+  LocalerightDrawer(this._data);
 
   String getByKey(String key) => _data[key]!;
 
   String get sample => _data["sample"]!;
-
   String get save => _data["save"]!;
-
   String get profile => _data["profile"]!;
+  String get yetkiliKullanici => _data["yetkiliKullanici"]!;
+  String get exit => _data["exit"]!;
+  String get changeCompany => _data["changeCompany"]!;
 }

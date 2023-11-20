@@ -7,6 +7,7 @@ import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evrak_ekle/view/cek_senet_evrak_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view_model/cek_senet_evraklar_view_model.dart";
@@ -37,9 +38,8 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
         appBar: appBar(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            final result = await bottomSheetDialogManager.getPhoto(context);
-            if (result != null) {
-              // await viewModel.uploadEvrak(result);
+            final result = await Get.to(CekSenetEvrakEkleView(model: widget.model));
+            if (result is bool) {
               await viewModel.resetPage();
             }
           },
