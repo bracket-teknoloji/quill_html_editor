@@ -59,6 +59,16 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
     return _$deleteEvrakAsyncAction.run(() => super.deleteEvrak(model));
   }
 
+  late final _$uploadEvrakAsyncAction = AsyncAction(
+      '_CekSenetEvraklarViewModelBase.uploadEvrak',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(
+      EvraklarModel model) {
+    return _$uploadEvrakAsyncAction.run(() => super.uploadEvrak(model));
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_CekSenetEvraklarViewModelBase.getData', context: context);
 

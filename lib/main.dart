@@ -214,6 +214,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/senetMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
               GetPage(name: "/cekBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
               GetPage(name: "/senetBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
+              GetPage(name: "/cekSenetEvraklari", page: ()=> CekSenetEvraklarView(model: Get.arguments)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
@@ -235,7 +236,6 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
               GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
               GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
-              GetPage(name: "/cekSenetEvraklari", page: ()=> CekSenetEvraklarView(model: Get.arguments)),
 
               //* Stok
               GetPage(

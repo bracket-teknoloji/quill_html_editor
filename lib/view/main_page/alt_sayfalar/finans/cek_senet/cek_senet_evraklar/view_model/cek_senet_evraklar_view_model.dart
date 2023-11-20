@@ -29,8 +29,15 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
     setEvraklarListesi(null);
     await getData();
   }
+
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
+    final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
+    return result;
+  }
+
+    @action
+  Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(EvraklarModel model) async {
     final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
     return result;
   }

@@ -104,61 +104,78 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
       );
 
   List<BottomSheetModel?> get bottomSheetItems => [
-        BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
+        BottomSheetModel(
+          title: "Görüntüle",
+          iconWidget: Icons.preview_outlined,
+          onTap: goruntuleCekSenet,
+        ),
         BottomSheetModel(
           title: "Sil",
           iconWidget: Icons.delete_outline_outlined,
-          onTap: () async {
-            Get.back();
-            await dialogManager.showAreYouSureDialog(() async {
-              final result = await networkManager.dioPost(
-                path: ApiUrls.deleteCekSenet,
-                bodyModel: const EditFaturaModel(),
-                showLoading: true,
-                data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
-              );
-              if (result.success ?? false) {
-                dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-                widget.onUpdate?.call(result.success ?? false);
-              }
-            });
-          },
+          onTap: deleteCekSenet,
         ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
         BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
         BottomSheetModel(
           title: "Hareketler",
           iconWidget: Icons.sync_alt_outlined,
-          onTap: () {
-            Get.back();
-            return Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
-          },
+          onTap: hareketlerCekSenet,
         ).yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
         BottomSheetModel(
           title: "Evraklar",
           iconWidget: Icons.description_outlined,
-          onTap: () async {
-            Get.back();
-            await Get.toNamed("/mainPage/cekSenetEvraklari", arguments: model);
-            widget.onUpdate?.call(true);
-          },
+          onTap: evraklarCekSenet,
         ),
         BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
         BottomSheetModel(
           title: "Cari İşlemleri",
           iconWidget: Icons.person_outline_outlined,
-          onTap: () async {
-            Get.back();
-            final result = await networkManager.dioGet(
-              path: ApiUrls.getCariler,
-              bodyModel: CariListesiModel(),
-              showLoading: true,
-              queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
-            );
-
-            dialogManager.showCariGridViewDialog(result.data.first);
-          },
+          onTap: cariIslemleri,
         ),
       ];
+
+  Future<void> cariIslemleri() async {
+    Get.back();
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getCariler,
+      bodyModel: CariListesiModel(),
+      showLoading: true,
+      queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
+    );
+
+    dialogManager.showCariGridViewDialog(result.data.first);
+  }
+
+  Future<void> evraklarCekSenet() async {
+    Get.back();
+    await Get.toNamed("/mainPage/cekSenetEvraklari", arguments: model);
+    widget.onUpdate?.call(true);
+  }
+
+  Future<void> goruntuleCekSenet() async {
+    Get.back();
+    await Get.toNamed("/mainPage/cekSenetGoruntule", arguments: model);
+  }
+
+  void hareketlerCekSenet() {
+    Get.back();
+    Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
+  }
+
+  Future<void> deleteCekSenet() async {
+    Get.back();
+    await dialogManager.showAreYouSureDialog(() async {
+      final result = await networkManager.dioPost(
+        path: ApiUrls.deleteCekSenet,
+        bodyModel: const EditFaturaModel(),
+        showLoading: true,
+        data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
+      );
+      if (result.success ?? false) {
+        dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+        widget.onUpdate?.call(result.success ?? false);
+      }
+    });
+  }
 
   Future<void> showTahsilatMakbuzu() async {
     Get.back();

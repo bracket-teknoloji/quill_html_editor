@@ -921,32 +921,33 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<MemoryImage?> getPhoto(BuildContext context, String path) async{
+  Future<MemoryImage?> getPhoto(BuildContext context) async {
     final sourceType = await showBottomSheetDialog(
-        context,
-        title: "Kaynak tipi",
-        children: [
-          BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, onTap: () => Get.back(result: ImageSource.gallery)),
-          BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, onTap: () => Get.back(result: ImageSource.camera)),
-        ],
-      );
-      if (sourceType != null) {
-        final ImagePicker picker = ImagePicker();
-        final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
-        if (result != null) {
-          Uint8List? compressedImage;
-          compressedImage = await FlutterImageCompress.compressWithFile(
-            result.path,
-            format: CompressFormat.png,
-            keepExif: true,
-            numberOfRetries: 10,
-            quality: 30,
-            autoCorrectionAngle: true,
-          );
-          if (compressedImage != null) {
-            return MemoryImage(compressedImage);
-          }
+      context,
+      title: "Kaynak tipi",
+      children: [
+        BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, onTap: () => Get.back(result: ImageSource.gallery)),
+        BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, onTap: () => Get.back(result: ImageSource.camera)),
+      ],
+    );
+    if (sourceType != null) {
+      final ImagePicker picker = ImagePicker();
+      final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
+      if (result != null) {
+        Uint8List? compressedImage;
+        compressedImage = await FlutterImageCompress.compressWithFile(
+          result.path,
+          format: CompressFormat.png,
+          keepExif: true,
+          numberOfRetries: 10,
+          quality: 30,
+          autoCorrectionAngle: true,
+        );
+        if (compressedImage != null) {
+          return MemoryImage(compressedImage);
         }
       }
+    }
+    return null;
   }
 }

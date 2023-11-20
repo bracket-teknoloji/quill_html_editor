@@ -35,10 +35,16 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: appBar(),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () async {},
-        //   child: const Icon(Icons.add_outlined),
-        // ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.getPhoto(context);
+            if (result != null) {
+              // await viewModel.uploadEvrak(result);
+              await viewModel.resetPage();
+            }
+          },
+          child: const Icon(Icons.add_outlined),
+        ),
         body: body(),
       );
 
