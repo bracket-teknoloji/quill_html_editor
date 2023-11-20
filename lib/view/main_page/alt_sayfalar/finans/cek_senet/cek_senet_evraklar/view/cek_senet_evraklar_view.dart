@@ -71,10 +71,13 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
                 return Card(
                   child: ListTile(
                     contentPadding: UIHelper.midPadding,
-                    leading: SizedBox(
-                      height: UIHelper.highSize * 10,
-                      width: UIHelper.highSize * 3,
-                      child: ImageWidget(path: model.resimUrlKucuk),
+                    leading: InkWell(
+                      onTap: () => Get.to(ImageView(path: model.resimUrl)),
+                      child: SizedBox(
+                        height: UIHelper.highSize * 3,
+                        width: UIHelper.highSize * 3,
+                        child: ImageWidget(path: model.resimUrlKucuk),
+                      ),
                     ),
                     title: Text(model.aciklama ?? ""),
                     onTap: () async => await onTap(model),
@@ -98,7 +101,20 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
               return Get.to(ImageView(path: model?.resimUrl));
             },
           ),
-          BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline_outlined),
+          BottomSheetModel(
+            title: "Sil",
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: () async {
+              Get.back();
+              dialogManager.showAreYouSureDialog(() async {
+                final result = await viewModel.deleteEvrak(model!);
+                if (result.success ?? false) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+                  await viewModel.resetPage();
+                }
+              });
+            },
+          ),
         ],
       );
 }

@@ -49,12 +49,14 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
     return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
-  late final _$getImageAsyncAction =
-      AsyncAction('_CekSenetEvraklarViewModelBase.getImage', context: context);
+  late final _$deleteEvrakAsyncAction = AsyncAction(
+      '_CekSenetEvraklarViewModelBase.deleteEvrak',
+      context: context);
 
   @override
-  Future<MemoryImage?> getImage(String? path) {
-    return _$getImageAsyncAction.run(() => super.getImage(path));
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(
+      EvraklarModel model) {
+    return _$deleteEvrakAsyncAction.run(() => super.deleteEvrak(model));
   }
 
   late final _$getDataAsyncAction =

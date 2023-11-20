@@ -30,3 +30,36 @@ class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMi
   @override
   CekSenetHareketleriModel fromJson(Map<String, dynamic> json) => CekSenetHareketleriModel.fromJson(json);
 }
+
+
+extension CekSenetHareketleriExtensions on CekSenetHareketleriModel{
+  String get durumAdi {
+    switch (durum) {
+      case "B":
+        return "Bekliyor";
+      case "O":
+        return "Ödendi";
+      case "P":
+        return "Karşılıksız";
+      default:
+        return "";
+    }
+  }
+
+  String get yerAdi {
+    switch (yeri) {
+      case "P":
+        return "Portföy";
+      case "C":
+        return "Ciro";
+      case "T":
+        return "Tahsilat";
+      case "E":
+        return "Teminat";
+        case "I":
+        return "İade";
+      default:
+        return "";
+    }
+  }
+}

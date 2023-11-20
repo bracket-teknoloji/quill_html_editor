@@ -1,5 +1,7 @@
 import "package:flutter/widgets.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
@@ -27,9 +29,11 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
     setEvraklarListesi(null);
     await getData();
   }
-
   @action
-  Future<MemoryImage?> getImage(String? path) async => await networkManager.getImage(path);
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
+    final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
+    return result;
+  }
 
   @action
   Future<void> getData() async {

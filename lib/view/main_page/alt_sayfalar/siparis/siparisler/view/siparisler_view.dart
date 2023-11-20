@@ -276,7 +276,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                               icon: const Icon(Icons.more_horiz_outlined),
                             ),
                           ),
-                        ),
+                        ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Özel Kod 2",
@@ -293,7 +293,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                               icon: const Icon(Icons.more_horiz_outlined),
                             ),
                           ),
-                        ),
+                        ).yetkiVarMi(yetkiController.satisOzelKod2AktifMi),
                       ],
                     ),
                     CustomWidgetWithLabel(

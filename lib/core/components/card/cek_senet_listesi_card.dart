@@ -136,9 +136,10 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         BottomSheetModel(
           title: "Evraklar",
           iconWidget: Icons.description_outlined,
-          onTap: () {
+          onTap: () async {
             Get.back();
-            return Get.toNamed("/mainPage/cekSenetEvraklari", arguments: model);
+            await Get.toNamed("/mainPage/cekSenetEvraklari", arguments: model);
+            widget.onUpdate?.call(true);
           },
         ),
         BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),

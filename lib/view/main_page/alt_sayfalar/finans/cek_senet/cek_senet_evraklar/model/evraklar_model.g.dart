@@ -15,6 +15,7 @@ _$EvraklarModelImpl _$$EvraklarModelImplFromJson(Map<String, dynamic> json) =>
       resimUrl: json['RESIM_URL'] as String?,
       resimUrlKucuk: json['RESIM_URL_KUCUK'] as String?,
       boyutByte: json['BOYUT_BYTE'] as int?,
+      islemKodu: json['ISLEM_KODU'] as int?,
     );
 
 Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) {
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) {
   writeNotNull('RESIM_URL', instance.resimUrl);
   writeNotNull('RESIM_URL_KUCUK', instance.resimUrlKucuk);
   writeNotNull('BOYUT_BYTE', instance.boyutByte);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
   return val;
 }

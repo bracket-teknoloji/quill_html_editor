@@ -51,7 +51,10 @@ class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(model.belgeNo ?? ""),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
+                        ),
                         Text(model.hesapKodu ?? ""),
                         Text(model.islemAdi ?? ""),
                       ],
@@ -59,9 +62,9 @@ class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
                     subtitle: LayoutBuilder(
                       builder: (context, constraints) => Wrap(
                         children: [
-                          Text("Yeri: ${model.yeri ?? ""}"),
-                          Text("Durumu: ${model.durum ?? ""}"),
-                          Text("Kayıt Yapan Kul: ${model.kayityapankul ?? ""}"),
+                          Text("Yeri:\n${model.yerAdi}"),
+                          Text("Durumu:\n${model.durumAdi}"),
+                          Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
                         ]
                             .map(
                               (e) => SizedBox(
@@ -72,7 +75,6 @@ class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
                             .toList(),
                       ),
                     ),
-                    trailing: Text(model.tarih.toDateString),
                   ),
                 );
               }

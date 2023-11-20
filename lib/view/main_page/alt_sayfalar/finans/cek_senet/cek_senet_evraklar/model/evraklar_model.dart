@@ -15,9 +15,18 @@ class EvraklarModel with _$EvraklarModel, NetworkManagerMixin {
     String? resimUrl,
     String? resimUrlKucuk,
     int? boyutByte,
+    int? islemKodu,
   }) = _EvraklarModel;
 
   factory EvraklarModel.fromJson(Map<String, dynamic> json) => _$EvraklarModelFromJson(json);
+
+  factory EvraklarModel.forDelete(EvraklarModel model) => EvraklarModel(
+        belgeNo: model.belgeNo,
+        id: model.id,
+        boyutByte: model.boyutByte,
+        belgeTipi: model.belgeTipi,
+        islemKodu: 2,
+      );
 
   @override
   EvraklarModel fromJson(Map<String, dynamic> json) => _$EvraklarModelFromJson(json);

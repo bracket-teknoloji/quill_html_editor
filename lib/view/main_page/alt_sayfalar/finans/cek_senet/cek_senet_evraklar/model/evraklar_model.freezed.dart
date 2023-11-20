@@ -34,6 +34,8 @@ mixin _$EvraklarModel {
   set resimUrlKucuk(String? value) => throw _privateConstructorUsedError;
   int? get boyutByte => throw _privateConstructorUsedError;
   set boyutByte(int? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,8 @@ abstract class $EvraklarModelCopyWith<$Res> {
       String? belgeTipi,
       String? resimUrl,
       String? resimUrlKucuk,
-      int? boyutByte});
+      int? boyutByte,
+      int? islemKodu});
 }
 
 /// @nodoc
@@ -77,6 +80,7 @@ class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel>
     Object? resimUrl = freezed,
     Object? resimUrlKucuk = freezed,
     Object? boyutByte = freezed,
+    Object? islemKodu = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -107,6 +111,10 @@ class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel>
           ? _value.boyutByte
           : boyutByte // ignore: cast_nullable_to_non_nullable
               as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -126,7 +134,8 @@ abstract class _$$EvraklarModelImplCopyWith<$Res>
       String? belgeTipi,
       String? resimUrl,
       String? resimUrlKucuk,
-      int? boyutByte});
+      int? boyutByte,
+      int? islemKodu});
 }
 
 /// @nodoc
@@ -147,6 +156,7 @@ class __$$EvraklarModelImplCopyWithImpl<$Res>
     Object? resimUrl = freezed,
     Object? resimUrlKucuk = freezed,
     Object? boyutByte = freezed,
+    Object? islemKodu = freezed,
   }) {
     return _then(_$EvraklarModelImpl(
       id: freezed == id
@@ -177,6 +187,10 @@ class __$$EvraklarModelImplCopyWithImpl<$Res>
           ? _value.boyutByte
           : boyutByte // ignore: cast_nullable_to_non_nullable
               as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -191,7 +205,8 @@ class _$EvraklarModelImpl extends _EvraklarModel {
       this.belgeTipi,
       this.resimUrl,
       this.resimUrlKucuk,
-      this.boyutByte})
+      this.boyutByte,
+      this.islemKodu})
       : super._();
 
   factory _$EvraklarModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -211,6 +226,8 @@ class _$EvraklarModelImpl extends _EvraklarModel {
   String? resimUrlKucuk;
   @override
   int? boyutByte;
+  @override
+  int? islemKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +251,8 @@ abstract class _EvraklarModel extends EvraklarModel {
       String? belgeTipi,
       String? resimUrl,
       String? resimUrlKucuk,
-      int? boyutByte}) = _$EvraklarModelImpl;
+      int? boyutByte,
+      int? islemKodu}) = _$EvraklarModelImpl;
   _EvraklarModel._() : super._();
 
   factory _EvraklarModel.fromJson(Map<String, dynamic> json) =
@@ -261,6 +279,9 @@ abstract class _EvraklarModel extends EvraklarModel {
   @override
   int? get boyutByte;
   set boyutByte(int? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
   @override
   @JsonKey(ignore: true)
   _$$EvraklarModelImplCopyWith<_$EvraklarModelImpl> get copyWith =>

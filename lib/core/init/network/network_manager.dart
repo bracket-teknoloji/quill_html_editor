@@ -16,6 +16,8 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
+import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
+import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 // import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 // import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 import "package:uuid/uuid.dart";
@@ -69,15 +71,15 @@ class NetworkManager {
         },
       ),
     );
-    // dio.interceptors.add(
-    //   TalkerDioLogger(
-    //     settings: const TalkerDioLoggerSettings(
-    //       printResponseMessage: true,
-    //       // printRequestHeaders: ,
-    //       printResponseData: false,
-    //     ),
-    //   ),
-    // );
+    dio.interceptors.add(
+      TalkerDioLogger(
+        settings: const TalkerDioLoggerSettings(
+          printResponseMessage: true,
+          printResponseData: false,
+          printRequestData: false,
+        ),
+      ),
+    );
   }
 
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
