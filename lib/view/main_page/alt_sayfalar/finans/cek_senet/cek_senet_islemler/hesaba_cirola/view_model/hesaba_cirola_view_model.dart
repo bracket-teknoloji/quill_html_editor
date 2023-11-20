@@ -7,13 +7,13 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 
-part "cari_hesaba_cirola_view_model.g.dart";
+part "hesaba_cirola_view_model.g.dart";
 
-class CariHesabaCirolaViewModel = _CariHesabaCirolaViewModelBase with _$CariHesabaCirolaViewModel;
+class HesabaCirolaViewModel = _HesabaCirolaViewModelBase with _$HesabaCirolaViewModel;
 
-abstract class _CariHesabaCirolaViewModelBase with Store, MobxNetworkMixin {
+abstract class _HesabaCirolaViewModelBase with Store, MobxNetworkMixin {
   @observable
-  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 4, yeniKayit: true, tag: "CekSenetBordroModel", pickerTahsilatTuru: "CHC");
+  SaveCekSenetModel model = SaveCekSenetModel(islemKodu: 4, tag: "CekSenetBordroModel", pickerTahsilatTuru: "CHC");
 
   @observable
   CariListesiModel? cariListesiModel;
@@ -24,11 +24,16 @@ abstract class _CariHesabaCirolaViewModelBase with Store, MobxNetworkMixin {
   @action
   void setIslemTarihi(DateTime? value) => model = model.copyWith(tarih: value.dateTimeWithoutTime);
 
+  //? Eğer Cari Hesabına ise bu
   @action
   void setCariKodu(CariListesiModel? value) {
     model = model.copyWith(verilenKodu: value?.cariKodu);
     cariListesiModel = value;
   }
+
+  //? Eğer Tahsil Hesabına ise bu çalışacak. Sayfada enum ile parametreye bağlandı.
+  @action
+  void setTahsilHesabi(String? value) => model = model.copyWith(verilenKodu: value);
 
   @action
   void setProjekodu(String? value) => model = model.copyWith(projeKodu: value);

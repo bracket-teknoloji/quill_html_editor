@@ -5,25 +5,29 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/cirola_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/cari_hesaba_cirola/view_model/cari_hesaba_cirola_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/hesaba_cirola/view_model/hesaba_cirola_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 import "package:uuid/uuid.dart";
 
-class CariHesabaCirolaView extends StatefulWidget {
+class HesabaCirolaView extends StatefulWidget {
   final CekSenetListesiModel model;
-  const CariHesabaCirolaView({super.key, required this.model});
+  final CirolaEnum cirolaEnum;
+  const HesabaCirolaView({super.key, required this.model, required this.cirolaEnum});
 
   @override
-  State<CariHesabaCirolaView> createState() => _CariHesabaCirolaViewState();
+  State<HesabaCirolaView> createState() => _HesabaCirolaViewState();
 }
 
-class _CariHesabaCirolaViewState extends BaseState<CariHesabaCirolaView> {
-  CariHesabaCirolaViewModel viewModel = CariHesabaCirolaViewModel();
+class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
+  HesabaCirolaViewModel viewModel = HesabaCirolaViewModel();
   CekSenetListesiModel get model => widget.model;
   late final TextEditingController _belgeNoController;
   late final TextEditingController _islemTarihiController;
@@ -35,14 +39,20 @@ class _CariHesabaCirolaViewState extends BaseState<CariHesabaCirolaView> {
   @override
   void initState() {
     viewModel.model.belgeTipi = model.belgeTipi;
+    viewModel.model.pickerTahsilatTuru = widget.cirolaEnum.belgeTipi;
     viewModel.setBelgeNo(model.belgeNo);
-    viewModel.setIslemTarihi(DateTime.now());
-    viewModel.setCariKodu(CariListesiModel(cariAdi: model.cariAdi, cariKodu: model.cariKodu));
+    viewModel.setIslemTarihi((model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih : DateTime.now());
     viewModel.setProjekodu(model.projeKodu);
     viewModel.setPlasiyerKodu(model.plasiyerKodu);
+    if (widget.cirolaEnum == CirolaEnum.cari) {
+      viewModel.setCariKodu(CariListesiModel(cariAdi: model.cariAdi, cariKodu: model.cariKodu));
+      _cariController = TextEditingController(text: model.cariAdi);
+    } else {
+      viewModel.setTahsilHesabi(model.verilenKodu);
+      _cariController = TextEditingController(text: model.verilenAdi);
+    }
     _belgeNoController = TextEditingController(text: model.belgeNo);
-    _islemTarihiController = TextEditingController(text: DateTime.now().toDateString);
-    _cariController = TextEditingController(text: model.cariAdi);
+    _islemTarihiController = TextEditingController(text: (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih.toDateString : DateTime.now().toDateString);
     _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerKodu);
     super.initState();
@@ -62,7 +72,7 @@ class _CariHesabaCirolaViewState extends BaseState<CariHesabaCirolaView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: "Cari Hesaba Cirola",
+            title: widget.cirolaEnum.name,
             subtitle: model.belgeNo ?? "",
           ),
           actions: [
@@ -108,7 +118,16 @@ class _CariHesabaCirolaViewState extends BaseState<CariHesabaCirolaView> {
                   suffix: IconButton(onPressed: getCariIslemler, icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
                   onTap: setCari,
-                ),
+                ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.cari),
+                CustomTextField(
+                  labelText: "Tahsil Hesabı",
+                  controller: _cariController,
+                  isMust: true,
+                  readOnly: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
+                  onTap: getTahsilHesabi,
+                ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.tahsil),
                 CustomTextField(
                   labelText: "Proje",
                   controller: _projeController,
@@ -154,6 +173,22 @@ class _CariHesabaCirolaViewState extends BaseState<CariHesabaCirolaView> {
       dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
     } else {
       dialogManager.showInfoSnackBar("Cari seçiniz");
+    }
+  }
+
+  Future<void> getTahsilHesabi() async {
+    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+      context,
+      BankaListesiRequestModel(
+        arrHesapTipi: "[5]",
+        belgeTipi: viewModel.model.pickerTahsilatTuru,
+        menuKodu: "YONE_BHRE",
+      ),
+      viewModel.model.verilenKodu,
+    );
+    if (result is BankaListesiModel) {
+      _cariController.text = result.bankaAdi ?? "";
+      viewModel.setTahsilHesabi(result.hesapKodu);
     }
   }
 

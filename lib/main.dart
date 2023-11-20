@@ -10,10 +10,11 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/cirola_enum.dart";
 import "package:picker/locale_delegate.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view/cek_senet_evraklar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_goruntule/view/cek_senet_goruntule_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/cari_hesaba_cirola/view/cari_hesaba_cirola_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/hesaba_cirola/view/hesaba_cirola_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -224,7 +225,8 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/senetBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
               GetPage(name: "/cekSenetEvraklari", page: () => CekSenetEvraklarView(model: Get.arguments)),
               GetPage(name: "/cekSenetGoruntule", page: () => CekSenetGoruntuleView(model: Get.arguments)),
-              GetPage(name: "/cariHesabaCirola", page: () => CariHesabaCirolaView(model: Get.arguments)),
+              GetPage(name: "/cariHesabaCirola", page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.cari)),
+              GetPage(name: "/tahsilHesabaCirola", page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.tahsil)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

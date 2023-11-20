@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cari_hesaba_cirola_view_model.dart';
+part of 'hesaba_cirola_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'cari_hesaba_cirola_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$CariHesabaCirolaViewModel on _CariHesabaCirolaViewModelBase, Store {
+mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
   late final _$modelAtom =
-      Atom(name: '_CariHesabaCirolaViewModelBase.model', context: context);
+      Atom(name: '_HesabaCirolaViewModelBase.model', context: context);
 
   @override
   SaveCekSenetModel get model {
@@ -26,8 +26,7 @@ mixin _$CariHesabaCirolaViewModel on _CariHesabaCirolaViewModelBase, Store {
   }
 
   late final _$cariListesiModelAtom = Atom(
-      name: '_CariHesabaCirolaViewModelBase.cariListesiModel',
-      context: context);
+      name: '_HesabaCirolaViewModelBase.cariListesiModel', context: context);
 
   @override
   CariListesiModel? get cariListesiModel {
@@ -43,69 +42,79 @@ mixin _$CariHesabaCirolaViewModel on _CariHesabaCirolaViewModelBase, Store {
   }
 
   late final _$saveDataAsyncAction =
-      AsyncAction('_CariHesabaCirolaViewModelBase.saveData', context: context);
+      AsyncAction('_HesabaCirolaViewModelBase.saveData', context: context);
 
   @override
   Future<GenericResponseModel<NetworkManagerMixin>> saveData() {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 
-  late final _$_CariHesabaCirolaViewModelBaseActionController =
-      ActionController(
-          name: '_CariHesabaCirolaViewModelBase', context: context);
+  late final _$_HesabaCirolaViewModelBaseActionController =
+      ActionController(name: '_HesabaCirolaViewModelBase', context: context);
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_CariHesabaCirolaViewModelBaseActionController
-        .startAction(name: '_CariHesabaCirolaViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setBelgeNo');
     try {
       return super.setBelgeNo(value);
     } finally {
-      _$_CariHesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setIslemTarihi(DateTime? value) {
-    final _$actionInfo = _$_CariHesabaCirolaViewModelBaseActionController
-        .startAction(name: '_CariHesabaCirolaViewModelBase.setIslemTarihi');
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setIslemTarihi');
     try {
       return super.setIslemTarihi(value);
     } finally {
-      _$_CariHesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_CariHesabaCirolaViewModelBaseActionController
-        .startAction(name: '_CariHesabaCirolaViewModelBase.setCariKodu');
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
     } finally {
-      _$_CariHesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTahsilHesabi(String? value) {
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setTahsilHesabi');
+    try {
+      return super.setTahsilHesabi(value);
+    } finally {
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setProjekodu(String? value) {
-    final _$actionInfo = _$_CariHesabaCirolaViewModelBaseActionController
-        .startAction(name: '_CariHesabaCirolaViewModelBase.setProjekodu');
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setProjekodu');
     try {
       return super.setProjekodu(value);
     } finally {
-      _$_CariHesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   void setPlasiyerKodu(String? value) {
-    final _$actionInfo = _$_CariHesabaCirolaViewModelBaseActionController
-        .startAction(name: '_CariHesabaCirolaViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_HesabaCirolaViewModelBaseActionController
+        .startAction(name: '_HesabaCirolaViewModelBase.setPlasiyerKodu');
     try {
       return super.setPlasiyerKodu(value);
     } finally {
-      _$_CariHesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
+      _$_HesabaCirolaViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
