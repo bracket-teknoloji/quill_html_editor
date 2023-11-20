@@ -18,7 +18,7 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
           ?.map(
               (e) => CekSenetKalemlerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      pickerTahsilatTuru: json['PICKER_TAHSILAT_TURU'] as String?,
+      pickerTahsilatTuru: json['PickerTahsilatTuru'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       tag: json['TAG'] as String?,
       tarih: json['TARIH'] == null
@@ -26,6 +26,8 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
           : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['_YeniKayit'] as bool?,
       projeKodu: json['PROJE_KODU'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      verilenKodu: json['VERILEN_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
@@ -44,12 +46,14 @@ Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
   writeNotNull('GUID', instance.guid);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
-  writeNotNull('PICKER_TAHSILAT_TURU', instance.pickerTahsilatTuru);
+  writeNotNull('PickerTahsilatTuru', instance.pickerTahsilatTuru);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('_YeniKayit', instance.yeniKayit);
   writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('VERILEN_KODU', instance.verilenKodu);
   return val;
 }
 

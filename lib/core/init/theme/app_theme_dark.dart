@@ -1,7 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:get/get_utils/src/platform/platform.dart";
+import "package:get/get.dart";
 import "package:google_fonts/google_fonts.dart";
 
 import "../../constants/ui_helper/ui_helper.dart";
@@ -54,7 +54,10 @@ class AppThemeDark extends AppTheme {
             .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
             .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
-        bottomAppBarTheme: BottomAppBarTheme(elevation: 0, surfaceTintColor: colorManager.shadow),
+        bottomAppBarTheme: BottomAppBarTheme(
+          elevation: 0,
+          surfaceTintColor: colorManager.shadow,
+        ),
         tooltipTheme: TooltipThemeData(
           decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))),
           textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),

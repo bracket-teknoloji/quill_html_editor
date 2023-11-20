@@ -34,7 +34,9 @@ mixin _$SaveCekSenetModel {
       throw _privateConstructorUsedError;
   set kalemler(List<CekSenetKalemlerModel>? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: "PickerTahsilatTuru")
   String? get pickerTahsilatTuru => throw _privateConstructorUsedError;
+  @JsonKey(name: "PickerTahsilatTuru")
   set pickerTahsilatTuru(String? value) => throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
@@ -48,6 +50,10 @@ mixin _$SaveCekSenetModel {
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
   set projeKodu(String? value) => throw _privateConstructorUsedError;
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
+  String? get verilenKodu => throw _privateConstructorUsedError;
+  set verilenKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,12 +74,14 @@ abstract class $SaveCekSenetModelCopyWith<$Res> {
       String? guid,
       int? islemKodu,
       List<CekSenetKalemlerModel>? kalemler,
-      String? pickerTahsilatTuru,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      String? projeKodu});
+      String? projeKodu,
+      String? belgeNo,
+      String? verilenKodu});
 }
 
 /// @nodoc
@@ -101,6 +109,8 @@ class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel>
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
     Object? projeKodu = freezed,
+    Object? belgeNo = freezed,
+    Object? verilenKodu = freezed,
   }) {
     return _then(_value.copyWith(
       belgeTipi: freezed == belgeTipi
@@ -151,6 +161,14 @@ class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel>
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verilenKodu: freezed == verilenKodu
+          ? _value.verilenKodu
+          : verilenKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -170,12 +188,14 @@ abstract class _$$SaveCekSenetModelImplCopyWith<$Res>
       String? guid,
       int? islemKodu,
       List<CekSenetKalemlerModel>? kalemler,
-      String? pickerTahsilatTuru,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      String? projeKodu});
+      String? projeKodu,
+      String? belgeNo,
+      String? verilenKodu});
 }
 
 /// @nodoc
@@ -201,6 +221,8 @@ class __$$SaveCekSenetModelImplCopyWithImpl<$Res>
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
     Object? projeKodu = freezed,
+    Object? belgeNo = freezed,
+    Object? verilenKodu = freezed,
   }) {
     return _then(_$SaveCekSenetModelImpl(
       belgeTipi: freezed == belgeTipi
@@ -251,6 +273,14 @@ class __$$SaveCekSenetModelImplCopyWithImpl<$Res>
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      verilenKodu: freezed == verilenKodu
+          ? _value.verilenKodu
+          : verilenKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -265,12 +295,14 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
       this.guid,
       this.islemKodu,
       this.kalemler,
-      this.pickerTahsilatTuru,
+      @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru,
       this.plasiyerKodu,
       this.tag,
       this.tarih,
       @JsonKey(name: "_YeniKayit") this.yeniKayit,
-      this.projeKodu})
+      this.projeKodu,
+      this.belgeNo,
+      this.verilenKodu})
       : super._();
 
   factory _$SaveCekSenetModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -289,6 +321,7 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
   @override
   List<CekSenetKalemlerModel>? kalemler;
   @override
+  @JsonKey(name: "PickerTahsilatTuru")
   String? pickerTahsilatTuru;
   @override
   String? plasiyerKodu;
@@ -301,6 +334,10 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
   bool? yeniKayit;
   @override
   String? projeKodu;
+  @override
+  String? belgeNo;
+  @override
+  String? verilenKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -325,12 +362,14 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
       String? guid,
       int? islemKodu,
       List<CekSenetKalemlerModel>? kalemler,
-      String? pickerTahsilatTuru,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
       String? plasiyerKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
-      String? projeKodu}) = _$SaveCekSenetModelImpl;
+      String? projeKodu,
+      String? belgeNo,
+      String? verilenKodu}) = _$SaveCekSenetModelImpl;
   _SaveCekSenetModel._() : super._();
 
   factory _SaveCekSenetModel.fromJson(Map<String, dynamic> json) =
@@ -355,7 +394,9 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
   List<CekSenetKalemlerModel>? get kalemler;
   set kalemler(List<CekSenetKalemlerModel>? value);
   @override
+  @JsonKey(name: "PickerTahsilatTuru")
   String? get pickerTahsilatTuru;
+  @JsonKey(name: "PickerTahsilatTuru")
   set pickerTahsilatTuru(String? value);
   @override
   String? get plasiyerKodu;
@@ -374,6 +415,12 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
   @override
   String? get projeKodu;
   set projeKodu(String? value);
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
+  @override
+  String? get verilenKodu;
+  set verilenKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith =>

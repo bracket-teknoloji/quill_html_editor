@@ -40,6 +40,9 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
+          onLongPress: () async {
+            dialogManager.showCekSenetGridViewDialog(model);
+          },
           onTap: () async {
             await bottomSheetDialogManager.showBottomSheetDialog(
               context,
@@ -79,6 +82,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
               LayoutBuilder(
                 builder: (context, constraints) => Wrap(
                   children: [
+                    Text("Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}").yetkiVarMi(model.dovizTutari != null),
                     Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                     Text("İşlem Tarihi: ${model.tarih.toDateString}"),
                     Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
@@ -97,6 +101,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                       .nullCheckWithGeneric,
                 ),
               ),
+              Text("${model.getCekBankaAdi} ${model.getCekSubeAdi}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.getCekBankaAdi != null || model.getCekSubeAdi != null),
               Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),
             ],
           ),
@@ -114,7 +119,14 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           iconWidget: Icons.delete_outline_outlined,
           onTap: deleteCekSenet,
         ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
-        BottomSheetModel(title: "İşlemler", iconWidget: Icons.list_alt_outlined),
+        BottomSheetModel(
+          title: "İşlemler",
+          iconWidget: Icons.list_alt_outlined,
+          onTap: () {
+            Get.back();
+            dialogManager.showCekSenetGridViewDialog(model);
+          },
+        ),
         BottomSheetModel(
           title: "Hareketler",
           iconWidget: Icons.sync_alt_outlined,

@@ -15,12 +15,14 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
     String? guid,
     int? islemKodu,
     List<CekSenetKalemlerModel>? kalemler,
-    String? pickerTahsilatTuru,
+    @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
     String? plasiyerKodu,
     String? tag,
     DateTime? tarih,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
     String? projeKodu,
+    String? belgeNo,
+    String? verilenKodu,
   }) = _SaveCekSenetModel;
 
   factory SaveCekSenetModel.fromJson(Map<String, dynamic> json) => _$SaveCekSenetModelFromJson(json);
