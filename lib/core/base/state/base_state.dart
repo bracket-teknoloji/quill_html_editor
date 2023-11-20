@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/generated/locale_base.dart";
 
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
@@ -21,4 +22,5 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   double get width => MediaQuery.sizeOf(context).width;
   double get height => MediaQuery.sizeOf(context).height;
   ThemeData get theme => Theme.of(context);
+  LocaleBase loc(BuildContext context) => Localizations.of<LocaleBase>(context, LocaleBase)!;
 }

@@ -38,7 +38,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Assets.lotties.personLottie.lottie(height: height * 0.2),
                   Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
-                  Text("Profil", style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
+                  Text(loc(context).main.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

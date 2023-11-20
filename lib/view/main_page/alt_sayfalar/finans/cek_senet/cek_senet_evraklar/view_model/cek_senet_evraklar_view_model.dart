@@ -1,4 +1,3 @@
-import "package:flutter/widgets.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";

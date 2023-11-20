@@ -160,11 +160,13 @@ flutter:
     - assets/lotties/
     - assets/icons/
     - assets/app_icon/
+    - locales/EN_US.json
+    - locales/TR.json
     # - shorebird.yaml
 
 
 flutter_gen:
-  output: lib/core/gen/ # Optional (default: lib/gen/)
+  output: lib/core/gen/ # Optional (defaults to lib/flutter_gen)
 
   # Optional
   integrations:

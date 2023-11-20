@@ -10,6 +10,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/locale_delegate.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view/cek_senet_evraklar_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -132,7 +133,12 @@ class PickerApp extends StatelessWidget {
         locale: Get.deviceLocale,
         fallbackLocale: const Locale("en"),
         supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
-        localizationsDelegates: const <LocalizationsDelegate>[GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate, GlobalMaterialLocalizations.delegate],
+        localizationsDelegates: const <LocalizationsDelegate>[
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          LocDelegate(),
+        ],
         scrollBehavior: const MaterialScrollBehavior()
             .copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown, PointerDeviceKind.trackpad}),
         opaqueRoute: false,
@@ -214,7 +220,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/senetMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
               GetPage(name: "/cekBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
               GetPage(name: "/senetBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
-              GetPage(name: "/cekSenetEvraklari", page: ()=> CekSenetEvraklarView(model: Get.arguments)),
+              GetPage(name: "/cekSenetEvraklari", page: () => CekSenetEvraklarView(model: Get.arguments)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

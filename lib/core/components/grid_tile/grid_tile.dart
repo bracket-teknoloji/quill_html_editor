@@ -104,13 +104,17 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
           footer: (widget.menuTipi == "S" && widget.altMenuler.ext.isNotNullOrEmpty) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox(),
           child: widget.menuTipi == "I"
               ? Center(
-                  child: Text(
-                    widget.title ?? "",
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: true,
-                    style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
+                  child: Container(
+                    margin: UIHelper.lowPaddingHorizontal,
+                    child: Text(
+                      widget.title ?? "",
+                      textAlign: TextAlign.center,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: true,
+                      
+                      style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
+                    ),
                   ),
                 )
               : Column(
