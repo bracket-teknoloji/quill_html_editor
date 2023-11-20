@@ -132,19 +132,17 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       title: item.title.toString(),
                       onTap: () {
                         if (item.altMenuVarMi) {
-                          item.altMenuler?.length == 1
-                              ? item.altMenuler?.first.onTap?.call()
-                              : setState(() {
-                                  lastItems.add(items);
-                                  title2.add(item.title.toString());
-                                  items = item.altMenuler!.where((element) {
-                                    element.color ??= item.color;
-                                    if (element.icon.ext.isNullOrEmpty) {
-                                      element.icon = item.icon;
-                                    }
-                                    return element.yetkiKontrol;
-                                  }).toList();
-                                });
+                          setState(() {
+                            lastItems.add(items);
+                            title2.add(item.title.toString());
+                            items = item.altMenuler!.where((element) {
+                              element.color ??= item.color;
+                              if (element.icon.ext.isNullOrEmpty) {
+                                element.icon = item.icon;
+                              }
+                              return element.yetkiKontrol;
+                            }).toList();
+                          });
                         } else {
                           items[index].onTap?.call();
                         }

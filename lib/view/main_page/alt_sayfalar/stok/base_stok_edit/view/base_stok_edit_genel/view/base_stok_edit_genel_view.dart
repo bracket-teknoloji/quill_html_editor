@@ -11,6 +11,7 @@ import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -206,7 +207,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                           icon: const Icon(Icons.add),
                         ),
                         //TODO resim göstermeyi ekleyince aç
-                      ),
+                      ).yetkiVarMi(false),
                       Expanded(
                         flex: 4,
                         child: CustomTextField(
