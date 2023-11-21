@@ -488,6 +488,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
     if (result != null) {
       _bankaController.text = result.bankaadi ?? "";
       viewModel.setBanka(result.bankakodu);
+      await getSube();
     }
   }
 

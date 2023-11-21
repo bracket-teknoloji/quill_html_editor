@@ -77,7 +77,9 @@ class BottomSheetDialogManager {
                     if (value == "") {
                       children = children2;
                     }
-                    children = children!.where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase())).toList();
+                    children = children!
+                        .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
+                        .toList();
                   },
                 ).paddingAll(UIHelper.midSize)
               else
@@ -133,8 +135,9 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel?>? children, required Object? groupValue}) async {
+  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
+    viewModel.setUnFilteredList(children);
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,
@@ -144,82 +147,92 @@ class BottomSheetDialogManager {
       useSafeArea: true,
       isScrollControlled: true,
       builder: (BuildContext context) => SafeArea(
-        child: Wrap(
-          children: <Widget>[
-            ListTile(
-              contentPadding: UIHelper.lowPadding,
-              title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-              trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-              splashColor: Colors.transparent,
-            ).paddingSymmetric(vertical: UIHelper.midSize),
-            const Divider(
-              thickness: 2,
-              endIndent: 0,
-              indent: 0,
-            ),
-            if (body == null)
-              if (children.ext.isNotNullOrEmpty)
-                SizedBox(
-                  // if children are not fit to screen, it will be scrollable
-                  height: children!.length * 50 < Get.height * 0.8 ? children.length * 50 : Get.height * 0.8,
-                  child: Column(
-                    children: <Widget>[
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: SafeArea(
-                            child: Wrap(
-                              children: <Widget>[
-                                ...List.generate(
-                                  children.length,
-                                  (int index) => Wrap(
-                                    children: [
-                                      RadioListTile(
-                                        toggleable: true,
-                                        activeColor: UIHelper.primaryColor,
-                                        onChanged: (dynamic value) {
-                                          if (children?[index]?.onTap != null) {
-                                            children?[index]?.onTap!();
-                                          } else {
-                                            Get.back(result: children![index]?.value);
-                                          }
-                                        },
-                                        value: children?[index]?.groupValue ?? "",
-                                        groupValue: groupValue,
-                                        title: Text(children![index]!.title),
-                                        subtitle: children[index]?.description != null
-                                            ? Text(children[index]!.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
-                                            : null,
-                                      ),
-                                      if (index != children.length - 1)
-                                        Padding(
-                                          padding: UIHelper.lowPaddingVertical,
-                                          child: const Divider(),
-                                        )
-                                      else
-                                        Container(),
-                                    ],
-                                  ),
+        child: Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Observer(
+            builder: (_) => Wrap(
+              children: <Widget>[
+                ListTile(
+                  contentPadding: UIHelper.lowPadding,
+                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                  splashColor: Colors.transparent,
+                ).paddingSymmetric(vertical: UIHelper.midSize),
+                const Divider(
+                  thickness: 2,
+                  endIndent: 0,
+                  indent: 0,
+                ),
+                if ((children?.length ?? 0) > 15)
+                  TextField(
+                    decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+                    onChanged: viewModel.changeSearchValue,
+                  ).paddingAll(UIHelper.midSize),
+                if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
+                  SizedBox(
+                    // if viewModel.getFilteredList are not fit to screen, it will be scrollable
+                    height: viewModel.getFilteredList!.length * 50 < Get.height * 0.8 ? (viewModel.getFilteredList?.length ?? 0) * 50 : Get.height * 0.8,
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: SafeArea(
+                              child: Observer(
+                                builder: (_) => Column(
+                                  children: [
+                                    Wrap(
+                                      children: <Widget>[
+                                        ...List.generate(
+                                          viewModel.getFilteredList!.length,
+                                          (int index) => Observer(
+                                            builder: (_) => Wrap(
+                                              children: [
+                                                RadioListTile(
+                                                  toggleable: true,
+                                                  activeColor: UIHelper.primaryColor,
+                                                  onChanged: (dynamic value) {
+                                                    if (viewModel.getFilteredList?[index].onTap != null) {
+                                                      viewModel.getFilteredList?[index].onTap!();
+                                                    } else {
+                                                      Get.back(result: viewModel.getFilteredList![index].value);
+                                                    }
+                                                  },
+                                                  value: viewModel.getFilteredList?[index].groupValue ?? "",
+                                                  groupValue: groupValue,
+                                                  title: Text(viewModel.getFilteredList![index].title),
+                                                  subtitle: viewModel.getFilteredList![index].description != null
+                                                      ? Text(viewModel.getFilteredList![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
+                                                      : null,
+                                                ),
+                                                if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
+                                                  Padding(
+                                                    padding: UIHelper.lowPaddingVertical,
+                                                    child: const Divider(),
+                                                  )
+                                                else
+                                                  Container(),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ).paddingOnly(bottom: UIHelper.midSize),
+                                  ],
                                 ),
-                              ],
-                            ).paddingOnly(bottom: UIHelper.midSize),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              else
-                Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize))
-            else
-              WillPopScope(
-                child: SingleChildScrollView(child: body),
-                onWillPop: () async {
-                  final Widget result = body;
-                  Get.back(result: result);
-                  return true;
-                },
-              ),
-          ],
+                      ],
+                    ),
+                  )
+                else
+                  Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize)),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -337,15 +350,7 @@ class BottomSheetDialogManager {
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children: CacheManager.getAnaVeri?.paramModel?.depoList
-            ?.map(
-              (DepoList e) => BottomSheetModel(
-                title: e.depoTanimi ?? "",
-                value: e,
-                groupValue: e.depoKodu,
-              ),
-            )
-            .toList(),
+        children: CacheManager.getAnaVeri?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e, groupValue: e.depoKodu)).toList(),
       );
 
   Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async {
@@ -387,7 +392,7 @@ class BottomSheetDialogManager {
         context,
         title: "Tipi seç",
         groupValue: groupValue,
-        children: <BottomSheetModel?>[
+        children: <BottomSheetModel>[
           BottomSheetModel(title: "Alıcı", value: "A", groupValue: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
           BottomSheetModel(title: "Satıcı", value: "S", groupValue: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
           BottomSheetModel(title: "Toptancı", value: "T", groupValue: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),

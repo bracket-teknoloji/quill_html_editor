@@ -68,7 +68,7 @@ import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_hareketleri/view/
 import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/view/cek_senet_listesi_view.dart";
 import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilat_ekle/view/cek_senet_tahsilat_ekle_view.dart";
 import "view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/view/cek_senet_tahsilati_view.dart";
-import "view/main_page/alt_sayfalar/finans/dekontlar/view/kasa_dekontlar_view.dart";
+import "view/main_page/alt_sayfalar/finans/dekontlar/view/dekontlar_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view/kredi_karti_tahsilati_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/muhtelif_odeme/view/muhtelif_odeme_view.dart";
 import "view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view/nakit_odeme_view.dart";
@@ -206,11 +206,13 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
               GetPage(name: "/kasaHareketDetayi", page: () => KasaHareketDetayiView(cariListesiModel: Get.arguments)),
               GetPage(name: "/kasaListesi", page: KasaListesiView.new),
-              GetPage(name: "/kasaDekontlari", page: KasaDekontlarView.new),
               GetPage(name: "/kasaIslemleri", page: KasaIslemleriView.new),
               GetPage(name: "/kasaTransferi", page: KasaTransferiView.new),
               GetPage(name: "/kasaKasaEkstreRaporu", page: KasaEkstreRaporuView.new),
 
+              //* * Dekontlar
+              GetPage(name: "/dekontlarListesi", page: DekontlarView.new),
+              
               //* * Çek-Senet
               GetPage(name: "/musteriCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
               GetPage(name: "/musteriSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),

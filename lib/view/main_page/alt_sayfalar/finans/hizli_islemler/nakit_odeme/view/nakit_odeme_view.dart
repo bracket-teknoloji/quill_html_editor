@@ -69,8 +69,10 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
         viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
+        if (viewModel.model.cariKodu == null) return;
       }
       await getKasa();
+      if (viewModel.model.kasaKodu == null) return;
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
       viewModel.setTarih(DateTime.now().dateTimeWithoutTime);

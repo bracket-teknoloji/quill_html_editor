@@ -9,6 +9,13 @@ part of 'bottom_sheet_state_manager.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
+  Computed<List<BottomSheetModel>?>? _$getFilteredListComputed;
+
+  @override
+  List<BottomSheetModel>? get getFilteredList => (_$getFilteredListComputed ??=
+          Computed<List<BottomSheetModel>?>(() => super.getFilteredList,
+              name: '_BottomSheetStateManagerBase.getFilteredList'))
+      .value;
   Computed<ObservableList<String>?>? _$getKodControllerTextComputed;
 
   @override
@@ -65,6 +72,38 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   set muhasebeKoduList(ObservableList<StokMuhasebeKoduModel>? value) {
     _$muhasebeKoduListAtom.reportWrite(value, super.muhasebeKoduList, () {
       super.muhasebeKoduList = value;
+    });
+  }
+
+  late final _$unFilteredListAtom = Atom(
+      name: '_BottomSheetStateManagerBase.unFilteredList', context: context);
+
+  @override
+  ObservableList<BottomSheetModel>? get unFilteredList {
+    _$unFilteredListAtom.reportRead();
+    return super.unFilteredList;
+  }
+
+  @override
+  set unFilteredList(ObservableList<BottomSheetModel>? value) {
+    _$unFilteredListAtom.reportWrite(value, super.unFilteredList, () {
+      super.unFilteredList = value;
+    });
+  }
+
+  late final _$searchValueAtom =
+      Atom(name: '_BottomSheetStateManagerBase.searchValue', context: context);
+
+  @override
+  String? get searchValue {
+    _$searchValueAtom.reportRead();
+    return super.searchValue;
+  }
+
+  @override
+  set searchValue(String? value) {
+    _$searchValueAtom.reportWrite(value, super.searchValue, () {
+      super.searchValue = value;
     });
   }
 
@@ -331,6 +370,28 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   }
 
   @override
+  void setUnFilteredList(List<BottomSheetModel>? value) {
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.setUnFilteredList');
+    try {
+      return super.setUnFilteredList(value);
+    } finally {
+      _$_BottomSheetStateManagerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeSearchValue(String value) {
+    final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
+        .startAction(name: '_BottomSheetStateManagerBase.changeSearchValue');
+    try {
+      return super.changeSearchValue(value);
+    } finally {
+      _$_BottomSheetStateManagerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeRadioGroupValue(String value) {
     final _$actionInfo =
         _$_BottomSheetStateManagerBaseActionController.startAction(
@@ -541,6 +602,8 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
 grupKoduList: ${grupKoduList},
 filteredGrupKoduList: ${filteredGrupKoduList},
 muhasebeKoduList: ${muhasebeKoduList},
+unFilteredList: ${unFilteredList},
+searchValue: ${searchValue},
 radioGroupValue: ${radioGroupValue},
 cariTipi: ${cariTipi},
 sehir: ${sehir},
@@ -555,6 +618,7 @@ kod5: ${kod5},
 aramaList: ${aramaList},
 isSelectedListMap: ${isSelectedListMap},
 kodControllerText: ${kodControllerText},
+getFilteredList: ${getFilteredList},
 getKodControllerText: ${getKodControllerText}
     ''';
   }

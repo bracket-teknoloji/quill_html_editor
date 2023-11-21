@@ -63,8 +63,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      while (viewModel.model.kktYontemi == null) {
-        await tahsilatYontemiDialog();
+      await tahsilatYontemiDialog();
+      if (viewModel.model.kktYontemi == null) {
+        Get.back();
+        return;
       }
       if (widget.cariListesiModel != null) {
         viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
@@ -72,19 +74,24 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
+        if (viewModel.model.cariKodu == null) return;
       }
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
+        if (viewModel.model.dekontSeri == null) return;
         // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
+        if (viewModel.model.hesapKodu == null) return;
       }
       if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H") {
         viewModel.setHesapTipi("C");
         await viewModel.getSiradakiKod();
         await getKasa();
+        if (viewModel.model.kasaKodu == null) return;
       }
       if (viewModel.model.kktYontemi == "H") {
         await getBankaSozlesmesi();
+        if (viewModel.model.sozlesmeKodu == null) return;
       }
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
       viewModel.setTarih(DateTime.now().dateTimeWithoutTime);

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../../../../base/model/base_grup_kodu_model.dart";
@@ -27,6 +28,27 @@ abstract class _BottomSheetStateManagerBase with Store {
   @action
   void changeMuhasebeKoduList(List<StokMuhasebeKoduModel> value) {
     muhasebeKoduList = value.asObservable();
+  }
+
+  @observable
+  ObservableList<BottomSheetModel>? unFilteredList;
+
+  @observable
+  String? searchValue;
+
+  @action
+  void setUnFilteredList(List<BottomSheetModel>? value) {
+    unFilteredList = value?.asObservable();
+  }
+
+  @computed
+  List<BottomSheetModel>? get getFilteredList => unFilteredList
+      ?.where((element) => element.title.toLowerCase().contains(searchValue?.toLowerCase() ?? "") || (element.description?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? false))
+      .toList();
+
+  @action
+  void changeSearchValue(String value) {
+    searchValue = value;
   }
 
   @observable

@@ -68,10 +68,12 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getKasa();
+      if (viewModel.model.kasaKodu == null) return;
       if (viewModel.model.dovizTipi != null) {
         await getDovizDialog();
       }
       await getMuhKodu();
+      if (viewModel.model.hesapKodu == null) return;
       // await getSeri();
 
       // viewModel.setPickerBelgeTuru("KKT");
