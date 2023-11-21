@@ -24,7 +24,8 @@ import "../view_model/cek_senet_tahsilati_view_model.dart";
 
 class CekSenetTahsilatiView extends StatefulWidget {
   final CekSenetListesiEnum cekSenetListesiEnum;
-  const CekSenetTahsilatiView({super.key, required this.cekSenetListesiEnum});
+  final CariListesiModel? cariListesiModel;
+  const CekSenetTahsilatiView({super.key, required this.cekSenetListesiEnum, this.cariListesiModel});
 
   @override
   State<CekSenetTahsilatiView> createState() => _CekSenetTahsilatiViewState();
@@ -48,7 +49,14 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       viewModel.model.belgeTipi = widget.cekSenetListesiEnum.belgeTipi;
       viewModel.setGirisTarihi(DateTime.now());
-      await getCari();
+      if (widget.cariListesiModel != null) {
+        viewModel.setCariKodu(widget.cariListesiModel!);
+        _cariController.text = widget.cariListesiModel!.cariAdi ?? "";
+        viewModel.setPlasiyerKodu(widget.cariListesiModel!.plasiyerKodu);
+        _plasiyerController.text = widget.cariListesiModel!.plasiyerAciklama ?? "";
+      } else {
+        await getCari();
+      }
     });
     super.initState();
   }

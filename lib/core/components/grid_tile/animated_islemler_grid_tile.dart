@@ -33,7 +33,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
         child: GridTile(
           footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (widget.iconWidget == null)
@@ -56,7 +56,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
               ),
               // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
             ],
-          ),
+          ).marginOnly(top: UIHelper.highSize),
         ),
       );
 }

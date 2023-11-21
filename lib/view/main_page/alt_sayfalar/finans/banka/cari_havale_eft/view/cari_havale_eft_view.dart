@@ -19,7 +19,8 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_havale_eft_view_model.dart";
 
 class CariHavaleEftView extends StatefulWidget {
-  const CariHavaleEftView({super.key});
+  final CariListesiModel? cariListesiModel;
+  const CariHavaleEftView({super.key, this.cariListesiModel});
 
   @override
   State<CariHavaleEftView> createState() => _CariHavaleEftViewState();
@@ -71,7 +72,12 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await getHesapListesi();
-      await getCari();
+      if (widget.cariListesiModel != null) {
+        viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
+        _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
+      } else {
+        await getCari();
+      }
     });
     super.initState();
   }

@@ -58,6 +58,14 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
+        islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
+        islemlerList.add(nakitTahsilat(model));
+        islemlerList.add(nakitOdeme(model));
+        islemlerList.add(krediKartiTahsilati(model));
+        islemlerList.add(borcCeki);
+        islemlerList.add(borcSenedi);
+        islemlerList.add(cekTahsilati);
+        islemlerList.add(tahsilatSenedi);
         islemlerList.add(paylas);
         islemlerList.add(kopyala);
         islemlerList.add(cariHareketleri);
@@ -93,7 +101,7 @@ class IslemlerMenuItemConstants<T> {
       if (model != null) {
         islemlerList.add(bankaHareketleri);
       }
-      islemlerList.add(bankaCariEFTHavale);
+      islemlerList.add(bankaCariEFTHavale());
       islemlerList.add(bankaKasaTransferi);
       islemlerList.add(hesaplarArasiVirman);
       islemlerList.add(hesaplarArasiEftHavale);
@@ -319,20 +327,20 @@ class IslemlerMenuItemConstants<T> {
         title: "Paylaş",
         iconData: Icons.share_outlined,
         onTap: () async {
+          final CariListesiModel newModel = model as CariListesiModel;
           final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
             context,
             title: "Paylaş",
             groupValues: List.generate(7, (index) => true),
             children: [
-              BottomSheetModel(title: "Ünvan", value: (model as CariListesiModel).cariAdi, groupValue: true).yetkiKontrol((model as CariListesiModel).cariAdi != null),
-              BottomSheetModel(title: "Adres", value: (model as CariListesiModel).cariAdres, groupValue: true).yetkiKontrol((model as CariListesiModel).cariAdres != null),
-              BottomSheetModel(title: "İl/ İlçe", value: "${(model as CariListesiModel).cariIl ?? ""} / ${(model as CariListesiModel).cariIlce ?? ""}", groupValue: true)
-                  .yetkiKontrol((model as CariListesiModel).cariIl != null || (model as CariListesiModel).cariIlce != null),
-              BottomSheetModel(title: "Vergi Bilgileri", value: "${(model as CariListesiModel).vergiDairesi ?? ""} ${(model as CariListesiModel).vergiNumarasi ?? ""}", groupValue: true)
-                  .yetkiKontrol((model as CariListesiModel).vergiDairesi != null || (model as CariListesiModel).vergiNumarasi != null),
-              BottomSheetModel(title: "Telefon", value: (model as CariListesiModel).cariTel, groupValue: true).yetkiKontrol((model as CariListesiModel).cariTel != null),
-              BottomSheetModel(title: "Web Sitesi", value: (model as CariListesiModel).web, groupValue: true).yetkiKontrol((model as CariListesiModel).web != null),
-              BottomSheetModel(title: "Mail", value: (model as CariListesiModel).email, groupValue: true).yetkiKontrol((model as CariListesiModel).email != null),
+              BottomSheetModel(title: "Ünvan", value: newModel.cariAdi, groupValue: true).yetkiKontrol(newModel.cariAdi != null),
+              BottomSheetModel(title: "Adres", value: newModel.cariAdres, groupValue: true).yetkiKontrol(newModel.cariAdres != null),
+              BottomSheetModel(title: "İl/ İlçe", value: "${newModel.cariIl ?? ""} / ${newModel.cariIlce ?? ""}", groupValue: true).yetkiKontrol(newModel.cariIl != null || newModel.cariIlce != null),
+              BottomSheetModel(title: "Vergi Bilgileri", value: "${newModel.vergiDairesi ?? ""} ${newModel.vergiNumarasi ?? ""}", groupValue: true)
+                  .yetkiKontrol(newModel.vergiDairesi != null || newModel.vergiNumarasi != null),
+              BottomSheetModel(title: "Telefon", value: newModel.cariTel, groupValue: true).yetkiKontrol(newModel.cariTel != null),
+              BottomSheetModel(title: "Web Sitesi", value: newModel.web, groupValue: true).yetkiKontrol(newModel.web != null),
+              BottomSheetModel(title: "Mail", value: newModel.email, groupValue: true).yetkiKontrol(newModel.email != null),
             ].nullCheckWithGeneric,
           );
           if ((result as List?).ext.isNotNullOrEmpty) {
@@ -440,8 +448,17 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
+  GridItemModel? get borcCeki => GridItemModel.islemler(title: "Borç Çeki", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cekBorcTahsilat", arguments: model));
+  GridItemModel? get borcSenedi =>
+      GridItemModel.islemler(title: "Borç Senedi", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model));
+  GridItemModel? get cekTahsilati =>
+      GridItemModel.islemler(title: "Senet tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/senetMusteriTahsilat", arguments: model));
+  GridItemModel? get tahsilatSenedi =>
+      GridItemModel.islemler(title: "Çek Tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cekMusteriTahsilat", arguments: model));
+
   //* Banka
-  GridItemModel? get bankaCariEFTHavale => GridItemModel.islemler(title: "Cari EFT/Havale", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale"));
+  GridItemModel? bankaCariEFTHavale({CariListesiModel? model}) =>
+      GridItemModel.islemler(title: "Cari EFT/Havale", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale", arguments: model));
   GridItemModel? get bankaHareketleri =>
       GridItemModel.islemler(title: "Banka Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaHareketleri", arguments: model));
 
