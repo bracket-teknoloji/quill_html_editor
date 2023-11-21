@@ -3,6 +3,9 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -97,8 +100,13 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(bankaMuhtelifTahsilat);
       islemlerList.add(bnkaMuhtelifOdeme);
     } else if (islemtipi == IslemTipiEnum.cekSenet) {
-      islemlerList.add(cariHesabaCirola);
-      islemlerList.add(tahsilHesabaCirola);
+      if ((model as CekSenetListesiModel).cekSenetListesiEnum.borcMu) {
+        //TODO Ödeme Dekontu Oluştur Ekle
+      } else {
+        islemlerList.add(cariHesabaCirola);
+        islemlerList.add(tahsilHesabaCirola);
+      }
+      islemlerList.add(kasaTahsilEt);
     }
   }
 
@@ -465,4 +473,9 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Cari Hesaba Cirola", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/cariHesabaCirola", arguments: model));
   GridItemModel? get tahsilHesabaCirola =>
       GridItemModel.islemler(title: "Tahsil Hesaba Cirola", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/tahsilHesabaCirola", arguments: model));
+  GridItemModel? get kasaTahsilEt => GridItemModel.islemler(
+        title: (model as CekSenetListesiModel).cekSenetListesiEnum.borcMu ? "Kasadan Öde" : "Kasa Tahsil Et",
+        iconData: Icons.add_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/kasadanTahsilEt", arguments: model),
+      );
 }

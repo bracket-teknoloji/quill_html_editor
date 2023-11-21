@@ -28,6 +28,14 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
       projeKodu: json['PROJE_KODU'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       verilenKodu: json['VERILEN_KODU'] as String?,
+      aciklama: json['ACIKLAMA'] as String?,
+      ceksenNo: json['CEKSEN_NO'] as String?,
+      gc: json['GC'] as String?,
+      kasaKodu: json['KASA_KODU'] as String?,
+      pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
+      refKod: json['REF_KOD'] as String?,
+      tahsilatmi: json['TAHSILATMI'] as bool?,
+      tutar: (json['TUTAR'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
@@ -54,6 +62,14 @@ Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('VERILEN_KODU', instance.verilenKodu);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('CEKSEN_NO', instance.ceksenNo);
+  writeNotNull('GC', instance.gc);
+  writeNotNull('KASA_KODU', instance.kasaKodu);
+  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
+  writeNotNull('REF_KOD', instance.refKod);
+  writeNotNull('TAHSILATMI', instance.tahsilatmi);
+  writeNotNull('TUTAR', instance.tutar);
   return val;
 }
 

@@ -12,6 +12,7 @@ import "package:picker/core/base/model/base_bottom_sheet_response_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
@@ -779,6 +780,29 @@ class BottomSheetDialogManager {
                 description: e.subekodu ?? "",
                 value: e,
                 groupValue: e.subekodu,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
+  Future<MuhasebeReferansModel?> showReferansKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final result = await NetworkManager().dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    if (result.data is List) {
+      final List<MuhasebeReferansModel> list = result.data.map((e) => e as MuhasebeReferansModel).toList().cast<MuhasebeReferansModel>();
+      return await showRadioBottomSheetDialog(
+        context,
+        title: "Referans Kod Seçiniz",
+        groupValue: groupValue,
+        children: list
+            .map(
+              (MuhasebeReferansModel e) => BottomSheetModel(
+                title: e.tanimi ?? "",
+                description: e.kodu ?? "",
+                value: e,
+                groupValue: e.kodu,
               ),
             )
             .toList(),

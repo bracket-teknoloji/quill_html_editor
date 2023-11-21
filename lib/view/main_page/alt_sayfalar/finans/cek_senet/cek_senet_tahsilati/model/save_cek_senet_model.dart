@@ -1,4 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:get/get.dart";
+import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -23,9 +26,29 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
     String? projeKodu,
     String? belgeNo,
     String? verilenKodu,
+    String? aciklama,
+    String? ceksenNo,
+    String? gc,
+    String? kasaKodu,
+    @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
+    String? refKod,
+    bool? tahsilatmi,
+    double? tutar,
   }) = _SaveCekSenetModel;
 
   factory SaveCekSenetModel.fromJson(Map<String, dynamic> json) => _$SaveCekSenetModelFromJson(json);
+
+  factory SaveCekSenetModel.fromCekSenetListesiModel(CekSenetListesiModel model) => SaveCekSenetModel(
+        cariKodu: model.cariKodu,
+        plasiyerKodu: model.plasiyerKodu,
+        tarih: model.tarih,
+        yeniKayit: true,
+        tag: "TahsilatModel",
+        projeKodu: model.projeKodu,
+        ceksenNo: model.belgeNo,
+        pickerBelgeTuru: model.belgeTipi,
+        tutar: model.tutar,
+      );
 
   @override
   SaveCekSenetModel fromJson(Map<String, dynamic> json) => SaveCekSenetModel.fromJson(json);
@@ -77,4 +100,12 @@ extension CekSenetExtensions on CekSenetKalemlerModel {
   bool get ciroMu => ciroTipi == "C";
 
   bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
+}
+
+extension CekSenetExtensions2 on CekSenetListesiModel {
+  CekSenetListesiEnum get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhere((element) => element.belgeTipi == belgeTipi);
+}
+
+extension CekSenetExtensions3 on SaveCekSenetModel {
+  CekSenetListesiEnum? get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == pickerBelgeTuru);
 }
