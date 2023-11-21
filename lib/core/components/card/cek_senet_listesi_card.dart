@@ -41,14 +41,20 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   Widget build(BuildContext context) => Card(
         child: ListTile(
           onLongPress: () async {
-            dialogManager.showCekSenetGridViewDialog(model);
+            final result = await dialogManager.showCekSenetGridViewDialog(model);
+            if (result != null) {
+              widget.onUpdate?.call(true);
+            }
           },
           onTap: () async {
-            await bottomSheetDialogManager.showBottomSheetDialog(
+            final result = await bottomSheetDialogManager.showBottomSheetDialog(
               context,
               title: model.belgeNo ?? "",
               children: bottomSheetItems.where((element) => element?.onTap != null).toList().nullCheckWithGeneric,
             );
+            if (result != null) {
+              widget.onUpdate?.call(true);
+            }
           },
           title: Column(
             mainAxisAlignment: MainAxisAlignment.start,

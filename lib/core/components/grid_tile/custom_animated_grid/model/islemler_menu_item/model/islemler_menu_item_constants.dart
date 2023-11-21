@@ -101,7 +101,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(bnkaMuhtelifOdeme);
     } else if (islemtipi == IslemTipiEnum.cekSenet) {
       if ((model as CekSenetListesiModel).cekSenetListesiEnum.borcMu) {
-        //TODO Ödeme Dekontu Oluştur Ekle
+        islemlerList.add(odemeDekontOlustur);
       } else {
         islemlerList.add(cariHesabaCirola);
         islemlerList.add(tahsilHesabaCirola);
@@ -469,6 +469,8 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Kasa Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/kasaHareketleri", arguments: model));
 
   //* Çek Senet
+  GridItemModel? get odemeDekontOlustur =>
+      GridItemModel.islemler(title: "Ödeme Dekont Oluştur", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/odemeDekontOlustur", arguments: model));
   GridItemModel? get cariHesabaCirola =>
       GridItemModel.islemler(title: "Cari Hesaba Cirola", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/cariHesabaCirola", arguments: model));
   GridItemModel? get tahsilHesabaCirola =>

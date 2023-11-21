@@ -16,6 +16,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_ev
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_goruntule/view/cek_senet_goruntule_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/hesaba_cirola/view/hesaba_cirola_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/kasadan_tahsil_et/view/kasadan_tahsil_et_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/odeme_dekontu_olustur/view/odeme_dekontu_olustur_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -229,6 +230,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariHesabaCirola", page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.cari)),
               GetPage(name: "/tahsilHesabaCirola", page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.tahsil)),
               GetPage(name: "/kasadanTahsilEt", page: () => KasadanTahsilEtView(model: Get.arguments)),
+              GetPage(name: "/odemeDekontOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

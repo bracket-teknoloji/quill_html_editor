@@ -13,6 +13,7 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
+import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
@@ -803,6 +804,29 @@ class BottomSheetDialogManager {
                 description: e.kodu ?? "",
                 value: e,
                 groupValue: e.kodu,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
+  Future<SeriModel?> showSeriKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final result = await NetworkManager().dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel(), showLoading: true);
+    if (result.data is List) {
+      final List<SeriModel> list = result.data.map((e) => e as SeriModel).toList().cast<SeriModel>();
+      return await showRadioBottomSheetDialog(
+        context,
+        title: "Seri Kod Seçiniz",
+        groupValue: groupValue,
+        children: list
+            .map(
+              (SeriModel e) => BottomSheetModel(
+                title: e.aciklama ?? "",
+                description: e.seriNo ?? "",
+                value: e,
+                groupValue: e.seriNo,
               ),
             )
             .toList(),

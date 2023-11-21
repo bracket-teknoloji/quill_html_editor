@@ -170,7 +170,7 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-        void showCekSenetGridViewDialog(CekSenetListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+        Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, [IslemTipiEnum? tip]) async => await _baseDialog(
         body: CustomAnimatedGridView<CekSenetListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cekSenet, title: model?.cariAdi ?? model?.cariKodu),
         onOk: () {},
         btnOkText: "İptal",

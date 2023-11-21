@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 import "base_network_mixin.dart";
 
@@ -54,6 +55,13 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   }) = _TahsilatRequestModel;
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
+
+  factory TahsilatRequestModel.fromCekSenetListesiModel(CekSenetListesiModel model) => TahsilatRequestModel(
+        belgeNo: model.belgeNo,
+        plasiyerKodu: model.plasiyerKodu,
+        tarih: model.tarih,
+        projeKodu: model.projeKodu,
+      );
 
   @override
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
