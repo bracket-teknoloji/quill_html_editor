@@ -2,9 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/components/card/dekontlar_card.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
@@ -64,7 +62,7 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
 
   AppBar appBar() => AppBar(
         title: Observer(
-          builder: (_) => AppBarTitle(title: "Dekontlar", subtitle: "(${viewModel.dekontListesi?.length ?? 0})"),
+          builder: (_) => AppBarTitle(title: "Dekontlar", subtitle: "${viewModel.dekontListesi?.length ?? 0}"),
         ),
       );
 
@@ -105,32 +103,7 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
                   );
                 } else {
                   final DekontListesiModel model = viewModel.dekontListesi![index];
-                  return Card(
-                    child: ListTile(
-                      onTap: () {},
-                      title: Row(
-                        children: [
-                          Text("${model.seri}-${model.dekontNo}"),
-                          const Spacer(),
-                          Text(model.tarih.toDateString),
-                        ],
-                      ),
-                      subtitle: LayoutBuilder(
-                        builder: (context, constraints) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(model.seriAdi ?? ""),
-                            Wrap(
-                              children: [
-                                Text("Tutar:\n${(model.borcToplami ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                                Text("Kalem Sayısı:\n${model.kalemSayisi ?? "0"}"),
-                              ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                  return DekontlarCard(model: model);
                 }
               },
             );

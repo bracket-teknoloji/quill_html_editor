@@ -22,3 +22,7 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
   @override
   DekontListesiModel fromJson(Map<String, dynamic> json) => DekontListesiModel.fromJson(json);
 }
+
+extension DekontListesiExtensions on DekontListesiModel {
+  String get title => "$seri-$dekontNo";
+}
