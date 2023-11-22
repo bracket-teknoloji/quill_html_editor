@@ -75,8 +75,8 @@ class _LoginViewState extends BaseState<LoginView> {
             ),
             Scaffold(
               // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-              floatingActionButton: !context.general.isKeyBoardOpen ? Text("V ${AppInfoModel.instance.version}") : null,
-              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
+              floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
+              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
               primary: true,
               backgroundColor: Colors.transparent,
               extendBodyBehindAppBar: true,
@@ -84,6 +84,17 @@ class _LoginViewState extends BaseState<LoginView> {
             ),
           ],
         ),
+      );
+
+  Widget fab() => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text("V ${AppInfoModel.instance.version}"),
+          InkWell(
+            onTap: () => Get.toNamed("/mainPage/surumYenilikleri"),
+            child: Text("Sürüm Yenilikleri", style: TextStyle(color: theme.colorScheme.primary)),
+          ),
+        ],
       );
 
   Center body(BuildContext context) => Center(
