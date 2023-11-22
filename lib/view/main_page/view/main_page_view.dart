@@ -126,6 +126,10 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       // title: item.title.toString(),
                       onTap: () {
                         if (item.altMenuVarMi) {
+                          if (item.altMenuler?.length == 1) {
+                            item.altMenuler?.first.onTap?.call();
+                            return;
+                          }
                           setState(() {
                             lastItems.add(items);
                             title2.add(item.title.toString());

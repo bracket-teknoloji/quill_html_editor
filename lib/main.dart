@@ -195,7 +195,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/bankaListesi", page: BankaListesiView.new),
               GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
               GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
-              GetPage(name: "/cariEFTHavale", page:()=> CariHavaleEftView(cariListesiModel: Get.arguments)),
+              GetPage(name: "/cariEFTHavale", page: () => CariHavaleEftView(cariListesiModel: Get.arguments)),
               GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
               GetPage(name: "/hesaplarArasiVirman", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman)),
               GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),
@@ -212,17 +212,17 @@ class PickerApp extends StatelessWidget {
 
               //* * Dekontlar
               GetPage(name: "/dekontlarListesi", page: DekontlarView.new),
-              
+
               //* * Çek-Senet
               GetPage(name: "/musteriCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
               GetPage(name: "/musteriSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
               GetPage(name: "/borcCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
               GetPage(name: "/borcSenetleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
               GetPage(name: "/cekSenetHareketleri", page: () => CekSenetHareketleriView(model: Get.arguments)),
-              GetPage(name: "/cekBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),
-              GetPage(name: "/cekMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
-              GetPage(name: "/senetBorcTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc)),
-              GetPage(name: "/senetMusteriTahsilat", page: () => const CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
+              GetPage(name: "/cekBorcTahsilat", page: () => CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekBorc, cariListesiModel: Get.arguments)),
+              GetPage(name: "/cekMusteriTahsilat", page: () => CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri, cariListesiModel: Get.arguments)),
+              GetPage(name: "/senetBorcTahsilat", page: () => CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetBorc, cariListesiModel: Get.arguments)),
+              GetPage(name: "/senetMusteriTahsilat", page: () => CekSenetTahsilatiView(cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri, cariListesiModel: Get.arguments)),
               GetPage(name: "/cekMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
               GetPage(name: "/senetMusteriTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.senetMusteri)),
               GetPage(name: "/cekBorcTahsilatEkle", page: () => CekSenetTahsilatEkleView(model: Get.arguments, cekSenetListesiEnum: CekSenetListesiEnum.cekBorc)),

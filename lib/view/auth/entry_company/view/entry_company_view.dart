@@ -300,14 +300,14 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   Future isletmeDialog(BuildContext context) async {
-    if (viewModel.isletmeList?.length == 1) {
-      isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
-      viewModel.selectedIsletme(viewModel.isletmeList?[0]);
-      // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
-      // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
-      await subeDialog(context);
-      return;
-    }
+    // if (viewModel.isletmeList?.length == 1) {
+    //   isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
+    //   viewModel.selectedIsletme(viewModel.isletmeList?[0]);
+    //   // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
+    //   // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
+    //   await subeDialog(context);
+    //   return;
+    // }
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "İşletme Seçiniz",
@@ -333,9 +333,10 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       ),
     );
     if (result is IsletmeModel) {
-      isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu ?? 0}";
+      isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu}";
       subeController.text = "";
       viewModel.selectedIsletme(result);
+      await subeDialog(context);
       // viewModel.selected["İşletme"] = result.isletmeKodu ?? 0;
       // viewModel.userData["İşletme"] = result.isletmeAdi;
       // viewModel.selected["Şube"] = null;
