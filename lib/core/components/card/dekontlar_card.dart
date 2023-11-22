@@ -1,21 +1,23 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
 class DekontlarCard extends StatefulWidget {
   final DekontListesiModel model;
-  const DekontlarCard({super.key, required this.model});
+  final ValueChanged<bool> onSelected;
+  const DekontlarCard({super.key, required this.model, required this.onSelected});
 
   @override
   State<DekontlarCard> createState() => _DekontlarCardState();
 }
 
 class _DekontlarCardState extends BaseState<DekontlarCard> {
-
   DekontListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
@@ -45,15 +47,22 @@ class _DekontlarCardState extends BaseState<DekontlarCard> {
         ),
       );
 
-  Future<void> dekontBottomSheet(DekontListesiModel? model) async {
-    await bottomSheetDialogManager.showBottomSheetDialog(
-      context,
-      title: model?.title ?? "",
-      children: [
-        BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-        BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
-        BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline),
-      ],
-    );
+  Future<void> dekontBottomSheet(DekontListesiModel? model) async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: model?.title ?? "",
+        children: [
+          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
+          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
+          BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline, onTap: deleteDekont),
+        ],
+      );
+
+  Future<void> deleteDekont() async {
+    Get.back();
+    final result = await networkManager.dioPost(path: ApiUrls.deleteDekont, showLoading: true, bodyModel: DekontListesiModel(), queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri});
+    if (result.success ?? false) {
+      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+      widget.onSelected.call(true);
+    }
   }
 }

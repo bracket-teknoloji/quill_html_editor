@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/card/dekontlar_card.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -67,8 +68,10 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
       );
 
   FloatingActionButton fab() => FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+        onPressed: () async {
+          await Get.toNamed("/mainPage/dekontEdit");
+        },
+        child: const Icon(Icons.add_outlined),
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
@@ -103,7 +106,10 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
                   );
                 } else {
                   final DekontListesiModel model = viewModel.dekontListesi![index];
-                  return DekontlarCard(model: model);
+                  return DekontlarCard(
+                    model: model,
+                    onSelected: (value) async => await viewModel.resetPage(),
+                  );
                 }
               },
             );
