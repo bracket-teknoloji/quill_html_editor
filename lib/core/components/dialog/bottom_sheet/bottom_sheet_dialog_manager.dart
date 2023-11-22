@@ -350,7 +350,9 @@ class BottomSheetDialogManager {
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children: CacheManager.getAnaVeri?.paramModel?.depoList?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", value: e, groupValue: e.depoKodu)).toList(),
+        children: CacheManager.getAnaVeri?.paramModel?.depoList
+            ?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
+            .toList(),
       );
 
   Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async {

@@ -1,10 +1,14 @@
-import "dart:developer";
-
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/genel/view/dekont_edit_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view_model/dekont_edit_view_model.dart";
 
 class DekontEditView extends StatefulWidget {
   final BaseEditEnum baseEditEnum;
@@ -14,18 +18,23 @@ class DekontEditView extends StatefulWidget {
   State<DekontEditView> createState() => _DekontEditViewState();
 }
 
-class _DekontEditViewState extends State<DekontEditView> with SingleTickerProviderStateMixin {
+class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerProviderStateMixin {
+  final DekontEditViewModel viewModel = DekontEditViewModel();
   late final TabController _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(length: tabs.length, vsync: this);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _tabController.addListener(() {
-        if (_tabController.indexIsChanging) {
-          log("Tab Changed: ${_tabController.index}");
-        }
-      });
+    SingletonDekontIslemlerRequestModel.setInstance(DekontIslemlerRequestModel());
+    if (widget.baseEditEnum == BaseEditEnum.ekle) {
+      SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
+      SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
+    }
+    _tabController = TabController(length: 2, vsync: this);
+    _tabController.addListener(() {
+      if (!SingletonDekontIslemlerRequestModel.instance.ilkSayfaTamamMi) {
+        dialogManager.showErrorSnackBar("Genel bilgileri doldurun.");
+        _tabController.animateTo(0);
+      }
     });
     super.initState();
   }
@@ -48,24 +57,62 @@ class _DekontEditViewState extends State<DekontEditView> with SingleTickerProvid
           ],
           bottom: TabBar(
             controller: _tabController,
-            tabs: tabs,
+            // onTap: (value) {
+            //   final DekontIslemlerRequestModel model = SingletonDekontIslemlerRequestModel.instance;
+            //   if (!model.ilkSayfaTamamMi) {
+            //     dialogManager.showErrorSnackBar("Genel bilgileri doldurun.");
+            //     _tabController.addListener(() {
+            //       if (_tabController.index == 1) {
+            //         log("Tab Changed: ${_tabController.index}");
+            //         _tabController.animateTo(0);
+            //       }
+            //     });
+            //   } else {
+            //     // if (_tabController.hasListeners) {
+            //     _tabController.addListener(() {
+            //       _tabController.animateTo(value);
+            //     });
+            //   }
+            // },
+            tabs: [
+              const Tab(text: "Genel"),
+              Tab(
+                child: Observer(
+                  builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),
+                ),
+              ),
+            ],
           ),
         ),
         body: TabBarView(
           controller: _tabController,
-          children: children,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            DekontEditGenelView(
+              onChanged: (value) {},
+            ),
+            DekontEditKalemlerView(
+              onChanged: viewModel.setKalemSayisi,
+            ),
+          ],
         ),
       );
 
-  IconButton get saveButton => IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined));
-
-  final List<Tab> tabs = [
-    const Tab(text: "Genel"),
-    const Tab(text: "Kalemler"),
-  ];
-
-  final List<Widget> children = [
-    const DekontEditGenelView(),
-    const DekontEditKalemlerView(),
-  ];
+  IconButton get saveButton => IconButton(
+        onPressed: () async {
+          if (SingletonDekontIslemlerRequestModel.instance.toplamAlacak != SingletonDekontIslemlerRequestModel.instance.toplamBorc) {
+            dialogManager.showErrorSnackBar("Alacak ve Borç eşit olmalıdır.");
+          } else if (SingletonDekontIslemlerRequestModel.instance.kalemler.ext.isNullOrEmpty) {
+            dialogManager.showErrorSnackBar("Kalem ekleyin.");
+            _tabController.animateTo(1);
+          } else {
+            final result = await viewModel.postData();
+            if (result.success ?? false) {
+              dialogManager.showSuccessSnackBar("İşlem Başarılı");
+              Get.back();
+            }
+          }
+        },
+        icon: const Icon(Icons.save_outlined),
+      );
 }

@@ -53,6 +53,9 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       iban: json['IBAN'] as String?,
       tcmbBankaKodu: json['TCMB_BANKA_KODU'] as String?,
       tcmbSubeKodu: json['TCMB_SUBE_KODU'] as String?,
+      kalemler: (json['KALEMLER'] as List<dynamic>?)
+          ?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -107,5 +110,51 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('IBAN', instance.iban);
   writeNotNull('TCMB_BANKA_KODU', instance.tcmbBankaKodu);
   writeNotNull('TCMB_SUBE_KODU', instance.tcmbSubeKodu);
+  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+_$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
+    _$DekontKalemlerImpl(
+      aciklama: json['ACIKLAMA'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      ba: json['BA'] as String?,
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
+      exportRefno: json['EXPORT_REFNO'] as String?,
+      exportTipi: json['EXPORT_TIPI'] as int?,
+      hesapKodu: json['HESAP_KODU'] as String?,
+      hesapTipi: json['HESAP_TIPI'] as String?,
+      plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      tutar: (json['TUTAR'] as num?)?.toDouble(),
+      depoKodu: json['DEPO_KODU'] as int?,
+    );
+
+Map<String, dynamic> _$$DekontKalemlerImplToJson(
+    _$DekontKalemlerImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('BA', instance.ba);
+  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
+  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
+  writeNotNull('EXPORT_REFNO', instance.exportRefno);
+  writeNotNull('EXPORT_TIPI', instance.exportTipi);
+  writeNotNull('HESAP_KODU', instance.hesapKodu);
+  writeNotNull('HESAP_TIPI', instance.hesapTipi);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
+  writeNotNull('TUTAR', instance.tutar);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
   return val;
 }

@@ -1,0 +1,59 @@
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
+
+part "dekont_islemler_request_model.freezed.dart";
+part "dekont_islemler_request_model.g.dart";
+
+@unfreezed
+class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManagerMixin {
+  DekontIslemlerRequestModel._();
+  // factory DekontIslemlerRequestModel.singleton();
+  factory DekontIslemlerRequestModel({
+    String? dekontIslemTuru,
+    String? dekontSeri,
+    String? guid,
+    List<DekontKalemler>? kalemler,
+    String? plasiyerKodu,
+    @Default("DekontModel") String? tag,
+    DateTime? tarih,
+    @JsonKey(name:"_YeniKayit") bool? yeniKayit,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
+  }) = _DekontIslemlerRequestModel;
+
+  factory DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) => _$DekontIslemlerRequestModelFromJson(json);
+
+  @override
+  DekontIslemlerRequestModel fromJson(Map<String, dynamic> json) => DekontIslemlerRequestModel.fromJson(json);
+}
+
+extension DekontIslemleriExtensions on DekontIslemlerRequestModel{
+  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue??0) + (previousValue??0)) ?? 0;
+
+  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue??0) + (previousValue??0)) ?? 0;
+
+  bool get ilkSayfaTamamMi => dekontSeri != null && tarih != null && plasiyerKodu != null;
+  
+}
+
+class SingletonDekontIslemlerRequestModel {
+  //create a singleton of DekontIslemlerRequestModel
+  static final DekontIslemlerRequestModel _instance = DekontIslemlerRequestModel();
+
+  static DekontIslemlerRequestModel get instance => _instance;
+
+  //setter for the singleton
+  static void setInstance(DekontIslemlerRequestModel value) {
+    _instance.dekontIslemTuru = value.dekontIslemTuru;
+    _instance.dekontSeri = value.dekontSeri;
+    _instance.guid = value.guid;
+    _instance.kalemler = value.kalemler;
+    _instance.plasiyerKodu = value.plasiyerKodu;
+    _instance.tag = value.tag;
+    _instance.tarih = value.tarih;
+    _instance.yeniKayit = value.yeniKayit;
+    _instance.seriAdi = value.seriAdi;
+    _instance.plasiyerAdi = value.plasiyerAdi;
+  }
+}

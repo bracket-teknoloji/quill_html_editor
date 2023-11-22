@@ -18,6 +18,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_go
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/hesaba_cirola/view/hesaba_cirola_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/kasadan_tahsil_et/view/kasadan_tahsil_et_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/odeme_dekontu_olustur/view/odeme_dekontu_olustur_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/dekont_kalem_ekle/view/dekont_kalem_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view/dekont_edit_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -215,6 +216,7 @@ class PickerApp extends StatelessWidget {
               //* * Dekontlar
               GetPage(name: "/dekontlarListesi", page: DekontlarView.new),
               GetPage(name: "/dekontEdit", page: () => const DekontEditView(baseEditEnum: BaseEditEnum.ekle)),
+              GetPage(name: "/dekontKalemEkle", page: () => DekontKalemEkleView(model: Get.arguments)),
 
               //* * Çek-Senet
               GetPage(name: "/musteriCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),

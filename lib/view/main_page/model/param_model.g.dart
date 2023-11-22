@@ -787,14 +787,15 @@ Map<String, dynamic> _$DepoListToJson(DepoList instance) {
   return val;
 }
 
-DovizList _$DovizListFromJson(Map<String, dynamic> json) => DovizList()
-  ..dovizKodu = json['DOVIZ_KODU'] as int?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
-  ..isim = json['ISIM'] as String?
-  ..alis = (json['ALIS'] as num?)?.toDouble()
-  ..satis = (json['SATIS'] as num?)?.toDouble()
-  ..efAlis = (json['EF_ALIS'] as num?)?.toDouble()
-  ..efSatis = (json['EF_SATIS'] as num?)?.toDouble();
+DovizList _$DovizListFromJson(Map<String, dynamic> json) => DovizList(
+      dovizKodu: json['DOVIZ_KODU'] as int?,
+      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      isim: json['ISIM'] as String?,
+      alis: (json['ALIS'] as num?)?.toDouble(),
+      satis: (json['SATIS'] as num?)?.toDouble(),
+      efAlis: (json['EF_ALIS'] as num?)?.toDouble(),
+      efSatis: (json['EF_SATIS'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$DovizListToJson(DovizList instance) {
   final val = <String, dynamic>{};

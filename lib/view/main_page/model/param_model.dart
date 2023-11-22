@@ -520,7 +520,15 @@ class DepoList {
 
 @JsonSerializable(createFactory: true)
 class DovizList {
-  DovizList();
+  DovizList({
+    this.dovizKodu,
+    this.dovizTipi,
+    this.isim,
+    this.alis,
+    this.satis,
+    this.efAlis,
+    this.efSatis,
+  });
   @JsonKey(name: "DOVIZ_KODU")
   int? dovizKodu;
   @JsonKey(name: "DOVIZ_TIPI")
@@ -535,6 +543,8 @@ class DovizList {
   double? efAlis;
   @JsonKey(name: "EF_SATIS")
   double? efSatis;
+
+  
 
   factory DovizList.fromJson(Map<String, dynamic> json) => _$DovizListFromJson(json);
 

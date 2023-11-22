@@ -52,6 +52,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? iban,
     String? tcmbBankaKodu,
     String? tcmbSubeKodu,
+    List<DekontKalemler>? kalemler,
   }) = _TahsilatRequestModel;
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
@@ -67,6 +68,61 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 }
 
+@unfreezed
+class DekontKalemler with _$DekontKalemler {
+  factory DekontKalemler({
+    String? aciklama,
+    String? belgeNo,
+    String? ba,
+    int? dovizTipi,
+    double? dovizTutari,
+    String? exportRefno,
+    int? exportTipi,
+    String? hesapKodu,
+    String? hesapTipi,
+    String? plasiyerKodu,
+    DateTime? tarih,
+    double? tutar,
+    int? depoKodu,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? plasiyerAdi,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? dovizTipiAdi,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi,
+  }) = _DekontKalemler;
+
+  factory DekontKalemler.fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
+}
+
 extension TahsilatRequestExtensions on TahsilatRequestModel {
+  bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
+}
+
+extension DekontKalemlerExtensions on DekontKalemler {
+  bool get cariMi => hesapTipi == "C";
+
+  bool get muhasebeMi => hesapTipi == "M";
+
+  bool get bankaMi => hesapTipi == "B";
+
+  bool get stokMu => hesapTipi == "S";
+
+  String get hesapAdi {
+    switch (hesapTipi) {
+      case "C":
+        return "Cari";
+      case "M":
+        return "Muhasebe";
+      case "B":
+        return "Banka";
+      case "S":
+        return "Stok";
+      default:
+        return "";
+    }
+  }
+
+  double get dovizKuru => (dovizTutari ?? 0) / (tutar ?? 1);
+
   bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
 }
