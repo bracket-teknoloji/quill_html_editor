@@ -123,7 +123,12 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            final result = await Get.toNamed("/mainPage/dekontKalemEkle", arguments: model);
+            late final dynamic result;
+            if (widget.baseEditEnum == BaseEditEnum.ekle) {
+              result = await Get.toNamed("/mainPage/dekontKalemEkle", arguments: model);
+            } else {
+              result = await Get.toNamed("/mainPage/dekontKalemEkleKisitli", arguments: model);
+            }
             if (result != null) {
               viewModel.updateKalemler(index, result);
               widget.onChanged(viewModel.kalemler?.length ?? 0);

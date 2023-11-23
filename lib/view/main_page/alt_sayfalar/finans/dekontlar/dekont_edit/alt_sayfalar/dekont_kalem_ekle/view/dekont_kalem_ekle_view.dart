@@ -6,6 +6,7 @@ import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -18,7 +19,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 class DekontKalemEkleView extends StatefulWidget {
   final DekontKalemler? model;
-  const DekontKalemEkleView({super.key, this.model});
+  final BaseEditEnum baseEditEnum;
+  const DekontKalemEkleView({super.key, this.model, required this.baseEditEnum});
 
   @override
   State<DekontKalemEkleView> createState() => _DekontKalemEkleViewState();
@@ -60,7 +62,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
     _dovizTutariController = TextEditingController(text: viewModel.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _tutarController = TextEditingController(text: viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "");
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama ?? "");
-    _exportTipiController = TextEditingController(text: viewModel.model.exportAdi ?? "");
+    _exportTipiController = TextEditingController(text: viewModel.model.exportTipi != null ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 0) - 1] : "");
     _exportRefNoController = TextEditingController(text: viewModel.model.exportRefno ?? "");
     _plasiyerController = TextEditingController(text: viewModel.model.plasiyerAdi ?? SingletonDekontIslemlerRequestModel.instance.plasiyerAdi ?? "");
 
@@ -104,6 +106,9 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                         constraints: BoxConstraints.expand(width: (constraints.maxWidth - 5) / viewModel.selectedHesapTipi.length),
                         isSelected: viewModel.selectedHesapTipi,
                         onPressed: (index) {
+                          if (widget.baseEditEnum != BaseEditEnum.ekle) {
+                            return;
+                          }
                           if (!viewModel.selectedHesapTipi[index]) {
                             _hesapController.text = "";
                             viewModel.setHesapKodu(null);
@@ -248,6 +253,12 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                           controller: _exportTipiController,
                           suffixMore: true,
                           readOnly: true,
+                          onClear: () {
+                            viewModel.model.exportAdi = null;
+                            viewModel.setExportTipi(null);
+                          },
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.exportTipi.toStringIfNotNull ?? "")),
+                          onTap: setExportTipi,
                         ),
                       ),
                       Expanded(
@@ -274,6 +285,23 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
           ),
         ),
       );
+
+  Future<void> setExportTipi() async {
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Export Tipi",
+      groupValue: viewModel.model.exportTipi,
+      children: List.generate(
+        viewModel.exportTipiList.length,
+        (index) => BottomSheetModel(title: viewModel.exportTipiList[index], description: (index + 1).toStringIfNotNull, value: index, groupValue: index + 1),
+      ),
+    );
+    if (result != null) {
+      viewModel.setExportTipi(result + 1);
+      viewModel.model.exportAdi = viewModel.exportTipiList[result];
+      _exportTipiController.text = viewModel.exportTipiList[result];
+    }
+  }
 
   Future<void> setDepo() async {
     final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model.depoKodu);

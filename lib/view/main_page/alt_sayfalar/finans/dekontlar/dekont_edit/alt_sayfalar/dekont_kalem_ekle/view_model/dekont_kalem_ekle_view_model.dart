@@ -25,6 +25,37 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
     "Alacak": "A",
   };
 
+  final List<String> exportTipiList = [
+    "Mal Bedeli",
+    "Gümrük Vergisi",
+    "Komisyon",
+    "Sigorta",
+    "Yurt içi Nakliye",
+    "Yurt dışı Nakliye",
+    "Ordino",
+    "Fonlar",
+    "Ardiye",
+    "Yükleme/Boşaltma",
+    "Mesai",
+    "Yolluk",
+    "Diğer 1",
+    "Diğer 2",
+    "Diğer 3",
+    "Diğer 4",
+    "Diğer 5",
+    "Diğer 6",
+    "Diğer 7",
+    "Diğer 8",
+    "Diğer 9",
+    "Diğer 10",
+    "Diğer 11",
+    "Diğer 12",
+    "Diğer 13",
+    "Diğer 14",
+    "Diğer 15",
+    "Diğer 16",
+  ];
+
   @observable
   late DekontKalemler model;
 

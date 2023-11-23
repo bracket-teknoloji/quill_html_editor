@@ -219,7 +219,8 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/dekontEkle", page: () => const DekontEditView(baseEditEnum: BaseEditEnum.ekle)),
               GetPage(name: "/dekontDuzenle", page: () => DekontEditView(baseEditEnum: BaseEditEnum.duzenle, model: Get.arguments)),
               GetPage(name: "/dekontGoruntule", page: () => DekontGoruntuleView(model: Get.arguments)),
-              GetPage(name: "/dekontKalemEkle", page: () => DekontKalemEkleView(model: Get.arguments)),
+              GetPage(name: "/dekontKalemEkle", page: () => DekontKalemEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),
+              GetPage(name: "/dekontKalemEkleKisitli", page: () => DekontKalemEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.duzenle)),
 
               //* * Çek-Senet
               GetPage(name: "/musteriCekleri", page: () => const CekSenetListesiView(cekSenetListesiEnum: CekSenetListesiEnum.cekMusteri)),
