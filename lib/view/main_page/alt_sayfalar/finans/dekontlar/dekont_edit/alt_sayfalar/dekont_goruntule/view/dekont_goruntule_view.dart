@@ -37,89 +37,89 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
         appBar: AppBar(
           title: const Text("Dekont Detayı"),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                padding: UIHelper.lowPadding.copyWith(top: UIHelper.lowSize / 2, bottom: UIHelper.lowSize / 2, right: UIHelper.lowSize / 2, left: UIHelper.lowSize / 2),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: UIHelper.midSize,
-                  mainAxisSpacing: UIHelper.midSize,
-                  childAspectRatio: 1.7,
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: UIHelper.lowPadding.copyWith(top: UIHelper.lowSize / 2, bottom: UIHelper.lowSize / 2, right: UIHelper.lowSize / 2, left: UIHelper.lowSize / 2),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: UIHelper.midSize,
+                mainAxisSpacing: UIHelper.midSize,
+                childAspectRatio: context.isLandscape ? 3 : 1.7,
+              ),
+              itemCount: 5,
+              itemBuilder: (context, index) => Card(
+                color: theme.colorScheme.onSecondary,
+                child: Observer(
+                  builder: (_) {
+                    if (viewModel.dekontMap?.isEmpty ?? true) {
+                      return const Center(child: CircularProgressIndicator.adaptive());
+                    }
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
+                        Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                        Text("${viewModel.dekontMap?.values.toList()[index]}").paddingAll(UIHelper.lowSize),
+                        // Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                      ],
+                    );
+                  },
                 ),
-                itemCount: 5,
-                itemBuilder: (context, index) => Card(
-                  color: theme.colorScheme.onSecondary,
+              ),
+            ),
+            const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
+            CustomWidgetWithLabel(
+              text: "İşlem Özeti",
+              child: Card(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
                   child: Observer(
-                    builder: (_) {
-                      if (viewModel.dekontMap?.isEmpty ?? true) {
-                        return const Center(child: CircularProgressIndicator.adaptive());
-                      }
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                          Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                          Text("${viewModel.dekontMap?.values.toList()[index]}").paddingAll(UIHelper.lowSize),
-                          // Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
-              const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
-              CustomWidgetWithLabel(
-                text: "İşlem Özeti",
-                child: Card(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Observer(
-                      builder: (_) => Wrap(
-                        children: List.generate(
-                          viewModel.dekontListesi.length,
-                          (index) {
-                            final item = viewModel.dekontListesi[index];
-                            return Row(
-                              children: [
-                                SizedBox(width: width / 3, child: Text(item.hesapAdi ?? "", overflow: TextOverflow.ellipsis, maxLines: 1)),
-                                if (index != viewModel.dekontListesi.length - 1)
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: UIHelper.highSize,
-                                  ),
-                                if (index != viewModel.dekontListesi.length - 1) Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                                if (index != viewModel.dekontListesi.length - 1)
-                                  Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: UIHelper.highSize,
-                                  ),
-                              ],
-                            );
-                          },
-                        ).nullCheckWithGeneric,
-                      ),
+                    builder: (_) => Wrap(
+                      children: List.generate(
+                        viewModel.dekontListesi.length,
+                        (index) {
+                          final item = viewModel.dekontListesi[index];
+                          return Row(
+                            children: [
+                              Text(item.hesapAdi ?? "", maxLines: 1),
+                              if (index != viewModel.dekontListesi.length - 1)
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: UIHelper.highSize,
+                                ),
+                              if (index != viewModel.dekontListesi.length - 1) Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                              if (index != viewModel.dekontListesi.length - 1)
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: UIHelper.highSize,
+                                ),
+                            ],
+                          ).paddingAll(UIHelper.lowSize);
+                        },
+                      ).nullCheckWithGeneric,
                     ),
-                  ).paddingAll(UIHelper.lowSize).paddingSymmetric(vertical: UIHelper.lowSize),
-                ),
+                  ),
+                ).paddingSymmetric(vertical: UIHelper.lowSize),
               ),
-              const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
-              Text(
-                "Kalemler",
-                style: theme.textTheme.titleMedium,
+            ),
+            const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
+            Observer(
+              builder: (_) => Text(
+                "Kalemler (${viewModel.dekontListesi.length})",
               ).paddingAll(UIHelper.lowSize),
-              const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
-              Observer(
+            ),
+            // const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
+            Expanded(
+              child: Observer(
                 builder: (_) => ListView.builder(
                   itemCount: viewModel.dekontListesi.length,
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     final item = viewModel.dekontListesi[index];
                     return Card(
@@ -132,8 +132,8 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                               Text("Sıra:\n${item.siraNo ?? ""}"),
                               Text("Hesap Tipi:\n${item.hesapTipi ?? ""}"),
                               Text("Hesap Kodu:\n${item.hesapKodu ?? ""}"),
-                              Text("Tutar:\n${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                              Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(item.dovizliMi),
+                              Text("Tutar:\n${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                              Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${item.dovizAdi ?? ""}").yetkiVarMi(item.dovizliMi),
                               Text("Kur:\n${item.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(item.dovizliMi),
                               Text("Plasiyer:\n${item.plasiyerAciklama ?? ""}"),
                             ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
@@ -151,9 +151,9 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                   },
                 ),
               ),
-              // CustomWidgetWithLabel(text: "Kalemler", child: ListView()),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
+            ),
+            // CustomWidgetWithLabel(text: "Kalemler", child: ListView()),
+          ],
+        ).paddingAll(UIHelper.lowSize),
       );
 }

@@ -57,66 +57,75 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Genel Dekont",
-            subtitle: widget.baseEditEnum.name,
-          ),
-          actions: [
-            saveButton,
-          ],
-          bottom: TabBar(
-            controller: _tabController,
-            // onTap: (value) {
-            //   final DekontIslemlerRequestModel model = SingletonDekontIslemlerRequestModel.instance;
-            //   if (!model.ilkSayfaTamamMi) {
-            //     dialogManager.showErrorSnackBar("Genel bilgileri doldurun.");
-            //     _tabController.addListener(() {
-            //       if (_tabController.index == 1) {
-            //         log("Tab Changed: ${_tabController.index}");
-            //         _tabController.animateTo(0);
-            //       }
-            //     });
-            //   } else {
-            //     // if (_tabController.hasListeners) {
-            //     _tabController.addListener(() {
-            //       _tabController.animateTo(value);
-            //     });
-            //   }
-            // },
-            tabs: [
-              const Tab(text: "Genel"),
-              Tab(
-                child: Observer(
-                  builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),
+  Widget build(BuildContext context) => WillPopScope(
+        onWillPop: () async {
+          late final bool result;
+          await dialogManager.showAreYouSureDialog(() async {
+            result = true;
+          });
+          return result;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: AppBarTitle(
+              title: "Genel Dekont",
+              subtitle: widget.baseEditEnum.name,
+            ),
+            actions: [
+              saveButton,
+            ],
+            bottom: TabBar(
+              controller: _tabController,
+              // onTap: (value) {
+              //   final DekontIslemlerRequestModel model = SingletonDekontIslemlerRequestModel.instance;
+              //   if (!model.ilkSayfaTamamMi) {
+              //     dialogManager.showErrorSnackBar("Genel bilgileri doldurun.");
+              //     _tabController.addListener(() {
+              //       if (_tabController.index == 1) {
+              //         log("Tab Changed: ${_tabController.index}");
+              //         _tabController.animateTo(0);
+              //       }
+              //     });
+              //   } else {
+              //     // if (_tabController.hasListeners) {
+              //     _tabController.addListener(() {
+              //       _tabController.animateTo(value);
+              //     });
+              //   }
+              // },
+              tabs: [
+                const Tab(text: "Genel"),
+                Tab(
+                  child: Observer(
+                    builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),
+                  ),
                 ),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            controller: _tabController,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              Observer(
+                builder: (_) {
+                  if (!viewModel.islemTamamlandi) {
+                    return const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    );
+                  }
+                  return DekontEditGenelView(
+                    baseEditEnum: widget.baseEditEnum,
+                    onChanged: (value) {},
+                  );
+                },
+              ),
+              DekontEditKalemlerView(
+                baseEditEnum: widget.baseEditEnum,
+                onChanged: viewModel.setKalemSayisi,
               ),
             ],
           ),
-        ),
-        body: TabBarView(
-          controller: _tabController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            Observer(
-              builder: (_) {
-                if (!viewModel.islemTamamlandi) {
-                  return const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  );
-                }
-                return DekontEditGenelView(
-                  baseEditEnum: widget.baseEditEnum,
-                  onChanged: (value) {},
-                );
-              },
-            ),
-            DekontEditKalemlerView(
-              baseEditEnum: widget.baseEditEnum,
-              onChanged: viewModel.setKalemSayisi,
-            ),
-          ],
         ),
       );
 
