@@ -27,7 +27,7 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
   void setDekontListesi(List<DekontDuzenleRequestModel> value) => dekontListesi = value.asObservable();
 
   @observable
-  ObservableMap<String, dynamic> dekontMap = ObservableMap<String, dynamic>();
+  ObservableMap<String, dynamic>? dekontMap;
 
   @action
   void setDekontMap(Map<String, dynamic> value) => dekontMap = value.asObservable();

@@ -29,13 +29,13 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
       Atom(name: '_DekontGoruntuleViewModelBase.dekontMap', context: context);
 
   @override
-  ObservableMap<String, dynamic> get dekontMap {
+  ObservableMap<String, dynamic>? get dekontMap {
     _$dekontMapAtom.reportRead();
     return super.dekontMap;
   }
 
   @override
-  set dekontMap(ObservableMap<String, dynamic> value) {
+  set dekontMap(ObservableMap<String, dynamic>? value) {
     _$dekontMapAtom.reportWrite(value, super.dekontMap, () {
       super.dekontMap = value;
     });

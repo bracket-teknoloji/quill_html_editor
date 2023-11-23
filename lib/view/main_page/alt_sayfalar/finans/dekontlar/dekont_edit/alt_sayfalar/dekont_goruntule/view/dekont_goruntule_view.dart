@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -41,7 +41,7 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -58,7 +58,7 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                   color: theme.colorScheme.onSecondary,
                   child: Observer(
                     builder: (_) {
-                      if (viewModel.dekontMap.isEmpty) {
+                      if (viewModel.dekontMap?.isEmpty ?? true) {
                         return const Center(child: CircularProgressIndicator.adaptive());
                       }
                       return Column(
@@ -66,7 +66,7 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                         children: [
                           Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                           Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                          Text("${viewModel.dekontMap.values.toList()[index]}").paddingAll(UIHelper.lowSize),
+                          Text("${viewModel.dekontMap?.values.toList()[index]}").paddingAll(UIHelper.lowSize),
                           // Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
                         ],
                       );
@@ -74,47 +74,82 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                   ),
                 ),
               ),
-              const CustomTextField(
-                labelText: "İşlem Özeti",
+              const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
+              CustomWidgetWithLabel(
+                text: "İşlem Özeti",
+                child: Card(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Observer(
+                      builder: (_) => Wrap(
+                        children: List.generate(
+                          viewModel.dekontListesi.length,
+                          (index) {
+                            final item = viewModel.dekontListesi[index];
+                            return Row(
+                              children: [
+                                SizedBox(width: width / 3, child: Text(item.hesapAdi ?? "", overflow: TextOverflow.ellipsis, maxLines: 1)),
+                                if (index != viewModel.dekontListesi.length - 1)
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: UIHelper.highSize,
+                                  ),
+                                if (index != viewModel.dekontListesi.length - 1) Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                                if (index != viewModel.dekontListesi.length - 1)
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: UIHelper.highSize,
+                                  ),
+                              ],
+                            );
+                          },
+                        ).nullCheckWithGeneric,
+                      ),
+                    ),
+                  ).paddingAll(UIHelper.lowSize).paddingSymmetric(vertical: UIHelper.lowSize),
+                ),
               ),
+              const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
               Text(
                 "Kalemler",
                 style: theme.textTheme.titleMedium,
               ).paddingAll(UIHelper.lowSize),
               const Divider(indent: 0, endIndent: 0).paddingAll(UIHelper.lowSize),
-              ListView.builder(
-                itemCount: viewModel.dekontListesi.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final item = viewModel.dekontListesi[index];
-                  return Card(
-                    child: ListTile(
-                      title: LayoutBuilder(
-                        builder: (context, constraints) => Wrap(
+              Observer(
+                builder: (_) => ListView.builder(
+                  itemCount: viewModel.dekontListesi.length,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    final item = viewModel.dekontListesi[index];
+                    return Card(
+                      child: ListTile(
+                        title: LayoutBuilder(
+                          builder: (context, constraints) => Wrap(
+                            children: [
+                              Text("Tarih:\n${item.tarih.toDateString}"),
+                              Text("Borç/Alacak:\n${item.ba ?? ""}"),
+                              Text("Sıra:\n${item.siraNo ?? ""}"),
+                              Text("Hesap Tipi:\n${item.hesapTipi ?? ""}"),
+                              Text("Hesap Kodu:\n${item.hesapKodu ?? ""}"),
+                              Text("Tutar:\n${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                              Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(item.dovizliMi),
+                              Text("Kur:\n${item.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(item.dovizliMi),
+                              Text("Plasiyer:\n${item.plasiyerAciklama ?? ""}"),
+                            ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
+                          ),
+                        ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Tarih:\n${item.tarih.toDateString}"),
-                            Text("Borç/Alacak:\n${item.ba ?? ""}"),
-                            Text("Sıra:\n${item.siraNo ?? ""}"),
-                            Text("Hesap Tipi:\n${item.hesapTipi ?? ""}"),
-                            Text("Hesap Kodu:\n${item.hesapKodu ?? ""}"),
-                            Text("Tutar:\n${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                            Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(item.dovizliMi),
-                            Text("Kur:\n${item.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(item.dovizliMi),
-                            Text("Plasiyer:\n${item.plasiyerAciklama ?? ""}"),
-                          ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
+                            Text("Hesap Adı:\n${item.hesapAdi ?? ""}"),
+                            Text("Açıklama:\n${item.aciklama ?? ""}").paddingOnly(top: UIHelper.lowSize),
+                          ],
                         ),
                       ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Hesap Adı:\n${item.hesapAdi ?? ""}"),
-                          Text("Açıklama:\n${item.aciklama ?? ""}").paddingOnly(top: UIHelper.lowSize),
-                        ],
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
               // CustomWidgetWithLabel(text: "Kalemler", child: ListView()),
             ],
