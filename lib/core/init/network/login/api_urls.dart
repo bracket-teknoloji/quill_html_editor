@@ -70,6 +70,7 @@ class ApiUrls {
   static const String deleteKasaHareket = "Finans/DeleteKasaHareket";
   static const String saveTahsilat = "Finans/SaveTahsilat";
   static const String getDekontSeriler = "Finans/GetDekontSeriler";
+  static const String getDekontHareketleri = "Finans/GetDekontHareketleri";
   static const String getBankaSozlesmeleri = "Finans/GetBankaSozlesmeleri";
   static const String getMuhasebeMuhasebeKodlari = "Muhasebe/GetMuhasebeKodlari";
   static const String getCekSenetler = "Finans/GetCekSenetler";

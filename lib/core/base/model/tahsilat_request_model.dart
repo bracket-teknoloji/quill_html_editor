@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
 
 import "base_network_mixin.dart";
 
@@ -69,7 +70,9 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class DekontKalemler with _$DekontKalemler {
+class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
+
+  DekontKalemler._();
   factory DekontKalemler({
     String? aciklama,
     String? belgeNo,
@@ -84,6 +87,16 @@ class DekontKalemler with _$DekontKalemler {
     DateTime? tarih,
     double? tutar,
     int? depoKodu,
+    int? inckeyno,
+    String? seriNo,
+    int? dekontNo,
+    int? siraNo,
+    String? hesapTipiAciklama,
+    String? hesapAdi,
+    String? dovizAdi,
+    String? refkey,
+    String? plasiyerAciklama,
+    String? muhasebeHesapTipi,
     @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
     @JsonKey(includeToJson: false, includeFromJson: false) String? plasiyerAdi,
     @JsonKey(includeToJson: false, includeFromJson: false) String? dovizTipiAdi,
@@ -92,6 +105,36 @@ class DekontKalemler with _$DekontKalemler {
   }) = _DekontKalemler;
 
   factory DekontKalemler.fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
+
+  @override
+  DekontKalemler fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
+
+  factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
+        aciklama: model.aciklama,
+        ba: model.ba,
+        dovizTipi: model.dovizTipi,
+        dovizTutari: model.dovizTutari,
+        exportTipi: model.exportTipi,
+        hesapKodu: model.hesapKodu,
+        hesapTipi: model.hesapTipi,
+        plasiyerKodu: model.plasiyerKodu,
+        tarih: model.tarih,
+        kalemAdi: model.hesapAdi,
+        tutar: model.tutar,
+        depoKodu: model.depoKodu,
+        inckeyno: model.inckeyno,
+        seriNo: model.seriNo,
+        dekontNo: model.dekontNo,
+        siraNo: model.siraNo,
+        hesapTipiAciklama: model.hesapTipiAciklama,
+        hesapAdi: model.hesapAdi,
+        dovizAdi: model.dovizAdi,
+        plasiyerAciklama: model.plasiyerAciklama,
+        muhasebeHesapTipi: model.muhasebeHesapTipi,
+        belgeNo: model.belgeNo,
+        plasiyerAdi: model.plasiyerAciklama,
+        dovizTipiAdi: model.dovizAdi,
+      );
 }
 
 extension TahsilatRequestExtensions on TahsilatRequestModel {

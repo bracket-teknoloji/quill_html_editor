@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/tahsilat_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
 
 part "dekont_islemler_request_model.freezed.dart";
 part "dekont_islemler_request_model.g.dart";
@@ -17,7 +18,8 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
     String? plasiyerKodu,
     @Default("DekontModel") String? tag,
     DateTime? tarih,
-    @JsonKey(name:"_YeniKayit") bool? yeniKayit,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+    int? dekontNo,
     @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
   }) = _DekontIslemlerRequestModel;
@@ -26,15 +28,24 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
 
   @override
   DekontIslemlerRequestModel fromJson(Map<String, dynamic> json) => DekontIslemlerRequestModel.fromJson(json);
+
+  factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) => DekontIslemlerRequestModel(
+        plasiyerKodu: list.first.plasiyerKodu,
+        tarih: list.first.tarih,
+        dekontSeri: list.first.seriNo,
+        plasiyerAdi: list.first.plasiyerAciklama,
+        seriAdi: list.first.seriNo,
+        dekontNo: list.first.dekontNo,
+        kalemler: list.map(DekontKalemler.fromDekontDuzenleModel).toList(),
+      );
 }
 
-extension DekontIslemleriExtensions on DekontIslemlerRequestModel{
-  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue??0) + (previousValue??0)) ?? 0;
+extension DekontIslemleriExtensions on DekontIslemlerRequestModel {
+  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + (element ?? 0)) ?? 0;
 
-  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue??0) + (previousValue??0)) ?? 0;
+  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + (element ?? 0)) ?? 0;
 
   bool get ilkSayfaTamamMi => dekontSeri != null && tarih != null && plasiyerKodu != null;
-  
 }
 
 class SingletonDekontIslemlerRequestModel {
@@ -55,5 +66,7 @@ class SingletonDekontIslemlerRequestModel {
     _instance.yeniKayit = value.yeniKayit;
     _instance.seriAdi = value.seriAdi;
     _instance.plasiyerAdi = value.plasiyerAdi;
+    _instance.dekontNo = value.dekontNo;
+    
   }
 }

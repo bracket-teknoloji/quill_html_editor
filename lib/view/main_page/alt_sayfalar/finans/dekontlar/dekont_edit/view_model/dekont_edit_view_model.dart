@@ -3,8 +3,10 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 part "dekont_edit_view_model.g.dart";
@@ -18,6 +20,12 @@ abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
   @observable
   int kalemSayisi = 0;
 
+  @observable
+  bool islemTamamlandi = false;
+
+  @action
+  void setIslemTamamlandi(bool value) => islemTamamlandi = value;
+
   @action
   void setSelectedTab(int value) => selectedTab = value;
 
@@ -29,5 +37,18 @@ abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
     SingletonDekontIslemlerRequestModel.instance.guid = const Uuid().v4();
     SingletonDekontIslemlerRequestModel.instance.kalemler?.map((e) => e.tarih = SingletonDekontIslemlerRequestModel.instance.tarih).toList();
     return await networkManager.dioPost(path: ApiUrls.saveDekont, bodyModel: DekontIslemlerModel(), data: SingletonDekontIslemlerRequestModel.instance.toJson(), showLoading: true);
+  }
+
+  @action
+  Future<void> getData(DekontListesiModel model) async {
+    final result =
+        await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model.queryParam, showLoading: true);
+    if (result.success ?? false) {
+      final List<DekontDuzenleRequestModel> list = (result.data as List).map((e) => e as DekontDuzenleRequestModel).toList().cast<DekontDuzenleRequestModel>();
+      SingletonDekontIslemlerRequestModel.setInstance(DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(list));
+      setKalemSayisi(list.length);
+      setIslemTamamlandi(true);
+      // kalemSayisi = SingletonDekontIslemlerRequestModel.instance.kalemler?.length ?? 0;
+    }
   }
 }

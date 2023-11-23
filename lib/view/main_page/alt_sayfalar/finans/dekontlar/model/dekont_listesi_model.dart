@@ -25,4 +25,9 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
 
 extension DekontListesiExtensions on DekontListesiModel {
   String get title => "$seri-$dekontNo";
+
+  Map<String, dynamic> get queryParam => {
+    "DekontNo": dekontNo,
+    "SeriNo": seri,
+  };
 }

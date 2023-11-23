@@ -131,6 +131,16 @@ _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['TARIH'] as String),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       depoKodu: json['DEPO_KODU'] as int?,
+      inckeyno: json['INCKEYNO'] as int?,
+      seriNo: json['SERI_NO'] as String?,
+      dekontNo: json['DEKONT_NO'] as int?,
+      siraNo: json['SIRA_NO'] as int?,
+      hesapTipiAciklama: json['HESAP_TIPI_ACIKLAMA'] as String?,
+      hesapAdi: json['HESAP_ADI'] as String?,
+      dovizAdi: json['DOVIZ_ADI'] as String?,
+      refkey: json['REFKEY'] as String?,
+      plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
+      muhasebeHesapTipi: json['MUHASEBE_HESAP_TIPI'] as String?,
     );
 
 Map<String, dynamic> _$$DekontKalemlerImplToJson(
@@ -156,5 +166,15 @@ Map<String, dynamic> _$$DekontKalemlerImplToJson(
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('TUTAR', instance.tutar);
   writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('INCKEYNO', instance.inckeyno);
+  writeNotNull('SERI_NO', instance.seriNo);
+  writeNotNull('DEKONT_NO', instance.dekontNo);
+  writeNotNull('SIRA_NO', instance.siraNo);
+  writeNotNull('HESAP_TIPI_ACIKLAMA', instance.hesapTipiAciklama);
+  writeNotNull('HESAP_ADI', instance.hesapAdi);
+  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('REFKEY', instance.refkey);
+  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
+  writeNotNull('MUHASEBE_HESAP_TIPI', instance.muhasebeHesapTipi);
   return val;
 }

@@ -51,11 +51,24 @@ class _DekontlarCardState extends BaseState<DekontlarCard> {
         context,
         title: model?.title ?? "",
         children: [
-          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined),
-          BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined),
+          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined, onTap: goruntuleDekont),
+          BottomSheetModel(title: "Düzenle", iconWidget: Icons.edit_outlined, onTap: duzenleDekont),
           BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline, onTap: deleteDekont),
         ],
       );
+
+  Future<void> goruntuleDekont() async {
+    Get.back();
+    await Get.toNamed("/mainPage/dekontGoruntule", arguments: model);
+  }
+
+  Future<void> duzenleDekont() async {
+    Get.back();
+    final result = await Get.toNamed("/mainPage/dekontDuzenle", arguments: model);
+    if (result != null) {
+      widget.onSelected.call(result);
+    }
+  }
 
   Future<void> deleteDekont() async {
     Get.back();

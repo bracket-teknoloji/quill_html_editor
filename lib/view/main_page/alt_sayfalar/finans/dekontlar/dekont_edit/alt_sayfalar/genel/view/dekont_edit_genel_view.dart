@@ -3,13 +3,15 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/genel/view_model/dekont_edit_genel_view_model.dart";
 
 class DekontEditGenelView extends StatefulWidget {
   final ValueChanged<bool>? onChanged;
-  const DekontEditGenelView({super.key, this.onChanged});
+  final BaseEditEnum baseEditEnum;
+  const DekontEditGenelView({super.key, this.onChanged, required this.baseEditEnum});
 
   @override
   State<DekontEditGenelView> createState() => _DekontEditGenelViewState();
@@ -46,6 +48,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
           children: [
             CustomTextField(
               labelText: "Tarih",
+              enabled: widget.baseEditEnum == BaseEditEnum.ekle,
               isDateTime: true,
               isMust: true,
               readOnly: true,
@@ -55,6 +58,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
             ),
             CustomTextField(
               labelText: "Seri",
+              enabled: widget.baseEditEnum == BaseEditEnum.ekle,
               suffixMore: true,
               isMust: true,
               readOnly: true,

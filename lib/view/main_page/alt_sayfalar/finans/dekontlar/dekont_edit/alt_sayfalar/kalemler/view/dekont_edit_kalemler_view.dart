@@ -9,14 +9,18 @@ import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view_model/dekont_edit_kalemler_view_model.dart";
 
 class DekontEditKalemlerView extends StatefulWidget {
   final ValueChanged<int> onChanged;
-  const DekontEditKalemlerView({super.key, required this.onChanged});
+  final BaseEditEnum baseEditEnum;
+  const DekontEditKalemlerView({super.key, required this.onChanged, required this.baseEditEnum});
 
   @override
   State<DekontEditKalemlerView> createState() => _DekontEditKalemlerViewState();
@@ -57,12 +61,13 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
                           children: [
                             Row(
                               children: [
-                                ColorfulBadge(label: Text(item.hesapAdi)).paddingOnly(right: UIHelper.lowSize),
+                                ColorfulBadge(label: Text(item.hesapTipiAciklama ?? "")).paddingOnly(right: UIHelper.lowSize),
                                 Text(item.hesapKodu ?? ""),
                               ],
                             ),
                             Row(
                               children: [
+                                const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(right: UIHelper.lowSize).yetkiVarMi(item.dovizliMi),
                                 Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                                 ColorfulBadge(label: Text(item.ba ?? "")).paddingOnly(left: UIHelper.lowSize),
                               ],
@@ -72,7 +77,13 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
                         Text(item.kalemAdi ?? ""),
                       ],
                     ),
-                    subtitle: Text("Plasiyer:\n${item.plasiyerAdi ?? item.plasiyerKodu ?? ""}").paddingOnly(top: UIHelper.highSize),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("${item.aciklama}").paddingOnly(top: UIHelper.highSize).yetkiVarMi(item.aciklama != null),
+                        Text("Plasiyer:\n${item.plasiyerAdi ?? item.plasiyerKodu ?? ""}").paddingOnly(top: UIHelper.highSize),
+                      ],
+                    ),
                   ),
                 );
               },

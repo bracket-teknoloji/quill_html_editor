@@ -40,6 +40,8 @@ mixin _$DekontIslemlerRequestModel {
   bool? get yeniKayit => throw _privateConstructorUsedError;
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
+  int? get dekontNo => throw _privateConstructorUsedError;
+  set dekontNo(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get seriAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -71,6 +73,7 @@ abstract class $DekontIslemlerRequestModelCopyWith<$Res> {
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+      int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? plasiyerAdi});
@@ -98,6 +101,7 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
     Object? tag = freezed,
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
+    Object? dekontNo = freezed,
     Object? seriAdi = freezed,
     Object? plasiyerAdi = freezed,
   }) {
@@ -134,6 +138,10 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
           ? _value.yeniKayit
           : yeniKayit // ignore: cast_nullable_to_non_nullable
               as bool?,
+      dekontNo: freezed == dekontNo
+          ? _value.dekontNo
+          : dekontNo // ignore: cast_nullable_to_non_nullable
+              as int?,
       seriAdi: freezed == seriAdi
           ? _value.seriAdi
           : seriAdi // ignore: cast_nullable_to_non_nullable
@@ -164,6 +172,7 @@ abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res>
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+      int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? plasiyerAdi});
@@ -190,6 +199,7 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
     Object? tag = freezed,
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
+    Object? dekontNo = freezed,
     Object? seriAdi = freezed,
     Object? plasiyerAdi = freezed,
   }) {
@@ -226,6 +236,10 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
           ? _value.yeniKayit
           : yeniKayit // ignore: cast_nullable_to_non_nullable
               as bool?,
+      dekontNo: freezed == dekontNo
+          ? _value.dekontNo
+          : dekontNo // ignore: cast_nullable_to_non_nullable
+              as int?,
       seriAdi: freezed == seriAdi
           ? _value.seriAdi
           : seriAdi // ignore: cast_nullable_to_non_nullable
@@ -250,6 +264,7 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
       this.tag = "DekontModel",
       this.tarih,
       @JsonKey(name: "_YeniKayit") this.yeniKayit,
+      this.dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) this.seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi})
       : super._();
@@ -276,6 +291,8 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @override
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
+  @override
+  int? dekontNo;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? seriAdi;
@@ -308,6 +325,7 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
+      int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? plasiyerAdi}) = _$DekontIslemlerRequestModelImpl;
@@ -342,6 +360,9 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   bool? get yeniKayit;
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value);
+  @override
+  int? get dekontNo;
+  set dekontNo(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get seriAdi;

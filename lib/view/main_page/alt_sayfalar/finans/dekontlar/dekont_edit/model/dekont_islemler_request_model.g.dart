@@ -21,6 +21,7 @@ _$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['_YeniKayit'] as bool?,
+      dekontNo: json['DEKONT_NO'] as int?,
     );
 
 Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(
@@ -41,5 +42,6 @@ Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('_YeniKayit', instance.yeniKayit);
+  writeNotNull('DEKONT_NO', instance.dekontNo);
   return val;
 }

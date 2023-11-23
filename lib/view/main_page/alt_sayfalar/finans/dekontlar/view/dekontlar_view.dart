@@ -69,7 +69,8 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
 
   FloatingActionButton fab() => FloatingActionButton(
         onPressed: () async {
-          await Get.toNamed("/mainPage/dekontEdit");
+          await Get.toNamed("/mainPage/dekontEkle");
+          await viewModel.resetPage();
         },
         child: const Icon(Icons.add_outlined),
       );

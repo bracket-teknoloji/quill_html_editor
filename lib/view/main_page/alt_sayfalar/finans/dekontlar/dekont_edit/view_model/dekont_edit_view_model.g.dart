@@ -41,6 +41,22 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
     });
   }
 
+  late final _$islemTamamlandiAtom =
+      Atom(name: '_DekontEditViewModelBase.islemTamamlandi', context: context);
+
+  @override
+  bool get islemTamamlandi {
+    _$islemTamamlandiAtom.reportRead();
+    return super.islemTamamlandi;
+  }
+
+  @override
+  set islemTamamlandi(bool value) {
+    _$islemTamamlandiAtom.reportWrite(value, super.islemTamamlandi, () {
+      super.islemTamamlandi = value;
+    });
+  }
+
   late final _$postDataAsyncAction =
       AsyncAction('_DekontEditViewModelBase.postData', context: context);
 
@@ -49,8 +65,27 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 
+  late final _$getDataAsyncAction =
+      AsyncAction('_DekontEditViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData(DekontListesiModel model) {
+    return _$getDataAsyncAction.run(() => super.getData(model));
+  }
+
   late final _$_DekontEditViewModelBaseActionController =
       ActionController(name: '_DekontEditViewModelBase', context: context);
+
+  @override
+  void setIslemTamamlandi(bool value) {
+    final _$actionInfo = _$_DekontEditViewModelBaseActionController.startAction(
+        name: '_DekontEditViewModelBase.setIslemTamamlandi');
+    try {
+      return super.setIslemTamamlandi(value);
+    } finally {
+      _$_DekontEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setSelectedTab(int value) {
@@ -78,7 +113,8 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
   String toString() {
     return '''
 selectedTab: ${selectedTab},
-kalemSayisi: ${kalemSayisi}
+kalemSayisi: ${kalemSayisi},
+islemTamamlandi: ${islemTamamlandi}
     ''';
   }
 }

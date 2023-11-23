@@ -183,7 +183,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   ),
                   Text("Kur: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency}")
                       .yetkiVarMi(kalemModel?.dovizKuru != null),
-                  Text("Tutar: ${kalemModel?.araToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
+                  Text("Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
                   Text("Teslim Miktar: ${kalemModel?.tamamlanan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.tamamlanan != null),
                   Text("Kalan Miktar: ${kalemModel?.kalan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.kalan != null),

@@ -1069,6 +1069,26 @@ mixin _$DekontKalemler {
   set tutar(double? value) => throw _privateConstructorUsedError;
   int? get depoKodu => throw _privateConstructorUsedError;
   set depoKodu(int? value) => throw _privateConstructorUsedError;
+  int? get inckeyno => throw _privateConstructorUsedError;
+  set inckeyno(int? value) => throw _privateConstructorUsedError;
+  String? get seriNo => throw _privateConstructorUsedError;
+  set seriNo(String? value) => throw _privateConstructorUsedError;
+  int? get dekontNo => throw _privateConstructorUsedError;
+  set dekontNo(int? value) => throw _privateConstructorUsedError;
+  int? get siraNo => throw _privateConstructorUsedError;
+  set siraNo(int? value) => throw _privateConstructorUsedError;
+  String? get hesapTipiAciklama => throw _privateConstructorUsedError;
+  set hesapTipiAciklama(String? value) => throw _privateConstructorUsedError;
+  String? get hesapAdi => throw _privateConstructorUsedError;
+  set hesapAdi(String? value) => throw _privateConstructorUsedError;
+  String? get dovizAdi => throw _privateConstructorUsedError;
+  set dovizAdi(String? value) => throw _privateConstructorUsedError;
+  String? get refkey => throw _privateConstructorUsedError;
+  set refkey(String? value) => throw _privateConstructorUsedError;
+  String? get plasiyerAciklama => throw _privateConstructorUsedError;
+  set plasiyerAciklama(String? value) => throw _privateConstructorUsedError;
+  String? get muhasebeHesapTipi => throw _privateConstructorUsedError;
+  set muhasebeHesapTipi(String? value) => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get kalemAdi => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -1116,6 +1136,16 @@ abstract class $DekontKalemlerCopyWith<$Res> {
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
+      int? inckeyno,
+      String? seriNo,
+      int? dekontNo,
+      int? siraNo,
+      String? hesapTipiAciklama,
+      String? hesapAdi,
+      String? dovizAdi,
+      String? refkey,
+      String? plasiyerAciklama,
+      String? muhasebeHesapTipi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
@@ -1151,6 +1181,16 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
     Object? tarih = freezed,
     Object? tutar = freezed,
     Object? depoKodu = freezed,
+    Object? inckeyno = freezed,
+    Object? seriNo = freezed,
+    Object? dekontNo = freezed,
+    Object? siraNo = freezed,
+    Object? hesapTipiAciklama = freezed,
+    Object? hesapAdi = freezed,
+    Object? dovizAdi = freezed,
+    Object? refkey = freezed,
+    Object? plasiyerAciklama = freezed,
+    Object? muhasebeHesapTipi = freezed,
     Object? kalemAdi = freezed,
     Object? plasiyerAdi = freezed,
     Object? dovizTipiAdi = freezed,
@@ -1210,6 +1250,46 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontNo: freezed == dekontNo
+          ? _value.dekontNo
+          : dekontNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      siraNo: freezed == siraNo
+          ? _value.siraNo
+          : siraNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapTipiAciklama: freezed == hesapTipiAciklama
+          ? _value.hesapTipiAciklama
+          : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refkey: freezed == refkey
+          ? _value.refkey
+          : refkey // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerAciklama: freezed == plasiyerAciklama
+          ? _value.plasiyerAciklama
+          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       kalemAdi: freezed == kalemAdi
           ? _value.kalemAdi
           : kalemAdi // ignore: cast_nullable_to_non_nullable
@@ -1256,6 +1336,16 @@ abstract class _$$DekontKalemlerImplCopyWith<$Res>
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
+      int? inckeyno,
+      String? seriNo,
+      int? dekontNo,
+      int? siraNo,
+      String? hesapTipiAciklama,
+      String? hesapAdi,
+      String? dovizAdi,
+      String? refkey,
+      String? plasiyerAciklama,
+      String? muhasebeHesapTipi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
@@ -1289,6 +1379,16 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
     Object? tarih = freezed,
     Object? tutar = freezed,
     Object? depoKodu = freezed,
+    Object? inckeyno = freezed,
+    Object? seriNo = freezed,
+    Object? dekontNo = freezed,
+    Object? siraNo = freezed,
+    Object? hesapTipiAciklama = freezed,
+    Object? hesapAdi = freezed,
+    Object? dovizAdi = freezed,
+    Object? refkey = freezed,
+    Object? plasiyerAciklama = freezed,
+    Object? muhasebeHesapTipi = freezed,
     Object? kalemAdi = freezed,
     Object? plasiyerAdi = freezed,
     Object? dovizTipiAdi = freezed,
@@ -1348,6 +1448,46 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontNo: freezed == dekontNo
+          ? _value.dekontNo
+          : dekontNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      siraNo: freezed == siraNo
+          ? _value.siraNo
+          : siraNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapTipiAciklama: freezed == hesapTipiAciklama
+          ? _value.hesapTipiAciklama
+          : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      refkey: freezed == refkey
+          ? _value.refkey
+          : refkey // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerAciklama: freezed == plasiyerAciklama
+          ? _value.plasiyerAciklama
+          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       kalemAdi: freezed == kalemAdi
           ? _value.kalemAdi
           : kalemAdi // ignore: cast_nullable_to_non_nullable
@@ -1374,7 +1514,7 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DekontKalemlerImpl implements _DekontKalemler {
+class _$DekontKalemlerImpl extends _DekontKalemler {
   _$DekontKalemlerImpl(
       {this.aciklama,
       this.belgeNo,
@@ -1389,11 +1529,22 @@ class _$DekontKalemlerImpl implements _DekontKalemler {
       this.tarih,
       this.tutar,
       this.depoKodu,
+      this.inckeyno,
+      this.seriNo,
+      this.dekontNo,
+      this.siraNo,
+      this.hesapTipiAciklama,
+      this.hesapAdi,
+      this.dovizAdi,
+      this.refkey,
+      this.plasiyerAciklama,
+      this.muhasebeHesapTipi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.plasiyerAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.exportAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) this.depoAdi});
+      @JsonKey(includeToJson: false, includeFromJson: false) this.depoAdi})
+      : super._();
 
   factory _$DekontKalemlerImpl.fromJson(Map<String, dynamic> json) =>
       _$$DekontKalemlerImplFromJson(json);
@@ -1425,6 +1576,26 @@ class _$DekontKalemlerImpl implements _DekontKalemler {
   @override
   int? depoKodu;
   @override
+  int? inckeyno;
+  @override
+  String? seriNo;
+  @override
+  int? dekontNo;
+  @override
+  int? siraNo;
+  @override
+  String? hesapTipiAciklama;
+  @override
+  String? hesapAdi;
+  @override
+  String? dovizAdi;
+  @override
+  String? refkey;
+  @override
+  String? plasiyerAciklama;
+  @override
+  String? muhasebeHesapTipi;
+  @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? kalemAdi;
   @override
@@ -1439,11 +1610,6 @@ class _$DekontKalemlerImpl implements _DekontKalemler {
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? depoAdi;
-
-  @override
-  String toString() {
-    return 'DekontKalemler(aciklama: $aciklama, belgeNo: $belgeNo, ba: $ba, dovizTipi: $dovizTipi, dovizTutari: $dovizTutari, exportRefno: $exportRefno, exportTipi: $exportTipi, hesapKodu: $hesapKodu, hesapTipi: $hesapTipi, plasiyerKodu: $plasiyerKodu, tarih: $tarih, tutar: $tutar, depoKodu: $depoKodu, kalemAdi: $kalemAdi, plasiyerAdi: $plasiyerAdi, dovizTipiAdi: $dovizTipiAdi, exportAdi: $exportAdi, depoAdi: $depoAdi)';
-  }
 
   @JsonKey(ignore: true)
   @override
@@ -1460,7 +1626,7 @@ class _$DekontKalemlerImpl implements _DekontKalemler {
   }
 }
 
-abstract class _DekontKalemler implements DekontKalemler {
+abstract class _DekontKalemler extends DekontKalemler {
   factory _DekontKalemler(
       {String? aciklama,
       String? belgeNo,
@@ -1475,6 +1641,16 @@ abstract class _DekontKalemler implements DekontKalemler {
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
+      int? inckeyno,
+      String? seriNo,
+      int? dekontNo,
+      int? siraNo,
+      String? hesapTipiAciklama,
+      String? hesapAdi,
+      String? dovizAdi,
+      String? refkey,
+      String? plasiyerAciklama,
+      String? muhasebeHesapTipi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
@@ -1483,6 +1659,7 @@ abstract class _DekontKalemler implements DekontKalemler {
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? depoAdi}) = _$DekontKalemlerImpl;
+  _DekontKalemler._() : super._();
 
   factory _DekontKalemler.fromJson(Map<String, dynamic> json) =
       _$DekontKalemlerImpl.fromJson;
@@ -1526,6 +1703,36 @@ abstract class _DekontKalemler implements DekontKalemler {
   @override
   int? get depoKodu;
   set depoKodu(int? value);
+  @override
+  int? get inckeyno;
+  set inckeyno(int? value);
+  @override
+  String? get seriNo;
+  set seriNo(String? value);
+  @override
+  int? get dekontNo;
+  set dekontNo(int? value);
+  @override
+  int? get siraNo;
+  set siraNo(int? value);
+  @override
+  String? get hesapTipiAciklama;
+  set hesapTipiAciklama(String? value);
+  @override
+  String? get hesapAdi;
+  set hesapAdi(String? value);
+  @override
+  String? get dovizAdi;
+  set dovizAdi(String? value);
+  @override
+  String? get refkey;
+  set refkey(String? value);
+  @override
+  String? get plasiyerAciklama;
+  set plasiyerAciklama(String? value);
+  @override
+  String? get muhasebeHesapTipi;
+  set muhasebeHesapTipi(String? value);
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get kalemAdi;

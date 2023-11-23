@@ -65,7 +65,7 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setDovizTutari(double? value) => model = model.copyWith(dovizTutari: value);
 
   @action
-  void setTutar(double? value) => model = model.copyWith(tutar: value);
+  void setTutar(double? value) => model = model.copyWith(tutar: double.tryParse(value?.toStringAsFixed(2) ?? ""));
 
   @action
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);

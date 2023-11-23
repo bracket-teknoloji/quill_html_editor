@@ -5,14 +5,18 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/genel/view/dekont_edit_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view_model/dekont_edit_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
 class DekontEditView extends StatefulWidget {
   final BaseEditEnum baseEditEnum;
-  const DekontEditView({super.key, required this.baseEditEnum});
+  final DekontListesiModel? model;
+  const DekontEditView({super.key, required this.baseEditEnum, this.model});
 
   @override
   State<DekontEditView> createState() => _DekontEditViewState();
@@ -28,7 +32,14 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
     if (widget.baseEditEnum == BaseEditEnum.ekle) {
       SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
       SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
+      viewModel.setIslemTamamlandi(true);
     }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.baseEditEnum == BaseEditEnum.duzenle) {
+        await viewModel.getData(widget.model!);
+        SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
+      }
+    });
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(() {
       if (!SingletonDekontIslemlerRequestModel.instance.ilkSayfaTamamMi) {
@@ -88,10 +99,21 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
           controller: _tabController,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            DekontEditGenelView(
-              onChanged: (value) {},
+            Observer(
+              builder: (_) {
+                if (!viewModel.islemTamamlandi) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
+                return DekontEditGenelView(
+                  baseEditEnum: widget.baseEditEnum,
+                  onChanged: (value) {},
+                );
+              },
             ),
             DekontEditKalemlerView(
+              baseEditEnum: widget.baseEditEnum,
               onChanged: viewModel.setKalemSayisi,
             ),
           ],
@@ -100,7 +122,8 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
 
   IconButton get saveButton => IconButton(
         onPressed: () async {
-          if (SingletonDekontIslemlerRequestModel.instance.toplamAlacak != SingletonDekontIslemlerRequestModel.instance.toplamBorc) {
+          if (SingletonDekontIslemlerRequestModel.instance.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) !=
+              SingletonDekontIslemlerRequestModel.instance.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)) {
             dialogManager.showErrorSnackBar("Alacak ve Borç eşit olmalıdır.");
           } else if (SingletonDekontIslemlerRequestModel.instance.kalemler.ext.isNullOrEmpty) {
             dialogManager.showErrorSnackBar("Kalem ekleyin.");
