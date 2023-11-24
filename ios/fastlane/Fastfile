@@ -7,15 +7,43 @@ default_platform(:ios)
 platform :ios do
   desc "Push code and tag to remote for CodeMagic build"
   lane :prepare_for_build do
+    runner = "Runner.xcodeproj"
 
-    increment_build_number({xcodeproj: "Runner.xcodeproj",build_number: latest_testflight_build_number + 1})
-    
+    puts "The latest build number will be incremented"
+
+    increment_build_number(
+      {
+        xcodeproj: runner,
+        build_number: latest_testflight_build_number + 1,
+      },
+    )
+
+    puts "The latest version number has been incremented"
+
+    version_number = get_version_number(xcodeproj: runner, target: "Runner")
+
+    build_number = get_build_number(xcodeproj: runner)
+
+
     puts "Build number has been incremented"
-    puts "Build number: #{get_build_number(xcodeproj: "Runner.xcodeproj")}"
+    puts "Build number: #{build_number}"
+
+    git_tag = "V#{version_number}+#{build_number}"
+
+    if git_tag_exists(tag: git_tag)
+      puts "Git tag already exists!"
+      puts "Git tag will be deleted and recreated"
+      
+      sh("git tag -d #{git_tag}")
+
+      sh("git push --delete origin #{git_tag}")
+
+      puts "Git tag has been deleted"
+    end
 
     add_git_tag(
       grouping: "",
-      tag: "V#{get_version_number(xcodeproj: "Runner.xcodeproj", target: "Runner")}+#{get_build_number(xcodeproj: "Runner.xcodeproj")}",
+      tag: git_tag,
       includes_lane: false,
       )
 
