@@ -62,7 +62,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
     _dovizTutariController = TextEditingController(text: viewModel.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _tutarController = TextEditingController(text: viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "");
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama ?? "");
-    _exportTipiController = TextEditingController(text: viewModel.model.exportTipi != null ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 0) - 1] : "");
+    _exportTipiController = TextEditingController(text: viewModel.model.exportTipi != null && viewModel.model.exportTipi != 0 ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 1) - 1] : "");
     _exportRefNoController = TextEditingController(text: viewModel.model.exportRefno ?? "");
     _plasiyerController = TextEditingController(text: viewModel.model.plasiyerAdi ?? SingletonDekontIslemlerRequestModel.instance.plasiyerAdi ?? "");
 

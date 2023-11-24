@@ -114,7 +114,7 @@ class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
         ba: model.ba,
         dovizTipi: model.dovizTipi,
         dovizTutari: model.dovizTutari,
-        exportTipi: model.exportTipi,
+        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
         hesapKodu: model.hesapKodu,
         hesapTipi: model.hesapTipi,
         plasiyerKodu: model.plasiyerKodu,
