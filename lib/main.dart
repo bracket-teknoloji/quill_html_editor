@@ -21,6 +21,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_is
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/dekont_goruntule/view/dekont_goruntule_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/dekont_kalem_ekle/view/dekont_kalem_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view/dekont_edit_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -243,6 +244,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/kasadanTahsilEt", page: () => KasadanTahsilEtView(model: Get.arguments)),
               GetPage(name: "/odemeDekontOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
 
+              //* * Ortalama Vade Tarihi Hesaplama
+              GetPage(name: "/ortalamaVadeTarihiHesaplama", page: () => const OrtalamaVadeTarihiHesaplamaView()),
+
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),
               GetPage(name: "/nakitTahsilat", page: () => NakitOdemeView(tahsilatMi: true, cariListesiModel: Get.arguments)),
@@ -253,6 +257,7 @@ class PickerApp extends StatelessWidget {
               //* * Finans Raporları
               GetPage(name: "/finansFinansalDurumRaporu", page: FinansalDurumRaporuView.new),
               GetPage(name: "/finansAylikMizanRaporu", page: AylikMizanRaporuView.new),
+
               //* Sipariş
               GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
               GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),

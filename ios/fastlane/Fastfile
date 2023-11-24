@@ -5,11 +5,12 @@ update_fastlane
 default_platform(:ios)
 
 platform :ios do
-  desc "Push code and tag to remote for CodeMagic build"
+  desc "Push code and tag to remote for Codemagic build"
   lane :prepare_for_build do
+
     runner = "Runner.xcodeproj"
 
-    puts "The latest build number will be incremented"
+    UI.important "The latest build number will be incremented"
 
     increment_build_number(
       {
@@ -18,27 +19,33 @@ platform :ios do
       },
     )
 
-    puts "The latest version number has been incremented"
+    UI.success "The latest version number has been incremented"
 
-    version_number = get_version_number(xcodeproj: runner, target: "Runner")
+    version_number = get_version_number(
+      xcodeproj: runner,
+      target: "Runner",
+    )
 
-    build_number = get_build_number(xcodeproj: runner)
+    build_number = get_build_number(
+      xcodeproj: runner,
+    )
 
-
-    puts "Build number has been incremented"
-    puts "Build number: #{build_number}"
+    UI.success "Build number has been incremented"
+    UI.success "Build number: #{build_number}"
 
     git_tag = "V#{version_number}+#{build_number}"
 
     if git_tag_exists(tag: git_tag)
-      puts "Git tag already exists!"
-      puts "Git tag will be deleted and recreated"
+
+      UI.important "Git tag already exists!"
+      UI.important "Git tag will be deleted and recreated"
       
       sh("git tag -d #{git_tag}")
 
       sh("git push --delete origin #{git_tag}")
 
-      puts "Git tag has been deleted"
+      UI.success "Git tag has been deleted"
+
     end
 
     add_git_tag(
@@ -47,16 +54,15 @@ platform :ios do
       includes_lane: false,
       )
 
-    puts "Git tag has been added"
+    UI.success "Git tag has been added"
 
     push_to_git_remote()
 
-    puts "Code has been pushed to remote"
+    UI.success "Code has been pushed to remote"
 
     push_git_tags()
 
-    puts "Git tag has been pushed to remote"
-
+    UI.success "Git tag has been pushed to remote"
 
   end
 end

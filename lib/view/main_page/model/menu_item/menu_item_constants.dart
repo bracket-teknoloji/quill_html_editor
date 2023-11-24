@@ -153,7 +153,7 @@ class MenuItemConstants {
             GridItemModel.item(name: "finans_Kasa_NakitOdeme", title: "Nakit Ödeme", route: "/mainPage/nakitOdeme"),
           ],
         ),
-        GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama"),
+        GridItemModel.item(name: "finans_OrtalamaVadeTarihiHesaplama", title: "Ortalama Vade Tarihi Hesaplama", route: "/mainPage/ortalamaVadeTarihiHesaplama"),
         GridItemModel.altmenu(
           name: null,
           title: "Raporlar",

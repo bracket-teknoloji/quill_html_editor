@@ -1,32 +1,31 @@
-fastlane documentation
-----
+#<span style="color: rgb(189, 61, 23)">Fastlane Integration</span>
 
-# Installation
+This README provides information about the Fastlane lane `prepare_for_build`.
 
-Make sure you have the latest version of the Xcode command line tools installed:
+## Prerequisites
+- Fastlane should be installed and up to date. If not, run `update_fastlane` to update Fastlane to the latest version.
 
-```sh
-xcode-select --install
-```
+## Description
+The `prepare_for_build` lane is used to push code and tag to remote for Codemagic build.
 
-For _fastlane_ installation instructions, see [Installing _fastlane_](https://docs.fastlane.tools/#installing-fastlane)
+## Steps
+1. The latest build number will be incremented.
+2. The latest version number will be incremented.
+3. The build number will be incremented.
+4. If the Git tag already exists, it will be deleted and recreated.
+5. The Git tag will be added.
+6. The code will be pushed to the remote repository.
+7. The Git tag will be pushed to the remote repository.
 
-# Available Actions
+## Usage
+To use the `prepare_for_build` lane, follow these steps:
+1. Open the terminal and navigate to the project directory.
+2. Run the following command:
+    ```
+    fastlane prepare_for_build
+    ```
 
-## iOS
+Note: Make sure to replace `Runner.xcodeproj` with the correct path to your Xcode project.
 
-### ios prepare_for_build
-
-```sh
-[bundle exec] fastlane ios prepare_for_build
-```
-
-Push code and tag to remote for CodeMagic build
-
-----
-
-This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
-
-More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
-
-The documentation of _fastlane_ can be found on [docs.fastlane.tools](https://docs.fastlane.tools).
+## License
+This Fastlane lane is licensed under the [MIT License](https://opensource.org/licenses/MIT).
