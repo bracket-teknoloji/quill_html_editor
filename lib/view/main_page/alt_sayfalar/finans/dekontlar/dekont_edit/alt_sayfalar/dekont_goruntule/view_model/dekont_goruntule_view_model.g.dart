@@ -45,8 +45,8 @@ mixin _$DekontGoruntuleViewModel on _DekontGoruntuleViewModelBase, Store {
       AsyncAction('_DekontGoruntuleViewModelBase.getData', context: context);
 
   @override
-  Future<void> getData(DekontListesiModel model) {
-    return _$getDataAsyncAction.run(() => super.getData(model));
+  Future<void> getData(DekontListesiModel? model, String? refkey) {
+    return _$getDataAsyncAction.run(() => super.getData(model, refkey));
   }
 
   late final _$_DekontGoruntuleViewModelBaseActionController =

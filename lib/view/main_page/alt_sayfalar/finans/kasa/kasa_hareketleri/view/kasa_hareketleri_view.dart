@@ -21,9 +21,9 @@ import "../../kasa_listesi/model/kasa_listesi_model.dart";
 import "../view_model/kasa_hareketleri_view_model.dart";
 
 class KasaHareketleriView extends StatefulWidget {
+  final KasaListesiModel? model;
   const KasaHareketleriView({super.key, this.model});
 
-  final KasaListesiModel? model;
 
   @override
   State<KasaHareketleriView> createState() => _KasaHareketleriViewState();

@@ -22,6 +22,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/dekont_kalem_ekle/view/dekont_kalem_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view/dekont_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view/tahsilat_odeme_kayitlari_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -220,6 +221,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/dekontEkle", page: () => const DekontEditView(baseEditEnum: BaseEditEnum.ekle)),
               GetPage(name: "/dekontDuzenle", page: () => DekontEditView(baseEditEnum: BaseEditEnum.duzenle, model: Get.arguments)),
               GetPage(name: "/dekontGoruntule", page: () => DekontGoruntuleView(model: Get.arguments)),
+              GetPage(name: "/dekontGoruntuleRefKey", page: () => DekontGoruntuleView(refKey: Get.arguments)),
               GetPage(name: "/dekontKalemEkle", page: () => DekontKalemEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),
               GetPage(name: "/dekontKalemEkleKisitli", page: () => DekontKalemEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.duzenle)),
 
@@ -246,6 +248,9 @@ class PickerApp extends StatelessWidget {
 
               //* * Ortalama Vade Tarihi Hesaplama
               GetPage(name: "/ortalamaVadeTarihiHesaplama", page: () => const OrtalamaVadeTarihiHesaplamaView()),
+
+              //* * Tahsilat Ödeme Kayıtları
+              GetPage(name: "/tahsilatOdemeKayitlari", page: TahsilatOdemeKayitlariView.new),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

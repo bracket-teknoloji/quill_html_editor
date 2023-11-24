@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
@@ -170,7 +171,7 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-        Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, [IslemTipiEnum? tip]) async => await _baseDialog(
+  Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, [IslemTipiEnum? tip]) async => await _baseDialog(
         body: CustomAnimatedGridView<CekSenetListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cekSenet, title: model?.cariAdi ?? model?.cariKodu),
         onOk: () {},
         btnOkText: "İptal",
@@ -217,6 +218,12 @@ class DialogManager {
 
   Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
+  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+        body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,

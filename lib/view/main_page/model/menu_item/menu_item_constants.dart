@@ -137,7 +137,7 @@ class MenuItemConstants {
             ),
           ],
         ),
-        GridItemModel.item(name: "Banka", title: "Tahsilat & Ödeme Kayıtları"),
+        GridItemModel.item(name: null, title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
         GridItemModel.item(name: null, title: "Hızlı Tahsilat Kayıtları"),
         GridItemModel.altmenu(
           name: null,

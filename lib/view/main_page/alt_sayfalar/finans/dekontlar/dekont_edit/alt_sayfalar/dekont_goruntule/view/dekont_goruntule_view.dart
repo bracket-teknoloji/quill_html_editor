@@ -14,8 +14,9 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
 class DekontGoruntuleView extends StatefulWidget {
-  final DekontListesiModel model;
-  const DekontGoruntuleView({super.key, required this.model});
+  final DekontListesiModel? model;
+  final String? refKey;
+  const DekontGoruntuleView({super.key, this.model, this.refKey});
 
   @override
   State<DekontGoruntuleView> createState() => _DekontGoruntuleViewState();
@@ -27,7 +28,10 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getData(widget.model);
+      await viewModel.getData(widget.model, widget.refKey);
+      if (widget.refKey != null) {
+        await viewModel.getData(DekontListesiModel.fromDekontDuzenleRequestModel(viewModel.dekontListesi.first), null);
+      }
     });
     super.initState();
   }

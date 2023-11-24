@@ -404,7 +404,8 @@ class BottomSheetDialogManager {
           BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
         ],
       );
-  Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List<String>? groupValues}) async {
+      /// `GroupValues must be a list of String`
+  Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
     final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog(
       context,

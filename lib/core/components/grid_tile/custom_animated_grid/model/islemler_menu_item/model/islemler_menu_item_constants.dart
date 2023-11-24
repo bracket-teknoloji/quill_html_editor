@@ -115,6 +115,14 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(tahsilHesabaCirola);
       }
       islemlerList.add(kasaTahsilEt);
+    } else if (islemtipi == IslemTipiEnum.tahsilatOdeme) {
+      islemlerList.add(nakitOdeme(model));
+      islemlerList.add(nakitTahsilat(model));
+      islemlerList.add(krediKartiTahsilati(model));
+      islemlerList.add(tahsilatSenedi);
+      islemlerList.add(cekTahsilati);
+      islemlerList.add(borcSenedi);
+      islemlerList.add(borcCeki);
     }
   }
 

@@ -33,9 +33,9 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
   void setDekontMap(Map<String, dynamic> value) => dekontMap = value.asObservable();
 
   @action
-  Future<void> getData(DekontListesiModel model) async {
+  Future<void> getData(DekontListesiModel? model, String? refkey) async {
     final result =
-        await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model.queryParam, showLoading: true);
+        await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model?.queryParam?? {"refKey": refkey}, showLoading: true);
     if (result.success ?? false) {
       final List<DekontDuzenleRequestModel> list = (result.data as List).map((e) => e as DekontDuzenleRequestModel).toList().cast<DekontDuzenleRequestModel>();
       setDekontListesi(list);

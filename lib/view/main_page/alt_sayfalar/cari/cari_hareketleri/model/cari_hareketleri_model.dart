@@ -59,6 +59,8 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   bool get dovizliMi => (dovizTuru ?? 0) > 1;
 
+  double get tutar => (alacak ?? 0) - (borc ?? 0);
+
   double get dovizBakiye => ((dovizAlacak ?? 0) - (dovizBorc ?? 0)).abs();
 
   @override

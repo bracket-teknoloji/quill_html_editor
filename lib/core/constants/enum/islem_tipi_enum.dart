@@ -11,6 +11,7 @@ enum IslemTipiEnum {
   banka,
   bankaIslemleri,
   cekSenet,
+  tahsilatOdeme,
 }
 
 extension IslemTipiEnumExtension on IslemTipiEnum {
