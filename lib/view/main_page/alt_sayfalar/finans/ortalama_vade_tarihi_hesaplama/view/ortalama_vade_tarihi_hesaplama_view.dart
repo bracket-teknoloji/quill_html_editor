@@ -5,6 +5,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -24,12 +25,26 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
   final OrtalamaVadeTarihiHesaplamaViewModel viewModel = OrtalamaVadeTarihiHesaplamaViewModel();
   late final TextEditingController _vadeTarihiController;
   late final TextEditingController _tutarController;
+  late final FocusNode _tutarFocusNode;
 
   @override
   void initState() {
     _vadeTarihiController = TextEditingController();
     _tutarController = TextEditingController();
+    _tutarFocusNode = FocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await getDateTime();
+    });
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _vadeTarihiController.dispose();
+    _tutarController.dispose();
+    _tutarFocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -73,6 +88,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
               Expanded(
                 child: CustomTextField(
                   labelText: "Tutar",
+                  focusNode: _tutarFocusNode,
                   controller: _tutarController,
                   isFormattedString: true,
                   isMust: true,
@@ -90,35 +106,57 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
                       tutar: _tutarController.text.toDoubleWithFormattedString,
                     ),
                   );
+                  _tutarController.clear();
                   await getDateTime();
+                  _tutarFocusNode.requestFocus();
                 },
                 icon: const Icon(Icons.save_outlined),
               ),
             ],
           ),
           Expanded(
-            child: Observer(
-              builder: (_) {
-                if (viewModel.ortalamaVadeTarihiListesi.ext.isNullOrEmpty) {
-                  return const Text("Liste Boş");
-                }
-                return ListView.builder(
-                  itemCount: viewModel.ortalamaVadeTarihiListesi.length,
-                  itemBuilder: (context, index) {
-                    final item = viewModel.ortalamaVadeTarihiListesi[index];
-                    return Card(
-                      child: ListTile(
-                        title: Text(item.vadeTarihi.toDateString),
-                        subtitle: Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                      ),
-                    );
-                  },
-                );
-              },
+            child: Center(
+              child: Observer(
+                builder: (_) {
+                  if (viewModel.ortalamaVadeTarihiListesi.ext.isNullOrEmpty) {
+                    return const Text("Liste Boş");
+                  }
+                  return ListView.builder(
+                    itemCount: viewModel.ortalamaVadeTarihiListesi.length,
+                    itemBuilder: (context, index) {
+                      final item = viewModel.ortalamaVadeTarihiListesi[index];
+                      return Card(
+                        child: ListTile(
+                          title: Text(item.vadeTarihi.toDateString),
+                          subtitle: Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                          onTap: () => listTileOnTap(item, index),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ],
       );
+
+  Future<void> listTileOnTap(OrtalamaVadeTarihiModel model, int index) async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Seçenekler",
+      children: [
+        BottomSheetModel(
+          iconWidget: Icons.delete_outline,
+          title: "Sil",
+          onTap: () {
+            Get.back();
+            viewModel.removeOrtalamaVadeTarihiListesi(index);
+          },
+        ),
+      ],
+    );
+  }
 
   BottomBarWidget bottomBar() => BottomBarWidget(
         isScrolledDown: true,
