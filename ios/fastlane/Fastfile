@@ -27,20 +27,21 @@ platform :ios do
       target: "Runner",
       )
 
-      build_number = get_build_number(
-        xcodeproj: runner,
-        )
+    build_number = get_build_number(
+      xcodeproj: runner,
+      )
 
-        UI.success "Build number has been incremented"
-        UI.success "Build number: #{build_number}"
+    UI.success "Build number has been incremented"
+    UI.success "Build number: #{build_number}"
 
-        git_tag_name = "V#{version_number}+#{build_number}"
+    git_tag_name = "V#{version_number}+#{build_number}"
 
-        #git add and commit
-        git_add
-        git_commit(path: "./", message: "Build number has been incremented to #{git_tag_name}")
-        # sh("git add .")
-        # sh("git commit -m '#{git_tag_name}'")
+    #git add and commit
+    
+    git_add
+    git_commit(path: "./", message: "Build number has been incremented to #{git_tag_name}")
+
+
     if git_tag_exists(tag: git_tag_name)
 
       UI.important "Git tag already exists!"
