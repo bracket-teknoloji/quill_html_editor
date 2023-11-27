@@ -19,27 +19,31 @@ platform :ios do
       },
     )
 
+
     UI.success "The latest version number has been incremented"
 
     version_number = get_version_number(
       xcodeproj: runner,
       target: "Runner",
-    )
+      )
 
-    build_number = get_build_number(
-      xcodeproj: runner,
-    )
+      build_number = get_build_number(
+        xcodeproj: runner,
+        )
 
-    UI.success "Build number has been incremented"
-    UI.success "Build number: #{build_number}"
+        UI.success "Build number has been incremented"
+        UI.success "Build number: #{build_number}"
 
-    git_tag_name = "V#{version_number}+#{build_number}"
+        git_tag_name = "V#{version_number}+#{build_number}"
 
+        #git add and commit
+        sh("git add .")
+        sh("git commit -m 'V #{git_tag_name}'")
     if git_tag_exists(tag: git_tag_name)
 
       UI.important "Git tag already exists!"
       UI.important "Git tag will be deleted and recreated"
-      
+
       sh("git tag -d #{git_tag_name}")
 
       sh("git push --delete origin #{git_tag_name}")
