@@ -118,7 +118,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 enabled: viewModel.isletmeList.ext.isNotNullOrEmpty,
                                 controller: isletmeController,
                                 readOnly: true,
-                                onTap: () async => await isletmeDialog(context),
+                                onTap: () async => await isletmeDialog(context, isTapOnIsletme: true),
                               ),
                             ),
                           ),
@@ -299,15 +299,15 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     }
   }
 
-  Future isletmeDialog(BuildContext context) async {
-    // if (viewModel.isletmeList?.length == 1) {
-    //   isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
-    //   viewModel.selectedIsletme(viewModel.isletmeList?[0]);
-    //   // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
-    //   // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
-    //   await subeDialog(context);
-    //   return;
-    // }
+  Future isletmeDialog(BuildContext context, {bool isTapOnIsletme = false}) async {
+    if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
+      isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
+      viewModel.selectedIsletme(viewModel.isletmeList?[0]);
+      // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
+      // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
+      await subeDialog(context);
+      return;
+    }
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "İşletme Seçiniz",
