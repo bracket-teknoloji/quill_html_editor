@@ -145,7 +145,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   },
                 )
               : AppBarTitle(
-                  title: "Cari Listesi",
+                  title: widget.isGetData ?? false ? "Cari Seçiniz" : "Cari Listesi",
                   subtitle: "${viewModel.cariListesi?.length ?? ""}",
                 )),
         ),
