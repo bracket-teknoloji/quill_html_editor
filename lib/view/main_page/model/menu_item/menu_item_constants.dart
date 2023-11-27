@@ -319,6 +319,15 @@ class MenuItemConstants {
       icon: "atm_dollar",
       color: ColorPalette.pineGreen,
       altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "tahsilat_Tahsilatlar", title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
+            GridItemModel.item(name: "tahsilat_NakitTahsilat", title: "Nakit Tahsilat", route: "/mainPage/nakitTahsilat"),
+            GridItemModel.item(name: "tahsilat_KKartiTahsilat", title: "Kredi Kartı Tahsilatı", route: "/mainPage/krediKartiTahsilati"),
+            GridItemModel.item(name: "tahsilat_CekTahsilat", title: "Çek Tahsilatı", route: "/mainPage/cekMusteriTahsilat"),
+            GridItemModel.item(name: "tahsilat_SenetTahsilat", title: "Senet Tahsilatı", route: "/mainPage/senetMusteriTahsilat"),
+            GridItemModel.item(name: "tahsilat_MuhtelifTahsilat", title: "Muhtelif Tahsilat", route: "/mainPage/muhtelifTahsilat"),
+            GridItemModel.item(name: "tahsilat_NakitOdeme", title: "Nakit Ödeme", route: "/mainPage/nakitOdeme"),
+            GridItemModel.item(name: "tahsilat_MuhtelifOdeme", title: "Muhtelif Ödeme", route: "/mainPage/muhtelifOdeme"),
+            
         //😳 GridItemModel.item(name: "TAHS_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
       ],
     ),
