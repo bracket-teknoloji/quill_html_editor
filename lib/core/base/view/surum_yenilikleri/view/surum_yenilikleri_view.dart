@@ -78,7 +78,7 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(item?.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          Text(item?.tarih.toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          Text(item?.tarih?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0)).toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                         ],
                       ).paddingSymmetric(horizontal: UIHelper.lowSize),
                       ListView.builder(

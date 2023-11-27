@@ -33,16 +33,16 @@ platform :ios do
     UI.success "Build number has been incremented"
     UI.success "Build number: #{build_number}"
 
-    git_tag = "V#{version_number}+#{build_number}"
+    git_tag_name = "V#{version_number}+#{build_number}"
 
-    if git_tag_exists(tag: git_tag)
+    if git_tag_exists(tag: git_tag_name)
 
       UI.important "Git tag already exists!"
       UI.important "Git tag will be deleted and recreated"
       
-      sh("git tag -d #{git_tag}")
+      sh("git tag -d #{git_tag_name}")
 
-      sh("git push --delete origin #{git_tag}")
+      sh("git push --delete origin #{git_tag_name}")
 
       UI.success "Git tag has been deleted"
 
@@ -50,7 +50,7 @@ platform :ios do
 
     add_git_tag(
       grouping: "",
-      tag: git_tag,
+      tag: git_tag_name,
       includes_lane: false,
       )
 

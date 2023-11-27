@@ -99,7 +99,6 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
             CacheManager.setHesapBilgileri(AccountModel.instance);
             CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
             Get.back(result: true);
-            Get.back();
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {
             dialogManager.showErrorSnackBar("${item.firmaKisaAdi ?? item.firma} zaten kayıtlı");
@@ -132,7 +131,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         for (AccountResponseModel item in response.data!) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             Get.back(result: true);
-            Get.offAndToNamed("/addCompany");
+            // Get.back(result: true);
             CacheManager.setHesapBilgileri(AccountModel.instance);
             CacheManager.setAccounts(item..parola = encodedPassword);
             dialogManager.showSuccessSnackBar("Başarılı");

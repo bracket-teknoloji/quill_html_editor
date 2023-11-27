@@ -141,7 +141,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         contentPadding: UIHelper.lowPadding,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[SizedBox(width: width * 0.7, child: Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
+          children: <Widget>[
+            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
+            const Icon(Icons.more_vert_outlined),
+          ],
         ),
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -149,7 +152,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           children: <Widget>[
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
-            Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}"),
+            Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
