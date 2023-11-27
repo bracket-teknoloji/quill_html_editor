@@ -123,7 +123,7 @@ class CacheManager {
   static String getPref(String query) => preferencesBox.get(query);
   static String getCompanies(String query) => companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
-  static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi) ?? true;
+  static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi??"") ?? true;
 
   static MainPageModel? get getAnaVeri => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
