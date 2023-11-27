@@ -303,7 +303,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               children: [
                                 Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
                                 if (object.cariIl != null)
-                                  Text("${object.cariIl}/${object.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
+                                  Text("${object.cariIl ?? ""}/${object.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
                                 else
                                   const SizedBox(),
                                 Row(
