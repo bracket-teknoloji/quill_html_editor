@@ -57,8 +57,35 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     });
   }
 
+  late final _$baglantiTipiAtom =
+      Atom(name: '_LoginViewModelBase.baglantiTipi', context: context);
+
+  @override
+  String get baglantiTipi {
+    _$baglantiTipiAtom.reportRead();
+    return super.baglantiTipi;
+  }
+
+  @override
+  set baglantiTipi(String value) {
+    _$baglantiTipiAtom.reportWrite(value, super.baglantiTipi, () {
+      super.baglantiTipi = value;
+    });
+  }
+
   late final _$_LoginViewModelBaseActionController =
       ActionController(name: '_LoginViewModelBase', context: context);
+
+  @override
+  void changeBaglantiTipi(bool value) {
+    final _$actionInfo = _$_LoginViewModelBaseActionController.startAction(
+        name: '_LoginViewModelBase.changeBaglantiTipi');
+    try {
+      return super.changeBaglantiTipi(value);
+    } finally {
+      _$_LoginViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void checkDebug() {
@@ -87,7 +114,8 @@ mixin _$LoginViewModel on _LoginViewModelBase, Store {
     return '''
 obscurePassword: ${obscurePassword},
 isDebug: ${isDebug},
-baseUrl: ${baseUrl}
+baseUrl: ${baseUrl},
+baglantiTipi: ${baglantiTipi}
     ''';
   }
 }

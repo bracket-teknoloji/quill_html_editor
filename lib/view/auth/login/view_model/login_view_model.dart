@@ -17,6 +17,18 @@ abstract class _LoginViewModelBase with Store {
   @observable
   String baseUrl = "";
 
+  @observable
+  String baglantiTipi = "Uzak";
+
+  @action
+  void changeBaglantiTipi(bool value) {
+    if (value) {
+      baglantiTipi = "Uzak";
+    } else {
+      baglantiTipi = "Yerel";
+    }
+  }
+
   @action
   void checkDebug() {
     isDebug = AccountModel.instance.isDebug;
