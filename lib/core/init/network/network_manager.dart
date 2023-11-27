@@ -61,7 +61,8 @@ class NetworkManager {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
           } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
             if (e.requestOptions.path == ApiUrls.token) {
-              return handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı."}));
+              return handler
+                  .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
             } else {
               return handler.next(e);
             }
@@ -348,7 +349,7 @@ class NetworkManager {
 
   static String get getBaseUrl {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
-    return  "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan) : account?.wsLan}/";
+    return "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/") : account?.wsLan}/";
     // if (account?.wsWan != null) {
     // } else {
     //   result = account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/";
