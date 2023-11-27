@@ -34,6 +34,7 @@ class CacheManager {
   static late Box cariSehirBox;
   static late Box subeListesiBox;
   static late Box<bool> isLicenseVerifiedBox;
+  static late Box<bool> isUzaktanBox;
   static late Box<BaseSiparisEditModel> siparisEditBox;
   static late Box<ListSiparisEditModel> siparisEditListBox;
   static late Box<BaseSiparisEditModel> faturaEditBox;
@@ -78,6 +79,7 @@ class CacheManager {
     cariSehirBox = await Hive.openBox("cariSehir");
     subeListesiBox = await Hive.openBox<List>("cariListesi");
     isLicenseVerifiedBox = await Hive.openBox<bool>("isLicenseVerified");
+    isUzaktanBox = await Hive.openBox<bool>("uzaktanMi");
     siparisEditBox = await Hive.openBox<BaseSiparisEditModel>("siparisEdit");
     siparisEditListBox = await Hive.openBox<ListSiparisEditModel>("siparisEditList");
     profilParametreBox = await Hive.openBox<Map>("profilParametre");
@@ -121,6 +123,7 @@ class CacheManager {
   static String getPref(String query) => preferencesBox.get(query);
   static String getCompanies(String query) => companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
+  static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi) ?? true;
 
   static MainPageModel? get getAnaVeri => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
@@ -165,6 +168,7 @@ class CacheManager {
   static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) => accountsBox.put(value.email, value);
   static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);
+  static void setUzaktanMi(String? sirketAdi, bool value) => isUzaktanBox.put(sirketAdi, value);
 
   ///? `[TODO DÜZELT]`
   static void setVerifiedUser(LoginDialogModel value) => verifiedUsersBox.put("data", value);

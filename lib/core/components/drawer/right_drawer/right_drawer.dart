@@ -1,12 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/drawer/right_drawer/drawer_model.dart";
+import "package:picker/core/init/app_info/app_info.dart";
+import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/add_company/model/account_response_model.dart";
 
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../gen/assets.gen.dart";
 import "../../../init/cache/cache_manager.dart";
-import "drawer_constants.dart";
 
 class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});
@@ -48,7 +51,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       else
                         const SizedBox(),
                       Text(
-                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc(context).rightDrawer.yetkiliKullanici,
+                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc(context).rightDrawer.executiveUser,
                         style: CacheManager.getAnaVeri!.userModel?.admin == "E"
                             ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
                             : theme.textTheme.bodySmall,
@@ -64,18 +67,21 @@ class _EndDrawerState extends BaseState<EndDrawer> {
               Expanded(
                 child: ListView.separated(
                   padding: UIHelper.zeroPadding,
-                  itemBuilder: (context, index) => ListTile(
-                    dense: true,
-                    onTap: DrawerMenuItems.items[index].onTap,
-                    title: Text(
-                      "${DrawerMenuItems.items[index]}",
-                      style: theme.textTheme.bodyMedium,
-                    ),
-                    horizontalTitleGap: 0,
-                    leading: Icon(DrawerMenuItems.items[index].iconWidget, size: 20, color: theme.colorScheme.primary),
-                  ),
+                  itemBuilder: (context, index) {
+                    final DrawerModel item = items[index];
+                    return ListTile(
+                      dense: true,
+                      onTap: item.onTap,
+                      title: Text(
+                        "${items[index].title}",
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                      horizontalTitleGap: 0,
+                      leading: Icon(item.iconWidget, size: 20, color: theme.colorScheme.primary),
+                    );
+                  },
                   separatorBuilder: (context, index) => const Divider(),
-                  itemCount: DrawerMenuItems.items.length,
+                  itemCount: items.length,
                 ),
               ),
               // Row(
@@ -155,4 +161,75 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           ),
         ),
       );
+
+  List<DrawerModel> get items => [
+        DrawerModel(
+          title: "${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})",
+          iconWidget: Icons.storage_outlined,
+        ),
+        DrawerModel(
+          title: CacheManager.getIsletmeSube["İşletme"],
+          iconWidget: Icons.home_outlined,
+        ),
+        // DrawerModel(
+        //   title: "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}",
+        //   iconWidget: Icons.router_outlined,
+        // ),
+        DrawerModel(
+          title: "${CacheManager.getVeriTabani()["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
+          iconWidget: Icons.location_on_outlined,
+        ),
+        DrawerModel(
+          title: "v${AppInfoModel.instance.version}",
+          iconWidget: Icons.route_outlined,
+        ),
+        DrawerModel(
+          title: _urlAdi,
+          iconWidget: Icons.link_outlined,
+          onTap: () async {
+            await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
+            setState(() {});
+          },
+        ),
+        DrawerModel(
+          title: loc(context).rightDrawer.releaseNotes,
+          iconWidget: Icons.new_releases_outlined,
+          onTap: () {
+            //close Drawer
+            Get.back();
+            return Get.toNamed("/mainPage/surumYenilikleri");
+          },
+        ),
+      ];
+
+  AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
+  String get _urlAdi {
+    if (CacheManager.getUzaktanMi(account?.firmaKisaAdi)) {
+      return "${getIP(account?.wsWan ?? "")} (${loc(context).rightDrawer.remote})";
+    } else {
+      return "${getIP(account?.wsLan ?? "")} (${loc(context).rightDrawer.local})";
+    }
+  }
+
+  String getIP(String url) {
+    final List<String> urlSplit = url.split("/");
+    // remove ":" from last element of urlSplit
+
+    // get 3rd element of urlSplit and split it with ".". Then observe first 3 elements of it.
+    final List<String> ipSplit = urlSplit[2].split(".");
+    // if any element contains ":" then split it with ":" and get first element of it.
+    for (var ip in ipSplit) {
+      if (ip.contains(":")) {
+        ipSplit[ipSplit.indexOf(ip)] = ip.split(":")[0];
+      }
+    }
+
+    for (int i = 1; i < ipSplit.length - 1; i++) {
+      ipSplit[i] = ipSplit[i].split(":")[0];
+      if (ipSplit[i].contains(":")) {}
+      ipSplit[i] = "*" * (ipSplit[i].length);
+    }
+    // join elements with "."
+    return ipSplit.join(".");
+  }
 }

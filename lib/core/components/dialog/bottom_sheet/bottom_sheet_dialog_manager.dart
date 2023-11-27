@@ -18,9 +18,12 @@ import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
+import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/add_company/model/account_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -404,7 +407,8 @@ class BottomSheetDialogManager {
           BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
         ],
       );
-      /// `GroupValues must be a list of String`
+
+  /// `GroupValues must be a list of String`
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
     final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog(
@@ -534,6 +538,23 @@ class BottomSheetDialogManager {
           )
           .toList(),
     );
+  }
+
+  Future<void> showBaglantiSekliBottomSheetDialog(BuildContext context, AccountResponseModel? model) async {
+    final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
+    final result = await showRadioBottomSheetDialog(
+      context,
+      title: "Bağlantı Şekli Seçiniz",
+      groupValue: model?.uzaktanMi,
+      children: [
+        BottomSheetModel(title: "Uzaktan", value: true, groupValue: true).yetkiKontrol(account?.wsWan != null),
+        BottomSheetModel(title: "Yerel", value: false, groupValue: false).yetkiKontrol(account?.wsLan != null),
+      ].nullCheckWithGeneric,
+    );
+    if (result != null && model != null) {
+      CacheManager.setUzaktanMi(account?.firmaKisaAdi ?? "", result);
+      CacheManager.setAccounts(model..uzaktanMi = result);
+    }
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {

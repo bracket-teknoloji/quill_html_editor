@@ -46,6 +46,8 @@ class AccountResponseModel with NetworkManagerMixin {
   String? maxWsVersion;
   @HiveField(18)
   dynamic demoBitisTarihi;
+  @HiveField(19)
+  bool? uzaktanMi = true;
 
   AccountResponseModel();
 

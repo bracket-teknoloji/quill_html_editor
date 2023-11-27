@@ -35,13 +35,14 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..guncellemeVarmi = fields[15] as bool?
       ..maxApkVersion = fields[16] as int?
       ..maxWsVersion = fields[17] as String?
-      ..demoBitisTarihi = fields[18] as dynamic;
+      ..demoBitisTarihi = fields[18] as dynamic
+      ..uzaktanMi = fields[19] as bool?;
   }
 
   @override
   void write(BinaryWriter writer, AccountResponseModel obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(20)
       ..writeByte(0)
       ..write(obj.firma)
       ..writeByte(1)
@@ -79,7 +80,9 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..writeByte(17)
       ..write(obj.maxWsVersion)
       ..writeByte(18)
-      ..write(obj.demoBitisTarihi);
+      ..write(obj.demoBitisTarihi)
+      ..writeByte(19)
+      ..write(obj.uzaktanMi);
   }
 
   @override
@@ -118,7 +121,8 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
       ..maxApkVersion = json['MAX_APK_VERSION'] as int?
       ..maxWsVersion = json['MAX_WS_VERSION'] as String?
-      ..demoBitisTarihi = json['DEMO_BITIS_TARIHI'];
+      ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
+      ..uzaktanMi = json['UZAKTAN_MI'] as bool?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
     AccountResponseModel instance) {
@@ -149,5 +153,6 @@ Map<String, dynamic> _$AccountResponseModelToJson(
   writeNotNull('MAX_APK_VERSION', instance.maxApkVersion);
   writeNotNull('MAX_WS_VERSION', instance.maxWsVersion);
   writeNotNull('DEMO_BITIS_TARIHI', instance.demoBitisTarihi);
+  writeNotNull('UZAKTAN_MI', instance.uzaktanMi);
   return val;
 }

@@ -33,7 +33,10 @@ class LocalerightDrawer {
   String get sample => _data["sample"]!;
   String get save => _data["save"]!;
   String get profile => _data["profile"]!;
-  String get yetkiliKullanici => _data["yetkiliKullanici"]!;
+  String get executiveUser => _data["executiveUser"]!;
   String get exit => _data["exit"]!;
   String get changeCompany => _data["changeCompany"]!;
+  String get remote => _data["remote"]!;
+  String get local => _data["local"]!;
+  String get releaseNotes => _data["releaseNotes"]!;
 }

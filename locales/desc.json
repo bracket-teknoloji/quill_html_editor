@@ -3,8 +3,11 @@
     "sample": "This is sample description",
     "save": "Use to save document",
     "profile": "profil",
-    "yetkiliKullanici": "Yetkili Kullancı",
+    "executiveUser": "Yetkili Kullancı",
     "exit": "Çıkış yapma butonu",
-    "changeCompany": "Şirket değiştirme butonu"
+    "changeCompany": "Şirket değiştirme butonu",
+    "remote": "Uzaktan",
+    "local": "Yerel",
+    "releaseNotes": "Sürüm Yenilikleri"
   }
 }

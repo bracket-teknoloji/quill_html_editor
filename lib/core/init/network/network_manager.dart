@@ -347,12 +347,12 @@ class NetworkManager {
   }
 
   static String get getBaseUrl {
-    String result;
-    if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan != null) {
-      result = "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}/";
-    } else {
-      result = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/";
-    }
-    return result;
+    final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
+    return  "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan) : account?.wsLan}/";
+    // if (account?.wsWan != null) {
+    // } else {
+    //   result = account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/";
+    // }
+    // return result;
   }
 }

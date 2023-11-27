@@ -2,8 +2,11 @@
   "rightDrawer": {
     "save": "Kaydet",
     "profile": "Profil",
-    "yetkiliKullanici": "Yetkili Kullanıcı",
+    "executiveUser": "Yetkili Kullanıcı",
     "exit": "Çıkış",
-    "changeCompany": "Şirket Değiştir"
+    "changeCompany": "Şirket Değiştir",
+    "remote": "Uzak",
+    "local": "Yerel",
+    "releaseNotes": "Sürüm Yenilikleri"
   }
 }
