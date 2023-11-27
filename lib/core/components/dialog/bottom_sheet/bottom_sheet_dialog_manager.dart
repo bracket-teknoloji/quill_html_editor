@@ -540,7 +540,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<void> showBaglantiSekliBottomSheetDialog(BuildContext context, AccountResponseModel? model) async {
+  Future<bool?> showBaglantiSekliBottomSheetDialog(BuildContext context, AccountResponseModel? model) async {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
     final result = await showRadioBottomSheetDialog(
       context,
@@ -555,6 +555,7 @@ class BottomSheetDialogManager {
       CacheManager.setUzaktanMi(account?.firmaKisaAdi ?? "", result);
       CacheManager.setAccounts(model..uzaktanMi = result);
     }
+    return result;
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
