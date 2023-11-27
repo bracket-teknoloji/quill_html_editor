@@ -45,7 +45,10 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                 ),
                 contentPadding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
               ),
-              const Divider(),
+              Divider(
+                indent: UIHelper.midSize,
+                endIndent: UIHelper.midSize,
+              ),
               if (list.ext.isNullOrEmpty)
                 Expanded(
                   flex: 2,
