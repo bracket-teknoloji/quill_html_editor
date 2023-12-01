@@ -310,4 +310,13 @@ final class YetkiController {
   bool get ebelgeEArsivSorgula => _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
   bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
+
+  //! TALEP TEKLİF
+  bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStal);
+  bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtal);
+  bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStal);
+
+  bool get satisTeklifiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTeklifi);
+  bool get alisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaAtal);
+  bool get satisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTalebi); 
 }

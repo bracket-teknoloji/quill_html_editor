@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/model/print_model.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
@@ -137,19 +139,18 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             }
                           });
                         },
-                      ),
-                      // .yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
+                      ).yetkiKontrol(widget.talepTeklifEnum.silinebilirMi && widget.model.tipi != 1),
                       BottomSheetModel(
                         title: "Yazdır",
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
-                          // Get.back();
-                          // final PrintModel printModel = PrintModel(
-                          //   raporOzelKod: widget.talepTeklifEnum.getPrintValue,
-                          //   etiketSayisi: 1,
-                          //   dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),
-                          // );
-                          // await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
+                          Get.back();
+                          final PrintModel printModel = PrintModel(
+                            raporOzelKod: widget.talepTeklifEnum.getPrintValue,
+                            etiketSayisi: 1,
+                            dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.belgeTuru, cariKodu: widget.model.cariKodu),
+                          );
+                          await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
                         },
                       ),
                       // .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),

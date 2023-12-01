@@ -24,6 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view/dekont_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view/tahsilat_odeme_kayitlari_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_aciklama_duzenle/view/talep_teklif_aciklama_duzenle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/view/talep_teklif_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -323,6 +324,11 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/talTekSatisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTalep)),
               GetPage(name: "/talTekSatisTeklif", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTeklif)),
               GetPage(name: "/talTekAlisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep)),
+
+              //* * Talep Açıklama Düzenleme
+              GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.satisTalep)),
+              GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.satisTeklif)),
+              GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.alisTalep)),
 
               //* Serbest Raporlar
               //*

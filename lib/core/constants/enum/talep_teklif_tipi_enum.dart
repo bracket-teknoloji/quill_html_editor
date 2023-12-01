@@ -1,11 +1,10 @@
-
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 
 enum TalepTeklifEnum {
   satisTalep,
   satisTeklif,
   alisTalep,
 }
-
 
 extension TalepTeklifEnumExtension on TalepTeklifEnum {
   String get rawValue {
@@ -58,6 +57,28 @@ extension TalepTeklifEnumExtension on TalepTeklifEnum {
         return false;
       case TalepTeklifEnum.alisTalep:
         return true;
+    }
+  }
+
+  String get aciklamaDuzenleRoute {
+    switch (this) {
+      case TalepTeklifEnum.satisTalep:
+        return "/talTekSatisTalepAciklamaDuzenle";
+      case TalepTeklifEnum.satisTeklif:
+        return "/talTekSatisTeklifAciklamaDuzenle";
+      case TalepTeklifEnum.alisTalep:
+        return "/talTekAlisTalepAciklamaDuzenle";
+    }
+  }
+
+  bool get silinebilirMi {
+    switch (this) {
+      case TalepTeklifEnum.satisTalep:
+        return YetkiController().satisTalebiSil;
+      case TalepTeklifEnum.satisTeklif:
+        return YetkiController().satisTeklifiSil;
+      case TalepTeklifEnum.alisTalep:
+        return YetkiController().alisTalebiSil;
     }
   }
 }
