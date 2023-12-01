@@ -47,6 +47,19 @@ _$TalepTeklifListesiModelImpl _$$TalepTeklifListesiModelImplFromJson(
       acik1: json['ACIK1'] as String?,
       acik2: json['ACIK2'] as String?,
       acik3: json['ACIK3'] as String?,
+      acik4: json['ACIK4'] as String?,
+      acik5: json['ACIK5'] as String?,
+      acik6: json['ACIK6'] as String?,
+      acik7: json['ACIK7'] as String?,
+      acik8: json['ACIK8'] as String?,
+      acik9: json['ACIK9'] as String?,
+      acik10: json['ACIK10'] as String?,
+      acik11: json['ACIK11'] as String?,
+      acik12: json['ACIK12'] as String?,
+      acik13: json['ACIK13'] as String?,
+      acik14: json['ACIK14'] as String?,
+      acik15: json['ACIK15'] as String?,
+      acik16: json['ACIK16'] as String?,
       belgeKodu: json['BELGE_KODU'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       belgeTuru: json['BELGE_TURU'] as String?,
@@ -62,6 +75,24 @@ _$TalepTeklifListesiModelImpl _$$TalepTeklifListesiModelImplFromJson(
       plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       siparislesti: json['SIPARISLESTI'] as String?,
+      ekAcik1: json['EK_ACIK1'] as String?,
+      ekAcik10: json['EK_ACIK10'] as String?,
+      ekAcik11: json['EK_ACIK11'] as String?,
+      ekAcik12: json['EK_ACIK12'] as String?,
+      ekAcik13: json['EK_ACIK13'] as String?,
+      ekAcik14: json['EK_ACIK14'] as String?,
+      ekAcik15: json['EK_ACIK15'] as String?,
+      ekAcik16: json['EK_ACIK16'] as String?,
+      ekAcik2: json['EK_ACIK2'] as String?,
+      ekAcik3: json['EK_ACIK3'] as String?,
+      ekAcik4: json['EK_ACIK4'] as String?,
+      ekAcik5: json['EK_ACIK5'] as String?,
+      ekAcik6: json['EK_ACIK6'] as String?,
+      ekAcik7: json['EK_ACIK7'] as String?,
+      ekAcik8: json['EK_ACIK8'] as String?,
+      ekAcik9: json['EK_ACIK9'] as String?,
+      islemKodu: json['ISLEM_KODU'] as int?,
+      tag: json['TAG'] as String? ?? "FaturaModel",
     );
 
 Map<String, dynamic> _$$TalepTeklifListesiModelImplToJson(
@@ -103,6 +134,19 @@ Map<String, dynamic> _$$TalepTeklifListesiModelImplToJson(
   writeNotNull('ACIK1', instance.acik1);
   writeNotNull('ACIK2', instance.acik2);
   writeNotNull('ACIK3', instance.acik3);
+  writeNotNull('ACIK4', instance.acik4);
+  writeNotNull('ACIK5', instance.acik5);
+  writeNotNull('ACIK6', instance.acik6);
+  writeNotNull('ACIK7', instance.acik7);
+  writeNotNull('ACIK8', instance.acik8);
+  writeNotNull('ACIK9', instance.acik9);
+  writeNotNull('ACIK10', instance.acik10);
+  writeNotNull('ACIK11', instance.acik11);
+  writeNotNull('ACIK12', instance.acik12);
+  writeNotNull('ACIK13', instance.acik13);
+  writeNotNull('ACIK14', instance.acik14);
+  writeNotNull('ACIK15', instance.acik15);
+  writeNotNull('ACIK16', instance.acik16);
   writeNotNull('BELGE_KODU', instance.belgeKodu);
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_TURU', instance.belgeTuru);
@@ -118,5 +162,23 @@ Map<String, dynamic> _$$TalepTeklifListesiModelImplToJson(
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('SIPARISLESTI', instance.siparislesti);
+  writeNotNull('EK_ACIK1', instance.ekAcik1);
+  writeNotNull('EK_ACIK10', instance.ekAcik10);
+  writeNotNull('EK_ACIK11', instance.ekAcik11);
+  writeNotNull('EK_ACIK12', instance.ekAcik12);
+  writeNotNull('EK_ACIK13', instance.ekAcik13);
+  writeNotNull('EK_ACIK14', instance.ekAcik14);
+  writeNotNull('EK_ACIK15', instance.ekAcik15);
+  writeNotNull('EK_ACIK16', instance.ekAcik16);
+  writeNotNull('EK_ACIK2', instance.ekAcik2);
+  writeNotNull('EK_ACIK3', instance.ekAcik3);
+  writeNotNull('EK_ACIK4', instance.ekAcik4);
+  writeNotNull('EK_ACIK5', instance.ekAcik5);
+  writeNotNull('EK_ACIK6', instance.ekAcik6);
+  writeNotNull('EK_ACIK7', instance.ekAcik7);
+  writeNotNull('EK_ACIK8', instance.ekAcik8);
+  writeNotNull('EK_ACIK9', instance.ekAcik9);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('TAG', instance.tag);
   return val;
 }

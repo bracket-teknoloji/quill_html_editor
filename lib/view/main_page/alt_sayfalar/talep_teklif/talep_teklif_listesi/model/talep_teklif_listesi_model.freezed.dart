@@ -78,6 +78,32 @@ mixin _$TalepTeklifListesiModel {
   set acik2(String? value) => throw _privateConstructorUsedError;
   String? get acik3 => throw _privateConstructorUsedError;
   set acik3(String? value) => throw _privateConstructorUsedError;
+  String? get acik4 => throw _privateConstructorUsedError;
+  set acik4(String? value) => throw _privateConstructorUsedError;
+  String? get acik5 => throw _privateConstructorUsedError;
+  set acik5(String? value) => throw _privateConstructorUsedError;
+  String? get acik6 => throw _privateConstructorUsedError;
+  set acik6(String? value) => throw _privateConstructorUsedError;
+  String? get acik7 => throw _privateConstructorUsedError;
+  set acik7(String? value) => throw _privateConstructorUsedError;
+  String? get acik8 => throw _privateConstructorUsedError;
+  set acik8(String? value) => throw _privateConstructorUsedError;
+  String? get acik9 => throw _privateConstructorUsedError;
+  set acik9(String? value) => throw _privateConstructorUsedError;
+  String? get acik10 => throw _privateConstructorUsedError;
+  set acik10(String? value) => throw _privateConstructorUsedError;
+  String? get acik11 => throw _privateConstructorUsedError;
+  set acik11(String? value) => throw _privateConstructorUsedError;
+  String? get acik12 => throw _privateConstructorUsedError;
+  set acik12(String? value) => throw _privateConstructorUsedError;
+  String? get acik13 => throw _privateConstructorUsedError;
+  set acik13(String? value) => throw _privateConstructorUsedError;
+  String? get acik14 => throw _privateConstructorUsedError;
+  set acik14(String? value) => throw _privateConstructorUsedError;
+  String? get acik15 => throw _privateConstructorUsedError;
+  set acik15(String? value) => throw _privateConstructorUsedError;
+  String? get acik16 => throw _privateConstructorUsedError;
+  set acik16(String? value) => throw _privateConstructorUsedError;
   String? get belgeKodu => throw _privateConstructorUsedError;
   set belgeKodu(String? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
@@ -108,6 +134,42 @@ mixin _$TalepTeklifListesiModel {
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get siparislesti => throw _privateConstructorUsedError;
   set siparislesti(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik1 => throw _privateConstructorUsedError;
+  set ekAcik1(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik10 => throw _privateConstructorUsedError;
+  set ekAcik10(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik11 => throw _privateConstructorUsedError;
+  set ekAcik11(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik12 => throw _privateConstructorUsedError;
+  set ekAcik12(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik13 => throw _privateConstructorUsedError;
+  set ekAcik13(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik14 => throw _privateConstructorUsedError;
+  set ekAcik14(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik15 => throw _privateConstructorUsedError;
+  set ekAcik15(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik16 => throw _privateConstructorUsedError;
+  set ekAcik16(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik2 => throw _privateConstructorUsedError;
+  set ekAcik2(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik3 => throw _privateConstructorUsedError;
+  set ekAcik3(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik4 => throw _privateConstructorUsedError;
+  set ekAcik4(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik5 => throw _privateConstructorUsedError;
+  set ekAcik5(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik6 => throw _privateConstructorUsedError;
+  set ekAcik6(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik7 => throw _privateConstructorUsedError;
+  set ekAcik7(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik8 => throw _privateConstructorUsedError;
+  set ekAcik8(String? value) => throw _privateConstructorUsedError;
+  String? get ekAcik9 => throw _privateConstructorUsedError;
+  set ekAcik9(String? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
+  String? get tag => throw _privateConstructorUsedError;
+  set tag(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -150,6 +212,19 @@ abstract class $TalepTeklifListesiModelCopyWith<$Res> {
       String? acik1,
       String? acik2,
       String? acik3,
+      String? acik4,
+      String? acik5,
+      String? acik6,
+      String? acik7,
+      String? acik8,
+      String? acik9,
+      String? acik10,
+      String? acik11,
+      String? acik12,
+      String? acik13,
+      String? acik14,
+      String? acik15,
+      String? acik16,
       String? belgeKodu,
       String? belgeNo,
       String? belgeTuru,
@@ -164,7 +239,25 @@ abstract class $TalepTeklifListesiModelCopyWith<$Res> {
       String? kdvDahil,
       String? plasiyerAciklama,
       String? plasiyerKodu,
-      String? siparislesti});
+      String? siparislesti,
+      String? ekAcik1,
+      String? ekAcik10,
+      String? ekAcik11,
+      String? ekAcik12,
+      String? ekAcik13,
+      String? ekAcik14,
+      String? ekAcik15,
+      String? ekAcik16,
+      String? ekAcik2,
+      String? ekAcik3,
+      String? ekAcik4,
+      String? ekAcik5,
+      String? ekAcik6,
+      String? ekAcik7,
+      String? ekAcik8,
+      String? ekAcik9,
+      int? islemKodu,
+      String? tag});
 }
 
 /// @nodoc
@@ -209,6 +302,19 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
     Object? acik1 = freezed,
     Object? acik2 = freezed,
     Object? acik3 = freezed,
+    Object? acik4 = freezed,
+    Object? acik5 = freezed,
+    Object? acik6 = freezed,
+    Object? acik7 = freezed,
+    Object? acik8 = freezed,
+    Object? acik9 = freezed,
+    Object? acik10 = freezed,
+    Object? acik11 = freezed,
+    Object? acik12 = freezed,
+    Object? acik13 = freezed,
+    Object? acik14 = freezed,
+    Object? acik15 = freezed,
+    Object? acik16 = freezed,
     Object? belgeKodu = freezed,
     Object? belgeNo = freezed,
     Object? belgeTuru = freezed,
@@ -224,6 +330,24 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
     Object? plasiyerAciklama = freezed,
     Object? plasiyerKodu = freezed,
     Object? siparislesti = freezed,
+    Object? ekAcik1 = freezed,
+    Object? ekAcik10 = freezed,
+    Object? ekAcik11 = freezed,
+    Object? ekAcik12 = freezed,
+    Object? ekAcik13 = freezed,
+    Object? ekAcik14 = freezed,
+    Object? ekAcik15 = freezed,
+    Object? ekAcik16 = freezed,
+    Object? ekAcik2 = freezed,
+    Object? ekAcik3 = freezed,
+    Object? ekAcik4 = freezed,
+    Object? ekAcik5 = freezed,
+    Object? ekAcik6 = freezed,
+    Object? ekAcik7 = freezed,
+    Object? ekAcik8 = freezed,
+    Object? ekAcik9 = freezed,
+    Object? islemKodu = freezed,
+    Object? tag = freezed,
   }) {
     return _then(_value.copyWith(
       cariDovizli: freezed == cariDovizli
@@ -338,6 +462,58 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
           ? _value.acik3
           : acik3 // ignore: cast_nullable_to_non_nullable
               as String?,
+      acik4: freezed == acik4
+          ? _value.acik4
+          : acik4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik5: freezed == acik5
+          ? _value.acik5
+          : acik5 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik6: freezed == acik6
+          ? _value.acik6
+          : acik6 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik7: freezed == acik7
+          ? _value.acik7
+          : acik7 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik8: freezed == acik8
+          ? _value.acik8
+          : acik8 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik9: freezed == acik9
+          ? _value.acik9
+          : acik9 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik10: freezed == acik10
+          ? _value.acik10
+          : acik10 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik11: freezed == acik11
+          ? _value.acik11
+          : acik11 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik12: freezed == acik12
+          ? _value.acik12
+          : acik12 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik13: freezed == acik13
+          ? _value.acik13
+          : acik13 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik14: freezed == acik14
+          ? _value.acik14
+          : acik14 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik15: freezed == acik15
+          ? _value.acik15
+          : acik15 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik16: freezed == acik16
+          ? _value.acik16
+          : acik16 // ignore: cast_nullable_to_non_nullable
+              as String?,
       belgeKodu: freezed == belgeKodu
           ? _value.belgeKodu
           : belgeKodu // ignore: cast_nullable_to_non_nullable
@@ -398,6 +574,78 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
           ? _value.siparislesti
           : siparislesti // ignore: cast_nullable_to_non_nullable
               as String?,
+      ekAcik1: freezed == ekAcik1
+          ? _value.ekAcik1
+          : ekAcik1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik10: freezed == ekAcik10
+          ? _value.ekAcik10
+          : ekAcik10 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik11: freezed == ekAcik11
+          ? _value.ekAcik11
+          : ekAcik11 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik12: freezed == ekAcik12
+          ? _value.ekAcik12
+          : ekAcik12 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik13: freezed == ekAcik13
+          ? _value.ekAcik13
+          : ekAcik13 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik14: freezed == ekAcik14
+          ? _value.ekAcik14
+          : ekAcik14 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik15: freezed == ekAcik15
+          ? _value.ekAcik15
+          : ekAcik15 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik16: freezed == ekAcik16
+          ? _value.ekAcik16
+          : ekAcik16 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik2: freezed == ekAcik2
+          ? _value.ekAcik2
+          : ekAcik2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik3: freezed == ekAcik3
+          ? _value.ekAcik3
+          : ekAcik3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik4: freezed == ekAcik4
+          ? _value.ekAcik4
+          : ekAcik4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik5: freezed == ekAcik5
+          ? _value.ekAcik5
+          : ekAcik5 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik6: freezed == ekAcik6
+          ? _value.ekAcik6
+          : ekAcik6 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik7: freezed == ekAcik7
+          ? _value.ekAcik7
+          : ekAcik7 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik8: freezed == ekAcik8
+          ? _value.ekAcik8
+          : ekAcik8 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik9: freezed == ekAcik9
+          ? _value.ekAcik9
+          : ekAcik9 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -440,6 +688,19 @@ abstract class _$$TalepTeklifListesiModelImplCopyWith<$Res>
       String? acik1,
       String? acik2,
       String? acik3,
+      String? acik4,
+      String? acik5,
+      String? acik6,
+      String? acik7,
+      String? acik8,
+      String? acik9,
+      String? acik10,
+      String? acik11,
+      String? acik12,
+      String? acik13,
+      String? acik14,
+      String? acik15,
+      String? acik16,
       String? belgeKodu,
       String? belgeNo,
       String? belgeTuru,
@@ -454,7 +715,25 @@ abstract class _$$TalepTeklifListesiModelImplCopyWith<$Res>
       String? kdvDahil,
       String? plasiyerAciklama,
       String? plasiyerKodu,
-      String? siparislesti});
+      String? siparislesti,
+      String? ekAcik1,
+      String? ekAcik10,
+      String? ekAcik11,
+      String? ekAcik12,
+      String? ekAcik13,
+      String? ekAcik14,
+      String? ekAcik15,
+      String? ekAcik16,
+      String? ekAcik2,
+      String? ekAcik3,
+      String? ekAcik4,
+      String? ekAcik5,
+      String? ekAcik6,
+      String? ekAcik7,
+      String? ekAcik8,
+      String? ekAcik9,
+      int? islemKodu,
+      String? tag});
 }
 
 /// @nodoc
@@ -498,6 +777,19 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
     Object? acik1 = freezed,
     Object? acik2 = freezed,
     Object? acik3 = freezed,
+    Object? acik4 = freezed,
+    Object? acik5 = freezed,
+    Object? acik6 = freezed,
+    Object? acik7 = freezed,
+    Object? acik8 = freezed,
+    Object? acik9 = freezed,
+    Object? acik10 = freezed,
+    Object? acik11 = freezed,
+    Object? acik12 = freezed,
+    Object? acik13 = freezed,
+    Object? acik14 = freezed,
+    Object? acik15 = freezed,
+    Object? acik16 = freezed,
     Object? belgeKodu = freezed,
     Object? belgeNo = freezed,
     Object? belgeTuru = freezed,
@@ -513,6 +805,24 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
     Object? plasiyerAciklama = freezed,
     Object? plasiyerKodu = freezed,
     Object? siparislesti = freezed,
+    Object? ekAcik1 = freezed,
+    Object? ekAcik10 = freezed,
+    Object? ekAcik11 = freezed,
+    Object? ekAcik12 = freezed,
+    Object? ekAcik13 = freezed,
+    Object? ekAcik14 = freezed,
+    Object? ekAcik15 = freezed,
+    Object? ekAcik16 = freezed,
+    Object? ekAcik2 = freezed,
+    Object? ekAcik3 = freezed,
+    Object? ekAcik4 = freezed,
+    Object? ekAcik5 = freezed,
+    Object? ekAcik6 = freezed,
+    Object? ekAcik7 = freezed,
+    Object? ekAcik8 = freezed,
+    Object? ekAcik9 = freezed,
+    Object? islemKodu = freezed,
+    Object? tag = freezed,
   }) {
     return _then(_$TalepTeklifListesiModelImpl(
       cariDovizli: freezed == cariDovizli
@@ -627,6 +937,58 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
           ? _value.acik3
           : acik3 // ignore: cast_nullable_to_non_nullable
               as String?,
+      acik4: freezed == acik4
+          ? _value.acik4
+          : acik4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik5: freezed == acik5
+          ? _value.acik5
+          : acik5 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik6: freezed == acik6
+          ? _value.acik6
+          : acik6 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik7: freezed == acik7
+          ? _value.acik7
+          : acik7 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik8: freezed == acik8
+          ? _value.acik8
+          : acik8 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik9: freezed == acik9
+          ? _value.acik9
+          : acik9 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik10: freezed == acik10
+          ? _value.acik10
+          : acik10 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik11: freezed == acik11
+          ? _value.acik11
+          : acik11 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik12: freezed == acik12
+          ? _value.acik12
+          : acik12 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik13: freezed == acik13
+          ? _value.acik13
+          : acik13 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik14: freezed == acik14
+          ? _value.acik14
+          : acik14 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik15: freezed == acik15
+          ? _value.acik15
+          : acik15 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik16: freezed == acik16
+          ? _value.acik16
+          : acik16 // ignore: cast_nullable_to_non_nullable
+              as String?,
       belgeKodu: freezed == belgeKodu
           ? _value.belgeKodu
           : belgeKodu // ignore: cast_nullable_to_non_nullable
@@ -687,6 +1049,78 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
           ? _value.siparislesti
           : siparislesti // ignore: cast_nullable_to_non_nullable
               as String?,
+      ekAcik1: freezed == ekAcik1
+          ? _value.ekAcik1
+          : ekAcik1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik10: freezed == ekAcik10
+          ? _value.ekAcik10
+          : ekAcik10 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik11: freezed == ekAcik11
+          ? _value.ekAcik11
+          : ekAcik11 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik12: freezed == ekAcik12
+          ? _value.ekAcik12
+          : ekAcik12 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik13: freezed == ekAcik13
+          ? _value.ekAcik13
+          : ekAcik13 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik14: freezed == ekAcik14
+          ? _value.ekAcik14
+          : ekAcik14 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik15: freezed == ekAcik15
+          ? _value.ekAcik15
+          : ekAcik15 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik16: freezed == ekAcik16
+          ? _value.ekAcik16
+          : ekAcik16 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik2: freezed == ekAcik2
+          ? _value.ekAcik2
+          : ekAcik2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik3: freezed == ekAcik3
+          ? _value.ekAcik3
+          : ekAcik3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik4: freezed == ekAcik4
+          ? _value.ekAcik4
+          : ekAcik4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik5: freezed == ekAcik5
+          ? _value.ekAcik5
+          : ekAcik5 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik6: freezed == ekAcik6
+          ? _value.ekAcik6
+          : ekAcik6 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik7: freezed == ekAcik7
+          ? _value.ekAcik7
+          : ekAcik7 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik8: freezed == ekAcik8
+          ? _value.ekAcik8
+          : ekAcik8 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekAcik9: freezed == ekAcik9
+          ? _value.ekAcik9
+          : ekAcik9 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -723,6 +1157,19 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
       this.acik1,
       this.acik2,
       this.acik3,
+      this.acik4,
+      this.acik5,
+      this.acik6,
+      this.acik7,
+      this.acik8,
+      this.acik9,
+      this.acik10,
+      this.acik11,
+      this.acik12,
+      this.acik13,
+      this.acik14,
+      this.acik15,
+      this.acik16,
       this.belgeKodu,
       this.belgeNo,
       this.belgeTuru,
@@ -737,7 +1184,25 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
       this.kdvDahil,
       this.plasiyerAciklama,
       this.plasiyerKodu,
-      this.siparislesti})
+      this.siparislesti,
+      this.ekAcik1,
+      this.ekAcik10,
+      this.ekAcik11,
+      this.ekAcik12,
+      this.ekAcik13,
+      this.ekAcik14,
+      this.ekAcik15,
+      this.ekAcik16,
+      this.ekAcik2,
+      this.ekAcik3,
+      this.ekAcik4,
+      this.ekAcik5,
+      this.ekAcik6,
+      this.ekAcik7,
+      this.ekAcik8,
+      this.ekAcik9,
+      this.islemKodu,
+      this.tag = "FaturaModel"})
       : super._();
 
   factory _$TalepTeklifListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -800,6 +1265,32 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
   @override
   String? acik3;
   @override
+  String? acik4;
+  @override
+  String? acik5;
+  @override
+  String? acik6;
+  @override
+  String? acik7;
+  @override
+  String? acik8;
+  @override
+  String? acik9;
+  @override
+  String? acik10;
+  @override
+  String? acik11;
+  @override
+  String? acik12;
+  @override
+  String? acik13;
+  @override
+  String? acik14;
+  @override
+  String? acik15;
+  @override
+  String? acik16;
+  @override
   String? belgeKodu;
   @override
   String? belgeNo;
@@ -829,6 +1320,43 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
   String? plasiyerKodu;
   @override
   String? siparislesti;
+  @override
+  String? ekAcik1;
+  @override
+  String? ekAcik10;
+  @override
+  String? ekAcik11;
+  @override
+  String? ekAcik12;
+  @override
+  String? ekAcik13;
+  @override
+  String? ekAcik14;
+  @override
+  String? ekAcik15;
+  @override
+  String? ekAcik16;
+  @override
+  String? ekAcik2;
+  @override
+  String? ekAcik3;
+  @override
+  String? ekAcik4;
+  @override
+  String? ekAcik5;
+  @override
+  String? ekAcik6;
+  @override
+  String? ekAcik7;
+  @override
+  String? ekAcik8;
+  @override
+  String? ekAcik9;
+  @override
+  int? islemKodu;
+  @override
+  @JsonKey()
+  String? tag;
 
   @JsonKey(ignore: true)
   @override
@@ -875,6 +1403,19 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
       String? acik1,
       String? acik2,
       String? acik3,
+      String? acik4,
+      String? acik5,
+      String? acik6,
+      String? acik7,
+      String? acik8,
+      String? acik9,
+      String? acik10,
+      String? acik11,
+      String? acik12,
+      String? acik13,
+      String? acik14,
+      String? acik15,
+      String? acik16,
       String? belgeKodu,
       String? belgeNo,
       String? belgeTuru,
@@ -889,7 +1430,25 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
       String? kdvDahil,
       String? plasiyerAciklama,
       String? plasiyerKodu,
-      String? siparislesti}) = _$TalepTeklifListesiModelImpl;
+      String? siparislesti,
+      String? ekAcik1,
+      String? ekAcik10,
+      String? ekAcik11,
+      String? ekAcik12,
+      String? ekAcik13,
+      String? ekAcik14,
+      String? ekAcik15,
+      String? ekAcik16,
+      String? ekAcik2,
+      String? ekAcik3,
+      String? ekAcik4,
+      String? ekAcik5,
+      String? ekAcik6,
+      String? ekAcik7,
+      String? ekAcik8,
+      String? ekAcik9,
+      int? islemKodu,
+      String? tag}) = _$TalepTeklifListesiModelImpl;
   _TalepTeklifListesiModel._() : super._();
 
   factory _TalepTeklifListesiModel.fromJson(Map<String, dynamic> json) =
@@ -980,6 +1539,45 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
   String? get acik3;
   set acik3(String? value);
   @override
+  String? get acik4;
+  set acik4(String? value);
+  @override
+  String? get acik5;
+  set acik5(String? value);
+  @override
+  String? get acik6;
+  set acik6(String? value);
+  @override
+  String? get acik7;
+  set acik7(String? value);
+  @override
+  String? get acik8;
+  set acik8(String? value);
+  @override
+  String? get acik9;
+  set acik9(String? value);
+  @override
+  String? get acik10;
+  set acik10(String? value);
+  @override
+  String? get acik11;
+  set acik11(String? value);
+  @override
+  String? get acik12;
+  set acik12(String? value);
+  @override
+  String? get acik13;
+  set acik13(String? value);
+  @override
+  String? get acik14;
+  set acik14(String? value);
+  @override
+  String? get acik15;
+  set acik15(String? value);
+  @override
+  String? get acik16;
+  set acik16(String? value);
+  @override
   String? get belgeKodu;
   set belgeKodu(String? value);
   @override
@@ -1024,6 +1622,60 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
   @override
   String? get siparislesti;
   set siparislesti(String? value);
+  @override
+  String? get ekAcik1;
+  set ekAcik1(String? value);
+  @override
+  String? get ekAcik10;
+  set ekAcik10(String? value);
+  @override
+  String? get ekAcik11;
+  set ekAcik11(String? value);
+  @override
+  String? get ekAcik12;
+  set ekAcik12(String? value);
+  @override
+  String? get ekAcik13;
+  set ekAcik13(String? value);
+  @override
+  String? get ekAcik14;
+  set ekAcik14(String? value);
+  @override
+  String? get ekAcik15;
+  set ekAcik15(String? value);
+  @override
+  String? get ekAcik16;
+  set ekAcik16(String? value);
+  @override
+  String? get ekAcik2;
+  set ekAcik2(String? value);
+  @override
+  String? get ekAcik3;
+  set ekAcik3(String? value);
+  @override
+  String? get ekAcik4;
+  set ekAcik4(String? value);
+  @override
+  String? get ekAcik5;
+  set ekAcik5(String? value);
+  @override
+  String? get ekAcik6;
+  set ekAcik6(String? value);
+  @override
+  String? get ekAcik7;
+  set ekAcik7(String? value);
+  @override
+  String? get ekAcik8;
+  set ekAcik8(String? value);
+  @override
+  String? get ekAcik9;
+  set ekAcik9(String? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
+  @override
+  String? get tag;
+  set tag(String? value);
   @override
   @JsonKey(ignore: true)
   _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl>
