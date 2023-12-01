@@ -12,6 +12,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/cirola_enum.dart";
+import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/locale_delegate.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view/cek_senet_evraklar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_goruntule/view/cek_senet_goruntule_view.dart";
@@ -23,6 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view/dekont_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view/tahsilat_odeme_kayitlari_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/view/talep_teklif_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -316,6 +318,12 @@ class PickerApp extends StatelessWidget {
 
               //* Profil
               GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),
+
+              //* Talep Teklif
+              GetPage(name: "/talTekAlisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep)),
+              GetPage(name: "/talTekAlisTeklif", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTeklif)),
+              GetPage(name: "/talTekSatisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTalep)),
+              GetPage(name: "/talTekSatisTeklif", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTeklif)),
 
               //* Serbest Raporlar
               //*
