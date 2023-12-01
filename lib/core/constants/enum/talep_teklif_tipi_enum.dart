@@ -63,11 +63,11 @@ extension TalepTeklifEnumExtension on TalepTeklifEnum {
   String get aciklamaDuzenleRoute {
     switch (this) {
       case TalepTeklifEnum.satisTalep:
-        return "/talTekSatisTalepAciklamaDuzenle";
+        return "/mainPage/talTekSatisTalepAciklamaDuzenle";
       case TalepTeklifEnum.satisTeklif:
-        return "/talTekSatisTeklifAciklamaDuzenle";
+        return "/mainPage/talTekSatisTeklifAciklamaDuzenle";
       case TalepTeklifEnum.alisTalep:
-        return "/talTekAlisTalepAciklamaDuzenle";
+        return "/mainPage/talTekAlisTalepAciklamaDuzenle";
     }
   }
 
@@ -81,4 +81,6 @@ extension TalepTeklifEnumExtension on TalepTeklifEnum {
         return YetkiController().alisTalebiSil;
     }
   }
+
+
 }
