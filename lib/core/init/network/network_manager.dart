@@ -245,6 +245,7 @@ class NetworkManager {
       headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
       addQuery: true,
       addSirketBilgileri: true,
+      showLoading: true,
       queryParameters: {"Modul": name, "GrupNo": grupNo},
     );
     if (responseKod.success != true) {
