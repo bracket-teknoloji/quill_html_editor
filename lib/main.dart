@@ -320,10 +320,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),
 
               //* Talep Teklif
-              GetPage(name: "/talTekAlisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep)),
-              GetPage(name: "/talTekAlisTeklif", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTeklif)),
               GetPage(name: "/talTekSatisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTalep)),
               GetPage(name: "/talTekSatisTeklif", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTeklif)),
+              GetPage(name: "/talTekAlisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep)),
 
               //* Serbest Raporlar
               //*

@@ -340,9 +340,9 @@ class MenuItemConstants {
       icon: "offer",
       color: ColorPalette.mulberry,
       altMenuler: <GridItemModel>[
-        //😳GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", icon: "offer"),
-        //😳GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", icon: "offer")
-        //😳GridItemModel.item(name: "taltek_STAL", title: "Satış Talebi", icon: "offer"),
+        GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", route: "/mainPage/talTekSatisTeklif"),
+        GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", route: "/mainPage/talTekAlisTalep"),
+        GridItemModel.item(name: "taltek_STAL", title: "Satış Talebi", route: "/mainPage/talTekSatisTalep"),
       ],
     ),
 
