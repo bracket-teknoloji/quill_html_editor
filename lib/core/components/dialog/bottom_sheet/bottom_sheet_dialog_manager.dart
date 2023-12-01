@@ -928,7 +928,7 @@ class BottomSheetDialogManager {
       final TextEditingController kopyaController = TextEditingController(text: printModel.etiketSayisi.toStringIfNotNull);
       await showBottomSheetDialog(
         context,
-        title: "",
+        title: printModel.dicParams?.belgeNo ?? "",
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -982,7 +982,7 @@ class BottomSheetDialogManager {
                 kopyaController.dispose();
               },
               child: const Text("Yazdır"),
-            ),
+            ).paddingAll(UIHelper.lowSize),
           ],
         ),
       );
