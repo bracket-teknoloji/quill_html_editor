@@ -9,6 +9,23 @@ part of 'talep_teklif_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
+  late final _$ekstraAlanlarMapAtom = Atom(
+      name: '_TalepTeklifListesiViewModelBase.ekstraAlanlarMap',
+      context: context);
+
+  @override
+  ObservableMap<String, bool> get ekstraAlanlarMap {
+    _$ekstraAlanlarMapAtom.reportRead();
+    return super.ekstraAlanlarMap;
+  }
+
+  @override
+  set ekstraAlanlarMap(ObservableMap<String, bool> value) {
+    _$ekstraAlanlarMapAtom.reportWrite(value, super.ekstraAlanlarMap, () {
+      super.ekstraAlanlarMap = value;
+    });
+  }
+
   late final _$siparislerRequestModelAtom = Atom(
       name: '_TalepTeklifListesiViewModelBase.siparislerRequestModel',
       context: context);
@@ -101,6 +118,32 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
           name: '_TalepTeklifListesiViewModelBase', context: context);
 
   @override
+  void changeEkstraAlanlarMap(String key, bool value) {
+    final _$actionInfo =
+        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
+            name: '_TalepTeklifListesiViewModelBase.changeEkstraAlanlarMap');
+    try {
+      return super.changeEkstraAlanlarMap(key, value);
+    } finally {
+      _$_TalepTeklifListesiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetEkstraAlanlarMap() {
+    final _$actionInfo =
+        _$_TalepTeklifListesiViewModelBaseActionController.startAction(
+            name: '_TalepTeklifListesiViewModelBase.resetEkstraAlanlarMap');
+    try {
+      return super.resetEkstraAlanlarMap();
+    } finally {
+      _$_TalepTeklifListesiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setIsScrolledDown(bool value) {
     final _$actionInfo =
         _$_TalepTeklifListesiViewModelBaseActionController.startAction(
@@ -120,6 +163,18 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
             name: '_TalepTeklifListesiViewModelBase.setPickerBelgeTuru');
     try {
       return super.setPickerBelgeTuru(value);
+    } finally {
+      _$_TalepTeklifListesiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSiralama(String value) {
+    final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
+        .startAction(name: '_TalepTeklifListesiViewModelBase.setSiralama');
+    try {
+      return super.setSiralama(value);
     } finally {
       _$_TalepTeklifListesiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -157,6 +212,7 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   @override
   String toString() {
     return '''
+ekstraAlanlarMap: ${ekstraAlanlarMap},
 siparislerRequestModel: ${siparislerRequestModel},
 talepTeklifListesiModelList: ${talepTeklifListesiModelList},
 isScrolledDown: ${isScrolledDown},
