@@ -60,6 +60,7 @@ class SiparislerModel with NetworkManagerMixin {
   String? odemeKodu;
   double? fYedek4;
   String? acik12;
+  
 
   double get araToplam => (genelToplam ?? 0) - (kdv ?? 0);
 
