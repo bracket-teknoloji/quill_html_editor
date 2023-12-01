@@ -126,53 +126,55 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 gapPadding: 0,
               ),
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.suffixMore == true
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        Observer(
-                          builder: (_) => Visibility(
-                            visible: (viewModel.showClearButton) && (widget.isMust != true),
-                            child: IconButton(
+                  ? Observer(
+                      builder: (_) => Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Observer(
+                            builder: (_) => Visibility(
+                              visible: (viewModel.showClearButton) && (widget.isMust != true),
+                              child: IconButton(
+                                style: ButtonStyle(
+                                  padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                  splashFactory: NoSplash.splashFactory,
+                                ),
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                onPressed: () {
+                                  controller.clear();
+                                  widget.onClear!();
+                                  // viewModel.setShowClearButton(false);
+                                },
+                                icon: const Icon(Icons.close),
+                              ),
+                            ),
+                          ).yetkiVarMi(widget.onClear != null),
+                          if (widget.suffix != null) widget.suffix!,
+                          if (widget.isDateTime == true)
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              onPressed: widget.onTap,
+                              icon: const Icon(Icons.date_range_outlined),
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
                               ),
+                            ),
+                          if (widget.suffixMore == true && !viewModel.showClearButton)
+                            IconButton(
                               padding: EdgeInsets.zero,
                               constraints: const BoxConstraints(),
-                              onPressed: () {
-                                controller.clear();
-                                widget.onClear!();
-                                // viewModel.setShowClearButton(false);
-                              },
-                              icon: const Icon(Icons.close),
+                              onPressed: widget.onTap,
+                              icon: const Icon(Icons.more_horiz_outlined),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                splashFactory: NoSplash.splashFactory,
+                              ),
                             ),
-                          ),
-                        ).yetkiVarMi(widget.onClear != null),
-                        if (widget.suffix != null) widget.suffix!,
-                        if (widget.isDateTime == true)
-                          IconButton(
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                            onPressed: widget.onTap,
-                            icon: const Icon(Icons.date_range_outlined),
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                              splashFactory: NoSplash.splashFactory,
-                            ),
-                          ),
-                        if (widget.suffixMore == true)
-                          IconButton(
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                            onPressed: widget.onTap,
-                            icon: const Icon(Icons.more_horiz_outlined),
-                            style: ButtonStyle(
-                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                              splashFactory: NoSplash.splashFactory,
-                            ),
-                          ),
-                      ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                        ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                      ),
                     )
                   : null,
               label: Wrap(
