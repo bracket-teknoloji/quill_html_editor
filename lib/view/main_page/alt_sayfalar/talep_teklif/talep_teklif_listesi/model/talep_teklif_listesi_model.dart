@@ -2,8 +2,8 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 
-part "talep_teklif_listesi_model.freezed.dart";
-part "talep_teklif_listesi_model.g.dart";
+part 'talep_teklif_listesi_model.freezed.dart';
+part 'talep_teklif_listesi_model.g.dart';
 
 @unfreezed
 class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixin {
