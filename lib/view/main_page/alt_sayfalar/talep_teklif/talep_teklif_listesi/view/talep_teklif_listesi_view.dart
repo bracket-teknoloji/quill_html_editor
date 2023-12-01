@@ -199,6 +199,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                       showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+                      onDeleted: () async => await viewModel.resetPage(),
                     ),
                   );
                 },

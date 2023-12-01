@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import 'package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart';
+import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -117,24 +118,24 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         title: "Sil",
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
-                          // Get.back();
-                          // return dialogManager.showAreYouSureDialog(() async {
-                          //   // if (widget.model.isNew == true) {
-                          //   //   try {
-                          //   //     CacheManager.removeSiparisEditList(widget.index!);
-                          //   //     dialogManager.showSuccessSnackBar("Silindi");
-                          //   //     widget.onDeleted?.call();
-                          //   //   } catch (e) {
-                          //   //     await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
-                          //   //   }
-                          //   //   return;
-                          //   // }
-                          //   // final result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
-                          //   // if (result.success == true) {
-                          //   //   dialogManager.showSuccessSnackBar("Silindi");
-                          //   //   widget.onDeleted?.call();
-                          //   // }
-                          // });
+                          Get.back();
+                          return dialogManager.showAreYouSureDialog(() async {
+                            // if (widget.model.isNew == true) {
+                            //   try {
+                            //     CacheManager.removeSiparisEditList(widget.index!);
+                            //     dialogManager.showSuccessSnackBar("Silindi");
+                            //     widget.onDeleted?.call();
+                            //   } catch (e) {
+                            //     await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                            //   }
+                            //   return;
+                            // }
+                            final result = await networkManager.deleteFatura(EditFaturaModel.fromTalepTeklifListesiModel(widget.model));
+                            if (result.success == true) {
+                              dialogManager.showSuccessSnackBar("Silindi");
+                              widget.onDeleted?.call();
+                            }
+                          });
                         },
                       ),
                       // .yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
