@@ -56,7 +56,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                     children: [
                       Icon(
                         Icons.star_border_outlined,
-                        size: 100,
+                        size: UIHelper.highSize * 5,
                         color: theme.colorScheme.onSurface.withOpacity(0.5),
                       ).marginSymmetric(vertical: 20),
                       // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
