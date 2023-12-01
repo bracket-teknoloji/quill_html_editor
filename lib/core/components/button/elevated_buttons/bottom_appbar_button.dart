@@ -32,7 +32,7 @@ class AppBarButton extends StatelessWidget {
             if (icon != null)
               Icon(
                 icon,
-                size: 20,
+                size: UIHelper.midSize * 2,
                 fill: 1,
                 color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
               )
