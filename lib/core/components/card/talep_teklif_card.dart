@@ -141,6 +141,17 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ).yetkiKontrol(widget.talepTeklifEnum.silinebilirMi && widget.model.tipi != 1),
                       BottomSheetModel(
+                        title: "Açıklama Düzenle",
+                        iconWidget: Icons.edit_note_outlined,
+                        onTap: () async {
+                          Get.back();
+                          await Get.toNamed(
+                            widget.talepTeklifEnum.aciklamaDuzenleRoute,
+                            arguments: widget.model,
+                          );
+                        },
+                      ),
+                      BottomSheetModel(
                         title: "Yazdır",
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
