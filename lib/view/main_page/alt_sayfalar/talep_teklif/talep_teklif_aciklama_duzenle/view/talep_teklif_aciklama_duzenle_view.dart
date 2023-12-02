@@ -42,6 +42,9 @@ class _TalepTeklifAciklamaDuzenleViewState extends BaseState<TalepTeklifAciklama
 
   @override
   void initState() {
+    widget.model.tag = "FaturaModel";
+    widget.model.islemKodu = 14;
+    viewModel.setTalepTeklifListesiModel(widget.model);
     _belgeNoController = TextEditingController(text: widget.model.belgeNo);
     _cariController = TextEditingController(text: widget.model.cariAdi);
     _tarihController = TextEditingController(text: widget.model.tarih.toDateString);
@@ -95,17 +98,17 @@ class _TalepTeklifAciklamaDuzenleViewState extends BaseState<TalepTeklifAciklama
             title: "Açıklama Düzenle",
           ),
           actions: [
-            // IconButton(
-            //   onPressed: () async {
-            //     await dialogManager.showAreYouSureDialog(() async {
-            //       final result = await viewModel.postData();
-            //       if (result.success ?? false) {
-            //         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-            //       }
-            //     });
-            //   },
-            //   icon: const Icon(Icons.save_outlined),
-            // ),
+            IconButton(
+              onPressed: () async {
+                await dialogManager.showAreYouSureDialog(() async {
+                  final result = await viewModel.postData();
+                  if (result.success ?? false) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                  }
+                });
+              },
+              icon: const Icon(Icons.save_outlined),
+            ),
           ],
         ),
         body: SingleChildScrollView(
