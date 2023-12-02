@@ -103,6 +103,7 @@ class _TalepTeklifAciklamaDuzenleViewState extends BaseState<TalepTeklifAciklama
                 await dialogManager.showAreYouSureDialog(() async {
                   final result = await viewModel.postData();
                   if (result.success ?? false) {
+                    Get.back();
                     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                   }
                 });
