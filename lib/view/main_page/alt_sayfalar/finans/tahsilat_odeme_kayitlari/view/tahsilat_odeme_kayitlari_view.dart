@@ -174,7 +174,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
               children: [
                 const Text("Tahsilat"),
                 Observer(
-                  builder: (_) => Text("${(viewModel.toplamTahsilat).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
+                  builder: (_) => Text("${viewModel.toplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
                 ),
               ],
               onPressed: () {
@@ -191,7 +191,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                 const Text("Ödeme"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.toplamOdeme).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    "${viewModel.toplamOdeme.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),

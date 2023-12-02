@@ -2,8 +2,8 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 
-part 'talep_teklif_listesi_model.freezed.dart';
-part 'talep_teklif_listesi_model.g.dart';
+part "talep_teklif_listesi_model.freezed.dart";
+part "talep_teklif_listesi_model.g.dart";
 
 @unfreezed
 class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixin {
@@ -65,24 +65,24 @@ class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixi
     String? plasiyerAciklama,
     String? plasiyerKodu,
     String? siparislesti,
-        String? ekAcik1,
-        String? ekAcik10,
-        String? ekAcik11,
-        String? ekAcik12,
-        String? ekAcik13,
-        String? ekAcik14,
-        String? ekAcik15,
-        String? ekAcik16,
-        String? ekAcik2,
-        String? ekAcik3,
-        String? ekAcik4,
-        String? ekAcik5,
-        String? ekAcik6,
-        String? ekAcik7,
-        String? ekAcik8,
-        String? ekAcik9,
-        int? islemKodu,
-        @Default("FaturaModel") String? tag,
+    String? ekAcik1,
+    String? ekAcik10,
+    String? ekAcik11,
+    String? ekAcik12,
+    String? ekAcik13,
+    String? ekAcik14,
+    String? ekAcik15,
+    String? ekAcik16,
+    String? ekAcik2,
+    String? ekAcik3,
+    String? ekAcik4,
+    String? ekAcik5,
+    String? ekAcik6,
+    String? ekAcik7,
+    String? ekAcik8,
+    String? ekAcik9,
+    int? islemKodu,
+    @Default("FaturaModel") String? tag,
   }) = _TalepTeklifListesiModel;
 
   factory TalepTeklifListesiModel.fromJson(Map<String, dynamic> json) => _$TalepTeklifListesiModelFromJson(json);

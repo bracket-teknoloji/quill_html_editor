@@ -366,7 +366,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 const Text("Borç"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.borclarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    "${viewModel.borclarToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),
@@ -377,7 +377,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 const Text("Alacak"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.alacaklarToplami).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    "${viewModel.alacaklarToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: const TextStyle(color: ColorPalette.mantis),
                   ),
                 ),
@@ -388,7 +388,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 Text((viewModel.toplamBakiye) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.toplamBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    "${viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
                     style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? ColorPalette.persianRed : ColorPalette.mantis),
                   ),
                 ),
@@ -411,7 +411,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       queryParameters: {"SIRALAMA": viewModel.siralama, "EkranTipi": "L", "CariKodu": widget.cari?.cariKodu ?? ""},
       addSirketBilgileri: true,
     );
-    return (response.data).map((e) => e as CariHareketleriModel).toList().cast<CariHareketleriModel>();
+    return response.data.map((e) => e as CariHareketleriModel).toList().cast<CariHareketleriModel>();
   }
 
   Future<void> showPdf(String ozelKod, String inckeyno) async {

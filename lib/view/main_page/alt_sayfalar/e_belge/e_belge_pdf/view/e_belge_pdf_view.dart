@@ -154,7 +154,7 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
           onTap: () async {
             if (viewModel.pdfFile != null) {
               Get.back();
-              OpenFile.open((viewModel.pdfFile)!.path);
+              OpenFile.open(viewModel.pdfFile!.path);
             }
           },
         ),
