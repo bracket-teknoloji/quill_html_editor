@@ -172,6 +172,14 @@ class PickerApp extends StatelessWidget {
             page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null),
           ),
           GetPage(
+            name: "/talepTeklifKalemEkle",
+            page: () => KalemEkleView(
+              stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
+              kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
+              isTalepTeklif: true,
+            ),
+          ),
+          GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
             children: <GetPage>[
@@ -292,6 +300,7 @@ class PickerApp extends StatelessWidget {
 
               GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
               GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
+              GetPage(name: "/talepTeklifStokRehberi", page: () => StokRehberiView(searchText: Get.arguments, isTalepTeklif: true)),
               GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
               GetPage(
                 name: "/stokHareketleri",
@@ -327,7 +336,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/talTekAlisTalep", page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep)),
 
               //* * Talep Teklif Edit
-              GetPage(name: "/talTekSatisTalepEdit", page: () => BaseTalepTeklifEditingView(model: Get.arguments)),
+              GetPage(name: "/talTekEdit", page: () => BaseTalepTeklifEditingView(model: Get.arguments)),
 
               //* * Talep Açıklama Düzenleme
               GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.satisTalep)),

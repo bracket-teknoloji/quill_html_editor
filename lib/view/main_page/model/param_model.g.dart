@@ -1364,6 +1364,20 @@ TalTekParam _$TalTekParamFromJson(Map<String, dynamic> json) => TalTekParam()
   ..ozelKod2Aktif = json['OZEL_KOD2_AKTIF'] as String?
   ..aciklar1 = json['ACIKLAR1'] as String?
   ..aciklar2 = json['ACIKLAR2'] as String?
+  ..aciklar3 = json['ACIKLAR3'] as String?
+  ..aciklar4 = json['ACIKLAR4'] as String?
+  ..aciklar5 = json['ACIKLAR5'] as String?
+  ..aciklar6 = json['ACIKLAR6'] as String?
+  ..aciklar7 = json['ACIKLAR7'] as String?
+  ..aciklar8 = json['ACIKLAR8'] as String?
+  ..aciklar9 = json['ACIKLAR9'] as String?
+  ..aciklar10 = json['ACIKLAR10'] as String?
+  ..aciklar11 = json['ACIKLAR11'] as String?
+  ..aciklar12 = json['ACIKLAR12'] as String?
+  ..aciklar13 = json['ACIKLAR13'] as String?
+  ..aciklar14 = json['ACIKLAR14'] as String?
+  ..aciklar15 = json['ACIKLAR15'] as String?
+  ..aciklar16 = json['ACIKLAR16'] as String?
   ..satirdaKdvSor = json['SATIRDA_KDV_SOR'] as String?
   ..satirTeslimTarSor = json['SATIR_TESLIM_TAR_SOR'] as String?
   ..dovizTakipHangisi = json['DOVIZ_TAKIP_HANGISI'] as int?
@@ -1427,6 +1441,20 @@ Map<String, dynamic> _$TalTekParamToJson(TalTekParam instance) {
   writeNotNull('OZEL_KOD2_AKTIF', instance.ozelKod2Aktif);
   writeNotNull('ACIKLAR1', instance.aciklar1);
   writeNotNull('ACIKLAR2', instance.aciklar2);
+  writeNotNull('ACIKLAR3', instance.aciklar3);
+  writeNotNull('ACIKLAR4', instance.aciklar4);
+  writeNotNull('ACIKLAR5', instance.aciklar5);
+  writeNotNull('ACIKLAR6', instance.aciklar6);
+  writeNotNull('ACIKLAR7', instance.aciklar7);
+  writeNotNull('ACIKLAR8', instance.aciklar8);
+  writeNotNull('ACIKLAR9', instance.aciklar9);
+  writeNotNull('ACIKLAR10', instance.aciklar10);
+  writeNotNull('ACIKLAR11', instance.aciklar11);
+  writeNotNull('ACIKLAR12', instance.aciklar12);
+  writeNotNull('ACIKLAR13', instance.aciklar13);
+  writeNotNull('ACIKLAR14', instance.aciklar14);
+  writeNotNull('ACIKLAR15', instance.aciklar15);
+  writeNotNull('ACIKLAR16', instance.aciklar16);
   writeNotNull('SATIRDA_KDV_SOR', instance.satirdaKdvSor);
   writeNotNull('SATIR_TESLIM_TAR_SOR', instance.satirTeslimTarSor);
   writeNotNull('DOVIZ_TAKIP_HANGISI', instance.dovizTakipHangisi);

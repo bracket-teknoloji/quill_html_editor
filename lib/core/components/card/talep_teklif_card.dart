@@ -1,12 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -40,7 +43,7 @@ class TalepTeklifCard extends StatefulWidget {
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
   final int? index;
   final bool? isGetData;
-  final TalepTeklifListesiModel model;
+  final BaseSiparisEditModel model;
   final Function? onDeleted;
   final ValueChanged<bool>? onUpdated;
   final bool? showEkAciklama;
@@ -90,30 +93,31 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         title: "Görüntüle",
                         iconWidget: Icons.preview_outlined,
                         onTap: () {
-                          // Get.back();
-                          // return Get.toNamed(
-                          //   "mainPage/siparisEdit",
-                          //   arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, talep: widget.talep),
-                          // );
+                          Get.back();
+                          return Get.toNamed(
+                            "mainPage/talTekEdit",
+                            arguments: BaseEditModel(
+                              model: widget.model,
+                              baseEditEnum: BaseEditEnum.goruntule,
+                              siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                            ),
+                          );
                         },
                       ),
                       BottomSheetModel(
                         title: "Düzenle",
                         iconWidget: Icons.edit_outlined,
                         onTap: () async {
-                          // if (widget.model.isNew == true) {
-                          //   BaseSiparisEditModel.setInstance(widget.model);
-                          // }
-                          // Get.back();
-                          // await Get.toNamed(
-                          //   "mainPage/siparisEdit",
-                          //   arguments: BaseEditModel(
-                          //     model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
-                          //     baseEditEnum: BaseEditEnum.duzenle,
-                          //     // talep: widget.talep,
-                          //   ),
-                          // );
-                          // widget.onUpdated?.call(true);
+                          Get.back();
+                          final result = await Get.toNamed(
+                            "mainPage/talTekEdit",
+                            arguments: BaseEditModel(
+                              model: widget.model,
+                              baseEditEnum: BaseEditEnum.duzenle,
+                              siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                            ),
+                          );
+                          widget.onUpdated?.call(result);
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
@@ -132,7 +136,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             //   }
                             //   return;
                             // }
-                            final result = await networkManager.deleteFatura(EditFaturaModel.fromTalepTeklifListesiModel(widget.model));
+                            final result = await networkManager.deleteFatura(EditFaturaModel.fromSiparislerModel(widget.model));
                             if (result.success == true) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();

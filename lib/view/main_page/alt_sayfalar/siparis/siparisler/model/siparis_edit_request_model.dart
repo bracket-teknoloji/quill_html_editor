@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
@@ -63,6 +64,12 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         cariKodu: model.cariKodu,
         tipi: model.tipi,
         tempBelgeId: model.tempBelgeId,
+      );
+
+  factory SiparisEditRequestModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => SiparisEditRequestModel(
+        belgeNo: model.belgeNo,
+        cariKodu: model.cariKodu,
+        belgeTuru: model.belgeTuru,
       );
 
   factory SiparisEditRequestModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => SiparisEditRequestModel(

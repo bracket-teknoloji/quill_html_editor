@@ -5,8 +5,8 @@ import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 part "talep_teklif_listesi_view_model.g.dart";
 
@@ -46,7 +46,7 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(sayfa: 1, faturalasmaGoster: true, miktarGetir: "E", ekranTipi: "L", iadeMi: false, cariKodu: "", siralama: "TARIH_ZA");
 
   @observable
-  ObservableList<TalepTeklifListesiModel>? talepTeklifListesiModelList;
+  ObservableList<BaseSiparisEditModel>? talepTeklifListesiModelList;
 
   @observable
   ObservableList<BaseGrupKoduModel>? grupKodlariList;
@@ -155,10 +155,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   void setSiralama(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
 
   @action
-  void setTalepTeklifiListesiModelList(List<TalepTeklifListesiModel> list) => talepTeklifListesiModelList = list.asObservable();
+  void setTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) => talepTeklifListesiModelList = list.asObservable();
 
   @action
-  void addTalepTeklifiListesiModelList(List<TalepTeklifListesiModel> list) => talepTeklifListesiModelList!.addAll(list);
+  void addTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) => talepTeklifListesiModelList!.addAll(list);
 
   @action
   void setArrPlasiyerKodu(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
@@ -248,9 +248,9 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: TalepTeklifListesiModel(), queryParameters: siparislerRequestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: siparislerRequestModel.toJson());
     if (result.data != null) {
-      final List<TalepTeklifListesiModel> list = result.data.map<TalepTeklifListesiModel>((e) => e as TalepTeklifListesiModel).toList().cast<TalepTeklifListesiModel>();
+      final List<BaseSiparisEditModel> list = result.data.map<BaseSiparisEditModel>((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         dahaVarMi = false;
       } else {

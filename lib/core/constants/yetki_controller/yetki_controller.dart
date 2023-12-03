@@ -312,11 +312,25 @@ final class YetkiController {
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
 
   //! TALEP TEKLİF
-  bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStal);
-  bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtal);
-  bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStal);
+  // String? get talepTeklifEkAciklama1Adi => _musteriSiparisiMi ? _paramModel?.a : _paramModel?.alisEkAciklama1Adi;
+
+  bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
+  bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
+  bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStalSil);
 
   bool get satisTeklifiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTeklifi);
   bool get alisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaAtal);
-  bool get satisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTalebi); 
+  bool get satisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTalebi);
+
+  bool get satisTeklifiDuzenle => _isTrue(_yetkiModel?.taltekStekDuzelt);
+  bool get alisTalebiDuzenle => _isTrue(_yetkiModel?.taltekAtalDuzelt);
+  bool get satisTalebiDuzenle => _isTrue(_yetkiModel?.taltekStalDuzelt);
+
+  bool get satisTeklifiEkle => _isTrue(_yetkiModel?.taltekStekKaydet);
+  bool get alisTalebiEkle => _isTrue(_yetkiModel?.taltekAtalKaydet);
+  bool get satisTalebiEkle => _isTrue(_yetkiModel?.taltekStalKaydet);
+
+  bool talepTeklifAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.taltekStekAciklamaAlanlari?.contains(index) ?? false));
+
+  // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 }

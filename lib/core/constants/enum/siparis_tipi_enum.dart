@@ -21,6 +21,12 @@ enum SiparisTipiEnum {
   alisFatura,
   @HiveField(5)
   alisIrsaliye,
+  @HiveField(6)
+  satisTeklifi,
+  @HiveField(7)
+  alisTalebi,
+  @HiveField(8)
+  satisTalebi,
 }
 
 extension SiparisTipiEnumExtension on SiparisTipiEnum {
@@ -39,6 +45,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "AF";
       case SiparisTipiEnum.alisIrsaliye:
         return "AI";
+      case SiparisTipiEnum.satisTeklifi:
+        return "STEK";
+      case SiparisTipiEnum.alisTalebi:
+        return "ATAL";
+      case SiparisTipiEnum.satisTalebi:
+        return "STAL";
     }
   }
 
@@ -56,6 +68,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "Alış Faturası";
       case SiparisTipiEnum.alisIrsaliye:
         return "Alış İrsaliyesi";
+      case SiparisTipiEnum.satisTeklifi:
+        return "Satış Teklifi";
+      case SiparisTipiEnum.alisTalebi:
+        return "Alış Talebi";
+      case SiparisTipiEnum.satisTalebi:
+        return "Satış Talebi";
     }
   }
 
@@ -73,6 +91,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return "AlisFaturasi";
       case SiparisTipiEnum.alisIrsaliye:
         return "AlisIrsaliyesi";
+      case SiparisTipiEnum.satisTeklifi:
+        return "SatisTeklifi";
+      case SiparisTipiEnum.alisTalebi:
+        return "AlisTalebi";
+      case SiparisTipiEnum.satisTalebi:
+        return "SatisTalebi";
     }
   }
 
@@ -81,10 +105,13 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.musteri:
       case SiparisTipiEnum.satisFatura:
       case SiparisTipiEnum.satisIrsaliye:
+      case SiparisTipiEnum.satisTeklifi:
+      case SiparisTipiEnum.satisTalebi:
         return true;
       case SiparisTipiEnum.satici:
       case SiparisTipiEnum.alisFatura:
       case SiparisTipiEnum.alisIrsaliye:
+      case SiparisTipiEnum.alisTalebi:
         return false;
     }
   }
@@ -103,7 +130,7 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsDigerSekmesiGelsin;
       default:
-        return false;
+        return true;
     }
   }
 
@@ -121,6 +148,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return yetkiController.alisFatEkle;
       case SiparisTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsEkle;
+      case SiparisTipiEnum.satisTeklifi:
+        return yetkiController.satisTeklifiEkle;
+      case SiparisTipiEnum.alisTalebi:
+        return yetkiController.alisTalebiEkle;
+      case SiparisTipiEnum.satisTalebi:
+        return yetkiController.satisTalebiEkle;
     }
   }
 
@@ -138,6 +171,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return yetkiController.alisFatDuzenle;
       case SiparisTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsDuzenle;
+        case SiparisTipiEnum.satisTeklifi:
+        return yetkiController.satisTeklifiDuzenle;
+      case SiparisTipiEnum.alisTalebi:
+        return yetkiController.alisTalebiDuzenle;
+      case SiparisTipiEnum.satisTalebi:
+        return yetkiController.satisTalebiDuzenle;
     }
   }
 
@@ -155,6 +194,12 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
         return yetkiController.alisFatSil;
       case SiparisTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsSil;
+      case SiparisTipiEnum.satisTeklifi:
+        return yetkiController.satisTeklifiSil;
+      case SiparisTipiEnum.alisTalebi:
+        return yetkiController.alisTalebiSil;
+      case SiparisTipiEnum.satisTalebi:
+        return yetkiController.satisTalebiSil;
     }
   }
 
@@ -164,6 +209,9 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.satici:
       case SiparisTipiEnum.satisFatura:
       case SiparisTipiEnum.alisFatura:
+      case SiparisTipiEnum.satisTeklifi:
+      case SiparisTipiEnum.alisTalebi:
+      case SiparisTipiEnum.satisTalebi:
         return false;
       case SiparisTipiEnum.satisIrsaliye:
       case SiparisTipiEnum.alisIrsaliye:
@@ -194,6 +242,10 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.alisFatura:
       case SiparisTipiEnum.alisIrsaliye:
         CacheManager.setFaturaEdit(BaseSiparisEditModel.instance);
+      case SiparisTipiEnum.satisTeklifi:
+      case SiparisTipiEnum.alisTalebi:
+      case SiparisTipiEnum.satisTalebi:
+        CacheManager.setTalepTeklifEdit(BaseSiparisEditModel.instance);
     }
   }
 
@@ -207,6 +259,10 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
       case SiparisTipiEnum.alisFatura:
       case SiparisTipiEnum.alisIrsaliye:
         CacheManager.addFaturaEditListItem(BaseSiparisEditModel.instance);
+      case SiparisTipiEnum.satisTeklifi:
+      case SiparisTipiEnum.alisTalebi:
+      case SiparisTipiEnum.satisTalebi:
+        CacheManager.addTalepTeklifEditListItem(BaseSiparisEditModel.instance);
     }
   }
 

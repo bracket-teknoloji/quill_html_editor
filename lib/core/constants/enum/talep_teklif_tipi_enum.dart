@@ -88,39 +88,40 @@ extension TalepTeklifEnumExtension on TalepTeklifEnum {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (satisMi) {
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhere((element) => element.belgeTipi == rawValue);
       switch (index) {
         case 1:
-          label = paramModel?.satisEkAciklamaTanimi1;
+          label = talTekParam?.aciklar1;
         case 2:
-          label = paramModel?.satisEkAciklamaTanimi2;
+          label = talTekParam?.aciklar2;
         case 3:
-          label = paramModel?.satisEkAciklamaTanimi3;
+          label = talTekParam?.aciklar3;
         case 4:
-          label = paramModel?.satisEkAciklamaTanimi4;
+          label = talTekParam?.aciklar4;
         case 5:
-          label = paramModel?.satisEkAciklamaTanimi5;
+          label = talTekParam?.aciklar5;
         case 6:
-          label = paramModel?.satisEkAciklamaTanimi6;
+          label = talTekParam?.aciklar6;
         case 7:
-          label = paramModel?.satisEkAciklamaTanimi7;
+          label = talTekParam?.aciklar7;
         case 8:
-          label = paramModel?.satisEkAciklamaTanimi8;
+          label = talTekParam?.aciklar8;
         case 9:
-          label = paramModel?.satisEkAciklamaTanimi9;
+          label = talTekParam?.aciklar9;
         case 10:
-          label = paramModel?.satisEkAciklamaTanimi10;
+          label = talTekParam?.aciklar10;
         case 11:
-          label = paramModel?.satisEkAciklamaTanimi11;
+          label = talTekParam?.aciklar11;
         case 12:
-          label = paramModel?.satisEkAciklamaTanimi12;
+          label = talTekParam?.aciklar12;
         case 13:
-          label = paramModel?.satisEkAciklamaTanimi13;
+          label = talTekParam?.aciklar13;
         case 14:
-          label = paramModel?.satisEkAciklamaTanimi14;
+          label = talTekParam?.aciklar14;
         case 15:
-          label = paramModel?.satisEkAciklamaTanimi15;
+          label = talTekParam?.aciklar15;
         case 16:
-          label = paramModel?.satisEkAciklamaTanimi16;
+          label = talTekParam?.aciklar16;
       }
     } else {
       switch (index) {

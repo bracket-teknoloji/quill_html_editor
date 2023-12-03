@@ -25,6 +25,12 @@ class SiparisTipiEnumAdapter extends TypeAdapter<SiparisTipiEnum> {
         return SiparisTipiEnum.alisFatura;
       case 5:
         return SiparisTipiEnum.alisIrsaliye;
+      case 6:
+        return SiparisTipiEnum.satisTeklifi;
+      case 7:
+        return SiparisTipiEnum.alisTalebi;
+      case 8:
+        return SiparisTipiEnum.satisTalebi;
       default:
         return SiparisTipiEnum.musteri;
     }
@@ -50,6 +56,15 @@ class SiparisTipiEnumAdapter extends TypeAdapter<SiparisTipiEnum> {
         break;
       case SiparisTipiEnum.alisIrsaliye:
         writer.writeByte(5);
+        break;
+      case SiparisTipiEnum.satisTeklifi:
+        writer.writeByte(6);
+        break;
+      case SiparisTipiEnum.alisTalebi:
+        writer.writeByte(7);
+        break;
+      case SiparisTipiEnum.satisTalebi:
+        writer.writeByte(8);
         break;
     }
   }

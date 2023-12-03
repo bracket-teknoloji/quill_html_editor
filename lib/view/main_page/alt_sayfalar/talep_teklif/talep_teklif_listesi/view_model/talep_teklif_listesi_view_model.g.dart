@@ -171,14 +171,13 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
       context: context);
 
   @override
-  ObservableList<TalepTeklifListesiModel>? get talepTeklifListesiModelList {
+  ObservableList<BaseSiparisEditModel>? get talepTeklifListesiModelList {
     _$talepTeklifListesiModelListAtom.reportRead();
     return super.talepTeklifListesiModelList;
   }
 
   @override
-  set talepTeklifListesiModelList(
-      ObservableList<TalepTeklifListesiModel>? value) {
+  set talepTeklifListesiModelList(ObservableList<BaseSiparisEditModel>? value) {
     _$talepTeklifListesiModelListAtom
         .reportWrite(value, super.talepTeklifListesiModelList, () {
       super.talepTeklifListesiModelList = value;
@@ -386,7 +385,7 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   @override
-  void setTalepTeklifiListesiModelList(List<TalepTeklifListesiModel> list) {
+  void setTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) {
     final _$actionInfo =
         _$_TalepTeklifListesiViewModelBaseActionController.startAction(
             name:
@@ -400,7 +399,7 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   @override
-  void addTalepTeklifiListesiModelList(List<TalepTeklifListesiModel> list) {
+  void addTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) {
     final _$actionInfo =
         _$_TalepTeklifListesiViewModelBaseActionController.startAction(
             name:

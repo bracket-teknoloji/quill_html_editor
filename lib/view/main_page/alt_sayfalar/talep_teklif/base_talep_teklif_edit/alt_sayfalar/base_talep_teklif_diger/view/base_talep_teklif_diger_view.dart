@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -9,7 +9,7 @@ import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 
 class BaseTalepTeklifDigerView extends StatefulWidget {
-  final BaseEditModel<TalepTeklifListesiModel> model;
+  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseTalepTeklifDigerView({super.key, required this.model});
 
   @override

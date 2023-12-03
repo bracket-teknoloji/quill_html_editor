@@ -4,7 +4,6 @@ import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 part "talep_teklif_aciklama_duzenle_view_model.g.dart";
 
@@ -12,7 +11,7 @@ class TalepTeklifAciklamaDuzenleViewModel = _TalepTeklifAciklamaDuzenleViewModel
 
 abstract class _TalepTeklifAciklamaDuzenleViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TalepTeklifListesiModel? talepTeklifListesiModel;
+  BaseSiparisEditModel? talepTeklifListesiModel;
 
   @action
   void setAciklama1(String value) => talepTeklifListesiModel = talepTeklifListesiModel?.copyWith(acik1: value, ekAcik1: value);
@@ -63,7 +62,7 @@ abstract class _TalepTeklifAciklamaDuzenleViewModelBase with Store, MobxNetworkM
   void setAciklama16(String value) => talepTeklifListesiModel = talepTeklifListesiModel?.copyWith(acik16: value, ekAcik16: value);
 
   @action
-  void setTalepTeklifListesiModel(TalepTeklifListesiModel value) => talepTeklifListesiModel = value;
+  void setTalepTeklifListesiModel(BaseSiparisEditModel value) => talepTeklifListesiModel = value;
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>

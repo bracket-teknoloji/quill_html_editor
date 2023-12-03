@@ -23,7 +23,8 @@ import "../view_model/kalem_ekle_view_model.dart";
 class KalemEkleView extends StatefulWidget {
   final StokListesiModel? stokListesiModel;
   final KalemModel? kalemModel;
-  const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel});
+  final bool? isTalepTeklif;
+  const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel, this.isTalepTeklif});
 
   @override
   State<KalemEkleView> createState() => _KalemEkleViewState();
@@ -192,10 +193,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             builder: (_) => Text.rich(
                               TextSpan(
                                 children: [
-                                  const TextSpan(text: "MF. Tutarı: "),
+                                  const TextSpan(text: "KDV Tutarı: "),
                                   TextSpan(
                                     text:
-                                        "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                        "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ],
@@ -203,6 +204,22 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             ),
                           ),
                         ),
+                        // Expanded(
+                        //   child: Observer(
+                        //     builder: (_) => Text.rich(
+                        //       TextSpan(
+                        //         children: [
+                        //           const TextSpan(text: "MF. Tutarı: "),
+                        //           TextSpan(
+                        //             text:
+                        //                 "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                        //             style: const TextStyle(fontWeight: FontWeight.bold),
+                        //           ),
+                        //         ],
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ).paddingSymmetric(horizontal: UIHelper.lowSize),
                     Row(
@@ -241,22 +258,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).paddingSymmetric(horizontal: UIHelper.lowSize),
                     Row(
                       children: [
-                        Expanded(
-                          child: Observer(
-                            builder: (_) => Text.rich(
-                              TextSpan(
-                                children: [
-                                  const TextSpan(text: "KDV Tutarı: "),
-                                  TextSpan(
-                                    text:
-                                        "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
                         Expanded(
                           child: Observer(
                             builder: (_) => Text.rich(
@@ -494,7 +495,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 ],
                               ),
                             ),
-                          ),
+                          ).yetkiVarMi(widget.isTalepTeklif != true),
                           Expanded(
                             child: CustomTextField(
                               labelText: "Ölçü Birimi",

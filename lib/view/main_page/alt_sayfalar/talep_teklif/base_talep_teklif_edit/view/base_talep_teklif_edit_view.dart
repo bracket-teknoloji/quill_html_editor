@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/alt_sayfalar/base_fatura_kalemler/view/base_talep_teklif_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/alt_sayfalar/base_talep_teklif_diger/view/base_talep_teklif_diger_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/alt_sayfalar/base_talep_teklif_genel/view/base_talep_teklif_genel_view.dart";
@@ -44,35 +45,37 @@ class BaseTalepTeklifEditingView extends StatefulWidget {
 class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingView> with TickerProviderStateMixin {
   BaseTalepTeklifEditingViewModel viewModel = BaseTalepTeklifEditingViewModel();
   late final TabController tabController;
-  late BaseEditModel<TalepTeklifListesiModel> model;
+  late BaseEditModel<SiparisEditRequestModel> model;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
-    tabController.addListener(() {
-      if (tabController.indexIsChanging && tabController.previousIndex == 0) {
-        final result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
-        if (result == null || !result) {
-          dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
-          tabController.animateTo(tabController.previousIndex);
+    if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
+      tabController.addListener(() {
+        if (tabController.indexIsChanging && tabController.previousIndex == 0) {
+          final result = StaticVariables.instance.talepTeklifGenelFormKey.currentState?.validate();
+          if (result == null || !result) {
+            dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
+            tabController.animateTo(tabController.previousIndex);
+          }
         }
-      }
-      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-        viewModel.changeIsLastPage(true);
-      } else {
-        viewModel.changeIsLastPage(false);
-      }
-    });
+        if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+          viewModel.changeIsLastPage(true);
+        } else {
+          viewModel.changeIsLastPage(false);
+        }
+      });
+    }
 
     if (widget.model.model is BaseSiparisEditModel) {
-      // model = BaseEditModel<TalepTeklifListesiModel>()..model = TalepTeklifListesiModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
-      // model.baseEditEnum = widget.model.baseEditEnum;
-      // model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
-    } else if (widget.model.model is TalepTeklifListesiModel) {
-      model = widget.model as BaseEditModel<TalepTeklifListesiModel>;
+      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
+      model.baseEditEnum = widget.model.baseEditEnum;
+      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+    } else if (widget.model.model is BaseSiparisEditModel) {
+      model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
-      model = BaseEditModel<TalepTeklifListesiModel>()..model = TalepTeklifListesiModel();
+      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model.baseEditEnum = widget.model.baseEditEnum;
       model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
     }
@@ -137,7 +140,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
-              title: widget.appBarTitle ?? "Sipariş",
+              title: widget.appBarTitle ?? "Talep Teklif",
               subtitle: widget.appBarSubtitle ?? widget.model.model?.belgeNo,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),

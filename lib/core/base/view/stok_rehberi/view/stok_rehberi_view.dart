@@ -28,7 +28,8 @@ import "../view_model/stok_rehberi_view_model.dart";
 
 class StokRehberiView extends StatefulWidget {
   final String? searchText;
-  const StokRehberiView({super.key, this.searchText});
+  final bool? isTalepTeklif;
+  const StokRehberiView({super.key, this.searchText, this.isTalepTeklif});
 
   @override
   State<StokRehberiView> createState() => _StokRehberiViewState();
@@ -357,7 +358,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         }
                                         stokModel?.yapkodAciklama = result.yapacik;
                                       }
-                                      await Get.toNamed("/kalemEkle", arguments: stokModel ?? stok);
+                                      await Get.toNamed((widget.isTalepTeklif??false)? "/talepTeklifKalemEkle":"/kalemEkle", arguments: stokModel ?? stok);
                                       viewModel.setSelectedStokModel(null);
                                     },
                                     title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),

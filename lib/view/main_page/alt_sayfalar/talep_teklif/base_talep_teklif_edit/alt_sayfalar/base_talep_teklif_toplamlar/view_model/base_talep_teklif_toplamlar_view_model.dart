@@ -3,9 +3,9 @@ import "package:mobx/mobx.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-import '../../../../../../../../../core/constants/extensions/number_extensions.dart';
-import '../../../../../../../../../core/constants/static_variables/static_variables.dart';
-import '../../../../../../../../../core/init/cache/cache_manager.dart';
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../../../core/init/cache/cache_manager.dart";
 
 part "base_talep_teklif_toplamlar_view_model.g.dart";
 

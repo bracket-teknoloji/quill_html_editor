@@ -15,13 +15,13 @@ mixin _$TalepTeklifAciklamaDuzenleViewModel
       context: context);
 
   @override
-  TalepTeklifListesiModel? get talepTeklifListesiModel {
+  BaseSiparisEditModel? get talepTeklifListesiModel {
     _$talepTeklifListesiModelAtom.reportRead();
     return super.talepTeklifListesiModel;
   }
 
   @override
-  set talepTeklifListesiModel(TalepTeklifListesiModel? value) {
+  set talepTeklifListesiModel(BaseSiparisEditModel? value) {
     _$talepTeklifListesiModelAtom
         .reportWrite(value, super.talepTeklifListesiModel, () {
       super.talepTeklifListesiModel = value;
@@ -250,7 +250,7 @@ mixin _$TalepTeklifAciklamaDuzenleViewModel
   }
 
   @override
-  void setTalepTeklifListesiModel(TalepTeklifListesiModel value) {
+  void setTalepTeklifListesiModel(BaseSiparisEditModel value) {
     final _$actionInfo =
         _$_TalepTeklifAciklamaDuzenleViewModelBaseActionController.startAction(
             name:

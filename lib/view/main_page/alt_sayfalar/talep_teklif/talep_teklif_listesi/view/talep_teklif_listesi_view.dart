@@ -24,7 +24,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/view_model/talep_teklif_listesi_view_model.dart";
 
 class TalepTeklifListesiView extends StatefulWidget {
@@ -191,7 +191,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                   if (index == viewModel.talepTeklifListesiModelList!.length) {
                     return const Center(child: CircularProgressIndicator.adaptive());
                   }
-                  final TalepTeklifListesiModel model = viewModel.talepTeklifListesiModelList![index];
+                  final BaseSiparisEditModel model = viewModel.talepTeklifListesiModelList![index];
                   return Observer(
                     builder: (_) => TalepTeklifCard(
                       model: model,
@@ -200,6 +200,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
                       onDeleted: () async => await viewModel.resetPage(),
+                      onUpdated: (value) async => await viewModel.resetPage(),
                     ),
                   );
                 },

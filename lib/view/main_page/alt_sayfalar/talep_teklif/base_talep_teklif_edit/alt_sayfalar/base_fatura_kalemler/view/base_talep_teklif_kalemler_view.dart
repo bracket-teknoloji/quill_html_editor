@@ -3,8 +3,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -21,10 +21,10 @@ import "../../../../../../../../../core/constants/extensions/widget_extensions.d
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import '../view_model/base_talep_teklif_kalemler_view_model.dart';
+import "../view_model/base_talep_teklif_kalemler_view_model.dart";
 
 class BaseTalepTeklifKalemlerView extends StatefulWidget {
-  final BaseEditModel<TalepTeklifListesiModel> model;
+  final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
   const BaseTalepTeklifKalemlerView({super.key, required this.model, this.updater});
 
@@ -58,7 +58,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
-            await Get.toNamed("/mainPage/stokRehberi");
+            await Get.toNamed("/mainPage/talepTeklifStokRehberi");
             viewModel.updateKalemList();
           },
           child: const Icon(Icons.add),
@@ -76,7 +76,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                 controller: _searchTextController,
                 onSubmitted: (String p0) async {
                   if (p0.ext.isNotNullOrNoEmpty) {
-                    await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
+                    await Get.toNamed("/mainPage/talepTeklifStokRehberi", arguments: p0);
                     viewModel.updateKalemList();
                   }
                 },
@@ -153,7 +153,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
-            Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
+            // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
                 .paddingOnly(bottom: UIHelper.lowSize),
@@ -193,8 +193,8 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                       .yetkiVarMi(kalemModel?.dovizKuru != null),
                   Text("Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
-                  Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
-                  Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
+                  // Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
+                  // Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
                   Text("Teslim Tarihi: ${kalemModel?.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel?.teslimTarihi != null),
                 ].map((Widget e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
               ),
@@ -266,7 +266,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+            await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
             viewModel.updateKalemList();
           },
         ).yetkiKontrol(!widget.model.isGoruntule),
