@@ -33,7 +33,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
 
   @action
   void setBelgeTipi(int? value) {
-    model = model.copyWith(belgeTipi: value);
+    model = model.copyWith(belgeTipi: value, tipi: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

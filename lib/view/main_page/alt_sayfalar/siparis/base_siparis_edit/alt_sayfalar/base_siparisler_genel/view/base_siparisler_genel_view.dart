@@ -204,6 +204,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                             final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
                             if (result != null) {
                               model.belgeTipi = result.belgeTipiId;
+                              model.tipi = result.belgeTipiId;
                               belgeTipiController.text = result.belgeTipi ?? "";
                             }
                           },
