@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -143,7 +144,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                 CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
-                CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
+                CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {})
+                    .yetkiVarMi(widget.model.baseEditEnum == BaseEditEnum.goruntule),
                 CustomTextField(
                   labelText: "Cari",
                   readOnly: true,
@@ -162,7 +164,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                 CustomTextField(
                   labelText: "Teslim Cari",
                   readOnly: true,
-                  isMust: true,
                   suffixMore: true,
                   controller: _teslimCariController,
                   enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),

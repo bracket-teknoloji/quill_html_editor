@@ -209,14 +209,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
                           },
                         ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
-                        // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
-                        // BottomSheetModel(
-                        //     title: "Ekranı Yeni Kayda Hazırla",
-                        //     description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                        //     iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                        //     onTap: () {
-                        //       Get.back();
-                        //     }).yetkiKontrol(widget.model.isEkle),
+                        BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
+                        BottomSheetModel(
+                          title: "Ekranı Yeni Kayda Hazırla",
+                          description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                          iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                          onTap: () {
+                            Get.back();
+                            viewModel.changeYeniKaydaHazirlaMi();
+                          },
+                        ).yetkiKontrol(widget.model.isEkle),
                       ].nullCheckWithGeneric,
                     );
                     if (result != null) {
@@ -234,10 +236,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                           if (await postData()) {
                             await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                             Get.back();
-                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {}
+                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
+
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
                             await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));
+                            }
                           }
                         });
                       },

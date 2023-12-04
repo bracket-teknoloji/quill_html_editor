@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/model/print_model.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 
@@ -110,6 +112,32 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   });
                 },
               ).yetkiKontrol(widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi),
+              BottomSheetModel(
+                title: "Yazdır",
+                iconWidget: Icons.print_outlined,
+                onTap: () async {
+                  Get.back();
+                  final PrintModel printModel = PrintModel(
+                    raporOzelKod: widget.editTipiEnum.getPrintValue,
+                    etiketSayisi: 1,
+                    dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),
+                  );
+                  await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
+                },
+              ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+              BottomSheetModel(
+                title: "İşlemler",
+                iconWidget: Icons.list_alt_outlined,
+                onTap: () async {
+                  Get.back();
+                  await dialogManager.showFaturaGridViewDialog(
+                    model: widget.model,
+                    onSelected: (value) {
+                      widget.onUpdated?.call(value);
+                    },
+                  );
+                },
+              ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,

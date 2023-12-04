@@ -11,6 +11,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_bottom_sheet_response_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/base/model/e_fatura_ozel_kod_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
@@ -26,6 +27,7 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/add_company/model/account_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
@@ -771,6 +773,52 @@ class BottomSheetDialogManager {
           )
           .toList(),
     );
+  }
+
+  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
+    final result = await NetworkManager().dioGet<KalemListModel>(
+        path: ApiUrls.getBelgeBaglantilari, bodyModel: KalemListModel(), showLoading: true, queryParameters: {"CariKodu": cariKodu, "BelgeTuru": belgeTipi, "BelgeNo": belgeNo});
+    if (result.data is List) {
+      final List<KalemListModel> list = result.data.map((e) => e as KalemListModel).toList().cast<KalemListModel>();
+      return await showBottomSheetDialog(
+        context,
+        title: "Belge Bağlantıları",
+        children: list
+            .map(
+              (KalemListModel e) => BottomSheetModel(
+                title: e.belgeTipi ?? "",
+                description: e.belgeNo ?? "",
+                value: e,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
+  Future<EFaturaOzelKodModel?> showEFaturaOzelKodBottomSheetDialog(BuildContext context, int? groupValue, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
+    final result = await NetworkManager()
+        .dioGet(path: ApiUrls.getEFaturaOzelKodlar, bodyModel: EFaturaOzelKodModel(), showLoading: true, queryParameters: {"CariKodu": cariKodu, "BelgeTipi": belgeTipi, "BelgeNo": belgeNo});
+    if (result.data != null) {
+      final List<EFaturaOzelKodModel> list = result.data.map((e) => e as EFaturaOzelKodModel).toList().cast<EFaturaOzelKodModel>();
+      return await showRadioBottomSheetDialog(
+        context,
+        title: "Özel Kod Seçiniz",
+        groupValue: groupValue,
+        children: list
+            .map(
+              (EFaturaOzelKodModel e) => BottomSheetModel(
+                title: e.aciklama ?? e.tipAdi ?? "",
+                description: e.kod.toStringIfNotNull ?? "",
+                value: e,
+                groupValue: e.kod,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
   }
 
   Future<TcmbBankalarModel?> showTcmbBankalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {

@@ -7,6 +7,7 @@ import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -123,6 +124,25 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cekTahsilati);
       islemlerList.add(borcSenedi);
       islemlerList.add(borcCeki);
+    } else if (islemtipi == IslemTipiEnum.talepTeklif) {
+      if (model is BaseSiparisEditModel) {
+        final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+        islemlerList.add(siparisPDFGoruntule);
+        islemlerList.add(belgeyiKapat);
+        islemlerList.add(kopyala);
+        islemlerList.add(cariKoduDegistir);
+        if (siparisModel.tipi != 1) {
+          islemlerList.add(belgeNoDegistir);
+        }
+        if (siparisModel.siparislesti == "E") {
+          islemlerList.add(belgeBaglantilari);
+        }
+      }
+    } else if (islemtipi == IslemTipiEnum.fatura) {
+      islemlerList.add(belgeyiKapat);
+      islemlerList.add(siparisPDFGoruntule);
+      islemlerList.add(cariKoduDegistir);
+      islemlerList.add(kopyala);
     }
   }
 
@@ -504,5 +524,31 @@ class IslemlerMenuItemConstants<T> {
         title: (model as CekSenetListesiModel).cekSenetListesiEnum.borcMu ? "Kasadan Öde" : "Kasa Tahsil Et",
         iconData: Icons.add_outlined,
         onTap: () async => await Get.toNamed("/mainPage/kasadanTahsilEt", arguments: model),
+      );
+
+  //* Talep Teklif
+  GridItemModel get belgeBaglantilari => GridItemModel.islemler(
+        title: "Belge Bağlantıları",
+        iconData: Icons.link_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            final result =
+                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+            if (result is KalemListModel) {
+              final BaseSiparisEditModel newModel = BaseSiparisEditModel(belgeTuru: result.belgeTipi, belgeNo: result.belgeNo, cariKodu: result.cariKodu);
+              if (result.belgeTipi == "MS") {
+                Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+              } else if (result.belgeTipi == "SS") {
+                Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satici));
+              }
+              // else if (result.belgeTipi == "") {
+              //   Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+              // } else if (result.belgeTipi == "IS") {
+              //   Get.toNamed("mainPage/irsaliyeEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+              // }
+            }
+          }
+        },
       );
 }

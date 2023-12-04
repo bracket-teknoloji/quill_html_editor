@@ -293,6 +293,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel kdvDahilMi(bool? kdvDahilMi);
 
+  BaseSiparisEditModel efatOzelkod(int? efatOzelkod);
+
+  BaseSiparisEditModel siparislesti(String? siparislesti);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -443,6 +447,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     EirsBilgiModel? eirsBilgiModel,
     String? uetdsBildirildi,
     bool? kdvDahilMi,
+    int? efatOzelkod,
+    String? siparislesti,
   });
 }
 
@@ -961,6 +967,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(kdvDahilMi: kdvDahilMi);
 
   @override
+  BaseSiparisEditModel efatOzelkod(int? efatOzelkod) =>
+      this(efatOzelkod: efatOzelkod);
+
+  @override
+  BaseSiparisEditModel siparislesti(String? siparislesti) =>
+      this(siparislesti: siparislesti);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1112,6 +1126,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? eirsBilgiModel = const $CopyWithPlaceholder(),
     Object? uetdsBildirildi = const $CopyWithPlaceholder(),
     Object? kdvDahilMi = const $CopyWithPlaceholder(),
+    Object? efatOzelkod = const $CopyWithPlaceholder(),
+    Object? siparislesti = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1688,6 +1704,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.kdvDahilMi
           // ignore: cast_nullable_to_non_nullable
           : kdvDahilMi as bool?,
+      efatOzelkod: efatOzelkod == const $CopyWithPlaceholder()
+          ? _value.efatOzelkod
+          // ignore: cast_nullable_to_non_nullable
+          : efatOzelkod as int?,
+      siparislesti: siparislesti == const $CopyWithPlaceholder()
+          ? _value.siparislesti
+          // ignore: cast_nullable_to_non_nullable
+          : siparislesti as String?,
     );
   }
 }
@@ -2949,6 +2973,8 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       eirsBilgiModel: fields[143] as EirsBilgiModel?,
       uetdsBildirildi: fields[144] as String?,
       kdvDahilMi: fields[145] as bool?,
+      efatOzelkod: fields[146] as int?,
+      siparislesti: fields[147] as String?,
     )
       ..yeniKayit = fields[115] as bool?
       ..uuid = fields[116] as String?
@@ -2958,7 +2984,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(146)
+      ..writeByte(148)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3250,7 +3276,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(144)
       ..write(obj.uetdsBildirildi)
       ..writeByte(145)
-      ..write(obj.kdvDahilMi);
+      ..write(obj.kdvDahilMi)
+      ..writeByte(146)
+      ..write(obj.efatOzelkod)
+      ..writeByte(147)
+      ..write(obj.siparislesti);
   }
 
   @override
@@ -3745,6 +3775,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
               json['EIRS_BILGI_MODEL'] as Map<String, dynamic>),
       uetdsBildirildi: json['UETDS_BILDIRILDI'] as String?,
       kdvDahilMi: json['KDV_DAHIL_MI'] as bool?,
+      efatOzelkod: json['EFAT_OZELKOD'] as int?,
+      siparislesti: json['SIPARISLESTI'] as String?,
     )
       ..yeniKayit = json['_YeniKayit'] as bool?
       ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
@@ -3907,6 +3939,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EIRS_BILGI_MODEL', instance.eirsBilgiModel?.toJson());
   writeNotNull('UETDS_BILDIRILDI', instance.uetdsBildirildi);
   writeNotNull('KDV_DAHIL_MI', instance.kdvDahilMi);
+  writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
+  writeNotNull('SIPARISLESTI', instance.siparislesti);
   return val;
 }
 

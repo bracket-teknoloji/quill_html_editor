@@ -13,6 +13,12 @@ class BaseFaturaToplamlarViewModel = _BaseFaturaToplamlarViewModelBase with _$Ba
 
 abstract class _BaseFaturaToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
+
+  final Map<String, String> senaryoMap = {
+    "Temel": "TEM",
+    "Ticari": "TIC",
+  };
+
   @observable
   bool isGenIsk1T = false;
 
@@ -140,6 +146,18 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
     }
   }
 
+  @action
+  void setSenaryo(String? value) {
+    model = model.copyWith(efaturaTipi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setEfatOzelkod(int? value) {
+    model = model.copyWith(efatOzelkod: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
   Map<String, double> get tevkifatMap => <String, double>{
         "$getTevkifatPay/$getTevkifatPayda (Varsayılan)": getTevkifatOranlari,
         "1/10": 0.1,
@@ -152,6 +170,8 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
         "8/10": 0.8,
         "9/10": 0.9,
       };
+
+
   int get getTevkifatPay => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
   int get getTevkifatPayda => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
   double get getTevkifatOranlari => getTevkifatPay / getTevkifatPayda;

@@ -421,9 +421,27 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   child: CustomTextField(
                     labelText: "İstisna Kodu",
                     enabled: enable,
+                    readOnly: true,
+                    suffixMore: true,
                     controller: istisnaKoduController,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.model.efatOzelkod.toStringIfNotNull ?? "",
+                      ),
+                    ),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showEFaturaOzelKodBottomSheetDialog(
+                        context,
+                        viewModel.model.efatOzelkod,
+                        cariKodu: model.cariKodu,
+                        belgeTipi: model.belgeTuru,
+                        belgeNo: model.belgeNo,
+                      );
+                      if (result != null) {
+                        istisnaKoduController.text = result.aciklama ?? "";
+                        viewModel.setEfatOzelkod(result.kod);
+                      }
+                    },
                   ),
                 ),
                 Expanded(
@@ -431,25 +449,23 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     labelText: "E-Fatura Senaryo",
                     enabled: enable,
                     isMust: true,
+                    readOnly: true,
                     controller: eFaturaSenaryoController,
-                    keyboardType: TextInputType.number,
-                    onChanged: (String value) => model.vadeGunu = int.tryParse(value),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final DateTime? date = await showDatePicker(
-                          context: context,
-                          initialDate: model.vadeTarihi ?? DateTime.now(),
-                          firstDate: model.tarih ?? DateTime.now(),
-                          lastDate: DateTime.now().add(const Duration(days: 365)),
-                        );
-                        if (date != null) {
-                          model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
-                          viewModel.setVadeTarihi(date);
-                          vadeGunuController.text = model.vadeGunu.toString();
-                        }
-                      },
-                      icon: const Icon(Icons.calendar_today),
-                    ),
+                    suffixMore: true,
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "E-Fatura Senaryo",
+                        children: List.generate(
+                          viewModel.senaryoMap.length,
+                          (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                        ),
+                      );
+                      if (result is MapEntry) {
+                        viewModel.setSenaryo(result.value);
+                        eFaturaSenaryoController.text = result.key;
+                      }
+                    },
                   ),
                 ),
               ],
@@ -488,7 +504,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     // }
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
-    istisnaKoduController = TextEditingController();
+    istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
   }
 
   void disposeControllers() {

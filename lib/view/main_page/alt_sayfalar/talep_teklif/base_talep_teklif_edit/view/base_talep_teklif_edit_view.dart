@@ -80,13 +80,13 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
       model.editTipiEnum = widget.model.editTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? EditTipiEnum.musteri : EditTipiEnum.satici);
     }
 
-    // if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-    //   model.model?.kayitModu = "S";
-    // } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-    //   model.model?.kayitModu = "U";
-    // } else {
-    //   model.model?.kayitModu = null;
-    // }
+    if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+      model.model?.kayitModu = "S";
+    } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+      model.model?.kayitModu = "U";
+    } else {
+      model.model?.kayitModu = null;
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);

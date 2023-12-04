@@ -70,17 +70,16 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
-          // contentPadding: EdgeInsets.zero,
-          // onLongPress: widget.model.remoteTempBelgeEtiketi == null
-          //     ? () async {
-          //         await dialogManager.showSiparisGridViewDialog(
-          //           model: widget.model,
-          //           onSelected: (value) {
-          //             widget.onUpdated?.call(value);
-          //           },
-          //         );
-          //       }
-          //     : null,
+          onLongPress: widget.model.remoteTempBelgeEtiketi == null
+              ? () async {
+                  await dialogManager.showTalepTeklifGridViewDialog(
+                    model: widget.model,
+                    onSelected: (value) {
+                      widget.onUpdated?.call(value);
+                    },
+                  );
+                }
+              : null,
           onTap: widget.isGetData == true
               ? () => Get.back(result: widget.model)
               : () async {
@@ -169,22 +168,21 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
                         },
                       ),
-                      // .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-                      // BottomSheetModel(
-                      //   title: "İşlemler",
-                      //   iconWidget: Icons.list_alt_outlined,
-                      //   onTap: () async {
-                      //     Get.back();
-                      //     await dialogManager.showSiparisGridViewDialog(
-                      //       model: widget.model,
-                      //       onSelected: (value) {
-                      //         widget.onUpdated?.call(value);
-                      //       },
-                      //     );
-                      //   },
-                      // ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-                      // BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
-                      //     .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
+                      BottomSheetModel(
+                        title: "İşlemler",
+                        iconWidget: Icons.list_alt_outlined,
+                        onTap: () async {
+                          Get.back();
+                          await dialogManager.showTalepTeklifGridViewDialog(
+                            model: widget.model,
+                            onSelected: (value) {
+                              widget.onUpdated?.call(value);
+                            },
+                          );
+                        },
+                      ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                      BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
+                          .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
                       BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_outline_outlined,
@@ -221,6 +219,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                   // ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
                   ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model.dovizAdi != null),
                   // const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(widget.model.isNew == true),
+                  const ColorfulBadge(label: Text("Sipariş"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.siparislesti == "E"),
                   const ColorfulBadge(label: Text("Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.faturalasti == "E"),
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(widget.model.tipi == 1),
                   const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),

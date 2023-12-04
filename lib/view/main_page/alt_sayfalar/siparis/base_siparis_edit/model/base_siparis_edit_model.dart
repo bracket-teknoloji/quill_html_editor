@@ -370,6 +370,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? uetdsBildirildi;
   @HiveField(145)
   bool? kdvDahilMi;
+  @HiveField(146)
+  int? efatOzelkod;
+  @HiveField(147)
+  String? siparislesti;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -515,6 +519,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.eirsBilgiModel,
     this.uetdsBildirildi,
     this.kdvDahilMi,
+    this.efatOzelkod,
+    this.siparislesti,
   });
 
   BaseSiparisEditModel._init();
@@ -530,6 +536,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get silinebilirMi {
     switch (efaturaDurumu) {
       case "TMM":
+      case "BEK":
         return false;
       default:
         return true;

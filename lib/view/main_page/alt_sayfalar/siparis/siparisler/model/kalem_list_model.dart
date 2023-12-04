@@ -1,11 +1,13 @@
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
 part "kalem_list_model.g.dart";
 
 @JsonSerializable(includeIfNull: true, createFactory: true)
-class KalemListModel {
+class KalemListModel with NetworkManagerMixin {
   List<dynamic>? tempBarkodList;
   int? sira;
+  String? belgeNo;
   DateTime? tarih;
   DateTime? teslimTarihi;
   String? belgeTipi;
@@ -38,5 +40,9 @@ class KalemListModel {
 
   factory KalemListModel.fromJson(Map<String, dynamic> json) => _$KalemListModelFromJson(json);
 
+  @override
+  KalemListModel fromJson(Map<String, dynamic> json) => KalemListModel.fromJson(json);
+
+  @override
   Map<String, dynamic> toJson() => _$KalemListModelToJson(this);
 }

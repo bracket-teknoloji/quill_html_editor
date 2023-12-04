@@ -10,6 +10,7 @@ KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
     KalemListModel()
       ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
       ..sira = json['SIRA'] as int?
+      ..belgeNo = json['BELGE_NO'] as String?
       ..tarih =
           json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
       ..teslimTarihi = json['TESLIM_TARIHI'] == null
@@ -45,6 +46,7 @@ Map<String, dynamic> _$KalemListModelToJson(KalemListModel instance) =>
     <String, dynamic>{
       'TEMP_BARKOD_LIST': instance.tempBarkodList,
       'SIRA': instance.sira,
+      'BELGE_NO': instance.belgeNo,
       'TARIH': instance.tarih?.toIso8601String(),
       'TESLIM_TARIHI': instance.teslimTarihi?.toIso8601String(),
       'BELGE_TIPI': instance.belgeTipi,

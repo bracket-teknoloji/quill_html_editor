@@ -235,6 +235,30 @@ mixin _$BaseFaturaToplamlarViewModel
   }
 
   @override
+  void setSenaryo(String? value) {
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setSenaryo');
+    try {
+      return super.setSenaryo(value);
+    } finally {
+      _$_BaseFaturaToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEfatOzelkod(int? value) {
+    final _$actionInfo = _$_BaseFaturaToplamlarViewModelBaseActionController
+        .startAction(name: '_BaseFaturaToplamlarViewModelBase.setEfatOzelkod');
+    try {
+      return super.setEfatOzelkod(value);
+    } finally {
+      _$_BaseFaturaToplamlarViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isGenIsk1T: ${isGenIsk1T},

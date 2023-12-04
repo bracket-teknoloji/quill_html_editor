@@ -53,7 +53,7 @@ abstract class _BaseFaturaEditViewModelBase with Store {
   void changeYeniKaydaHazirlaMi() {
     yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
     CacheManager.setProfilParametre(
-      CacheManager.getProfilParametre.copyWith(siparisYeniKaydaHazirla: yeniKaydaHazirlaMi),
+      CacheManager.getProfilParametre.copyWith(faturaYeniKaydaHazirla: yeniKaydaHazirlaMi),
     );
   }
 }
