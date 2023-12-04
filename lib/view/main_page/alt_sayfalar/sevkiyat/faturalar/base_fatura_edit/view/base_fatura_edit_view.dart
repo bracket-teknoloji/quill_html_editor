@@ -84,7 +84,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         final GenericResponseModel<NetworkManagerMixin> result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
-          viewModel.changeIsLoaded(true);
           // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
@@ -105,7 +104,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         BaseSiparisEditModel.instance.isNew = true;
         final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
-          // viewModel.changeIsBaseSiparisEmpty(true);
+          viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.siparisTipi = model.siparisTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
@@ -114,13 +113,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
           BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
-          viewModel.changeIsLoaded(true);
+          // viewModel.changeIsLoaded(true);
         }
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
-      // viewModel.changeIsBaseSiparisEmpty(false);
+      viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
   }
@@ -235,11 +234,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                           if (await postData()) {
                             await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                             Get.back();
-                            // if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-                            // }
+                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {}
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
-                            await Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
                           }
                         });
                       },
@@ -263,11 +261,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               physics: const NeverScrollableScrollPhysics(),
               children: <Widget>[
                 Observer(
-                  builder: (_) => viewModel.isLoaded
-                      ? BaseFaturaGenelView(model: model)
-                      : const Center(
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
+                  builder: (_) {
+                    if (viewModel.isBaseSiparisEmpty) {
+                      return const Center(child: CircularProgressIndicator.adaptive());
+                    } else {
+                      return BaseFaturaGenelView(model: model);
+                    }
+                  },
                 ),
                 BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false),
                 BaseFaturaKalemlerView(model: model),

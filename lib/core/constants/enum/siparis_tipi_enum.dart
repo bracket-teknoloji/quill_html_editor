@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../init/cache/cache_manager.dart";
@@ -278,4 +279,83 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
   }
 
   SiparisTipiEnum? getSiparisTipiEnumWithRawValue(String? rawValue) => SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
+
+
+  String aciklamaLabel(int index) {
+    final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
+    String? label;
+    if (satisMi) {
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhere((element) => element.belgeTipi == rawValue);
+      switch (index) {
+        case 1:
+          label = talTekParam?.aciklar1;
+        case 2:
+          label = talTekParam?.aciklar2;
+        case 3:
+          label = talTekParam?.aciklar3;
+        case 4:
+          label = talTekParam?.aciklar4;
+        case 5:
+          label = talTekParam?.aciklar5;
+        case 6:
+          label = talTekParam?.aciklar6;
+        case 7:
+          label = talTekParam?.aciklar7;
+        case 8:
+          label = talTekParam?.aciklar8;
+        case 9:
+          label = talTekParam?.aciklar9;
+        case 10:
+          label = talTekParam?.aciklar10;
+        case 11:
+          label = talTekParam?.aciklar11;
+        case 12:
+          label = talTekParam?.aciklar12;
+        case 13:
+          label = talTekParam?.aciklar13;
+        case 14:
+          label = talTekParam?.aciklar14;
+        case 15:
+          label = talTekParam?.aciklar15;
+        case 16:
+          label = talTekParam?.aciklar16;
+      }
+    } else {
+      switch (index) {
+        case 1:
+          label = paramModel?.alisEkAciklamaTanimi1;
+        case 2:
+          label = paramModel?.alisEkAciklamaTanimi2;
+        case 3:
+          label = paramModel?.alisEkAciklamaTanimi3;
+        case 4:
+          label = paramModel?.alisEkAciklamaTanimi4;
+        case 5:
+          label = paramModel?.alisEkAciklamaTanimi5;
+        case 6:
+          label = paramModel?.alisEkAciklamaTanimi6;
+        case 7:
+          label = paramModel?.alisEkAciklamaTanimi7;
+        case 8:
+          label = paramModel?.alisEkAciklamaTanimi8;
+        case 9:
+          label = paramModel?.alisEkAciklamaTanimi9;
+        case 10:
+          label = paramModel?.alisEkAciklamaTanimi10;
+        case 11:
+          label = paramModel?.alisEkAciklamaTanimi11;
+        case 12:
+          label = paramModel?.alisEkAciklamaTanimi12;
+        case 13:
+          label = paramModel?.alisEkAciklamaTanimi13;
+        case 14:
+          label = paramModel?.alisEkAciklamaTanimi14;
+        case 15:
+          label = paramModel?.alisEkAciklamaTanimi15;
+        case 16:
+          label = paramModel?.alisEkAciklamaTanimi16;
+      }
+    }
+    return label ?? "Açıklama $index";
+  }
 }

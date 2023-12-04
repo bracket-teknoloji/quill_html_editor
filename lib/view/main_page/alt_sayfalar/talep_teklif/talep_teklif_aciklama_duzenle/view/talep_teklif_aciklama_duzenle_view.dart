@@ -3,14 +3,14 @@ import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_aciklama_duzenle/view_model/talep_teklif_aciklama_duzenle_view_model.dart";
 
 class TalepTeklifAciklamaDuzenleView extends StatefulWidget {
-  final TalepTeklifEnum talTekEnum;
+  final SiparisTipiEnum talTekEnum;
   final BaseSiparisEditModel model;
   const TalepTeklifAciklamaDuzenleView({super.key, required this.talTekEnum, required this.model});
 
