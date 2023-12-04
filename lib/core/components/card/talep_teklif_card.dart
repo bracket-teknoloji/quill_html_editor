@@ -117,7 +117,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                               siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                             ),
                           );
-                          widget.onUpdated?.call(result);
+                          widget.onUpdated?.call(result ?? false);
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(

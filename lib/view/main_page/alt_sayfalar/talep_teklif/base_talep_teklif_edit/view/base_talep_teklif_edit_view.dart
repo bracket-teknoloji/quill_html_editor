@@ -238,7 +238,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                       dialogManager.showAreYouSureDialog(() async {
                         if (await postData()) {
                           await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          Get.back();
+                          Get.back(result: true);
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;

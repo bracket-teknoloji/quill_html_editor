@@ -117,23 +117,6 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         body: body(),
       );
 
-  Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown,
-          onPressed: () async {
-            await Get.toNamed(
-              "mainPage/talTekEdit",
-              arguments: BaseEditModel(
-                // model: widget.model,
-                baseEditEnum: BaseEditEnum.ekle,
-                siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
-              ),
-            );
-            await viewModel.resetPage();
-          },
-        ),
-      );
-
   AppBar appBar() => AppBar(
         title: Observer(
           builder: (_) {
@@ -195,6 +178,25 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         ),
       );
 
+  Observer fab() => Observer(
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrolledDown,
+          onPressed: () async {
+            final result = await Get.toNamed(
+              "mainPage/talTekEdit",
+              arguments: BaseEditModel(
+                // model: widget.model,
+                baseEditEnum: BaseEditEnum.ekle,
+                siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+              ),
+            );
+            if (result) {
+              await viewModel.resetPage();
+            }
+          },
+        ),
+      );
+
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: viewModel.resetPage,
         child: Observer(
@@ -222,7 +224,11 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
                       onDeleted: () async => await viewModel.resetPage(),
-                      onUpdated: (value) async => await viewModel.resetPage(),
+                      onUpdated: (value) async {
+                        if (value) {
+                          await viewModel.resetPage();
+                        }
+                      },
                     ),
                   );
                 },
