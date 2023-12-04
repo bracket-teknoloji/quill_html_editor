@@ -10,7 +10,11 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
         Map<String, dynamic> json) =>
     _$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla:
-          json['SIPARIS_YENI_KAYDA_HAZIRLA'] as bool? ?? true,
+          json['SIPARIS_YENI_KAYDA_HAZIRLA'] as bool? ?? false,
+      faturaYeniKaydaHazirla:
+          json['FATURA_YENI_KAYDA_HAZIRLA'] as bool? ?? false,
+      talepTeklifYeniKaydaHazirla:
+          json['TALEP_TEKLIF_YENI_KAYDA_HAZIRLA'] as bool? ?? false,
       siparisEkAlan: json['SIPARIS_EK_ALAN'] as bool? ?? false,
       siparisMiktar: json['SIPARIS_MIKTAR'] as bool? ?? false,
       siparisVade: json['SIPARIS_VADE'] as bool? ?? false,
@@ -34,6 +38,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
     _$BaseProfilParametreModelImpl instance) {
   final val = <String, dynamic>{
     'SIPARIS_YENI_KAYDA_HAZIRLA': instance.siparisYeniKaydaHazirla,
+    'FATURA_YENI_KAYDA_HAZIRLA': instance.faturaYeniKaydaHazirla,
+    'TALEP_TEKLIF_YENI_KAYDA_HAZIRLA': instance.talepTeklifYeniKaydaHazirla,
     'SIPARIS_EK_ALAN': instance.siparisEkAlan,
     'SIPARIS_MIKTAR': instance.siparisMiktar,
     'SIPARIS_VADE': instance.siparisVade,

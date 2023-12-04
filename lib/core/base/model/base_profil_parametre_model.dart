@@ -9,7 +9,9 @@ part "base_profil_parametre_model.g.dart";
 @freezed
 abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, NetworkManagerMixin {
   factory BaseProfilParametreModel({
-    @Default(true) bool siparisYeniKaydaHazirla,
+    @Default(false) bool siparisYeniKaydaHazirla,
+    @Default(false) bool faturaYeniKaydaHazirla,
+    @Default(false) bool talepTeklifYeniKaydaHazirla,
     @Default(false) bool siparisEkAlan,
     @Default(false) bool siparisMiktar,
     @Default(false) bool siparisVade,

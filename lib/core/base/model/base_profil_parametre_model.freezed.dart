@@ -22,6 +22,8 @@ BaseProfilParametreModel _$BaseProfilParametreModelFromJson(
 /// @nodoc
 mixin _$BaseProfilParametreModel {
   bool get siparisYeniKaydaHazirla => throw _privateConstructorUsedError;
+  bool get faturaYeniKaydaHazirla => throw _privateConstructorUsedError;
+  bool get talepTeklifYeniKaydaHazirla => throw _privateConstructorUsedError;
   bool get siparisEkAlan => throw _privateConstructorUsedError;
   bool get siparisMiktar => throw _privateConstructorUsedError;
   bool get siparisVade => throw _privateConstructorUsedError;
@@ -48,6 +50,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
   @useResult
   $Res call(
       {bool siparisYeniKaydaHazirla,
+      bool faturaYeniKaydaHazirla,
+      bool talepTeklifYeniKaydaHazirla,
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
@@ -74,6 +78,8 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? siparisYeniKaydaHazirla = null,
+    Object? faturaYeniKaydaHazirla = null,
+    Object? talepTeklifYeniKaydaHazirla = null,
     Object? siparisEkAlan = null,
     Object? siparisMiktar = null,
     Object? siparisVade = null,
@@ -88,6 +94,14 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
           ? _value.siparisYeniKaydaHazirla
           : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
+          ? _value.faturaYeniKaydaHazirla
+          : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
+          ? _value.talepTeklifYeniKaydaHazirla
+          : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
               as bool,
       siparisEkAlan: null == siparisEkAlan
           ? _value.siparisEkAlan
@@ -140,6 +154,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool siparisYeniKaydaHazirla,
+      bool faturaYeniKaydaHazirla,
+      bool talepTeklifYeniKaydaHazirla,
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
@@ -165,6 +181,8 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? siparisYeniKaydaHazirla = null,
+    Object? faturaYeniKaydaHazirla = null,
+    Object? talepTeklifYeniKaydaHazirla = null,
     Object? siparisEkAlan = null,
     Object? siparisMiktar = null,
     Object? siparisVade = null,
@@ -179,6 +197,14 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
           ? _value.siparisYeniKaydaHazirla
           : siparisYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      faturaYeniKaydaHazirla: null == faturaYeniKaydaHazirla
+          ? _value.faturaYeniKaydaHazirla
+          : faturaYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
+          ? _value.talepTeklifYeniKaydaHazirla
+          : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
               as bool,
       siparisEkAlan: null == siparisEkAlan
           ? _value.siparisEkAlan
@@ -224,7 +250,9 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   _$BaseProfilParametreModelImpl(
-      {this.siparisYeniKaydaHazirla = true,
+      {this.siparisYeniKaydaHazirla = false,
+      this.faturaYeniKaydaHazirla = false,
+      this.talepTeklifYeniKaydaHazirla = false,
       this.siparisEkAlan = false,
       this.siparisMiktar = false,
       this.siparisVade = false,
@@ -242,6 +270,12 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool siparisYeniKaydaHazirla;
+  @override
+  @JsonKey()
+  final bool faturaYeniKaydaHazirla;
+  @override
+  @JsonKey()
+  final bool talepTeklifYeniKaydaHazirla;
   @override
   @JsonKey()
   final bool siparisEkAlan;
@@ -286,6 +320,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
 abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   factory _BaseProfilParametreModel(
       {final bool siparisYeniKaydaHazirla,
+      final bool faturaYeniKaydaHazirla,
+      final bool talepTeklifYeniKaydaHazirla,
       final bool siparisEkAlan,
       final bool siparisMiktar,
       final bool siparisVade,
@@ -302,6 +338,10 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
 
   @override
   bool get siparisYeniKaydaHazirla;
+  @override
+  bool get faturaYeniKaydaHazirla;
+  @override
+  bool get talepTeklifYeniKaydaHazirla;
   @override
   bool get siparisEkAlan;
   @override
