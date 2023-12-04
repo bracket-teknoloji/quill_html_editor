@@ -241,7 +241,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed("/mainPage/siparisEdit", arguments: BaseEditModel<TalepTeklifListesiModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            Get.toNamed("/mainPage/TalTekEdit", arguments: BaseEditModel<TalepTeklifListesiModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
                           }
                         }
                       });
