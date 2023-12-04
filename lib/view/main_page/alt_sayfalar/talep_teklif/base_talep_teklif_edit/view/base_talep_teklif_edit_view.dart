@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/alt_sayfalar/base_fatura_kalemler/view/base_talep_teklif_kalemler_view.dart";
@@ -20,7 +21,6 @@ import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
@@ -71,13 +71,13 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
     if (widget.model.model is BaseSiparisEditModel) {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+      model.editTipiEnum = widget.model.editTipiEnum;
     } else if (widget.model.model is BaseSiparisEditModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.siparisTipiEnum = widget.model.siparisTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? SiparisTipiEnum.musteri : SiparisTipiEnum.satici);
+      model.editTipiEnum = widget.model.editTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? EditTipiEnum.musteri : EditTipiEnum.satici);
     }
 
     // if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
@@ -112,7 +112,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.siparisTipi = model.siparisTipiEnum;
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
@@ -122,8 +122,8 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         }
       }
 
-      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
@@ -242,7 +242,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed("/mainPage/TalTekEdit", arguments: BaseEditModel<TalepTeklifListesiModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            Get.toNamed("/mainPage/TalTekEdit", arguments: BaseEditModel<TalepTeklifListesiModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));
                           }
                         }
                       });

@@ -3,13 +3,13 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../view/main_page/model/menu_item/menu_item_constants.dart";
 import "../../../../base/state/base_state.dart";
 import "../../../../constants/enum/islem_tipi_enum.dart";
-import "../../../../constants/enum/siparis_tipi_enum.dart";
 import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../animated_islemler_grid_tile.dart";
@@ -19,7 +19,7 @@ import "../view_model/custom_animated_grid_view_model.dart";
 class CustomAnimatedGridView<T> extends StatefulWidget {
   final CariListesiModel? cariListesiModel;
   final IslemTipiEnum islemTipi;
-  final SiparisTipiEnum? siparisTipi;
+  final EditTipiEnum? siparisTipi;
   final T? model;
   final String? title;
   final ValueChanged<bool>? onSelected;

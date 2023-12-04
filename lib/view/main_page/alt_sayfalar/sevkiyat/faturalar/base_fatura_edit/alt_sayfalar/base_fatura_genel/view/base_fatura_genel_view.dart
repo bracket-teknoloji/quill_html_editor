@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -9,7 +10,6 @@ import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -134,7 +134,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   child: ListTile(
                     onTap: () async => Get.toNamed(
                       "/mainPage/eBelgePdf",
-                      arguments: EBelgeListesiModel(belgeTuru: widget.model.siparisTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
+                      arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
                     ),
                     contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
@@ -173,7 +173,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _teslimCariController.text = result.cariAdi ?? "";
                     }
                   },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.siparisTipiEnum?.irsaliyeMi != true),
+                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
                 Row(
                   children: <Widget>[
                     Expanded(

@@ -1,69 +1,69 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'siparis_tipi_enum.dart';
+part of 'edit_tipi_enum.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SiparisTipiEnumAdapter extends TypeAdapter<SiparisTipiEnum> {
+class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
   @override
   final int typeId = 79;
 
   @override
-  SiparisTipiEnum read(BinaryReader reader) {
+  EditTipiEnum read(BinaryReader reader) {
     switch (reader.readByte()) {
       case 0:
-        return SiparisTipiEnum.musteri;
+        return EditTipiEnum.musteri;
       case 1:
-        return SiparisTipiEnum.satici;
+        return EditTipiEnum.satici;
       case 2:
-        return SiparisTipiEnum.satisFatura;
+        return EditTipiEnum.satisFatura;
       case 3:
-        return SiparisTipiEnum.satisIrsaliye;
+        return EditTipiEnum.satisIrsaliye;
       case 4:
-        return SiparisTipiEnum.alisFatura;
+        return EditTipiEnum.alisFatura;
       case 5:
-        return SiparisTipiEnum.alisIrsaliye;
+        return EditTipiEnum.alisIrsaliye;
       case 6:
-        return SiparisTipiEnum.satisTeklifi;
+        return EditTipiEnum.satisTeklifi;
       case 7:
-        return SiparisTipiEnum.alisTalebi;
+        return EditTipiEnum.alisTalebi;
       case 8:
-        return SiparisTipiEnum.satisTalebi;
+        return EditTipiEnum.satisTalebi;
       default:
-        return SiparisTipiEnum.musteri;
+        return EditTipiEnum.musteri;
     }
   }
 
   @override
-  void write(BinaryWriter writer, SiparisTipiEnum obj) {
+  void write(BinaryWriter writer, EditTipiEnum obj) {
     switch (obj) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         writer.writeByte(0);
         break;
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         writer.writeByte(1);
         break;
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         writer.writeByte(2);
         break;
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         writer.writeByte(3);
         break;
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         writer.writeByte(4);
         break;
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         writer.writeByte(5);
         break;
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         writer.writeByte(6);
         break;
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         writer.writeByte(7);
         break;
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         writer.writeByte(8);
         break;
     }
@@ -75,7 +75,7 @@ class SiparisTipiEnumAdapter extends TypeAdapter<SiparisTipiEnum> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SiparisTipiEnumAdapter &&
+      other is EditTipiEnumAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

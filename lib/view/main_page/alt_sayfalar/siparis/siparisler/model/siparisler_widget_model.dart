@@ -1,7 +1,7 @@
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 class SiparislerWidgetModel {
   bool? isGetData;
-  SiparisTipiEnum siparisTipiEnum;
-  SiparislerWidgetModel({this.isGetData, required this.siparisTipiEnum});
+  EditTipiEnum editTipiEnum;
+  SiparislerWidgetModel({this.isGetData, required this.editTipiEnum});
 }

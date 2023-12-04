@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -11,7 +12,6 @@ import "../../base/state/base_state.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
-import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -46,7 +46,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               "/mainPage/faturaEdit",
               arguments: BaseEditModel(
                 baseEditEnum: BaseEditEnum.goruntule,
-                siparisTipiEnum: SiparisTipiEnum.alisFatura.getSiparisTipiEnumWithRawValue(model.belgeTipi),
+                editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(model.belgeTipi),
                 model: SiparisEditRequestModel.fromCariHareketleriModel(model),
               ),
             );

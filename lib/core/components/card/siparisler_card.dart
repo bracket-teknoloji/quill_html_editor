@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -13,7 +14,6 @@ import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
-import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/model_extensions.dart";
@@ -30,7 +30,7 @@ class SiparislerCard extends StatefulWidget {
     super.key,
     required this.model,
     this.onDeleted,
-    required this.siparisTipiEnum,
+    required this.editTipiEnum,
     this.index,
     this.isGetData,
     this.showEkAciklama,
@@ -48,7 +48,7 @@ class SiparislerCard extends StatefulWidget {
   final bool? showEkAciklama;
   final bool? showMiktar;
   final bool? showVade;
-  final SiparisTipiEnum siparisTipiEnum;
+  final EditTipiEnum editTipiEnum;
 
   @override
   State<SiparislerCard> createState() => _SiparislerCardState();
@@ -93,7 +93,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           Get.back();
                           return Get.toNamed(
                             "mainPage/siparisEdit",
-                            arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum),
+                            arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum),
                           );
                         },
                       ),
@@ -110,7 +110,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             arguments: BaseEditModel(
                               model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
                               baseEditEnum: BaseEditEnum.duzenle,
-                              siparisTipiEnum: widget.siparisTipiEnum,
+                              editTipiEnum: widget.editTipiEnum,
                             ),
                           );
                           widget.onUpdated?.call(true);
@@ -146,7 +146,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         onTap: () async {
                           Get.back();
                           final PrintModel printModel = PrintModel(
-                            raporOzelKod: widget.siparisTipiEnum.getPrintValue,
+                            raporOzelKod: widget.editTipiEnum.getPrintValue,
                             etiketSayisi: 1,
                             dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),
                           );

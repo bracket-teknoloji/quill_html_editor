@@ -3,7 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/belge_tipi_model.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -147,7 +147,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                 //   child: ListTile(
                 //     onTap: () async => Get.toNamed(
                 //       "/mainPage/eBelgePdf",
-                //       arguments: EBelgeListesiModel(belgeTuru: widget.model.siparisTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
+                //       arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
                 //     ),
                 //     contentPadding: UIHelper.lowPaddingHorizontal,
                 //     leading: const Icon(Icons.info_outline),
@@ -186,7 +186,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                 //       _teslimCariController.text = result.cariAdi ?? "";
                 //     }
                 //   },
-                // ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.siparisTipiEnum?.irsaliyeMi != true),
+                // ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -422,7 +422,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
       showLoading: true,
     );
     if (result.success == true) {

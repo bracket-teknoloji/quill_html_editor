@@ -453,7 +453,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
             //       ),
             //     ),
             //   ],
-            // ).yetkiVarMi(widget.model.siparisTipiEnum?.irsaliyeMi != true),
+            // ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
           ],
         ),
       );

@@ -5,7 +5,7 @@ import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/e_belge_enum.dart";
 import "package:picker/core/constants/enum/e_belge_islem_kodu_enum.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
@@ -421,7 +421,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       );
 
   BottomSheetModel get faturaGoruntule => BottomSheetModel(
-        title: "${SiparisTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
+        title: "${EditTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
         iconWidget: Icons.preview_outlined,
         onTap: () async {
           Get.back();
@@ -430,7 +430,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             arguments: BaseEditModel<SiparisEditRequestModel>(
               model: SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel),
               baseEditEnum: BaseEditEnum.goruntule,
-              siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.rawValue == widget.eBelgeListesiModel.belgeTuru),
+              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.eBelgeListesiModel.belgeTuru),
             ),
           );
         },

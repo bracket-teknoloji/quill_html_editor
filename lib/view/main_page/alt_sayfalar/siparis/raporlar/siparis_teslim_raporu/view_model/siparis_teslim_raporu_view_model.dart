@@ -1,24 +1,24 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 
 part "siparis_teslim_raporu_view_model.g.dart";
 
 class SiparisTeslimRaporuViewModel = _SiparisTeslimRaporuViewModelBase with _$SiparisTeslimRaporuViewModel;
 
 abstract class _SiparisTeslimRaporuViewModelBase with Store {
-  _SiparisTeslimRaporuViewModelBase(SiparisTipiEnum siparisTipi) {
-    siparisTipiEnum = siparisTipi;
-    pdfModel.dicParams?.belgeTipi = siparisTipiEnum?.rawValue;
+  _SiparisTeslimRaporuViewModelBase(EditTipiEnum siparisTipi) {
+    editTipiEnum = siparisTipi;
+    pdfModel.dicParams?.belgeTipi = editTipiEnum?.rawValue;
   }
   //* Model
   //*
 
-  static SiparisTipiEnum? siparisTipiEnum = SiparisTipiEnum.musteri;
+  static EditTipiEnum? editTipiEnum = EditTipiEnum.musteri;
   @observable
   PdfModel pdfModel = PdfModel(
-    raporOzelKod: siparisTipiEnum == SiparisTipiEnum.musteri ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
+    raporOzelKod: editTipiEnum == EditTipiEnum.musteri ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
     standart: true,
     dicParams: DicParams(),
   );

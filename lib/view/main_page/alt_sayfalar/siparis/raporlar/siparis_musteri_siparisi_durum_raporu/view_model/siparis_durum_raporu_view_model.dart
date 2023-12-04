@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
-
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparisler/model/siparisler_request_model.dart";
@@ -10,7 +9,7 @@ part "siparis_durum_raporu_view_model.g.dart";
 class SiparisDurumRaporuViewModel = _SiparisDurumRaporuViewModelBase with _$SiparisDurumRaporuViewModel;
 
 abstract class _SiparisDurumRaporuViewModelBase with Store {
-  _SiparisDurumRaporuViewModelBase(this.siparisTipiEnum) {
+  _SiparisDurumRaporuViewModelBase(this.editTipiEnum) {
     siparislerRequestModel = siparislerRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
   }
   final Map<String, String> siralaMap = {
@@ -31,7 +30,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   };
   final List<String?> karsilamaValueList = [null, "K", "A"];
   final List<String?> siparisValueList = [null, "K", "B"];
-  late final SiparisTipiEnum siparisTipiEnum;
+  late final EditTipiEnum editTipiEnum;
   @observable
   bool searchBar = false;
   @action
@@ -63,7 +62,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   }
 
   @computed
-  String get pickerBelgeTuru => siparisTipiEnum.rawValue;
+  String get pickerBelgeTuru => editTipiEnum.rawValue;
   @observable
   SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(
     sayfa: 1,

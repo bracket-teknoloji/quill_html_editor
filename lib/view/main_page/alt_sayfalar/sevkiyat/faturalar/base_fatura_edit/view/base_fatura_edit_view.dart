@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
@@ -14,7 +15,6 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
@@ -51,9 +51,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
   @override
   void initState() {
-    tabController = TabController(length: widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
+    tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     tabController.addListener(() {
-      if (tabController.index == (widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+      if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -63,13 +63,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     if (widget.model.model is BaseSiparisEditModel) {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+      model.editTipiEnum = widget.model.editTipiEnum;
     } else if (widget.model.model is SiparisEditRequestModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.siparisTipiEnum = widget.model.siparisTipiEnum;
+      model.editTipiEnum = widget.model.editTipiEnum;
     }
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
@@ -93,8 +93,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = widget.model.siparisTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.siparisTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           }
         } else {
           Get.back();
@@ -106,7 +106,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.siparisTipi = model.siparisTipiEnum;
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
           BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
@@ -117,8 +117,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       }
 
-      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.siparisTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
@@ -134,11 +134,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   @override
   Widget build(BuildContext context) => WillPopScope(
         child: DefaultTabController(
-          length: widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
+          length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
           child: Scaffold(
             appBar: AppBar(
               title: AppBarTitle(
-                title: widget.appBarTitle ?? widget.model.siparisTipiEnum?.getName ?? "Fatura",
+                title: widget.appBarTitle ?? widget.model.editTipiEnum?.getName ?? "Fatura",
                 subtitle: widget.appBarSubtitle ?? widget.model.model?.belgeNo,
                 isSubTitleSmall: widget.isSubTitleSmall,
               ),
@@ -184,7 +184,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                                     dicParams: DicParams(
                                       belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                       cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                      belgeTipi: widget.model.siparisTipiEnum?.rawValue,
+                                      belgeTipi: widget.model.editTipiEnum?.rawValue,
                                     ),
                                   ),
                                 ),
@@ -237,7 +237,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {}
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
-                            await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: model.siparisTipiEnum));
+                            await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));
                           }
                         });
                       },
@@ -250,7 +250,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 controller: tabController,
                 tabs: [
                   const Tab(child: Text("Genel")),
-                  const Tab(child: Text("Diğer")).yetkiVarMi(widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false),
+                  const Tab(child: Text("Diğer")).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar")),
                 ].whereType<Tab>().toList(),
@@ -269,7 +269,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     }
                   },
                 ),
-                BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.siparisTipiEnum?.digerSekmesiGoster ?? false),
+                BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                 BaseFaturaKalemlerView(model: model),
                 BaseFaturaToplamlarView(model: model),
               ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,

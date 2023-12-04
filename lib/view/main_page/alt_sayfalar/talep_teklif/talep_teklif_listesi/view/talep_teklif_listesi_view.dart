@@ -22,7 +22,7 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -187,7 +187,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
               arguments: BaseEditModel(
                 // model: widget.model,
                 baseEditEnum: BaseEditEnum.ekle,
-                siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
               ),
             );
             if (result) {

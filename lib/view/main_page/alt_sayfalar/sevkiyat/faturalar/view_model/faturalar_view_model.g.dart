@@ -74,19 +74,19 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$siparisTipiEnumAtom =
-      Atom(name: '_FaturalarViewModelBase.siparisTipiEnum', context: context);
+  late final _$editTipiEnumAtom =
+      Atom(name: '_FaturalarViewModelBase.editTipiEnum', context: context);
 
   @override
-  SiparisTipiEnum get siparisTipiEnum {
-    _$siparisTipiEnumAtom.reportRead();
-    return super.siparisTipiEnum;
+  EditTipiEnum get editTipiEnum {
+    _$editTipiEnumAtom.reportRead();
+    return super.editTipiEnum;
   }
 
   @override
-  set siparisTipiEnum(SiparisTipiEnum value) {
-    _$siparisTipiEnumAtom.reportWrite(value, super.siparisTipiEnum, () {
-      super.siparisTipiEnum = value;
+  set editTipiEnum(EditTipiEnum value) {
+    _$editTipiEnumAtom.reportWrite(value, super.editTipiEnum, () {
+      super.editTipiEnum = value;
     });
   }
 
@@ -610,7 +610,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   String toString() {
     return '''
 kodlariGoster: ${kodlariGoster},
-siparisTipiEnum: ${siparisTipiEnum},
+editTipiEnum: ${editTipiEnum},
 ekstraAlanlarMap: ${ekstraAlanlarMap},
 faturaRequestModel: ${faturaRequestModel},
 paramData: ${paramData},

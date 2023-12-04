@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -20,7 +21,6 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
@@ -342,7 +342,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       arguments: BaseEditModel<SiparisEditRequestModel>(
                                         baseEditEnum: BaseEditEnum.goruntule,
                                         model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                        siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                        editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
                                       ),
                                     );
                                     viewModel.setStokHareketleri(await getData()!);
@@ -361,7 +361,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     context,
                                     title: "Seçenekler",
                                     children: [
-                                      //TODO Bunları unutma 😳
                                       BottomSheetModel(
                                         title: "Belgeyi Görüntüle",
                                         iconWidget: Icons.preview_outlined,
@@ -371,7 +370,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                             arguments: BaseEditModel<SiparisEditRequestModel>(
                                               baseEditEnum: BaseEditEnum.goruntule,
                                               model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                              siparisTipiEnum: SiparisTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
                                             ),
                                           );
                                           viewModel.setStokHareketleri(await getData()!);

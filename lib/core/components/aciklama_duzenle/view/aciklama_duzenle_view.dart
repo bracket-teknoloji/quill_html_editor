@@ -1,25 +1,25 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/aciklama_duzenle/view_model/aciklama_duzenle_view_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_aciklama_duzenle/view_model/talep_teklif_aciklama_duzenle_view_model.dart";
 
-class TalepTeklifAciklamaDuzenleView extends StatefulWidget {
-  final SiparisTipiEnum talTekEnum;
+class AciklamaDuzenleView extends StatefulWidget {
+  final EditTipiEnum editEnum;
   final BaseSiparisEditModel model;
-  const TalepTeklifAciklamaDuzenleView({super.key, required this.talTekEnum, required this.model});
+  const AciklamaDuzenleView({super.key, required this.editEnum, required this.model});
 
   @override
-  State<TalepTeklifAciklamaDuzenleView> createState() => _TalepTeklifAciklamaDuzenleViewState();
+  State<AciklamaDuzenleView> createState() => _AciklamaDuzenleViewState();
 }
 
-class _TalepTeklifAciklamaDuzenleViewState extends BaseState<TalepTeklifAciklamaDuzenleView> {
-  TalepTeklifAciklamaDuzenleViewModel viewModel = TalepTeklifAciklamaDuzenleViewModel();
+class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
+  AciklamaDuzenleViewModel viewModel = AciklamaDuzenleViewModel();
   late final TextEditingController _belgeNoController;
   late final TextEditingController _cariController;
   late final TextEditingController _tarihController;
@@ -135,82 +135,82 @@ class _TalepTeklifAciklamaDuzenleViewState extends BaseState<TalepTeklifAciklama
               ),
               const Text("Ek açıklamalar").paddingAll(UIHelper.lowSize),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(1),
+                labelText: widget.editEnum.aciklamaLabel(1),
                 controller: _aciklama1Controller,
                 onChanged: (value) => viewModel.setAciklama1(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(2),
+                labelText: widget.editEnum.aciklamaLabel(2),
                 controller: _aciklama2Controller,
                 onChanged: (value) => viewModel.setAciklama2(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(3),
+                labelText: widget.editEnum.aciklamaLabel(3),
                 controller: _aciklama3Controller,
                 onChanged: (value) => viewModel.setAciklama3(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(4),
+                labelText: widget.editEnum.aciklamaLabel(4),
                 controller: _aciklama4Controller,
                 onChanged: (value) => viewModel.setAciklama4(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(5),
+                labelText: widget.editEnum.aciklamaLabel(5),
                 controller: _aciklama5Controller,
                 onChanged: (value) => viewModel.setAciklama5(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(6),
+                labelText: widget.editEnum.aciklamaLabel(6),
                 controller: _aciklama6Controller,
                 onChanged: (value) => viewModel.setAciklama6(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(7),
+                labelText: widget.editEnum.aciklamaLabel(7),
                 controller: _aciklama7Controller,
                 onChanged: (value) => viewModel.setAciklama7(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(8),
+                labelText: widget.editEnum.aciklamaLabel(8),
                 controller: _aciklama8Controller,
                 onChanged: (value) => viewModel.setAciklama8(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(9),
+                labelText: widget.editEnum.aciklamaLabel(9),
                 controller: _aciklama9Controller,
                 onChanged: (value) => viewModel.setAciklama9(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(10),
+                labelText: widget.editEnum.aciklamaLabel(10),
                 controller: _aciklama10Controller,
                 onChanged: (value) => viewModel.setAciklama10(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(11),
+                labelText: widget.editEnum.aciklamaLabel(11),
                 controller: _aciklama11Controller,
                 onChanged: (value) => viewModel.setAciklama11(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(12),
+                labelText: widget.editEnum.aciklamaLabel(12),
                 controller: _aciklama12Controller,
                 onChanged: (value) => viewModel.setAciklama12(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(13),
+                labelText: widget.editEnum.aciklamaLabel(13),
                 controller: _aciklama13Controller,
                 onChanged: (value) => viewModel.setAciklama13(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(14),
+                labelText: widget.editEnum.aciklamaLabel(14),
                 controller: _aciklama14Controller,
                 onChanged: (value) => viewModel.setAciklama14(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(15),
+                labelText: widget.editEnum.aciklamaLabel(15),
                 controller: _aciklama15Controller,
                 onChanged: (value) => viewModel.setAciklama15(value),
               ),
               CustomTextField(
-                labelText: widget.talTekEnum.aciklamaLabel(16),
+                labelText: widget.editEnum.aciklamaLabel(16),
                 controller: _aciklama16Controller,
                 onChanged: (value) => viewModel.setAciklama16(value),
               ),

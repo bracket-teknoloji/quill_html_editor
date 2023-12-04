@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -9,7 +10,6 @@ import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/color_palette.dart";
-import "../../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -453,7 +453,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   ),
                 ),
               ],
-            ).yetkiVarMi(widget.model.siparisTipiEnum?.irsaliyeMi != true),
+            ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
           ],
         ),
       );

@@ -347,7 +347,6 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                         }
                       },
                     ),
-                    //TODO : Yetki eklenecek
                   ).yetkiVarMi(yetkiController.referansKodu(viewModel.model.refKod)),
                 ],
               ),

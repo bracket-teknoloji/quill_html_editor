@@ -1,10 +1,9 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/dialog/dialog_manager.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
-import "../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../grid_item_model.dart";
 import "../main_page_model.dart";
@@ -172,7 +171,6 @@ class MenuItemConstants {
     //* Genel
     //*
     GridItemModel.anamenu(
-      //TODO BUNUN ADINA BAK
       name: "GNEL_BEKO",
       title: "Genel",
       icon: "settings",
@@ -181,7 +179,7 @@ class MenuItemConstants {
         GridItemModel.item(name: null, title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
-        GridItemModel.item(name: null, title: "Servis İşlemleri", onTap: () => DialogManager().showInfoSnackBar("Yapım Aşamasında")),
+        // GridItemModel.item(name: null, title: "Servis İşlemleri", onTap: () => DialogManager().showInfoSnackBar("Yapım Aşamasında")),
       ],
     ),
 
@@ -249,26 +247,26 @@ class MenuItemConstants {
             GridItemModel.item(
               name: "siparis_MusteriSiparisi_DurumRaporu",
               title: "Müşteri Siparişi Durum Raporu",
-              siparisTipi: SiparisTipiEnum.musteri,
+              siparisTipi: EditTipiEnum.musteri,
               route: "/mainPage/siparisMusteriSiparisiDurumRaporu",
             ),
             GridItemModel.item(
               name: "siparis_SaticiSiparisi_DurumRaporu",
               title: "Satıcı Siparişi Durum Raporu",
-              siparisTipi: SiparisTipiEnum.satici,
+              siparisTipi: EditTipiEnum.satici,
               route: "/mainPage/siparisSaticiSiparisiDurumRaporu",
             ),
-            GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", siparisTipi: SiparisTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
+            GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", siparisTipi: EditTipiEnum.musteri, route: "/mainPage/siparisSiparisKarlilikRaporu"),
             GridItemModel.item(
               name: "siparis_MusSip_TeslimRaporu",
               title: "Müşteri Siparişi Teslim Raporu",
-              siparisTipi: SiparisTipiEnum.musteri,
+              siparisTipi: EditTipiEnum.musteri,
               route: "/mainPage/siparisMusteriSiparisiTeslimRaporu",
             ),
             GridItemModel.item(
               name: "siparis_SaticiSip_TeslimRaporu",
               title: "Satıcı Siparişi Teslim Raporu",
-              siparisTipi: SiparisTipiEnum.satici,
+              siparisTipi: EditTipiEnum.satici,
               route: "/mainPage/siparisSaticiSiparisiTeslimRaporu",
             ),
             GridItemModel.item(name: "siparis_MusSip_StokIhtiyacRaporu", title: "Stok İhtiyaç Raporu", route: "/mainPage/siparisStokIhtiyacRaporu"),

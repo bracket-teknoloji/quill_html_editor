@@ -6,7 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
@@ -241,7 +241,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                             "/mainPage/faturaEdit",
                                             arguments: BaseEditModel(
                                               baseEditEnum: BaseEditEnum.goruntule,
-                                              siparisTipiEnum: SiparisTipiEnum.alisFatura.getSiparisTipiEnumWithRawValue(model.belgeTipi),
+                                              editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(model.belgeTipi),
                                               model: SiparisEditRequestModel.fromCariHareketleriModel(model),
                                             ),
                                           );

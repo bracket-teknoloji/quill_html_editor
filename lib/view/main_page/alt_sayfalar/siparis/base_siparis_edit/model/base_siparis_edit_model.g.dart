@@ -213,7 +213,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel kalemler(List<KalemModel>? kalemler);
 
-  BaseSiparisEditModel siparisTipi(SiparisTipiEnum? siparisTipi);
+  BaseSiparisEditModel siparisTipi(EditTipiEnum? siparisTipi);
 
   BaseSiparisEditModel isNew(bool? isNew);
 
@@ -403,7 +403,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? remoteTempBelgeEtiketi,
     String? tag,
     List<KalemModel>? kalemler,
-    SiparisTipiEnum? siparisTipi,
+    EditTipiEnum? siparisTipi,
     bool? isNew,
     String? irsaliyelesti,
     int? irslesenSayi,
@@ -813,7 +813,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(kalemler: kalemler);
 
   @override
-  BaseSiparisEditModel siparisTipi(SiparisTipiEnum? siparisTipi) =>
+  BaseSiparisEditModel siparisTipi(EditTipiEnum? siparisTipi) =>
       this(siparisTipi: siparisTipi);
 
   @override
@@ -1531,7 +1531,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       siparisTipi: siparisTipi == const $CopyWithPlaceholder()
           ? _value.siparisTipi
           // ignore: cast_nullable_to_non_nullable
-          : siparisTipi as SiparisTipiEnum?,
+          : siparisTipi as EditTipiEnum?,
       isNew: isNew == const $CopyWithPlaceholder()
           ? _value.isNew
           // ignore: cast_nullable_to_non_nullable
@@ -2909,7 +2909,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       remoteTempBelgeEtiketi: fields[100] as String?,
       tag: fields[101] as String?,
       kalemler: (fields[102] as List?)?.cast<KalemModel>(),
-      siparisTipi: fields[103] as SiparisTipiEnum?,
+      siparisTipi: fields[103] as EditTipiEnum?,
       isNew: fields[104] as bool?,
       irsaliyelesti: fields[105] as String?,
       irslesenSayi: fields[106] as int?,

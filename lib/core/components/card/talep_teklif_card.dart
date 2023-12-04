@@ -6,7 +6,7 @@ import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -99,7 +99,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             arguments: BaseEditModel(
                               model: widget.model,
                               baseEditEnum: BaseEditEnum.goruntule,
-                              siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                             ),
                           );
                         },
@@ -114,7 +114,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             arguments: BaseEditModel(
                               model: widget.model,
                               baseEditEnum: BaseEditEnum.duzenle,
-                              siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                             ),
                           );
                           widget.onUpdated?.call(result ?? false);

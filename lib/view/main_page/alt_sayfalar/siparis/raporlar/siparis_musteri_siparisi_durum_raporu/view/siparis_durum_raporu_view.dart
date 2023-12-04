@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -12,7 +13,6 @@ import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bo
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
@@ -25,8 +25,8 @@ import "../../../siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/siparis_durum_raporu_view_model.dart";
 
 class SiparisDurumRaporuView extends StatefulWidget {
-  final SiparisTipiEnum siparisTipiEnum;
-  const SiparisDurumRaporuView({super.key, required this.siparisTipiEnum});
+  final EditTipiEnum editTipiEnum;
+  const SiparisDurumRaporuView({super.key, required this.editTipiEnum});
 
   @override
   State<SiparisDurumRaporuView> createState() => _YaslandirmaRaporuViewState();
@@ -46,7 +46,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
 
   @override
   void initState() {
-    viewModel = SiparisDurumRaporuViewModel(widget.siparisTipiEnum);
+    viewModel = SiparisDurumRaporuViewModel(widget.editTipiEnum);
     belgeNoController = TextEditingController();
     stokController = TextEditingController();
     cariController = TextEditingController();
@@ -94,7 +94,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             if (viewModel.searchBar) {
               return CustomTextField(labelText: "Ara", controller: searchBarController, onChanged: (p0) => viewModel.setSearchKey(p0), focusNode: focusNode);
             }
-            return Text("${widget.siparisTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
+            return Text("${widget.editTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
           },
         ),
         actions: [
@@ -212,7 +212,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   Get.back();
                   return Get.toNamed(
                     "mainPage/siparisEdit",
-                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum),
+                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum),
                   );
                 },
               ),
@@ -257,7 +257,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   controller: belgeNoController,
                   valueWidget: Observer(builder: (_) => Text(viewModel.siparislerRequestModel.belgeNo ?? "")),
                   onTap: () async {
-                    final result = await Get.toNamed(widget.siparisTipiEnum.getRoute, arguments: true);
+                    final result = await Get.toNamed(widget.editTipiEnum.getRoute, arguments: true);
                     if (result is BaseSiparisEditModel) {
                       belgeNoController.text = result.belgeNo ?? "";
                       viewModel.setBelgeNo(result.belgeNo);

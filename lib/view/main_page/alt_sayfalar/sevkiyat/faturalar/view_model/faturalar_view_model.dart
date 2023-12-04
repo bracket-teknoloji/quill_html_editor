@@ -2,7 +2,7 @@ import "dart:convert";
 
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -16,7 +16,7 @@ part "faturalar_view_model.g.dart";
 class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
 abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
-  _FaturalarViewModelBase({required String pickerBelgeTuru, required this.siparisTipiEnum}) {
+  _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
   }
 
@@ -48,7 +48,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   bool kodlariGoster = false;
 
   @observable
-  late SiparisTipiEnum siparisTipiEnum;
+  late EditTipiEnum editTipiEnum;
 
   @observable
   ObservableMap<String, bool> ekstraAlanlarMap = {
@@ -263,7 +263,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     if (result.data is List) {
       final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
       if ((faturaRequestModel.sayfa ?? 0) < 2) {
-        setFaturaList(CacheManager.getFaturaEditLists(siparisTipiEnum));
+        setFaturaList(CacheManager.getFaturaEditLists(editTipiEnum));
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         if (faturaList.ext.isNullOrEmpty) {
           setFaturaList(list);

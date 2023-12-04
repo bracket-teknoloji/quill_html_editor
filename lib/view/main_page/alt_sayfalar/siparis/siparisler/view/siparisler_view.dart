@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -23,7 +24,6 @@ import "../../../../../../core/components/textfield/custom_app_bar_text_field.da
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
@@ -65,8 +65,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   @override
   void initState() {
-    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.widgetModel.siparisTipiEnum.rawValue);
-    StaticVariables.instance.isMusteriSiparisleri = widget.widgetModel.siparisTipiEnum == SiparisTipiEnum.musteri;
+    viewModel = SiparislerViewModel(pickerBelgeTuru: widget.widgetModel.editTipiEnum.rawValue);
+    StaticVariables.instance.isMusteriSiparisleri = widget.widgetModel.editTipiEnum == EditTipiEnum.musteri;
     scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
@@ -558,7 +558,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
             onPressed: () async {
               await Get.toNamed(
                 "mainPage/siparisEdit",
-                arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.widgetModel.siparisTipiEnum),
+                arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.widgetModel.editTipiEnum),
               );
               viewModel.setSiparislerList(null);
               viewModel.setDahaVarMi(true);
@@ -602,7 +602,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
                           model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
                           index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
-                          siparisTipiEnum: widget.widgetModel.siparisTipiEnum,
+                          editTipiEnum: widget.widgetModel.editTipiEnum,
                           onDeleted: () => viewModel.removeSiparislerList(index),
                           onUpdated: (value) {
                             if (value) {
@@ -655,7 +655,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
       if (viewModel.sayfa == 1) {
-        viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.siparisTipiEnum)?.toList().cast<BaseSiparisEditModel?>());
+        viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList().cast<BaseSiparisEditModel?>());
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
       }
       final List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();

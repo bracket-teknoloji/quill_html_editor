@@ -1,4 +1,3 @@
-
 import "dart:convert";
 
 import "package:flutter/material.dart";
@@ -6,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -23,7 +23,6 @@ import "../../../../../../core/components/textfield/custom_app_bar_text_field.da
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
@@ -34,8 +33,8 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/faturalar_view_model.dart";
 
 class FaturalarView extends StatefulWidget {
-  final SiparisTipiEnum siparisTipiEnum;
-  const FaturalarView({super.key, required this.siparisTipiEnum});
+  final EditTipiEnum editTipiEnum;
+  const FaturalarView({super.key, required this.editTipiEnum});
 
   @override
   State<FaturalarView> createState() => _FaturalarViewState();
@@ -62,7 +61,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
 
   @override
   void initState() {
-    viewModel = FaturalarViewModel(pickerBelgeTuru: widget.siparisTipiEnum.rawValue, siparisTipiEnum: widget.siparisTipiEnum);
+    viewModel = FaturalarViewModel(pickerBelgeTuru: widget.editTipiEnum.rawValue, editTipiEnum: widget.editTipiEnum);
     _scrollController = ScrollController();
     _searchController = TextEditingController();
     _baslangicTarihiController = TextEditingController();
@@ -140,7 +139,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                 },
               );
             }
-            return AppBarTitle(title: widget.siparisTipiEnum.getName, subtitle: viewModel.faturaList?.length.toStringIfNotNull ?? "");
+            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.faturaList?.length.toStringIfNotNull ?? "");
           },
         ),
         actions: <Widget>[
@@ -234,11 +233,11 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
-              await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, siparisTipiEnum: widget.siparisTipiEnum));
+              await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
               await viewModel.resetPage();
             },
           ),
-        ).yetkiVarMi(viewModel.faturaList != null && widget.siparisTipiEnum.eklensinMi),
+        ).yetkiVarMi(viewModel.faturaList != null && widget.editTipiEnum.eklensinMi),
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
@@ -266,7 +265,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
                               showMiktar: viewModel.ekstraAlanlarMap["MİK"],
                               showVade: viewModel.ekstraAlanlarMap["VADE"],
-                              siparisTipiEnum: widget.siparisTipiEnum,
+                              editTipiEnum: widget.editTipiEnum,
                               onDeleted: () async {
                                 await viewModel.resetPage();
                               },

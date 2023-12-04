@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/model/base_proje_model.dart";
@@ -8,7 +9,6 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../../../core/constants/enum/siparis_tipi_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
@@ -104,7 +104,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   //   child: ListTile(
                   //     onTap: () async => Get.toNamed(
                   //       "/mainPage/eBelgePdf",
-                  //       arguments: EBelgeListesiModel(belgeTuru: widget.model.siparisTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? model.belgeNo ?? ""),
+                  //       arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? model.belgeNo ?? ""),
                   //     ),
                   //     contentPadding: UIHelper.lowPaddingHorizontal,
                   //     leading: const Icon(Icons.info_outline),
@@ -505,7 +505,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
       showLoading: true,
     );
     if (result.success == true) {

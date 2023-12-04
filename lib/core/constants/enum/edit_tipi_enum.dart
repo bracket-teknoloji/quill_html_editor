@@ -1,4 +1,4 @@
-import "package:collection/collection.dart";
+import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -6,10 +6,10 @@ import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/bas
 import "../../init/cache/cache_manager.dart";
 import "../yetki_controller/yetki_controller.dart";
 
-part "siparis_tipi_enum.g.dart";
+part "edit_tipi_enum.g.dart";
 
 @HiveType(typeId: 79)
-enum SiparisTipiEnum {
+enum EditTipiEnum {
   @HiveField(0)
   musteri,
   @HiveField(1)
@@ -30,105 +30,105 @@ enum SiparisTipiEnum {
   satisTalebi,
 }
 
-extension SiparisTipiEnumExtension on SiparisTipiEnum {
+extension EditTipiEnumExtension on EditTipiEnum {
   static YetkiController yetkiController = YetkiController();
   String get rawValue {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return "MS";
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return "SS";
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return "SF";
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return "SI";
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return "AF";
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return "AI";
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return "STEK";
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return "ATAL";
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return "STAL";
     }
   }
 
   String get getName {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return "Müşteri Siparişi";
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return "Satıcı Siparişi";
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return "Satış Faturası";
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return "Satış İrsaliyesi";
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return "Alış Faturası";
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return "Alış İrsaliyesi";
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return "Satış Teklifi";
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return "Alış Talebi";
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return "Satış Talebi";
     }
   }
 
   String get getPrintValue {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return "MusteriSiparisi";
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return "SaticiSiparisi";
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return "SatisFaturasi";
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return "SatisIrsaliyesi";
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return "AlisFaturasi";
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return "AlisIrsaliyesi";
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return "SatisTeklifi";
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return "AlisTalebi";
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return "SatisTalebi";
     }
   }
 
   bool get satisMi {
     switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satisFatura:
-      case SiparisTipiEnum.satisIrsaliye:
-      case SiparisTipiEnum.satisTeklifi:
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTalebi:
         return true;
-      case SiparisTipiEnum.satici:
-      case SiparisTipiEnum.alisFatura:
-      case SiparisTipiEnum.alisIrsaliye:
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisTalebi:
         return false;
     }
   }
 
   bool get digerSekmesiGoster {
     switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
         return yetkiController.siparisDigerSekmesiGoster;
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return yetkiController.satisFatDigerSekmesiGelsin;
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsDigerSekmesiGelsin;
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return yetkiController.alisFatDigerSekmesiGelsin;
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsDigerSekmesiGelsin;
       default:
         return true;
@@ -137,155 +137,175 @@ extension SiparisTipiEnumExtension on SiparisTipiEnum {
 
   bool get eklensinMi {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return yetkiController.siparisMSKaydet;
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return yetkiController.siparisSSKaydet;
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return yetkiController.satisFatEkle;
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsEkle;
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return yetkiController.alisFatEkle;
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsEkle;
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return yetkiController.satisTeklifiEkle;
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return yetkiController.alisTalebiEkle;
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiEkle;
     }
   }
 
   bool get duzenlensinMi {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return yetkiController.siparisMSDuzelt;
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return yetkiController.siparisSSDuzelt;
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return yetkiController.satisFatDuzenle;
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsDuzenle;
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return yetkiController.alisFatDuzenle;
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsDuzenle;
-        case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return yetkiController.satisTeklifiDuzenle;
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return yetkiController.alisTalebiDuzenle;
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiDuzenle;
     }
   }
 
   bool get silinsinMi {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return yetkiController.siparisMSSil;
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return yetkiController.siparisSSSil;
-      case SiparisTipiEnum.satisFatura:
+      case EditTipiEnum.satisFatura:
         return yetkiController.satisFatSil;
-      case SiparisTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsSil;
-      case SiparisTipiEnum.alisFatura:
+      case EditTipiEnum.alisFatura:
         return yetkiController.alisFatSil;
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsSil;
-      case SiparisTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTeklifi:
         return yetkiController.satisTeklifiSil;
-      case SiparisTipiEnum.alisTalebi:
+      case EditTipiEnum.alisTalebi:
         return yetkiController.alisTalebiSil;
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiSil;
     }
   }
 
   bool get irsaliyeMi {
     switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satici:
-      case SiparisTipiEnum.satisFatura:
-      case SiparisTipiEnum.alisFatura:
-      case SiparisTipiEnum.satisTeklifi:
-      case SiparisTipiEnum.alisTalebi:
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
         return false;
-      case SiparisTipiEnum.satisIrsaliye:
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisIrsaliye:
         return true;
     }
   }
 
   // BaseSiparisEditModel? get getEditModel {
   //   switch (this) {
-  //     case SiparisTipiEnum.musteri:
-  //     case SiparisTipiEnum.satici:
+  //     case EditTipiEnum.musteri:
+  //     case EditTipiEnum.satici:
   //       return CacheManager.getSiparisEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
-  //     case SiparisTipiEnum.satisFatura:
-  //     case SiparisTipiEnum.satisIrsaliye:
-  //     case SiparisTipiEnum.alisFatura:
-  //     case SiparisTipiEnum.alisIrsaliye:
+  //     case EditTipiEnum.satisFatura:
+  //     case EditTipiEnum.satisIrsaliye:
+  //     case EditTipiEnum.alisFatura:
+  //     case EditTipiEnum.alisIrsaliye:
   //       return CacheManager.getFaturaEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
   //   }
   // }
 
   void setEditModel() {
     switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
         CacheManager.setSiparisEdit(BaseSiparisEditModel.instance);
-      case SiparisTipiEnum.satisFatura:
-      case SiparisTipiEnum.satisIrsaliye:
-      case SiparisTipiEnum.alisFatura:
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
         CacheManager.setFaturaEdit(BaseSiparisEditModel.instance);
-      case SiparisTipiEnum.satisTeklifi:
-      case SiparisTipiEnum.alisTalebi:
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
         CacheManager.setTalepTeklifEdit(BaseSiparisEditModel.instance);
     }
   }
 
   void get addEditListItem {
     switch (this) {
-      case SiparisTipiEnum.musteri:
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
         CacheManager.addSiparisEditListItem(BaseSiparisEditModel.instance);
-      case SiparisTipiEnum.satisFatura:
-      case SiparisTipiEnum.satisIrsaliye:
-      case SiparisTipiEnum.alisFatura:
-      case SiparisTipiEnum.alisIrsaliye:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
         CacheManager.addFaturaEditListItem(BaseSiparisEditModel.instance);
-      case SiparisTipiEnum.satisTeklifi:
-      case SiparisTipiEnum.alisTalebi:
-      case SiparisTipiEnum.satisTalebi:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
         CacheManager.addTalepTeklifEditListItem(BaseSiparisEditModel.instance);
     }
   }
 
   String get getRoute {
     switch (this) {
-      case SiparisTipiEnum.musteri:
+      case EditTipiEnum.musteri:
         return "/mainPage/siparisMusteriSiparisi";
-      case SiparisTipiEnum.satici:
+      case EditTipiEnum.satici:
         return "/mainPage/siparisSaticiSiparisi";
       default:
         return "/mainPage/siparisSaticiSiparisi";
     }
   }
 
-  SiparisTipiEnum? getSiparisTipiEnumWithRawValue(String? rawValue) => SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
+  String get aciklamaDuzenleRoute {
+    switch (this) {
+      case EditTipiEnum.satisFatura:
+        return "/mainPage/faturaSatisFaturasiAciklamaDuzenle";
+      case EditTipiEnum.satisIrsaliye:
+        return "/mainPage/faturaSatisIrsaliyesiAciklamaDuzenle";
+      case EditTipiEnum.alisFatura:
+        return "/mainPage/faturaAlisFaturasiAciklamaDuzenle";
+      case EditTipiEnum.alisIrsaliye:
+        return "/mainPage/faturaAlisIrsaliyesiAciklamaDuzenle";
+      case EditTipiEnum.satisTeklifi:
+        return "/mainPage/talTekSatisTeklifAciklamaDuzenle";
+      case EditTipiEnum.alisTalebi:
+        return "/mainPage/talTekAlisTalepAciklamaDuzenle";
+      case EditTipiEnum.satisTalebi:
+        return "/mainPage/talTekSatisTalepAciklamaDuzenle";
+      default:
+        throw Exception("Açıklama düzenleme route bulunamadı");
+    }
+  }
 
+  EditTipiEnum? getEditTipiEnumWithRawValue(String? rawValue) => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 
   String aciklamaLabel(int index) {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (satisMi) {
-      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhere((element) => element.belgeTipi == rawValue);
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
       switch (index) {
         case 1:
           label = talTekParam?.aciklar1;

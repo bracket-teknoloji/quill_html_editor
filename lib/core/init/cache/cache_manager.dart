@@ -2,6 +2,7 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -16,7 +17,6 @@ import "../../../view/main_page/model/sirket_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
 import "../../base/model/base_profil_parametre_model.dart";
 import "../../base/model/login_dialog_model.dart";
-import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/static_variables/static_variables.dart";
 import "favorites_model.dart";
 
@@ -61,7 +61,7 @@ class CacheManager {
     Hive.registerAdapter(BaseSiparisEditModelAdapter());
     Hive.registerAdapter(KalemModelAdapter());
     Hive.registerAdapter(CariListesiModelAdapter());
-    Hive.registerAdapter(SiparisTipiEnumAdapter());
+    Hive.registerAdapter(EditTipiEnumAdapter());
     Hive.registerAdapter(ListSiparisEditModelAdapter());
     Hive.registerAdapter(StokListAdapter());
     initHiveBoxes();
@@ -128,7 +128,7 @@ class CacheManager {
   static String getPref(String query) => preferencesBox.get(query);
   static String getCompanies(String query) => companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
-  static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi??"") ?? true;
+  static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi ?? "") ?? true;
 
   static MainPageModel? get getAnaVeri => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
@@ -147,15 +147,14 @@ class CacheManager {
   /// ```
   /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String cariKodu) => siparisEditBox.get(cariKodu);
-  static List<BaseSiparisEditModel?> getSiparisEditList(SiparisTipiEnum siparisTipi) =>
+  static List<BaseSiparisEditModel?> getSiparisEditList(EditTipiEnum siparisTipi) =>
       siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
-  static List<BaseSiparisEditModel>? getSiparisEditLists(SiparisTipiEnum siparisTipi) =>
+  static List<BaseSiparisEditModel>? getSiparisEditLists(EditTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
   static BaseSiparisEditModel? getFaturaEdit(String key) => faturaEditBox.get(key);
-  static List<BaseSiparisEditModel?> getFaturaEditList(SiparisTipiEnum siparisTipi) =>
-      faturaEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
-  static List<BaseSiparisEditModel>? getFaturaEditLists(SiparisTipiEnum siparisTipi) =>
+  static List<BaseSiparisEditModel?> getFaturaEditList(EditTipiEnum siparisTipi) => faturaEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel>? getFaturaEditLists(EditTipiEnum siparisTipi) =>
       faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
   static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(

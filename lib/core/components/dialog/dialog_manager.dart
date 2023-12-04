@@ -7,6 +7,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
@@ -20,8 +22,6 @@ import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_
 import "../../base/model/login_dialog_model.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/enum/islem_tipi_enum.dart";
-import "../../constants/enum/siparis_tipi_enum.dart";
-import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/app_info/app_info.dart";
@@ -216,13 +216,13 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, SiparisTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",

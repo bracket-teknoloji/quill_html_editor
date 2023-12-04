@@ -74,8 +74,6 @@ class _AccountsViewState extends BaseState<AccountsView> {
                             });
                           },
                         ),
-
-                        //TODO Sunucu Tercihi Sayfasına Yönlendir
                         BottomSheetModel(
                           iconWidget: Icons.storage_rounded,
                           title: "Sunucu Tercihi",

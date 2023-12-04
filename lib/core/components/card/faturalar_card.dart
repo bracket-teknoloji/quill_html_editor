@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -10,7 +11,6 @@ import "../../base/model/base_edit_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
-import "../../constants/enum/siparis_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -25,13 +25,13 @@ class FaturalarCard extends StatefulWidget {
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
   final bool? showMiktar;
-  final SiparisTipiEnum? siparisTipiEnum;
+  final EditTipiEnum editTipiEnum;
   final bool? showVade;
   final bool? showEkAciklama;
   final Function? onDeleted;
   final int? index;
 
-  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.siparisTipiEnum, this.onDeleted, this.index});
+  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index});
 
   @override
   State<FaturalarCard> createState() => _FaturalarCardState();
@@ -60,7 +60,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
+                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
                 },
               ),
               BottomSheetModel(
@@ -68,9 +68,21 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.edit_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
+                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                 },
-              ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
+              ).yetkiKontrol(widget.editTipiEnum.duzenlensinMi),
+              BottomSheetModel(
+                title: "Açıklama Düzenle",
+                iconWidget: Icons.edit_note_outlined,
+                onTap: () async {
+                  Get.back();
+                  await Get.toNamed(
+                    widget.editTipiEnum.aciklamaDuzenleRoute,
+                    arguments: widget.model,
+                  );
+                  widget.onUpdated?.call(true);
+                },
+              ),
               // BottomSheetModel(
               //   title: "Sil",
               //   iconWidget: Icons.delete_outline_outlined,
@@ -94,7 +106,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
               //       }
               //     });
               //   },
-              // ).yetkiKontrol(widget.siparisTipiEnum?.silinsinMi == true),
+              // ).yetkiKontrol(widget.editTipiEnum?.silinsinMi == true),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
@@ -146,7 +158,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   // const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
                   dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili))
-                      .yetkiVarMi((model.efaturaMi == "E" || model.earsivMi == "E") && model.efaturaGibDurumKodu == 1300 && widget.siparisTipiEnum?.satisMi == true),
+                      .yetkiVarMi((model.efaturaMi == "E" || model.earsivMi == "E") && model.efaturaGibDurumKodu == 1300 && widget.editTipiEnum.satisMi),
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),

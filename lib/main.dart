@@ -10,8 +10,10 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/aciklama_duzenle/view/aciklama_duzenle_view.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/cirola_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/locale_delegate.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view/cek_senet_evraklar_view.dart";
@@ -25,7 +27,6 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/
 import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view/tahsilat_odeme_kayitlari_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/view/base_talep_teklif_edit_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_aciklama_duzenle/view/talep_teklif_aciklama_duzenle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/view/talep_teklif_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -40,7 +41,6 @@ import "core/constants/enum/banka_muhtelif_islemler_enum.dart";
 import "core/constants/enum/cek_senet_listesi_enum.dart";
 import "core/constants/enum/e_belge_enum.dart";
 import "core/constants/enum/hesaplar_arasi_enum.dart";
-import "core/constants/enum/siparis_tipi_enum.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
@@ -276,14 +276,14 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/finansAylikMizanRaporu", page: AylikMizanRaporuView.new),
 
               //* Sipariş
-              GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.musteri, isGetData: Get.arguments))),
-              GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(siparisTipiEnum: SiparisTipiEnum.satici, isGetData: Get.arguments))),
+              GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.musteri, isGetData: Get.arguments))),
+              GetPage(name: "/siparisSaticiSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.satici, isGetData: Get.arguments))),
               GetPage(name: "/siparisEdit", page: () => BaseSiparisEditingView(model: Get.arguments)),
-              GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri)),
-              GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(siparisTipiEnum: SiparisTipiEnum.satici)),
+              GetPage(name: "/siparisMusteriSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(editTipiEnum: EditTipiEnum.musteri)),
+              GetPage(name: "/siparisSaticiSiparisiDurumRaporu", page: () => const SiparisDurumRaporuView(editTipiEnum: EditTipiEnum.satici)),
               GetPage(name: "/siparisStokIhtiyacRaporu", page: () => StokIhtiyacRaporuView(model: Get.arguments as BaseSiparisEditModel?)),
-              GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
-              GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(siparisTipiEnum: SiparisTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
+              GetPage(name: "/siparisMusteriSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(editTipiEnum: EditTipiEnum.musteri, baseSiparisEditModel: Get.arguments)),
+              GetPage(name: "/siparisSaticiSiparisiTeslimRaporu", page: () => SiparisTeslimRaporuView(editTipiEnum: EditTipiEnum.satici, baseSiparisEditModel: Get.arguments)),
               GetPage(name: "/siparisSiparisKarlilikRaporu", page: () => SiparisKarlilikRaporuView(model: Get.arguments)),
 
               //* Stok
@@ -320,12 +320,18 @@ class PickerApp extends StatelessWidget {
               //! Faturalar
               GetPage(name: "/faturaEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
               //* Mal Kabul
-              GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisFatura)),
-              GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.alisIrsaliye)),
+              GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.alisFatura)),
+              GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.alisIrsaliye)),
 
               //* Sevkiyat
-              GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisFatura)),
-              GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(siparisTipiEnum: SiparisTipiEnum.satisIrsaliye)),
+              GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.satisFatura)),
+              GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.satisIrsaliye)),
+
+              //* * Faturalar Açıklama Düzenleme
+              GetPage(name: "/faturaAlisFaturasiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisFatura)),
+              GetPage(name: "/faturaAlisIrsaliyesiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisIrsaliye)),
+              GetPage(name: "/faturaSatisFaturasiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisFatura)),
+              GetPage(name: "/faturaSatisIrsaliyesiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisIrsaliye)),
 
               //* Profil
               GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),
@@ -339,9 +345,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/talTekEdit", page: () => BaseTalepTeklifEditingView(model: Get.arguments)),
 
               //* * Talep Açıklama Düzenleme
-              GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.satisTalebi)),
-              GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.satisTeklifi)),
-              GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.alisTalebi)),
+              GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisTalebi)),
+              GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisTeklifi)),
+              GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisTalebi)),
 
               //* Serbest Raporlar
               //*
