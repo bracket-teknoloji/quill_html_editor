@@ -237,6 +237,12 @@ class NetworkManager {
     return response;
   }
 
+  Future<GenericResponseModel> dbUpdate(String veriTabani) async {
+    final Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await dioPost<BasePdfModel>(path: ApiUrls.dbUpdate, bodyModel: BasePdfModel(), headers: head, showLoading: true, data: {"Veritabani": veriTabani});
+    return response;
+  }
+
   Future<List<BaseGrupKoduModel>> getGrupKod({required String name, int? grupNo, bool? kullanimda}) async {
     final responseKod = await dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,

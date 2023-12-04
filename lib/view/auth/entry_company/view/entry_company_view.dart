@@ -13,6 +13,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -86,6 +87,23 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             icon: const Icon(Icons.arrow_back_outlined),
           ),
           title: const Text("Şirkete Giriş"),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                if (sirketController.text.isEmpty) {
+                  dialogManager.showErrorSnackBar("Şirket seçiniz.");
+                  return;
+                }
+                final result = await networkManager.dbUpdate(sirketController.text);
+                if (result.success == true) {
+                  dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
+                } else {
+                  dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
+                }
+              },
+              icon: const Icon(Icons.cloud_upload_outlined),
+            ).yetkiVarMi(yetkiController.userModel?.adminMi ?? false),
+          ],
         ),
         body: Observer(
           builder: (_) {

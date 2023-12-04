@@ -10,6 +10,7 @@ class ApiUrls {
   static const String surumYenilikleri = "https://storews.netfect.com/api/Picker/GetSurumYenilikleri";
   static const String getProjeler = "General/GetProjeler";
   static const String print = "Print/Print";
+  static const String dbUpdate = "Servis/DBUpdate";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
   static const String getSiradakiBelgeNo = "General/GetSiradakiBelgeNo";
   static const String getKullaniciAyarlari = "General/GetKullaniciAyarlari";
