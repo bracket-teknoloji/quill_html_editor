@@ -51,15 +51,18 @@ class GridItemModel {
     required this.title,
     this.icon,
     this.color,
+    this.onTap,
     this.route,
     this.arguments,
     this.siparisTipi,
   }) {
     menuTipi = "I";
-    if (route == null) {
-      onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
-    } else {
-      onTap = () async => await Get.toNamed(route!, arguments: arguments);
+    if (onTap == null) {
+      if (route == null) {
+        onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
+      } else {
+        onTap = () async => await Get.toNamed(route!, arguments: arguments);
+      }
     }
   }
   GridItemModel.islemler({
