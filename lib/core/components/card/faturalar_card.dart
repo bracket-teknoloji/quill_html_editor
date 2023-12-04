@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/delete_fatura_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 
@@ -85,30 +86,30 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   }
                 },
               ),
-              // BottomSheetModel(
-              //   title: "Sil",
-              //   iconWidget: Icons.delete_outline_outlined,
-              //   onTap: () async {
-              //     Get.back();
-              //     return dialogManager.showAreYouSureDialog(() async {
-              //       if (widget.model.isNew == true) {
-              //         try {
-              //           CacheManager.removeSiparisEditList(widget.index!);
-              //           dialogManager.showSuccessSnackBar("Silindi");
-              //           widget.onDeleted?.call();
-              //         } catch (e) {
-              //           dialogManager.showAlertDialog("Hata Oluştu.\n$e");
-              //         }
-              //         return;
-              //       }
-              //       final result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
-              //       if (result.success == true) {
-              //         dialogManager.showSuccessSnackBar("Silindi");
-              //         widget.onDeleted?.call();
-              //       }
-              //     });
-              //   },
-              // ).yetkiKontrol(widget.editTipiEnum?.silinsinMi == true),
+              BottomSheetModel(
+                title: "Sil",
+                iconWidget: Icons.delete_outline_outlined,
+                onTap: () async {
+                  Get.back();
+                  return dialogManager.showAreYouSureDialog(() async {
+                    if (widget.model.isNew == true) {
+                      try {
+                        CacheManager.removeSiparisEditList(widget.index!);
+                        dialogManager.showSuccessSnackBar("Silindi");
+                        widget.onDeleted?.call();
+                      } catch (e) {
+                        dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                      }
+                      return;
+                    }
+                    final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(widget.model.toJson()));
+                    if (result.success == true) {
+                      dialogManager.showSuccessSnackBar("Silindi");
+                      widget.onDeleted?.call();
+                    }
+                  });
+                },
+              ).yetkiKontrol(widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
@@ -210,16 +211,15 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}",
             badge.badgeColorEnum.getColor,
           );
-          // switch (model.efaturaDurumu) {
-          //   case "HAT":
-          //   case "BEK":
-          //   case "TAS":
-          //     dialogManager.showInfoSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
-          //   case "TMM":
-          //     dialogManager.showSuccessSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
-          //     break;
-          //   default:
-          // }
+          switch (model.efaturaDurumu) {
+            case "HAT":
+            case "BEK":
+            case "TAS":
+              dialogManager.showInfoSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
+            case "TMM":
+              dialogManager.showSuccessSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
+            default:
+          }
         },
         child: badge,
       );
