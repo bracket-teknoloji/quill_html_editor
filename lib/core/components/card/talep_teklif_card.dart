@@ -153,6 +153,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             widget.talepTeklifEnum.aciklamaDuzenleRoute,
                             arguments: widget.model,
                           );
+                          widget.onUpdated?.call(true);
                         },
                       ),
                       BottomSheetModel(
