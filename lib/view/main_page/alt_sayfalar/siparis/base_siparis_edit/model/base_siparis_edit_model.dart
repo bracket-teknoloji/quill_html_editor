@@ -529,13 +529,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get silinebilirMi {
     switch (efaturaDurumu) {
-      case "HAT":
-      case "BEK":
-      case "TAS":
-        return true;
-      // case "TMM":
-      default:
+      case "TMM":
         return false;
+      default:
+        return true;
     }
   }
 
