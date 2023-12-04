@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/dialog_manager.dart";
 
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
@@ -180,6 +181,7 @@ class MenuItemConstants {
         GridItemModel.item(name: null, title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
+        GridItemModel.item(name: null, title: "Servis İşlemleri", onTap: () => DialogManager().showInfoSnackBar("Yapım Aşamasında")),
       ],
     ),
 
@@ -320,14 +322,14 @@ class MenuItemConstants {
       color: ColorPalette.pineGreen,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "tahsilat_Tahsilatlar", title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
-            GridItemModel.item(name: "tahsilat_NakitTahsilat", title: "Nakit Tahsilat", route: "/mainPage/nakitTahsilat"),
-            GridItemModel.item(name: "tahsilat_KKartiTahsilat", title: "Kredi Kartı Tahsilatı", route: "/mainPage/krediKartiTahsilati"),
-            GridItemModel.item(name: "tahsilat_CekTahsilat", title: "Çek Tahsilatı", route: "/mainPage/cekMusteriTahsilat"),
-            GridItemModel.item(name: "tahsilat_SenetTahsilat", title: "Senet Tahsilatı", route: "/mainPage/senetMusteriTahsilat"),
-            GridItemModel.item(name: "tahsilat_MuhtelifTahsilat", title: "Muhtelif Tahsilat", route: "/mainPage/muhtelifTahsilat"),
-            GridItemModel.item(name: "tahsilat_NakitOdeme", title: "Nakit Ödeme", route: "/mainPage/nakitOdeme"),
-            GridItemModel.item(name: "tahsilat_MuhtelifOdeme", title: "Muhtelif Ödeme", route: "/mainPage/muhtelifOdeme"),
-            
+        GridItemModel.item(name: "tahsilat_NakitTahsilat", title: "Nakit Tahsilat", route: "/mainPage/nakitTahsilat"),
+        GridItemModel.item(name: "tahsilat_KKartiTahsilat", title: "Kredi Kartı Tahsilatı", route: "/mainPage/krediKartiTahsilati"),
+        GridItemModel.item(name: "tahsilat_CekTahsilat", title: "Çek Tahsilatı", route: "/mainPage/cekMusteriTahsilat"),
+        GridItemModel.item(name: "tahsilat_SenetTahsilat", title: "Senet Tahsilatı", route: "/mainPage/senetMusteriTahsilat"),
+        GridItemModel.item(name: "tahsilat_MuhtelifTahsilat", title: "Muhtelif Tahsilat", route: "/mainPage/muhtelifTahsilat"),
+        GridItemModel.item(name: "tahsilat_NakitOdeme", title: "Nakit Ödeme", route: "/mainPage/nakitOdeme"),
+        GridItemModel.item(name: "tahsilat_MuhtelifOdeme", title: "Muhtelif Ödeme", route: "/mainPage/muhtelifOdeme"),
+
         //😳 GridItemModel.item(name: "TAHS_STEK", title: "Satış Teklifi", icon: "atm_dollar"),
       ],
     ),
