@@ -162,7 +162,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 splashFactory: NoSplash.splashFactory,
                               ),
                             ),
-                          if (widget.suffixMore == true && !viewModel.showClearButton)
+                          if (widget.suffixMore == true || (!viewModel.showClearButton && widget.onClear == null))
                             IconButton(
                               padding: EdgeInsets.zero,
                               constraints: const BoxConstraints(),
