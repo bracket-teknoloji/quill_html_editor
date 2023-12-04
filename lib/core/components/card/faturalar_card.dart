@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -62,14 +63,14 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, siparisTipiEnum: widget.siparisTipiEnum));
                 },
               ),
-              // BottomSheetModel(
-              //   title: "Düzenle",
-              //   iconWidget: Icons.edit_outlined,
-              //   onTap: () async {
-              //     Get.back();
-              //     await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
-              //   },
-              // ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
+              BottomSheetModel(
+                title: "Düzenle",
+                iconWidget: Icons.edit_outlined,
+                onTap: () async {
+                  Get.back();
+                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, siparisTipiEnum: widget.siparisTipiEnum));
+                },
+              ).yetkiKontrol(widget.siparisTipiEnum?.duzenlensinMi == true),
               // BottomSheetModel(
               //   title: "Sil",
               //   iconWidget: Icons.delete_outline_outlined,
