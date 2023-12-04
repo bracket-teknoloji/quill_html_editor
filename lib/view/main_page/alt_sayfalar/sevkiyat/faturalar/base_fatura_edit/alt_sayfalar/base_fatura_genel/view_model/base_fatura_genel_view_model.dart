@@ -28,6 +28,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   void changeKdvDahil(bool value) {
     kdvDahil = value;
     BaseSiparisEditModel.instance.kdvDahil = value ? "E" : "H";
+    BaseSiparisEditModel.instance.kdvDahilMi = value;
   }
 
   @action
