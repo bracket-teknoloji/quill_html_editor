@@ -88,6 +88,8 @@ class ApiUrls {
   static const String saveFatura = "Fatura/SaveFatura";
   static const String deleteFatura = "Fatura/DeleteFatura";
   static const String getCekSenetLoglari = "Finans/GetCekSenetLoglari";
+  static const String getEFaturaOzelKodlar = "Fatura/GetEFaturaOzelKodlar";
+  static const String getBelgeBaglantilari = "Fatura/GetBelgeBaglantilari";
 
   //*Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
