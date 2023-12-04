@@ -527,6 +527,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
+  bool get silinebilirMi {
+    switch (efaturaDurumu) {
+      case "HAT":
+      case "BEK":
+      case "TAS":
+        return true;
+      // case "TMM":
+      default:
+        return false;
+    }
+  }
+
   double get dovizliKdv => kalemList?.map((e) => e.dovizAdi != null ? e.dovizKdvTutari : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
   double get sumGenIsk1 => kalemList?.map((e) => e.iskonto1).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
