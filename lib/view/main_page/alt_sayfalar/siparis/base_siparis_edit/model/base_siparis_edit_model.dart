@@ -953,7 +953,7 @@ class KalemModel with NetworkManagerMixin {
   double get getAraToplamTutari => araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi) ? kdvTutari : 0);
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
 
-  double get genelToplamTutari => araToplamTutari + kdvTutari;
+  double get genelToplamTutari => araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi) ? 0 : kdvTutari);
 
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 

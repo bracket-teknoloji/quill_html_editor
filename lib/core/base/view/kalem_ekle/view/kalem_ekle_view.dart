@@ -193,33 +193,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             builder: (_) => Text.rich(
                               TextSpan(
                                 children: [
-                                  const TextSpan(text: "KDV Tutarı: "),
+                                  const TextSpan(text: "MF. Tutarı: "),
                                   TextSpan(
                                     text:
-                                        "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                        "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                        // Expanded(
-                        //   child: Observer(
-                        //     builder: (_) => Text.rich(
-                        //       TextSpan(
-                        //         children: [
-                        //           const TextSpan(text: "MF. Tutarı: "),
-                        //           TextSpan(
-                        //             text:
-                        //                 "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
-                        //             style: const TextStyle(fontWeight: FontWeight.bold),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
+                        ).yetkiVarMi(widget.isTalepTeklif != true),
                       ],
                     ).paddingSymmetric(horizontal: UIHelper.lowSize),
                     Row(
@@ -243,10 +227,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             builder: (_) => Text.rich(
                               TextSpan(
                                 children: [
-                                  const TextSpan(text: "Ara Toplam: "),
+                                  const TextSpan(text: "KDV Tutarı: "),
                                   TextSpan(
                                     text:
-                                        "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                        "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${(viewModel.kalemModel.kdvTutari / (viewModel.kalemModel.dovizKuru ?? 1)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                     style: const TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                 ],
@@ -258,6 +242,22 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).paddingSymmetric(horizontal: UIHelper.lowSize),
                     Row(
                       children: [
+                        Expanded(
+                          child: Observer(
+                            builder: (_) => Text.rich(
+                              TextSpan(
+                                children: [
+                                  const TextSpan(text: "Ara Toplam: "),
+                                  TextSpan(
+                                    text:
+                                        "${viewModel.kalemModel.araToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                         Expanded(
                           child: Observer(
                             builder: (_) => Text.rich(
@@ -478,7 +478,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 ),
                               ),
                             ),
-                          ),
+                          ).yetkiVarMi(widget.isTalepTeklif != true),
                         ],
                       ),
                       Row(
@@ -671,17 +671,27 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ),
                       Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                           .paddingSymmetric(vertical: UIHelper.lowSize)
-                          .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null)),
-                      CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(1)),
-                      CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(2)),
-                      CustomTextField(labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(3)),
-                      CustomTextField(labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(4)),
-                      CustomTextField(labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(5)),
-                      CustomTextField(labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(6)),
-                      CustomTextField(labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(7)),
-                      CustomTextField(labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(8)),
-                      CustomTextField(labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(9)),
-                      CustomTextField(labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10).yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(10)),
+                          .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !(widget.isTalepTeklif ?? false)),
+                      CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(1)),
+                      CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(2)),
+                      CustomTextField(labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(3)),
+                      CustomTextField(labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(4)),
+                      CustomTextField(labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(5)),
+                      CustomTextField(labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(6)),
+                      CustomTextField(labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(7)),
+                      CustomTextField(labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(8)),
+                      CustomTextField(labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(9)),
+                      CustomTextField(labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10)
+                          .yetkiVarMi(!(widget.isTalepTeklif ?? false) && yetkiController.siparisMSSatirAciklamaAlanlari(10)),
                       const SizedBox(height: 50),
                     ],
                   ),
