@@ -339,9 +339,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/talTekEdit", page: () => BaseTalepTeklifEditingView(model: Get.arguments)),
 
               //* * Talep Açıklama Düzenleme
-              GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.satisTalep)),
-              GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.satisTeklif)),
-              GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: TalepTeklifEnum.alisTalep)),
+              GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.satisTalebi)),
+              GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.satisTeklifi)),
+              GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => TalepTeklifAciklamaDuzenleView(model: Get.arguments, talTekEnum: SiparisTipiEnum.alisTalebi)),
 
               //* Serbest Raporlar
               //*
