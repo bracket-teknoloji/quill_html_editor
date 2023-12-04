@@ -121,7 +121,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrolledDown,
           onPressed: () async {
-            Get.toNamed(
+            await Get.toNamed(
               "mainPage/talTekEdit",
               arguments: BaseEditModel(
                 // model: widget.model,
