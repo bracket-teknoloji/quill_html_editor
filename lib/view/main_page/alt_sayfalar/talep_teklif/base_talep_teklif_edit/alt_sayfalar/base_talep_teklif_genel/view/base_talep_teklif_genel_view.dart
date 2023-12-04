@@ -1,8 +1,11 @@
-import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/belge_tipi_model.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -10,7 +13,6 @@ import "package:picker/view/main_page/model/param_model.dart";
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
-import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -73,6 +75,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
+    _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(text: model.ozelKod2);
@@ -93,6 +96,11 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _aciklama15Controller = TextEditingController(text: model.acik15);
     _aciklama16Controller = TextEditingController(text: model.acik16);
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
+        await getBelgeNo();
+      }
+    });
     super.initState();
   }
 
@@ -232,21 +240,11 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: "Belge Tipi",
-                            children: List.generate(
-                              viewModel.belgeTipi.length,
-                              (int index) => BottomSheetModel(
-                                title: viewModel.belgeTipi.keys.toList()[index],
-                                description: viewModel.belgeTipi.values.toList()[index].toStringIfNotNull,
-                                value: viewModel.belgeTipi.entries.toList()[index],
-                              ),
-                            ),
-                          );
-                          if (result is MapEntry) {
-                            _belgeTipiController.text = result.key ?? "";
-                            viewModel.setBelgeTipi(result.value);
+                          final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
+
+                          if (result is BelgeTipiModel) {
+                            _belgeTipiController.text = result.belgeTipi ?? "";
+                            viewModel.setBelgeTipi(result.belgeTipiId);
                           }
                         },
                       ),
@@ -270,47 +268,47 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                     ),
                   ],
                 ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: <Widget>[
-                //     Expanded(
-                //       child: CustomTextField(
-                //         labelText: "Toplu Depo",
-                //         readOnly: true,
-                //         suffixMore: true,
-                //         controller: _topluDepoController,
-                //         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
-                //         valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                //         onClear: () => viewModel.setTopluDepoKodu(null),
-                //         onTap: () async {
-                //           final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
-                //           if (result != null) {
-                //             _topluDepoController.text = result.depoTanimi ?? "";
-                //             viewModel.setTopluDepoKodu(result.depoKodu);
-                //           }
-                //         },
-                //       ),
-                //     ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
-                //     Expanded(
-                //       child: CustomTextField(
-                //         labelText: "Özel Kod 2",
-                //         readOnly: true,
-                //         suffixMore: true,
-                //         controller: _ozelKod2Controller,
-                //         enabled: enable,
-                //         valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                //         onClear: () => viewModel.setOzelKod2(null),
-                //         onTap: () async {
-                //           final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
-                //           if (result != null) {
-                //             _ozelKod2Controller.text = result.aciklama ?? "";
-                //             viewModel.setOzelKod2(result.kod);
-                //           }
-                //         },
-                //       ),
-                //     ),
-                //   ],
-                // ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Toplu Depo",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: _topluDepoController,
+                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                        onClear: () => viewModel.setTopluDepoKodu(null),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                          if (result != null) {
+                            _topluDepoController.text = result.depoTanimi ?? "";
+                            viewModel.setTopluDepoKodu(result.depoKodu);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
+                    // Expanded(
+                    //   child: CustomTextField(
+                    //     labelText: "Özel Kod 2",
+                    //     readOnly: true,
+                    //     suffixMore: true,
+                    //     controller: _ozelKod2Controller,
+                    //     enabled: enable,
+                    //     valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                    //     onClear: () => viewModel.setOzelKod2(null),
+                    //     onTap: () async {
+                    //       final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
+                    //       if (result != null) {
+                    //         _ozelKod2Controller.text = result.aciklama ?? "";
+                    //         viewModel.setOzelKod2(result.kod);
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
+                  ],
+                ),
                 CustomWidgetWithLabel(
                   text: "KDV Dahil",
                   isVertical: true,
@@ -355,7 +353,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                           .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(14)),
                       CustomTextField(enabled: enable, labelText: taltekParam?.aciklar15 ?? "Açıklama 15", onChanged: (value) => changeAciklama(15, value), controller: _aciklama15Controller)
                           .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(15)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar16 ?? "Açıklama 16", onChanged: (value) => changeAciklama(16 , value), controller: _aciklama16Controller)
+                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar16 ?? "Açıklama 16", onChanged: (value) => changeAciklama(16, value), controller: _aciklama16Controller)
                           .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(16)),
                     ],
                   ),
@@ -417,6 +415,19 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
         model.acik16 = value;
         model.ekAcik16 = value;
       default:
+    }
+  }
+
+  Future<void> getBelgeNo() async {
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getSiradakiBelgeNo,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.siparisTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      showLoading: true,
+    );
+    if (result.success == true) {
+      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
+      _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }
 }

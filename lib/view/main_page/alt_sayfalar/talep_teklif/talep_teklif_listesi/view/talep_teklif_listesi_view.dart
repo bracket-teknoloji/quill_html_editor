@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -13,12 +14,15 @@ import "package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/card/talep_teklif_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/siparis_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -108,8 +112,26 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         extendBody: true,
         extendBodyBehindAppBar: false,
         appBar: appBar(),
+        floatingActionButton: fab(),
         bottomNavigationBar: bottomBar(),
         body: body(),
+      );
+
+  Observer fab() => Observer(
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrolledDown,
+          onPressed: () async {
+            Get.toNamed(
+              "mainPage/talTekEdit",
+              arguments: BaseEditModel(
+                // model: widget.model,
+                baseEditEnum: BaseEditEnum.ekle,
+                siparisTipiEnum: SiparisTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+              ),
+            );
+            await viewModel.resetPage();
+          },
+        ),
       );
 
   AppBar appBar() => AppBar(
