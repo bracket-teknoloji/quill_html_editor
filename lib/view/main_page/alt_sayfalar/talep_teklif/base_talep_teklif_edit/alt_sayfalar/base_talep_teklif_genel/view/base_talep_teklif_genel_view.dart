@@ -39,7 +39,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala;
   bool get enable => widget.model.enable;
-  TalTekParam? get taltekParam => parametreModel.talTekParam?.firstWhere((element) => element.belgeTipi == model.belgeTuru);
+  TalTekParam? get taltekParam => parametreModel.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == model.belgeTuru);
 
   late final TextEditingController _belgeNoController;
   late final TextEditingController _resmiBelgeNoController;
@@ -155,7 +155,20 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                 //     trailing: const Icon(Icons.open_in_new_outlined),
                 //   ),
                 // ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
-                CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
+                CustomTextField(
+                  labelText: "Belge No",
+                  isMust: true,
+                  controller: _belgeNoController,
+                  enabled: enable,
+                  maxLength: 15,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      await getBelgeNo();
+                    },
+                    icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                  ),
+                  onTap: () {},
+                ),
                 // CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
                   labelText: "Cari",
