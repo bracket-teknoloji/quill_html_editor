@@ -76,11 +76,13 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.edit_note_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed(
+                  final result = await Get.toNamed(
                     widget.editTipiEnum.aciklamaDuzenleRoute,
                     arguments: widget.model,
                   );
-                  widget.onUpdated?.call(true);
+                  if (result != null) {
+                    widget.onUpdated?.call(result);
+                  }
                 },
               ),
               // BottomSheetModel(
