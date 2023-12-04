@@ -117,6 +117,22 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get talepTeklifMi {
+    switch (this) {
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
+        return true;
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+        return false;
+    }
+  }
+
   bool get digerSekmesiGoster {
     switch (this) {
       case EditTipiEnum.musteri:
@@ -304,7 +320,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   String aciklamaLabel(int index) {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
-    if (satisMi) {
+    if (talepTeklifMi) {
       final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
       switch (index) {
         case 1:
@@ -339,6 +355,41 @@ extension EditTipiEnumExtension on EditTipiEnum {
           label = talTekParam?.aciklar15;
         case 16:
           label = talTekParam?.aciklar16;
+      }
+    }else if (satisMi){
+      switch (index) {
+        case 1:
+          label = paramModel?.satisEkAciklamaTanimi1;
+        case 2:
+          label = paramModel?.satisEkAciklamaTanimi2;
+        case 3:
+          label = paramModel?.satisEkAciklamaTanimi3;
+        case 4:
+          label = paramModel?.satisEkAciklamaTanimi4;
+        case 5:
+          label = paramModel?.satisEkAciklamaTanimi5;
+        case 6:
+          label = paramModel?.satisEkAciklamaTanimi6;
+        case 7:
+          label = paramModel?.satisEkAciklamaTanimi7;
+        case 8:
+          label = paramModel?.satisEkAciklamaTanimi8;
+        case 9:
+          label = paramModel?.satisEkAciklamaTanimi9;
+        case 10:
+          label = paramModel?.satisEkAciklamaTanimi10;
+        case 11:
+          label = paramModel?.satisEkAciklamaTanimi11;
+        case 12:
+          label = paramModel?.satisEkAciklamaTanimi12;
+        case 13:
+          label = paramModel?.satisEkAciklamaTanimi13;
+        case 14:
+          label = paramModel?.satisEkAciklamaTanimi14;
+        case 15:
+          label = paramModel?.satisEkAciklamaTanimi15;
+        case 16:
+          label = paramModel?.satisEkAciklamaTanimi16;
       }
     } else {
       switch (index) {
