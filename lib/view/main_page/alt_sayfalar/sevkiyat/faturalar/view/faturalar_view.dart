@@ -269,6 +269,11 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               onDeleted: () async {
                                 await viewModel.resetPage();
                               },
+                              onUpdated: (value) async {
+                                if (value) {
+                                  await viewModel.resetPage();
+                                }
+                              },
                             ),
                           );
                         }
