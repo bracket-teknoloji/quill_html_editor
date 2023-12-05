@@ -408,7 +408,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               readOnly: true,
               suffixMore: true,
               onTap: () {
-                Get.toNamed("/mainPage/siparisRehberi", arguments: widget.model.model);
+                Get.toNamed("/mainPage/siparisRehberi", arguments: BaseSiparisEditModel(pickerBelgeTuru: widget.model.editTipiEnum?.rawValue));
               },
             ),
             CustomTextField(
