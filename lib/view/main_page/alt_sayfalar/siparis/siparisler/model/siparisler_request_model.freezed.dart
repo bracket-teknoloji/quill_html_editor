@@ -86,6 +86,8 @@ mixin _$SiparislerRequestModel {
   bool? get siparisSevkEdilenGoster => throw _privateConstructorUsedError;
   set siparisSevkEdilenGoster(bool? value) =>
       throw _privateConstructorUsedError;
+  String? get refBelgeTuru => throw _privateConstructorUsedError;
+  set refBelgeTuru(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -129,7 +131,8 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       String? siparisDurumu,
       String? referansStokKodu,
       String? menuKodu,
-      bool? siparisSevkEdilenGoster});
+      bool? siparisSevkEdilenGoster,
+      String? refBelgeTuru});
 }
 
 /// @nodoc
@@ -176,6 +179,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? referansStokKodu = freezed,
     Object? menuKodu = freezed,
     Object? siparisSevkEdilenGoster = freezed,
+    Object? refBelgeTuru = freezed,
   }) {
     return _then(_value.copyWith(
       pickerBelgeTuru: freezed == pickerBelgeTuru
@@ -298,6 +302,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
           ? _value.siparisSevkEdilenGoster
           : siparisSevkEdilenGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      refBelgeTuru: freezed == refBelgeTuru
+          ? _value.refBelgeTuru
+          : refBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -341,7 +349,8 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       String? siparisDurumu,
       String? referansStokKodu,
       String? menuKodu,
-      bool? siparisSevkEdilenGoster});
+      bool? siparisSevkEdilenGoster,
+      String? refBelgeTuru});
 }
 
 /// @nodoc
@@ -387,6 +396,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? referansStokKodu = freezed,
     Object? menuKodu = freezed,
     Object? siparisSevkEdilenGoster = freezed,
+    Object? refBelgeTuru = freezed,
   }) {
     return _then(_$SiparislerRequestModelImpl(
       pickerBelgeTuru: freezed == pickerBelgeTuru
@@ -509,6 +519,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
           ? _value.siparisSevkEdilenGoster
           : siparisSevkEdilenGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      refBelgeTuru: freezed == refBelgeTuru
+          ? _value.refBelgeTuru
+          : refBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -538,7 +552,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.arrPlasiyerKodu,
       this.arrKod1,
       this.arrBelgeTipi,
-      this.ekranTipi,
+      this.ekranTipi = "L",
       this.sayfa,
       this.baslamaTarihi,
       this.bitisTarihi,
@@ -547,7 +561,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.siparisDurumu,
       this.referansStokKodu,
       this.menuKodu,
-      this.siparisSevkEdilenGoster});
+      this.siparisSevkEdilenGoster,
+      this.refBelgeTuru});
 
   factory _$SiparislerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SiparislerRequestModelImplFromJson(json);
@@ -595,6 +610,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   String? arrBelgeTipi;
   @override
+  @JsonKey()
   String? ekranTipi;
   @override
   int? sayfa;
@@ -615,10 +631,12 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   String? menuKodu;
   @override
   bool? siparisSevkEdilenGoster;
+  @override
+  String? refBelgeTuru;
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, arrBelgeTipi: $arrBelgeTipi, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, arrBelgeTipi: $arrBelgeTipi, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru)';
   }
 
   @JsonKey(ignore: true)
@@ -667,7 +685,8 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       String? siparisDurumu,
       String? referansStokKodu,
       String? menuKodu,
-      bool? siparisSevkEdilenGoster}) = _$SiparislerRequestModelImpl;
+      bool? siparisSevkEdilenGoster,
+      String? refBelgeTuru}) = _$SiparislerRequestModelImpl;
 
   factory _SiparislerRequestModel.fromJson(Map<String, dynamic> json) =
       _$SiparislerRequestModelImpl.fromJson;
@@ -764,6 +783,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   bool? get siparisSevkEdilenGoster;
   set siparisSevkEdilenGoster(bool? value);
+  @override
+  String? get refBelgeTuru;
+  set refBelgeTuru(String? value);
   @override
   @JsonKey(ignore: true)
   _$$SiparislerRequestModelImplCopyWith<_$SiparislerRequestModelImpl>

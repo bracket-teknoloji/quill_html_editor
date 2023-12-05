@@ -30,7 +30,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrPlasiyerKodu: json['ArrPlasiyerKodu'] as String?,
       arrKod1: json['ArrKod1'] as String?,
       arrBelgeTipi: json['ArrBelgeTipi'] as String?,
-      ekranTipi: json['EkranTipi'] as String?,
+      ekranTipi: json['EkranTipi'] as String? ?? "L",
       sayfa: json['Sayfa'] as int?,
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
@@ -40,6 +40,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       referansStokKodu: json['ReferansStokKodu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       siparisSevkEdilenGoster: json['SiparisSevkEdilenGoster'] as bool?,
+      refBelgeTuru: json['RefBelgeTuru'] as String?,
     );
 
 Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
@@ -83,5 +84,6 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('ReferansStokKodu', instance.referansStokKodu);
   writeNotNull('MenuKodu', instance.menuKodu);
   writeNotNull('SiparisSevkEdilenGoster', instance.siparisSevkEdilenGoster);
+  writeNotNull('RefBelgeTuru', instance.refBelgeTuru);
   return val;
 }

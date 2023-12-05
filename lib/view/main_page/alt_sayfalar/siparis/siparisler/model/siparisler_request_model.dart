@@ -28,7 +28,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     String? arrPlasiyerKodu,
     String? arrKod1,
     String? arrBelgeTipi,
-    String? ekranTipi,
+    @Default("L") String? ekranTipi,
     int? sayfa,
     String? baslamaTarihi,
     String? bitisTarihi,
@@ -37,7 +37,8 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     String? siparisDurumu,
     String? referansStokKodu,
     String? menuKodu,
-        bool? siparisSevkEdilenGoster,
+    bool? siparisSevkEdilenGoster,
+    String? refBelgeTuru,
   }) = _SiparislerRequestModel;
 
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
