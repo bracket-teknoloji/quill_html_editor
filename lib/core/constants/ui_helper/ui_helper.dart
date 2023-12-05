@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 import "../color_palette.dart";
 
 class UIHelper {
+
+  static ThemeData get _theme => Get.theme;
   //* Radius
   static BorderRadius get highBorderRadius => BorderRadius.circular(highSize);
   static BorderRadius get midBorderRadius => BorderRadius.circular(midSize);
@@ -36,6 +39,7 @@ class UIHelper {
 
   //* color
   static Color get primaryColor => const Color.fromRGBO(189, 61, 23, 1);
+  static Color get secondaryColor => _theme.colorScheme.onSurface.withOpacity(0.1);
   static Color getColorWithValue(double bakiye) {
     if (bakiye > 0) {
       return ColorPalette.mantis;
