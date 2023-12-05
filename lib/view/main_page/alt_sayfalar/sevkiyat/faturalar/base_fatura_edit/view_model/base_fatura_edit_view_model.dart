@@ -8,8 +8,15 @@ part "base_fatura_edit_view_model.g.dart";
 class BaseFaturaEditViewModel = _BaseFaturaEditViewModelBase with _$BaseFaturaEditViewModel;
 
 abstract class _BaseFaturaEditViewModelBase with Store {
-  @computed
-  BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
+  @observable
+  BaseSiparisEditModel baseSiparisEditModel = BaseSiparisEditModel.instance;
+
+  @action
+  void setCariKodu(String? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(cariKodu: value);
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
+  
 
   @observable
   bool updateKalemler = false;

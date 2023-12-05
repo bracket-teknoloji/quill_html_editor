@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "siparisler_request_model.freezed.dart";
 part "siparisler_request_model.g.dart";
@@ -35,7 +36,20 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     @Default("") String? belgeNo,
     String? siparisDurumu,
     String? referansStokKodu,
+    String? menuKodu,
+        bool? siparisSevkEdilenGoster,
   }) = _SiparislerRequestModel;
 
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
+
+  factory SiparislerRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => SiparislerRequestModel(
+        menuKodu: "COMM_BREH",
+        siralama: "TESLIM_TARIHI_AZ",
+        ekranTipi: "R",
+        siparisSevkEdilenGoster: true,
+        pickerBelgeTuru: model.belgeTuru,
+        cariKodu: model.cariKodu,
+        projeKodu: model.projeKodu,
+        belgeNo: model.belgeNo,
+      );
 }

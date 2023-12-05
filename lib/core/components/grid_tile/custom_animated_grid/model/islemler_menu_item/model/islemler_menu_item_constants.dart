@@ -130,14 +130,15 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(siparisPDFGoruntule);
         islemlerList.add(saticiSiparisiOlustur);
         islemlerList.add(musteriSiparisiOlustur);
+        islemlerList.add(satisIrsaliyeOlustur);
+        if (siparisModel.siparislesti == "E" || siparisModel.faturalasti == "E") {
+          islemlerList.add(belgeBaglantilari);
+        }
         islemlerList.add(belgeyiKapat);
         islemlerList.add(kopyala);
         islemlerList.add(cariKoduDegistir);
         if (siparisModel.tipi != 1) {
           islemlerList.add(belgeNoDegistir);
-        }
-        if (siparisModel.siparislesti == "E" || siparisModel.faturalasti == "E") {
-          islemlerList.add(belgeBaglantilari);
         }
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
@@ -529,7 +530,7 @@ class IslemlerMenuItemConstants<T> {
   //* Talep Teklif
   GridItemModel get belgeBaglantilari => GridItemModel.islemler(
         title: "Belge Bağlantıları",
-        iconData: Icons.link_outlined,
+        iconData: Icons.hub_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -560,9 +561,9 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel? get saticiSiparisiOlustur => GridItemModel.islemler(
+  GridItemModel get saticiSiparisiOlustur => GridItemModel.islemler(
         title: "Satıcı Siparişi Oluştur",
-        iconData: Icons.add_outlined,
+        iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -570,13 +571,24 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
-  GridItemModel? get musteriSiparisiOlustur => GridItemModel.islemler(
+  GridItemModel get musteriSiparisiOlustur => GridItemModel.islemler(
         title: "Müşteri Siparişi Oluştur",
-        iconData: Icons.add_outlined,
+        iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.musteri));
+          }
+        },
+      );
+
+  GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
+        title: "Satış İrsaliyesi Oluştur",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            Get.toNamed("/mainPage/kalemRehberi", arguments: siparisModel);
           }
         },
       );

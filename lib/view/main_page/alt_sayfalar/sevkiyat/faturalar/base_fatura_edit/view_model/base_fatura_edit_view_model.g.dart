@@ -9,14 +9,6 @@ part of 'base_fatura_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
-  Computed<BaseSiparisEditModel>? _$baseSiparisEditModelComputed;
-
-  @override
-  BaseSiparisEditModel get baseSiparisEditModel =>
-      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
-              () => super.baseSiparisEditModel,
-              name: '_BaseFaturaEditViewModelBase.baseSiparisEditModel'))
-          .value;
   Computed<int>? _$getKalemCountComputed;
 
   @override
@@ -24,6 +16,24 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
       (_$getKalemCountComputed ??= Computed<int>(() => super.getKalemCount,
               name: '_BaseFaturaEditViewModelBase.getKalemCount'))
           .value;
+
+  late final _$baseSiparisEditModelAtom = Atom(
+      name: '_BaseFaturaEditViewModelBase.baseSiparisEditModel',
+      context: context);
+
+  @override
+  BaseSiparisEditModel get baseSiparisEditModel {
+    _$baseSiparisEditModelAtom.reportRead();
+    return super.baseSiparisEditModel;
+  }
+
+  @override
+  set baseSiparisEditModel(BaseSiparisEditModel value) {
+    _$baseSiparisEditModelAtom.reportWrite(value, super.baseSiparisEditModel,
+        () {
+      super.baseSiparisEditModel = value;
+    });
+  }
 
   late final _$updateKalemlerAtom = Atom(
       name: '_BaseFaturaEditViewModelBase.updateKalemler', context: context);
@@ -127,6 +137,17 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
       ActionController(name: '_BaseFaturaEditViewModelBase', context: context);
 
   @override
+  void setCariKodu(String? value) {
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setCariKodu');
+    try {
+      return super.setCariKodu(value);
+    } finally {
+      _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeUpdateKalemler() {
     final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
         .startAction(name: '_BaseFaturaEditViewModelBase.changeUpdateKalemler');
@@ -208,13 +229,13 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
   @override
   String toString() {
     return '''
+baseSiparisEditModel: ${baseSiparisEditModel},
 updateKalemler: ${updateKalemler},
 pageIndex: ${pageIndex},
 isValid: ${isValid},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
-baseSiparisEditModel: ${baseSiparisEditModel},
 getKalemCount: ${getKalemCount}
     ''';
   }
