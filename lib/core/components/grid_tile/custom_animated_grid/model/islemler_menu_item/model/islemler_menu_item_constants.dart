@@ -128,6 +128,8 @@ class IslemlerMenuItemConstants<T> {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList.add(siparisPDFGoruntule);
+        islemlerList.add(saticiSiparisiOlustur);
+        islemlerList.add(musteriSiparisiOlustur);
         islemlerList.add(belgeyiKapat);
         islemlerList.add(kopyala);
         islemlerList.add(cariKoduDegistir);
@@ -554,6 +556,27 @@ class IslemlerMenuItemConstants<T> {
               //   Get.toNamed("mainPage/irsaliyeEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
               // }
             }
+          }
+        },
+      );
+
+  GridItemModel? get saticiSiparisiOlustur => GridItemModel.islemler(
+        title: "Satıcı Siparişi Oluştur",
+        iconData: Icons.add_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satici));
+          }
+        },
+      );
+  GridItemModel? get musteriSiparisiOlustur => GridItemModel.islemler(
+        title: "Müşteri Siparişi Oluştur",
+        iconData: Icons.add_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.musteri));
           }
         },
       );
