@@ -27,7 +27,6 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     String? arrKod2,
     String? arrPlasiyerKodu,
     String? arrKod1,
-    String? arrBelgeTipi,
     @Default("R") String? ekranTipi,
     int? sayfa,
     String? baslamaTarihi,
@@ -39,6 +38,9 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     String? menuKodu,
     bool? siparisSevkEdilenGoster,
     String? refBelgeTuru,
+    bool? kisitYok,
+    String? arrBelgeTipi,
+    String? arrBelgeNo,
   }) = _SiparislerRequestModel;
 
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
@@ -46,11 +48,17 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
   factory SiparislerRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => SiparislerRequestModel(
         menuKodu: "COMM_BREH",
         siralama: "TESLIM_TARIHI_AZ",
+        kisitYok: true,
         ekranTipi: "R",
+        arrBelgeTipi: "[2, 6]",
+        siparisDurumu: "A",
+        pickerBelgeTuru: "MS",
+        siparisKarsilanmaDurumu: "K",
         siparisSevkEdilenGoster: true,
-        pickerBelgeTuru: model.belgeTuru,
-        cariKodu: model.cariKodu,
+        belgeNo: model.belgeNo ?? "",
+        arrBelgeNo: model.arrBelgeNo,
+        cariKodu: model.cariKodu ?? "",
+        refBelgeTuru: model.belgeTuru,
         projeKodu: model.projeKodu,
-        belgeNo: model.belgeNo,
       );
 }

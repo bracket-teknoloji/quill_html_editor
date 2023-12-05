@@ -28,7 +28,6 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrKod2: json['ArrKod2'] as String?,
       arrPlasiyerKodu: json['ArrPlasiyerKodu'] as String?,
       arrKod1: json['ArrKod1'] as String?,
-      arrBelgeTipi: json['ArrBelgeTipi'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "R",
       sayfa: json['Sayfa'] as int?,
       baslamaTarihi: json['BaslamaTarihi'] as String?,
@@ -40,6 +39,9 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       menuKodu: json['MenuKodu'] as String?,
       siparisSevkEdilenGoster: json['SiparisSevkEdilenGoster'] as bool?,
       refBelgeTuru: json['RefBelgeTuru'] as String?,
+      kisitYok: json['KisitYok'] as bool?,
+      arrBelgeTipi: json['ArrBelgeTipi'] as String?,
+      arrBelgeNo: json['ArrBelgeNo'] as String?,
     );
 
 Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
@@ -72,7 +74,6 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('ArrKod2', instance.arrKod2);
   writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
   writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('Sayfa', instance.sayfa);
   writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
@@ -84,5 +85,8 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('MenuKodu', instance.menuKodu);
   writeNotNull('SiparisSevkEdilenGoster', instance.siparisSevkEdilenGoster);
   writeNotNull('RefBelgeTuru', instance.refBelgeTuru);
+  writeNotNull('KisitYok', instance.kisitYok);
+  writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
+  writeNotNull('ArrBelgeNo', instance.arrBelgeNo);
   return val;
 }
