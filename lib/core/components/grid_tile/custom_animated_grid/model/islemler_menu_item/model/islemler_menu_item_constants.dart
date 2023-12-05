@@ -134,7 +134,7 @@ class IslemlerMenuItemConstants<T> {
         if (siparisModel.tipi != 1) {
           islemlerList.add(belgeNoDegistir);
         }
-        if (siparisModel.siparislesti == "E") {
+        if (siparisModel.siparislesti == "E" || siparisModel.faturalasti == "E") {
           islemlerList.add(belgeBaglantilari);
         }
       }
@@ -319,14 +319,12 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? [])
-              .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
-              .whereType<NetFectDizaynList>()
-              .toList();
+          final List<NetFectDizaynList> dizaynList =
+              (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
           final result =
               await bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
-            Get.back();
+            // Get.back();
             Get.to(
               () => PDFViewerView(
                 title: result.dizaynAdi ?? "Serbest Raporlar",
@@ -541,6 +539,14 @@ class IslemlerMenuItemConstants<T> {
                 Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
               } else if (result.belgeTipi == "SS") {
                 Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satici));
+              } else if (result.belgeTipi == "SF") {
+                Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satisFatura));
+              } else if (result.belgeTipi == "AF") {
+                Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.alisFatura));
+              } else if (result.belgeTipi == "SI") {
+                Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satisIrsaliye));
+              } else if (result.belgeTipi == "AI") {
+                Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.alisIrsaliye));
               }
               // else if (result.belgeTipi == "") {
               //   Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));

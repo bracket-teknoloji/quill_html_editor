@@ -777,7 +777,11 @@ class BottomSheetDialogManager {
 
   Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
     final result = await NetworkManager().dioGet<KalemListModel>(
-        path: ApiUrls.getBelgeBaglantilari, bodyModel: KalemListModel(), showLoading: true, queryParameters: {"CariKodu": cariKodu, "BelgeTuru": belgeTipi, "BelgeNo": belgeNo});
+      path: ApiUrls.getBelgeBaglantilari,
+      bodyModel: KalemListModel(),
+      showLoading: true,
+      queryParameters: {"CariKodu": cariKodu, "BelgeTuru": belgeTipi, "BelgeNo": belgeNo},
+    );
     if (result.data is List) {
       final List<KalemListModel> list = result.data.map((e) => e as KalemListModel).toList().cast<KalemListModel>();
       return await showBottomSheetDialog(
