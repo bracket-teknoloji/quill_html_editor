@@ -42,8 +42,8 @@ mixin _$SiparislerRequestModel {
       throw _privateConstructorUsedError;
   String? get ozelKod1 => throw _privateConstructorUsedError;
   set ozelKod1(String? value) => throw _privateConstructorUsedError;
-  String? get kapaliBelgelerListelenmesin => throw _privateConstructorUsedError;
-  set kapaliBelgelerListelenmesin(String? value) =>
+  bool? get kapaliBelgelerListelenmesin => throw _privateConstructorUsedError;
+  set kapaliBelgelerListelenmesin(bool? value) =>
       throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
   set projeKodu(String? value) => throw _privateConstructorUsedError;
@@ -111,7 +111,7 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
-      String? kapaliBelgelerListelenmesin,
+      bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
       String? arrKod5,
@@ -221,7 +221,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
       kapaliBelgelerListelenmesin: freezed == kapaliBelgelerListelenmesin
           ? _value.kapaliBelgelerListelenmesin
           : kapaliBelgelerListelenmesin // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       projeKodu: freezed == projeKodu
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
@@ -329,7 +329,7 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
-      String? kapaliBelgelerListelenmesin,
+      bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
       String? arrKod5,
@@ -438,7 +438,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
       kapaliBelgelerListelenmesin: freezed == kapaliBelgelerListelenmesin
           ? _value.kapaliBelgelerListelenmesin
           : kapaliBelgelerListelenmesin // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       projeKodu: freezed == projeKodu
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
@@ -552,7 +552,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.arrPlasiyerKodu,
       this.arrKod1,
       this.arrBelgeTipi,
-      this.ekranTipi = "L",
+      this.ekranTipi = "R",
       this.sayfa,
       this.baslamaTarihi,
       this.bitisTarihi,
@@ -588,7 +588,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   String? ozelKod1;
   @override
-  String? kapaliBelgelerListelenmesin;
+  bool? kapaliBelgelerListelenmesin;
   @override
   String? projeKodu;
   @override
@@ -665,7 +665,7 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
-      String? kapaliBelgelerListelenmesin,
+      bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
       String? arrKod5,
@@ -721,8 +721,8 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   String? get ozelKod1;
   set ozelKod1(String? value);
   @override
-  String? get kapaliBelgelerListelenmesin;
-  set kapaliBelgelerListelenmesin(String? value);
+  bool? get kapaliBelgelerListelenmesin;
+  set kapaliBelgelerListelenmesin(bool? value);
   @override
   String? get projeKodu;
   set projeKodu(String? value);

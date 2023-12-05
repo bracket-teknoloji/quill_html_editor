@@ -18,8 +18,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       siralama: json['SIRALAMA'] as String?,
       siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
       ozelKod1: json['OzelKod1'] as String?,
-      kapaliBelgelerListelenmesin:
-          json['KapaliBelgelerListelenmesin'] as String?,
+      kapaliBelgelerListelenmesin: json['KapaliBelgelerListelenmesin'] as bool?,
       projeKodu: json['ProjeKodu'] as String?,
       faturalasmaGoster: json['FaturalasmaGoster'] as bool?,
       arrKod5: json['ArrKod5'] as String?,
@@ -30,7 +29,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrPlasiyerKodu: json['ArrPlasiyerKodu'] as String?,
       arrKod1: json['ArrKod1'] as String?,
       arrBelgeTipi: json['ArrBelgeTipi'] as String?,
-      ekranTipi: json['EkranTipi'] as String? ?? "L",
+      ekranTipi: json['EkranTipi'] as String? ?? "R",
       sayfa: json['Sayfa'] as int?,
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
