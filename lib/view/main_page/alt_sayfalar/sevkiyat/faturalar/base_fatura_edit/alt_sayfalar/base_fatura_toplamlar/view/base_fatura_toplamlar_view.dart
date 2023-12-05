@@ -300,15 +300,6 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
               children: <Widget>[
                 Expanded(
                   child: CustomTextField(
-                    labelText: "Ek Mal. 1",
-                    enabled: enable,
-                    controller: ekMal1Controller,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                  ),
-                ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
-                Expanded(
-                  child: CustomTextField(
                     labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
                     enabled: enable,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
@@ -338,15 +329,6 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
             ),
             Row(
               children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Ek Mal. 3",
-                    enabled: enable,
-                    controller: ekMal3Controller,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                  ),
-                ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Vade Günü",
@@ -373,46 +355,6 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Ek Mal. 1",
-                    enabled: enable,
-                    controller: ekMal1Controller,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                  ),
-                ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
-                    enabled: enable,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
-                    controller: tevkifatController,
-                    inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Tevkifat Oranı",
-                          children: List.generate(
-                            viewModel.tevkifatMap.length,
-                            (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
-                          ),
-                        );
-                        if (result != null) {
-                          viewModel.setTevkifat(result);
-                          tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
-                    ),
-                    // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
-                  ),
-                ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
               ],
             ),
             Row(
