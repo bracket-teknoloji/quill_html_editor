@@ -314,67 +314,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         },
       );
 
-  // BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) {
-  //   return BottomSheetModel(
-  //       title: "Toplu İskonto Girişi",
-  //       iconWidget: Icons.add_outlined,
-  //       onTap: viewModel.baseSiparisEditModel.kalemList.ext.isNullOrEmpty
-  //           ? () {
-  //               Get.back();
-  //               return dialogManager.showAlertDialog("Önce kalem girmeniz gerekiyor.");
-  //             }
-  //           : () async {
-  //               Get.back();
-  //               List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
-  //               List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
-  //               await bottomSheetDialogManager.showBottomSheetDialog(context,
-  //                   title: "Toplu İskonto Girişi",
-  //                   body: SafeArea(
-  //                     child: Column(
-  //                       children: [
-  //                         Container(
-  //                           constraints: BoxConstraints(maxHeight: height * 0.8),
-  //                           child: ListView.builder(
-  //                             shrinkWrap: true,
-  //                             itemCount: kalemList?.length ?? 0,
-  //                             itemBuilder: (BuildContext context, int index) {
-  //                               KalemModel? model = kalemList?[index];
-  //                               TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
-  //                               return topluIskontoListTile(model, iskontoList, index, controller);
-  //                             },
-  //                           ),
-  //                         ),
-  //                         Row(
-  //                           children: [
-  //                             Expanded(
-  //                               child: ElevatedButton(
-  //                                   onPressed: () {
-  //                                     Get.back();
-  //                                   },
-  //                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
-  //                                   child: const Text("İptal")),
-  //                             ),
-  //                             SizedBox(width: width * 0.02),
-  //                             Expanded(
-  //                               child: ElevatedButton(
-  //                                   onPressed: () {
-  //                                     for (var element in kalemList) {
-  //                                       element.iskonto1 = iskontoList[kalemList.indexOf(element)];
-  //                                     }
-  //                                     viewModel.changeUpdateKalemler();
-  //                                     setState(() {});
-  //                                     Get.back();
-  //                                   },
-  //                                   child: const Text("Kaydet")),
-  //                             )
-  //                           ],
-  //                         ),
-  //                       ],
-  //                     ),
-  //                   ));
-  //             });
-  // }
-
   ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) => ListTile(
         title: Row(
           children: <Widget>[
