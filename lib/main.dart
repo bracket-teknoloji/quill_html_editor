@@ -11,6 +11,7 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/kalem_rehberi/view/kalem_rehberi_view.dart";
+import "package:picker/core/base/view/siparis_rehberi/view/siparis_rehberi_view.dart";
 import "package:picker/core/components/aciklama_duzenle/view/aciklama_duzenle_view.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/cirola_enum.dart";
@@ -186,6 +187,7 @@ class PickerApp extends StatelessWidget {
             children: <GetPage>[
               GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
               GetPage(name: "/kalemRehberi", page: ()=>  KalemRehberiView(model: Get.arguments)),
+              GetPage(name: "/siparisRehberi", page: ()=>  SiparisRehberiView(model: Get.arguments)),
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
