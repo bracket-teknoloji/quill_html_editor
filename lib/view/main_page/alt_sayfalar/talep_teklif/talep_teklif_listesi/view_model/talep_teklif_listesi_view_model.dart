@@ -191,7 +191,7 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   void setTeslimatDurumuGroupValue(int? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0]);
 
   @action
-  void setKapaliBelgelerListelenmesin(bool? value) => siparislerRequestModel = siparislerRequestModel.copyWith(kapaliBelgelerListelenmesin: (value ?? false) ? "E" : null);
+  void setKapaliBelgelerListelenmesin(bool? value) => siparislerRequestModel = siparislerRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
 
   @action
   void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
@@ -262,9 +262,9 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
       } else {
         addTalepTeklifiListesiModelList(list);
       }
-      if (!(result.paramData?.values.contains("0")?? true)){
-      final Map<String, dynamic> paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")))).cast<String, dynamic>() ?? {};
-      setParamData(paramData);
+      if (!(result.paramData?.values.contains("0") ?? true)) {
+        final Map<String, dynamic> paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")))).cast<String, dynamic>() ?? {};
+        setParamData(paramData);
       }
     }
   }

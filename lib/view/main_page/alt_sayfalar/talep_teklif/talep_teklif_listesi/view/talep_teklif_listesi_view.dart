@@ -353,7 +353,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
           CustomWidgetWithLabel(
             isVertical: true,
             text: "Kapalı Belgeler Listelenmesin",
-            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.siparislerRequestModel.kapaliBelgelerListelenmesin == "E", onChanged: viewModel.setKapaliBelgelerListelenmesin)),
+            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.siparislerRequestModel.kapaliBelgelerListelenmesin ?? false, onChanged: viewModel.setKapaliBelgelerListelenmesin)),
           ),
           Observer(
             builder: (_) => SlideControllerWidget(
