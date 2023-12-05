@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
@@ -48,10 +49,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   BaseFaturaEditViewModel viewModel = BaseFaturaEditViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;
+  late final TextEditingController _cariKoduController;
+  late final TextEditingController _siparisController;
+  late final TextEditingController _kalemlerController;
 
   @override
   void initState() {
     tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
+    _cariKoduController = TextEditingController();
+    _siparisController = TextEditingController();
+    _kalemlerController = TextEditingController();
     tabController.addListener(() {
       if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
@@ -91,6 +98,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+            final result = await getSiparisBaglantisi();
+            if (result != true) {
+              Get.back();
+              return;
+            }
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -101,18 +113,23 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        final result = await getSiparisBaglantisi();
+        if (result != true) {
+          Get.back();
+          return;
+        }
         BaseSiparisEditModel.instance.isNew = true;
-        final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-        if (result is CariListesiModel) {
+        final cariModel = await getCari();
+        if (cariModel is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
+          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
           // viewModel.changeIsLoaded(true);
         }
       }
@@ -124,9 +141,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     super.initState();
   }
 
+  Future<dynamic> getCari() async => await Get.toNamed("/mainPage/cariListesi", arguments: true);
+
   @override
   void dispose() {
     BaseSiparisEditModel.resetInstance();
+    _cariKoduController.dispose();
+    _siparisController.dispose();
+    _kalemlerController.dispose();
     tabController.dispose();
     super.dispose();
   }
@@ -237,10 +259,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                             Get.back();
                             if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-
-                            BaseSiparisEditModel.resetInstance();
-                            BaseSiparisEditModel.instance.isNew = true;
-                            await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));
+                              BaseSiparisEditModel.resetInstance();
+                              BaseSiparisEditModel.instance.isNew = true;
+                              await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel<SiparisEditRequestModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));
                             }
                           }
                         });
@@ -414,4 +435,50 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       return false;
     }
   }
+
+  Future<bool?> getSiparisBaglantisi() async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Sipariş Bağlantısı",
+        body: Column(
+          children: [
+            const Row(
+              children: [
+                Icon(Icons.info_outline),
+                Text("Cari veya Sipariş seçiniz."),
+              ],
+            ),
+            CustomTextField(
+              labelText: "Cari",
+              controller: _cariKoduController,
+              readOnly: true,
+              suffixMore: true,
+              suffix: IconButton(
+                onPressed: () async => dialogManager.showCariGridViewDialog(CariListesiModel()),
+                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+              ),
+              onTap: () async {
+                final result = await getCari();
+                if (result is CariListesiModel) {
+                  _cariKoduController.text = result.cariKodu ?? "";
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Sipariş",
+              controller: _siparisController,
+              readOnly: true,
+              suffixMore: true,
+              onTap: () {},
+            ),
+            CustomTextField(
+              labelText: "Kalemler",
+              controller: _kalemlerController,
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              onTap: () {},
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
 }
