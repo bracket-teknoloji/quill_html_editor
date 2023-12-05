@@ -154,7 +154,7 @@ abstract class _SiparislerViewModelBase with Store {
   //*for model
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
         pickerBelgeTuru: pickerBelgeTuru,
-        kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin ? "E" : "H",
+        kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin,
         sayfa: sayfa,
         siralama: siralama,
         searchText: searchText,
