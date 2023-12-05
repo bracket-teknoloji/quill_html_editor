@@ -468,7 +468,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               controller: _siparisController,
               readOnly: true,
               suffixMore: true,
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("/mainPage/siparisRehberi", arguments: widget.model.model);
+              },
             ),
             CustomTextField(
               labelText: "Kalemler",
