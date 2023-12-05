@@ -29,13 +29,13 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
       Atom(name: '_KalemRehberiViewModelBase.kalemList', context: context);
 
   @override
-  ObservableList<KalemListModel>? get kalemList {
+  ObservableList<KalemModel>? get kalemList {
     _$kalemListAtom.reportRead();
     return super.kalemList;
   }
 
   @override
-  set kalemList(ObservableList<KalemListModel>? value) {
+  set kalemList(ObservableList<KalemModel>? value) {
     _$kalemListAtom.reportWrite(value, super.kalemList, () {
       super.kalemList = value;
     });
@@ -45,13 +45,13 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
       name: '_KalemRehberiViewModelBase.selectedKalemList', context: context);
 
   @override
-  ObservableList<KalemListModel> get selectedKalemList {
+  ObservableList<KalemModel> get selectedKalemList {
     _$selectedKalemListAtom.reportRead();
     return super.selectedKalemList;
   }
 
   @override
-  set selectedKalemList(ObservableList<KalemListModel> value) {
+  set selectedKalemList(ObservableList<KalemModel> value) {
     _$selectedKalemListAtom.reportWrite(value, super.selectedKalemList, () {
       super.selectedKalemList = value;
     });
@@ -88,7 +88,7 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
-  void setKalemList(List<KalemListModel>? value) {
+  void setKalemList(List<KalemModel>? value) {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.setKalemList');
     try {
@@ -99,7 +99,7 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
-  void addSelectedKalem(KalemListModel value) {
+  void addSelectedKalem(KalemModel value) {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.addSelectedKalem');
     try {
@@ -110,7 +110,7 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
-  void removeSelectedKalem(KalemListModel value) {
+  void removeSelectedKalem(KalemModel value) {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.removeSelectedKalem');
     try {
@@ -121,7 +121,7 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
-  void addAllSelectedKalem(List<KalemListModel> value) {
+  void addAllSelectedKalem(List<KalemModel> value) {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.addAllSelectedKalem');
     try {

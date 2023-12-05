@@ -53,7 +53,16 @@ class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.search_outlined)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
+            IconButton(
+              onPressed: () async {
+                if (viewModel.selectedSiparisList.isEmpty) {
+                  dialogManager.showErrorSnackBar("Lütfen en az bir sipariş seçiniz");
+                } else {
+                  Get.back(result: viewModel.selectedSiparisList);
+                }
+              },
+              icon: Icon(Icons.check_circle, color: UIHelper.primaryColor),
+            ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
           ],
         ),

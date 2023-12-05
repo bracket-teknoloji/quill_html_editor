@@ -374,6 +374,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? efatOzelkod;
   @HiveField(147)
   String? siparislesti;
+  @HiveField(148)
+  String? arrBelgeNo;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -521,6 +523,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.kdvDahilMi,
     this.efatOzelkod,
     this.siparislesti,
+    this.faturalasanSayi,
+    this.yeniKayit,
+    this.uuid,
+    this.arrBelgeNo,
   });
 
   BaseSiparisEditModel._init();
@@ -855,6 +861,8 @@ class KalemModel with NetworkManagerMixin {
   String? dovizAdi;
   @HiveField(89)
   List<dynamic>? kalemListHucreList;
+  @HiveField(90)
+  String? arrBelgeNo;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -947,6 +955,7 @@ class KalemModel with NetworkManagerMixin {
     this.seriMiktarKadarSor,
     this.dovizAdi,
     this.kalemListHucreList,
+    this.arrBelgeNo,
   });
 
   String get faturaKalemAciklama =>

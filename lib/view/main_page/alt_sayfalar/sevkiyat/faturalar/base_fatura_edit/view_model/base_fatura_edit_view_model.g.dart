@@ -137,11 +137,33 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
       ActionController(name: '_BaseFaturaEditViewModelBase', context: context);
 
   @override
-  void setCariKodu(String? value) {
+  void setCariKodu(CariListesiModel? value) {
     final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
         .startAction(name: '_BaseFaturaEditViewModelBase.setCariKodu');
     try {
       return super.setCariKodu(value);
+    } finally {
+      _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBelgeNo(List<BaseSiparisEditModel>? value) {
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setBelgeNo');
+    try {
+      return super.setBelgeNo(value);
+    } finally {
+      _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKalemList(List<KalemModel>? value) {
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setKalemList');
+    try {
+      return super.setKalemList(value);
     } finally {
       _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
     }

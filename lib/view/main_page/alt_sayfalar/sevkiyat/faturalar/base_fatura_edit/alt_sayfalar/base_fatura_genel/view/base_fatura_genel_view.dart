@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -90,6 +91,11 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _aciklama15Controller = TextEditingController(text: model.acik15);
     _aciklama16Controller = TextEditingController(text: model.acik16);
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
+        await getBelgeNo();
+      }
+    });
     super.initState();
   }
 
@@ -143,7 +149,22 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
-                CustomTextField(labelText: "Belge No", isMust: true, controller: _belgeNoController, enabled: enable, maxLength: 15, onTap: () {}),
+                CustomTextField(
+                  enabled: enable,
+                  labelText: "Belge No",
+                  isMust: true,
+                  controller: _belgeNoController,
+                  maxLength: 15,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      await getBelgeNo();
+                    },
+                    icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                  ),
+                  onChanged: (value) {
+                    model.belgeNo = value;
+                  },
+                ),
                 CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {})
                     .yetkiVarMi(widget.model.baseEditEnum == BaseEditEnum.goruntule),
                 CustomTextField(
@@ -379,6 +400,19 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       } else {
         return "E-İrsaliye (${model.resmiBelgeNo})";
       }
+    }
+  }
+
+  Future<void> getBelgeNo() async {
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getSiradakiBelgeNo,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      showLoading: true,
+    );
+    if (result.success == true) {
+      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
+      _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }
 }

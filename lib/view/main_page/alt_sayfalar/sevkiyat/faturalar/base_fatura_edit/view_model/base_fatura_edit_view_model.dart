@@ -1,6 +1,9 @@
+import "dart:convert";
+
 import "package:mobx/mobx.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_fatura_edit_view_model.g.dart";
@@ -12,11 +15,26 @@ abstract class _BaseFaturaEditViewModelBase with Store {
   BaseSiparisEditModel baseSiparisEditModel = BaseSiparisEditModel.instance;
 
   @action
-  void setCariKodu(String? value) {
-    baseSiparisEditModel = baseSiparisEditModel.copyWith(cariKodu: value);
+  void setCariKodu(CariListesiModel? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(
+      cariKodu: value?.cariKodu,
+      cariAdi: value?.cariAdi,
+      belgeTipi: int.tryParse(value?.odemeTipi ?? "0"),
+    );
     BaseSiparisEditModel.setInstance(baseSiparisEditModel);
   }
-  
+
+  @action
+  void setBelgeNo(List<BaseSiparisEditModel>? value) {
+      baseSiparisEditModel = baseSiparisEditModel.copyWith(arrBelgeNo: jsonEncode(value?.map((e) => e.belgeNo).toList()));
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
+
+  @action
+  void setKalemList(List<KalemModel>? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(kalemList: value);
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
 
   @observable
   bool updateKalemler = false;

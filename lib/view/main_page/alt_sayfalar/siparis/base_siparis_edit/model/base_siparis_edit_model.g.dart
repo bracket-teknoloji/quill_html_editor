@@ -297,6 +297,14 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel siparislesti(String? siparislesti);
 
+  BaseSiparisEditModel faturalasanSayi(int? faturalasanSayi);
+
+  BaseSiparisEditModel yeniKayit(bool? yeniKayit);
+
+  BaseSiparisEditModel uuid(String? uuid);
+
+  BaseSiparisEditModel arrBelgeNo(String? arrBelgeNo);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -449,6 +457,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
     bool? kdvDahilMi,
     int? efatOzelkod,
     String? siparislesti,
+    int? faturalasanSayi,
+    bool? yeniKayit,
+    String? uuid,
+    String? arrBelgeNo,
   });
 }
 
@@ -975,6 +987,20 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(siparislesti: siparislesti);
 
   @override
+  BaseSiparisEditModel faturalasanSayi(int? faturalasanSayi) =>
+      this(faturalasanSayi: faturalasanSayi);
+
+  @override
+  BaseSiparisEditModel yeniKayit(bool? yeniKayit) => this(yeniKayit: yeniKayit);
+
+  @override
+  BaseSiparisEditModel uuid(String? uuid) => this(uuid: uuid);
+
+  @override
+  BaseSiparisEditModel arrBelgeNo(String? arrBelgeNo) =>
+      this(arrBelgeNo: arrBelgeNo);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1128,6 +1154,10 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? kdvDahilMi = const $CopyWithPlaceholder(),
     Object? efatOzelkod = const $CopyWithPlaceholder(),
     Object? siparislesti = const $CopyWithPlaceholder(),
+    Object? faturalasanSayi = const $CopyWithPlaceholder(),
+    Object? yeniKayit = const $CopyWithPlaceholder(),
+    Object? uuid = const $CopyWithPlaceholder(),
+    Object? arrBelgeNo = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1712,6 +1742,22 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.siparislesti
           // ignore: cast_nullable_to_non_nullable
           : siparislesti as String?,
+      faturalasanSayi: faturalasanSayi == const $CopyWithPlaceholder()
+          ? _value.faturalasanSayi
+          // ignore: cast_nullable_to_non_nullable
+          : faturalasanSayi as int?,
+      yeniKayit: yeniKayit == const $CopyWithPlaceholder()
+          ? _value.yeniKayit
+          // ignore: cast_nullable_to_non_nullable
+          : yeniKayit as bool?,
+      uuid: uuid == const $CopyWithPlaceholder()
+          ? _value.uuid
+          // ignore: cast_nullable_to_non_nullable
+          : uuid as String?,
+      arrBelgeNo: arrBelgeNo == const $CopyWithPlaceholder()
+          ? _value.arrBelgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : arrBelgeNo as String?,
     );
   }
 }
@@ -1904,6 +1950,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kalemListHucreList(List<dynamic>? kalemListHucreList);
 
+  KalemModel arrBelgeNo(String? arrBelgeNo);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2001,6 +2049,7 @@ abstract class _$KalemModelCWProxy {
     bool? seriMiktarKadarSor,
     String? dovizAdi,
     List<dynamic>? kalemListHucreList,
+    String? arrBelgeNo,
   });
 }
 
@@ -2310,6 +2359,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(kalemListHucreList: kalemListHucreList);
 
   @override
+  KalemModel arrBelgeNo(String? arrBelgeNo) => this(arrBelgeNo: arrBelgeNo);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2408,6 +2460,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? seriMiktarKadarSor = const $CopyWithPlaceholder(),
     Object? dovizAdi = const $CopyWithPlaceholder(),
     Object? kalemListHucreList = const $CopyWithPlaceholder(),
+    Object? arrBelgeNo = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2771,6 +2824,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kalemListHucreList
           // ignore: cast_nullable_to_non_nullable
           : kalemListHucreList as List<dynamic>?,
+      arrBelgeNo: arrBelgeNo == const $CopyWithPlaceholder()
+          ? _value.arrBelgeNo
+          // ignore: cast_nullable_to_non_nullable
+          : arrBelgeNo as String?,
     );
   }
 }
@@ -2975,16 +3032,17 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       kdvDahilMi: fields[145] as bool?,
       efatOzelkod: fields[146] as int?,
       siparislesti: fields[147] as String?,
-    )
-      ..yeniKayit = fields[115] as bool?
-      ..uuid = fields[116] as String?
-      ..faturalasanSayi = fields[117] as int?;
+      faturalasanSayi: fields[117] as int?,
+      yeniKayit: fields[115] as bool?,
+      uuid: fields[116] as String?,
+      arrBelgeNo: fields[148] as String?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(148)
+      ..writeByte(149)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3280,7 +3338,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(146)
       ..write(obj.efatOzelkod)
       ..writeByte(147)
-      ..write(obj.siparislesti);
+      ..write(obj.siparislesti)
+      ..writeByte(148)
+      ..write(obj.arrBelgeNo);
   }
 
   @override
@@ -3395,13 +3455,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       seriMiktarKadarSor: fields[87] as bool?,
       dovizAdi: fields[88] as String?,
       kalemListHucreList: (fields[89] as List?)?.cast<dynamic>(),
+      arrBelgeNo: fields[90] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(90)
+      ..writeByte(91)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3581,7 +3642,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(88)
       ..write(obj.dovizAdi)
       ..writeByte(89)
-      ..write(obj.kalemListHucreList);
+      ..write(obj.kalemListHucreList)
+      ..writeByte(90)
+      ..write(obj.arrBelgeNo);
   }
 
   @override
@@ -3777,9 +3840,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       kdvDahilMi: json['KDV_DAHIL_MI'] as bool?,
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
       siparislesti: json['SIPARISLESTI'] as String?,
-    )
-      ..yeniKayit = json['_YeniKayit'] as bool?
-      ..faturalasanSayi = json['FATURALASAN_SAYI'] as int?;
+      faturalasanSayi: json['FATURALASAN_SAYI'] as int?,
+      yeniKayit: json['_YeniKayit'] as bool?,
+      arrBelgeNo: json['ARR_BELGE_NO'] as String?,
+    );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -3941,6 +4005,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('KDV_DAHIL_MI', instance.kdvDahilMi);
   writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
   writeNotNull('SIPARISLESTI', instance.siparislesti);
+  writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   return val;
 }
 
@@ -4045,6 +4110,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       seriMiktarKadarSor: json['SERI_MIKTAR_KADAR_SOR'] as bool?,
       dovizAdi: json['DOVIZ_ADI'] as String?,
       kalemListHucreList: json['KALEM_LIST_HUCRE_LIST'] as List<dynamic>?,
+      arrBelgeNo: json['ARR_BELGE_NO'] as String?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4147,6 +4213,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SERI_MIKTAR_KADAR_SOR', instance.seriMiktarKadarSor);
   writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   writeNotNull('KALEM_LIST_HUCRE_LIST', instance.kalemListHucreList);
+  writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   return val;
 }
 

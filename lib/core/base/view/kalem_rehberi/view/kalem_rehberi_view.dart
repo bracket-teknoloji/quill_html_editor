@@ -7,7 +7,6 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 
 class KalemRehberiView extends StatefulWidget {
   final BaseSiparisEditModel model;
@@ -40,7 +39,13 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (viewModel.selectedKalemList.isEmpty) {
+                  dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
+                } else {
+                  Get.back(result: viewModel.kalemList);
+                }
+              },
               icon: Icon(
                 Icons.check_circle,
                 color: UIHelper.primaryColor,
@@ -68,7 +73,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
               itemCount: viewModel.kalemList?.length ?? 0,
               itemBuilder: (context, index) {
                 //checkBox listTile
-                final KalemListModel model = viewModel.kalemList?[index] ?? KalemListModel();
+                final KalemModel model = viewModel.kalemList?[index] ?? KalemModel();
                 return Card(
                   child: ListTile(
                     onTap: () {
@@ -113,7 +118,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
         ),
       );
 
-  void changeCheckBox(bool? value, KalemListModel model) {
+  void changeCheckBox(bool? value, KalemModel model) {
     if (value == true) {
       viewModel.addSelectedKalem(model);
     } else {

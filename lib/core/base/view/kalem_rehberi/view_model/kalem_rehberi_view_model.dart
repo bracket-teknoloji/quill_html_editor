@@ -3,7 +3,6 @@ import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
 part "kalem_rehberi_view_model.g.dart";
@@ -28,25 +27,25 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
   SiparislerRequestModel? model;
 
   @observable
-  ObservableList<KalemListModel>? kalemList;
+  ObservableList<KalemModel>? kalemList;
 
   @observable
-  ObservableList<KalemListModel> selectedKalemList = <KalemListModel>[].asObservable();
+  ObservableList<KalemModel> selectedKalemList = <KalemModel>[].asObservable();
 
   @action
   void setModel(BaseSiparisEditModel value) => model = SiparislerRequestModel.fromBaseSiparisEditModel(value);
 
   @action
-  void setKalemList(List<KalemListModel>? value) => kalemList = value?.asObservable();
+  void setKalemList(List<KalemModel>? value) => kalemList = value?.asObservable();
 
   @action
-  void addSelectedKalem(KalemListModel value) => selectedKalemList.add(value);
+  void addSelectedKalem(KalemModel value) => selectedKalemList.add(value);
 
   @action
-  void removeSelectedKalem(KalemListModel value) => selectedKalemList.removeWhere((element) => element.stokKodu == value.stokKodu);
+  void removeSelectedKalem(KalemModel value) => selectedKalemList.removeWhere((element) => element.stokKodu == value.stokKodu);
 
   @action
-  void addAllSelectedKalem(List<KalemListModel> value) => selectedKalemList.addAll(value);
+  void addAllSelectedKalem(List<KalemModel> value) => selectedKalemList.addAll(value);
 
   @action
   void removeAllSelectedKalem() => selectedKalemList.clear();
@@ -62,9 +61,9 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemListModel(), queryParameters: model?.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: model?.toJson());
     if (result.data != null) {
-      setKalemList(result.data?.map((e) => e as KalemListModel).toList().cast<KalemListModel>());
+      setKalemList(result.data?.map((e) => e as KalemModel).toList().cast<KalemModel>());
     }
   }
 }
