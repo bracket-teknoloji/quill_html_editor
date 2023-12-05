@@ -95,8 +95,6 @@ class _QRScannerState extends BaseState<QRScannerView> {
         qrViewController.pauseCamera();
         Navigator.pop(context, scanData.code);
       }
-      // setState(() {
-      // });
     });
   }
 
