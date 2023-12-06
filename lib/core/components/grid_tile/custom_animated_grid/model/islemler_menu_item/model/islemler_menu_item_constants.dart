@@ -583,12 +583,12 @@ class IslemlerMenuItemConstants<T> {
       );
 
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
-        title: "Satış İrsaliyesi Oluştur",
+        title: "${siparisTipi?.getName} Oluştur",
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            Get.toNamed("/mainPage/kalemRehberi", arguments: siparisModel);
+            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi));
           }
         },
       );
