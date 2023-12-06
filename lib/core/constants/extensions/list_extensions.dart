@@ -1,7 +1,11 @@
 //extension on a list for padding all items
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/model/param_model.dart";
+import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 
 extension ListExtension<T> on List<T> {
   List<Padding> get withPadding => map(
@@ -37,4 +41,28 @@ extension NotNullExtension<T> on List<T> {
 
 extension ListGenericNullCheck<T> on List<T?> {
   List<T> get nullCheckWithGeneric => whereType<T>().toList();
+}
+
+extension DizaynListExtensions on List<NetFectDizaynList> {
+  List<NetFectDizaynList> filteredDizaynList(EditTipiEnum? editTipiEnum) {
+    final ProfilYetkiModel profilYetkiModel = CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
+    switch (editTipiEnum) {
+      case EditTipiEnum.satisTeklifi:
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.id == element2) ?? false).toList();
+      case EditTipiEnum.satisIrsaliye:
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.id == element2) ?? false).toList();
+      case EditTipiEnum.satisFatura:
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.id == element2) ?? false).toList();
+      case EditTipiEnum.alisIrsaliye:
+        return where((element) => profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.id == element2) ?? false).toList();
+      case EditTipiEnum.alisFatura:
+        return where((element) => profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.id == element2) ?? false).toList();
+      case EditTipiEnum.satisTalebi:
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.id == element2) ?? false).toList();
+      // case EditTipiEnum.alis:
+      //   return where((element) => profilYetkiModel.yazdirmaDizaynAli?.any((element2) => element.id == element2) ??false ).toList();
+      default:
+        return this;
+    }
+  }
 }
