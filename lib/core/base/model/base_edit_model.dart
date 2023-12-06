@@ -7,6 +7,7 @@ class BaseEditModel<T> {
   BaseEditEnum? baseEditEnum;
   String? siradakiKod;
   EditTipiEnum? editTipiEnum;
+  String? belgeNo;
 
   bool get enable => baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
@@ -19,10 +20,18 @@ class BaseEditModel<T> {
     this.baseEditEnum,
     this.siradakiKod,
     this.editTipiEnum,
+    this.belgeNo,
   });
 
   @override
   // ignore: hash_and_equals
   bool operator ==(Object other) =>
-      identical(this, other) || other is BaseEditModel && runtimeType == other.runtimeType && model == other.model && baseEditEnum == other.baseEditEnum && siradakiKod == other.siradakiKod;
+      identical(this, other) ||
+      other is BaseEditModel &&
+          runtimeType == other.runtimeType &&
+          model == other.model &&
+          baseEditEnum == other.baseEditEnum &&
+          siradakiKod == other.siradakiKod &&
+          editTipiEnum == other.editTipiEnum &&
+          belgeNo == other.belgeNo;
 }
