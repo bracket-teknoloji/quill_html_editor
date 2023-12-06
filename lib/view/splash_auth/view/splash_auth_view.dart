@@ -142,6 +142,10 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       );
       if (response != null && response.error == null) {
         if (response.accessToken != null) {
+          AccountModel.instance.adi = response.userJson?.ad;
+          AccountModel.instance.soyadi = response.userJson?.soyad;
+          AccountModel.instance.admin = response.userJson?.admin ?? "H";
+          
           CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
           CacheManager.setToken(response.accessToken!);
           await getSession();
@@ -168,6 +172,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
     viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için\noturum açılıyor...");
     AccountModel.instance
+      // ..adi = CacheManager.getVerifiedUser.
       ..kullaniciAdi = CacheManager.getVerifiedUser.username
       ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
@@ -184,6 +189,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       },
     );
     if (response.data != null) {
+      CacheManager.setHesapBilgileri(AccountModel.instance);
       CacheManager.setAnaVeri(response.data.first);
       Get.offAllNamed("/mainPage");
       if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message.toString());
