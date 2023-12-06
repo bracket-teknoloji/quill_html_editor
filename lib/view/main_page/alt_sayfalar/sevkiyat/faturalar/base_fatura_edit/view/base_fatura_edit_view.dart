@@ -61,6 +61,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     _siparisController = TextEditingController();
     _kalemlerController = TextEditingController();
     tabController.addListener(() {
+      if (tabController.indexIsChanging && tabController.previousIndex == 0) {
+        final result = StaticVariables.instance.isFaturaValid;
+        if (!result) {
+          dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
+          tabController.animateTo(tabController.previousIndex);
+        }
+      }
       if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
@@ -111,6 +118,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         final result = await getSiparisBaglantisi();
+        BaseSiparisEditModel.instance.tarih = DateTime.now();
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
         BaseSiparisEditModel.instance.isNew = true;
@@ -398,6 +406,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   arguments: CariListesiRequestModel(
                     menuKodu: "CARI_CREH",
                     belgeTuru: "MS",
+                    siparisKarsilanmaDurumu: "K",
                   ),
                 );
                 if (result is CariListesiModel) {
