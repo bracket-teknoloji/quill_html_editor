@@ -10,8 +10,8 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CariListesiRequestModelImpl(
       eFaturaGoster: json['EFaturaGoster'] as bool?,
-      siralama: json['SIRALAMA'] as String?,
-      sayfa: json['Sayfa'] as int?,
+      siralama: json['SIRALAMA'] as String? ?? "AZ",
+      sayfa: json['Sayfa'] as int? ?? 1,
       menuKodu: json['MenuKodu'] as String? ?? "CARI_CREH",
       filterText: json['FilterText'] as String? ?? "",
       kod: json['Kod'] as String? ?? "",
@@ -41,6 +41,7 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
       belgeTuru: json['BelgeTuru'] as String?,
       teslimCari: json['TeslimCari'] as String?,
       sehir: json['Sehir'] as String?,
+      siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
     );
 
 Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
@@ -74,5 +75,6 @@ Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
   writeNotNull('BelgeTuru', instance.belgeTuru);
   writeNotNull('TeslimCari', instance.teslimCari);
   writeNotNull('Sehir', instance.sehir);
+  writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
   return val;
 }

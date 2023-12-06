@@ -13,8 +13,8 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
   @JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
   factory CariListesiRequestModel({
     bool? eFaturaGoster,
-    @JsonKey(name: "SIRALAMA") String? siralama,
-    int? sayfa,
+    @JsonKey(name: "SIRALAMA") @Default("AZ") String? siralama,
+    @Default(1) int? sayfa,
     @Default("CARI_CREH") String? menuKodu,
     @Default("") String? filterText,
     @Default("") String? kod,
@@ -33,6 +33,7 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
     String? belgeTuru,
     String? teslimCari,
     String? sehir,
+    String? siparisKarsilanmaDurumu,
   }) = _CariListesiRequestModel;
 
   factory CariListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CariListesiRequestModelFromJson(json);
