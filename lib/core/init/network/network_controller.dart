@@ -1,9 +1,5 @@
-import "dart:developer";
-
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:get/get.dart";
-import "package:network_info_plus/network_info_plus.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../components/dialog/dialog_manager.dart";
 
@@ -32,9 +28,9 @@ class NetworkController extends GetxController {
       // if (result == ConnectivityResult.wifi) {
       //   final NetworkInfo networkInfo = NetworkInfo();
       //   try {
-      //   AccountModel.instance.wifiAdi = await networkInfo.getWifiName(); 
+      //   AccountModel.instance.wifiAdi = await networkInfo.getWifiName();
       //   } catch (e) {
-      //     log(e.toString(), name: "NetworkController"); 
+      //     log(e.toString(), name: "NetworkController");
       //   }
       // }
     }
