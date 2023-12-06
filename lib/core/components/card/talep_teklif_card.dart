@@ -70,16 +70,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
-          onLongPress: widget.model.remoteTempBelgeEtiketi == null
-              ? () async {
-                  await dialogManager.showTalepTeklifGridViewDialog(
-                    model: widget.model,
-                    onSelected: (value) {
-                      widget.onUpdated?.call(value);
-                    },
-                  );
-                }
-              : null,
+          onLongPress: widget.model.remoteTempBelgeEtiketi == null ? () async => await gridDialog() : null,
           onTap: widget.isGetData == true
               ? () => Get.back(result: widget.model)
               : () async {
@@ -113,7 +104,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             arguments: BaseEditModel(
                               model: widget.model,
                               baseEditEnum: BaseEditEnum.duzenle,
-                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                              editTipiEnum: editTipiEnum,
                             ),
                           );
                           widget.onUpdated?.call(result ?? false);
@@ -173,12 +164,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
-                          await dialogManager.showTalepTeklifGridViewDialog(
-                            model: widget.model,
-                            onSelected: (value) {
-                              widget.onUpdated?.call(value);
-                            },
-                          );
+                          await gridDialog();
                         },
                       ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
@@ -295,6 +281,18 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
           ),
         ),
       );
+
+  Future<void> gridDialog() async {
+    await dialogManager.showTalepTeklifGridViewDialog(
+      model: widget.model,
+      siparisTipi: editTipiEnum,
+      onSelected: (value) {
+        widget.onUpdated?.call(value);
+      },
+    );
+  }
+
+  EditTipiEnum? get editTipiEnum => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue);
 
   Future<CariListesiModel?> getCari() async {
     final result = await networkManager.dioGet(
