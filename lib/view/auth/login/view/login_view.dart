@@ -290,9 +290,9 @@ class _LoginViewState extends BaseState<LoginView> {
       if (response?.error == null) {
         log(jsonEncode(instance.toJson()), name: "sea");
         instance = instance
-          ..isim = response?.userJson?.ad
+          ..adi = response?.userJson?.ad
           ..soyadi = response?.userJson?.soyad
-          ..admin = response?.userJson?.admin;
+          ..admin = response?.userJson?.admin ?? "H";
         CacheManager.setHesapBilgileri(instance);
         viewModel.checkDebug();
         dialogManager.hideAlertDialog;
