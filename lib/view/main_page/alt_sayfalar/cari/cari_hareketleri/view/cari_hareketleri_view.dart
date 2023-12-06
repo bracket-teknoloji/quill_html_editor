@@ -228,9 +228,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                 bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
                                   title: "Seçenekler",
-                                  //TODO DÜZELT. ORJİNAL PİCKER'A BAK
                                   children: [
-                                    //! BottomSheetModel(iconWidget: Icons.display_settings_outlined, title: "İşlemler", onTap: () {}),
                                     BottomSheetModel(
                                       iconWidget: Icons.preview_outlined,
                                       title: "Görüntüle",

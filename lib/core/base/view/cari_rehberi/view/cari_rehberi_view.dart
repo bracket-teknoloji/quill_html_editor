@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -22,8 +23,8 @@ import "../../../state/base_state.dart";
 import "../view_model/cari_rehberi_view_model.dart";
 
 class CariRehberiView extends StatefulWidget {
-  final String cariKodu;
-  const CariRehberiView({super.key, required this.cariKodu});
+  final CariListesiRequestModel cariRequestModel;
+  const CariRehberiView({super.key, required this.cariRequestModel});
 
   @override
   State<CariRehberiView> createState() => _CariRehberiViewState();
@@ -58,9 +59,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     scrollController = ScrollController();
     searchFocusNode = FocusNode();
     searchFocusNode.requestFocus();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      viewModel.changeBagliCariKodu(widget.cariKodu);
-      viewModel.getCariListesi();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      viewModel.changeBagliCariKodu(widget.cariRequestModel.kod);
+      viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
+      viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
+      await viewModel.getCariListesi();
       scrollController.addListener(() {
         if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
           viewModel.changeIsScrollDown(false);
@@ -109,7 +112,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 )
               : AppBarTitle(
                   title: "Cari Rehberi",
-                  subtitle: "${widget.cariKodu} Koduna Bağlı Cariler",
+                  subtitle: "${widget.cariRequestModel.kod} Koduna Bağlı Cariler",
                 ),
         ),
         actions: [

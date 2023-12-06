@@ -210,6 +210,28 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   @override
+  void setMenuKodu(String? value) {
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setMenuKodu');
+    try {
+      return super.setMenuKodu(value);
+    } finally {
+      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBelgeTuru(String? value) {
+    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
+        .startAction(name: '_CariRehberiViewModelBase.setBelgeTuru');
+    try {
+      return super.setBelgeTuru(value);
+    } finally {
+      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsScrollDown(bool value) {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
         .startAction(name: '_CariRehberiViewModelBase.changeIsScrollDown');

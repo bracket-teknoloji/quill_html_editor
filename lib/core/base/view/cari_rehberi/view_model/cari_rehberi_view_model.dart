@@ -82,6 +82,12 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   void changeSearchBar() => searchBar = !searchBar;
 
   @action
+  void setMenuKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(menuKodu: value);
+
+  @action
+  void setBelgeTuru(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(belgeTuru: value);
+
+  @action
   void changeIsScrollDown(bool value) => isScrollDown = value;
 
   @action

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -161,7 +162,14 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     controller: teslimCariController,
                     suffix: IconButton(
                       onPressed: () async {
-                        final result = await Get.toNamed("mainPage/cariRehberi", arguments: model.cariKodu ?? "");
+                        final result = await Get.toNamed(
+                          "mainPage/cariRehberi",
+                          arguments: CariListesiRequestModel(
+                            kod: model.cariKodu ?? "",
+                            menuKodu: "CARI_CREH",
+                            belgeTuru: widget.model.editTipiEnum?.rawValue,
+                          ),
+                        );
                         if (result != null && result is CariListesiModel) {
                           model.teslimCari = result.cariKodu;
                           model.teslimCariAdi = result.cariAdi;
