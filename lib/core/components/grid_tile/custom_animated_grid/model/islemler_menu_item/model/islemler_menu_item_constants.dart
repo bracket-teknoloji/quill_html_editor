@@ -162,7 +162,6 @@ class IslemlerMenuItemConstants<T> {
       );
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
-  GridItemModel? get faturaOlustur => GridItemModel.islemler(title: "Fatura Oluştur (Siparişten)", iconData: Icons.conveyor_belt);
   GridItemModel? get belgeyiKapat {
     if (model is BaseSiparisEditModel) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -323,7 +322,7 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
           final List<NetFectDizaynList> dizaynList =
-              (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
+              (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
           final result =
               await bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
@@ -588,6 +587,22 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+
+            final result =
+                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result?.belgeNo));
+          }
+        },
+      );
+  GridItemModel get faturaOlustur => GridItemModel.islemler(
+        title: "${siparisTipi?.getName} Oluştur",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+
+            final result =
+                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi));
           }
         },
