@@ -29,14 +29,14 @@ class NetworkController extends GetxController {
         DialogManager().hideAlertDialog;
         isOffline = false;
       }
-      if (result == ConnectivityResult.wifi) {
-        final NetworkInfo networkInfo = NetworkInfo();
-        try {
-        AccountModel.instance.wifiAdi = await networkInfo.getWifiName(); 
-        } catch (e) {
-          log(e.toString(), name: "NetworkController"); 
-        }
-      }
+      // if (result == ConnectivityResult.wifi) {
+      //   final NetworkInfo networkInfo = NetworkInfo();
+      //   try {
+      //   AccountModel.instance.wifiAdi = await networkInfo.getWifiName(); 
+      //   } catch (e) {
+      //     log(e.toString(), name: "NetworkController"); 
+      //   }
+      // }
     }
     // connectivityResult != result ? connectivityResult = result : connectivityResult = null;
     // if (connectivityResult == ConnectivityResult.none) {
