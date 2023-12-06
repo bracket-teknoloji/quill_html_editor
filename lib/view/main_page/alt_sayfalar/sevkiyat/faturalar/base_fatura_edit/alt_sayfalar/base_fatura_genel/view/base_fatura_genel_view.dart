@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -134,6 +135,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
         padding: UIHelper.lowPadding,
         child: SingleChildScrollView(
           child: Form(
+            key: StaticVariables.instance.faturaGenelFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
