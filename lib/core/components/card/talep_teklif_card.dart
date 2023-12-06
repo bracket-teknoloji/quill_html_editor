@@ -213,6 +213,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text(widget.model.sonrakiRevizeNo ?? "").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(widget.model.sonrakiRevizeNo != null),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
                   // mainAxisAlignment: MainAxisAlignment.start,
