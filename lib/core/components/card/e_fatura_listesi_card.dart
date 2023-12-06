@@ -421,7 +421,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       );
 
   BottomSheetModel get faturaGoruntule => BottomSheetModel(
-        title: "${EditTipiEnum.values.firstWhere((element) => element.rawValue == model.belgeTuru).getName} Görüntüle",
+        title: "${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == model.belgeTuru)?.getName} Görüntüle",
         iconWidget: Icons.preview_outlined,
         onTap: () async {
           Get.back();
@@ -430,7 +430,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             arguments: BaseEditModel<SiparisEditRequestModel>(
               model: SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel),
               baseEditEnum: BaseEditEnum.goruntule,
-              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.eBelgeListesiModel.belgeTuru),
+              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.eBelgeListesiModel.belgeTuru),
             ),
           );
         },

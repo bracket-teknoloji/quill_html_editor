@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:get/get.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
@@ -83,7 +84,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
   factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
         belgeNo: model?.fisno,
         cariKodu: model?.cariKodu,
-        belgeTuru: EditTipiEnum.values.firstWhere((element) => element.getName == model?.belgeTipiAciklama).rawValue,
+        belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
       );
   @override
   SiparisEditRequestModel fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);

@@ -61,7 +61,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
   Widget aciklamaText(int? index) => Text(
-        "${paramModel?.talTekParam?.firstWhere((element) => element.belgeTipi == widget.talepTeklifEnum.rawValue).toJson()["ACIKLAR$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}",
+        "${paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == widget.talepTeklifEnum.rawValue)?.toJson()["ACIKLAR$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}",
         style: greyTextStyle,
       ).yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 

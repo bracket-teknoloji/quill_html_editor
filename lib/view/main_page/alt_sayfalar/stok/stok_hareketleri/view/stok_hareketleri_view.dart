@@ -342,7 +342,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       arguments: BaseEditModel<SiparisEditRequestModel>(
                                         baseEditEnum: BaseEditEnum.goruntule,
                                         model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                        editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                        editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama),
                                       ),
                                     );
                                     viewModel.setStokHareketleri(await getData()!);
@@ -370,7 +370,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                             arguments: BaseEditModel<SiparisEditRequestModel>(
                                               baseEditEnum: BaseEditEnum.goruntule,
                                               model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.getName == model.belgeTipiAciklama),
+                                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama),
                                             ),
                                           );
                                           viewModel.setStokHareketleri(await getData()!);

@@ -103,7 +103,7 @@ extension CekSenetExtensions on CekSenetKalemlerModel {
 }
 
 extension CekSenetExtensions2 on CekSenetListesiModel {
-  CekSenetListesiEnum get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhere((element) => element.belgeTipi == belgeTipi);
+  CekSenetListesiEnum get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == belgeTipi) ?? CekSenetListesiEnum.cekBorc;
 }
 
 extension CekSenetExtensions3 on SaveCekSenetModel {

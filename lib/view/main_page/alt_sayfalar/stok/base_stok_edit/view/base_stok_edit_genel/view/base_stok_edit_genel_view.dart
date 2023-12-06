@@ -391,7 +391,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     child: CustomTextField(
                       // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
                       readOnly: true,
-                      enabled: (enable && subeList.firstWhere((element) => element.subeKodu == veriTabani["Şube"]).merkezmi == "E") || widget.model == BaseEditEnum.ekle,
+                      enabled: (enable && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model == BaseEditEnum.ekle,
                       labelText: "Şube",
                       isMust: true,
                       controller: subeController,

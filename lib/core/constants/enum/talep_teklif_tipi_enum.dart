@@ -1,3 +1,4 @@
+import "package:get/get.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -88,7 +89,7 @@ extension TalepTeklifEnumExtension on TalepTeklifEnum {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (satisMi) {
-      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhere((element) => element.belgeTipi == rawValue);
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
       switch (index) {
         case 1:
           label = talTekParam?.aciklar1;

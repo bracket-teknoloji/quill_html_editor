@@ -325,7 +325,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     final result = await networkManager
         .dioPost<StokListesiModel>(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"});
     if (result.data != null) {
-      return result.data.firstWhere((element) => element.stokKodu == stokKodu);
+      return result.data.firstWhereOrNull((element) => element.stokKodu == stokKodu);
     }
     return null;
   }

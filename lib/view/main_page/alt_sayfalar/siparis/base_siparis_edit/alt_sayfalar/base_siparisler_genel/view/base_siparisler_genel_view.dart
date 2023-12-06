@@ -555,10 +555,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     satisAcik15Controller.text = model.acik15 ?? "";
     satisAcik16Controller.text = model.acik16 ?? "";
     if (model.topluDepo != null) {
-      topluDepoController.text = parametreModel.depoList?.firstWhere((element) => element.depoKodu == model.topluDepo).depoTanimi ?? "";
+      topluDepoController.text = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == model.topluDepo)?.depoTanimi ?? "";
     }
     if (model.ozelKod2 != null) {
-      ozelKod2Controller.text = parametreModel.listOzelKodTum?.firstWhere((element) => element.kod == model.ozelKod2).aciklama ?? "";
+      ozelKod2Controller.text = parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.kod == model.ozelKod2)?.aciklama ?? "";
     }
   }
 

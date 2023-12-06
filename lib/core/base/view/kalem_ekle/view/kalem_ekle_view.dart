@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -68,7 +69,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   @override
   void initState() {
     initControllers();
-    viewModel.setKalemModel(widget.kalemModel);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
       viewModel.setIskonto1OranMi(widget.kalemModel?.iskonto1OranMi ?? true);
@@ -116,9 +116,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
                   BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
-                      viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi ?? (viewModel.koliMi ? "K" : null);
+                      viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null);
                 } else {
-                  BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = widget.stokListesiModel?.paketMi);
+                  BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
                 }
                 dialogManager.showSuccessSnackBar("Kalem Eklendi");
                 Get.back();
@@ -553,7 +553,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   }
                                 },
                               ),
-                            ).yetkiVarMi(widget.stokListesiModel?.dovizliMi ?? false),
+                            ).yetkiVarMi(viewModel.dovizliMi),
                             Expanded(
                               child: CustomTextField(
                                 labelText: "Döviz Kuru",
@@ -567,7 +567,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                                 },
                               ),
-                            ).yetkiVarMi((widget.stokListesiModel?.dovizliMi ?? false) && viewModel.showDovizBilgileri),
+                            ).yetkiVarMi((viewModel.dovizliMi) && viewModel.showDovizBilgileri),
                           ],
                         ),
                       ),
@@ -583,7 +583,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             viewModel.setBrutFiyat((viewModel.kalemModel.dovizFiyati ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
                             fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                           },
-                        ).yetkiVarMi((widget.stokListesiModel?.dovizliMi ?? false) && viewModel.showDovizBilgileri),
+                        ).yetkiVarMi((viewModel.dovizliMi) && viewModel.showDovizBilgileri),
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -720,6 +720,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.setModel(widget.stokListesiModel!);
     } else if (widget.kalemModel != null) {
       viewModel.setKalemModel(widget.kalemModel!);
+      await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
     } else {
       final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
       if (result is StokListesiModel) {
@@ -784,18 +785,18 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> controllerFiller() async {
-    viewModel.kalemModel.kalemList ??= widget.stokListesiModel?.stokList?.map(KalemModel.fromStokList).toList();
-    viewModel.kalemModel.stokKodu ??= widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu;
-    viewModel.kalemModel.stokSatDovizAdi ??= widget.stokListesiModel?.satisDovizAdi ?? widget.kalemModel?.stokSatDovizAdi;
-    viewModel.kalemModel.stokAlisDovizAdi ??= widget.stokListesiModel?.alisDovizAdi ?? widget.kalemModel?.stokAlisDovizAdi;
-    viewModel.kalemModel.stokSatDovTip ??= widget.stokListesiModel?.satDovTip ?? viewModel.model?.satDovTip;
+    viewModel.kalemModel.kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList();
+    viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu ?? widget.kalemModel?.stokKodu;
+    viewModel.kalemModel.stokSatDovizAdi ??= viewModel.model?.satisDovizAdi ?? widget.kalemModel?.stokSatDovizAdi;
+    viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi ?? widget.kalemModel?.stokAlisDovizAdi;
+    viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
     viewModel.setYapKod(widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod);
-    viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip;
+    viewModel.kalemModel.stokAlisDovTip ??= viewModel.model?.alisDovTip;
     viewModel.kalemModel.dovizTipi ??= StaticVariables.instance.isMusteriSiparisleri ? viewModel.model?.satDovTip : viewModel.model?.alisDovTip;
-    kalemAdiController.text = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
+    kalemAdiController.text = viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
     ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    yapKodController.text = widget.stokListesiModel?.yapkodAciklama ?? widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod ?? "";
+    yapKodController.text = viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? widget.kalemModel?.yapkod ?? "";
     isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
     isk1TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
@@ -812,7 +813,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
     malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNotNull ?? "";
-    olcuBirimiController.text = widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
+    olcuBirimiController.text = viewModel.model?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
     kdvOraniController.text = widget.kalemModel?.kdvOrani.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
@@ -823,11 +824,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
       viewModel.kalemModel.projeKodu = model.projeKodu;
     }
-    viewModel.kalemModel.stokAdi = widget.stokListesiModel?.stokAdi ?? widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
-    viewModel.kalemModel.stokKodu = widget.stokListesiModel?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokAdi = viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokKodu = viewModel.model?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
-    viewModel.setShowDovizBilgileri(widget.stokListesiModel?.dovizliMi ?? false);
+    viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {
       viewModel.setKosul(model.kosulKodu ?? "");
