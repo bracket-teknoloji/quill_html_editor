@@ -63,6 +63,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       viewModel.changeBagliCariKodu(widget.cariRequestModel.kod);
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
+      viewModel.setSiparisKarsilanmaDurumu(widget.cariRequestModel.siparisKarsilanmaDurumu);
       await viewModel.getCariListesi();
       scrollController.addListener(() {
         if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {

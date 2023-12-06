@@ -57,7 +57,6 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     sayfa: 1,
     siralama: "AZ",
     belgeTuru: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
-    teslimCari: "E",
   );
 
   @computed
@@ -88,6 +87,9 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   void setBelgeTuru(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(belgeTuru: value);
 
   @action
+  void setSiparisKarsilanmaDurumu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(siparisKarsilanmaDurumu: value);
+
+  @action
   void changeIsScrollDown(bool value) => isScrollDown = value;
 
   @action
@@ -97,7 +99,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   void addCariListesi(List<CariListesiModel> value) => cariListesi?.addAll(value);
 
   @action
-  void changeBagliCariKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value);
+  void changeBagliCariKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value != "" ? value : null);
 
   @action
   void changeSehir(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(sehir: value);

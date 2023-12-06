@@ -232,6 +232,18 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   @override
+  void setSiparisKarsilanmaDurumu(String? value) {
+    final _$actionInfo =
+        _$_CariRehberiViewModelBaseActionController.startAction(
+            name: '_CariRehberiViewModelBase.setSiparisKarsilanmaDurumu');
+    try {
+      return super.setSiparisKarsilanmaDurumu(value);
+    } finally {
+      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeIsScrollDown(bool value) {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
         .startAction(name: '_CariRehberiViewModelBase.changeIsScrollDown');
