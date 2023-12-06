@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:uuid/uuid.dart";
@@ -392,7 +393,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                final result = await Get.toNamed(
+                  "mainPage/cariRehberi",
+                  arguments: CariListesiRequestModel(
+                    menuKodu: "CARI_CREH",
+                    belgeTuru: "MS",
+                  ),
+                );
                 if (result is CariListesiModel) {
                   _cariKoduController.text = result.cariAdi ?? "";
                   viewModel.setCariKodu(result);
