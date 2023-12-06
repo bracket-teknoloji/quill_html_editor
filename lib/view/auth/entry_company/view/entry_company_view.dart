@@ -24,26 +24,36 @@ import "package:picker/view/auth/model/isletme_model.dart";
 import "package:picker/view/main_page/model/main_page_model.dart";
 
 class EntryCompanyView extends StatefulWidget {
+  const EntryCompanyView({super.key, this.isSplash, this.onMenu});
+
   final bool? isSplash;
   final bool? onMenu;
-  const EntryCompanyView({super.key, this.isSplash, this.onMenu});
 
   @override
   State<EntryCompanyView> createState() => _EntryCompanyViewState();
 }
 
 class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
+  bool first = true;
+  List<IsletmeModel>? isletme;
+  late final TextEditingController isletmeController;
   // Map selected = {"Şirket": "", "İşletme": null, "Şube": null};
   // Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
   // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
-  List<IsletmeModel>? isletme;
-  List<IsletmeModel>? sube;
+
   late final TextEditingController sirketController;
-  late final TextEditingController isletmeController;
+  List<IsletmeModel>? sube;
   late final TextEditingController subeController;
   final EntryCompanyViewModel viewModel = EntryCompanyViewModel();
-  bool first = true;
+
+  @override
+  void dispose() {
+    sirketController.dispose();
+    isletmeController.dispose();
+    subeController.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -65,12 +75,134 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
   }
 
-  @override
-  void dispose() {
-    sirketController.dispose();
-    isletmeController.dispose();
-    subeController.dispose();
-    super.dispose();
+  Future subeDialog(BuildContext context) async {
+    if (viewModel.subeList?.length == 1) {
+      subeController.text = viewModel.subeList?[0].subeAdi ?? "";
+
+      viewModel.selectedSube(viewModel.subeList?[0]);
+      // viewModel.selected["Şube"] = viewModel.subeList?[0].subeKodu ?? 0;
+      // viewModel.userData["Şube"] = viewModel.subeList?[0].subeAdi;
+      return;
+    }
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Şube Seçiniz",
+      groupValue: viewModel.selected["Şube"],
+      children: List.generate(
+        viewModel.subeList?.length ?? 0,
+        (index) => BottomSheetModel(
+          title: viewModel.subeList?[index].subeAdi ?? "",
+          value: viewModel.subeList?[index],
+          groupValue: viewModel.subeList?[index].subeKodu,
+          // onTap: () {
+          //   setState(() {
+          //     subeController.text = "${viewModel.subeList?[index].subeAdi} ${viewModel.subeList?[index].subeKodu ?? 0}";
+          //     selected["Şube"] = viewModel.subeList?[index].subeKodu ?? 0;
+          //     userData["Şube"] = viewModel.subeList?[index].subeAdi;
+          //   });
+          //   Get.back();
+          // },
+        ),
+      ),
+    );
+    if (result is IsletmeModel) {
+      subeController.text = result.subeAdi ?? "";
+      viewModel.selectedSube(result);
+      // viewModel.selected["Şube"] = result.subeKodu ?? 0;
+      // viewModel.userData["Şube"] = result.subeAdi;
+    }
+  }
+
+  Future sirketDialog(BuildContext context) async {
+    if (viewModel.sirketList?.length == 1) {
+      sirketController.text = viewModel.sirketList?[0].company ?? "";
+      viewModel.selectedSirket(viewModel.sirketList?[0]);
+      // viewModel.selected["Şirket"] = viewModel.sirketList?[0].company ?? "";
+      // viewModel.userData["Şirket"] = viewModel.sirketList?[0].company ?? "";
+      // viewModel.selected["İşletme"] = null;
+      // viewModel.selected["Şube"] = null;
+      await viewModel.getSube();
+      isletmeController.text = "";
+      subeController.text = "";
+      await isletmeDialog(context);
+      return;
+    }
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Şirket Seçiniz",
+      groupValue: viewModel.selected["Şirket"],
+      children: List.generate(
+        viewModel.sirketList?.length ?? 0,
+        (index) => BottomSheetModel(
+          iconWidget: Icons.storage_outlined,
+          title: viewModel.sirketList?[index].company ?? "",
+          value: viewModel.sirketList?[index],
+          groupValue: viewModel.sirketList?[index].company,
+        ),
+      ),
+    );
+    if (result is CompanyModel) {
+      first = false;
+      sirketController.text = result.company ?? "";
+      isletmeController.text = "";
+      subeController.text = "";
+      viewModel.selectedSirket(result);
+      // viewModel.selected["Şirket"] = result;
+      // viewModel.userData["Şirket"] = result;
+      // viewModel.selected["İşletme"] = null;
+      // viewModel.selected["Şube"] = null;
+      await viewModel.getSube();
+      await isletmeDialog(context);
+    } else {
+      if (first && widget.isSplash == false) {
+        first = false;
+        Get.back();
+      }
+    }
+  }
+
+  Future isletmeDialog(BuildContext context, {bool isTapOnIsletme = false}) async {
+    if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
+      isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
+      viewModel.selectedIsletme(viewModel.isletmeList?[0]);
+      // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
+      // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
+      await subeDialog(context);
+      return;
+    }
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "İşletme Seçiniz",
+      groupValue: viewModel.selected["İşletme"],
+      children: List.generate(
+        viewModel.isletmeList?.length ?? 0,
+        (index) => BottomSheetModel(
+          iconWidget: Icons.data_array_outlined,
+          title: viewModel.isletmeList?[index].isletmeAdi ?? "",
+          value: viewModel.isletmeList?[index],
+          groupValue: viewModel.isletmeList?[index].isletmeKodu,
+          // onTap: () {
+          //   isletmeController.text = "${viewModel.isletmeList?[index].isletmeAdi} ${viewModel.isletmeList?[index].isletmeKodu ?? 0}";
+          //   subeController.text = "";
+          //   viewModel.selected["İşletme"] = viewModel.isletmeList?[index].isletmeKodu ?? 0;
+          //   viewModel.userData["İşletme"] = viewModel.isletmeList?[index].isletmeAdi;
+          //   viewModel.selected["Şube"] = null;
+          //   // setState(() {
+          //   // });
+          //   Get.back();
+          // },
+        ),
+      ),
+    );
+    if (result is IsletmeModel) {
+      isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu}";
+      subeController.text = "";
+      viewModel.selectedIsletme(result);
+      await subeDialog(context);
+      // viewModel.selected["İşletme"] = result.isletmeKodu ?? 0;
+      // viewModel.userData["İşletme"] = result.isletmeAdi;
+      // viewModel.selected["Şube"] = null;
+    }
   }
 
   @override
@@ -231,134 +363,4 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           },
         ),
       );
-
-  Future subeDialog(BuildContext context) async {
-    if (viewModel.subeList?.length == 1) {
-      subeController.text = viewModel.subeList?[0].subeAdi ?? "";
-
-      viewModel.selectedSube(viewModel.subeList?[0]);
-      // viewModel.selected["Şube"] = viewModel.subeList?[0].subeKodu ?? 0;
-      // viewModel.userData["Şube"] = viewModel.subeList?[0].subeAdi;
-      return;
-    }
-    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-      context,
-      title: "Şube Seçiniz",
-      groupValue: viewModel.selected["Şube"],
-      children: List.generate(
-        viewModel.subeList?.length ?? 0,
-        (index) => BottomSheetModel(
-          title: viewModel.subeList?[index].subeAdi ?? "",
-          value: viewModel.subeList?[index],
-          groupValue: viewModel.subeList?[index].subeKodu,
-          // onTap: () {
-          //   setState(() {
-          //     subeController.text = "${viewModel.subeList?[index].subeAdi} ${viewModel.subeList?[index].subeKodu ?? 0}";
-          //     selected["Şube"] = viewModel.subeList?[index].subeKodu ?? 0;
-          //     userData["Şube"] = viewModel.subeList?[index].subeAdi;
-          //   });
-          //   Get.back();
-          // },
-        ),
-      ),
-    );
-    if (result is IsletmeModel) {
-      subeController.text = result.subeAdi ?? "";
-      viewModel.selectedSube(result);
-      // viewModel.selected["Şube"] = result.subeKodu ?? 0;
-      // viewModel.userData["Şube"] = result.subeAdi;
-    }
-  }
-
-  Future sirketDialog(BuildContext context) async {
-    if (viewModel.sirketList?.length == 1) {
-      sirketController.text = viewModel.sirketList?[0].company ?? "";
-      viewModel.selectedSirket(viewModel.sirketList?[0]);
-      // viewModel.selected["Şirket"] = viewModel.sirketList?[0].company ?? "";
-      // viewModel.userData["Şirket"] = viewModel.sirketList?[0].company ?? "";
-      // viewModel.selected["İşletme"] = null;
-      // viewModel.selected["Şube"] = null;
-      await viewModel.getSube();
-      isletmeController.text = "";
-      subeController.text = "";
-      await isletmeDialog(context);
-      return;
-    }
-    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-      context,
-      title: "Şirket Seçiniz",
-      groupValue: viewModel.selected["Şirket"],
-      children: List.generate(
-        viewModel.sirketList?.length ?? 0,
-        (index) => BottomSheetModel(
-          iconWidget: Icons.storage_outlined,
-          title: viewModel.sirketList?[index].company ?? "",
-          value: viewModel.sirketList?[index],
-          groupValue: viewModel.sirketList?[index].company,
-        ),
-      ),
-    );
-    if (result is CompanyModel) {
-      first = false;
-      sirketController.text = result.company ?? "";
-      isletmeController.text = "";
-      subeController.text = "";
-      viewModel.selectedSirket(result);
-      // viewModel.selected["Şirket"] = result;
-      // viewModel.userData["Şirket"] = result;
-      // viewModel.selected["İşletme"] = null;
-      // viewModel.selected["Şube"] = null;
-      await viewModel.getSube();
-      await isletmeDialog(context);
-    } else {
-      if (first && widget.isSplash == false) {
-        first = false;
-        Get.back();
-      }
-    }
-  }
-
-  Future isletmeDialog(BuildContext context, {bool isTapOnIsletme = false}) async {
-    if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
-      isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
-      viewModel.selectedIsletme(viewModel.isletmeList?[0]);
-      // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
-      // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
-      await subeDialog(context);
-      return;
-    }
-    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-      context,
-      title: "İşletme Seçiniz",
-      groupValue: viewModel.selected["İşletme"],
-      children: List.generate(
-        viewModel.isletmeList?.length ?? 0,
-        (index) => BottomSheetModel(
-          iconWidget: Icons.data_array_outlined,
-          title: viewModel.isletmeList?[index].isletmeAdi ?? "",
-          value: viewModel.isletmeList?[index],
-          groupValue: viewModel.isletmeList?[index].isletmeKodu,
-          // onTap: () {
-          //   isletmeController.text = "${viewModel.isletmeList?[index].isletmeAdi} ${viewModel.isletmeList?[index].isletmeKodu ?? 0}";
-          //   subeController.text = "";
-          //   viewModel.selected["İşletme"] = viewModel.isletmeList?[index].isletmeKodu ?? 0;
-          //   viewModel.userData["İşletme"] = viewModel.isletmeList?[index].isletmeAdi;
-          //   viewModel.selected["Şube"] = null;
-          //   // setState(() {
-          //   // });
-          //   Get.back();
-          // },
-        ),
-      ),
-    );
-    if (result is IsletmeModel) {
-      isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu}";
-      subeController.text = "";
-      viewModel.selectedIsletme(result);
-      await subeDialog(context);
-      // viewModel.selected["İşletme"] = result.isletmeKodu ?? 0;
-      // viewModel.userData["İşletme"] = result.isletmeAdi;
-      // viewModel.selected["Şube"] = null;
-    }
-  }
 }
