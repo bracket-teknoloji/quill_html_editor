@@ -48,7 +48,7 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..offline = fields[28] as String?
       ..simOperator = fields[29] as String?
       ..paketAdi = fields[30] as String?
-      ..paramMap = fields[31] as String?
+      ..paramMap = (fields[31] as Map?)?.cast<String, dynamic>()
       ..platform = fields[32] as String?
       ..requestVersion = fields[33] as int?
       ..soyadi = fields[34] as String?
@@ -61,13 +61,15 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..uzakErisim = fields[41] as String?
       ..wifidenBagli = fields[42] as String?
       ..qrData = fields[43] as String?
-      ..debugMu = fields[44] as bool?;
+      ..debugMu = fields[44] as bool?
+      ..adi = fields[45] as String?
+      ..wifiAdi = fields[46] as String?;
   }
 
   @override
   void write(BinaryWriter writer, AccountModel obj) {
     writer
-      ..writeByte(45)
+      ..writeByte(47)
       ..writeByte(0)
       ..write(obj.isim)
       ..writeByte(1)
@@ -157,7 +159,11 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..writeByte(43)
       ..write(obj.qrData)
       ..writeByte(44)
-      ..write(obj.debugMu);
+      ..write(obj.debugMu)
+      ..writeByte(45)
+      ..write(obj.adi)
+      ..writeByte(46)
+      ..write(obj.wifiAdi);
   }
 
   @override
@@ -213,7 +219,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..offline = json['OFFLINE'] as String?
   ..simOperator = json['SIM_OPERATOR'] as String?
   ..paketAdi = json['PAKET_ADI'] as String?
-  ..paramMap = json['PARAM_MAP'] as String?
+  ..paramMap = json['PARAM_MAP'] as Map<String, dynamic>? ?? {}
   ..platform = json['PLATFORM'] as String?
   ..requestVersion = json['REQUEST_VERSION'] as int?
   ..soyadi = json['SOYADI'] as String?
@@ -226,7 +232,9 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..uzakErisim = json['UZAK_ERISIM'] as String?
   ..wifidenBagli = json['WIFIDEN_BAGLI'] as String?
   ..qrData = json['QR_DATA'] as String?
-  ..debugMu = json['DEBUG_MU'] as bool?;
+  ..debugMu = json['DEBUG_MU'] as bool?
+  ..adi = json['ADI'] as String?
+  ..wifiAdi = json['WIFI_ADI'] as String?;
 
 Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   final val = <String, dynamic>{};
@@ -283,9 +291,7 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   writeNotNull('WIFIDEN_BAGLI', instance.wifidenBagli);
   writeNotNull('QR_DATA', instance.qrData);
   writeNotNull('DEBUG_MU', instance.debugMu);
+  writeNotNull('ADI', instance.adi);
+  writeNotNull('WIFI_ADI', instance.wifiAdi);
   return val;
 }
-
-ParamMap _$ParamMapFromJson(Map<String, dynamic> json) => ParamMap();
-
-Map<String, dynamic> _$ParamMapToJson(ParamMap instance) => <String, dynamic>{};

@@ -6,6 +6,7 @@ import "package:android_id/android_id.dart";
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
+import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
@@ -101,8 +102,9 @@ class AccountModel with NetworkManagerMixin {
   String? simOperator;
   @HiveField(30)
   String? paketAdi;
+  @JsonKey(defaultValue: {})
   @HiveField(31)
-  String? paramMap;
+  Map<String, dynamic>? paramMap;
   @HiveField(32)
   String? platform;
   @HiveField(33)
@@ -129,6 +131,10 @@ class AccountModel with NetworkManagerMixin {
   String? qrData;
   @HiveField(44)
   bool? debugMu;
+  @HiveField(45)
+  String? adi;
+  @HiveField(46)
+  String? wifiAdi;
 
   Future<void> init() async {
     if (isDebug) {
@@ -137,8 +143,11 @@ class AccountModel with NetworkManagerMixin {
       debugMu = null;
     }
     debugMu = null;
-    //* Uygulama Bilgileri
 
+    final AccountResponseModel? account = CacheManager.getAccounts(uyeEmail ?? "");
+    uzakErisim = CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? "E" : "H";
+    
+    //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
     uygulamaSurumKodu = 229;
@@ -182,6 +191,7 @@ class AccountModel with NetworkManagerMixin {
     uygulamaDili = "tr";
     cihazDili = Get.locale?.languageCode ?? "tr";
     cihazSistemVersiyonu = "20";
+    cihazTarihi = getKonumTarihi;
     cihazTarihiUtc = DateTime.now().toUtc();
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
@@ -266,6 +276,7 @@ class AccountModel with NetworkManagerMixin {
         cihazKimligi = ozelCihazKimligi;
       }
     }
+    kuruluHesaplar = CacheManager.accountsBox.values.map((e) => (e as AccountResponseModel).email).join(";");
   }
 
   String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
@@ -281,15 +292,4 @@ class AccountModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$AccountModelToJson(this);
-}
-
-@JsonSerializable()
-class ParamMap with NetworkManagerMixin {
-  ParamMap();
-
-  @override
-  ParamMap fromJson(Map<String, dynamic> json) => _$ParamMapFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$ParamMapToJson(this);
 }
