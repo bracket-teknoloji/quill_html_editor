@@ -6,7 +6,6 @@ import "package:android_id/android_id.dart";
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
-import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
