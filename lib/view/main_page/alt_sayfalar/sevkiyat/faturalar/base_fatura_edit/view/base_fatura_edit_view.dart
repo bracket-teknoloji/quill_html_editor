@@ -118,16 +118,17 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.cariKodu = null;
           BaseSiparisEditModel.instance.kalemList = <KalemModel>[];
           BaseSiparisEditModel.instance.arrBelgeNo = null;
-        }
-        final cariModel = await getCari();
-        if (cariModel is CariListesiModel) {
-          viewModel.changeIsBaseSiparisEmpty(true);
-          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+        } else {
+          final cariModel = await getCari();
+          if (cariModel is CariListesiModel) {
+            viewModel.changeIsBaseSiparisEmpty(true);
+            BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+            BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+            BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+            BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+            BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+            BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+          }
         }
       }
 
@@ -374,12 +375,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         title: "Sipariş Bağlantısı",
         body: Column(
           children: [
-            const Row(
+            Row(
               children: [
-                Icon(Icons.info_outline),
-                Text("Cari veya Sipariş seçiniz."),
+                const Icon(Icons.info_outline).paddingOnly(right: UIHelper.lowSize),
+                const Text("Cari veya Sipariş seçiniz."),
               ],
-            ),
+            ).paddingAll(UIHelper.lowSize),
             CustomTextField(
               labelText: "Cari",
               controller: _cariKoduController,
