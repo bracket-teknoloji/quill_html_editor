@@ -158,7 +158,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 final model = AccountModel.instance
                                   ..aktifVeritabani = viewModel.selected["Şirket"]
                                   ..aktifIsletmeKodu = viewModel.selected["İşletme"]
-                                  ..aktifSubeKodu = viewModel.selected["Şube"];
+                                  ..aktifSubeKodu = viewModel.selected["Şube"]
+                                  ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
                                 dialogManager.showLoadingDialog("${viewModel.selected["Şirket"]} şirketine giriş yapılıyor.");
                                 GenericResponseModel<NetworkManagerMixin> response;
                                 response = await networkManager.dioPost<MainPageModel>(
