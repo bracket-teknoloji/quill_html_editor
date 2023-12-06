@@ -109,21 +109,25 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        final result = await getSiparisBaglantisi();
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
         BaseSiparisEditModel.instance.isNew = true;
-        final result = await getSiparisBaglantisi();
-        if (result ?? false) {
-          final cariModel = await getCari();
-          if (cariModel is CariListesiModel) {
-            viewModel.changeIsBaseSiparisEmpty(true);
-            BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-            BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-            BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-            BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-            BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-            BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
-          }
+        if (result != true) {
+          BaseSiparisEditModel.instance.belgeNo = null;
+          BaseSiparisEditModel.instance.cariKodu = null;
+          BaseSiparisEditModel.instance.kalemList = <KalemModel>[];
+          BaseSiparisEditModel.instance.arrBelgeNo = null;
+        }
+        final cariModel = await getCari();
+        if (cariModel is CariListesiModel) {
+          viewModel.changeIsBaseSiparisEmpty(true);
+          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
       }
 
