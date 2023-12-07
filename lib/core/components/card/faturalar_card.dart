@@ -122,7 +122,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     etiketSayisi: 1,
                     dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),
                   );
-                  await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
+                  await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(

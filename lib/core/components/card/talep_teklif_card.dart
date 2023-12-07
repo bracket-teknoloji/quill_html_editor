@@ -37,7 +37,7 @@ class TalepTeklifCard extends StatefulWidget {
     this.showEkAciklama,
     this.showMiktar,
     this.showVade,
-    this.onUpdated,
+    this.onUpdated, this.editTipiEnum,
   });
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
@@ -50,6 +50,7 @@ class TalepTeklifCard extends StatefulWidget {
   final bool? showMiktar;
   final bool? showVade;
   final TalepTeklifEnum talepTeklifEnum;
+  final EditTipiEnum? editTipiEnum;
 
   @override
   State<TalepTeklifCard> createState() => _TalepTeklifCardState();
@@ -156,7 +157,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             etiketSayisi: 1,
                             dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.belgeTuru, cariKodu: widget.model.cariKodu),
                           );
-                          await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true);
+                          await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                         },
                       ),
                       BottomSheetModel(
