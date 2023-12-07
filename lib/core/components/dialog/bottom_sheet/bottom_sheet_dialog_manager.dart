@@ -17,6 +17,7 @@ import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
@@ -931,7 +932,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar) async {
+  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar, {EditTipiEnum? editTipiEnum}) async {
     if (printModel.yaziciAdi == null) {
       final List<YaziciList?> yaziciListe = CacheManager.getAnaVeri?.paramModel?.yaziciList ?? <YaziciList?>[];
       if (yaziciListe.length == 1) {
@@ -954,7 +955,7 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
+          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {
