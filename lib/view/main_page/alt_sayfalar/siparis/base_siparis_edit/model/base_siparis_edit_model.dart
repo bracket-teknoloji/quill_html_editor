@@ -378,6 +378,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? arrBelgeNo;
   @HiveField(149)
   String? sonrakiRevizeNo;
+  @HiveField(150)
+  bool? teklifRevizeIslemi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -530,6 +532,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.uuid,
     this.arrBelgeNo,
     this.sonrakiRevizeNo,
+    this.teklifRevizeIslemi,
   });
 
   BaseSiparisEditModel._init();

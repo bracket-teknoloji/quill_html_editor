@@ -307,6 +307,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel sonrakiRevizeNo(String? sonrakiRevizeNo);
 
+  BaseSiparisEditModel teklifRevizeIslemi(bool? teklifRevizeIslemi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -464,6 +466,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? uuid,
     String? arrBelgeNo,
     String? sonrakiRevizeNo,
+    bool? teklifRevizeIslemi,
   });
 }
 
@@ -1008,6 +1011,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(sonrakiRevizeNo: sonrakiRevizeNo);
 
   @override
+  BaseSiparisEditModel teklifRevizeIslemi(bool? teklifRevizeIslemi) =>
+      this(teklifRevizeIslemi: teklifRevizeIslemi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1166,6 +1173,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? uuid = const $CopyWithPlaceholder(),
     Object? arrBelgeNo = const $CopyWithPlaceholder(),
     Object? sonrakiRevizeNo = const $CopyWithPlaceholder(),
+    Object? teklifRevizeIslemi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1770,6 +1778,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.sonrakiRevizeNo
           // ignore: cast_nullable_to_non_nullable
           : sonrakiRevizeNo as String?,
+      teklifRevizeIslemi: teklifRevizeIslemi == const $CopyWithPlaceholder()
+          ? _value.teklifRevizeIslemi
+          // ignore: cast_nullable_to_non_nullable
+          : teklifRevizeIslemi as bool?,
     );
   }
 }
@@ -3049,13 +3061,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       uuid: fields[116] as String?,
       arrBelgeNo: fields[148] as String?,
       sonrakiRevizeNo: fields[149] as String?,
+      teklifRevizeIslemi: fields[150] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(150)
+      ..writeByte(151)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3355,7 +3368,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(148)
       ..write(obj.arrBelgeNo)
       ..writeByte(149)
-      ..write(obj.sonrakiRevizeNo);
+      ..write(obj.sonrakiRevizeNo)
+      ..writeByte(150)
+      ..write(obj.teklifRevizeIslemi);
   }
 
   @override
@@ -3859,6 +3874,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       yeniKayit: json['_YeniKayit'] as bool?,
       arrBelgeNo: json['ARR_BELGE_NO'] as String?,
       sonrakiRevizeNo: json['SONRAKI_REVIZE_NO'] as String?,
+      teklifRevizeIslemi: json['TEKLIF_REVIZE_ISLEMI'] as bool?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4023,6 +4039,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('SIPARISLESTI', instance.siparislesti);
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   writeNotNull('SONRAKI_REVIZE_NO', instance.sonrakiRevizeNo);
+  writeNotNull('TEKLIF_REVIZE_ISLEMI', instance.teklifRevizeIslemi);
   return val;
 }
 
