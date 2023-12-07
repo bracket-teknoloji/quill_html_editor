@@ -342,6 +342,18 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
   }
 
   @override
+  void setCariKodu(String? value) {
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setCariKodu');
+    try {
+      return super.setCariKodu(value);
+    } finally {
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchBar() {
     final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
         .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchBar');

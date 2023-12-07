@@ -218,7 +218,8 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                 ),
                 CustomTextField(
                   labelText: "Cari",
-                  valueText: widget.model?.cariKodu,
+                  // valueText: widget.model?.cariKodu,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model?.cariKodu ?? "")),
                   isMust: true,
                   readOnly: true,
                   controller: cariController,
@@ -270,7 +271,11 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
 
   Future<void> getData() async {
     if (viewModel.model == null) {
-      viewModel.setModel(await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?);
+      final result = await Get.toNamed("mainPage/cariListesi", arguments: true) as CariListesiModel?;
+      if (result is CariListesiModel) {
+        viewModel.setModel(result);
+        // viewModel.setCariKodu(result.cariKodu);
+      }
     }
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";

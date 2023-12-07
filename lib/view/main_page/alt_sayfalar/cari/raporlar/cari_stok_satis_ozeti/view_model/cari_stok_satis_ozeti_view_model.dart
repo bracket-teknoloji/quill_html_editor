@@ -112,6 +112,9 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   void setModel(CariListesiModel? value) => model = value;
 
   @action
+  void setCariKodu(String? value) => model = model?.copyWith(cariKodu: value);
+
+  @action
   void setSearchBar() => searchBar = !searchBar;
 
   @observable
