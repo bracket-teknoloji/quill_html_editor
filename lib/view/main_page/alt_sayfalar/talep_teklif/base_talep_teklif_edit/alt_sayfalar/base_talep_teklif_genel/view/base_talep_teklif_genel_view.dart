@@ -37,7 +37,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseTalepTeklifGenelViewModel viewModel = BaseTalepTeklifGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize;
   bool get enable => widget.model.enable;
   TalTekParam? get taltekParam => parametreModel.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == model.belgeTuru);
 
