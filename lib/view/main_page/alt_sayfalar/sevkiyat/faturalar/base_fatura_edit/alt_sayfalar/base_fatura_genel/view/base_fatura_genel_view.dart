@@ -35,7 +35,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala ||siparisModel.isRevize;
   bool get enable => widget.model.enable;
 
   late final TextEditingController _belgeNoController;
