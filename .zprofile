@@ -1,2 +1,2 @@
-export PATH=$PATH:/Users/bracketteknoloji/development/flutter/bin
+export PATH=$PATH:/Users/bracketteknoloji/fvm/default/bin
 
