@@ -60,48 +60,51 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
             ),
           ],
         ),
-        body: Observer(
-          builder: (_) {
-            if (viewModel.surumYenilikleriModelList == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
-            } else if ((viewModel.getSurumYenilikleriModelList?.length ?? 0) < 1) {
-              return const Center(child: Text("Sonuç bulunamadı."));
-            } else {
-              return ListView.builder(
-                itemCount: viewModel.getSurumYenilikleriModelList?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final SurumYenilikleriModel? item = viewModel.getSurumYenilikleriModelList?[index];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(item?.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          Text(item?.tarih?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0)).toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        padding: UIHelper.zeroPadding,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: item?.liste?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          final ValueList? newItem = item?.liste?[index];
-                          return Card(
-                            elevation: 0,
-                            child: ListTile(
-                              title: Text("• ${newItem?.aciklama ?? ""}"),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ).paddingAll(UIHelper.lowSize);
-                },
-              );
-            }
-          },
-        ).paddingAll(UIHelper.lowSize),
+        body: RefreshIndicator.adaptive(
+          onRefresh: () async => await viewModel.getData(),
+          child: Observer(
+            builder: (_) {
+              if (viewModel.surumYenilikleriModelList == null) {
+                return const Center(child: CircularProgressIndicator.adaptive());
+              } else if ((viewModel.getSurumYenilikleriModelList?.length ?? 0) < 1) {
+                return const Center(child: Text("Sonuç bulunamadı."));
+              } else {
+                return ListView.builder(
+                  itemCount: viewModel.getSurumYenilikleriModelList?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final SurumYenilikleriModel? item = viewModel.getSurumYenilikleriModelList?[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(item?.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            Text(item?.tarih?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0)).toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          padding: UIHelper.zeroPadding,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: item?.liste?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            final ValueList? newItem = item?.liste?[index];
+                            return Card(
+                              elevation: 0,
+                              child: ListTile(
+                                title: Text("• ${newItem?.aciklama ?? ""}"),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ).paddingAll(UIHelper.lowSize);
+                  },
+                );
+              }
+            },
+          ).paddingAll(UIHelper.lowSize),
+        ),
       );
 }
