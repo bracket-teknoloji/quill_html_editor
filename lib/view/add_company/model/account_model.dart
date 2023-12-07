@@ -197,6 +197,7 @@ class AccountModel with NetworkManagerMixin {
     if (kIsWeb) {
       platform = "android";
       final webInfo = await deviceInfo.webBrowserInfo;
+      cihazSistemVersiyonu = webInfo.appVersion;
       cihazMarkasi = webInfo.vendor;
       cihazModeli = webInfo.userAgent;
       cihazKimligi = base64Encode(
