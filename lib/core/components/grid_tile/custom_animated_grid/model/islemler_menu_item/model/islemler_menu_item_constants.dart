@@ -128,9 +128,10 @@ class IslemlerMenuItemConstants<T> {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList.add(siparisPDFGoruntule);
+        islemlerList.add(talTekRevizeEt);
         islemlerList.add(saticiSiparisiOlustur);
         islemlerList.add(musteriSiparisiOlustur);
-        islemlerList.add(satisIrsaliyeOlustur);
+        islemlerList.add(faturaOlustur);
         if (siparisModel.siparislesti == "E" || siparisModel.faturalasti == "E") {
           islemlerList.add(belgeBaglantilari);
         }
@@ -321,8 +322,10 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList =
-              (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
+          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? [])
+              .where((element) => element.ozelKod == siparisTipi?.getPrintValue)
+              .whereType<NetFectDizaynList>()
+              .toList();
           final result =
               await bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
@@ -581,13 +584,22 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
+  GridItemModel get talTekRevizeEt => GridItemModel.islemler(
+        title: "Revize Et",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.revize, editTipiEnum: siparisTipi));
+          }
+        },
+      );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
         title: "${siparisTipi?.getName} Oluştur",
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-
             final result =
                 await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result?.belgeNo));
@@ -600,10 +612,9 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-
             final result =
                 await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
-            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi));
+            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi, belgeNo: result?.belgeNo));
           }
         },
       );
