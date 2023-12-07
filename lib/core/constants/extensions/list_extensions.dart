@@ -14,30 +14,33 @@ extension ListExtension<T> on List<T> {
           child: e as Widget,
         ),
       ).toList();
-}
 
-// an extension on a list of widget to add sized box between items
-extension ListExtension2<T> on List<T> {
   List<Widget> get withSizedBox => map(
         (e) => SizedBox(
           width: (Get.width - UIHelper.midSize) * 0.45,
           child: e as Widget,
         ),
       ).toList();
+
+  List<T> get nullCheck => where((element) => element != null).toList().cast<T>();
 }
+
 
 // an extension on a list or ObservableList to check is empty or null
 extension ListExtension3<T> on List<T>? {
   bool get isEmptyOrNull => this == null || this!.isEmpty;
+
+  void addIfConditionTrue(bool condition, T item) {
+    if (condition) {
+      this!.add(item);
+    }
+  }
 }
 
 extension ListExtension4<T> on List? {
   List<T> cast(T model) => this!.map((e) => e as T).toList().cast<T>();
 }
 
-extension NotNullExtension<T> on List<T> {
-  List<T> get nullCheck => where((element) => element != null).toList().cast<T>();
-}
 
 extension ListGenericNullCheck<T> on List<T?> {
   List<T> get nullCheckWithGeneric => whereType<T>().toList();
