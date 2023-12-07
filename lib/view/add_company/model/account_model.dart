@@ -195,13 +195,14 @@ class AccountModel with NetworkManagerMixin {
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
     if (kIsWeb) {
+      platform = "android";
       final webInfo = await deviceInfo.webBrowserInfo;
       cihazMarkasi = webInfo.vendor;
       cihazModeli = webInfo.userAgent;
-      ozelCihazKimligi = webInfo.userAgent;
       cihazKimligi = base64Encode(
         utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"),
       );
+      ozelCihazKimligi = cihazKimligi;
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
