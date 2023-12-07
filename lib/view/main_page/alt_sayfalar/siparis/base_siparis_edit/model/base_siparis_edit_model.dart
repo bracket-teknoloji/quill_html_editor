@@ -537,6 +537,20 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   BaseSiparisEditModel._init();
 
+  bool get siparislestiMi => siparislesti == "E";
+
+  bool get faturalastiMi => faturalasti == "E"; 
+
+  bool get irsaliyelestiMi => irsaliyelesti == "E";
+
+  bool get kapaliMi => tipi == 1;
+
+  bool get stekMi => belgeTuru == "STEK";
+
+  bool get stalMi => belgeTuru == "STAL";
+
+  bool get atalMi => belgeTuru == "ATAL";
+
   bool kalemEkliMi(StokListesiModel? model) {
     if (model != null) {
       return kalemList?.any((element) => element.stokKodu == model.stokKodu) ?? false;
