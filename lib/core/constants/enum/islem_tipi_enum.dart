@@ -35,9 +35,9 @@ extension IslemTipiEnumExtension on IslemTipiEnum {
       return "/mainPage/siparisEdit";
     } else if (this == IslemTipiEnum.kasa) {
       return "/mainPage/kasaEdit";
-    }else if (this == IslemTipiEnum.fatura){
+    } else if (this == IslemTipiEnum.fatura) {
       return "/mainPage/faturaEdit";
-    }else if (this == IslemTipiEnum.talepTeklif){
+    } else if (this == IslemTipiEnum.talepTeklif) {
       return "/mainPage/talTekEdit";
     } else {
       return "/mainPage/rapor";
