@@ -220,6 +220,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                     builder: (_) => TalepTeklifCard(
                       model: model,
                       talepTeklifEnum: widget.talepTeklifEnum,
+                      editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                       showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
