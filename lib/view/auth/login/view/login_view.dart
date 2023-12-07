@@ -280,7 +280,7 @@ class _LoginViewState extends BaseState<LoginView> {
     }
     // dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
-
+    log(jsonEncode(instance.toJson()));
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       final response = await networkManager.getToken(
         path: ApiUrls.token,

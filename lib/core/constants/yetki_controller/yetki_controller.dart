@@ -22,7 +22,7 @@ final class YetkiController {
   /// Eğer Admin ise `true` döndürür.
   /// Bunu yapma sebebim `null` gelen verilerin admin sebepli mi yoksa yetki sebepli mi olduğunu anlamak
   ///
-  /// ! EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı
+  /// ! `EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı`
   // bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
   // * Adminse artık her şeye erişiyor 1.3.0
   bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
@@ -331,6 +331,24 @@ final class YetkiController {
   bool get satisTalebiEkle => _isTrue(_yetkiModel?.taltekStalKaydet);
 
   bool talepTeklifAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.taltekStekAciklamaAlanlari?.contains(index) ?? false));
+
+  bool taltekOnayIslemleri(String? belgeTuru) {
+    if (belgeTuru == "STEK") {
+      return stekOnayIslemleri;
+    } else if (belgeTuru == "STAL") {
+      return stalOnayIslemleri;
+    } else if (belgeTuru == "ATAL") {
+      return atalOnayIslemleri;
+    }
+    return false;
+  }
+
+  // bool get stekDigersSekmesiGelsin => _isTrue(_yetkiModel?.diger);
+
+
+  bool get stekOnayIslemleri => _isTrue(_yetkiModel?.taltekStekOnayIslemleri ?? false);
+  bool get stalOnayIslemleri => _isTrue(_yetkiModel?.taltekStalOnayIslemleri ?? false);
+  bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 }

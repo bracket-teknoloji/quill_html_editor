@@ -375,6 +375,13 @@ class NetworkManager {
     return null;
   }
 
+  // Future<CariListesiModel?> getCariModel(String cariKodu) async {
+  //   final result = await dioGet<CariListesiModel>(path: ApiUrls.getCariler, bodyModel: CariListesiModel(), queryParameters: {"CariKodu": cariKodu});
+  //   if (result.success ?? false) {
+  //     return result.data.first;
+  //   }
+  // }
+
   static String get getBaseUrl {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
     return "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/") : account?.wsLan}/";

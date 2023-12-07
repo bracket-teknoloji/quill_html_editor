@@ -380,6 +380,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? sonrakiRevizeNo;
   @HiveField(150)
   bool? teklifRevizeIslemi;
+  @HiveField(151)
+  String? onaylayankul;
+  @HiveField(152)
+  DateTime? onaytarihi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -533,23 +537,37 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.arrBelgeNo,
     this.sonrakiRevizeNo,
     this.teklifRevizeIslemi,
+    this.onaylayankul,
+    this.onaytarihi,
   });
 
   BaseSiparisEditModel._init();
 
   bool get siparislestiMi => siparislesti == "E";
 
-  bool get faturalastiMi => faturalasti == "E"; 
+  bool get faturalastiMi => faturalasti == "E";
 
   bool get irsaliyelestiMi => irsaliyelesti == "E";
 
   bool get kapaliMi => tipi == 1;
+
+  bool get onaylandiMi => onaylayankul != null;
+
+  bool get onaydaMi => tipi == 3;
 
   bool get stekMi => belgeTuru == "STEK";
 
   bool get stalMi => belgeTuru == "STAL";
 
   bool get atalMi => belgeTuru == "ATAL";
+
+  bool get teklifRevizeEdilmisMi => sonrakiRevizeNo != null;
+
+  bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
+
+  bool get teklifSipariseDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
+
+  bool get teklifRevizeEdilebilirMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
 
   bool kalemEkliMi(StokListesiModel? model) {
     if (model != null) {
@@ -978,7 +996,7 @@ class KalemModel with NetworkManagerMixin {
     this.arrBelgeNo,
   });
 
-  bool get dovizliMi => dovizKodu != null && dovizKodu != 0;
+  bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
 
   String get faturaKalemAciklama =>
       "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";

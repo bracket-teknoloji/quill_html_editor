@@ -309,6 +309,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel teklifRevizeIslemi(bool? teklifRevizeIslemi);
 
+  BaseSiparisEditModel onaylayankul(String? onaylayankul);
+
+  BaseSiparisEditModel onaytarihi(DateTime? onaytarihi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -467,6 +471,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? arrBelgeNo,
     String? sonrakiRevizeNo,
     bool? teklifRevizeIslemi,
+    String? onaylayankul,
+    DateTime? onaytarihi,
   });
 }
 
@@ -1015,6 +1021,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(teklifRevizeIslemi: teklifRevizeIslemi);
 
   @override
+  BaseSiparisEditModel onaylayankul(String? onaylayankul) =>
+      this(onaylayankul: onaylayankul);
+
+  @override
+  BaseSiparisEditModel onaytarihi(DateTime? onaytarihi) =>
+      this(onaytarihi: onaytarihi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1174,6 +1188,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? arrBelgeNo = const $CopyWithPlaceholder(),
     Object? sonrakiRevizeNo = const $CopyWithPlaceholder(),
     Object? teklifRevizeIslemi = const $CopyWithPlaceholder(),
+    Object? onaylayankul = const $CopyWithPlaceholder(),
+    Object? onaytarihi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1782,6 +1798,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.teklifRevizeIslemi
           // ignore: cast_nullable_to_non_nullable
           : teklifRevizeIslemi as bool?,
+      onaylayankul: onaylayankul == const $CopyWithPlaceholder()
+          ? _value.onaylayankul
+          // ignore: cast_nullable_to_non_nullable
+          : onaylayankul as String?,
+      onaytarihi: onaytarihi == const $CopyWithPlaceholder()
+          ? _value.onaytarihi
+          // ignore: cast_nullable_to_non_nullable
+          : onaytarihi as DateTime?,
     );
   }
 }
@@ -3062,13 +3086,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       arrBelgeNo: fields[148] as String?,
       sonrakiRevizeNo: fields[149] as String?,
       teklifRevizeIslemi: fields[150] as bool?,
+      onaylayankul: fields[151] as String?,
+      onaytarihi: fields[152] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(151)
+      ..writeByte(153)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3370,7 +3396,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(149)
       ..write(obj.sonrakiRevizeNo)
       ..writeByte(150)
-      ..write(obj.teklifRevizeIslemi);
+      ..write(obj.teklifRevizeIslemi)
+      ..writeByte(151)
+      ..write(obj.onaylayankul)
+      ..writeByte(152)
+      ..write(obj.onaytarihi);
   }
 
   @override
@@ -3875,6 +3905,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       arrBelgeNo: json['ARR_BELGE_NO'] as String?,
       sonrakiRevizeNo: json['SONRAKI_REVIZE_NO'] as String?,
       teklifRevizeIslemi: json['TEKLIF_REVIZE_ISLEMI'] as bool?,
+      onaylayankul: json['ONAYLAYANKUL'] as String?,
+      onaytarihi: json['ONAYTARIHI'] == null
+          ? null
+          : DateTime.parse(json['ONAYTARIHI'] as String),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4040,6 +4074,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   writeNotNull('SONRAKI_REVIZE_NO', instance.sonrakiRevizeNo);
   writeNotNull('TEKLIF_REVIZE_ISLEMI', instance.teklifRevizeIslemi);
+  writeNotNull('ONAYLAYANKUL', instance.onaylayankul);
+  writeNotNull('ONAYTARIHI', instance.onaytarihi?.toIso8601String());
   return val;
 }
 

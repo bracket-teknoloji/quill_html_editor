@@ -58,7 +58,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           tabController.animateTo(tabController.previousIndex);
         }
       }
-      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) &&
+          BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty &&
+          widget.model.baseEditEnum != BaseEditEnum.goruntule) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);
@@ -163,7 +165,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         title: "PDF Görüntüle",
                         iconWidget: Icons.picture_as_pdf_outlined,
                         onTap: () async {
-                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? [])
+                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
                               .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
                               .whereType<NetFectDizaynList>()
                               .toList();

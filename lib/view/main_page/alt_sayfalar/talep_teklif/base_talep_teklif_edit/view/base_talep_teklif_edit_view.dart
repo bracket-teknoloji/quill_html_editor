@@ -50,7 +50,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
 
   @override
   void initState() {
-    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
     if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
       tabController.addListener(() {
         if (tabController.indexIsChanging && tabController.previousIndex == 0) {
@@ -60,7 +60,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
             tabController.animateTo(tabController.previousIndex);
           }
         }
-        if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+        if (tabController.index == (3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
           viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
@@ -100,15 +100,10 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
-            BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.belgeNo = widget.model.model?.belgeNo;
           } else if (widget.model.baseEditEnum == BaseEditEnum.revize) {
             BaseSiparisEditModel.instance.isNew = true;
-            BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.teklifRevizeIslemi = true;
-            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           }
         } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
           BaseSiparisEditModel.resetInstance();
@@ -173,7 +168,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                         title: "PDF Görüntüle",
                         iconWidget: Icons.picture_as_pdf_outlined,
                         onTap: () async {
-                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? [])
+                          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
                               .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
                               .whereType<NetFectDizaynList>()
                               .toList();
@@ -263,7 +258,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               controller: tabController,
               tabs: [
                 const Tab(child: Text("Genel")),
-                if (yetkiController.siparisDigerSekmesiGoster) const Tab(child: Text("Diğer")),
+                const Tab(child: Text("Diğer")),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
@@ -283,7 +278,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                     }
                   },
                 ),
-                if (yetkiController.siparisDigerSekmesiGoster) BaseTalepTeklifDigerView(model: model),
+                BaseTalepTeklifDigerView(model: model),
                 BaseTalepTeklifKalemlerView(model: model),
                 BaseTalepTeklifToplamlarView(model: model),
               ].whereType<Widget>().toList(),

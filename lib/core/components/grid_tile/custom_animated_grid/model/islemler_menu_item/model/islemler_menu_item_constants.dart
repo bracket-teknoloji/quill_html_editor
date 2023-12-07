@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
@@ -50,6 +51,8 @@ class IslemlerMenuItemConstants<T> {
   // T? get model2 => model;
   DialogManager get _dialogManager => DialogManager();
   NetworkManager get _networkManager => NetworkManager();
+  ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
+  YetkiController get _yetkiController => YetkiController();
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
@@ -76,7 +79,7 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemtipi == IslemTipiEnum.siparis) {
       // islemlerList.add(irsaliyeOlustur);
       // islemlerList.add(faturaOlustur);
-      islemlerList.add(belgeyiKapat);
+      islemlerList.add(belgeyiKapatAc);
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(cariKoduDegistir);
       islemlerList.add(belgeNoDegistir);
@@ -128,22 +131,20 @@ class IslemlerMenuItemConstants<T> {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList.add(siparisPDFGoruntule);
-        islemlerList.add(talTekRevizeEt);
+        islemlerList.addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
+
         islemlerList.add(saticiSiparisiOlustur);
         islemlerList.add(musteriSiparisiOlustur);
-        islemlerList.add(faturaOlustur);
-        if (siparisModel.siparislesti == "E" || siparisModel.faturalasti == "E") {
-          islemlerList.add(belgeBaglantilari);
-        }
-        islemlerList.add(belgeyiKapat);
+        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
+        islemlerList.add(belgeyiKapatAc);
         islemlerList.add(kopyala);
         islemlerList.add(cariKoduDegistir);
-        if (siparisModel.tipi != 1) {
-          islemlerList.add(belgeNoDegistir);
-        }
+        islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
+        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) &&_yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
-      islemlerList.add(belgeyiKapat);
+      islemlerList.add(belgeyiKapatAc);
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(cariKoduDegistir);
       islemlerList.add(kopyala);
@@ -163,7 +164,7 @@ class IslemlerMenuItemConstants<T> {
       );
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
-  GridItemModel? get belgeyiKapat {
+  GridItemModel? get belgeyiKapatAc {
     if (model is BaseSiparisEditModel) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       if (siparisModel.tipi != 1) {
@@ -213,7 +214,7 @@ class IslemlerMenuItemConstants<T> {
       data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson(),
     );
     if (result.success == true) {
-      DialogManager().showSuccessSnackBar("Başarılı");
+      _dialogManager.showSuccessSnackBar("Başarılı");
       return result.success!;
     } else {
       return false;
@@ -284,7 +285,7 @@ class IslemlerMenuItemConstants<T> {
                       child: ElevatedButton(
                         onPressed: () async {
                           if (formKey.currentState?.validate() ?? false) {
-                            final result = await NetworkManager().dioPost<SiparisEditRequestModel>(
+                            final result = await _networkManager.dioPost<SiparisEditRequestModel>(
                               path: ApiUrls.saveFatura,
                               showLoading: true,
                               bodyModel: SiparisEditRequestModel(),
@@ -298,7 +299,7 @@ class IslemlerMenuItemConstants<T> {
                             );
                             if (result.success == true) {
                               updatePage = true;
-                              DialogManager().showSuccessSnackBar("Başarılı");
+                              _dialogManager.showSuccessSnackBar("Başarılı");
                               Get.back();
                               return;
                             }
@@ -322,7 +323,7 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? [])
+          final List<NetFectDizaynList> dizaynList = (_paramModel.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? [])
               .where((element) => element.ozelKod == siparisTipi?.getPrintValue)
               .whereType<NetFectDizaynList>()
               .toList();
@@ -457,15 +458,15 @@ class IslemlerMenuItemConstants<T> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (controller.text != "") {
-                            DialogManager().showAreYouSureDialog(() async {
-                              final result = await NetworkManager().dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
+                            _dialogManager.showAreYouSureDialog(() async {
+                              final result = await _networkManager.dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
                               if (result.success == true) {
                                 Get.back();
-                                DialogManager().showSuccessSnackBar("Başarılı");
+                                _dialogManager.showSuccessSnackBar("Başarılı");
                               }
                             });
                           } else {
-                            DialogManager().showAlertDialog("Lütfen Cari Kodu Giriniz");
+                            _dialogManager.showAlertDialog("Lütfen Cari Kodu Giriniz");
                           }
                         },
                         child: const Text("Kaydet"),
@@ -563,6 +564,15 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
+  GridItemModel get cariIslemleri => GridItemModel.islemler(
+        title: "Cari İşlemleri",
+        iconData: Icons.hub_outlined,
+        onTap: () async {
+          CariNetworkManager.getCariListesi();
+          // _dialogManager.showCariGridViewDialog(model);
+        },
+      );
+
   GridItemModel get saticiSiparisiOlustur => GridItemModel.islemler(
         title: "Satıcı Siparişi Oluştur",
         iconData: Icons.list_alt_outlined,
@@ -586,16 +596,17 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get talTekRevizeEt => GridItemModel.islemler(
         title: "Revize Et",
-        iconData: Icons.list_alt_outlined,
+        iconData: Icons.app_registration_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.revize, editTipiEnum: siparisTipi));
+            final result = await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.revize, editTipiEnum: siparisTipi));
+            Get.back(result: result);
           }
         },
       );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
-        title: "${siparisTipi?.getName} Oluştur",
+        title: "Satış İrsaliyesi Oluştur",
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
@@ -618,4 +629,33 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
+
+  GridItemModel get talTekOnayla {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: siparisModel.onaydaMi ? "Onayla" : "Onayı Kaldır",
+      iconData: siparisModel.onaydaMi ? Icons.check_circle_outline : Icons.cancel_outlined,
+      onTap: () async {
+        final BaseSiparisEditModel newSiparisModel = BaseSiparisEditModel()
+          ..belgeNo = siparisModel.belgeNo
+          ..belgeTuru = siparisModel.belgeTuru
+          ..pickerBelgeTuru = siparisModel.belgeTuru
+          ..cariKodu = siparisModel.cariKodu
+          ..islemKodu = siparisModel.onaydaMi ? 1 : 3
+          ..tag = "FaturaModel";
+        final result = await _networkManager.dioPost<BaseSiparisEditModel>(
+          path: ApiUrls.saveFatura,
+          bodyModel: BaseSiparisEditModel(),
+          data: newSiparisModel.toJson(),
+          showLoading: true,
+        );
+        if (result.success == true) {
+          _dialogManager.showSuccessSnackBar("Kayıt Başarılı");
+          return true;
+        } else {
+          return false;
+        }
+      },
+    );
+  }
 }

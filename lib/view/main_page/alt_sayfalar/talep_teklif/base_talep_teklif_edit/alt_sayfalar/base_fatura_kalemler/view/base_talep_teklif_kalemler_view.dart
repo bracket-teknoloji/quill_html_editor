@@ -185,7 +185,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                       children: [
                         TextSpan(text: "Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
                         TextSpan(text: "\n(${kalemModel?.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
-                            .yetkiVarMi(kalemModel?.dovizAdi != null),
+                            .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
                     ).yetkiVarMi(kalemModel?.brutFiyat != null),
                   ),

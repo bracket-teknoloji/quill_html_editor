@@ -212,7 +212,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                   const ColorfulBadge(label: Text("Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.faturalasti == "E"),
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(widget.model.tipi == 1),
                   const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
-                  // ColorfulBadge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(widget.model.irsaliyelesti == "E"),
+                  ColorfulBadge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(widget.model.irsaliyelesti == "E"),
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),

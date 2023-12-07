@@ -3,7 +3,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/belge_tipi_model.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -98,7 +97,8 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
-        await getBelgeNo();
+        await getBelgeNo(null);
+        // BaseSiparisEditModel.instance.belgeNo= await networkManager.getSiradakiBelgeNo(SiradakiBelgeNoModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, sirketKodu: model.sirketKodu));
       }
     });
     super.initState();
@@ -163,7 +163,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   maxLength: 15,
                   suffix: IconButton(
                     onPressed: () async {
-                      await getBelgeNo();
+                      await getBelgeNo(_belgeNoController.text);
                     },
                     icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                   ),
@@ -431,11 +431,11 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     }
   }
 
-  Future<void> getBelgeNo() async {
+  Future<void> getBelgeNo(String? seri) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      queryParameters: {"Seri": seri, "BelgeTipi": widget.model.model?.belgeTuru, "EIrsaliye": "H"},
       showLoading: true,
     );
     if (result.success == true) {

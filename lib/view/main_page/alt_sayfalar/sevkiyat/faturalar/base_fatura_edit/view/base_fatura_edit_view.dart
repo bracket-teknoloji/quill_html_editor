@@ -189,7 +189,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                           title: "PDF Görüntüle",
                           iconWidget: Icons.picture_as_pdf_outlined,
                           onTap: () async {
-                            final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? <NetFectDizaynList>[])
+                            final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? <NetFectDizaynList>[])
                                 .where((NetFectDizaynList element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
                                 .whereType<NetFectDizaynList>()
                                 .toList();
