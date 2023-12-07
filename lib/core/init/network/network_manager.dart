@@ -126,7 +126,17 @@ class NetworkManager {
       final Map<String, dynamic> queries = getStandardQueryParameters();
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
-      response = await dio.get(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+      response = await dio.request(
+        path,
+        queryParameters: queries,
+        cancelToken: CancelToken(),
+        options: Options(
+          headers: head,
+          method: HttpTypes.GET,
+          contentType: "application/json",
+        ),
+        data: data,
+      );
     } catch (e) {
       if (showError) {
         await DialogManager().showAlertDialog(e.toString());
@@ -172,7 +182,18 @@ class NetworkManager {
       final Map<String, dynamic> queries = getStandardQueryParameters();
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
-      response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+      // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+      response = await dio.request(
+        path,
+        queryParameters: queries,
+        cancelToken: CancelToken(),
+        options: Options(
+          headers: head,
+          method: HttpTypes.POST,
+          contentType: "application/json",
+        ),
+        data: data,
+      );
     } catch (e) {
       if (showError) {
         if (showLoading) {
