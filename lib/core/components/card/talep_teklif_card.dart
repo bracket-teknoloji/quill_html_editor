@@ -8,6 +8,7 @@ import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
+import "package:picker/core/constants/extensions/string_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
@@ -37,7 +38,8 @@ class TalepTeklifCard extends StatefulWidget {
     this.showEkAciklama,
     this.showMiktar,
     this.showVade,
-    this.onUpdated, this.editTipiEnum,
+    this.onUpdated,
+    this.editTipiEnum,
   });
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
@@ -214,7 +216,10 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-              Text(widget.model.sonrakiRevizeNo ?? "").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(widget.model.sonrakiRevizeNo != null),
+              Text(
+                "${(widget.model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
+                style: TextStyle(color: UIHelper.primaryColor),
+              ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(widget.model.sonrakiRevizeNo != null),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
                   // mainAxisAlignment: MainAxisAlignment.start,
