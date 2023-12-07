@@ -101,25 +101,31 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
-            BaseSiparisEditModel.instance.pickerBelgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+          } else if (widget.model.baseEditEnum == BaseEditEnum.revize) {
+            BaseSiparisEditModel.instance.isNew = true;
+            BaseSiparisEditModel.instance.belgeNo = null;
+            BaseSiparisEditModel.instance.teklifRevizeIslemi = true;
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           }
-        }
-      } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
-        BaseSiparisEditModel.resetInstance();
-        BaseSiparisEditModel.instance.tarih = DateTime.now();
-        BaseSiparisEditModel.instance.isNew = true;
-        final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-        if (result is CariListesiModel) {
-          viewModel.changeIsBaseSiparisEmpty(true);
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
+        } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
+          BaseSiparisEditModel.resetInstance();
+          BaseSiparisEditModel.instance.tarih = DateTime.now();
+          BaseSiparisEditModel.instance.isNew = true;
+          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+          if (result is CariListesiModel) {
+            viewModel.changeIsBaseSiparisEmpty(true);
+            BaseSiparisEditModel.instance.tag = "FaturaModel";
+            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+            BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
+            BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
+            BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
+            BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
+            BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
+            BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
+          }
         }
       }
 
@@ -188,7 +194,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                                   dicParams: DicParams(
                                     belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                     cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                    belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+                                    belgeTipi: widget.model.editTipiEnum?.rawValue,
                                   ),
                                 ),
                               ),
