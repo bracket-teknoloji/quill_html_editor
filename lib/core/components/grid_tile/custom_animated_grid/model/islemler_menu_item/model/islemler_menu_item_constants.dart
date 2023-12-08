@@ -42,7 +42,6 @@ import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
-  BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
   IslemTipiEnum islemtipi;
   ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
   EditTipiEnum? siparisTipi;
@@ -53,6 +52,8 @@ class IslemlerMenuItemConstants<T> {
   NetworkManager get _networkManager => NetworkManager();
   ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
   YetkiController get _yetkiController => YetkiController();
+  BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
+
   IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemtipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
@@ -132,16 +133,15 @@ class IslemlerMenuItemConstants<T> {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList.add(siparisPDFGoruntule);
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
-
-        islemlerList.add(saticiSiparisiOlustur);
-        islemlerList.add(musteriSiparisiOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur);
+        islemlerList.addIfConditionTrue((siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi, musteriSiparisiOlustur);
         islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(belgeyiKapatAc);
+        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.add(kopyala);
         islemlerList.add(cariKoduDegistir);
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
-        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) &&_yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
+        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
       islemlerList.add(belgeyiKapatAc);
@@ -232,7 +232,7 @@ class IslemlerMenuItemConstants<T> {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
           final formKey = GlobalKey<FormState>();
           var updatePage = false;
-          await bottomSheetDialogManager.showBottomSheetDialog(
+          await _bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "Belge No Değiştir",
             body: Column(
@@ -323,12 +323,10 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList = (_paramModel.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? [])
-              .where((element) => element.ozelKod == siparisTipi?.getPrintValue)
-              .whereType<NetFectDizaynList>()
-              .toList();
+          final List<NetFectDizaynList> dizaynList =
+              (_paramModel.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
           final result =
-              await bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+              await _bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
             // Get.back();
             Get.to(
@@ -360,7 +358,7 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.share_outlined,
         onTap: () async {
           final CariListesiModel newModel = model as CariListesiModel;
-          final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+          final result = await _bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
             context,
             title: "Paylaş",
             groupValues: List.generate(7, (index) => true),
@@ -390,7 +388,7 @@ class IslemlerMenuItemConstants<T> {
           final KodDegistirModel kodDegistirModel = KodDegistirModel()
             ..kaynakSil = "H"
             ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariKodu : null);
-          await bottomSheetDialogManager.showBottomSheetDialog(
+          await _bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "Cari Kodu Değiştir",
             body: Column(
@@ -538,7 +536,7 @@ class IslemlerMenuItemConstants<T> {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             final result =
-                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             if (result is KalemListModel) {
               final BaseSiparisEditModel newModel = BaseSiparisEditModel(belgeTuru: result.belgeTipi, belgeNo: result.belgeNo, cariKodu: result.cariKodu);
               if (result.belgeTipi == "MS") {
@@ -612,7 +610,7 @@ class IslemlerMenuItemConstants<T> {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             final result =
-                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result?.belgeNo));
           }
         },
@@ -624,7 +622,7 @@ class IslemlerMenuItemConstants<T> {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             final result =
-                await BottomSheetDialogManager().showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi, belgeNo: result?.belgeNo));
           }
         },
