@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/belge_tipi_model.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -435,7 +436,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": seri, "BelgeTipi": widget.model.model?.belgeTuru, "EIrsaliye": "H"},
+      queryParameters: {"Seri": seri, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H"},
       showLoading: true,
     );
     if (result.success == true) {

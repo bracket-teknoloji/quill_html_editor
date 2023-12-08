@@ -10,14 +10,12 @@ part of 'base_talep_teklif_editing_view_model.dart';
 
 mixin _$BaseTalepTeklifEditingViewModel
     on _BaseTalepTeklifEditingViewModelBase, Store {
-  Computed<BaseSiparisEditModel>? _$baseSiparisEditModelComputed;
+  Computed<BaseSiparisEditModel>? _$modelComputed;
 
   @override
-  BaseSiparisEditModel get baseSiparisEditModel =>
-      (_$baseSiparisEditModelComputed ??= Computed<BaseSiparisEditModel>(
-              () => super.baseSiparisEditModel,
-              name:
-                  '_BaseTalepTeklifEditingViewModelBase.baseSiparisEditModel'))
+  BaseSiparisEditModel get model =>
+      (_$modelComputed ??= Computed<BaseSiparisEditModel>(() => super.model,
+              name: '_BaseTalepTeklifEditingViewModelBase.model'))
           .value;
   Computed<int>? _$getKalemCountComputed;
 
@@ -232,7 +230,7 @@ isValid: ${isValid},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
-baseSiparisEditModel: ${baseSiparisEditModel},
+model: ${model},
 getKalemCount: ${getKalemCount}
     ''';
   }

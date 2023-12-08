@@ -178,7 +178,6 @@ class PickerApp extends StatelessWidget {
             page: () => KalemEkleView(
               stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
               kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
-              editTipiEnum: BaseSiparisEditModel.instance.getEditTipiEnum,
             ),
           ),
           GetPage(

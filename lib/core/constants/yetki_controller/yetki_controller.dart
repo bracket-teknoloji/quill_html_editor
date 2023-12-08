@@ -29,6 +29,10 @@ final class YetkiController {
 
   //! GENEL
 
+
+  int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
+  int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
+
   bool get projeUygulamasiAcikMi => _isTrue(_paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => _isTrue(_paramModel?.plasiyerUygulamasi, skipAdmin: true);
   bool get lokalDepoUygulamasiAcikMi => _isTrue(_paramModel?.lokalDepoUygulamasiAcik, skipAdmin: true);
@@ -104,12 +108,13 @@ final class YetkiController {
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
 
   //! Sipariş
+  bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
 
   //* Genel Sipariş Yetkileri
+
   String? get siparisSatisEkMaliyet2Adi => _musteriSiparisiMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int get siparisSatirKademeliIskontoSayisi => _musteriSiparisiMi ? _paramModel?.satisSatirKademeliIskontoSayisi ?? 0 : _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
 
-  bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
   bool get siparisOzelKod1AktifMi => false;
   bool get siparisGenIsk1AktifMi => (_musteriSiparisiMi ? siparisMSGenIsk1AktifMi : siparisSSGenIsk1AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk1);
   bool get siparisGenIsk2AktifMi => (_musteriSiparisiMi ? siparisMSGenIsk2AktifMi : siparisSSGenIsk2AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk2);
@@ -319,7 +324,8 @@ final class YetkiController {
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
 
   //! TALEP TEKLİF
-  // String? get talepTeklifEkAciklama1Adi => _musteriSiparisiMi ? _paramModel?.a : _paramModel?.alisEkAciklama1Adi;
+  String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
+  int get talTekSatirKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
 
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);

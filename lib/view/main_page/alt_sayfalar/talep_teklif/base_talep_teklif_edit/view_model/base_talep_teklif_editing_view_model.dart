@@ -9,7 +9,7 @@ class BaseTalepTeklifEditingViewModel = _BaseTalepTeklifEditingViewModelBase wit
 
 abstract class _BaseTalepTeklifEditingViewModelBase with Store {
   @computed
-  BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
 
   @observable
   bool updateKalemler = false;

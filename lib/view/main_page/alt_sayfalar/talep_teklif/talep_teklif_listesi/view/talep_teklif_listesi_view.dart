@@ -356,6 +356,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
             text: "Kapalı Belgeler Listelenmesin",
             child: Observer(builder: (_) => Switch.adaptive(value: viewModel.siparislerRequestModel.kapaliBelgelerListelenmesin ?? false, onChanged: viewModel.setKapaliBelgelerListelenmesin)),
           ),
+          // .yetkiVarMi(parametreModel.kapali),
           Observer(
             builder: (_) => SlideControllerWidget(
               scroll: false,

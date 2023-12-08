@@ -332,7 +332,18 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..ureticiKodu = json['URETICI_KODU'] as String?
       ..yapilandirmaAktif = json['YAPILANDIRMA_AKTIF'] as bool?
       ..yapkod = json['YAPKOD'] as String?
-      ..yapkodAciklama = json['YAPKOD_ACIKLAMA'] as String?;
+      ..yapkodAciklama = json['YAPKOD_ACIKLAMA'] as String?
+      ..idx = json['IDX'] as int?
+      ..alisKuru = (json['ALIS_KURU'] as num?)?.toDouble()
+      ..alisKurTarihi = json['ALIS_KUR_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['ALIS_KUR_TARIHI'] as String)
+      ..satisKuru = (json['SATIS_KURU'] as num?)?.toDouble()
+      ..satisKurTarihi = json['SATIS_KUR_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['SATIS_KUR_TARIHI'] as String)
+      ..bulunanDovizFiyati = (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble()
+      ..bulunanDovizTipi = json['BULUNAN_DOVIZ_TIPI'] as int?;
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -416,6 +427,13 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('YAPILANDIRMA_AKTIF', instance.yapilandirmaAktif);
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('YAPKOD_ACIKLAMA', instance.yapkodAciklama);
+  writeNotNull('IDX', instance.idx);
+  writeNotNull('ALIS_KURU', instance.alisKuru);
+  writeNotNull('ALIS_KUR_TARIHI', instance.alisKurTarihi?.toIso8601String());
+  writeNotNull('SATIS_KURU', instance.satisKuru);
+  writeNotNull('SATIS_KUR_TARIHI', instance.satisKurTarihi?.toIso8601String());
+  writeNotNull('BULUNAN_DOVIZ_FIYATI', instance.bulunanDovizFiyati);
+  writeNotNull('BULUNAN_DOVIZ_TIPI', instance.bulunanDovizTipi);
   return val;
 }
 

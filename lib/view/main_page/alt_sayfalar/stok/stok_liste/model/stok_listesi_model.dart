@@ -85,6 +85,13 @@ class StokListesiModel with NetworkManagerMixin {
   bool? yapilandirmaAktif;
   String? yapkod;
   String? yapkodAciklama;
+  int? idx;
+  double? alisKuru;
+  DateTime? alisKurTarihi;
+  double? satisKuru;
+  DateTime? satisKurTarihi;
+  double? bulunanDovizFiyati;
+  int? bulunanDovizTipi;
 
   static StokListesiModel? _instance;
 

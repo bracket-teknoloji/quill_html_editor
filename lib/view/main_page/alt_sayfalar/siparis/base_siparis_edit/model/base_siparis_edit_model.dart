@@ -569,6 +569,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get teklifRevizeEdilebilirMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
 
+  EditTipiEnum? get getEditTipiEnum => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == belgeTuru);
+
+  // bool get muhtelifCariMi => cariKodu ;
+
   bool kalemEkliMi(StokListesiModel? model) {
     if (model != null) {
       return kalemList?.any((element) => element.stokKodu == model.stokKodu) ?? false;
@@ -1058,7 +1062,7 @@ class KalemModel with NetworkManagerMixin {
   double get dovizAraToplamTutari => ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
   double get getDovizAraToplamTutari => (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari;
 
-  double get dovizGenelToplamTutari => dovizAraToplamTutari + dovizKdvTutari;
+  double get dovizGenelToplamTutari => dovizAraToplamTutari + (!(BaseSiparisEditModel._instance?.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
 
   double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
 

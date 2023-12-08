@@ -52,6 +52,23 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
   bool get talepTeklifMi => satisTalebiMi || alisTalebiMi || satisTeklifiMi;
 
   bool get talepKalemlerFiltrele => alisTalebiMi || satisTalebiMi;
+
+  int get kademeliIskontoSayisi {
+    if (this == null) return 0;
+    switch (this!) {
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisTalebi:
+        return YetkiController().alisKademeliIskontoSayisi;
+      case EditTipiEnum.satici:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTalebi:
+        return YetkiController().satisKademeliIskontoSayisi;
+    }
+  }
 }
 
 extension EditTipiEnumExtension on EditTipiEnum {
