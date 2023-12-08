@@ -178,7 +178,7 @@ class PickerApp extends StatelessWidget {
             page: () => KalemEkleView(
               stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null,
               kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
-              isTalepTeklif: true,
+              editTipiEnum: BaseSiparisEditModel.instance.getEditTipiEnum,
             ),
           ),
           GetPage(
@@ -186,8 +186,8 @@ class PickerApp extends StatelessWidget {
             page: () => const MainPageView(),
             children: <GetPage>[
               GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
-              GetPage(name: "/kalemRehberi", page: ()=>  KalemRehberiView(model: Get.arguments)),
-              GetPage(name: "/siparisRehberi", page: ()=>  SiparisRehberiView(model: Get.arguments)),
+              GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
+              GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
