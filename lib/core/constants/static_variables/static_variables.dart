@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
@@ -41,4 +42,6 @@ class StaticVariables {
 
   bool isMusteriSiparisleri = false;
   bool isSatisFaturasi = false;
+
+  EditTipiEnum editTipi = EditTipiEnum.musteri;
 }
