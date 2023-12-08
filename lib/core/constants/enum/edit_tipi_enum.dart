@@ -30,8 +30,33 @@ enum EditTipiEnum {
   satisTalebi,
 }
 
+extension NullableEditTipiEnumExtension on EditTipiEnum? {
+  bool get musteriMi => this == EditTipiEnum.musteri;
+
+  bool get saticiMi => this == EditTipiEnum.satici;
+
+  bool get satisFaturasiMi => this == EditTipiEnum.satisFatura;
+
+  bool get satisIrsaliyesiMi => this == EditTipiEnum.satisIrsaliye;
+
+  bool get alisFaturasiMi => this == EditTipiEnum.alisFatura;
+
+  bool get alisIrsaliyesiMi => this == EditTipiEnum.alisIrsaliye;
+
+  bool get satisTeklifiMi => this == EditTipiEnum.satisTeklifi;
+
+  bool get alisTalebiMi => this == EditTipiEnum.alisTalebi;
+
+  bool get satisTalebiMi => this == EditTipiEnum.satisTalebi;
+
+  bool get talepTeklifMi => satisTalebiMi || alisTalebiMi || satisTeklifiMi;
+
+  bool get talepKalemlerFiltrele => alisTalebiMi || satisTalebiMi;
+}
+
 extension EditTipiEnumExtension on EditTipiEnum {
   static YetkiController yetkiController = YetkiController();
+
   String get rawValue {
     switch (this) {
       case EditTipiEnum.musteri:
@@ -356,7 +381,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         case 16:
           label = talTekParam?.aciklar16;
       }
-    }else if (satisMi){
+    } else if (satisMi) {
       switch (index) {
         case 1:
           label = paramModel?.satisEkAciklamaTanimi1;
