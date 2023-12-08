@@ -41,6 +41,9 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     plasiyerController = TextEditingController();
     cariController = TextEditingController();
     cariVKNController = TextEditingController();
+    if (yetkiController.temsilciProfilKdvDahilMi) {
+      viewModel.setKDVDahil(true);
+    }
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       await getData();
     });
@@ -154,7 +157,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             text: "KDV Dahil",
                             child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (bool value) => viewModel.setKDVDahil(value))),
                           ).paddingAll(UIHelper.lowSize),
-                        ),
+                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi),
                         Expanded(
                           child: CustomWidgetWithLabel(
                             isVertical: true,
@@ -242,7 +245,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 ],
                               ),
                               Observer(builder: (_) => SizedBox(height: height * 0.3, child: CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam))),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar)),
+                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle)),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
@@ -262,7 +265,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                               Observer(
                                 builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikAlislar)),
+                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle)),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
@@ -306,7 +309,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 builder: (_) =>
                                     ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar)),
+                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle)),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
