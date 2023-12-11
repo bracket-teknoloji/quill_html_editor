@@ -209,10 +209,45 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 children: [
                   // ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
                   ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
-                  // const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
-                  const ColorfulBadge(label: Text("Sipariş"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.siparislestiMi),
-                  const ColorfulBadge(label: Text("İrsaliye"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelestiMi),
-                  const ColorfulBadge(label: Text("Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalastiMi),
+                  ColorfulBadge(
+                    label: const Text("Sipariş"),
+                    badgeColorEnum: BadgeColorEnum.fatura,
+                    onTap: () async {
+                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                        context,
+                        cariKodu: widget.model.cariKodu,
+                        belgeNo: widget.model.belgeNo,
+                        belgeTipi: widget.model.belgeTuru,
+                        filterText: EditTipiEnum.values.where((element) => element.siparisMi).map((e) => e.rawValue).toList(),
+                      );
+                    },
+                  ).yetkiVarMi(model.siparislestiMi),
+                  ColorfulBadge(
+                    label: const Text("İrsaliye"),
+                    badgeColorEnum: BadgeColorEnum.irsaliye,
+                    onTap: () async {
+                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                        context,
+                        cariKodu: widget.model.cariKodu,
+                        belgeNo: widget.model.belgeNo,
+                        belgeTipi: widget.model.belgeTuru,
+                        filterText: EditTipiEnum.values.where((element) => element.irsaliyeMi).map((e) => e.rawValue).toList(),
+                      );
+                    },
+                  ).yetkiVarMi(model.irsaliyelestiMi),
+                  ColorfulBadge(
+                    label: const Text("Fatura"),
+                    badgeColorEnum: BadgeColorEnum.fatura,
+                    onTap: () async {
+                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                        context,
+                        cariKodu: widget.model.cariKodu,
+                        belgeNo: widget.model.belgeNo,
+                        belgeTipi: widget.model.belgeTuru,
+                        filterText: EditTipiEnum.values.where((element) => element.faturaMi).map((e) => e.rawValue).toList(),
+                      );
+                    },
+                  ).yetkiVarMi(model.faturalastiMi),
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
                   const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
