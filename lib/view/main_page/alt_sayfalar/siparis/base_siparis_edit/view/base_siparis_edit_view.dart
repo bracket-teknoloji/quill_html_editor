@@ -100,8 +100,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
-            BaseSiparisEditModel.instance.pickerBelgeTuru = StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS";
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
