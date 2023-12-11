@@ -67,6 +67,8 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
           builder: (_) {
             if (viewModel.kalemList == null) {
               return const Center(child: CircularProgressIndicator.adaptive());
+            } else if (viewModel.kalemList!.isEmpty) {
+              return const Center(child: Text("Kayıt bulunamadı"));
             }
             return ListView.builder(
               padding: UIHelper.lowPadding,
