@@ -325,7 +325,8 @@ final class YetkiController {
 
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
-  int get talTekSatirKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
+  int  talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi??"")?? 0;
+  
 
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
