@@ -776,7 +776,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo, }) async {
+  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo, List<String>? filterText}) async {
     final result = await NetworkManager().dioGet<KalemListModel>(
       path: ApiUrls.getBelgeBaglantilari,
       bodyModel: KalemListModel(),
@@ -789,6 +789,7 @@ class BottomSheetDialogManager {
         context,
         title: "Belge Bağlantıları",
         children: list
+            .where((element) => filterText != null ? filterText.contains(element.belgeTipi) : true)
             .map(
               (KalemListModel e) => BottomSheetModel(
                 title: e.belgeTipi ?? "",
@@ -955,7 +956,8 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
+          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ??
+              <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {
