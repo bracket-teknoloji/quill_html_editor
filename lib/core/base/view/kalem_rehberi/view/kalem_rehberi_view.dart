@@ -43,7 +43,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 if (viewModel.selectedKalemList.isEmpty) {
                   dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
                 } else {
-                  Get.back(result: viewModel.kalemList);
+                  Get.back(result: viewModel.selectedKalemList);
                 }
               },
               icon: Icon(
