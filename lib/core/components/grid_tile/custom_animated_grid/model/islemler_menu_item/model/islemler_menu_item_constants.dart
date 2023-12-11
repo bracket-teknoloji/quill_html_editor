@@ -136,6 +136,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur);
         islemlerList.addIfConditionTrue((siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi, musteriSiparisiOlustur);
         islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi, siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.add(kopyala);
@@ -594,7 +595,7 @@ class IslemlerMenuItemConstants<T> {
 
               await getBelgeNo(controller, siparisModel);
               // ignore: use_build_context_synchronously
-              await _bottomSheetDialogManager.showBottomSheetDialog(
+              return await _bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: "Belge No",
                 body: Column(
@@ -679,19 +680,55 @@ class IslemlerMenuItemConstants<T> {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             final result =
                 await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
-            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result?.belgeNo));
+            if (result != null) {
+              final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
+              siparisModel.kalemler = kalemList;
+              return await Get.toNamed(
+                "mainPage/faturaEdit",
+                arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
+              );
+            } else {
+              return;
+            }
           }
         },
       );
-  GridItemModel get faturaOlustur => GridItemModel.islemler(
-        title: "${siparisTipi?.getName} Oluştur",
+  GridItemModel get siparistenFaturaOlustur => GridItemModel.islemler(
+        title: "Fatura Oluştur (Siparişten)",
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             final result =
                 await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
-            Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi, belgeNo: result?.belgeNo));
+            if (result != null) {
+              final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
+              if (kalemList == null) {
+                return;
+              }
+              siparisModel.kalemler = kalemList;
+              return await Get.toNamed(
+                "mainPage/faturaEdit",
+                arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+              );
+            } else {
+              return;
+            }
+          }
+        },
+      );
+  GridItemModel get irsaliyedenFaturaOlustur => GridItemModel.islemler(
+        title: "Fatura Oluştur (İrsaliyeden)",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            final result =
+                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+            return await Get.toNamed(
+              "mainPage/faturaEdit",
+              arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result?.belgeNo),
+            );
           }
         },
       );
@@ -723,5 +760,20 @@ class IslemlerMenuItemConstants<T> {
         }
       },
     );
+  }
+
+  Future<List<KalemModel>?> getKalemRehberi(BaseSiparisEditModel model) async {
+    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: model..belgeTuru = "MS");
+    if (result is List) {
+      final List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
+      return list
+          .map(
+            (KalemModel e) => e
+              ..miktar = e.kalan
+              ..kalan = 0,
+          )
+          .toList();
+    }
+    return null;
   }
 }
