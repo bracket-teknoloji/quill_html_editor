@@ -19,7 +19,7 @@ import "../../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/s
 import "../../../../../../../view/main_page/model/grid_item_model.dart";
 import "../../../../../../../view/main_page/model/param_model.dart";
 import "../../../../../../base/model/base_edit_model.dart";
-import "../../../../../../base/model/delete_fatura_model.dart";
+import "../../../../../../base/model/edit_fatura_model.dart";
 import "../../../../../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../constants/enum/base_edit_enum.dart";
@@ -587,7 +587,70 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.musteri));
+            final kalemler = await Get.toNamed("mainPage/kalemRehberi", arguments: siparisModel);
+            if (kalemler != null && kalemler is List<KalemModel>) {
+              final List<KalemModel> newKalemler = kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
+              final TextEditingController controller = TextEditingController();
+              // ignore: use_build_context_synchronously
+              await _bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: "Belge No",
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    CustomTextField(
+                      labelText: "Belge No",
+                      controller: controller,
+                      isMust: true,
+                      maxLength: 15,
+                      suffix: IconButton(
+                        onPressed: () async {
+                          final result = await _networkManager.dioGet<BaseSiparisEditModel>(
+                            path: ApiUrls.getSiradakiBelgeNo,
+                            bodyModel: BaseSiparisEditModel(),
+                            queryParameters: {
+                              "Seri": controller.text,
+                              "BelgeTipi": "MS",
+                              "EIrsaliye": "H",
+                              "CariKodu": siparisModel.cariKodu ?? "",
+                            },
+                          );
+                          if (result.success == true) {
+                            controller.text = result.data?.first.belgeNo ?? "";
+                          }
+                        },
+                        icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        final result = await _networkManager.dioPost<SiparisEditRequestModel>(
+                          path: ApiUrls.talepTeklifSiparislestir,
+                          showLoading: true,
+                          bodyModel: SiparisEditRequestModel(),
+                          data: EditFaturaModel.fromSiparislerModel(
+                            siparisModel
+                              ..yeniBelgeNo = controller.text
+                              ..tag = "FaturaModel"
+                              ..belgeNo = siparisModel.belgeNo
+                              ..kalemler = newKalemler
+                              ..cariKodu = siparisModel.cariKodu
+                              ..belgeTuru = siparisModel.belgeTuru
+                              ..pickerBelgeTuru = siparisModel.belgeTuru
+                              ..belgeTipi = siparisModel.tipi,
+                          ).toJson(),
+                        );
+                        if (result.success == true) {
+                          _dialogManager.showSuccessSnackBar("Başarılı");
+                          Get.back(result: true);
+                        }
+                      },
+                      child: const Text("Kaydet"),
+                    ).paddingAll(UIHelper.lowSize),
+                  ],
+                ).paddingAll(UIHelper.lowSize),
+              );
+            }
           }
         },
       );
