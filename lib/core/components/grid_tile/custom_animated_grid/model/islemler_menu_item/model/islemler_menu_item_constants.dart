@@ -591,6 +591,8 @@ class IslemlerMenuItemConstants<T> {
             if (kalemler != null && kalemler is List<KalemModel>) {
               final List<KalemModel> newKalemler = kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
               final TextEditingController controller = TextEditingController();
+
+              await getBelgeNo(controller, siparisModel);
               // ignore: use_build_context_synchronously
               await _bottomSheetDialogManager.showBottomSheetDialog(
                 context,
@@ -604,21 +606,7 @@ class IslemlerMenuItemConstants<T> {
                       isMust: true,
                       maxLength: 15,
                       suffix: IconButton(
-                        onPressed: () async {
-                          final result = await _networkManager.dioGet<BaseSiparisEditModel>(
-                            path: ApiUrls.getSiradakiBelgeNo,
-                            bodyModel: BaseSiparisEditModel(),
-                            queryParameters: {
-                              "Seri": controller.text,
-                              "BelgeTipi": "MS",
-                              "EIrsaliye": "H",
-                              "CariKodu": siparisModel.cariKodu ?? "",
-                            },
-                          );
-                          if (result.success == true) {
-                            controller.text = result.data?.first.belgeNo ?? "";
-                          }
-                        },
+                        onPressed: () async => await getBelgeNo(controller, siparisModel),
                         icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                       ),
                     ),
@@ -643,6 +631,7 @@ class IslemlerMenuItemConstants<T> {
                         if (result.success == true) {
                           _dialogManager.showSuccessSnackBar("Başarılı");
                           Get.back(result: true);
+                          controller.dispose();
                         }
                       },
                       child: const Text("Kaydet"),
@@ -654,6 +643,22 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
+
+  Future<void> getBelgeNo(TextEditingController controller, BaseSiparisEditModel siparisModel) async {
+    final result = await _networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getSiradakiBelgeNo,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: {
+        "Seri": controller.text,
+        "BelgeTipi": "MS",
+        "EIrsaliye": "H",
+        "CariKodu": siparisModel.cariKodu ?? "",
+      },
+    );
+    if (result.success == true) {
+      controller.text = result.data?.first.belgeNo ?? "";
+    }
+  }
 
   GridItemModel get talTekRevizeEt => GridItemModel.islemler(
         title: "Revize Et",
