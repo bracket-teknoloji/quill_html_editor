@@ -59,14 +59,15 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
       case EditTipiEnum.musteri:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
-      case EditTipiEnum.alisTalebi:
         return YetkiController().alisKademeliIskontoSayisi;
       case EditTipiEnum.satici:
       case EditTipiEnum.satisFatura:
       case EditTipiEnum.satisIrsaliye:
+        return YetkiController().satisKademeliIskontoSayisi;
+      case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.satisTalebi:
-        return YetkiController().satisKademeliIskontoSayisi;
+        return YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? "");
     }
   }
 }
