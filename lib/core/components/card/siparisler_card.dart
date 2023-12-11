@@ -8,7 +8,7 @@ import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/bas
 import "../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/model/base_edit_model.dart";
-import "../../base/model/delete_fatura_model.dart";
+import "../../base/model/edit_fatura_model.dart";
 import "../../base/model/print_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";

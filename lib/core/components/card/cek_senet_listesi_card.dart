@@ -17,7 +17,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_li
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/delete_cek_senet_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-import "../../base/model/delete_fatura_model.dart";
+import "../../base/model/edit_fatura_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../base/view/pdf_viewer/view/pdf_viewer_view.dart";

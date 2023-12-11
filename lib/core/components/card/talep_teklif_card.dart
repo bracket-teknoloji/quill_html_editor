@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
