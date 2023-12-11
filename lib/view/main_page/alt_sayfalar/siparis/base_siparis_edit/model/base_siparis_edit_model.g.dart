@@ -3738,7 +3738,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String),
       teslimCariAdi: json['TESLIM_CARI_ADI'] as String?,
-      kdvDahilmi: json['KDV_DAHILMI'] as bool?,
+      kdvDahilmi: json['KDV_DAHILMI'] as bool? ?? false,
       remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
       tempBelgeMi: json['TEMP_BELGE_MI'] as bool?,
       cariModel: json['CARI_MODEL'] == null
@@ -3842,7 +3842,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ekAciklama: json['EK_ACIKLAMA'] as String?,
       islemId: json['ISLEM_ID'] as String?,
       kayityapankul: json['KAYITYAPANKUL'] as String?,
-      kdvDahil: json['KDV_DAHIL'] as String?,
+      kdvDahil: json['KDV_DAHIL'] as String? ?? 'H',
       kosulKodu: json['KOSUL_KODU'] as String?,
       mevcutBelgeNo: json['MEVCUT_BELGE_NO'] as String?,
       mevcutCariKodu: json['MEVCUT_CARI_KODU'] as String?,
@@ -3897,7 +3897,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           : EirsBilgiModel.fromJson(
               json['EIRS_BILGI_MODEL'] as Map<String, dynamic>),
       uetdsBildirildi: json['UETDS_BILDIRILDI'] as String?,
-      kdvDahilMi: json['KDV_DAHIL_MI'] as bool?,
+      kdvDahilMi: json['KDV_DAHIL_MI'] as bool? ?? false,
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
       siparislesti: json['SIPARISLESTI'] as String?,
       faturalasanSayi: json['FATURALASAN_SAYI'] as int?,
