@@ -61,12 +61,14 @@ class TalepTeklifCard extends StatefulWidget {
 class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
+  BaseSiparisEditModel get model => widget.model;
+
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
   Widget aciklamaText(int? index) => Text(
         "${paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == widget.talepTeklifEnum.rawValue)?.toJson()["ACIKLAR$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}",
         style: greyTextStyle,
-      ).yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
+      ).yetkiVarMi(model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
@@ -119,7 +121,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         onTap: () {
                           Get.back();
                           return dialogManager.showAreYouSureDialog(() async {
-                            // if (widget.model.isNew == true) {
+                            // if (model.isNew == true) {
                             //   try {
                             //     CacheManager.removeSiparisEditList(widget.index!);
                             //     dialogManager.showSuccessSnackBar("Silindi");
@@ -129,7 +131,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             //   }
                             //   return;
                             // }
-                            final result = await networkManager.deleteFatura(EditFaturaModel.fromSiparislerModel(widget.model));
+                            final result = await networkManager.deleteFatura(EditFaturaModel.fromSiparislerModel(model));
                             if (result.success == true) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
@@ -169,9 +171,9 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           Get.back();
                           await gridDialog();
                         },
-                      ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                      ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
-                          .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
+                          .yetkiKontrol(model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
                       BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_outline_outlined,
@@ -188,7 +190,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.model.belgeNo ?? ""),
+              Text(model.belgeNo ?? ""),
               Text.rich(
                 TextSpan(
                   children: [
@@ -205,21 +207,21 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
             children: [
               Row(
                 children: [
-                  // ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
-                  ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model.dovizAdi != null),
-                  // const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(widget.model.isNew == true),
-                  const ColorfulBadge(label: Text("Sipariş"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.siparislesti == "E"),
-                  const ColorfulBadge(label: Text("Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.faturalasti == "E"),
-                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(widget.model.tipi == 1),
-                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
-                  ColorfulBadge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(widget.model.irsaliyelesti == "E"),
+                  // ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
+                  ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
+                  // const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
+                  const ColorfulBadge(label: Text("Sipariş"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.siparislestiMi),
+                  const ColorfulBadge(label: Text("İrsaliye"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelestiMi),
+                  const ColorfulBadge(label: Text("Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalastiMi),
+                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
+                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
-              Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
               Text(
-                "${(widget.model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
+                "${(model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
                 style: TextStyle(color: UIHelper.primaryColor),
-              ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(widget.model.sonrakiRevizeNo != null),
+              ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.sonrakiRevizeNo != null),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
                   // mainAxisAlignment: MainAxisAlignment.start,
@@ -228,11 +230,11 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     // Text("Tipi: ${widget.model.tipi ? "Yurtiçi" : "Yurtdışı"}"),
                     Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
                     Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
-                    // Text("Koşul: ${widget.model.kosulKodu ?? ""}").yetkiVarMi(widget.model.kosulKodu != null),
+                    // Text("Koşul: ${widget.model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),
                     Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
                     Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
                     Text("Döviz Toplamı: ${widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.model.dovizAdi ?? ""}")
-                        .yetkiVarMi(widget.model.dovizTutari != null && widget.model.dovizAdi != null),
+                        .yetkiVarMi(model.dovizTutari != null && widget.model.dovizAdi != null),
                     Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     // Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
@@ -250,7 +252,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
               //         Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}"),
               //         Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
               //         Text("KDV: ${widget.model.kdv.commaSeparatedWithFixedDigits} $mainCurrency"),
-              //         widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(widget.model.dovizTutari != null) : null,
+              //         widget.model.dovizAdi != null ? Text("Döviz Toplamı: ${widget.model.dovizTutari ?? ""} ${widget.model.dovizAdi ?? ""}").yetkiVarMi(model.dovizTutari != null) : null,
               //       ].nullCheckWithGeneric,
               //     ),
               //     Column(
@@ -274,7 +276,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 children: [
                   Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
                   const Flexible(child: Text("|")),
-                  Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
+                  Text("Teslim Miktar: ${((model.miktar ?? 0) - (model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
                   const Flexible(child: Text("|")),
                   Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
                 ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
@@ -291,10 +293,12 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
 
   Future<void> gridDialog() async {
     await dialogManager.showTalepTeklifGridViewDialog(
-      model: widget.model,
+      model: model,
       siparisTipi: editTipiEnum,
       onSelected: (value) {
-        widget.onUpdated?.call(value);
+        if (value) {
+          widget.onUpdated?.call(value);
+        }
       },
     );
   }
