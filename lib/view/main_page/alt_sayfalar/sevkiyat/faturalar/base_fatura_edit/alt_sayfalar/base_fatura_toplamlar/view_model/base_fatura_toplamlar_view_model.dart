@@ -148,7 +148,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
 
   @action
   void setSenaryo(String? value) {
-    model = model.copyWith(efaturaTipi: value);
+    model = model.copyWith(efaturaSenaryo: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

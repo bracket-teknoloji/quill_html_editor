@@ -39,7 +39,6 @@ dependencies:
 
   #Network Dependencies
   dio: ^5.1.1
-  network_info_plus: ^4.1.0
 
   #Utils Dependencies
   crypto: ^3.0.3

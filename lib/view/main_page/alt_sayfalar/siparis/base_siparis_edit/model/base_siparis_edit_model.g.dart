@@ -313,6 +313,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel onaytarihi(DateTime? onaytarihi);
 
+  BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -473,6 +475,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     bool? teklifRevizeIslemi,
     String? onaylayankul,
     DateTime? onaytarihi,
+    String? efaturaSenaryo,
   });
 }
 
@@ -1029,6 +1032,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(onaytarihi: onaytarihi);
 
   @override
+  BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo) =>
+      this(efaturaSenaryo: efaturaSenaryo);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1190,6 +1197,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? teklifRevizeIslemi = const $CopyWithPlaceholder(),
     Object? onaylayankul = const $CopyWithPlaceholder(),
     Object? onaytarihi = const $CopyWithPlaceholder(),
+    Object? efaturaSenaryo = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1806,6 +1814,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.onaytarihi
           // ignore: cast_nullable_to_non_nullable
           : onaytarihi as DateTime?,
+      efaturaSenaryo: efaturaSenaryo == const $CopyWithPlaceholder()
+          ? _value.efaturaSenaryo
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaSenaryo as String?,
     );
   }
 }
@@ -3088,13 +3100,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       teklifRevizeIslemi: fields[150] as bool?,
       onaylayankul: fields[151] as String?,
       onaytarihi: fields[152] as DateTime?,
+      efaturaSenaryo: fields[153] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(153)
+      ..writeByte(154)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3400,7 +3413,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(151)
       ..write(obj.onaylayankul)
       ..writeByte(152)
-      ..write(obj.onaytarihi);
+      ..write(obj.onaytarihi)
+      ..writeByte(153)
+      ..write(obj.efaturaSenaryo);
   }
 
   @override
@@ -3738,7 +3753,6 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String),
       teslimCariAdi: json['TESLIM_CARI_ADI'] as String?,
-      kdvDahilmi: json['KDV_DAHILMI'] as bool? ?? false,
       remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
       tempBelgeMi: json['TEMP_BELGE_MI'] as bool?,
       cariModel: json['CARI_MODEL'] == null
@@ -3897,7 +3911,6 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           : EirsBilgiModel.fromJson(
               json['EIRS_BILGI_MODEL'] as Map<String, dynamic>),
       uetdsBildirildi: json['UETDS_BILDIRILDI'] as String?,
-      kdvDahilMi: json['KDV_DAHIL_MI'] as bool? ?? false,
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
       siparislesti: json['SIPARISLESTI'] as String?,
       faturalasanSayi: json['FATURALASAN_SAYI'] as int?,
@@ -3909,6 +3922,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       onaytarihi: json['ONAYTARIHI'] == null
           ? null
           : DateTime.parse(json['ONAYTARIHI'] as String),
+      efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -3930,7 +3944,6 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
   writeNotNull('TEMP_JSON_DATA', instance.tempJsonData?.toJson());
   writeNotNull('TESLIM_CARI_ADI', instance.teslimCariAdi);
-  writeNotNull('KDV_DAHILMI', instance.kdvDahilmi);
   writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);
   writeNotNull('TEMP_BELGE_MI', instance.tempBelgeMi);
   writeNotNull('CARI_MODEL', instance.cariModel?.toJson());
@@ -4068,7 +4081,6 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EBELGE_CHECKBOX', instance.ebelgeCheckbox);
   writeNotNull('EIRS_BILGI_MODEL', instance.eirsBilgiModel?.toJson());
   writeNotNull('UETDS_BILDIRILDI', instance.uetdsBildirildi);
-  writeNotNull('KDV_DAHIL_MI', instance.kdvDahilMi);
   writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
   writeNotNull('SIPARISLESTI', instance.siparislesti);
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
@@ -4076,6 +4088,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('TEKLIF_REVIZE_ISLEMI', instance.teklifRevizeIslemi);
   writeNotNull('ONAYLAYANKUL', instance.onaylayankul);
   writeNotNull('ONAYTARIHI', instance.onaytarihi?.toIso8601String());
+  writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
   return val;
 }
 

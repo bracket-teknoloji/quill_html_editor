@@ -35,7 +35,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala ||siparisModel.isRevize;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize;
   bool get enable => widget.model.enable;
 
   late final TextEditingController _belgeNoController;
@@ -93,7 +93,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _aciklama16Controller = TextEditingController(text: model.acik16);
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
+      if (BaseSiparisEditModel.instance.belgeNo == null) {
         await getBelgeNo();
       }
     });

@@ -143,12 +143,10 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
-              title:
-                  "${BaseSiparisEditModel.instance.getEditTipiEnum != null ? BaseSiparisEditModel.instance.getEditTipiEnum!.getName : "Talep Teklif"}${widget.model.baseEditEnum.revizeMi ? "(Revize)" : ""}",
+              title: "${model.editTipiEnum?.getName ?? "Talep Teklif"}${widget.model.baseEditEnum.revizeMi ? " (Revize)" : ""}",
               subtitle: (BaseSiparisEditModel.instance.isNew ?? false) ? "Yeni Belge" : widget.model.model?.belgeNo,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
-            // title: const Text("Sipariş Detayları"),
             actions: [
               seceneklerButton(context),
               Observer(
@@ -173,7 +171,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                             title: "PDF görüntülemek ister misiniz?",
                           );
                           await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                            BaseSiparisEditModel.resetInstance();
+                          BaseSiparisEditModel.resetInstance();
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.instance.isNew = true;
                             Get.toNamed("/mainPage/TalTekEdit", arguments: BaseEditModel<TalepTeklifListesiModel>(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: model.editTipiEnum));

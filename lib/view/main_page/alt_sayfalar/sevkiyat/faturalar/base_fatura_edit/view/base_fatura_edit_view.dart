@@ -101,13 +101,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
           BaseSiparisEditModel.setInstance(result.data!.first);
+          BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
           BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            await getSiparisBaglantisi();
-
+            // await getKalemRehberi();
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -369,7 +370,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(),
+      data: (BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null)).toJson(),
       showLoading: true,
     );
     if (result.success == true) {
@@ -515,5 +516,20 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       },
     );
     return result.data.first;
+  }
+
+  Future<void> getKalemRehberi() async {
+    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: BaseSiparisEditModel.instance..belgeTuru = "MS");
+    if (result is List) {
+      List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
+      list = list
+          .map(
+            (KalemModel e) => e
+              ..miktar = e.kalan
+              ..kalan = 0,
+          )
+          .toList();
+      viewModel.setKalemList(list);
+    }
   }
 }
