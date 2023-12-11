@@ -212,6 +212,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   }
 
   String getIP(String url) {
+    if (url.isEmpty) return "";
     final List<String> urlSplit = url.split("/");
     // remove ":" from last element of urlSplit
 
