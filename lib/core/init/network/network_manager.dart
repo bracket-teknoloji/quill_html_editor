@@ -9,7 +9,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/model/delete_fatura_model.dart";
+import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
