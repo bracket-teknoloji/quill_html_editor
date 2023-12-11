@@ -8,7 +8,8 @@ import "../../constants/ui_helper/ui_helper.dart";
 class ColorfulBadge extends StatefulWidget {
   final Widget? label;
   final BadgeColorEnum? badgeColorEnum;
-  const ColorfulBadge({super.key, this.badgeColorEnum, this.label});
+  final void Function()? onTap;
+  const ColorfulBadge({super.key, this.badgeColorEnum, this.label, this.onTap});
 
   @override
   State<ColorfulBadge> createState() => _ColorfulBadgeState();
@@ -18,7 +19,10 @@ class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
         textStyle: TextStyle(fontSize: UIHelper.midSize),
-        label: widget.label,
+        label: InkWell(
+          onTap: widget.onTap,
+          child: widget.label,
+        ),
         textColor: theme.colorScheme.background,
         backgroundColor: widget.badgeColorEnum?.getColor,
       ).yetkiVarMi(widget.label != null);

@@ -776,7 +776,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
+  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo, }) async {
     final result = await NetworkManager().dioGet<KalemListModel>(
       path: ApiUrls.getBelgeBaglantilari,
       bodyModel: KalemListModel(),
