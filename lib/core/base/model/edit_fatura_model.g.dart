@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'delete_fatura_model.dart';
+part of 'edit_fatura_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -24,6 +24,9 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
       paramMap: json['PARAM_MAP'] as String?,
       tag: json['TAG'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
+      kalemler: (json['KALEMLER'] as List<dynamic>?)
+          ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$EditFaturaModelImplToJson(
@@ -51,5 +54,6 @@ Map<String, dynamic> _$$EditFaturaModelImplToJson(
   writeNotNull('PARAM_MAP', instance.paramMap);
   writeNotNull('TAG', instance.tag);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
   return val;
 }

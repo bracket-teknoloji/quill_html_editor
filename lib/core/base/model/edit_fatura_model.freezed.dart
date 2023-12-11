@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'delete_fatura_model.dart';
+part of 'edit_fatura_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -37,6 +37,7 @@ mixin _$EditFaturaModel {
   String? get paramMap => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
+  List<KalemModel>? get kalemler => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +66,8 @@ abstract class $EditFaturaModelCopyWith<$Res> {
       String? mevcutCariKodu,
       String? paramMap,
       String? tag,
-      int? islemKodu});
+      int? islemKodu,
+      List<KalemModel>? kalemler});
 }
 
 /// @nodoc
@@ -96,6 +98,7 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
     Object? paramMap = freezed,
     Object? tag = freezed,
     Object? islemKodu = freezed,
+    Object? kalemler = freezed,
   }) {
     return _then(_value.copyWith(
       belgeTipi: freezed == belgeTipi
@@ -158,6 +161,10 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      kalemler: freezed == kalemler
+          ? _value.kalemler
+          : kalemler // ignore: cast_nullable_to_non_nullable
+              as List<KalemModel>?,
     ) as $Val);
   }
 }
@@ -185,7 +192,8 @@ abstract class _$$EditFaturaModelImplCopyWith<$Res>
       String? mevcutCariKodu,
       String? paramMap,
       String? tag,
-      int? islemKodu});
+      int? islemKodu,
+      List<KalemModel>? kalemler});
 }
 
 /// @nodoc
@@ -214,6 +222,7 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
     Object? paramMap = freezed,
     Object? tag = freezed,
     Object? islemKodu = freezed,
+    Object? kalemler = freezed,
   }) {
     return _then(_$EditFaturaModelImpl(
       belgeTipi: freezed == belgeTipi
@@ -276,6 +285,10 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      kalemler: freezed == kalemler
+          ? _value._kalemler
+          : kalemler // ignore: cast_nullable_to_non_nullable
+              as List<KalemModel>?,
     ));
   }
 }
@@ -298,8 +311,10 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
       this.mevcutCariKodu,
       this.paramMap,
       this.tag,
-      this.islemKodu})
-      : super._();
+      this.islemKodu,
+      final List<KalemModel>? kalemler})
+      : _kalemler = kalemler,
+        super._();
 
   factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EditFaturaModelImplFromJson(json);
@@ -336,6 +351,15 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   final String? tag;
   @override
   final int? islemKodu;
+  final List<KalemModel>? _kalemler;
+  @override
+  List<KalemModel>? get kalemler {
+    final value = _kalemler;
+    if (value == null) return null;
+    if (_kalemler is EqualUnmodifiableListView) return _kalemler;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @JsonKey(ignore: true)
   @override
@@ -368,7 +392,8 @@ abstract class _EditFaturaModel extends EditFaturaModel {
       final String? mevcutCariKodu,
       final String? paramMap,
       final String? tag,
-      final int? islemKodu}) = _$EditFaturaModelImpl;
+      final int? islemKodu,
+      final List<KalemModel>? kalemler}) = _$EditFaturaModelImpl;
   const _EditFaturaModel._() : super._();
 
   factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
@@ -406,6 +431,8 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   String? get tag;
   @override
   int? get islemKodu;
+  @override
+  List<KalemModel>? get kalemler;
   @override
   @JsonKey(ignore: true)
   _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>

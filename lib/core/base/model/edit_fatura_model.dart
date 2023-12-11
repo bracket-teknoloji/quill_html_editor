@@ -4,8 +4,8 @@ import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_lis
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "base_network_mixin.dart";
 
-part "delete_fatura_model.freezed.dart";
-part "delete_fatura_model.g.dart";
+part "edit_fatura_model.freezed.dart";
+part "edit_fatura_model.g.dart";
 
 @freezed
 class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
@@ -27,6 +27,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     String? paramMap,
     String? tag,
     int? islemKodu,
+    List<KalemModel>? kalemler,
   }) = _EditFaturaModel;
 
   factory EditFaturaModel.fromJson(Map<String, Object?> json) => _$EditFaturaModelFromJson(json);
@@ -41,6 +42,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
         tempBelgeId: model.tempBelgeId,
         islemKodu: model.islemKodu,
         yeniBelgeNo: model.yeniBelgeNo,
+        kalemler: model.kalemler,
       );
 
       factory EditFaturaModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => EditFaturaModel(
