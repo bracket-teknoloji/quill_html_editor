@@ -187,6 +187,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           title: _urlAdi,
           iconWidget: Icons.link_outlined,
           onTap: () async {
+            if (_urlAdi == " ") return;
             await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
             setState(() {});
           },
