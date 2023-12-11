@@ -263,6 +263,38 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get siparisMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
+        return true;
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
+        return false;
+    }
+  }
+
+  bool get faturaMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
+        return false;
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+        return true;
+    }
+  }
+
   bool get irsaliyeMi {
     switch (this) {
       case EditTipiEnum.musteri:
