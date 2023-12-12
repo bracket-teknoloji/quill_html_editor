@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
@@ -197,7 +198,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _teslimCariController.text = result.cariAdi ?? "";
                     }
                   },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
+                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -330,16 +331,31 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                   ],
                 ),
-                CustomWidgetWithLabel(
-                  text: "KDV Dahil",
-                  isVertical: true,
-                  child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.kdvDahil,
-                      onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null,
-                    ),
-                  ),
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
+                CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [
+                    CustomWidgetWithLabel(
+                      text: "KDV Dahil",
+                      isVertical: true,
+                      child: Observer(
+                        builder: (_) => Switch.adaptive(
+                          value: viewModel.kdvDahil,
+                          onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null,
+                        ),
+                      ),
+                    ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
+                    CustomWidgetWithLabel(
+                      text: "E-İrsaliye",
+                      isVertical: true,
+                      child: Observer(
+                        builder: (_) => Switch.adaptive(
+                          value: viewModel.ebelgeCheckbox,
+                          onChanged: enable ? (bool value) => viewModel.changeEbelgeCheckBox(value) : null,
+                        ),
+                      ),
+                    ).yetkiVarMi(BaseSiparisEditModel.instance.getEditTipiEnum.irsaliyeMi),
+                  ],
+                ),
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",
                   child: Column(
@@ -409,7 +425,12 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": _belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
+      queryParameters: {
+        "Seri": _belgeNoController.text,
+        "BelgeTipi": widget.model.editTipiEnum?.rawValue,
+        "EIrsaliye": widget.model.editTipiEnum.irsaliyeMi ? "E" : "H",
+        "CariKodu": model.cariKodu ?? "",
+      },
       showLoading: true,
     );
     if (result.success == true) {
