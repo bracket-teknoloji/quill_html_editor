@@ -47,7 +47,8 @@ class AccountResponseModel with NetworkManagerMixin {
   @HiveField(18)
   dynamic demoBitisTarihi;
   @HiveField(19)
-  bool? uzaktanMi = true;
+  @JsonKey(defaultValue: true)
+  bool? uzaktanMi;
 
   AccountResponseModel();
 

@@ -122,7 +122,7 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..maxApkVersion = json['MAX_APK_VERSION'] as int?
       ..maxWsVersion = json['MAX_WS_VERSION'] as String?
       ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
-      ..uzaktanMi = json['UZAKTAN_MI'] as bool?;
+      ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
     AccountResponseModel instance) {
