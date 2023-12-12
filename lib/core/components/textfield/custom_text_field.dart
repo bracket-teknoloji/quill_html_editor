@@ -164,6 +164,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 splashFactory: NoSplash.splashFactory,
                               ),
                             ),
+                            if (widget.isTime == true)
+                            IconButton(
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              onPressed: widget.onTap,
+                              icon: const Icon(Icons.access_time_outlined),
+                              style: ButtonStyle(
+                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                splashFactory: NoSplash.splashFactory,
+                              ),
+                            ),
                           if (widget.suffixMore == true && ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null))
                             IconButton(
                               padding: EdgeInsets.zero,
