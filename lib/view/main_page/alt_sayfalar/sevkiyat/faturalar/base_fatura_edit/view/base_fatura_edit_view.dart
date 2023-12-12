@@ -143,8 +143,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       }
 
-      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
     });
     super.initState();
@@ -374,7 +374,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       showLoading: true,
     );
     if (result.success == true) {
-      dialogManager.showSuccessSnackBar("Kayıt Başarılı");
+      dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       return true;
     } else {
       return false;
