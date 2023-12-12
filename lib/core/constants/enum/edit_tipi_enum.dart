@@ -51,6 +51,8 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get talepTeklifMi => satisTalebiMi || alisTalebiMi || satisTeklifiMi;
 
+  bool get irsaliyeMi => satisIrsaliyesiMi || alisIrsaliyesiMi;
+
   bool get talepKalemlerFiltrele => alisTalebiMi || satisTalebiMi;
 
   int get kademeliIskontoSayisi {
