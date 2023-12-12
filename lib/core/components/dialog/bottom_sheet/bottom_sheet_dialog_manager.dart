@@ -16,6 +16,7 @@ import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
@@ -561,6 +562,31 @@ class BottomSheetDialogManager {
     return result;
   }
 
+  Future<EIrsaliyeBilgiModel?> showEIrsaliyeSablonBottomSheetDialog(BuildContext context) async {
+    final result = await NetworkManager().dioGet<EIrsaliyeBilgiModel>(
+      path: ApiUrls.getEIrsaliyeSablonlari,
+      bodyModel: EIrsaliyeBilgiModel(),
+      showLoading: true,
+    );
+    if (result.data is List) {
+      final List<EIrsaliyeBilgiModel> list = result.data.map((e) => e as EIrsaliyeBilgiModel).toList().cast<EIrsaliyeBilgiModel>();
+      return await showBottomSheetDialog(
+        context,
+        title: "Şablon Seçiniz",
+        children: list
+            .map(
+              (e) => BottomSheetModel(
+                title: e.tasiyiciUnvan ?? "",
+                description: "${e.sablonKodu ?? ""} (${e.sofor1Adi?.split("").first ?? ""}. ${e.sofor1Soyadi ?? ""})",
+                value: e,
+              ),
+            )
+            .toList(),
+      );
+    }
+    return null;
+  }
+
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? <BaseProjeModel>[];
     final BaseProjeModel? proje = await showRadioBottomSheetDialog(
@@ -776,7 +802,13 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(BuildContext context, {required String? cariKodu, required String? belgeTipi, required String? belgeNo, List<String>? filterText}) async {
+  Future<KalemListModel?> showBelgeBaglantilariBottomSheetDialog(
+    BuildContext context, {
+    required String? cariKodu,
+    required String? belgeTipi,
+    required String? belgeNo,
+    List<String>? filterText,
+  }) async {
     final result = await NetworkManager().dioGet<KalemListModel>(
       path: ApiUrls.getBelgeBaglantilari,
       bodyModel: KalemListModel(),
