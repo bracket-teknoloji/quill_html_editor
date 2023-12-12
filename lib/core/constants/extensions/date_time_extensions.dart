@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:intl/intl.dart";
 
 extension DateTimeExtension on DateTime? {
@@ -10,6 +11,8 @@ extension DateTimeExtension on DateTime? {
   String? get toDateStringIfNull => this == null ? null : DateFormat("dd.MM.yyyy").format(this!);
 
   String? get toDateTimeHypenString => this == null ? null : DateFormat("dd.MM.dd_MM_yyyy_HH_mm_ss").format(this!);
+
+  TimeOfDay? get toTimeOfDay => this == null ? null : TimeOfDay(hour: this!.hour, minute: this!.minute);
 }
 
 extension DateTimeExtensionWithTime on DateTime {
@@ -37,4 +40,8 @@ extension DateTimeExtensionWithTime on DateTime {
 // am extension for String dd.MM.yyyy to DateTime
 extension StringExtension on String? {
   DateTime toDateTimeDDMMYYYY() => DateFormat("dd.MM.yyyy").parse(this!, true);
+}
+
+extension TimeOfDayExtensions on TimeOfDay {
+  String get toTimeString => "${hour.toString().padLeft(2, "0")}:${minute.toString().padLeft(2, "0")}";
 }
