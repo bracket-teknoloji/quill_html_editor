@@ -94,7 +94,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
               CustomTextField(
                 labelText: "Stok",
                 controller: stokController,
-                readOnly: false,
+                readOnly: true,
                 isMust: true,
                 suffixMore: true,
                 onSubmitted: getStok,
@@ -322,10 +322,15 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<StokListesiModel?> getStok(String? stokKodu) async {
-    final result = await networkManager
-        .dioPost<StokListesiModel>(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"});
+    final result = await networkManager.dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
+      data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"},
+      showLoading: true,
+    );
     if (result.data != null) {
-      return result.data.firstWhereOrNull((element) => element.stokKodu == stokKodu);
+      final List<StokListesiModel> list = result.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
+      return list.firstWhereOrNull((element) => element.stokKodu == stokKodu);
     }
     return null;
   }
