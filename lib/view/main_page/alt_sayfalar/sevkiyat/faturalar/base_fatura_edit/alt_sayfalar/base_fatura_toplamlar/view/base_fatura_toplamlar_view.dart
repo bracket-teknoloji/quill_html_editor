@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/text_span_extensions.dart";
@@ -414,12 +415,19 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 ),
               ],
             ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
+            
+            // Eğer enable ise sayfaya yönlendirme yapılabilir.
             ElevatedButton(
-              onPressed: () async {
-                await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler");
-              },
+              onPressed: !enable
+                  ? null
+                  : () async {
+                      final result = await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler", arguments: model.eirsBilgiModel);
+                      if (result is EIrsaliyeBilgiModel) {
+                        model.eirsBilgiModel = result;
+                      }
+                    },
               child: const Text("E-İrsaliye Ek Bilgiler"),
-            ).paddingAll(UIHelper.lowSize),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E"),
           ],
         ),
       );
