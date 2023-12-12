@@ -1037,6 +1037,8 @@ class KalemModel with NetworkManagerMixin {
 
   bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
 
+  double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
+
   String get faturaKalemAciklama =>
       "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
   //koli mi
