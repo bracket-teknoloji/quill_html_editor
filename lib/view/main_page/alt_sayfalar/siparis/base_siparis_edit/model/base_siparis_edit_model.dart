@@ -561,6 +561,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get onaylandiMi => onaylayankul != null;
 
   bool get onaydaMi => tipi == 3;
+  
 
   bool get stekMi => belgeTuru == "STEK";
 
