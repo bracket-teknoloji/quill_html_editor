@@ -3,11 +3,16 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/kalem_rehberi/view_model/kalem_rehberi_view_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
+/// KalemModel Listesi dönüyor
 class KalemRehberiView extends StatefulWidget {
   final BaseSiparisEditModel model;
   const KalemRehberiView({super.key, required this.model});
@@ -81,6 +86,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                     onTap: () {
                       changeCheckBox(!viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo), model);
                     },
+                    visualDensity: VisualDensity.compact,
                     leading: Observer(
                       builder: (_) => Checkbox(
                         value: viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo),
@@ -90,7 +96,24 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                       ),
                     ),
                     title: Text(model.stokAdi ?? "", overflow: TextOverflow.ellipsis),
-                    subtitle: Text(model.stokKodu ?? ""),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Belge No: ${model.belgeNo ?? ""}", overflow: TextOverflow.ellipsis),
+                        Text("Stok Kodu: ${model.stokKodu ?? ""}", overflow: TextOverflow.ellipsis),
+                        CustomLayoutBuilder(
+                          splitCount: 2,
+                          children: [
+                            Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("Miktar 2: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("Teslim Miktarı: ${model.teslimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("Kalan Miktar: ${model.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("Teslim Tarihi: ${model.teslimTarihi.toDateString}"),
+                            Text("Sıra: ${model.sira ?? ""}"),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
