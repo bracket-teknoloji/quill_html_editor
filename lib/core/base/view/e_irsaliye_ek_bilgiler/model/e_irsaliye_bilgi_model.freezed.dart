@@ -90,6 +90,8 @@ mixin _$EIrsaliyeBilgiModel {
   set tasiyiciUnvan(String? value) => throw _privateConstructorUsedError;
   String? get tasiyiciVkn => throw _privateConstructorUsedError;
   set tasiyiciVkn(String? value) => throw _privateConstructorUsedError;
+  String? get sablonKodu => throw _privateConstructorUsedError;
+  set sablonKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -126,7 +128,8 @@ abstract class $EIrsaliyeBilgiModelCopyWith<$Res> {
       String? tasiyiciPostakodu,
       String? tasiyiciUlke,
       String? tasiyiciUnvan,
-      String? tasiyiciVkn});
+      String? tasiyiciVkn,
+      String? sablonKodu});
 }
 
 /// @nodoc
@@ -165,6 +168,7 @@ class _$EIrsaliyeBilgiModelCopyWithImpl<$Res, $Val extends EIrsaliyeBilgiModel>
     Object? tasiyiciUlke = freezed,
     Object? tasiyiciUnvan = freezed,
     Object? tasiyiciVkn = freezed,
+    Object? sablonKodu = freezed,
   }) {
     return _then(_value.copyWith(
       dorsePlaka1: freezed == dorsePlaka1
@@ -259,6 +263,10 @@ class _$EIrsaliyeBilgiModelCopyWithImpl<$Res, $Val extends EIrsaliyeBilgiModel>
           ? _value.tasiyiciVkn
           : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
               as String?,
+      sablonKodu: freezed == sablonKodu
+          ? _value.sablonKodu
+          : sablonKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -294,7 +302,8 @@ abstract class _$$EIrsaliyeBilgiModelImplCopyWith<$Res>
       String? tasiyiciPostakodu,
       String? tasiyiciUlke,
       String? tasiyiciUnvan,
-      String? tasiyiciVkn});
+      String? tasiyiciVkn,
+      String? sablonKodu});
 }
 
 /// @nodoc
@@ -331,6 +340,7 @@ class __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>
     Object? tasiyiciUlke = freezed,
     Object? tasiyiciUnvan = freezed,
     Object? tasiyiciVkn = freezed,
+    Object? sablonKodu = freezed,
   }) {
     return _then(_$EIrsaliyeBilgiModelImpl(
       dorsePlaka1: freezed == dorsePlaka1
@@ -425,6 +435,10 @@ class __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>
           ? _value.tasiyiciVkn
           : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
               as String?,
+      sablonKodu: freezed == sablonKodu
+          ? _value.sablonKodu
+          : sablonKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -455,7 +469,8 @@ class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
       this.tasiyiciPostakodu,
       this.tasiyiciUlke,
       this.tasiyiciUnvan,
-      this.tasiyiciVkn})
+      this.tasiyiciVkn,
+      this.sablonKodu})
       : super._();
 
   factory _$EIrsaliyeBilgiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -519,6 +534,8 @@ class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
   String? tasiyiciUnvan;
   @override
   String? tasiyiciVkn;
+  @override
+  String? sablonKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -559,7 +576,8 @@ abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
       String? tasiyiciPostakodu,
       String? tasiyiciUlke,
       String? tasiyiciUnvan,
-      String? tasiyiciVkn}) = _$EIrsaliyeBilgiModelImpl;
+      String? tasiyiciVkn,
+      String? sablonKodu}) = _$EIrsaliyeBilgiModelImpl;
   _EIrsaliyeBilgiModel._() : super._();
 
   factory _EIrsaliyeBilgiModel.fromJson(Map<String, dynamic> json) =
@@ -658,6 +676,9 @@ abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
   @override
   String? get tasiyiciVkn;
   set tasiyiciVkn(String? value);
+  @override
+  String? get sablonKodu;
+  set sablonKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EIrsaliyeBilgiModelImplCopyWith<_$EIrsaliyeBilgiModelImpl> get copyWith =>

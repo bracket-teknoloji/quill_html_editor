@@ -34,6 +34,7 @@ _$EIrsaliyeBilgiModelImpl _$$EIrsaliyeBilgiModelImplFromJson(
       tasiyiciUlke: json['TASIYICI_ULKE'] as String?,
       tasiyiciUnvan: json['TASIYICI_UNVAN'] as String?,
       tasiyiciVkn: json['TASIYICI_VKN'] as String?,
+      sablonKodu: json['SABLON_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$EIrsaliyeBilgiModelImplToJson(
@@ -69,5 +70,6 @@ Map<String, dynamic> _$$EIrsaliyeBilgiModelImplToJson(
   writeNotNull('TASIYICI_ULKE', instance.tasiyiciUlke);
   writeNotNull('TASIYICI_UNVAN', instance.tasiyiciUnvan);
   writeNotNull('TASIYICI_VKN', instance.tasiyiciVkn);
+  writeNotNull('SABLON_KODU', instance.sablonKodu);
   return val;
 }

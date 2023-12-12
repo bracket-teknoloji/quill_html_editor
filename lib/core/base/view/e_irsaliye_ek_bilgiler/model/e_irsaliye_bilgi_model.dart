@@ -6,9 +6,8 @@ part "e_irsaliye_bilgi_model.g.dart";
 
 @unfreezed
 class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
-    
-    EIrsaliyeBilgiModel._();
-   factory EIrsaliyeBilgiModel({
+  EIrsaliyeBilgiModel._();
+  factory EIrsaliyeBilgiModel({
     String? dorsePlaka1,
     String? dorsePlaka2,
     String? dorsePlaka3,
@@ -32,10 +31,21 @@ class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
     String? tasiyiciUlke,
     String? tasiyiciUnvan,
     String? tasiyiciVkn,
+    String? sablonKodu,
   }) = _EIrsaliyeBilgiModel;
 
   factory EIrsaliyeBilgiModel.fromJson(Map<String, dynamic> json) => _$EIrsaliyeBilgiModelFromJson(json);
 
   @override
   EIrsaliyeBilgiModel fromJson(Map<String, dynamic> json) => _$EIrsaliyeBilgiModelFromJson(json);
+}
+
+extension EIrsaliyeBilgiModelExtensions on EIrsaliyeBilgiModel {
+  bool get tasiyiciBilgileriTamMi =>
+      (tasiyiciIl?.isNotEmpty ?? false) &&
+      (tasiyiciIlce?.isNotEmpty ?? false) &&
+      (tasiyiciPostakodu?.isNotEmpty ?? false) &&
+      (tasiyiciUlke?.isNotEmpty ?? false) &&
+      (tasiyiciUnvan?.isNotEmpty ?? false) &&
+      (tasiyiciVkn?.isNotEmpty ?? false);
 }
