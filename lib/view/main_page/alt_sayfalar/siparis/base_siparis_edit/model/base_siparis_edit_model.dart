@@ -567,6 +567,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get atalMi => belgeTuru == "ATAL";
 
+  bool get faturaIrsaliyeMi => belgeTuru == "SI" || belgeTuru == "AI" || belgeTuru == "SF" || belgeTuru == "AF";
+
   bool get teklifRevizeEdilmisMi => sonrakiRevizeNo != null;
 
   bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
@@ -925,6 +927,10 @@ class KalemModel with NetworkManagerMixin {
   List<dynamic>? kalemListHucreList;
   @HiveField(90)
   String? arrBelgeNo;
+  @HiveField(91)
+    int? efatOzelkod;
+  @HiveField(92)
+    String? efatOzelkodAdi;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1018,6 +1024,8 @@ class KalemModel with NetworkManagerMixin {
     this.dovizAdi,
     this.kalemListHucreList,
     this.arrBelgeNo,
+    this.efatOzelkod,
+    this.efatOzelkodAdi,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(

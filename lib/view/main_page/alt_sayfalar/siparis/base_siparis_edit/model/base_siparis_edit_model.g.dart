@@ -2012,6 +2012,10 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel arrBelgeNo(String? arrBelgeNo);
 
+  KalemModel efatOzelkod(int? efatOzelkod);
+
+  KalemModel efatOzelkodAdi(String? efatOzelkodAdi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2110,6 +2114,8 @@ abstract class _$KalemModelCWProxy {
     String? dovizAdi,
     List<dynamic>? kalemListHucreList,
     String? arrBelgeNo,
+    int? efatOzelkod,
+    String? efatOzelkodAdi,
   });
 }
 
@@ -2422,6 +2428,13 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel arrBelgeNo(String? arrBelgeNo) => this(arrBelgeNo: arrBelgeNo);
 
   @override
+  KalemModel efatOzelkod(int? efatOzelkod) => this(efatOzelkod: efatOzelkod);
+
+  @override
+  KalemModel efatOzelkodAdi(String? efatOzelkodAdi) =>
+      this(efatOzelkodAdi: efatOzelkodAdi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2521,6 +2534,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? dovizAdi = const $CopyWithPlaceholder(),
     Object? kalemListHucreList = const $CopyWithPlaceholder(),
     Object? arrBelgeNo = const $CopyWithPlaceholder(),
+    Object? efatOzelkod = const $CopyWithPlaceholder(),
+    Object? efatOzelkodAdi = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2888,6 +2903,14 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.arrBelgeNo
           // ignore: cast_nullable_to_non_nullable
           : arrBelgeNo as String?,
+      efatOzelkod: efatOzelkod == const $CopyWithPlaceholder()
+          ? _value.efatOzelkod
+          // ignore: cast_nullable_to_non_nullable
+          : efatOzelkod as int?,
+      efatOzelkodAdi: efatOzelkodAdi == const $CopyWithPlaceholder()
+          ? _value.efatOzelkodAdi
+          // ignore: cast_nullable_to_non_nullable
+          : efatOzelkodAdi as String?,
     );
   }
 }
@@ -3531,13 +3554,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       dovizAdi: fields[88] as String?,
       kalemListHucreList: (fields[89] as List?)?.cast<dynamic>(),
       arrBelgeNo: fields[90] as String?,
+      efatOzelkod: fields[91] as int?,
+      efatOzelkodAdi: fields[92] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(91)
+      ..writeByte(93)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3719,7 +3744,11 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(89)
       ..write(obj.kalemListHucreList)
       ..writeByte(90)
-      ..write(obj.arrBelgeNo);
+      ..write(obj.arrBelgeNo)
+      ..writeByte(91)
+      ..write(obj.efatOzelkod)
+      ..writeByte(92)
+      ..write(obj.efatOzelkodAdi);
   }
 
   @override
@@ -4194,6 +4223,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       dovizAdi: json['DOVIZ_ADI'] as String?,
       kalemListHucreList: json['KALEM_LIST_HUCRE_LIST'] as List<dynamic>?,
       arrBelgeNo: json['ARR_BELGE_NO'] as String?,
+      efatOzelkod: json['EFAT_OZELKOD'] as int?,
+      efatOzelkodAdi: json['EFAT_OZELKOD_ADI'] as String?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4297,6 +4328,8 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('DOVIZ_ADI', instance.dovizAdi);
   writeNotNull('KALEM_LIST_HUCRE_LIST', instance.kalemListHucreList);
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
+  writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
+  writeNotNull('EFAT_OZELKOD_ADI', instance.efatOzelkodAdi);
   return val;
 }
 
