@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
@@ -447,6 +448,10 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
+    if (widget.model.baseEditEnum == BaseEditEnum.goruntule && viewModel.model.efatOzelkod == null) {
+      viewModel.setEfatOzelkod(model.kalemList?.first.efatOzelkod ?? 0);
+      istisnaKoduController.text = model.kalemList?.first.efatOzelkodAdi ?? "";
+    }
   }
 
   void disposeControllers() {
