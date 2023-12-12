@@ -95,6 +95,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     } else {
       model.model?.kayitModu = null;
     }
+    if (model.editTipiEnum?.irsaliyeMi ?? false) {
+      model.model?.siparisSevkEdilenGoster = true;
+    }
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result =
@@ -120,7 +123,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         final result = await getSiparisBaglantisi();
-        if (model.editTipiEnum.irsaliyeMi){
+        if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
         }
         BaseSiparisEditModel.instance.tarih = DateTime.now();
