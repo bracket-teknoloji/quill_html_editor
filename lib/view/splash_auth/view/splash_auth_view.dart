@@ -132,7 +132,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       final response = await networkManager.getToken(
         path: ApiUrls.token,
         queryParameters: {
-          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson()),
+          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi..uyeEmail= CacheManager.getVerifiedUser.account?.email ?? "")?.toJson()),
         },
         data: {
           "grant_type": "password",
