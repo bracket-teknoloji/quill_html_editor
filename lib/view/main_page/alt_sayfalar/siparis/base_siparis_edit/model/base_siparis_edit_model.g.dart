@@ -287,7 +287,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel ebelgeCheckbox(String? ebelgeCheckbox);
 
-  BaseSiparisEditModel eirsBilgiModel(EirsBilgiModel? eirsBilgiModel);
+  BaseSiparisEditModel eirsBilgiModel(EIrsaliyeBilgiModel? eirsBilgiModel);
 
   BaseSiparisEditModel uetdsBildirildi(String? uetdsBildirildi);
 
@@ -314,9 +314,6 @@ abstract class _$BaseSiparisEditModelCWProxy {
   BaseSiparisEditModel onaytarihi(DateTime? onaytarihi);
 
   BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo);
-
-  BaseSiparisEditModel eirsaliyeBilgiModel(
-      EIrsaliyeBilgiModel? eirsaliyeBilgiModel);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -465,7 +462,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? earsivGibDurumKodu,
     String? eirsaliyeDurumu,
     String? ebelgeCheckbox,
-    EirsBilgiModel? eirsBilgiModel,
+    EIrsaliyeBilgiModel? eirsBilgiModel,
     String? uetdsBildirildi,
     bool? kdvDahilMi,
     int? efatOzelkod,
@@ -479,7 +476,6 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? onaylayankul,
     DateTime? onaytarihi,
     String? efaturaSenaryo,
-    EIrsaliyeBilgiModel? eirsaliyeBilgiModel,
   });
 }
 
@@ -986,7 +982,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(ebelgeCheckbox: ebelgeCheckbox);
 
   @override
-  BaseSiparisEditModel eirsBilgiModel(EirsBilgiModel? eirsBilgiModel) =>
+  BaseSiparisEditModel eirsBilgiModel(EIrsaliyeBilgiModel? eirsBilgiModel) =>
       this(eirsBilgiModel: eirsBilgiModel);
 
   @override
@@ -1038,11 +1034,6 @@ class _$BaseSiparisEditModelCWProxyImpl
   @override
   BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo) =>
       this(efaturaSenaryo: efaturaSenaryo);
-
-  @override
-  BaseSiparisEditModel eirsaliyeBilgiModel(
-          EIrsaliyeBilgiModel? eirsaliyeBilgiModel) =>
-      this(eirsaliyeBilgiModel: eirsaliyeBilgiModel);
 
   @override
 
@@ -1207,7 +1198,6 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? onaylayankul = const $CopyWithPlaceholder(),
     Object? onaytarihi = const $CopyWithPlaceholder(),
     Object? efaturaSenaryo = const $CopyWithPlaceholder(),
-    Object? eirsaliyeBilgiModel = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1775,7 +1765,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       eirsBilgiModel: eirsBilgiModel == const $CopyWithPlaceholder()
           ? _value.eirsBilgiModel
           // ignore: cast_nullable_to_non_nullable
-          : eirsBilgiModel as EirsBilgiModel?,
+          : eirsBilgiModel as EIrsaliyeBilgiModel?,
       uetdsBildirildi: uetdsBildirildi == const $CopyWithPlaceholder()
           ? _value.uetdsBildirildi
           // ignore: cast_nullable_to_non_nullable
@@ -1828,10 +1818,6 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.efaturaSenaryo
           // ignore: cast_nullable_to_non_nullable
           : efaturaSenaryo as String?,
-      eirsaliyeBilgiModel: eirsaliyeBilgiModel == const $CopyWithPlaceholder()
-          ? _value.eirsaliyeBilgiModel
-          // ignore: cast_nullable_to_non_nullable
-          : eirsaliyeBilgiModel as EIrsaliyeBilgiModel?,
     );
   }
 }
@@ -3124,7 +3110,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       earsivGibDurumKodu: fields[140] as int?,
       eirsaliyeDurumu: fields[141] as String?,
       ebelgeCheckbox: fields[142] as String?,
-      eirsBilgiModel: fields[143] as EirsBilgiModel?,
+      eirsBilgiModel: fields[143] as EIrsaliyeBilgiModel?,
       uetdsBildirildi: fields[144] as String?,
       kdvDahilMi: fields[145] as bool?,
       efatOzelkod: fields[146] as int?,
@@ -3138,14 +3124,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       onaylayankul: fields[151] as String?,
       onaytarihi: fields[152] as DateTime?,
       efaturaSenaryo: fields[153] as String?,
-      eirsaliyeBilgiModel: fields[154] as EIrsaliyeBilgiModel?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(155)
+      ..writeByte(154)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3453,9 +3438,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(152)
       ..write(obj.onaytarihi)
       ..writeByte(153)
-      ..write(obj.efaturaSenaryo)
-      ..writeByte(154)
-      ..write(obj.eirsaliyeBilgiModel);
+      ..write(obj.efaturaSenaryo);
   }
 
   @override
@@ -3954,7 +3937,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       ebelgeCheckbox: json['EBELGE_CHECKBOX'] as String?,
       eirsBilgiModel: json['EIRS_BILGI_MODEL'] == null
           ? null
-          : EirsBilgiModel.fromJson(
+          : EIrsaliyeBilgiModel.fromJson(
               json['EIRS_BILGI_MODEL'] as Map<String, dynamic>),
       uetdsBildirildi: json['UETDS_BILDIRILDI'] as String?,
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
@@ -3969,10 +3952,6 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : DateTime.parse(json['ONAYTARIHI'] as String),
       efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
-      eirsaliyeBilgiModel: json['EIRSALIYE_BILGI_MODEL'] == null
-          ? null
-          : EIrsaliyeBilgiModel.fromJson(
-              json['EIRSALIYE_BILGI_MODEL'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4139,7 +4118,6 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ONAYLAYANKUL', instance.onaylayankul);
   writeNotNull('ONAYTARIHI', instance.onaytarihi?.toIso8601String());
   writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
-  writeNotNull('EIRSALIYE_BILGI_MODEL', instance.eirsaliyeBilgiModel?.toJson());
   return val;
 }
 
@@ -4352,45 +4330,5 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
   writeNotNull('EFAT_OZELKOD_ADI', instance.efatOzelkodAdi);
-  return val;
-}
-
-EirsBilgiModel _$EirsBilgiModelFromJson(Map<String, dynamic> json) =>
-    EirsBilgiModel(
-      sevktar: json['SEVKTAR'] == null
-          ? null
-          : DateTime.parse(json['SEVKTAR'] as String),
-      plaka: json['PLAKA'] as String?,
-      tasiyiciVkn: json['TASIYICI_VKN'] as String?,
-      tasiyiciUnvan: json['TASIYICI_UNVAN'] as String?,
-      tasiyiciIl: json['TASIYICI_IL'] as String?,
-      tasiyiciIlce: json['TASIYICI_ILCE'] as String?,
-      tasiyiciUlke: json['TASIYICI_ULKE'] as String?,
-      tasiyiciPostakodu: json['TASIYICI_POSTAKODU'] as String?,
-      sofor1Adi: json['SOFOR_1_ADI'] as String?,
-      sofor1Soyadi: json['SOFOR_1_SOYADI'] as String?,
-      sofor1KimlikNo: json['SOFOR_1_KIMLIK_NO'] as String?,
-    );
-
-Map<String, dynamic> _$EirsBilgiModelToJson(EirsBilgiModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SEVKTAR', instance.sevktar?.toIso8601String());
-  writeNotNull('PLAKA', instance.plaka);
-  writeNotNull('TASIYICI_VKN', instance.tasiyiciVkn);
-  writeNotNull('TASIYICI_UNVAN', instance.tasiyiciUnvan);
-  writeNotNull('TASIYICI_IL', instance.tasiyiciIl);
-  writeNotNull('TASIYICI_ILCE', instance.tasiyiciIlce);
-  writeNotNull('TASIYICI_ULKE', instance.tasiyiciUlke);
-  writeNotNull('TASIYICI_POSTAKODU', instance.tasiyiciPostakodu);
-  writeNotNull('SOFOR_1_ADI', instance.sofor1Adi);
-  writeNotNull('SOFOR_1_SOYADI', instance.sofor1Soyadi);
-  writeNotNull('SOFOR_1_KIMLIK_NO', instance.sofor1KimlikNo);
   return val;
 }

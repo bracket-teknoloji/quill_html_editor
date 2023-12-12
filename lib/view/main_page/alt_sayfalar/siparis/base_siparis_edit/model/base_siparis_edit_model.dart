@@ -368,7 +368,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(142)
   String? ebelgeCheckbox;
   @HiveField(143)
-  EirsBilgiModel? eirsBilgiModel;
+  EIrsaliyeBilgiModel? eirsBilgiModel;
   @HiveField(144)
   String? uetdsBildirildi;
   @HiveField(145)
@@ -390,8 +390,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   DateTime? onaytarihi;
   @HiveField(153)
   String? efaturaSenaryo;
-  @HiveField(154)
-  EIrsaliyeBilgiModel? eirsaliyeBilgiModel;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -548,7 +546,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.onaylayankul,
     this.onaytarihi,
     this.efaturaSenaryo,
-    this.eirsaliyeBilgiModel,
   });
 
   BaseSiparisEditModel._init();
@@ -1156,48 +1153,4 @@ class KalemModel with NetworkManagerMixin {
 
   @override
   KalemModel fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
-}
-
-@JsonSerializable(createFactory: true)
-class EirsBilgiModel {
-  @JsonKey(name: "SEVKTAR")
-  DateTime? sevktar;
-  @JsonKey(name: "PLAKA")
-  String? plaka;
-  @JsonKey(name: "TASIYICI_VKN")
-  String? tasiyiciVkn;
-  @JsonKey(name: "TASIYICI_UNVAN")
-  String? tasiyiciUnvan;
-  @JsonKey(name: "TASIYICI_IL")
-  String? tasiyiciIl;
-  @JsonKey(name: "TASIYICI_ILCE")
-  String? tasiyiciIlce;
-  @JsonKey(name: "TASIYICI_ULKE")
-  String? tasiyiciUlke;
-  @JsonKey(name: "TASIYICI_POSTAKODU")
-  String? tasiyiciPostakodu;
-  @JsonKey(name: "SOFOR_1_ADI")
-  String? sofor1Adi;
-  @JsonKey(name: "SOFOR_1_SOYADI")
-  String? sofor1Soyadi;
-  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
-  String? sofor1KimlikNo;
-
-  EirsBilgiModel({
-    this.sevktar,
-    this.plaka,
-    this.tasiyiciVkn,
-    this.tasiyiciUnvan,
-    this.tasiyiciIl,
-    this.tasiyiciIlce,
-    this.tasiyiciUlke,
-    this.tasiyiciPostakodu,
-    this.sofor1Adi,
-    this.sofor1Soyadi,
-    this.sofor1KimlikNo,
-  });
-
-  factory EirsBilgiModel.fromJson(Map<String, dynamic> json) => _$EirsBilgiModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$EirsBilgiModelToJson(this);
 }
