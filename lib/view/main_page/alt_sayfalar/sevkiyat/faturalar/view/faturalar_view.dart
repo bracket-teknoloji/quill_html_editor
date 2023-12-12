@@ -252,7 +252,6 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       primary: false,
                       physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                       controller: _scrollController,
-                      shrinkWrap: true,
                       itemCount: viewModel.faturaList != null ? ((viewModel.faturaList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
                       itemBuilder: (BuildContext context, int index) {
                         if (index == viewModel.faturaList?.length) {
