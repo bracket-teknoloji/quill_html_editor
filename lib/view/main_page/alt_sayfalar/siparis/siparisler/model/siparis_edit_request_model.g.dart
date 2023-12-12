@@ -30,6 +30,7 @@ _$SiparisEditRequestModelImpl _$$SiparisEditRequestModelImplFromJson(
       resimGoster: json['ResimGoster'] as String?,
       stokKodu: json['StokKodu'] as String?,
       tag: json['Tag'] as String?,
+      siparisSevkEdilenGoster: json['SiparisSevkEdilenGoster'] as bool?,
     );
 
 Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
@@ -63,5 +64,6 @@ Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
   writeNotNull('ResimGoster', instance.resimGoster);
   writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull('Tag', instance.tag);
+  writeNotNull('SiparisSevkEdilenGoster', instance.siparisSevkEdilenGoster);
   return val;
 }

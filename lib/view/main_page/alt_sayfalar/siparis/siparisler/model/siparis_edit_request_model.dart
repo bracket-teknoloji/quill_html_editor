@@ -38,6 +38,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? resimGoster,
     String? stokKodu,
     String? tag,
+    bool? siparisSevkEdilenGoster,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();
