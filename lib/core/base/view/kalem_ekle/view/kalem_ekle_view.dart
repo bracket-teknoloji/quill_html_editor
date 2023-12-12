@@ -255,6 +255,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 labelText: "Muh. Kodu",
                                 suffixMore: true,
                                 readOnly: true,
+                                isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
                                 onClear: () => viewModel.setMuhasebeKodu(null),
                                 // suffix: IconButton(
                                 //     onPressed: () {
@@ -272,7 +273,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   }
                                 },
                               ),
-                            ).yetkiVarMi((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi),
+                            ).yetkiVarMi(((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi) || BaseSiparisEditModel.instance.faturaIrsaliyeMi),
                           ],
                         ),
                       ),
