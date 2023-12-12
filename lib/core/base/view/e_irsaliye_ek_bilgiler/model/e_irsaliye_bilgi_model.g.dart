@@ -16,18 +16,18 @@ _$EIrsaliyeBilgiModelImpl _$$EIrsaliyeBilgiModelImplFromJson(
       sevktar: json['SEVKTAR'] == null
           ? null
           : DateTime.parse(json['SEVKTAR'] as String),
-      sofor1Aciklama: json['SOFOR1_ACIKLAMA'] as String?,
-      sofor1Adi: json['SOFOR1_ADI'] as String?,
-      sofor1KimlikNo: json['SOFOR1_KIMLIK_NO'] as String?,
-      sofor1Soyadi: json['SOFOR1_SOYADI'] as String?,
-      sofor2Aciklama: json['SOFOR2_ACIKLAMA'] as String?,
-      sofor2Adi: json['SOFOR2_ADI'] as String?,
-      sofor2KimlikNo: json['SOFOR2_KIMLIK_NO'] as String?,
-      sofor2Soyadi: json['SOFOR2_SOYADI'] as String?,
-      sofor3Aciklama: json['SOFOR3_ACIKLAMA'] as String?,
-      sofor3Adi: json['SOFOR3_ADI'] as String?,
-      sofor3KimlikNo: json['SOFOR3_KIMLIK_NO'] as String?,
-      sofor3Soyadi: json['SOFOR3_SOYADI'] as String?,
+      sofor1Aciklama: json['SOFOR_1_ACIKLAMA'] as String?,
+      sofor1Adi: json['SOFOR_1_ADI'] as String?,
+      sofor1KimlikNo: json['SOFOR_1_KIMLIK_NO'] as String?,
+      sofor1Soyadi: json['SOFOR_1_SOYADI'] as String?,
+      sofor2Aciklama: json['SOFOR_2_ACIKLAMA'] as String?,
+      sofor2Adi: json['SOFOR_2_ADI'] as String?,
+      sofor2KimlikNo: json['SOFOR_2_KIMLIK_NO'] as String?,
+      sofor2Soyadi: json['SOFOR_2_SOYADI'] as String?,
+      sofor3Aciklama: json['SOFOR_3_ACIKLAMA'] as String?,
+      sofor3Adi: json['SOFOR_3_ADI'] as String?,
+      sofor3KimlikNo: json['SOFOR_3_KIMLIK_NO'] as String?,
+      sofor3Soyadi: json['SOFOR_3_SOYADI'] as String?,
       tasiyiciIl: json['TASIYICI_IL'] as String?,
       tasiyiciIlce: json['TASIYICI_ILCE'] as String?,
       tasiyiciPostakodu: json['TASIYICI_POSTAKODU'] as String?,
@@ -51,18 +51,18 @@ Map<String, dynamic> _$$EIrsaliyeBilgiModelImplToJson(
   writeNotNull('DORSE_PLAKA3', instance.dorsePlaka3);
   writeNotNull('PLAKA', instance.plaka);
   writeNotNull('SEVKTAR', instance.sevktar?.toIso8601String());
-  writeNotNull('SOFOR1_ACIKLAMA', instance.sofor1Aciklama);
-  writeNotNull('SOFOR1_ADI', instance.sofor1Adi);
-  writeNotNull('SOFOR1_KIMLIK_NO', instance.sofor1KimlikNo);
-  writeNotNull('SOFOR1_SOYADI', instance.sofor1Soyadi);
-  writeNotNull('SOFOR2_ACIKLAMA', instance.sofor2Aciklama);
-  writeNotNull('SOFOR2_ADI', instance.sofor2Adi);
-  writeNotNull('SOFOR2_KIMLIK_NO', instance.sofor2KimlikNo);
-  writeNotNull('SOFOR2_SOYADI', instance.sofor2Soyadi);
-  writeNotNull('SOFOR3_ACIKLAMA', instance.sofor3Aciklama);
-  writeNotNull('SOFOR3_ADI', instance.sofor3Adi);
-  writeNotNull('SOFOR3_KIMLIK_NO', instance.sofor3KimlikNo);
-  writeNotNull('SOFOR3_SOYADI', instance.sofor3Soyadi);
+  writeNotNull('SOFOR_1_ACIKLAMA', instance.sofor1Aciklama);
+  writeNotNull('SOFOR_1_ADI', instance.sofor1Adi);
+  writeNotNull('SOFOR_1_KIMLIK_NO', instance.sofor1KimlikNo);
+  writeNotNull('SOFOR_1_SOYADI', instance.sofor1Soyadi);
+  writeNotNull('SOFOR_2_ACIKLAMA', instance.sofor2Aciklama);
+  writeNotNull('SOFOR_2_ADI', instance.sofor2Adi);
+  writeNotNull('SOFOR_2_KIMLIK_NO', instance.sofor2KimlikNo);
+  writeNotNull('SOFOR_2_SOYADI', instance.sofor2Soyadi);
+  writeNotNull('SOFOR_3_ACIKLAMA', instance.sofor3Aciklama);
+  writeNotNull('SOFOR_3_ADI', instance.sofor3Adi);
+  writeNotNull('SOFOR_3_KIMLIK_NO', instance.sofor3KimlikNo);
+  writeNotNull('SOFOR_3_SOYADI', instance.sofor3Soyadi);
   writeNotNull('TASIYICI_IL', instance.tasiyiciIl);
   writeNotNull('TASIYICI_ILCE', instance.tasiyiciIlce);
   writeNotNull('TASIYICI_POSTAKODU', instance.tasiyiciPostakodu);

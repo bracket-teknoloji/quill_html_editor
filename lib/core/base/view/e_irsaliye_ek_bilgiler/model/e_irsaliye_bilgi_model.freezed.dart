@@ -30,29 +30,53 @@ mixin _$EIrsaliyeBilgiModel {
   set plaka(String? value) => throw _privateConstructorUsedError;
   DateTime? get sevktar => throw _privateConstructorUsedError;
   set sevktar(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_ACIKLAMA")
   String? get sofor1Aciklama => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_ACIKLAMA")
   set sofor1Aciklama(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_ADI")
   String? get sofor1Adi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_ADI")
   set sofor1Adi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
   String? get sofor1KimlikNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
   set sofor1KimlikNo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_SOYADI")
   String? get sofor1Soyadi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_1_SOYADI")
   set sofor1Soyadi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_ACIKLAMA")
   String? get sofor2Aciklama => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_ACIKLAMA")
   set sofor2Aciklama(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_ADI")
   String? get sofor2Adi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_ADI")
   set sofor2Adi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_KIMLIK_NO")
   String? get sofor2KimlikNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_KIMLIK_NO")
   set sofor2KimlikNo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_SOYADI")
   String? get sofor2Soyadi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_2_SOYADI")
   set sofor2Soyadi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_ACIKLAMA")
   String? get sofor3Aciklama => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_ACIKLAMA")
   set sofor3Aciklama(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_ADI")
   String? get sofor3Adi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_ADI")
   set sofor3Adi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_KIMLIK_NO")
   String? get sofor3KimlikNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_KIMLIK_NO")
   set sofor3KimlikNo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_SOYADI")
   String? get sofor3Soyadi => throw _privateConstructorUsedError;
+  @JsonKey(name: "SOFOR_3_SOYADI")
   set sofor3Soyadi(String? value) => throw _privateConstructorUsedError;
   String? get tasiyiciIl => throw _privateConstructorUsedError;
   set tasiyiciIl(String? value) => throw _privateConstructorUsedError;
@@ -85,18 +109,18 @@ abstract class $EIrsaliyeBilgiModelCopyWith<$Res> {
       String? dorsePlaka3,
       String? plaka,
       DateTime? sevktar,
-      String? sofor1Aciklama,
-      String? sofor1Adi,
-      String? sofor1KimlikNo,
-      String? sofor1Soyadi,
-      String? sofor2Aciklama,
-      String? sofor2Adi,
-      String? sofor2KimlikNo,
-      String? sofor2Soyadi,
-      String? sofor3Aciklama,
-      String? sofor3Adi,
-      String? sofor3KimlikNo,
-      String? sofor3Soyadi,
+      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
       String? tasiyiciIl,
       String? tasiyiciIlce,
       String? tasiyiciPostakodu,
@@ -253,18 +277,18 @@ abstract class _$$EIrsaliyeBilgiModelImplCopyWith<$Res>
       String? dorsePlaka3,
       String? plaka,
       DateTime? sevktar,
-      String? sofor1Aciklama,
-      String? sofor1Adi,
-      String? sofor1KimlikNo,
-      String? sofor1Soyadi,
-      String? sofor2Aciklama,
-      String? sofor2Adi,
-      String? sofor2KimlikNo,
-      String? sofor2Soyadi,
-      String? sofor3Aciklama,
-      String? sofor3Adi,
-      String? sofor3KimlikNo,
-      String? sofor3Soyadi,
+      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
       String? tasiyiciIl,
       String? tasiyiciIlce,
       String? tasiyiciPostakodu,
@@ -414,18 +438,18 @@ class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
       this.dorsePlaka3,
       this.plaka,
       this.sevktar,
-      this.sofor1Aciklama,
-      this.sofor1Adi,
-      this.sofor1KimlikNo,
-      this.sofor1Soyadi,
-      this.sofor2Aciklama,
-      this.sofor2Adi,
-      this.sofor2KimlikNo,
-      this.sofor2Soyadi,
-      this.sofor3Aciklama,
-      this.sofor3Adi,
-      this.sofor3KimlikNo,
-      this.sofor3Soyadi,
+      @JsonKey(name: "SOFOR_1_ACIKLAMA") this.sofor1Aciklama,
+      @JsonKey(name: "SOFOR_1_ADI") this.sofor1Adi,
+      @JsonKey(name: "SOFOR_1_KIMLIK_NO") this.sofor1KimlikNo,
+      @JsonKey(name: "SOFOR_1_SOYADI") this.sofor1Soyadi,
+      @JsonKey(name: "SOFOR_2_ACIKLAMA") this.sofor2Aciklama,
+      @JsonKey(name: "SOFOR_2_ADI") this.sofor2Adi,
+      @JsonKey(name: "SOFOR_2_KIMLIK_NO") this.sofor2KimlikNo,
+      @JsonKey(name: "SOFOR_2_SOYADI") this.sofor2Soyadi,
+      @JsonKey(name: "SOFOR_3_ACIKLAMA") this.sofor3Aciklama,
+      @JsonKey(name: "SOFOR_3_ADI") this.sofor3Adi,
+      @JsonKey(name: "SOFOR_3_KIMLIK_NO") this.sofor3KimlikNo,
+      @JsonKey(name: "SOFOR_3_SOYADI") this.sofor3Soyadi,
       this.tasiyiciIl,
       this.tasiyiciIlce,
       this.tasiyiciPostakodu,
@@ -448,28 +472,40 @@ class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
   @override
   DateTime? sevktar;
   @override
+  @JsonKey(name: "SOFOR_1_ACIKLAMA")
   String? sofor1Aciklama;
   @override
+  @JsonKey(name: "SOFOR_1_ADI")
   String? sofor1Adi;
   @override
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
   String? sofor1KimlikNo;
   @override
+  @JsonKey(name: "SOFOR_1_SOYADI")
   String? sofor1Soyadi;
   @override
+  @JsonKey(name: "SOFOR_2_ACIKLAMA")
   String? sofor2Aciklama;
   @override
+  @JsonKey(name: "SOFOR_2_ADI")
   String? sofor2Adi;
   @override
+  @JsonKey(name: "SOFOR_2_KIMLIK_NO")
   String? sofor2KimlikNo;
   @override
+  @JsonKey(name: "SOFOR_2_SOYADI")
   String? sofor2Soyadi;
   @override
+  @JsonKey(name: "SOFOR_3_ACIKLAMA")
   String? sofor3Aciklama;
   @override
+  @JsonKey(name: "SOFOR_3_ADI")
   String? sofor3Adi;
   @override
+  @JsonKey(name: "SOFOR_3_KIMLIK_NO")
   String? sofor3KimlikNo;
   @override
+  @JsonKey(name: "SOFOR_3_SOYADI")
   String? sofor3Soyadi;
   @override
   String? tasiyiciIl;
@@ -506,18 +542,18 @@ abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
       String? dorsePlaka3,
       String? plaka,
       DateTime? sevktar,
-      String? sofor1Aciklama,
-      String? sofor1Adi,
-      String? sofor1KimlikNo,
-      String? sofor1Soyadi,
-      String? sofor2Aciklama,
-      String? sofor2Adi,
-      String? sofor2KimlikNo,
-      String? sofor2Soyadi,
-      String? sofor3Aciklama,
-      String? sofor3Adi,
-      String? sofor3KimlikNo,
-      String? sofor3Soyadi,
+      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
       String? tasiyiciIl,
       String? tasiyiciIlce,
       String? tasiyiciPostakodu,
@@ -545,40 +581,64 @@ abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
   DateTime? get sevktar;
   set sevktar(DateTime? value);
   @override
+  @JsonKey(name: "SOFOR_1_ACIKLAMA")
   String? get sofor1Aciklama;
+  @JsonKey(name: "SOFOR_1_ACIKLAMA")
   set sofor1Aciklama(String? value);
   @override
+  @JsonKey(name: "SOFOR_1_ADI")
   String? get sofor1Adi;
+  @JsonKey(name: "SOFOR_1_ADI")
   set sofor1Adi(String? value);
   @override
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
   String? get sofor1KimlikNo;
+  @JsonKey(name: "SOFOR_1_KIMLIK_NO")
   set sofor1KimlikNo(String? value);
   @override
+  @JsonKey(name: "SOFOR_1_SOYADI")
   String? get sofor1Soyadi;
+  @JsonKey(name: "SOFOR_1_SOYADI")
   set sofor1Soyadi(String? value);
   @override
+  @JsonKey(name: "SOFOR_2_ACIKLAMA")
   String? get sofor2Aciklama;
+  @JsonKey(name: "SOFOR_2_ACIKLAMA")
   set sofor2Aciklama(String? value);
   @override
+  @JsonKey(name: "SOFOR_2_ADI")
   String? get sofor2Adi;
+  @JsonKey(name: "SOFOR_2_ADI")
   set sofor2Adi(String? value);
   @override
+  @JsonKey(name: "SOFOR_2_KIMLIK_NO")
   String? get sofor2KimlikNo;
+  @JsonKey(name: "SOFOR_2_KIMLIK_NO")
   set sofor2KimlikNo(String? value);
   @override
+  @JsonKey(name: "SOFOR_2_SOYADI")
   String? get sofor2Soyadi;
+  @JsonKey(name: "SOFOR_2_SOYADI")
   set sofor2Soyadi(String? value);
   @override
+  @JsonKey(name: "SOFOR_3_ACIKLAMA")
   String? get sofor3Aciklama;
+  @JsonKey(name: "SOFOR_3_ACIKLAMA")
   set sofor3Aciklama(String? value);
   @override
+  @JsonKey(name: "SOFOR_3_ADI")
   String? get sofor3Adi;
+  @JsonKey(name: "SOFOR_3_ADI")
   set sofor3Adi(String? value);
   @override
+  @JsonKey(name: "SOFOR_3_KIMLIK_NO")
   String? get sofor3KimlikNo;
+  @JsonKey(name: "SOFOR_3_KIMLIK_NO")
   set sofor3KimlikNo(String? value);
   @override
+  @JsonKey(name: "SOFOR_3_SOYADI")
   String? get sofor3Soyadi;
+  @JsonKey(name: "SOFOR_3_SOYADI")
   set sofor3Soyadi(String? value);
   @override
   String? get tasiyiciIl;
