@@ -5,6 +5,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:uuid/uuid.dart";
 
@@ -389,6 +390,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   DateTime? onaytarihi;
   @HiveField(153)
   String? efaturaSenaryo;
+  @HiveField(154)
+  EIrsaliyeBilgiModel? eirsaliyeBilgiModel;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -545,6 +548,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.onaylayankul,
     this.onaytarihi,
     this.efaturaSenaryo,
+    this.eirsaliyeBilgiModel,
   });
 
   BaseSiparisEditModel._init();
@@ -928,9 +932,9 @@ class KalemModel with NetworkManagerMixin {
   @HiveField(90)
   String? arrBelgeNo;
   @HiveField(91)
-    int? efatOzelkod;
+  int? efatOzelkod;
   @HiveField(92)
-    String? efatOzelkodAdi;
+  String? efatOzelkodAdi;
 
   KalemModel({
     this.iskonto1OranMi,
