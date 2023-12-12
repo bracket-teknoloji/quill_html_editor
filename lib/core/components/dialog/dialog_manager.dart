@@ -69,6 +69,10 @@ class DialogManager {
         firstDate: DateTime(2000),
         lastDate: DateTime(2100),
       );
+  Future<TimeOfDay?> showSaatPicker() async => await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
 
   Future<void> showAlertDialog(String message) async => _baseDialog(
         dialogType: DialogType.error,
