@@ -93,6 +93,7 @@ class ApiUrls {
   static const String getFaturalar = "Fatura/GetFaturalar";
   static const String saveFatura = "Fatura/SaveFatura";
   static const String talepTeklifSiparislestir = "Fatura/TalepTeklifSiparislestir";
+  static const String getEIrsaliyeSablonlari = "Fatura/GetEIrsaliyeSablonlari";
   
   //*Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
