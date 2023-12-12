@@ -179,6 +179,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
   Padding textFields() => Padding(
         padding: UIHelper.lowPaddingHorizontal,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
               children: <CustomTextField>[
@@ -413,6 +414,12 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 ),
               ],
             ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
+            ElevatedButton(
+              onPressed: () async {
+                await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler");
+              },
+              child: const Text("E-İrsaliye Ek Bilgiler"),
+            ).paddingAll(UIHelper.lowSize),
           ],
         ),
       );
@@ -448,7 +455,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
-    if (widget.model.baseEditEnum == BaseEditEnum.goruntule && viewModel.model.efatOzelkod == null) {
+    if (widget.model.baseEditEnum != BaseEditEnum.ekle && viewModel.model.efatOzelkod == null && widget.model.editTipiEnum?.irsaliyeMi != true) {
       viewModel.setEfatOzelkod(model.kalemList?.first.efatOzelkod ?? 0);
       istisnaKoduController.text = model.kalemList?.first.efatOzelkodAdi ?? "";
     }
