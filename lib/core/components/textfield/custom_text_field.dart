@@ -33,6 +33,7 @@ class CustomTextField extends StatefulWidget {
   final bool? suffixMore;
   final bool? isFormattedString;
   final bool? isDateTime;
+  final bool? isTime;
   const CustomTextField({
     super.key,
     this.controller,
@@ -57,6 +58,7 @@ class CustomTextField extends StatefulWidget {
     this.isFormattedString,
     this.onClear,
     this.isDateTime,
+    this.isTime,
   });
 
   @override
@@ -125,7 +127,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 borderRadius: BorderRadius.circular(UIHelper.midSize),
                 gapPadding: 0,
               ),
-              suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.suffixMore == true
+              suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
                   ? Observer(
                       builder: (_) => Row(
                         mainAxisSize: MainAxisSize.min,
