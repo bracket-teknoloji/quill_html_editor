@@ -549,7 +549,7 @@ class BottomSheetDialogManager {
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Bağlantı Şekli Seçiniz",
-      groupValue: model?.uzaktanMi,
+      groupValue: CacheManager.getUzaktanMi(account?.firmaKisaAdi),
       children: [
         BottomSheetModel(title: "Uzaktan", value: true, groupValue: true).yetkiKontrol(account?.wsWan != null),
         BottomSheetModel(title: "Yerel", value: false, groupValue: false).yetkiKontrol(account?.wsLan != null),
