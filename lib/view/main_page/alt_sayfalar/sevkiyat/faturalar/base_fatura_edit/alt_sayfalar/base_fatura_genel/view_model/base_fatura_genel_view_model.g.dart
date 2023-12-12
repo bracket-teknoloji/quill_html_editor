@@ -25,6 +25,22 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
     });
   }
 
+  late final _$ebelgeCheckboxAtom = Atom(
+      name: '_BaseFaturaGenelViewModelBase.ebelgeCheckbox', context: context);
+
+  @override
+  bool get ebelgeCheckbox {
+    _$ebelgeCheckboxAtom.reportRead();
+    return super.ebelgeCheckbox;
+  }
+
+  @override
+  set ebelgeCheckbox(bool value) {
+    _$ebelgeCheckboxAtom.reportWrite(value, super.ebelgeCheckbox, () {
+      super.ebelgeCheckbox = value;
+    });
+  }
+
   late final _$modelAtom =
       Atom(name: '_BaseFaturaGenelViewModelBase.model', context: context);
 
@@ -50,6 +66,18 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
         .startAction(name: '_BaseFaturaGenelViewModelBase.changeKdvDahil');
     try {
       return super.changeKdvDahil(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeEbelgeCheckBox(bool value) {
+    final _$actionInfo =
+        _$_BaseFaturaGenelViewModelBaseActionController.startAction(
+            name: '_BaseFaturaGenelViewModelBase.changeEbelgeCheckBox');
+    try {
+      return super.changeEbelgeCheckBox(value);
     } finally {
       _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -125,6 +153,7 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   String toString() {
     return '''
 kdvDahil: ${kdvDahil},
+ebelgeCheckbox: ${ebelgeCheckbox},
 model: ${model}
     ''';
   }
