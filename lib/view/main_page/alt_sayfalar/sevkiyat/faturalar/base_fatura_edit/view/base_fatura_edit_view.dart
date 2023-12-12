@@ -120,6 +120,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         final result = await getSiparisBaglantisi();
+        if (model.editTipiEnum.irsaliyeMi){
+          BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
+        }
         BaseSiparisEditModel.instance.tarih = DateTime.now();
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
