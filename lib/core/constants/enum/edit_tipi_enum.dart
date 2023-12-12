@@ -31,6 +31,7 @@ enum EditTipiEnum {
 }
 
 extension NullableEditTipiEnumExtension on EditTipiEnum? {
+  
   bool get musteriMi => this == EditTipiEnum.musteri;
 
   bool get saticiMi => this == EditTipiEnum.satici;
@@ -292,22 +293,6 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisFatura:
       case EditTipiEnum.satisIrsaliye:
       case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-        return true;
-    }
-  }
-
-  bool get irsaliyeMi {
-    switch (this) {
-      case EditTipiEnum.musteri:
-      case EditTipiEnum.satici:
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.satisTeklifi:
-      case EditTipiEnum.alisTalebi:
-      case EditTipiEnum.satisTalebi:
-        return false;
-      case EditTipiEnum.satisIrsaliye:
       case EditTipiEnum.alisIrsaliye:
         return true;
     }
