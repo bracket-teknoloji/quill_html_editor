@@ -176,7 +176,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),
                     ),
                   ),
-                ],
+                ].whereType<Expanded>().toList(),
               ),
               const Divider(
                 endIndent: 0,
