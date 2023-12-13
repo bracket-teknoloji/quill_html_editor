@@ -137,7 +137,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
       );
 
   ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) => ListTile(
-        onTap: () async => await listTileBottomSheet(context, index),
+        onTap: () async => await listTileBottomSheet(context, index, model: kalemModel),
         contentPadding: UIHelper.lowPadding,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,6 +150,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
@@ -191,7 +192,6 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                   ),
                   Text("Kur: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency}")
                       .yetkiVarMi(kalemModel?.dovizKuru != null),
-                  Text("Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text.rich(
                     TextSpan(
                       children: [
@@ -246,11 +246,15 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
         subtitle: Wrap(
           children: <Text>[
             Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+            Text(
+              "Fiyat: ${(kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+            ),
             // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
-            Text("Tutar: ${kalemList?.araToplamTutari.toIntIfDouble ?? 0}"),
+            Text(
+              "Tutar: ${(((kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat) ?? 0) * (kalemList?.koliBilesenMiktari ?? 0)).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+            ),
           ]
               .map(
                 (Text e) => SizedBox(
@@ -265,7 +269,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
       );
 
-  Future<void> listTileBottomSheet(BuildContext context, int index) async {
+  Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
@@ -278,7 +282,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
             await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
             viewModel.updateKalemList();
           },
-        ).yetkiKontrol(!widget.model.isGoruntule),
+        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
           title: "Sil",
           iconWidget: Icons.delete_outline_outlined,
@@ -288,7 +292,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
               viewModel.removeAtKalemList(index);
             });
           },
-        ).yetkiKontrol(!widget.model.isGoruntule),
+        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
