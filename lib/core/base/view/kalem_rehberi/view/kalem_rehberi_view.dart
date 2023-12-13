@@ -84,12 +84,12 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 return Card(
                   child: ListTile(
                     onTap: () {
-                      changeCheckBox(!viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo), model);
+                      changeCheckBox(!viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo && element.stokKodu == model.stokKodu), model);
                     },
                     visualDensity: VisualDensity.compact,
                     leading: Observer(
                       builder: (_) => Checkbox(
-                        value: viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo),
+                        value: viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo && element.stokKodu == model.stokKodu),
                         onChanged: (value) {
                           changeCheckBox(value, model);
                         },
