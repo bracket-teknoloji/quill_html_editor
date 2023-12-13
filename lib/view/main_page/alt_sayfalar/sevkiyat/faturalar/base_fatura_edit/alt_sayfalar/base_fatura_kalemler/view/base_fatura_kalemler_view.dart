@@ -137,7 +137,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
       );
 
   ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) => ListTile(
-        onTap: () async => await listTileBottomSheet(context, index),
+        onTap: () async => await listTileBottomSheet(context, index, model: kalemModel),
         contentPadding: UIHelper.lowPadding,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,6 +150,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
@@ -237,11 +238,15 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         subtitle: Wrap(
           children: <Text>[
             Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+            Text(
+              "Fiyat: ${(kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+            ),
             // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("KDV %: ${((StaticVariables.instance.isMusteriSiparisleri ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
 
-            Text("Tutar: ${kalemList?.araToplamTutari.toIntIfDouble ?? 0}"),
+            Text(
+              "Tutar: ${(((kalemList?.koliBilesenFiyatorandan == "E" ? superKalemList?.koliBilesenOrandan(kalemList?.koliBilesenOrani ?? 0) : kalemList?.brutFiyat) ?? 0) * (kalemList?.koliBilesenMiktari ?? 0)).toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+            ),
           ]
               .map(
                 (Text e) => SizedBox(
@@ -256,7 +261,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
       );
 
-  Future<void> listTileBottomSheet(BuildContext context, int index) async {
+  Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
@@ -266,10 +271,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+            await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
             viewModel.updateKalemList();
           },
-        ).yetkiKontrol(!widget.model.isGoruntule),
+        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
           title: "Sil",
           iconWidget: Icons.delete_outline_outlined,
@@ -279,7 +284,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               viewModel.removeAtKalemList(index);
             });
           },
-        ).yetkiKontrol(!widget.model.isGoruntule),
+        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
