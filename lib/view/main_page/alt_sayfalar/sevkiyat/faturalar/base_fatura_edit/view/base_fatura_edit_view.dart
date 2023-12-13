@@ -107,11 +107,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
-          BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
-          BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            // await getKalemRehberi();
+            BaseSiparisEditModel.setInstance(widget.model.model);
+            if (widget.model.model?.kalemList != null) {
+              BaseSiparisEditModel.instance.kalemList = widget.model.model?.kalemList;
+            }
+            BaseSiparisEditModel.instance.tag = "FaturaModel";
+            BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
