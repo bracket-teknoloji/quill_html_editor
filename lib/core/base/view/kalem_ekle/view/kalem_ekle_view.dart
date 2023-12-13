@@ -431,7 +431,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 ),
                               ),
                             ),
-                          ).yetkiVarMi(!editTipi.talepTeklifMi),
+                          ),
                         ],
                       ),
                       Row(
