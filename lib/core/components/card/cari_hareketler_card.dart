@@ -167,7 +167,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       text: "Plasiyer",
                       child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
                     ),
-                  ),
+                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       addPadding: false,
