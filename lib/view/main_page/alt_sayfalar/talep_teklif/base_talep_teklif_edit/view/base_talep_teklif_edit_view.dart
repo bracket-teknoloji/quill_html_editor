@@ -115,6 +115,8 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
+          // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
+          BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
@@ -163,6 +165,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                                 raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
                                 dicParams: DicParams(
                                   belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
                                   belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                                 ),
                               );
@@ -459,7 +462,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
       Get.to(
         () => PDFViewerView(
           title: result.dizaynAdi ?? "Serbest Raporlar",
-          pdfData: pdfModel,
+          pdfData: pdfModel
+            ?..dizaynId = result.id
+            ..etiketSayisi = result.kopyaSayisi,
         ),
       );
     }
