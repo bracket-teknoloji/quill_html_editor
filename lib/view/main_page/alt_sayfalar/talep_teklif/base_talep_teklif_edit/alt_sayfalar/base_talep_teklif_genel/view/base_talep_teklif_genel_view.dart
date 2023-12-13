@@ -436,7 +436,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": seri, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H"},
+      queryParameters: {"Seri": seri, "BelgeTipi": BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue, "EIrsaliye": "H"},
       showLoading: true,
     );
     if (result.success == true) {
