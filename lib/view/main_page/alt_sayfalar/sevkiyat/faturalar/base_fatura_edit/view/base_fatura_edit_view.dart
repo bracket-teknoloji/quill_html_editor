@@ -405,7 +405,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.baseSiparisEditModel.cariKodu ?? "")),
               suffix: IconButton(
-                onPressed: () async => dialogManager.showCariGridViewDialog(CariListesiModel()),
+                onPressed: () async {
+                  if (_cariKoduController.text.isEmpty) {
+                    dialogManager.showAlertDialog("Lütfen Cari seçiniz.");
+                    return;
+                  }
+                  dialogManager.showCariGridViewDialog(CariListesiModel());
+                },
                 icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onTap: () async {
@@ -497,6 +503,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                         return;
                       }
                       Get.back(result: true);
+                      if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
+                        dialogManager.showAreYouSureDialog(() async {});
+                      } else {
+                        dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
+                      }
                     },
                     child: const Text("Kaydet"),
                   ),
