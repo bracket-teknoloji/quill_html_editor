@@ -667,7 +667,8 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            return  await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.revize, editTipiEnum: siparisTipi));          }
+            return await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.revize, editTipiEnum: siparisTipi));
+          }
         },
       );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
@@ -680,7 +681,7 @@ class IslemlerMenuItemConstants<T> {
                 await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
             if (result != null) {
               final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
-              siparisModel.kalemler = kalemList;
+              siparisModel.kalemList = kalemList;
               return await Get.toNamed(
                 "mainPage/faturaEdit",
                 arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
