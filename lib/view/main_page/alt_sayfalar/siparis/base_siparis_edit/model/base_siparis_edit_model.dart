@@ -561,7 +561,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get onaylandiMi => onaylayankul != null;
 
   bool get onaydaMi => tipi == 3;
-  
 
   bool get stekMi => belgeTuru == "STEK";
 
@@ -574,6 +573,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get teklifRevizeEdilmisMi => sonrakiRevizeNo != null;
 
   bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
+
+  bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
 
   bool get teklifFaturayaDonerMi {
     final bool islemGorduMu = kapaliMi || onaydaMi || teklifRevizeEdilmisMi;
@@ -612,7 +613,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
-  double get dovizliKdv => kalemList?.map((e) => e.dovizAdi != null ? e.dovizKdvTutari : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get genelDovizliToplamTutar {
+    dovizTutari = kalemList?.map((e) => e.dovizAdi != null ? e.dovizBrutTutar : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+    return dovizTutari ?? 0;
+  }
 
   double get sumGenIsk1 => kalemList?.map((e) => e.iskonto1).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
   double get sumGenIsk2 => kalemList?.map((e) => e.iskonto2).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
@@ -623,6 +627,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     kdv = iskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
     return kdv ?? 0;
   }
+
+  double get dovizliKdv => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAdi != null ? e.dovizKdvTutari : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
 
   double iskontoCheckerEkMaliyetsiz(double result) {
     if (genIsk1o != null && genIsk1o != 0.0) {
@@ -646,6 +652,19 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return result;
   }
 
+  double dovizliIskontoCheckerEkMaliyetsiz(double result) {
+    if (genIsk1o != null && genIsk1o != 0.0) {
+      result = result - result * ((genIsk1o ?? 0) / 100);
+    }
+    if (genIsk2o != null && genIsk2o != 0.0) {
+      result = result - result * ((genIsk2o ?? 0) / 100);
+    }
+    if (genIsk3o != null && genIsk3o != 0.0) {
+      result = result - result * ((genIsk3o ?? 0) / 100);
+    }
+    return result;
+  }
+
   String get kdvTutarlariVeOranlari {
     String result = "";
     kalemList?.forEach((element) {
@@ -661,9 +680,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int toplamKalemMiktari([bool miktar2EklensinMi = false]) => (kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => a + b) ?? 0).toInt();
 
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get toplamDovizBrutTutar => kalemList?.map((e) => e.dovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamNetTutar => kalemList?.map((e) => e.netFiyat ?? 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
-  double get toplamDovizBrutTutar => kalemList?.map((e) => e.getDovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get genelToplamTutar {
     if (kdvDahilMi ?? false) {
       genelToplam = toplamBrutTutar - getToplamIskonto;
@@ -673,12 +692,23 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return genelToplam ?? 0;
   }
 
+  double get genelDovizToplamTutar {
+    if (kdvDahilMi ?? false) {
+      dovizTutari = toplamDovizBrutTutar - getDovizliToplamIskonto;
+    } else {
+      dovizTutari = getDovizliAraToplam + dovizliKdv;
+    }
+    return dovizTutari ?? 0;
+  }
+
   double get getAraToplam {
     araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
     return araToplam ?? 0;
   }
 
-  double get getDovizliAraToplam => kalemList?.map((e) => e.getDovizAraToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get getDovizliAraToplam =>
+      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0) -
+      ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
 
   double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
@@ -718,7 +748,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0);
 
-  double get getDovizliToplamIskonto => toplamDovizBrutTutar - getDovizliAraToplam;
+  double get getDovizliToplamIskonto => toplamDovizBrutTutar - getDovizliAraToplam - ((kdvDahilMi ?? false) ? dovizliKdv : 0);
 
   double get genelIskontoToplami => (genIsk1t ?? 0) + (genIsk2t ?? 0) + (genIsk3t ?? 0);
 
@@ -1037,6 +1067,15 @@ class KalemModel with NetworkManagerMixin {
         stokKodu: model.stokKodu,
       );
 
+  double koliBilesenOrandan(double bilesenOrani){
+    double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
+    if (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) {
+      return toplamTutar * (bilesenOrani) / toplamOran;
+    } else {
+      return 0;
+    }
+  }
+
   bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
 
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
@@ -1054,7 +1093,8 @@ class KalemModel with NetworkManagerMixin {
 
   double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? 0);
 
-  double get koliTutar => kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get koliTutar =>
+      (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
   double get toplamTutar => isKoli ? koliTutar : brutTutar;
 
@@ -1068,6 +1108,8 @@ class KalemModel with NetworkManagerMixin {
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 
   double get kdvTutari => (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? araToplamTutari - (araToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : araToplamTutari * ((kdvOrani ?? 0) / 100);
+
+  double get dovizKdvTutari => (araToplamTutari / (dovizKuru ?? 1)) * ((kdvOrani ?? 0) / 100);
 
   double get iskontoTutari {
     double result = (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
@@ -1106,33 +1148,31 @@ class KalemModel with NetworkManagerMixin {
 
   double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
 
-  double get dovizKdvTutari => (araToplamTutari / (dovizKuru ?? 1)) * ((kdvOrani ?? 0) / 100);
-
   double get dovizIskontoTutari {
+    double result = (getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
     if (iskonto1OranMi ?? true) {
-      double result = (getSelectedMiktar ?? 0) * (dovizFiyati ?? 0);
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
       }
-      if (iskonto2 != null && iskonto2 != 0) {
-        result = result - result * ((iskonto2 ?? 0) / 100);
-      }
-      if (iskonto3 != null && iskonto3 != 0) {
-        result = result - result * ((iskonto3 ?? 0) / 100);
-      }
-      if (iskonto4 != null && iskonto4 != 0) {
-        result = result - result * ((iskonto4 ?? 0) / 100);
-      }
-      if (iskonto5 != null && iskonto5 != 0) {
-        result = result - result * ((iskonto5 ?? 0) / 100);
-      }
-      if (iskonto6 != null && iskonto6 != 0) {
-        result = result - result * ((iskonto6 ?? 0) / 100);
-      }
-      return ((getSelectedMiktar ?? 0) * (dovizFiyati ?? 0)) - result;
     } else {
-      return (iskonto1 ?? 0) * (getSelectedMiktar ?? 0);
+      result = result - (iskonto1 ?? 0) * (getSelectedMiktar ?? 0);
     }
+    if (iskonto2 != null && iskonto2 != 0) {
+      result = result - result * ((iskonto2 ?? 0) / 100);
+    }
+    if (iskonto3 != null && iskonto3 != 0) {
+      result = result - result * ((iskonto3 ?? 0) / 100);
+    }
+    if (iskonto4 != null && iskonto4 != 0) {
+      result = result - result * ((iskonto4 ?? 0) / 100);
+    }
+    if (iskonto5 != null && iskonto5 != 0) {
+      result = result - result * ((iskonto5 ?? 0) / 100);
+    }
+    if (iskonto6 != null && iskonto6 != 0) {
+      result = result - result * ((iskonto6 ?? 0) / 100);
+    }
+    return ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - result;
   }
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
