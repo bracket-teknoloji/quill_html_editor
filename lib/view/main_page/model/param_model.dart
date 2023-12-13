@@ -859,6 +859,8 @@ class NetFectDizaynList {
 
   @override
   String toString() => toJson().toString();
+
+  bool get aktifMi => aktif == "E";
 }
 
 @JsonSerializable(createFactory: true)
