@@ -234,7 +234,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                 }
               },
               icon: const Icon(Icons.cloud_upload_outlined),
-            ).yetkiVarMi(yetkiController.userModel?.adminMi ?? false),
+            ),
           ],
         ),
         body: Observer(
