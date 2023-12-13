@@ -53,19 +53,19 @@ extension DizaynListExtensions on List<NetFectDizaynList> {
     }
     switch (editTipiEnum) {
       case EditTipiEnum.satisTeklifi:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? true).toList();
       case EditTipiEnum.satisIrsaliye:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? true).toList();
       case EditTipiEnum.satisFatura:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.aktifMi) ?? true).toList();
       case EditTipiEnum.alisIrsaliye:
-        return where((element) => profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.aktifMi) ?? true).toList();
       case EditTipiEnum.alisFatura:
-        return where((element) => profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.aktifMi) ?? true).toList();
       case EditTipiEnum.satisTalebi:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.aktifMi) ?? false).toList();
+        return where((element) => profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.aktifMi) ?? true).toList();
       // case EditTipiEnum.alis:
-      //   return where((element) => profilYetkiModel.yazdirmaDizaynAli?.any((element2) => element.aktifMi) ??false ).toList();
+      //   return where((element) => profilYetkiModel.yazdirmaDizaynAli?.any((element2) => element.aktifMi) ??true ).toList();
       default:
         return this;
     }
