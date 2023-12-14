@@ -29,9 +29,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
 
   @override
   void dispose() {
-    if (controller.isEnable) {
-      controller.dispose();
-    }
+    controller.dispose();
     super.dispose();
   }
 
