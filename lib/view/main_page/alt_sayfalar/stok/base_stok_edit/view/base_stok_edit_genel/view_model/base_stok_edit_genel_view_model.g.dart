@@ -30,13 +30,13 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
       name: '_BaseStokEditGenelViewModelBase.stokDetayModel', context: context);
 
   @override
-  StokDetayModel get stokDetayModel {
+  StokDetayModel? get stokDetayModel {
     _$stokDetayModelAtom.reportRead();
     return super.stokDetayModel;
   }
 
   @override
-  set stokDetayModel(StokDetayModel value) {
+  set stokDetayModel(StokDetayModel? value) {
     _$stokDetayModelAtom.reportWrite(value, super.stokDetayModel, () {
       super.stokDetayModel = value;
     });
@@ -58,6 +58,24 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
     });
   }
 
+  late final _$setStokDetayModelAsyncAction = AsyncAction(
+      '_BaseStokEditGenelViewModelBase.setStokDetayModel',
+      context: context);
+
+  @override
+  Future<void> setStokDetayModel(StokDetayModel? value) {
+    return _$setStokDetayModelAsyncAction
+        .run(() => super.setStokDetayModel(value));
+  }
+
+  late final _$getDataAsyncAction =
+      AsyncAction('_BaseStokEditGenelViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
+  }
+
   late final _$_BaseStokEditGenelViewModelBaseActionController =
       ActionController(
           name: '_BaseStokEditGenelViewModelBase', context: context);
@@ -69,6 +87,28 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
             name: '_BaseStokEditGenelViewModelBase.changeGrupKoduListesi');
     try {
       return super.changeGrupKoduListesi(grupkodu, value);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAdi(String? value) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setAdi');
+    try {
+      return super.setAdi(value);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDepoKodu(int? value) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setDepoKodu');
+    try {
+      return super.setDepoKodu(value);
     } finally {
       _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
     }
