@@ -176,10 +176,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           ),
                         Observer(
                           builder: (_) => Visibility(
-                            visible: widget.suffixMore == true && ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null),
+                            visible: ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null) && widget.suffixMore == true,
                             child: IconButton(
                               padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
                               onPressed: widget.onTap,
                               icon: const Icon(Icons.more_horiz_outlined),
                               style: ButtonStyle(
