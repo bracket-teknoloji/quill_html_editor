@@ -1,6 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
@@ -175,12 +180,13 @@ class MenuItemConstants {
       title: "Genel",
       icon: "settings",
       color: ColorPalette.tomato,
-      altMenuler: <GridItemModel>[
+      altMenuler: [
         GridItemModel.item(name: null, title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
+        GridItemModel.item(name: null, title: "Oturumlar", route: "/oturumlar").isDebug(),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
-        // GridItemModel.item(name: null, title: "Servis İşlemleri", onTap: () => DialogManager().showInfoSnackBar("Yapım Aşamasında")),
-      ],
+        GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
+      ].whereType<GridItemModel>().toList(),
     ),
 
     //* Hücre Takibi
@@ -423,5 +429,22 @@ class MenuItemConstants {
     } else {
       return getGridItemModel;
     }
+  }
+
+  static Future<void> genelServisIslemleriDialog() async {
+    await BottomSheetDialogManager().showBottomSheetDialog(
+      Get.context!,
+      title: "Servis İşlemleri",
+      children: [
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
+      ],
+    );
   }
 }
