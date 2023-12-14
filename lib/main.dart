@@ -13,6 +13,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/view/e_irsaliye_ek_bilgiler_view.dart";
 import "package:picker/core/base/view/kalem_rehberi/view/kalem_rehberi_view.dart";
+import "package:picker/core/base/view/oturumlar/view/oturumlar_view.dart";
 import "package:picker/core/base/view/siparis_rehberi/view/siparis_rehberi_view.dart";
 import "package:picker/core/components/aciklama_duzenle/view/aciklama_duzenle_view.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -171,6 +172,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/addAccount", page: () => const AddAccountView()),
           GetPage(name: "/qr", page: () => const QRScannerView()),
           GetPage(name: "/dovizKurlari", page: () => const DovizKurlariView()),
+          GetPage(name: "/oturumlar", page: () => const OturumlarView()),
           GetPage(
             name: "/kalemEkle",
             page: () => KalemEkleView(stokListesiModel: Get.arguments is StokListesiModel ? Get.arguments : null, kalemModel: Get.arguments is KalemModel ? Get.arguments : null),
