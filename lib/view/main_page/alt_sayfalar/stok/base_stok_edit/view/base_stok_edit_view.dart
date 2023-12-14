@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view_model/base_stok_edit_view_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -28,21 +30,26 @@ class BaseStokEditingView extends StatefulWidget {
 }
 
 class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
+  BaseStokEditingViewModel viewModel = BaseStokEditingViewModel();
   TabController? tabController;
-  List<Tab>? get tabs => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const Tab(child: Text("Fiyat Listesi"))] : [];
-  List<Widget>? get views => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? [const BaseStokEditFiyatListesiView()] : [];
+  int get tabLength => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? 4 : 3;
+
+  @override
+  void initState() {
+    viewModel.setStokListesiModel(widget.model?.model);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
+        await viewModel.getData();
+      } else {
+        viewModel.setIsSuccess(true);
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    StokListesiModel.setInstance(widget.model?.model);
-    final List<Tab> tabList = [const Tab(child: Text("Genel")), ...?tabs, const Tab(child: Text("Fiyat")), const Tab(child: Text("Seriler"))];
-    final List<Widget> viewList = [
-      BaseStokEditGenelView(model: widget.model?.baseEditEnum),
-      ...?views,
-      BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
-      BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
-    ];
-    tabController = TabController(length: tabList.length, vsync: this);
+    tabController = TabController(length: tabLength, vsync: this);
     return WillPopScope(
       onWillPop: () async {
         if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
@@ -53,7 +60,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
         return result;
       },
       child: DefaultTabController(
-        length: tabList.length,
+        length: tabLength,
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
@@ -77,10 +84,31 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
             ],
             bottom: TabBar(
               controller: tabController,
-              tabs: tabList,
+              tabs: [
+                const Tab(child: Text("Genel")),
+                if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const Tab(child: Text("Fiyat Listesi")),
+                const Tab(child: Text("Fiyat")),
+                const Tab(child: Text("Seriler")),
+              ],
             ),
           ),
-          body: TabBarView(controller: tabController, children: viewList),
+          body: TabBarView(
+            controller: tabController,
+            children: [
+              Observer(
+                builder: (_) {
+                  if (viewModel.isSuccess) {
+                    return BaseStokEditGenelView(model: widget.model?.baseEditEnum);
+                  } else {
+                    return const Center(child: CircularProgressIndicator.adaptive());
+                  }
+                },
+              ),
+              if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const BaseStokEditFiyatListesiView(),
+              BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
+              BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
+            ],
+          ),
         ),
       ),
     );
@@ -88,13 +116,15 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
 
   Future<void> postData() async {
     final StokListesiModel model = StokListesiModel.instance;
-    final SaveStokModel saveStokModel = SaveStokModel().fromJson(model.toJson());
+    final SaveStokModel saveStokModel = SaveStokModel.fromStokListesiModel(model);
     saveStokModel.adi = model.stokAdi;
     saveStokModel.kodu = model.stokKodu;
     saveStokModel.alisFiyati1 = model.alisFiat1;
     saveStokModel.alisDovizTipi = model.alisDovTip;
     saveStokModel.satisDovizTipi = model.satDovTip;
     saveStokModel.alisFiyati2 = model.alisFiat2;
+    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
+    saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
     // saveStokModel.subeKodu = model.subeKodu;
     saveStokModel.alisFiyati3 = model.alisFiat3;
     saveStokModel.alisFiyati4 = model.alisFiat4;
@@ -109,8 +139,6 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     saveStokModel.alisDovizFiyati = model.dovAlisFiat;
     saveStokModel.satisDovizFiyati = model.dovSatisFiat;
     saveStokModel.muhdetayKodu = model.muhdetayKodu;
-    saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
-    saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
     saveStokModel.satisFiyati1 = model.satisFiat1;
     saveStokModel.satisFiyati2 = model.satisFiat2;
     saveStokModel.satisFiyati3 = model.satisFiat3;
@@ -125,22 +153,18 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     saveStokModel.alisDovizFiyati = model.dovAlisFiat;
     saveStokModel.alisDovizTipi = model.alisDovTip;
     saveStokModel.satisDovizTipi = model.satDovTip;
-    dialogManager.showLoadingDialog("Kaydediliyor..");
     final result = await networkManager.dioPost<SaveStokModel>(
       path: ApiUrls.saveStok,
       bodyModel: SaveStokModel(),
       addCKey: true,
+      showLoading: true,
       addSirketBilgileri: true,
       data: saveStokModel.toJson(),
     );
-    dialogManager.hideAlertDialog;
     SaveStokModel.setInstance(SaveStokModel());
     if (result.success == true) {
       dialogManager.showSuccessSnackBar("Başarılı");
       Get.back(result: BaseEditModel());
-    } else {
-      dialogManager.hideAlertDialog;
-      dialogManager.showErrorSnackBar(result.message ?? "Hata oluştu");
     }
   }
 
