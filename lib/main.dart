@@ -1,3 +1,4 @@
+import "dart:developer";
 import "dart:io";
 import "dart:ui";
 
@@ -380,6 +381,7 @@ Future<void> firebaseInitialized() async {
     await FirebaseMessaging.instance.setAutoInitEnabled(true);
     AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken();
     await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
+    log("fcmToken: ${AccountModel.instance.fcmToken}");
     // print token
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
