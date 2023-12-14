@@ -88,13 +88,13 @@ class ApiUrls {
   static const String getBelgeBaglantilari = "Fatura/GetBelgeBaglantilari";
   static const String getCekSenetLoglari = "Finans/GetCekSenetLoglari";
   static const String getEFaturaOzelKodlar = "Fatura/GetEFaturaOzelKodlar";
+  static const String getEIrsaliyeSablonlari = "Fatura/GetEIrsaliyeSablonlari";
   static const String getFaturaDetay = "Fatura/GetFaturaDetay";
   static const String getFaturaKalemleri = "Fatura/GetFaturaKalemleri";
   static const String getFaturalar = "Fatura/GetFaturalar";
   static const String saveFatura = "Fatura/SaveFatura";
   static const String talepTeklifSiparislestir = "Fatura/TalepTeklifSiparislestir";
-  static const String getEIrsaliyeSablonlari = "Fatura/GetEIrsaliyeSablonlari";
-  
+
   //*Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
 }
