@@ -134,6 +134,18 @@ class AccountModel with NetworkManagerMixin {
   String? adi;
   @HiveField(46)
   String? wifiAdi;
+  @HiveField(47)
+  String? debug;
+  @HiveField(48)
+  DateTime? girisTarihi;
+  @HiveField(49)
+  DateTime? sonKullanimTarihi;
+  @HiveField(50)
+  String? onayli;
+  @HiveField(51)
+  String? konumEnlem;
+  @HiveField(52)
+  String? konumBoylam;
 
   Future<void> init() async {
     if (isDebug) {
@@ -145,7 +157,7 @@ class AccountModel with NetworkManagerMixin {
 
     final AccountResponseModel? account = CacheManager.getAccounts(uyeEmail ?? "");
     uzakErisim = CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? "E" : "H";
-    
+
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.

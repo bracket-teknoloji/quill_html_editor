@@ -63,13 +63,19 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..qrData = fields[43] as String?
       ..debugMu = fields[44] as bool?
       ..adi = fields[45] as String?
-      ..wifiAdi = fields[46] as String?;
+      ..wifiAdi = fields[46] as String?
+      ..debug = fields[47] as String?
+      ..girisTarihi = fields[48] as DateTime?
+      ..sonKullanimTarihi = fields[49] as DateTime?
+      ..onayli = fields[50] as String?
+      ..konumEnlem = fields[51] as String?
+      ..konumBoylam = fields[52] as String?;
   }
 
   @override
   void write(BinaryWriter writer, AccountModel obj) {
     writer
-      ..writeByte(47)
+      ..writeByte(53)
       ..writeByte(0)
       ..write(obj.isim)
       ..writeByte(1)
@@ -163,7 +169,19 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
       ..writeByte(45)
       ..write(obj.adi)
       ..writeByte(46)
-      ..write(obj.wifiAdi);
+      ..write(obj.wifiAdi)
+      ..writeByte(47)
+      ..write(obj.debug)
+      ..writeByte(48)
+      ..write(obj.girisTarihi)
+      ..writeByte(49)
+      ..write(obj.sonKullanimTarihi)
+      ..writeByte(50)
+      ..write(obj.onayli)
+      ..writeByte(51)
+      ..write(obj.konumEnlem)
+      ..writeByte(52)
+      ..write(obj.konumBoylam);
   }
 
   @override
@@ -234,7 +252,17 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..qrData = json['QR_DATA'] as String?
   ..debugMu = json['DEBUG_MU'] as bool?
   ..adi = json['ADI'] as String?
-  ..wifiAdi = json['WIFI_ADI'] as String?;
+  ..wifiAdi = json['WIFI_ADI'] as String?
+  ..debug = json['DEBUG'] as String?
+  ..girisTarihi = json['GIRIS_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['GIRIS_TARIHI'] as String)
+  ..sonKullanimTarihi = json['SON_KULLANIM_TARIHI'] == null
+      ? null
+      : DateTime.parse(json['SON_KULLANIM_TARIHI'] as String)
+  ..onayli = json['ONAYLI'] as String?
+  ..konumEnlem = json['KONUM_ENLEM'] as String?
+  ..konumBoylam = json['KONUM_BOYLAM'] as String?;
 
 Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   final val = <String, dynamic>{};
@@ -293,5 +321,12 @@ Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
   writeNotNull('DEBUG_MU', instance.debugMu);
   writeNotNull('ADI', instance.adi);
   writeNotNull('WIFI_ADI', instance.wifiAdi);
+  writeNotNull('DEBUG', instance.debug);
+  writeNotNull('GIRIS_TARIHI', instance.girisTarihi?.toIso8601String());
+  writeNotNull(
+      'SON_KULLANIM_TARIHI', instance.sonKullanimTarihi?.toIso8601String());
+  writeNotNull('ONAYLI', instance.onayli);
+  writeNotNull('KONUM_ENLEM', instance.konumEnlem);
+  writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
   return val;
 }
