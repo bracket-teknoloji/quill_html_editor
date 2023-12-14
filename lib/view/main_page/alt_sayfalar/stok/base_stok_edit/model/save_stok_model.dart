@@ -1,4 +1,5 @@
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -66,6 +67,35 @@ class SaveStokModel with NetworkManagerMixin {
   bool? yeniKayit;
   @override
   SaveStokModel fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
+
+  factory SaveStokModel.fromStokListesiModel(StokListesiModel model) => SaveStokModel()
+    ..adi = model.stokAdi
+    ..kodu = model.stokKodu
+    ..alisFiyati1 = model.alisFiat1
+    ..alisDovizTipi = model.alisDovTip
+    ..satisDovizTipi = model.satDovTip
+    ..alisFiyati2 = model.alisFiat2
+    ..alisFiyati3 = model.alisFiat3
+    ..alisFiyati4 = model.alisFiat4
+    ..alisKdvOrani = model.alisKdv
+    ..satisKdvOrani = model.satisKdv
+    ..alisDovizFiyati = model.dovAlisFiat
+    ..satisDovizFiyati = model.dovSatisFiat
+    ..muhdetayKodu = model.muhdetayKodu
+    ..satisFiyati1 = model.satisFiat1
+    ..satisFiyati2 = model.satisFiat2
+    ..satisFiyati3 = model.satisFiat3
+    ..satisFiyati4 = model.satisFiat4
+    ..alisFiyati1 = model.alisFiat1
+    ..alisFiyati2 = model.alisFiat2
+    ..alisFiyati3 = model.alisFiat3
+    ..alisFiyati4 = model.alisFiat4
+    ..satisKdvOrani = model.satisKdv
+    ..alisKdvOrani = model.alisKdv
+    ..satisDovizFiyati = model.dovSatisFiat
+    ..alisDovizFiyati = model.dovAlisFiat
+    ..alisDovizTipi = model.alisDovTip
+    ..satisDovizTipi = model.satDovTip;
 
   @override
   Map<String, dynamic> toJson() => _$SaveStokModelToJson(this);
