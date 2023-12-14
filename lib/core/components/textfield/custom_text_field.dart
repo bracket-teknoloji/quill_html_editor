@@ -128,55 +128,56 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 gapPadding: 0,
               ),
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
-                  ? Observer(
-                      builder: (_) => Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Observer(
-                            builder: (_) => Visibility(
-                              visible: (viewModel.showClearButton) && (widget.isMust != true),
-                              child: IconButton(
-                                style: ButtonStyle(
-                                  padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                                  splashFactory: NoSplash.splashFactory,
-                                ),
-                                padding: EdgeInsets.zero,
-                                constraints: const BoxConstraints(),
-                                onPressed: () {
-                                  controller.clear();
-                                  widget.onClear!();
-                                  // viewModel.setShowClearButton(false);
-                                },
-                                icon: const Icon(Icons.close),
-                              ),
-                            ),
-                          ).yetkiVarMi(widget.onClear != null),
-                          if (widget.suffix != null) widget.suffix!,
-                          if (widget.isDateTime == true)
-                            IconButton(
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                              onPressed: widget.onTap,
-                              icon: const Icon(Icons.date_range_outlined),
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Observer(
+                          builder: (_) => Visibility(
+                            visible: (viewModel.showClearButton) && (widget.isMust != true),
+                            child: IconButton(
                               style: ButtonStyle(
                                 padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
                               ),
-                            ),
-                            if (widget.isTime == true)
-                            IconButton(
                               padding: EdgeInsets.zero,
                               constraints: const BoxConstraints(),
-                              onPressed: widget.onTap,
-                              icon: const Icon(Icons.access_time_outlined),
-                              style: ButtonStyle(
-                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                                splashFactory: NoSplash.splashFactory,
-                              ),
+                              onPressed: () {
+                                controller.clear();
+                                widget.onClear!();
+                                // viewModel.setShowClearButton(false);
+                              },
+                              icon: const Icon(Icons.close),
                             ),
-                          if (widget.suffixMore == true && ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null))
-                            IconButton(
+                          ),
+                        ).yetkiVarMi(widget.onClear != null),
+                        if (widget.suffix != null) widget.suffix!,
+                        if (widget.isDateTime == true)
+                          IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: widget.onTap,
+                            icon: const Icon(Icons.date_range_outlined),
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              splashFactory: NoSplash.splashFactory,
+                            ),
+                          ),
+                        if (widget.isTime == true)
+                          IconButton(
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: widget.onTap,
+                            icon: const Icon(Icons.access_time_outlined),
+                            style: ButtonStyle(
+                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              splashFactory: NoSplash.splashFactory,
+                            ),
+                          ),
+                        Observer(
+                          builder: (_) => Visibility(
+                            visible: widget.suffixMore == true && ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null),
+                            child: IconButton(
                               padding: EdgeInsets.zero,
                               constraints: const BoxConstraints(),
                               onPressed: widget.onTap,
@@ -186,8 +187,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 splashFactory: NoSplash.splashFactory,
                               ),
                             ),
-                        ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
-                      ),
+                          ),
+                        ),
+                      ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
               label: Wrap(
