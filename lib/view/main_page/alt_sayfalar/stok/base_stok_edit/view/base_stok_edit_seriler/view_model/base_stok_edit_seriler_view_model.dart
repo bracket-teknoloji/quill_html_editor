@@ -9,7 +9,7 @@ part "base_stok_edit_seriler_view_model.g.dart";
 class BaseStokEditSerilerViewModel = _BaseStokEditSerilerViewModelBase with _$BaseStokEditSerilerViewModel;
 
 abstract class _BaseStokEditSerilerViewModelBase with Store {
-  List<String> labelList = [
+  final List<String> labelList = [
     "Girişte Seri aktif",
     "Girişte Seri Otomatik",
     "Çıkışta Seri aktif",
@@ -27,9 +27,6 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
     StokDetayModel.instance.stokList?.first.seriBakiyeKontrolu ?? false,
     StokDetayModel.instance.stokList?.first.seriMiktarKadarSor ?? false,
   ].asObservable();
-
-  @observable
-  ObservableList<SeriList>? seriList = StokDetayModel.instance.seriList?.asObservable();
 
   @action
   void changeSwitchValue(int index) {
