@@ -1,6 +1,5 @@
 class ApiUrls {
   static const String createSession = "General/CreateSessionV3";
-  static const String dbUpdate = "Servis/DBUpdate";
   static const String deleteDovizKuru = "General/DeleteDovizKuru";
   static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
   static const String getDizaynParametreleri = "Print/GetDizaynParametreleri";
@@ -97,4 +96,11 @@ class ApiUrls {
 
   //*Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
+
+  //*User
+  static const String getOturumlar = "User/GetOturumlar";
+
+  //* Servis
+  static const String dbUpdate = "Servis/DBUpdate";
+  static const String getServiceInfos = "Servis/GetServiceInfos";
 }
