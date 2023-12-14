@@ -153,7 +153,8 @@ class NetworkManager {
         await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
       if (responseModel.errorCode == 1) {
-        Get.toNamed("/");
+        CacheManager.setLogout(false);
+        Get.offAndToNamed("/login");
       }
     }
     return responseModel;
