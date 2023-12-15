@@ -143,6 +143,13 @@ class DialogManager {
       ).show();
   Future showAreYouSureDialog(void Function() onYes, {String? title}) async => await _areYouSureDialog(onYes, title).show();
 
+    void showSuccesDialog(String? description) => _baseDialog(
+        dialogType: DialogType.success,
+        btnOkText: "Tamam",
+        body: Text(description ?? "", textAlign: TextAlign.center),
+        onOk: () {},
+      ).show();
+
   void showInfoDialog(String? description) => _baseDialog(
         dialogType: DialogType.info,
         btnOkText: "Tamam",
