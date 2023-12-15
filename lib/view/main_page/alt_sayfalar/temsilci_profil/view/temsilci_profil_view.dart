@@ -17,9 +17,7 @@ import "../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../core/constants/ui_helper/text_style_helper.dart";
 import "../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../core/init/network/login/api_urls.dart";
-import "../../../model/param_model.dart";
 import "../model/temsilci_profil_model.dart";
 import "../view_model/temsilci_profil_view_model.dart";
 
@@ -119,15 +117,12 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             controller: plasiyerController,
                             readOnly: true,
                             suffixMore: true,
+                            onClear: () => viewModel.setPlasiyer(null),
                             onTap: () async {
-                              final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
-                              final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                                context,
-                                title: "Plasiyer Seçiniz",
-                                children: plasiyerList.map((PlasiyerList e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu, onTap: () => Get.back(result: e))).toList(),
-                              );
+                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.plasiyer);
                               if (result != null) {
                                 plasiyerController.text = result.plasiyerAciklama ?? "";
+                                viewModel.setPlasiyer(result.plasiyerKodu);
                               }
                             },
                           ),
