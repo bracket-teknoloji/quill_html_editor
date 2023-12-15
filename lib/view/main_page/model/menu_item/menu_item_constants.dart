@@ -4,7 +4,6 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../core/constants/color_palette.dart";
