@@ -16,6 +16,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 // import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
@@ -376,12 +377,13 @@ class NetworkManager {
     return null;
   }
 
-  // Future<CariListesiModel?> getCariModel(String cariKodu) async {
-  //   final result = await dioGet<CariListesiModel>(path: ApiUrls.getCariler, bodyModel: CariListesiModel(), queryParameters: {"CariKodu": cariKodu});
-  //   if (result.success ?? false) {
-  //     return result.data.first;
-  //   }
-  // }
+  Future<CariListesiModel?> getCariModel(String cariKodu) async {
+    final result = await dioGet<CariListesiModel>(path: ApiUrls.getCariler, bodyModel: CariListesiModel(), queryParameters: {"CariKodu": cariKodu});
+    if (result.success ?? false) {
+      return result.data.first;
+    }
+    return null;
+  }
 
   static String get getBaseUrl {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
