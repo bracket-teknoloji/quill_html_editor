@@ -11,6 +11,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/e_belge_gonder/view/e_belge_gonder_view.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/view/e_irsaliye_ek_bilgiler_view.dart";
 import "package:picker/core/base/view/kalem_rehberi/view/kalem_rehberi_view.dart";
 import "package:picker/core/base/view/oturumlar/view/oturumlar_view.dart";
@@ -194,6 +195,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
               GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
               GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),
+
+              //* E-Fatura - E-Arşiv - E-İrsaliye
+              GetPage(name: "/eBelgeGonder", page: () =>  EBelgeGonderView(model: Get.arguments)),
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
