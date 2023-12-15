@@ -6,6 +6,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
@@ -155,6 +156,11 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(cariKoduDegistir);
       islemlerList.add(kopyala);
+    } else if (islemtipi == IslemTipiEnum.eBelge) {
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+      islemlerList.add(eBelgeGoruntule);
+      islemlerList.add(eFaturaGonder);
+      islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
     }
   }
 
@@ -780,5 +786,29 @@ class IslemlerMenuItemConstants<T> {
           .toList();
     }
     return null;
+  }
+
+  GridItemModel get eFaturaGonder {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "${siparisModel.getTitle} Gönder",
+      onTap: () => Get.toNamed("/mainPage/eBelgeGonder", arguments: model),
+    );
+  }
+
+  GridItemModel get eBelgeGoruntule {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "E-Belge Görüntüle",
+      onTap: () => Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel)),
+    );
+  }
+
+  GridItemModel get eBelgetaslakSil {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Taslağı Sil",
+      onTap: () => Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.sil(siparisModel)),
+    );
   }
 }
