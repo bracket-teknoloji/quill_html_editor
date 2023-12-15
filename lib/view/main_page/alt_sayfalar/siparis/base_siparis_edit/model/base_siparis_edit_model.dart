@@ -574,7 +574,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
 
-  bool get dovizliMi => dovizTipi != null && dovizTipi != 0;
+  bool get dovizliMi => kalemList?.any((element) => element.dovizliMi) == true;
 
   bool get teklifFaturayaDonerMi {
     final bool islemGorduMu = kapaliMi || onaydaMi || teklifRevizeEdilmisMi;
@@ -1109,7 +1109,8 @@ class KalemModel with NetworkManagerMixin {
 
   double get kdvTutari => (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? araToplamTutari - (araToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : araToplamTutari * ((kdvOrani ?? 0) / 100);
 
-  double get dovizKdvTutari => (araToplamTutari / (dovizKuru ?? 1)) * ((kdvOrani ?? 0) / 100);
+  double get dovizKdvTutari =>
+      (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizAraToplamTutari - (dovizAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : dovizAraToplamTutari * ((kdvOrani ?? 0) / 100);
 
   double get iskontoTutari {
     double result = (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
@@ -1138,10 +1139,10 @@ class KalemModel with NetworkManagerMixin {
     return ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar => ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
+  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
   double get getDovizBrutTutar => dovizFiyati ?? (brutTutar / (dovizKuru ?? 1));
 
-  double get dovizAraToplamTutari => ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
+  double get dovizAraToplamTutari => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
   double get getDovizAraToplamTutari => (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari;
 
   double get dovizGenelToplamTutari => dovizAraToplamTutari + (!(BaseSiparisEditModel._instance?.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
