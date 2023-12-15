@@ -139,14 +139,26 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(
+                title: "E-Belge İşlemleri",
+                iconWidget: Icons.receipt_long_outlined,
+                onTap: () async {
+                  Get.back();
+                  await dialogManager.showEBelgeGridViewDialog(
+                    model: widget.model,
+                    onSelected: (value) {
+                      widget.onUpdated?.call(value);
+                    },
+                  );
+                },
+              ),
+              BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
-                onTap: () {
+                onTap: () async {
                   Get.back();
+                  final CariListesiModel? cariListesiModel = await networkManager.getCariModel(model.cariKodu!);
                   dialogManager.showCariGridViewDialog(
-                    CariListesiModel()
-                      ..cariKodu = widget.model.cariKodu
-                      ..cariAdi = widget.model.cariAdi,
+                    cariListesiModel,
                   );
                 },
               ),
