@@ -550,6 +550,22 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   BaseSiparisEditModel._init();
 
+  String get getTitle {
+    if (eArsivMi){
+      return "E-Arşiv";
+    }else if (eFaturaMi){
+      return "E-Fatura";
+    }else if (irsaliyelestiMi){
+      return "E-İrsaliye";}
+      return "Sipariş";
+  }
+
+  bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" ||earsivMi == "E"); 
+
+  bool get eArsivMi => earsivMi == "E";
+
+  bool get eFaturaMi => efaturaMi == "E";
+
   bool get siparislestiMi => siparislesti == "E";
 
   bool get faturalastiMi => faturalasti == "E";
@@ -557,6 +573,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get irsaliyelestiMi => irsaliyelesti == "E";
 
   bool get kapaliMi => tipi == 1;
+
+  bool get eBelgeGoster => eFaturaMi || eArsivMi;
 
   bool get onaylandiMi => onaylayankul != null;
 
