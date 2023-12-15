@@ -19,7 +19,7 @@ abstract class _StokRehberiViewModelBase with Store {
   void setDahaVarMi(bool value) => dahaVarMi = value;
 
   @observable
-  bool isScrolledDown = false;
+  bool isScrolledDown = true;
 
   @action
   void changeIsScrolledDown(bool value) => isScrolledDown = value;

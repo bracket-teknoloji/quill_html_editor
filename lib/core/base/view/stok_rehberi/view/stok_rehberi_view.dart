@@ -272,7 +272,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
               resetData();
             }
           },
-        ),
+        ).yetkiVarMi(yetkiController.stokKartiYeniKayit),
       );
 
   Padding body() => Padding(
@@ -358,7 +358,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                         }
                                         stokModel?.yapkodAciklama = result.yapacik;
                                       }
-                                      await Get.toNamed((widget.isTalepTeklif??false)? "/talepTeklifKalemEkle":"/kalemEkle", arguments: stokModel ?? stok);
+                                      await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel ?? stok);
                                       viewModel.setSelectedStokModel(null);
                                     },
                                     title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
