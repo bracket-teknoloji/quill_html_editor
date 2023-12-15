@@ -14,6 +14,7 @@ enum IslemTipiEnum {
   tahsilatOdeme,
   fatura,
   talepTeklif,
+  eBelge,
 }
 
 extension IslemTipiEnumExtension on IslemTipiEnum {
