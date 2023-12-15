@@ -150,7 +150,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     },
                   );
                 },
-              ),
+              ).yetkiKontrol(widget.model.eBelgeGoster),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
@@ -196,7 +196,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata))
                       .yetkiVarMi((model.earsivDurumu == "HAT" || model.efaturaDurumu == "HAT") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak))
-                      .yetkiVarMi((model.earsivDurumu == "TAS" || model.efaturaDurumu == "TAS") && (model.efaturaMi == "E" || model.earsivMi == "E")),
+                      .yetkiVarMi(model.taslakMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   // const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
