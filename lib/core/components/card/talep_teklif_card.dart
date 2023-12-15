@@ -11,6 +11,7 @@ import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
 import "package:picker/core/constants/extensions/string_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -226,26 +227,28 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     label: const Text("İrsaliye"),
                     badgeColorEnum: BadgeColorEnum.irsaliye,
                     onTap: () async {
-                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
                         context,
                         cariKodu: widget.model.cariKodu,
                         belgeNo: widget.model.belgeNo,
                         belgeTipi: widget.model.belgeTuru,
                         filterText: EditTipiEnum.values.where((element) => element.irsaliyeMi).map((e) => e.rawValue).toList(),
                       );
+                      await getBelgeBaglantilari(result);
                     },
                   ).yetkiVarMi(model.irsaliyelestiMi),
                   ColorfulBadge(
                     label: const Text("Fatura"),
                     badgeColorEnum: BadgeColorEnum.fatura,
                     onTap: () async {
-                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
                         context,
                         cariKodu: widget.model.cariKodu,
                         belgeNo: widget.model.belgeNo,
                         belgeTipi: widget.model.belgeTuru,
                         filterText: EditTipiEnum.values.where((element) => element.faturaMi).map((e) => e.rawValue).toList(),
                       );
+                      await getBelgeBaglantilari(result);
                     },
                   ).yetkiVarMi(model.faturalastiMi),
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
@@ -355,5 +358,29 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
       },
     );
     return result.data.first;
+  }
+
+  Future<void> getBelgeBaglantilari(KalemListModel? model) async {
+    if (model is KalemListModel) {
+      final BaseSiparisEditModel newModel = BaseSiparisEditModel(belgeTuru: model.belgeTipi, belgeNo: model.belgeNo, cariKodu: model.cariKodu);
+      if (model.belgeTipi == "MS") {
+        Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+      } else if (model.belgeTipi == "SS") {
+        Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satici));
+      } else if (model.belgeTipi == "SF") {
+        Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satisFatura));
+      } else if (model.belgeTipi == "AF") {
+        Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.alisFatura));
+      } else if (model.belgeTipi == "SI") {
+        Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.satisIrsaliye));
+      } else if (model.belgeTipi == "AI") {
+        Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: newModel, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.alisIrsaliye));
+      }
+      // else if (result.belgeTipi == "") {
+      //   Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+      // } else if (result.belgeTipi == "IS") {
+      //   Get.toNamed("mainPage/irsaliyeEdit", arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: EditTipiEnum.musteri));
+      // }
+    }
   }
 }
