@@ -144,6 +144,10 @@ mixin _$EBelgeListesiModel {
   set gonderimSekliEPosta(String? value) => throw _privateConstructorUsedError;
   String? get ePosta => throw _privateConstructorUsedError;
   set ePosta(String? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
+  String? get kutuTuru => throw _privateConstructorUsedError;
+  set kutuTuru(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -218,7 +222,9 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
       String? gonderimSekliEPosta,
-      String? ePosta});
+      String? ePosta,
+      int? islemKodu,
+      String? kutuTuru});
 }
 
 /// @nodoc
@@ -295,6 +301,8 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? gelenEFatKontrolAciklama = freezed,
     Object? gonderimSekliEPosta = freezed,
     Object? ePosta = freezed,
+    Object? islemKodu = freezed,
+    Object? kutuTuru = freezed,
   }) {
     return _then(_value.copyWith(
       ebelgeTuru: freezed == ebelgeTuru
@@ -541,6 +549,14 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.ePosta
           : ePosta // ignore: cast_nullable_to_non_nullable
               as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kutuTuru: freezed == kutuTuru
+          ? _value.kutuTuru
+          : kutuTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -614,7 +630,9 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
       String? gonderimSekliEPosta,
-      String? ePosta});
+      String? ePosta,
+      int? islemKodu,
+      String? kutuTuru});
 }
 
 /// @nodoc
@@ -689,6 +707,8 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? gelenEFatKontrolAciklama = freezed,
     Object? gonderimSekliEPosta = freezed,
     Object? ePosta = freezed,
+    Object? islemKodu = freezed,
+    Object? kutuTuru = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
       ebelgeTuru: freezed == ebelgeTuru
@@ -935,6 +955,14 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.ePosta
           : ePosta // ignore: cast_nullable_to_non_nullable
               as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kutuTuru: freezed == kutuTuru
+          ? _value.kutuTuru
+          : kutuTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1003,7 +1031,9 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.gelenEFatKontrolEdildi,
       this.gelenEFatKontrolAciklama,
       this.gonderimSekliEPosta,
-      this.ePosta})
+      this.ePosta,
+      this.islemKodu,
+      this.kutuTuru})
       : super._();
 
   factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1131,6 +1161,10 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   String? gonderimSekliEPosta;
   @override
   String? ePosta;
+  @override
+  int? islemKodu;
+  @override
+  String? kutuTuru;
 
   @JsonKey(ignore: true)
   @override
@@ -1209,7 +1243,9 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
       String? gonderimSekliEPosta,
-      String? ePosta}) = _$EBelgeListesiModelImpl;
+      String? ePosta,
+      int? islemKodu,
+      String? kutuTuru}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
   factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
@@ -1398,6 +1434,12 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   String? get ePosta;
   set ePosta(String? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
+  @override
+  String? get kutuTuru;
+  set kutuTuru(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>

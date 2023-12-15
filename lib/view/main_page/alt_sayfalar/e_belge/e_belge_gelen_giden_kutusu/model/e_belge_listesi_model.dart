@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -70,12 +71,31 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? gelenEFatKontrolAciklama,
     String? gonderimSekliEPosta,
     String? ePosta,
+    int? islemKodu,
+    String? kutuTuru,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
 
   @override
   EBelgeListesiModel fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
+
+  factory EBelgeListesiModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        resmiBelgeNo: model.resmiBelgeNo,
+        islemKodu: 1,
+      );
+
+      factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        kutuTuru: "GIK",
+        islemKodu: 8,
+      );
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
