@@ -9,5 +9,11 @@
     "remote": "Uzaktan",
     "local": "Yerel",
     "releaseNotes": "Sürüm Yenilikleri"
+  },
+  "serviceOperations": {
+    "isWebServicesWorking": "Web servis title",
+    "isWebServicesWorkingSubtitle": "",
+    "updateService": "update service title",
+    "updateServiceSubtitle": "update service subtitle"
   }
 }

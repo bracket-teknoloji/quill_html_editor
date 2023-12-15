@@ -9,5 +9,11 @@
     "remote": "Remote",
     "local": "local",
     "releaseNotes": "Release Notes"
+  },
+  "serviceOperations": {
+    "isWebServicesWorking": "Are Web Services Working?",
+    "isWebServicesWorkingSubtitle": "Checks whether web services are running or not.",
+    "updateService": "Update Service",
+    "updateServiceSubtitle": "It is used to Update the Service."
   }
 }
