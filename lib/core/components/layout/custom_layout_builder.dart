@@ -4,7 +4,7 @@ import "package:picker/core/base/state/base_state.dart";
 class CustomLayoutBuilder extends StatefulWidget {
   final List<Widget> children;
   final int splitCount;
-  const CustomLayoutBuilder({super.key, required this.children, required this.splitCount});
+  const CustomLayoutBuilder({super.key, required this.splitCount, required this.children});
 
   @override
   State<CustomLayoutBuilder> createState() => _CustomLayoutBuilderState();
