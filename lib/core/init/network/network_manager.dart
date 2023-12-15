@@ -378,7 +378,12 @@ class NetworkManager {
   }
 
   Future<CariListesiModel?> getCariModel(String cariKodu) async {
-    final result = await dioGet<CariListesiModel>(path: ApiUrls.getCariler, bodyModel: CariListesiModel(), queryParameters: {"CariKodu": cariKodu});
+    final result = await dioGet<CariListesiModel>(
+      path: ApiUrls.getCariler,
+      bodyModel: CariListesiModel(),
+      showLoading: true,
+      queryParameters: {"CariKodu": cariKodu},
+    );
     if (result.success ?? false) {
       return result.data.first;
     }
