@@ -20,9 +20,9 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           title: const Text("Servis İşlemleri"),
         ),
         body: ListView.builder(
-          itemCount: viewModel.itemList.length,
+          itemCount: itemList.length,
           itemBuilder: (context, index) {
-            final BottomSheetModel model = viewModel.itemList[index];
+            final BottomSheetModel model = itemList[index];
             return Card(
               child: ListTile(
                 leading: Icon(model.iconWidget),
@@ -34,4 +34,29 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           },
         ).paddingAll(UIHelper.lowSize),
       );
+
+  List<BottomSheetModel> get itemList => [
+        BottomSheetModel(
+          title: loc(context).serviceOperations.isWebServicesWorking,
+          description: loc(context).serviceOperations.isWebServicesWorkingSubtitle,
+          iconWidget: Icons.travel_explore_outlined,
+          onTap: viewModel.webServisleriCalistir,
+        ),
+        BottomSheetModel(
+          title: "Servisi Güncelle",
+          description: "Servisi güncellemek için kullanılır.",
+          iconWidget: Icons.sync_alt_outlined,
+        ),
+        BottomSheetModel(
+          title: "Web Servisi Yeniden Başlat",
+          description: "Web servisini yeniden başlatmak için kullanılır.",
+          iconWidget: Icons.restart_alt_outlined,
+        ),
+        BottomSheetModel(
+          title: "DB Update",
+          description: "SQL veritabanını güncellemek için kullanılır.",
+          iconWidget: Icons.cloud_upload_outlined,
+          onTap: viewModel.dbUpdate,
+        ),
+      ];
 }
