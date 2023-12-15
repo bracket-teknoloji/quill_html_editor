@@ -285,6 +285,22 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
     });
   }
 
+  late final _$plasiyerAtom =
+      Atom(name: '_TemsilciProfilViewModelBase.plasiyer', context: context);
+
+  @override
+  String? get plasiyer {
+    _$plasiyerAtom.reportRead();
+    return super.plasiyer;
+  }
+
+  @override
+  set plasiyer(String? value) {
+    _$plasiyerAtom.reportWrite(value, super.plasiyer, () {
+      super.plasiyer = value;
+    });
+  }
+
   late final _$temsilciProfilListAtom = Atom(
       name: '_TemsilciProfilViewModelBase.temsilciProfilList',
       context: context);
@@ -373,6 +389,17 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   }
 
   @override
+  void setPlasiyer(String? value) {
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
+        .startAction(name: '_TemsilciProfilViewModelBase.setPlasiyer');
+    try {
+      return super.setPlasiyer(value);
+    } finally {
+      _$_TemsilciProfilViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTemsilciProfilList(List<TemsilciProfilModel>? value) {
     final _$actionInfo =
         _$_TemsilciProfilViewModelBaseActionController.startAction(
@@ -394,6 +421,7 @@ donemValueList: ${donemValueList},
 temsilciProfilRequestModel: ${temsilciProfilRequestModel},
 aciklama: ${aciklama},
 donemKodu: ${donemKodu},
+plasiyer: ${plasiyer},
 temsilciProfilList: ${temsilciProfilList},
 donem: ${donem},
 getBugunSatis: ${getBugunSatis},

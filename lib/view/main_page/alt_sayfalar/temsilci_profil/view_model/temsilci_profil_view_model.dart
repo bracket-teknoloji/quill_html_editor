@@ -78,10 +78,18 @@ abstract class _TemsilciProfilViewModelBase with Store {
   void setAciklama(String? value) => aciklama = value;
 
   @observable
+  String? plasiyer;
+
+  @action
+  void setPlasiyer(String? value) => plasiyer = value;
+
+
+
+  @observable
   ObservableList<TemsilciProfilModel>? temsilciProfilList;
 
   @action
-  void setTemsilciProfilList(List<TemsilciProfilModel>? value) => temsilciProfilList = value?.asObservable();
+  void setTemsilciProfilList(List<TemsilciProfilModel>? value) => temsilciProfilList = value?.where((element) =>plasiyer==null? true: element.plasiyerKodu == plasiyer).toList().asObservable();
 
   @computed
   double get getBugunSatis => (temsilciProfilList
@@ -321,7 +329,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   double get getBuYilSatis => (temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "SATIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "SATIS" && element.ayKodu! <= DateTime.now().month,
               )
               .toList()
               .ext
@@ -329,7 +337,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
           false)
       ? temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "SATIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "SATIS" && element.ayKodu! <= DateTime.now().month,
               )
               .map((e) => e.tutar)
               .toList()
@@ -341,7 +349,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   double get getBuYilAlis => (temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "ALIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "ALIS" && element.ayKodu! <= DateTime.now().month,
               )
               .toList()
               .ext
@@ -349,7 +357,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
           false)
       ? temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "ALIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "ALIS" && element.ayKodu! <= DateTime.now().month,
               )
               .map((e) => e.tutar)
               .toList()
@@ -361,7 +369,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   double get getBuYilSiparis => (temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "SIPARIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "SIPARIS" && element.ayKodu! <= DateTime.now().month,
               )
               .toList()
               .ext
@@ -369,7 +377,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
           false)
       ? temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "SIPARIS" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "SIPARIS" && element.ayKodu! <= DateTime.now().month,
               )
               .map((e) => e.tutar)
               .toList()
@@ -381,7 +389,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   double get getBuYilTahsilatlar => (temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "TAHSILAT" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "TAHSILAT" && element.ayKodu! <= DateTime.now().month,
               )
               .toList()
               .ext
@@ -389,7 +397,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
           false)
       ? temsilciProfilList
               ?.where(
-                (element) => element.tabloTipi == "TAHSILAT" && element.ayKodu! < DateTime.now().month,
+                (element) => element.tabloTipi == "TAHSILAT" && element.ayKodu! <= DateTime.now().month,
               )
               .map((e) => e.tutar)
               .toList()
