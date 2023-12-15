@@ -78,14 +78,20 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addAll(raporlar!);
       }
     } else if (islemtipi == IslemTipiEnum.siparis) {
-      // islemlerList.add(irsaliyeOlustur);
-      // islemlerList.add(faturaOlustur);
-      islemlerList.add(belgeyiKapatAc);
-      islemlerList.add(siparisPDFGoruntule);
-      islemlerList.add(cariKoduDegistir);
-      islemlerList.add(belgeNoDegistir);
-      islemlerList.add(kopyala);
-      islemlerList.addAll(raporlar!);
+      if (model is BaseSiparisEditModel) {
+        final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+        // islemlerList.add(irsaliyeOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi, siparistenFaturaOlustur);
+
+        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
+        islemlerList.add(belgeyiKapatAc);
+        islemlerList.add(siparisPDFGoruntule);
+        islemlerList.add(cariKoduDegistir);
+        islemlerList.add(belgeNoDegistir);
+        islemlerList.add(kopyala);
+        islemlerList.addAll(raporlar!);
+      }
     } else if (islemtipi == IslemTipiEnum.kasa) {
       if (model != null) {
         islemlerList.add(kasaHareketleri);
