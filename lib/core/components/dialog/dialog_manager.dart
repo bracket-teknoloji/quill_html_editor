@@ -143,7 +143,7 @@ class DialogManager {
       ).show();
   Future showAreYouSureDialog(void Function() onYes, {String? title}) async => await _areYouSureDialog(onYes, title).show();
 
-    void showSuccesDialog(String? description) => _baseDialog(
+  void showSuccesDialog(String? description) => _baseDialog(
         dialogType: DialogType.success,
         btnOkText: "Tamam",
         body: Text(description ?? "", textAlign: TextAlign.center),
@@ -177,6 +177,13 @@ class DialogManager {
 
   void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
         body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model?.cariAdi ?? model?.cariKodu),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
+
+  Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model.cariAdi ?? model.cariKodu),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
