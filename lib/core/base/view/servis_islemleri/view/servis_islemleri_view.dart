@@ -42,16 +42,16 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           iconWidget: Icons.travel_explore_outlined,
           onTap: viewModel.webServisleriCalistir,
         ),
-        BottomSheetModel(
-          title: "Servisi Güncelle",
-          description: "Servisi güncellemek için kullanılır.",
-          iconWidget: Icons.sync_alt_outlined,
-        ),
-        BottomSheetModel(
-          title: "Web Servisi Yeniden Başlat",
-          description: "Web servisini yeniden başlatmak için kullanılır.",
-          iconWidget: Icons.restart_alt_outlined,
-        ),
+        // BottomSheetModel(
+        //   title: "Servisi Güncelle",
+        //   description: "Servisi güncellemek için kullanılır.",
+        //   iconWidget: Icons.sync_alt_outlined,
+        // ),
+        // BottomSheetModel(
+        //   title: "Web Servisi Yeniden Başlat",
+        //   description: "Web servisini yeniden başlatmak için kullanılır.",
+        //   iconWidget: Icons.restart_alt_outlined,
+        // ),
         BottomSheetModel(
           title: "DB Update",
           description: "SQL veritabanını güncellemek için kullanılır.",
