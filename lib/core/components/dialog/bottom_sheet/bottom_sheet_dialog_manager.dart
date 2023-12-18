@@ -27,6 +27,7 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/add_company/model/account_response_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
@@ -635,7 +636,8 @@ class BottomSheetDialogManager {
       children: yaziciList
               ?.map(
                 (YaziciList e) => BottomSheetModel(
-                  title: e.yaziciAdi ?? e.aciklama ?? "",
+                  title: e.aciklama ?? e.yaziciAdi ?? "",
+                  description: e.yaziciAdi,
                   value: e,
                   groupValue: e.yaziciAdi,
                   onTap: () {
@@ -1084,6 +1086,82 @@ class BottomSheetDialogManager {
       }
     }
     return null;
+  }
+
+  Future<void> showEBelgePrintBottomSheetDialog(BuildContext context, EBelgeListesiModel model) async {
+    final TextEditingController yaziciController = TextEditingController(text: model.yaziciAdi);
+    final TextEditingController kopyaController = TextEditingController(text: model.kopyaSayisi.toStringIfNotNull);
+    await showBottomSheetDialog(
+      context,
+      title: model.belgeNo ?? "",
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          CustomTextField(
+            labelText: "Yazıcı",
+            isMust: true,
+            controller: yaziciController,
+            readOnly: true,
+            suffixMore: true,
+            onTap: () async {
+              final YaziciList? yaziciList = await showYaziciBottomSheetDialog(context, null);
+              if (yaziciList != null) {
+                model = model.copyWith(yaziciAdi: yaziciList.yaziciAdi);
+                yaziciController.text = model.yaziciAdi ?? "";
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Kopya Sayısı",
+            isMust: true,
+            controller: kopyaController,
+            keyboardType: TextInputType.number,
+            onChanged: (String value) {
+              int kopya = int.tryParse(value) ?? 0;
+              if ((int.tryParse(value) ?? 0) <= 0) {
+                kopya = 1;
+
+                return;
+              }
+              kopyaController.text = kopya.toString();
+              model = model.copyWith(kopyaSayisi: 1);
+            },
+            suffix: Wrap(
+              children: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    model = model.copyWith(kopyaSayisi: (model.kopyaSayisi ?? 0) - 1);
+                    kopyaController.text = model.kopyaSayisi.toStringIfNotNull ?? "";
+                  },
+                  icon: const Icon(Icons.remove),
+                ),
+                IconButton(
+                  onPressed: () {
+                    model = model.copyWith(kopyaSayisi: (model.kopyaSayisi ?? 0) + 1);
+                    kopyaController.text = model.kopyaSayisi.toStringIfNotNull ?? "";
+                  },
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              final result = await NetworkManager().dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.printEBelge.toJson(), showLoading: true);
+              if (result.success == true) {
+                DialogManager().showSuccessSnackBar("Yazdırıldı.");
+              } else {
+                await DialogManager().showAlertDialog(result.message ?? "Yazdırma işlemi başarısız.");
+              }
+              Get.back();
+              yaziciController.dispose();
+              kopyaController.dispose();
+            },
+            child: const Text("Yazdır"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ),
+    );
   }
 
   Future<MemoryImage?> getPhoto(BuildContext context) async {
