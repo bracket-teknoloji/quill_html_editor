@@ -82,6 +82,10 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       ePosta: json['E_POSTA'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
       kutuTuru: json['KUTU_TURU'] as String?,
+      aciklama: json['ACIKLAMA'] as String?,
+      senaryoTipi: json['SENARYO_TIPI'] as String?,
+      kopyaSayisi: json['KOPYA_SAYISI'] as int?,
+      yaziciAdi: json['YAZICI_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -159,5 +163,9 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('E_POSTA', instance.ePosta);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('KUTU_TURU', instance.kutuTuru);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('SENARYO_TIPI', instance.senaryoTipi);
+  writeNotNull('KOPYA_SAYISI', instance.kopyaSayisi);
+  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
   return val;
 }

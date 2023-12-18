@@ -73,6 +73,10 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? ePosta,
     int? islemKodu,
     String? kutuTuru,
+    String? aciklama,
+    String? senaryoTipi,
+    int? kopyaSayisi,
+    String? yaziciAdi,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
@@ -96,9 +100,19 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GIK",
         islemKodu: 8,
       );
+      
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
+
+  EBelgeListesiModel get printEBelge => EBelgeListesiModel(
+        belgeTuru: belgeTuru,
+        ebelgeTuru: ebelgeTuru,
+        islemKodu: 22,
+        resmiBelgeNo: resmiBelgeNo,
+        kopyaSayisi: kopyaSayisi,
+        yaziciAdi: yaziciAdi,
+      );
   bool get showBadge => gelen != "E" || taslak != "E";
 
   bool get uyariMi => showBadge && gondermeDurumu == "BEK";
