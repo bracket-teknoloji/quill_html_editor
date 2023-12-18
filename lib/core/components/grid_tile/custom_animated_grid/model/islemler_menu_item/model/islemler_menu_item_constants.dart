@@ -159,8 +159,9 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemtipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(eBelgeGoruntule);
-      islemlerList.add(eFaturaGonder);
       islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
+      islemlerList.add(eFaturaGonder);
+      islemlerList.add(eBelgeYazdir);
     }
   }
 
@@ -788,10 +789,13 @@ class IslemlerMenuItemConstants<T> {
     return null;
   }
 
+  //* E-Fatura
+
   GridItemModel get eFaturaGonder {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "${siparisModel.getTitle} Gönder",
+      iconData: Icons.send_outlined,
       onTap: () => Get.toNamed("/mainPage/eBelgeGonder", arguments: model),
     );
   }
@@ -800,6 +804,7 @@ class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "E-Belge Görüntüle",
+      iconData: Icons.picture_as_pdf_outlined,
       onTap: () => Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel)),
     );
   }
@@ -808,7 +813,33 @@ class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Taslağı Sil",
-      onTap: () => Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.sil(siparisModel)),
+      iconData: Icons.delete_outline,
+      onTap: () async {
+        final result = await _networkManager.dioPost<EBelgeListesiModel>(
+          path: ApiUrls.eBelgeIslemi,
+          showLoading: true,
+          bodyModel: EBelgeListesiModel(),
+          data: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).taslakSil.toJson(),
+        );
+        if (result.success == true) {
+          _dialogManager.showSuccessSnackBar("Başarılı");
+          return true;
+        } else {
+          return false;
+        }
+      },
+    );
+  }
+
+  GridItemModel get eBelgeYazdir {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Yazdır",
+      iconData: Icons.print_outlined,
+      onTap: () {
+        final EBelgeListesiModel model = EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel);
+        _bottomSheetDialogManager.showEBelgePrintBottomSheetDialog(context, model);
+      },
     );
   }
 }
