@@ -113,6 +113,15 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
         kopyaSayisi: kopyaSayisi,
         yaziciAdi: yaziciAdi,
       );
+
+      EBelgeListesiModel get taslakSil => EBelgeListesiModel(
+        belgeTuru: belgeTuru,
+        ebelgeTuru: ebelgeTuru,
+        islemKodu: 9,
+        resmiBelgeNo: resmiBelgeNo,
+        kopyaSayisi: kopyaSayisi,
+        yaziciAdi: yaziciAdi,
+      );
   bool get showBadge => gelen != "E" || taslak != "E";
 
   bool get uyariMi => showBadge && gondermeDurumu == "BEK";
