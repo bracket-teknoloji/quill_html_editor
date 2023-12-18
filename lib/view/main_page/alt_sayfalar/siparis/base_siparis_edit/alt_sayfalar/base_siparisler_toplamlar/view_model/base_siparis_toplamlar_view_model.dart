@@ -77,7 +77,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
     }
     if (isGenIsk1T) {
       model = model.copyWith(
-        genIsk1o: (value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100,
+        genIsk1o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100,
       );
     } else {
       model = model.copyWith(genIsk1o: value);
@@ -93,7 +93,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
     }
     if (isGenIsk2T) {
       model = model.copyWith(
-        genIsk2o: (value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100,
+        genIsk2o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100,
       );
     } else {
       model = model.copyWith(genIsk2o: value);
@@ -108,9 +108,7 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(
-        genIsk3o: (value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100,
-      );
+      model = model.copyWith(genIsk3o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk3o: value);
     }

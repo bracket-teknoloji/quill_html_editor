@@ -80,7 +80,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk1T) {
-      model = model.copyWith(genIsk1o: (value ?? 0) / (model.araToplam != 0 ? (model.araToplam ?? 0) : 1) * 100);
+      model = model.copyWith(genIsk1o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100);
     } else {
       model = model.copyWith(genIsk1o: value);
     }
@@ -94,7 +94,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2o: (value ?? 0) / (model.getAraToplam != 0 ? (model.araToplam ?? 0) - (model.genIsk1t ?? 0) : 1) * 100);
+      model = model.copyWith(genIsk2o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk2o: value);
     }
@@ -108,7 +108,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3o: (value ?? 0) / (model.getAraToplam != 0 ? model.getAraToplam : 1) * 100);
+      model = model.copyWith(genIsk3o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk3o: value);
     }
@@ -170,7 +170,6 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
         "8/10": 0.8,
         "9/10": 0.9,
       };
-
 
   int get getTevkifatPay => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
   int get getTevkifatPayda => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
