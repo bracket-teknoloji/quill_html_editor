@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -28,6 +29,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     List<String?>? arrKod5,
     List<String?>? arrSehir,
     @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
+    bool? plasiyerKisitiYok,
     String? belgeTuru,
   }) = _CariRequestModel;
 
@@ -35,4 +37,13 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
 
   @override
   CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
+
+  factory CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => CariRequestModel(
+        filterText: "",
+        kod: [model.cariKodu??""],
+        sayfa: 1,
+        eFaturaGoster: true,
+        plasiyerKisitiYok: true,
+        belgeTuru: model.belgeTuru,
+      );
 }

@@ -61,6 +61,8 @@ mixin _$CariRequestModel {
   @JsonKey(name: "ArrPlasiyerKodu")
   set arrPlasiyerKodu(List<String>? value) =>
       throw _privateConstructorUsedError;
+  bool? get plasiyerKisitiYok => throw _privateConstructorUsedError;
+  set plasiyerKisitiYok(bool? value) => throw _privateConstructorUsedError;
   String? get belgeTuru => throw _privateConstructorUsedError;
   set belgeTuru(String? value) => throw _privateConstructorUsedError;
 
@@ -94,6 +96,7 @@ abstract class $CariRequestModelCopyWith<$Res> {
       List<String?>? arrKod5,
       List<String?>? arrSehir,
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
+      bool? plasiyerKisitiYok,
       String? belgeTuru});
 }
 
@@ -127,6 +130,7 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
     Object? arrKod5 = freezed,
     Object? arrSehir = freezed,
     Object? arrPlasiyerKodu = freezed,
+    Object? plasiyerKisitiYok = freezed,
     Object? belgeTuru = freezed,
   }) {
     return _then(_value.copyWith(
@@ -198,6 +202,10 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      plasiyerKisitiYok: freezed == plasiyerKisitiYok
+          ? _value.plasiyerKisitiYok
+          : plasiyerKisitiYok // ignore: cast_nullable_to_non_nullable
+              as bool?,
       belgeTuru: freezed == belgeTuru
           ? _value.belgeTuru
           : belgeTuru // ignore: cast_nullable_to_non_nullable
@@ -232,6 +240,7 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
       List<String?>? arrKod5,
       List<String?>? arrSehir,
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
+      bool? plasiyerKisitiYok,
       String? belgeTuru});
 }
 
@@ -263,6 +272,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
     Object? arrKod5 = freezed,
     Object? arrSehir = freezed,
     Object? arrPlasiyerKodu = freezed,
+    Object? plasiyerKisitiYok = freezed,
     Object? belgeTuru = freezed,
   }) {
     return _then(_$CariRequestModelImpl(
@@ -334,6 +344,10 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.arrPlasiyerKodu
           : arrPlasiyerKodu // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      plasiyerKisitiYok: freezed == plasiyerKisitiYok
+          ? _value.plasiyerKisitiYok
+          : plasiyerKisitiYok // ignore: cast_nullable_to_non_nullable
+              as bool?,
       belgeTuru: freezed == belgeTuru
           ? _value.belgeTuru
           : belgeTuru // ignore: cast_nullable_to_non_nullable
@@ -364,6 +378,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       this.arrKod5,
       this.arrSehir,
       @JsonKey(name: "ArrPlasiyerKodu") this.arrPlasiyerKodu,
+      this.plasiyerKisitiYok,
       this.belgeTuru})
       : super._();
 
@@ -408,6 +423,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   @JsonKey(name: "ArrPlasiyerKodu")
   List<String>? arrPlasiyerKodu;
   @override
+  bool? plasiyerKisitiYok;
+  @override
   String? belgeTuru;
 
   @JsonKey(ignore: true)
@@ -444,6 +461,7 @@ abstract class _CariRequestModel extends CariRequestModel {
       List<String?>? arrKod5,
       List<String?>? arrSehir,
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
+      bool? plasiyerKisitiYok,
       String? belgeTuru}) = _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
@@ -507,6 +525,9 @@ abstract class _CariRequestModel extends CariRequestModel {
   List<String>? get arrPlasiyerKodu;
   @JsonKey(name: "ArrPlasiyerKodu")
   set arrPlasiyerKodu(List<String>? value);
+  @override
+  bool? get plasiyerKisitiYok;
+  set plasiyerKisitiYok(bool? value);
   @override
   String? get belgeTuru;
   set belgeTuru(String? value);
