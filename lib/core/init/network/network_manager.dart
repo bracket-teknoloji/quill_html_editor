@@ -17,6 +17,7 @@ import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 // import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
@@ -377,12 +378,12 @@ class NetworkManager {
     return null;
   }
 
-  Future<CariListesiModel?> getCariModel(String cariKodu) async {
+  Future<CariListesiModel?> getCariModel(CariRequestModel model) async {
     final result = await dioGet<CariListesiModel>(
       path: ApiUrls.getCariler,
       bodyModel: CariListesiModel(),
       showLoading: true,
-      queryParameters: {"CariKodu": cariKodu},
+      queryParameters: model.toJson(),
     );
     if (result.success ?? false) {
       return result.data.first;
