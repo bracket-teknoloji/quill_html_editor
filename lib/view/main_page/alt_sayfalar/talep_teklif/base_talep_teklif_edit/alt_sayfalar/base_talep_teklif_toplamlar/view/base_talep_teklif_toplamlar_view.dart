@@ -171,6 +171,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                       enabled: enable && yetkiController.siparisGenIsk1AktifMi,
                       controller: genelIskonto1Controller,
+                      isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       onChanged: (String p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
                       valueWidget: Observer(
@@ -210,6 +211,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                       enabled: enable && yetkiController.siparisGenIsk2AktifMi,
                       controller: genelIskonto2Controller,
+                      isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       valueWidget: Observer(
                         builder: (_) => Text(
@@ -251,6 +253,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                       controller: genelIskonto3Controller,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       onChanged: (String p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                      isFormattedString: true,
                       valueWidget: Observer(
                         builder: (_) => Text(
                           viewModel.isGenIsk3T

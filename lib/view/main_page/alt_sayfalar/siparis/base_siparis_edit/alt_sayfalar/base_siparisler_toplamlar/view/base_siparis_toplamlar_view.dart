@@ -108,7 +108,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}").yetkiVarMi(model.dovizAdi != null),
+                      TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}").yetkiVarMi(model.dovizliMi),
                     ],
                   ),
                 ),
@@ -128,7 +128,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizTutari != null),
+                      TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                     ],
                   ),
                 ),
@@ -143,7 +143,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizTutari != null),
+                      TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                     ],
                   ),
                 ),
@@ -159,7 +159,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                           text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizTutari != null),
+                        TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                       ],
                     ),
                   ),
@@ -183,7 +183,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         ),
                         TextSpan(
                           text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                        ).yetkiVarMi(model.dovizTutari != null),
+                        ).yetkiVarMi(model.dovizliMi),
                       ],
                     ),
                   ),
@@ -205,7 +205,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                               text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizTutari != null),
+                            TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                           ],
                         ),
                       ),
@@ -235,7 +235,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                           text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(text: "\n${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizTutari != null),
+                        TextSpan(text: "\n${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                       ],
                     ),
                   ),
@@ -257,6 +257,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                   enabled: enable && yetkiController.siparisGenIsk1AktifMi,
                   controller: genelIskonto1Controller,
+                  isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (p0) => viewModel.setGenIsk1(
                     double.tryParse(p0.replaceAll(RegExp(r","), ".")),
@@ -306,6 +307,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                   enabled: enable && yetkiController.siparisGenIsk2AktifMi,
                   controller: genelIskonto2Controller,
+                  isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   valueWidget: Observer(
                     builder: (_) => Text(
@@ -331,6 +333,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                   enabled: enable && yetkiController.siparisGenIsk2AktifMi,
                   readOnly: true,
+                  isFormattedString: true,
                   suffixMore: true,
                   valueWidget: Observer(
                     builder: (_) => Text(
@@ -354,6 +357,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   labelText: "Gen. İsk 3",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
                   enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                  isFormattedString: true,
                   controller: genelIskonto3Controller,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (p0) => viewModel.setGenIsk3(
