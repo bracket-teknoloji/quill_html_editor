@@ -6,6 +6,7 @@ import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -150,13 +151,13 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     },
                   );
                 },
-              ).yetkiKontrol(widget.model.eBelgeGoster),
+              ).yetkiKontrol(!widget.model.isTempBelge),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
                 onTap: () async {
                   Get.back();
-                  final CariListesiModel? cariListesiModel = await networkManager.getCariModel(model.cariKodu!);
+                  final CariListesiModel? cariListesiModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
                   dialogManager.showCariGridViewDialog(
                     cariListesiModel,
                   );
@@ -195,8 +196,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.earsivMi == "E"),
                   dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata))
                       .yetkiVarMi((model.earsivDurumu == "HAT" || model.efaturaDurumu == "HAT") && (model.efaturaMi == "E" || model.earsivMi == "E")),
-                  dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak))
-                      .yetkiVarMi(model.taslakMi),
+                  dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.taslakMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   // const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
