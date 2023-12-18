@@ -560,6 +560,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       return "Sipariş";
   }
 
+  bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi??0) > 0;
+
   bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" ||earsivMi == "E"); 
 
   bool get eArsivMi => earsivMi == "E";
@@ -698,6 +700,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int toplamKalemMiktari([bool miktar2EklensinMi = false]) => (kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => a + b) ?? 0).toInt();
 
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+  double get toplamAraToplam => kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamDovizBrutTutar => kalemList?.map((e) => e.dovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamNetTutar => kalemList?.map((e) => e.netFiyat ?? 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
