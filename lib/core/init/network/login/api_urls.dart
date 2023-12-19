@@ -17,6 +17,7 @@ class ApiUrls {
   static const String isletmelerSubeler = "General/GetIsletmelerSubeler";
   static const String logoutUser = "User/LogoutUser";
   static const String print = "Print/Print";
+  static const String getDizaynlar = "Print/GetDizaynlar";
   static const String saveDovizKuru = "General/SaveDovizKuru";
   static const String saveEvrak = "General/SaveEvrak";
   static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
