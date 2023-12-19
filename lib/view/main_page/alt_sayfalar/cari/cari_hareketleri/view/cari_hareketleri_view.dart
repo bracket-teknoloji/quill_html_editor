@@ -4,6 +4,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
@@ -90,9 +91,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       );
 
   AppBar appBar(BuildContext context) => AppBar(
-        // materialType: MaterialType.transparency,
-        backgroundColor: Colors.transparent,
-        // controller: scrollController!,
         title: Observer(
           builder: (_) => viewModel.isSearchBarOpened
               ? SizedBox(
@@ -123,53 +121,44 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined)),
           ),
         ],
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(height * 0.07),
-          child: SizedBox(
-            height: height * 0.07,
-            child: ListView(
-              shrinkWrap: true,
-              itemExtent: width * 0.33,
-              scrollDirection: Axis.horizontal,
-              children: [
-                AppBarButton(
-                  onPressed: () {
-                    dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipiEnum.cari, title: widget.cari?.cariAdi));
-                  },
-                  icon: Icons.tune_outlined,
-                  child: const Text("Cari İşlemleri"),
-                ),
-                AppBarButton(
-                  icon: Icons.sort_by_alpha_outlined,
-                  onPressed: () async {
-                    final siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                      context,
-                      title: "Sıralama seçiniz",
-                      groupValue: viewModel.siralama,
-                      children: [
-                        BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", groupValue: "TARIH_AZ", value: "TARIH_AZ"),
-                        BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", groupValue: "TARIH_ZA", value: "TARIH_ZA"),
-                      ],
-                    );
-                    if (siralama != viewModel.siralama && siralama != null) {
-                      viewModel.setSiralama(siralama!);
-                      viewModel.setCariHareketleri(null);
-                      return getData().then((value) => viewModel.setCariHareketleri(value));
-                    }
-                  },
-                  child: const Text("Sırala"),
-                ),
-                AppBarButton(
-                  icon: Icons.refresh_outlined,
-                  child: const Text("Yenile"),
-                  onPressed: () {
-                    viewModel.setCariHareketleri(null);
-                    return getData().then((value) => viewModel.setCariHareketleri(value));
-                  },
-                ),
-              ].map((e) => e.paddingAll(UIHelper.lowSize)).toList(),
+        bottom: AppBarPreferedSizedBottom(
+          children: [
+            AppBarButton(
+              onPressed: () {
+                dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: widget.cari, islemTipi: IslemTipiEnum.cari, title: widget.cari?.cariAdi));
+              },
+              icon: Icons.tune_outlined,
+              child: const Text("Cari İşlemleri"),
             ),
-          ),
+            AppBarButton(
+              icon: Icons.sort_by_alpha_outlined,
+              onPressed: () async {
+                final siralama = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Sıralama seçiniz",
+                  groupValue: viewModel.siralama,
+                  children: [
+                    BottomSheetModel(title: "Tarih (Eskiden-Yeniye)", groupValue: "TARIH_AZ", value: "TARIH_AZ"),
+                    BottomSheetModel(title: "Tarih (Yeniden-Eskiye)", groupValue: "TARIH_ZA", value: "TARIH_ZA"),
+                  ],
+                );
+                if (siralama != viewModel.siralama && siralama != null) {
+                  viewModel.setSiralama(siralama!);
+                  viewModel.setCariHareketleri(null);
+                  return getData().then((value) => viewModel.setCariHareketleri(value));
+                }
+              },
+              child: const Text("Sırala"),
+            ),
+            AppBarButton(
+              icon: Icons.refresh_outlined,
+              child: const Text("Yenile"),
+              onPressed: () {
+                viewModel.setCariHareketleri(null);
+                return getData().then((value) => viewModel.setCariHareketleri(value));
+              },
+            ),
+          ],
         ),
       );
 
@@ -309,7 +298,6 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                         );
                                       },
                                     ).yetkiKontrol(model.devirMi && yetkiController.cariHareketleriSilme),
-
                                     BottomSheetModel(
                                       iconWidget: Icons.receipt_long_outlined,
                                       title: "Tahsilat Makbuzu",
