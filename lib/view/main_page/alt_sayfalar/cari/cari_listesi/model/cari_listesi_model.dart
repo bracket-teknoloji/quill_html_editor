@@ -1,6 +1,7 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
@@ -364,7 +365,6 @@ class CariListesiModel with NetworkManagerMixin {
   @HiveField(110)
   String? muhAdi;
 
-
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
   @override
@@ -374,6 +374,13 @@ class CariListesiModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$CariListesiModelToJson(this);
 
   factory CariListesiModel.fromCariHareketleriModel(CariHareketleriModel? model) => CariListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+        plasiyerAciklama: model?.plasiyerAciklama,
+        plasiyerKodu: model?.plasiyerKodu,
+      );
+
+  factory CariListesiModel.fromSiparisModel(BaseSiparisEditModel? model) => CariListesiModel(
         cariAdi: model?.cariAdi,
         cariKodu: model?.cariKodu,
         plasiyerAciklama: model?.plasiyerAciklama,
