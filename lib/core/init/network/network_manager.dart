@@ -18,6 +18,8 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 // import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
@@ -89,6 +91,8 @@ class NetworkManager {
     final FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
+    try {
+       
     final response = await dio.request(
       path,
       queryParameters: queryParameters,
@@ -103,6 +107,9 @@ class NetworkManager {
     );
     final a = response.data;
     return TokenModel().fromJson(a);
+    } catch (e) {
+      return TokenModel()..error = e.toString();
+    }
   }
 
   Future<GenericResponseModel> dioGet<T extends NetworkManagerMixin>({
@@ -384,6 +391,19 @@ class NetworkManager {
       bodyModel: CariListesiModel(),
       showLoading: true,
       queryParameters: model.toJson(),
+    );
+    if (result.success ?? false) {
+      return result.data.first;
+    }
+    return null;
+  }
+
+  Future<BaseSiparisEditModel?> getBaseSiparisEditModel(SiparisEditRequestModel model) async {
+    final result = await dioPost<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturaDetay,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      data: model.toJson(),
     );
     if (result.success ?? false) {
       return result.data.first;
