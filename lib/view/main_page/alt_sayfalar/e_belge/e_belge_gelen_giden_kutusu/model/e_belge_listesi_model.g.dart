@@ -61,7 +61,6 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       iptalTarihi: json['IPTAL_TARIHI'] == null
           ? null
           : DateTime.parse(json['IPTAL_TARIHI'] as String),
-      gonderimSekliEposta: json['GONDERIM_SEKLI_EPOSTA'] as String?,
       eposta: json['EPOSTA'] as String?,
       eBelgeTuru: json['E_BELGE_TURU'] as String?,
       id: json['ID'] as int?,
@@ -78,7 +77,7 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       kayitYapanKul: json['KAYIT_YAPAN_KUL'] as String?,
       gelenEFatKontrolEdildi: json['GELEN_E_FAT_KONTROL_EDILDI'] as String?,
       gelenEFatKontrolAciklama: json['GELEN_E_FAT_KONTROL_ACIKLAMA'] as String?,
-      gonderimSekliEPosta: json['GONDERIM_SEKLI_E_POSTA'] as String?,
+      gonderimSekliEPosta: json['GONDERIM_SEKLI_E_POSTA'] as bool?,
       ePosta: json['E_POSTA'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
       kutuTuru: json['KUTU_TURU'] as String?,
@@ -86,6 +85,9 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       senaryoTipi: json['SENARYO_TIPI'] as String?,
       kopyaSayisi: json['KOPYA_SAYISI'] as int?,
       yaziciAdi: json['YAZICI_ADI'] as String?,
+      dizaynNo: json['DIZAYN_NO'] as int?,
+      dovizliOlustur: json['DOVIZLI_OLUSTUR'] as bool?,
+      internetFaturasi: json['INTERNET_FATURASI'] as bool?,
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -144,7 +146,6 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('GONDERME_DURUMU', instance.gondermeDurumu);
   writeNotNull('ZARF_SILINEBILIR', instance.zarfSilinebilir);
   writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
-  writeNotNull('GONDERIM_SEKLI_EPOSTA', instance.gonderimSekliEposta);
   writeNotNull('EPOSTA', instance.eposta);
   writeNotNull('E_BELGE_TURU', instance.eBelgeTuru);
   writeNotNull('ID', instance.id);
@@ -167,5 +168,8 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('SENARYO_TIPI', instance.senaryoTipi);
   writeNotNull('KOPYA_SAYISI', instance.kopyaSayisi);
   writeNotNull('YAZICI_ADI', instance.yaziciAdi);
+  writeNotNull('DIZAYN_NO', instance.dizaynNo);
+  writeNotNull('DOVIZLI_OLUSTUR', instance.dovizliOlustur);
+  writeNotNull('INTERNET_FATURASI', instance.internetFaturasi);
   return val;
 }

@@ -112,8 +112,6 @@ mixin _$EBelgeListesiModel {
   set zarfSilinebilir(String? value) => throw _privateConstructorUsedError;
   DateTime? get iptalTarihi => throw _privateConstructorUsedError;
   set iptalTarihi(DateTime? value) => throw _privateConstructorUsedError;
-  String? get gonderimSekliEposta => throw _privateConstructorUsedError;
-  set gonderimSekliEposta(String? value) => throw _privateConstructorUsedError;
   String? get eposta => throw _privateConstructorUsedError;
   set eposta(String? value) => throw _privateConstructorUsedError;
   String? get eBelgeTuru => throw _privateConstructorUsedError;
@@ -140,8 +138,8 @@ mixin _$EBelgeListesiModel {
   String? get gelenEFatKontrolAciklama => throw _privateConstructorUsedError;
   set gelenEFatKontrolAciklama(String? value) =>
       throw _privateConstructorUsedError;
-  String? get gonderimSekliEPosta => throw _privateConstructorUsedError;
-  set gonderimSekliEPosta(String? value) => throw _privateConstructorUsedError;
+  bool? get gonderimSekliEPosta => throw _privateConstructorUsedError;
+  set gonderimSekliEPosta(bool? value) => throw _privateConstructorUsedError;
   String? get ePosta => throw _privateConstructorUsedError;
   set ePosta(String? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
@@ -156,6 +154,12 @@ mixin _$EBelgeListesiModel {
   set kopyaSayisi(int? value) => throw _privateConstructorUsedError;
   String? get yaziciAdi => throw _privateConstructorUsedError;
   set yaziciAdi(String? value) => throw _privateConstructorUsedError;
+  int? get dizaynNo => throw _privateConstructorUsedError;
+  set dizaynNo(int? value) => throw _privateConstructorUsedError;
+  bool? get dovizliOlustur => throw _privateConstructorUsedError;
+  set dovizliOlustur(bool? value) => throw _privateConstructorUsedError;
+  bool? get internetFaturasi => throw _privateConstructorUsedError;
+  set internetFaturasi(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -216,7 +220,6 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? gondermeDurumu,
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
-      String? gonderimSekliEposta,
       String? eposta,
       String? eBelgeTuru,
       int? id,
@@ -229,14 +232,17 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? kayitYapanKul,
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
-      String? gonderimSekliEPosta,
+      bool? gonderimSekliEPosta,
       String? ePosta,
       int? islemKodu,
       String? kutuTuru,
       String? aciklama,
       String? senaryoTipi,
       int? kopyaSayisi,
-      String? yaziciAdi});
+      String? yaziciAdi,
+      int? dizaynNo,
+      bool? dovizliOlustur,
+      bool? internetFaturasi});
 }
 
 /// @nodoc
@@ -298,7 +304,6 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? gondermeDurumu = freezed,
     Object? zarfSilinebilir = freezed,
     Object? iptalTarihi = freezed,
-    Object? gonderimSekliEposta = freezed,
     Object? eposta = freezed,
     Object? eBelgeTuru = freezed,
     Object? id = freezed,
@@ -319,6 +324,9 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? senaryoTipi = freezed,
     Object? kopyaSayisi = freezed,
     Object? yaziciAdi = freezed,
+    Object? dizaynNo = freezed,
+    Object? dovizliOlustur = freezed,
+    Object? internetFaturasi = freezed,
   }) {
     return _then(_value.copyWith(
       ebelgeTuru: freezed == ebelgeTuru
@@ -505,10 +513,6 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      gonderimSekliEposta: freezed == gonderimSekliEposta
-          ? _value.gonderimSekliEposta
-          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
-              as String?,
       eposta: freezed == eposta
           ? _value.eposta
           : eposta // ignore: cast_nullable_to_non_nullable
@@ -560,7 +564,7 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
       gonderimSekliEPosta: freezed == gonderimSekliEPosta
           ? _value.gonderimSekliEPosta
           : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       ePosta: freezed == ePosta
           ? _value.ePosta
           : ePosta // ignore: cast_nullable_to_non_nullable
@@ -589,6 +593,18 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.yaziciAdi
           : yaziciAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      dizaynNo: freezed == dizaynNo
+          ? _value.dizaynNo
+          : dizaynNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      dovizliOlustur: freezed == dovizliOlustur
+          ? _value.dovizliOlustur
+          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      internetFaturasi: freezed == internetFaturasi
+          ? _value.internetFaturasi
+          : internetFaturasi // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -648,7 +664,6 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? gondermeDurumu,
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
-      String? gonderimSekliEposta,
       String? eposta,
       String? eBelgeTuru,
       int? id,
@@ -661,14 +676,17 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? kayitYapanKul,
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
-      String? gonderimSekliEPosta,
+      bool? gonderimSekliEPosta,
       String? ePosta,
       int? islemKodu,
       String? kutuTuru,
       String? aciklama,
       String? senaryoTipi,
       int? kopyaSayisi,
-      String? yaziciAdi});
+      String? yaziciAdi,
+      int? dizaynNo,
+      bool? dovizliOlustur,
+      bool? internetFaturasi});
 }
 
 /// @nodoc
@@ -728,7 +746,6 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? gondermeDurumu = freezed,
     Object? zarfSilinebilir = freezed,
     Object? iptalTarihi = freezed,
-    Object? gonderimSekliEposta = freezed,
     Object? eposta = freezed,
     Object? eBelgeTuru = freezed,
     Object? id = freezed,
@@ -749,6 +766,9 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? senaryoTipi = freezed,
     Object? kopyaSayisi = freezed,
     Object? yaziciAdi = freezed,
+    Object? dizaynNo = freezed,
+    Object? dovizliOlustur = freezed,
+    Object? internetFaturasi = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
       ebelgeTuru: freezed == ebelgeTuru
@@ -935,10 +955,6 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.iptalTarihi
           : iptalTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      gonderimSekliEposta: freezed == gonderimSekliEposta
-          ? _value.gonderimSekliEposta
-          : gonderimSekliEposta // ignore: cast_nullable_to_non_nullable
-              as String?,
       eposta: freezed == eposta
           ? _value.eposta
           : eposta // ignore: cast_nullable_to_non_nullable
@@ -990,7 +1006,7 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
       gonderimSekliEPosta: freezed == gonderimSekliEPosta
           ? _value.gonderimSekliEPosta
           : gonderimSekliEPosta // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as bool?,
       ePosta: freezed == ePosta
           ? _value.ePosta
           : ePosta // ignore: cast_nullable_to_non_nullable
@@ -1019,6 +1035,18 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.yaziciAdi
           : yaziciAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      dizaynNo: freezed == dizaynNo
+          ? _value.dizaynNo
+          : dizaynNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      dovizliOlustur: freezed == dovizliOlustur
+          ? _value.dovizliOlustur
+          : dovizliOlustur // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      internetFaturasi: freezed == internetFaturasi
+          ? _value.internetFaturasi
+          : internetFaturasi // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -1073,7 +1101,6 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.gondermeDurumu,
       this.zarfSilinebilir,
       this.iptalTarihi,
-      this.gonderimSekliEposta,
       this.eposta,
       this.eBelgeTuru,
       this.id,
@@ -1093,7 +1120,10 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.aciklama,
       this.senaryoTipi,
       this.kopyaSayisi,
-      this.yaziciAdi})
+      this.yaziciAdi,
+      this.dizaynNo,
+      this.dovizliOlustur,
+      this.internetFaturasi})
       : super._();
 
   factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1192,8 +1222,6 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   @override
   DateTime? iptalTarihi;
   @override
-  String? gonderimSekliEposta;
-  @override
   String? eposta;
   @override
   String? eBelgeTuru;
@@ -1218,7 +1246,7 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   @override
   String? gelenEFatKontrolAciklama;
   @override
-  String? gonderimSekliEPosta;
+  bool? gonderimSekliEPosta;
   @override
   String? ePosta;
   @override
@@ -1233,6 +1261,12 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   int? kopyaSayisi;
   @override
   String? yaziciAdi;
+  @override
+  int? dizaynNo;
+  @override
+  bool? dovizliOlustur;
+  @override
+  bool? internetFaturasi;
 
   @JsonKey(ignore: true)
   @override
@@ -1297,7 +1331,6 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? gondermeDurumu,
       String? zarfSilinebilir,
       DateTime? iptalTarihi,
-      String? gonderimSekliEposta,
       String? eposta,
       String? eBelgeTuru,
       int? id,
@@ -1310,14 +1343,17 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? kayitYapanKul,
       String? gelenEFatKontrolEdildi,
       String? gelenEFatKontrolAciklama,
-      String? gonderimSekliEPosta,
+      bool? gonderimSekliEPosta,
       String? ePosta,
       int? islemKodu,
       String? kutuTuru,
       String? aciklama,
       String? senaryoTipi,
       int? kopyaSayisi,
-      String? yaziciAdi}) = _$EBelgeListesiModelImpl;
+      String? yaziciAdi,
+      int? dizaynNo,
+      bool? dovizliOlustur,
+      bool? internetFaturasi}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
   factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
@@ -1462,9 +1498,6 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   DateTime? get iptalTarihi;
   set iptalTarihi(DateTime? value);
   @override
-  String? get gonderimSekliEposta;
-  set gonderimSekliEposta(String? value);
-  @override
   String? get eposta;
   set eposta(String? value);
   @override
@@ -1501,8 +1534,8 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   String? get gelenEFatKontrolAciklama;
   set gelenEFatKontrolAciklama(String? value);
   @override
-  String? get gonderimSekliEPosta;
-  set gonderimSekliEPosta(String? value);
+  bool? get gonderimSekliEPosta;
+  set gonderimSekliEPosta(bool? value);
   @override
   String? get ePosta;
   set ePosta(String? value);
@@ -1524,6 +1557,15 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   String? get yaziciAdi;
   set yaziciAdi(String? value);
+  @override
+  int? get dizaynNo;
+  set dizaynNo(int? value);
+  @override
+  bool? get dovizliOlustur;
+  set dovizliOlustur(bool? value);
+  @override
+  bool? get internetFaturasi;
+  set internetFaturasi(bool? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>

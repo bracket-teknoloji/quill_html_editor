@@ -56,7 +56,6 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? gondermeDurumu,
     String? zarfSilinebilir,
     DateTime? iptalTarihi,
-    String? gonderimSekliEposta,
     String? eposta,
     String? eBelgeTuru,
     int? id,
@@ -69,7 +68,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? kayitYapanKul,
     String? gelenEFatKontrolEdildi,
     String? gelenEFatKontrolAciklama,
-    String? gonderimSekliEPosta,
+    bool? gonderimSekliEPosta,
     String? ePosta,
     int? islemKodu,
     String? kutuTuru,
@@ -77,6 +76,9 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     String? senaryoTipi,
     int? kopyaSayisi,
     String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? internetFaturasi,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
@@ -91,7 +93,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         islemKodu: 1,
       );
 
-      factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
+  factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
         ebelgeTuru: model.belgeNo?.substring(0, 3),
         belgeNo: model.belgeNo,
@@ -100,28 +102,38 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GIK",
         islemKodu: 8,
       );
-      
+
+  factory EBelgeListesiModel.taslakKaydet(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        senaryoTipi: model.efaturaTipi,
+        kutuTuru: "GIK",
+        islemKodu: 2,
+      );
+  factory EBelgeListesiModel.faturaGonder(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        senaryoTipi: model.efaturaTipi,
+        kutuTuru: "GIK",
+        islemKodu: 3,
+      );
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
+  EBelgeListesiModel get printEBelge => copyWith(islemKodu: 22);
 
-  EBelgeListesiModel get printEBelge => EBelgeListesiModel(
-        belgeTuru: belgeTuru,
-        ebelgeTuru: ebelgeTuru,
-        islemKodu: 22,
-        resmiBelgeNo: resmiBelgeNo,
-        kopyaSayisi: kopyaSayisi,
-        yaziciAdi: yaziciAdi,
-      );
+  EBelgeListesiModel get taslakGonder => copyWith(islemKodu: 2);
 
-      EBelgeListesiModel get taslakSil => EBelgeListesiModel(
-        belgeTuru: belgeTuru,
-        ebelgeTuru: ebelgeTuru,
-        islemKodu: 9,
-        resmiBelgeNo: resmiBelgeNo,
-        kopyaSayisi: kopyaSayisi,
-        yaziciAdi: yaziciAdi,
-      );
+  EBelgeListesiModel get faturaGonder => copyWith(islemKodu: 3);
+
+  EBelgeListesiModel get taslakSil => copyWith(islemKodu: 8);
+
   bool get showBadge => gelen != "E" || taslak != "E";
 
   bool get uyariMi => showBadge && gondermeDurumu == "BEK";
