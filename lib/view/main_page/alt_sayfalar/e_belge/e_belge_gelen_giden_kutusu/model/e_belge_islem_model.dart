@@ -23,6 +23,10 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
     DateTime? iptalTarihi,
     int? kopyaSayisi,
     String? yaziciAdi,
+    int? dizaynNo,
+    bool? dovizliOlustur,
+    bool? gonderimSekliEposta,
+    bool? internetFaturasi,
   }) = _EBelgeIslemModel;
 
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
@@ -40,4 +44,6 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
         cariKodu: model.cariKodu,
         iptalTarihi: model.iptalTarihi,
       );
+
+      
 }
