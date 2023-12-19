@@ -7,6 +7,7 @@ import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -551,22 +552,29 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   BaseSiparisEditModel._init();
 
   String get getTitle {
-    if (eArsivMi){
+    if (eArsivMi) {
       return "E-Arşiv";
-    }else if (eFaturaMi){
+    } else if (eFaturaMi) {
       return "E-Fatura";
-    }else if (irsaliyelestiMi){
-      return "E-İrsaliye";}
-      return "Sipariş";
+    } else if (eIrsaliyeMi) {
+      return "E-İrsaliye";
+    }
+    return "E-Belge";
   }
 
-  bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi??0) > 0;
+  YetkiController get _yetkiController => YetkiController();
 
-  bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" ||earsivMi == "E"); 
+  // bool get eBelgeGoster=> _yetkiController.;
+
+  bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi ?? 0) > 0;
+
+  bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" || earsivMi == "E");
 
   bool get eArsivMi => earsivMi == "E";
 
   bool get eFaturaMi => efaturaMi == "E";
+
+  bool get eIrsaliyeMi => getEditTipiEnum?.irsaliyeMi == true;
 
   bool get siparislestiMi => siparislesti == "E";
 
@@ -576,7 +584,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get kapaliMi => tipi == 1;
 
-  bool get eBelgeGoster => eFaturaMi || eArsivMi;
+  // bool get eBelgeGoster => eFaturaMi || eArsivMi;
 
   bool get onaylandiMi => onaylayankul != null;
 
@@ -593,6 +601,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get teklifRevizeEdilmisMi => sonrakiRevizeNo != null;
 
   bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
+
+  String get titleName {
+    if (efaturaMi == "E") {
+      return "E-Fatura";
+    } else if (earsivMi == "E") {
+      return "E-Arşiv";
+    } else if (eirsaliyeDurumu == "E") {
+      return "E-İrsaliye";
+    } else {
+      return "Sipariş";
+    }
+  }
 
   bool get dovizliMi => kalemList?.any((element) => element.dovizliMi) == true;
 
@@ -614,6 +634,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   EditTipiEnum? get getEditTipiEnum => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == belgeTuru);
 
   // bool get muhtelifCariMi => cariKodu ;
+
+  double get eBelgeGonderAraToplam => (genelToplam??0) - (kdv??0);
 
   bool kalemEkliMi(StokListesiModel? model) {
     if (model != null) {
