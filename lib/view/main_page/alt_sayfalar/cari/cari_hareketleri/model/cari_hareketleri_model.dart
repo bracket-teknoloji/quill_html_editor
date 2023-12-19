@@ -63,6 +63,12 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   double get dovizBakiye => ((dovizAlacak ?? 0) - (dovizBorc ?? 0)).abs();
 
+  bool get alacakMi => alacak!= null ||dovizAlacak!= null;
+
+  bool get borcMu => !alacakMi;
+
+  String get alacakBorcHarf => alacakMi ? "A" : "B";
+
   @override
   CariHareketleriModel fromJson(Map<String, dynamic> json) => _$CariHareketleriModelFromJson(json);
 
