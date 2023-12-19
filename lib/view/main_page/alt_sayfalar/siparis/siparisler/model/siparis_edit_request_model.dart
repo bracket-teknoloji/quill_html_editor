@@ -39,6 +39,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? stokKodu,
     String? tag,
     bool? siparisSevkEdilenGoster,
+    int? filtreKodu,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();
@@ -58,12 +59,14 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         belgeTuru: model.belgeTipi,
         pickerBelgeTuru: model.belgeTipi,
       );
+
   factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel model) => SiparisEditRequestModel(
         belgeNo: model.belgeNo,
         pickerBelgeTuru: model.belgeTuru,
         belgeTuru: model.belgeTuru,
         belgeTipi: model.belgeTipi.toStringIfNotNull,
         cariKodu: model.cariKodu,
+        filtreKodu: 2,
         tipi: model.tipi,
         tempBelgeId: model.tempBelgeId,
       );

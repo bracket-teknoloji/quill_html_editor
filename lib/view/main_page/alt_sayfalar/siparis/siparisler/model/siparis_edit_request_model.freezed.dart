@@ -72,6 +72,8 @@ mixin _$SiparisEditRequestModel {
   bool? get siparisSevkEdilenGoster => throw _privateConstructorUsedError;
   set siparisSevkEdilenGoster(bool? value) =>
       throw _privateConstructorUsedError;
+  int? get filtreKodu => throw _privateConstructorUsedError;
+  set filtreKodu(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -107,7 +109,8 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
       String? resimGoster,
       String? stokKodu,
       String? tag,
-      bool? siparisSevkEdilenGoster});
+      bool? siparisSevkEdilenGoster,
+      int? filtreKodu});
 }
 
 /// @nodoc
@@ -146,6 +149,7 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? tag = freezed,
     Object? siparisSevkEdilenGoster = freezed,
+    Object? filtreKodu = freezed,
   }) {
     return _then(_value.copyWith(
       ekranTipi: freezed == ekranTipi
@@ -236,6 +240,10 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
           ? _value.siparisSevkEdilenGoster
           : siparisSevkEdilenGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      filtreKodu: freezed == filtreKodu
+          ? _value.filtreKodu
+          : filtreKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -271,7 +279,8 @@ abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
       String? resimGoster,
       String? stokKodu,
       String? tag,
-      bool? siparisSevkEdilenGoster});
+      bool? siparisSevkEdilenGoster,
+      int? filtreKodu});
 }
 
 /// @nodoc
@@ -309,6 +318,7 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? tag = freezed,
     Object? siparisSevkEdilenGoster = freezed,
+    Object? filtreKodu = freezed,
   }) {
     return _then(_$SiparisEditRequestModelImpl(
       ekranTipi: freezed == ekranTipi
@@ -399,6 +409,10 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
           ? _value.siparisSevkEdilenGoster
           : siparisSevkEdilenGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      filtreKodu: freezed == filtreKodu
+          ? _value.filtreKodu
+          : filtreKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -429,7 +443,8 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
       this.resimGoster,
       this.stokKodu,
       this.tag,
-      this.siparisSevkEdilenGoster})
+      this.siparisSevkEdilenGoster,
+      this.filtreKodu})
       : super._();
 
   factory _$SiparisEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -483,6 +498,8 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   String? tag;
   @override
   bool? siparisSevkEdilenGoster;
+  @override
+  int? filtreKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -522,7 +539,8 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
       String? resimGoster,
       String? stokKodu,
       String? tag,
-      bool? siparisSevkEdilenGoster}) = _$SiparisEditRequestModelImpl;
+      bool? siparisSevkEdilenGoster,
+      int? filtreKodu}) = _$SiparisEditRequestModelImpl;
   _SiparisEditRequestModel._() : super._();
 
   factory _SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =
@@ -600,6 +618,9 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   bool? get siparisSevkEdilenGoster;
   set siparisSevkEdilenGoster(bool? value);
+  @override
+  int? get filtreKodu;
+  set filtreKodu(int? value);
   @override
   @JsonKey(ignore: true)
   _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>
