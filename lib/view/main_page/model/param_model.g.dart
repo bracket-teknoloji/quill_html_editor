@@ -430,7 +430,30 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisOzelKod2Tablodan = json['SatisOzelKod2Tablodan'] as bool?
   ..seriCikislardaOtomatik = json['SeriCikislardaOtomatik'] as bool?
   ..serideSaatOlsun = json['SerideSaatOlsun'] as bool?
-  ..seriEIrsaliyeYanit = json['SeriEIrsaliyeYanit'] as String?;
+  ..seriEIrsaliyeYanit = json['SeriEIrsaliyeYanit'] as String?
+  ..datSatirBazindaDepoSorulsun = json['DAT_SatirBazindaDepoSorulsun'] as bool?
+  ..stokResimleriKlasorden = json['StokResimleriKlasorden'] as bool?
+  ..alisEkAlan1Aktif = json['AlisEkAlan1Aktif'] as bool?
+  ..alisEkMaliyet1KdvOrani =
+      (json['AlisEkMaliyet1KdvOrani'] as num?)?.toDouble()
+  ..satisAciklamaAlaniGorunsun = json['SatisAciklamaAlaniGorunsun'] as bool?
+  ..satisMusteriSiptenSaticiSipAktif =
+      json['SatisMusteriSiptenSaticiSipAktif'] as bool?
+  ..satisSipOnayAktif = json['SatisSipOnayAktif'] as bool?
+  ..satisMuhRefKodSorulsun = json['SatisMuhRefKodSorulsun'] as bool?
+  ..satisEkMaliyet1KdvOrani =
+      (json['SatisEkMaliyet1KdvOrani'] as num?)?.toDouble()
+  ..fatuSatisTeslimCarideBaglanmisCarilerSecilsin =
+      json['FatuSatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..fatuAlisTeslimCarideBaglanmisCarilerSecilsin =
+      json['FatuAlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..seriUrunBazindaTekOlsun = json['SeriUrunBazindaTekOlsun'] as bool?
+  ..eArsivAktif = json['EArsivAktif'] as bool?
+  ..satisTeslimCarideBaglanmisCarilerSecilsin =
+      json['SatisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..alisTeslimCarideBaglanmisCarilerSecilsin =
+      json['AlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
+  ..faturaSatisIadeUygulamasi = json['FaturaSatisIadeUygulamasi'] as bool?;
 
 Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   final val = <String, dynamic>{};
@@ -717,6 +740,29 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
   writeNotNull('SeriCikislardaOtomatik', instance.seriCikislardaOtomatik);
   writeNotNull('SerideSaatOlsun', instance.serideSaatOlsun);
   writeNotNull('SeriEIrsaliyeYanit', instance.seriEIrsaliyeYanit);
+  writeNotNull(
+      'DAT_SatirBazindaDepoSorulsun', instance.datSatirBazindaDepoSorulsun);
+  writeNotNull('StokResimleriKlasorden', instance.stokResimleriKlasorden);
+  writeNotNull('AlisEkAlan1Aktif', instance.alisEkAlan1Aktif);
+  writeNotNull('AlisEkMaliyet1KdvOrani', instance.alisEkMaliyet1KdvOrani);
+  writeNotNull(
+      'SatisAciklamaAlaniGorunsun', instance.satisAciklamaAlaniGorunsun);
+  writeNotNull('SatisMusteriSiptenSaticiSipAktif',
+      instance.satisMusteriSiptenSaticiSipAktif);
+  writeNotNull('SatisSipOnayAktif', instance.satisSipOnayAktif);
+  writeNotNull('SatisMuhRefKodSorulsun', instance.satisMuhRefKodSorulsun);
+  writeNotNull('SatisEkMaliyet1KdvOrani', instance.satisEkMaliyet1KdvOrani);
+  writeNotNull('FatuSatisTeslimCarideBaglanmisCarilerSecilsin',
+      instance.fatuSatisTeslimCarideBaglanmisCarilerSecilsin);
+  writeNotNull('FatuAlisTeslimCarideBaglanmisCarilerSecilsin',
+      instance.fatuAlisTeslimCarideBaglanmisCarilerSecilsin);
+  writeNotNull('SeriUrunBazindaTekOlsun', instance.seriUrunBazindaTekOlsun);
+  writeNotNull('EArsivAktif', instance.eArsivAktif);
+  writeNotNull('SatisTeslimCarideBaglanmisCarilerSecilsin',
+      instance.satisTeslimCarideBaglanmisCarilerSecilsin);
+  writeNotNull('AlisTeslimCarideBaglanmisCarilerSecilsin',
+      instance.alisTeslimCarideBaglanmisCarilerSecilsin);
+  writeNotNull('FaturaSatisIadeUygulamasi', instance.faturaSatisIadeUygulamasi);
   return val;
 }
 

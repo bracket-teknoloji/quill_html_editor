@@ -438,7 +438,6 @@ class ParamModel {
   bool? muhFislerdeRefKodSorulsunGelir;
   @JsonKey(name: "MuhFislerdeRefKodSorulsun_Gider")
   bool? muhFislerdeRefKodSorulsunGider;
-
   @JsonKey(name: "MuhFislerdeRefKodSorulsun_Nazim")
   bool? muhFislerdeRefKodSorulsunNazim;
   @JsonKey(name: "AlisOzelKod2Aktif")
@@ -455,6 +454,38 @@ class ParamModel {
   bool? serideSaatOlsun;
   @JsonKey(name: "SeriEIrsaliyeYanit")
   String? seriEIrsaliyeYanit;
+    @JsonKey(name: "DAT_SatirBazindaDepoSorulsun")
+    bool? datSatirBazindaDepoSorulsun;
+    @JsonKey(name: "StokResimleriKlasorden")
+    bool? stokResimleriKlasorden;
+    @JsonKey(name: "AlisEkAlan1Aktif")
+    bool? alisEkAlan1Aktif;
+    @JsonKey(name: "AlisEkMaliyet1KdvOrani")
+    double? alisEkMaliyet1KdvOrani;
+    @JsonKey(name: "SatisAciklamaAlaniGorunsun")
+    bool? satisAciklamaAlaniGorunsun;
+    @JsonKey(name: "SatisMusteriSiptenSaticiSipAktif")
+    bool? satisMusteriSiptenSaticiSipAktif;
+    @JsonKey(name: "SatisSipOnayAktif")
+    bool? satisSipOnayAktif;
+    @JsonKey(name: "SatisMuhRefKodSorulsun")
+    bool? satisMuhRefKodSorulsun;
+    @JsonKey(name: "SatisEkMaliyet1KdvOrani")
+    double? satisEkMaliyet1KdvOrani;
+    @JsonKey(name: "FatuSatisTeslimCarideBaglanmisCarilerSecilsin")
+    bool? fatuSatisTeslimCarideBaglanmisCarilerSecilsin;
+    @JsonKey(name: "FatuAlisTeslimCarideBaglanmisCarilerSecilsin")
+    bool? fatuAlisTeslimCarideBaglanmisCarilerSecilsin;
+    @JsonKey(name: "SeriUrunBazindaTekOlsun")
+    bool? seriUrunBazindaTekOlsun;
+    @JsonKey(name: "EArsivAktif")
+    bool? eArsivAktif;
+    @JsonKey(name: "SatisTeslimCarideBaglanmisCarilerSecilsin")
+    bool? satisTeslimCarideBaglanmisCarilerSecilsin;
+    @JsonKey(name: "AlisTeslimCarideBaglanmisCarilerSecilsin")
+    bool? alisTeslimCarideBaglanmisCarilerSecilsin;
+    @JsonKey(name: "FaturaSatisIadeUygulamasi")
+    bool? faturaSatisIadeUygulamasi;
   factory ParamModel.fromJson(Map<String, dynamic> json) => _$ParamModelFromJson(json);
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 
@@ -592,6 +623,7 @@ class KasaList with NetworkManagerMixin {
   double? dovizBakiye;
   @JsonKey(name: "DEVIRLI_DOVIZ_BAKIYE")
   double? devirliDovizBakiye;
+  
 
   factory KasaList.fromJson(Map<String, dynamic> json) => _$KasaListFromJson(json);
 
