@@ -183,7 +183,7 @@ class DialogManager {
       ).show();
 
   Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.eBelge, title: model.cariAdi ?? model.cariKodu),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.eBelge, title: model.cariAdi ?? model.cariKodu, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
