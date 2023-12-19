@@ -55,6 +55,14 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
+          onLongPress: () async {
+            await dialogManager.showFaturaGridViewDialog(
+              model: widget.model,
+              onSelected: (value) {
+                widget.onUpdated?.call(value);
+              },
+            );
+          },
           onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: model.cariAdi ?? "",
@@ -144,8 +152,12 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.receipt_long_outlined,
                 onTap: () async {
                   Get.back();
+                  final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                  final BaseSiparisEditModel newModel = widget.model.copyWith(
+                    efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+                  );
                   await dialogManager.showEBelgeGridViewDialog(
-                    model: widget.model,
+                    model: newModel,
                     onSelected: (value) {
                       widget.onUpdated?.call(value);
                     },
@@ -199,7 +211,6 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.taslakMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
-                  // const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.efaturaDurumu == "BEK" && model.efaturaMi == "E"),
                   dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili))
                       .yetkiVarMi((model.efaturaMi == "E" || model.earsivMi == "E") && model.efaturaGibDurumKodu == 1300 && widget.editTipiEnum.satisMi),
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
