@@ -796,7 +796,13 @@ class IslemlerMenuItemConstants<T> {
     return GridItemModel.islemler(
       title: "${siparisModel.getTitle} Gönder",
       iconData: Icons.send_outlined,
-      onTap: () => Get.toNamed("/mainPage/eBelgeGonder", arguments: model),
+      onTap: () async {
+        final BaseSiparisEditModel? newSiparisModel = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model as BaseSiparisEditModel));
+        if (newSiparisModel == null) {
+          return;
+        }
+        return await Get.toNamed("/mainPage/eBelgeGonder", arguments: newSiparisModel);
+      },
     );
   }
 
@@ -805,7 +811,7 @@ class IslemlerMenuItemConstants<T> {
     return GridItemModel.islemler(
       title: "E-Belge Görüntüle",
       iconData: Icons.picture_as_pdf_outlined,
-      onTap: () => Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel)),
+      onTap: () async => await Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel)),
     );
   }
 
@@ -836,9 +842,9 @@ class IslemlerMenuItemConstants<T> {
     return GridItemModel.islemler(
       title: "Yazdır",
       iconData: Icons.print_outlined,
-      onTap: () {
+      onTap: () async {
         final EBelgeListesiModel model = EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel);
-        _bottomSheetDialogManager.showEBelgePrintBottomSheetDialog(context, model);
+        return await _bottomSheetDialogManager.showEBelgePrintBottomSheetDialog(context, model);
       },
     );
   }
