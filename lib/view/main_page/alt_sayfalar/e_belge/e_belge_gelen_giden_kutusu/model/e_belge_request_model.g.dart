@@ -24,6 +24,7 @@ _$EBelgeRequestModelImpl _$$EBelgeRequestModelImplFromJson(
       sorgulanmasin: json['Sorgulanmasin'] as bool?,
       searchText: json['SearchText'] as String?,
       taslak: json['Taslak'] as String?,
+      resmiBelgeNo: json['ResmiBelgeNo'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeRequestModelImplToJson(
@@ -51,5 +52,6 @@ Map<String, dynamic> _$$EBelgeRequestModelImplToJson(
   writeNotNull('Sorgulanmasin', instance.sorgulanmasin);
   writeNotNull('SearchText', instance.searchText);
   writeNotNull('Taslak', instance.taslak);
+  writeNotNull('ResmiBelgeNo', instance.resmiBelgeNo);
   return val;
 }
