@@ -461,7 +461,7 @@ class DialogManager {
         context: context,
         isDense: true,
         width: kIsWeb
-            ? 400
+            ? 700
             : Platform.isLinux || Platform.isWindows || Platform.isMacOS
                 ? context.isLandscape
                     ? MediaQuery.of(context).size.width * 0.5
