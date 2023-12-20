@@ -3,7 +3,9 @@
 import "dart:convert";
 import "dart:developer";
 
+import "package:dio/browser.dart" if (dart.library.io) "package:dio/dio.dart";
 import "package:dio/dio.dart";
+import "package:dio/io.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
@@ -48,7 +50,7 @@ class NetworkManager {
       connectTimeout: const Duration(seconds: 20),
       sendTimeout: const Duration(minutes: 2),
       receiveDataWhenStatusError: true,
-      contentType: "application/json",
+      contentType: Headers.jsonContentType,
       responseType: ResponseType.json,
     ),
   );
@@ -76,6 +78,11 @@ class NetworkManager {
         },
       ),
     );
+    if (kIsWeb) {
+      dio.httpClientAdapter = BrowserHttpClientAdapter();
+    } else {
+      dio.httpClientAdapter = IOHttpClientAdapter();
+    }
     dio.interceptors.add(
       TalkerDioLogger(
         settings: const TalkerDioLoggerSettings(
@@ -88,25 +95,23 @@ class NetworkManager {
   }
 
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
-    final FormData formData = FormData.fromMap(data);
+    // final FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     try {
-       
-    final response = await dio.request(
-      path,
-      queryParameters: queryParameters,
-      cancelToken: CancelToken(),
-      options: Options(
-        headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
-        contentType: "application/x-www-form-urlencoded",
-        method: HttpTypes.GET,
-        responseType: ResponseType.json,
-      ),
-      data: kIsWeb ? formData : data,
-    );
-    final a = response.data;
-    return TokenModel().fromJson(a);
+      final response = await dio.request(
+        path,
+        queryParameters: queryParameters,
+        cancelToken: CancelToken(),
+        options: Options(
+          headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
+          contentType: Headers.formUrlEncodedContentType,
+          method: HttpTypes.POST,
+        ),
+        data:data,
+      );
+      final a = response.data;
+      return TokenModel().fromJson(a);
     } catch (e) {
       return TokenModel()..error = e.toString();
     }
@@ -142,7 +147,7 @@ class NetworkManager {
         options: Options(
           headers: head,
           method: HttpTypes.GET,
-          contentType: "application/json",
+          contentType: Headers.jsonContentType,
         ),
         data: data,
       );
@@ -200,7 +205,7 @@ class NetworkManager {
         options: Options(
           headers: head,
           method: HttpTypes.POST,
-          contentType: "application/json",
+          contentType: kIsWeb ? null : Headers.jsonContentType,
         ),
         data: data,
       );
