@@ -15,19 +15,19 @@ import "../param_model.dart";
 
 class MenuItemConstants {
   static final MainPageModel? _anaVeri = CacheManager.getAnaVeri;
-  static final List<NetFectDizaynList>? _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList!.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList();
+  static final List<NetFectDizaynList> _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
 
   static List<GridItemModel> get getGridItemModel =>
-      _serbestRapor!.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
+      _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
 
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
-    final List<NetFectDizaynList>? serbestRaporList = _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
+    final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
     if (serbestRaporList.ext.isNullOrEmpty) {
       return [];
     }
     return List.generate(
-      _serbestRapor?.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).length ?? 0,
-      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList?[index].dizaynAdi ?? "", arguments: serbestRaporList?[index], color: ColorPalette.asparagus),
+      _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).length,
+      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList[index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: ColorPalette.asparagus),
     );
   }
 
@@ -400,9 +400,9 @@ class MenuItemConstants {
   List<GridItemModel?> getAltMenuList(String name) => getGridItemModel.where((GridItemModel element) => element.name == name).toList();
 
   static List<GridItemModel> groupBySerbestRaporList() {
-    if (_serbestRapor!.length >= 16) {
+    if (_serbestRapor.length >= 16) {
       final Map<String?, GridItemModel> result = groupBy(
-        _serbestRapor!,
+        _serbestRapor,
         (NetFectDizaynList obj) => obj.detayKod,
       ).map((String? key, List<NetFectDizaynList> value) {
         if (value.length != 1) {
