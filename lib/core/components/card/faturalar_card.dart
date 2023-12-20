@@ -152,18 +152,18 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.receipt_long_outlined,
                 onTap: () async {
                   Get.back();
-                  final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                  final BaseSiparisEditModel newModel = widget.model.copyWith(
-                    efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
-                  );
+                  // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                  // final BaseSiparisEditModel newModel = widget.model.copyWith(
+                  //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+                  // );
                   await dialogManager.showEBelgeGridViewDialog(
-                    model: newModel,
+                    model: widget.model,
                     onSelected: (value) {
                       widget.onUpdated?.call(value);
                     },
                   );
                 },
-              ).yetkiKontrol(!widget.model.isTempBelge),
+              ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
