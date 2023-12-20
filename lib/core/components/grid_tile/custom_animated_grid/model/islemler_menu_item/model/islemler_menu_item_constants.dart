@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -158,10 +160,13 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kopyala);
     } else if (islemtipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-      islemlerList.add(eBelgeGoruntule);
+      // islemlerList.add(eBelgeGoruntule);
+      islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
-      islemlerList.add(eFaturaGonder);
-      islemlerList.add(eBelgeYazdir);
+      islemlerList.addIfConditionTrue(siparisModel.uyariMi, durumSorgula);
+      islemlerList.addIfConditionTrue(!siparisModel.uyariMi, eFaturaGonder);
+      islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
+      // islemlerList.add(eBelgeYazdir);
     }
   }
 
@@ -815,24 +820,49 @@ class IslemlerMenuItemConstants<T> {
     );
   }
 
+  GridItemModel get durumSorgula {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Durum Sorgula",
+      iconData: Icons.refresh_outlined,
+      onTap: () async {
+        final result = await _networkManager.dioGet<EBelgeListesiModel>(
+          path: ApiUrls.getEFaturalar,
+          showLoading: true,
+          bodyModel: EBelgeListesiModel(),
+          queryParameters: {"FilterModel": jsonEncode(EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).durumSorgula.toJson())},
+        );
+        if (result.success == true) {
+          final EBelgeListesiModel eBelgeListesiModel = result.data!.first;
+          _dialogManager.showInfoDialog(eBelgeListesiModel.onayDurumuString);
+          return true;
+        }
+      },
+    );
+  }
+
   GridItemModel get eBelgetaslakSil {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Taslağı Sil",
       iconData: Icons.delete_outline,
       onTap: () async {
-        final result = await _networkManager.dioPost<EBelgeListesiModel>(
-          path: ApiUrls.eBelgeIslemi,
-          showLoading: true,
-          bodyModel: EBelgeListesiModel(),
-          data: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).taslakSil.toJson(),
-        );
-        if (result.success == true) {
-          _dialogManager.showSuccessSnackBar("Başarılı");
-          return true;
-        } else {
-          return false;
-        }
+        bool boolean = false;
+        await _dialogManager.showAreYouSureDialog(() async {
+          final result = await _networkManager.dioPost<EBelgeListesiModel>(
+            path: ApiUrls.eBelgeIslemi,
+            showLoading: true,
+            bodyModel: EBelgeListesiModel(),
+            data: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).taslakSil.toJson(),
+          );
+          if (result.success == true) {
+            _dialogManager.showSuccessSnackBar("Başarılı");
+            boolean = true;
+          } else {
+            boolean = false;
+          }
+        });
+        return boolean;
       },
     );
   }
