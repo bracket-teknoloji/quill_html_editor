@@ -170,7 +170,7 @@ class AccountModel with NetworkManagerMixin {
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
     if (kIsWeb) {
-      platform = "Web";
+      platform = "web";
     } else {
       platform = Platform.operatingSystem;
       final list = await NetworkInterface.list(
@@ -207,15 +207,8 @@ class AccountModel with NetworkManagerMixin {
     final deviceInfo = DeviceInfoPlugin();
     //!WEB
     if (kIsWeb) {
-      platform = "android";
-      final webInfo = await deviceInfo.webBrowserInfo;
-      cihazSistemVersiyonu = webInfo.appVersion;
-      cihazMarkasi = webInfo.vendor;
-      cihazModeli = webInfo.userAgent;
-      cihazKimligi = base64Encode(
-        utf8.encode("$cihazMarkasi:$cihazModeli:$ozelCihazKimligi:"),
-      );
-      ozelCihazKimligi = cihazKimligi;
+      platform = "web";
+      // final webInfo = await deviceInfo.webBrowserInfo;
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
