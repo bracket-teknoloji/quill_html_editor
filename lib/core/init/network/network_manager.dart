@@ -3,9 +3,9 @@
 import "dart:convert";
 import "dart:developer";
 
-import "package:dio/browser.dart" if (dart.library.io) "package:dio/dio.dart";
+// ignore: uri_does_not_exist
+// import "package:dio/browser.dart" if (dart.library.io) "package:dio/io.dart";
 import "package:dio/dio.dart";
-import "package:dio/io.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
@@ -78,11 +78,11 @@ class NetworkManager {
         },
       ),
     );
-    if (kIsWeb) {
-      dio.httpClientAdapter = BrowserHttpClientAdapter();
-    } else {
-      dio.httpClientAdapter = IOHttpClientAdapter();
-    }
+    // if (!kIsWeb) {
+    //   dio.httpClientAdapter = IOHttpClientAdapter();
+    // } else {
+    //   dio.httpClientAdapter = BrowserHttpClientAdapter();
+    // }
     dio.interceptors.add(
       TalkerDioLogger(
         settings: const TalkerDioLoggerSettings(
@@ -108,7 +108,7 @@ class NetworkManager {
           contentType: Headers.formUrlEncodedContentType,
           method: HttpTypes.POST,
         ),
-        data:data,
+        data: data,
       );
       final a = response.data;
       return TokenModel().fromJson(a);
