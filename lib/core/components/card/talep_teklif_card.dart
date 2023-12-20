@@ -214,13 +214,14 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     label: const Text("Sipariş"),
                     badgeColorEnum: BadgeColorEnum.fatura,
                     onTap: () async {
-                      await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(
                         context,
                         cariKodu: widget.model.cariKodu,
                         belgeNo: widget.model.belgeNo,
                         belgeTipi: widget.model.belgeTuru,
                         filterText: EditTipiEnum.values.where((element) => element.siparisMi).map((e) => e.rawValue).toList(),
                       );
+                      await getBelgeBaglantilari(result);
                     },
                   ).yetkiVarMi(model.siparislestiMi),
                   ColorfulBadge(
