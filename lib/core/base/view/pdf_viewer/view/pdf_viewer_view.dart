@@ -1,6 +1,7 @@
 import "dart:convert";
 import "dart:io";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -137,6 +138,9 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 controller: pdfViewerController,
                 interactionMode: PdfInteractionMode.selection,
                 onTextSelectionChanged: (details) {
+                  if (kIsWeb) {
+                    return;
+                  }
                   if (Platform.isAndroid || Platform.isIOS) {
                     if (details.selectedText == null && overlayEntry != null) {
                       overlayEntry?.remove();
@@ -196,6 +200,9 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   Future<File?> get getFile async {
+    if (kIsWeb) {
+      return null;
+    }
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
