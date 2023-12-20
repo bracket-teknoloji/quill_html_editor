@@ -3,6 +3,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/e_belge_gonder/model/model/dizayn_model.dart";
@@ -59,7 +60,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     _kdvTutariController = TextEditingController(text: widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _genelToplamController = TextEditingController(text: widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _dovizliToplamController = TextEditingController(text: widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari));
-    _senaryoController = TextEditingController(text: viewModel.senaryoMap.entries.firstWhere((element) => element.value == widget.model.efaturaTipi).key);
+    _senaryoController = TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == widget.model.efaturaTipi)?.key);
     _dizaynController = TextEditingController();
     _gonderimSekliController = TextEditingController();
     _cariEPostaController = TextEditingController();
@@ -92,7 +93,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
           Get.back(result: true);
           return false;
         },
-    child: Scaffold(
+        child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
               title: "${widget.model.titleName} Gönder",
@@ -211,34 +212,38 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     ),
                   ],
                 ),
-                Observer(
-                  builder: (_) => SwitchListTile.adaptive(
-                    value: model.dovizliOlustur ?? false,
-                    onChanged: viewModel.setDovizOlustur,
-                    title: const Text("Döviz Oluştur"),
-                  ).yetkiVarMi(widget.model.dovizliMi && !viewModel.siparisEditModel.taslakMi),
-                ),
-                Observer(
-                  builder: (_) => SwitchListTile.adaptive(
-                    value: model.gonderimSekliEPosta ?? false,
-                    onChanged: (value) async {
-                      viewModel.setGonderimSekliEposta(value);
-                      if (value) {
-                        _cariEPostaController.text = await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
-                      } else {
-                        _cariEPostaController.text = "";
-                      }
-                    },
-                    title: const Text("Gönderim Şekli E-Posta"),
-                  ),
-                ),
-                Observer(
-                  builder: (_) => SwitchListTile.adaptive(
-                    value: model.internetFaturasi ?? false,
-                    onChanged: viewModel.setInternetFaturasi,
-                    title: const Text("İnternet Tipli"),
-                  ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
-                ),
+                Column(
+                  children: [
+                    Observer(
+                      builder: (_) => SwitchListTile.adaptive(
+                        value: model.dovizliOlustur ?? false,
+                        onChanged: viewModel.setDovizOlustur,
+                        title: const Text("Döviz Oluştur"),
+                      ).yetkiVarMi(widget.model.dovizliMi && !viewModel.siparisEditModel.taslakMi),
+                    ),
+                    Observer(
+                      builder: (_) => SwitchListTile.adaptive(
+                        value: model.gonderimSekliEPosta ?? false,
+                        onChanged: (value) async {
+                          viewModel.setGonderimSekliEposta(value);
+                          if (value) {
+                            _cariEPostaController.text = await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
+                          } else {
+                            _cariEPostaController.text = "";
+                          }
+                        },
+                        title: const Text("Gönderim Şekli E-Posta"),
+                      ),
+                    ),
+                    Observer(
+                      builder: (_) => SwitchListTile.adaptive(
+                        value: model.internetFaturasi ?? false,
+                        onChanged: viewModel.setInternetFaturasi,
+                        title: const Text("İnternet Tipli"),
+                      ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                    ),
+                  ],
+                ).yetkiVarMi(viewModel.siparisEditModel.eArsivSerisindenMi),
                 Observer(
                   builder: (_) => Visibility(
                     visible: model.gonderimSekliEPosta ?? false,
@@ -277,9 +282,9 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (result.success ?? false) {
                             final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                             if (siparisModel != null) {
-                            dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                              dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                               viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
-                              
+
                               viewModel.setSiparisModel(siparisModel);
                             }
                           }
@@ -303,7 +308,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           final result = await viewModel.sendEBelge();
                           if (result.success ?? false) {
                             dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-  
+
                             Get.back(result: true);
                           }
                         },
@@ -319,7 +324,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
             ).paddingAll(UIHelper.lowSize),
           ),
         ),
-  );
+      );
 
   Future<void> getDizayn({bool? otomatikSec}) async {
     final result = await viewModel.getDizayn();

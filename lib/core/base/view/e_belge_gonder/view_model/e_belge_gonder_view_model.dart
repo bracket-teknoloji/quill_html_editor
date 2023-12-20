@@ -64,7 +64,14 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<List<DizaynModel>> getDizayn() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getDizaynlar, bodyModel: DizaynModel(), queryParameters: {"ModulID": 100, "ERPDizaynlari": true});
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getDizaynlar,
+      bodyModel: DizaynModel(),
+      queryParameters: {
+        "ModulID": siparisEditModel.eArsivSerisindenMi ? 100 : 99,
+        "ERPDizaynlari": true,
+      },
+    );
     if (result.success == true) {
       return result.data.map((e) => e as DizaynModel).toList().cast<DizaynModel>();
     } else {
