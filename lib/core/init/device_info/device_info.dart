@@ -2,6 +2,7 @@ import "dart:developer";
 import "dart:io";
 
 import "package:device_info_plus/device_info_plus.dart";
+import "package:flutter/foundation.dart";
 
 class DeviceInfoModel {
   String? model;
@@ -10,6 +11,11 @@ class DeviceInfoModel {
 
   Future<void> init() async {
     final deviceInfo = DeviceInfoPlugin();
+    if (kIsWeb){
+      log("Running on Web");
+      model = "Web";
+      brand = "Web";
+    }
     if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
       model = androidInfo.model;
