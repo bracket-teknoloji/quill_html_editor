@@ -142,7 +142,7 @@ flutter_native_splash:
   fill: false
   android: true
   ios: true
-  web: false
+  web: true
   macos: false
   windows: true
   linux: false
