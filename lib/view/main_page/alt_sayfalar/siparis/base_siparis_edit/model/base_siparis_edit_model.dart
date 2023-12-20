@@ -552,11 +552,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   BaseSiparisEditModel._init();
 
   String get getTitle {
-    if (eArsivMi) {
+    if (eArsivSerisindenMi) {
       return "E-Arşiv";
-    } else if (eFaturaMi) {
+    } else if (eFaturaSerisindenMi) {
       return "E-Fatura";
-    } else if (eIrsaliyeMi) {
+    } else if (eIrsaliyeSerisindenMi) {
       return "E-İrsaliye";
     }
     return "E-Belge";
@@ -564,11 +564,27 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   YetkiController get _yetkiController => YetkiController();
 
-  // bool get eBelgeGoster=> _yetkiController.;
+  bool get eBelgeMi => eArsivMi || eFaturaMi || eIrsaliyeMi;
+
+  bool get eFaturaSerisindenMi => _yetkiController.eFaturaSerisindenMi(belgeNo ?? "");
+
+  bool get eArsivSerisindenMi => _yetkiController.eArsivSerisindenMi(belgeNo ?? "");
+
+  bool get eIrsaliyeSerisindenMi => _yetkiController.eIrsaliyeSerisindenMi(belgeNo ?? "");
+
+  bool get eBelgeSerisinden => eFaturaSerisindenMi || eArsivSerisindenMi || eIrsaliyeSerisindenMi;
+
+  bool get eBelgeEslestirmeIslemiYapilabilirMi => resmiBelgeNo != null && (aIrsMi || aFaturaMi);
+
+  bool get eIrsaliyeIslemleriYapilabilirMi => _yetkiController.eIrsaliyeAktif && eIrsaliyeMi;
+
+  bool get eBelgeIslemlerGorunsunMu => _yetkiController.eFaturaAktif && (eBelgeSerisinden || eBelgeMi || eBelgeEslestirmeIslemiYapilabilirMi) && ((getEditTipiEnum?.faturaMi??false)|| eIrsaliyeIslemleriYapilabilirMi);
 
   bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi ?? 0) > 0;
 
   bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" || earsivMi == "E");
+
+  bool get uyariMi => (earsivDurumu == "BEK" || efaturaDurumu == "BEK") && (efaturaMi == "E" || earsivMi == "E");
 
   bool get eArsivMi => earsivMi == "E";
 
@@ -595,6 +611,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get stalMi => belgeTuru == "STAL";
 
   bool get atalMi => belgeTuru == "ATAL";
+
+  bool get aIrsMi => belgeTuru == "AI";
+
+  bool get sIrsMi => belgeTuru == "SI";
+
+  bool get aFaturaMi => belgeTuru == "AF";
 
   bool get faturaIrsaliyeMi => belgeTuru == "SI" || belgeTuru == "AI" || belgeTuru == "SF" || belgeTuru == "AF";
 
@@ -635,7 +657,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   // bool get muhtelifCariMi => cariKodu ;
 
-  double get eBelgeGonderAraToplam => (genelToplam??0) - (kdv??0);
+  double get eBelgeGonderAraToplam => (genelToplam ?? 0) - (kdv ?? 0);
 
   bool kalemEkliMi(StokListesiModel? model) {
     if (model != null) {
