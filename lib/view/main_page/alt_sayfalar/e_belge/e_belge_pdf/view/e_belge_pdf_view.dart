@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -74,6 +75,9 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
                   viewModel.pdfFile!,
                   controller: pdfViewerController,
                   onTextSelectionChanged: (details) {
+                    if (kIsWeb) {
+                      return;
+                    }
                     if (Platform.isAndroid || Platform.isIOS) {
                       if (details.selectedText == null && overlayEntry != null) {
                         overlayEntry?.remove();
