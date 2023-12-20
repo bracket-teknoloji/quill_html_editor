@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
@@ -151,7 +152,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
             ),
             Visibility(
-              visible: Platform.isIOS && lastItems.isNotEmpty,
+              visible:!kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
               child: SizedBox(
                 width: UIHelper.highSize * 3,
                 child: GestureDetector(
