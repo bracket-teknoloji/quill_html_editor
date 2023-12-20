@@ -169,7 +169,7 @@ class CacheManager {
   static void setToken(String token) => tokenBox.put("token", token);
   static void setPref(String key, String value) => preferencesBox.put(key, value);
   static void setCompanies(String key, String value) => companiesBox.put(key, value);
-  static void setAnaVeri(MainPageModel value) => anaVeriBox.put("data", value);
+  static Future<void> setAnaVeri(MainPageModel value) async => anaVeriBox.put("data", value);
   static void setAccounts(AccountResponseModel value) => accountsBox.put(value.email, value);
   static void setHesapBilgileri(AccountModel value) => hesapBilgileriBox.put("value", value);
   static void setUzaktanMi(String? sirketAdi, bool value) => isUzaktanBox.put(sirketAdi, value);
