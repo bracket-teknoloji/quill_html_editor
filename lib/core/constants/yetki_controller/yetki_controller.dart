@@ -29,7 +29,6 @@ final class YetkiController {
 
   //! GENEL
 
-
   int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
   int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
 
@@ -306,8 +305,8 @@ final class YetkiController {
   bool get ebelgeEFaturaSorgula => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
   bool get ebelgeEFaturaGoruntule => _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
   bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
-  bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif ?? false);
-  bool eFaturaSerisindenMi(String belgeNo)=> _isTrue(belgeNo.contains(_paramModel?.seriEFatura??""));
+  bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif);
+  bool eFaturaSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? ""), skipAdmin: true);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   bool get ebelgeEIrsaliyeGelenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
@@ -316,8 +315,8 @@ final class YetkiController {
   // bool get ebelgeEIrsaliyeSorgula => _isTrue(_yetkiModel?.ebelgeEIrsaliyeSorgula);
   bool get ebelgeEIrsaliyeGoruntule => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
   bool get ebelgeEIrsaliyeTaslakSil => _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
-  bool get eIrsaliyeAktif => _isTrue(_paramModel?.eIrsaliyeAktif ?? false);
-  bool eIrsaliyeSerisindenMi(String belgeNo)=> _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye??""));
+  bool get eIrsaliyeAktif => _isTrue(_paramModel?.eIrsaliyeAktif);
+  bool eIrsaliyeSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? ""), skipAdmin: true);
 
   bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
@@ -326,13 +325,12 @@ final class YetkiController {
   bool get ebelgeEArsivSorgula => _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
   bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
-  bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif ?? false);
-  bool eArsivSerisindenMi(String belgeNo)=> _isTrue(belgeNo.contains(_paramModel?.seriEArsiv??""));
+  bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif);
+  bool eArsivSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? ""), skipAdmin: true);
 
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
-  int  talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi??"")?? 0;
-  
+  int talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi ?? "") ?? 0;
 
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
@@ -364,7 +362,6 @@ final class YetkiController {
   }
 
   // bool get stekDigersSekmesiGelsin => _isTrue(_yetkiModel?.diger);
-
 
   bool get stekOnayIslemleri => _isTrue(_yetkiModel?.taltekStekOnayIslemleri ?? false);
   bool get stalOnayIslemleri => _isTrue(_yetkiModel?.taltekStalOnayIslemleri ?? false);
