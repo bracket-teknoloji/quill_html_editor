@@ -386,7 +386,7 @@ Future<void> firebaseInitialized() async {
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
     await FirebaseMessaging.instance.setAutoInitEnabled(true);
-    AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken();
+    AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken(vapidKey: "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE");
     await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
     log("fcmToken: ${AccountModel.instance.fcmToken}");
     // print token
