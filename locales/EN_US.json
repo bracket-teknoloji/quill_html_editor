@@ -17,6 +17,6 @@
     "updateServiceSubtitle": "It is used to Update the Service.",
     "dbUpdate": "DB Update",
     "dbUpdateSubtitle": "It is used to update the SQL database.",
-    "serviceOperations": "Service Operations"
+    "serviceOperationsTitle": "Service Operations"
   }
 }

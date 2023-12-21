@@ -16,6 +16,6 @@
     "updateServiceSubtitle": "Servisi güncellemek için kullanılır.",
     "dbUpdate": "Veri Tabanını Güncelle",
     "dbUpdateSubtitle": "SQL veritabanını güncellemek için kullanılır.",
-    "serviceOperations": "Servis İşlemleri"
+    "serviceOperationsTitle": "Servis İşlemleri"
   }
 }

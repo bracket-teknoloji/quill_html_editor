@@ -17,6 +17,6 @@
     "updateServiceSubtitle": "update service subtitle",
     "dbUpdate": "DataBase Update",
     "dbUpdateSubtitle": "Database Update Subtitle",
-    "serviceOperations": "Servis İşlemleri"
+    "serviceOperationsTitle": "Servis İşlemleri"
   }
 }

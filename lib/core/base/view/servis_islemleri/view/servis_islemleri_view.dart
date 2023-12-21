@@ -17,7 +17,7 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(loc(context).serviceOperations.serviceOperations),
+          title: Text(loc(context).serviceOperations.serviceOperationsTitle),
         ),
         body: ListView.builder(
           itemCount: itemList.length,
@@ -42,11 +42,11 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           iconWidget: Icons.travel_explore_outlined,
           onTap: viewModel.webServisleriCalistir,
         ),
-        // BottomSheetModel(
-          // title: loc(context).serviceOperations.updateService,
-          // description: loc(context).serviceOperations.updateServiceSubtitle,
-        //   iconWidget: Icons.sync_alt_outlined,
-        // ),
+        BottomSheetModel(
+          title: loc(context).serviceOperations.updateService,
+          description: loc(context).serviceOperations.updateServiceSubtitle,
+          iconWidget: Icons.sync_alt_outlined,
+        ),
         // BottomSheetModel(
         //   title: "Web Servisi Yeniden Başlat",
         //   description: "Web servisini yeniden başlatmak için kullanılır.",
