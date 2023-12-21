@@ -4,9 +4,8 @@ import "dart:convert";
 import "dart:developer";
 
 // ignore: uri_does_not_exist
-import "package:dio/browser.dart" if (dart.library.io) "package:dio/io.dart";
+// import "package:dio/browser.dart" if (dart.library.io) "package:dio/io.dart";
 import "package:dio/dio.dart";
-import "package:dio/io.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
@@ -25,6 +24,8 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 import "package:talker_dio_logger/talker_dio_logger_settings.dart";
+// import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
+// import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../view/add_company/model/account_response_model.dart";
@@ -77,11 +78,11 @@ class NetworkManager {
         },
       ),
     );
-    if (!kIsWeb) {
-      dio.httpClientAdapter = IOHttpClientAdapter();
-    } else {
-      dio.httpClientAdapter = BrowserHttpClientAdapter();
-    }
+    // if (!kIsWeb) {
+    //   dio.httpClientAdapter = IOHttpClientAdapter();
+    // } else {
+    //   dio.httpClientAdapter = BrowserHttpClientAdapter();
+    // }
     dio.interceptors.add(
       TalkerDioLogger(
         settings: const TalkerDioLoggerSettings(
@@ -354,8 +355,7 @@ class NetworkManager {
       path: ApiUrls.getUyeBilgileri,
     );
     if (result.success == true) {
-      final AccountResponseModel? account = result.data.firstOrNull;
-      CacheManager.setIsLicenseVerified(email ?? account?.email ?? "", true);
+      CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, true);
       if (getFromCache) {
         final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
         if (list.firstOrNull != null) {
@@ -364,8 +364,7 @@ class NetworkManager {
       }
     } else {
       if (result.errorCode == 5) {
-        final AccountResponseModel? account = result.data.firstOrNull;
-        CacheManager.setIsLicenseVerified(email ?? account?.email ?? "", false);
+        CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, false);
       }
     }
     return result;
