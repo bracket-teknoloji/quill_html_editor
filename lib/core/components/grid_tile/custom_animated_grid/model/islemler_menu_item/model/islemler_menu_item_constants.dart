@@ -84,9 +84,8 @@ class IslemlerMenuItemConstants<T> {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi, siparistenFaturaOlustur);
-
+        islemlerList.add(satisIrsaliyeOlustur);
+        islemlerList.add(siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.add(belgeyiKapatAc);
         islemlerList.add(siparisPDFGoruntule);
@@ -283,7 +282,7 @@ class IslemlerMenuItemConstants<T> {
                           },
                         );
                         if (result.success == true) {
-                          controller.text = result.data?.first.belgeNo ?? "";
+                          controller.text = result.data?.firstOrNull?.belgeNo ?? "";
                         }
                       },
                       icon: const Icon(Icons.abc),
@@ -675,7 +674,7 @@ class IslemlerMenuItemConstants<T> {
       },
     );
     if (result.success == true) {
-      controller.text = result.data?.first.belgeNo ?? "";
+      controller.text = result.data?.firstOrNull?.belgeNo ?? "";
     }
   }
 
