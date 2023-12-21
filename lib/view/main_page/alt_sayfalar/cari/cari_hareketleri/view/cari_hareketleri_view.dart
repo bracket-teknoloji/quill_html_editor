@@ -256,7 +256,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     ).yetkiKontrol(model.resmiBelgeNo != null),
                                     BottomSheetModel(
                                       iconWidget: Icons.list_alt_outlined,
-                                      title: "İşlemler",
+                                      title: loc(context).generalStrings.transactions,
                                       onTap: () async {
                                         Get.back();
                                         await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(viewModel.cariHareketleriList?[index]));

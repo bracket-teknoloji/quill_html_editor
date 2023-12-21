@@ -135,7 +135,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(
-                title: "İşlemler",
+                title: loc(context).generalStrings.transactions,
                 iconWidget: Icons.list_alt_outlined,
                 onTap: () async {
                   Get.back();

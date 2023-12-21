@@ -86,4 +86,5 @@ class LocalegeneralStrings {
   String get print => _data["print"]!;
   String get delete => _data["delete"]!;
   String get view => _data["view"]!;
+  String get transactions => _data["transactions"]!;
 }

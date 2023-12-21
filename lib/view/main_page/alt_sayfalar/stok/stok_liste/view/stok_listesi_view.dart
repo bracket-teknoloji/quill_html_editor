@@ -649,7 +649,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     //   },
                                     // ),
                                     BottomSheetModel(
-                                      title: "İşlemler",
+                                      title: loc(context).generalStrings.transactions,
                                       iconWidget: Icons.list_alt,
                                       onTap: () {
                                         Get.back();

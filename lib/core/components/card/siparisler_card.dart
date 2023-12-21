@@ -87,7 +87,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                     title: widget.model.belgeNo ?? "",
                     children: [
                       BottomSheetModel(
-                        title: "Görüntüle",
+                        title: loc(context).generalStrings.view,
                         iconWidget: Icons.preview_outlined,
                         onTap: () {
                           Get.back();
@@ -154,7 +154,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(
-                        title: "İşlemler",
+                        title: loc(context).generalStrings.transactions,
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();

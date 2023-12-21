@@ -457,7 +457,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         ).yetkiKontrol(yetkiController.cariKartiSilme),
         BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")).yetkiKontrol(yetkiController.cariHareketleri),
         BottomSheetModel(
-          title: "İşlemler",
+          title: loc(context).generalStrings.transactions,
           iconWidget: Icons.list_alt_outlined,
           onTap: () {
             Get.back();

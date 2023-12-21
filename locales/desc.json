@@ -37,6 +37,7 @@
     "edit": "edit",
     "print": "print",
     "delete": "delete",
-    "view": "view"
+    "view": "view",
+    "transactions": "transactions"
   }
 }
