@@ -13,6 +13,9 @@
     "isWebServicesWorking": "Web Servisleri Çalışıyor Mu?",
     "isWebServicesWorkingSubtitle": "Web servislerinin çalışıp çalışmadığını kontrol eder.",
     "updateService": "Servisi Güncelle",
-    "updateServiceSubtitle": "Servisi güncellemek için kullanılır."
+    "updateServiceSubtitle": "Servisi güncellemek için kullanılır.",
+    "dbUpdate": "Veri Tabanını Güncelle",
+    "dbUpdateSubtitle": "SQL veritabanını güncellemek için kullanılır.",
+    "serviceOperations": "Servis İşlemleri"
   }
 }

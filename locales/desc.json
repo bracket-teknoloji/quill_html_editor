@@ -14,6 +14,9 @@
     "isWebServicesWorking": "Web servis title",
     "isWebServicesWorkingSubtitle": "",
     "updateService": "update service title",
-    "updateServiceSubtitle": "update service subtitle"
+    "updateServiceSubtitle": "update service subtitle",
+    "dbUpdate": "DataBase Update",
+    "dbUpdateSubtitle": "Database Update Subtitle",
+    "serviceOperations": "Servis İşlemleri"
   }
 }

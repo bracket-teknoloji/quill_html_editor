@@ -54,4 +54,7 @@ class LocaleserviceOperations {
   String get isWebServicesWorkingSubtitle => _data["isWebServicesWorkingSubtitle"]!;
   String get updateService => _data["updateService"]!;
   String get updateServiceSubtitle => _data["updateServiceSubtitle"]!;
+  String get dbUpdate => _data["dbUpdate"]!;
+  String get dbUpdateSubtitle => _data["dbUpdateSubtitle"]!;
+  String get serviceOperations => _data["serviceOperations"]!;
 }
