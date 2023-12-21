@@ -101,7 +101,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: "Düzenle",
+                        title: loc(context).generalStrings.edit,
                         iconWidget: Icons.edit_outlined,
                         onTap: () async {
                           Get.back();
@@ -117,7 +117,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
-                        title: "Sil",
+                        title: loc(context).generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();

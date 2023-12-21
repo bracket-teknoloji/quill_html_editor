@@ -426,12 +426,15 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       context,
       title: "${object.cariKodu}\n${object.cariAdi}",
       children: [
-        BottomSheetModel(title: loc(context).generalStrings.view, iconWidget: Icons.preview_outlined, onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)))
-            .yetkiKontrol(yetkiController.cariKarti),
+        BottomSheetModel(
+          title: loc(context).generalStrings.view,
+          iconWidget: Icons.preview_outlined,
+          onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)),
+        ).yetkiKontrol(yetkiController.cariKarti),
         BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined, onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)))
             .yetkiKontrol(yetkiController.cariKartiDuzenleme),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline,
           onTap: () async {
             Get.back();

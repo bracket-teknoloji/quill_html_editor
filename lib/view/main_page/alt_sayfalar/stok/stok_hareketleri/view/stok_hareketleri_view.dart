@@ -311,7 +311,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 icon: Icons.delete_forever,
                                 backgroundColor: UIHelper.primaryColor,
                                 foregroundColor: theme.colorScheme.primary,
-                                label: "Sil",
+                                label: loc(context).generalStrings.delete,
                               ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
                               if (slidableAction != const SizedBox()) {
                                 children2.add(slidableAction);

@@ -98,7 +98,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: "Düzenle",
+                        title: loc(context).generalStrings.edit,
                         iconWidget: Icons.edit_outlined,
                         onTap: () async {
                           if (widget.model.isNew == true) {
@@ -117,7 +117,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
-                        title: "Sil",
+                        title: loc(context).generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();

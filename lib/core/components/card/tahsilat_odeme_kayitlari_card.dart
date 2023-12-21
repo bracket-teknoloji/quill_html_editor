@@ -111,7 +111,7 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
           widget.cariHareketleriModel.hareketAciklama == "Kasa",
         ),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async => await deleteData(),
         ).yetkiKontrol(

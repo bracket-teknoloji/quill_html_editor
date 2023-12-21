@@ -108,7 +108,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
             },
           ),
           BottomSheetModel(
-            title: "Sil",
+            title: loc(context).generalStrings.delete,
             iconWidget: Icons.delete_outline_outlined,
             onTap: () async {
               Get.back();

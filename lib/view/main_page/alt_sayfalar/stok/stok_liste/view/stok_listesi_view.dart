@@ -659,7 +659,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   ];
                                   children2.insert(
                                     2,
-                                    BottomSheetModel(title: "Sil", iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme),
+                                    BottomSheetModel(title: loc(context).generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? ""))
+                                        .yetkiKontrol(yetkiController.stokKartiSilme),
                                   );
                                   final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
                                   final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: stok.stokKodu ?? "", children: newResult);

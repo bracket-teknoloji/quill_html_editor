@@ -241,7 +241,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                       },
                                     ),
                                     BottomSheetModel(
-                                      title: "Sil",
+                                      title: loc(context).generalStrings.delete,
                                       iconWidget: Icons.delete_outline,
                                       onTap: () {
                                         Get.back();

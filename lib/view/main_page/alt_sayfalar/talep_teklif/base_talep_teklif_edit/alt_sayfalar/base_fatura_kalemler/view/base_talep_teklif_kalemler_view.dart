@@ -275,7 +275,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
-          title: "Düzenle",
+          title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -284,7 +284,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
           },
         ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () {
             Get.back();

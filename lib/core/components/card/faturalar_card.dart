@@ -76,7 +76,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ),
               BottomSheetModel(
-                title: "Düzenle",
+                title: loc(context).generalStrings.edit,
                 iconWidget: Icons.edit_outlined,
                 onTap: () async {
                   Get.back();
@@ -98,7 +98,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ),
               BottomSheetModel(
-                title: "Sil",
+                title: loc(context).generalStrings.delete,
                 iconWidget: Icons.delete_outline_outlined,
                 onTap: () async {
                   Get.back();

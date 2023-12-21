@@ -267,7 +267,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
-          title: "Düzenle",
+          title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -276,7 +276,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           },
         ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () {
             Get.back();

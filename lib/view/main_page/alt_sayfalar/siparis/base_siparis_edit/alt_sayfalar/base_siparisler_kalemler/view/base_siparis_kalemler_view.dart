@@ -256,7 +256,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children: [
         BottomSheetModel(
-          title: "Düzenle",
+          title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -265,7 +265,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           },
         ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () {
             Get.back();

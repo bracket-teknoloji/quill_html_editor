@@ -148,7 +148,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
       children: [
         BottomSheetModel(
           iconWidget: Icons.delete_outline,
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           onTap: () {
             Get.back();
             viewModel.removeOrtalamaVadeTarihiListesi(index);

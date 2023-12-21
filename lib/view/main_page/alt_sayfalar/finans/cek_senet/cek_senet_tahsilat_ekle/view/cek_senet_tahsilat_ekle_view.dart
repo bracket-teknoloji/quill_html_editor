@@ -566,7 +566,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
         title: "Kaynak tipi",
         children: [
           BottomSheetModel(
-            title: "Düzenle",
+            title: loc(context).generalStrings.edit,
             iconWidget: Icons.photo_library_outlined,
             onTap: () async {
               Get.back();
@@ -579,7 +579,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
             },
           ),
           BottomSheetModel(
-            title: "Sil",
+            title: loc(context).generalStrings.delete,
             iconWidget: Icons.camera_alt_outlined,
             onTap: () {
               Get.back();

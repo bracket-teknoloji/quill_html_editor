@@ -24,7 +24,6 @@ class KasaHareketleriView extends StatefulWidget {
   final KasaListesiModel? model;
   const KasaHareketleriView({super.key, this.model});
 
-
   @override
   State<KasaHareketleriView> createState() => _KasaHareketleriViewState();
 }
@@ -122,7 +121,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                                 title: item?.tipAciklama ?? "",
                                 children: [
                                   BottomSheetModel(
-                                    title: "Sil",
+                                    title: loc(context).generalStrings.delete,
                                     iconWidget: Icons.delete_outline_outlined,
                                     onTap: () {
                                       Get.back();

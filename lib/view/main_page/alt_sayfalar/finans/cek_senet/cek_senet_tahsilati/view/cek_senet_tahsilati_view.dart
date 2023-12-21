@@ -207,7 +207,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                               title: loc(context).generalStrings.options,
                               children: [
                                 BottomSheetModel(
-                                  title: "Düzenle",
+                                  title: loc(context).generalStrings.edit,
                                   iconWidget: Icons.edit_outlined,
                                   onTap: () {
                                     Get.back();
@@ -215,7 +215,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                                   },
                                 ),
                                 BottomSheetModel(
-                                  title: "Sil",
+                                  title: loc(context).generalStrings.delete,
                                   iconWidget: Icons.delete_outline,
                                   onTap: () {
                                     Get.back();

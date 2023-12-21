@@ -136,7 +136,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
           },
         ),
         BottomSheetModel(
-          title: "Sil",
+          title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async {
             Get.back();

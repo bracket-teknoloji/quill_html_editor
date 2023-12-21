@@ -264,7 +264,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     ),
                                     BottomSheetModel(
                                       iconWidget: Icons.edit_outlined,
-                                      title: "Düzenle",
+                                      title: loc(context).generalStrings.edit,
                                       onTap: () async {
                                         Get.back();
                                         final result = await Get.toNamed(
@@ -278,7 +278,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                       },
                                     ).yetkiKontrol(model.devirMi && yetkiController.cariHareketleriDuzenleme),
                                     BottomSheetModel(
-                                      title: "Sil",
+                                      title: loc(context).generalStrings.delete,
                                       iconWidget: Icons.delete_outline_outlined,
                                       onTap: () async {
                                         Get.back();
