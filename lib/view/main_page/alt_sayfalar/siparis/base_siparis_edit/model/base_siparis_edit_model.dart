@@ -578,7 +578,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get eIrsaliyeIslemleriYapilabilirMi => _yetkiController.eIrsaliyeAktif && eIrsaliyeMi;
 
-  bool get eBelgeIslemlerGorunsunMu => _yetkiController.eFaturaAktif && (eBelgeSerisinden || eBelgeMi || eBelgeEslestirmeIslemiYapilabilirMi) && ((getEditTipiEnum?.faturaMi??false)|| eIrsaliyeIslemleriYapilabilirMi);
+  bool get eBelgeIslemlerGorunsunMu =>
+      _yetkiController.eFaturaAktif && (eBelgeSerisinden || eBelgeMi || eBelgeEslestirmeIslemiYapilabilirMi) && ((getEditTipiEnum?.faturaMi ?? false) || eIrsaliyeIslemleriYapilabilirMi);
 
   bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi ?? 0) > 0;
 
@@ -599,6 +600,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get irsaliyelestiMi => irsaliyelesti == "E";
 
   bool get kapaliMi => tipi == 1;
+
+  bool get basariliMi => (efaturaMi == "E" || earsivMi == "E") && efaturaGibDurumKodu == 1300 && (getEditTipiEnum?.satisMi??false);
 
   // bool get eBelgeGoster => eFaturaMi || eArsivMi;
 
