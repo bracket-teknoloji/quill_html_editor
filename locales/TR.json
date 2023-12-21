@@ -18,13 +18,13 @@
     "dbUpdateSubtitle": "SQL veritabanını güncellemek için kullanılır.",
     "serviceOperationsTitle": "Servis İşlemleri",
     "netOpenXKernelStatus": "NetOpenX Kernel Durumu",
-    "netOpenXKernelStatusSubTitle": "NetOpenX Kernel Durumunu öğrenmenizi sağlar",
+    "netOpenXKernelStatusSubTitle": "NetOpenX Kernel Durumunu öğrenmenizi sağlar.",
     "eFaturaDLLKayitla": "E-Fatura DLL Kayıtla",
     "eFaturaDLLKayitlaSubTitle": "E-faturaların DLL kayıtlarını oluşturur.",
     "netOpenXCreateKernel": "NetOpenX Kernel Oluştur",
-    "netOpenXCreateKernelSubTitle": "NetOpenX Kernel'i Oluşturmak için kullanabilirsiniz",
+    "netOpenXCreateKernelSubTitle": "NetOpenX Kernel'i Oluşturmak için kullanabilirsiniz.",
     "netfectWinServiceRestart": "NetFect Windows Sunucularını Yeniden Başlat",
-    "netfectWinServiceRestartSubTitle": "NetFect Windows Sunucularını Yeniden Başlatmak için bunu kullanabilirsiniz"
+    "netfectWinServiceRestartSubTitle": "NetFect Windows Sunucularını Yeniden Başlatmak için bunu kullanabilirsiniz."
   },
   "generalStrings": {
     "save": "Kaydet",

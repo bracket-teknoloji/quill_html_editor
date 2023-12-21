@@ -19,13 +19,13 @@
     "dbUpdateSubtitle": "It is used to update the SQL database.",
     "serviceOperationsTitle": "Service Operations",
     "netOpenXKernelStatus": "NetOpenX Kernel Status",
-    "netOpenXKernelStatusSubTitle": "Allows you to find out NetOpenX Kernel Status",
+    "netOpenXKernelStatusSubTitle": "Allows you to find out NetOpenX Kernel Status.",
     "eFaturaDLLKayitla": "E-invoice DLL registration",
     "eFaturaDLLKayitlaSubTitle": "Creates DLL records of E-invoices.",
     "netOpenXCreateKernel": "Create a New NetOpenX Kernel",
-    "netOpenXCreateKernelSubTitle": "You can use it to Build NetOpenX Kernel",
+    "netOpenXCreateKernelSubTitle": "You can use it to Build NetOpenX Kernel.",
     "netfectWinServiceRestart": "Restart NetFect Windows Servers",
-    "netfectWinServiceRestartSubTitle": "You can use this to restart NetFect Windows Servers"
+    "netfectWinServiceRestartSubTitle": "You can use this to restart NetFect Windows Servers."
   },
   "generalStrings": {
     "save": "Save",
