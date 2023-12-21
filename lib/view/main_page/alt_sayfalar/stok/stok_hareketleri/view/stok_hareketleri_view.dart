@@ -121,11 +121,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Filtrele",
+                  title: loc(context).generalStrings.filter,
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -233,11 +233,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Sırala",
+                  title: loc(context).generalStrings.sort,
                   children: [
                     BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
                     BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),

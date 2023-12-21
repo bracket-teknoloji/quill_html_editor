@@ -1,5 +1,6 @@
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import "dart:convert";
+
+import "package:flutter/services.dart" show rootBundle;
 
 class LocaleBase {
   late Map<String, dynamic> _data;
@@ -10,10 +11,8 @@ class LocaleBase {
     _data = jsonDecode(strJson);
     initAll();
   }
-  
-  Map<String, String> getData(String group) {
-    return Map<String, String>.from(_data[group]);
-  }
+
+  Map<String, String> getData(String group) => Map<String, String>.from(_data[group]);
 
   String getPath() => _path;
 
@@ -21,10 +20,13 @@ class LocaleBase {
   LocalerightDrawer get rightDrawer => _rightDrawer;
   late LocaleserviceOperations _serviceOperations;
   LocaleserviceOperations get serviceOperations => _serviceOperations;
+  late LocalegeneralStrings _generalStrings;
+  LocalegeneralStrings get generalStrings => _generalStrings;
 
   void initAll() {
-    _rightDrawer = LocalerightDrawer(Map<String, String>.from(_data['rightDrawer']));
-    _serviceOperations = LocaleserviceOperations(Map<String, String>.from(_data['serviceOperations']));
+    _rightDrawer = LocalerightDrawer(Map<String, String>.from(_data["rightDrawer"]));
+    _serviceOperations = LocaleserviceOperations(Map<String, String>.from(_data["serviceOperations"]));
+    _generalStrings = LocalegeneralStrings(Map<String, String>.from(_data["generalStrings"]));
   }
 }
 
@@ -32,9 +34,7 @@ class LocalerightDrawer {
   late final Map<String, String> _data;
   LocalerightDrawer(this._data);
 
-  String getByKey(String key) {
-    return _data[key]!;
-  }
+  String getByKey(String key) => _data[key]!;
 
   String get sample => _data["sample"]!;
   String get save => _data["save"]!;
@@ -51,9 +51,7 @@ class LocaleserviceOperations {
   late final Map<String, String> _data;
   LocaleserviceOperations(this._data);
 
-  String getByKey(String key) {
-    return _data[key]!;
-  }
+  String getByKey(String key) => _data[key]!;
 
   String get isWebServicesWorking => _data["isWebServicesWorking"]!;
   String get isWebServicesWorkingSubtitle => _data["isWebServicesWorkingSubtitle"]!;
@@ -62,5 +60,25 @@ class LocaleserviceOperations {
   String get dbUpdate => _data["dbUpdate"]!;
   String get dbUpdateSubtitle => _data["dbUpdateSubtitle"]!;
   String get serviceOperationsTitle => _data["serviceOperationsTitle"]!;
+  String get netOpenXKernelStatus => _data["netOpenXKernelStatus"]!;
+  String get netOpenXKernelStatusSubTitle => _data["netOpenXKernelStatusSubTitle"]!;
+  String get eFaturaDLLKayitla => _data["eFaturaDLLKayitla"]!;
+  String get eFaturaDLLKayitlaSubTitle => _data["eFaturaDLLKayitlaSubTitle"]!;
+  String get netOpenXCreateKernel => _data["netOpenXCreateKernel"]!;
+  String get netOpenXCreateKernelSubTitle => _data["netOpenXCreateKernelSubTitle"]!;
+  String get netfectWinServiceRestart => _data["netfectWinServiceRestart"]!;
+  String get netfectWinServiceRestartSubTitle => _data["netfectWinServiceRestartSubTitle"]!;
 }
 
+class LocalegeneralStrings {
+  late final Map<String, String> _data;
+  LocalegeneralStrings(this._data);
+
+  String getByKey(String key) => _data[key]!;
+
+  String get save => _data["save"]!;
+  String get success => _data["success"]!;
+  String get error => _data["error"]!;
+  String get filter => _data["filter"]!;
+  String get sort => _data["sort"]!;
+}

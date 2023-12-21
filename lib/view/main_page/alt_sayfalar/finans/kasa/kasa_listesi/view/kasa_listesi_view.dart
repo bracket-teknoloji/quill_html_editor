@@ -85,9 +85,9 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                 ),
               ),
               onPressed: filtrele,
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
             ),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: const Text("Sırala")),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child:  Text(loc(context).generalStrings.sort)),
             AppBarButton(
               icon: Icons.refresh_outlined,
               onPressed: () async {
@@ -183,7 +183,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
   Future<void> sirala() async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
-      title: "Sırala",
+      title: loc(context).generalStrings.sort,
       groupValue: viewModel.sirala,
       children: List.generate(
         viewModel.siralaMap.length,
@@ -204,7 +204,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
   Future<void> filtrele() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         children: [
           Observer(

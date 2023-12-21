@@ -122,14 +122,14 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
           children: [
             AppBarButton(
               onPressed: filterBottomSheet,
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Sırala",
+                  title: loc(context).generalStrings.sort,
                   children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
                 );
                 if (result != null) {
@@ -235,7 +235,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   Future filterBottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

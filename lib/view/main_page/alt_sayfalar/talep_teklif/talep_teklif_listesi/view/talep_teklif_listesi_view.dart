@@ -161,14 +161,14 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                       size: UIHelper.midSize * 2,
                     ),
                   ),
-                  const Text("Filtrele"),
+                  Text(loc(context).generalStrings.filter),
                 ],
               ),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: siralaButtonOnTap,
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: seceneklerButtonOnTap,
@@ -269,7 +269,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   Future<void> filtreleButtonOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

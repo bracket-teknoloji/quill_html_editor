@@ -162,7 +162,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
               icon: Icons.filter_alt_outlined,
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Filtrele",
+                title: loc(context).generalStrings.filter,
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -452,7 +452,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   ],
                 ),
               ),
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
@@ -478,7 +478,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   getData();
                 }
               },
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {

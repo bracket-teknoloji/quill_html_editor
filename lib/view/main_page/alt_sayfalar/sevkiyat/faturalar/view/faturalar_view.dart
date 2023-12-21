@@ -150,11 +150,11 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
             AppBarButton(
               icon: Icons.filter_alt_outlined,
               onPressed: () async => await filtrele(),
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -309,7 +309,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
 
   Future<void> filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: "Filtrele",
+        title: loc(context).generalStrings.filter,
         body: Column(
           children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(

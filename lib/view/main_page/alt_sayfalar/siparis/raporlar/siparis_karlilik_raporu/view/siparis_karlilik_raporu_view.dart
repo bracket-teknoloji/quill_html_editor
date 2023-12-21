@@ -76,7 +76,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Form(
         key: _formKey,
         child: Column(

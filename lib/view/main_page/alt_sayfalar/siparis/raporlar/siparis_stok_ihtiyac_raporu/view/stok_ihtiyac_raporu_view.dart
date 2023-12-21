@@ -69,7 +69,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -114,7 +114,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
             ],
           ),
           CustomTextField(
-            labelText: "Sırala",
+            labelText: loc(context).generalStrings.sort,
             readOnly: true,
             suffixMore: true,
             controller: siralaController,
@@ -125,7 +125,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
             onTap: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Sırala",
+                title: loc(context).generalStrings.sort,
                 children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
               );
               if (result != null && result is MapEntry<String, String>) {

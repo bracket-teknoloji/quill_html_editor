@@ -197,11 +197,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   AppBarButton siralaButton() => AppBarButton(
         icon: Icons.sort_by_alpha_outlined,
-        child: const Text("Sırala"),
+        child:  Text(loc(context).generalStrings.sort),
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Sırala",
+            title: loc(context).generalStrings.sort,
             children: List.generate(
               viewModel.siralaMap.length,
               (index) => BottomSheetModel(
@@ -217,12 +217,12 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       );
   AppBarButton filtreleButton() => AppBarButton(
         icon: Icons.filter_alt_outlined,
-        child: const Text("Filtrele"),
+        child: Text(loc(context).generalStrings.filter),
         onPressed: () async {
           await viewModel.getGrupKodlari();
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Filtrele",
+            title: loc(context).generalStrings.filter,
             body: Observer(
               builder: (_) => Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -473,7 +473,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       viewModel.resetAll();
                       Get.back();
                     },
-                    child: const Text("Filtrele"),
+                    child: Text(loc(context).generalStrings.filter),
                   ),
                 ],
               ),

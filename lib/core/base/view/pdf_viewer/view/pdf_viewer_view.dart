@@ -97,7 +97,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     await getData();
                   }
                 },
-                child: const Text("Filtrele"),
+                child:  Text(loc(context).generalStrings.filter),
               )
             else
               null,

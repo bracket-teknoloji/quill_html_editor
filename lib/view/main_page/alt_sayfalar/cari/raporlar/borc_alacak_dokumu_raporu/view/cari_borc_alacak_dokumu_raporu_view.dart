@@ -48,7 +48,7 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -62,14 +62,14 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
           ),
           CustomTextField(
             controller: _siralaController,
-            labelText: "Sırala",
+            labelText: loc(context).generalStrings.sort,
             readOnly: true,
             suffixMore: true,
             valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.sirala ?? "x")),
             onTap: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Sırala",
+                title: loc(context).generalStrings.sort,
                 children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
               );
               if (result is MapEntry) {

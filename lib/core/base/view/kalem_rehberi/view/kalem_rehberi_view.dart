@@ -58,7 +58,8 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
             ),
             IconButton(
               onPressed: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Sırala", groupValue: viewModel.model?.siralama, children: viewModel.siralaList);
+                final result =
+                    await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: loc(context).generalStrings.sort, groupValue: viewModel.model?.siralama, children: viewModel.siralaList);
                 if (result != null) {
                   viewModel.setSiralama(result);
                   await viewModel.resetPage();

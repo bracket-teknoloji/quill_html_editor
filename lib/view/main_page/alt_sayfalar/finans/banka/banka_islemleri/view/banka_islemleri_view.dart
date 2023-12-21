@@ -203,7 +203,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         children: [
           CustomTextField(

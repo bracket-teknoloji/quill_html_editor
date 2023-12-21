@@ -72,7 +72,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Filtrele",
+                title: loc(context).generalStrings.filter,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[

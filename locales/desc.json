@@ -17,6 +17,21 @@
     "updateServiceSubtitle": "update service subtitle",
     "dbUpdate": "DataBase Update",
     "dbUpdateSubtitle": "Database Update Subtitle",
-    "serviceOperationsTitle": "Servis İşlemleri"
+    "serviceOperationsTitle": "Servis İşlemleri",
+    "netOpenXKernelStatus": "NetOpenX Kernel Status",
+    "netOpenXKernelStatusSubTitle": "NetOpenX Kernel Status Subtitle ",
+    "eFaturaDLLKayitla": "E Fatura DLL Kayıtla",
+    "eFaturaDLLKayitlaSubTitle": "E  fatura dll kayıtla subtitle",
+    "netOpenXCreateKernel": "Create a NetOpenX Kernel",
+    "netOpenXCreateKernelSubTitle": "netOpenx create kernel subtitle",
+    "netfectWinServiceRestart": "netfectWinServiceRestart",
+    "netfectWinServiceRestartSubTitle": "netfectWinServiceRestartSubTitle"
+  },
+  "generalStrings": {
+    "save": "save",
+    "success": "success",
+    "error": "error",
+    "filter": "filter",
+    "sort": "sort"
   }
 }

@@ -131,8 +131,8 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
         ],
         bottom: AppBarPreferedSizedBottom(
           children: [
-            AppBarButton(icon: Icons.filter_alt_outlined, hasFilter: false, onPressed: filtrele, child: const Text("Filtrele")),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child: const Text("Sırala")),
+            AppBarButton(icon: Icons.filter_alt_outlined, hasFilter: false, onPressed: filtrele, child: Text(loc(context).generalStrings.filter)),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child:  Text(loc(context).generalStrings.sort)),
             AppBarButton(icon: Icons.refresh_outlined, hasFilter: false, onPressed: refresh, child: const Text("Yenile")),
           ],
         ),
@@ -178,7 +178,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
 
   Future<void> filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: "Filtrele",
+        title: loc(context).generalStrings.filter,
         body: Observer(
           builder: (_) => Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -369,7 +369,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
   Future<void> sirala() async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
-      title: "Sırala",
+      title: loc(context).generalStrings.sort,
       groupValue: viewModel.eBelgeRequestModel.sirala,
       children: List.generate(
         viewModel.siralaMap.length,

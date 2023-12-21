@@ -131,10 +131,10 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Filtrele",
+                title: loc(context).generalStrings.filter,
                 body: Observer(
                   builder: (_) => Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -295,11 +295,11 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
-                  title: "Sırala",
+                  title: loc(context).generalStrings.sort,
                   groupValue: viewModel.cekSenetListesiRequestModel.sirala,
                   children: List.generate(
                     viewModel.siralaMap.length,

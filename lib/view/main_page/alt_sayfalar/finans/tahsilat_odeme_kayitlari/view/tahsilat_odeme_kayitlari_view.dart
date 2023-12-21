@@ -210,7 +210,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
       );
 
   Future<void> filter() async {
-    await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Filtrele", body: filterBody);
+    await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.filter, body: filterBody);
   }
 
   Widget get filterBody => Column(

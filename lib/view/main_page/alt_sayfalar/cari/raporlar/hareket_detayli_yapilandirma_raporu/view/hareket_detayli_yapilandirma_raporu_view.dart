@@ -50,7 +50,7 @@ class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayli
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

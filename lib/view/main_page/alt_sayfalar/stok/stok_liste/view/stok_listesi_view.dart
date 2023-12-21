@@ -201,7 +201,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
               onPressed: () async {
                 if (viewModel.grupKodlari.isEmptyOrNull) {
                   final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
@@ -488,12 +488,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
               // child: const Icon(Icons.sort_by_alpha_outlined),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
-                  title: "Sırala",
+                  title: loc(context).generalStrings.sort,
                   groupValue: viewModel.siralama,
                   children: [
                     BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),

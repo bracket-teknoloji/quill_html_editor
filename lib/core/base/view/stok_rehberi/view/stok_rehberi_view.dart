@@ -94,7 +94,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Filtrele",
+                title: loc(context).generalStrings.filter,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -235,7 +235,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         Get.back();
                         resetData();
                       },
-                      child: const Text("Filtrele"),
+                      child: Text(loc(context).generalStrings.filter),
                     ).paddingAll(UIHelper.lowSize),
                   ],
                 ),
@@ -247,7 +247,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
             onPressed: () async {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: "Sırala",
+                title: loc(context).generalStrings.sort,
                 children:
                     List.generate(viewModel.siralamaMap.length, (index) => BottomSheetModel(title: viewModel.siralamaMap.keys.toList()[index], value: viewModel.siralamaMap.values.toList()[index])),
               );

@@ -181,12 +181,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 //   viewModel.resetPage();
                 // }
               },
-              child: const Text("Filtrele"),
+              child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: () async => await siralaDialog(context),
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {
@@ -489,7 +489,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Future<dynamic> filtreleDialog(BuildContext context) async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: "Filtrele",
+        title: loc(context).generalStrings.filter,
         body: Column(
           children: [
             CustomWidgetWithLabel(

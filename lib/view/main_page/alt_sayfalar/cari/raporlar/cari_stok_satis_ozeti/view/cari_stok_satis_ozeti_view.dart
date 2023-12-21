@@ -81,7 +81,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
             IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
             IconButton(
               onPressed: () async {
-                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.bottomSheetModelList));
+                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.sort, children: viewModel.bottomSheetModelList));
                 getData();
               },
               icon: const Icon(Icons.sort_by_alpha_outlined),
@@ -90,7 +90,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Filtrele",
+                  title: loc(context).generalStrings.filter,
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

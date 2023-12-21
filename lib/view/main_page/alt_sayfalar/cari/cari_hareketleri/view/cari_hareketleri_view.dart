@@ -148,7 +148,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   return getData().then((value) => viewModel.setCariHareketleri(value));
                 }
               },
-              child: const Text("Sırala"),
+              child:  Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,

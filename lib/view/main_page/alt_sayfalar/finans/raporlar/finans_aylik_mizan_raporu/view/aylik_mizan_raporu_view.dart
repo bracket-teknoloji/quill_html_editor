@@ -39,7 +39,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Filtrele",
+      title: loc(context).generalStrings.filter,
       body: Form(
         key: formKey,
         child: Column(

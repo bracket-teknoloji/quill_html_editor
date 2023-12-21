@@ -78,7 +78,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
       viewModel.resetFuture();
       await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: "Filtrele",
+        title: loc(context).generalStrings.filter,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -129,12 +129,12 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                 ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
                 Expanded(
                   child: CustomTextField(
-                    labelText: "Sırala",
+                    labelText: loc(context).generalStrings.sort,
                     controller: siralaController,
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Sırala", children: viewModel.siralaBottomSheetList);
+                      final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.sort, children: viewModel.siralaBottomSheetList);
                       if (result != null) {
                         siralaController.text = result;
                         viewModel.pdfModel.dicParams?.sirala = result;
