@@ -97,9 +97,9 @@ import "view/main_page/alt_sayfalar/finans/kasa/kasa_transferi/view/kasa_transfe
 import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view/kasa_ekstre_raporu_view.dart";
 import "view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
 import "view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
+import "view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalar/base_fatura_edit/view/base_fatura_edit_view.dart";
+import "view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalar/view/faturalar_view.dart";
 import "view/main_page/alt_sayfalar/serbest_raporlar/view/serbest_raporlar_view.dart";
-import "view/main_page/alt_sayfalar/sevkiyat/faturalar/base_fatura_edit/view/base_fatura_edit_view.dart";
-import "view/main_page/alt_sayfalar/sevkiyat/faturalar/view/faturalar_view.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "view/main_page/alt_sayfalar/siparis/base_siparis_edit/view/base_siparis_edit_view.dart";
 import "view/main_page/alt_sayfalar/siparis/raporlar/siparis_karlilik_raporu/view/siparis_karlilik_raporu_view.dart";
@@ -197,7 +197,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),
 
               //* E-Fatura - E-Arşiv - E-İrsaliye
-              GetPage(name: "/eBelgeGonder", page: () =>  EBelgeGonderView(model: Get.arguments)),
+              GetPage(name: "/eBelgeGonder", page: () => EBelgeGonderView(model: Get.arguments)),
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),

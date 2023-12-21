@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 
+/// Represents a model for a bottom sheet.
 class BottomSheetModel {
   final String title;
   final String? description;
