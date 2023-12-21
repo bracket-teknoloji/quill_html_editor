@@ -299,7 +299,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     CustomWidgetWithLabel(
                       isVertical: true,
                       text: "Kapalı Belgeler Listelenmesin",
-                      child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
+                      child: Observer(builder: (_) => Switch(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
                     ),
                     Observer(
                       builder: (_) => SlideControllerWidget(
