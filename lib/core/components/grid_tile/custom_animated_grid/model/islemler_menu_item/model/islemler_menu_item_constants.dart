@@ -694,17 +694,37 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            final result =
-                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
-            if (result != null) {
-              final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
-              siparisModel.kalemList = kalemList;
-              return await Get.toNamed(
-                "mainPage/faturaEdit",
-                arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
-              );
+            if (!siparisModel.getEditTipiEnum.siparisMi) {
+              final result =
+                  await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+              if (result != null) {
+                final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
+                if (kalemList == null) {
+                  return;
+                }
+                siparisModel.kalemList = kalemList;
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
+                );
+              } else {
+                return;
+              }
             } else {
-              return;
+              final result = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
+              if (result == null) {
+                return;
+              } else {
+                final kalemList = await getKalemRehberi(result);
+                if (kalemList == null) {
+                  return;
+                }
+                siparisModel.kalemList = kalemList;
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
+                );
+              }
             }
           }
         },
@@ -715,20 +735,37 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            final result =
-                await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
-            if (result != null) {
-              final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
-              if (kalemList == null) {
+            if (!siparisModel.getEditTipiEnum.siparisMi) {
+              final result =
+                  await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+              if (result != null) {
+                final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
+                if (kalemList == null) {
+                  return;
+                }
+                siparisModel.kalemler = kalemList;
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+                );
+              } else {
                 return;
               }
-              siparisModel.kalemler = kalemList;
-              return await Get.toNamed(
-                "mainPage/faturaEdit",
-                arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
-              );
             } else {
-              return;
+              final result = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
+              if (result == null) {
+                return;
+              } else {
+                final kalemList = await getKalemRehberi(result);
+                if (kalemList == null) {
+                  return;
+                }
+                siparisModel.kalemler = kalemList;
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+                );
+              }
             }
           }
         },
