@@ -3,8 +3,13 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/dialog/dialog_manager.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/core/init/network/network_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_islem_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
@@ -73,7 +78,14 @@ class MenuItemConstants {
         //! UNUTMA BUNU AÇMAYI
         GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu", route: "/mainPage/eBelgeGelenKutusu"), // onTap: () => Get.to(PDFViewerView())),
         GridItemModel.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu", route: "/mainPage/eBelgeGidenKutusu"),
-        GridItemModel.item(name: "ebelge_EFatCariGuncelle", title: "E-Fatura Carilerini Güncelle "),
+        GridItemModel.item(
+          name: "ebelge_EFatCariGuncelle",
+          title: "E-Fatura Carilerini Güncelle ",
+          onTap: () async {
+            NetworkManager().dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: EBelgeListesiModel(), data: EBelgeIslemModel(ebelgeTuru: "EFT", islemKodu: 6));
+            DialogManager().showInfoDialog("Bu işlem uzun sürebilir. Tamamlandığında bilgilendirme yapılacaktır.");
+          },
+        ),
       ],
     ),
     //*Finans
