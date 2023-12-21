@@ -14,6 +14,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet(
       path: ApiUrls.getServiceInfos,
       bodyModel: ServisInfoModel(),
+      showLoading: true,
     );
     if (result.data.first is ServisInfoModel) {
       final List<ServisInfoModel> list = result.data.map((e) => e as ServisInfoModel).toList().cast<ServisInfoModel>();
@@ -24,5 +25,44 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> dbUpdate() async {
     await networkManager.dbUpdate(CacheManager.getVeriTabani()["Şirket"]);
+  }
+
+  @action
+  Future<void> netOpenXCreateKernel() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.netOpenXCreateKernel,
+      bodyModel: ServisInfoModel(),
+      showLoading: true,
+    );
+    dialogManager.showSuccesDialog(result.message);
+  }
+  @action
+  Future<void> netOpenXStatus() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getNetOpenXStatus,
+      bodyModel: ServisInfoModel(),
+      showLoading: true,
+    );
+    dialogManager.showSuccesDialog(result.message);
+  }
+
+  @action
+  Future<void> eFaturaDLLKayitla() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.eFaturaDLLKayitla,
+      bodyModel: ServisInfoModel(),
+      showLoading: true,
+    );
+    dialogManager.showSuccesDialog(result.message);
+  }
+
+  @action
+  Future<void> netFectWinServiceRestart() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.netFectWinServiceRestart,
+      bodyModel: ServisInfoModel(),
+      showLoading: true,
+    );
+    dialogManager.showSuccesDialog(result.message);
   }
 }

@@ -19,6 +19,7 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
         appBar: AppBar(
           title: Text(loc(context).serviceOperations.serviceOperationsTitle),
         ),
+        
         body: ListView.builder(
           itemCount: itemList.length,
           itemBuilder: (context, index) {
@@ -57,6 +58,30 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           description: loc(context).serviceOperations.dbUpdateSubtitle,
           iconWidget: Icons.cloud_upload_outlined,
           onTap: viewModel.dbUpdate,
+        ),
+        BottomSheetModel(
+          title: loc(context).serviceOperations.netOpenXCreateKernel,
+          description: loc(context).serviceOperations.netOpenXCreateKernelSubTitle,
+          iconWidget: Icons.bookmark_add_outlined,
+          onTap: viewModel.netOpenXCreateKernel,
+        ),
+        BottomSheetModel(
+          title: loc(context).serviceOperations.netOpenXKernelStatus,
+          description: loc(context).serviceOperations.netOpenXKernelStatusSubTitle,
+          iconWidget: Icons.broadcast_on_personal_outlined,
+          onTap: viewModel.netOpenXStatus,
+        ),
+        BottomSheetModel(
+          title: loc(context).serviceOperations.eFaturaDLLKayitla,
+          description: loc(context).serviceOperations.eFaturaDLLKayitlaSubTitle,
+          iconWidget: Icons.podcasts_outlined,
+          onTap: viewModel.eFaturaDLLKayitla,
+        ),
+        BottomSheetModel(
+          title: loc(context).serviceOperations.netfectWinServiceRestart,
+          description: loc(context).serviceOperations.netfectWinServiceRestartSubTitle,
+          iconWidget: Icons.restart_alt_outlined,
+          onTap: viewModel.netFectWinServiceRestart,
         ),
       ];
 }

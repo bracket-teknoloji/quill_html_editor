@@ -27,6 +27,15 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
     return _$dbUpdateAsyncAction.run(() => super.dbUpdate());
   }
 
+  late final _$netOpenXStatusAsyncAction = AsyncAction(
+      '_ServisIslemleriViewModelBase.netOpenXStatus',
+      context: context);
+
+  @override
+  Future<void> netOpenXStatus() {
+    return _$netOpenXStatusAsyncAction.run(() => super.netOpenXStatus());
+  }
+
   @override
   String toString() {
     return '''
