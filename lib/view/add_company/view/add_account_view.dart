@@ -97,7 +97,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         for (AccountResponseModel item in response.data) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             CacheManager.setHesapBilgileri(AccountModel.instance);
-            CacheManager.setAccounts(response.data!.firstOrNull?..parola = encodedPassword);
+            CacheManager.setAccounts(item..parola = encodedPassword);
             Get.back(result: true);
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {
