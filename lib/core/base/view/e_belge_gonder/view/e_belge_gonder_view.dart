@@ -299,8 +299,8 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           Get.toNamed("/mainPage/eBelgePdf", arguments: model);
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white),
-                        child: const Column(
-                          children: [Icon(Icons.preview_outlined), Text("Görüntüle")],
+                        child: Column(
+                          children: [const Icon(Icons.preview_outlined), Text(loc(context).generalStrings.view)],
                         ).paddingAll(UIHelper.lowSize),
                       ),
                       ElevatedButton(

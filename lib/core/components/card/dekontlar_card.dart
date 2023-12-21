@@ -51,7 +51,7 @@ class _DekontlarCardState extends BaseState<DekontlarCard> {
         context,
         title: model?.title ?? "",
         children: [
-          BottomSheetModel(title: "Görüntüle", iconWidget: Icons.preview_outlined, onTap: goruntuleDekont),
+          BottomSheetModel(title: loc(context).generalStrings.view, iconWidget: Icons.preview_outlined, onTap: goruntuleDekont),
           BottomSheetModel(title: "Düzenle", iconWidget: Icons.edit_outlined, onTap: duzenleDekont),
           BottomSheetModel(title: "Sil", iconWidget: Icons.delete_outline, onTap: deleteDekont),
         ],

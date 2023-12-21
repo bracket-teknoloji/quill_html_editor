@@ -86,7 +86,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     title: widget.model.belgeNo ?? "",
                     children: [
                       BottomSheetModel(
-                        title: "Görüntüle",
+                        title: loc(context).generalStrings.view,
                         iconWidget: Icons.preview_outlined,
                         onTap: () {
                           Get.back();
@@ -153,7 +153,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: "Yazdır",
+                        title: loc(context).generalStrings.print,
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
                           Get.back();

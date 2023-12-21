@@ -24,7 +24,7 @@ class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: "Görüntüle",
+            title: loc(context).generalStrings.view,
             subtitle: model.belgeNo ?? "",
           ),
         ),

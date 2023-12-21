@@ -116,7 +116,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
 
   List<BottomSheetModel?> get bottomSheetItems => [
         BottomSheetModel(
-          title: "Görüntüle",
+          title: loc(context).generalStrings.view,
           iconWidget: Icons.preview_outlined,
           onTap: goruntuleCekSenet,
         ),

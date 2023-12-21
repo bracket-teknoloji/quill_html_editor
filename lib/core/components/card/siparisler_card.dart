@@ -141,7 +141,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
                       BottomSheetModel(
-                        title: "Yazdır",
+                        title: loc(context).generalStrings.print,
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
                           Get.back();

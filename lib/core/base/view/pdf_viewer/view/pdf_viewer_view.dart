@@ -97,13 +97,13 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     await getData();
                   }
                 },
-                child:  Text(loc(context).generalStrings.filter),
+                child: Text(loc(context).generalStrings.filter),
               )
             else
               null,
             AppBarButton(
               icon: Icons.print_outlined,
-              child: const Text("Yazdır"),
+              child:  Text(loc(context).generalStrings.print),
               onPressed: () async {
                 final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
                 await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);

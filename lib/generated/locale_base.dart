@@ -82,4 +82,8 @@ class LocalegeneralStrings {
   String get filter => _data["filter"]!;
   String get sort => _data["sort"]!;
   String get options => _data["options"]!;
+  String get edit => _data["edit"]!;
+  String get print => _data["print"]!;
+  String get delete => _data["delete"]!;
+  String get view => _data["view"]!;
 }

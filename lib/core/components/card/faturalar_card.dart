@@ -68,7 +68,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             title: model.cariAdi ?? "",
             children: <BottomSheetModel?>[
               BottomSheetModel(
-                title: "Görüntüle",
+                title: loc(context).generalStrings.view,
                 iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
@@ -122,7 +122,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ).yetkiKontrol(widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi),
               BottomSheetModel(
-                title: "Yazdır",
+                title: loc(context).generalStrings.print,
                 iconWidget: Icons.print_outlined,
                 onTap: () async {
                   Get.back();
@@ -211,8 +211,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.taslakMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
-                  dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili))
-                      .yetkiVarMi(model.basariliMi),
+                  dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariliMi),
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),

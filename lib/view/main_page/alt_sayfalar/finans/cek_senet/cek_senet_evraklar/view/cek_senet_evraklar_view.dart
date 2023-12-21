@@ -100,7 +100,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
         title: loc(context).generalStrings.options,
         children: [
           BottomSheetModel(
-            title: "Görüntüle",
+            title: loc(context).generalStrings.view,
             iconWidget: Icons.preview_outlined,
             onTap: () {
               Get.back();

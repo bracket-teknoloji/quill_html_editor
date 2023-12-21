@@ -32,6 +32,10 @@
     "error": "Hata",
     "filter": "Filtrele",
     "sort": "Sırala",
-    "options": "Seçenekler"
+    "options": "Seçenekler",
+    "edit": "Düzenle",
+    "print": "Yazdır",
+    "delete": "Sil",
+    "view": "Görüntüle"
   }
 }

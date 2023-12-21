@@ -269,7 +269,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       );
 
   BottomSheetModel get yazdir => BottomSheetModel(
-        title: "Yazdır",
+        title: loc(context).generalStrings.print,
         iconWidget: Icons.print_outlined,
         onTap: () async {
           Get.back();
@@ -278,7 +278,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           final TextEditingController kopyaSayisiController = TextEditingController(text: "1");
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Yazdır",
+            title: loc(context).generalStrings.print,
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -341,7 +341,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                     }
                   },
-                  child: const Text("Yazdır"),
+                  child:  Text(loc(context).generalStrings.print),
                 ).paddingAll(UIHelper.lowSize),
               ],
             ).paddingAll(UIHelper.lowSize),

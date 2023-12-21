@@ -220,7 +220,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                   children: [
                                     BottomSheetModel(
                                       iconWidget: Icons.preview_outlined,
-                                      title: "Görüntüle",
+                                      title: loc(context).generalStrings.view,
                                       onTap: () async {
                                         Get.back();
                                         if (model.faturaMi) {

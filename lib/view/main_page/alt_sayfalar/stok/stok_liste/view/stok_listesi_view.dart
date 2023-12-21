@@ -608,7 +608,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                               : () async {
                                   final children2 = [
                                     BottomSheetModel(
-                                      title: "Görüntüle",
+                                      title: loc(context).generalStrings.view,
                                       iconWidget: Icons.preview_outlined,
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKarti),
@@ -634,7 +634,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     ),
                                     //TODO BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                     //TODO !!BottomSheetModel(
-                                    // !!  title: "Yazdır",
+                                    // !!  title: loc(context).generalStrings.print,
                                     //   iconWidget: Icons.print,
                                     //   onTap: () async {
                                     //     // // ignore: use_build_context_synchronously

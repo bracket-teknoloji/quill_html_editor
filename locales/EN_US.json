@@ -33,6 +33,10 @@
     "error": "Error",
     "filter": "Filter",
     "sort": "Sort",
-    "options": "Options"
+    "options": "Options",
+    "edit": "Edit",
+    "print": "print",
+    "delete": "Delete",
+    "view": "View"
   }
 }
