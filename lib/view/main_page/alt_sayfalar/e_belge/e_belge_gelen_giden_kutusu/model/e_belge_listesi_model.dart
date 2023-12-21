@@ -93,6 +93,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         ebelgeTuru: model.belgeNo?.substring(0, 3),
         resmiBelgeNo: model.resmiBelgeNo,
         islemKodu: 1,
+        tarih: model.tarih,
       );
 
   factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
@@ -141,12 +142,12 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   EBelgeListesiModel get taslakSil => eArsivMi ? eArsivTaslakSil : eFaturaTaslakSil;
 
   EBelgeRequestModel get durumSorgula => EBelgeRequestModel(
-    baslamaTarihi: tarih?.toDateString,
-    bitisTarihi: DateTime.now().toDateString,
-    eBelgeTuru: ebelgeTuru,
-    faturaYonu: "GIK",
-    resmiBelgeNo: resmiBelgeNo,
-  );
+        baslamaTarihi: tarih?.toDateString,
+        bitisTarihi: DateTime.now().toDateString,
+        eBelgeTuru: ebelgeTuru,
+        faturaYonu: "GIK",
+        resmiBelgeNo: resmiBelgeNo,
+      );
 
   bool get showBadge => gelen != "E" || taslak != "E";
 
@@ -178,5 +179,5 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get kabulEdildiMi => true;
 
-  String get onayDurumuString => "${onayAciklama ?? ""} - ${onayDurumKodu ?? ""}";
+  String get onayDurumuString => "${cevapKodu ?? ""} - ${cevapAciklama ?? ""}";
 }
