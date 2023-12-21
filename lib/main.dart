@@ -381,7 +381,27 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb || Platform.isWindows) return;
+  if (kIsWeb){
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    final FirebaseMessaging messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission();
+    await FirebaseMessaging.instance.setAutoInitEnabled(true);
+    AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken();
+    await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
+    log("fcmToken: ${AccountModel.instance.fcmToken}");
+    // print token
+    // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
+    // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
+    // FirebaseMessaging.onSurfaceMessage((message) async => print(message));
+    await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
+    FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+      AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+      FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
+  }
   if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
