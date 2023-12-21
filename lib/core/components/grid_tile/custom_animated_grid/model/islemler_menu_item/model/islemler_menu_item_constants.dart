@@ -162,8 +162,8 @@ class IslemlerMenuItemConstants<T> {
       // islemlerList.add(eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
-      islemlerList.addIfConditionTrue(siparisModel.uyariMi, durumSorgula);
-      islemlerList.addIfConditionTrue(!siparisModel.uyariMi, eFaturaGonder);
+      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
+      islemlerList.addIfConditionTrue(!siparisModel.uyariMi && !siparisModel.basariliMi, eFaturaGonder);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
     }
@@ -870,7 +870,7 @@ class IslemlerMenuItemConstants<T> {
         );
         if (result.success == true) {
           final EBelgeListesiModel eBelgeListesiModel = result.data!.first;
-          _dialogManager.showInfoDialog(eBelgeListesiModel.onayDurumuString);
+          _dialogManager.showInfoSnackBar(eBelgeListesiModel.onayDurumuString);
           return true;
         }
       },
