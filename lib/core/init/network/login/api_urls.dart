@@ -104,4 +104,9 @@ class ApiUrls {
   //* Servis
   static const String dbUpdate = "Servis/DBUpdate";
   static const String getServiceInfos = "Servis/GetServiceInfos";
+  static const String getNetOpenXStatus = "Servis/GetNetOpenXStatus";
+  static const String netOpenXCreateKernel = "Servis/NetOpenXCreateKernel";
+  static const String eFaturaDLLKayitla = "Servis/EFaturaDLLKayitla";
+  static const String netFectWinServiceRestart = "Servis/NetFectWinServiceRestart";
+
 }
