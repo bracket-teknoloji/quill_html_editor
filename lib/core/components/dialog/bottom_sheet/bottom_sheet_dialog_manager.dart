@@ -826,7 +826,7 @@ class BottomSheetDialogManager {
             .where((element) => filterText != null ? filterText.contains(element.belgeTipi) : true)
             .map(
               (KalemListModel e) => BottomSheetModel(
-                title: e.belgeTipi ?? "",
+                title: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == e.belgeTipi)?.getName ?? "",
                 description: e.belgeNo ?? "",
                 value: e,
               ),
