@@ -212,7 +212,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili))
-                      .yetkiVarMi((model.efaturaMi == "E" || model.earsivMi == "E") && model.efaturaGibDurumKodu == 1300 && widget.editTipiEnum.satisMi),
+                      .yetkiVarMi(model.basariliMi),
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
