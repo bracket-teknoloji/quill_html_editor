@@ -17,7 +17,7 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Servis İşlemleri"),
+          title: Text(loc(context).serviceOperations.serviceOperations),
         ),
         body: ListView.builder(
           itemCount: itemList.length,
@@ -43,8 +43,8 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           onTap: viewModel.webServisleriCalistir,
         ),
         // BottomSheetModel(
-        //   title: "Servisi Güncelle",
-        //   description: "Servisi güncellemek için kullanılır.",
+          // title: loc(context).serviceOperations.updateService,
+          // description: loc(context).serviceOperations.updateServiceSubtitle,
         //   iconWidget: Icons.sync_alt_outlined,
         // ),
         // BottomSheetModel(
@@ -53,8 +53,8 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
         //   iconWidget: Icons.restart_alt_outlined,
         // ),
         BottomSheetModel(
-          title: "DB Update",
-          description: "SQL veritabanını güncellemek için kullanılır.",
+          title: loc(context).serviceOperations.dbUpdate,
+          description: loc(context).serviceOperations.dbUpdateSubtitle,
           iconWidget: Icons.cloud_upload_outlined,
           onTap: viewModel.dbUpdate,
         ),
