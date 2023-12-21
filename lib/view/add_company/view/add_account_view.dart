@@ -124,8 +124,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       //   path: ApiUrls.getUyeBilgileri,
       // );
       if (response.success == true) {
-        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.firstOrNull?.parola)));
-        AccountModel.instance.uyeEmail = response.data.firstOrNull?.email;
+        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first?.parola)));
+        AccountModel.instance.uyeEmail = response.data.first?.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;
         for (AccountResponseModel item in response.data!) {
