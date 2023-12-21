@@ -35,7 +35,15 @@ abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioPost<SurumYenilikleriModel>(path: ApiUrls.surumYenilikleri, bodyModel: SurumYenilikleriModel(), data: AccountModel.instance.toJson());
+    final result = await networkManager.dioPost<SurumYenilikleriModel>(
+      path: ApiUrls.surumYenilikleri,
+      bodyModel: SurumYenilikleriModel(),
+      data: AccountModel.instance.toJson(),
+      addCKey: false,
+      addTokenKey: false,
+      addQuery: false,
+      addSirketBilgileri: false,
+    );
     if (result.success == true && result.data is List) {
       setSurumYenilikleriModelList(result.data.map((e) => e as SurumYenilikleriModel).toList().cast<SurumYenilikleriModel>());
     } else {
