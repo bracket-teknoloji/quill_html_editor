@@ -467,8 +467,8 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
     if (widget.model.baseEditEnum != BaseEditEnum.ekle && viewModel.model.efatOzelkod == null && widget.model.editTipiEnum?.irsaliyeMi != true) {
-      viewModel.setEfatOzelkod(model.kalemList?.first.efatOzelkod ?? 0);
-      istisnaKoduController.text = model.kalemList?.first.efatOzelkodAdi ?? "";
+      viewModel.setEfatOzelkod(model.kalemList?.firstOrNull?.efatOzelkod ?? 0);
+      istisnaKoduController.text = model.kalemList?.firstOrNull?.efatOzelkodAdi ?? "";
     }
   }
 

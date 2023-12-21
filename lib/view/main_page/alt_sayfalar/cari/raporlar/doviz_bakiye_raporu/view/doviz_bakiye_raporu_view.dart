@@ -42,7 +42,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
   void initState() {
     cariController = TextEditingController();
     plasiyerController = TextEditingController();
-    siralaController = TextEditingController(text: viewModel.siralaBottomSheetList.first.title);
+    siralaController = TextEditingController(text: viewModel.siralaBottomSheetList.firstOrNull?.title);
     grupKoduController = TextEditingController();
     kod1Controller = TextEditingController();
     kod2Controller = TextEditingController();

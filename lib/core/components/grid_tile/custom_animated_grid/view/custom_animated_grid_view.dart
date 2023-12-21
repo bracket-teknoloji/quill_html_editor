@@ -39,14 +39,14 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   List<GridItemModel> result = MenuItemConstants().getList();
   @override
   void initState() {
-    // viewModel.setGridItemModel(result.getList().first.altMenuler?.where((element) => element.title == "Raporlar").first.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
+    // viewModel.setGridItemModel(result.getList().firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.first.altMenuler);
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.first.altMenuler);
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.first.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.firstOrNull?.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
     } else {
       final IslemlerMenuItemConstants islemlerResult =
@@ -165,6 +165,6 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     if (!result.any((element) => element.title == menu.value)) {
       return null;
     }
-    return result.where((element) => element.title == menu.value).first.altMenuler?.where((element) => element.title == "Raporlar").toList();
+    return result.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList();
   }
 }

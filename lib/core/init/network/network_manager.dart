@@ -355,13 +355,16 @@ class NetworkManager {
       path: ApiUrls.getUyeBilgileri,
     );
     if (result.success == true) {
-      CacheManager.setIsLicenseVerified(email ?? result.data.first.email, true);
+      CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, true);
       if (getFromCache) {
-        CacheManager.setAccounts(result.data.first..parola = (password ?? CacheManager.getVerifiedUser.account?.parola));
+        final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+        if (list.firstOrNull != null) {
+          CacheManager.setAccounts(list.firstOrNull!..parola = password ?? CacheManager.getVerifiedUser.account?.parola ?? "");
+        }
       }
     } else {
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(email ?? result.data.first.email, false);
+        CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, false);
       }
     }
     return result;
@@ -385,7 +388,8 @@ class NetworkManager {
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {
     final result = await dioGet<SiradakiBelgeNoModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: SiradakiBelgeNoModel(), data: (model..belgeNo = null).toJson());
     if (result.success ?? false) {
-      return result.data.first.belgeNo;
+      final List<SiradakiBelgeNoModel> list = result.data.map((e) => e as SiradakiBelgeNoModel).toList().cast<SiradakiBelgeNoModel>();
+      return list.firstOrNull?.belgeNo;
     }
     return null;
   }

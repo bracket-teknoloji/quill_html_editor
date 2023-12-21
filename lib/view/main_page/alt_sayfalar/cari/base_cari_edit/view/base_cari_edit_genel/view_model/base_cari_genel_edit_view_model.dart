@@ -59,9 +59,9 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   void setModel(CariSaveRequestModel? value) {
     model = value;
     model?.requestVersion = 6;
-    model?.efaturaSenaryo = CariDetayModel.instance.cariList?.first.efaturaTipi;
-    model?.kilit ??= CariDetayModel.instance.cariList?.first.kilit ?? "H";
-    model?.subeKodu ??= CariDetayModel.instance.cariList?.first.subeKodu.toStringIfNotNull ?? "-1";
+    model?.efaturaSenaryo = CariDetayModel.instance.cariList?.firstOrNull?.efaturaTipi;
+    model?.kilit ??= CariDetayModel.instance.cariList?.firstOrNull?.kilit ?? "H";
+    model?.subeKodu ??= CariDetayModel.instance.cariList?.firstOrNull?.subeKodu.toStringIfNotNull ?? "-1";
     CariSaveRequestModel.setInstance(value);
   }
 

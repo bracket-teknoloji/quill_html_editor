@@ -329,8 +329,8 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   Future<void> getDizayn({bool? otomatikSec}) async {
     final result = await viewModel.getDizayn();
     if (result.length == 1 && (otomatikSec ?? false)) {
-      _dizaynController.text = result.first.dizaynAdi ?? "";
-      viewModel.setDizaynNo(result.first.id ?? 0);
+      _dizaynController.text = result.firstOrNull?.dizaynAdi ?? "";
+      viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
     } else {
       final selectedDizaynModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,

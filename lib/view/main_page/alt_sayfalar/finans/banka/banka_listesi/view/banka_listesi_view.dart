@@ -197,7 +197,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(itemList.first.hesapTipiAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                              Text(itemList.firstOrNull?.hesapTipiAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                               Text(
                                 "${total.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                                 style: const TextStyle(color: ColorPalette.slateGray),

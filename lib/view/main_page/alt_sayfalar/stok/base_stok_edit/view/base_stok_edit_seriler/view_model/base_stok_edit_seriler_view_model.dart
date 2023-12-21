@@ -20,12 +20,12 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
   CariListesiModel? cariListesiModel = CariListesiModel.instance;
   @observable
   ObservableList<bool> switchValueList = [
-    StokDetayModel.instance.stokList?.first.seriGirislerdeAcik ?? false,
-    StokDetayModel.instance.stokList?.first.seriGiristeOtomatikMi ?? false,
-    StokDetayModel.instance.stokList?.first.seriCikislardaAcik ?? false,
-    StokDetayModel.instance.stokList?.first.seriCikistaOtomatikMi ?? false,
-    StokDetayModel.instance.stokList?.first.seriBakiyeKontrolu ?? false,
-    StokDetayModel.instance.stokList?.first.seriMiktarKadarSor ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriGirislerdeAcik ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriGiristeOtomatikMi ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriCikislardaAcik ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu ?? false,
+    StokDetayModel.instance.stokList?.firstOrNull?.seriMiktarKadarSor ?? false,
   ].asObservable();
 
   @action
@@ -33,29 +33,29 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
     switch (index) {
       case 0:
         switchValueList[index] = !switchValueList[index];
-        StokDetayModel.instance.stokList?.first.seriGirislerdeAcik = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriGirislerdeAcik = switchValueList[index];
         StokListesiModel.instance.seriGirislerdeAcik = switchValueList[index];
       case 1:
         switchValueList[index] = !switchValueList[index];
-        StokDetayModel.instance.stokList?.first.seriGiristeOtomatikMi = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriGiristeOtomatikMi = switchValueList[index];
         StokListesiModel.instance.seriGiristeOtomatikMi = switchValueList[index];
       case 2:
         switchValueList[index] = !switchValueList[index];
-        StokDetayModel.instance.stokList?.first.seriCikislardaAcik = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriCikislardaAcik = switchValueList[index];
         StokListesiModel.instance.seriCikislardaAcik = switchValueList[index];
       case 3:
         switchValueList[index] = !switchValueList[index];
         switchValueList[index + 1] = switchValueList[index] ? false : switchValueList[index + 1];
-        StokDetayModel.instance.stokList?.first.seriCikistaOtomatikMi = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi = switchValueList[index];
         StokListesiModel.instance.seriCikistaOtomatikMi = switchValueList[index];
       case 4:
         switchValueList[index] = !switchValueList[index];
         switchValueList[index - 1] = switchValueList[index] ? false : switchValueList[index - 1];
-        StokDetayModel.instance.stokList?.first.seriBakiyeKontrolu = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu = switchValueList[index];
         StokListesiModel.instance.seriBakiyeKontrolu = switchValueList[index];
       case 5:
         switchValueList[index] = !switchValueList[index];
-        StokDetayModel.instance.stokList?.first.seriMiktarKadarSor = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriMiktarKadarSor = switchValueList[index];
         StokListesiModel.instance.seriMiktarKadarSor = switchValueList[index];
     }
   }

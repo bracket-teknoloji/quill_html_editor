@@ -31,7 +31,7 @@
 //   ObservableList<KasaIslemleriModel>? kasaIslemleriListesi;
 
 //   // @computed
-//   // double get toplamDevirTutari => kasaIslemleriListesi?.first.kasaDevirTutari ?? 0;
+//   // double get toplamDevirTutari => kasaIslemleriListesi?.firstOrNull?.kasaDevirTutari ?? 0;
 
 //   //* Actions
 //   @action
@@ -120,7 +120,7 @@
 //   ObservableList<KasaIslemleriModel>? kasaIslemleriListesi;
 
 //   @computed
-//   double get toplamDevirTutari => kasaIslemleriListesi?.first.kasaDevirTutari ?? 0;
+//   double get toplamDevirTutari => kasaIslemleriListesi?.firstOrNull?.kasaDevirTutari ?? 0;
 
 //   //* Actions
 //   @action
@@ -216,7 +216,7 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin {
   String? dovizAdi;
 
   // @computed
-  // double get toplamDevirTutari => kasaIslemleriListesi?.first.kasaDevirTutari ?? 0;
+  // double get toplamDevirTutari => kasaIslemleriListesi?.firstOrNull?.kasaDevirTutari ?? 0;
 
   @computed
   double get bakiye => (paramData?["TOPLAM_GELIR"] as double? ?? 0) - (paramData?["TOPLAM_GIDER"] as double? ?? 0);

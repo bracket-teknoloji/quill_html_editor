@@ -97,7 +97,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         for (AccountResponseModel item in response.data) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             CacheManager.setHesapBilgileri(AccountModel.instance);
-            CacheManager.setAccounts(response.data!.first..parola = encodedPassword);
+            CacheManager.setAccounts(response.data!.firstOrNull?..parola = encodedPassword);
             Get.back(result: true);
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {
@@ -124,8 +124,8 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       //   path: ApiUrls.getUyeBilgileri,
       // );
       if (response.success == true) {
-        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.first.parola)));
-        AccountModel.instance.uyeEmail = response.data.first.email;
+        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.data.firstOrNull?.parola)));
+        AccountModel.instance.uyeEmail = response.data.firstOrNull?.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;
         for (AccountResponseModel item in response.data!) {

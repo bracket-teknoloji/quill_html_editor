@@ -440,7 +440,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
       showLoading: true,
     );
     if (result.success == true) {
-      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
+      BaseSiparisEditModel.instance.belgeNo = result.data?.firstOrNull?.belgeNo;
       _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }

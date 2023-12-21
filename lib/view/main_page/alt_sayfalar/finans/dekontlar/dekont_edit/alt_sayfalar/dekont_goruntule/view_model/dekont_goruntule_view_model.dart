@@ -34,15 +34,19 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData(DekontListesiModel? model, String? refkey) async {
-    final result =
-        await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model?.queryParam?? {"refKey": refkey}, showLoading: true);
+    final result = await networkManager.dioGet<DekontDuzenleRequestModel>(
+      path: ApiUrls.getDekontHareketleri,
+      bodyModel: DekontDuzenleRequestModel(),
+      queryParameters: model?.queryParam ?? {"refKey": refkey},
+      showLoading: true,
+    );
     if (result.success ?? false) {
       final List<DekontDuzenleRequestModel> list = (result.data as List).map((e) => e as DekontDuzenleRequestModel).toList().cast<DekontDuzenleRequestModel>();
       setDekontListesi(list);
       setDekontMap({
-        "Tarih": list.first.tarih.toDateString,
-        "Seri": list.first.seriNo,
-        "Dekont No": list.first.dekontNo,
+        "Tarih": list.firstOrNull?.tarih.toDateString,
+        "Seri": list.firstOrNull?.seriNo,
+        "Dekont No": list.firstOrNull?.dekontNo,
         "Borç Toplamı": list
             .where((element) => element.ba == "B")
             .map((e) => e.tutar)

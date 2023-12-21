@@ -128,7 +128,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       onTap: () {
                         if (item.altMenuVarMi) {
                           if (item.altMenuler?.length == 1) {
-                            item.altMenuler?.first.onTap?.call();
+                            item.altMenuler?.firstOrNull?.onTap?.call();
                             return;
                           }
                           setState(() {
@@ -152,7 +152,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
             ),
             Visibility(
-              visible:!kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
+              visible: !kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
               child: SizedBox(
                 width: UIHelper.highSize * 3,
                 child: GestureDetector(

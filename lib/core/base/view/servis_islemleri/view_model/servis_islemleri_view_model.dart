@@ -16,7 +16,8 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
     );
     if (result.data.first is ServisInfoModel) {
-      dialogManager.showSuccesDialog(result.data.first.getInfo ?? "Servisler Çalışıyor");
+      final List<ServisInfoModel> list = result.data.map((e) => e as ServisInfoModel).toList().cast<ServisInfoModel>();
+      dialogManager.showSuccesDialog(list.firstOrNull?.getInfo ?? "Servisler Çalışıyor");
     }
   }
 

@@ -317,23 +317,23 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.first.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
-            value: viewModel.dovizKurlariListesi?.first.dovAlis,
+            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.first.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
-            value: viewModel.dovizKurlariListesi?.first.dovSatis,
+            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.first.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
-            value: viewModel.dovizKurlariListesi?.first.effAlis,
+            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.first.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
-            value: viewModel.dovizKurlariListesi?.first.effSatis,
+            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
         ],

@@ -448,7 +448,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     //   final cariModel = await getCari();
                     //   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
                     // }
-                    _siparisController.text = list.first.belgeNo ?? "";
+                    _siparisController.text = list.firstOrNull?.belgeNo ?? "";
                   } else {
                     _siparisController.text = "${list.length} adet Sipariş Seçildi.";
                   }

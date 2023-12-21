@@ -434,7 +434,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       showLoading: true,
     );
     if (result.success == true) {
-      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
+      final List<BaseSiparisEditModel> list = (result.data as List).map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      BaseSiparisEditModel.instance.belgeNo = list.firstOrNull?.belgeNo;
       _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }

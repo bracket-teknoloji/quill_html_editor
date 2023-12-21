@@ -137,7 +137,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       pdfModel.dicParams?.kasaharInckey = model?.inckeyno.toStringIfNotNull;
       pdfModel.dicParams?.belgeNo = model?.belgeNo;
       if (result!.length == 1) {
-        pdfModel.dizaynId = result.first.id;
+        pdfModel.dizaynId = result.firstOrNull?.id;
         dizaynList = result.first;
       } else {
         dizaynList = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, pdfModel.dizaynId);

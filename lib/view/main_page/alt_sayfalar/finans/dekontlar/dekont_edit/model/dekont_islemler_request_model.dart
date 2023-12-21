@@ -30,12 +30,12 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
   DekontIslemlerRequestModel fromJson(Map<String, dynamic> json) => DekontIslemlerRequestModel.fromJson(json);
 
   factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) => DekontIslemlerRequestModel(
-        plasiyerKodu: list.first.plasiyerKodu,
-        tarih: list.first.tarih,
-        dekontSeri: list.first.seriNo,
-        plasiyerAdi: list.first.plasiyerAciklama,
-        seriAdi: list.first.seriNo,
-        dekontNo: list.first.dekontNo,
+        plasiyerKodu: list.firstOrNull?.plasiyerKodu,
+        tarih: list.firstOrNull?.tarih,
+        dekontSeri: list.firstOrNull?.seriNo,
+        plasiyerAdi: list.firstOrNull?.plasiyerAciklama,
+        seriAdi: list.firstOrNull?.seriNo,
+        dekontNo: list.firstOrNull?.dekontNo,
         kalemler: list.map(DekontKalemler.fromDekontDuzenleModel).toList(),
       );
 }
@@ -67,6 +67,5 @@ class SingletonDekontIslemlerRequestModel {
     _instance.seriAdi = value.seriAdi;
     _instance.plasiyerAdi = value.plasiyerAdi;
     _instance.dekontNo = value.dekontNo;
-    
   }
 }

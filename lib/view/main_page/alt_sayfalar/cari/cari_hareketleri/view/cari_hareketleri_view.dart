@@ -314,8 +314,8 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                         // NetFectDizaynList? dizaynList;
                                         // if (result.ext.isNotNullOrEmpty) {
                                         //   if (result!.length == 1) {
-                                        //     pdfModel.dizaynId = result.first.id;
-                                        //     pdfModel.etiketSayisi = result.first.kopyaSayisi;
+                                        //     pdfModel.dizaynId = result.firstOrNull?.id;
+                                        //     pdfModel.etiketSayisi = result.firstOrNull?.kopyaSayisi;
                                         //     pdfModel.dicParams?.caharInckey = model.inckeyno.toStringIfNotNull;
                                         //     dizaynList = result.first;
                                         //     Get.back();
@@ -407,8 +407,8 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
     if (result.ext.isNotNullOrEmpty) {
       Get.back();
       if (result!.length == 1) {
-        pdfModel.dizaynId = result.first.id;
-        pdfModel.etiketSayisi = result.first.kopyaSayisi;
+        pdfModel.dizaynId = result.firstOrNull?.id;
+        pdfModel.etiketSayisi = result.firstOrNull?.kopyaSayisi;
         pdfModel.dicParams?.caharInckey = inckeyno;
         dizaynList = result.first;
       } else {

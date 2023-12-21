@@ -517,7 +517,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       showLoading: true,
     );
     if (result.success == true) {
-      BaseSiparisEditModel.instance.belgeNo = result.data?.first.belgeNo;
+      BaseSiparisEditModel.instance.belgeNo = result.data?.firstOrNull?.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }

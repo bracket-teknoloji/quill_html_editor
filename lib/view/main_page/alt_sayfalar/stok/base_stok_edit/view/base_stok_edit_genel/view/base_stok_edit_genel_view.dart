@@ -83,30 +83,30 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     final isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
     stokKoduController = TextEditingController(text: viewModel.stokListesiModel?.stokKodu);
     stokAdiController = TextEditingController(text: viewModel.stokListesiModel?.stokAdi);
-    depoController = TextEditingController(text: model?.stokList?.first.depoKodu.toStringIfNotNull ?? viewModel.stokListesiModel?.depoKodu.toStringIfNotNull);
-    muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.first.muhdetayAdi ?? viewModel.stokListesiModel?.muhdetayAdi);
-    olcuBirimi1Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi ?? viewModel.stokListesiModel?.olcuBirimi);
-    olcuBirimi2Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi2 ?? viewModel.stokListesiModel?.olcuBirimi2);
-    olcuBirimi2PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Pay.toStringIfNotNull);
-    olcuBirimi2PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi2Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Payda.toStringIfNotNull);
-    olcuBirimi3Controller = TextEditingController(text: model?.stokList?.first.olcuBirimi3 ?? viewModel.stokListesiModel?.olcuBirimi3);
-    olcuBirimi3PayController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Pay.toStringIfNotNull);
-    olcuBirimi3PaydaController = TextEditingController(text: model?.stokList?.first.olcuBirimi3Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Payda.toStringIfNotNull);
-    barkod1Controller = TextEditingController(text: model?.stokList?.first.barkod1 ?? viewModel.stokListesiModel?.barkod1);
-    barkod2Controller = TextEditingController(text: model?.stokList?.first.barkod2 ?? viewModel.stokListesiModel?.barkod2);
-    barkod3Controller = TextEditingController(text: model?.stokList?.first.barkod3 ?? viewModel.stokListesiModel?.barkod3);
+    depoController = TextEditingController(text: model?.stokList?.firstOrNull?.depoKodu.toStringIfNotNull ?? viewModel.stokListesiModel?.depoKodu.toStringIfNotNull);
+    muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.muhdetayAdi ?? viewModel.stokListesiModel?.muhdetayAdi);
+    olcuBirimi1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi ?? viewModel.stokListesiModel?.olcuBirimi);
+    olcuBirimi2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2 ?? viewModel.stokListesiModel?.olcuBirimi2);
+    olcuBirimi2PayController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Pay.toStringIfNotNull);
+    olcuBirimi2PaydaController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi2Payda.toStringIfNotNull);
+    olcuBirimi3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3 ?? viewModel.stokListesiModel?.olcuBirimi3);
+    olcuBirimi3PayController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3Pay.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Pay.toStringIfNotNull);
+    olcuBirimi3PaydaController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3Payda.toStringIfNotNull ?? viewModel.stokListesiModel?.olcuBirimi3Payda.toStringIfNotNull);
+    barkod1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod1 ?? viewModel.stokListesiModel?.barkod1);
+    barkod2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod2 ?? viewModel.stokListesiModel?.barkod2);
+    barkod3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod3 ?? viewModel.stokListesiModel?.barkod3);
     subeController = TextEditingController(
       text: subeList.ext.isNotNullOrEmpty
-          ? subeList.where((element) => element.subeKodu == model?.stokList?.first.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
+          ? subeList.where((element) => element.subeKodu == model?.stokList?.firstOrNull?.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
           : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}",
     ); //text: model?.stokAdi
-    ureticiKoduController = TextEditingController(text: model?.stokList?.first.ureticiKodu ?? viewModel.stokListesiModel?.ureticiKodu); //text: model?.stokAdi
-    grupKoduController = TextEditingController(text: model?.stokList?.first.grupKodu ?? viewModel.stokListesiModel?.grupKodu);
-    kod1Controller = TextEditingController(text: model?.stokList?.first.kod1 ?? viewModel.stokListesiModel?.kod1);
-    kod2Controller = TextEditingController(text: model?.stokList?.first.kod2 ?? viewModel.stokListesiModel?.kod2);
-    kod3Controller = TextEditingController(text: model?.stokList?.first.kod3 ?? viewModel.stokListesiModel?.kod3);
-    kod4Controller = TextEditingController(text: model?.stokList?.first.kod4 ?? viewModel.stokListesiModel?.kod4);
-    kod5Controller = TextEditingController(text: model?.stokList?.first.kod5 ?? viewModel.stokListesiModel?.kod5);
+    ureticiKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.ureticiKodu ?? viewModel.stokListesiModel?.ureticiKodu); //text: model?.stokAdi
+    grupKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.grupKodu ?? viewModel.stokListesiModel?.grupKodu);
+    kod1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod1 ?? viewModel.stokListesiModel?.kod1);
+    kod2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod2 ?? viewModel.stokListesiModel?.kod2);
+    kod3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod3 ?? viewModel.stokListesiModel?.kod3);
+    kod4Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod4 ?? viewModel.stokListesiModel?.kod4);
+    kod5Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod5 ?? viewModel.stokListesiModel?.kod5);
     if (subeController.text == "") {
       subeController.text = "Şubelerde Ortak";
       viewModel.stokListesiModel?.subeKodu = -1;
