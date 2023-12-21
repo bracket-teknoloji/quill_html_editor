@@ -321,7 +321,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         ],
                       ).paddingAll(UIHelper.lowSize),
                     ),
-                    // viewModel.musteriSiparisleriList.first.o
+                    // viewModel.musteriSiparisleriList.firstOrNull?.o
                     Observer(
                       builder: (_) => AnimatedContainer(
                         height: viewModel.grupKodlariGoster ? null : 0,
