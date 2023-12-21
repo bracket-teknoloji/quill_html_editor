@@ -155,7 +155,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     onPressed: () async {
                       await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
-                        title: "Seçenekler",
+                        title: loc(context).generalStrings.options,
                         body: Observer(
                           builder: (_) => SwitchListTile.adaptive(
                             title: const Text("Resimleri Göster"),
@@ -488,7 +488,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               // child: const Icon(Icons.sort_by_alpha_outlined),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(

@@ -168,7 +168,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: siralaButtonOnTap,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: seceneklerButtonOnTap,
@@ -540,7 +540,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   Future<void> seceneklerButtonOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Seçenekler",
+      title: loc(context).generalStrings.options,
       children: [
         BottomSheetModel(
           title: "Görünecek Ekstra Alanlar",

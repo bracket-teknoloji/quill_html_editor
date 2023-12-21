@@ -81,4 +81,5 @@ class LocalegeneralStrings {
   String get error => _data["error"]!;
   String get filter => _data["filter"]!;
   String get sort => _data["sort"]!;
+  String get options => _data["options"]!;
 }

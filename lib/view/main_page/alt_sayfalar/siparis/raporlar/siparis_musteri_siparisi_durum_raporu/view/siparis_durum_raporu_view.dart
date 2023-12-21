@@ -125,7 +125,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
@@ -203,7 +203,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
           ),
           onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Seçenekler",
+            title: loc(context).generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Belgeyi Görüntüle",

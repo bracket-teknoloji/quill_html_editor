@@ -185,7 +185,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   onPressed: () async {
                     final result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
-                      title: "Seçenekler",
+                      title: loc(context).generalStrings.options,
                       children: <BottomSheetModel?>[
                         BottomSheetModel(
                           title: "Cari İşlemleri",

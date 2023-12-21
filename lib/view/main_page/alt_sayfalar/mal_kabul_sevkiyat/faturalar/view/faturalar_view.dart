@@ -154,7 +154,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -179,7 +179,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Seçenekler",
+                  title: loc(context).generalStrings.options,
                   children: <BottomSheetModel>[
                     BottomSheetModel(
                       title: "Görünecek Ekstra Alanlar",

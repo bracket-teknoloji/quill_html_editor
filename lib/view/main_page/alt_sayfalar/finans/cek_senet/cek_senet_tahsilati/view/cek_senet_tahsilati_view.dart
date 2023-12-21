@@ -204,7 +204,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                             ),
                             onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
-                              title: "Seçenekler",
+                              title: loc(context).generalStrings.options,
                               children: [
                                 BottomSheetModel(
                                   title: "Düzenle",

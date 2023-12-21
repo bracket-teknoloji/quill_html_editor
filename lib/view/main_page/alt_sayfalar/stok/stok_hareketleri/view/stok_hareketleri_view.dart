@@ -93,7 +93,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         actions: [
           //😳 IconButton(
           //😳     onPressed: () async {
-          //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Seçenekler", children: [
+          //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.options, children: [
           //😳         BottomSheetModel(
           //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
           //😳             title: "Dövizli Fiyat Göster",
@@ -233,7 +233,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
@@ -359,7 +359,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 if (widget.model != null) {
                                   await bottomSheetDialogManager.showBottomSheetDialog(
                                     context,
-                                    title: "Seçenekler",
+                                    title: loc(context).generalStrings.options,
                                     children: [
                                       BottomSheetModel(
                                         title: "Belgeyi Görüntüle",

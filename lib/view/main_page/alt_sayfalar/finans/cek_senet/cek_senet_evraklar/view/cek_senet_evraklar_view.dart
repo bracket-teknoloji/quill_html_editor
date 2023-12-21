@@ -97,7 +97,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
 
   Future<void> onTap(EvraklarModel? model) async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: "Seçenekler",
+        title: loc(context).generalStrings.options,
         children: [
           BottomSheetModel(
             title: "Görüntüle",

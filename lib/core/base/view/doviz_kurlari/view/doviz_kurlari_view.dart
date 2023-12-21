@@ -60,7 +60,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         onPressed: () async {
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Seçenekler",
+            title: loc(context).generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Kur Girişi",
@@ -225,7 +225,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                               onTap: () async {
                                 await bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: "Seçenekler",
+                                  title: loc(context).generalStrings.options,
                                   children: [
                                     BottomSheetModel(
                                       title: "Düzelt",

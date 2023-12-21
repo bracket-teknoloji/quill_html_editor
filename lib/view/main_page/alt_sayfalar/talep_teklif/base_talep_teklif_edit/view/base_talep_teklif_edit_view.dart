@@ -235,7 +235,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: "Seçenekler",
+            title: loc(context).generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Cari İşlemleri",

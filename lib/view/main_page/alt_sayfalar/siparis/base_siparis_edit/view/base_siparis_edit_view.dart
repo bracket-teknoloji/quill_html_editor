@@ -151,7 +151,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                 onPressed: () async {
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
-                    title: "Seçenekler",
+                    title: loc(context).generalStrings.options,
                     children: [
                       BottomSheetModel(
                         title: "Cari İşlemleri",

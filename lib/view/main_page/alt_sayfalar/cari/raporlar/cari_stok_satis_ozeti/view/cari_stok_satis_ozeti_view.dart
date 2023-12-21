@@ -243,7 +243,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                 trailing: Text(viewModel.modelList?[index].miktar.toStringIfNotNull ?? ""),
                                 onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: "Seçenekler",
+                                  title: loc(context).generalStrings.options,
                                   children: [
                                     BottomSheetModel(
                                       title: "Cari Stok Satış Hareketleri",

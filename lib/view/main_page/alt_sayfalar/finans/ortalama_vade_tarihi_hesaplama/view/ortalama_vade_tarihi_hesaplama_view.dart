@@ -144,7 +144,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
   Future<void> listTileOnTap(OrtalamaVadeTarihiModel model, int index) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Seçenekler",
+      title: loc(context).generalStrings.options,
       children: [
         BottomSheetModel(
           iconWidget: Icons.delete_outline,
@@ -198,7 +198,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
   Future<void> cardOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: "Seçenekler",
+      title: loc(context).generalStrings.options,
     );
   }
 }

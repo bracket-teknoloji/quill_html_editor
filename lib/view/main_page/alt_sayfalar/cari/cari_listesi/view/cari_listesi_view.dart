@@ -186,13 +186,13 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: () async => await siralaDialog(context),
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Seçenekler",
+                  title: loc(context).generalStrings.options,
                   children: [
                     BottomSheetModel(
                       title: "Raporlar",

@@ -148,7 +148,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   return getData().then((value) => viewModel.setCariHareketleri(value));
                 }
               },
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
@@ -216,7 +216,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               onTap: () {
                                 bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: "Seçenekler",
+                                  title: loc(context).generalStrings.options,
                                   children: [
                                     BottomSheetModel(
                                       iconWidget: Icons.preview_outlined,

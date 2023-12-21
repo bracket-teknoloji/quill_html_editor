@@ -478,13 +478,13 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   getData();
                 }
               },
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Seçenekler",
+                  title: loc(context).generalStrings.options,
                   children: [
                     BottomSheetModel(
                       title: "Görünecek Ekstra Alanlar",
