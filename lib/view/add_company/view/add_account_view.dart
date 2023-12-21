@@ -113,7 +113,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   Future<void> _getQR(BuildContext context) async {
     final barcode = await Get.toNamed("/qr");
     GenericResponseModel response;
-
+    
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
       response = await networkManager.getUyeBilgileri(null, getFromCache: false);
