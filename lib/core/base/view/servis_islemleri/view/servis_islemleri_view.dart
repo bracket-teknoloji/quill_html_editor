@@ -4,6 +4,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/servis_islemleri/view_model/servis_islemleri_view_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/generated/locale_base.dart";
 
 class ServisIslemleriView extends StatefulWidget {
   const ServisIslemleriView({super.key});
@@ -14,12 +15,15 @@ class ServisIslemleriView extends StatefulWidget {
 
 class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   ServisIslemleriViewModel viewModel = ServisIslemleriViewModel();
+
+
+  LocaleBase get getLoc => loc(context);
+  
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(loc(context).serviceOperations.serviceOperationsTitle),
+          title: Text(getLoc.serviceOperations.serviceOperationsTitle),
         ),
-        
         body: ListView.builder(
           itemCount: itemList.length,
           itemBuilder: (context, index) {
@@ -38,50 +42,51 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
 
   List<BottomSheetModel> get itemList => [
         BottomSheetModel(
-          title: loc(context).serviceOperations.isWebServicesWorking,
-          description: loc(context).serviceOperations.isWebServicesWorkingSubtitle,
+          title: getLoc.serviceOperations.isWebServicesWorking,
+          description: getLoc.serviceOperations.isWebServicesWorkingSubtitle,
           iconWidget: Icons.travel_explore_outlined,
           onTap: viewModel.webServisleriCalistir,
         ),
-        BottomSheetModel(
-          title: loc(context).serviceOperations.updateService,
-          description: loc(context).serviceOperations.updateServiceSubtitle,
-          iconWidget: Icons.sync_alt_outlined,
-        ),
+        // BottomSheetModel(
+        //   title: getLoc.serviceOperations.updateService,
+        //   description: getLoc.serviceOperations.updateServiceSubtitle,
+        //   iconWidget: Icons.sync_alt_outlined,
+        // ),
         // BottomSheetModel(
         //   title: "Web Servisi Yeniden Başlat",
         //   description: "Web servisini yeniden başlatmak için kullanılır.",
         //   iconWidget: Icons.restart_alt_outlined,
         // ),
         BottomSheetModel(
-          title: loc(context).serviceOperations.dbUpdate,
-          description: loc(context).serviceOperations.dbUpdateSubtitle,
+          title: getLoc.serviceOperations.dbUpdate,
+          description: getLoc.serviceOperations.dbUpdateSubtitle,
           iconWidget: Icons.cloud_upload_outlined,
           onTap: viewModel.dbUpdate,
         ),
         BottomSheetModel(
-          title: loc(context).serviceOperations.netOpenXCreateKernel,
-          description: loc(context).serviceOperations.netOpenXCreateKernelSubTitle,
+          title: getLoc.serviceOperations.netOpenXCreateKernel,
+          description: getLoc.serviceOperations.netOpenXCreateKernelSubTitle,
           iconWidget: Icons.bookmark_add_outlined,
           onTap: viewModel.netOpenXCreateKernel,
         ),
         BottomSheetModel(
-          title: loc(context).serviceOperations.netOpenXKernelStatus,
-          description: loc(context).serviceOperations.netOpenXKernelStatusSubTitle,
+          title: getLoc.serviceOperations.netOpenXKernelStatus,
+          description: getLoc.serviceOperations.netOpenXKernelStatusSubTitle,
           iconWidget: Icons.broadcast_on_personal_outlined,
           onTap: viewModel.netOpenXStatus,
         ),
         BottomSheetModel(
-          title: loc(context).serviceOperations.eFaturaDLLKayitla,
-          description: loc(context).serviceOperations.eFaturaDLLKayitlaSubTitle,
+          title: getLoc.serviceOperations.eFaturaDLLKayitla,
+          description: getLoc.serviceOperations.eFaturaDLLKayitlaSubTitle,
           iconWidget: Icons.podcasts_outlined,
           onTap: viewModel.eFaturaDLLKayitla,
         ),
         BottomSheetModel(
-          title: loc(context).serviceOperations.netfectWinServiceRestart,
-          description: loc(context).serviceOperations.netfectWinServiceRestartSubTitle,
+          title: getLoc.serviceOperations.netfectWinServiceRestart,
+          description: getLoc.serviceOperations.netfectWinServiceRestartSubTitle,
           iconWidget: Icons.restart_alt_outlined,
           onTap: viewModel.netFectWinServiceRestart,
         ),
       ];
+
 }
