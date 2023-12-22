@@ -41,6 +41,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
               elevation: UIHelper.highSize,
               child: QuillHtmlEditor(
                 hintText: "Buraya notlarınızı yazabilirsiniz.",
+                text: model.ekAciklama ?? "",
                 controller: controller,
                 isEnabled: enable,
                 minHeight: height,
@@ -51,11 +52,6 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.background,
                 onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
-                onEditorCreated: () async {
-                  if (model.ekAciklama != null) {
-                    await controller.insertText(model.ekAciklama ?? "");
-                  }
-                },
                 loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
               ),
             ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
