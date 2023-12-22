@@ -81,6 +81,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       init();
+      if (widget.isGetData ?? false) {
+        viewModel.changeSearchBar();
+      }
     });
     super.initState();
   }
