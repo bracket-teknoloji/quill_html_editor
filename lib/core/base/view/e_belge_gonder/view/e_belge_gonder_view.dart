@@ -219,7 +219,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         value: model.dovizliOlustur ?? false,
                         onChanged: viewModel.setDovizOlustur,
                         title: const Text("Döviz Oluştur"),
-                      ).yetkiVarMi(widget.model.dovizliMi && !viewModel.siparisEditModel.taslakMi),
+                      ).yetkiVarMi(viewModel.model.dovizliMi && !viewModel.siparisEditModel.taslakMi),
                     ),
                     Observer(
                       builder: (_) => SwitchListTile.adaptive(
@@ -292,7 +292,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white),
                         child: const Column(
                           children: [Icon(Icons.delete_outline_outlined), Text("Taslak Sil")],
-                        ).paddingAll(UIHelper.lowSize),
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -301,7 +301,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white),
                         child: Column(
                           children: [const Icon(Icons.preview_outlined), Text(loc(context).generalStrings.view)],
-                        ).paddingAll(UIHelper.lowSize),
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () async {
@@ -315,7 +315,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white),
                         child: const Column(
                           children: [Icon(Icons.send_outlined), Text("Gönder")],
-                        ).paddingAll(UIHelper.lowSize),
+                        ),
                       ),
                     ].map((e) => Expanded(child: e.paddingAll(UIHelper.lowSize))).toList(),
                   ).yetkiVarMi(viewModel.siparisEditModel.taslakMi),
@@ -338,7 +338,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         groupValue: viewModel.model.dizaynNo,
         children: List.generate(result.length, (index) {
           final DizaynModel dizaynModel = result[index];
-          return BottomSheetModel(title: dizaynModel.dizaynAdi ?? "", groupValue: dizaynModel.id, value: dizaynModel);
+          return BottomSheetModel(title: dizaynModel.dizaynTamAd, description: dizaynModel.id.toStringIfNotNull, groupValue: dizaynModel.id, value: dizaynModel);
         }),
       );
       if (selectedDizaynModel is DizaynModel) {
