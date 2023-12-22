@@ -6,6 +6,7 @@ import "package:picker/core/base/model/belge_tipi_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -181,8 +182,9 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
+                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
+                      viewModel.model.vadeGunu = result.vadeGunu;
                     }
                   },
                 ),

@@ -144,6 +144,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       if (result != null && result is CariListesiModel) {
                         model.cariAdi = result.cariAdi ?? "";
                         model.cariKodu = result.cariKodu ?? "";
+                        model.vadeGunu = result.vadeGunu ?? 0;
                         cariController.text = result.cariAdi ?? "";
                         if (!yetkiController.siparisFarkliTeslimCariAktif) {
                           cariController.text = result.cariAdi ?? "";

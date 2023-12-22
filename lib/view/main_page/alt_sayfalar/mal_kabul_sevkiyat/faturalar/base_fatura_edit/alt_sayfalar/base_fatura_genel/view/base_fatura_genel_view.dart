@@ -7,6 +7,7 @@ import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -180,8 +181,9 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                    if (result != null) {
+                    if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
+                      viewModel.model.vadeGunu = result.vadeGunu;
                     }
                   },
                 ),
