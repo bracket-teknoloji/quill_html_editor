@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/base_talep_teklif_edit/alt_sayfalar/base_fatura_kalemler/view/base_talep_teklif_kalemler_view.dart";
@@ -240,9 +241,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_2_outlined,
-                onTap: () {
+                onTap: () async {
                   Get.back();
-                  dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
+                  dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                 },
               ),
               topluIskontoBottomSheetModel(context),
