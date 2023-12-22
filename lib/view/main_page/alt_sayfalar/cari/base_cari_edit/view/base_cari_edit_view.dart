@@ -42,7 +42,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   late final TabController tabController;
   List<Tab> get tabs => <Widget>[
         const Tab(child: Text("Genel")),
-        Tab(child: Text(loc(context).generalStrings.other)),
+        const Tab(child: Text("Diğer")),
         const Tab(child: Text("Özet")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("Banka")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("İletişim")).yetkiVarMi(goruntulenecekMi),
@@ -131,7 +131,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           return result;
         },
         child: Scaffold(
-          // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text("Genel")), Tab(child: Text(loc(context).generalStrings.other))]),
+          // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text("Genel")), Tab(child: Text("Diğer"))]),
           appBar: AppBar(
             title: AppBarTitle(
               title: widget.appBarTitle ?? "Cari Kartı",
