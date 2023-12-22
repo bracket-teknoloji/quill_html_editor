@@ -269,7 +269,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
                                   if (result != null) {
                                     muhKoduController.text = result.adi ?? "";
-                                    viewModel.setMuhasebeKodu((StaticVariables.instance.isMusteriSiparisleri ? result.satisHesabi : result.satisHesabi) ?? "");
+                                    viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
                                   }
                                 },
                               ),
@@ -744,8 +744,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi ?? widget.kalemModel?.stokAlisDovizAdi;
     viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
     viewModel.setYapKod(widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod);
-    viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.alisDovTip;
-    viewModel.kalemModel.dovizTipi ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.alisDovTip;
+    viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.alisDovTip ?? viewModel.model?.satDovTip;
+    viewModel.kalemModel.dovizTipi ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.satDovTip;
     viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? widget.kalemModel?.dovizAdi ?? viewModel.model?.alisDovizAdi;
     kalemAdiController.text = viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
     ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
@@ -772,7 +772,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
-    dovizTipiController.text = ((widget.kalemModel?.dovizAdi != null) ? widget.kalemModel?.dovizAdi : viewModel.model?.alisDovizAdi ?? mainCurrency) ?? "";
+    dovizTipiController.text = widget.kalemModel?.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? mainCurrency;
     dovizFiyatiController.text = (widget.kalemModel?.dovizFiyati ?? viewModel.model?.dovAlisFiat).commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     if (yetkiController.projeUygulamasiAcikMi) {
       projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
