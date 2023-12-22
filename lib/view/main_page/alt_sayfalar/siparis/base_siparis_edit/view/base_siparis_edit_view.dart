@@ -167,8 +167,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         title: "PDF Görüntüle",
                         iconWidget: Icons.picture_as_pdf_outlined,
                         onTap: () async {
+                          Get.back();
                           final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
-                              .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
+                              .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
                               .whereType<NetFectDizaynList>()
                               .toList();
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -177,7 +178,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                             children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
                           );
                           if (result is NetFectDizaynList) {
-                            Get.back();
                             Get.to(
                               () => PDFViewerView(
                                 title: result.dizaynAdi ?? "Serbest Raporlar",

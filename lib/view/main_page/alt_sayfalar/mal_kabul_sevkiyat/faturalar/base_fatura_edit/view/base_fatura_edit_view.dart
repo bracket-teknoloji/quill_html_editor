@@ -200,8 +200,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                           title: "PDF Görüntüle",
                           iconWidget: Icons.picture_as_pdf_outlined,
                           onTap: () async {
-                            final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? <NetFectDizaynList>[])
-                                .where((NetFectDizaynList element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
+                            Get.back();
+                            final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
+                                .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
                                 .whereType<NetFectDizaynList>()
                                 .toList();
                             final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -210,7 +211,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                               children: dizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
                             );
                             if (result is NetFectDizaynList) {
-                              Get.back();
                               await Get.to(
                                 () => PDFViewerView(
                                   title: result.dizaynAdi ?? "Serbest Raporlar",
@@ -290,7 +290,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 controller: tabController,
                 tabs: [
                   const Tab(child: Text("Genel")),
-                   Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
+                  Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar")),
                 ].whereType<Tab>().toList(),

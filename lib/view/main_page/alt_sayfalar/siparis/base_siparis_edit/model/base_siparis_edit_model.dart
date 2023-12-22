@@ -760,7 +760,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (kdvDahilMi ?? false) {
       genelToplam = toplamBrutTutar - getToplamIskonto;
     } else {
-      genelToplam = getAraToplam + kdvTutari;
+      //? getToplamEkMaliyet ekleme sebebim GetToplamIskonto İçinde zaten bulunuyor olması
+      genelToplam = getAraToplam + kdvTutari + getToplamEkMaliyet;
     }
     return genelToplam ?? 0;
   }
@@ -819,7 +820,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get isEmpty => this == BaseSiparisEditModel();
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
-  double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0);
+  double get getToplamEkMaliyet => (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
+
+  double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0) + getToplamEkMaliyet;
 
   double get getDovizliToplamIskonto => toplamDovizBrutTutar - getDovizliAraToplam - ((kdvDahilMi ?? false) ? dovizliKdv : 0);
 

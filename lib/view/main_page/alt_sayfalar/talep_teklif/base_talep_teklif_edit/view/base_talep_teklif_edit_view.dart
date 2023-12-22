@@ -191,7 +191,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               controller: tabController,
               tabs: [
                 const Tab(child: Text("Genel")),
-                 Tab(child: Text(loc(context).generalStrings.other)),
+                Tab(child: Text(loc(context).generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
@@ -250,8 +250,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                 title: "PDF Görüntüle",
                 iconWidget: Icons.picture_as_pdf_outlined,
                 onTap: () async {
+                  Get.back();
                   final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
-                      .where((element) => element.ozelKod == (StaticVariables.instance.isMusteriSiparisleri ? "MusteriSiparisi" : "SaticiSiparisi"))
+                      .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
                       .whereType<NetFectDizaynList>()
                       .toList();
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -260,7 +261,6 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                     children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
                   );
                   if (result is NetFectDizaynList) {
-                    Get.back();
                     Get.to(
                       () => PDFViewerView(
                         title: result.dizaynAdi ?? "Serbest Raporlar",
@@ -288,24 +288,24 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                 },
               ),
               BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
-              BottomSheetModel(
-                title: "Cari'ye Yapılan Son Satışlar",
-                iconWidget: Icons.info_outline_rounded,
-                onTap: () {
-                  Get.back();
-                  Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
-                },
-              ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
+              // BottomSheetModel(
+              //   title: "Cari'ye Yapılan Son Satışlar",
+              //   iconWidget: Icons.info_outline_rounded,
+              //   onTap: () {
+              //     Get.back();
+              //     Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
+              //   },
+              // ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
               // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
-              BottomSheetModel(
-                title: "Ekranı Yeni Kayda Hazırla",
-                description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                onTap: () {
-                  Get.back();
-                  viewModel.changeYeniKaydaHazirlaMi();
-                },
-              ).yetkiKontrol(widget.model.isEkle),
+              // BottomSheetModel(
+              //   title: "Ekranı Yeni Kayda Hazırla",
+              //   description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+              //   iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+              //   onTap: () {
+              //     Get.back();
+              //     viewModel.changeYeniKaydaHazirlaMi();
+              //   },
+              // ).yetkiKontrol(widget.model.isEkle),
             ].nullCheckWithGeneric,
           );
           if (result != null) {
