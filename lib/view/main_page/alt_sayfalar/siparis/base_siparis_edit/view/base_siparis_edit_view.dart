@@ -256,7 +256,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               controller: tabController,
               tabs: [
                 const Tab(child: Text("Genel")),
-                if (yetkiController.siparisDigerSekmesiGoster) const Tab(child: Text("Diğer")),
+                if (yetkiController.siparisDigerSekmesiGoster) Tab(child: Text(loc(context).generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
