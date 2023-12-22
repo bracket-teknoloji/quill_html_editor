@@ -2016,6 +2016,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel efatOzelkodAdi(String? efatOzelkodAdi);
 
+  KalemModel kalemAdi(String? kalemAdi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2116,6 +2118,7 @@ abstract class _$KalemModelCWProxy {
     String? arrBelgeNo,
     int? efatOzelkod,
     String? efatOzelkodAdi,
+    String? kalemAdi,
   });
 }
 
@@ -2435,6 +2438,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(efatOzelkodAdi: efatOzelkodAdi);
 
   @override
+  KalemModel kalemAdi(String? kalemAdi) => this(kalemAdi: kalemAdi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2536,6 +2542,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? arrBelgeNo = const $CopyWithPlaceholder(),
     Object? efatOzelkod = const $CopyWithPlaceholder(),
     Object? efatOzelkodAdi = const $CopyWithPlaceholder(),
+    Object? kalemAdi = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2911,6 +2918,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.efatOzelkodAdi
           // ignore: cast_nullable_to_non_nullable
           : efatOzelkodAdi as String?,
+      kalemAdi: kalemAdi == const $CopyWithPlaceholder()
+          ? _value.kalemAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemAdi as String?,
     );
   }
 }
@@ -3556,13 +3567,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       arrBelgeNo: fields[90] as String?,
       efatOzelkod: fields[91] as int?,
       efatOzelkodAdi: fields[92] as String?,
+      kalemAdi: fields[93] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(93)
+      ..writeByte(94)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3748,7 +3760,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(91)
       ..write(obj.efatOzelkod)
       ..writeByte(92)
-      ..write(obj.efatOzelkodAdi);
+      ..write(obj.efatOzelkodAdi)
+      ..writeByte(93)
+      ..write(obj.kalemAdi);
   }
 
   @override
@@ -4225,6 +4239,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       arrBelgeNo: json['ARR_BELGE_NO'] as String?,
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
       efatOzelkodAdi: json['EFAT_OZELKOD_ADI'] as String?,
+      kalemAdi: json['KALEM_ADI'] as String?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4330,5 +4345,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('ARR_BELGE_NO', instance.arrBelgeNo);
   writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
   writeNotNull('EFAT_OZELKOD_ADI', instance.efatOzelkodAdi);
+  writeNotNull('KALEM_ADI', instance.kalemAdi);
   return val;
 }

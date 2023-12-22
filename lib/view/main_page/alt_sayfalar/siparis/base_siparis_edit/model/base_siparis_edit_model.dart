@@ -1039,6 +1039,8 @@ class KalemModel with NetworkManagerMixin {
   int? efatOzelkod;
   @HiveField(92)
   String? efatOzelkodAdi;
+  @HiveField(93)
+  String? kalemAdi;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1134,6 +1136,7 @@ class KalemModel with NetworkManagerMixin {
     this.arrBelgeNo,
     this.efatOzelkod,
     this.efatOzelkodAdi,
+    this.kalemAdi,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
