@@ -36,6 +36,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
     );
     dialogManager.showSuccesDialog(result.message);
   }
+
   @action
   Future<void> netOpenXStatus() async {
     final result = await networkManager.dioGet(
@@ -63,6 +64,6 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
       showLoading: true,
     );
-    dialogManager.showSuccesDialog(result.message);
+    dialogManager.showSuccesDialog(result.message ?? "Servis Yeniden Başlatıldı");
   }
 }
