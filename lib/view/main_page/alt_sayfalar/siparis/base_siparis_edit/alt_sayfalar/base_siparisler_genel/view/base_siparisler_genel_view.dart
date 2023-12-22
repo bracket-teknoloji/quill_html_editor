@@ -122,9 +122,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       controller: belgeNoController,
                       maxLength: 15,
                       suffix: IconButton(
-                        onPressed: () async {
-                          await getBelgeNo();
-                        },
+                        onPressed: getBelgeNo,
                         icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                       ),
                       onChanged: (value) {
@@ -517,7 +515,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       showLoading: true,
     );
     if (result.success == true) {
-      BaseSiparisEditModel.instance.belgeNo = result.data?.firstOrNull?.belgeNo;
+      final List<BaseSiparisEditModel>? list = result.data.map((e)=> e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      BaseSiparisEditModel.instance.belgeNo = list?.firstOrNull?.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }
