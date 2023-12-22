@@ -507,7 +507,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                     Get.back();
                     await viewModel.resetPage();
                   },
-                  child: const Text("Uygula"),
+                  child: Text(loc(context).generalStrings.apply),
                 ),
               ),
             ],
