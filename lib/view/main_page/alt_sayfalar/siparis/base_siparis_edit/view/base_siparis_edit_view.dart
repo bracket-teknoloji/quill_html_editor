@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -157,9 +158,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_2_outlined,
-                        onTap: () {
+                        onTap: () async {
                           Get.back();
-                          dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
+                          dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                         },
                       ),
                       topluIskontoBottomSheetModel(context),
