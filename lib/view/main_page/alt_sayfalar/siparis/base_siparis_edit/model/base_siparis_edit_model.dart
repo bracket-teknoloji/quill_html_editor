@@ -1212,18 +1212,8 @@ class KalemModel with NetworkManagerMixin {
     return ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
-  double get getDovizBrutTutar => dovizFiyati ?? (brutTutar / (dovizKuru ?? 1));
-
-  double get dovizAraToplamTutari => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
-  double get getDovizAraToplamTutari => (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari;
-
-  double get dovizGenelToplamTutari => dovizAraToplamTutari + (!(BaseSiparisEditModel._instance?.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
-
-  double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
-
   double get dovizIskontoTutari {
-    double result = (getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
+    double result = (getSelectedMiktar ?? 0) * (dovizFiyati ?? 0);
     if (iskonto1OranMi ?? true) {
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
@@ -1246,8 +1236,18 @@ class KalemModel with NetworkManagerMixin {
     if (iskonto6 != null && iskonto6 != 0) {
       result = result - result * ((iskonto6 ?? 0) / 100);
     }
-    return ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - result;
+    return ((getSelectedMiktar ?? 0) * (dovizFiyati ?? 0)) - result;
   }
+
+  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malFazlasiMiktar ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
+  double get getDovizBrutTutar => dovizFiyati ?? (brutTutar / (dovizKuru ?? 1));
+
+  double get dovizAraToplamTutari => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)))) - dovizIskontoTutari;
+  double get getDovizAraToplamTutari => (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari;
+
+  double get dovizGenelToplamTutari => dovizAraToplamTutari + (!(BaseSiparisEditModel._instance?.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
+
+  double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 
