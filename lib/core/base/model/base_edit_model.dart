@@ -15,6 +15,7 @@ class BaseEditModel<T> {
   bool get isEkle => baseEditEnum == BaseEditEnum.ekle;
   bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala;
   bool get isRevize => baseEditEnum == BaseEditEnum.revize;
+  String? get getSubTitle => (isKopyala || isEkle || isRevize) ? "Yeni Belge" : null;
 
   BaseEditModel({
     this.model,
