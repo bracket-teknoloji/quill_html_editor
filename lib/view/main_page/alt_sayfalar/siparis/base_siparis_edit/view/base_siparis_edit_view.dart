@@ -94,6 +94,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
+          BaseSiparisEditModel.instance.kdvDahilMi ??= BaseSiparisEditModel.instance.kdvDahil == "E";
           BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
