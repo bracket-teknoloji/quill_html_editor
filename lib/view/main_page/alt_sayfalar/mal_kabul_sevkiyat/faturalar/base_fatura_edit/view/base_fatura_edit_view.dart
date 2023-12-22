@@ -7,6 +7,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
@@ -177,7 +178,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             appBar: AppBar(
               title: AppBarTitle(
                 title: widget.model.editTipiEnum?.getName ?? "Fatura",
-                subtitle: widget.model.model?.belgeNo,
+                subtitle: widget.model.getSubTitle ?? widget.model.model?.belgeNo,
                 isSubTitleSmall: widget.isSubTitleSmall,
               ),
               actions: <Widget>[
@@ -190,9 +191,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                         BottomSheetModel(
                           title: "Cari İşlemleri",
                           iconWidget: Icons.person_outline_outlined,
-                          onTap: () {
+                          onTap: () async {
                             Get.back();
-                            dialogManager.showCariGridViewDialog(BaseSiparisEditModel.instance.cariModel);
+                            dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                           },
                         ),
                         // topluIskontoBottomSheetModel(context),
