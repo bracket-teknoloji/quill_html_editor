@@ -249,7 +249,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 Observer(
                   builder: (_) => Row(
                     children: [
-                      Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, onChanged: (p0) => viewModel.kalemModel.stokAdi = p0)),
+                      Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, onChanged: (p0) => viewModel.kalemModel.kalemAdi = p0)),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Muh. Kodu",
