@@ -126,7 +126,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       children: <InlineSpan>[
                         const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                        TextSpan(text: "\n${model.getDovizliToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                       ],
                     ),
                   ),
