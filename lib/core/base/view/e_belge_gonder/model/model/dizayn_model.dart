@@ -31,4 +31,6 @@ class DizaynModel with NetworkManagerMixin {
 
   @override
   DizaynModel fromJson(Map<String, dynamic> json) => DizaynModel.fromJson(json);
+
+  String get dizaynTamAd => "${dizaynAdi?? ""} (${dizaynKodu??""})";
 }
