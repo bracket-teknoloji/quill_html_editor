@@ -207,7 +207,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       getData();
                                       Get.back();
                                     },
-                                    child: const Text("Uygula"),
+                                    child: Text(loc(context).generalStrings.apply),
                                   ),
                                 ),
                               ],

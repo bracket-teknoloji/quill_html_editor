@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "dart:ui";
 
 import "package:flutter/material.dart";
@@ -210,10 +212,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
                   }
                 }
-                // ignore: use_build_context_synchronously
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: "Filtre",
+                  title: loc(context).generalStrings.filter,
                   body: Column(
                     children: [
                       Wrap(
@@ -474,7 +475,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     getData();
                                     Get.back();
                                   },
-                                  child: const Text("Uygula"),
+                                  child: Text(loc(context).generalStrings.apply),
                                 ),
                               ),
                             ],

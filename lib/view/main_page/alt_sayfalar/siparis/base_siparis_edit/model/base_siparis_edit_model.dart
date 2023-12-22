@@ -601,7 +601,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get kapaliMi => tipi == 1;
 
-  bool get basariliMi => (efaturaMi == "E" || earsivMi == "E") && efaturaGibDurumKodu == 1300 && (getEditTipiEnum?.satisMi??false);
+  bool get basariliMi => (efaturaMi == "E" || earsivMi == "E") && efaturaGibDurumKodu == 1300 && (getEditTipiEnum?.satisMi ?? false);
 
   // bool get eBelgeGoster => eFaturaMi || eArsivMi;
 
@@ -696,6 +696,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   double get dovizliKdv => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAdi != null ? e.dovizKdvTutari : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
+
+  double get getDovizTutari {
+    dovizTutari = kalemList?.map((e) => e.dovizliMi ? e.dovizBrutTutar : 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
+    return dovizTutari ?? 0;
+  }
 
   double iskontoCheckerEkMaliyetsiz(double result) {
     if (genIsk1o != null && genIsk1o != 0.0) {

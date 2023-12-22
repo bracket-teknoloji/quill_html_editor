@@ -135,7 +135,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         Get.back();
                         await viewModel.resetPage();
                       },
-                      child: const Text("Uygula"),
+                      child: Text(loc(context).generalStrings.apply),
                     ).paddingAll(UIHelper.lowSize),
                   ],
                 ),
@@ -143,7 +143,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -166,7 +166,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: const Text("Yenile"),
+              child: Text(loc(context).generalStrings.refresh),
               onPressed: () async => await viewModel.resetPage(),
             ),
           ],

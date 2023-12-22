@@ -141,7 +141,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               },
             ),
             AppBarButton(
-              child: const Text("Yenile"),
+              child: Text(loc(context).generalStrings.refresh),
               onPressed: () {
                 viewModel.setKalemList(null);
                 getData();
@@ -378,7 +378,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               getData();
               Get.back();
             },
-            child: const Text("Uygula"),
+            child: Text(loc(context).generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

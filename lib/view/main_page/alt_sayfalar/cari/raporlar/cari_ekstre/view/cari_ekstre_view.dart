@@ -140,7 +140,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                   Get.back();
                 }
               },
-              child: const Text("Uygula"),
+              child: Text(loc(context).generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ),
         ],

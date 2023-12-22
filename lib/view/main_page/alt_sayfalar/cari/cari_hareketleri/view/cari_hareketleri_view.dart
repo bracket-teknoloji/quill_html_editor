@@ -152,7 +152,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: const Text("Yenile"),
+              child:  Text(loc(context).generalStrings.refresh),
               onPressed: () {
                 viewModel.setCariHareketleri(null);
                 return getData().then((value) => viewModel.setCariHareketleri(value));

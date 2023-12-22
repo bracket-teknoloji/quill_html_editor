@@ -300,7 +300,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: const Text("Uygula"),
+                  child: Text(loc(context).generalStrings.apply),
                 ),
               ),
             ],

@@ -27,6 +27,16 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
     return _$dbUpdateAsyncAction.run(() => super.dbUpdate());
   }
 
+  late final _$netOpenXCreateKernelAsyncAction = AsyncAction(
+      '_ServisIslemleriViewModelBase.netOpenXCreateKernel',
+      context: context);
+
+  @override
+  Future<void> netOpenXCreateKernel() {
+    return _$netOpenXCreateKernelAsyncAction
+        .run(() => super.netOpenXCreateKernel());
+  }
+
   late final _$netOpenXStatusAsyncAction = AsyncAction(
       '_ServisIslemleriViewModelBase.netOpenXStatus',
       context: context);
@@ -34,6 +44,25 @@ mixin _$ServisIslemleriViewModel on _ServisIslemleriViewModelBase, Store {
   @override
   Future<void> netOpenXStatus() {
     return _$netOpenXStatusAsyncAction.run(() => super.netOpenXStatus());
+  }
+
+  late final _$eFaturaDLLKayitlaAsyncAction = AsyncAction(
+      '_ServisIslemleriViewModelBase.eFaturaDLLKayitla',
+      context: context);
+
+  @override
+  Future<void> eFaturaDLLKayitla() {
+    return _$eFaturaDLLKayitlaAsyncAction.run(() => super.eFaturaDLLKayitla());
+  }
+
+  late final _$netFectWinServiceRestartAsyncAction = AsyncAction(
+      '_ServisIslemleriViewModelBase.netFectWinServiceRestart',
+      context: context);
+
+  @override
+  Future<void> netFectWinServiceRestart() {
+    return _$netFectWinServiceRestartAsyncAction
+        .run(() => super.netFectWinServiceRestart());
   }
 
   @override

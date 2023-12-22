@@ -233,7 +233,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                   Get.back();
                 }
               },
-              child: const Text("Uygula"),
+              child: Text(loc(context).generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ],
         ),

@@ -71,13 +71,17 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await getHesapListesi();
       if (widget.cariListesiModel != null) {
         viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
+        viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);
+        _aciklamaController.text = "EFT/HAVALE - ${widget.cariListesiModel?.cariAdi ?? ""}";
+        viewModel.setAciklama(_aciklamaController.text);
         _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
+        _plasiyerController.text = widget.cariListesiModel?.plasiyerAciklama ?? "";
       } else {
         await getCari();
       }
+      await getHesapListesi();
     });
     super.initState();
   }
@@ -117,7 +121,11 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                 if (_formKey.currentState?.validate() == true) {
                   await dialogManager.showAreYouSureDialog(() async {
                     viewModel.model.guid = const Uuid().v4();
-                    await viewModel.postData();
+                    final result = await viewModel.postData();
+                    if (result.success == true) {
+                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
+                      Get.back(result: result);
+                    }
                   });
                 }
               },

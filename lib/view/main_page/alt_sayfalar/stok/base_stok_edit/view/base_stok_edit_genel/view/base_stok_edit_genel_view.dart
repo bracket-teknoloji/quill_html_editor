@@ -371,7 +371,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 ),
               ),
               CustomWidgetWithLabel(
-                text: "Diğer",
+                text: loc(context).generalStrings.other,
                 child: CustomTextField(
                   // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
                   readOnly: true,

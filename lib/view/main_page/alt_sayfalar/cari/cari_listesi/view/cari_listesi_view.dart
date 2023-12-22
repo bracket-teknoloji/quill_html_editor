@@ -821,7 +821,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       Get.back();
                       await viewModel.resetPage();
                     },
-                    child: const Text("Uygula"),
+                    child: Text(loc(context).generalStrings.apply),
                   ),
                 ),
               ],

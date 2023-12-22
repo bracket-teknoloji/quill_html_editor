@@ -221,7 +221,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                 Get.back();
               }
             },
-            child: const Text("Uygula"),
+            child: Text(loc(context).generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

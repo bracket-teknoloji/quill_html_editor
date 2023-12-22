@@ -77,7 +77,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariylaGonderildiMi),
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
-                  const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
+                   ColorfulBadge(label: Text(loc(context).generalStrings.alert), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
                   ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
                   Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
@@ -341,7 +341,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                     }
                   },
-                  child:  Text(loc(context).generalStrings.print),
+                  child: Text(loc(context).generalStrings.print),
                 ).paddingAll(UIHelper.lowSize),
               ],
             ).paddingAll(UIHelper.lowSize),

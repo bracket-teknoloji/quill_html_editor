@@ -221,7 +221,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 Get.back();
                                 viewModel.setFuture(getData());
                               },
-                              child: const Text("Uygula"),
+                              child: Text(loc(context).generalStrings.apply),
                             ),
                           ),
                         ],
@@ -253,7 +253,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: const Text("Yenile"),
+              child: Text(loc(context).generalStrings.refresh),
               onPressed: () {
                 getData();
               },

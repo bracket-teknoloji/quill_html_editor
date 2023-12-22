@@ -132,8 +132,8 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
         bottom: AppBarPreferedSizedBottom(
           children: [
             AppBarButton(icon: Icons.filter_alt_outlined, hasFilter: false, onPressed: filtrele, child: Text(loc(context).generalStrings.filter)),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child:  Text(loc(context).generalStrings.sort)),
-            AppBarButton(icon: Icons.refresh_outlined, hasFilter: false, onPressed: refresh, child: const Text("Yenile")),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child: Text(loc(context).generalStrings.sort)),
+            AppBarButton(icon: Icons.refresh_outlined, hasFilter: false, onPressed: refresh, child: Text(loc(context).generalStrings.refresh)),
           ],
         ),
       );
@@ -275,7 +275,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 onTap: () => viewModel.changeDigerGoster(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [const Text("Diğer"), Observer(builder: (_) => Icon(viewModel.digerGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
+                  children: [Text(loc(context).generalStrings.other), Observer(builder: (_) => Icon(viewModel.digerGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
                 ),
               ).paddingAll(UIHelper.lowSize),
               Column(
@@ -359,7 +359,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   Get.back();
                   return viewModel.resetPage();
                 },
-                child: const Text("Uygula"),
+                child: Text(loc(context).generalStrings.apply),
               ).paddingAll(UIHelper.lowSize),
             ],
           ),

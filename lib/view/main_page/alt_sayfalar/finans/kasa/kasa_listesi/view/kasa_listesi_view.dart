@@ -87,14 +87,14 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               onPressed: filtrele,
               child: Text(loc(context).generalStrings.filter),
             ),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child:  Text(loc(context).generalStrings.sort)),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: Text(loc(context).generalStrings.sort)),
             AppBarButton(
               icon: Icons.refresh_outlined,
               onPressed: () async {
                 viewModel.setKasaListesi(null);
                 await viewModel.getData();
               },
-              child: const Text("Yenile"),
+              child: Text(loc(context).generalStrings.refresh),
             ),
           ],
         ),
@@ -236,7 +236,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                     viewModel.setKasaListesi(null);
                     viewModel.getData();
                   },
-                  child: const Text("Uygula"),
+                  child: Text(loc(context).generalStrings.apply),
                 ),
               ),
             ],

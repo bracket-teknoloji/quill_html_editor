@@ -286,7 +286,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           Get.back();
                           await viewModel.getData();
                         },
-                        child: const Text("Uygula"),
+                        child: Text(loc(context).generalStrings.apply),
                       ).paddingAll(UIHelper.lowSize),
                     ],
                   ),
@@ -295,7 +295,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child:  Text(loc(context).generalStrings.sort),
+              child: Text(loc(context).generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -316,7 +316,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                 }
               },
             ),
-            AppBarButton(icon: Icons.refresh_outlined, onPressed: () async => await viewModel.getData(), child: const Text("Yenile")),
+            AppBarButton(icon: Icons.refresh_outlined, onPressed: () async => await viewModel.getData(), child: Text(loc(context).generalStrings.refresh)),
           ],
         ),
       );

@@ -77,7 +77,7 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
                 viewModel.setFuture();
                 Get.back();
               },
-              child: const Text("Uygula"),
+              child: Text(loc(context).generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ),
         ],

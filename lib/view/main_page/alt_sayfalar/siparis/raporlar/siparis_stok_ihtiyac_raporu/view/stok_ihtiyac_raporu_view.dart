@@ -164,7 +164,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
               viewModel.setFuture();
               Get.back();
             },
-            child: const Text("Uygula"),
+            child: Text(loc(context).generalStrings.apply),
           ),
         ],
       ),

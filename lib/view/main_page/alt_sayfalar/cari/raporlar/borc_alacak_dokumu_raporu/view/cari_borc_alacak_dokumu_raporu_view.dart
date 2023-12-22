@@ -83,7 +83,7 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
               viewModel.setFuture();
               Get.back();
             },
-            child: const Text("Uygula"),
+            child: Text(loc(context).generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

@@ -260,7 +260,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       dialogManager.showAreYouSureDialog(() async {
                         final result = await viewModel.sendTaslak();
                         if (result.success ?? false) {
-                          dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                          dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
                           final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                           if (siparisModel != null) {
                             viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
@@ -282,7 +282,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (result.success ?? false) {
                             final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                             if (siparisModel != null) {
-                              dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                              dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
                               viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
 
                               viewModel.setSiparisModel(siparisModel);
@@ -307,7 +307,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         onPressed: () async {
                           final result = await viewModel.sendEBelge();
                           if (result.success ?? false) {
-                            dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                            dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
 
                             Get.back(result: true);
                           }

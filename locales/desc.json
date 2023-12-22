@@ -38,6 +38,11 @@
     "print": "print",
     "delete": "delete",
     "view": "view",
-    "transactions": "transactions"
+    "transactions": "transactions",
+    "other": "other",
+    "general": "general",
+    "alert": "alert",
+    "refresh": "refresh",
+    "apply": "apply"
   }
 }

@@ -155,7 +155,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 Get.back();
               }
             },
-            child: const Text("Uygula"),
+            child: Text(loc(context).generalStrings.apply),
           ).paddingAll(UIHelper.midSize),
         ],
       ),

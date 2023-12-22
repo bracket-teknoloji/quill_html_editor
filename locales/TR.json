@@ -37,6 +37,11 @@
     "print": "Yazdır",
     "delete": "Sil",
     "view": "Görüntüle",
-    "transactions": "İşlemler"
+    "transactions": "İşlemler",
+    "other": "Diğer",
+    "general": "Genel",
+    "alert": "Uyarı",
+    "refresh": "Yenile",
+    "apply": "Uygula"
   }
 }

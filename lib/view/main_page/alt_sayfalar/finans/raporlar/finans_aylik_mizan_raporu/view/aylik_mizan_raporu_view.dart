@@ -67,7 +67,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
                   Get.back();
                 }
               },
-              child: const Text("Uygula"),
+              child: Text(loc(context).generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ],
         ),

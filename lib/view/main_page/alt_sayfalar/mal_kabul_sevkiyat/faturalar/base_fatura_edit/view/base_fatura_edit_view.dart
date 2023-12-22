@@ -290,7 +290,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 controller: tabController,
                 tabs: [
                   const Tab(child: Text("Genel")),
-                  const Tab(child: Text("Diğer")).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
+                   Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar")),
                 ].whereType<Tab>().toList(),

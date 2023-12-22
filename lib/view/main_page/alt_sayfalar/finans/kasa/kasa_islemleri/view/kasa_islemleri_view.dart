@@ -317,7 +317,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: const Text("Uygula"),
+                  child: Text(loc(context).generalStrings.apply),
                 ),
               ),
             ],

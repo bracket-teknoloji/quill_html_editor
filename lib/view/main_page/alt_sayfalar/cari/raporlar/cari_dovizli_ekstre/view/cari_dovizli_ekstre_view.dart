@@ -134,7 +134,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                   Get.back();
                 }
               },
-              child: const Text("Uygula"),
+              child: Text(loc(context).generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ),
         ],

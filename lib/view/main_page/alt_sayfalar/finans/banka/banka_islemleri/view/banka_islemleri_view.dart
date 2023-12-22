@@ -282,7 +282,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: const Text("Uygula"),
+                  child: Text(loc(context).generalStrings.apply),
                 ),
               ),
             ],
