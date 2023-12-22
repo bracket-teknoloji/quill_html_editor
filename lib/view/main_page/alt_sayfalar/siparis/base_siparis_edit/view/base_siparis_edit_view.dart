@@ -114,6 +114,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.vadeGunu = result.vadeGunu;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;

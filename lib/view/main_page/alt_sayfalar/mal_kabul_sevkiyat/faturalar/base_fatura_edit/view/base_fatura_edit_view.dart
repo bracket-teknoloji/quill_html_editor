@@ -143,6 +143,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           final cariModel = await getCari();
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
+          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
             BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
             BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
@@ -324,7 +325,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           bool result = false;
           await dialogManager.showAreYouSureDialog(() {
             result = true;
-            BaseSiparisEditModel.resetInstance();
+            BaseSiparisEditModel.resetInstance();       
           });
           return result;
         },
@@ -508,7 +509,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                       }
                       Get.back(result: true);
                       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
-                        dialogManager.showAreYouSureDialog(() async {});
                       } else {
                         dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
                       }

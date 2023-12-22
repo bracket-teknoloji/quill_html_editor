@@ -116,6 +116,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.vadeGunu = result.vadeGunu;
           // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
