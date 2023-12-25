@@ -45,6 +45,12 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   }
 
   @action
+  void setOzelKod1(String? value) {
+    model = model.copyWith(ozelKod1: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setOzelKod2(String? value) {
     model = model.copyWith(ozelKod2: value);
     BaseSiparisEditModel.setInstance(model);

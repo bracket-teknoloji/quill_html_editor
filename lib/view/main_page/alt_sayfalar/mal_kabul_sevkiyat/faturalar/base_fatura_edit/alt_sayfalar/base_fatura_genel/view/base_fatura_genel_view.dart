@@ -45,9 +45,11 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   late final TextEditingController _cariController;
   late final TextEditingController _teslimCariController;
   late final TextEditingController _plasiyerController;
+  late final TextEditingController _projeController;
   late final TextEditingController _belgeTipiController;
   late final TextEditingController _tarihController;
   late final TextEditingController _topluDepoController;
+  late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
@@ -74,8 +76,10 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
+    _projeController = TextEditingController(text: model.projeAciklama);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.topluDepo.toStringIfNotNull);
+    _ozelKod1Controller = TextEditingController(text: model.ozelKod1);
     _ozelKod2Controller = TextEditingController(text: model.ozelKod2);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
@@ -109,9 +113,11 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _cariController.dispose();
     _teslimCariController.dispose();
     _plasiyerController.dispose();
+    _projeController.dispose();
     _belgeTipiController.dispose();
     _tarihController.dispose();
     _topluDepoController.dispose();
+    _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
     _aciklama1Controller.dispose();
     _aciklama2Controller.dispose();
@@ -209,13 +215,13 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         readOnly: true,
                         isMust: true,
                         suffixMore: true,
-                        controller: _plasiyerController,
+                        controller: _projeController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
                           final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
-                            _plasiyerController.text = result.projeAciklama ?? "";
+                            _projeController.text = result.projeAciklama ?? "";
                             viewModel.setProje(result);
                           }
                         },
@@ -297,22 +303,23 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   children: <Widget>[
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Toplu Depo",
+                        labelText: "Özel Kod 1",
                         readOnly: true,
                         suffixMore: true,
-                        controller: _topluDepoController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                        onClear: () => viewModel.setTopluDepoKodu(null),
+                        isMust: true,
+                        controller: _ozelKod1Controller,
+                        enabled: enable,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                        onClear: () => viewModel.setOzelKod1(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                          final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
                           if (result != null) {
-                            _topluDepoController.text = result.depoTanimi ?? "";
-                            viewModel.setTopluDepoKodu(result.depoKodu);
+                            _ozelKod1Controller.text = result.aciklama ?? "";
+                            viewModel.setOzelKod1(result.kod);
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
+                    ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Özel Kod 2",
@@ -330,9 +337,25 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ),
+                    ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                   ],
                 ),
+                CustomTextField(
+                  labelText: "Toplu Depo",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: _topluDepoController,
+                  enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                  onClear: () => viewModel.setTopluDepoKodu(null),
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                    if (result != null) {
+                      _topluDepoController.text = result.depoTanimi ?? "";
+                      viewModel.setTopluDepoKodu(result.depoKodu);
+                    }
+                  },
+                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
                 CustomLayoutBuilder(
                   splitCount: 2,
                   children: [

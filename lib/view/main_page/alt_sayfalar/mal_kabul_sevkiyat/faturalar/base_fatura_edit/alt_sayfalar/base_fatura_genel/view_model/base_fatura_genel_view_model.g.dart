@@ -95,6 +95,17 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOzelKod2(String? value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setOzelKod2');
