@@ -38,7 +38,7 @@
     "print": "print",
     "delete": "delete",
     "view": "view",
-    "transactions": "transactions",
+    "actions": "actions",
     "other": "other",
     "general": "general",
     "alert": "alert",
