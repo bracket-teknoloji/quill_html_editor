@@ -291,16 +291,7 @@ class CacheManager {
   static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
-  static void removeSiparisEditList(int index) {
-    final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeAt(index);
-    }
-    siparisEditListBox.put(
-      StaticVariables.getSiparisString,
-      ListSiparisEditModel(list: list),
-    );
-  }
+  static void removeSiparisEditList(int index) => siparisEditListBox.deleteAt(index);
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
     final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;

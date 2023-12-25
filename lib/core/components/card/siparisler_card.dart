@@ -31,7 +31,7 @@ class SiparislerCard extends StatefulWidget {
     required this.model,
     this.onDeleted,
     required this.editTipiEnum,
-    this.index,
+    required this.index,
     this.isGetData,
     this.showEkAciklama,
     this.showMiktar,
@@ -40,7 +40,7 @@ class SiparislerCard extends StatefulWidget {
   });
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
-  final int? index;
+  final int index;
   final bool? isGetData;
   final BaseSiparisEditModel model;
   final Function? onDeleted;
@@ -124,7 +124,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           return dialogManager.showAreYouSureDialog(() async {
                             if (widget.model.isNew == true) {
                               try {
-                                CacheManager.removeSiparisEditList(widget.index!);
+                                CacheManager.removeSiparisEditList(widget.index);
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
                               } catch (e) {
@@ -154,7 +154,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.transactions,
+                        title: loc(context).generalStrings.actions,
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
