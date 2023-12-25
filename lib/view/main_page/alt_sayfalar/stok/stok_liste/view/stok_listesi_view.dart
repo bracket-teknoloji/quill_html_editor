@@ -58,9 +58,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
-    if (widget.searchText != null) {
+    if (widget.isGetData ?? false) {
       viewModel.setSearchBar();
-      viewModel.setSearchValue(widget.searchText!);
+      // viewModel.setSearchValue(widget.searchText);
     }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getData();
