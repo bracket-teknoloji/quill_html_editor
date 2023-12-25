@@ -65,7 +65,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                       padding: UIHelper.lowPaddingVertical,
                       child: CustomWidgetWithLabel(
                         text: "Şifre",
-                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod),
+                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod()),
                       ),
                     ),
                     Row(
@@ -113,7 +113,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
   Future<void> _getQR(BuildContext context) async {
     final barcode = await Get.toNamed("/qr");
     GenericResponseModel response;
-    
+
     if (barcode != null) {
       AccountModel.instance.qrData = barcode;
       response = await networkManager.getUyeBilgileri(null, getFromCache: false);
