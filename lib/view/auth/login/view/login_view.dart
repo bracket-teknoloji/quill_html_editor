@@ -203,6 +203,7 @@ class _LoginViewState extends BaseState<LoginView> {
                               controller: passwordController,
                               textInputAction: TextInputAction.done,
                               obscureText: viewModel.obscurePassword,
+                              onSubmitted: (_) => login(),
                               decoration: InputDecoration(
                                 suffixIcon: IconButton(
                                   onPressed: () => viewModel.changeShowPassword(),
