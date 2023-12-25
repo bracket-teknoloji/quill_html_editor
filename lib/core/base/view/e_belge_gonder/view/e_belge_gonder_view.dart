@@ -96,7 +96,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
-              title: "${widget.model.titleName} Gönder",
+              title: "${widget.model.getTitle} Gönder",
               subtitle: widget.model.belgeNo,
             ),
           ),
@@ -219,7 +219,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         value: model.dovizliOlustur ?? false,
                         onChanged: viewModel.setDovizOlustur,
                         title: const Text("Döviz Oluştur"),
-                      ).yetkiVarMi(viewModel.model.dovizliMi && !viewModel.siparisEditModel.taslakMi),
+                      ).yetkiVarMi(viewModel.model.dovizliMi),
                     ),
                     Observer(
                       builder: (_) => SwitchListTile.adaptive(
