@@ -179,5 +179,5 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get kabulEdildiMi => true;
 
-  String get onayDurumuString => "${cevapKodu ?? ""} - ${cevapAciklama ?? ""}";
+  String get onayDurumuString => "${cevapKodu ?? "0"} - ${cevapAciklama ?? "0"}";
 }
