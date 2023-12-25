@@ -40,6 +40,9 @@ dependencies:
   #Network Dependencies
   dio: ^5.1.1
 
+  #Localizations Dependencies
+  easy_localization: ^3.0.3
+
   #Utils Dependencies
   crypto: ^3.0.3
   copy_with_extension: ^5.0.3
