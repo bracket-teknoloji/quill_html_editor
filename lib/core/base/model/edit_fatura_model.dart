@@ -42,7 +42,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
         tempBelgeId: model.tempBelgeId,
         islemKodu: model.islemKodu,
         yeniBelgeNo: model.yeniBelgeNo,
-        kalemler: model.kalemler,
+        kalemler: model.kalemList,
       );
 
       factory EditFaturaModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => EditFaturaModel(
