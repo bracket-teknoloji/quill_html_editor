@@ -166,7 +166,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       children: <InlineSpan>[
                         const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                        TextSpan(text: "\n${model.getDovizliToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                       ],
                     ),
                   ),
@@ -415,7 +415,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(model.eFaturaSerisindenMi),
               ],
             ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
 
@@ -453,17 +453,15 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
     if (model.vadeGunu == null) {
-      // viewModel.setVadeTarihi(DateTime.now());
       viewModel.model.vadeGunu = 0;
     }
     if (model.vadeTarihi == null) {
-      viewModel.model.vadeGunu = 0;
-      viewModel.setVadeTarihi(DateTime.now());
+      viewModel.setVadeTarihi(DateTime.now().add(Duration(days: model.vadeGunu ?? 0)));
     }
-    // if ((model.vadeTarihi?.isBefore(DateTime.now()) ?? false) && widget.model.baseEditEnum != BaseEditEnum.goruntule) {
-    //   viewModel.setVadeTarihi(DateTime.now());
-    // }
-    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
+
+    vadeGunuController = TextEditingController(
+      text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
+    );
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
     if (widget.model.baseEditEnum != BaseEditEnum.ekle && viewModel.model.efatOzelkod == null && widget.model.editTipiEnum?.irsaliyeMi != true) {
