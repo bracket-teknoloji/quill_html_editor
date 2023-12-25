@@ -298,6 +298,8 @@ final class YetkiController {
   // bool get satisFatEkle => _isTrue(_yetkiModel?.ekle);
 
   //! E-FATURA
+  bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ?_paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
+  bool ebelgeOzelKod2AktifMi(bool satisMi) => _isTrue(satisMi ?_paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
   bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
   bool get ebelgeEFaturaGelenKutusu => _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
   bool get ebelgeEFaturaGidenKutusu => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
