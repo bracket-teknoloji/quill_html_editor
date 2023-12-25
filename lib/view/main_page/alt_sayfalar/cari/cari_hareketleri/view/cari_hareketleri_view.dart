@@ -152,7 +152,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child:  Text(loc(context).generalStrings.refresh),
+              child: Text(loc(context).generalStrings.refresh),
               onPressed: () {
                 viewModel.setCariHareketleri(null);
                 return getData().then((value) => viewModel.setCariHareketleri(value));
@@ -256,7 +256,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     ).yetkiKontrol(model.resmiBelgeNo != null),
                                     BottomSheetModel(
                                       iconWidget: Icons.list_alt_outlined,
-                                      title: loc(context).generalStrings.transactions,
+                                      title: loc(context).generalStrings.actions,
                                       onTap: () async {
                                         Get.back();
                                         await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(viewModel.cariHareketleriList?[index]));
