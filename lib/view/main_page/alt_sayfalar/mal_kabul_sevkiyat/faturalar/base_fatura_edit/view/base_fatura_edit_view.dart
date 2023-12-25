@@ -109,8 +109,22 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+            BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.setInstance(widget.model.model);
+            BaseSiparisEditModel.instance.tarih = DateTime.now();
+            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+            if (cariModel is CariListesiModel) {
+              viewModel.changeIsBaseSiparisEmpty(true);
+              BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+              BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+              BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+              BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+              BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+              BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
+            }
             if (widget.model.model?.kalemList != null) {
               BaseSiparisEditModel.instance.kalemList = widget.model.model?.kalemList;
             }
@@ -143,7 +157,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           final cariModel = await getCari();
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
-          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+            BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+            BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
             BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
             BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
@@ -325,7 +340,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           bool result = false;
           await dialogManager.showAreYouSureDialog(() {
             result = true;
-            BaseSiparisEditModel.resetInstance();       
+            BaseSiparisEditModel.resetInstance();
           });
           return result;
         },
@@ -374,14 +389,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   }
 
   Future<bool> postData() async {
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum == BaseEditEnum.kopyala || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
     const Uuid uuid = Uuid();
+    final BaseSiparisEditModel newInstance =
+        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, mevcutCariKodu: BaseSiparisEditModel.instance.cariKodu, mevcutBelgeNo: BaseSiparisEditModel.instance.belgeNo);
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null)).toJson(),
+      data: newInstance.toJson(),
       showLoading: true,
     );
     if (result.success == true) {

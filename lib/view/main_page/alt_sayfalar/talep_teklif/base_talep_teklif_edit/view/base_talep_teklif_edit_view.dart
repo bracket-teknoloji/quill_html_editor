@@ -115,6 +115,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
+          BaseSiparisEditModel.instance.efaturaTipi = result.efaturaTipi;
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = result.vadeGunu;
           // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için

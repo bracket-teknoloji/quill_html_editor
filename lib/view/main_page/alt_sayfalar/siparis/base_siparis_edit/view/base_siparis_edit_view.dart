@@ -145,7 +145,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           appBar: AppBar(
             title: AppBarTitle(
               title: widget.appBarTitle ?? "Sipariş",
-              subtitle: widget.appBarSubtitle ?? widget.model.model?.belgeNo,
+              subtitle: widget.model.getSubTitle ?? widget.model.model?.belgeNo,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
             // title: const Text("Sipariş Detayları"),
