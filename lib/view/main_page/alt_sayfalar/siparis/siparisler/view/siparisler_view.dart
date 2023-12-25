@@ -601,7 +601,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                           showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
                           model: viewModel.musteriSiparisleriList?[index] ?? BaseSiparisEditModel(),
-                          index: (viewModel.musteriSiparisleriList?[index]?.isNew ?? false) ? index : null,
+                          index: index,
                           editTipiEnum: widget.widgetModel.editTipiEnum,
                           onDeleted: () => viewModel.removeSiparislerList(index),
                           onUpdated: (value) {
