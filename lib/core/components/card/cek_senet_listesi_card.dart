@@ -126,7 +126,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           onTap: deleteCekSenet,
         ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
         BottomSheetModel(
-          title: loc(context).generalStrings.transactions,
+          title: loc(context).generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
           onTap: () {
             Get.back();

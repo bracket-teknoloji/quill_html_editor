@@ -166,7 +166,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.transactions,
+                        title: loc(context).generalStrings.actions,
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();
