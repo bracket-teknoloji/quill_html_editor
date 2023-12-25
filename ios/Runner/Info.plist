@@ -8,6 +8,11 @@
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
 		<string>Picker</string>
+		<key>CFBundleLocalizations</key>
+		<array>
+			<string>tr</string>
+			<string>en</string>
+		</array>
 		<key>CFBundleDocumentTypes</key>
 		<array>
 			<dict>
@@ -22,7 +27,8 @@
 		<!-- <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string> -->
+		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra
+		gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string> -->
 		<key>CFBundleGetInfoString</key>
 		<string></string>
 		<key>CFBundleIdentifier</key>
@@ -40,15 +46,15 @@
 		<key>CFBundleVersion</key>
 		<string>87</string>
 		<key>FirebaseAppDelegateProxyEnabled</key>
-		<false/>
+		<false />
 		<key>ITSAppUsesNonExemptEncryption</key>
-		<false/>
+		<false />
 		<key>LSApplicationCategoryType</key>
 		<string>public.app-category.business</string>
 		<key>LSRequiresIPhoneOS</key>
-		<true/>
+		<true />
 		<key>LSSupportsOpeningDocumentsInPlace</key>
-		<true/>
+		<true />
 		<key>NSHumanReadableCopyright</key>
 		<string></string>
 		<key>NSCameraUsageDescription</key>
@@ -58,7 +64,7 @@
 		<key>NSUserTrackingUsageDescription</key>
 		<string>Uygulama herhangi bir hata aldığında bize haber vermesi için lütfen bunu onaylayın.</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
-		<true/>
+		<true />
 		<key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>
@@ -69,9 +75,9 @@
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
 		<key>UIRequiresFullScreen</key>
-		<true/>
+		<true />
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<false />
 		<key>UIStatusBarStyle</key>
 		<string></string>
 		<key>UISupportedInterfaceOrientations</key>
@@ -88,8 +94,8 @@
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
 		<key>UISupportsDocumentBrowser</key>
-		<true/>
+		<true />
 		<key>UIViewControllerBasedStatusBarAppearance</key>
-		<false/>
+		<false />
 	</dict>
 </plist>
