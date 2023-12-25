@@ -466,17 +466,15 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
       iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
     if (model.vadeGunu == null) {
-      // viewModel.setVadeTarihi(DateTime.now());
       viewModel.model.vadeGunu = 0;
     }
     if (model.vadeTarihi == null) {
-      viewModel.model.vadeGunu = 0;
-      viewModel.setVadeTarihi(DateTime.now());
+      viewModel.setVadeTarihi(DateTime.now().add(Duration(days: model.vadeGunu ?? 0)));
     }
-    // if ((model.vadeTarihi?.isBefore(DateTime.now()) ?? false) && widget.model.baseEditEnum != BaseEditEnum.goruntule) {
-    //   viewModel.setVadeTarihi(DateTime.now());
-    // }
-    vadeGunuController = TextEditingController(text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull);
+
+    vadeGunuController = TextEditingController(
+      text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
+    );
     eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
     istisnaKoduController = TextEditingController();
   }
