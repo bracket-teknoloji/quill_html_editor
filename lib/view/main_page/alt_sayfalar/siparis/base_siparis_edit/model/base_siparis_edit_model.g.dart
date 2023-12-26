@@ -2018,6 +2018,10 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kalemAdi(String? kalemAdi);
 
+  KalemModel kalemAdiDegistimi(bool? kalemAdiDegistimi);
+
+  KalemModel kalemAdiDegisti(bool? kalemAdiDegisti);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2119,6 +2123,8 @@ abstract class _$KalemModelCWProxy {
     int? efatOzelkod,
     String? efatOzelkodAdi,
     String? kalemAdi,
+    bool? kalemAdiDegistimi,
+    bool? kalemAdiDegisti,
   });
 }
 
@@ -2441,6 +2447,14 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel kalemAdi(String? kalemAdi) => this(kalemAdi: kalemAdi);
 
   @override
+  KalemModel kalemAdiDegistimi(bool? kalemAdiDegistimi) =>
+      this(kalemAdiDegistimi: kalemAdiDegistimi);
+
+  @override
+  KalemModel kalemAdiDegisti(bool? kalemAdiDegisti) =>
+      this(kalemAdiDegisti: kalemAdiDegisti);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2543,6 +2557,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? efatOzelkod = const $CopyWithPlaceholder(),
     Object? efatOzelkodAdi = const $CopyWithPlaceholder(),
     Object? kalemAdi = const $CopyWithPlaceholder(),
+    Object? kalemAdiDegistimi = const $CopyWithPlaceholder(),
+    Object? kalemAdiDegisti = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2922,6 +2938,14 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kalemAdi
           // ignore: cast_nullable_to_non_nullable
           : kalemAdi as String?,
+      kalemAdiDegistimi: kalemAdiDegistimi == const $CopyWithPlaceholder()
+          ? _value.kalemAdiDegistimi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemAdiDegistimi as bool?,
+      kalemAdiDegisti: kalemAdiDegisti == const $CopyWithPlaceholder()
+          ? _value.kalemAdiDegisti
+          // ignore: cast_nullable_to_non_nullable
+          : kalemAdiDegisti as bool?,
     );
   }
 }
@@ -3135,13 +3159,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       onaylayankul: fields[151] as String?,
       onaytarihi: fields[152] as DateTime?,
       efaturaSenaryo: fields[153] as String?,
-    );
+    )..paramMap = (fields[154] as Map?)?.cast<String, dynamic>();
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(154)
+      ..writeByte(155)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3449,7 +3473,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(152)
       ..write(obj.onaytarihi)
       ..writeByte(153)
-      ..write(obj.efaturaSenaryo);
+      ..write(obj.efaturaSenaryo)
+      ..writeByte(154)
+      ..write(obj.paramMap);
   }
 
   @override
@@ -3568,13 +3594,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       efatOzelkod: fields[91] as int?,
       efatOzelkodAdi: fields[92] as String?,
       kalemAdi: fields[93] as String?,
+      kalemAdiDegistimi: fields[94] as bool?,
+      kalemAdiDegisti: fields[95] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(94)
+      ..writeByte(96)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3762,7 +3790,11 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(92)
       ..write(obj.efatOzelkodAdi)
       ..writeByte(93)
-      ..write(obj.kalemAdi);
+      ..write(obj.kalemAdi)
+      ..writeByte(94)
+      ..write(obj.kalemAdiDegistimi)
+      ..writeByte(95)
+      ..write(obj.kalemAdiDegisti);
   }
 
   @override
@@ -3966,7 +3998,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : DateTime.parse(json['ONAYTARIHI'] as String),
       efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
-    );
+    )..paramMap = json['PARAM_MAP'] as Map<String, dynamic>? ?? {};
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -4132,6 +4164,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ONAYLAYANKUL', instance.onaylayankul);
   writeNotNull('ONAYTARIHI', instance.onaytarihi?.toIso8601String());
   writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
+  writeNotNull('PARAM_MAP', instance.paramMap);
   return val;
 }
 
@@ -4240,6 +4273,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       efatOzelkod: json['EFAT_OZELKOD'] as int?,
       efatOzelkodAdi: json['EFAT_OZELKOD_ADI'] as String?,
       kalemAdi: json['KALEM_ADI'] as String?,
+      kalemAdiDegistimi: json['KALEM_ADI_DEGISTIMI'] as bool?,
+      kalemAdiDegisti: json['KALEM_ADI_DEGISTI'] as bool?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4346,5 +4381,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('EFAT_OZELKOD', instance.efatOzelkod);
   writeNotNull('EFAT_OZELKOD_ADI', instance.efatOzelkodAdi);
   writeNotNull('KALEM_ADI', instance.kalemAdi);
+  writeNotNull('KALEM_ADI_DEGISTIMI', instance.kalemAdiDegistimi);
+  writeNotNull('KALEM_ADI_DEGISTI', instance.kalemAdiDegisti);
   return val;
 }
