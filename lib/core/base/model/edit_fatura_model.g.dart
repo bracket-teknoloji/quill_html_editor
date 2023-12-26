@@ -21,8 +21,8 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
       mevcutBelgeNo: json['MEVCUT_BELGE_NO'] as String?,
       yeniBelgeNo: json['YENI_BELGE_NO'] as String?,
       mevcutCariKodu: json['MEVCUT_CARI_KODU'] as String?,
-      paramMap: json['PARAM_MAP'] as String?,
-      tag: json['TAG'] as String?,
+      paramMap: json['PARAM_MAP'] as Map<String, dynamic>? ?? const {},
+      tag: json['TAG'] as String? ?? "FaturaModel",
       islemKodu: json['ISLEM_KODU'] as int?,
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))

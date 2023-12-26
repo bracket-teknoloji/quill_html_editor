@@ -34,7 +34,7 @@ mixin _$EditFaturaModel {
   String? get mevcutBelgeNo => throw _privateConstructorUsedError;
   String? get yeniBelgeNo => throw _privateConstructorUsedError;
   String? get mevcutCariKodu => throw _privateConstructorUsedError;
-  String? get paramMap => throw _privateConstructorUsedError;
+  Map<dynamic, dynamic>? get paramMap => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   List<KalemModel>? get kalemler => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $EditFaturaModelCopyWith<$Res> {
       String? mevcutBelgeNo,
       String? yeniBelgeNo,
       String? mevcutCariKodu,
-      String? paramMap,
+      Map<dynamic, dynamic>? paramMap,
       String? tag,
       int? islemKodu,
       List<KalemModel>? kalemler});
@@ -152,7 +152,7 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
       paramMap: freezed == paramMap
           ? _value.paramMap
           : paramMap // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Map<dynamic, dynamic>?,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ abstract class _$$EditFaturaModelImplCopyWith<$Res>
       String? mevcutBelgeNo,
       String? yeniBelgeNo,
       String? mevcutCariKodu,
-      String? paramMap,
+      Map<dynamic, dynamic>? paramMap,
       String? tag,
       int? islemKodu,
       List<KalemModel>? kalemler});
@@ -274,9 +274,9 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
           : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       paramMap: freezed == paramMap
-          ? _value.paramMap
+          ? _value._paramMap
           : paramMap // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Map<dynamic, dynamic>?,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -309,11 +309,12 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
       this.mevcutBelgeNo,
       this.yeniBelgeNo,
       this.mevcutCariKodu,
-      this.paramMap,
-      this.tag,
+      final Map<dynamic, dynamic>? paramMap = const {},
+      this.tag = "FaturaModel",
       this.islemKodu,
       final List<KalemModel>? kalemler})
-      : _kalemler = kalemler,
+      : _paramMap = paramMap,
+        _kalemler = kalemler,
         super._();
 
   factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -345,9 +346,19 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   final String? yeniBelgeNo;
   @override
   final String? mevcutCariKodu;
+  final Map<dynamic, dynamic>? _paramMap;
   @override
-  final String? paramMap;
+  @JsonKey()
+  Map<dynamic, dynamic>? get paramMap {
+    final value = _paramMap;
+    if (value == null) return null;
+    if (_paramMap is EqualUnmodifiableMapView) return _paramMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
+  @JsonKey()
   final String? tag;
   @override
   final int? islemKodu;
@@ -390,7 +401,7 @@ abstract class _EditFaturaModel extends EditFaturaModel {
       final String? mevcutBelgeNo,
       final String? yeniBelgeNo,
       final String? mevcutCariKodu,
-      final String? paramMap,
+      final Map<dynamic, dynamic>? paramMap,
       final String? tag,
       final int? islemKodu,
       final List<KalemModel>? kalemler}) = _$EditFaturaModelImpl;
@@ -426,7 +437,7 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   @override
   String? get mevcutCariKodu;
   @override
-  String? get paramMap;
+  Map<dynamic, dynamic>? get paramMap;
   @override
   String? get tag;
   @override
