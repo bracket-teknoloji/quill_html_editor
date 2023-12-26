@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
@@ -112,7 +113,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.setInstance(widget.model.model);
-            BaseSiparisEditModel.instance.tarih = DateTime.now();
+            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
               viewModel.changeIsBaseSiparisEmpty(true);
@@ -144,7 +145,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
         }
-        BaseSiparisEditModel.instance.tarih = DateTime.now();
+        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
         BaseSiparisEditModel.instance.isNew = true;
@@ -289,7 +290,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                         await dialogManager.showAreYouSureDialog(() async {
                           if (await postData()) {
                             await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                            Get.back();
+                            Get.back(result: true);
                             if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                               BaseSiparisEditModel.resetInstance();
                               BaseSiparisEditModel.instance.isNew = true;
@@ -394,7 +395,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     }
     const Uuid uuid = Uuid();
     final BaseSiparisEditModel newInstance =
-        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, mevcutCariKodu: BaseSiparisEditModel.instance.cariKodu, mevcutBelgeNo: BaseSiparisEditModel.instance.belgeNo);
+        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null);
+        if (widget.model.baseEditEnum == BaseEditEnum.duzenle){
+          newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
+          newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
+        }
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
