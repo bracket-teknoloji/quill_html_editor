@@ -113,6 +113,17 @@ final class YetkiController {
 
   String? get siparisSatisEkMaliyet2Adi => _musteriSiparisiMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int get siparisSatirKademeliIskontoSayisi => _musteriSiparisiMi ? _paramModel?.satisSatirKademeliIskontoSayisi ?? 0 : _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
+  bool get msOnayIslemleri => _isTrue(_yetkiModel?.siparisMusSipOnayIslemleri);
+  bool get ssOnayIslemleri => _isTrue(_yetkiModel?.siparisSaticiSipOnayIslemleri);
+
+  bool siparisOnayIslemleri(String? belgeTuru) {
+    if (belgeTuru == "MS") {
+      return msOnayIslemleri;
+    } else if (belgeTuru == "SS") {
+      return ssOnayIslemleri;
+    }
+    return false;
+  }
 
   bool get siparisOzelKod1AktifMi => false;
   bool get siparisGenIsk1AktifMi => (_musteriSiparisiMi ? siparisMSGenIsk1AktifMi : siparisSSGenIsk1AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk1);
@@ -298,8 +309,8 @@ final class YetkiController {
   // bool get satisFatEkle => _isTrue(_yetkiModel?.ekle);
 
   //! E-FATURA
-  bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ?_paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
-  bool ebelgeOzelKod2AktifMi(bool satisMi) => _isTrue(satisMi ?_paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
+  bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
+  bool ebelgeOzelKod2AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
   bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
   bool get ebelgeEFaturaGelenKutusu => _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
   bool get ebelgeEFaturaGidenKutusu => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
