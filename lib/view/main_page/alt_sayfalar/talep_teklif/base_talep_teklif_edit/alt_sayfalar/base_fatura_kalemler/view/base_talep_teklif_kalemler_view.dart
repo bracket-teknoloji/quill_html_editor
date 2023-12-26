@@ -138,11 +138,11 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
 
   ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) => ListTile(
         onTap: () async => await listTileBottomSheet(context, index, model: kalemModel),
-        contentPadding: UIHelper.lowPadding,
+        contentPadding: UIHelper.lowPadding.copyWith(left: UIHelper.highSize, bottom: UIHelper.lowSize),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
+            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
             const Icon(Icons.more_vert_outlined),
           ],
         ),

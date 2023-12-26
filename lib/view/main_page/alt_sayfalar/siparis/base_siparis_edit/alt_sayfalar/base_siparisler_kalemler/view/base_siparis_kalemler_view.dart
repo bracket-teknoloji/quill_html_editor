@@ -137,10 +137,10 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
 
   ListTile kalemListTile(BuildContext context, int index, KalemModel? kalemModel) => ListTile(
         onTap: () async => await listTileBottomSheet(context, index),
-        contentPadding: UIHelper.lowPadding,
+        contentPadding: UIHelper.lowPadding.copyWith(left: UIHelper.highSize, bottom: UIHelper.lowSize),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [SizedBox(width: width * 0.7, child: Text(kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
+          children: [SizedBox(width: width * 0.7, child: Text(kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
         ),
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -183,7 +183,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   ),
                   Text("Kur: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency}")
                       .yetkiVarMi(kalemModel?.dovizKuru != null),
-                  Text("Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
+                  Text("Tutar: ${kalemModel?.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}").yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
                   Text("Teslim Miktar: ${kalemModel?.tamamlanan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.tamamlanan != null),
                   Text("Kalan Miktar: ${kalemModel?.kalan.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.kalan != null),
