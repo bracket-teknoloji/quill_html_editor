@@ -84,13 +84,14 @@ class IslemlerMenuItemConstants<T> {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
-        islemlerList.add(satisIrsaliyeOlustur);
-        islemlerList.add(siparistenFaturaOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(belgeyiKapatAc);
         islemlerList.add(siparisPDFGoruntule);
+        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
+        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, satisIrsaliyeOlustur);
+        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
+        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.add(cariKoduDegistir);
         islemlerList.add(belgeNoDegistir);
+        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
         islemlerList.addAll(raporlar!);
       }
@@ -161,8 +162,10 @@ class IslemlerMenuItemConstants<T> {
       // islemlerList.add(eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
+      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && !siparisModel.eFaturaMi, eBelgeEslestir);
+      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && siparisModel.eFaturaMi, eBelgeEslestirmeKaldir);
       islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
-      islemlerList.addIfConditionTrue(!siparisModel.uyariMi && !siparisModel.basariliMi, eFaturaGonder);
+      islemlerList.addIfConditionTrue(!siparisModel.uyariMi && !siparisModel.basariliMi && siparisModel.getEditTipiEnum.satisFaturasiMi, eFaturaGonder);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
     }
@@ -341,8 +344,10 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList =
-              (_paramModel.netFectDizaynList?.filteredDizaynList(siparisTipi) ?? []).where((element) => element.ozelKod == siparisTipi?.getPrintValue).whereType<NetFectDizaynList>().toList();
+          final List<NetFectDizaynList> dizaynList = (_paramModel.netFectDizaynList?.filteredDizaynList(siparisModel?.getEditTipiEnum) ?? [])
+              .where((element) => element.ozelKod == siparisModel?.getEditTipiEnum?.getPrintValue)
+              .whereType<NetFectDizaynList>()
+              .toList();
           final result =
               await _bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
@@ -637,13 +642,7 @@ class IslemlerMenuItemConstants<T> {
                           data: EditFaturaModel.fromSiparislerModel(
                             siparisModel
                               ..yeniBelgeNo = controller.text
-                              ..tag = "FaturaModel"
-                              ..belgeNo = siparisModel.belgeNo
-                              ..kalemList = newKalemler
-                              ..cariKodu = siparisModel.cariKodu
-                              ..belgeTuru = siparisModel.belgeTuru
-                              ..pickerBelgeTuru = siparisModel.belgeTuru
-                              ..belgeTipi = siparisModel.tipi,
+                              ..kalemList = newKalemler,
                           ).toJson(),
                         );
                         if (result.success == true) {
@@ -767,10 +766,13 @@ class IslemlerMenuItemConstants<T> {
                   return;
                 }
                 siparisModel.kalemList = kalemList;
-                return await Get.toNamed(
+                final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
                 );
+                if (boolean == true) {
+                  return true;
+                }
               }
             }
           }
@@ -917,6 +919,64 @@ class IslemlerMenuItemConstants<T> {
       onTap: () async {
         final EBelgeListesiModel model = EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel);
         return await _bottomSheetDialogManager.showEBelgePrintBottomSheetDialog(context, model);
+      },
+    );
+  }
+
+  GridItemModel get eBelgeEslestir {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "E-Belge Eşleştir",
+      iconData: Icons.hub_outlined,
+      onTap: () async {
+        bool boolean = false;
+        await _dialogManager.showAreYouSureDialog(() async {
+          boolean = true;
+        });
+        if (boolean) {
+          final result = await _networkManager.dioPost<EBelgeListesiModel>(
+            path: ApiUrls.eBelgeIslemi,
+            showLoading: true,
+            bodyModel: EBelgeListesiModel(),
+            data: EBelgeListesiModel.eBelgeEslestir(siparisModel).toJson(),
+          );
+          if (result.success == true) {
+            _dialogManager.showSuccessSnackBar("Başarılı");
+            boolean = true;
+          } else {
+            boolean = false;
+          }
+        }
+        return boolean;
+      },
+    );
+  }
+
+  GridItemModel get eBelgeEslestirmeKaldir {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Eşleştirme Kaldır",
+      iconData: Icons.delete_outline_outlined,
+      onTap: () async {
+        bool boolean = false;
+        await _dialogManager.showAreYouSureDialog(() async {
+          boolean = true;
+        });
+        if (boolean) {
+          final result = await _networkManager.dioPost<EBelgeListesiModel>(
+            path: ApiUrls.eBelgeIslemi,
+            showLoading: true,
+            bodyModel: EBelgeListesiModel(),
+            data: EBelgeListesiModel.eBelgeEslestirmeKaldir(siparisModel).toJson(),
+          );
+          if (result.success == true) {
+            _dialogManager.showSuccessSnackBar("Başarılı");
+            boolean = true;
+          } else {
+            boolean = false;
+          }
+        }
+        return boolean;
       },
     );
   }
