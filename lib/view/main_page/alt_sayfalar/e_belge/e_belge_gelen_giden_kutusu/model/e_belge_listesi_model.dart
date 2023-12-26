@@ -90,7 +90,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
 
   factory EBelgeListesiModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
         resmiBelgeNo: model.resmiBelgeNo,
         islemKodu: 1,
         tarih: model.tarih,
@@ -126,6 +126,26 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GIK",
         islemKodu: 3,
       );
+
+  factory EBelgeListesiModel.eBelgeEslestir(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        kutuTuru: "GET",
+        islemKodu: 20,
+      );
+
+  factory EBelgeListesiModel.eBelgeEslestirmeKaldir(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        kutuTuru: "GET",
+        islemKodu: 11,
+      );
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
@@ -138,6 +158,8 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   EBelgeListesiModel get eArsivTaslakSil => copyWith(islemKodu: 8);
 
   EBelgeListesiModel get eFaturaTaslakSil => copyWith(islemKodu: 9);
+
+  EBelgeListesiModel get eBelgeEslestir => copyWith(islemKodu: 20);
 
   EBelgeListesiModel get taslakSil => eArsivMi ? eArsivTaslakSil : eFaturaTaslakSil;
 
