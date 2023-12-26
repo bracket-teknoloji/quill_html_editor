@@ -17,7 +17,12 @@ class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
 abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
-    faturaRequestModel = faturaRequestModel.copyWith(pickerBelgeTuru: pickerBelgeTuru);
+    faturaRequestModel = faturaRequestModel.copyWith(
+      pickerBelgeTuru: pickerBelgeTuru,
+      faturalasmaGoster: pickerBelgeTuru == "SF" ? true : null,
+      miktarGetir: pickerBelgeTuru == "AF" ? "E" : null,
+      belgeNo: pickerBelgeTuru == "AF" ? null : "",
+    );
   }
 
   //*for view
