@@ -46,6 +46,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
   late final TextEditingController _resmiBelgeNoController;
   late final TextEditingController _cariController;
   late final TextEditingController _teslimCariController;
+  late final TextEditingController _projeController;
   late final TextEditingController _plasiyerController;
   late final TextEditingController _belgeTipiController;
   late final TextEditingController _tarihController;
@@ -74,6 +75,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _resmiBelgeNoController = TextEditingController(text: model.resmiBelgeNo);
     _cariController = TextEditingController(text: model.cariAdi);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
+    _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
     _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
@@ -112,6 +114,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _resmiBelgeNoController.dispose();
     _cariController.dispose();
     _teslimCariController.dispose();
+    _projeController.dispose();
     _plasiyerController.dispose();
     _belgeTipiController.dispose();
     _tarihController.dispose();
@@ -182,7 +185,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                     if (result is CariListesiModel) {
+                    if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
                       viewModel.model.vadeGunu = result.vadeGunu;
                     }
@@ -211,13 +214,13 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         readOnly: true,
                         isMust: true,
                         suffixMore: true,
-                        controller: _plasiyerController,
+                        controller: _projeController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
                           final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
-                            _plasiyerController.text = result.projeAciklama ?? "";
+                            _projeController.text = result.projeAciklama ?? "";
                             viewModel.setProje(result);
                           }
                         },
