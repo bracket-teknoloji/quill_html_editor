@@ -88,7 +88,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKosul(String? value) => kalemModel = kalemModel.copyWith(kosulKodu: value);
 
   @action
-  void setMiktar(int? value) => kalemModel = kalemModel.copyWith(miktar: value?.toDouble());
+  void setMiktar(double? value) => kalemModel = kalemModel.copyWith(miktar: value);
 
   @action
   void setBrutFiyat(double? value) => kalemModel = kalemModel.copyWith(brutFiyat: value);
@@ -138,7 +138,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void decreaseMiktar(TextEditingController controller) {
     if ((kalemModel.miktar ?? 0) > 1) {
-      kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) - 1);
+      kalemModel = kalemModel.copyWith(
+        miktar: (kalemModel.miktar ?? 0) - 1,
+      );
       controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
     }
   }
@@ -153,7 +155,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setMiktar2(int value) {
+  void setMiktar2(double value) {
     kalemModel = kalemModel.copyWith(
       miktar2: value.toDouble(),
       miktar: value.toDouble(),
@@ -181,7 +183,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setMFMiktar(int value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value.toDouble());
+  void setMFMiktar(double value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value.toDouble(), malfazIskAdedi: value.toDouble());
 
   @action
   void decreaseMFMiktar(TextEditingController controller) {

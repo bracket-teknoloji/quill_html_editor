@@ -187,6 +187,18 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               Text.rich(
                                 TextSpan(
                                   children: [
+                                    const TextSpan(text: "MF Tutarı: "),
+                                    TextSpan(
+                                      text:
+                                          "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ).yetkiVarMi(!editTipi.talepTeklifMi),
+                              Text.rich(
+                                TextSpan(
+                                  children: [
                                     const TextSpan(text: "İsk. Tutarı: "),
                                     TextSpan(
                                       text:
@@ -232,7 +244,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   ],
                                 ),
                               ),
-                            ],
+                            ].where((element) => element is! SizedBox).toList(),
                           ),
                           Card(
                             color: theme.colorScheme.primary.withOpacity(0.1),
@@ -249,7 +261,16 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 Observer(
                   builder: (_) => Row(
                     children: [
-                      Expanded(child: CustomTextField(labelText: "Kalem Adı", controller: kalemAdiController, onChanged: (p0) => viewModel.kalemModel.kalemAdi = p0)),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Kalem Adı",
+                          controller: kalemAdiController,
+                          onChanged: (p0) => viewModel.kalemModel
+                            ..kalemAdi = p0
+                            ..kalemAdiDegisti = true
+                            ..kalemAdiDegistimi = true,
+                        ),
+                      ),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Muh. Kodu",
@@ -277,8 +298,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ],
                   ),
                 ),
-                CustomTextField(labelText: "Ek Alan 1", onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
-                CustomTextField(labelText: "Ek Alan 2", onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
+                CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
+                    .yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
+                CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
+                    .yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
                 CustomTextField(
                   labelText: "Yapılandırma Kodu",
                   valueWidget: Observer(
@@ -404,7 +427,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           isMust: true,
                           controller: viewModel.koliMi ? null : miktarController,
                           keyboardType: TextInputType.number,
-                          onChanged: (value) => viewModel.setMiktar(int.tryParse(value) ?? 0),
+                          onChanged: (value) => viewModel.setMiktar(double.tryParse(value) ?? 0),
                           suffix: Wrap(
                             children: [
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
@@ -422,7 +445,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           keyboardType: TextInputType.number,
                           validator: miktar2Validator,
                           isMust: viewModel.model?.koliMi,
-                          onChanged: (value) => viewModel.setMiktar2(int.tryParse(value) ?? 0),
+                          onChanged: (value) => viewModel.setMiktar2(double.tryParse(value) ?? 0),
                           suffix: Wrap(
                             children: [
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
@@ -440,7 +463,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Mal. Faz. Miktar",
+                        keyboardType: TextInputType.number,
                         controller: malFazMiktarController,
+                        onChanged: (value) => viewModel.setMFMiktar(double.tryParse(value) ?? 0),
                         suffix: Wrap(
                           children: [
                             IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMFMiktar(malFazMiktarController)),
@@ -625,25 +650,25 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi),
-                CustomTextField(labelText: getAciklamaLabel(1), onChanged: (value) => viewModel.kalemModel.aciklama1)
+                CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(1)),
-                CustomTextField(labelText: getAciklamaLabel(2), onChanged: (value) => viewModel.kalemModel.aciklama2)
+                CustomTextField(labelText: getAciklamaLabel(2), controllerText: widget.kalemModel?.aciklama2, onChanged: (value) => viewModel.kalemModel.aciklama2 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(2)),
-                CustomTextField(labelText: getAciklamaLabel(3), onChanged: (value) => viewModel.kalemModel.aciklama3)
+                CustomTextField(labelText: getAciklamaLabel(3), controllerText: widget.kalemModel?.aciklama3, onChanged: (value) => viewModel.kalemModel.aciklama3 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(3)),
-                CustomTextField(labelText: getAciklamaLabel(4), onChanged: (value) => viewModel.kalemModel.aciklama4)
+                CustomTextField(labelText: getAciklamaLabel(4), controllerText: widget.kalemModel?.aciklama4, onChanged: (value) => viewModel.kalemModel.aciklama4 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(4)),
-                CustomTextField(labelText: getAciklamaLabel(5), onChanged: (value) => viewModel.kalemModel.aciklama5)
+                CustomTextField(labelText: getAciklamaLabel(5), controllerText: widget.kalemModel?.aciklama5, onChanged: (value) => viewModel.kalemModel.aciklama5 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(5)),
-                CustomTextField(labelText: getAciklamaLabel(6), onChanged: (value) => viewModel.kalemModel.aciklama6)
+                CustomTextField(labelText: getAciklamaLabel(6), controllerText: widget.kalemModel?.aciklama6, onChanged: (value) => viewModel.kalemModel.aciklama6 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(6)),
-                CustomTextField(labelText: getAciklamaLabel(7), onChanged: (value) => viewModel.kalemModel.aciklama7)
+                CustomTextField(labelText: getAciklamaLabel(7), controllerText: widget.kalemModel?.aciklama7, onChanged: (value) => viewModel.kalemModel.aciklama7 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(7)),
-                CustomTextField(labelText: getAciklamaLabel(8), onChanged: (value) => viewModel.kalemModel.aciklama8)
+                CustomTextField(labelText: getAciklamaLabel(8), controllerText: widget.kalemModel?.aciklama8, onChanged: (value) => viewModel.kalemModel.aciklama8 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(8)),
-                CustomTextField(labelText: getAciklamaLabel(9), onChanged: (value) => viewModel.kalemModel.aciklama9)
+                CustomTextField(labelText: getAciklamaLabel(9), controllerText: widget.kalemModel?.aciklama9, onChanged: (value) => viewModel.kalemModel.aciklama9 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(9)),
-                CustomTextField(labelText: getAciklamaLabel(10), onChanged: (value) => viewModel.kalemModel.aciklama10)
+                CustomTextField(labelText: getAciklamaLabel(10), controllerText: widget.kalemModel?.aciklama10, onChanged: (value) => viewModel.kalemModel.aciklama10 = value)
                     .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(10)),
                 const SizedBox(height: 50),
               ],
@@ -735,52 +760,58 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> controllerFiller() async {
-    viewModel.kalemModel.kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList();
-    viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu ?? widget.kalemModel?.stokKodu;
-    viewModel.kalemModel.stokSatDovizAdi ??= viewModel.model?.satisDovizAdi ?? widget.kalemModel?.stokSatDovizAdi;
-    viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi ?? widget.kalemModel?.stokAlisDovizAdi;
-    viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
-    viewModel.setYapKod(widget.stokListesiModel?.yapkod ?? widget.kalemModel?.yapkod);
-    viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.alisDovTip ?? viewModel.model?.satDovTip;
-    viewModel.kalemModel.dovizTipi ??= widget.stokListesiModel?.alisDovTip ?? widget.kalemModel?.dovizTipi ?? viewModel.model?.satDovTip;
-    viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? widget.kalemModel?.dovizAdi ?? viewModel.model?.alisDovizAdi;
-    kalemAdiController.text = viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
-    ekAlan1Controller.text = widget.kalemModel?.ekalan1 ?? "";
-    ekAlan2Controller.text = widget.kalemModel?.ekalan2 ?? "";
-    yapKodController.text = viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? widget.kalemModel?.yapkod ?? "";
-    isk1Controller?.text = widget.kalemModel?.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
-    isk1TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk1Tipi.toIntIfDouble);
-    isk2YuzdeController?.text = widget.kalemModel?.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
-    isk2TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk2Tipi.toIntIfDouble);
-    isk3YuzdeController?.text = widget.kalemModel?.iskonto3.toIntIfDouble.toStringIfNotNull ?? "";
-    isk3TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk3Tipi.toIntIfDouble);
-    isk4YuzdeController?.text = widget.kalemModel?.iskonto4.toIntIfDouble.toStringIfNotNull ?? "";
-    isk4TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk4Tipi.toIntIfDouble);
-    isk5YuzdeController?.text = widget.kalemModel?.iskonto5.toIntIfDouble.toStringIfNotNull ?? "";
-    isk5TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk5Tipi.toIntIfDouble);
-    isk6YuzdeController?.text = widget.kalemModel?.iskonto6.toIntIfDouble.toStringIfNotNull ?? "";
-    isk6TipiController?.text = getIskTipiAciklama(widget.kalemModel?.isk6Tipi.toIntIfDouble);
-    fiyatController.text = (widget.kalemModel?.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+    if (widget.kalemModel != null) {
+      viewModel.setKalemModel(widget.kalemModel!);
+      await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
+    } else {
+      viewModel.kalemModel.kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList();
+      viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu;
+      viewModel.kalemModel.stokSatDovizAdi ??= viewModel.model?.satisDovizAdi;
+      viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi;
+      viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
+      viewModel.setYapKod(widget.stokListesiModel?.yapkod);
+      viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip ?? viewModel.model?.satDovTip;
+      viewModel.kalemModel.dovizTipi ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.satDovTip;
+      viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? viewModel.model?.alisDovizAdi;
+    }
+    kalemAdiController.text = viewModel.kalemModel.kalemAdi ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
+    ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? "";
+    ekAlan2Controller.text = viewModel.kalemModel.ekalan2 ?? "";
+    teslimTarihiController.text = viewModel.kalemModel.teslimTarihi?.toDateString ?? "";
+    yapKodController.text = viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
+    isk1Controller?.text = viewModel.kalemModel.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
+    isk1TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk1Tipi.toIntIfDouble);
+    isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
+    isk2TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk2Tipi.toIntIfDouble);
+    isk3YuzdeController?.text = viewModel.kalemModel.iskonto3.toIntIfDouble.toStringIfNotNull ?? "";
+    isk3TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk3Tipi.toIntIfDouble);
+    isk4YuzdeController?.text = viewModel.kalemModel.iskonto4.toIntIfDouble.toStringIfNotNull ?? "";
+    isk4TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk4Tipi.toIntIfDouble);
+    isk5YuzdeController?.text = viewModel.kalemModel.iskonto5.toIntIfDouble.toStringIfNotNull ?? "";
+    isk5TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk5Tipi.toIntIfDouble);
+    isk6YuzdeController?.text = viewModel.kalemModel.iskonto6.toIntIfDouble.toStringIfNotNull ?? "";
+    isk6TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk6Tipi.toIntIfDouble);
+    fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
-    malFazMiktarController.text = viewModel.kalemModel.malFazlasiMiktar?.toIntIfDouble.toStringIfNotNull ?? "";
-    olcuBirimiController.text = viewModel.model?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "";
-    kdvOraniController.text = widget.kalemModel?.kdvOrani.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
+    malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
+    olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
+    kdvOraniController.text = viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
-    kosulController.text = model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
-    dovizTipiController.text = widget.kalemModel?.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? mainCurrency;
-    dovizFiyatiController.text = (widget.kalemModel?.dovizFiyati ?? viewModel.model?.dovAlisFiat).commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
+    kosulController.text = viewModel.kalemModel.kosulKodu ?? model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
+    dovizTipiController.text = viewModel.kalemModel.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? mainCurrency;
+    dovizFiyatiController.text = (viewModel.kalemModel.dovizFiyati ?? viewModel.model?.dovAlisFiat).commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     if (yetkiController.projeUygulamasiAcikMi) {
       projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
       viewModel.kalemModel.projeKodu = model.projeKodu;
     }
-    viewModel.kalemModel.stokAdi = viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? widget.kalemModel?.stokAdi ?? widget.kalemModel?.stokKodu ?? "";
-    viewModel.kalemModel.stokKodu = viewModel.model?.stokKodu ?? widget.kalemModel?.stokKodu ?? "";
+    viewModel.kalemModel.stokAdi = viewModel.kalemModel.stokAdi ?? viewModel.kalemModel.stokKodu ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
+    viewModel.kalemModel.stokKodu = viewModel.kalemModel.stokKodu ?? viewModel.model?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
     viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
-    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? widget.kalemModel?.olcuBirimAdi ?? "", 0));
+    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {
       viewModel.setKosul(model.kosulKodu ?? "");
       if (yetkiController.projeUygulamasiAcikMi) {
@@ -788,9 +819,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
       viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
-      viewModel.setMiktar(int.tryParse(miktarController.text) ?? 0);
-      viewModel.setMiktar2(int.tryParse(miktar2Controller.text) ?? 0);
-      viewModel.setMFMiktar(int.tryParse(malFazMiktarController.text) ?? 0);
+      viewModel.setMiktar(double.tryParse(miktarController.text) ?? 0);
+      viewModel.setMiktar2(double.tryParse(miktar2Controller.text) ?? 0);
+      viewModel.setMFMiktar(double.tryParse(malFazMiktarController.text) ?? 0);
       viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
       viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
       viewModel.setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0);
