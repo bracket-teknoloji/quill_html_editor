@@ -61,11 +61,11 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
     switch (this!) {
-      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
         return YetkiController().alisKademeliIskontoSayisi;
-      case EditTipiEnum.satici:
+      case EditTipiEnum.musteri:
       case EditTipiEnum.satisFatura:
       case EditTipiEnum.satisIrsaliye:
         return YetkiController().satisKademeliIskontoSayisi;
