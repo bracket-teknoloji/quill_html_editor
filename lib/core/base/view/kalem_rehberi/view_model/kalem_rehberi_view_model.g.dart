@@ -121,11 +121,11 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
-  void addAllSelectedKalem(List<KalemModel> value) {
+  void addAllSelectedKalem() {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.addAllSelectedKalem');
     try {
-      return super.addAllSelectedKalem(value);
+      return super.addAllSelectedKalem();
     } finally {
       _$_KalemRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
