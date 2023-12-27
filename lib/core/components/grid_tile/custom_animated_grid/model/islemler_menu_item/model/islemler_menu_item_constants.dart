@@ -893,6 +893,9 @@ class IslemlerMenuItemConstants<T> {
       onTap: () async {
         bool boolean = false;
         await _dialogManager.showAreYouSureDialog(() async {
+          boolean = true;
+        });
+        if (boolean) {
           final result = await _networkManager.dioPost<EBelgeListesiModel>(
             path: ApiUrls.eBelgeIslemi,
             showLoading: true,
@@ -905,8 +908,8 @@ class IslemlerMenuItemConstants<T> {
           } else {
             boolean = false;
           }
-        });
-        return boolean;
+          return boolean;
+        }
       },
     );
   }
