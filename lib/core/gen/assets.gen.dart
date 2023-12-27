@@ -102,6 +102,19 @@ class $AssetsSplashGen {
       [pickerLogoTuruncuPng, pickerLogoTuruncuSvg, pickerLogoTuruncu1024];
 }
 
+class $AssetsTranslationsGen {
+  const $AssetsTranslationsGen();
+
+  /// File path: assets/translations/en.json
+  String get en => 'assets/translations/en.json';
+
+  /// File path: assets/translations/tr.json
+  String get tr => 'assets/translations/tr.json';
+
+  /// List of all assets
+  List<String> get values => [en, tr];
+}
+
 class $AssetsIconsPickerSvgIconGen {
   const $AssetsIconsPickerSvgIconGen();
 
@@ -317,6 +330,7 @@ class Assets {
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();
+  static const $AssetsTranslationsGen translations = $AssetsTranslationsGen();
   static const $LocalesGen locales = $LocalesGen();
 }
 
