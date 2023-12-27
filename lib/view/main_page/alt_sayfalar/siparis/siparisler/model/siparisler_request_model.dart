@@ -48,17 +48,17 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
   factory SiparislerRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => SiparislerRequestModel(
         menuKodu: "COMM_BREH",
         siralama: "TESLIM_TARIHI_AZ",
-        kisitYok: true,
+        // kisitYok: true,
         ekranTipi: "R",
         arrBelgeTipi: "[2,6]",
-        siparisDurumu: "A",
+        // siparisDurumu: "A",
         pickerBelgeTuru: model.belgeTuru,
         siparisKarsilanmaDurumu: "K",
         siparisSevkEdilenGoster: true,
         belgeNo: model.belgeNo ?? "",
         arrBelgeNo: model.arrBelgeNo,
         cariKodu: model.cariKodu ?? "",
-        refBelgeTuru: model.belgeTuru,
+        // refBelgeTuru: model.belgeTuru,
         projeKodu: model.projeKodu,
       );
 }
