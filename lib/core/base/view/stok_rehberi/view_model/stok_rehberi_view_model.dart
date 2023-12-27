@@ -65,7 +65,7 @@ abstract class _StokRehberiViewModelBase with Store {
     belgeTarihi: BaseSiparisEditModel.instance.tarih.toDateString,
     belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
     ekranTipi: "R",
-    resimGoster: "H",
+    resimGoster: "E",
     faturaTipi: 2,
     okutuldu: true,
     cariKodu: BaseSiparisEditModel.instance.cariKodu,
