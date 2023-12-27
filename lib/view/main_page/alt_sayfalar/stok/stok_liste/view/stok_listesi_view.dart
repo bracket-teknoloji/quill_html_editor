@@ -6,6 +6,8 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/image/image_view.dart";
+import "package:picker/core/components/image/image_widget.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -171,7 +173,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                 Get.back();
                               } else {
                                 viewModel.setStokListesi(null);
-                                viewModel.setImageMap({});
                                 viewModel.resetSayfa();
                                 getData();
                                 Get.back();
@@ -575,8 +576,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           contentPadding: UIHelper.lowPadding,
                           // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                           leading: CircleAvatar(
-                            foregroundImage: viewModel.imageMap[stok.stokKodu],
-                            child: Text((stok.stokAdi ?? "  ").substring(0, 1)),
+                            child: stok.resimUrlKucuk == null
+                                ? Text((stok.stokAdi ?? "  ").substring(0, 1))
+                                : SizedBox(
+                                    height: UIHelper.highSize * 3,
+                                    width: UIHelper.highSize * 3,
+                                    child: InkWell(
+                                      onTap: () => Get.to(ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? "")),
+                                      child: SizedBox(
+                                        height: UIHelper.highSize * 3,
+                                        width: UIHelper.highSize * 3,
+                                        child: ImageWidget(path: stok.resimUrlKucuk),
+                                      ),
+                                    ),
+                                  ),
                           ),
                           trailing: Text(
                             "${(stok.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.olcuBirimi ?? ""}",
@@ -736,25 +749,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     }
     final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: data2, bodyModel: StokListesiModel());
     if (response.success ?? false) {
-      final Map<String, MemoryImage?> imageMap = {};
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 
       if (viewModel.sayfa == 1) {
-        for (var stokKaydi in liste ?? <StokListesiModel>[]) {
-          if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
-            imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
-          }
-        }
         viewModel.setStokListesi(liste);
-        viewModel.addImageMap(imageMap);
       } else {
-        for (var stokKaydi in liste ?? <StokListesiModel>[]) {
-          if (stokKaydi.resimUrlKucuk != null && viewModel.resimleriGoster == "E") {
-            imageMap[stokKaydi.stokKodu ?? ""] = await getImage(stokKaydi.resimUrlKucuk ?? "");
-          }
-        }
         viewModel.addStokListesi(liste ?? <StokListesiModel>[]);
-        viewModel.addImageMap(imageMap);
       }
       if ((liste?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
