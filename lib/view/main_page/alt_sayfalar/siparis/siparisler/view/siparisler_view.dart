@@ -159,7 +159,19 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
         bottom: AppBarPreferedSizedBottom(
           children: [
             AppBarButton(
-              icon: Icons.filter_alt_outlined,
+              iconWidget: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Observer(
+                    builder: (_) => Icon(
+                      Icons.filter_alt_outlined,
+                      color: viewModel.hasFilter ? UIHelper.primaryColor : null,
+                      size: UIHelper.midSize * 2,
+                    ),
+                  ),
+                  Text(loc(context).generalStrings.filter),
+                ],
+              ),
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: loc(context).generalStrings.filter,
@@ -452,7 +464,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   ],
                 ),
               ),
-              child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
@@ -532,23 +543,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
           ],
         ),
       );
-
-  void clearTextEditingControllers() {
-    baslangicTarihiController.clear();
-    bitisTarihiController.clear();
-    cariController.clear();
-    cariTipiController.clear();
-    plasiyerController.clear();
-    projeController.clear();
-    ozelKod1Controller.clear();
-    ozelKod2Controller.clear();
-    grupKoduController.clear();
-    kod1Controller.clear();
-    kod2Controller.clear();
-    kod3Controller.clear();
-    kod4Controller.clear();
-    kod5Controller.clear();
-  }
 
   Observer fab() => Observer(
         builder: (_) => Visibility(
@@ -725,5 +719,22 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       default:
         return [];
     }
+  }
+
+  void clearTextEditingControllers() {
+    baslangicTarihiController.clear();
+    bitisTarihiController.clear();
+    cariController.clear();
+    cariTipiController.clear();
+    plasiyerController.clear();
+    projeController.clear();
+    ozelKod1Controller.clear();
+    ozelKod2Controller.clear();
+    grupKoduController.clear();
+    kod1Controller.clear();
+    kod2Controller.clear();
+    kod3Controller.clear();
+    kod4Controller.clear();
+    kod5Controller.clear();
   }
 }

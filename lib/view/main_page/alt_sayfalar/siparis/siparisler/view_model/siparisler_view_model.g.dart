@@ -51,6 +51,13 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
       (_$grupKodList5Computed ??= Computed<bool>(() => super.grupKodList5,
               name: '_SiparislerViewModelBase.grupKodList5'))
           .value;
+  Computed<bool>? _$hasFilterComputed;
+
+  @override
+  bool get hasFilter =>
+      (_$hasFilterComputed ??= Computed<bool>(() => super.hasFilter,
+              name: '_SiparislerViewModelBase.hasFilter'))
+          .value;
   Computed<String>? _$getQueryParamsComputed;
 
   @override
@@ -956,6 +963,7 @@ grupKodList2: ${grupKodList2},
 grupKodList3: ${grupKodList3},
 grupKodList4: ${grupKodList4},
 grupKodList5: ${grupKodList5},
+hasFilter: ${hasFilter},
 getQueryParams: ${getQueryParams},
 getPlasiyer: ${getPlasiyer},
 getGrupKodlari: ${getGrupKodlari},

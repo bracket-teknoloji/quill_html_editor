@@ -89,6 +89,23 @@ abstract class _SiparislerViewModelBase with Store {
   @observable
   String? teslimatDurumuGroupValue;
 
+  @computed
+  bool get hasFilter =>
+      cariKodu != null ||
+      ozelKod1 != null ||
+      kapaliBelgelerListelenmesin ||
+      projeKodu != null ||
+      arrGrupKodu != null ||
+      arrKod1 != null ||
+      arrKod2 != null ||
+      arrKod3 != null ||
+      arrKod4 != null ||
+      arrKod5 != null ||
+      teslimatDurumuGroupValue != null ||
+      arrPlasiyerKodu != null ||
+      baslamaTarihi != null ||
+      bitisTarihi != null;
+
   @action
   void setTeslimatDurumuGroupValue(int? value) {
     teslimatDurumuGroupValue = teslimatDurumuValueList[value!];
