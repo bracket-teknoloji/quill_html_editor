@@ -30,6 +30,13 @@ Uygulamayı indirdikten sonra, kolayca kurulum talimatlarını takip ederek hız
 4. Yardım ve destek sekmelerinden herhangi bir sorunuz olursa bize ulaşın!
 
 ## <span style="color: #c0392b;">❓ Sıkça Sorulan Sorular (SSS)</span>
+- Localization işlemleri için:
+
+```properties
+    flutter pub run easy_localization:generate --source-dir ./assets/translations --output-dir ./lib/generated  
+    flutter pub run easy_localization:generate -O lib/generated -f keys -o locale_keys.g.dart --source-dir ./assets/translations
+```
+    
 
 ### <span style="color: #e74c3c;">🤔 Soru 1</span>
 

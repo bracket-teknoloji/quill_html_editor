@@ -163,6 +163,7 @@ flutter:
     - assets/app_icon/
     - locales/EN_US.json
     - locales/TR.json
+    - assets/translations/
     # - shorebird.yaml
 
 
