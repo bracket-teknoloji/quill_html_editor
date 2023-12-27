@@ -3,6 +3,7 @@ import "dart:io";
 import "dart:ui";
 
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
+import "package:easy_localization/easy_localization.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
@@ -53,6 +54,7 @@ import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
 import "core/init/theme/app_theme_dark.dart";
 import "firebase_options.dart";
+// import "generated/codegen_loader.g.dart";
 import "view/add_company/model/account_model.dart";
 import "view/add_company/view/add_account_view.dart";
 import "view/add_company/view/company_page.dart";
@@ -133,11 +135,23 @@ void main() async {
   //* Firebase Crashlytics
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async {
     await firebaseInitialized();
+    await EasyLocalization.ensureInitialized();
   });
 
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
-    runApp(const PickerApp());
+    runApp(
+      // EasyLocalization(
+      //   supportedLocales: const [
+      //     Locale("en"),
+      //     Locale("tr"),
+      //   ],
+      //   path: "assets/translations",
+      //   assetLoader: const CodegenLoader(),
+      //   child: const PickerApp(),
+      // ),
+      const PickerApp(),
+    );
     //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
     NetworkDependencyInjection.init();
   });
@@ -149,11 +163,14 @@ class PickerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GetMaterialApp(
         title: "Picker",
-        defaultTransition: Transition.rightToLeft,
+        // defaultTransition: Transition.rightToLeft,
         popGesture: true,
         debugShowCheckedModeBanner: false,
+        // locale: context.locale,
         locale: Get.deviceLocale,
         fallbackLocale: const Locale("en"),
+        // supportedLocales: context.supportedLocales,
+        // localizationsDelegates: context.localizationDelegates,
         supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
         localizationsDelegates: const <LocalizationsDelegate>[
           GlobalWidgetsLocalizations.delegate,
@@ -161,6 +178,7 @@ class PickerApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           LocDelegate(),
         ],
+
         scrollBehavior: const MaterialScrollBehavior()
             .copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown, PointerDeviceKind.trackpad}),
         opaqueRoute: false,
@@ -381,7 +399,7 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb){
+  if (kIsWeb) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
