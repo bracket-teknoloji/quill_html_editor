@@ -2022,6 +2022,10 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kalemAdiDegisti(bool? kalemAdiDegisti);
 
+  KalemModel teklifNo(String? teklifNo);
+
+  KalemModel teklifKalemSira(int? teklifKalemSira);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2125,6 +2129,8 @@ abstract class _$KalemModelCWProxy {
     String? kalemAdi,
     bool? kalemAdiDegistimi,
     bool? kalemAdiDegisti,
+    String? teklifNo,
+    int? teklifKalemSira,
   });
 }
 
@@ -2455,6 +2461,13 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(kalemAdiDegisti: kalemAdiDegisti);
 
   @override
+  KalemModel teklifNo(String? teklifNo) => this(teklifNo: teklifNo);
+
+  @override
+  KalemModel teklifKalemSira(int? teklifKalemSira) =>
+      this(teklifKalemSira: teklifKalemSira);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2559,6 +2572,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? kalemAdi = const $CopyWithPlaceholder(),
     Object? kalemAdiDegistimi = const $CopyWithPlaceholder(),
     Object? kalemAdiDegisti = const $CopyWithPlaceholder(),
+    Object? teklifNo = const $CopyWithPlaceholder(),
+    Object? teklifKalemSira = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -2946,6 +2961,14 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kalemAdiDegisti
           // ignore: cast_nullable_to_non_nullable
           : kalemAdiDegisti as bool?,
+      teklifNo: teklifNo == const $CopyWithPlaceholder()
+          ? _value.teklifNo
+          // ignore: cast_nullable_to_non_nullable
+          : teklifNo as String?,
+      teklifKalemSira: teklifKalemSira == const $CopyWithPlaceholder()
+          ? _value.teklifKalemSira
+          // ignore: cast_nullable_to_non_nullable
+          : teklifKalemSira as int?,
     );
   }
 }
@@ -3596,13 +3619,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kalemAdi: fields[93] as String?,
       kalemAdiDegistimi: fields[94] as bool?,
       kalemAdiDegisti: fields[95] as bool?,
+      teklifNo: fields[96] as String?,
+      teklifKalemSira: fields[97] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(96)
+      ..writeByte(98)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3794,7 +3819,11 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(94)
       ..write(obj.kalemAdiDegistimi)
       ..writeByte(95)
-      ..write(obj.kalemAdiDegisti);
+      ..write(obj.kalemAdiDegisti)
+      ..writeByte(96)
+      ..write(obj.teklifNo)
+      ..writeByte(97)
+      ..write(obj.teklifKalemSira);
   }
 
   @override
@@ -4275,6 +4304,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       kalemAdi: json['KALEM_ADI'] as String?,
       kalemAdiDegistimi: json['KALEM_ADI_DEGISTIMI'] as bool?,
       kalemAdiDegisti: json['KALEM_ADI_DEGISTI'] as bool?,
+      teklifNo: json['TEKLIF_NO'] as String?,
+      teklifKalemSira: json['TEKLIF_KALEM_SIRA'] as int?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4383,5 +4414,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('KALEM_ADI', instance.kalemAdi);
   writeNotNull('KALEM_ADI_DEGISTIMI', instance.kalemAdiDegistimi);
   writeNotNull('KALEM_ADI_DEGISTI', instance.kalemAdiDegisti);
+  writeNotNull('TEKLIF_NO', instance.teklifNo);
+  writeNotNull('TEKLIF_KALEM_SIRA', instance.teklifKalemSira);
   return val;
 }

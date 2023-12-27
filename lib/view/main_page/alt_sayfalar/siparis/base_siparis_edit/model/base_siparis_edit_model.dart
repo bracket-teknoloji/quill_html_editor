@@ -1050,6 +1050,10 @@ class KalemModel with NetworkManagerMixin {
   bool? kalemAdiDegistimi;
   @HiveField(95)
   bool? kalemAdiDegisti;
+  @HiveField(96)
+  final String? teklifNo;
+  @HiveField(97)
+  final int? teklifKalemSira;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1148,6 +1152,8 @@ class KalemModel with NetworkManagerMixin {
     this.kalemAdi,
     this.kalemAdiDegistimi,
     this.kalemAdiDegisti,
+    this.teklifNo,
+    this.teklifKalemSira,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1156,6 +1162,7 @@ class KalemModel with NetworkManagerMixin {
         depoKodu: model.depoKodu,
         stokKodu: model.stokKodu,
       );
+
 
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
