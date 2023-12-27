@@ -155,9 +155,6 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
-            Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
-                .yetkiVarMi(kalemModel?.siparisNo != null)
-                .paddingOnly(bottom: UIHelper.lowSize),
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
                 children: <Widget>[
@@ -274,7 +271,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
             viewModel.updateKalemList();
           },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
+        ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
           title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
@@ -284,7 +281,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               viewModel.removeAtKalemList(index);
             });
           },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
+        ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
