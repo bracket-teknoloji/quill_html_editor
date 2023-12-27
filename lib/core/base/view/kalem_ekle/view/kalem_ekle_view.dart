@@ -289,8 +289,13 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
                             if (result != null) {
-                              muhKoduController.text = result.adi ?? "";
-                              viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
+                              if (editTipi?.satisMi ?? false) {
+                                viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
+                                muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
+                              } else {
+                                viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
+                                muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                              }
                             }
                           },
                         ),
