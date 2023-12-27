@@ -75,22 +75,6 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$imageMapAtom =
-      Atom(name: '_StokListesiViewModelBase.imageMap', context: context);
-
-  @override
-  ObservableMap<String, MemoryImage?> get imageMap {
-    _$imageMapAtom.reportRead();
-    return super.imageMap;
-  }
-
-  @override
-  set imageMap(ObservableMap<String, MemoryImage?> value) {
-    _$imageMapAtom.reportWrite(value, super.imageMap, () {
-      super.imageMap = value;
-    });
-  }
-
   late final _$searchBarAtom =
       Atom(name: '_StokListesiViewModelBase.searchBar', context: context);
 
@@ -269,39 +253,6 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
 
   late final _$_StokListesiViewModelBaseActionController =
       ActionController(name: '_StokListesiViewModelBase', context: context);
-
-  @override
-  void setImageMap(Map<String, MemoryImage?> value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.setImageMap');
-    try {
-      return super.setImageMap(value);
-    } finally {
-      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addImageMap(Map<String, MemoryImage?> value) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.addImageMap');
-    try {
-      return super.addImageMap(value);
-    } finally {
-      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void removeImageMap(String key) {
-    final _$actionInfo = _$_StokListesiViewModelBaseActionController
-        .startAction(name: '_StokListesiViewModelBase.removeImageMap');
-    try {
-      return super.removeImageMap(key);
-    } finally {
-      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   void setSearchBar() {
@@ -516,7 +467,6 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   String toString() {
     return '''
 bakiyeGroupValue: ${bakiyeGroupValue},
-imageMap: ${imageMap},
 searchBar: ${searchBar},
 searchValue: ${searchValue},
 bottomSheetModel: ${bottomSheetModel},
