@@ -811,7 +811,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
       viewModel.kalemModel.projeKodu = model.projeKodu;
     }
-    viewModel.kalemModel.stokAdi = viewModel.kalemModel.stokAdi ?? viewModel.kalemModel.stokKodu ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
+    viewModel.kalemModel.kalemAdi = kalemAdiController.text;
     viewModel.kalemModel.stokKodu = viewModel.kalemModel.stokKodu ?? viewModel.model?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
