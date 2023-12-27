@@ -20,6 +20,7 @@ import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
@@ -254,6 +255,18 @@ class NetworkManager {
       log(e.toString());
       return null;
     }
+  }
+
+  Future<List<EvraklarModel?>?> getEvraklar(String? path, String? belgeNo) async {
+    if (path == null) {
+      return null;
+    }
+    final response = await dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: {"BelgeNo": belgeNo, "BelgeTipi": "STOK", "UrlGetir": "E"});
+
+    if (response.success == true) {
+      return response.data.map((e) => e as EvraklarModel).toList().cast<EvraklarModel>();
+    }
+    return null;
   }
 
   Future<Uint8List?> getImageUint8List(String path) async {
