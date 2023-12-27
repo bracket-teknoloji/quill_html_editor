@@ -394,12 +394,21 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
     const Uuid uuid = Uuid();
-    final BaseSiparisEditModel newInstance =
-        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null);
-        if (widget.model.baseEditEnum == BaseEditEnum.duzenle){
-          newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
-          newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
-        }
+     BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null,kalemler: BaseSiparisEditModel.instance.kalemList);
+    if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
+      newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
+      newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
+    }else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+      newInstance = newInstance.copyWith(kalemler: BaseSiparisEditModel.instance.kalemList
+          ?.map(
+            (e) => e
+              ..siparisNo = e.belgeNo
+              ..belgeNo ??= null
+              ..siparisSira = e.teklifKalemSira,
+          )
+          .toList(),
+      kalemList: null,);
+    }
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
