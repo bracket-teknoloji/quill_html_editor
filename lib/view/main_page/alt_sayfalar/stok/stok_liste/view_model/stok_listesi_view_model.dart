@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -14,17 +13,6 @@ abstract class _StokListesiViewModelBase with Store {
   @observable
   String? bakiyeGroupValue = "Tümü";
 
-  @observable
-  ObservableMap<String, MemoryImage?> imageMap = <String, MemoryImage?>{}.asObservable();
-
-  @action
-  void setImageMap(Map<String, MemoryImage?> value) => imageMap = value.asObservable();
-
-  @action
-  void addImageMap(Map<String, MemoryImage?> value) => imageMap.addAll(value);
-
-  @action
-  void removeImageMap(String key) => imageMap.remove(key);
   @observable
   bool searchBar = false;
 
