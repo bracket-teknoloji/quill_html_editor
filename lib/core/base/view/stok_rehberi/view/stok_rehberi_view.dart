@@ -3,6 +3,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/image/image_view.dart";
+import "package:picker/core/components/image/image_widget.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -361,6 +363,18 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                       await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel ?? stok);
                                       viewModel.setSelectedStokModel(null);
                                     },
+                                    leading: SizedBox(
+                                      height: UIHelper.highSize * 3,
+                                      width: UIHelper.highSize * 3,
+                                      child: InkWell(
+                                        onTap: () => Get.to(ImageView(path: stok?.resimUrl ?? "", title: stok?.stokKodu ?? "")),
+                                        child: SizedBox(
+                                          height: UIHelper.highSize * 3,
+                                          width: UIHelper.highSize * 3,
+                                          child: ImageWidget(path: stok?.resimUrlKucuk),
+                                        ),
+                                      ),
+                                    ),
                                     title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
                                     subtitle: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
