@@ -31,20 +31,24 @@ class _ImageViewState extends BaseState<ImageView> {
             ),
           ],
         ),
-        body: InteractiveViewer(
-          child: Center(
-            child: FutureBuilder<MemoryImage?>(
-              future: networkManager.getImage(widget.path),
-              builder: (BuildContext context, AsyncSnapshot<MemoryImage?> snapshot) {
-                if (snapshot.hasData) {
-                  xfile = XFile.fromData(snapshot.data!.bytes);
-                  return Image.memory(snapshot.data!.bytes);
-                } else {
-                  return const Center(child: CircularProgressIndicator.adaptive());
-                }
-              },
+        body: Column(
+          children: [
+            InteractiveViewer(
+              child: Center(
+                child: FutureBuilder<MemoryImage?>(
+                  future: networkManager.getImage(widget.path),
+                  builder: (BuildContext context, AsyncSnapshot<MemoryImage?> snapshot) {
+                    if (snapshot.hasData) {
+                      xfile = XFile.fromData(snapshot.data!.bytes);
+                      return Image.memory(snapshot.data!.bytes);
+                    } else {
+                      return const Center(child: CircularProgressIndicator.adaptive());
+                    }
+                  },
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       );
 }
