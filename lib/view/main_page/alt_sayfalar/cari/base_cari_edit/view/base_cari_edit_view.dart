@@ -78,6 +78,11 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     });
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
+        if (widget.model?.baseEditEnum == BaseEditEnum.kopyala) {
+          CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(widget.model?.model));
+          viewModel.changeIsDownloadCompletedSuccesfully(true);
+          return;
+        }
         final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariDetayModel>(
           path: ApiUrls.getCariDetay,
           bodyModel: CariDetayModel(),
