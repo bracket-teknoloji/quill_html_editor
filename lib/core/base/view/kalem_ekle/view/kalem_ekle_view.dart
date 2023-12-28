@@ -839,7 +839,12 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.depoTanimi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.depoKodu).firstOrNull?.depoTanimi ?? "";
     depoController.text = viewModel.kalemModel.depoTanimi ?? "";
     viewModel.kalemModel.depoTanimi ??= depoController.text;
-    await getDovizData();
+    if (widget.kalemModel == null) {
+      await getDovizData();
+    } else {
+      dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+      dovizFiyatiController.text = viewModel.kalemModel.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
+    }
   }
 
   void disposeControllers() {
