@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -182,7 +183,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                     TextSpan(
                       children: [
                         TextSpan(text: "Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
-                        TextSpan(text: "\n(${kalemModel?.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
+                        TextSpan(text: "\n(${kalemModel?.dovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
                     ).yetkiVarMi(kalemModel?.brutFiyat != null),
@@ -285,9 +286,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
-          onTap: () {
+          onTap: () async {
             Get.back();
-            return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
+            final StokListesiModel? stokList = await networkManager.getStokModel(StokRehberiRequestModel.fromKalemModel(model!));
+            return dialogManager.showStokGridViewDialog(stokList);
           },
         ),
       ].nullCheckWithGeneric,
