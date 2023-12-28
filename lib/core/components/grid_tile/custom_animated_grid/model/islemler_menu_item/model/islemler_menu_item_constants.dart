@@ -66,6 +66,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
+        final CariListesiModel newModel = model as CariListesiModel;
         islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
         islemlerList.add(nakitTahsilat(model));
         islemlerList.add(nakitOdeme(model));
@@ -77,7 +78,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(paylas);
         islemlerList.add(kopyala);
         islemlerList.add(cariHareketleri);
-        islemlerList.add(cariKoduDegistir);
+        islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar!);
       }
     } else if (islemtipi == IslemTipiEnum.siparis) {
@@ -89,7 +90,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, satisIrsaliyeOlustur);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(cariKoduDegistir);
+        islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
         islemlerList.add(belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
@@ -149,13 +150,14 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.add(kopyala);
-        islemlerList.add(cariKoduDegistir);
+        islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
-      islemlerList.add(cariKoduDegistir);
+      islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
       islemlerList.add(kopyala);
     } else if (islemtipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -403,14 +405,14 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel? get cariKoduDegistir => GridItemModel.islemler(
+  GridItemModel? cariKoduDegistir(String? cariKodu) => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
           final KodDegistirModel kodDegistirModel = KodDegistirModel()
             ..kaynakSil = "H"
-            ..kaynakCari = model is CariListesiModel ? (model as CariListesiModel).cariKodu : (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).cariKodu : null);
+            ..kaynakCari = cariKodu;
           await _bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "Cari Kodu Değiştir",
@@ -422,7 +424,7 @@ class IslemlerMenuItemConstants<T> {
                   labelText: "Cari",
                   readOnly: true,
                   isMust: true,
-                  controllerText: model is CariListesiModel ? (model as CariListesiModel).cariAdi : null,
+                  controllerText: cariKodu,
                 ),
                 CustomTextField(
                   labelText: "Yeni Cari Kodu",
