@@ -7,6 +7,7 @@ enum MuhasebeBelgeTipiEnum {
   cariHavaleEft,
   muhtelifTahsilat,
   muhtelifOdeme,
+  dekont,
 }
 
 extension MuhasebeBelgeExtensions on MuhasebeBelgeTipiEnum? {
@@ -28,6 +29,8 @@ extension MuhasebeBelgeExtensions on MuhasebeBelgeTipiEnum? {
         return "BMT";
       case MuhasebeBelgeTipiEnum.muhtelifOdeme:
         return "BMO";
+      case MuhasebeBelgeTipiEnum.dekont:
+        return "DEKO";
       default:
         throw Exception("Böyle bir değer yok");
     }
