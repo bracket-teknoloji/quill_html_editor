@@ -60,6 +60,9 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   void setGonderimSekliEposta(bool value) => model = model.copyWith(gonderimSekliEPosta: value ? true : null);
 
   @action
+  void setEPosta(String? value) => model = model.copyWith(ePosta: value);
+
+  @action
   void setSiparisModel(BaseSiparisEditModel value) => siparisEditModel = value;
 
   @action

@@ -228,8 +228,10 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           viewModel.setGonderimSekliEposta(value);
                           if (value) {
                             _cariEPostaController.text = await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
+                            viewModel.setEPosta(_cariEPostaController.text);
                           } else {
                             _cariEPostaController.text = "";
+                            viewModel.setEPosta(null);
                           }
                         },
                         title: const Text("Gönderim Şekli E-Posta"),
@@ -257,6 +259,10 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                 Observer(
                   builder: (_) => ElevatedButton.icon(
                     onPressed: () async {
+                      if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
+                        dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
+                        return;
+                      }
                       dialogManager.showAreYouSureDialog(() async {
                         final result = await viewModel.sendTaslak();
                         if (result.success ?? false) {

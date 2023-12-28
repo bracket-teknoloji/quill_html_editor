@@ -175,6 +175,17 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
   }
 
   @override
+  void setEPosta(String? value) {
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
+        .startAction(name: '_EBelgeGonderViewModelBase.setEPosta');
+    try {
+      return super.setEPosta(value);
+    } finally {
+      _$_EBelgeGonderViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSiparisModel(BaseSiparisEditModel value) {
     final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
         .startAction(name: '_EBelgeGonderViewModelBase.setSiparisModel');
