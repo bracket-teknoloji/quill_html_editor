@@ -74,6 +74,10 @@ mixin _$SiparisEditRequestModel {
       throw _privateConstructorUsedError;
   int? get filtreKodu => throw _privateConstructorUsedError;
   set filtreKodu(int? value) => throw _privateConstructorUsedError;
+  int? get eFaturaIncKeyNo => throw _privateConstructorUsedError;
+  set eFaturaIncKeyNo(int? value) => throw _privateConstructorUsedError;
+  int? get depoKodu => throw _privateConstructorUsedError;
+  set depoKodu(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -110,7 +114,9 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
       String? stokKodu,
       String? tag,
       bool? siparisSevkEdilenGoster,
-      int? filtreKodu});
+      int? filtreKodu,
+      int? eFaturaIncKeyNo,
+      int? depoKodu});
 }
 
 /// @nodoc
@@ -150,6 +156,8 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
     Object? tag = freezed,
     Object? siparisSevkEdilenGoster = freezed,
     Object? filtreKodu = freezed,
+    Object? eFaturaIncKeyNo = freezed,
+    Object? depoKodu = freezed,
   }) {
     return _then(_value.copyWith(
       ekranTipi: freezed == ekranTipi
@@ -244,6 +252,14 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      eFaturaIncKeyNo: freezed == eFaturaIncKeyNo
+          ? _value.eFaturaIncKeyNo
+          : eFaturaIncKeyNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -280,7 +296,9 @@ abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
       String? stokKodu,
       String? tag,
       bool? siparisSevkEdilenGoster,
-      int? filtreKodu});
+      int? filtreKodu,
+      int? eFaturaIncKeyNo,
+      int? depoKodu});
 }
 
 /// @nodoc
@@ -319,6 +337,8 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     Object? tag = freezed,
     Object? siparisSevkEdilenGoster = freezed,
     Object? filtreKodu = freezed,
+    Object? eFaturaIncKeyNo = freezed,
+    Object? depoKodu = freezed,
   }) {
     return _then(_$SiparisEditRequestModelImpl(
       ekranTipi: freezed == ekranTipi
@@ -413,6 +433,14 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      eFaturaIncKeyNo: freezed == eFaturaIncKeyNo
+          ? _value.eFaturaIncKeyNo
+          : eFaturaIncKeyNo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -444,7 +472,9 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
       this.stokKodu,
       this.tag,
       this.siparisSevkEdilenGoster,
-      this.filtreKodu})
+      this.filtreKodu,
+      this.eFaturaIncKeyNo,
+      this.depoKodu})
       : super._();
 
   factory _$SiparisEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -500,6 +530,10 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   bool? siparisSevkEdilenGoster;
   @override
   int? filtreKodu;
+  @override
+  int? eFaturaIncKeyNo;
+  @override
+  int? depoKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -540,7 +574,9 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
       String? stokKodu,
       String? tag,
       bool? siparisSevkEdilenGoster,
-      int? filtreKodu}) = _$SiparisEditRequestModelImpl;
+      int? filtreKodu,
+      int? eFaturaIncKeyNo,
+      int? depoKodu}) = _$SiparisEditRequestModelImpl;
   _SiparisEditRequestModel._() : super._();
 
   factory _SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =
@@ -621,6 +657,12 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   int? get filtreKodu;
   set filtreKodu(int? value);
+  @override
+  int? get eFaturaIncKeyNo;
+  set eFaturaIncKeyNo(int? value);
+  @override
+  int? get depoKodu;
+  set depoKodu(int? value);
   @override
   @JsonKey(ignore: true)
   _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>

@@ -40,6 +40,8 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? tag,
     bool? siparisSevkEdilenGoster,
     int? filtreKodu,
+    int? eFaturaIncKeyNo,
+    int? depoKodu,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();
@@ -82,7 +84,10 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         cariKodu: model?.cariKodu,
         belgeTuru: model?.belgeTuru,
         belgeTipi: model?.belgeTuru,
+        pickerBelgeTuru: model?.belgeTuru,
+        filtreKodu: 8,
         tipi: model?.dovizTipi,
+        eFaturaIncKeyNo: model?.inckeyno,
       );
 
   factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
