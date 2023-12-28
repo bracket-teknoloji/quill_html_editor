@@ -453,7 +453,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           if (depoModel == null) {
             return;
           }
-          final cariModel = await networkManager.getCariModel(CariRequestModel(kod:[""], filterText: "", vergiNo: ))
+          // final cariModel = await networkManager.getCariModel(CariRequestModel(kod:[""], filterText: "", vergiNo: ))
           final siparisModel = await networkManager.getFatura(SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)..depoKodu = depoModel.depoKodu);
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",
