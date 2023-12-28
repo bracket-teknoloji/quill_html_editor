@@ -23,6 +23,7 @@ import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/cirola_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/talep_teklif_tipi_enum.dart";
+import "package:picker/core/init/theme/app_theme_light.dart";
 import "package:picker/locale_delegate.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view/cek_senet_evraklar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_goruntule/view/cek_senet_goruntule_view.dart";
@@ -182,6 +183,7 @@ class PickerApp extends StatelessWidget {
         scrollBehavior: const MaterialScrollBehavior()
             .copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown, PointerDeviceKind.trackpad}),
         opaqueRoute: false,
+        theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: ThemeMode.dark,
         home: const SplashAuthView(),
