@@ -51,6 +51,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               children: [
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
+                cariOlustur.yetkiKontrol(model.kayitliCariKodu == null),
                 eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
@@ -77,7 +78,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariylaGonderildiMi),
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
-                   ColorfulBadge(label: Text(loc(context).generalStrings.alert), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
+                  ColorfulBadge(label: Text(loc(context).generalStrings.alert), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
                   ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
                   Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
@@ -362,6 +363,24 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           );
 
           dialogManager.showCariGridViewDialog((result.data as List).firstOrNull);
+        },
+      );
+
+  BottomSheetModel get cariOlustur => BottomSheetModel(
+        title: "Cari Oluştur",
+        iconWidget: Icons.person_add_outlined,
+        onTap: () async {
+          Get.back();
+          final result = await Get.toNamed(
+            "/mainPage/cariEdit",
+            arguments: BaseEditModel<CariListesiModel>(
+              model: CariListesiModel.fromEBelgeListesiModel(model),
+              baseEditEnum: BaseEditEnum.kopyala,
+            ),
+          );
+          if (result != null) {
+            widget.onRefresh.call(true);
+          }
         },
       );
 
