@@ -1163,7 +1163,6 @@ class KalemModel with NetworkManagerMixin {
         stokKodu: model.stokKodu,
       );
 
-
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
     if (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) {
@@ -1210,6 +1209,7 @@ class KalemModel with NetworkManagerMixin {
   double get toplamTutar => isKoli ? koliTutar : brutTutar;
 
   double get araToplamTutari => brutTutar - iskontoTutari - mfTutari;
+
   double get getAraToplamTutari => araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
 
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
