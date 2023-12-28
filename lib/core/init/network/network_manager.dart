@@ -13,6 +13,7 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -23,6 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
 import "package:talker_dio_logger/talker_dio_logger_settings.dart";
 // import "package:talker_dio_logger/talker_dio_logger_interceptor.dart";
@@ -413,6 +415,19 @@ class NetworkManager {
     final result = await dioGet<CariListesiModel>(
       path: ApiUrls.getCariler,
       bodyModel: CariListesiModel(),
+      showLoading: true,
+      queryParameters: model.toJson(),
+    );
+    if (result.success ?? false) {
+      return result.data.first;
+    }
+    return null;
+  }
+
+  Future<StokListesiModel?> getStokModel(StokRehberiRequestModel model) async {
+    final result = await dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
       showLoading: true,
       queryParameters: model.toJson(),
     );
