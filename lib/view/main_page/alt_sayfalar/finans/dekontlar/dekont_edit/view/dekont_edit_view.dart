@@ -2,11 +2,16 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/genel/view/dekont_edit_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
@@ -16,7 +21,8 @@ import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont
 class DekontEditView extends StatefulWidget {
   final BaseEditEnum baseEditEnum;
   final DekontListesiModel? model;
-  const DekontEditView({super.key, required this.baseEditEnum, this.model});
+  final EBelgeListesiModel? eBelgeModel;
+  const DekontEditView({super.key, required this.baseEditEnum, this.model, this.eBelgeModel});
 
   @override
   State<DekontEditView> createState() => _DekontEditViewState();
@@ -38,6 +44,56 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
       if (widget.baseEditEnum == BaseEditEnum.duzenle) {
         await viewModel.getData(widget.model!);
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
+      } else if (widget.baseEditEnum == BaseEditEnum.taslak) {
+        final EBelgeListesiModel model = widget.eBelgeModel!;
+        final CariListesiModel? cariModel = await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, filterText: "", eFaturaGoster: true, kod: [""]));
+        SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
+        SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
+        SingletonDekontIslemlerRequestModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+
+        SingletonDekontIslemlerRequestModel.instance.kalemler = [
+          DekontKalemler(
+            hesapTipi: "C",
+            ba: "A",
+            hesapAdi: cariModel?.cariAdi,
+            hesapKodu: cariModel?.cariKodu,
+            kalemAdi: model.cariAdi,
+            tutar: model.genelToplam,
+            belgeNo: model.resmiBelgeNo,
+            hesapTipiAciklama: "Cari",
+            aciklama: "E-Faturadan Dekont İşlemi",
+            plasiyerAciklama: cariModel?.plasiyerAciklama,
+            plasiyerKodu: cariModel?.plasiyerKodu,
+          ),
+          DekontKalemler(
+            hesapTipi: "M",
+            ba: "B",
+            hesapAdi: "Muhasebe Kodu Seçiniz",
+            hesapKodu: cariModel?.cariKodu,
+            kalemAdi: "Muhasebe Kodu Seçiniz",
+            tutar: (model.genelToplam ?? 0) - (model.kdvTutari ?? 0),
+            belgeNo: model.resmiBelgeNo,
+            hesapTipiAciklama: "Muhasebe",
+            aciklama: "E-Faturadan Dekont İşlemi",
+            plasiyerAciklama: cariModel?.plasiyerAciklama,
+            plasiyerKodu: cariModel?.plasiyerKodu,
+          ),
+          DekontKalemler(
+            hesapTipi: "M",
+            ba: "B",
+            hesapAdi: "Muhasebe Kodu Seçiniz",
+            hesapKodu: cariModel?.cariKodu,
+            kalemAdi: "Muhasebe Kodu Seçiniz",
+            tutar: model.kdvTutari,
+            belgeNo: model.resmiBelgeNo,
+            hesapTipiAciklama: "Muhasebe",
+            aciklama: "E-Faturadan Dekont İşlemi",
+            plasiyerAciklama: cariModel?.plasiyerAciklama,
+            plasiyerKodu: cariModel?.plasiyerKodu,
+          ),
+        ];
+        viewModel.setKalemSayisi(SingletonDekontIslemlerRequestModel.instance.kalemler?.length ?? 0);
+        viewModel.setIslemTamamlandi(true);
       }
     });
     _tabController = TabController(length: 2, vsync: this);

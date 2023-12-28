@@ -87,7 +87,7 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setHesapKodu(String? value) => model = model.copyWith(hesapKodu: value);
 
   @action
-  void setKalemAdi(String? value) => model = model.copyWith(kalemAdi: value);
+  void setKalemAdi(String? value) => model = model.copyWith(kalemAdi: value, hesapAdi: value);
 
   @action
   void setDovizTipi(DovizList? value) => model = model.copyWith(dovizTipi: value?.dovizKodu, dovizTipiAdi: value?.isim);

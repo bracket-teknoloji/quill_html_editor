@@ -29,7 +29,11 @@ abstract class _DekontEditGenelViewModelBase with Store {
 
   @action
   void setPlasiyerKodu(PlasiyerList? value) {
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama);
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
+      plasiyerKodu: value?.plasiyerKodu,
+      plasiyerAdi: value?.plasiyerAciklama,
+      kalemler: dekontIslemlerRequestModel.kalemler?.map((e) => e.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama)).toList(),
+    );
     setSingleton();
   }
 }

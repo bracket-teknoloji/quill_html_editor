@@ -74,7 +74,9 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
                             ),
                           ],
                         ),
-                        Text(item.kalemAdi ?? ""),
+                        Observer(
+                          builder: (_) => Text(item.kalemAdi ?? ""),
+                        ),
                       ],
                     ),
                     subtitle: Column(
@@ -124,7 +126,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
           onTap: () async {
             Get.back();
             late final dynamic result;
-            if (widget.baseEditEnum == BaseEditEnum.ekle) {
+            if (widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak) {
               result = await Get.toNamed("/mainPage/dekontKalemEkle", arguments: model);
             } else {
               result = await Get.toNamed("/mainPage/dekontKalemEkleKisitli", arguments: model);

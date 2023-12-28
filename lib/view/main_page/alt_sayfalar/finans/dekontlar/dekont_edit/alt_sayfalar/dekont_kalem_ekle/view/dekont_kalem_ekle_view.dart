@@ -7,6 +7,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -320,14 +321,14 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         hesapKodu = result.cariKodu ?? "";
       }
     } else if (viewModel.model.muhasebeMi) {
-      final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+      final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.dekont, hesapTipi: "M");
       if (result != null) {
-        _hesapController.text = result.adi ?? "";
-        if (viewModel.model.ba == "B") {
-          hesapKodu = result.satisHesabi ?? "";
-        } else {
-          hesapKodu = result.alisHesabi ?? "";
-        }
+        _hesapController.text = result.hesapAdi ?? "";
+        hesapKodu = result.hesapKodu ?? "";
+        // if (viewModel.model.ba == "B") {
+        // } else {
+        //   hesapKodu = result.alisHesabi ?? "";
+        // }
       }
     } else if (viewModel.model.bankaMi) {
       final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE"), viewModel.model.hesapKodu);

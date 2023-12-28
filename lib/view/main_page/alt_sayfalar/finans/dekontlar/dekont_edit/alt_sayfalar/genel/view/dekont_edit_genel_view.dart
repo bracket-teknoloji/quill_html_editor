@@ -29,6 +29,15 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
     _tarihController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.tarih?.toDateString ?? "");
     _seriController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.seriAdi ?? "");
     _plasiyerController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.plasiyerAdi ?? "");
+    if ((widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak) && viewModel.dekontIslemlerRequestModel.seriAdi == null) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+        if (viewModel.dekontIslemlerRequestModel.tarih == null) {
+          viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
+          _tarihController.text = viewModel.dekontIslemlerRequestModel.tarih?.toDateString ?? "";
+        }
+        await setSeri();
+      });
+    }
     super.initState();
   }
 
@@ -48,7 +57,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
           children: [
             CustomTextField(
               labelText: "Tarih",
-              enabled: widget.baseEditEnum == BaseEditEnum.ekle,
+              enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
               isDateTime: true,
               isMust: true,
               readOnly: true,
@@ -58,7 +67,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
             ),
             CustomTextField(
               labelText: "Seri",
-              enabled: widget.baseEditEnum == BaseEditEnum.ekle,
+              enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
               suffixMore: true,
               isMust: true,
               readOnly: true,
