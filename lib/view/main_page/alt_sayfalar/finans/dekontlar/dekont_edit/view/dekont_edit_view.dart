@@ -76,23 +76,6 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
             ],
             bottom: TabBar(
               controller: _tabController,
-              // onTap: (value) {
-              //   final DekontIslemlerRequestModel model = SingletonDekontIslemlerRequestModel.instance;
-              //   if (!model.ilkSayfaTamamMi) {
-              //     dialogManager.showErrorSnackBar("Genel bilgileri doldurun.");
-              //     _tabController.addListener(() {
-              //       if (_tabController.index == 1) {
-              //         log("Tab Changed: ${_tabController.index}");
-              //         _tabController.animateTo(0);
-              //       }
-              //     });
-              //   } else {
-              //     // if (_tabController.hasListeners) {
-              //     _tabController.addListener(() {
-              //       _tabController.animateTo(value);
-              //     });
-              //   }
-              // },
               tabs: [
                 const Tab(text: "Genel"),
                 Tab(
