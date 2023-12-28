@@ -16,8 +16,10 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_islem_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -52,12 +54,15 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
                 cariOlustur.yetkiKontrol(model.kayitliCariKodu == null),
+                // alisFaturasiOlustur,
+                dekontOlustur,
                 eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
                 faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
                 zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
-                cariIslemleri.yetkiKontrol((!model.gelenMi && model.eArsivMi) || (model.kayitliCariKodu != null && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)),
+                cariIslemleri
+                    .yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.kayitliCariKodu != null && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.kayitliCariKodu != null),
                 yazdir.yetkiKontrol(!(model.gelenMi && model.eArsivMi)),
               ].nullCheckWithGeneric,
             );
@@ -436,6 +441,46 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             },
             title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?",
           );
+        },
+      );
+
+  BottomSheetModel get alisFaturasiOlustur => BottomSheetModel(
+        title: "Alış Faturası Oluştur",
+        iconWidget: Icons.add_outlined,
+        onTap: () async {
+          Get.back();
+          final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 1);
+          if (depoModel == null) {
+            return;
+          }
+          final cariModel = await networkManager.getCariModel(CariRequestModel(kod:[""], filterText: "", vergiNo: ))
+          final siparisModel = await networkManager.getFatura(SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)..depoKodu = depoModel.depoKodu);
+          final result = await Get.toNamed(
+            "/mainPage/faturaEdit",
+            arguments: BaseEditModel<BaseSiparisEditModel>(
+              model: siparisModel,
+              baseEditEnum: BaseEditEnum.kopyala,
+              editTipiEnum: EditTipiEnum.alisFatura,
+            ),
+          );
+          if (result != null) {
+            widget.onRefresh.call(true);
+          }
+        },
+      );
+
+  BottomSheetModel get dekontOlustur => BottomSheetModel(
+        title: "Dekont Oluştur",
+        iconWidget: Icons.add_outlined,
+        onTap: () async {
+          Get.back();
+          final result = await Get.toNamed(
+            "/mainPage/dekontEBelgedenEkle",
+            arguments: model,
+          );
+          if (result != null) {
+            widget.onRefresh.call(true);
+          }
         },
       );
 
