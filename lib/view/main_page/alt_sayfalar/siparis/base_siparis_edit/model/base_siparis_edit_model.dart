@@ -8,6 +8,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -848,6 +849,22 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   //setter for singleton
   static void setInstance(BaseSiparisEditModel instance) => _instance = instance;
+
+  factory BaseSiparisEditModel.fromEBelgeListesiModel(EBelgeListesiModel model) => BaseSiparisEditModel(
+        belgeNo: model.belgeNo,
+        belgeTuru: model.belgeTuru,
+        cariKodu: model.cariKodu,
+        cariAdi: model.cariAdi,
+        tarih: model.tarih,
+        genelToplam: model.genelToplam,
+        dovizTutari: model.dovizTutari,
+        dovizTipi: model.dovizTipi,
+        dovizAdi: model.dovizAdi,
+        cariDovizli: model.dovizliMi,
+        kdvDahilMi: model.kdvTutari != null,
+        kdvDahil: model.kdvTutari != null ? "E" : "H",
+        aciklama: model.aciklama,
+      );
 }
 
 @CopyWith()
@@ -1201,7 +1218,7 @@ class KalemModel with NetworkManagerMixin {
 
   double get brutTutar => (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
 
-  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizFiyati ?? 0);
+  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0);
 
   double get koliTutar =>
       (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
@@ -1251,7 +1268,7 @@ class KalemModel with NetworkManagerMixin {
   }
 
   double get dovizIskontoTutari {
-    double result = (getSelectedMiktar ?? 0) * (dovizFiyati ?? 0);
+    double result = (getSelectedMiktar ?? 0) * (dovizliFiyat ?? 0);
     if (iskonto1OranMi ?? true) {
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
@@ -1274,19 +1291,19 @@ class KalemModel with NetworkManagerMixin {
     if (iskonto6 != null && iskonto6 != 0) {
       result = result - result * ((iskonto6 ?? 0) / 100);
     }
-    return ((getSelectedMiktar ?? 0) * (dovizFiyati ?? 0)) - result;
+    return ((getSelectedMiktar ?? 0) * (dovizliFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizFiyati ?? (brutTutar / (dovizKuru ?? 1)));
-  double get getDovizBrutTutar => !dovizliMi ? 0 : dovizFiyati ?? (brutTutar / (dovizKuru ?? 1));
+  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
+  double get getDovizBrutTutar => !dovizliMi ? 0 : dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1));
 
   double get dovizAraToplamTutari => !dovizliMi ? 0 : araToplamTutari / (dovizKuru ?? 1);
   double get getKdvsizDovizAraToplamTutari => getDovizAraToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
-  double get getDovizAraToplamTutari => !dovizliMi ? 0 : ((dovizFiyati ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari);
+  double get getDovizAraToplamTutari => !dovizliMi ? 0 : ((dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari);
 
   double get dovizGenelToplamTutari => !dovizliMi ? 0 : genelToplamTutari / (dovizKuru ?? 1);
 
-  double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizFiyati ?? 0);
+  double get dovizMfTutari => (malfazIskAdedi ?? 0) * (dovizliFiyat ?? 0);
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 
