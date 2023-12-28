@@ -437,6 +437,19 @@ class NetworkManager {
     return null;
   }
 
+  Future<BaseSiparisEditModel?> getFatura(SiparisEditRequestModel model) async {
+    final result = await dioPost<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      queryParameters: model.toJson(),
+    );
+    if (result.success ?? false) {
+      return result.data.first;
+    }
+    return null;
+  }
+
   Future<BaseSiparisEditModel?> getBaseSiparisEditModel(SiparisEditRequestModel model) async {
     final result = await dioPost<BaseSiparisEditModel>(
       path: ApiUrls.getFaturaDetay,
