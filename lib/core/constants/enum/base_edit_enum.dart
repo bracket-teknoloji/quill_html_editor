@@ -4,6 +4,7 @@ enum BaseEditEnum {
   goruntule,
   kopyala,
   revize,
+  taslak
 }
 
 extension ToString on BaseEditEnum? {
@@ -23,6 +24,8 @@ extension ToString on BaseEditEnum? {
         return "Kopyala";
       case BaseEditEnum.revize:
         return "Revize";
+      case BaseEditEnum.taslak:
+        return "Yeni Kayıt";
       default:
         return "";
     }
