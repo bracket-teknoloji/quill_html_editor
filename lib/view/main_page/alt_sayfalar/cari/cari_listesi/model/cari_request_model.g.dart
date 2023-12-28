@@ -44,6 +44,7 @@ _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
           .toList(),
       plasiyerKisitiYok: json['PlasiyerKisitiYok'] as bool?,
       belgeTuru: json['BelgeTuru'] as String?,
+      vergiNo: json['VergiNo'] as String?,
     );
 
 Map<String, dynamic> _$$CariRequestModelImplToJson(
@@ -75,5 +76,6 @@ Map<String, dynamic> _$$CariRequestModelImplToJson(
   writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
   writeNotNull('PlasiyerKisitiYok', instance.plasiyerKisitiYok);
   writeNotNull('BelgeTuru', instance.belgeTuru);
+  writeNotNull('VergiNo', instance.vergiNo);
   return val;
 }

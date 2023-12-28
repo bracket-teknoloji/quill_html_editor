@@ -31,6 +31,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
     bool? plasiyerKisitiYok,
     String? belgeTuru,
+    String? vergiNo,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
