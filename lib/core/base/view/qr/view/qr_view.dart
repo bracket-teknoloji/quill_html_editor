@@ -29,45 +29,43 @@ class _QRScannerState extends BaseState<QRScannerView> {
   }
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text("QR Kod Okuyucu"),
-            actions: [
-              Observer(
-                builder: (_) => IconButton(
-                  onPressed: () {
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text("QR Kod Okuyucu"),
+          actions: [
+            Observer(
+              builder: (_) => IconButton(
+                onPressed: () {
+                  viewModel.changeFlash();
+                  qrViewController.toggleFlash();
+                },
+                icon: Icon(
+                  Icons.flash_on,
+                  color: viewModel.isFlashOpen ? ColorPalette.gamboge : null,
+                ),
+              ),
+            ),
+            Observer(
+              builder: (_) => IconButton(
+                isSelected: false,
+                onPressed: () {
+                  if (viewModel.isFlashOpen) {
                     viewModel.changeFlash();
                     qrViewController.toggleFlash();
-                  },
-                  icon: Icon(
-                    Icons.flash_on,
-                    color: viewModel.isFlashOpen ? ColorPalette.gamboge : null,
-                  ),
+                  }
+                  viewModel.changeCameraReverse();
+                  qrViewController.flipCamera();
+                },
+                icon: Icon(
+                  Icons.flip_camera_ios,
+                  color: viewModel.isCameraReverse ? ColorPalette.gamboge : null,
                 ),
               ),
-              Observer(
-                builder: (_) => IconButton(
-                  isSelected: false,
-                  onPressed: () {
-                    if (viewModel.isFlashOpen) {
-                      viewModel.changeFlash();
-                      qrViewController.toggleFlash();
-                    }
-                    viewModel.changeCameraReverse();
-                    qrViewController.flipCamera();
-                  },
-                  icon: Icon(
-                    Icons.flip_camera_ios,
-                    color: viewModel.isCameraReverse ? ColorPalette.gamboge : null,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          body: Stack(
-            children: [buildQrView(context), buildResult()],
-          ),
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [buildQrView(context), buildResult()],
         ),
       );
 
