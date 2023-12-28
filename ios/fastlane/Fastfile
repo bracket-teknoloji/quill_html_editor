@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Update fastlane to latest version
 update_fastlane
@@ -5,71 +6,66 @@ update_fastlane
 default_platform(:ios)
 
 platform :ios do
-  desc "Push code and tag to remote for Codemagic build"
+  desc 'Push code and tag to remote for Codemagic build'
   lane :prepare_for_build do
-
-    runner = "Runner.xcodeproj"
-
-    UI.important "The latest build number will be incremented"
+    runner = 'Runner.xcodeproj'
+    UI.important 'The latest build number will be incremented'
 
     increment_build_number(
       {
         xcodeproj: runner,
-        build_number: latest_testflight_build_number + 1,
-      },
+        build_number: latest_testflight_build_number + 1
+      }
     )
 
-
-    UI.success "The latest version number has been incremented"
+    UI.success 'The latest version number has been incremented'
 
     version_number = get_version_number(
       xcodeproj: runner,
-      target: "Runner",
-      )
+      target: 'Runner'
+    )
 
     build_number = get_build_number(
-      xcodeproj: runner,
-      )
+      xcodeproj: runner
+    )
 
-    UI.success "Build number has been incremented"
+    UI.success 'Build number has been incremented'
     UI.success "Build number: #{build_number}"
 
     git_tag_name = "V#{version_number}+#{build_number}"
 
-    #git add and commit
-    
-    git_add
-    git_commit(path: "./", message: "Build number has been incremented to #{git_tag_name}")
+    # git add and commit
 
+    git_add
+    git_commit(path: './', message: "Build number has been incremented to #{git_tag_name}")
 
     if git_tag_exists(tag: git_tag_name)
 
-      UI.important "Git tag already exists!"
-      UI.important "Git tag will be deleted and recreated"
+      UI.important 'Git tag already exists!'
+      UI.important 'Git tag will be deleted and recreated'
 
       sh("git tag -d #{git_tag_name}")
 
       sh("git push --delete origin #{git_tag_name}")
 
-      UI.success "Git tag has been deleted"
+      UI.success 'Git tag has been deleted'
 
     end
 
     add_git_tag(
-      grouping: "",
+      grouping: '',
       tag: git_tag_name,
-      includes_lane: false,
-      )
+      includes_lane: false
+    )
 
-    UI.success "Git tag has been added"
+    UI.success 'Git tag has been added'
 
-    push_to_git_remote()
+    push_to_git_remote
 
-    UI.success "Code has been pushed to remote"
+    UI.success 'Code has been pushed to remote'
 
-    push_git_tags()
+    push_git_tags
 
-    UI.success "Git tag has been pushed to remote"
-
+    UI.success 'Git tag has been pushed to remote'
   end
 end
