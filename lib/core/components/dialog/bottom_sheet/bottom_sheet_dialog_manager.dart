@@ -112,8 +112,8 @@ class BottomSheetDialogManager {
                                 itemBuilder: (BuildContext context, int index) => Column(
                                   children: <Widget>[
                                     ListTile(
-                                      onTap: children?[index].onTap ?? () => Get.back(result: children![index].value),
-                                      title: Text(children![index].title),
+                                      onTap: children2?[index].onTap ?? () => Get.back(result: children2![index].value),
+                                      title: Text(children2![index].title),
                                       subtitle: children2![index].description != null
                                           ? Text(children2![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
                                           : null,
