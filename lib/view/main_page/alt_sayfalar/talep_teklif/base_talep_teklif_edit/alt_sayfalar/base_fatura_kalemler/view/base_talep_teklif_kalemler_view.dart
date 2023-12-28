@@ -195,7 +195,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: "Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
+                        TextSpan(text: "Tutar: ${kalemModel?.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
                         TextSpan(text: "\n(${kalemModel?.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
