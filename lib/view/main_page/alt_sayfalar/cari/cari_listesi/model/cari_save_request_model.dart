@@ -191,7 +191,7 @@ class CariSaveRequestModel with NetworkManagerMixin {
         postaKodu: model?.postakodu,
         website: model?.web,
         vergiDairesi: model?.vergiDairesi,
-        vergiNo: model?.vergiNumarasi,
+        vergiNo: model?.vergiNo,
         grupKodu: model?.grupKodu,
         kod1: model?.kod1,
         kod2: model?.kod2,
