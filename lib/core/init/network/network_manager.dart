@@ -86,10 +86,12 @@ class NetworkManager {
     // }
     dio.interceptors.add(
       TalkerDioLogger(
-        settings: const TalkerDioLoggerSettings(
+        settings: TalkerDioLoggerSettings(
           printResponseMessage: true,
           printResponseData: false,
           printRequestData: false,
+          requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
+          responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
         ),
       ),
     );
