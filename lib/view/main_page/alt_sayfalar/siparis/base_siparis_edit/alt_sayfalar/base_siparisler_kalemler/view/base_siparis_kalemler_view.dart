@@ -152,7 +152,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             LayoutBuilder(
               builder: (context, constrains) => Wrap(
                 children: [
-                  Text("Koşul: ${kalemModel?.kosulKodu ?? ""}").yetkiVarMi(kalemModel?.kosulKodu != null),
+                  Text("Koşul: ${kalemModel?.kosulKodu ?? ""}").yetkiVarMi(kalemModel?.kosulKodu != null && kalemModel?.kosulKodu != ""),
                   Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
                   Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
