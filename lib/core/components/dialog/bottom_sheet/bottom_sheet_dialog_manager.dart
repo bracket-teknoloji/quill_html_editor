@@ -367,7 +367,8 @@ class BottomSheetDialogManager {
         title: "Depo seç",
         groupValue: groupValue,
         children: CacheManager.getAnaVeri?.paramModel?.depoList
-            ?.map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
+            ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
+            .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
             .toList(),
       );
 
