@@ -101,6 +101,19 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       model.model?.siparisSevkEdilenGoster = true;
     }
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+      if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
+        BaseSiparisEditModel.resetInstance();
+        BaseSiparisEditModel.setInstance(widget.model.model);
+        BaseSiparisEditModel.instance.isNew = true;
+        BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+        BaseSiparisEditModel.instance.tag = "FaturaModel";
+        BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
+        BaseSiparisEditModel.instance.belgeNo = null;
+        viewModel.changeIsBaseSiparisEmpty(false);
+        return;
+      }
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
@@ -394,20 +407,22 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
     const Uuid uuid = Uuid();
-     BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null,kalemler: BaseSiparisEditModel.instance.kalemList);
+    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, kalemler: BaseSiparisEditModel.instance.kalemList);
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
       newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
-    }else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-      newInstance = newInstance.copyWith(kalemler: BaseSiparisEditModel.instance.kalemList
-          ?.map(
-            (e) => e
-              ..siparisNo = e.belgeNo
-              ..belgeNo ??= null
-              ..siparisSira = e.teklifKalemSira,
-          )
-          .toList(),
-      kalemList: null,);
+    } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+      newInstance = newInstance.copyWith(
+        kalemler: BaseSiparisEditModel.instance.kalemList
+            ?.map(
+              (e) => e
+                ..siparisNo = e.belgeNo
+                ..belgeNo ??= null
+                ..siparisSira = e.teklifKalemSira,
+            )
+            .toList(),
+        kalemList: null,
+      );
     }
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
