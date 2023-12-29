@@ -395,6 +395,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(154)
   @JsonKey(defaultValue: {})
   Map<String, dynamic>? paramMap;
+  @HiveField(155)
+  String? yeniCariKodu;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -551,6 +553,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.onaylayankul,
     this.onaytarihi,
     this.efaturaSenaryo,
+    this.paramMap,
+    this.yeniCariKodu,
   });
 
   BaseSiparisEditModel._init();
@@ -864,6 +868,19 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         kdvDahilMi: model.kdvTutari != null,
         kdvDahil: model.kdvTutari != null ? "E" : "H",
         aciklama: model.aciklama,
+      );
+
+  factory BaseSiparisEditModel.cariKoduDegistir(BaseSiparisEditModel model) => BaseSiparisEditModel(
+        cariKodu: model.cariKodu,
+        belgeNo: model.belgeNo,
+        tipi: model.tipi,
+        belgeTuru: model.belgeTuru,
+        islemKodu: 3,
+        pickerBelgeTuru: model.pickerBelgeTuru,
+        tag: "FaturaModel",
+        paramMap: {
+          "TESLIM_CARI_DEGISMESIN": "H",
+        },
       );
 }
 

@@ -315,6 +315,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel efaturaSenaryo(String? efaturaSenaryo);
 
+  BaseSiparisEditModel paramMap(Map<String, dynamic>? paramMap);
+
+  BaseSiparisEditModel yeniCariKodu(String? yeniCariKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -476,6 +480,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? onaylayankul,
     DateTime? onaytarihi,
     String? efaturaSenaryo,
+    Map<String, dynamic>? paramMap,
+    String? yeniCariKodu,
   });
 }
 
@@ -1036,6 +1042,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(efaturaSenaryo: efaturaSenaryo);
 
   @override
+  BaseSiparisEditModel paramMap(Map<String, dynamic>? paramMap) =>
+      this(paramMap: paramMap);
+
+  @override
+  BaseSiparisEditModel yeniCariKodu(String? yeniCariKodu) =>
+      this(yeniCariKodu: yeniCariKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1198,6 +1212,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? onaylayankul = const $CopyWithPlaceholder(),
     Object? onaytarihi = const $CopyWithPlaceholder(),
     Object? efaturaSenaryo = const $CopyWithPlaceholder(),
+    Object? paramMap = const $CopyWithPlaceholder(),
+    Object? yeniCariKodu = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1818,6 +1834,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.efaturaSenaryo
           // ignore: cast_nullable_to_non_nullable
           : efaturaSenaryo as String?,
+      paramMap: paramMap == const $CopyWithPlaceholder()
+          ? _value.paramMap
+          // ignore: cast_nullable_to_non_nullable
+          : paramMap as Map<String, dynamic>?,
+      yeniCariKodu: yeniCariKodu == const $CopyWithPlaceholder()
+          ? _value.yeniCariKodu
+          // ignore: cast_nullable_to_non_nullable
+          : yeniCariKodu as String?,
     );
   }
 }
@@ -3182,13 +3206,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       onaylayankul: fields[151] as String?,
       onaytarihi: fields[152] as DateTime?,
       efaturaSenaryo: fields[153] as String?,
-    )..paramMap = (fields[154] as Map?)?.cast<String, dynamic>();
+      paramMap: (fields[154] as Map?)?.cast<String, dynamic>(),
+      yeniCariKodu: fields[155] as String?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(155)
+      ..writeByte(156)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3498,7 +3524,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(153)
       ..write(obj.efaturaSenaryo)
       ..writeByte(154)
-      ..write(obj.paramMap);
+      ..write(obj.paramMap)
+      ..writeByte(155)
+      ..write(obj.yeniCariKodu);
   }
 
   @override
@@ -4027,7 +4055,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : DateTime.parse(json['ONAYTARIHI'] as String),
       efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
-    )..paramMap = json['PARAM_MAP'] as Map<String, dynamic>? ?? {};
+      paramMap: json['PARAM_MAP'] as Map<String, dynamic>? ?? {},
+      yeniCariKodu: json['YENI_CARI_KODU'] as String?,
+    );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -4194,6 +4224,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ONAYTARIHI', instance.onaytarihi?.toIso8601String());
   writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
   writeNotNull('PARAM_MAP', instance.paramMap);
+  writeNotNull('YENI_CARI_KODU', instance.yeniCariKodu);
   return val;
 }
 
