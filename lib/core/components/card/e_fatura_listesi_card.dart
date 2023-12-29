@@ -469,8 +469,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",
             arguments: BaseEditModel<BaseSiparisEditModel>(
-              model: siparisModel,
-              baseEditEnum: BaseEditEnum.kopyala,
+              model: siparisModel..cariAdi = cariModel?.cariAdi..cariEfaturami = "E",
+              baseEditEnum: BaseEditEnum.taslak,
               editTipiEnum: EditTipiEnum.alisFatura,
             ),
           );
