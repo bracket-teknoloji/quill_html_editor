@@ -70,7 +70,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setYapKod(String? value) => kalemModel = kalemModel.copyWith(yapkod: value);
 
   @action
-  void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizFiyati: value);
+  void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value);
 
   @action
   void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);

@@ -24,7 +24,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> dbUpdate() async {
-    await networkManager.dbUpdate(CacheManager.getVeriTabani()["Şirket"]);
+    await networkManager.dbUpdate(CacheManager.getVeriTabani["Şirket"]);
   }
 
   @action

@@ -164,7 +164,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
 
   List<DrawerModel> get items => [
         DrawerModel(
-          title: "${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})",
+          title: "${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})",
           iconWidget: Icons.storage_outlined,
         ),
         DrawerModel(
@@ -176,7 +176,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
         //   iconWidget: Icons.router_outlined,
         // ),
         DrawerModel(
-          title: "${CacheManager.getVeriTabani()["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
+          title: "${CacheManager.getVeriTabani["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
           iconWidget: Icons.location_on_outlined,
         ),
         DrawerModel(

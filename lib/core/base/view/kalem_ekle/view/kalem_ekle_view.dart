@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -564,6 +566,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     onChanged: (p0) {
                       viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
                       viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
+                      log(viewModel.kalemModel.brutFiyat.toString());
                       fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                     },
                   ).yetkiVarMi(viewModel.kalemModel.dovizliMi),

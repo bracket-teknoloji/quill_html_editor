@@ -195,7 +195,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               child: Row(
                 children: [
                   Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
-                  Text("${CacheManager.getVeriTabani()["Şirket"]} (${CacheManager.getVeriTabani()["Şube"]})", style: theme.textTheme.bodyMedium),
+                  Text("${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})", style: theme.textTheme.bodyMedium),
                 ],
               ),
             ),

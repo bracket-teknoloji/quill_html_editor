@@ -61,7 +61,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     isletmeController = TextEditingController();
     subeController = TextEditingController();
     if (CacheManager.getLogout == true) {
-      viewModel.selected = CacheManager.getVeriTabani().asObservable();
+      viewModel.selected = CacheManager.getVeriTabani.asObservable();
       viewModel.userData = CacheManager.getIsletmeSube.asObservable();
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -69,9 +69,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         await sirketDialog(context);
       }
     });
-    // controller1?.text = CacheManager.getVeriTabani()?["Şirket"] ?? "";
+    // controller1?.text = getVeriTabani?["Şirket"] ?? "";
     // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
-    // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${CacheManager.getVeriTabani()?["Şube"] ?? ""}";
+    // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${getVeriTabani?["Şube"] ?? ""}";
   }
 
   Future subeDialog(BuildContext context) async {

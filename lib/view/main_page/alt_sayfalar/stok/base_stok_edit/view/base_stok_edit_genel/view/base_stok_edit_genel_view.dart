@@ -46,7 +46,7 @@ class BaseStokEditGenelView extends StatefulWidget {
 
 class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   // StokListesiModel? get widgetModel => StokListesiModel.instance
-  Map veriTabani = CacheManager.getVeriTabani();
+  Map veriTabani = CacheManager.getVeriTabani;
   List<IsletmeModel> subeList = [];
   BaseStokEditGenelViewModel viewModel = BaseStokEditGenelViewModel();
   late final TextEditingController stokKoduController;

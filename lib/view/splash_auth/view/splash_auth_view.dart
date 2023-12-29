@@ -132,7 +132,12 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       final response = await networkManager.getToken(
         path: ApiUrls.token,
         queryParameters: {
-          "deviceInfos": jsonEncode((CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi..uyeEmail= CacheManager.getVerifiedUser.account?.email ?? "")?.toJson()),
+          "deviceInfos": jsonEncode(
+            (CacheManager.getHesapBilgileri
+                  ?..cihazKimligi = AccountModel.instance.cihazKimligi
+                  ..uyeEmail = CacheManager.getVerifiedUser.account?.email ?? "")
+                ?.toJson(),
+          ),
         },
         data: {
           "grant_type": "password",
@@ -145,7 +150,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
           AccountModel.instance.adi = response.userJson?.ad;
           AccountModel.instance.soyadi = response.userJson?.soyad;
           AccountModel.instance.admin = response.userJson?.admin ?? "H";
-          
+
           CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
           CacheManager.setToken(response.accessToken!);
           await getSession();
@@ -170,21 +175,21 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       return;
     }
 
-    viewModel.setTitle("${CacheManager.getVeriTabani()["Şirket"] ?? ""} şirketi için\noturum açılıyor...");
+    viewModel.setTitle("${CacheManager.getVeriTabani["Şirket"] ?? ""} şirketi için\noturum açılıyor...");
     AccountModel.instance
       // ..adi = CacheManager.getVerifiedUser.
       ..kullaniciAdi = CacheManager.getVerifiedUser.username
-      ..aktifVeritabani = CacheManager.getVeriTabani()["Şirket"]
-      ..aktifIsletmeKodu = CacheManager.getVeriTabani()["İşletme"]
-      ..aktifSubeKodu = CacheManager.getVeriTabani()["Şube"];
+      ..aktifVeritabani = CacheManager.getVeriTabani["Şirket"]
+      ..aktifIsletmeKodu = CacheManager.getVeriTabani["İşletme"]
+      ..aktifSubeKodu = CacheManager.getVeriTabani["Şube"];
     final response = await networkManager.dioPost<MainPageModel>(
       path: ApiUrls.createSession,
       bodyModel: MainPageModel(),
       data: AccountModel.instance,
       headers: {
-        "VERITABANI": CacheManager.getVeriTabani()["Şirket"].toString(),
-        "ISLETME_KODU": CacheManager.getVeriTabani()["İşletme"].toString(),
-        "SUBE_KODU": CacheManager.getVeriTabani()["Şube"].toString(),
+        "VERITABANI": CacheManager.getVeriTabani["Şirket"].toString(),
+        "ISLETME_KODU": CacheManager.getVeriTabani["İşletme"].toString(),
+        "SUBE_KODU": CacheManager.getVeriTabani["Şube"].toString(),
         "content-type": "application/json",
       },
     );
