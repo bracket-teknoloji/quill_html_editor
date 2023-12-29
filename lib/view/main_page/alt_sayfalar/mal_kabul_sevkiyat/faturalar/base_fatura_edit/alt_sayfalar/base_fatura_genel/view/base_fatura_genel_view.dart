@@ -37,7 +37,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize || siparisModel.isTaslak;
   bool get enable => widget.model.enable;
 
   late final TextEditingController _belgeNoController;
@@ -176,7 +176,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   },
                 ),
                 CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {})
-                    .yetkiVarMi(widget.model.baseEditEnum == BaseEditEnum.goruntule),
+                    .yetkiVarMi(widget.model.baseEditEnum == BaseEditEnum.goruntule || widget.model.baseEditEnum == BaseEditEnum.taslak),
                 CustomTextField(
                   labelText: "Cari",
                   readOnly: true,
@@ -206,7 +206,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _teslimCariController.text = result.cariAdi ?? "";
                     }
                   },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari")),
+                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.baseEditEnum != BaseEditEnum.taslak),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -319,7 +319,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                    ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) && widget.model.baseEditEnum != BaseEditEnum.taslak),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Özel Kod 2",
