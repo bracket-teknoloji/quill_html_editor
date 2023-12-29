@@ -57,13 +57,13 @@ class CariHareketleriModel with NetworkManagerMixin {
 
   String getBorcAlacakHarf() => borcHareketiMi ? "B" : "A";
 
-  bool get dovizliMi => (dovizTuru ?? 0) > 1;
+  bool get dovizliMi => (dovizTuru ?? 0) > 0;
 
   double get tutar => (alacak ?? 0) - (borc ?? 0);
 
   double get dovizBakiye => ((dovizAlacak ?? 0) - (dovizBorc ?? 0)).abs();
 
-  bool get alacakMi => alacak!= null ||dovizAlacak!= null;
+  bool get alacakMi => alacak != null || dovizAlacak != null;
 
   bool get borcMu => !alacakMi;
 

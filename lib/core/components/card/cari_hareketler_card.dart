@@ -123,13 +123,10 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                     "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: theme.textTheme.bodySmall?.copyWith(fontSize: 12),
                   ),
-                  Visibility(
-                    visible: widget.cariHareketleriModel.dovizliMi,
-                    child: Text(
-                      "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                      style: theme.textTheme.bodySmall?.copyWith(fontSize: UIHelper.midSize),
-                    ),
-                  ),
+                  Text(
+                    "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                    style: theme.textTheme.bodySmall?.copyWith(fontSize: UIHelper.midSize),
+                  ).yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null),
                 ],
               ),
             ],
