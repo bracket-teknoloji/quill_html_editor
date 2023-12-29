@@ -126,6 +126,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.setInstance(widget.model.model);
+            BaseSiparisEditModel.instance.belgeNo = null;
+            BaseSiparisEditModel.instance.resmiBelgeNo = null;
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
@@ -406,8 +409,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum == BaseEditEnum.kopyala || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
+
     const Uuid uuid = Uuid();
-    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, kalemler: BaseSiparisEditModel.instance.kalemList);
+    BaseSiparisEditModel newInstance =
+        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList());
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
       newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
@@ -417,8 +422,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             ?.map(
               (e) => e
                 ..siparisNo = e.belgeNo
-                ..belgeNo ??= null
-                ..siparisSira = e.teklifKalemSira,
+                ..belgeNo ??= null,
             )
             .toList(),
         kalemList: null,
