@@ -79,10 +79,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getData();
       if (widget.isGetData) {
         viewModel.changeSearchBar();
       }
+      await viewModel.getData();
       init();
     });
     super.initState();
