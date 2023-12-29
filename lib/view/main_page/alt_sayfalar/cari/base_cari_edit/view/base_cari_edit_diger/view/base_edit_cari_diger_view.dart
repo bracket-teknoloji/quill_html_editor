@@ -35,7 +35,7 @@ class CariEditDigerView extends StatefulWidget {
 }
 
 class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
-  Map veriTabani = CacheManager.getVeriTabani();
+  Map veriTabani = CacheManager.getVeriTabani;
   final GlobalKey<FormState> cariKartiDigerFormKey = GlobalKey<FormState>();
   BaseEditCariDigerViewModel viewModel = BaseEditCariDigerViewModel();
   List<BaseGrupKoduModel>? list = <BaseGrupKoduModel>[];
