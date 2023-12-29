@@ -48,8 +48,17 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 if (viewModel.selectedKalemList.isEmpty) {
                   dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
                 } else {
-                  if (widget.model.getEditTipiEnum.faturaMi){
-                    Get.back(result: viewModel.selectedKalemList.map((e) => e..siparisNo = widget.model.belgeNo..belgeNo = null).toList());
+                  if (widget.model.getEditTipiEnum.faturaMi) {
+                    Get.back(
+                      result: viewModel.selectedKalemList
+                          .map(
+                            (e) => e
+                              ..siparisNo = widget.model.belgeNo
+                              ..belgeNo = null
+                              ..siparisSira = viewModel.selectedKalemList.indexOf(e) + 1,
+                          )
+                          .toList(),
+                    );
                   }
                   Get.back(result: viewModel.selectedKalemList);
                 }
