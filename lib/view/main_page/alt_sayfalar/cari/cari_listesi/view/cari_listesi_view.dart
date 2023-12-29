@@ -42,8 +42,8 @@ import "../model/cari_sehirler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";
 
 class CariListesiView extends StatefulWidget {
-  final bool? isGetData;
-  const CariListesiView({super.key, this.isGetData});
+  final bool isGetData;
+  const CariListesiView({super.key, this.isGetData = false});
 
   @override
   State<CariListesiView> createState() => _CariListesiViewState();
@@ -79,10 +79,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (widget.isGetData ?? false) {
+      await viewModel.getData();
+      if (widget.isGetData) {
         viewModel.changeSearchBar();
       }
-      await viewModel.getData();
       init();
     });
     super.initState();
@@ -148,7 +148,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   },
                 )
               : AppBarTitle(
-                  title: widget.isGetData ?? false ? "Cari Seçiniz" : "Cari Listesi",
+                  title: widget.isGetData ? "Cari Seçiniz" : "Cari Listesi",
                   subtitle: "${viewModel.cariListesi?.length ?? ""}",
                 )),
         ),
@@ -286,7 +286,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               dialogManager.showCariGridViewDialog(object);
                             },
                             onTap: () {
-                              if (widget.isGetData ?? false) {
+                              if (widget.isGetData) {
                                 Get.back(result: object);
                               } else {
                                 cariBottomSheet(context, object);
