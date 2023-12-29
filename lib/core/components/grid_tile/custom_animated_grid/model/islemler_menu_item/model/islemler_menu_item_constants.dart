@@ -90,7 +90,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, satisIrsaliyeOlustur);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
+        islemlerList.add(siparisCariKoduDegistir);
         islemlerList.add(belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
@@ -150,14 +150,13 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.add(kopyala);
-        islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
+        islemlerList.add(siparisCariKoduDegistir);
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
-      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
-      islemlerList.add(cariKoduDegistir(siparisModel.cariKodu));
+      islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(kopyala);
     } else if (islemtipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -503,6 +502,72 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
+  GridItemModel get siparisCariKoduDegistir => GridItemModel.islemler(
+        title: "Cari Kodu Değiştir",
+        iconData: Icons.people_alt_outlined,
+        onTap: () async {
+          final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+          final BaseSiparisEditModel newModel = BaseSiparisEditModel.cariKoduDegistir(siparisModel);
+          final TextEditingController controller = TextEditingController(text: siparisModel.cariAdi);
+          return await _bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: "Cari Kodu Değiştir",
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomTextField(
+                  labelText: "Yeni Cari",
+                  readOnly: true,
+                  isMust: true,
+                  controller: controller,
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                    if (result is CariListesiModel) {
+                      newModel.yeniCariKodu = result.cariKodu;
+                      controller.text = result.cariAdi ?? "";
+                    }
+                  },
+                ),
+                CustomWidgetWithLabel(
+                  text: "Teslim Cari Kodu Değişmesin",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.cariKodDegistirSwitch,
+                      onChanged: (value) {
+                        viewModel.changeCariKodDegistirSwitch(value);
+                        newModel.paramMap?["TESLIM_CARI_DEGISMESIN"] = (value ? "E" : "H");
+                      },
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await _dialogManager.showAreYouSureDialog(() async {
+                      final result = await _networkManager.dioPost<SiparisEditRequestModel>(
+                        path: ApiUrls.saveFatura,
+                        showLoading: true,
+                        bodyModel: SiparisEditRequestModel(),
+                        data: newModel,
+                      );
+                      if (result.success == true) {
+                        Get.back(result: true);
+                        _dialogManager.showSuccessSnackBar("Başarılı");
+                      } else {
+                        Get.back();
+                      }
+                    });
+                  },
+                  child: const Text("Kaydet"),
+                ).paddingAll(UIHelper.lowSize),
+              ],
+            ).paddingAll(UIHelper.lowSize),
+          );
+        },
+      );
+
   GridItemModel? get borcCeki => GridItemModel.islemler(title: "Borç Çeki", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cekBorcTahsilat", arguments: model));
   GridItemModel? get borcSenedi =>
       GridItemModel.islemler(title: "Borç Senedi", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model));
@@ -767,7 +832,11 @@ class IslemlerMenuItemConstants<T> {
                 if (kalemList == null) {
                   return;
                 }
-                siparisModel.kalemList = kalemList;
+                for (var element in kalemList) {
+                  element.siparisNo = element.belgeNo;
+                  element.siparisSira = element.sira;
+                }
+                result.kalemList = kalemList;
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
