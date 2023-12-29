@@ -54,7 +54,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
                 cariOlustur.yetkiKontrol(model.kayitliCariKodu == null),
-                // alisFaturasiOlustur,
+                alisFaturasiOlustur,
                 dekontOlustur,
                 eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
@@ -449,12 +449,23 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         iconWidget: Icons.add_outlined,
         onTap: () async {
           Get.back();
-          final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 1);
+          final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
           if (depoModel == null) {
             return;
           }
-          // final cariModel = await networkManager.getCariModel(CariRequestModel(kod:[""], filterText: "", vergiNo: ))
-          final siparisModel = await networkManager.getFatura(SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)..depoKodu = depoModel.depoKodu);
+          final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
+          final siparisModel = await networkManager.getFatura(
+            (SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel))
+              ..depoKodu = depoModel.depoKodu
+              ..belgeTipi = null
+              ..kisitYok = null
+              ..iadeMi = false
+              ..belgeTuru = null
+              ..cariKodu = cariModel?.cariKodu,
+          );
+          if (siparisModel == null) {
+            return;
+          }
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",
             arguments: BaseEditModel<BaseSiparisEditModel>(
