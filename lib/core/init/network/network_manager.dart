@@ -321,7 +321,7 @@ class NetworkManager {
       header.addAll({"Authorization": "Bearer $token"});
     }
     if (headerSirketBilgileri) {
-      final veriTabani = CacheManager.getVeriTabani();
+      final veriTabani = CacheManager.getVeriTabani;
       final Map<String, String> sirketBilgileri = {
         "VERITABANI": veriTabani["Şirket"].toString(),
         "ISLETME_KODU": veriTabani["İşletme"].toString(),
@@ -438,10 +438,11 @@ class NetworkManager {
   }
 
   Future<BaseSiparisEditModel?> getFatura(SiparisEditRequestModel model) async {
-    final result = await dioPost<BaseSiparisEditModel>(
+    final result = await dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getFaturalar,
       bodyModel: BaseSiparisEditModel(),
       showLoading: true,
+      // headers: {"platform": AccountModel.instance.platform ?? ""},
       queryParameters: model.toJson(),
     );
     if (result.success ?? false) {
