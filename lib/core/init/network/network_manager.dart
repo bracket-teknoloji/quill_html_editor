@@ -14,6 +14,8 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -418,8 +420,17 @@ class NetworkManager {
       showLoading: true,
       queryParameters: model.toJson(),
     );
-    if (result.success ?? false) {
-      return result.data.first;
+    if ((result.success ?? false) && (result.data is List)) {
+      final List<CariListesiModel> list = result.data.map((e) => e as CariListesiModel).toList().cast<CariListesiModel>();
+      if (list.length == 1) {
+        return list.first;
+      } else {
+        // ignore: use_build_context_synchronously
+        final cariModel = await Get.toNamed("/mainPage/cariListesiOzel", arguments: model..kod = null);
+        if (cariModel is CariListesiModel) {
+          return cariModel;
+        }
+      }
     }
     return null;
   }
@@ -437,7 +448,7 @@ class NetworkManager {
     return null;
   }
 
-  Future<BaseSiparisEditModel?> getFatura(SiparisEditRequestModel model) async {
+  Future<BaseSiparisEditModel?> getFatura(BuildContext context, SiparisEditRequestModel model) async {
     final result = await dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getFaturalar,
       bodyModel: BaseSiparisEditModel(),
@@ -445,8 +456,18 @@ class NetworkManager {
       // headers: {"platform": AccountModel.instance.platform ?? ""},
       queryParameters: model.toJson(),
     );
-    if (result.success ?? false) {
-      return result.data.first;
+    if ((result.success ?? false) && result.data is List) {
+      final List<BaseSiparisEditModel> list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      if (result.data.length == 1) {
+        return result.data.first;
+      } else {
+        // ignore: use_build_context_synchronously
+        return await BottomSheetDialogManager().showBottomSheetDialog(
+          context,
+          title: "Fatura Seçiniz",
+          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, onTap: () => Get.back(result: e))).toList(),
+        );
+      }
     }
     return null;
   }
