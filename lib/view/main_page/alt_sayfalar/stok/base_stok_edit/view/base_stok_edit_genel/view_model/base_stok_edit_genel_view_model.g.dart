@@ -104,6 +104,17 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   @override
+  void setImage(String? value) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setImage');
+    try {
+      return super.setImage(value);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDepoKodu(int? value) {
     final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
         .startAction(name: '_BaseStokEditGenelViewModelBase.setDepoKodu');
