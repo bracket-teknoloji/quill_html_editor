@@ -2,7 +2,6 @@
 
 import "dart:convert";
 import "dart:developer";
-import "dart:io";
 import "dart:typed_data";
 import "dart:ui" as ui;
 
@@ -13,6 +12,7 @@ import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -77,7 +77,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
   bool get enable => widget.model != BaseEditEnum.goruntule;
 
-  File? image;
   @override
   void initState() {
     final isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
@@ -111,10 +110,15 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       subeController.text = "Şubelerde Ortak";
       viewModel.stokListesiModel?.subeKodu = -1;
     }
-    if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
-      stokDetayModel = getSiradakiKod();
-    }
     subeChecker();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
+        if (viewModel.stokListesiModel?.stokKodu == null) {
+          stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
+          viewModel.stokListesiModel?.stokKodu = stokKoduController.text;
+        }
+      }
+    });
     super.initState();
   }
 
@@ -152,49 +156,61 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
           child: Column(
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Expanded(
                     flex: 1,
-                    child: IconButton(
-                      onPressed: () async {
-                        final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Kaynak tipi",
-                          children: [
-                            BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                            BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                          ],
-                        );
-                        //image picker
-                        if (sourceType != null) {
-                          final ImagePicker picker = ImagePicker();
-                          final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
-                          if (result != null) {
-                            setState(() => image = File(result.path));
-                            if (image != null) {
-                              Uint8List? compressedImage;
-                              try {
-                                compressedImage = await FlutterImageCompress.compressWithFile(
-                                  image!.path,
-                                  format: CompressFormat.png,
-                                  keepExif: true,
-                                  numberOfRetries: 10,
-                                  quality: 30,
-                                  autoCorrectionAngle: true,
-                                );
-                              } catch (e) {
-                                compressedImage = await FlutterImageCompress.compressWithFile(image!.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
+                    child: Observer(
+                      builder: (_) {
+                        if (viewModel.stokListesiModel?.resimBase64 != null) {
+                          return InkWell(
+                            child: Image.memory(
+                              base64Decode(viewModel.stokListesiModel!.resimBase64!),
+                              fit: BoxFit.fitHeight,
+                            ).paddingAll(UIHelper.lowSize),
+                            onTap: () async {
+                              final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                                context,
+                                title: "Kaynak tipi",
+                                children: [
+                                  BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+                                  BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+                                  BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
+                                ],
+                              );
+                              if (sourceType is ImageSource) {
+                                await imageCompresser(sourceType);
+                              } else {
+                                dialogManager.showAreYouSureDialog(() {
+                                  viewModel.setImage(null);
+                                });
                               }
-                              final base64 = base64Encode(compressedImage!.toList());
-                              viewModel.stokListesiModel?.resimBase64 = base64;
-                            }
-                          }
+                            },
+                          );
                         }
+                        return IconButton(
+                          onPressed: () async {
+                            final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: "Kaynak tipi",
+                              children: [
+                                BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+                                BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+                              ],
+                            );
+                            //image picker
+                            if (sourceType != null) {
+                              await imageCompresser(sourceType);
+                            }
+                          },
+                          icon: const Icon(Icons.add),
+                        );
                       },
-                      icon: const Icon(Icons.add),
                     ),
                     //TODO resim göstermeyi ekleyince aç
-                  ).yetkiVarMi(false),
+                  ).yetkiVarMi(
+                    AccountModel.instance.isDebug,
+                  ),
                   Expanded(
                     flex: 4,
                     child: CustomTextField(
@@ -558,6 +574,29 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
           ).paddingAll(UIHelper.lowSize),
         ),
       );
+
+  Future<void> imageCompresser(ImageSource sourceType) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
+    if (result != null) {
+      Uint8List? compressedImage;
+      try {
+        compressedImage = await FlutterImageCompress.compressWithFile(
+          result.path,
+          format: CompressFormat.png,
+          keepExif: true,
+          numberOfRetries: 10,
+          quality: 30,
+          autoCorrectionAngle: true,
+        );
+      } catch (e) {
+        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
+      }
+      final base64 = base64Encode(compressedImage!.toList());
+      viewModel.setImage(base64);
+      // viewModel.stokListesiModel?.resimBase64 = base64;
+    }
+  }
 
   Future<void> baseOlcuBirimleriController({int? controller}) async {
     dialogManager.showLoadingDialog("Ölçü Birimleri Yükleniyor...");
