@@ -589,11 +589,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     width: UIHelper.highSize * 3,
                                     child: InkWell(
                                       onTap: () => Get.to(ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? "")),
-                                      child: SizedBox(
-                                        height: UIHelper.highSize * 3,
-                                        width: UIHelper.highSize * 3,
-                                        child: ImageWidget(path: stok.resimUrlKucuk),
-                                      ),
+                                      child: ImageWidget(path: stok.resimUrlKucuk),
                                     ),
                                   ),
                           ),
