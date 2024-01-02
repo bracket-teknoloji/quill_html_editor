@@ -257,6 +257,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               Text(
                 "${(model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
                 style: TextStyle(color: UIHelper.primaryColor),

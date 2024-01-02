@@ -213,6 +213,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
                   // mainAxisAlignment: MainAxisAlignment.start,

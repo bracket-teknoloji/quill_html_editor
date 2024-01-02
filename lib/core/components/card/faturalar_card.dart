@@ -82,7 +82,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   Get.back();
                   await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                 },
-              ).yetkiKontrol(widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi),
+              ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi) && (widget.editTipiEnum.alisFaturasiMi ? !widget.model.eBelgeMi : true)),
               BottomSheetModel(
                 title: "Açıklama Düzenle",
                 iconWidget: Icons.edit_note_outlined,
@@ -215,6 +215,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) => Wrap(
                   crossAxisAlignment: WrapCrossAlignment.start,
