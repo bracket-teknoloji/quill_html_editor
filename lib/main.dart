@@ -221,6 +221,7 @@ class PickerApp extends StatelessWidget {
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
+              GetPage(name: "/cariListesiOzel", page: () => CariListesiView(isGetData: true, cariRequestModel: Get.arguments)),
               GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariRequestModel: Get.arguments)),
               GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
               GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
