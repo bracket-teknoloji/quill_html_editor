@@ -80,7 +80,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
     _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
-    _topluDepoController = TextEditingController(text: model.topluDepo.toStringIfNotNull);
+    _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(text: model.ozelKod2);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);

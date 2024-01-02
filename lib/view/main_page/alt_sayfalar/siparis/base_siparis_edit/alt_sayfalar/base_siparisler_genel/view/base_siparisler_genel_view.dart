@@ -532,7 +532,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ? model.topluDepo.toStringIfNotNull ?? "" : "";
+    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ?(model.depoTanimi ??  model.topluDepo.toStringIfNotNull) ?? "" : "";
     projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";

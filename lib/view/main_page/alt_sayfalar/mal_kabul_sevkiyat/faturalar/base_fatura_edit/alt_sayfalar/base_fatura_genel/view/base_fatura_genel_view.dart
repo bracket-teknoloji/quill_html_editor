@@ -78,7 +78,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
     _projeController = TextEditingController(text: model.projeAciklama);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
-    _topluDepoController = TextEditingController(text: model.topluDepo.toStringIfNotNull);
+    _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(text: model.ozelKod1);
     _ozelKod2Controller = TextEditingController(text: model.ozelKod2);
     _aciklama1Controller = TextEditingController(text: model.acik1);
@@ -427,7 +427,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       );
 
   String get eBelgeButtonText {
-    if (model.efaturaMi == "E") {
+    if (model.efaturaMi == "E" || model.cariEfaturami == "E") {
       if (model.efaturaDurumu == "TAS") {
         return "E-Fatura Taslağı (${model.resmiBelgeNo})";
       }
@@ -441,7 +441,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       if (model.eirsaliyeDurumu == "TAS") {
         return "E-İrsaliye Taslağı (${model.resmiBelgeNo})";
       } else {
-        return "E-İrsaliye (${model.resmiBelgeNo})";
+        return "E-Fatura (${model.resmiBelgeNo})";
       }
     }
   }
