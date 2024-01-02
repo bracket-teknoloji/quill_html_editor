@@ -8,15 +8,15 @@ class BaseFaturaKalemlerViewModel = BaseFaturaKalemlerViewModelBase with _$BaseF
 
 abstract class BaseFaturaKalemlerViewModelBase with Store {
   @observable
-  ObservableList<KalemModel>? kalemList;
+  ObservableList<KalemModel> kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable();
 
   @action
   void removeAtKalemList(int index) {
-    kalemList?.removeAt(index);
+    kalemList.removeAt(index);
     BaseSiparisEditModel.instance.kalemList = kalemList;
     updateKalemList();
   }
 
   @action
-  void updateKalemList() => kalemList = BaseSiparisEditModel.instance.kalemList?.asObservable();
+  void updateKalemList() => kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable() ;
 }

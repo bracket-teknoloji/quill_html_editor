@@ -321,6 +321,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel depoTanimi(String? depoTanimi);
 
+  BaseSiparisEditModel efattanAlisFat(bool? efattanAlisFat);
+
+  BaseSiparisEditModel efaturaInckeyno(int? efaturaInckeyno);
+
+  BaseSiparisEditModel ebelgeZarfid(String? ebelgeZarfid);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -485,6 +491,9 @@ abstract class _$BaseSiparisEditModelCWProxy {
     Map<String, dynamic>? paramMap,
     String? yeniCariKodu,
     String? depoTanimi,
+    bool? efattanAlisFat,
+    int? efaturaInckeyno,
+    String? ebelgeZarfid,
   });
 }
 
@@ -1057,6 +1066,18 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(depoTanimi: depoTanimi);
 
   @override
+  BaseSiparisEditModel efattanAlisFat(bool? efattanAlisFat) =>
+      this(efattanAlisFat: efattanAlisFat);
+
+  @override
+  BaseSiparisEditModel efaturaInckeyno(int? efaturaInckeyno) =>
+      this(efaturaInckeyno: efaturaInckeyno);
+
+  @override
+  BaseSiparisEditModel ebelgeZarfid(String? ebelgeZarfid) =>
+      this(ebelgeZarfid: ebelgeZarfid);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1222,6 +1243,9 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? paramMap = const $CopyWithPlaceholder(),
     Object? yeniCariKodu = const $CopyWithPlaceholder(),
     Object? depoTanimi = const $CopyWithPlaceholder(),
+    Object? efattanAlisFat = const $CopyWithPlaceholder(),
+    Object? efaturaInckeyno = const $CopyWithPlaceholder(),
+    Object? ebelgeZarfid = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1854,6 +1878,18 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.depoTanimi
           // ignore: cast_nullable_to_non_nullable
           : depoTanimi as String?,
+      efattanAlisFat: efattanAlisFat == const $CopyWithPlaceholder()
+          ? _value.efattanAlisFat
+          // ignore: cast_nullable_to_non_nullable
+          : efattanAlisFat as bool?,
+      efaturaInckeyno: efaturaInckeyno == const $CopyWithPlaceholder()
+          ? _value.efaturaInckeyno
+          // ignore: cast_nullable_to_non_nullable
+          : efaturaInckeyno as int?,
+      ebelgeZarfid: ebelgeZarfid == const $CopyWithPlaceholder()
+          ? _value.ebelgeZarfid
+          // ignore: cast_nullable_to_non_nullable
+          : ebelgeZarfid as String?,
     );
   }
 }
@@ -3221,13 +3257,16 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       paramMap: (fields[154] as Map?)?.cast<String, dynamic>(),
       yeniCariKodu: fields[155] as String?,
       depoTanimi: fields[156] as String?,
+      efattanAlisFat: fields[157] as bool?,
+      efaturaInckeyno: fields[158] as int?,
+      ebelgeZarfid: fields[159] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(157)
+      ..writeByte(160)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3541,7 +3580,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(155)
       ..write(obj.yeniCariKodu)
       ..writeByte(156)
-      ..write(obj.depoTanimi);
+      ..write(obj.depoTanimi)
+      ..writeByte(157)
+      ..write(obj.efattanAlisFat)
+      ..writeByte(158)
+      ..write(obj.efaturaInckeyno)
+      ..writeByte(159)
+      ..write(obj.ebelgeZarfid);
   }
 
   @override
@@ -4073,6 +4118,9 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       paramMap: json['PARAM_MAP'] as Map<String, dynamic>? ?? {},
       yeniCariKodu: json['YENI_CARI_KODU'] as String?,
       depoTanimi: json['DEPO_TANIMI'] as String?,
+      efattanAlisFat: json['EFATTAN_ALIS_FAT'] as bool?,
+      efaturaInckeyno: json['EFATURA_INCKEYNO'] as int?,
+      ebelgeZarfid: json['EBELGE_ZARFID'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4242,6 +4290,9 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('PARAM_MAP', instance.paramMap);
   writeNotNull('YENI_CARI_KODU', instance.yeniCariKodu);
   writeNotNull('DEPO_TANIMI', instance.depoTanimi);
+  writeNotNull('EFATTAN_ALIS_FAT', instance.efattanAlisFat);
+  writeNotNull('EFATURA_INCKEYNO', instance.efaturaInckeyno);
+  writeNotNull('EBELGE_ZARFID', instance.ebelgeZarfid);
   return val;
 }
 

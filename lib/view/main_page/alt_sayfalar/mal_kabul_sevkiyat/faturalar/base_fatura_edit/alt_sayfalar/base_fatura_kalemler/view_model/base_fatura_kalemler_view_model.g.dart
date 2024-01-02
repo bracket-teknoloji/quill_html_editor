@@ -13,13 +13,13 @@ mixin _$BaseFaturaKalemlerViewModel on BaseFaturaKalemlerViewModelBase, Store {
       Atom(name: 'BaseFaturaKalemlerViewModelBase.kalemList', context: context);
 
   @override
-  ObservableList<KalemModel>? get kalemList {
+  ObservableList<KalemModel> get kalemList {
     _$kalemListAtom.reportRead();
     return super.kalemList;
   }
 
   @override
-  set kalemList(ObservableList<KalemModel>? value) {
+  set kalemList(ObservableList<KalemModel> value) {
     _$kalemListAtom.reportWrite(value, super.kalemList, () {
       super.kalemList = value;
     });

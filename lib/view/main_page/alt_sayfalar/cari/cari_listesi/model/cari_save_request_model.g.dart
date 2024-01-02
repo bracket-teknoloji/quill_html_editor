@@ -840,7 +840,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       requestVersion: json['REQUEST_VERSION'] as int?,
       islemKodu: json['ISLEM_KODU'] as int?,
       yeniKayit: json['_YeniKayit'] as bool?,
-      sahisFirmasi: json['SAHIS_FIRMASI'] as bool?,
+      sahisFirmasi: json['SahisFirmasi'] as bool?,
       subeKodu: json['SUBE_KODU'] as String?,
       kodu: json['KODU'] as String?,
       tipi: json['TIPI'] as String?,
@@ -917,7 +917,7 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
   writeNotNull('REQUEST_VERSION', instance.requestVersion);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('_YeniKayit', instance.yeniKayit);
-  writeNotNull('SAHIS_FIRMASI', instance.sahisFirmasi);
+  writeNotNull('SahisFirmasi', instance.sahisFirmasi);
   writeNotNull('SUBE_KODU', instance.subeKodu);
   writeNotNull('KODU', instance.kodu);
   writeNotNull('TIPI', instance.tipi);
