@@ -439,8 +439,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           iconWidget: Icons.preview_outlined,
           onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)),
         ).yetkiKontrol(yetkiController.cariKarti),
-        BottomSheetModel(title: "Düzelt", iconWidget: Icons.edit_outlined, onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)))
-            .yetkiKontrol(yetkiController.cariKartiDuzenleme),
+        BottomSheetModel(
+          title: loc(context).generalStrings.edit,
+          iconWidget: Icons.edit_outlined,
+          onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)),
+        ).yetkiKontrol(yetkiController.cariKartiDuzenleme),
         BottomSheetModel(
           title: loc(context).generalStrings.delete,
           iconWidget: Icons.delete_outline,

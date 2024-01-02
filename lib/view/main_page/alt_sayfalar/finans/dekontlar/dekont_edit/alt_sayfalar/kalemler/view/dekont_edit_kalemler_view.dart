@@ -121,7 +121,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
       title: model.kalemAdi ?? "",
       children: [
         BottomSheetModel(
-          title: "Düzelt",
+          title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();

@@ -228,7 +228,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                   title: loc(context).generalStrings.options,
                                   children: [
                                     BottomSheetModel(
-                                      title: "Düzelt",
+                                      title: loc(context).generalStrings.edit,
                                       iconWidget: Icons.edit_outlined,
                                       onTap: () async {
                                         Get.back();

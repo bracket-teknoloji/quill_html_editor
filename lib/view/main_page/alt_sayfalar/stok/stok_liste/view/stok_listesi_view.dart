@@ -627,7 +627,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKarti),
                                     BottomSheetModel(
-                                      title: "Düzelt",
+                                      title: loc(context).generalStrings.edit,
                                       iconWidget: Icons.edit,
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
