@@ -163,7 +163,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         iconWidget: Icons.person_2_outlined,
                         onTap: () async {
                           Get.back();
-                          dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
+                          dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                         },
                       ),
                       topluIskontoBottomSheetModel(context),
