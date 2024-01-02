@@ -48,6 +48,6 @@ Cevap 2
 
 ## <span style="color: #2980b9;">💌 İletişim ve Destek</span>
 
+- 🌐 Web sitesi: <a href="https://picker.bracket.com.tr/" style="color: #27ae60;">picker.bracket.com.tr</a>
 - 📧 E-posta: <a href="mailto:destek@picker.com" style="color: #8e44ad;">destek@picker.com</a>
-- 🌐 Web sitesi: <a href="https://www.picker.com" style="color: #27ae60;">https://www.picker.com</a>
-- 📱 Sosyal Medya: <a href="https://twitter.com/PickerNetsis" style="color: #c0392b;">@PickerNetsis</a>
+- 📱 Sosyal Medya: <a href="https://www.instagram.com/bracketteknoloji/?hl=tr" style="color: #c0392b;">@bracketteknoloji</a>
