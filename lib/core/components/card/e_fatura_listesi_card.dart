@@ -454,7 +454,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             return;
           }
           final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
+          // ignore: use_build_context_synchronously
           final siparisModel = await networkManager.getFatura(
+            context,
             (SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel))
               ..depoKodu = depoModel.depoKodu
               ..belgeTipi = null
@@ -469,7 +471,14 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",
             arguments: BaseEditModel<BaseSiparisEditModel>(
-              model: siparisModel..cariAdi = cariModel?.cariAdi..cariEfaturami = "E",
+              // model: siparisModel..cariAdi = cariModel?.cariAdi..cariEfaturami = "E",
+              model: siparisModel.copyWith(
+                cariAdi: cariModel?.cariAdi,
+                cariEfaturami: "E",
+                plasiyerAciklama: cariModel?.plasiyerAciklama,
+                plasiyerKodu: cariModel?.plasiyerKodu,
+                depoTanimi: depoModel.depoTanimi,
+              ),
               baseEditEnum: BaseEditEnum.taslak,
               editTipiEnum: EditTipiEnum.alisFatura,
             ),
