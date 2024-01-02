@@ -1,6 +1,7 @@
 enum IslemTipiEnum {
   stok,
   cari,
+  cariIslemleri,
   stokRapor,
   cariRapor,
   stokSerbest,
@@ -20,8 +21,10 @@ enum IslemTipiEnum {
 extension IslemTipiEnumExtension on IslemTipiEnum {
   String get value {
     //return capitalized with method
-    if (this != IslemTipiEnum.siparis) {
+    if (this != IslemTipiEnum.siparis && this != IslemTipiEnum.cariIslemleri) {
       return "${toString().split('.').last[0].toUpperCase()}${toString().split('.').last.substring(1)}";
+    } else if (this == IslemTipiEnum.cariIslemleri) {
+      return "Cari";
     } else {
       return "Sipariş";
     }
