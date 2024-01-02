@@ -375,9 +375,9 @@ class NetworkManager {
       path: ApiUrls.getUyeBilgileri,
     );
     if (result.success == true) {
-      final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+      final List<AccountResponseModel>? list = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
       if (list.ext.isNotNullOrEmpty) {
-        CacheManager.setIsLicenseVerified(email ?? list.firstOrNull?.email ?? "", true);
+        CacheManager.setIsLicenseVerified(email ?? list?.firstOrNull?.email ?? "", true);
       }
       if (getFromCache) {
         final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
@@ -386,9 +386,10 @@ class NetworkManager {
         }
       }
     } else {
-      final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+      final List<AccountResponseModel>? list = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+      // final List<AccountResponseModel> accountList = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(email ?? list.firstOrNull?.email ?? "", false);
+        CacheManager.setIsLicenseVerified(email ?? list?.firstOrNull?.email ?? "", false);
       }
     }
     return result;
