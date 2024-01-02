@@ -1139,6 +1139,9 @@ class BottomSheetDialogManager {
               children: <Widget>[
                 IconButton(
                   onPressed: () {
+                    if ((model.kopyaSayisi ?? 0) <= 0) {
+                      return;
+                    }
                     model = model.copyWith(kopyaSayisi: (model.kopyaSayisi ?? 0) - 1);
                     kopyaController.text = model.kopyaSayisi.toStringIfNotNull ?? "";
                   },
