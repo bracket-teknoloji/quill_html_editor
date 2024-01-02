@@ -2,7 +2,6 @@
 
 import "dart:convert";
 import "dart:developer";
-import "dart:typed_data";
 
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -12,7 +11,6 @@ import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -71,7 +69,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   late final TextEditingController kod3Controller;
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
-  Future? stokDetayModel;
   StokDetayModel? model;
   String? siradakiKod;
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
@@ -79,7 +76,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
 
   @override
   void initState() {
-    final isletmeModel = IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak");
     stokKoduController = TextEditingController(text: viewModel.stokListesiModel?.stokKodu);
     stokAdiController = TextEditingController(text: viewModel.stokListesiModel?.stokAdi);
     depoController = TextEditingController(text: model?.stokList?.firstOrNull?.depoKodu.toStringIfNotNull ?? viewModel.stokListesiModel?.depoKodu.toStringIfNotNull);
@@ -97,7 +93,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     subeController = TextEditingController(
       text: subeList.ext.isNotNullOrEmpty
           ? subeList.where((element) => element.subeKodu == model?.stokList?.firstOrNull?.subeKodu || element.subeKodu == viewModel.stokListesiModel?.subeKodu).firstOrNull?.subeAdi
-          : "${isletmeModel.subeAdi} ${isletmeModel.subeKodu}",
+          : null,
     ); //text: model?.stokAdi
     ureticiKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.ureticiKodu ?? viewModel.stokListesiModel?.ureticiKodu); //text: model?.stokAdi
     grupKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.grupKodu ?? viewModel.stokListesiModel?.grupKodu);
