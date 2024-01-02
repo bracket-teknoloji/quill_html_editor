@@ -397,6 +397,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   Map<String, dynamic>? paramMap;
   @HiveField(155)
   String? yeniCariKodu;
+  @HiveField(156)
+  String? depoTanimi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -555,6 +557,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efaturaSenaryo,
     this.paramMap,
     this.yeniCariKodu,
+    this.depoTanimi,
   });
 
   BaseSiparisEditModel._init();
