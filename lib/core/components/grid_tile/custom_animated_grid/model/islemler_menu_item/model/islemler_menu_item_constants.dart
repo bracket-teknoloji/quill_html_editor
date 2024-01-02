@@ -8,6 +8,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
@@ -96,6 +97,12 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(kopyala);
         islemlerList.addAll(raporlar!);
       }
+    } else if (islemtipi == IslemTipiEnum.cariIslemleri) {
+      islemlerList.add(cariKarti);
+      islemlerList.add(cariHareketleri);
+      islemlerList.addAll(raporlar!);
+      islemlerList.add(cariIslemleri);
+      islemlerList.add(paylas);
     } else if (islemtipi == IslemTipiEnum.kasa) {
       if (model != null) {
         islemlerList.add(kasaHareketleri);
@@ -654,12 +661,24 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel get cariIslemleri => GridItemModel.islemler(
-        title: "Cari İşlemleri",
-        iconData: Icons.hub_outlined,
+  GridItemModel get cariKarti => GridItemModel.islemler(
+        title: "Cari Kartı",
+        iconData: Icons.person_outline_outlined,
         onTap: () async {
-          CariNetworkManager.getCariListesi();
-          // _dialogManager.showCariGridViewDialog(model);
+          if (model is CariListesiModel) {
+            final cariModel = await _networkManager.getCariModel(CariRequestModel.fromCariListesiModel(model as CariListesiModel));
+            if (cariModel != null) {
+              Get.toNamed("mainPage/cariEdit", arguments: BaseEditModel(model: cariModel, baseEditEnum: BaseEditEnum.duzenle));
+            }
+          }
+        },
+      );
+
+  GridItemModel get cariIslemleri => GridItemModel.islemler(
+        title: "İşlemler",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          _dialogManager.showCariGridViewDialog(model as CariListesiModel);
         },
       );
 
@@ -1044,7 +1063,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get eBelgeEslestirmeKaldir {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
-      title: "Eşleştirme İpta",
+      title: "Eşleştirme İptali",
       iconData: Icons.delete_outline_outlined,
       onTap: () async {
         bool boolean = false;
