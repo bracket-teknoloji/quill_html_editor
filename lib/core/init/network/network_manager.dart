@@ -9,6 +9,7 @@ import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
@@ -374,7 +375,10 @@ class NetworkManager {
       path: ApiUrls.getUyeBilgileri,
     );
     if (result.success == true) {
-      CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, true);
+      final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+      if (list.ext.isNotNullOrEmpty) {
+        CacheManager.setIsLicenseVerified(email ?? list.firstOrNull?.email ?? "", true);
+      }
       if (getFromCache) {
         final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
         if (list.firstOrNull != null) {
@@ -382,8 +386,9 @@ class NetworkManager {
         }
       }
     } else {
+      final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(email ?? result.data.firstOrNull?.email, false);
+        CacheManager.setIsLicenseVerified(email ?? list.firstOrNull?.email ?? "", false);
       }
     }
     return result;
