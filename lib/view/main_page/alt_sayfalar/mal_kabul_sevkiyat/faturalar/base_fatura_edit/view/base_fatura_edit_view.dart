@@ -110,7 +110,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-        BaseSiparisEditModel.instance.belgeNo = null;
         viewModel.changeIsBaseSiparisEmpty(false);
         return;
       }

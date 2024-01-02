@@ -5,6 +5,9 @@ import "package:get/get.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/text_span_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -156,6 +159,14 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
                     title: Text(eBelgeButtonText),
+                    subtitle: Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: "Genel Toplam: ${model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                          TextSpan(text: " / ${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizAdi != null),
+                        ].nullCheckWithGeneric,
+                      ),
+                    ),
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E" && model.resmiBelgeNo != null),

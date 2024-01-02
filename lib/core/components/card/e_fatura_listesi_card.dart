@@ -478,6 +478,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 plasiyerAciklama: cariModel?.plasiyerAciklama,
                 plasiyerKodu: cariModel?.plasiyerKodu,
                 depoTanimi: depoModel.depoTanimi,
+                dovizAdi: cariModel?.dovizAdi,
+                dovizTipi: cariModel?.dovizKodu,
               ),
               baseEditEnum: BaseEditEnum.taslak,
               editTipiEnum: EditTipiEnum.alisFatura,
