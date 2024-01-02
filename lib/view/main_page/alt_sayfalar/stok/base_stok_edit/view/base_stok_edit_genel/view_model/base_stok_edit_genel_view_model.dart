@@ -39,6 +39,11 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setImage(String? value) {
+    stokListesiModel = stokListesiModel?..resimBase64 = value;
+  }
+
+  @action
   void setDepoKodu(int? value) {
     stokListesiModel = stokListesiModel?..depoKodu = value;
   }
