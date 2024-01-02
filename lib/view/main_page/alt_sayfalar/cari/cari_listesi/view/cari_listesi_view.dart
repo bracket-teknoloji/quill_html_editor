@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -43,7 +44,8 @@ import "../view_model/cari_listesi_view_model.dart";
 
 class CariListesiView extends StatefulWidget {
   final bool isGetData;
-  const CariListesiView({super.key, this.isGetData = false});
+  final CariRequestModel? cariRequestModel;
+  const CariListesiView({super.key, this.isGetData = false, this.cariRequestModel});
 
   @override
   State<CariListesiView> createState() => _CariListesiViewState();
@@ -67,6 +69,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   Map? filterData;
   @override
   void initState() {
+    if (widget.cariRequestModel != null) {
+      viewModel.cariRequestModel = widget.cariRequestModel!;
+    }
     _scrollController = ScrollController();
     plasiyerController = TextEditingController();
     sehirController = TextEditingController();
