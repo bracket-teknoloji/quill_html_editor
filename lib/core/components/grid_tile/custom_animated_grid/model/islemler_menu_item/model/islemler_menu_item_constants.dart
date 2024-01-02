@@ -155,9 +155,11 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemtipi == IslemTipiEnum.fatura) {
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(kopyala);
+      islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
     } else if (islemtipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       // islemlerList.add(eBelgeGoruntule);
@@ -755,6 +757,19 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
+  GridItemModel get alistanSatisFaturasiOlustur => GridItemModel.islemler(
+        title: "Satış Faturası Oluştur",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            return await Get.toNamed(
+              "mainPage/faturaEdit",
+              arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura),
+            );
+          }
+        },
+      );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
         title: "Satış İrsaliyesi Oluştur",
         iconData: Icons.list_alt_outlined,
@@ -1029,7 +1044,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get eBelgeEslestirmeKaldir {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
-      title: "Eşleştirme Kaldır",
+      title: "Eşleştirme İpta",
       iconData: Icons.delete_outline_outlined,
       onTap: () async {
         bool boolean = false;
