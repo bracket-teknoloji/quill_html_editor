@@ -149,6 +149,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
+            Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
             LayoutBuilder(
               builder: (context, constrains) => Wrap(
                 children: [
