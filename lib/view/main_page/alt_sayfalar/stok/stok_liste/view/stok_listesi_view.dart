@@ -149,7 +149,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     getData();
                   },
                 )
-              : Text("Stok Listesi ${viewModel.stokListesi?.length ?? ""}"),
+              : Text("${(widget.isGetData ?? false) ? "Stok Seçiniz" : "Stok Listesi"} ${viewModel.stokListesi?.length ?? ""}"),
         ),
         actions: [
           hideSearchBar(),
@@ -541,9 +541,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
           visible: viewModel.stokListesi?.isNotEmpty ?? false,
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
-            onPressed: () {
+            onPressed: () async {
               final BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
-              Get.toNamed("/mainPage/stokEdit", arguments: result);
+              final isSucces = await Get.toNamed("/mainPage/stokEdit", arguments: result);
+              if (isSucces != null) {
+                viewModel.setStokListesi(null);
+                viewModel.resetSayfa();
+                await getData();
+              }
             },
           ).yetkiVarMi(yetkiController.stokKartiYeniKayit),
         ),
