@@ -123,7 +123,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     saveStokModel.alisDovizTipi = model.alisDovTip;
     saveStokModel.satisDovizTipi = model.satDovTip;
     saveStokModel.alisFiyati2 = model.alisFiat2;
-    saveStokModel.resimBase64 = model.resimBase64;
+    // saveStokModel.resimBase64 = model.resimBase64;
     saveStokModel.islemKodu = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
     saveStokModel.yeniKayit = saveStokModel.islemKodu == 1 ? true : false;
     // saveStokModel.subeKodu = model.subeKodu;
