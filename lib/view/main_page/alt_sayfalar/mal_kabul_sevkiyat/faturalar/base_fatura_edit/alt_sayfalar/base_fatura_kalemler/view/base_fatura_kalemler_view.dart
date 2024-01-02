@@ -3,6 +3,9 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/save_stok_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -109,15 +112,15 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                     : Observer(
                         builder: (_) => ListView.builder(
                           primary: true,
-                          itemCount: viewModel.kalemList?.length ?? 0,
+                          itemCount: viewModel.kalemList.length,
                           itemBuilder: (BuildContext context, int index) {
-                            final KalemModel? kalemModel = viewModel.kalemList?[index];
+                            final KalemModel kalemModel = viewModel.kalemList[index];
                             return Card(
                               child: Column(
                                 children: <Widget>[
                                   kalemListTile(context, index, kalemModel),
-                                  ...List.generate(kalemModel?.kalemList?.length ?? 0, (int index2) {
-                                    final KalemModel? model = kalemModel?.kalemList?[index2];
+                                  ...List.generate(kalemModel.kalemList?.length ?? 0, (int index2) {
+                                    final KalemModel? model = kalemModel.kalemList?[index2];
                                     return Column(
                                       children: <Widget>[
                                         const Divider(),
@@ -270,14 +273,14 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
   Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList?[index].stokAdi ?? "",
+      title: viewModel.kalemList[index].stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
           title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
+            await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList[index]);
             viewModel.updateKalemList();
           },
         ).yetkiKontrol(!widget.model.isGoruntule),
@@ -291,6 +294,41 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             });
           },
         ).yetkiKontrol(!widget.model.isGoruntule),
+        BottomSheetModel(
+          title: "Stok Oluştur",
+          iconWidget: Icons.inventory_2_outlined,
+          onTap: () async {
+            Get.back();
+            final result = await Get.toNamed(
+              "/mainPage/stokEdit",
+              arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel((model?..stokKodu = null)!), baseEditEnum: BaseEditEnum.ekle),
+            );
+            if (result is SaveStokModel) {
+              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
+                stokAdi: result.adi,
+                stokKodu: result.kodu,
+                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? result.satisKdvOrani : result.alisKdvOrani,
+              );
+            }
+          },
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && model?.stokKodu == "EFATURA_STOK"),
+        BottomSheetModel(
+          title: "Stok Değiştir",
+          iconWidget: Icons.change_circle_outlined,
+          onTap: () async {
+            Get.back();
+            final stokModel = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+            if (stokModel is StokListesiModel) {
+              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
+                stokAdi: stokModel.stokAdi,
+                stokKodu: stokModel.stokKodu,
+                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? stokModel.satisKdv : stokModel.alisKdv,
+              );
+              viewModel.updateKalemList();
+              // viewModel.addKalemList(KalemModel.fromStokListesiModel(stokModel));
+            }
+          },
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && model?.stokKodu == "EFATURA_STOK"),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
