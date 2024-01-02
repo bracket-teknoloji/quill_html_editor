@@ -95,7 +95,64 @@ class SaveStokModel with NetworkManagerMixin {
     ..satisDovizFiyati = model.dovSatisFiat
     ..alisDovizFiyati = model.dovAlisFiat
     ..alisDovizTipi = model.alisDovTip
-    ..satisDovizTipi = model.satDovTip;
+    ..barkod1 = model.barkod1
+    ..barkod2 = model.barkod2
+    ..barkod3 = model.barkod3
+    ..depoKodu = model.depoKodu
+    ..grupKodu = model.grupKodu
+    ..satisDovizTipi = model.satDovTip
+    ..kod1 = model.kod1
+    ..kod2 = model.kod2
+    ..kod3 = model.kod3
+    ..kod4 = model.kod4
+    ..kod5 = model.kod5
+    //sdkjflksdf
+    ..adi = model.stokAdi
+    ..alisDovizFiyati = model.dovAlisFiat
+    ..alisDovizTipi = model.alisDovTip
+    ..alisFiyati1 = model.alisFiat1
+    ..alisFiyati2 = model.alisFiat2
+    ..alisFiyati3 = model.alisFiat3
+    ..alisFiyati4 = model.alisFiat4
+    ..alisKdvOrani = model.alisKdv
+    ..barkod1 = model.barkod1
+    ..barkod2 = model.barkod2
+    ..barkod3 = model.barkod3
+    ..depoKodu = model.depoKodu
+    ..grupKodu = model.grupKodu
+    // ..islemKodu = model.islemKodu
+    ..kod1 = model.kod1
+    ..kod2 = model.kod2
+    ..kod3 = model.kod3
+    ..kod4 = model.kod4
+    ..kod5 = model.kod5
+    ..kodu = model.stokKodu
+    ..muhdetayKodu = model.muhdetayKodu
+    ..olcuBirimi1 = model.olcuBirimi
+    ..olcuBirimi2 = model.olcuBirimi2
+    ..olcuBirimi2Pay = model.olcuBirimi2Pay
+    ..olcuBirimi2Payda = model.olcuBirimi2Payda
+    ..olcuBirimi3 = model.olcuBirimi3
+    ..olcuBirimi3Pay = model.olcuBirimi3Pay
+    ..olcuBirimi3Payda = model.olcuBirimi3Payda
+    // ..requestVersion = model.requestVersion
+    ..satisDovizFiyati = model.dovSatisFiat
+    ..satisDovizTipi = model.satDovTip
+    ..satisFiyati1 = model.satisFiat1
+    ..satisFiyati2 = model.satisFiat2 
+    ..satisFiyati3 = model.satisFiat3
+    ..satisFiyati4 = model.satisFiat4
+    ..satisKdvOrani = model.satisKdv
+    ..resimBase64 = model.resimBase64
+    ..seriGiristeOtomatik = model.seriGiristeOtomatikMi
+    ..seriCikistaAktif = model.seriCikislardaAcik
+    ..seriCikistaOtomatik = model.seriCikistaOtomatikMi
+    ..seriGiristeAktif = model.seriGirislerdeAcik
+    ..seriMiktarKadar = model.seriMiktarKadarSor
+    ..subeKodu = model.subeKodu
+    ..ureticiKodu = model.ureticiKodu
+
+    ;
 
   @override
   Map<String, dynamic> toJson() => _$SaveStokModelToJson(this);
