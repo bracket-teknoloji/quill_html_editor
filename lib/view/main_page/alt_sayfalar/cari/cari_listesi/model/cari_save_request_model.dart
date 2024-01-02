@@ -96,6 +96,7 @@ class CariSaveRequestModel with NetworkManagerMixin {
   int? islemKodu;
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
+  @JsonKey(name: "SahisFirmasi")
   bool? sahisFirmasi;
   String? subeKodu;
   String? kodu;
