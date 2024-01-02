@@ -21,13 +21,11 @@ version: 1.4.0+73
 environment:
   sdk: ">=3.0.0 <4.0.0"
 
-
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
 
   cupertino_icons: ^1.0.6
 
@@ -125,7 +123,7 @@ flutter_launcher_icons:
   ios: true
   remove_alpha_ios: true
   adaptive_icon_background: "#bd3d17"
-  
+
   web:
     generate: true
     image_path: "assets/app_icon/beyaz_1024.png"
@@ -166,7 +164,6 @@ flutter:
     - assets/translations/
     # - shorebird.yaml
 
-
 flutter_gen:
   output: lib/core/gen/ # Optional (defaults to lib/flutter_gen)
 
@@ -174,3 +171,5 @@ flutter_gen:
   integrations:
     flutter_svg: true
     lottie: true
+flutter_intl:
+  enabled: true
