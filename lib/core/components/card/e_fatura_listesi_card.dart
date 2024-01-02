@@ -379,7 +379,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           final result = await Get.toNamed(
             "/mainPage/cariEdit",
             arguments: BaseEditModel<CariListesiModel>(
-              model: CariListesiModel.fromEBelgeListesiModel(model),
+              model: CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
+                ..hesaptutmasekli = "Y"
+                ..vadeGunu = 0,
               baseEditEnum: BaseEditEnum.kopyala,
             ),
           );
@@ -449,11 +451,35 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         iconWidget: Icons.add_outlined,
         onTap: () async {
           Get.back();
+          if (widget.eBelgeListesiModel.kayitliCariKodu == null) {
+            final result = await dialogManager.showAreYouSureDialog(
+              () async {
+                final result = await Get.toNamed(
+                  "/mainPage/cariEdit",
+                  arguments: BaseEditModel<CariListesiModel>(
+                    model: CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
+                      ..hesaptutmasekli = "Y"
+                      ..vadeGunu = 0,
+                    baseEditEnum: BaseEditEnum.kopyala,
+                  ),
+                );
+                if (result != null) {
+                  widget.onRefresh.call(true);
+                }
+              },
+              title: "Cari Kodu Bulunamadı. Oluşturulsun Mu?",
+            );
+            if (result == null) {
+              return;
+            }
+          }
+          final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
+
+          // ignore: use_build_context_synchronously
           final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
           if (depoModel == null) {
             return;
           }
-          final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
           // ignore: use_build_context_synchronously
           final siparisModel = await networkManager.getFatura(
             context,
@@ -480,6 +506,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 depoTanimi: depoModel.depoTanimi,
                 dovizAdi: cariModel?.dovizAdi,
                 dovizTipi: cariModel?.dovizKodu,
+                efaturaInckeyno: widget.eBelgeListesiModel.inckeyno,
+                efattanAlisFat: true,
+                ebelgeZarfid: widget.eBelgeListesiModel.zarfid,
               ),
               baseEditEnum: BaseEditEnum.taslak,
               editTipiEnum: EditTipiEnum.alisFatura,
