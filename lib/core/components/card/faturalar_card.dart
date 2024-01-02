@@ -82,7 +82,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   Get.back();
                   await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                 },
-              ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi) && (widget.editTipiEnum.alisFaturasiMi ? !widget.model.eBelgeMi : true)),
+              ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
               BottomSheetModel(
                 title: "Açıklama Düzenle",
                 iconWidget: Icons.edit_note_outlined,
