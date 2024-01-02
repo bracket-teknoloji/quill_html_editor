@@ -38,6 +38,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   KalemEkleViewModel viewModel = KalemEkleViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   EditTipiEnum? get editTipi => model.getEditTipiEnum;
+  bool get satisMi => editTipi?.satisMi ?? false;
   late final TextEditingController kalemAdiController;
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
