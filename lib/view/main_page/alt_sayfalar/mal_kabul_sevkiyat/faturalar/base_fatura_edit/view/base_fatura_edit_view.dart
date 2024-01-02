@@ -105,6 +105,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.setInstance(widget.model.model);
         BaseSiparisEditModel.instance.isNew = true;
+        BaseSiparisEditModel.instance.efattanAlisFat = true;
         BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
