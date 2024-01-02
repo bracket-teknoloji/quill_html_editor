@@ -124,8 +124,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.isNew = false;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
+
+            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+            if (cariModel is CariListesiModel) {
+              viewModel.changeIsBaseSiparisEmpty(true);
+              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+            }
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            BaseSiparisEditModel.setInstance(widget.model.model);
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -142,7 +148,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
               BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
             }
-            if (widget.model.model?.kalemList != null) {
+            if ((widget.model.model?.kalemList as List<KalemModel>?).ext.isNotNullOrEmpty) {
               BaseSiparisEditModel.instance.kalemList = widget.model.model?.kalemList;
             }
             BaseSiparisEditModel.instance.tag = "FaturaModel";
@@ -411,8 +417,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
     }
 
     const Uuid uuid = Uuid();
-    BaseSiparisEditModel newInstance =
-        BaseSiparisEditModel.instance.copyWith(islemId: uuid.v4(), cariModel: null, kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList());
+    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance
+        .copyWith(islemId: uuid.v4(), cariModel: null, belgeTuru: widget.model.editTipiEnum?.rawValue, kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList());
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
       newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
