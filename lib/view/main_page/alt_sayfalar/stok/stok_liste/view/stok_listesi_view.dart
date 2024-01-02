@@ -51,7 +51,7 @@ class StokListesiView extends StatefulWidget {
 class _StokListesiViewState extends BaseState<StokListesiView> {
   StokListesiViewModel viewModel = StokListesiViewModel();
   List<StokListesiModel>? get stokListesi => viewModel.stokListesi ?? [];
-  ScrollController scrollController = ScrollController();
+  late final ScrollController scrollController;
   TextEditingController grupKoduController = TextEditingController();
   TextEditingController kod1Controller = TextEditingController();
   TextEditingController kod2Controller = TextEditingController();
@@ -60,13 +60,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   TextEditingController kod5Controller = TextEditingController();
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.isGetData ?? false) {
-        viewModel.setSearchBar();
-        // viewModel.setSearchValue(widget.searchText);
-      }
-      getData();
-    });
+    scrollController = ScrollController();
     scrollController.addListener(() async {
       if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
         if (viewModel.dahaVarMi) {
@@ -78,6 +72,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       } else if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
         viewModel.changeIsScrolledDown(false);
       }
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (widget.isGetData ?? false) {
+        viewModel.setSearchBar();
+        // viewModel.setSearchValue(widget.searchText);
+      }
+      await getData();
     });
     super.initState();
   }
