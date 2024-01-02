@@ -3,8 +3,8 @@
 import "dart:convert";
 import "dart:developer";
 import "dart:typed_data";
-import "dart:ui" as ui;
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -208,9 +208,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       },
                     ),
                     //TODO resim göstermeyi ekleyince aç
-                  ).yetkiVarMi(
-                    AccountModel.instance.isDebug,
-                  ),
+                  ).yetkiVarMi(kDebugMode),
                   Expanded(
                     flex: 4,
                     child: CustomTextField(
@@ -725,18 +723,5 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": model?.stokKodu ?? stokKoduController.text, "Seri": seriValue},
     );
     return result.paramData!["URETILEN_BARKOD"];
-  }
-
-  Future<String> bitmapToBase64(ui.Image? bitmap) async {
-    if (bitmap == null) {
-      return "";
-    }
-    try {
-      final ByteData? byteData = await bitmap.toByteData(format: ui.ImageByteFormat.png);
-      final Uint8List pngBytes = byteData?.buffer.asUint8List() ?? Uint8List(0);
-      return base64Encode(pngBytes);
-    } catch (e) {
-      return "";
-    }
   }
 }
