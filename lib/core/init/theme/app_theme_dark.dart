@@ -46,9 +46,13 @@ class AppThemeDark extends AppTheme {
           borderRadius: UIHelper.lowBorderRadius,
         ),
         brightness: Brightness.dark,
-        textTheme: GoogleFonts.dmSansTextTheme()
-            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
-            .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
+        textTheme: GoogleFonts.dmSansTextTheme().apply(
+          bodyColor: colorManager.onSecondaryContainer,
+          displayColor: colorManager.onSecondaryContainer,
+          decorationColor: colorManager.onSecondaryContainer,
+        ),
+        // .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
+        // .copyWith(bodySmall: TextStyle(color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
         bottomAppBarTheme: BottomAppBarTheme(
           elevation: 0,
@@ -182,7 +186,7 @@ class AppThemeDark extends AppTheme {
           ),
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
-          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
+          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20, fontFamily: GoogleFonts.dmSans().fontFamily),
           scrolledUnderElevation: 0,
           elevation: 0,
         ),
