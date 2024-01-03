@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
@@ -197,7 +198,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                         children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
                       ),
                     )
-                  : const Center(child: CircularProgressIndicator.adaptive())
+                  : const ListViewShimmer().paddingAll(UIHelper.lowSize)
               : Observer(
                   builder: (_) => SlidableAutoCloseBehavior(
                     child: ListView.builder(

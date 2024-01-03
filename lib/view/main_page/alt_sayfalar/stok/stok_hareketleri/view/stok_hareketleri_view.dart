@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -419,7 +420,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                     ),
             );
           } else {
-            return const Center(child: CircularProgressIndicator.adaptive());
+            return const ListViewShimmer().paddingAll(UIHelper.lowSize);
           }
         },
       );

@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -107,7 +108,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         },
         child: Observer(
           builder: (_) => viewModel.getKasaListesi == null
-              ? const Center(child: CircularProgressIndicator.adaptive())
+              ? const ListViewShimmer().paddingAll(UIHelper.lowSize)
               : viewModel.getKasaListesi.ext.isNullOrEmpty
                   ? const Center(
                       child: Text("Kasa bulunamadı"),

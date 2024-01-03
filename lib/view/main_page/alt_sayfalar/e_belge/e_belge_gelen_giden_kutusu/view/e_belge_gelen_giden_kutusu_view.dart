@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -144,7 +145,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
           builder: (_) => viewModel.eBelgeListesi.ext.isNullOrEmpty
               ? (viewModel.eBelgeListesi?.isEmpty ?? false)
                   ? Center(child: Text(viewModel.error ?? "E-Belge Kaydı Bulunamadı.", textAlign: TextAlign.center))
-                  : const Center(child: CircularProgressIndicator.adaptive())
+                  : const ListViewShimmer().paddingAll(UIHelper.lowSize)
               : ListView.builder(
                   primary: false,
                   controller: _scrollController,

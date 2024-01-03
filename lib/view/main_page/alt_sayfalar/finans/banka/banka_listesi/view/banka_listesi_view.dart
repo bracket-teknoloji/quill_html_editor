@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -178,7 +179,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
         child: Observer(
           builder: (_) {
             if (viewModel.bankaListesi == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
+              return const ListViewShimmer().paddingAll(UIHelper.lowSize);
             } else if (viewModel.bankaListesi!.isEmpty) {
               return Center(child: Text(viewModel.errorText ?? "Banka bulunamadı.", textAlign: TextAlign.center));
             } else {

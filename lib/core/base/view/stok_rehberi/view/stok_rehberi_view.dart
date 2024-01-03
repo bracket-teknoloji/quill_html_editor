@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -324,7 +325,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                   builder: (_) => viewModel.stokListesi.ext.isNullOrEmpty
                       ? (viewModel.stokListesi?.isEmpty ?? false)
                           ? const Center(child: Text("Stok Bulunamadı"))
-                          : const Center(child: CircularProgressIndicator.adaptive())
+                          : const ListViewShimmer().paddingAll(UIHelper.lowSize)
                       : Observer(
                           builder: (_) => ListView.builder(
                             primary: false,
