@@ -186,7 +186,7 @@ class AppThemeDark extends AppTheme {
           ),
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
-          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20, fontFamily: GoogleFonts.dmSans().fontFamily),
+          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
           scrolledUnderElevation: 0,
           elevation: 0,
         ),
