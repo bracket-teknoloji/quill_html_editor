@@ -396,38 +396,86 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   text: "Ek Açıklamalar",
                   child: Column(
                     children: <Widget>[
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi1 ?? "Açıklama 1", controller: _aciklama1Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(1)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi2 ?? "Açıklama 2", controller: _aciklama2Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(2)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi3 ?? "Açıklama 3", controller: _aciklama3Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(3)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi4 ?? "Açıklama 4", controller: _aciklama4Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(4)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi5 ?? "Açıklama 5", controller: _aciklama5Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(5)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi6 ?? "Açıklama 6", controller: _aciklama6Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(6)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi7 ?? "Açıklama 7", controller: _aciklama7Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(7)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi8 ?? "Açıklama 8", controller: _aciklama8Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(8)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi9 ?? "Açıklama 9", controller: _aciklama9Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(9)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi10 ?? "Açıklama 10", controller: _aciklama10Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(10)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi11 ?? "Açıklama 11", controller: _aciklama11Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(11)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi12 ?? "Açıklama 12", controller: _aciklama12Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(12)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi13 ?? "Açıklama 13", controller: _aciklama13Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(13)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi14 ?? "Açıklama 14", controller: _aciklama14Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(14)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi15 ?? "Açıklama 15", controller: _aciklama15Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(15)),
-                      CustomTextField(enabled: enable, labelText: parametreModel.satisEkAciklamaTanimi16 ?? "Açıklama 16", controller: _aciklama16Controller)
-                          .yetkiVarMi(yetkiController.siparisMSAciklamaAlanlari(16)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
+                        controller: _aciklama1Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
+                        controller: _aciklama2Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
+                        controller: _aciklama3Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
+                        controller: _aciklama4Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
+                        controller: _aciklama5Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
+                        controller: _aciklama6Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
+                        controller: _aciklama7Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
+                        controller: _aciklama8Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
+                        controller: _aciklama9Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
+                        controller: _aciklama10Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
+                        controller: _aciklama11Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
+                        controller: _aciklama12Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
+                        controller: _aciklama13Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
+                        controller: _aciklama14Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
+                        controller: _aciklama15Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
+                        controller: _aciklama16Controller,
+                      ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16)),
                     ],
                   ),
                 ),
@@ -436,6 +484,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
           ),
         ),
       );
+
+  bool get satisMi => model.getEditTipiEnum?.satisMi ?? false;
 
   String get eBelgeButtonText {
     if (model.efaturaMi == "E" || model.cariEfaturami == "E") {
