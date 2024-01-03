@@ -178,6 +178,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         labelText: "Senaryo",
                         controller: _senaryoController,
                         readOnly: true,
+                        enabled: !viewModel.siparisEditModel.taslakMi,
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(model.senaryoTipi ?? "")),
                         onTap: () async {
@@ -199,7 +200,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             _senaryoController.text = result.key;
                           }
                         },
-                      ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                      ).yetkiVarMi(widget.model.sFaturaMi),
                     ),
                     Observer(
                       builder: (_) => CustomTextField(
@@ -221,7 +222,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         value: model.dovizliOlustur ?? false,
                         onChanged: viewModel.setDovizOlustur,
                         title: const Text("Döviz Oluştur"),
-                      ).yetkiVarMi(viewModel.model.dovizliMi),
+                      ).yetkiVarMi(widget.model.dovizliMi),
                     ),
                     Observer(
                       builder: (_) => SwitchListTile.adaptive(
@@ -340,6 +341,11 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       _dizaynController.text = result.firstOrNull?.dizaynAdi ?? "";
       viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
     } else {
+      if (result.any((element) => element.varsayilanMi ?? false)) {
+        _dizaynController.text = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynAdi ?? "";
+        viewModel.setDizaynNo(result.firstWhere((element) => element.varsayilanMi ?? false).id ?? 0);
+        return;
+      }
       final selectedDizaynModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Dizayn Seçiniz",
