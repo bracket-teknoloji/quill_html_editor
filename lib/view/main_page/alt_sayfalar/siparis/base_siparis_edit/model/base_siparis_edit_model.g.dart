@@ -3709,13 +3709,13 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kalemAdiDegisti: fields[95] as bool?,
       teklifNo: fields[96] as String?,
       teklifKalemSira: fields[97] as int?,
-    );
+    )..kalemStoktanKodu = fields[98] as String?;
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(98)
+      ..writeByte(99)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -3911,7 +3911,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(96)
       ..write(obj.teklifNo)
       ..writeByte(97)
-      ..write(obj.teklifKalemSira);
+      ..write(obj.teklifKalemSira)
+      ..writeByte(98)
+      ..write(obj.kalemStoktanKodu);
   }
 
   @override
@@ -4405,7 +4407,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       kalemAdiDegisti: json['KALEM_ADI_DEGISTI'] as bool?,
       teklifNo: json['TEKLIF_NO'] as String?,
       teklifKalemSira: json['TEKLIF_KALEM_SIRA'] as int?,
-    );
+    )..kalemStoktanKodu = json['KALEM_STOKTAN_KODU'] as String?;
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -4515,5 +4517,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('KALEM_ADI_DEGISTI', instance.kalemAdiDegisti);
   writeNotNull('TEKLIF_NO', instance.teklifNo);
   writeNotNull('TEKLIF_KALEM_SIRA', instance.teklifKalemSira);
+  writeNotNull('KALEM_STOKTAN_KODU', instance.kalemStoktanKodu);
   return val;
 }

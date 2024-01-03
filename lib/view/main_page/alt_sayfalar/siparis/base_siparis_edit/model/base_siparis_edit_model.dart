@@ -1102,7 +1102,8 @@ class KalemModel with NetworkManagerMixin {
   final String? teklifNo;
   @HiveField(97)
   final int? teklifKalemSira;
-
+  @HiveField(98)
+  String? kalemStoktanKodu;
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,
@@ -1220,6 +1221,8 @@ class KalemModel with NetworkManagerMixin {
   }
 
   bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
+
+  bool get kalemStoktanMi => kalemStoktanKodu == stokKodu;
 
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 
