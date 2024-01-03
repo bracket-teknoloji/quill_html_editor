@@ -12,6 +12,7 @@ DizaynModel _$DizaynModelFromJson(Map<String, dynamic> json) => DizaynModel(
       modulId: json['MODUL_ID'] as int?,
       dizaynKodu: json['DIZAYN_KODU'] as String?,
       erpDizayni: json['ERP_DIZAYNI'] as String?,
+      varsayilanMi: json['VARSAYILAN_MI'] as bool?,
     );
 
 Map<String, dynamic> _$DizaynModelToJson(DizaynModel instance) {
@@ -28,5 +29,6 @@ Map<String, dynamic> _$DizaynModelToJson(DizaynModel instance) {
   writeNotNull('MODUL_ID', instance.modulId);
   writeNotNull('DIZAYN_KODU', instance.dizaynKodu);
   writeNotNull('ERP_DIZAYNI', instance.erpDizayni);
+  writeNotNull('VARSAYILAN_MI', instance.varsayilanMi);
   return val;
 }

@@ -15,6 +15,8 @@ class DizaynModel with NetworkManagerMixin {
   final String? dizaynKodu;
   @JsonKey(name: "ERP_DIZAYNI")
   final String? erpDizayni;
+    @JsonKey(name: "VARSAYILAN_MI")
+    final bool? varsayilanMi;
 
   DizaynModel({
     this.id,
@@ -22,6 +24,7 @@ class DizaynModel with NetworkManagerMixin {
     this.modulId,
     this.dizaynKodu,
     this.erpDizayni,
+    this.varsayilanMi,
   });
 
   factory DizaynModel.fromJson(Map<String, dynamic> json) => _$DizaynModelFromJson(json);
