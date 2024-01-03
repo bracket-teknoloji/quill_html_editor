@@ -1,4 +1,5 @@
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -381,4 +382,20 @@ final class YetkiController {
   bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
+
+  //! FATURA
+  bool faturaAciklamaAlanlari(EditTipiEnum? editTipi, int index) {
+    if (editTipi == EditTipiEnum.satisFatura) {
+      return satisFaturaAciklamaAlanlari(index);
+    } else if (editTipi == EditTipiEnum.alisIrsaliye) {
+      return alisIrsaliyeAciklamaAlanlari(index);
+    } else if (editTipi == EditTipiEnum.alisFatura) {
+      return alisFaturaAciklamaAlanlari(index);
+    }
+    return false;
+  }
+  bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index) ?? false));
+  bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index) ?? false));
+  bool satisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index) ?? false));
+
 }
