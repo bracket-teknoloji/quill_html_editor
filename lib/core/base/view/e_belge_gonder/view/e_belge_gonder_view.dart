@@ -65,7 +65,9 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     _gonderimSekliController = TextEditingController();
     _cariEPostaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await getDizayn(otomatikSec: true);
+      if (!widget.model.taslakMi) {
+        await getDizayn(otomatikSec: true);
+      }
     });
     super.initState();
   }
