@@ -117,6 +117,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             controller: plasiyerController,
                             readOnly: true,
                             suffixMore: true,
+                            valueWidget: Observer(builder: (_) => Text(viewModel.plasiyer?.toString() ?? "")),
                             onClear: () => viewModel.setPlasiyer(null),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.plasiyer);
@@ -239,8 +240,22 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                   ),
                                 ],
                               ),
-                              Observer(builder: (_) => SizedBox(height: height * 0.3, child: CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam))),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle)),
+                              Observer(
+                                builder: (_) {
+                                  if (viewModel.getPlasiyerToplam.isEmpty) {
+                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                                  }
+                                  return SizedBox(height: height * 0.3, child: CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam));
+                                },
+                              ),
+                              Observer(
+                                builder: (_) {
+                                  if (viewModel.getAylikSatislar.isEmpty) {
+                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                                  }
+                                  return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
+                                },
+                              ),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
@@ -260,7 +275,14 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                               Observer(
                                 builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle)),
+                              Observer(
+                                builder: (_) {
+                                  if (viewModel.getAylikAlislar.isEmpty) {
+                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                                  }
+                                  return CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle);
+                                },
+                              ),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
@@ -280,7 +302,14 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                               Observer(
                                 builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikSiparisler)),
+                              Observer(
+                                builder: (_) {
+                                  if (viewModel.getAylikSiparisler.isEmpty) {
+                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                                  }
+                                  return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
+                                },
+                              ),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
@@ -304,7 +333,14 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                 builder: (_) =>
                                     ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
-                              Observer(builder: (_) => CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle)),
+                              Observer(
+                                builder: (_) {
+                                  if (viewModel.getAylikTahsilatlar.isEmpty) {
+                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                                  }
+                                  return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle);
+                                },
+                              ),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
