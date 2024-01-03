@@ -200,8 +200,8 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             _senaryoController.text = result.key;
                           }
                         },
-                      ).yetkiVarMi(widget.model.sFaturaMi),
-                    ),
+                      ),
+                    ).yetkiVarMi(widget.model.eFaturaSerisindenMi),
                     Observer(
                       builder: (_) => CustomTextField(
                         labelText: "Dizayn",
