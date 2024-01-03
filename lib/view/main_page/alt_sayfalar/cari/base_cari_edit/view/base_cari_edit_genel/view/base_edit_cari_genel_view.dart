@@ -361,14 +361,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         viewModel.changePlasiyer(null);
                       },
                       onTap: () async {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Plasiyer",
-                          children: List.generate(
-                            anaVeri?.paramModel?.plasiyerList?.length ?? 0,
-                            (int index) => BottomSheetModel(title: anaVeri?.paramModel?.plasiyerList?[index].plasiyerAciklama ?? "", value: anaVeri?.paramModel?.plasiyerList?[index]),
-                          ),
-                        );
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model?.plasiyerKodu);
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.changePlasiyer(result.plasiyerKodu);
