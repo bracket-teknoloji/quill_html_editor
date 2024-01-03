@@ -14,12 +14,12 @@ class IconHelper {
         )
       : Icon(
           iconData,
-          size: 30,
+          size: 24,
           color: color ?? Colors.white,
         );
   static SvgPicture middleMenuIcon(String path, {Color? color}) => SvgPicture.asset(
         _getMenuIconPath(path),
-        height: 24,
+        height: 30,
         colorFilter: ColorFilter.mode(color ?? Colors.white, BlendMode.srcIn),
       );
   static SvgPicture smallMenuIcon(String path, {Color? color}) => SvgPicture.asset(
