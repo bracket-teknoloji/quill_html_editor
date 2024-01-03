@@ -337,7 +337,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             final StokListesiModel? stokList = await networkManager.getStokModel(StokRehberiRequestModel.fromKalemModel(model!));
             return dialogManager.showStokGridViewDialog(stokList);
           },
-        ),
+        ).yetkiKontrol(!(model?.kalemStoktanMi ?? false)),
       ].nullCheckWithGeneric,
     );
   }
