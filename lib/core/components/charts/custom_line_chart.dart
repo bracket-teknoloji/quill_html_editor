@@ -121,7 +121,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
-                        colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0),
+                        colors: Colors.primaries.sublist(0, (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length),
                       ),
                       isStrokeCapRound: true,
                       dotData: FlDotData(
@@ -144,7 +144,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                         gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.topRight,
-                          colors: Colors.primaries.sublist(0, widget.lineChartValue?.length ?? 0).map((e) => e.withOpacity(0.3)).toList(),
+                          colors: Colors.primaries.sublist(0, (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length).map((e) => e.withOpacity(0.3)).toList(),
                         ),
                       ),
                     ),
