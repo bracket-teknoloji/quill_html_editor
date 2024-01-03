@@ -73,15 +73,15 @@ class BottomSheetDialogManager {
           child: Wrap(
             children: <Widget>[
               ListTile(
-                contentPadding: UIHelper.lowPadding,
-                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                contentPadding: UIHelper.lowPaddingHorizontal,
+                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.midSize),
                 trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
                 splashColor: Colors.transparent,
               ).paddingSymmetric(vertical: UIHelper.midSize),
               const Divider(
                 thickness: 2,
-                endIndent: 0,
-                indent: 0,
+                endIndent: 10,
+                indent: 10,
               ),
               if (body == null && ((children?.length ?? 0) > 20))
                 TextField(
