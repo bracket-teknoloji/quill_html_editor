@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -270,7 +271,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           builder: (_) => (viewModel.cariListesi.ext.isNullOrEmpty
               ? (viewModel.cariListesi?.isEmpty ?? false)
                   ? Center(child: Observer(builder: (_) => Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı")))
-                  : const Center(child: CircularProgressIndicator.adaptive())
+                  : const ListViewShimmer()
               : ListView.builder(
                   primary: false,
                   controller: _scrollController,

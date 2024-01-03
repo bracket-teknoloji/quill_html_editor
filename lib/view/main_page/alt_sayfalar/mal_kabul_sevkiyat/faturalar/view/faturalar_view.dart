@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -244,7 +245,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         onRefresh: () async => viewModel.resetPage(),
         child: Observer(
           builder: (_) => viewModel.faturaList == null
-              ? const Center(child: CircularProgressIndicator.adaptive())
+              ? const ListViewShimmer()
               : viewModel.faturaList.ext.isNullOrEmpty
                   ? const Center(child: Text("Fatura bulunamadı"))
                   : ListView.builder(

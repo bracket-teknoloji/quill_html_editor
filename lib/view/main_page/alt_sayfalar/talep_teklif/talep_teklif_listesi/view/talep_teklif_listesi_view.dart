@@ -17,6 +17,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -202,7 +203,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         child: Observer(
           builder: (_) {
             if (viewModel.talepTeklifListesiModelList == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
+              return const ListViewShimmer();
             } else if (viewModel.talepTeklifListesiModelList!.isEmpty) {
               return const Center(child: Text("Kayıt Bulunamadı."));
             } else {

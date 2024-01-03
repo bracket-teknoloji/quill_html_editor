@@ -8,6 +8,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -558,7 +559,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         builder: (_) => viewModel.stokListesi.isEmptyOrNull
             ? (viewModel.stokListesi?.isEmpty ?? false)
                 ? const Center(child: Text("Stok Bulunamadı"))
-                : const Center(child: CircularProgressIndicator.adaptive())
+                : const ListViewShimmer()
             : ListView.builder(
                 primary: false,
                 padding: UIHelper.lowPadding,

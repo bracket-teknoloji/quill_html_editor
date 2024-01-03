@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -82,8 +83,8 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      getData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await getData();
     });
     scrollController.addListener(() async {
       if (scrollController.position.pixels == scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
@@ -324,7 +325,12 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       ),
                     ),
                     InkWell(
-                      onTap: () => viewModel.changeGrupKodlariGoster(),
+                      onTap: () async {
+                        if (viewModel.grupKodList.ext.isNullOrEmpty) {
+                          viewModel.changeGrupKodList(await networkManager.getGrupKod(name: "CARI", grupNo: -1));
+                        }
+                        viewModel.changeGrupKodlariGoster();
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -574,7 +580,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
           builder: (_) => musteriSiparisleriList.ext.isNullOrEmpty
               ? (viewModel.musteriSiparisleriList?.isEmpty ?? false)
                   ? const Center(child: Text("Stok Bulunamadı"))
-                  : const Center(child: CircularProgressIndicator.adaptive())
+                  : const ListViewShimmer()
               : Observer(
                   builder: (_) => ListView.builder(
                     primary: false,
@@ -642,9 +648,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       );
 
   Future<void> getData() async {
-    if (viewModel.grupKodList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKodList(await networkManager.getGrupKod(name: "CARI", grupNo: -1));
-    }
     viewModel.setDahaVarMi(false);
     final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.data != null) {
