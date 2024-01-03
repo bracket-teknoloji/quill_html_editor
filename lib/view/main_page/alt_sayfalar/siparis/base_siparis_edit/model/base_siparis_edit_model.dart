@@ -641,6 +641,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get aFaturaMi => belgeTuru == "AF";
 
+  bool get sFaturaMi => belgeTuru == "SF";
+
   bool get faturaIrsaliyeMi => belgeTuru == "SI" || belgeTuru == "AI" || belgeTuru == "SF" || belgeTuru == "AF";
 
   bool get teklifRevizeEdilmisMi => sonrakiRevizeNo != null;
