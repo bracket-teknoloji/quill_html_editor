@@ -82,7 +82,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       softWrap: true,
-                      style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
+                      style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 )
@@ -100,7 +100,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                               data: const IconThemeData(weight: 0.1, size: 30, color: Colors.white),
                               child: Icon(
                                 widget.model?.iconData,
-                                size: 30,
+                                size: UIHelper.midSize * 3,
                                 grade: 0.1,
                               ),
                             ),
@@ -108,11 +108,11 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     Text(
                       widget.model?.menuTipi != "I" ? (widget.model?.title ?? "") : "",
                       textAlign: TextAlign.center,
-                      maxLines: 3,
+                      maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       // softWrap: true,
-                      style: theme.textTheme.bodySmall?.copyWith(color: Colors.white),
-                    ),
+                      style: theme.textTheme.bodyMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                    ).paddingSymmetric(horizontal: UIHelper.lowSize),
                   ],
                 ),
         ),
@@ -120,7 +120,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     );
   }
 
-  Align? header(Icon Function() yetkiKontrol, Icon icon) => (widget.model?.menuTipi == "I" || widget.model?.menuTipi == "SR")
+  Widget? header(Icon Function() yetkiKontrol, Icon icon) => (widget.model?.menuTipi == "I" || widget.model?.menuTipi == "SR")
       ? Align(
           alignment: Alignment.centerRight,
           child: InkWell(
@@ -150,7 +150,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
               setState(() {});
             },
           ),
-        )
+        ).paddingOnly(right: UIHelper.lowSize / 2, top: UIHelper.lowSize / 2)
       : null;
 
   Widget footer() => (widget.model?.menuTipi == "S" && (widget.model?.altMenuler.ext.isNotNullOrEmpty ?? false)) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox();
