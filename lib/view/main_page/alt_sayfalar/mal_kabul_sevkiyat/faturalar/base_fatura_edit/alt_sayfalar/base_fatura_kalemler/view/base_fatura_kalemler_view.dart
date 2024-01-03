@@ -156,7 +156,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           children: <Widget>[
             const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
-            Text(kalemModel?.stokKodu ?? ""),
+            Text(kalemModel?.stokKodu ?? "", style: TextStyle(color: kalemModel?.kalemStoktanMi ?? false ? UIHelper.primaryColor : null)),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
             LayoutBuilder(
@@ -296,7 +296,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
           title: "Stok Oluştur",
-          iconWidget: Icons.inventory_2_outlined,
+          iconWidget: Icons.add_outlined,
           onTap: () async {
             Get.back();
             final result = await Get.toNamed(
@@ -311,7 +311,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               );
             }
           },
-        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && model?.stokKodu == "EFATURA_STOK"),
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && (model?.kalemStoktanMi ?? false)),
         BottomSheetModel(
           title: "Stok Değiştir",
           iconWidget: Icons.change_circle_outlined,
@@ -328,7 +328,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               // viewModel.addKalemList(KalemModel.fromStokListesiModel(stokModel));
             }
           },
-        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && model?.stokKodu == "EFATURA_STOK"),
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && (model?.kalemStoktanMi ?? false)),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
