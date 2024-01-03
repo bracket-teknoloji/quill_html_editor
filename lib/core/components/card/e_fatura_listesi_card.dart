@@ -475,6 +475,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           }
           final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
 
+          if (cariModel == null) {
+            return;
+          }
           // ignore: use_build_context_synchronously
           final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
           if (depoModel == null) {
@@ -489,7 +492,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               ..kisitYok = null
               ..iadeMi = false
               ..belgeTuru = null
-              ..cariKodu = cariModel?.cariKodu,
+              ..cariKodu = cariModel.cariKodu,
           );
           if (siparisModel == null) {
             return;
@@ -499,13 +502,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             arguments: BaseEditModel<BaseSiparisEditModel>(
               // model: siparisModel..cariAdi = cariModel?.cariAdi..cariEfaturami = "E",
               model: siparisModel.copyWith(
-                cariAdi: cariModel?.cariAdi,
+                cariAdi: cariModel.cariAdi,
                 cariEfaturami: "E",
-                plasiyerAciklama: cariModel?.plasiyerAciklama,
-                plasiyerKodu: cariModel?.plasiyerKodu,
+                plasiyerAciklama: cariModel.plasiyerAciklama,
+                plasiyerKodu: cariModel.plasiyerKodu,
                 depoTanimi: depoModel.depoTanimi,
-                dovizAdi: cariModel?.dovizAdi,
-                dovizTipi: cariModel?.dovizKodu,
+                dovizAdi: cariModel.dovizAdi,
+                dovizTipi: cariModel.dovizKodu,
                 efaturaInckeyno: widget.eBelgeListesiModel.inckeyno,
                 efattanAlisFat: true,
                 ebelgeZarfid: widget.eBelgeListesiModel.zarfid,
