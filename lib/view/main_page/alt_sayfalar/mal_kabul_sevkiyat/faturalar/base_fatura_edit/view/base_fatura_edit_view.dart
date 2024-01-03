@@ -104,6 +104,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.setInstance(widget.model.model);
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e..kalemStoktanKodu = e.stokKodu).toList();
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.efattanAlisFat = true;
         BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
