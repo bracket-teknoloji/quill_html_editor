@@ -580,7 +580,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
           builder: (_) => musteriSiparisleriList.ext.isNullOrEmpty
               ? (viewModel.musteriSiparisleriList?.isEmpty ?? false)
                   ? const Center(child: Text("Stok Bulunamadı"))
-                  : const ListViewShimmer()
+                  : const ListViewShimmer().paddingAll(UIHelper.lowSize)
               : Observer(
                   builder: (_) => ListView.builder(
                     primary: false,

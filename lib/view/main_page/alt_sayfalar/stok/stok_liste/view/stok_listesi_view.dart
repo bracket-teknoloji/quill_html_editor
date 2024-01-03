@@ -559,7 +559,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         builder: (_) => viewModel.stokListesi.isEmptyOrNull
             ? (viewModel.stokListesi?.isEmpty ?? false)
                 ? const Center(child: Text("Stok Bulunamadı"))
-                : const ListViewShimmer()
+                : const ListViewShimmer().paddingAll(UIHelper.lowSize)
             : ListView.builder(
                 primary: false,
                 padding: UIHelper.lowPadding,

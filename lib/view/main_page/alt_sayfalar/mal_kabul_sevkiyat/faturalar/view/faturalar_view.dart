@@ -245,7 +245,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         onRefresh: () async => viewModel.resetPage(),
         child: Observer(
           builder: (_) => viewModel.faturaList == null
-              ? const ListViewShimmer()
+              ? const ListViewShimmer().paddingAll(UIHelper.lowSize)
               : viewModel.faturaList.ext.isNullOrEmpty
                   ? const Center(child: Text("Fatura bulunamadı"))
                   : ListView.builder(
