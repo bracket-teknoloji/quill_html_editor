@@ -165,6 +165,7 @@ class IslemlerMenuItemConstants<T> {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
+      islemlerList.add(faturaBelgeNoDegistir);
       islemlerList.add(kopyala);
       islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
     } else if (islemtipi == IslemTipiEnum.eBelge) {
@@ -288,7 +289,7 @@ class IslemlerMenuItemConstants<T> {
                           bodyModel: BaseSiparisEditModel(),
                           queryParameters: {
                             "Seri": controller.text,
-                            "BelgeTipi": StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+                            "BelgeTipi": siparisModel?.getEditTipiEnum?.rawValue,
                             "EIrsaliye": "H",
                             "CariKodu": siparisModel?.cariKodu ?? "",
                           },
@@ -1087,5 +1088,118 @@ class IslemlerMenuItemConstants<T> {
         return boolean;
       },
     );
+  }
+
+  GridItemModel get faturaBelgeNoDegistir {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Fatura Belge No Değiştir",
+      iconData: Icons.edit_outlined,
+      onTap: () async {
+        final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+        final TextEditingController controller = TextEditingController(text: siparisModel.belgeNo);
+        final TextEditingController resmiController = TextEditingController(text: siparisModel.resmiBelgeNo);
+        return await _bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: "Fatura Belge No Değiştir",
+          body: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomTextField(
+                  labelText: "Belge No",
+                  isMust: true,
+                  maxLength: 15,
+                  controller: controller,
+                  validator: (p0) {
+                    if (p0 == null || p0.length != 15) {
+                      return "Lütfen 15 haneli bir belge no giriniz.";
+                    }
+                    return null;
+                  },
+                  onChanged: (p0) {
+                    resmiController.text = belgeNoToResmiBelgeNo(p0, siparisModel.tarih);
+                  },
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await _networkManager.dioGet<BaseSiparisEditModel>(
+                        path: ApiUrls.getSiradakiBelgeNo,
+                        bodyModel: BaseSiparisEditModel(),
+                        queryParameters: {
+                          "Seri": controller.text,
+                          "BelgeTipi": siparisModel.getEditTipiEnum?.rawValue,
+                          "EIrsaliye": "H",
+                          "CariKodu": siparisModel.cariKodu ?? "",
+                        },
+                      );
+                      if (result.success == true) {
+                        final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+                        controller.text = list?.firstOrNull?.belgeNo ?? "";
+                        resmiController.text = belgeNoToResmiBelgeNo(controller.text, siparisModel.tarih);
+                      }
+                    },
+                    icon: const Icon(Icons.abc),
+                  ),
+                ),
+                CustomTextField(
+                  labelText: "Resmi Belge No",
+                  controller: resmiController,
+                  isMust: true,
+                  maxLength: 16,
+                  validator: (p0) {
+                    if (p0 == null || p0.length != 16) {
+                      return "Lütfen 16 haneli bir belge no giriniz.";
+                    }
+                    return null;
+                  },
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    if (formKey.currentState?.validate() != true) {
+                      return;
+                    }
+                    bool boolean = false;
+                    await _dialogManager.showAreYouSureDialog(() async {
+                      boolean = true;
+                    });
+                    if (boolean) {
+                      final result = await _networkManager.dioPost<BaseSiparisEditModel>(
+                        path: ApiUrls.saveFatura,
+                        showLoading: true,
+                        bodyModel: BaseSiparisEditModel(),
+                        data: BaseSiparisEditModel.belgeNoDegistir(
+                          siparisModel
+                            ..yeniBelgeNo = controller.text
+                            ..resmiBelgeNo = resmiController.text,
+                        ).toJson(),
+                      );
+                      if (result.success == true) {
+                        _dialogManager.showSuccessSnackBar("Başarılı");
+                        boolean = true;
+                      } else {
+                        boolean = false;
+                      }
+                    }
+                    Get.back(result: boolean);
+                  },
+                  child: const Text("Kaydet"),
+                ).paddingAll(UIHelper.lowSize),
+              ],
+            ).paddingAll(UIHelper.lowSize),
+          ),
+        );
+      },
+    );
+  }
+
+  String belgeNoToResmiBelgeNo(String belgeNo, DateTime? tarih) {
+    // belgeNo is like as "EFT000000000012" and resmiBelgeNo should be "EFT2023000000012"
+    if (belgeNo.length == 15) {
+      return belgeNo.substring(0, 3) + (tarih?.year.toString() ?? "") + belgeNo.substring(6, 15);
+    } else {
+      return "";
+    }
   }
 }
