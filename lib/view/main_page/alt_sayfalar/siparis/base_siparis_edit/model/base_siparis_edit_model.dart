@@ -896,6 +896,19 @@ class BaseSiparisEditModel with NetworkManagerMixin {
           "TESLIM_CARI_DEGISMESIN": "H",
         },
       );
+
+  factory BaseSiparisEditModel.belgeNoDegistir(BaseSiparisEditModel model) => BaseSiparisEditModel(
+        cariKodu: model.cariKodu,
+        belgeNo: model.belgeNo,
+        tipi: model.tipi,
+        belgeTuru: model.belgeTuru,
+        belgeTipi: model.belgeTipi,
+        islemKodu: 10,
+        pickerBelgeTuru: model.pickerBelgeTuru,
+        yeniBelgeNo: model.yeniBelgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        tag: "FaturaModel",
+      );
 }
 
 @CopyWith()
