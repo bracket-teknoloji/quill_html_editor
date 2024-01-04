@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -158,7 +159,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               child: Observer(
                 builder: (_) => viewModel.dovizKurlariList.ext.isNullOrEmpty
                     ? viewModel.dovizKurlariList == null
-                        ? const Center(child: CircularProgressIndicator.adaptive())
+                        ? const ListViewShimmer()
                         : const Center(child: Text("Veri Yok"))
                     : ListView.builder(
                         itemCount: viewModel.dovizKurlariList?.length ?? 0,
@@ -270,7 +271,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                           );
                         },
                       ),
-              ),
+              ).paddingAll(UIHelper.lowSize),
             ),
           ),
         ],
