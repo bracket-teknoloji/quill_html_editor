@@ -78,7 +78,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _cariController = TextEditingController(text: model.cariAdi);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
-    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
+    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.belgeTipi));
     _projeController = TextEditingController(text: model.projeAciklama);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
@@ -200,7 +200,13 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
+                      _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      viewModel.setCariAdi(result.cariAdi);
+                      viewModel.setCariKodu(result.cariKodu);
+                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
+                      _belgeNoController.text = "";
+                      await getBelgeNo();
                     }
                   },
                 ),
@@ -215,6 +221,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result != null) {
                       _teslimCariController.text = result.cariAdi ?? "";
+                      viewModel.setTeslimCariAdi(result.cariAdi);
+                      viewModel.setTeslimCariKodu(result.cariKodu);
                     }
                   },
                 ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.baseEditEnum != BaseEditEnum.taslak),
@@ -398,81 +406,97 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     children: <Widget>[
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(1, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
                         controller: _aciklama1Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(2, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
                         controller: _aciklama2Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(3, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
                         controller: _aciklama3Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(4, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
                         controller: _aciklama4Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(5, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
                         controller: _aciklama5Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(6, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
                         controller: _aciklama6Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(7, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
                         controller: _aciklama7Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(8, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
                         controller: _aciklama8Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(9, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
                         controller: _aciklama9Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(10, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
                         controller: _aciklama10Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(11, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
                         controller: _aciklama11Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(12, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
                         controller: _aciklama12Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(13, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
                         controller: _aciklama13Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(14, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
                         controller: _aciklama14Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(15, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
                         controller: _aciklama15Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
                       CustomTextField(
                         enabled: enable,
+                        onChanged: (value) => viewModel.setAciklama(16, value),
                         labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
                         controller: _aciklama16Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16)),
@@ -507,12 +531,12 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     }
   }
 
-  Future<void> getBelgeNo() async {
+  Future<void> getBelgeNo({String? seri}) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
       queryParameters: {
-        "Seri": _belgeNoController.text,
+        "Seri": seri ?? _belgeNoController.text,
         "BelgeTipi": widget.model.editTipiEnum?.rawValue,
         "EIrsaliye": widget.model.editTipiEnum.irsaliyeMi ? "E" : "H",
         "CariKodu": model.cariKodu ?? "",

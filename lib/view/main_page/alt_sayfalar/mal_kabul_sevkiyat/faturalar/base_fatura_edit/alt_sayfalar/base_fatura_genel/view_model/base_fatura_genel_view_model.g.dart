@@ -61,6 +61,61 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
       ActionController(name: '_BaseFaturaGenelViewModelBase', context: context);
 
   @override
+  void setCariAdi(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setCariAdi');
+    try {
+      return super.setCariAdi(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCariKodu(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setCariKodu');
+    try {
+      return super.setCariKodu(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTeslimCariAdi(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setTeslimCariAdi');
+    try {
+      return super.setTeslimCariAdi(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTeslimCariKodu(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setTeslimCariKodu');
+    try {
+      return super.setTeslimCariKodu(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDepoKodu(DepoList? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setDepoKodu');
+    try {
+      return super.setDepoKodu(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeKdvDahil(bool value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.changeKdvDahil');
@@ -155,6 +210,17 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
         .startAction(name: '_BaseFaturaGenelViewModelBase.setTopluDepoKodu');
     try {
       return super.setTopluDepoKodu(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama(int index, String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setAciklama');
+    try {
+      return super.setAciklama(index, value);
     } finally {
       _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
     }

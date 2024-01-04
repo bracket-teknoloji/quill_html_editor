@@ -25,6 +25,37 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
 
   @observable
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;
+  
+  @action
+  void setCariAdi(String? value) {
+    model = model.copyWith(cariAdi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setCariKodu(String? value) {
+    model = model.copyWith(cariKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTeslimCariAdi(String? value) {
+    model = model.copyWith(teslimCariAdi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTeslimCariKodu(String? value) {
+    model = model.copyWith(teslimCari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setDepoKodu(DepoList? value) {
+    model = model.copyWith(topluDepo: value?.depoKodu, depoTanimi: value?.depoTanimi);
+    BaseSiparisEditModel.setInstance(model);
+  }
+  
 
   @action
   void changeKdvDahil(bool value) {
@@ -77,6 +108,46 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   @action
   void setTopluDepoKodu(int? value) {
     model = model.copyWith(topluDepo: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setAciklama(int index, String? value) {
+    switch (index) {
+      case 1:
+        model = model.copyWith(acik1: value);
+        case 2:
+        model = model.copyWith(acik2: value);
+        case 3:
+        model = model.copyWith(acik3: value);
+        case 4:
+        model = model.copyWith(acik4: value);
+        case 5:
+        model = model.copyWith(acik5: value);
+        case 6:
+        model = model.copyWith(acik6: value);
+        case 7:
+        model = model.copyWith(acik7: value);
+        case 8:
+        model = model.copyWith(acik8: value);
+        case 9:
+        model = model.copyWith(acik9: value);
+        case 10:
+        model = model.copyWith(acik10: value);
+        case 11:
+        model = model.copyWith(acik11: value);
+        case 12:
+        model = model.copyWith(acik12: value);
+        case 13:
+        model = model.copyWith(acik13: value);
+        case 14:
+        model = model.copyWith(acik14: value);
+        case 15:
+        model = model.copyWith(acik15: value);
+        case 16:
+        model = model.copyWith(acik16: value);
+      default:
+    }
     BaseSiparisEditModel.setInstance(model);
   }
 }
