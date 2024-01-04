@@ -27,7 +27,7 @@ class MenuItemConstants {
 
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
     final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
-    if (serbestRaporList.ext.isNullOrEmpty) {
+    if (serbestRaporList.ext.isNullOrEmpty || CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true) {
       return [];
     }
     return List.generate(
@@ -153,8 +153,8 @@ class MenuItemConstants {
             ),
           ],
         ),
-        GridItemModel.item(name: null, title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
-        GridItemModel.item(name: null, title: "Hızlı Tahsilat Kayıtları"),
+        GridItemModel.item(name: "finans_TahsilatKayitlari", title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
+        GridItemModel.item(name: "finans_HizliTahsilatKayitlari", title: "Hızlı Tahsilat Kayıtları"),
         GridItemModel.altmenu(
           name: null,
           title: "Hızlı İşlemler",
@@ -192,10 +192,10 @@ class MenuItemConstants {
       icon: "settings",
       color: ColorPalette.tomato,
       altMenuler: [
-        GridItemModel.item(name: null, title: "Döviz Kurları", route: "/dovizKurlari"),
+        GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
-        GridItemModel.item(name: null, title: "Oturumlar", route: "/oturumlar").isDebug(),
-        GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
+        GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
+        GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri").isDebug(),
         GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
       ].whereType<GridItemModel>().toList(),
     ),
@@ -396,7 +396,7 @@ class MenuItemConstants {
     //*
     GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory_2", color: ColorPalette.outerSpace, altMenuler: <GridItemModel>[]),
     GridItemModel.anamenu(
-      name: "GNEL_SRAP",
+      name: "yazdirma_Serbest",
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,
