@@ -270,7 +270,7 @@ class DialogManager {
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
         onOk: () async {
-          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson());
+          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson(), showLoading: true);
           if (response.success ?? false) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
