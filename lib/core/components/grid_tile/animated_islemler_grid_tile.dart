@@ -29,6 +29,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
         borderRadius: UIHelper.lowBorderRadius,
         splashFactory: InkRipple.splashFactory,
         splashColor: theme.primaryColor,
+        enableFeedback: widget.onTap != null,
         onTap: widget.onTap,
         child: GridTile(
           footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
