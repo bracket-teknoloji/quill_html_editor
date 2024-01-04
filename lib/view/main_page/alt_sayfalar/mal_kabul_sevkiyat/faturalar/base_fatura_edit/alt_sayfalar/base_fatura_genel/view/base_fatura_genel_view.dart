@@ -205,6 +205,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.setCariKodu(result.cariKodu);
                       viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
+                      viewModel.model.efaturaSenaryo = result.efaturaSenaryo;
                       _belgeNoController.text = "";
                       await getBelgeNo();
                     }
