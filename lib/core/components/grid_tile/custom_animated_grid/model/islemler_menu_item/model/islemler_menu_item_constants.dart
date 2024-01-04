@@ -515,6 +515,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get siparisCariKoduDegistir => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
         iconData: Icons.people_alt_outlined,
+        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi,
         onTap: () async {
           final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
           final BaseSiparisEditModel newModel = BaseSiparisEditModel.cariKoduDegistir(siparisModel);
@@ -1095,6 +1096,7 @@ class IslemlerMenuItemConstants<T> {
     return GridItemModel.islemler(
       title: "Fatura Belge No Değiştir",
       iconData: Icons.edit_outlined,
+      isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi,
       onTap: () async {
         final GlobalKey<FormState> formKey = GlobalKey<FormState>();
         final TextEditingController controller = TextEditingController(text: siparisModel.belgeNo);
