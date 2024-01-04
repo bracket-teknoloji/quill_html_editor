@@ -124,7 +124,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
-            BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
+            BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
 
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
@@ -168,6 +168,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
         }
+        BaseSiparisEditModel.instance.belgeTipi = 2;
+        BaseSiparisEditModel.instance.tipi = 2;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
@@ -188,7 +190,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
             BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
             BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-            BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
           }
         }
       }
