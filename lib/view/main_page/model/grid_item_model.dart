@@ -23,6 +23,7 @@ class GridItemModel {
   dynamic arguments;
   EditTipiEnum? siparisTipi;
   late final String menuTipi;
+  bool? isEnabled;
 
   GridItemModel.anamenu({
     required this.name,
@@ -71,9 +72,16 @@ class GridItemModel {
     this.color,
     this.onTap,
     this.iconData,
+    this.isEnabled,
   }) {
     menuTipi = "IS";
-    onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");
+    isEnabled ??= true;
+    if (isEnabled == false) {
+      color = Colors.grey.withOpacity(0.5);
+      onTap = null;
+    } else {
+      onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");
+    }
   }
   GridItemModel.serbestRaporlar({
     required this.title,
