@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/color_palette.dart";
@@ -478,12 +480,10 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           if (cariModel == null) {
             return;
           }
-          // ignore: use_build_context_synchronously
           final depoModel = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, null);
           if (depoModel == null) {
             return;
           }
-          // ignore: use_build_context_synchronously
           final siparisModel = await networkManager.getFatura(
             context,
             (SiparisEditRequestModel.fromEBelgeListesiModel(widget.eBelgeListesiModel))
