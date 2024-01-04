@@ -6,6 +6,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:open_file_plus/open_file_plus.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
@@ -64,8 +65,9 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
         ),
         actions: [
           IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
+          IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)).yetkiVarMi(widget.model.taslakMi),
           IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
-        ],
+        ].whereType<IconButton>().toList(),
       );
 
   Observer body(BuildContext context) => Observer(
