@@ -195,7 +195,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
               Text.rich(
                 TextSpan(
                   children: [
-                    TextSpan(text: widget.model.kayittarihi.toDateString),
+                    TextSpan(text: widget.model.tarih.toDateString),
                     TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),

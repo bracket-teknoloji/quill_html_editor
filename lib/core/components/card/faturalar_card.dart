@@ -184,7 +184,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
               Text.rich(
                 TextSpan(
                   children: <InlineSpan>[
-                    TextSpan(text: model.kayittarihi.toDateString),
+                    TextSpan(text: model.tarih.toDateString),
                     TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),
