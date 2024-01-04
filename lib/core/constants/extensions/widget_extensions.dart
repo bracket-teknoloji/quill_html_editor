@@ -16,5 +16,5 @@ extension RowExtension on Row {
 }
 
 extension YetkiExtension2 on dynamic {
-  Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode) ? this : null;
+  Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode || CacheManager.getHesapBilgileri?.admin=="E") ? this : null;
 }
