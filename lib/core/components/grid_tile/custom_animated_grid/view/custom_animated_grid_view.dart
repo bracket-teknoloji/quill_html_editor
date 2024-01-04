@@ -129,25 +129,27 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                               color: item?.color,
                               name: item?.name.toString(),
                               title: item?.title.toString(),
-                              onTap: () async {
-                                if (item?.altMenuVarMi == true) {
-                                  viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
-                                  viewModel.setGridItemModel(null);
-                                  // await Future.delayed(const Duration(milliseconds: 500));
-                                  viewModel.setGridItemModel(item?.altMenuler);
-                                } else {
-                                  if (item?.route != null && item?.menuTipi != "SR") {
-                                    Get.back();
-                                    Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
-                                  } else {
-                                    Get.back();
-                                    final result = await item?.onTap?.call();
-                                    if (result is bool) {
-                                      widget.onSelected?.call(result);
-                                    }
-                                  }
-                                }
-                              },
+                              onTap: item?.onTap == null
+                                  ? null
+                                  : () async {
+                                      if (item?.altMenuVarMi == true) {
+                                        viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                        viewModel.setGridItemModel(null);
+                                        // await Future.delayed(const Duration(milliseconds: 500));
+                                        viewModel.setGridItemModel(item?.altMenuler);
+                                      } else {
+                                        if (item?.route != null && item?.menuTipi != "SR") {
+                                          Get.back();
+                                          Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                        } else {
+                                          Get.back();
+                                          final result = await item?.onTap?.call();
+                                          if (result is bool) {
+                                            widget.onSelected?.call(result);
+                                          }
+                                        }
+                                      }
+                                    },
                             ),
                           ),
                         ),
