@@ -623,6 +623,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get basariliMi => (efaturaMi == "E" || earsivMi == "E") && efaturaGibDurumKodu == 1300 && (getEditTipiEnum?.satisMi ?? false);
 
+  bool get islemBilgileriDegistirebilirMi => !taslakMi && !uyariMi;
+
   // bool get eBelgeGoster => eFaturaMi || eArsivMi;
 
   bool get onaylandiMi => onaylayankul != null;
