@@ -146,6 +146,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GET",
         islemKodu: 11,
       );
+ 
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
