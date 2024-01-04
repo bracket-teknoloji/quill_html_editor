@@ -446,7 +446,7 @@ class NetworkManager {
       path: ApiUrls.getStoklar,
       bodyModel: StokListesiModel(),
       showLoading: true,
-      queryParameters: model.toJson(),
+      data: model.toJson(),
     );
     if (result.success ?? false) {
       return result.data.first;
