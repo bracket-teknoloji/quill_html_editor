@@ -146,7 +146,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
+            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
             const Icon(Icons.more_vert_outlined),
           ],
         ),
@@ -271,9 +271,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
       );
 
   Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
+    final kalemList2 = viewModel.kalemList[index];
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList[index].stokAdi ?? "",
+      title: kalemList2.kalemAdi ?? kalemList2.stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
           title: loc(context).generalStrings.edit,
@@ -335,6 +336,9 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           onTap: () async {
             Get.back();
             final StokListesiModel? stokList = await networkManager.getStokModel(StokRehberiRequestModel.fromKalemModel(model!));
+            if (stokList == null) {
+              return;
+            }
             return dialogManager.showStokGridViewDialog(stokList);
           },
         ).yetkiKontrol(!(model?.kalemStoktanMi ?? false)),
