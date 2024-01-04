@@ -1140,7 +1140,7 @@ class IslemlerMenuItemConstants<T> {
                         resmiController.text = belgeNoToResmiBelgeNo(controller.text, siparisModel.tarih);
                       }
                     },
-                    icon: const Icon(Icons.abc),
+                    icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                   ),
                 ),
                 CustomTextField(
