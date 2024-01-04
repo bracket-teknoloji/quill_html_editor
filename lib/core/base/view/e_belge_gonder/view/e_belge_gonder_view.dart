@@ -305,7 +305,17 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
-                          Get.toNamed("/mainPage/eBelgePdf", arguments: model);
+                          final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model);
+                          if (result) {
+                            dialogManager.showAreYouSureDialog(() async {
+                              final result = await viewModel.sendEBelge();
+                              if (result.success ?? false) {
+                                dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+
+                                Get.back(result: true);
+                              }
+                            });
+                          }
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white),
                         child: Column(
@@ -314,12 +324,14 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
-                          final result = await viewModel.sendEBelge();
-                          if (result.success ?? false) {
-                            dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+                          dialogManager.showAreYouSureDialog(() async {
+                            final result = await viewModel.sendEBelge();
+                            if (result.success ?? false) {
+                              dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
 
-                            Get.back(result: true);
-                          }
+                              Get.back(result: true);
+                            }
+                          });
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white),
                         child: const Column(
