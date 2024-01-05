@@ -156,7 +156,22 @@ class _MainPageViewState extends BaseState<MainPageView> {
               child: SizedBox(
                 width: UIHelper.highSize * 3,
                 child: GestureDetector(
+                  onHorizontalDragStart: (details) {
+                    if (Directionality.of(context) == TextDirection.ltr) {
+                      return;
+                    }
+                    if (details.localPosition.dx < 50) {
+                      setState(() {
+                        items = lastItems.last;
+                        title2.removeLast();
+                        lastItems.removeLast();
+                      });
+                    }
+                  },
                   onHorizontalDragEnd: (details) {
+                    if (Directionality.of(context) == TextDirection.rtl) {
+                      return;
+                    }
                     if (details.primaryVelocity! > 0) {
                       setState(() {
                         items = lastItems.last;
