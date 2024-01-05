@@ -128,6 +128,9 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     final SaveStokModel saveStokModel = SaveStokModel.fromStokListesiModel(model);
     saveStokModel.requestVersion = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2;
     saveStokModel.yeniKayit = widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala;
+    if (widget.model?.baseEditEnum == BaseEditEnum.ekle) {
+      saveStokModel.islemKodu = 1;
+    }
     final result = await networkManager.dioPost<SaveStokModel>(
       path: ApiUrls.saveStok,
       bodyModel: SaveStokModel(),
