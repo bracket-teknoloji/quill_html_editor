@@ -101,7 +101,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
-        await getBelgeNo(null);
+        await getBelgeNo();
         // BaseSiparisEditModel.instance.belgeNo= await networkManager.getSiradakiBelgeNo(SiradakiBelgeNoModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, sirketKodu: model.sirketKodu));
       }
     });
@@ -148,18 +148,6 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // Card(
-                //   child: ListTile(
-                //     onTap: () async => Get.toNamed(
-                //       "/mainPage/eBelgePdf",
-                //       arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
-                //     ),
-                //     contentPadding: UIHelper.lowPaddingHorizontal,
-                //     leading: const Icon(Icons.info_outline),
-                //     title: Text(eBelgeButtonText),
-                //     trailing: const Icon(Icons.open_in_new_outlined),
-                //   ),
-                // ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                 CustomTextField(
                   labelText: "Belge No",
                   isMust: true,
@@ -168,13 +156,14 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   maxLength: 15,
                   suffix: IconButton(
                     onPressed: () async {
-                      await getBelgeNo(_belgeNoController.text);
+                      await getBelgeNo();
                     },
                     icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                   ),
-                  onTap: () {},
+                  onChanged: (value) {
+                    model.belgeNo = value;
+                  },
                 ),
-                // CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
                   labelText: "Cari",
                   readOnly: true,
@@ -187,7 +176,14 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
+                      _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      viewModel.setCariAdi(result.cariAdi);
+                      viewModel.setCariKodu(result.cariKodu);
+                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
+                      viewModel.model.efaturaTipi = result.efaturaTipi;
+                      _belgeNoController.text = "";
+                      await getBelgeNo();
                     }
                   },
                 ),
@@ -308,24 +304,6 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         },
                       ),
                     ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
-                    // Expanded(
-                    //   child: CustomTextField(
-                    //     labelText: "Özel Kod 2",
-                    //     readOnly: true,
-                    //     suffixMore: true,
-                    //     controller: _ozelKod2Controller,
-                    //     enabled: enable,
-                    //     valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                    //     onClear: () => viewModel.setOzelKod2(null),
-                    //     onTap: () async {
-                    //       final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
-                    //       if (result != null) {
-                    //         _ozelKod2Controller.text = result.aciklama ?? "";
-                    //         viewModel.setOzelKod2(result.kod);
-                    //       }
-                    //     },
-                    //   ),
-                    // ),
                   ],
                 ),
                 CustomWidgetWithLabel(
@@ -342,38 +320,102 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   text: "Ek Açıklamalar",
                   child: Column(
                     children: <Widget>[
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar1 ?? "Açıklama 1", onChanged: (value) => changeAciklama(1, value), controller: _aciklama1Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(1)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar2 ?? "Açıklama 2", onChanged: (value) => changeAciklama(2, value), controller: _aciklama2Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(2)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar3 ?? "Açıklama 3", onChanged: (value) => changeAciklama(3, value), controller: _aciklama3Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(3)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar4 ?? "Açıklama 4", onChanged: (value) => changeAciklama(4, value), controller: _aciklama4Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(4)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar5 ?? "Açıklama 5", onChanged: (value) => changeAciklama(5, value), controller: _aciklama5Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(5)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar6 ?? "Açıklama 6", onChanged: (value) => changeAciklama(6, value), controller: _aciklama6Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(6)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar7 ?? "Açıklama 7", onChanged: (value) => changeAciklama(7, value), controller: _aciklama7Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(7)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar8 ?? "Açıklama 8", onChanged: (value) => changeAciklama(8, value), controller: _aciklama8Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(8)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar9 ?? "Açıklama 9", onChanged: (value) => changeAciklama(9, value), controller: _aciklama9Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(9)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar10 ?? "Açıklama 10", onChanged: (value) => changeAciklama(10, value), controller: _aciklama10Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(10)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar11 ?? "Açıklama 11", onChanged: (value) => changeAciklama(11, value), controller: _aciklama11Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(11)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar12 ?? "Açıklama 12", onChanged: (value) => changeAciklama(12, value), controller: _aciklama12Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(12)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar13 ?? "Açıklama 13", onChanged: (value) => changeAciklama(13, value), controller: _aciklama13Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(13)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar14 ?? "Açıklama 14", onChanged: (value) => changeAciklama(14, value), controller: _aciklama14Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(14)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar15 ?? "Açıklama 15", onChanged: (value) => changeAciklama(15, value), controller: _aciklama15Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(15)),
-                      CustomTextField(enabled: enable, labelText: taltekParam?.aciklar16 ?? "Açıklama 16", onChanged: (value) => changeAciklama(16, value), controller: _aciklama16Controller)
-                          .yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(16)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
+                        onChanged: (value) => viewModel.setAciklama(1, value),
+                        controller: _aciklama1Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(1)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
+                        onChanged: (value) => viewModel.setAciklama(2, value),
+                        controller: _aciklama2Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(2)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
+                        onChanged: (value) => viewModel.setAciklama(3, value),
+                        controller: _aciklama3Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(3)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
+                        onChanged: (value) => viewModel.setAciklama(4, value),
+                        controller: _aciklama4Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(4)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
+                        onChanged: (value) => viewModel.setAciklama(5, value),
+                        controller: _aciklama5Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(5)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
+                        onChanged: (value) => viewModel.setAciklama(6, value),
+                        controller: _aciklama6Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(6)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
+                        onChanged: (value) => viewModel.setAciklama(7, value),
+                        controller: _aciklama7Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(7)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
+                        onChanged: (value) => viewModel.setAciklama(8, value),
+                        controller: _aciklama8Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(8)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
+                        onChanged: (value) => viewModel.setAciklama(9, value),
+                        controller: _aciklama9Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(9)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
+                        onChanged: (value) => viewModel.setAciklama(10, value),
+                        controller: _aciklama10Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(10)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
+                        onChanged: (value) => viewModel.setAciklama(11, value),
+                        controller: _aciklama11Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(11)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
+                        onChanged: (value) => viewModel.setAciklama(12, value),
+                        controller: _aciklama12Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(12)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
+                        onChanged: (value) => viewModel.setAciklama(13, value),
+                        controller: _aciklama13Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(13)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
+                        onChanged: (value) => viewModel.setAciklama(14, value),
+                        controller: _aciklama14Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(14)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
+                        onChanged: (value) => viewModel.setAciklama(15, value),
+                        controller: _aciklama15Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(15)),
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
+                        onChanged: (value) => viewModel.setAciklama(16, value),
+                        controller: _aciklama16Controller,
+                      ).yetkiVarMi(yetkiController.talepTeklifAciklamaAlanlari(16)),
                     ],
                   ),
                 ),
@@ -383,70 +425,21 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
         ),
       );
 
-  void changeAciklama(int sira, String value) {
-    switch (sira) {
-      case 1:
-        model.acik1 = value;
-        model.ekAcik1 = value;
-      case 2:
-        model.acik2 = value;
-        model.ekAcik2 = value;
-      case 3:
-        model.acik3 = value;
-        model.ekAcik3 = value;
-      case 4:
-        model.acik4 = value;
-        model.ekAcik4 = value;
-      case 5:
-        model.acik5 = value;
-        model.ekAcik5 = value;
-      case 6:
-        model.acik6 = value;
-        model.ekAcik6 = value;
-      case 7:
-        model.acik7 = value;
-        model.ekAcik7 = value;
-      case 8:
-        model.acik8 = value;
-        model.ekAcik8 = value;
-      case 9:
-        model.acik9 = value;
-        model.ekAcik9 = value;
-      case 10:
-        model.acik10 = value;
-        model.ekAcik10 = value;
-      case 11:
-        model.acik11 = value;
-        model.ekAcik11 = value;
-      case 12:
-        model.acik12 = value;
-        model.ekAcik12 = value;
-      case 13:
-        model.acik13 = value;
-        model.ekAcik13 = value;
-      case 14:
-        model.acik14 = value;
-        model.ekAcik14 = value;
-      case 15:
-        model.acik15 = value;
-        model.ekAcik15 = value;
-      case 16:
-        model.acik16 = value;
-        model.ekAcik16 = value;
-      default:
-    }
-  }
-
-  Future<void> getBelgeNo(String? seri) async {
+  Future<void> getBelgeNo({String? seri}) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {"Seri": seri, "BelgeTipi": BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue, "EIrsaliye": "H"},
+      queryParameters: {
+        "Seri": seri ?? _belgeNoController.text,
+        "BelgeTipi": widget.model.editTipiEnum?.rawValue,
+        "EIrsaliye": widget.model.editTipiEnum.irsaliyeMi ? "E" : "H",
+        "CariKodu": model.cariKodu ?? "",
+      },
       showLoading: true,
     );
     if (result.success == true) {
-      final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-      BaseSiparisEditModel.instance.belgeNo = list?.firstOrNull?.belgeNo;
+      final List<BaseSiparisEditModel> list = (result.data as List).map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      BaseSiparisEditModel.instance.belgeNo = list.firstOrNull?.belgeNo;
       _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }
