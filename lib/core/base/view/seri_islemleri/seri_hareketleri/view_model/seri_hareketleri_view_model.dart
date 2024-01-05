@@ -18,6 +18,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   bool isSearchBarOpened = false;
 
   @observable
+  String searchQuery = "";
+
+  @observable
   StokListesiModel? stokListesiModel;
 
   @observable
@@ -25,6 +28,20 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   ObservableList<SeriHareketleriModel>? seriHareketleriList;
+
+  @computed
+  ObservableList<SeriHareketleriModel>? get filteredList {
+    if (searchQuery.isEmpty) return seriHareketleriList;
+    return seriHareketleriList
+        ?.where(
+          (element) => searchQuery == "" ? true : element.seriNo?.toLowerCase().contains(searchQuery.toLowerCase()) ?? false,
+        )
+        .toList()
+        .asObservable();
+  }
+
+  @action
+  void setSearchQuery(String query) => searchQuery = query;
 
   @action
   void setIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;
@@ -49,5 +66,12 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
       final List<SeriHareketleriModel> list = result.data.map((e) => e as SeriHareketleriModel).toList().cast<SeriHareketleriModel>();
       setSerihareketleriList(list);
     }
+  }
+
+  @action
+  Future<bool> deleteSeriHareket(SeriHareketleriModel? model) async {
+    final result = await networkManager.dioPost(path: ApiUrls.deleteSeriHareketi, bodyModel: SeriHareketleriModel(), showLoading: true, data: model?.toJson());
+
+    return result.success ?? false;
   }
 }

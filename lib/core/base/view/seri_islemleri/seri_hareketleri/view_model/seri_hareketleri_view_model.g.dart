@@ -9,6 +9,16 @@ part of 'seri_hareketleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
+  Computed<ObservableList<SeriHareketleriModel>?>? _$filteredListComputed;
+
+  @override
+  ObservableList<SeriHareketleriModel>? get filteredList =>
+      (_$filteredListComputed ??=
+              Computed<ObservableList<SeriHareketleriModel>?>(
+                  () => super.filteredList,
+                  name: '_SeriHareketleriViewModelBase.filteredList'))
+          .value;
+
   late final _$isSearchBarOpenedAtom = Atom(
       name: '_SeriHareketleriViewModelBase.isSearchBarOpened',
       context: context);
@@ -23,6 +33,22 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   set isSearchBarOpened(bool value) {
     _$isSearchBarOpenedAtom.reportWrite(value, super.isSearchBarOpened, () {
       super.isSearchBarOpened = value;
+    });
+  }
+
+  late final _$searchQueryAtom =
+      Atom(name: '_SeriHareketleriViewModelBase.searchQuery', context: context);
+
+  @override
+  String get searchQuery {
+    _$searchQueryAtom.reportRead();
+    return super.searchQuery;
+  }
+
+  @override
+  set searchQuery(String value) {
+    _$searchQueryAtom.reportWrite(value, super.searchQuery, () {
+      super.searchQuery = value;
     });
   }
 
@@ -83,8 +109,29 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$deleteSeriHareketAsyncAction = AsyncAction(
+      '_SeriHareketleriViewModelBase.deleteSeriHareket',
+      context: context);
+
+  @override
+  Future<bool> deleteSeriHareket(SeriHareketleriModel? model) {
+    return _$deleteSeriHareketAsyncAction
+        .run(() => super.deleteSeriHareket(model));
+  }
+
   late final _$_SeriHareketleriViewModelBaseActionController =
       ActionController(name: '_SeriHareketleriViewModelBase', context: context);
+
+  @override
+  void setSearchQuery(String query) {
+    final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
+        .startAction(name: '_SeriHareketleriViewModelBase.setSearchQuery');
+    try {
+      return super.setSearchQuery(query);
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setIsSearchBarOpened() {
@@ -147,9 +194,11 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   String toString() {
     return '''
 isSearchBarOpened: ${isSearchBarOpened},
+searchQuery: ${searchQuery},
 stokListesiModel: ${stokListesiModel},
 requestModel: ${requestModel},
-seriHareketleriList: ${seriHareketleriList}
+seriHareketleriList: ${seriHareketleriList},
+filteredList: ${filteredList}
     ''';
   }
 }
