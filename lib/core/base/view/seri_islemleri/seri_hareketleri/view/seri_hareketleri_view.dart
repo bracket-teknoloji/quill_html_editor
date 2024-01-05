@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -12,8 +14,10 @@ import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -47,156 +51,210 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) {
-              if (viewModel.isSearchBarOpened) {
-                return const CustomAppBarTextField();
-              }
-              return AppBarTitle(
-                title: "Seri Hareketleri (${viewModel.seriHareketleriList?.length ?? 0})",
-                subtitle: widget.model.stokKodu,
-              );
-            },
-          ),
-          actions: [
-            IconButton(
-              onPressed: () => viewModel.setIsSearchBarOpened(),
-              icon: Observer(
-                builder: (_) => Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined),
-              ),
-            ),
-            IconButton(
-              onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc(context).generalStrings.options,
-                  children: [
-                    BottomSheetModel(
-                      title: loc(context).generalStrings.sort,
-                      iconWidget: Icons.sort_by_alpha_outlined,
-                      onTap: () async {
-                        Get.back();
-                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                          context,
-                          groupValue: viewModel.requestModel.sirala,
-                          title: loc(context).generalStrings.sort,
-                          children: List.generate(
-                            viewModel.siralaMap.length,
-                            (index) => BottomSheetModel(
-                              title: viewModel.siralaMap.keys.toList()[index],
-                              value: viewModel.siralaMap.values.toList()[index],
-                              groupValue: viewModel.siralaMap[viewModel.siralaMap.keys.toList()[index]],
-                            ),
-                          ),
-                        );
-                        if (result is String) {
-                          viewModel.setSirala(result);
-                          await viewModel.getData();
-                        }
-                      },
-                    ),
-                    BottomSheetModel(
-                      title: "Stok İşlemleri",
-                      iconWidget: Icons.list_alt,
-                      onTap: () async {
-                        Get.back();
-                        final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu));
-                        if (result is StokListesiModel) {
-                          dialogManager.showStokGridViewDialog(result);
-                        }
-                      },
-                    ),
-                  ],
-                );
-              },
-              icon: Observer(
-                builder: (_) => const Icon(Icons.more_vert_outlined),
-              ),
-            ),
-          ],
+        appBar: appBar(context),
+        floatingActionButton: fab(),
+        body: body().paddingAll(UIHelper.lowSize),
+      );
+
+  AppBar appBar(BuildContext context) => AppBar(
+        title: Observer(
+          builder: (_) {
+            if (viewModel.isSearchBarOpened) {
+              return CustomAppBarTextField(onChanged: viewModel.setSearchQuery);
+            }
+            return AppBarTitle(
+              title: "Seri Hareketleri (${viewModel.seriHareketleriList?.length ?? 0})",
+              subtitle: widget.model.stokKodu,
+            );
+          },
         ),
-        floatingActionButton: const CustomFloatingActionButton(isScrolledDown: true),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Stok",
-              readOnly: true,
-              controller: _stokKoduController,
-              suffixMore: true,
-              onTap: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/stokListesiOzel",
-                  arguments: StokBottomSheetModel(
-                    seriTakibiVar: "E",
-                    resimGoster: "E",
-                    menuKodu: "STOK_SREH",
-                  ),
-                );
-                if (result is StokListesiModel) {
-                  _stokKoduController.text = result.stokKodu ?? "";
-                  viewModel.setStokKodu(result.stokKodu ?? "");
-                  await viewModel.getData();
-                }
-              },
-              suffix: Row(
+        actions: [
+          IconButton(
+            onPressed: () => viewModel.setIsSearchBarOpened(),
+            icon: Observer(
+              builder: (_) => Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined),
+            ),
+          ),
+          IconButton(
+            onPressed: () async {
+              await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: loc(context).generalStrings.options,
                 children: [
-                  IconButton(
-                    onPressed: () async {
-                      final result = await Get.toNamed("/qr");
+                  BottomSheetModel(
+                    title: loc(context).generalStrings.sort,
+                    iconWidget: Icons.sort_by_alpha_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                        context,
+                        groupValue: viewModel.requestModel.sirala,
+                        title: loc(context).generalStrings.sort,
+                        children: List.generate(
+                          viewModel.siralaMap.length,
+                          (index) => BottomSheetModel(
+                            title: viewModel.siralaMap.keys.toList()[index],
+                            value: viewModel.siralaMap.values.toList()[index],
+                            groupValue: viewModel.siralaMap[viewModel.siralaMap.keys.toList()[index]],
+                          ),
+                        ),
+                      );
                       if (result is String) {
-                        _stokKoduController.text = result;
-                        viewModel.setStokKodu(result);
+                        viewModel.setSirala(result);
                         await viewModel.getData();
                       }
                     },
-                    icon: const Icon(Icons.qr_code_scanner),
                   ),
+                  BottomSheetModel(
+                    title: "Stok İşlemleri",
+                    iconWidget: Icons.list_alt,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu));
+                      if (result is StokListesiModel) {
+                        dialogManager.showStokGridViewDialog(result);
+                      }
+                    },
+                  ),
+                ],
+              );
+            },
+            icon: const Icon(Icons.more_vert_outlined),
+          ),
+        ],
+      );
+
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
+        onPressed: () async {
+          final result = await Get.toNamed("/seriGirisi", arguments: SeriHareketleriModel.ekle(widget.model));
+          if (result == true) {
+            await viewModel.getData();
+          }
+        },
+      );
+
+  Column body() => Column(
+        children: [
+          LayoutBuilder(
+            builder: (context, constraints) => Observer(
+              builder: (_) => ToggleButtons(
+                constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+                isSelected: const [true, false],
+                children: const [
+                  Text("Stok Kodundan"),
+                  Text("Seriden"),
                 ],
               ),
             ),
-            Expanded(
+          ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(false),
+          CustomTextField(
+            labelText: "Stok",
+            readOnly: true,
+            controller: _stokKoduController,
+            suffixMore: true,
+            onTap: () async {
+              final result = await Get.toNamed(
+                "/mainPage/stokListesiOzel",
+                arguments: StokBottomSheetModel(
+                  seriTakibiVar: "E",
+                  resimGoster: "E",
+                  menuKodu: "STOK_SREH",
+                ),
+              );
+              if (result is StokListesiModel) {
+                _stokKoduController.text = result.stokKodu ?? "";
+                viewModel.setStokKodu(result.stokKodu ?? "");
+                await viewModel.getData();
+              }
+            },
+            suffix: IconButton(
+              onPressed: () async {
+                final result = await Get.toNamed("/qr");
+                if (result is String) {
+                  _stokKoduController.text = result;
+                  viewModel.setStokKodu(result);
+                  await viewModel.getData();
+                }
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
+          ),
+          Expanded(
+            child: RefreshIndicator.adaptive(
+              onRefresh: () async => await viewModel.getData(),
               child: Observer(
                 builder: (_) {
                   if (viewModel.seriHareketleriList == null) {
                     return const ListViewShimmer();
                   }
-                  if (viewModel.seriHareketleriList!.isEmpty) {
+                  if (viewModel.filteredList!.isEmpty) {
                     return const Center(child: Text("Veri Bulunamadı"));
                   }
                   return ListView.builder(
-                    itemCount: viewModel.seriHareketleriList?.length ?? 0,
+                    itemCount: viewModel.filteredList?.length ?? 0,
                     itemBuilder: (context, index) {
-                      final SeriHareketleriModel item = viewModel.seriHareketleriList![index];
+                      final SeriHareketleriModel item = viewModel.filteredList![index];
                       return Card(
+                        color: (item.gckod == "G" ? ColorPalette.mantis : ColorPalette.persianRed).withOpacity(0.5),
                         child: ListTile(
                           title: Text(item.seriNo ?? ""),
                           subtitle: CustomLayoutBuilder(
                             splitCount: 2,
                             children: [
                               Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
+                              Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}").yetkiVarMi(item.depoKodu != null),
+                              Text("Açıklama 1: ${item.acik1 ?? ""}").yetkiVarMi(item.acik1 != null),
+                              Text("Açıklama 2: ${item.acik2 ?? ""}").yetkiVarMi(item.acik2 != null),
                               Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
-                              // Text("Tarih: ${item.seriNo ?? ""}"),
                               Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
-                              Text("Açıklama: ${item.haracik ?? ""}"),
-                              Text("Giriş/Çıkış: ${item.gckod ?? ""}"),
-                              Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}"),
-                              Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}"),
+                              Text("Açıklama: ${item.haracik ?? ""}").yetkiVarMi(item.haracik != null),
+                              Text("Giriş/Çıkış: ${item.gckod ?? ""}").yetkiVarMi(item.gckod != null),
+                              Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}").yetkiVarMi(item.belgeTipi != null),
+                              Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}").yetkiVarMi(item.kayitTipi != null),
                               // Text("Şube: ${item. ?? ""}"),
-                              Text("StHarInc: ${item.stharInc ?? ""}"),
-                              Text("Belge No: ${item.belgeNo ?? ""}"),
-                              // Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
-                              // Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
-                              // Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
-                            ],
+                              Text("StHarInc: ${item.stharInc ?? ""}").yetkiVarMi(item.stharInc != null),
+                              Text("Belge No: ${item.belgeNo ?? ""}").yetkiVarMi(item.belgeNo != null),
+                            ].whereType<Text>().toList(),
                           ),
                           onTap: () async {
                             await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
                               title: loc(context).generalStrings.options,
                               children: [
-                                BottomSheetModel(title: loc(context).generalStrings.edit, iconWidget: Icons.edit_outlined, onTap: () {}),
-                                BottomSheetModel(title: loc(context).generalStrings.delete, iconWidget: Icons.delete_outline, onTap: () {}),
+                                BottomSheetModel(
+                                  title: loc(context).generalStrings.edit,
+                                  iconWidget: Icons.edit_outlined,
+                                  onTap: () async {
+                                    Get.back();
+                                    if (item.devirMi) {
+                                      final result = await Get.toNamed("/seriGirisi", arguments: item.copyWith(islemKodu: 8));
+                                      if (result == true) {
+                                        await viewModel.getData();
+                                      }
+                                    } else {
+                                      islemHataDialog();
+                                    }
+                                  },
+                                ),
+                                BottomSheetModel(
+                                  title: loc(context).generalStrings.delete,
+                                  iconWidget: Icons.delete_outline,
+                                  onTap: () async {
+                                    Get.back();
+                                    if (item.devirMi) {
+                                      dialogManager.showAreYouSureDialog(() async {
+                                        final result = await viewModel.deleteSeriHareket(item);
+                                        if (result) {
+                                          dialogManager.showAlertDialog(loc(context).generalStrings.success);
+                                          await viewModel.getData();
+                                        }
+                                      });
+                                    } else {
+                                      islemHataDialog();
+                                    }
+                                  },
+                                ),
                                 BottomSheetModel(
                                   title: "Stok İşlemleri",
                                   iconWidget: Icons.list_alt,
@@ -218,7 +276,9 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                 },
               ),
             ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
+          ),
+        ],
       );
+
+  void islemHataDialog() => dialogManager.showAlertDialog("Sadece kayıt tipi D-Devir olan kayıtlara işlem yapılabilir.");
 }
