@@ -31,6 +31,7 @@ mixin _$StokRehberiRequestModel {
   String? get menuKodu => throw _privateConstructorUsedError;
   String? get resimGoster => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
+  String? get seriTakibiVar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +55,8 @@ abstract class $StokRehberiRequestModelCopyWith<$Res> {
       bool? kisitYok,
       String? menuKodu,
       String? resimGoster,
-      String? stokKodu});
+      String? stokKodu,
+      String? seriTakibiVar});
 }
 
 /// @nodoc
@@ -81,6 +83,7 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
     Object? menuKodu = freezed,
     Object? resimGoster = freezed,
     Object? stokKodu = freezed,
+    Object? seriTakibiVar = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -123,6 +126,10 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
           ? _value.stokKodu
           : stokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriTakibiVar: freezed == seriTakibiVar
+          ? _value.seriTakibiVar
+          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -146,7 +153,8 @@ abstract class _$$StokRehberiRequestModelImplCopyWith<$Res>
       bool? kisitYok,
       String? menuKodu,
       String? resimGoster,
-      String? stokKodu});
+      String? stokKodu,
+      String? seriTakibiVar});
 }
 
 /// @nodoc
@@ -172,6 +180,7 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
     Object? menuKodu = freezed,
     Object? resimGoster = freezed,
     Object? stokKodu = freezed,
+    Object? seriTakibiVar = freezed,
   }) {
     return _then(_$StokRehberiRequestModelImpl(
       belgeNo: freezed == belgeNo
@@ -214,6 +223,10 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
           ? _value.stokKodu
           : stokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriTakibiVar: freezed == seriTakibiVar
+          ? _value.seriTakibiVar
+          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -232,7 +245,8 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
       this.kisitYok,
       this.menuKodu,
       this.resimGoster,
-      this.stokKodu});
+      this.stokKodu,
+      this.seriTakibiVar});
 
   factory _$StokRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StokRehberiRequestModelImplFromJson(json);
@@ -258,10 +272,12 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
   final String? resimGoster;
   @override
   final String? stokKodu;
+  @override
+  final String? seriTakibiVar;
 
   @override
   String toString() {
-    return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu)';
+    return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu, seriTakibiVar: $seriTakibiVar)';
   }
 
   @override
@@ -287,7 +303,9 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
             (identical(other.resimGoster, resimGoster) ||
                 other.resimGoster == resimGoster) &&
             (identical(other.stokKodu, stokKodu) ||
-                other.stokKodu == stokKodu));
+                other.stokKodu == stokKodu) &&
+            (identical(other.seriTakibiVar, seriTakibiVar) ||
+                other.seriTakibiVar == seriTakibiVar));
   }
 
   @JsonKey(ignore: true)
@@ -303,7 +321,8 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
       kisitYok,
       menuKodu,
       resimGoster,
-      stokKodu);
+      stokKodu,
+      seriTakibiVar);
 
   @JsonKey(ignore: true)
   @override
@@ -331,7 +350,8 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
       final bool? kisitYok,
       final String? menuKodu,
       final String? resimGoster,
-      final String? stokKodu}) = _$StokRehberiRequestModelImpl;
+      final String? stokKodu,
+      final String? seriTakibiVar}) = _$StokRehberiRequestModelImpl;
 
   factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) =
       _$StokRehberiRequestModelImpl.fromJson;
@@ -356,6 +376,8 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
   String? get resimGoster;
   @override
   String? get stokKodu;
+  @override
+  String? get seriTakibiVar;
   @override
   @JsonKey(ignore: true)
   _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>

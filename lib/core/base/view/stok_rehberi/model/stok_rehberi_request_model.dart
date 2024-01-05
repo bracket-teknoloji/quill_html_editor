@@ -19,6 +19,7 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
     String? menuKodu,
     String? resimGoster,
     String? stokKodu,
+    String? seriTakibiVar,
   }) = _StokRehberiRequestModel;
 
   factory StokRehberiRequestModel.fromJson(Map<String, dynamic> json) => _$StokRehberiRequestModelFromJson(json);
@@ -32,4 +33,5 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
         cariKodu: model.cariKodu,
         stokKodu: model.stokKodu,
       );
+
 }
