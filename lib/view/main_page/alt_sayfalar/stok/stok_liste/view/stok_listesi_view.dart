@@ -650,6 +650,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       title: "Raporlar",
                                       iconWidget: Icons.area_chart_outlined,
                                       onTap: () async {
+                                        Get.back();
                                         dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
                                       },
                                     ),
@@ -798,9 +799,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   Future<MemoryImage?> getImage(String path) async => await networkManager.getImage(path);
 
   void deleteStok(String stokKodu) {
+    Get.back();
     dialogManager.showAreYouSureDialog(() async {
-      Get.back();
-      final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu});
+      final GenericResponseModel response =
+          await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu}, showLoading: true);
       if (response.success ?? false) {
         dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();
