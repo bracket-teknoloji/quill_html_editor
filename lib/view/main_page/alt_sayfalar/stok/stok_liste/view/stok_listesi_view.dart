@@ -191,7 +191,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
         bottom: AppBarPreferedSizedBottom(
           children: [
             AppBarButton(
-              icon: Icons.qr_code_2_outlined,
+              icon: Icons.qr_code_scanner,
               child: const Text("Barkod"),
               onPressed: () async {
                 final result = await Get.toNamed("/qr");

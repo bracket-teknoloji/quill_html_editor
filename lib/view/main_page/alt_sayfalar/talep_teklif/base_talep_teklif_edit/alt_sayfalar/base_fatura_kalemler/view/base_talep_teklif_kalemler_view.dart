@@ -89,7 +89,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                       viewModel.updateKalemList();
                     }
                   },
-                  icon: const Icon(Icons.qr_code_2_outlined),
+                  icon: const Icon(Icons.qr_code_scanner),
                 ),
               ).paddingOnly(top: UIHelper.lowSize),
             ),

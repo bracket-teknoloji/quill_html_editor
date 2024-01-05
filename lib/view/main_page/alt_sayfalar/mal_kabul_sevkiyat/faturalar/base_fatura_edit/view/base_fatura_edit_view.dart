@@ -288,7 +288,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
                           },
                         ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
-                        BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
+                        BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_scanner),
                         BottomSheetModel(
                           title: "Ekranı Yeni Kayda Hazırla",
                           description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",

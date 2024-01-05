@@ -120,7 +120,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                   }
                 },
                 suffix: IconButton(
-                  icon: const Icon(Icons.qr_code_2_outlined),
+                  icon: const Icon(Icons.qr_code_scanner),
                   onPressed: () async {
                     final result = await Get.toNamed("/qr");
                     if (result != null) {

@@ -44,7 +44,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
           title: const Text("Firmalar"),
           centerTitle: false,
           actions: [
-            IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_outlined)),
+            IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_scanner)),
             IconButton(onPressed: loginMethod, icon: const Icon(Icons.save_outlined)),
           ],
         ),
