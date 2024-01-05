@@ -9,6 +9,7 @@ import "package:get/get.dart";
 import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -150,7 +151,10 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     getData();
                   },
                 )
-              : Text("${(widget.isGetData ?? false) ? "Stok Seçiniz" : "Stok Listesi"} ${viewModel.stokListesi?.length ?? ""}"),
+              : AppBarTitle(
+                  title: (widget.isGetData ?? false) ? "Stok Seçiniz" : "Stok Listesi",
+                  subtitle: viewModel.stokListesi?.length.toStringIfNotNull ?? "",
+                ),
         ),
         actions: [
           hideSearchBar(),
