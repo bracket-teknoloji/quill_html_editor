@@ -114,6 +114,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                     enabled: isEnabled,
                     labelText: "KDV Oranı",
                     controller: alisKdvOraniController,
+                    isFormattedString: true,
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
@@ -146,6 +147,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Fiyat 1",
+                          isFormattedString: true,
                           controller: alisFiyat1Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
@@ -158,6 +160,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Fiyat 2",
+                          isFormattedString: true,
                           controller: alisFiyat2Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
@@ -174,6 +177,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Fiyat 3",
+                          isFormattedString: true,
                           controller: alisFiyat3Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
@@ -186,6 +190,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Fiyat 4",
+                          isFormattedString: true,
                           controller: alisFiyat4Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
@@ -219,6 +224,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Alış Fiyatı",
+                          isFormattedString: true,
                           controller: alisDovizFiyatiController,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
@@ -273,6 +279,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           keyboardType: TextInputType.number,
                           enabled: isEnabled,
                           labelText: "Fiyat 1",
+                          isFormattedString: true,
                           controller: satisFiyat1Controller,
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.satisFiat1 = double.tryParse(p0);
@@ -285,6 +292,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           keyboardType: TextInputType.number,
                           enabled: isEnabled,
                           labelText: "Fiyat 2",
+                          isFormattedString: true,
                           controller: satisFiyat2Controller,
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.satisFiat2 = double.tryParse(p0);
@@ -301,6 +309,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           keyboardType: TextInputType.number,
                           enabled: isEnabled,
                           labelText: "Fiyat 3",
+                          isFormattedString: true,
                           controller: satisFiyat3Controller,
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.satisFiat3 = double.tryParse(p0);
@@ -313,6 +322,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           keyboardType: TextInputType.number,
                           enabled: isEnabled,
                           labelText: "Fiyat 4",
+                          isFormattedString: true,
                           controller: satisFiyat4Controller,
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.satisFiat4 = double.tryParse(p0);
@@ -345,6 +355,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Alış Fiyatı",
+                          isFormattedString: true,
                           controller: satisDovizFiyatiController,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
