@@ -1,3 +1,4 @@
+import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -8,9 +9,8 @@ import "../../../../../../core/init/cache/cache_manager.dart";
 part "stok_listesi_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
+@CopyWith()
 class StokListesiModel with NetworkManagerMixin {
-  StokListesiModel();
-
   StokListesiModel._init();
 
   bool? seriBakiyeKontrolu;
@@ -96,6 +96,89 @@ class StokListesiModel with NetworkManagerMixin {
 
   static StokListesiModel? _instance;
 
+  StokListesiModel({
+    this.seriBakiyeKontrolu,
+    this.seriCikislardaAcik,
+    this.seriCikistaOtomatikMi,
+    this.seriGirislerdeAcik,
+    this.seriGiristeOtomatikMi,
+    this.seriMiktarKadarSor,
+    this.duzeltmetarihi,
+    this.alisFiat1,
+    this.alisFiat2,
+    this.alisFiat3,
+    this.alisFiat4,
+    this.alisKdv,
+    this.bakiye,
+    this.birimAgirlik,
+    this.dovAlisFiat,
+    this.dovSatisFiat,
+    this.olcuBirimi2Pay,
+    this.olcuBirimi2Payda,
+    this.olcuBirimi3Pay,
+    this.olcuBirimi3Payda,
+    this.satisFiat1,
+    this.satisFiat2,
+    this.satisFiat3,
+    this.satisFiat4,
+    this.satisKdv,
+    this.alisDovTip,
+    this.bulunanFiyat,
+    this.depoKodu,
+    this.fiatBirimi,
+    this.muhdetayKodu,
+    this.satDovTip,
+    this.subeKodu,
+    this.stokFiyatList,
+    this.stokList,
+    this.alisDovizAdi,
+    this.barkod1,
+    this.barkod2,
+    this.barkod3,
+    this.duzeltmeyapankul,
+    this.grupKodu,
+    this.grupTanimi,
+    this.kayittarihi,
+    this.kayityapankul,
+    this.kilitAlis,
+    this.kilitGenel,
+    this.kilitMussip,
+    this.kilitSaticisip,
+    this.kilitSatis,
+    this.kod1,
+    this.kod1Tanimi,
+    this.kod2,
+    this.kod2Tanimi,
+    this.kod3,
+    this.kod3Tanimi,
+    this.kod4,
+    this.kod4Tanimi,
+    this.kod5,
+    this.kod5Tanimi,
+    this.muhdetayAdi,
+    this.olcuBirimi,
+    this.olcuBirimi2,
+    this.olcuBirimi3,
+    this.paketMi,
+    this.resimBase64,
+    this.resimUrl,
+    this.resimUrlKucuk,
+    this.satisDovizAdi,
+    this.stokAdi,
+    this.stokKodu,
+    this.ureticiKodu,
+    this.yapilandirmaAktif,
+    this.yapkod,
+    this.yapkodAciklama,
+    this.idx,
+    this.alisKuru,
+    this.alisKurTarihi,
+    this.satisKuru,
+    this.satisKurTarihi,
+    this.bulunanDovizFiyati,
+    this.bulunanDovizTipi,
+  });
+
   @override
   StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
@@ -108,8 +191,7 @@ class StokListesiModel with NetworkManagerMixin {
     ..paketMi = model.paketMi
     ..depoKodu = model.depoKodu
     ..alisKdv = model.stokAlisKdv
-    ..satisKdv = model.stokSatisKdv
-    ;
+    ..satisKdv = model.stokSatisKdv;
 
   static StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
