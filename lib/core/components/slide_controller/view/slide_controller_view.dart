@@ -57,13 +57,14 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
             itemCount: widget.childrenTitleList.length,
             itemBuilder: (context, listTileIndex) => RadioMenuButton(
               style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.zero),
+                // padding: MaterialStateProperty.all(EdgeInsets.zero),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIHelper.lowSize), side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.2)))),
               ),
               value: widget.childrenValueList[listTileIndex],
               groupValue: widget.groupValue,
               onChanged: (index) => widget.filterOnChanged(listTileIndex),
               child: Text(widget.childrenTitleList[listTileIndex]),
-            ).paddingOnly(right: UIHelper.highSize),
+            ).paddingOnly(right: UIHelper.lowSize),
           ),
         ),
       ).paddingAll(UIHelper.lowSize);
