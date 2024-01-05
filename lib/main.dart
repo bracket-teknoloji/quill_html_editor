@@ -16,6 +16,7 @@ import "package:picker/core/base/view/e_belge_gonder/view/e_belge_gonder_view.da
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/view/e_irsaliye_ek_bilgiler_view.dart";
 import "package:picker/core/base/view/kalem_rehberi/view/kalem_rehberi_view.dart";
 import "package:picker/core/base/view/oturumlar/view/oturumlar_view.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_girisi/view/seri_girisi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/view/seri_hareketleri_view.dart";
 import "package:picker/core/base/view/servis_islemleri/view/servis_islemleri_view.dart";
 import "package:picker/core/base/view/siparis_rehberi/view/siparis_rehberi_view.dart";
@@ -208,7 +209,9 @@ class PickerApp extends StatelessWidget {
               kalemModel: Get.arguments is KalemModel ? Get.arguments : null,
             ),
           ),
-          GetPage(name: "/seriHareketleri", page:()=>  SeriHareketleriView(model: Get.arguments)),
+          //* Seri İşlemleri
+          GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
+          GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
@@ -333,6 +336,7 @@ class PickerApp extends StatelessWidget {
                   searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,
                 ),
               ),
+              GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
               GetPage(name: "/stokFiyatGor", page: FiyatGorView.new),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
               GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
