@@ -52,6 +52,20 @@ mixin _$SeriHareketleriModel {
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
   int? get stharInc => throw _privateConstructorUsedError;
   set stharInc(int? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
+  String? get acik1 => throw _privateConstructorUsedError;
+  set acik1(String? value) => throw _privateConstructorUsedError;
+  String? get acik2 => throw _privateConstructorUsedError;
+  set acik2(String? value) => throw _privateConstructorUsedError;
+  String? get aciklama1 => throw _privateConstructorUsedError;
+  set aciklama1(String? value) => throw _privateConstructorUsedError;
+  String? get seri1 => throw _privateConstructorUsedError;
+  set seri1(String? value) => throw _privateConstructorUsedError;
+  int? get requestVersion => throw _privateConstructorUsedError;
+  set requestVersion(int? value) => throw _privateConstructorUsedError;
+  String? get seri2 => throw _privateConstructorUsedError;
+  set seri2(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -81,7 +95,14 @@ abstract class $SeriHareketleriModelCopyWith<$Res> {
       String? haracik,
       String? gckod,
       DateTime? tarih,
-      int? stharInc});
+      int? stharInc,
+      int? islemKodu,
+      String? acik1,
+      String? acik2,
+      String? aciklama1,
+      String? seri1,
+      int? requestVersion,
+      String? seri2});
 }
 
 /// @nodoc
@@ -114,6 +135,13 @@ class _$SeriHareketleriModelCopyWithImpl<$Res,
     Object? gckod = freezed,
     Object? tarih = freezed,
     Object? stharInc = freezed,
+    Object? islemKodu = freezed,
+    Object? acik1 = freezed,
+    Object? acik2 = freezed,
+    Object? aciklama1 = freezed,
+    Object? seri1 = freezed,
+    Object? requestVersion = freezed,
+    Object? seri2 = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
@@ -180,6 +208,34 @@ class _$SeriHareketleriModelCopyWithImpl<$Res,
           ? _value.stharInc
           : stharInc // ignore: cast_nullable_to_non_nullable
               as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      acik1: freezed == acik1
+          ? _value.acik1
+          : acik1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik2: freezed == acik2
+          ? _value.acik2
+          : acik2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama1: freezed == aciklama1
+          ? _value.aciklama1
+          : aciklama1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri1: freezed == seri1
+          ? _value.seri1
+          : seri1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      requestVersion: freezed == requestVersion
+          ? _value.requestVersion
+          : requestVersion // ignore: cast_nullable_to_non_nullable
+              as int?,
+      seri2: freezed == seri2
+          ? _value.seri2
+          : seri2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -208,7 +264,14 @@ abstract class _$$SeriHareketleriModelImplCopyWith<$Res>
       String? haracik,
       String? gckod,
       DateTime? tarih,
-      int? stharInc});
+      int? stharInc,
+      int? islemKodu,
+      String? acik1,
+      String? acik2,
+      String? aciklama1,
+      String? seri1,
+      int? requestVersion,
+      String? seri2});
 }
 
 /// @nodoc
@@ -238,6 +301,13 @@ class __$$SeriHareketleriModelImplCopyWithImpl<$Res>
     Object? gckod = freezed,
     Object? tarih = freezed,
     Object? stharInc = freezed,
+    Object? islemKodu = freezed,
+    Object? acik1 = freezed,
+    Object? acik2 = freezed,
+    Object? aciklama1 = freezed,
+    Object? seri1 = freezed,
+    Object? requestVersion = freezed,
+    Object? seri2 = freezed,
   }) {
     return _then(_$SeriHareketleriModelImpl(
       stokKodu: freezed == stokKodu
@@ -304,6 +374,34 @@ class __$$SeriHareketleriModelImplCopyWithImpl<$Res>
           ? _value.stharInc
           : stharInc // ignore: cast_nullable_to_non_nullable
               as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      acik1: freezed == acik1
+          ? _value.acik1
+          : acik1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      acik2: freezed == acik2
+          ? _value.acik2
+          : acik2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama1: freezed == aciklama1
+          ? _value.aciklama1
+          : aciklama1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri1: freezed == seri1
+          ? _value.seri1
+          : seri1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      requestVersion: freezed == requestVersion
+          ? _value.requestVersion
+          : requestVersion // ignore: cast_nullable_to_non_nullable
+              as int?,
+      seri2: freezed == seri2
+          ? _value.seri2
+          : seri2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -327,7 +425,14 @@ class _$SeriHareketleriModelImpl extends _SeriHareketleriModel {
       this.haracik,
       this.gckod,
       this.tarih,
-      this.stharInc})
+      this.stharInc,
+      this.islemKodu,
+      this.acik1,
+      this.acik2,
+      this.aciklama1,
+      this.seri1,
+      this.requestVersion,
+      this.seri2})
       : super._();
 
   factory _$SeriHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -365,6 +470,20 @@ class _$SeriHareketleriModelImpl extends _SeriHareketleriModel {
   DateTime? tarih;
   @override
   int? stharInc;
+  @override
+  int? islemKodu;
+  @override
+  String? acik1;
+  @override
+  String? acik2;
+  @override
+  String? aciklama1;
+  @override
+  String? seri1;
+  @override
+  int? requestVersion;
+  @override
+  String? seri2;
 
   @JsonKey(ignore: true)
   @override
@@ -399,7 +518,14 @@ abstract class _SeriHareketleriModel extends SeriHareketleriModel {
       String? haracik,
       String? gckod,
       DateTime? tarih,
-      int? stharInc}) = _$SeriHareketleriModelImpl;
+      int? stharInc,
+      int? islemKodu,
+      String? acik1,
+      String? acik2,
+      String? aciklama1,
+      String? seri1,
+      int? requestVersion,
+      String? seri2}) = _$SeriHareketleriModelImpl;
   _SeriHareketleriModel._() : super._();
 
   factory _SeriHareketleriModel.fromJson(Map<String, dynamic> json) =
@@ -453,6 +579,27 @@ abstract class _SeriHareketleriModel extends SeriHareketleriModel {
   @override
   int? get stharInc;
   set stharInc(int? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
+  @override
+  String? get acik1;
+  set acik1(String? value);
+  @override
+  String? get acik2;
+  set acik2(String? value);
+  @override
+  String? get aciklama1;
+  set aciklama1(String? value);
+  @override
+  String? get seri1;
+  set seri1(String? value);
+  @override
+  int? get requestVersion;
+  set requestVersion(int? value);
+  @override
+  String? get seri2;
+  set seri2(String? value);
   @override
   @JsonKey(ignore: true)
   _$$SeriHareketleriModelImplCopyWith<_$SeriHareketleriModelImpl>

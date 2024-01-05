@@ -27,6 +27,13 @@ _$SeriHareketleriModelImpl _$$SeriHareketleriModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       stharInc: json['STHAR_INC'] as int?,
+      islemKodu: json['ISLEM_KODU'] as int?,
+      acik1: json['ACIK1'] as String?,
+      acik2: json['ACIK2'] as String?,
+      aciklama1: json['ACIKLAMA1'] as String?,
+      seri1: json['SERI1'] as String?,
+      requestVersion: json['REQUEST_VERSION'] as int?,
+      seri2: json['SERI2'] as String?,
     );
 
 Map<String, dynamic> _$$SeriHareketleriModelImplToJson(
@@ -55,5 +62,12 @@ Map<String, dynamic> _$$SeriHareketleriModelImplToJson(
   writeNotNull('GCKOD', instance.gckod);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('STHAR_INC', instance.stharInc);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('ACIK1', instance.acik1);
+  writeNotNull('ACIK2', instance.acik2);
+  writeNotNull('ACIKLAMA1', instance.aciklama1);
+  writeNotNull('SERI1', instance.seri1);
+  writeNotNull('REQUEST_VERSION', instance.requestVersion);
+  writeNotNull('SERI2', instance.seri2);
   return val;
 }
