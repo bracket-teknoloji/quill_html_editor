@@ -60,6 +60,7 @@ class ApiUrls {
   static const String saveStok = "Stok/SaveStok";
   static const String savestokFiyatGecmisi = "Stok/SaveStokFiyatGecmisi";
   static const String saveStokHareket = "Stok/SaveStokHareket";
+  static const String getSeriHareketleri = "Stok/GetSeriHareketleri";
 
   //* Finans
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
