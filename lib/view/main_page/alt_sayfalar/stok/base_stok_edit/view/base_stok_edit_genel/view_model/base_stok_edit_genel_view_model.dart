@@ -12,10 +12,10 @@ class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase with _$BaseSt
 
 abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   @observable
-  StokListesiModel? stokListesiModel = StokListesiModel.instance;
+  StokListesiModel stokListesiModel = StokListesiModel.instance;
 
   @observable
-  StokDetayModel? stokDetayModel = StokDetayModel.instance;
+  StokDetayModel stokDetayModel = StokDetayModel.instance;
 
   @observable
   ObservableMap<int, List<BaseGrupKoduModel>?>? grupKodlariMap = <int, List<BaseGrupKoduModel>?>{}.asObservable();
@@ -27,25 +27,25 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> setStokDetayModel(StokDetayModel? value) async {
-    stokDetayModel = value;
-    if (stokDetayModel != null) {
-      StokDetayModel.setInstance(stokDetayModel!);
+    if (value != null) {
+      stokDetayModel = value;
+      StokDetayModel.setInstance(stokDetayModel);
     }
   }
 
   @action
   void setAdi(String? value) {
-    stokListesiModel = stokListesiModel?..stokAdi = value;
+    stokListesiModel = stokListesiModel.copyWith(stokAdi: value);
   }
 
   @action
   void setImage(String? value) {
-    stokListesiModel = stokListesiModel?..resimBase64 = value;
+    stokListesiModel = stokListesiModel.copyWith(resimBase64: value);
   }
 
   @action
   void setDepoKodu(int? value) {
-    stokListesiModel = stokListesiModel?..depoKodu = value;
+    stokListesiModel = stokListesiModel.copyWith(depoKodu: value);
   }
 
   @action
@@ -57,7 +57,7 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
       addSirketBilgileri: true,
       showLoading: true,
       queryParameters: {
-        "stokKodu": stokListesiModel?.stokKodu ?? "",
+        "stokKodu": stokListesiModel.stokKodu ?? "",
       },
     );
     if (result.data != null) {

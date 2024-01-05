@@ -14,13 +14,13 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
       context: context);
 
   @override
-  StokListesiModel? get stokListesiModel {
+  StokListesiModel get stokListesiModel {
     _$stokListesiModelAtom.reportRead();
     return super.stokListesiModel;
   }
 
   @override
-  set stokListesiModel(StokListesiModel? value) {
+  set stokListesiModel(StokListesiModel value) {
     _$stokListesiModelAtom.reportWrite(value, super.stokListesiModel, () {
       super.stokListesiModel = value;
     });
@@ -30,13 +30,13 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
       name: '_BaseStokEditGenelViewModelBase.stokDetayModel', context: context);
 
   @override
-  StokDetayModel? get stokDetayModel {
+  StokDetayModel get stokDetayModel {
     _$stokDetayModelAtom.reportRead();
     return super.stokDetayModel;
   }
 
   @override
-  set stokDetayModel(StokDetayModel? value) {
+  set stokDetayModel(StokDetayModel value) {
     _$stokDetayModelAtom.reportWrite(value, super.stokDetayModel, () {
       super.stokDetayModel = value;
     });
