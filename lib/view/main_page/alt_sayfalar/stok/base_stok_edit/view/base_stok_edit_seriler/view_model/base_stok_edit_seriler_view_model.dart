@@ -48,11 +48,15 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
         switchValueList[index + 1] = switchValueList[index] ? false : switchValueList[index + 1];
         StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi = switchValueList[index];
         StokListesiModel.instance.seriCikistaOtomatikMi = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu = switchValueList[index + 1];
+        StokListesiModel.instance.seriBakiyeKontrolu = switchValueList[index + 1];
       case 4:
         switchValueList[index] = !switchValueList[index];
         switchValueList[index - 1] = switchValueList[index] ? false : switchValueList[index - 1];
         StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu = switchValueList[index];
         StokListesiModel.instance.seriBakiyeKontrolu = switchValueList[index];
+        StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi = switchValueList[index - 1];
+        StokListesiModel.instance.seriCikistaOtomatikMi = switchValueList[index - 1];
       case 5:
         switchValueList[index] = !switchValueList[index];
         StokDetayModel.instance.stokList?.firstOrNull?.seriMiktarKadarSor = switchValueList[index];
