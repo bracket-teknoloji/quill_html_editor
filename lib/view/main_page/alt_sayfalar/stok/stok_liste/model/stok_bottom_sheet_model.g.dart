@@ -13,18 +13,19 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
       bakiyeDurumu: json['BakiyeDurumu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       resimleriGoster: json['ResimleriGoster'] as String?,
-      siralama: json['Siralama'] as String?,
+      siralama: json['Siralama'] as String? ?? "AZ",
       searchText: json['SearchText'] as String?,
       belgeNo: json['BelgeNo'] as String?,
       belgeTarihi: json['BelgeTarihi'] as String?,
       belgeTipi: json['BelgeTipi'] as String?,
       cariKodu: json['CariKodu'] as String?,
-      ekranTipi: json['EkranTipi'] as String?,
+      ekranTipi: json['EkranTipi'] as String? ?? "R",
       faturaTipi: json['FaturaTipi'] as int?,
       resimGoster: json['ResimGoster'] as String?,
       kisitYok: json['KisitYok'] as bool?,
       stokKodu: json['StokKodu'] as String?,
       okutuldu: json['Okutuldu'] as bool?,
+      seriTakibiVar: json['SeriTakibiVar'] as String?,
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
@@ -83,6 +84,7 @@ Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
   writeNotNull('KisitYok', instance.kisitYok);
   writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull('Okutuldu', instance.okutuldu);
+  writeNotNull('SeriTakibiVar', instance.seriTakibiVar);
   writeNotNull(
       'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());

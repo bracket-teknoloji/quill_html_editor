@@ -36,6 +36,7 @@ mixin _$StokBottomSheetModel {
   bool? get kisitYok => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
   bool? get okutuldu => throw _privateConstructorUsedError;
+  String? get seriTakibiVar => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrGrupKodu =>
       throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod1 => throw _privateConstructorUsedError;
@@ -73,6 +74,7 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
       bool? kisitYok,
       String? stokKodu,
       bool? okutuldu,
+      String? seriTakibiVar,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
       List<BaseGrupKoduModel>? arrKod2,
@@ -111,6 +113,7 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? kisitYok = freezed,
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
+    Object? seriTakibiVar = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -183,6 +186,10 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
           ? _value.okutuldu
           : okutuldu // ignore: cast_nullable_to_non_nullable
               as bool?,
+      seriTakibiVar: freezed == seriTakibiVar
+          ? _value.seriTakibiVar
+          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+              as String?,
       arrGrupKodu: freezed == arrGrupKodu
           ? _value.arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
@@ -236,6 +243,7 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
       bool? kisitYok,
       String? stokKodu,
       bool? okutuldu,
+      String? seriTakibiVar,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
       List<BaseGrupKoduModel>? arrKod2,
@@ -271,6 +279,7 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? kisitYok = freezed,
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
+    Object? seriTakibiVar = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -343,6 +352,10 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
           ? _value.okutuldu
           : okutuldu // ignore: cast_nullable_to_non_nullable
               as bool?,
+      seriTakibiVar: freezed == seriTakibiVar
+          ? _value.seriTakibiVar
+          : seriTakibiVar // ignore: cast_nullable_to_non_nullable
+              as String?,
       arrGrupKodu: freezed == arrGrupKodu
           ? _value._arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
@@ -380,18 +393,19 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.bakiyeDurumu,
       this.menuKodu,
       this.resimleriGoster,
-      this.siralama,
+      this.siralama = "AZ",
       this.searchText,
       this.belgeNo,
       this.belgeTarihi,
       this.belgeTipi,
       this.cariKodu,
-      this.ekranTipi,
+      this.ekranTipi = "R",
       this.faturaTipi,
       this.resimGoster,
       this.kisitYok,
       this.stokKodu,
       this.okutuldu,
+      this.seriTakibiVar,
       final List<BaseGrupKoduModel>? arrGrupKodu = const [],
       final List<BaseGrupKoduModel>? arrKod1 = const [],
       final List<BaseGrupKoduModel>? arrKod2 = const [],
@@ -418,6 +432,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @override
   final String? resimleriGoster;
   @override
+  @JsonKey()
   final String? siralama;
   @override
   final String? searchText;
@@ -430,6 +445,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @override
   final String? cariKodu;
   @override
+  @JsonKey()
   final String? ekranTipi;
   @override
   final int? faturaTipi;
@@ -441,6 +457,8 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   final String? stokKodu;
   @override
   final bool? okutuldu;
+  @override
+  final String? seriTakibiVar;
   final List<BaseGrupKoduModel>? _arrGrupKodu;
   @override
   @JsonKey()
@@ -541,6 +559,7 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       final bool? kisitYok,
       final String? stokKodu,
       final bool? okutuldu,
+      final String? seriTakibiVar,
       final List<BaseGrupKoduModel>? arrGrupKodu,
       final List<BaseGrupKoduModel>? arrKod1,
       final List<BaseGrupKoduModel>? arrKod2,
@@ -584,6 +603,8 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   String? get stokKodu;
   @override
   bool? get okutuldu;
+  @override
+  String? get seriTakibiVar;
   @override
   List<BaseGrupKoduModel>? get arrGrupKodu;
   @override
