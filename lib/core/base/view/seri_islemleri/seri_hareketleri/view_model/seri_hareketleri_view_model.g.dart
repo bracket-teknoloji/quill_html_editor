@@ -26,6 +26,22 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
     });
   }
 
+  late final _$stokListesiModelAtom = Atom(
+      name: '_SeriHareketleriViewModelBase.stokListesiModel', context: context);
+
+  @override
+  StokListesiModel? get stokListesiModel {
+    _$stokListesiModelAtom.reportRead();
+    return super.stokListesiModel;
+  }
+
+  @override
+  set stokListesiModel(StokListesiModel? value) {
+    _$stokListesiModelAtom.reportWrite(value, super.stokListesiModel, () {
+      super.stokListesiModel = value;
+    });
+  }
+
   late final _$requestModelAtom = Atom(
       name: '_SeriHareketleriViewModelBase.requestModel', context: context);
 
@@ -71,12 +87,23 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
       ActionController(name: '_SeriHareketleriViewModelBase', context: context);
 
   @override
-  void changeIsSearchBarOpened() {
+  void setIsSearchBarOpened() {
     final _$actionInfo =
         _$_SeriHareketleriViewModelBaseActionController.startAction(
-            name: '_SeriHareketleriViewModelBase.changeIsSearchBarOpened');
+            name: '_SeriHareketleriViewModelBase.setIsSearchBarOpened');
     try {
-      return super.changeIsSearchBarOpened();
+      return super.setIsSearchBarOpened();
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setStokListesiModel(StokListesiModel model) {
+    final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
+        .startAction(name: '_SeriHareketleriViewModelBase.setStokListesiModel');
+    try {
+      return super.setStokListesiModel(model);
     } finally {
       _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -94,7 +121,7 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   }
 
   @override
-  void setStokKodu(String stokKodu) {
+  void setStokKodu(String? stokKodu) {
     final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
         .startAction(name: '_SeriHareketleriViewModelBase.setStokKodu');
     try {
@@ -105,9 +132,22 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   }
 
   @override
+  void setSerihareketleriList(List<SeriHareketleriModel>? list) {
+    final _$actionInfo =
+        _$_SeriHareketleriViewModelBaseActionController.startAction(
+            name: '_SeriHareketleriViewModelBase.setSerihareketleriList');
+    try {
+      return super.setSerihareketleriList(list);
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isSearchBarOpened: ${isSearchBarOpened},
+stokListesiModel: ${stokListesiModel},
 requestModel: ${requestModel},
 seriHareketleriList: ${seriHareketleriList}
     ''';

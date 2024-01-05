@@ -4,6 +4,8 @@ import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_model.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/view_model/seri_hareketleri_view_model.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
@@ -13,6 +15,7 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SeriHareketleriView extends StatefulWidget {
@@ -24,15 +27,22 @@ class SeriHareketleriView extends StatefulWidget {
 }
 
 class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
+  late final TextEditingController _stokKoduController;
   SeriHareketleriViewModel viewModel = SeriHareketleriViewModel();
 
   @override
   void initState() {
+    _stokKoduController = TextEditingController(text: widget.model.stokKodu ?? "");
     viewModel.setStokKodu(widget.model.stokKodu ?? "");
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -51,13 +61,55 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
           ),
           actions: [
             IconButton(
-              onPressed: () => viewModel.changeIsSearchBarOpened(),
+              onPressed: () => viewModel.setIsSearchBarOpened(),
               icon: Observer(
                 builder: (_) => Icon(viewModel.isSearchBarOpened ? Icons.search_off_outlined : Icons.search_outlined),
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () async {
+                await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: loc(context).generalStrings.options,
+                  children: [
+                    BottomSheetModel(
+                      title: loc(context).generalStrings.sort,
+                      iconWidget: Icons.sort_by_alpha_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          groupValue: viewModel.requestModel.sirala,
+                          title: loc(context).generalStrings.sort,
+                          children: List.generate(
+                            viewModel.siralaMap.length,
+                            (index) => BottomSheetModel(
+                              title: viewModel.siralaMap.keys.toList()[index],
+                              value: viewModel.siralaMap.values.toList()[index],
+                              groupValue: viewModel.siralaMap[viewModel.siralaMap.keys.toList()[index]],
+                            ),
+                          ),
+                        );
+                        if (result is String) {
+                          viewModel.setSirala(result);
+                          await viewModel.getData();
+                        }
+                      },
+                    ),
+                    BottomSheetModel(
+                      title: "Stok İşlemleri",
+                      iconWidget: Icons.list_alt,
+                      onTap: () async {
+                        Get.back();
+                        final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu));
+                        if (result is StokListesiModel) {
+                          dialogManager.showStokGridViewDialog(result);
+                        }
+                      },
+                    ),
+                  ],
+                );
+              },
               icon: Observer(
                 builder: (_) => const Icon(Icons.more_vert_outlined),
               ),
@@ -67,12 +119,39 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
         floatingActionButton: const CustomFloatingActionButton(isScrolledDown: true),
         body: Column(
           children: [
-            const CustomTextField(
+            CustomTextField(
               labelText: "Stok",
+              readOnly: true,
+              controller: _stokKoduController,
+              suffixMore: true,
+              onTap: () async {
+                final result = await Get.toNamed(
+                  "/mainPage/stokListesiOzel",
+                  arguments: StokBottomSheetModel(
+                    seriTakibiVar: "E",
+                    resimGoster: "E",
+                    menuKodu: "STOK_SREH",
+                  ),
+                );
+                if (result is StokListesiModel) {
+                  _stokKoduController.text = result.stokKodu ?? "";
+                  viewModel.setStokKodu(result.stokKodu ?? "");
+                  await viewModel.getData();
+                }
+              },
               suffix: Row(
                 children: [
-                  Icon(Icons.qr_code_scanner),
-                  Icon(Icons.qr_code_scanner),
+                  IconButton(
+                    onPressed: () async {
+                      final result = await Get.toNamed("/qr");
+                      if (result is String) {
+                        _stokKoduController.text = result;
+                        viewModel.setStokKodu(result);
+                        await viewModel.getData();
+                      }
+                    },
+                    icon: const Icon(Icons.qr_code_scanner),
+                  ),
                 ],
               ),
             ),
@@ -111,6 +190,27 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                               // Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
                             ],
                           ),
+                          onTap: () async {
+                            await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: loc(context).generalStrings.options,
+                              children: [
+                                BottomSheetModel(title: loc(context).generalStrings.edit, iconWidget: Icons.edit_outlined, onTap: () {}),
+                                BottomSheetModel(title: loc(context).generalStrings.delete, iconWidget: Icons.delete_outline, onTap: () {}),
+                                BottomSheetModel(
+                                  title: "Stok İşlemleri",
+                                  iconWidget: Icons.list_alt,
+                                  onTap: () async {
+                                    Get.back();
+                                    final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu));
+                                    if (result is StokListesiModel) {
+                                      dialogManager.showStokGridViewDialog(result);
+                                    }
+                                  },
+                                ),
+                              ],
+                            );
+                          },
                         ),
                       );
                     },

@@ -3,14 +3,22 @@ import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "seri_hareketleri_view_model.g.dart";
 
 class SeriHareketleriViewModel = _SeriHareketleriViewModelBase with _$SeriHareketleriViewModel;
 
 abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
+  final Map<String, String> siralaMap = {
+    "Tarih (A-Z)": "TARIH_AZ",
+    "Tarih (Z-A)": "TARIH_ZA",
+  };
   @observable
   bool isSearchBarOpened = false;
+
+  @observable
+  StokListesiModel? stokListesiModel;
 
   @observable
   SeriHareketleriRequestModel requestModel = SeriHareketleriRequestModel(sirala: "TARIH_ZA");
@@ -19,20 +27,27 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   ObservableList<SeriHareketleriModel>? seriHareketleriList;
 
   @action
-  void changeIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;
+  void setIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;
+
+  @action
+  void setStokListesiModel(StokListesiModel model) => stokListesiModel = model;
 
   @action
   void setSirala(String sirala) => requestModel = requestModel.copyWith(sirala: sirala);
 
   @action
-  void setStokKodu(String stokKodu) => requestModel = requestModel.copyWith(stokKodu: stokKodu);
+  void setStokKodu(String? stokKodu) => requestModel = requestModel.copyWith(stokKodu: stokKodu);
+
+  @action
+  void setSerihareketleriList(List<SeriHareketleriModel>? list) => seriHareketleriList = list?.asObservable();
 
   @action
   Future<void> getData() async {
+    setSerihareketleriList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getSeriHareketleri, bodyModel: SeriHareketleriModel(), data: requestModel.toJson());
     if (result.data is List) {
       final List<SeriHareketleriModel> list = result.data.map((e) => e as SeriHareketleriModel).toList().cast<SeriHareketleriModel>();
-      seriHareketleriList = list.asObservable();
+      setSerihareketleriList(list);
     }
   }
 }
