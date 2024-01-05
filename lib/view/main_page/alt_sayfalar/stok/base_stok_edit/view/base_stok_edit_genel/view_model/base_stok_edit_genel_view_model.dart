@@ -36,16 +36,19 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   @action
   void setAdi(String? value) {
     stokListesiModel = stokListesiModel.copyWith(stokAdi: value);
+    StokListesiModel.setInstance(stokListesiModel);
   }
 
   @action
   void setImage(String? value) {
     stokListesiModel = stokListesiModel.copyWith(resimBase64: value);
+    StokListesiModel.setInstance(stokListesiModel);
   }
 
   @action
   void setDepoKodu(int? value) {
     stokListesiModel = stokListesiModel.copyWith(depoKodu: value);
+    StokListesiModel.setInstance(stokListesiModel);
   }
 
   @action
