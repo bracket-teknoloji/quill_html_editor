@@ -43,8 +43,9 @@ import "../view_model/stok_listesi_view_model.dart";
 
 class StokListesiView extends StatefulWidget {
   final bool? isGetData;
+  final StokBottomSheetModel? requestModel;
   final String? searchText;
-  const StokListesiView({super.key, this.isGetData, this.searchText});
+  const StokListesiView({super.key, this.isGetData, this.searchText, this.requestModel});
 
   @override
   State<StokListesiView> createState() => _StokListesiViewState();
@@ -584,7 +585,6 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           onLongPress: () {
                             dialogManager.showStokGridViewDialog(stok);
                           },
-                          contentPadding: UIHelper.lowPadding,
                           // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                           leading: CircleAvatar(
                             child: stok.resimUrlKucuk == null
@@ -692,7 +692,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     await getData();
                                   }
                                 },
-                        ).paddingAll(UIHelper.midSize),
+                        ),
                       ),
                     );
                   } else {
@@ -708,7 +708,19 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       );
 
   Future<void> getData() async {
-    final data2 = {"MenuKodu": "STOK_STOK", "ResimGoster": viewModel.resimleriGoster, "Siralama": viewModel.siralama, "Sayfa": viewModel.sayfa, "BakiyeDurumu": viewModel.bakiye ?? ""};
+    final StokBottomSheetModel? requestModel = widget.requestModel;
+    Map data2 = {
+      "MenuKodu": requestModel?.menuKodu ?? "STOK_STOK",
+      "ResimGoster": requestModel?.resimleriGoster ?? viewModel.resimleriGoster,
+      "Siralama": requestModel?.siralama ?? viewModel.siralama,
+      "Sayfa": viewModel.sayfa,
+      "BakiyeDurumu": viewModel.bakiye ?? "",
+    };
+    if (requestModel != null) {
+      data2 = requestModel.toJson();
+      data2["SeriTakibiVar"] = requestModel.seriTakibiVar;
+      data2["Sayfa"] = viewModel.sayfa;
+    }
     if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
       final List<String> liste = [];
       viewModel.bottomSheetModel.arrGrupKodu?.forEach((element) {
