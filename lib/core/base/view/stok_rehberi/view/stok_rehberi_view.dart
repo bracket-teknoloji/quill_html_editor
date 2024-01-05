@@ -368,7 +368,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                       height: UIHelper.highSize * 3,
                                       width: UIHelper.highSize * 3,
                                       child: InkWell(
-                                        onTap: () => Get.to(ImageView(path: stok?.resimUrl ?? "", title: stok?.stokKodu ?? "")),
+                                        onTap: stok?.resimUrlKucuk == null ? null : () => Get.to(ImageView(path: stok?.resimUrl ?? "", title: stok?.stokKodu ?? "")),
                                         child: SizedBox(
                                           height: UIHelper.highSize * 3,
                                           width: UIHelper.highSize * 3,
