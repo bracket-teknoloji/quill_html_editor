@@ -261,55 +261,67 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ),
                   ),
                 ),
-                Observer(
-                  builder: (_) => Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Kalem Adı",
-                          controller: kalemAdiController,
-                          onChanged: (p0) => viewModel.kalemModel
-                            ..kalemAdi = p0
-                            ..kalemAdiDegisti = true
-                            ..kalemAdiDegistimi = true,
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Muh. Kodu",
-                          suffixMore: true,
-                          readOnly: true,
-                          isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
-                          onClear: () => viewModel.setMuhasebeKodu(null),
-                          // suffix: IconButton(
-                          //     onPressed: () {
-                          //       muhKoduController.clear();
-                          //       viewModel.setMuhasebeKodu(null);
-                          //     },
-                          //     icon: const Icon(Icons.close)),
-                          controller: muhKoduController,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
-                            if (result != null) {
-                              if (editTipi?.satisMi ?? false) {
-                                viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
-                                muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
-                              } else {
-                                viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
-                                muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
-                              }
-                            }
-                          },
-                        ),
-                      ).yetkiVarMi(((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi) || BaseSiparisEditModel.instance.faturaIrsaliyeMi),
-                    ],
-                  ),
+                CustomTextField(
+                  labelText: "Kalem Adı",
+                  controller: kalemAdiController,
+                  onChanged: (p0) => viewModel.kalemModel
+                    ..kalemAdi = p0
+                    ..kalemAdiDegisti = true
+                    ..kalemAdiDegistimi = true,
                 ),
-                CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
-                    .yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
-                CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
-                    .yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
+                // Observer(
+                //   builder: (_) => Row(
+                //     children: [
+                //       Expanded(
+                //         child:
+                //       ).yetkiVarMi(((viewModel.kalemModel.stokKodu?.startsWith("HIZ") ?? false) && yetkiController.siparisHizmetAktifMi) || BaseSiparisEditModel.instance.faturaIrsaliyeMi),
+                //     ],
+                //   ),
+                // ),
+                CustomTextField(
+                  labelText: "Muh. Kodu",
+                  suffixMore: true,
+                  readOnly: true,
+                  isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
+                  onClear: () => viewModel.setMuhasebeKodu(null),
+                  controller: muhKoduController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                    if (result != null) {
+                      if (editTipi?.satisMi ?? false) {
+                        viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
+                        muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
+                      } else {
+                        viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
+                        muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                      }
+                    }
+                  },
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Ek Alan 1",
+                        controllerText: widget.kalemModel?.ekalan1,
+                        onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0,
+                      ),
+                    ).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Ek Alan 2",
+                        controllerText: widget.kalemModel?.ekalan2,
+                        onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0,
+                      ),
+                    ).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
+                  ],
+                ),
+                // CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
+                //     .yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
+                // CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
+                //     .yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
                 CustomTextField(
                   labelText: "Yapılandırma Kodu",
                   valueWidget: Observer(
@@ -803,6 +815,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
+    muhKoduController.text = viewModel.kalemModel.muhasebeKodu ?? "";
     malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
     kdvOraniController.text = viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
