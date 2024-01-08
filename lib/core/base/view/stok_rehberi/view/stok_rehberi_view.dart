@@ -6,6 +6,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -434,7 +435,11 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
-      return response.data.first;
+      final List<StokListesiModel>? list = response.data as List<StokListesiModel>?;
+      if (list.isEmptyOrNull){
+        return null;
+      }
+      return list?.firstOrNull;
     }
     return null;
   }
