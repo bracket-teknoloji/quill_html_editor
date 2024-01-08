@@ -62,10 +62,13 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker() async => await showDatePicker(
+  Future<DateTime?> showDateTimePicker({
+    DateTime? initialDate,
+  }) async =>
+      await showDatePicker(
         context: context,
         locale: Get.locale,
-        initialDate: DateTime.now(),
+        initialDate: initialDate?? DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2100),
       );
@@ -189,7 +192,13 @@ class DialogManager {
       ).show();
 
   Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.eBelge, title: model.cariAdi ?? model.cariKodu, onSelected: onSelected),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.eBelge,
+          title: model.cariAdi ?? model.cariKodu,
+          onSelected: onSelected,
+          siparisTipi: siparisTipi,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
