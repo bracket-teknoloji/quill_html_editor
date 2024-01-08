@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
 
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/ui_helper/duration_helper.dart";
@@ -29,7 +30,7 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
 }
 
-class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTimeBottomSheetView> {
+class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDateTimeBottomSheetView> {
   late final ScrollController scrollController;
   RaporFiltreDateTimeBottomSheetViewModel viewModel = RaporFiltreDateTimeBottomSheetViewModel();
 
@@ -88,14 +89,17 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
         //   );
         // }),
         SizedBox(
-          height: 50,
+          height: UIHelper.midSize * 3,
           width: double.infinity,
           child: ListView.builder(
             controller: scrollController,
             scrollDirection: Axis.horizontal,
             itemCount: viewModel.childrenTitleList.length,
             itemBuilder: (context, listTileIndex) => RadioMenuButton(
-              style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+              style: ButtonStyle(
+                // padding: MaterialStateProperty.all(EdgeInsets.zero),
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIHelper.lowSize), side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.2)))),
+              ),
               value: listTileIndex,
               groupValue: viewModel.groupValue,
               onChanged: (index) {
@@ -106,9 +110,9 @@ class _RaporFiltreDateTimeBottomSheetViewState extends State<RaporFiltreDateTime
                 setState(() {});
               },
               child: Text(viewModel.childrenTitleList[listTileIndex]),
-            ).paddingOnly(right: UIHelper.highSize),
+            ).paddingOnly(right: UIHelper.lowSize),
           ),
-        ).paddingOnly(left: UIHelper.lowSize),
+        ).paddingAll(UIHelper.lowSize).paddingOnly(bottom: UIHelper.lowSize),
         Row(
           children: children2.map((e) => Expanded(child: e)).toList(),
         ),
