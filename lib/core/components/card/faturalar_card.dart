@@ -85,21 +85,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     widget.onUpdated?.call(result);
                   }
                 },
-              ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
-              BottomSheetModel(
-                title: "Açıklama Düzenle",
-                iconWidget: Icons.edit_note_outlined,
-                onTap: () async {
-                  Get.back();
-                  final result = await Get.toNamed(
-                    widget.editTipiEnum.aciklamaDuzenleRoute,
-                    arguments: widget.model,
-                  );
-                  if (result != null) {
-                    widget.onUpdated?.call(result);
-                  }
-                },
-              ),
+              ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
               BottomSheetModel(
                 title: loc(context).generalStrings.delete,
                 iconWidget: Icons.delete_outline_outlined,
@@ -124,6 +110,20 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   });
                 },
               ).yetkiKontrol(widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi),
+              BottomSheetModel(
+                title: "Açıklama Düzenle",
+                iconWidget: Icons.edit_note_outlined,
+                onTap: () async {
+                  Get.back();
+                  final result = await Get.toNamed(
+                    widget.editTipiEnum.aciklamaDuzenleRoute,
+                    arguments: widget.model,
+                  );
+                  if (result != null) {
+                    widget.onUpdated?.call(result);
+                  }
+                },
+              ),
               BottomSheetModel(
                 title: loc(context).generalStrings.print,
                 iconWidget: Icons.print_outlined,
