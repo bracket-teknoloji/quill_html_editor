@@ -106,7 +106,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             BaseSiparisEditModel.setInstance(widget.model);
                           }
                           Get.back();
-                          await Get.toNamed(
+                          final result = await Get.toNamed(
                             "mainPage/siparisEdit",
                             arguments: BaseEditModel(
                               model: SiparisEditRequestModel.fromSiparislerModel(widget.model),
@@ -114,7 +114,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               editTipiEnum: widget.editTipiEnum,
                             ),
                           );
-                          widget.onUpdated?.call(true);
+                          if (result == true) {
+                            widget.onUpdated?.call(true);
+                          }
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
