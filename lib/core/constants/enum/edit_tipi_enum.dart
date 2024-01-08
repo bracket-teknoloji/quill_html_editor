@@ -201,6 +201,22 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get ekAlan1GorunsunMu {
+    if (satisMi){
+      return yetkiController.satisEkAlan1AktifMi;
+    } else {
+      return yetkiController.alisEkAlan1AktifMi;
+    }
+  }
+
+  bool get ekAlan2GorunsunMu {
+    if (satisMi){
+      return yetkiController.satisEkAlan2AktifMi;
+    } else {
+      return yetkiController.alisEkAlan2AktifMi;
+    }
+  }
+
   bool get eklensinMi {
     switch (this) {
       case EditTipiEnum.musteri:
