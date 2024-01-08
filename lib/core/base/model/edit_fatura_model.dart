@@ -24,8 +24,8 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     String? mevcutBelgeNo,
     String? yeniBelgeNo,
     String? mevcutCariKodu,
-    @Default({})Map? paramMap,
-    @Default("FaturaModel")String? tag,
+    @Default({}) Map? paramMap,
+    @Default("FaturaModel") String? tag,
     int? islemKodu,
     List<KalemModel>? kalemler,
   }) = _EditFaturaModel;
@@ -41,9 +41,11 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
         islemKodu: model.islemKodu,
         yeniBelgeNo: model.yeniBelgeNo,
         kalemler: model.kalemList,
+        tipi: model.tipi,
+        belgeTipi: model.tipi,
       );
 
-      factory EditFaturaModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => EditFaturaModel(
+  factory EditFaturaModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => EditFaturaModel(
         belgeNo: model.belgeNo,
         pickerBelgeTuru: model.belgeTuru,
         belgeTuru: model.belgeTuru,

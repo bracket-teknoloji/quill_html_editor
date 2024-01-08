@@ -81,6 +81,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     int? dizaynNo,
     bool? dovizliOlustur,
     bool? internetFaturasi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? dizaynAdi,
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
@@ -146,7 +147,6 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GET",
         islemKodu: 11,
       );
- 
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
@@ -203,4 +203,6 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   bool get kabulEdildiMi => true;
 
   String get onayDurumuString => "${cevapKodu ?? "0"} - ${cevapAciklama ?? "0"}";
+
+  String get getDizaynAdi => "${dizaynNo ?? ""} - ${dizaynAdi ?? ""}";
 }

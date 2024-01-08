@@ -160,6 +160,10 @@ mixin _$EBelgeListesiModel {
   set dovizliOlustur(bool? value) => throw _privateConstructorUsedError;
   bool? get internetFaturasi => throw _privateConstructorUsedError;
   set internetFaturasi(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get dizaynAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set dizaynAdi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -242,7 +246,9 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       String? yaziciAdi,
       int? dizaynNo,
       bool? dovizliOlustur,
-      bool? internetFaturasi});
+      bool? internetFaturasi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? dizaynAdi});
 }
 
 /// @nodoc
@@ -327,6 +333,7 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? dizaynNo = freezed,
     Object? dovizliOlustur = freezed,
     Object? internetFaturasi = freezed,
+    Object? dizaynAdi = freezed,
   }) {
     return _then(_value.copyWith(
       ebelgeTuru: freezed == ebelgeTuru
@@ -605,6 +612,10 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      dizaynAdi: freezed == dizaynAdi
+          ? _value.dizaynAdi
+          : dizaynAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -686,7 +697,9 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       String? yaziciAdi,
       int? dizaynNo,
       bool? dovizliOlustur,
-      bool? internetFaturasi});
+      bool? internetFaturasi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? dizaynAdi});
 }
 
 /// @nodoc
@@ -769,6 +782,7 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? dizaynNo = freezed,
     Object? dovizliOlustur = freezed,
     Object? internetFaturasi = freezed,
+    Object? dizaynAdi = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
       ebelgeTuru: freezed == ebelgeTuru
@@ -1047,6 +1061,10 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      dizaynAdi: freezed == dizaynAdi
+          ? _value.dizaynAdi
+          : dizaynAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1123,7 +1141,8 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.yaziciAdi,
       this.dizaynNo,
       this.dovizliOlustur,
-      this.internetFaturasi})
+      this.internetFaturasi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.dizaynAdi})
       : super._();
 
   factory _$EBelgeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1267,6 +1286,9 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   bool? dovizliOlustur;
   @override
   bool? internetFaturasi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? dizaynAdi;
 
   @JsonKey(ignore: true)
   @override
@@ -1353,7 +1375,9 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       String? yaziciAdi,
       int? dizaynNo,
       bool? dovizliOlustur,
-      bool? internetFaturasi}) = _$EBelgeListesiModelImpl;
+      bool? internetFaturasi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? dizaynAdi}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
 
   factory _EBelgeListesiModel.fromJson(Map<String, dynamic> json) =
@@ -1566,6 +1590,11 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   bool? get internetFaturasi;
   set internetFaturasi(bool? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get dizaynAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set dizaynAdi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>
