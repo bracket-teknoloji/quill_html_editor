@@ -72,6 +72,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               ? () async {
                   await dialogManager.showSiparisGridViewDialog(
                     model: widget.model,
+                    siparisTipi: widget.model.getEditTipiEnum,
                     onSelected: (value) {
                       widget.onUpdated?.call(value);
                     },
@@ -160,6 +161,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           Get.back();
                           await dialogManager.showSiparisGridViewDialog(
                             model: widget.model,
+                            siparisTipi: widget.model.getEditTipiEnum,
                             onSelected: (value) {
                               widget.onUpdated?.call(value);
                             },

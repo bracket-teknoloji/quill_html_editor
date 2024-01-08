@@ -110,7 +110,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     ).yetkiVarMi(!model.gelenMi),
                     Text("Senaryo: ${model.senaryo ?? ""}").yetkiVarMi(model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${model.dovizAdi ?? mainCurrency}"),
+                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(!model.dovizliMi),
+                    Text("Genel Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
                   ];
                   final eArsivList = [
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
@@ -126,7 +127,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     ).yetkiVarMi(!model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Gönderme Şekli: ${model.gondermeDurumu ?? ""}"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(!model.dovizliMi),
+                    Text("Genel Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
                   ];
                   final eIrsaliyeList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),

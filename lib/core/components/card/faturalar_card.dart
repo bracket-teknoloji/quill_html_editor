@@ -80,7 +80,10 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 iconWidget: Icons.edit_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
+                  final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
+                  if (result != null) {
+                    widget.onUpdated?.call(result);
+                  }
                 },
               ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.kapaliMi && !model.basariliMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
               BottomSheetModel(
