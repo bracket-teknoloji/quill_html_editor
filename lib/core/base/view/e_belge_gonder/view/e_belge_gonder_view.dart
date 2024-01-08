@@ -209,7 +209,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         readOnly: true,
                         isMust: true,
                         suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(model.getDizaynAdi ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(model.getDizaynAdi)),
                         onTap: () async => await getDizayn(),
                       ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
                     ),
@@ -298,7 +298,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             }
                           }
                         },
-                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white),
+                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
                         child: const Column(
                           children: [Icon(Icons.delete_outline_outlined), Text("Taslak Sil")],
                         ),
@@ -317,7 +317,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             });
                           }
                         },
-                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white),
+                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
                         child: Column(
                           children: [const Icon(Icons.preview_outlined), Text(loc(context).generalStrings.view)],
                         ),
@@ -333,7 +333,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             }
                           });
                         },
-                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white),
+                        style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
                         child: const Column(
                           children: [Icon(Icons.send_outlined), Text("Gönder")],
                         ),
