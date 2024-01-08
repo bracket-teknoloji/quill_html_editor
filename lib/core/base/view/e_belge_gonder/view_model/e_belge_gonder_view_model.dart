@@ -70,6 +70,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet(
       path: ApiUrls.getDizaynlar,
       bodyModel: DizaynModel(),
+      showLoading: true,
       queryParameters: {
         "ModulID": siparisEditModel.eArsivSerisindenMi ? 100 : 99,
         "ERPDizaynlari": true,

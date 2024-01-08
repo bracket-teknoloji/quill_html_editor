@@ -209,7 +209,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         readOnly: true,
                         isMust: true,
                         suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(model.dizaynNo.toStringIfNotNull ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(model.getDizaynAdi ?? "")),
                         onTap: () async => await getDizayn(),
                       ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
                     ),
@@ -305,8 +305,8 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ),
                       ElevatedButton(
                         onPressed: () async {
-                          final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model);
-                          if (result) {
+                          final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model.copyWith(taslak: "E"));
+                          if (result == true) {
                             dialogManager.showAreYouSureDialog(() async {
                               final result = await viewModel.sendEBelge();
                               if (result.success ?? false) {
@@ -351,10 +351,12 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     final result = await viewModel.getDizayn();
     if (result.length == 1 && (otomatikSec ?? false)) {
       _dizaynController.text = result.firstOrNull?.dizaynAdi ?? "";
+      viewModel.model.dizaynAdi = result.firstOrNull?.dizaynKodu;
       viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
     } else {
       if (result.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
         _dizaynController.text = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynKodu;
         viewModel.setDizaynNo(result.firstWhere((element) => element.varsayilanMi ?? false).id ?? 0);
         return;
       }
@@ -369,6 +371,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       );
       if (selectedDizaynModel is DizaynModel) {
         _dizaynController.text = selectedDizaynModel.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = selectedDizaynModel.dizaynKodu;
         viewModel.setDizaynNo(selectedDizaynModel.id ?? 0);
       }
     }
