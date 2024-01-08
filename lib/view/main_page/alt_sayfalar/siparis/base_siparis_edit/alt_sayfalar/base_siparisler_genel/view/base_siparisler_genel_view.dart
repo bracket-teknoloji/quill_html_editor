@@ -226,11 +226,6 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           suffixMore: true,
                           controller: plasiyerController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                          onClear: () {
-                            viewModel.setPlasiyer(null);
-                            model.plasiyerKodu = null;
-                            model.plasiyerAciklama = null;
-                          },
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                             if (result != null) {
@@ -516,7 +511,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       showLoading: true,
     );
     if (result.success == true) {
-      final List<BaseSiparisEditModel>? list = result.data.map((e)=> e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       BaseSiparisEditModel.instance.belgeNo = list?.firstOrNull?.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
@@ -532,7 +527,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
     plasiyerController.text = model.plasiyerAciklama ?? model.plasiyerKodu ?? "";
     tarihController.text = model.tarih.toDateString;
     teslimTarihController.text = model.teslimTarihi.toDateString;
-    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ?(model.depoTanimi ??  model.topluDepo.toStringIfNotNull) ?? "" : "";
+    topluDepoController.text = yetkiController.lokalDepoUygulamasiAcikMi ? (model.depoTanimi ?? model.topluDepo.toStringIfNotNull) ?? "" : "";
     projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
     odemeKoduController.text = model.odemeKodu ?? "";
     kosulController.text = model.kosulKodu ?? "";
