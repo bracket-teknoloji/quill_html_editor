@@ -487,8 +487,9 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                           lastDate: DateTime.now().add(const Duration(days: 365)),
                         );
                         if (date != null) {
-                          model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
+                          // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
                           viewModel.setVadeTarihi(date);
+                          model.vadeGunu = viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays;
                           vadeGunuController.text = model.vadeGunu.toString();
                         }
                       },
@@ -549,7 +550,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
       viewModel.model.vadeGunu = 0;
     }
     vadeGunuController = TextEditingController(
-      text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
+      text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toStringIfNotNull,
     );
   }
 
