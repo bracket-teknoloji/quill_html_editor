@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_kasa_transferi/view_model/banka_kasa_transferi_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 import "package:uuid/uuid.dart";
 
@@ -355,8 +356,9 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   }
 
   Future<void> getHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
-    if (result != null) {
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.bankaListesiRequestModel);
+    if (result is BankaListesiModel) {
       _hesapController.text = result.hesapAdi ?? "";
       _dovizTipiController.text = result.dovizAdi ?? "";
       viewModel.setAciklama("${result.hesapAdi ?? ""} .Kodu: ${result.hesapKodu ?? ""}");

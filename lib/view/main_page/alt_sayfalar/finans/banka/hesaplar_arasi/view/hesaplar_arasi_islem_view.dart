@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -395,8 +396,10 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   }
 
   Future<void> getCikisHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.cikisBankaListesiRequestModel, viewModel.model.hesapKodu);
-    if (result != null) {
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.cikisBankaListesiRequestModel, viewModel.model.hesapKodu);
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.cikisBankaListesiRequestModel);
+    if (result is BankaListesiModel) {
+      // if (result != null) {
       _cikisHesabiController.text = result.hesapAdi ?? "";
       viewModel.setCikisHesabi(result);
       viewModel.setDovizTipi(result.dovizTipi);
@@ -410,8 +413,9 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
       dialogManager.showErrorSnackBar("Çıkış hesabını seçiniz.");
       return;
     }
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.girisBankaListesiRequestModel, viewModel.model.hedefHesapKodu);
-    if (result != null) {
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.girisBankaListesiRequestModel, viewModel.model.hedefHesapKodu);
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.girisBankaListesiRequestModel);
+    if (result is BankaListesiModel) {
       _girisHesabiController.text = result.hesapAdi ?? "";
       viewModel.setGirisHesabi(result);
       if (!viewModel.model.dovizliMi) {

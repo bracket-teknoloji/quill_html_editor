@@ -165,14 +165,22 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   }
 
   Future<void> setOdemeHesabi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-      context,
-      BankaListesiRequestModel(
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+    //   context,
+    //   BankaListesiRequestModel(
+    //     arrHesapTipi: "[0]",
+    //     belgeTipi: viewModel.model.dekontIslemTuru,
+    //     menuKodu: "YONE_BHRE",
+    //   ),
+    //   viewModel.model.hesapKodu,
+    // );
+    final result = await Get.toNamed(
+      "/mainPage/bankaListesiOzel",
+      arguments: BankaListesiRequestModel(
         arrHesapTipi: "[0]",
         belgeTipi: viewModel.model.dekontIslemTuru,
         menuKodu: "YONE_BHRE",
       ),
-      viewModel.model.hesapKodu,
     );
     if (result is BankaListesiModel) {
       viewModel.setOdemeHesabi(result.hesapKodu);

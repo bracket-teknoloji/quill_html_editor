@@ -8,6 +8,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_muhtelif_islemler/view_model/banka_muhtelif_islemler_view_model.dart";
 import "package:uuid/uuid.dart";
 
@@ -347,8 +348,9 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
   }
 
   Future<void> getHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
-    if (result != null) {
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.bankaListesiRequestModel);
+    if (result is BankaListesiModel) {
       _hesapController.text = result.hesapAdi ?? "";
       _dovizTipiController.text = result.dovizAdi ?? "";
       viewModel.setHesapNo(result.hesapKodu);

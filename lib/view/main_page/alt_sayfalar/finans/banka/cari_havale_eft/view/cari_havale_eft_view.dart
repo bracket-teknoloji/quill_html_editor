@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -502,8 +503,8 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   }
 
   Future<void> getHesapListesi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, viewModel.bankaListesiRequestModel, viewModel.model.hesapKodu);
-    if (result != null) {
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.bankaListesiRequestModel);
+    if (result is BankaListesiModel) {
       _hesapController.text = result.hesapAdi ?? "";
       _dovizTipiController.text = result.dovizAdi ?? "";
       viewModel.setHesapNo(result);

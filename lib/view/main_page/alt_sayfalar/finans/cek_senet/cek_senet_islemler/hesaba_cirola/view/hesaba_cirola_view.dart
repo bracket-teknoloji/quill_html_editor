@@ -54,7 +54,7 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _islemTarihiController = TextEditingController(text: (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih.toDateString : DateTime.now().toDateString);
     _projeController = TextEditingController(text: model.projeKodu);
-    _plasiyerController = TextEditingController(text:model.plasiyerKodu ?? model.plasiyerKodu);
+    _plasiyerController = TextEditingController(text: model.plasiyerKodu ?? model.plasiyerKodu);
     super.initState();
   }
 
@@ -177,14 +177,18 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
   }
 
   Future<void> getTahsilHesabi() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-      context,
-      BankaListesiRequestModel(
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+    //   context,
+    //   ,
+    //   viewModel.model.verilenKodu,
+    // );
+    final result = await Get.toNamed(
+      "/mainPage/bankaListesiOzel",
+      arguments: BankaListesiRequestModel(
         arrHesapTipi: "[5]",
         belgeTipi: viewModel.model.pickerTahsilatTuru,
         menuKodu: "YONE_BHRE",
       ),
-      viewModel.model.verilenKodu,
     );
     if (result is BankaListesiModel) {
       _cariController.text = result.bankaAdi ?? "";

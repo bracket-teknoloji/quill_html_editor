@@ -18,6 +18,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -453,12 +454,13 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
       );
 
   Future<void> getBankaHesapKodu() async {
-    final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-      context,
-      BankaListesiRequestModel(belgeTipi: widget.cekSenetListesiEnum.belgeTipi, menuKodu: "YONE_BHRE"),
-      viewModel.model.verenKodu,
-    );
-    if (result != null) {
+    // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+    //   context,
+    //   BankaListesiRequestModel(belgeTipi: widget.cekSenetListesiEnum.belgeTipi, menuKodu: "YONE_BHRE"),
+    //   viewModel.model.verenKodu,
+    // );
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(belgeTipi: widget.cekSenetListesiEnum.belgeTipi, menuKodu: "YONE_BHRE"));
+    if (result is BankaListesiModel) {
       _bankaHesapKoduController.text = result.hesapKodu ?? "";
       viewModel.setBankaHesapKodu(result.hesapKodu);
     }

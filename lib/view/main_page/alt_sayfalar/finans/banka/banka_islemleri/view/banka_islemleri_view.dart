@@ -8,6 +8,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -214,12 +215,13 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             onClear: () => viewModel.setHesapKodu(null),
             valueWidget: Observer(builder: (_) => Text(viewModel.bankaIslemleriRequestModel.hesapKodu ?? "")),
             onTap: () async {
-              final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-                context,
-                BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"),
-                viewModel.bankaIslemleriRequestModel.hesapKodu,
-              );
-              if (result != null) {
+              // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+              //   context,
+              //   BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"),
+              //   viewModel.bankaIslemleriRequestModel.hesapKodu,
+              // );
+              final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"));
+              if (result is BankaListesiModel) {
                 hesapController.text = result.hesapAdi ?? "";
                 viewModel.setHesapKodu(result.hesapKodu ?? "");
               }

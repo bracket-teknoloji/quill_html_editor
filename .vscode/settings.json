@@ -12,5 +12,6 @@
     "minimap.background": "#00000000",
     "scrollbar.shadow": "#00000000"
   },
-  "cSpell.words": ["mobx"]
+  "cSpell.words": ["mobx"],
+  "docwriter.language": "Turkish"
 }

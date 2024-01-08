@@ -18,6 +18,7 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/view_model/banka_listesi_view_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -26,7 +27,9 @@ import "../../../../../../../core/components/badge/colorful_badge.dart";
 import "../../../../../../../core/components/button/elevated_buttons/bottom_appbar_button.dart";
 
 class BankaListesiView extends StatefulWidget {
-  const BankaListesiView({super.key});
+  final bool? isGetData;
+  final BankaListesiRequestModel? requestModel;
+  const BankaListesiView({super.key, this.isGetData, this.requestModel});
 
   @override
   State<BankaListesiView> createState() => _BankaListesiViewState();
@@ -41,7 +44,13 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
   void initState() {
     _searchController = TextEditingController();
     _hesapTipiController = TextEditingController();
+    if (widget.requestModel != null) {
+      viewModel.model = widget.requestModel!;
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) async => await viewModel.getData());
+    if (widget.isGetData == true) {
+      viewModel.setSearchBar();
+    }
     super.initState();
   }
 
@@ -226,7 +235,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                             elevation: 0,
                             borderOnForeground: true,
                             child: ListTile(
-                              onTap: () async => await dialogManager.showBankaGridViewDialog(item),
+                              onTap: () async => widget.isGetData == true ? Get.back(result: item) : await dialogManager.showBankaGridViewDialog(item),
                               leading: CircleAvatar(
                                 foregroundColor: Colors.white,
                                 backgroundColor: UIHelper.getColorWithValue(item.bakiye),

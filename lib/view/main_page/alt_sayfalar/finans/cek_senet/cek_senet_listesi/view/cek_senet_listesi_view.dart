@@ -6,6 +6,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -244,17 +245,26 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcSenetleri)) {
                             arrHesapTipi.add(BankaConstants.borcSenetleri);
                           }
-                          final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-                            context,
-                            BankaListesiRequestModel(
+                          // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+                          //   context,
+                          //   BankaListesiRequestModel(
+                          //     arrHesapTipi: jsonEncode(arrHesapTipi),
+                          //     ekranTipi: "R",
+                          //     belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
+                          //     menuKodu: "YONE_BHRE",
+                          //   ),
+                          //   viewModel.cekSenetListesiRequestModel.verilenKodu,
+                          // );
+                          final result = await Get.toNamed(
+                            "/mainPage/bankaListesiOzel",
+                            arguments: BankaListesiRequestModel(
                               arrHesapTipi: jsonEncode(arrHesapTipi),
                               ekranTipi: "R",
                               belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
                               menuKodu: "YONE_BHRE",
                             ),
-                            viewModel.cekSenetListesiRequestModel.verilenKodu,
                           );
-                          if (result != null) {
+                          if (result is BankaListesiModel) {
                             viewModel.setBanka(result.hesapKodu);
                             _bankaController.text = result.hesapAdi ?? "";
                           }

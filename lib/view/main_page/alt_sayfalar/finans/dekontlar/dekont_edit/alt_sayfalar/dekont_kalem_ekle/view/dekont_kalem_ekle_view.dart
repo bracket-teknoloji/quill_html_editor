@@ -13,6 +13,7 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/dekont_kalem_ekle/view_model/dekont_kalem_ekle_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
@@ -331,8 +332,9 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         // }
       }
     } else if (viewModel.model.bankaMi) {
-      final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE"), viewModel.model.hesapKodu);
-      if (result != null) {
+      // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE"), viewModel.model.hesapKodu);
+      final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE"));
+      if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
         hesapKodu = result.hesapKodu ?? "";
       }
