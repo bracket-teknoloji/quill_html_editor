@@ -89,7 +89,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
       );
 
   Future<void> setTarih() async {
-    final result = await dialogManager.showDateTimePicker();
+    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.dekontIslemlerRequestModel.tarih);
     if (result != null) {
       _tarihController.text = result.toDateString;
       viewModel.setTarih(result);

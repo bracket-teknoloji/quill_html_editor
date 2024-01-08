@@ -271,7 +271,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
       );
 
   Future<void> getTarih() async {
-    final result = await dialogManager.showDateTimePicker();
+    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
     if (result != null) {
       viewModel.setGirisTarihi(result);
       _girisTarihiController.text = result.toDateString;

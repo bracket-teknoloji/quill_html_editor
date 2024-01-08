@@ -145,7 +145,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     readOnly: true,
                     isMust: true,
                     onTap: () async {
-                      final DateTime? result = await dialogManager.showDateTimePicker();
+                      final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                       if (result != null) {
                         _tarihController.text = result.toDateString;
                         viewModel.setTarih(result);

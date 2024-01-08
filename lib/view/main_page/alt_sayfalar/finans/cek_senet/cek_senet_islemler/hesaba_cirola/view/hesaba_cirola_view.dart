@@ -153,7 +153,7 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
       );
 
   Future<void> setTarih() async {
-    final result = await dialogManager.showDateTimePicker();
+    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
     if (result is DateTime) {
       _islemTarihiController.text = result.toDateString;
       viewModel.setIslemTarihi(result);

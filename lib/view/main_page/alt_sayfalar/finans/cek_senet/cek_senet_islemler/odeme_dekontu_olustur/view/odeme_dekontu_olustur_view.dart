@@ -149,7 +149,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
       );
 
   Future<void> setTarih() async {
-    final result = await dialogManager.showDateTimePicker();
+    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
     if (result is DateTime) {
       viewModel.setTarih(result);
       _kayitTarihiController.text = result.toDateString;

@@ -423,7 +423,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         iconWidget: Icons.delete_outline_outlined,
         onTap: () async {
           Get.back();
-          final DateTime? result = await dialogManager.showDateTimePicker();
+          final DateTime? result = await dialogManager.showDateTimePicker(initialDate: model.iptalTarihi);
           if (result == null) {
             return;
           } else {

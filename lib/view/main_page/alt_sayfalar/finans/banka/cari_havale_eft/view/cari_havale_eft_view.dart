@@ -171,7 +171,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           readOnly: true,
                           isDateTime: true,
                           onTap: () async {
-                            final result = await dialogManager.showDateTimePicker();
+                            final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                             if (result != null) {
                               viewModel.setTarih(result);
                               _tarihController.text = viewModel.model.tarih?.toDateStringIfNull ?? "";

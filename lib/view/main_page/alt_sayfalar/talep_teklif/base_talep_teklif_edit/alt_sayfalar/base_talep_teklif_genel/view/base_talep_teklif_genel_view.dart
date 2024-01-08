@@ -273,7 +273,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         controller: _tarihController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
                         onTap: () async {
-                          final DateTime? result = await dialogManager.showDateTimePicker();
+                          final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                           if (result != null) {
                             _tarihController.text = result.toDateString;
                             viewModel.setTarih(result);

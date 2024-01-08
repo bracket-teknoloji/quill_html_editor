@@ -194,7 +194,7 @@ class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
       );
 
   Future<void> setTarih() async {
-    final result = await dialogManager.showDateTimePicker();
+    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
     if (result != null) {
       viewModel.setTarih(result);
       _tarihController.text = result.toDateString;

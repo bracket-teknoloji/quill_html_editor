@@ -255,7 +255,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           readOnly: true,
                           isDateTime: true,
                           onTap: () async {
-                            final result = await dialogManager.showDateTimePicker();
+                            final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                             if (result != null) {
                               model.tarih = result;
                               tarihController.text = result.toDateString;
@@ -272,7 +272,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                           isDateTime: true,
                           readOnly: true,
                           onTap: () async {
-                            final result = await dialogManager.showDateTimePicker();
+                            final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.teslimTarihi);
                             if (result != null) {
                               model.teslimTarihi = result;
                               teslimTarihController.text = result.toDateString;

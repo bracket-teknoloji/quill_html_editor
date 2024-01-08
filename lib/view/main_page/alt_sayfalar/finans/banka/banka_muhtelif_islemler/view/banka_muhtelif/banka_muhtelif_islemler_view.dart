@@ -122,7 +122,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                       readOnly: true,
                       isMust: true,
                       onTap: () async {
-                        final result = await dialogManager.showDateTimePicker();
+                        final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                         if (result is DateTime) {
                           viewModel.setTarih(result);
                           _tarihController.text = viewModel.model.tarih?.toDateString ?? "";

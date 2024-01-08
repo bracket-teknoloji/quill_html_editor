@@ -465,7 +465,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
   }
 
   Future<void> getTarih() async {
-    final DateTime? result = await dialogManager.showDateTimePicker();
+    final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
     if (result != null) {
       _vadeTarihiController.text = result.toDateString;
       viewModel.setVadeTarihi(result);

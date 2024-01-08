@@ -125,7 +125,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                   isDateTime: true,
                   // suffix: const Icon(Icons.calendar_today_outlined),
                   onTap: () async {
-                    final DateTime? result = await dialogManager.showDateTimePicker();
+                    final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.pdfModel.dicParams?.refTarih?.toDateTimeDDMMYYYY());
                     if (result != null) {
                       referansTarihController.text = result.toDateString;
                       viewModel.pdfModel.dicParams?.refTarih = result.toDateString;
