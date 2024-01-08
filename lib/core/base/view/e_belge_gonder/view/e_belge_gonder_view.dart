@@ -269,11 +269,11 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       dialogManager.showAreYouSureDialog(() async {
                         final result = await viewModel.sendTaslak();
                         if (result.success ?? false) {
-                          dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
                           final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                           if (siparisModel != null) {
                             viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
                             viewModel.setSiparisModel(siparisModel);
+                            dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
                           }
                         }
                       });
@@ -353,7 +353,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       _dizaynController.text = result.firstOrNull?.dizaynAdi ?? "";
       viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
     } else {
-      if (result.any((element) => element.varsayilanMi ?? false)) {
+      if (result.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
         _dizaynController.text = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynAdi ?? "";
         viewModel.setDizaynNo(result.firstWhere((element) => element.varsayilanMi ?? false).id ?? 0);
         return;
