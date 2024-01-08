@@ -69,6 +69,12 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
+        islemlerList.add(cariMusteriSiparisi);
+        islemlerList.add(cariSaticiSiparisi);
+        islemlerList.add(cariAlisIrsaliyesi);
+        islemlerList.add(cariAlisFaturasi);
+        islemlerList.add(cariSatisIrsaliyesi);
+        islemlerList.add(cariSatisFaturasi);
         islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
         islemlerList.add(nakitTahsilat(model));
         islemlerList.add(nakitOdeme(model));
@@ -197,7 +203,7 @@ class IslemlerMenuItemConstants<T> {
           arguments: BaseEditModel(
             model: model,
             baseEditEnum: BaseEditEnum.kopyala,
-            editTipiEnum: siparisTipi,
+            editTipiEnum: siparisTipi ?? (model is BaseSiparisEditModel ? (model as BaseSiparisEditModel).getEditTipiEnum : null),
           ),
         ),
       );
@@ -615,11 +621,11 @@ class IslemlerMenuItemConstants<T> {
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));
   GridItemModel? krediKartiTahsilati(dynamic value) =>
-      GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value));
+      GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value));
   GridItemModel? nakitTahsilat(dynamic value) =>
-      GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value));
+      GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value));
   GridItemModel? nakitOdeme(dynamic value) =>
-      GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value));
+      GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value));
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif\nTahsilat", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/muhtelifTahsilat"));
   GridItemModel? get muhtelifOdeme => GridItemModel.islemler(title: "Muhtelif\nÖdeme", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/muhtelifOdeme"));
   GridItemModel? get kasaHareketleri =>
@@ -681,6 +687,78 @@ class IslemlerMenuItemConstants<T> {
             if (cariModel != null) {
               Get.toNamed("mainPage/cariEdit", arguments: BaseEditModel(model: cariModel, baseEditEnum: BaseEditEnum.duzenle));
             }
+          }
+        },
+      );
+
+  GridItemModel get cariMusteriSiparisi => GridItemModel.islemler(
+        title: "Müşteri Siparişi",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.musteri));
+          }
+        },
+      );
+
+  GridItemModel get cariSaticiSiparisi => GridItemModel.islemler(
+        title: "Satıcı Siparişi",
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satici));
+          }
+        },
+      );
+
+  GridItemModel get cariAlisIrsaliyesi => GridItemModel.islemler(
+        title: "Alış İrsaliyesi",
+        icon: "pallet",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.alisIrsaliye));
+          }
+        },
+      );
+
+  GridItemModel get cariSatisIrsaliyesi => GridItemModel.islemler(
+        title: "Satış İrsaliyesi",
+        icon: "forklift",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisIrsaliye));
+          }
+        },
+      );
+
+  GridItemModel get cariAlisFaturasi => GridItemModel.islemler(
+        title: "Alış Faturası",
+        icon: "pallet",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.alisFatura));
+          }
+        },
+      );
+
+  GridItemModel get cariSatisFaturasi => GridItemModel.islemler(
+        title: "Satış Faturası",
+        icon: "forklift",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisFatura));
           }
         },
       );
