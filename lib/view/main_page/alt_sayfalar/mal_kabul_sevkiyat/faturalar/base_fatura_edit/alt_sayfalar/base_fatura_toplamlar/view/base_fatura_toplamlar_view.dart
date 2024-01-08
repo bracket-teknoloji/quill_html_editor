@@ -411,7 +411,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       );
                       if (result is MapEntry) {
                         viewModel.setSenaryo(result.value);
-                        eFaturaSenaryoController.text = result.key;
+                        eFaturaSenaryoController.text = model.eFaturaTipAdi ?? "";
                       }
                     },
                   ),
@@ -462,7 +462,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     vadeGunuController = TextEditingController(
       text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
     );
-    eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
+    eFaturaSenaryoController = TextEditingController(text: model.eFaturaTipAdi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
     if (widget.model.baseEditEnum != BaseEditEnum.ekle && viewModel.model.efatOzelkod == null && widget.model.editTipiEnum?.irsaliyeMi != true) {
       viewModel.setEfatOzelkod(model.kalemList?.firstOrNull?.efatOzelkod ?? 0);

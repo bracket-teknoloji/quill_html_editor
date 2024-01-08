@@ -484,7 +484,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
     vadeGunuController = TextEditingController(
       text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
     );
-    eFaturaSenaryoController = TextEditingController(text: model.efaturaTipi);
+    eFaturaSenaryoController = TextEditingController(text: model.eFaturaTipAdi);
     istisnaKoduController = TextEditingController();
   }
 
