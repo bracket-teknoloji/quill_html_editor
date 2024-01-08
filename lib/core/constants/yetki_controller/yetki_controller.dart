@@ -37,6 +37,12 @@ final class YetkiController {
   bool get plasiyerUygulamasiAcikMi => _isTrue(_paramModel?.plasiyerUygulamasi, skipAdmin: true);
   bool get lokalDepoUygulamasiAcikMi => _isTrue(_paramModel?.lokalDepoUygulamasiAcik, skipAdmin: true);
 
+  bool get alisEkAlan1AktifMi => _isTrue(_paramModel?.alisEkAlan1Aktif, skipAdmin: true);
+  bool get alisEkAlan2AktifMi => _isTrue(_paramModel?.alisSatirdaEkAlan2Aktif, skipAdmin: true);
+  bool get satisEkAlan1AktifMi => _isTrue(_paramModel?.satisEkAlan1Aktif, skipAdmin: true);
+  bool get satisEkAlan2AktifMi => _isTrue(_paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
+
+
   //! TEMSİLCİ
   bool get temsilciProfilKdvDahilMi => _isTrue(_yetkiModel?.temsilciProfilKdvDahil, skipAdmin: true);
   bool get temsilciProfilSatisPerformansiniGizle => _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle, skipAdmin: true);
