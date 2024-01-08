@@ -651,6 +651,15 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get teklifIrsaliyeDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi) ? siparislestiMi : false;
 
+  String? get eFaturaTipAdi {
+    if (efaturaTipi == "TIC") {
+      return "Ticari";
+    } else if (efaturaTipi == "TEM") {
+      return "Temel";
+    }
+    return null;
+  }
+
   String get titleName {
     if (eFaturaSerisindenMi) {
       return "E-Fatura";
