@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -278,71 +279,61 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //     ],
                 //   ),
                 // ),
-                CustomTextField(
-                  labelText: "Muh. Kodu",
-                  suffixMore: true,
-                  readOnly: true,
-                  isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
-                  onClear: () => viewModel.setMuhasebeKodu(null),
-                  controller: muhKoduController,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
-                    if (result != null) {
-                      if (editTipi?.satisMi ?? false) {
-                        viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
-                        muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
-                      } else {
-                        viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
-                        muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
-                      }
-                    }
-                  },
-                ),
+
+                CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
+                    .yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
+                CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
+                    .yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Ek Alan 1",
-                        controllerText: widget.kalemModel?.ekalan1,
-                        onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0,
+                        labelText: "Muh. Kodu",
+                        suffixMore: true,
+                        readOnly: true,
+                        isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
+                        onClear: () => viewModel.setMuhasebeKodu(null),
+                        controller: muhKoduController,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                          if (result != null) {
+                            if (editTipi?.satisMi ?? false) {
+                              viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
+                              muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
+                            } else {
+                              viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
+                              muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                            }
+                          }
+                        },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
+                    ),
                     Expanded(
                       child: CustomTextField(
-                        labelText: "Ek Alan 2",
-                        controllerText: widget.kalemModel?.ekalan2,
-                        onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0,
+                        labelText: "Yapılandırma Kodu",
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
+                        ),
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: yapKodController,
+                        onTap: () async {
+                          final result = await Get.toNamed(
+                            "/mainPage/yapilandirmaRehberi",
+                            arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
+                              ..stokKodu = viewModel.kalemModel.stokKodu,
+                          );
+                          if (result is YapilandirmaRehberiModel) {
+                            yapKodController.text = result.yapacik ?? "";
+                            viewModel.setYapKod(result.yapkod);
+                          }
+                        },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
-                  ],
+                    ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
+                  ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
                 ),
-                // CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
-                //     .yetkiVarMi(yetkiController.siparisEkAlan1AktifMi),
-                // CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
-                //     .yetkiVarMi(yetkiController.siparisSatirdaEkAlan2AktifMi),
-                CustomTextField(
-                  labelText: "Yapılandırma Kodu",
-                  valueWidget: Observer(
-                    builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
-                  ),
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: yapKodController,
-                  onTap: () async {
-                    final result = await Get.toNamed(
-                      "/mainPage/yapilandirmaRehberi",
-                      arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
-                        ..stokKodu = viewModel.kalemModel.stokKodu,
-                    );
-                    if (result is YapilandirmaRehberiModel) {
-                      yapKodController.text = result.yapacik ?? "";
-                      viewModel.setYapKod(result.yapkod);
-                    }
-                  },
-                ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -822,7 +813,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
         (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = viewModel.kalemModel.kosulKodu ?? model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
-    dovizTipiController.text = viewModel.kalemModel.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? mainCurrency;
+    dovizTipiController.text = viewModel.kalemModel.dovizliMi ? (viewModel.kalemModel.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? "") : mainCurrency;
     dovizFiyatiController.text = (viewModel.kalemModel.dovizliFiyat ?? viewModel.model?.dovAlisFiat).commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     if (yetkiController.projeUygulamasiAcikMi) {
       projeController.text = BaseSiparisEditModel.instance.projeAciklama ?? "";
@@ -860,6 +851,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       await getDovizData();
     } else {
       dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+      viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? mainCurrency;
       viewModel.kalemModel.dovizliFiyat = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);
       dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     }
