@@ -212,6 +212,8 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   suffixMore: true,
                   controller: iskontoTipi1Controller,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk1Tipi.toStringIfNotNull ?? "")),
+
+                  onClear: () => viewModel.setIskTipi1(null),
                   onTap: () async {
                     final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk1Tipi);
                     if (result != null) {
@@ -252,6 +254,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   suffixMore: true,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi.toStringIfNotNull ?? "")),
                   controller: iskontoTipi2Controller,
+                  onClear: () => viewModel.setIskTipi2(null),
                   onTap: () async {
                     final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk2Tipi);
                     if (result != null) {
@@ -292,6 +295,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   readOnly: true,
                   controller: iskontoTipi3Controller,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk3Tipi.toStringIfNotNull ?? "")),
+                  onClear: () => viewModel.setIskTipi3(null),
                   onTap: () async {
                     final ListIskTip? result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk3Tipi);
                     if (result != null) {
@@ -411,7 +415,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       );
                       if (result is MapEntry) {
                         viewModel.setSenaryo(result.value);
-                        eFaturaSenaryoController.text = model.eFaturaTipAdi ?? "";
+                        eFaturaSenaryoController.text = result.key;
                       }
                     },
                   ),
@@ -452,15 +456,11 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       iskontoTipi2Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
       iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
-    if (model.vadeGunu == null) {
+    if (model.vadeTarihi?.isBefore(DateTime.now()) ?? false) {
       viewModel.model.vadeGunu = 0;
     }
-    if (model.vadeTarihi == null) {
-      viewModel.setVadeTarihi(DateTime.now().add(Duration(days: model.vadeGunu ?? 0)));
-    }
-
     vadeGunuController = TextEditingController(
-      text: model.vadeGunu.toStringIfNotNull ?? model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
+      text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi?.difference(DateTime.now()).inDays.toStringIfNotNull,
     );
     eFaturaSenaryoController = TextEditingController(text: model.eFaturaTipAdi);
     istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
