@@ -107,6 +107,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           } else if (widget.model.baseEditEnum == BaseEditEnum.revize) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.yeniKayit = true;
+            BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.teklifRevizeIslemi = true;
           }
         }

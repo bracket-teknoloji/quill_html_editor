@@ -146,7 +146,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
-              title: widget.appBarTitle ?? "Sipariş",
+              title: widget.appBarTitle ?? widget.model.editTipiEnum?.getName ?? "Sipariş",
               subtitle: widget.model.getSubTitle ?? widget.model.model?.belgeNo,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
