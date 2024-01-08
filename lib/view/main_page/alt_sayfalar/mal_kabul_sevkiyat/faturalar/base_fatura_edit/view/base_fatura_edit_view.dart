@@ -164,6 +164,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
+        _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         final result = await getSiparisBaglantisi();
         if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";

@@ -111,6 +111,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+        BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
+        BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         BaseSiparisEditModel.instance.isNew = true;
         final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
         if (result is CariListesiModel) {
@@ -243,7 +245,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       dialogManager.showAreYouSureDialog(() async {
                         if (await postData()) {
                           await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          Get.back();
+                          Get.back(result: true);
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
