@@ -192,7 +192,14 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",
         iconData: Icons.copy_outlined,
-        onTap: () async => Get.toNamed(islemtipi.route, arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.kopyala)),
+        onTap: () async => await Get.toNamed(
+          islemtipi.route,
+          arguments: BaseEditModel(
+            model: model,
+            baseEditEnum: BaseEditEnum.kopyala,
+            editTipiEnum: siparisTipi,
+          ),
+        ),
       );
   //* Siparis
   GridItemModel? get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
