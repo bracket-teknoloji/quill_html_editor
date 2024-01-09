@@ -78,7 +78,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   void initState() {
     stokKoduController = TextEditingController(text: viewModel.stokListesiModel.stokKodu);
     stokAdiController = TextEditingController(text: viewModel.stokListesiModel.stokAdi);
-    depoController = TextEditingController(text: model?.stokList?.firstOrNull?.depoKodu.toStringIfNotNull ?? viewModel.stokListesiModel.depoKodu.toStringIfNotNull);
+    depoController = TextEditingController(
+      text:
+          CacheManager.getAnaVeri?.paramModel?.depoList?.firstWhere((element) => element.depoKodu == (model?.stokList?.firstOrNull?.depoKodu ?? viewModel.stokListesiModel.depoKodu)).depoTanimi ?? "",
+    );
     muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.muhdetayAdi ?? viewModel.stokListesiModel.muhdetayAdi);
     olcuBirimi1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi ?? viewModel.stokListesiModel.olcuBirimi);
     olcuBirimi2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2 ?? viewModel.stokListesiModel.olcuBirimi2);
