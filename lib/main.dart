@@ -338,7 +338,7 @@ class PickerApp extends StatelessWidget {
                 ),
               ),
               GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
-              GetPage(name: "/stokFiyatGor", page: FiyatGorView.new),
+              GetPage(name: "/stokFiyatGor", page: () => FiyatGorView(model: Get.arguments)),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
               GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
 
