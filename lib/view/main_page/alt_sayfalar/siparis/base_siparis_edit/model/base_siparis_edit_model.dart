@@ -920,6 +920,16 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         resmiBelgeNo: model.resmiBelgeNo,
         tag: "FaturaModel",
       );
+
+  factory BaseSiparisEditModel.fromCariListesiModel(CariListesiModel model) => BaseSiparisEditModel(
+        cariKodu: model.cariKodu,
+        cariAdi: model.cariAdi,
+        dovizAdi: model.dovizAdi,
+        cariDovizli: model.dovizli,
+        plasiyerAciklama: model.plasiyerAciklama,
+        plasiyerKodu: model.plasiyerKodu,
+      
+  );
 }
 
 @CopyWith()
