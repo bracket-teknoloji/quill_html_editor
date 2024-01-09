@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:hive_flutter/hive_flutter.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
@@ -53,14 +54,22 @@ class FiyatList {
 }
 
 @JsonSerializable(explicitToJson: true)
+@HiveType(typeId: 196)
 class SeriList {
   SeriList();
+  @HiveField(0)
   String? stokKodu;
+  @HiveField(1)
   int? depoKodu;
+  @HiveField(2)
   double? miktar;
+  @HiveField(3)
   String? seriNo;
+  @HiveField(4)
   int? inckeyno;
+  @HiveField(5)
   String? depoTanimi;
+  
   int? hareketId;
 
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);

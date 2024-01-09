@@ -3,6 +3,58 @@
 part of 'stok_detay_model.dart';
 
 // **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class SeriListAdapter extends TypeAdapter<SeriList> {
+  @override
+  final int typeId = 196;
+
+  @override
+  SeriList read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return SeriList()
+      ..stokKodu = fields[0] as String?
+      ..depoKodu = fields[1] as int?
+      ..miktar = fields[2] as double?
+      ..seriNo = fields[3] as String?
+      ..inckeyno = fields[4] as int?
+      ..depoTanimi = fields[5] as String?;
+  }
+
+  @override
+  void write(BinaryWriter writer, SeriList obj) {
+    writer
+      ..writeByte(6)
+      ..writeByte(0)
+      ..write(obj.stokKodu)
+      ..writeByte(1)
+      ..write(obj.depoKodu)
+      ..writeByte(2)
+      ..write(obj.miktar)
+      ..writeByte(3)
+      ..write(obj.seriNo)
+      ..writeByte(4)
+      ..write(obj.inckeyno)
+      ..writeByte(5)
+      ..write(obj.depoTanimi);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SeriListAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
