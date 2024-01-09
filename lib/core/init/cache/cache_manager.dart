@@ -3,6 +3,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -64,6 +65,7 @@ class CacheManager {
     Hive.registerAdapter(EditTipiEnumAdapter());
     Hive.registerAdapter(ListSiparisEditModelAdapter());
     Hive.registerAdapter(StokListAdapter());
+    Hive.registerAdapter(SeriListAdapter());
     initHiveBoxes();
   }
 
