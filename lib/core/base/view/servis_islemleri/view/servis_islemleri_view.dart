@@ -16,7 +16,6 @@ class ServisIslemleriView extends StatefulWidget {
 class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   ServisIslemleriViewModel viewModel = ServisIslemleriViewModel();
 
-
   LocaleBase get getLoc => loc(context);
   
   @override
