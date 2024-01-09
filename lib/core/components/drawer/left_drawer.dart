@@ -87,36 +87,38 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                     key: const Key("Favoriler"),
                     itemBuilder: (context, index) {
                       final value = list[index];
-                      return ListTile(
+                      return Card(
                         key: ValueKey(index),
-                        enabled: liste.contains(value),
-                        title: Text(
-                          value.title.toString(),
+                        child: ListTile(
+                          enabled: liste.contains(value),
+                          title: Text(
+                            value.title.toString(),
+                          ),
+                          leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                          trailing: isEditing
+                              ? IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      list.removeAt(index);
+                                      CacheManager.setFavorilerList(list.map((e) => e).toList());
+                                    });
+                                  },
+                                  icon: const Icon(Icons.delete_outline),
+                                )
+                              : const Icon(Icons.drag_handle).paddingAll(UIHelper.lowSize),
+                          onTap: () {
+                            Get.back();
+                            if (value.arguments != null) {
+                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                            } else {
+                              Get.toNamed(value.onTap.toString());
+                            }
+                          },
                         ),
-                        leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing: isEditing
-                            ? IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    list.removeAt(index);
-                                    CacheManager.setFavorilerList(list.map((e) => e).toList());
-                                  });
-                                },
-                                icon: const Icon(Icons.delete_outline),
-                              )
-                            : const Icon(Icons.drag_handle),
-                        onTap: () {
-                          Get.back();
-                          if (value.arguments != null) {
-                            Get.toNamed(value.onTap.toString(), arguments: value.arguments);
-                          } else {
-                            Get.toNamed(value.onTap.toString());
-                          }
-                        },
                       );
                     },
                     itemCount: list.length,
-                  ),
+                  ).paddingAll(UIHelper.lowSize),
                 ),
             ],
           ),
