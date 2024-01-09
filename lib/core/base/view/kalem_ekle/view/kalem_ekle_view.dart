@@ -215,10 +215,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               Text.rich(
                                 TextSpan(
                                   children: [
-                                    const TextSpan(text: "KDV Tutarı: "),
+                                    const TextSpan(text: "Ara Toplam: "),
                                     TextSpan(
                                       text:
-                                          "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizKdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                          "${viewModel.kalemModel.getAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getKdvsizDovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                       style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -227,10 +227,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               Text.rich(
                                 TextSpan(
                                   children: [
-                                    const TextSpan(text: "Ara Toplam: "),
+                                    const TextSpan(text: "KDV Tutarı: "),
                                     TextSpan(
                                       text:
-                                          "${viewModel.kalemModel.getAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getKdvsizDovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
+                                          "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizKdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi})' : ""}",
                                       style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
                                   ],
