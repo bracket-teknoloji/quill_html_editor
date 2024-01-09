@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -199,6 +200,17 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
+      if (BaseSiparisEditModel.instance.dovizliMi &&
+          BaseSiparisEditModel.instance.yeniKayit == true &&
+          (widget.model.model?.tarih as DateTime?).toDateString != DateTime.now().toDateString &&
+          BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+        dialogManager.showAreYouSureDialog(
+          () async {
+            await dovizGuncelle();
+          },
+          title: "Kalemlerdeki Fiyatlar, ${DateTime.now().toDateString} tarihli döviz kurlarına göre güncellensin mi?",
+        );
+      }
     });
     super.initState();
   }
@@ -281,7 +293,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             Get.toNamed("/dovizKurlari");
                           },
                         ),
-                        BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
+                        BottomSheetModel(
+                          title: "Döviz Kurlarını Güncelle",
+                          iconWidget: Icons.attach_money_outlined,
+                          onTap: () async {
+                            Get.back();
+                            await dovizGuncelle();
+                          },
+                        ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                         BottomSheetModel(
                           title: "Cari'ye Yapılan Son Satışlar",
                           iconWidget: Icons.info_outline_rounded,
@@ -372,6 +391,26 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           return result;
         },
       );
+
+  Future<void> dovizGuncelle() async {
+    final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
+    if (result is DovizKurlariModel) {
+      BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
+        if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+          e.dovizKuru = result.dovSatis;
+          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
+        } else {
+          e.dovizKuru = result.dovAlis;
+          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
+        }
+        return e;
+      }).toList();
+      viewModel.changeUpdateKalemler();
+      dialogManager.showSuccesDialog(
+        "${BaseSiparisEditModel.instance.dovizAdi} döviz kuru ${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? result.dovSatis : result.dovAlis} olarak güncellendi.",
+      );
+    }
+  }
 
   ListTile topluIskontoListTile(KalemModel? model, List<double?>? iskonto1, int index, TextEditingController controller) => ListTile(
         title: Row(
