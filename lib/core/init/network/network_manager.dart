@@ -12,6 +12,7 @@ import "package:get/get.dart" hide FormData, Response;
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
@@ -486,6 +487,19 @@ class NetworkManager {
       data: model.toJson(),
     );
     if (result.success ?? false) {
+      return result.data.first;
+    }
+    return null;
+  }
+
+  Future<DovizKurlariModel?> getDovizKurlari(int? dovizKodu) async {
+    final result = await dioGet<DovizKurlariModel>(
+      path: ApiUrls.getDovizKurlari,
+      bodyModel: DovizKurlariModel(),
+      showLoading: true,
+      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": DateTime.now().toDateString},
+    );
+    if (result.data is List){
       return result.data.first;
     }
     return null;
