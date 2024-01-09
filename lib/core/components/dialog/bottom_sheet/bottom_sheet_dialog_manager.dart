@@ -79,7 +79,6 @@ class BottomSheetDialogManager {
                 splashColor: Colors.transparent,
               ).paddingSymmetric(vertical: UIHelper.midSize),
               const Divider(
-                thickness: 2,
                 endIndent: 10,
                 indent: 10,
               ),
