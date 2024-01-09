@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -306,7 +307,27 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                   Get.toNamed("/dovizKurlari");
                 },
               ),
-              BottomSheetModel(title: "Döviz Kurlarını Güncelle", iconWidget: Icons.attach_money_outlined).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
+              BottomSheetModel(
+                title: "Döviz Kurlarını Güncelle",
+                iconWidget: Icons.attach_money_outlined,
+                onTap: () async {
+                  Get.back();
+                  final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
+                  if (result is DovizKurlariModel) {
+                    BaseSiparisEditModel.instance.kalemList?.forEach((element) {
+                      if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+                        element.dovizKuru = result.dovSatis;
+                      } else {
+                        element.dovizKuru = result.dovAlis;
+                      }
+                    });
+                    viewModel.changeUpdateKalemler();
+                    dialogManager.showSuccesDialog(
+                      "${BaseSiparisEditModel.instance.dovizAdi} döviz kuru ${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? result.dovSatis : result.dovAlis} olarak güncellendi.",
+                    );
+                  }
+                },
+              ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
               // BottomSheetModel(
               //   title: "Cari'ye Yapılan Son Satışlar",
               //   iconWidget: Icons.info_outline_rounded,
