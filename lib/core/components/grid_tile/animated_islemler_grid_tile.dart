@@ -25,39 +25,45 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
 
 class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> {
   @override
-  Widget build(BuildContext context) => InkWell(
-        borderRadius: UIHelper.lowBorderRadius,
-        splashFactory: InkRipple.splashFactory,
-        splashColor: theme.primaryColor,
-        enableFeedback: widget.onTap != null,
-        onTap: widget.onTap,
-        child: GridTile(
-          footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              if (widget.iconWidget == null)
-                IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
-              else
-                IconTheme(
-                  data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
-                  child: Icon(
-                    widget.iconWidget,
-                    size: 20,
-                    grade: 0.1,
-                  ),
-                ).marginOnly(bottom: UIHelper.lowSize),
-              Text(
-                widget.title.toString(),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface, fontSize: 10),
-              ),
-              // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
-            ],
-          ).marginOnly(top: UIHelper.highSize, left: UIHelper.lowSize, right: UIHelper.lowSize),
+  Widget build(BuildContext context) => Container(
+        decoration: BoxDecoration(
+          borderRadius: UIHelper.lowBorderRadius,
+          border: Border.all(color: theme.colorScheme.onSurface.withOpacity(0.1)),
         ),
-      );
+        child: InkWell(
+          borderRadius: UIHelper.lowBorderRadius,
+          splashFactory: InkRipple.splashFactory,
+          splashColor: theme.primaryColor,
+          enableFeedback: widget.onTap != null,
+          onTap: widget.onTap,
+          child: GridTile(
+            footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                if (widget.iconWidget == null)
+                  IconHelper.middleMenuIcon(widget.icon ?? "", color: UIHelper.primaryColor)
+                else
+                  IconTheme(
+                    data: IconThemeData(weight: 0.1, size: 20, color: widget.color ?? UIHelper.primaryColor),
+                    child: Icon(
+                      widget.iconWidget,
+                      size: 20,
+                      grade: 0.1,
+                    ),
+                  ).marginOnly(bottom: UIHelper.lowSize),
+                Text(
+                  widget.title.toString(),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface, fontSize: 10),
+                ),
+                // Flexible(child: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
+              ],
+            ).marginOnly(top: UIHelper.highSize, left: UIHelper.lowSize, right: UIHelper.lowSize),
+          ),
+        ),
+      ).paddingAll(UIHelper.lowSize);
 }
