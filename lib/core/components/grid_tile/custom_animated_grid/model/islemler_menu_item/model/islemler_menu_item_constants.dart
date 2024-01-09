@@ -69,6 +69,8 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
+        islemlerList.add(cariSatisTeklifi);
+        islemlerList.add(cariSatisTalebi);
         islemlerList.add(cariMusteriSiparisi);
         islemlerList.add(cariSaticiSiparisi);
         islemlerList.add(cariAlisIrsaliyesi);
@@ -691,13 +693,38 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel get cariMusteriSiparisi => GridItemModel.islemler(
-        title: "Müşteri Siparişi",
-        iconData: Icons.list_alt_outlined,
+  GridItemModel get cariSatisTeklifi => GridItemModel.islemler(
+        title: "Satış Teklifi",
+        icon: "offer",
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
+            return await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisTeklifi));
+          }
+        },
+      );
+  GridItemModel get cariSatisTalebi => GridItemModel.islemler(
+        title: "Satış Talebi",
+        icon: "offer",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
+            return await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisTalebi));
+          }
+        },
+      );
+  GridItemModel get cariMusteriSiparisi => GridItemModel.islemler(
+        title: "Müşteri Siparişi",
+        icon: "order",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.musteri));
           }
         },
@@ -705,11 +732,12 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariSaticiSiparisi => GridItemModel.islemler(
         title: "Satıcı Siparişi",
-        iconData: Icons.list_alt_outlined,
+        icon: "order",
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/siparisEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satici));
           }
         },
@@ -721,7 +749,8 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.alisIrsaliye));
           }
         },
@@ -733,7 +762,8 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisIrsaliye));
           }
         },
@@ -745,7 +775,7 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.alisFatura));
           }
         },
@@ -757,7 +787,7 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel(cariKodu: cariModel.cariKodu, cariAdi: cariModel.cariAdi);
+            final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/faturaEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisFatura));
           }
         },
