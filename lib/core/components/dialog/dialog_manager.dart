@@ -68,7 +68,7 @@ class DialogManager {
       await showDatePicker(
         context: context,
         locale: Get.locale,
-        initialDate: initialDate?? DateTime.now(),
+        initialDate: initialDate ?? DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(2100),
       );
@@ -476,7 +476,7 @@ class DialogManager {
         context: context,
         isDense: true,
         width: kIsWeb
-            ? 700
+            ? MediaQuery.of(context).size.width * 0.5
             : Platform.isLinux || Platform.isWindows || Platform.isMacOS
                 ? context.isLandscape
                     ? MediaQuery.of(context).size.width * 0.5
