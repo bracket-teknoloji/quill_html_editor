@@ -19,7 +19,9 @@ class AppThemeDark extends AppTheme {
           primaryColor: UIHelper.primaryColor,
           applyThemeToAll: true,
         ),
-        // scaffoldBackgroundColor: colorManager.onInverseSurface,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          shape: RoundedRectangleBorder(borderRadius: UIHelper.highBorderRadius),
+        ),
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
         radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
