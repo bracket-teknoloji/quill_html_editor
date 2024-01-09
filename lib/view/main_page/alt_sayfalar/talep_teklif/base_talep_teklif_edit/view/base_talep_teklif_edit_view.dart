@@ -115,21 +115,34 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.isNew = true;
-        final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-        if (result is CariListesiModel) {
+        BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
+        BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
+        BaseSiparisEditModel.instance.isNew = true;
+        final CariListesiModel? cariModel;
+        if (widget.model.model?.cariKodu == null) {
+          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+          if (result is CariListesiModel) {
+            cariModel = result;
+          } else {
+            cariModel = null;
+          }
+        } else {
+          cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+        }
+        if (cariModel is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
-          BaseSiparisEditModel.instance.efaturaTipi = result.efaturaTipi;
+          BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
           BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.vadeGunu = result.vadeGunu;
+          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
           // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = result.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = result.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = result.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(result.odemeTipi ?? "0");
+          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
       }
 
