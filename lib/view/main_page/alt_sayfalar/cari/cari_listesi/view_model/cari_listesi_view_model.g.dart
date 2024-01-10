@@ -249,6 +249,23 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
+  late final _$cariRequestModelTempAtom = Atom(
+      name: '_CariListesiViewModelBase.cariRequestModelTemp', context: context);
+
+  @override
+  CariRequestModel get cariRequestModelTemp {
+    _$cariRequestModelTempAtom.reportRead();
+    return super.cariRequestModelTemp;
+  }
+
+  @override
+  set cariRequestModelTemp(CariRequestModel value) {
+    _$cariRequestModelTempAtom.reportWrite(value, super.cariRequestModelTemp,
+        () {
+      super.cariRequestModelTemp = value;
+    });
+  }
+
   late final _$resetPageAsyncAction =
       AsyncAction('_CariListesiViewModelBase.resetPage', context: context);
 
@@ -538,6 +555,161 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
+  void changeSiralamaTemp(String? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeSiralamaTemp');
+    try {
+      return super.changeSiralamaTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeFilterTextTemp(String? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeFilterTextTemp');
+    try {
+      return super.changeFilterTextTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeFilterBakiyeTemp(String? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeFilterBakiyeTemp');
+    try {
+      return super.changeFilterBakiyeTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrPlasiyerKoduTemp(List<String>? value) {
+    final _$actionInfo =
+        _$_CariListesiViewModelBaseActionController.startAction(
+            name: '_CariListesiViewModelBase.changeArrPlasiyerKoduTemp');
+    try {
+      return super.changeArrPlasiyerKoduTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrGrupKoduTemp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrGrupKoduTemp');
+    try {
+      return super.changeArrGrupKoduTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrSehirTemp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrSehirTemp');
+    try {
+      return super.changeArrSehirTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod0Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod0Temp');
+    try {
+      return super.changeArrKod0Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod1Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod1Temp');
+    try {
+      return super.changeArrKod1Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod2Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod2Temp');
+    try {
+      return super.changeArrKod2Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod3Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod3Temp');
+    try {
+      return super.changeArrKod3Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod4Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod4Temp');
+    try {
+      return super.changeArrKod4Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeArrKod5Temp(List<String?>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeArrKod5Temp');
+    try {
+      return super.changeArrKod5Temp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeIlceTemp(String? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeIlceTemp');
+    try {
+      return super.changeIlceTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeCariTipiTemp(String? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.changeCariTipiTemp');
+    try {
+      return super.changeCariTipiTemp(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void resetFilter() {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.resetFilter');
@@ -562,6 +734,7 @@ kodlariGoster: ${kodlariGoster},
 grupKodlari: ${grupKodlari},
 sehirler: ${sehirler},
 cariRequestModel: ${cariRequestModel},
+cariRequestModelTemp: ${cariRequestModelTemp},
 getCariRequestModel: ${getCariRequestModel},
 getGrupKod0: ${getGrupKod0},
 getGrupKod1: ${getGrupKod1},

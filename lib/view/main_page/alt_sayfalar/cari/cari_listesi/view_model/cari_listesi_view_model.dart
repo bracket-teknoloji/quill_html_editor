@@ -65,6 +65,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
   CariRequestModel cariRequestModel = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
 
+  @observable
+  CariRequestModel cariRequestModelTemp = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
+
   //* Computed
 
   @computed
@@ -190,19 +193,76 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeCariTipi(String? value) => cariRequestModel = cariRequestModel.copyWith(cariTipi: value);
 
   @action
-  void resetFilter() => cariRequestModel = cariRequestModel.copyWith(
-        filterText: "",
-        arrGrupKodu: null,
-        arrKod1: null,
-        arrKod2: null,
-        arrKod3: null,
-        arrKod4: null,
-        arrKod5: null,
-        arrSehir: null,
-        arrPlasiyerKodu: null,
-        ilce: null,
-        filterBakiye: "",
-      );
+  void changeSiralamaTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(siralama: value);
+
+  @action
+  void changeFilterTextTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(filterText: value ?? "");
+
+  @action
+  void changeFilterBakiyeTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(filterBakiye: value ?? "");
+
+  @action
+  void changeArrPlasiyerKoduTemp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrPlasiyerKodu: value);
+
+  @action
+  void changeArrGrupKoduTemp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
+
+  @action
+  void changeArrSehirTemp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrSehir: value);
+
+  @action
+  void changeArrKod0Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
+
+  @action
+  void changeArrKod1Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod1: value);
+
+  @action
+  void changeArrKod2Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod2: value);
+
+  @action
+  void changeArrKod3Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod3: value);
+
+  @action
+  void changeArrKod4Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod4: value);
+
+  @action
+  void changeArrKod5Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod5: value);
+
+  @action
+  void changeIlceTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(ilce: value);
+
+  @action
+  void changeCariTipiTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(cariTipi: value);
+
+  @action
+  void resetFilter() {
+    cariRequestModel = cariRequestModel.copyWith(
+      filterText: "",
+      arrGrupKodu: null,
+      arrKod1: null,
+      arrKod2: null,
+      arrKod3: null,
+      arrKod4: null,
+      arrKod5: null,
+      arrSehir: null,
+      arrPlasiyerKodu: null,
+      ilce: null,
+      filterBakiye: "",
+    );
+    cariRequestModelTemp = cariRequestModelTemp.copyWith(
+      filterText: "",
+      arrGrupKodu: null,
+      arrKod1: null,
+      arrKod2: null,
+      arrKod3: null,
+      arrKod4: null,
+      arrKod5: null,
+      arrSehir: null,
+      arrPlasiyerKodu: null,
+      ilce: null,
+      filterBakiye: "",
+    );
+  }
 
   @action
   Future<void> resetPage() async {
