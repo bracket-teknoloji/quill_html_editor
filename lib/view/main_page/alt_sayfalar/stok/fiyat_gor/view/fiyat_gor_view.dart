@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -133,7 +135,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                               TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
                                             ],
                                           ),
-                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -147,7 +149,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           itemCount: 5,
                                           itemBuilder: (context, index) => InkWell(
                                             onTap: () async {
-                                              if ((int.tryParse(viewModel.getBilgi(index)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
+                                              if ((viewModel.getBilgi(index) ?? 0) > 0) {
                                                 await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
                                               } else {
                                                 dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
@@ -160,7 +162,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                   Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                  Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
                                             ),
@@ -183,7 +185,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                               TextSpan(text: "  %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
                                             ],
                                           ),
-                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.lowSize),
+                                        ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
                                         GridView.builder(
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
@@ -197,7 +199,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           itemCount: 5,
                                           itemBuilder: (context, index) => InkWell(
                                             onTap: () async {
-                                              if ((int.tryParse(viewModel.getBilgi(index, isSatis: true)?.replaceAll(",", ".") ?? "") ?? 0) > 0) {
+                                              if ((viewModel.getBilgi(index, isSatis: true) ?? 0) > 0) {
                                                 await Get.toNamed("mainPage/stokYazdir", arguments: viewModel.stokListesiModel);
                                               } else {
                                                 dialogManager.showErrorSnackBar("Fiyat sıfır olduğu için yazdırılamaz");
@@ -210,7 +212,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                   Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                  Text("${viewModel.getBilgi(index, isSatis: true)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
                                             ),

@@ -1,7 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 import "../model/fiyat_gor_model.dart";
 
@@ -31,18 +29,18 @@ abstract class _FiyatGorViewModelBase with Store {
   ];
 
   @action
-  String? getBilgi(int index, {bool isSatis = false}) {
+  double? getBilgi(int index, {bool isSatis = false}) {
     switch (index) {
       case 0:
-        return (isSatis ? modelList?.last?.dovizTipi : modelList?.first?.dovizTipi).toStringIfNotNull;
+        return (isSatis ? modelList?.last?.dovizTipi : modelList?.first?.dovizTipi)?.toDouble();
       case 1:
-        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1);
       case 2:
-        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2);
       case 3:
-        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3);
       case 4:
-        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4);
       default:
         return null;
     }
