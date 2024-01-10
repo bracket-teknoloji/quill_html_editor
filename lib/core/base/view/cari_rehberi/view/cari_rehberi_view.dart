@@ -10,6 +10,7 @@ import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart"
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -113,7 +114,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 )
               : AppBarTitle(
                   title: "Cari Rehberi",
-                  subtitle: "${widget.cariRequestModel.kod} Koduna Bağlı Cariler",
+                  subtitle: widget.cariRequestModel.kod != null ? "${widget.cariRequestModel.kod} Koduna Bağlı Cariler" : null,
                 ),
         ),
         actions: [
@@ -170,7 +171,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 return const Center(child: Text("Cari Bulunamadı"));
               } else {
                 //* Eğer cariListesi null ise
-                return const Center(child: CircularProgressIndicator.adaptive());
+                return const ListViewShimmer();
               }
             } else {
               //* Eğer cariListesi boş veya null değilse
@@ -197,7 +198,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   AppBarButton siralaButton() => AppBarButton(
         icon: Icons.sort_by_alpha_outlined,
-        child:  Text(loc(context).generalStrings.sort),
+        child: Text(loc(context).generalStrings.sort),
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
