@@ -99,6 +99,7 @@ import "view/main_page/alt_sayfalar/finans/kasa/raporlar/kasa_ekstre_raporu/view
 import "view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/view/ortalama_vade_tarihi_hesaplama_view.dart";
 import "view/main_page/alt_sayfalar/finans/raporlar/finans_aylik_mizan_raporu/view/aylik_mizan_raporu_view.dart";
 import "view/main_page/alt_sayfalar/finans/raporlar/finans_finansal_durum_raporu/view/finansal_durum_raporu_view.dart";
+import "view/main_page/alt_sayfalar/finans/raporlar/ozet_rapor/view/finans_ozet_rapor_view.dart";
 import "view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view/tahsilat_odeme_kayitlari_view.dart";
 import "view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalar/base_fatura_edit/view/base_fatura_edit_view.dart";
 import "view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalar/view/faturalar_view.dart";
@@ -315,6 +316,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/muhtelifOdeme", page: MuhtelifOdemeView.new),
 
               //* * Finans Raporları
+              GetPage(name: "/finansOzetRaporu", page: FinansOzetRaporView.new),
               GetPage(name: "/finansFinansalDurumRaporu", page: FinansalDurumRaporuView.new),
               GetPage(name: "/finansAylikMizanRaporu", page: AylikMizanRaporuView.new),
 
