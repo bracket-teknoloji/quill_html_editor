@@ -65,7 +65,7 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
           onRefresh: viewModel.getData,
           child: Observer(
             builder: (_) {
-              if (viewModel.filteredList == null) return const ListViewShimmer();
+              if (viewModel.filteredList == null) return const ListViewShimmer().paddingAll(UIHelper.lowSize);
               if (viewModel.filteredList!.isEmpty) return const Center(child: Text("Oturum bulunamadı."));
               return ListView.builder(
                 itemCount: viewModel.filteredList?.length ?? 0,

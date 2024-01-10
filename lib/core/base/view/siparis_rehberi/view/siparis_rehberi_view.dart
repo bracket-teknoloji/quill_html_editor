@@ -5,6 +5,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/siparis_rehberi/view_model/siparis_rehberi_view_model.dart";
 import "package:picker/core/components/card/siparis_rehberi_card.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -83,7 +84,10 @@ class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
                 child: Observer(
                   builder: (_) {
                     if (viewModel.siparisList == null) {
-                      return const Center(child: CircularProgressIndicator.adaptive());
+                      return const ListViewShimmer();
+                    }
+                    if (viewModel.siparisList!.isEmpty) {
+                      return const Center(child: Text("Sipariş bulunamadı"));
                     }
                     return ListView.builder(
                       controller: _scrollController,

@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -172,18 +173,21 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
         }
-        BaseSiparisEditModel.instance.belgeTipi = 2;
-        BaseSiparisEditModel.instance.tipi = 2;
-        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-        BaseSiparisEditModel.instance.tag = "FaturaModel";
-        BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-        BaseSiparisEditModel.instance.isNew = true;
         if (result != true) {
-          BaseSiparisEditModel.instance.belgeNo = null;
-          BaseSiparisEditModel.instance.cariKodu = null;
-          BaseSiparisEditModel.instance.kalemList = <KalemModel>[];
-          BaseSiparisEditModel.instance.arrBelgeNo = null;
+          BaseSiparisEditModel.resetInstance();
+          BaseSiparisEditModel.instance.belgeTipi = 2;
+          BaseSiparisEditModel.instance.tipi = 2;
+          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+          BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+          BaseSiparisEditModel.instance.isNew = true;
         } else {
+          BaseSiparisEditModel.instance.belgeTipi = 2;
+          BaseSiparisEditModel.instance.tipi = 2;
+          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+          BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+          BaseSiparisEditModel.instance.isNew = true;
           final cariModel = await getCari();
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
@@ -367,7 +371,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 Observer(
                   builder: (_) {
                     if (viewModel.isBaseSiparisEmpty) {
-                      return const Center(child: CircularProgressIndicator.adaptive());
+                      return const ListViewShimmer();
                     } else {
                       return BaseFaturaGenelView(model: model);
                     }

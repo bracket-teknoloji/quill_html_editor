@@ -66,7 +66,7 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
           child: Observer(
             builder: (_) {
               if (viewModel.surumYenilikleriModelList == null) {
-                return const ListViewShimmer();
+                return const ListViewShimmer().paddingAll(UIHelper.lowSize);
               } else if ((viewModel.getSurumYenilikleriModelList?.length ?? 0) < 1) {
                 return const Center(child: Text("Sonuç bulunamadı."));
               } else {

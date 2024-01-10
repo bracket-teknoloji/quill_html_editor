@@ -96,7 +96,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                     if (viewModel.kasaIslemleriListesi != null) {
                       return const Center(child: Text("Kasa hareketi bulunamadı."));
                     } else {
-                      return const ListViewShimmer();
+                      return const ListViewShimmer().paddingAll(UIHelper.lowSize);
                     }
                   }
                   return Observer(
