@@ -105,9 +105,9 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                       CacheManager.setFavorilerList(list.map((e) => e).toList());
                                     });
                                   },
-                                  icon: const Icon(Icons.delete_outline),
+                                  icon: const Icon(Icons.delete_outline).paddingOnly(left: UIHelper.lowSize),
                                 )
-                              : const Icon(Icons.drag_handle),
+                              : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
                           onTap: () {
                             Get.back();
                             if (value.arguments != null) {
