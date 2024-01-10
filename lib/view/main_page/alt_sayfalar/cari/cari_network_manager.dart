@@ -18,8 +18,8 @@ class CariNetworkManager {
       path: ApiUrls.getGrupKodlari,
       showError: false,
       bodyModel: BaseGrupKoduModel(),
-      headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-      queryParameters: <String, dynamic>{"Modul": name?.name ?? "CARI", "GrupNo": "-1"},
+      // headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+      queryParameters: <String, dynamic>{"Modul": name?.rawValue ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
     return responseKod;
   }
