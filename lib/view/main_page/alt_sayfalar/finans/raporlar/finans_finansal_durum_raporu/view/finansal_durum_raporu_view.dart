@@ -1,5 +1,3 @@
-import "dart:convert";
-
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -53,7 +51,7 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                 context,
                 title: "Görünecek Alanlar",
-                groupValues: jsonDecode(viewModel.pdfModel.dicParams?.gorunecekAlanlar ?? "[]")?.split(";"),
+                groupValues: viewModel.pdfModel.dicParams?.gorunecekAlanlar?.split(";") ?? [],
                 children: List.generate(
                   viewModel.gorunecekAlanlarMap.length,
                   (index) => BottomSheetModel(
