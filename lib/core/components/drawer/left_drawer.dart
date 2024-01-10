@@ -90,6 +90,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                       return Card(
                         key: ValueKey(index),
                         child: ListTile(
+                          contentPadding: UIHelper.midPaddingHorizontal,
                           enabled: liste.contains(value),
                           title: Text(
                             value.title.toString(),
@@ -97,6 +98,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
                           trailing: isEditing
                               ? IconButton(
+                                  style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                                   onPressed: () {
                                     setState(() {
                                       list.removeAt(index);
@@ -105,7 +107,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                   },
                                   icon: const Icon(Icons.delete_outline),
                                 )
-                              : const Icon(Icons.drag_handle).paddingAll(UIHelper.lowSize),
+                              : const Icon(Icons.drag_handle),
                           onTap: () {
                             Get.back();
                             if (value.arguments != null) {
