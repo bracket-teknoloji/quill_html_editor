@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
-import "../../../../core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
-import "../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../core/components/dialog/dialog_manager.dart";
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -440,22 +437,5 @@ class MenuItemConstants {
     } else {
       return getGridItemModel;
     }
-  }
-
-  static Future<void> genelServisIslemleriDialog() async {
-    await BottomSheetDialogManager().showBottomSheetDialog(
-      Get.context!,
-      title: "Servis İşlemleri",
-      children: [
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-        BottomSheetModel(title: "Web Servis Çalışıyor Mu?"),
-      ],
-    );
   }
 }
