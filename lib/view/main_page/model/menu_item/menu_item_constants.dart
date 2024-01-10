@@ -83,7 +83,7 @@ class MenuItemConstants {
           title: "E-Fatura Carilerini Güncelle ",
           onTap: () async {
             NetworkManager().dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: EBelgeListesiModel(), data: EBelgeIslemModel(ebelgeTuru: "EFT", islemKodu: 6));
-            DialogManager().showInfoDialog("Bu işlem uzun sürebilir. Tamamlandığında bilgilendirme yapılacaktır.");
+            DialogManager().showInfoDialog("Bu işlem uzun sürebilir.\nTamamlandığında bilgilendirme yapılacaktır.");
           },
         ),
       ],
