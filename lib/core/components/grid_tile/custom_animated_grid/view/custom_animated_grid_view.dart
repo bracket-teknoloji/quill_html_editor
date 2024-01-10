@@ -132,7 +132,6 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                               onTap: item?.isEnabled == false && item?.menuTipi == "IS"
                                   ? null
                                   : () async {
-                                      //TODO
                                       if (item?.altMenuVarMi == true) {
                                         viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
                                         viewModel.setGridItemModel(null);
