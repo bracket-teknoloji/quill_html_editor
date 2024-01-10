@@ -176,6 +176,7 @@ class MenuItemConstants {
           icon: "monitoring",
           altMenuler: <GridItemModel>[
             // GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor"),
+            GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Özet Rapor", route: "/mainPage/finansOzetRaporu"),
             GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansFinansalDurumRaporu"),
             GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu", route: "/mainPage/finansAylikMizanRaporu"),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
