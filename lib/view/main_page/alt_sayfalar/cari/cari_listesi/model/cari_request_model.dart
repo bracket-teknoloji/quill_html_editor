@@ -33,6 +33,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     bool? plasiyerKisitiYok,
     String? belgeTuru,
     String? vergiNo,
+    String? siparisKarsilanmaDurumu,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);

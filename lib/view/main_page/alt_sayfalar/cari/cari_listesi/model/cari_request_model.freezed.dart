@@ -67,6 +67,9 @@ mixin _$CariRequestModel {
   set belgeTuru(String? value) => throw _privateConstructorUsedError;
   String? get vergiNo => throw _privateConstructorUsedError;
   set vergiNo(String? value) => throw _privateConstructorUsedError;
+  String? get siparisKarsilanmaDurumu => throw _privateConstructorUsedError;
+  set siparisKarsilanmaDurumu(String? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -100,7 +103,8 @@ abstract class $CariRequestModelCopyWith<$Res> {
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
       bool? plasiyerKisitiYok,
       String? belgeTuru,
-      String? vergiNo});
+      String? vergiNo,
+      String? siparisKarsilanmaDurumu});
 }
 
 /// @nodoc
@@ -136,6 +140,7 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
     Object? plasiyerKisitiYok = freezed,
     Object? belgeTuru = freezed,
     Object? vergiNo = freezed,
+    Object? siparisKarsilanmaDurumu = freezed,
   }) {
     return _then(_value.copyWith(
       filterText: freezed == filterText
@@ -218,6 +223,10 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.vergiNo
           : vergiNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      siparisKarsilanmaDurumu: freezed == siparisKarsilanmaDurumu
+          ? _value.siparisKarsilanmaDurumu
+          : siparisKarsilanmaDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -250,7 +259,8 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
       bool? plasiyerKisitiYok,
       String? belgeTuru,
-      String? vergiNo});
+      String? vergiNo,
+      String? siparisKarsilanmaDurumu});
 }
 
 /// @nodoc
@@ -284,6 +294,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
     Object? plasiyerKisitiYok = freezed,
     Object? belgeTuru = freezed,
     Object? vergiNo = freezed,
+    Object? siparisKarsilanmaDurumu = freezed,
   }) {
     return _then(_$CariRequestModelImpl(
       filterText: freezed == filterText
@@ -366,6 +377,10 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.vergiNo
           : vergiNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      siparisKarsilanmaDurumu: freezed == siparisKarsilanmaDurumu
+          ? _value.siparisKarsilanmaDurumu
+          : siparisKarsilanmaDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -394,7 +409,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       @JsonKey(name: "ArrPlasiyerKodu") this.arrPlasiyerKodu,
       this.plasiyerKisitiYok,
       this.belgeTuru,
-      this.vergiNo})
+      this.vergiNo,
+      this.siparisKarsilanmaDurumu})
       : super._();
 
   factory _$CariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -443,6 +459,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   String? belgeTuru;
   @override
   String? vergiNo;
+  @override
+  String? siparisKarsilanmaDurumu;
 
   @JsonKey(ignore: true)
   @override
@@ -480,7 +498,8 @@ abstract class _CariRequestModel extends CariRequestModel {
       @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
       bool? plasiyerKisitiYok,
       String? belgeTuru,
-      String? vergiNo}) = _$CariRequestModelImpl;
+      String? vergiNo,
+      String? siparisKarsilanmaDurumu}) = _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
   factory _CariRequestModel.fromJson(Map<String, dynamic> json) =
@@ -552,6 +571,9 @@ abstract class _CariRequestModel extends CariRequestModel {
   @override
   String? get vergiNo;
   set vergiNo(String? value);
+  @override
+  String? get siparisKarsilanmaDurumu;
+  set siparisKarsilanmaDurumu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>
