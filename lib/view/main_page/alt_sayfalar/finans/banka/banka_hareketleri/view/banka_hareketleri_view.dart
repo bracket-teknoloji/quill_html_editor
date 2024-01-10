@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -56,7 +57,7 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         child: Observer(
           builder: (_) {
             if (viewModel.bankaHareketleriListesi == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
+              return const ListViewShimmer();
             } else if ((viewModel.bankaHareketleriListesi?.length ?? 0) < 1) {
               return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
             }

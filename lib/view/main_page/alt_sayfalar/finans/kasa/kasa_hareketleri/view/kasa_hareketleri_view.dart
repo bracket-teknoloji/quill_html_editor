@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/badge/colorful_badge.dart";
@@ -95,7 +96,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                     if (viewModel.kasaIslemleriListesi != null) {
                       return const Center(child: Text("Kasa hareketi bulunamadı."));
                     } else {
-                      return const Center(child: CircularProgressIndicator.adaptive());
+                      return const ListViewShimmer();
                     }
                   }
                   return Observer(

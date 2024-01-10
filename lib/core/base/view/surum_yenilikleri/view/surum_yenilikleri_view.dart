@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../components/textfield/custom_app_bar_text_field.dart";
@@ -65,7 +66,7 @@ class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
           child: Observer(
             builder: (_) {
               if (viewModel.surumYenilikleriModelList == null) {
-                return const Center(child: CircularProgressIndicator.adaptive());
+                return const ListViewShimmer();
               } else if ((viewModel.getSurumYenilikleriModelList?.length ?? 0) < 1) {
                 return const Center(child: Text("Sonuç bulunamadı."));
               } else {

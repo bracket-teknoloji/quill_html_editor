@@ -5,6 +5,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/oturumlar/view_model/oturumlar_view_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -64,7 +65,7 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
           onRefresh: viewModel.getData,
           child: Observer(
             builder: (_) {
-              if (viewModel.filteredList == null) return const Center(child: CircularProgressIndicator.adaptive());
+              if (viewModel.filteredList == null) return const ListViewShimmer();
               if (viewModel.filteredList!.isEmpty) return const Center(child: Text("Oturum bulunamadı."));
               return ListView.builder(
                 itemCount: viewModel.filteredList?.length ?? 0,

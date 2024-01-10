@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/kalem_rehberi/view_model/kalem_rehberi_view_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -84,7 +85,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
         body: Observer(
           builder: (_) {
             if (viewModel.kalemList == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
+              return const ListViewShimmer();
             } else if (viewModel.kalemList!.isEmpty) {
               return const Center(child: Text("Kayıt bulunamadı"));
             }
