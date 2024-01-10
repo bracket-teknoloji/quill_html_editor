@@ -1,15 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/drawer/right_drawer/drawer_model.dart";
-import "package:picker/core/init/app_info/app_info.dart";
-import "package:picker/view/add_company/model/account_model.dart";
-import "package:picker/view/add_company/model/account_response_model.dart";
 
+import "../../../../view/add_company/model/account_model.dart";
+import "../../../../view/add_company/model/account_response_model.dart";
 import "../../../base/state/base_state.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../gen/assets.gen.dart";
+import "../../../init/app_info/app_info.dart";
 import "../../../init/cache/cache_manager.dart";
+import "drawer_model.dart";
 
 class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});

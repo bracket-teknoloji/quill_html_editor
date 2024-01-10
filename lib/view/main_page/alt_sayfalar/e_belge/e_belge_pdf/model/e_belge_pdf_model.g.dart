@@ -6,16 +6,12 @@ part of 'e_belge_pdf_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EBelgePdfModelImpl _$$EBelgePdfModelImplFromJson(Map<String, dynamic> json) =>
-    _$EBelgePdfModelImpl(
+_$EBelgePdfModelImpl _$$EBelgePdfModelImplFromJson(Map<String, dynamic> json) => _$EBelgePdfModelImpl(
       islemKodu: json['ISLEM_KODU'] as int?,
-      fileModel: json['FileModel'] == null
-          ? null
-          : FileModel.fromJson(json['FileModel'] as Map<String, dynamic>),
+      fileModel: json['FileModel'] == null ? null : FileModel.fromJson(json['FileModel'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$EBelgePdfModelImplToJson(
-    _$EBelgePdfModelImpl instance) {
+Map<String, dynamic> _$$EBelgePdfModelImplToJson(_$EBelgePdfModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -29,13 +25,10 @@ Map<String, dynamic> _$$EBelgePdfModelImplToJson(
   return val;
 }
 
-_$FileModelImpl _$$FileModelImplFromJson(Map<String, dynamic> json) =>
-    _$FileModelImpl(
+_$FileModelImpl _$$FileModelImplFromJson(Map<String, dynamic> json) => _$FileModelImpl(
       byteData: json['BYTE_DATA'] as String?,
       uzanti: json['UZANTI'] as String?,
-      dosyaTarihi: json['DOSYA_TARIHI'] == null
-          ? null
-          : DateTime.parse(json['DOSYA_TARIHI'] as String),
+      dosyaTarihi: json['DOSYA_TARIHI'] == null ? null : DateTime.parse(json['DOSYA_TARIHI'] as String),
       dosyaAdi: json['DOSYA_ADI'] as String?,
     );
 

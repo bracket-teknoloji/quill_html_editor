@@ -3,20 +3,20 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/image/image_view.dart";
-import "package:picker/core/components/image/image_widget.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../components/badge/colorful_badge.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../components/image/image_view.dart";
+import "../../../../components/image/image_widget.dart";
+import "../../../../components/shimmer/list_view_shimmer.dart";
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/enum/badge_color_enum.dart";
 import "../../../../constants/enum/base_edit_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
+import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
@@ -436,7 +436,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
       final List<StokListesiModel>? list = response.data as List<StokListesiModel>?;
-      if (list.isEmptyOrNull){
+      if (list.isEmptyOrNull) {
         return null;
       }
       return list?.firstOrNull;

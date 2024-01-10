@@ -48,7 +48,6 @@ class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
   SeriHareketleriModel fromJson(Map<String, dynamic> json) => SeriHareketleriModel.fromJson(json);
 }
 
-
 extension SeriHareketleriModelExtensions on SeriHareketleriModel {
   bool get devirMi => kayitTipi == "D";
 }

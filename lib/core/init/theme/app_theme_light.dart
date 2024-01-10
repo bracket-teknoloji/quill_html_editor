@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get_utils/src/platform/platform.dart";
 import "package:google_fonts/google_fonts.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
+import "../../constants/ui_helper/ui_helper.dart";
 import "app_theme.dart";
 
 class AppThemeLight extends AppTheme {
@@ -180,7 +180,6 @@ class AppThemeLight extends AppTheme {
             statusBarColor: colorManager.background,
             systemNavigationBarColor: colorManager.background,
             systemStatusBarContrastEnforced: true,
-            
           ),
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),

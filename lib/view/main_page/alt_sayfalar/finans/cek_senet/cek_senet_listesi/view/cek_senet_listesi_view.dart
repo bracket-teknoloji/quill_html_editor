@@ -5,8 +5,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/add_company/model/account_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -28,7 +26,9 @@ import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../add_company/model/account_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 import "../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "../view_model/cek_senet_listesi_view_model.dart";
 

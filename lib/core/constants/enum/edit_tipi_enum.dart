@@ -1,8 +1,8 @@
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../view/main_page/model/param_model.dart";
 import "../../init/cache/cache_manager.dart";
 import "../yetki_controller/yetki_controller.dart";
 
@@ -31,7 +31,6 @@ enum EditTipiEnum {
 }
 
 extension NullableEditTipiEnumExtension on EditTipiEnum? {
-  
   bool get musteriMi => this == EditTipiEnum.musteri;
 
   bool get saticiMi => this == EditTipiEnum.satici;
@@ -58,7 +57,7 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get siparisMi => musteriMi || saticiMi;
 
-  bool get faturaMi => satisFaturasiMi || alisFaturasiMi ;
+  bool get faturaMi => satisFaturasiMi || alisFaturasiMi;
 
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
@@ -202,7 +201,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get ekAlan1GorunsunMu {
-    if (satisMi){
+    if (satisMi) {
       return yetkiController.satisEkAlan1AktifMi;
     } else {
       return yetkiController.alisEkAlan1AktifMi;
@@ -210,7 +209,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get ekAlan2GorunsunMu {
-    if (satisMi){
+    if (satisMi) {
       return yetkiController.satisEkAlan2AktifMi;
     } else {
       return yetkiController.alisEkAlan2AktifMi;

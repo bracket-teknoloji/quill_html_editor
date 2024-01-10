@@ -25,21 +25,18 @@ mixin _$SeriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SeriModelCopyWith<SeriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SeriModelCopyWith<SeriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SeriModelCopyWith<$Res> {
-  factory $SeriModelCopyWith(SeriModel value, $Res Function(SeriModel) then) =
-      _$SeriModelCopyWithImpl<$Res, SeriModel>;
+  factory $SeriModelCopyWith(SeriModel value, $Res Function(SeriModel) then) = _$SeriModelCopyWithImpl<$Res, SeriModel>;
   @useResult
   $Res call({String? seriNo, String? aciklama});
 }
 
 /// @nodoc
-class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
-    implements $SeriModelCopyWith<$Res> {
+class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel> implements $SeriModelCopyWith<$Res> {
   _$SeriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,23 +64,16 @@ class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
 }
 
 /// @nodoc
-abstract class _$$SeriModelImplCopyWith<$Res>
-    implements $SeriModelCopyWith<$Res> {
-  factory _$$SeriModelImplCopyWith(
-          _$SeriModelImpl value, $Res Function(_$SeriModelImpl) then) =
-      __$$SeriModelImplCopyWithImpl<$Res>;
+abstract class _$$SeriModelImplCopyWith<$Res> implements $SeriModelCopyWith<$Res> {
+  factory _$$SeriModelImplCopyWith(_$SeriModelImpl value, $Res Function(_$SeriModelImpl) then) = __$$SeriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? seriNo, String? aciklama});
 }
 
 /// @nodoc
-class __$$SeriModelImplCopyWithImpl<$Res>
-    extends _$SeriModelCopyWithImpl<$Res, _$SeriModelImpl>
-    implements _$$SeriModelImplCopyWith<$Res> {
-  __$$SeriModelImplCopyWithImpl(
-      _$SeriModelImpl _value, $Res Function(_$SeriModelImpl) _then)
-      : super(_value, _then);
+class __$$SeriModelImplCopyWithImpl<$Res> extends _$SeriModelCopyWithImpl<$Res, _$SeriModelImpl> implements _$$SeriModelImplCopyWith<$Res> {
+  __$$SeriModelImplCopyWithImpl(_$SeriModelImpl _value, $Res Function(_$SeriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -109,8 +99,7 @@ class __$$SeriModelImplCopyWithImpl<$Res>
 class _$SeriModelImpl extends _SeriModel {
   _$SeriModelImpl({this.seriNo, this.aciklama}) : super._();
 
-  factory _$SeriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SeriModelImplFromJson(json);
+  factory _$SeriModelImpl.fromJson(Map<String, dynamic> json) => _$$SeriModelImplFromJson(json);
 
   @override
   final String? seriNo;
@@ -120,8 +109,7 @@ class _$SeriModelImpl extends _SeriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
-      __$$SeriModelImplCopyWithImpl<_$SeriModelImpl>(this, _$identity);
+  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith => __$$SeriModelImplCopyWithImpl<_$SeriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -132,12 +120,10 @@ class _$SeriModelImpl extends _SeriModel {
 }
 
 abstract class _SeriModel extends SeriModel {
-  factory _SeriModel({final String? seriNo, final String? aciklama}) =
-      _$SeriModelImpl;
+  factory _SeriModel({final String? seriNo, final String? aciklama}) = _$SeriModelImpl;
   _SeriModel._() : super._();
 
-  factory _SeriModel.fromJson(Map<String, dynamic> json) =
-      _$SeriModelImpl.fromJson;
+  factory _SeriModel.fromJson(Map<String, dynamic> json) = _$SeriModelImpl.fromJson;
 
   @override
   String? get seriNo;
@@ -145,6 +131,5 @@ abstract class _SeriModel extends SeriModel {
   String? get aciklama;
   @override
   @JsonKey(ignore: true)
-  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

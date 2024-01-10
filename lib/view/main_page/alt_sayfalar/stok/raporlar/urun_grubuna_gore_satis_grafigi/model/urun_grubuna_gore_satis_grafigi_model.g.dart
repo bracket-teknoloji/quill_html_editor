@@ -6,17 +6,14 @@ part of 'urun_grubuna_gore_satis_grafigi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
-        Map<String, dynamic> json) =>
-    UrunGrubunaGoreSatisGrafigiModel()
-      ..grupKodu = json['GRUP_KODU'] as String?
-      ..grupAdi = json['GRUP_ADI'] as String?
-      ..netTutar = (json['NET_TUTAR'] as num?)?.toDouble()
-      ..toplamTutar = (json['TOPLAM_TUTAR'] as num?)?.toDouble()
-      ..oran = (json['ORAN'] as num?)?.toDouble();
+UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(Map<String, dynamic> json) => UrunGrubunaGoreSatisGrafigiModel()
+  ..grupKodu = json['GRUP_KODU'] as String?
+  ..grupAdi = json['GRUP_ADI'] as String?
+  ..netTutar = (json['NET_TUTAR'] as num?)?.toDouble()
+  ..toplamTutar = (json['TOPLAM_TUTAR'] as num?)?.toDouble()
+  ..oran = (json['ORAN'] as num?)?.toDouble();
 
-Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
-    UrunGrubunaGoreSatisGrafigiModel instance) {
+Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(UrunGrubunaGoreSatisGrafigiModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

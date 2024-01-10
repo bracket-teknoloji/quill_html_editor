@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+
+import "base_network_mixin.dart";
 
 part "e_fatura_ozel_kod_model.freezed.dart";
 part "e_fatura_ozel_kod_model.g.dart";

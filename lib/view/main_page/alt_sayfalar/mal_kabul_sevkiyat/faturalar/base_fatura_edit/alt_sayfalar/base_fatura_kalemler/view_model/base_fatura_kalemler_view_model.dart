@@ -18,5 +18,5 @@ abstract class BaseFaturaKalemlerViewModelBase with Store {
   }
 
   @action
-  void updateKalemList() => kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable() ;
+  void updateKalemList() => kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable();
 }

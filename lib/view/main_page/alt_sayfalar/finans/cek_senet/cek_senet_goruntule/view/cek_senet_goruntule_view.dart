@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 class CekSenetGoruntuleView extends StatefulWidget {
   final CekSenetListesiModel model;

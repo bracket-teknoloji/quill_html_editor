@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(
-    Map<String, dynamic> json) {
+CariHareketleriRequestModel _$CariHareketleriRequestModelFromJson(Map<String, dynamic> json) {
   return _CariHareketleriRequestModel.fromJson(json);
 }
 
@@ -26,8 +25,7 @@ mixin _$CariHareketleriRequestModel {
   @JsonKey(name: "SIRALAMA")
   set siralama(String? value) => throw _privateConstructorUsedError;
   bool? get sadeceTahsilatlarOdemeler => throw _privateConstructorUsedError;
-  set sadeceTahsilatlarOdemeler(bool? value) =>
-      throw _privateConstructorUsedError;
+  set sadeceTahsilatlarOdemeler(bool? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
@@ -45,17 +43,13 @@ mixin _$CariHareketleriRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CariHareketleriRequestModelCopyWith<$Res> {
-  factory $CariHareketleriRequestModelCopyWith(
-          CariHareketleriRequestModel value,
-          $Res Function(CariHareketleriRequestModel) then) =
-      _$CariHareketleriRequestModelCopyWithImpl<$Res,
-          CariHareketleriRequestModel>;
+  factory $CariHareketleriRequestModelCopyWith(CariHareketleriRequestModel value, $Res Function(CariHareketleriRequestModel) then) =
+      _$CariHareketleriRequestModelCopyWithImpl<$Res, CariHareketleriRequestModel>;
   @useResult
   $Res call(
       {@JsonKey(name: "SIRALAMA") String? siralama,
@@ -70,9 +64,7 @@ abstract class $CariHareketleriRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CariHareketleriRequestModelCopyWithImpl<$Res,
-        $Val extends CariHareketleriRequestModel>
-    implements $CariHareketleriRequestModelCopyWith<$Res> {
+class _$CariHareketleriRequestModelCopyWithImpl<$Res, $Val extends CariHareketleriRequestModel> implements $CariHareketleriRequestModelCopyWith<$Res> {
   _$CariHareketleriRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -135,11 +127,8 @@ class _$CariHareketleriRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res>
-    implements $CariHareketleriRequestModelCopyWith<$Res> {
-  factory _$$CariHareketleriRequestModelImplCopyWith(
-          _$CariHareketleriRequestModelImpl value,
-          $Res Function(_$CariHareketleriRequestModelImpl) then) =
+abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res> implements $CariHareketleriRequestModelCopyWith<$Res> {
+  factory _$$CariHareketleriRequestModelImplCopyWith(_$CariHareketleriRequestModelImpl value, $Res Function(_$CariHareketleriRequestModelImpl) then) =
       __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -156,14 +145,9 @@ abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
-    extends _$CariHareketleriRequestModelCopyWithImpl<$Res,
-        _$CariHareketleriRequestModelImpl>
+class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res> extends _$CariHareketleriRequestModelCopyWithImpl<$Res, _$CariHareketleriRequestModelImpl>
     implements _$$CariHareketleriRequestModelImplCopyWith<$Res> {
-  __$$CariHareketleriRequestModelImplCopyWithImpl(
-      _$CariHareketleriRequestModelImpl _value,
-      $Res Function(_$CariHareketleriRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$CariHareketleriRequestModelImplCopyWithImpl(_$CariHareketleriRequestModelImpl _value, $Res Function(_$CariHareketleriRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -222,8 +206,7 @@ class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$CariHareketleriRequestModelImpl
-    implements _CariHareketleriRequestModel {
+class _$CariHareketleriRequestModelImpl implements _CariHareketleriRequestModel {
   _$CariHareketleriRequestModelImpl(
       {@JsonKey(name: "SIRALAMA") this.siralama,
       this.sadeceTahsilatlarOdemeler,
@@ -235,9 +218,7 @@ class _$CariHareketleriRequestModelImpl
       this.bitisTarihi,
       this.ba});
 
-  factory _$CariHareketleriRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$CariHareketleriRequestModelImplFromJson(json);
+  factory _$CariHareketleriRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$CariHareketleriRequestModelImplFromJson(json);
 
   @override
   @JsonKey(name: "SIRALAMA")
@@ -267,9 +248,7 @@ class _$CariHareketleriRequestModelImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
-      get copyWith => __$$CariHareketleriRequestModelImplCopyWithImpl<
-          _$CariHareketleriRequestModelImpl>(this, _$identity);
+  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith => __$$CariHareketleriRequestModelImplCopyWithImpl<_$CariHareketleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -279,8 +258,7 @@ class _$CariHareketleriRequestModelImpl
   }
 }
 
-abstract class _CariHareketleriRequestModel
-    implements CariHareketleriRequestModel {
+abstract class _CariHareketleriRequestModel implements CariHareketleriRequestModel {
   factory _CariHareketleriRequestModel(
       {@JsonKey(name: "SIRALAMA") String? siralama,
       bool? sadeceTahsilatlarOdemeler,
@@ -292,8 +270,7 @@ abstract class _CariHareketleriRequestModel
       String? bitisTarihi,
       String? ba}) = _$CariHareketleriRequestModelImpl;
 
-  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$CariHareketleriRequestModelImpl.fromJson;
+  factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) = _$CariHareketleriRequestModelImpl.fromJson;
 
   @override
   @JsonKey(name: "SIRALAMA")
@@ -326,6 +303,5 @@ abstract class _CariHareketleriRequestModel
   set ba(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

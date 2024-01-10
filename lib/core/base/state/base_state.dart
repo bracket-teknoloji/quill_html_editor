@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:picker/generated/locale_base.dart";
 
+import "../../../generated/locale_base.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";

@@ -6,14 +6,10 @@ part of 'banka_hareketleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$BankaHareketleriModelImpl(
+_$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(Map<String, dynamic> json) => _$BankaHareketleriModelImpl(
       inckeyno: json['INCKEYNO'] as int?,
       netheskodu: json['NETHESKODU'] as String?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       harturu: json['HARTURU'] as int?,
       ba: json['BA'] as String?,
       tutar: (json['TUTAR'] as num?)?.toDouble(),
@@ -32,8 +28,7 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
       dovizAdi: json['DOVIZ_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
-    _$BankaHareketleriModelImpl instance) {
+Map<String, dynamic> _$$BankaHareketleriModelImplToJson(_$BankaHareketleriModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -1,10 +1,10 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "stok_listesi_model.g.dart";
 

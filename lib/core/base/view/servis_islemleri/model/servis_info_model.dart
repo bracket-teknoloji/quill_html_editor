@@ -1,6 +1,7 @@
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
+
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../model/base_network_mixin.dart";
 
 part "servis_info_model.g.dart";
 

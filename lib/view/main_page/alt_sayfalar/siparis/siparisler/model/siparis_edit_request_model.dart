@@ -1,13 +1,13 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../../../stok/stok_hareketleri/model/stok_hareketleri_model.dart";
+import "../../../talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 import "../../base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "siparis_edit_request_model.freezed.dart";

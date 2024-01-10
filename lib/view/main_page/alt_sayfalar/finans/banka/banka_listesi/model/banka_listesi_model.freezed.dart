@@ -61,15 +61,12 @@ mixin _$BankaListesiModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BankaListesiModelCopyWith<BankaListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $BankaListesiModelCopyWith<BankaListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaListesiModelCopyWith<$Res> {
-  factory $BankaListesiModelCopyWith(
-          BankaListesiModel value, $Res Function(BankaListesiModel) then) =
-      _$BankaListesiModelCopyWithImpl<$Res, BankaListesiModel>;
+  factory $BankaListesiModelCopyWith(BankaListesiModel value, $Res Function(BankaListesiModel) then) = _$BankaListesiModelCopyWithImpl<$Res, BankaListesiModel>;
   @useResult
   $Res call(
       {String? bankaKodu,
@@ -94,8 +91,7 @@ abstract class $BankaListesiModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BankaListesiModelCopyWithImpl<$Res, $Val extends BankaListesiModel>
-    implements $BankaListesiModelCopyWith<$Res> {
+class _$BankaListesiModelCopyWithImpl<$Res, $Val extends BankaListesiModel> implements $BankaListesiModelCopyWith<$Res> {
   _$BankaListesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -208,11 +204,8 @@ class _$BankaListesiModelCopyWithImpl<$Res, $Val extends BankaListesiModel>
 }
 
 /// @nodoc
-abstract class _$$BankaListesiModelImplCopyWith<$Res>
-    implements $BankaListesiModelCopyWith<$Res> {
-  factory _$$BankaListesiModelImplCopyWith(_$BankaListesiModelImpl value,
-          $Res Function(_$BankaListesiModelImpl) then) =
-      __$$BankaListesiModelImplCopyWithImpl<$Res>;
+abstract class _$$BankaListesiModelImplCopyWith<$Res> implements $BankaListesiModelCopyWith<$Res> {
+  factory _$$BankaListesiModelImplCopyWith(_$BankaListesiModelImpl value, $Res Function(_$BankaListesiModelImpl) then) = __$$BankaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -238,12 +231,8 @@ abstract class _$$BankaListesiModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$BankaListesiModelImplCopyWithImpl<$Res>
-    extends _$BankaListesiModelCopyWithImpl<$Res, _$BankaListesiModelImpl>
-    implements _$$BankaListesiModelImplCopyWith<$Res> {
-  __$$BankaListesiModelImplCopyWithImpl(_$BankaListesiModelImpl _value,
-      $Res Function(_$BankaListesiModelImpl) _then)
-      : super(_value, _then);
+class __$$BankaListesiModelImplCopyWithImpl<$Res> extends _$BankaListesiModelCopyWithImpl<$Res, _$BankaListesiModelImpl> implements _$$BankaListesiModelImplCopyWith<$Res> {
+  __$$BankaListesiModelImplCopyWithImpl(_$BankaListesiModelImpl _value, $Res Function(_$BankaListesiModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -374,8 +363,7 @@ class _$BankaListesiModelImpl extends _BankaListesiModel {
       this.baglihesapKodu})
       : super._();
 
-  factory _$BankaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BankaListesiModelImplFromJson(json);
+  factory _$BankaListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaListesiModelImplFromJson(json);
 
   @override
   String? bankaKodu;
@@ -419,9 +407,7 @@ class _$BankaListesiModelImpl extends _BankaListesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
-      __$$BankaListesiModelImplCopyWithImpl<_$BankaListesiModelImpl>(
-          this, _$identity);
+  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith => __$$BankaListesiModelImplCopyWithImpl<_$BankaListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -454,8 +440,7 @@ abstract class _BankaListesiModel extends BankaListesiModel {
       String? baglihesapKodu}) = _$BankaListesiModelImpl;
   _BankaListesiModel._() : super._();
 
-  factory _BankaListesiModel.fromJson(Map<String, dynamic> json) =
-      _$BankaListesiModelImpl.fromJson;
+  factory _BankaListesiModel.fromJson(Map<String, dynamic> json) = _$BankaListesiModelImpl.fromJson;
 
   @override
   String? get bankaKodu;
@@ -516,6 +501,5 @@ abstract class _BankaListesiModel extends BankaListesiModel {
   set baglihesapKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

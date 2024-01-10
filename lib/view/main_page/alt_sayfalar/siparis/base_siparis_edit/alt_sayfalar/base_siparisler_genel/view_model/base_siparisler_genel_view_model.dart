@@ -10,7 +10,7 @@ class BaseSiparislerGenelViewModel = _BaseSiparislerGenelViewModelBase with _$Ba
 
 abstract class _BaseSiparislerGenelViewModelBase with Store {
   @observable
-  bool kdvDahil = (BaseSiparisEditModel.instance.kdvDahilMi ??false) ? true : false;
+  bool kdvDahil = (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? true : false;
 
   @observable
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;

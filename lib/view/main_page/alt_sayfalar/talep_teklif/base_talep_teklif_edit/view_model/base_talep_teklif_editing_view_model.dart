@@ -1,7 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/static_variables/static_variables.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_talep_teklif_editing_view_model.g.dart";
 

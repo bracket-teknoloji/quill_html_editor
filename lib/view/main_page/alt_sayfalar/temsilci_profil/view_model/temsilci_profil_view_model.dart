@@ -83,13 +83,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @action
   void setPlasiyer(String? value) => plasiyer = value;
 
-
-
   @observable
   ObservableList<TemsilciProfilModel>? temsilciProfilList;
 
   @action
-  void setTemsilciProfilList(List<TemsilciProfilModel>? value) => temsilciProfilList = value?.where((element) =>plasiyer==null? true: element.plasiyerKodu == plasiyer).toList().asObservable();
+  void setTemsilciProfilList(List<TemsilciProfilModel>? value) => temsilciProfilList = value?.where((element) => plasiyer == null ? true : element.plasiyerKodu == plasiyer).toList().asObservable();
 
   @computed
   double get getBugunSatis => (temsilciProfilList

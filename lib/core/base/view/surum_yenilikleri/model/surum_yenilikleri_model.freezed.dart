@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SurumYenilikleriModel _$SurumYenilikleriModelFromJson(
-    Map<String, dynamic> json) {
+SurumYenilikleriModel _$SurumYenilikleriModelFromJson(Map<String, dynamic> json) {
   return _SurumYenilikleriModel.fromJson(json);
 }
 
@@ -38,30 +37,18 @@ mixin _$SurumYenilikleriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SurumYenilikleriModelCopyWith<SurumYenilikleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SurumYenilikleriModelCopyWith<SurumYenilikleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SurumYenilikleriModelCopyWith<$Res> {
-  factory $SurumYenilikleriModelCopyWith(SurumYenilikleriModel value,
-          $Res Function(SurumYenilikleriModel) then) =
-      _$SurumYenilikleriModelCopyWithImpl<$Res, SurumYenilikleriModel>;
+  factory $SurumYenilikleriModelCopyWith(SurumYenilikleriModel value, $Res Function(SurumYenilikleriModel) then) = _$SurumYenilikleriModelCopyWithImpl<$Res, SurumYenilikleriModel>;
   @useResult
-  $Res call(
-      {int? surumKodu,
-      String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
-      List<ValueList>? liste,
-      List<dynamic>? listAciklama,
-      DateTime? tarih});
+  $Res call({int? surumKodu, String? versiyon, dynamic surumAdi, dynamic yer, List<ValueList>? liste, List<dynamic>? listAciklama, DateTime? tarih});
 }
 
 /// @nodoc
-class _$SurumYenilikleriModelCopyWithImpl<$Res,
-        $Val extends SurumYenilikleriModel>
-    implements $SurumYenilikleriModelCopyWith<$Res> {
+class _$SurumYenilikleriModelCopyWithImpl<$Res, $Val extends SurumYenilikleriModel> implements $SurumYenilikleriModelCopyWith<$Res> {
   _$SurumYenilikleriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -114,32 +101,16 @@ class _$SurumYenilikleriModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SurumYenilikleriModelImplCopyWith<$Res>
-    implements $SurumYenilikleriModelCopyWith<$Res> {
-  factory _$$SurumYenilikleriModelImplCopyWith(
-          _$SurumYenilikleriModelImpl value,
-          $Res Function(_$SurumYenilikleriModelImpl) then) =
-      __$$SurumYenilikleriModelImplCopyWithImpl<$Res>;
+abstract class _$$SurumYenilikleriModelImplCopyWith<$Res> implements $SurumYenilikleriModelCopyWith<$Res> {
+  factory _$$SurumYenilikleriModelImplCopyWith(_$SurumYenilikleriModelImpl value, $Res Function(_$SurumYenilikleriModelImpl) then) = __$$SurumYenilikleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? surumKodu,
-      String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
-      List<ValueList>? liste,
-      List<dynamic>? listAciklama,
-      DateTime? tarih});
+  $Res call({int? surumKodu, String? versiyon, dynamic surumAdi, dynamic yer, List<ValueList>? liste, List<dynamic>? listAciklama, DateTime? tarih});
 }
 
 /// @nodoc
-class __$$SurumYenilikleriModelImplCopyWithImpl<$Res>
-    extends _$SurumYenilikleriModelCopyWithImpl<$Res,
-        _$SurumYenilikleriModelImpl>
-    implements _$$SurumYenilikleriModelImplCopyWith<$Res> {
-  __$$SurumYenilikleriModelImplCopyWithImpl(_$SurumYenilikleriModelImpl _value,
-      $Res Function(_$SurumYenilikleriModelImpl) _then)
-      : super(_value, _then);
+class __$$SurumYenilikleriModelImplCopyWithImpl<$Res> extends _$SurumYenilikleriModelCopyWithImpl<$Res, _$SurumYenilikleriModelImpl> implements _$$SurumYenilikleriModelImplCopyWith<$Res> {
+  __$$SurumYenilikleriModelImplCopyWithImpl(_$SurumYenilikleriModelImpl _value, $Res Function(_$SurumYenilikleriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -188,18 +159,9 @@ class __$$SurumYenilikleriModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
-  _$SurumYenilikleriModelImpl(
-      {this.surumKodu,
-      this.versiyon,
-      this.surumAdi,
-      this.yer,
-      this.liste,
-      this.listAciklama,
-      this.tarih})
-      : super._();
+  _$SurumYenilikleriModelImpl({this.surumKodu, this.versiyon, this.surumAdi, this.yer, this.liste, this.listAciklama, this.tarih}) : super._();
 
-  factory _$SurumYenilikleriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SurumYenilikleriModelImplFromJson(json);
+  factory _$SurumYenilikleriModelImpl.fromJson(Map<String, dynamic> json) => _$$SurumYenilikleriModelImplFromJson(json);
 
   @override
   int? surumKodu;
@@ -219,9 +181,7 @@ class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl>
-      get copyWith => __$$SurumYenilikleriModelImplCopyWithImpl<
-          _$SurumYenilikleriModelImpl>(this, _$identity);
+  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl> get copyWith => __$$SurumYenilikleriModelImplCopyWithImpl<_$SurumYenilikleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -232,18 +192,10 @@ class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
 }
 
 abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
-  factory _SurumYenilikleriModel(
-      {int? surumKodu,
-      String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
-      List<ValueList>? liste,
-      List<dynamic>? listAciklama,
-      DateTime? tarih}) = _$SurumYenilikleriModelImpl;
+  factory _SurumYenilikleriModel({int? surumKodu, String? versiyon, dynamic surumAdi, dynamic yer, List<ValueList>? liste, List<dynamic>? listAciklama, DateTime? tarih}) = _$SurumYenilikleriModelImpl;
   _SurumYenilikleriModel._() : super._();
 
-  factory _SurumYenilikleriModel.fromJson(Map<String, dynamic> json) =
-      _$SurumYenilikleriModelImpl.fromJson;
+  factory _SurumYenilikleriModel.fromJson(Map<String, dynamic> json) = _$SurumYenilikleriModelImpl.fromJson;
 
   @override
   int? get surumKodu;
@@ -268,8 +220,7 @@ abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
   set tarih(DateTime? value);
   @override
   @JsonKey(ignore: true)
-  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SurumYenilikleriModelImplCopyWith<_$SurumYenilikleriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 ValueList _$ValueListFromJson(Map<String, dynamic> json) {
@@ -284,21 +235,18 @@ mixin _$ValueList {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ValueListCopyWith<ValueList> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ValueListCopyWith<ValueList> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ValueListCopyWith<$Res> {
-  factory $ValueListCopyWith(ValueList value, $Res Function(ValueList) then) =
-      _$ValueListCopyWithImpl<$Res, ValueList>;
+  factory $ValueListCopyWith(ValueList value, $Res Function(ValueList) then) = _$ValueListCopyWithImpl<$Res, ValueList>;
   @useResult
   $Res call({int? id, String? aciklama, bool? talepEden});
 }
 
 /// @nodoc
-class _$ValueListCopyWithImpl<$Res, $Val extends ValueList>
-    implements $ValueListCopyWith<$Res> {
+class _$ValueListCopyWithImpl<$Res, $Val extends ValueList> implements $ValueListCopyWith<$Res> {
   _$ValueListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -331,23 +279,16 @@ class _$ValueListCopyWithImpl<$Res, $Val extends ValueList>
 }
 
 /// @nodoc
-abstract class _$$ValueListImplCopyWith<$Res>
-    implements $ValueListCopyWith<$Res> {
-  factory _$$ValueListImplCopyWith(
-          _$ValueListImpl value, $Res Function(_$ValueListImpl) then) =
-      __$$ValueListImplCopyWithImpl<$Res>;
+abstract class _$$ValueListImplCopyWith<$Res> implements $ValueListCopyWith<$Res> {
+  factory _$$ValueListImplCopyWith(_$ValueListImpl value, $Res Function(_$ValueListImpl) then) = __$$ValueListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, String? aciklama, bool? talepEden});
 }
 
 /// @nodoc
-class __$$ValueListImplCopyWithImpl<$Res>
-    extends _$ValueListCopyWithImpl<$Res, _$ValueListImpl>
-    implements _$$ValueListImplCopyWith<$Res> {
-  __$$ValueListImplCopyWithImpl(
-      _$ValueListImpl _value, $Res Function(_$ValueListImpl) _then)
-      : super(_value, _then);
+class __$$ValueListImplCopyWithImpl<$Res> extends _$ValueListCopyWithImpl<$Res, _$ValueListImpl> implements _$$ValueListImplCopyWith<$Res> {
+  __$$ValueListImplCopyWithImpl(_$ValueListImpl _value, $Res Function(_$ValueListImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -378,8 +319,7 @@ class __$$ValueListImplCopyWithImpl<$Res>
 class _$ValueListImpl implements _ValueList {
   const _$ValueListImpl({this.id, this.aciklama, this.talepEden});
 
-  factory _$ValueListImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ValueListImplFromJson(json);
+  factory _$ValueListImpl.fromJson(Map<String, dynamic> json) => _$$ValueListImplFromJson(json);
 
   @override
   final int? id;
@@ -399,10 +339,8 @@ class _$ValueListImpl implements _ValueList {
         (other.runtimeType == runtimeType &&
             other is _$ValueListImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.aciklama, aciklama) ||
-                other.aciklama == aciklama) &&
-            (identical(other.talepEden, talepEden) ||
-                other.talepEden == talepEden));
+            (identical(other.aciklama, aciklama) || other.aciklama == aciklama) &&
+            (identical(other.talepEden, talepEden) || other.talepEden == talepEden));
   }
 
   @JsonKey(ignore: true)
@@ -412,8 +350,7 @@ class _$ValueListImpl implements _ValueList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith =>
-      __$$ValueListImplCopyWithImpl<_$ValueListImpl>(this, _$identity);
+  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith => __$$ValueListImplCopyWithImpl<_$ValueListImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -424,13 +361,9 @@ class _$ValueListImpl implements _ValueList {
 }
 
 abstract class _ValueList implements ValueList {
-  const factory _ValueList(
-      {final int? id,
-      final String? aciklama,
-      final bool? talepEden}) = _$ValueListImpl;
+  const factory _ValueList({final int? id, final String? aciklama, final bool? talepEden}) = _$ValueListImpl;
 
-  factory _ValueList.fromJson(Map<String, dynamic> json) =
-      _$ValueListImpl.fromJson;
+  factory _ValueList.fromJson(Map<String, dynamic> json) = _$ValueListImpl.fromJson;
 
   @override
   int? get id;
@@ -440,6 +373,5 @@ abstract class _ValueList implements ValueList {
   bool? get talepEden;
   @override
   @JsonKey(ignore: true)
-  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ValueListImplCopyWith<_$ValueListImpl> get copyWith => throw _privateConstructorUsedError;
 }

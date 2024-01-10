@@ -1,16 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/oturumlar/view_model/oturumlar_view_model.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/add_company/model/account_model.dart";
+
+import "../../../../../view/add_company/model/account_model.dart";
+import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../components/layout/custom_layout_builder.dart";
+import "../../../../components/shimmer/list_view_shimmer.dart";
+import "../../../../components/textfield/custom_app_bar_text_field.dart";
+import "../../../../components/wrap/appbar_title.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../state/base_state.dart";
+import "../view_model/oturumlar_view_model.dart";
 
 class OturumlarView extends StatefulWidget {
   const OturumlarView({super.key});

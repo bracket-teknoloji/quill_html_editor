@@ -6,13 +6,9 @@ part of 'dekont_duzenle_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DekontDuzenleRequestModelImpl(
+_$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(Map<String, dynamic> json) => _$DekontDuzenleRequestModelImpl(
       inckeyno: json['INCKEYNO'] as int?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       seriNo: json['SERI_NO'] as String?,
       dekontNo: json['DEKONT_NO'] as int?,
       siraNo: json['SIRA_NO'] as int?,
@@ -37,8 +33,7 @@ _$DekontDuzenleRequestModelImpl _$$DekontDuzenleRequestModelImplFromJson(
       cariAdi: json['CARI_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(
-    _$DekontDuzenleRequestModelImpl instance) {
+Map<String, dynamic> _$$DekontDuzenleRequestModelImplToJson(_$DekontDuzenleRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

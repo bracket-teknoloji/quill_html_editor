@@ -43,8 +43,6 @@ extension ListExtension4<T> on List? {
 
 extension ListGenericNullCheck<T> on List<T?> {
   List<T> get nullCheckWithGeneric => whereType<T>().toList();
-
-  
 }
 
 extension DizaynListExtensions on List<NetFectDizaynList> {

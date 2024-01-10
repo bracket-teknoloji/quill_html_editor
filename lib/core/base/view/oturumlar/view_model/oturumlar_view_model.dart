@@ -1,7 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/add_company/model/account_model.dart";
+
+import "../../../../../view/add_company/model/account_model.dart";
+import "../../../../init/network/login/api_urls.dart";
+import "../../../view_model/mobx_network_mixin.dart";
 
 part "oturumlar_view_model.g.dart";
 

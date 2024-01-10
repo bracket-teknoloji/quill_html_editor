@@ -1,6 +1,5 @@
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-
 import "../../constants/enum/base_edit_enum.dart";
+import "../../constants/enum/edit_tipi_enum.dart";
 
 class BaseEditModel<T> {
   T? model;
@@ -9,7 +8,8 @@ class BaseEditModel<T> {
   EditTipiEnum? editTipiEnum;
   String? belgeNo;
 
-  bool get enable => baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.revize || baseEditEnum == BaseEditEnum.taslak;
+  bool get enable =>
+      baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.revize || baseEditEnum == BaseEditEnum.taslak;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
   bool get isGoruntule => baseEditEnum == BaseEditEnum.goruntule;
   bool get isEkle => baseEditEnum == BaseEditEnum.ekle;

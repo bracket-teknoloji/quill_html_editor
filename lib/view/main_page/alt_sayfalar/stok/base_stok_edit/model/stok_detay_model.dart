@@ -69,7 +69,7 @@ class SeriList {
   int? inckeyno;
   @HiveField(5)
   String? depoTanimi;
-  
+
   int? hareketId;
 
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);

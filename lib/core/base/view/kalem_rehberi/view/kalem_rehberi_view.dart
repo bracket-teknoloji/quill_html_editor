@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/kalem_rehberi/view_model/kalem_rehberi_view_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../components/layout/custom_layout_builder.dart";
+import "../../../../components/shimmer/list_view_shimmer.dart";
+import "../../../../components/wrap/appbar_title.dart";
+import "../../../../constants/enum/edit_tipi_enum.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/ondalik_utils.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../state/base_state.dart";
+import "../view_model/kalem_rehberi_view_model.dart";
 
 /// KalemModel Listesi dönüyor
 class KalemRehberiView extends StatefulWidget {

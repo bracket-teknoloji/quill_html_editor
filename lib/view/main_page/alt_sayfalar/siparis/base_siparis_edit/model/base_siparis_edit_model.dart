@@ -5,16 +5,16 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/yetki_controller/yetki_controller.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../../../stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 
@@ -928,8 +928,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         cariDovizli: model.dovizli,
         plasiyerAciklama: model.plasiyerAciklama,
         plasiyerKodu: model.plasiyerKodu,
-      
-  );
+      );
 }
 
 @CopyWith()

@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+
+import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparisler/model/siparisler_request_model.dart";

@@ -37,8 +37,7 @@ mixin _$StokBottomSheetModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   bool? get okutuldu => throw _privateConstructorUsedError;
   String? get seriTakibiVar => throw _privateConstructorUsedError;
-  List<BaseGrupKoduModel>? get arrGrupKodu =>
-      throw _privateConstructorUsedError;
+  List<BaseGrupKoduModel>? get arrGrupKodu => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod1 => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod2 => throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod3 => throw _privateConstructorUsedError;
@@ -47,15 +46,12 @@ mixin _$StokBottomSheetModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokBottomSheetModelCopyWith<$Res> {
-  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value,
-          $Res Function(StokBottomSheetModel) then) =
-      _$StokBottomSheetModelCopyWithImpl<$Res, StokBottomSheetModel>;
+  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value, $Res Function(StokBottomSheetModel) then) = _$StokBottomSheetModelCopyWithImpl<$Res, StokBottomSheetModel>;
   @useResult
   $Res call(
       {int? sayfa,
@@ -84,9 +80,7 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StokBottomSheetModelCopyWithImpl<$Res,
-        $Val extends StokBottomSheetModel>
-    implements $StokBottomSheetModelCopyWith<$Res> {
+class _$StokBottomSheetModelCopyWithImpl<$Res, $Val extends StokBottomSheetModel> implements $StokBottomSheetModelCopyWith<$Res> {
   _$StokBottomSheetModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -219,11 +213,8 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
-    implements $StokBottomSheetModelCopyWith<$Res> {
-  factory _$$StokBottomSheetModelImplCopyWith(_$StokBottomSheetModelImpl value,
-          $Res Function(_$StokBottomSheetModelImpl) then) =
-      __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
+abstract class _$$StokBottomSheetModelImplCopyWith<$Res> implements $StokBottomSheetModelCopyWith<$Res> {
+  factory _$$StokBottomSheetModelImplCopyWith(_$StokBottomSheetModelImpl value, $Res Function(_$StokBottomSheetModelImpl) then) = __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -253,12 +244,8 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
-    extends _$StokBottomSheetModelCopyWithImpl<$Res, _$StokBottomSheetModelImpl>
-    implements _$$StokBottomSheetModelImplCopyWith<$Res> {
-  __$$StokBottomSheetModelImplCopyWithImpl(_$StokBottomSheetModelImpl _value,
-      $Res Function(_$StokBottomSheetModelImpl) _then)
-      : super(_value, _then);
+class __$$StokBottomSheetModelImplCopyWithImpl<$Res> extends _$StokBottomSheetModelCopyWithImpl<$Res, _$StokBottomSheetModelImpl> implements _$$StokBottomSheetModelImplCopyWith<$Res> {
+  __$$StokBottomSheetModelImplCopyWithImpl(_$StokBottomSheetModelImpl _value, $Res Function(_$StokBottomSheetModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -420,8 +407,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
         _arrKod5 = arrKod5,
         super._();
 
-  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StokBottomSheetModelImplFromJson(json);
+  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) => _$$StokBottomSheetModelImplFromJson(json);
 
   @override
   final int? sayfa;
@@ -528,10 +514,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
-      get copyWith =>
-          __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(
-              this, _$identity);
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith => __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -568,8 +551,7 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       final List<BaseGrupKoduModel>? arrKod5}) = _$StokBottomSheetModelImpl;
   _StokBottomSheetModel._() : super._();
 
-  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) =
-      _$StokBottomSheetModelImpl.fromJson;
+  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) = _$StokBottomSheetModelImpl.fromJson;
 
   @override
   int? get sayfa;
@@ -619,6 +601,5 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   List<BaseGrupKoduModel>? get arrKod5;
   @override
   @JsonKey(ignore: true)
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
+import "../../../../components/shimmer/list_view_shimmer.dart";
 import "../../../../components/textfield/custom_app_bar_text_field.dart";
 import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";

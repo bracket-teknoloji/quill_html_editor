@@ -6,24 +6,17 @@ part of 'surum_yenilikleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SurumYenilikleriModelImpl(
+_$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(Map<String, dynamic> json) => _$SurumYenilikleriModelImpl(
       surumKodu: json['SURUM_KODU'] as int?,
       versiyon: json['VERSIYON'] as String?,
       surumAdi: json['SURUM_ADI'],
       yer: json['YER'],
-      liste: (json['LISTE'] as List<dynamic>?)
-          ?.map((e) => ValueList.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      liste: (json['LISTE'] as List<dynamic>?)?.map((e) => ValueList.fromJson(e as Map<String, dynamic>)).toList(),
       listAciklama: json['LIST_ACIKLAMA'] as List<dynamic>?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
     );
 
-Map<String, dynamic> _$$SurumYenilikleriModelImplToJson(
-    _$SurumYenilikleriModelImpl instance) {
+Map<String, dynamic> _$$SurumYenilikleriModelImplToJson(_$SurumYenilikleriModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -42,8 +35,7 @@ Map<String, dynamic> _$$SurumYenilikleriModelImplToJson(
   return val;
 }
 
-_$ValueListImpl _$$ValueListImplFromJson(Map<String, dynamic> json) =>
-    _$ValueListImpl(
+_$ValueListImpl _$$ValueListImplFromJson(Map<String, dynamic> json) => _$ValueListImpl(
       id: json['ID'] as int?,
       aciklama: json['ACIKLAMA'] as String?,
       talepEden: json['TALEP_EDEN'] as bool?,

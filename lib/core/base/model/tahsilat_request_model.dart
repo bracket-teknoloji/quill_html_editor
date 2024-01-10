@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
 
+import "../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
 import "base_network_mixin.dart";
 
 part "tahsilat_request_model.freezed.dart";
@@ -71,7 +71,6 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
 
 @unfreezed
 class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
-
   DekontKalemler._();
   factory DekontKalemler({
     String? aciklama,

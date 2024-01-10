@@ -2,20 +2,21 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view_model/dekont_edit_kalemler_view_model.dart";
+
+import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/components/badge/colorful_badge.dart";
+import "../../../../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../../core/constants/color_palette.dart";
+import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../view_model/dekont_edit_kalemler_view_model.dart";
 
 class DekontEditKalemlerView extends StatefulWidget {
   final ValueChanged<int> onChanged;

@@ -2,11 +2,11 @@ import "dart:convert";
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_request_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../../../cari/cari_hareketleri/model/cari_hareketleri_request_model.dart";
 
 part "tahsilat_odeme_kayitlari_view_model.g.dart";
 

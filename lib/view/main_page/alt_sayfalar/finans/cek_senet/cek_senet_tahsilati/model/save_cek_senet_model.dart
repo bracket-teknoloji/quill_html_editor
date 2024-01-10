@@ -1,9 +1,9 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
 
 part "save_cek_senet_model.freezed.dart";
 part "save_cek_senet_model.g.dart";

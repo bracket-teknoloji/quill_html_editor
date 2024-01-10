@@ -1,7 +1,8 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_duzenle_request_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "dekont_duzenle_request_model.dart";
 
 part "dekont_islemler_request_model.freezed.dart";
 part "dekont_islemler_request_model.g.dart";

@@ -1,7 +1,7 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 part "siparis_teslim_raporu_view_model.g.dart";
 

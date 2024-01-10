@@ -1,8 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/seri_model.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../../core/base/model/seri_model.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../model/param_model.dart";
+import "../../../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_genel_view_model.g.dart";
 

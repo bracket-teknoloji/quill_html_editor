@@ -2,9 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -21,6 +18,9 @@ import "../../../../../../../../../core/constants/extensions/widget_extensions.d
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
+import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_talep_teklif_kalemler_view_model.dart";
 
 class BaseTalepTeklifKalemlerView extends StatefulWidget {

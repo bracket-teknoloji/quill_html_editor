@@ -1,11 +1,4 @@
-enum BaseEditEnum {
-  ekle,
-  duzenle,
-  goruntule,
-  kopyala,
-  revize,
-  taslak
-}
+enum BaseEditEnum { ekle, duzenle, goruntule, kopyala, revize, taslak }
 
 extension ToString on BaseEditEnum? {
   String? get name => getName(this);

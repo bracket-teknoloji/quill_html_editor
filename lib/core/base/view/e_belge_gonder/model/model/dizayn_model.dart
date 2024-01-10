@@ -1,5 +1,6 @@
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+
+import "../../../../model/base_network_mixin.dart";
 
 part "dizayn_model.g.dart";
 
@@ -15,8 +16,8 @@ class DizaynModel with NetworkManagerMixin {
   final String? dizaynKodu;
   @JsonKey(name: "ERP_DIZAYNI")
   final String? erpDizayni;
-    @JsonKey(name: "VARSAYILAN_MI")
-    final bool? varsayilanMi;
+  @JsonKey(name: "VARSAYILAN_MI")
+  final bool? varsayilanMi;
 
   DizaynModel({
     this.id,
@@ -35,5 +36,5 @@ class DizaynModel with NetworkManagerMixin {
   @override
   DizaynModel fromJson(Map<String, dynamic> json) => DizaynModel.fromJson(json);
 
-  String get dizaynTamAd => "${dizaynAdi?? ""} (${dizaynKodu??""})";
+  String get dizaynTamAd => "${dizaynAdi ?? ""} (${dizaynKodu ?? ""})";
 }

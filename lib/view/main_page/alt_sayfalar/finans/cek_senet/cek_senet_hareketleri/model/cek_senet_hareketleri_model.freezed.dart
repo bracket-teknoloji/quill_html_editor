@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CekSenetHareketleriModel _$CekSenetHareketleriModelFromJson(
-    Map<String, dynamic> json) {
+CekSenetHareketleriModel _$CekSenetHareketleriModelFromJson(Map<String, dynamic> json) {
   return _CekSenetHareketleriModel.fromJson(json);
 }
 
@@ -52,15 +51,12 @@ mixin _$CekSenetHareketleriModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CekSenetHareketleriModelCopyWith<CekSenetHareketleriModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CekSenetHareketleriModelCopyWith<CekSenetHareketleriModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetHareketleriModelCopyWith<$Res> {
-  factory $CekSenetHareketleriModelCopyWith(CekSenetHareketleriModel value,
-          $Res Function(CekSenetHareketleriModel) then) =
-      _$CekSenetHareketleriModelCopyWithImpl<$Res, CekSenetHareketleriModel>;
+  factory $CekSenetHareketleriModelCopyWith(CekSenetHareketleriModel value, $Res Function(CekSenetHareketleriModel) then) = _$CekSenetHareketleriModelCopyWithImpl<$Res, CekSenetHareketleriModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -80,9 +76,7 @@ abstract class $CekSenetHareketleriModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CekSenetHareketleriModelCopyWithImpl<$Res,
-        $Val extends CekSenetHareketleriModel>
-    implements $CekSenetHareketleriModelCopyWith<$Res> {
+class _$CekSenetHareketleriModelCopyWithImpl<$Res, $Val extends CekSenetHareketleriModel> implements $CekSenetHareketleriModelCopyWith<$Res> {
   _$CekSenetHareketleriModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -170,12 +164,8 @@ class _$CekSenetHareketleriModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$CekSenetHareketleriModelImplCopyWith<$Res>
-    implements $CekSenetHareketleriModelCopyWith<$Res> {
-  factory _$$CekSenetHareketleriModelImplCopyWith(
-          _$CekSenetHareketleriModelImpl value,
-          $Res Function(_$CekSenetHareketleriModelImpl) then) =
-      __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>;
+abstract class _$$CekSenetHareketleriModelImplCopyWith<$Res> implements $CekSenetHareketleriModelCopyWith<$Res> {
+  factory _$$CekSenetHareketleriModelImplCopyWith(_$CekSenetHareketleriModelImpl value, $Res Function(_$CekSenetHareketleriModelImpl) then) = __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -196,14 +186,8 @@ abstract class _$$CekSenetHareketleriModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>
-    extends _$CekSenetHareketleriModelCopyWithImpl<$Res,
-        _$CekSenetHareketleriModelImpl>
-    implements _$$CekSenetHareketleriModelImplCopyWith<$Res> {
-  __$$CekSenetHareketleriModelImplCopyWithImpl(
-      _$CekSenetHareketleriModelImpl _value,
-      $Res Function(_$CekSenetHareketleriModelImpl) _then)
-      : super(_value, _then);
+class __$$CekSenetHareketleriModelImplCopyWithImpl<$Res> extends _$CekSenetHareketleriModelCopyWithImpl<$Res, _$CekSenetHareketleriModelImpl> implements _$$CekSenetHareketleriModelImplCopyWith<$Res> {
+  __$$CekSenetHareketleriModelImplCopyWithImpl(_$CekSenetHareketleriModelImpl _value, $Res Function(_$CekSenetHareketleriModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -304,8 +288,7 @@ class _$CekSenetHareketleriModelImpl extends _CekSenetHareketleriModel {
       this.kayittarihi})
       : super._();
 
-  factory _$CekSenetHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CekSenetHareketleriModelImplFromJson(json);
+  factory _$CekSenetHareketleriModelImpl.fromJson(Map<String, dynamic> json) => _$$CekSenetHareketleriModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -339,9 +322,7 @@ class _$CekSenetHareketleriModelImpl extends _CekSenetHareketleriModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
-      get copyWith => __$$CekSenetHareketleriModelImplCopyWithImpl<
-          _$CekSenetHareketleriModelImpl>(this, _$identity);
+  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl> get copyWith => __$$CekSenetHareketleriModelImplCopyWithImpl<_$CekSenetHareketleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -369,8 +350,7 @@ abstract class _CekSenetHareketleriModel extends CekSenetHareketleriModel {
       String? kayittarihi}) = _$CekSenetHareketleriModelImpl;
   _CekSenetHareketleriModel._() : super._();
 
-  factory _CekSenetHareketleriModel.fromJson(Map<String, dynamic> json) =
-      _$CekSenetHareketleriModelImpl.fromJson;
+  factory _CekSenetHareketleriModel.fromJson(Map<String, dynamic> json) = _$CekSenetHareketleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -416,6 +396,5 @@ abstract class _CekSenetHareketleriModel extends CekSenetHareketleriModel {
   set kayittarihi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

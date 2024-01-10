@@ -2,17 +2,16 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/save_stok_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "../../../../../../../../../core/components/badge/colorful_badge.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/model_extensions.dart";
@@ -24,6 +23,7 @@ import "../../../../../../../../../core/constants/static_variables/static_variab
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
+import "../../../../../../stok/base_stok_edit/model/save_stok_model.dart";
 import "../../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_fatura_kalemler_view_model.dart";
 

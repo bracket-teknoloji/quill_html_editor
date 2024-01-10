@@ -2,12 +2,12 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/card/dekontlar_card.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/card/dekontlar_card.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/dekont_listesi_model.dart";
 import "../view_model/dekontlar_view_model.dart";
 
 class DekontlarView extends StatefulWidget {

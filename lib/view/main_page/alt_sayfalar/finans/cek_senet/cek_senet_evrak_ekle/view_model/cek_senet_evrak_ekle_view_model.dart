@@ -1,10 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evrak_ekle/model/cek_senet_evrak_ekle_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../model/cek_senet_evrak_ekle_model.dart";
 
 part "cek_senet_evrak_ekle_view_model.g.dart";
 

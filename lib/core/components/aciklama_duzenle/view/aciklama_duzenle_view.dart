@@ -1,13 +1,14 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/aciklama_duzenle/view_model/aciklama_duzenle_view_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../base/state/base_state.dart";
+import "../../../constants/enum/edit_tipi_enum.dart";
+import "../../../constants/extensions/date_time_extensions.dart";
+import "../../../constants/ui_helper/ui_helper.dart";
+import "../../textfield/custom_text_field.dart";
+import "../../wrap/appbar_title.dart";
+import "../view_model/aciklama_duzenle_view_model.dart";
 
 class AciklamaDuzenleView extends StatefulWidget {
   final EditTipiEnum editEnum;

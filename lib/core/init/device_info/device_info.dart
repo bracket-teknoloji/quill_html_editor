@@ -11,7 +11,7 @@ class DeviceInfoModel {
 
   Future<void> init() async {
     final deviceInfo = DeviceInfoPlugin();
-    if (kIsWeb){
+    if (kIsWeb) {
       log("Running on Web");
       model = "Web";
       brand = "Web";

@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -8,6 +7,7 @@ import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
+import "../badge/colorful_badge.dart";
 
 class CariRehberiCard extends StatefulWidget {
   final CariListesiModel model;

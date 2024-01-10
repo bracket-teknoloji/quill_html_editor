@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/image/image_view.dart";
-import "package:picker/core/components/image/image_widget.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evrak_ekle/view/cek_senet_evrak_ekle_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/view_model/cek_senet_evraklar_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../core/components/image/image_view.dart";
+import "../../../../../../../core/components/image/image_widget.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../cek_senet_evrak_ekle/view/cek_senet_evrak_ekle_view.dart";
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../model/evraklar_model.dart";
+import "../model/evraklar_request_model.dart";
+import "../view_model/cek_senet_evraklar_view_model.dart";
 
 class CekSenetEvraklarView extends StatefulWidget {
   final CekSenetListesiModel model;

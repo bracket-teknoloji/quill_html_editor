@@ -1,10 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../model/evraklar_model.dart";
+import "../model/evraklar_request_model.dart";
 
 part "cek_senet_evraklar_view_model.g.dart";
 
@@ -35,7 +36,7 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
     return result;
   }
 
-    @action
+  @action
   Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(EvraklarModel model) async {
     final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
     return result;

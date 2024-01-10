@@ -31,8 +31,7 @@ class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMi
   CekSenetHareketleriModel fromJson(Map<String, dynamic> json) => CekSenetHareketleriModel.fromJson(json);
 }
 
-
-extension CekSenetHareketleriExtensions on CekSenetHareketleriModel{
+extension CekSenetHareketleriExtensions on CekSenetHareketleriModel {
   String get durumAdi {
     switch (durum) {
       case "B":
@@ -56,7 +55,7 @@ extension CekSenetHareketleriExtensions on CekSenetHareketleriModel{
         return "Tahsilat";
       case "E":
         return "Teminat";
-        case "I":
+      case "I":
         return "İade";
       default:
         return "";

@@ -71,15 +71,12 @@ mixin _$StokYeniKayitModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StokYeniKayitModelCopyWith<StokYeniKayitModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $StokYeniKayitModelCopyWith<StokYeniKayitModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokYeniKayitModelCopyWith<$Res> {
-  factory $StokYeniKayitModelCopyWith(
-          StokYeniKayitModel value, $Res Function(StokYeniKayitModel) then) =
-      _$StokYeniKayitModelCopyWithImpl<$Res, StokYeniKayitModel>;
+  factory $StokYeniKayitModelCopyWith(StokYeniKayitModel value, $Res Function(StokYeniKayitModel) then) = _$StokYeniKayitModelCopyWithImpl<$Res, StokYeniKayitModel>;
   @useResult
   $Res call(
       {String? aciklama,
@@ -107,8 +104,7 @@ abstract class $StokYeniKayitModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel>
-    implements $StokYeniKayitModelCopyWith<$Res> {
+class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel> implements $StokYeniKayitModelCopyWith<$Res> {
   _$StokYeniKayitModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -236,11 +232,8 @@ class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel>
 }
 
 /// @nodoc
-abstract class _$$StokYeniKayitModelImplCopyWith<$Res>
-    implements $StokYeniKayitModelCopyWith<$Res> {
-  factory _$$StokYeniKayitModelImplCopyWith(_$StokYeniKayitModelImpl value,
-          $Res Function(_$StokYeniKayitModelImpl) then) =
-      __$$StokYeniKayitModelImplCopyWithImpl<$Res>;
+abstract class _$$StokYeniKayitModelImplCopyWith<$Res> implements $StokYeniKayitModelCopyWith<$Res> {
+  factory _$$StokYeniKayitModelImplCopyWith(_$StokYeniKayitModelImpl value, $Res Function(_$StokYeniKayitModelImpl) then) = __$$StokYeniKayitModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -269,12 +262,8 @@ abstract class _$$StokYeniKayitModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StokYeniKayitModelImplCopyWithImpl<$Res>
-    extends _$StokYeniKayitModelCopyWithImpl<$Res, _$StokYeniKayitModelImpl>
-    implements _$$StokYeniKayitModelImplCopyWith<$Res> {
-  __$$StokYeniKayitModelImplCopyWithImpl(_$StokYeniKayitModelImpl _value,
-      $Res Function(_$StokYeniKayitModelImpl) _then)
-      : super(_value, _then);
+class __$$StokYeniKayitModelImplCopyWithImpl<$Res> extends _$StokYeniKayitModelCopyWithImpl<$Res, _$StokYeniKayitModelImpl> implements _$$StokYeniKayitModelImplCopyWith<$Res> {
+  __$$StokYeniKayitModelImplCopyWithImpl(_$StokYeniKayitModelImpl _value, $Res Function(_$StokYeniKayitModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -423,8 +412,7 @@ class _$StokYeniKayitModelImpl extends _StokYeniKayitModel {
       @JsonKey(name: "_YeniKayit") this.yeniKayit})
       : super._();
 
-  factory _$StokYeniKayitModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StokYeniKayitModelImplFromJson(json);
+  factory _$StokYeniKayitModelImpl.fromJson(Map<String, dynamic> json) => _$$StokYeniKayitModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -476,9 +464,7 @@ class _$StokYeniKayitModelImpl extends _StokYeniKayitModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
-      __$$StokYeniKayitModelImplCopyWithImpl<_$StokYeniKayitModelImpl>(
-          this, _$identity);
+  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith => __$$StokYeniKayitModelImplCopyWithImpl<_$StokYeniKayitModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -514,8 +500,7 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
       @JsonKey(name: "_YeniKayit") bool? yeniKayit}) = _$StokYeniKayitModelImpl;
   _StokYeniKayitModel._() : super._();
 
-  factory _StokYeniKayitModel.fromJson(Map<String, dynamic> json) =
-      _$StokYeniKayitModelImpl.fromJson;
+  factory _StokYeniKayitModel.fromJson(Map<String, dynamic> json) = _$StokYeniKayitModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -589,6 +574,5 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
   set yeniKayit(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

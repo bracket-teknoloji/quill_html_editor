@@ -6,26 +6,19 @@ part of 'dekont_islemler_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DekontIslemlerRequestModelImpl(
+_$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(Map<String, dynamic> json) => _$DekontIslemlerRequestModelImpl(
       dekontIslemTuru: json['DEKONT_ISLEM_TURU'] as String?,
       dekontSeri: json['DEKONT_SERI'] as String?,
       guid: json['GUID'] as String?,
-      kalemler: (json['KALEMLER'] as List<dynamic>?)
-          ?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      kalemler: (json['KALEMLER'] as List<dynamic>?)?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>)).toList(),
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       tag: json['TAG'] as String? ?? "DekontModel",
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['_YeniKayit'] as bool?,
       dekontNo: json['DEKONT_NO'] as int?,
     );
 
-Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(
-    _$DekontIslemlerRequestModelImpl instance) {
+Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(_$DekontIslemlerRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -1,4 +1,4 @@
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 class SiparislerWidgetModel {
   bool? isGetData;

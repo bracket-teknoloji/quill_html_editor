@@ -1,10 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/doviz_kurlari_model.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../../core/base/model/doviz_kurlari_model.dart";
+import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../../model/param_model.dart";
 
 part "dekont_kalem_ekle_view_model.g.dart";
 

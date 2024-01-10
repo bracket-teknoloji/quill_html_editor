@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/siparis_rehberi/view_model/siparis_rehberi_view_model.dart";
-import "package:picker/core/components/card/siparis_rehberi_card.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../components/card/siparis_rehberi_card.dart";
+import "../../../../components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../components/shimmer/list_view_shimmer.dart";
+import "../../../../components/wrap/appbar_title.dart";
+import "../../../../constants/enum/edit_tipi_enum.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../state/base_state.dart";
+import "../view_model/siparis_rehberi_view_model.dart";
 
 class SiparisRehberiView extends StatefulWidget {
   final BaseSiparisEditModel model;

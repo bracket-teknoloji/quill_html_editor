@@ -1,8 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_request_model.dart";
+
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
 part "dekontlar_view_model.g.dart";
 

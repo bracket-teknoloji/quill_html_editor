@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DekontDuzenleRequestModel _$DekontDuzenleRequestModelFromJson(
-    Map<String, dynamic> json) {
+DekontDuzenleRequestModel _$DekontDuzenleRequestModelFromJson(Map<String, dynamic> json) {
   return _DekontDuzenleRequestModel.fromJson(json);
 }
 
@@ -72,15 +71,12 @@ mixin _$DekontDuzenleRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DekontDuzenleRequestModelCopyWith<DekontDuzenleRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DekontDuzenleRequestModelCopyWith<DekontDuzenleRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontDuzenleRequestModelCopyWith<$Res> {
-  factory $DekontDuzenleRequestModelCopyWith(DekontDuzenleRequestModel value,
-          $Res Function(DekontDuzenleRequestModel) then) =
-      _$DekontDuzenleRequestModelCopyWithImpl<$Res, DekontDuzenleRequestModel>;
+  factory $DekontDuzenleRequestModelCopyWith(DekontDuzenleRequestModel value, $Res Function(DekontDuzenleRequestModel) then) = _$DekontDuzenleRequestModelCopyWithImpl<$Res, DekontDuzenleRequestModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -110,9 +106,7 @@ abstract class $DekontDuzenleRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DekontDuzenleRequestModelCopyWithImpl<$Res,
-        $Val extends DekontDuzenleRequestModel>
-    implements $DekontDuzenleRequestModelCopyWith<$Res> {
+class _$DekontDuzenleRequestModelCopyWithImpl<$Res, $Val extends DekontDuzenleRequestModel> implements $DekontDuzenleRequestModelCopyWith<$Res> {
   _$DekontDuzenleRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -250,12 +244,8 @@ class _$DekontDuzenleRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$DekontDuzenleRequestModelImplCopyWith<$Res>
-    implements $DekontDuzenleRequestModelCopyWith<$Res> {
-  factory _$$DekontDuzenleRequestModelImplCopyWith(
-          _$DekontDuzenleRequestModelImpl value,
-          $Res Function(_$DekontDuzenleRequestModelImpl) then) =
-      __$$DekontDuzenleRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontDuzenleRequestModelImplCopyWith<$Res> implements $DekontDuzenleRequestModelCopyWith<$Res> {
+  factory _$$DekontDuzenleRequestModelImplCopyWith(_$DekontDuzenleRequestModelImpl value, $Res Function(_$DekontDuzenleRequestModelImpl) then) = __$$DekontDuzenleRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -286,14 +276,9 @@ abstract class _$$DekontDuzenleRequestModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DekontDuzenleRequestModelImplCopyWithImpl<$Res>
-    extends _$DekontDuzenleRequestModelCopyWithImpl<$Res,
-        _$DekontDuzenleRequestModelImpl>
+class __$$DekontDuzenleRequestModelImplCopyWithImpl<$Res> extends _$DekontDuzenleRequestModelCopyWithImpl<$Res, _$DekontDuzenleRequestModelImpl>
     implements _$$DekontDuzenleRequestModelImplCopyWith<$Res> {
-  __$$DekontDuzenleRequestModelImplCopyWithImpl(
-      _$DekontDuzenleRequestModelImpl _value,
-      $Res Function(_$DekontDuzenleRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$DekontDuzenleRequestModelImplCopyWithImpl(_$DekontDuzenleRequestModelImpl _value, $Res Function(_$DekontDuzenleRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -454,8 +439,7 @@ class _$DekontDuzenleRequestModelImpl extends _DekontDuzenleRequestModel {
       this.cariAdi})
       : super._();
 
-  factory _$DekontDuzenleRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DekontDuzenleRequestModelImplFromJson(json);
+  factory _$DekontDuzenleRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontDuzenleRequestModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -509,9 +493,7 @@ class _$DekontDuzenleRequestModelImpl extends _DekontDuzenleRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DekontDuzenleRequestModelImplCopyWith<_$DekontDuzenleRequestModelImpl>
-      get copyWith => __$$DekontDuzenleRequestModelImplCopyWithImpl<
-          _$DekontDuzenleRequestModelImpl>(this, _$identity);
+  _$$DekontDuzenleRequestModelImplCopyWith<_$DekontDuzenleRequestModelImpl> get copyWith => __$$DekontDuzenleRequestModelImplCopyWithImpl<_$DekontDuzenleRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -549,8 +531,7 @@ abstract class _DekontDuzenleRequestModel extends DekontDuzenleRequestModel {
       String? cariAdi}) = _$DekontDuzenleRequestModelImpl;
   _DekontDuzenleRequestModel._() : super._();
 
-  factory _DekontDuzenleRequestModel.fromJson(Map<String, dynamic> json) =
-      _$DekontDuzenleRequestModelImpl.fromJson;
+  factory _DekontDuzenleRequestModel.fromJson(Map<String, dynamic> json) = _$DekontDuzenleRequestModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -626,6 +607,5 @@ abstract class _DekontDuzenleRequestModel extends DekontDuzenleRequestModel {
   set cariAdi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$DekontDuzenleRequestModelImplCopyWith<_$DekontDuzenleRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$DekontDuzenleRequestModelImplCopyWith<_$DekontDuzenleRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

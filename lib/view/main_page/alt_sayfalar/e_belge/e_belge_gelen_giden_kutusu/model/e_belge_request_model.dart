@@ -29,5 +29,4 @@ class EBelgeRequestModel with _$EBelgeRequestModel {
   factory EBelgeRequestModel.fromJson(Map<String, dynamic> json) => _$EBelgeRequestModelFromJson(json);
 
   EBelgeRequestModel fromJson(Map<String, dynamic> json) => EBelgeRequestModel.fromJson(json);
-  
 }

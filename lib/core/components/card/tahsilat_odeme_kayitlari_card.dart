@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
+import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
+import "../../../view/main_page/model/param_model.dart";
+import "../../base/state/base_state.dart";
+import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/list_extensions.dart";
+import "../../constants/extensions/model_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ondalik_utils.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../../init/network/login/api_urls.dart";
+import "../badge/colorful_badge.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TahsilatOdemeKayitlariCard extends StatefulWidget {
   final CariHareketleriModel cariHareketleriModel;

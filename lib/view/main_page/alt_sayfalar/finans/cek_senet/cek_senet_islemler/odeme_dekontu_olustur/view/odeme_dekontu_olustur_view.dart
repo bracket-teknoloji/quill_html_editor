@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/model/seri_model.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_islemler/odeme_dekontu_olustur/view_model/odeme_dekontu_olustur_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 import "package:uuid/uuid.dart";
+
+import "../../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../../core/base/model/seri_model.dart";
+import "../../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
+import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../model/param_model.dart";
+import "../../../../banka/banka_listesi/model/banka_listesi_model.dart";
+import "../../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
+import "../../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
+import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
+import "../view_model/odeme_dekontu_olustur_view_model.dart";
 
 class OdemeDekontuOlusturView extends StatefulWidget {
   final CekSenetListesiModel model;

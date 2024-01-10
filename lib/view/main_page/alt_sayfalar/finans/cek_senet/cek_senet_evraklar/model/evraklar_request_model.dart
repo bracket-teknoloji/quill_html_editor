@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
+
+import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 part "evraklar_request_model.freezed.dart";
 part "evraklar_request_model.g.dart";

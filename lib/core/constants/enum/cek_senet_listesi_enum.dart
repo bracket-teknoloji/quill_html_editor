@@ -92,7 +92,6 @@ extension CekSenetExtensions on CekSenetListesiEnum {
         return "/mainPage/senetBorcTahsilat";
     }
   }
-  
 
   bool get cekMi {
     switch (this) {

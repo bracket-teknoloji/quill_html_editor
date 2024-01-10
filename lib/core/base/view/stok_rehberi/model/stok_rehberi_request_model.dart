@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../constants/extensions/date_time_extensions.dart";
 
 part "stok_rehberi_request_model.freezed.dart";
 part "stok_rehberi_request_model.g.dart";
@@ -33,5 +34,4 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
         cariKodu: model.cariKodu,
         stokKodu: model.stokKodu,
       );
-
 }

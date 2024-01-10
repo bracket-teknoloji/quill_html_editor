@@ -6,12 +6,8 @@ part of 'doviz_kurlari_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DovizKurlariModelImpl(
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+_$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(Map<String, dynamic> json) => _$DovizKurlariModelImpl(
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       sira: json['SIRA'] as int?,
       dovizTipi: json['DOVIZ_TIPI'] as int?,
       dovAlis: (json['DOV_ALIS'] as num?)?.toDouble(),
@@ -21,8 +17,7 @@ _$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(
       effSatis: (json['EFF_SATIS'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$DovizKurlariModelImplToJson(
-    _$DovizKurlariModelImpl instance) {
+Map<String, dynamic> _$$DovizKurlariModelImplToJson(_$DovizKurlariModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -42,12 +37,8 @@ Map<String, dynamic> _$$DovizKurlariModelImplToJson(
   return val;
 }
 
-_$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$DovizKurlariRequestModelImpl(
-      tarih: json['Tarih'] == null
-          ? null
-          : DateTime.parse(json['Tarih'] as String),
+_$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelImpl(
+      tarih: json['Tarih'] == null ? null : DateTime.parse(json['Tarih'] as String),
       sira: json['Sira'] as int?,
       dovizTipi: json['DovizTipi'] as int?,
       alis: (json['Alis'] as num?)?.toDouble(),
@@ -57,8 +48,7 @@ _$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
       eFSatis: (json['EFSatis'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$DovizKurlariRequestModelImplToJson(
-    _$DovizKurlariRequestModelImpl instance) {
+Map<String, dynamic> _$$DovizKurlariRequestModelImplToJson(_$DovizKurlariRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

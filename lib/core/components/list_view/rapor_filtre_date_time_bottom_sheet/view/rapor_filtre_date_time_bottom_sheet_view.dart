@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
 
+import "../../../../base/state/base_state.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/ui_helper/duration_helper.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";

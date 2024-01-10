@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_talep_teklif_kalemler_view_model.g.dart";
 

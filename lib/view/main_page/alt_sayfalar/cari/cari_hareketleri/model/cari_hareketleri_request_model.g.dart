@@ -6,9 +6,7 @@ part of 'cari_hareketleri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CariHareketleriRequestModelImpl(
+_$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(Map<String, dynamic> json) => _$CariHareketleriRequestModelImpl(
       siralama: json['SIRALAMA'] as String?,
       sadeceTahsilatlarOdemeler: json['SadeceTahsilatlarOdemeler'] as bool?,
       cariKodu: json['CariKodu'] as String?,
@@ -20,8 +18,7 @@ _$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
       ba: json['Ba'] as String?,
     );
 
-Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(
-    _$CariHareketleriRequestModelImpl instance) {
+Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(_$CariHareketleriRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

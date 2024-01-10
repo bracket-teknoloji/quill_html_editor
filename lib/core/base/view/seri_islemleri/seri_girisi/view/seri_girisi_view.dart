@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_girisi/view_model/seri_girisi_view_model.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../components/textfield/custom_text_field.dart";
+import "../../../../../constants/extensions/number_extensions.dart";
+import "../../../../../constants/ondalik_utils.dart";
+import "../../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../state/base_state.dart";
+import "../../seri_hareketleri/model/seri_hareketleri_model.dart";
+import "../view_model/seri_girisi_view_model.dart";
 
 class SeriGirisiView extends StatefulWidget {
   final SeriHareketleriModel? seriHareketleriModel;

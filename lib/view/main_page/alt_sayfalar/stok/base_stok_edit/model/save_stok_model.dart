@@ -1,7 +1,7 @@
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "save_stok_model.g.dart";
 
@@ -139,7 +139,7 @@ class SaveStokModel with NetworkManagerMixin {
     ..satisDovizFiyati = model.dovSatisFiat
     ..satisDovizTipi = model.satDovTip
     ..satisFiyati1 = model.satisFiat1
-    ..satisFiyati2 = model.satisFiat2 
+    ..satisFiyati2 = model.satisFiat2
     ..satisFiyati3 = model.satisFiat3
     ..satisFiyati4 = model.satisFiat4
     ..satisKdvOrani = model.satisKdv
@@ -150,9 +150,7 @@ class SaveStokModel with NetworkManagerMixin {
     ..seriGiristeAktif = model.seriGirislerdeAcik
     ..seriMiktarKadar = model.seriMiktarKadarSor
     ..subeKodu = model.subeKodu
-    ..ureticiKodu = model.ureticiKodu
-
-    ;
+    ..ureticiKodu = model.ureticiKodu;
 
   @override
   Map<String, dynamic> toJson() => _$SaveStokModelToJson(this);

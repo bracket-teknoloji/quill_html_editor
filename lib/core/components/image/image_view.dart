@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/image/image_widget.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:share_plus/share_plus.dart";
+
+import "../../base/state/base_state.dart";
+import "../../constants/extensions/list_extensions.dart";
+import "../wrap/appbar_title.dart";
+import "image_widget.dart";
 
 class ImageView extends StatefulWidget {
   final String path;

@@ -2,9 +2,10 @@ import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:shimmer/shimmer.dart";
+
+import "../../base/state/base_state.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class ListViewShimmer extends StatefulWidget {
   const ListViewShimmer({super.key});
@@ -23,7 +24,6 @@ class _ListViewShimmerState extends BaseState<ListViewShimmer> {
             (index) => Shimmer.fromColors(
               baseColor: Colors.grey.withOpacity(0.1),
               highlightColor: Colors.grey.withOpacity(0.2),
-              
               child: Card(
                 child: ListTile(
                   leading: const CircleAvatar(),

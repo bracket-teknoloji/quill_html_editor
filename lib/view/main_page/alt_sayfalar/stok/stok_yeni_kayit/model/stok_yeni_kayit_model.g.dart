@@ -6,9 +6,7 @@ part of 'stok_yeni_kayit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$StokYeniKayitModelImpl(
+_$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(Map<String, dynamic> json) => _$StokYeniKayitModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       gc: json['GC'] as String?,
@@ -21,9 +19,7 @@ _$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
       projeKodu: json['PROJE_KODU'] as String?,
       tag: json['TAG'] as String?,
       tahsilatmi: json['TAHSILATMI'] as bool?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       stokKodu: json['STOK_KODU'] as String?,
       depoKodu: json['DEPO_KODU'] as int?,
@@ -35,8 +31,7 @@ _$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
       yeniKayit: json['_YeniKayit'] as bool?,
     );
 
-Map<String, dynamic> _$$StokYeniKayitModelImplToJson(
-    _$StokYeniKayitModelImpl instance) {
+Map<String, dynamic> _$$StokYeniKayitModelImplToJson(_$StokYeniKayitModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

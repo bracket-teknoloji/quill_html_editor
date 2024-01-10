@@ -48,7 +48,7 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   void setHesapNo(BankaListesiModel? hesapNo) {
     model = model.copyWith(hesapKodu: hesapNo?.hesapKodu != "" ? hesapNo?.hesapKodu : null);
     setBankaDovizliMi(hesapNo?.dovizAdi != null);
-    if (!model.dovizliMi){
+    if (!model.dovizliMi) {
       setDovizTipi(hesapNo?.dovizTipi);
     }
   }

@@ -11,7 +11,6 @@ extension NumExtensionWithFixedDigits on num? {
       final f = NumberFormat.decimalPatternDigits(
         locale: "TR",
         decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,
-        
       );
       final String finalValue = f.format(this!);
       if (finalValue == "-0,00") {

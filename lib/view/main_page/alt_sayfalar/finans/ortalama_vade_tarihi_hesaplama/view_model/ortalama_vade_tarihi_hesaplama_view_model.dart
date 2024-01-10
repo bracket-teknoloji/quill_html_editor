@@ -1,7 +1,8 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/ortalama_vade_tarihi_hesaplama/model/ortalama_vade_tarihi_model.dart";
+
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../model/ortalama_vade_tarihi_model.dart";
 
 part "ortalama_vade_tarihi_hesaplama_view_model.g.dart";
 

@@ -6,17 +6,13 @@ part of 'cek_senet_hareketleri_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CekSenetHareketleriModelImpl(
+_$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(Map<String, dynamic> json) => _$CekSenetHareketleriModelImpl(
       inckeyno: json['INCKEYNO'] as int?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       yeri: json['YERI'] as String?,
       durum: json['DURUM'] as String?,
-      tarih: json['TARIH'] == null
-          ? null
-          : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
       hesapKodu: json['HESAP_KODU'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
       islemAdi: json['ISLEM_ADI'] as String?,
@@ -27,8 +23,7 @@ _$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
       kayittarihi: json['KAYITTARIHI'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetHareketleriModelImplToJson(
-    _$CekSenetHareketleriModelImpl instance) {
+Map<String, dynamic> _$$CekSenetHareketleriModelImplToJson(_$CekSenetHareketleriModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

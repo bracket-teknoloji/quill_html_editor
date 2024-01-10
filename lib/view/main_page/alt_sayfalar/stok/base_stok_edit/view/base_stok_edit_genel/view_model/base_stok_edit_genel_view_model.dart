@@ -1,8 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
+import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 import "../../../model/stok_detay_model.dart";
 

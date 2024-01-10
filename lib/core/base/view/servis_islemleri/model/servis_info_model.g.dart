@@ -6,12 +6,9 @@ part of 'servis_info_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ServisInfoModel _$ServisInfoModelFromJson(Map<String, dynamic> json) =>
-    ServisInfoModel(
+ServisInfoModel _$ServisInfoModelFromJson(Map<String, dynamic> json) => ServisInfoModel(
       version: json['Version'] as String?,
-      updateDate: json['UpdateDate'] == null
-          ? null
-          : DateTime.parse(json['UpdateDate'] as String),
+      updateDate: json['UpdateDate'] == null ? null : DateTime.parse(json['UpdateDate'] as String),
       siteName: json['SiteName'] as String?,
       assemblyName: json['AssemblyName'] as String?,
       isDebug: json['IsDebug'] as bool?,

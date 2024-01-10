@@ -14,8 +14,7 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CekSenetListesiRequestModel _$CekSenetListesiRequestModelFromJson(
-    Map<String, dynamic> json) {
+CekSenetListesiRequestModel _$CekSenetListesiRequestModelFromJson(Map<String, dynamic> json) {
   return _CekSenetListesiRequestModel.fromJson(json);
 }
 
@@ -48,17 +47,13 @@ mixin _$CekSenetListesiRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CekSenetListesiRequestModelCopyWith<CekSenetListesiRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $CekSenetListesiRequestModelCopyWith<CekSenetListesiRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetListesiRequestModelCopyWith<$Res> {
-  factory $CekSenetListesiRequestModelCopyWith(
-          CekSenetListesiRequestModel value,
-          $Res Function(CekSenetListesiRequestModel) then) =
-      _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-          CekSenetListesiRequestModel>;
+  factory $CekSenetListesiRequestModelCopyWith(CekSenetListesiRequestModel value, $Res Function(CekSenetListesiRequestModel) then) =
+      _$CekSenetListesiRequestModelCopyWithImpl<$Res, CekSenetListesiRequestModel>;
   @useResult
   $Res call(
       {String? verenKodu,
@@ -76,9 +71,7 @@ abstract class $CekSenetListesiRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-        $Val extends CekSenetListesiRequestModel>
-    implements $CekSenetListesiRequestModelCopyWith<$Res> {
+class _$CekSenetListesiRequestModelCopyWithImpl<$Res, $Val extends CekSenetListesiRequestModel> implements $CekSenetListesiRequestModelCopyWith<$Res> {
   _$CekSenetListesiRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -156,11 +149,8 @@ class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res>
-    implements $CekSenetListesiRequestModelCopyWith<$Res> {
-  factory _$$CekSenetListesiRequestModelImplCopyWith(
-          _$CekSenetListesiRequestModelImpl value,
-          $Res Function(_$CekSenetListesiRequestModelImpl) then) =
+abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res> implements $CekSenetListesiRequestModelCopyWith<$Res> {
+  factory _$$CekSenetListesiRequestModelImplCopyWith(_$CekSenetListesiRequestModelImpl value, $Res Function(_$CekSenetListesiRequestModelImpl) then) =
       __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -180,14 +170,9 @@ abstract class _$$CekSenetListesiRequestModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
-    extends _$CekSenetListesiRequestModelCopyWithImpl<$Res,
-        _$CekSenetListesiRequestModelImpl>
+class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res> extends _$CekSenetListesiRequestModelCopyWithImpl<$Res, _$CekSenetListesiRequestModelImpl>
     implements _$$CekSenetListesiRequestModelImplCopyWith<$Res> {
-  __$$CekSenetListesiRequestModelImplCopyWithImpl(
-      _$CekSenetListesiRequestModelImpl _value,
-      $Res Function(_$CekSenetListesiRequestModelImpl) _then)
-      : super(_value, _then);
+  __$$CekSenetListesiRequestModelImplCopyWithImpl(_$CekSenetListesiRequestModelImpl _value, $Res Function(_$CekSenetListesiRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -261,25 +246,11 @@ class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$CekSenetListesiRequestModelImpl
-    implements _CekSenetListesiRequestModel {
+class _$CekSenetListesiRequestModelImpl implements _CekSenetListesiRequestModel {
   _$CekSenetListesiRequestModelImpl(
-      {this.verenKodu,
-      this.sirala,
-      this.ekranTipi,
-      this.yer,
-      this.donemTipi,
-      this.tarihTipi,
-      this.tipi,
-      this.verilenKodu,
-      this.durum,
-      this.searchText,
-      this.baslangicTarihi,
-      this.bitisTarihi});
+      {this.verenKodu, this.sirala, this.ekranTipi, this.yer, this.donemTipi, this.tarihTipi, this.tipi, this.verilenKodu, this.durum, this.searchText, this.baslangicTarihi, this.bitisTarihi});
 
-  factory _$CekSenetListesiRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
-      _$$CekSenetListesiRequestModelImplFromJson(json);
+  factory _$CekSenetListesiRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$CekSenetListesiRequestModelImplFromJson(json);
 
   @override
   String? verenKodu;
@@ -314,9 +285,7 @@ class _$CekSenetListesiRequestModelImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
-      get copyWith => __$$CekSenetListesiRequestModelImplCopyWithImpl<
-          _$CekSenetListesiRequestModelImpl>(this, _$identity);
+  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl> get copyWith => __$$CekSenetListesiRequestModelImplCopyWithImpl<_$CekSenetListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -326,8 +295,7 @@ class _$CekSenetListesiRequestModelImpl
   }
 }
 
-abstract class _CekSenetListesiRequestModel
-    implements CekSenetListesiRequestModel {
+abstract class _CekSenetListesiRequestModel implements CekSenetListesiRequestModel {
   factory _CekSenetListesiRequestModel(
       {String? verenKodu,
       String? sirala,
@@ -342,8 +310,7 @@ abstract class _CekSenetListesiRequestModel
       String? baslangicTarihi,
       String? bitisTarihi}) = _$CekSenetListesiRequestModelImpl;
 
-  factory _CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) =
-      _$CekSenetListesiRequestModelImpl.fromJson;
+  factory _CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) = _$CekSenetListesiRequestModelImpl.fromJson;
 
   @override
   String? get verenKodu;
@@ -383,6 +350,5 @@ abstract class _CekSenetListesiRequestModel
   set bitisTarihi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

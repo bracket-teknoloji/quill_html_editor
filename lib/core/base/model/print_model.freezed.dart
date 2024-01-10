@@ -31,32 +31,20 @@ mixin _$PrintModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PrintModelCopyWith<PrintModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PrintModelCopyWith<PrintModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PrintModelCopyWith<$Res> {
-  factory $PrintModelCopyWith(
-          PrintModel value, $Res Function(PrintModel) then) =
-      _$PrintModelCopyWithImpl<$Res, PrintModel>;
+  factory $PrintModelCopyWith(PrintModel value, $Res Function(PrintModel) then) = _$PrintModelCopyWithImpl<$Res, PrintModel>;
   @useResult
-  $Res call(
-      {int? dizaynId,
-      int? etiketSayisi,
-      String raporOzelKod,
-      bool? yazdir,
-      String? yaziciAdi,
-      String? yaziciTipi,
-      DicParams? dicParams,
-      bool? standart});
+  $Res call({int? dizaynId, int? etiketSayisi, String raporOzelKod, bool? yazdir, String? yaziciAdi, String? yaziciTipi, DicParams? dicParams, bool? standart});
 
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
-    implements $PrintModelCopyWith<$Res> {
+class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel> implements $PrintModelCopyWith<$Res> {
   _$PrintModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -126,34 +114,19 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
 }
 
 /// @nodoc
-abstract class _$$PrintModelImplCopyWith<$Res>
-    implements $PrintModelCopyWith<$Res> {
-  factory _$$PrintModelImplCopyWith(
-          _$PrintModelImpl value, $Res Function(_$PrintModelImpl) then) =
-      __$$PrintModelImplCopyWithImpl<$Res>;
+abstract class _$$PrintModelImplCopyWith<$Res> implements $PrintModelCopyWith<$Res> {
+  factory _$$PrintModelImplCopyWith(_$PrintModelImpl value, $Res Function(_$PrintModelImpl) then) = __$$PrintModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? dizaynId,
-      int? etiketSayisi,
-      String raporOzelKod,
-      bool? yazdir,
-      String? yaziciAdi,
-      String? yaziciTipi,
-      DicParams? dicParams,
-      bool? standart});
+  $Res call({int? dizaynId, int? etiketSayisi, String raporOzelKod, bool? yazdir, String? yaziciAdi, String? yaziciTipi, DicParams? dicParams, bool? standart});
 
   @override
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class __$$PrintModelImplCopyWithImpl<$Res>
-    extends _$PrintModelCopyWithImpl<$Res, _$PrintModelImpl>
-    implements _$$PrintModelImplCopyWith<$Res> {
-  __$$PrintModelImplCopyWithImpl(
-      _$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then)
-      : super(_value, _then);
+class __$$PrintModelImplCopyWithImpl<$Res> extends _$PrintModelCopyWithImpl<$Res, _$PrintModelImpl> implements _$$PrintModelImplCopyWith<$Res> {
+  __$$PrintModelImplCopyWithImpl(_$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -207,19 +180,9 @@ class __$$PrintModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PrintModelImpl extends _PrintModel {
-  _$PrintModelImpl(
-      {this.dizaynId,
-      this.etiketSayisi,
-      required this.raporOzelKod,
-      this.yazdir = true,
-      this.yaziciAdi,
-      this.yaziciTipi,
-      this.dicParams,
-      this.standart})
-      : super._();
+  _$PrintModelImpl({this.dizaynId, this.etiketSayisi, required this.raporOzelKod, this.yazdir = true, this.yaziciAdi, this.yaziciTipi, this.dicParams, this.standart}) : super._();
 
-  factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PrintModelImplFromJson(json);
+  factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) => _$$PrintModelImplFromJson(json);
 
   @override
   final int? dizaynId;
@@ -242,8 +205,7 @@ class _$PrintModelImpl extends _PrintModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
-      __$$PrintModelImplCopyWithImpl<_$PrintModelImpl>(this, _$identity);
+  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith => __$$PrintModelImplCopyWithImpl<_$PrintModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -265,8 +227,7 @@ abstract class _PrintModel extends PrintModel {
       final bool? standart}) = _$PrintModelImpl;
   _PrintModel._() : super._();
 
-  factory _PrintModel.fromJson(Map<String, dynamic> json) =
-      _$PrintModelImpl.fromJson;
+  factory _PrintModel.fromJson(Map<String, dynamic> json) = _$PrintModelImpl.fromJson;
 
   @override
   int? get dizaynId;
@@ -286,6 +247,5 @@ abstract class _PrintModel extends PrintModel {
   bool? get standart;
   @override
   @JsonKey(ignore: true)
-  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

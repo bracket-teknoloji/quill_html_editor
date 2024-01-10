@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
+import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -24,7 +24,8 @@ class SiparisRehberiCard extends StatefulWidget {
     this.showEkAciklama,
     this.showMiktar,
     this.showVade,
-    this.onTap, required this.value,
+    this.onTap,
+    required this.value,
   });
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.

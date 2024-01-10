@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+
+import "../../base/state/base_state.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class ImageWidget extends StatefulWidget {
   final String? path;

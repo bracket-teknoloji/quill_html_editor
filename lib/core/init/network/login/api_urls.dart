@@ -111,5 +111,4 @@ class ApiUrls {
   static const String netOpenXCreateKernel = "Servis/NetOpenXCreateKernel";
   static const String eFaturaDLLKayitla = "Servis/EFaturaDLLKayitla";
   static const String netFectWinServiceRestart = "Servis/NetFectWinServiceRestart";
-
 }

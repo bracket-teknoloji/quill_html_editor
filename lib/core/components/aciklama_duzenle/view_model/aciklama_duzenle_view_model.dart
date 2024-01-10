@@ -1,9 +1,10 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../base/model/base_network_mixin.dart";
+import "../../../base/model/generic_response_model.dart";
+import "../../../base/view_model/mobx_network_mixin.dart";
+import "../../../init/network/login/api_urls.dart";
 
 part "aciklama_duzenle_view_model.g.dart";
 

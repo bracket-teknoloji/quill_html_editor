@@ -1,10 +1,11 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/static_variables/static_variables.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_fatura_edit_view_model.g.dart";
 
@@ -26,7 +27,7 @@ abstract class _BaseFaturaEditViewModelBase with Store {
 
   @action
   void setBelgeNo(List<BaseSiparisEditModel>? value) {
-      baseSiparisEditModel = baseSiparisEditModel.copyWith(arrBelgeNo: jsonEncode(value?.map((e) => e.belgeNo).toList()));
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(arrBelgeNo: jsonEncode(value?.map((e) => e.belgeNo).toList()));
     BaseSiparisEditModel.setInstance(baseSiparisEditModel);
   }
 

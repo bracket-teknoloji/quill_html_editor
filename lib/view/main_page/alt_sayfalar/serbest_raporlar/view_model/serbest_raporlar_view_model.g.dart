@@ -12,14 +12,9 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
   Computed<DicParams>? _$dicParamsComputedComputed;
 
   @override
-  DicParams get dicParamsComputed => (_$dicParamsComputedComputed ??=
-          Computed<DicParams>(() => super.dicParamsComputed,
-              name: '_SerbestRaporlarViewModelBase.dicParamsComputed'))
-      .value;
+  DicParams get dicParamsComputed => (_$dicParamsComputedComputed ??= Computed<DicParams>(() => super.dicParamsComputed, name: '_SerbestRaporlarViewModelBase.dicParamsComputed')).value;
 
-  late final _$serbestRaporResponseModelListAtom = Atom(
-      name: '_SerbestRaporlarViewModelBase.serbestRaporResponseModelList',
-      context: context);
+  late final _$serbestRaporResponseModelListAtom = Atom(name: '_SerbestRaporlarViewModelBase.serbestRaporResponseModelList', context: context);
 
   @override
   List<SerbestRaporResponseModel>? get serbestRaporResponseModelList {
@@ -29,15 +24,12 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   set serbestRaporResponseModelList(List<SerbestRaporResponseModel>? value) {
-    _$serbestRaporResponseModelListAtom
-        .reportWrite(value, super.serbestRaporResponseModelList, () {
+    _$serbestRaporResponseModelListAtom.reportWrite(value, super.serbestRaporResponseModelList, () {
       super.serbestRaporResponseModelList = value;
     });
   }
 
-  late final _$textEditingControllerListAtom = Atom(
-      name: '_SerbestRaporlarViewModelBase.textEditingControllerList',
-      context: context);
+  late final _$textEditingControllerListAtom = Atom(name: '_SerbestRaporlarViewModelBase.textEditingControllerList', context: context);
 
   @override
   List<TextEditingController>? get textEditingControllerList {
@@ -47,14 +39,12 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   set textEditingControllerList(List<TextEditingController>? value) {
-    _$textEditingControllerListAtom
-        .reportWrite(value, super.textEditingControllerList, () {
+    _$textEditingControllerListAtom.reportWrite(value, super.textEditingControllerList, () {
       super.textEditingControllerList = value;
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_SerbestRaporlarViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(name: '_SerbestRaporlarViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -69,8 +59,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
     });
   }
 
-  late final _$dicParamsAtom =
-      Atom(name: '_SerbestRaporlarViewModelBase.dicParams', context: context);
+  late final _$dicParamsAtom = Atom(name: '_SerbestRaporlarViewModelBase.dicParams', context: context);
 
   @override
   Map<String, dynamic> get dicParams {
@@ -85,8 +74,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(
-      name: '_SerbestRaporlarViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(name: '_SerbestRaporlarViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -101,16 +89,11 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
     });
   }
 
-  late final _$_SerbestRaporlarViewModelBaseActionController =
-      ActionController(name: '_SerbestRaporlarViewModelBase', context: context);
+  late final _$_SerbestRaporlarViewModelBaseActionController = ActionController(name: '_SerbestRaporlarViewModelBase', context: context);
 
   @override
-  void changeSerbestRaporResponseModelList(
-      List<SerbestRaporResponseModel> value) {
-    final _$actionInfo =
-        _$_SerbestRaporlarViewModelBaseActionController.startAction(
-            name:
-                '_SerbestRaporlarViewModelBase.changeSerbestRaporResponseModelList');
+  void changeSerbestRaporResponseModelList(List<SerbestRaporResponseModel> value) {
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.changeSerbestRaporResponseModelList');
     try {
       return super.changeSerbestRaporResponseModelList(value);
     } finally {
@@ -120,9 +103,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   void changeControllerText(String name, String value) {
-    final _$actionInfo =
-        _$_SerbestRaporlarViewModelBaseActionController.startAction(
-            name: '_SerbestRaporlarViewModelBase.changeControllerText');
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.changeControllerText');
     try {
       return super.changeControllerText(name, value);
     } finally {
@@ -132,8 +113,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   void dispose() {
-    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
-        .startAction(name: '_SerbestRaporlarViewModelBase.dispose');
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.dispose');
     try {
       return super.dispose();
     } finally {
@@ -142,10 +122,8 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
   }
 
   @override
-  void changeDicParams(String key, String value,
-      [bool changeController = true]) {
-    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
-        .startAction(name: '_SerbestRaporlarViewModelBase.changeDicParams');
+  void changeDicParams(String key, String value, [bool changeController = true]) {
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.changeDicParams');
     try {
       return super.changeDicParams(key, value, changeController);
     } finally {
@@ -155,8 +133,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
-        .startAction(name: '_SerbestRaporlarViewModelBase.setFuture');
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -166,8 +143,7 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
-        .startAction(name: '_SerbestRaporlarViewModelBase.resetFuture');
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController.startAction(name: '_SerbestRaporlarViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

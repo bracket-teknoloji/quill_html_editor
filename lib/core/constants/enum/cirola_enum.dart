@@ -1,9 +1,6 @@
+enum CirolaEnum { cari, tahsil }
 
-
-enum CirolaEnum {cari,tahsil}
-
-extension CirolaEnumExtensions on CirolaEnum{
-
+extension CirolaEnumExtensions on CirolaEnum {
   String get belgeTipi {
     switch (this) {
       case CirolaEnum.cari:

@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "../model/e_irsaliye_bilgi_model.dart";
 
 part "e_irsaliye_ek_bilgiler_view_model.g.dart";
 
@@ -30,7 +31,8 @@ abstract class _EIrsaliyeEkBilgilerViewModelBase with Store {
         tasiyiciIlce: model?.cariIlce,
         tasiyiciUlke: model?.ulkeAdi,
         tasiyiciPostakodu: model?.postakodu,
-        tasiyiciVkn: model?.vergiNumarasi,);
+        tasiyiciVkn: model?.vergiNumarasi,
+      );
 
   @action
   void setVergiNo(String? vergiNo) => model = model.copyWith(tasiyiciVkn: vergiNo);
@@ -91,5 +93,4 @@ abstract class _EIrsaliyeEkBilgilerViewModelBase with Store {
 
   @action
   void setDorsePlaka3(String? dorsePlaka3) => model = model.copyWith(dorsePlaka3: dorsePlaka3);
-
 }

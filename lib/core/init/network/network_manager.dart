@@ -499,7 +499,7 @@ class NetworkManager {
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": DateTime.now().toDateString},
     );
-    if (result.data is List){
+    if (result.data is List) {
       return result.data.first;
     }
     return null;

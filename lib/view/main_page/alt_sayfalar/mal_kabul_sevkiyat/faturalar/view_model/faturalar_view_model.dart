@@ -2,10 +2,10 @@ import "dart:convert";
 
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";

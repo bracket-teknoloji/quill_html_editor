@@ -1,8 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../../../../base/model/base_grup_kodu_model.dart";
+import "../model/bottom_sheet_model.dart";
 
 part "bottom_sheet_state_manager.g.dart";
 

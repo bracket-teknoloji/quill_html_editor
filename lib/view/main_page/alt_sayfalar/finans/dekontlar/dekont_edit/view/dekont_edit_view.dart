@@ -2,21 +2,22 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/genel/view/dekont_edit_genel_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/view_model/dekont_edit_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
+
+import "../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../cari/cari_listesi/model/cari_request_model.dart";
+import "../../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "../../model/dekont_listesi_model.dart";
+import "../alt_sayfalar/genel/view/dekont_edit_genel_view.dart";
+import "../alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
+import "../model/dekont_islemler_request_model.dart";
+import "../view_model/dekont_edit_view_model.dart";
 
 class DekontEditView extends StatefulWidget {
   final BaseEditEnum baseEditEnum;

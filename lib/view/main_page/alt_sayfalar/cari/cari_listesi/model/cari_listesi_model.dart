@@ -1,10 +1,10 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
 import "cari_detay_model.dart";
 
@@ -401,7 +401,6 @@ class CariListesiModel with NetworkManagerMixin {
         dovizKodu: model?.dovizTipi,
         email: model?.ePosta,
         sahisFirmasiMi: model?.vergiNo?.length == 11,
-
       );
 }
 

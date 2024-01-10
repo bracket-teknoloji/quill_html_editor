@@ -1,7 +1,8 @@
 import "package:get/get.dart";
-import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../view/main_page/model/param_model.dart";
+import "../../init/cache/cache_manager.dart";
+import "../yetki_controller/yetki_controller.dart";
 
 enum TalepTeklifEnum {
   satisTalep,

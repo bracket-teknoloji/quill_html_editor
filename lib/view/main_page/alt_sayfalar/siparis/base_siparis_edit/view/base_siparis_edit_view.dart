@@ -2,13 +2,10 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/doviz_kurlari_model.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
@@ -16,6 +13,8 @@ import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
@@ -24,6 +23,7 @@ import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../model/param_model.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../../siparisler/model/siparis_edit_request_model.dart";
 import "../alt_sayfalar/base_siparisler_diger/view/base_siparisler_diger_view.dart";
 import "../alt_sayfalar/base_siparisler_genel/view/base_siparisler_genel_view.dart";
@@ -112,9 +112,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-        if (widget.model.model is BaseSiparisEditModel){
-        BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
-        BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
+        if (widget.model.model is BaseSiparisEditModel) {
+          BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
+          BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         }
         BaseSiparisEditModel.instance.isNew = true;
         final CariListesiModel? cariModel;
@@ -226,23 +226,23 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                       BottomSheetModel(
                         title: "Döviz Kurlarını Güncelle",
                         iconWidget: Icons.attach_money_outlined,
-                onTap: () async {
-                  Get.back();
-                  final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
-                  if (result is DovizKurlariModel) {
-                    BaseSiparisEditModel.instance.kalemList?.forEach((element) {
-                      if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
-                        element.dovizKuru = result.dovSatis;
-                      } else {
-                        element.dovizKuru = result.dovAlis;
-                      }
-                    });
-                    viewModel.changeUpdateKalemler();
-                    dialogManager.showSuccesDialog(
-                      "${BaseSiparisEditModel.instance.dovizAdi} döviz kuru ${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? result.dovSatis : result.dovAlis} olarak güncellendi.",
-                    );
-                  }
-                },
+                        onTap: () async {
+                          Get.back();
+                          final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
+                          if (result is DovizKurlariModel) {
+                            BaseSiparisEditModel.instance.kalemList?.forEach((element) {
+                              if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+                                element.dovizKuru = result.dovSatis;
+                              } else {
+                                element.dovizKuru = result.dovAlis;
+                              }
+                            });
+                            viewModel.changeUpdateKalemler();
+                            dialogManager.showSuccesDialog(
+                              "${BaseSiparisEditModel.instance.dovizAdi} döviz kuru ${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? result.dovSatis : result.dovAlis} olarak güncellendi.",
+                            );
+                          }
+                        },
                       ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
                       BottomSheetModel(
                         title: "Cari'ye Yapılan Son Satışlar",

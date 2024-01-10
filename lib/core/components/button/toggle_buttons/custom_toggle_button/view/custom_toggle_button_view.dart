@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 class CustomToggleButton extends StatefulWidget {
-  
   const CustomToggleButton({super.key});
 
   @override

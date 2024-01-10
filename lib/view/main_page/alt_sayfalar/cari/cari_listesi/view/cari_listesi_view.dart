@@ -5,8 +5,6 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -22,6 +20,7 @@ import "../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -39,6 +38,7 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../cari_network_manager.dart";
 import "../model/cari_listesi_model.dart";
+import "../model/cari_request_model.dart";
 import "../model/cari_secenekler_model.dart";
 import "../model/cari_sehirler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";

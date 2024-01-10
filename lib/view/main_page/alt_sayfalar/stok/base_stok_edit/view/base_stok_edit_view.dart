@@ -2,8 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view_model/base_stok_edit_view_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -13,6 +11,8 @@ import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 import "../model/save_stok_model.dart";
+import "../model/stok_detay_model.dart";
+import "../view_model/base_stok_edit_view_model.dart";
 import "base_stok_edit_fiyat/view/base_stok_edit_fiyat_view.dart";
 import "base_stok_edit_fiyat_listesi/view/base_stok_edit_fiyat_listesi_view.dart";
 import "base_stok_edit_genel/view/base_stok_edit_genel_view.dart";

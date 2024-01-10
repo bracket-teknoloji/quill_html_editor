@@ -1,7 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
+
+import "../../../../../init/network/login/api_urls.dart";
+import "../../../../view_model/mobx_network_mixin.dart";
+import "../../seri_hareketleri/model/seri_hareketleri_model.dart";
 
 part "seri_girisi_view_model.g.dart";
 

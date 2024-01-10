@@ -38,8 +38,7 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
         seri: model.seriNo,
       );
 
-      factory DekontListesiModel.fromEBelgeListesiModel(EBelgeListesiModel model) => DekontListesiModel(
-      );
+  factory DekontListesiModel.fromEBelgeListesiModel(EBelgeListesiModel model) => DekontListesiModel();
 }
 
 extension DekontListesiExtensions on DekontListesiModel {

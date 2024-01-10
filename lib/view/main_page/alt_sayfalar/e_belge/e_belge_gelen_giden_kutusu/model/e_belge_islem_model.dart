@@ -44,6 +44,4 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
         cariKodu: model.cariKodu,
         iptalTarihi: model.iptalTarihi,
       );
-
-      
 }

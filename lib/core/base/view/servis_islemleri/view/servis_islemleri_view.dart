@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/servis_islemleri/view_model/servis_islemleri_view_model.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/generated/locale_base.dart";
+
+import "../../../../../generated/locale_base.dart";
+import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../state/base_state.dart";
+import "../view_model/servis_islemleri_view_model.dart";
 
 class ServisIslemleriView extends StatefulWidget {
   const ServisIslemleriView({super.key});
@@ -17,7 +18,7 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   ServisIslemleriViewModel viewModel = ServisIslemleriViewModel();
 
   LocaleBase get getLoc => loc(context);
-  
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -87,5 +88,4 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           onTap: viewModel.netFectWinServiceRestart,
         ),
       ];
-
 }

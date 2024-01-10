@@ -2,11 +2,11 @@ import "dart:convert";
 
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../model/banka_listesi_model.dart";
+import "../model/banka_listesi_request_model.dart";
 
 part "banka_listesi_view_model.g.dart";
 
@@ -72,7 +72,7 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
     // create a list of filtered items by searchValue
     final filteredList = bankaListesi?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? false).toList().asObservable();
     final groupedList = groupBy(filteredList ?? <BankaListesiModel>[], (BankaListesiModel e) => e.hesapTipiAdi);
-    return groupedList.values.toList().sorted((a, b) => b.firstOrNull?.hesapTipi?.compareTo(a.firstOrNull?.hesapTipi??0)??0).asObservable();
+    return groupedList.values.toList().sorted((a, b) => b.firstOrNull?.hesapTipi?.compareTo(a.firstOrNull?.hesapTipi ?? 0) ?? 0).asObservable();
   }
 
   @action

@@ -26,23 +26,18 @@ mixin _$EvraklarRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EvraklarRequestModelCopyWith<EvraklarRequestModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EvraklarRequestModelCopyWith<EvraklarRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EvraklarRequestModelCopyWith<$Res> {
-  factory $EvraklarRequestModelCopyWith(EvraklarRequestModel value,
-          $Res Function(EvraklarRequestModel) then) =
-      _$EvraklarRequestModelCopyWithImpl<$Res, EvraklarRequestModel>;
+  factory $EvraklarRequestModelCopyWith(EvraklarRequestModel value, $Res Function(EvraklarRequestModel) then) = _$EvraklarRequestModelCopyWithImpl<$Res, EvraklarRequestModel>;
   @useResult
   $Res call({String? belgeTipi, String? urlGetir, String? belgeNo});
 }
 
 /// @nodoc
-class _$EvraklarRequestModelCopyWithImpl<$Res,
-        $Val extends EvraklarRequestModel>
-    implements $EvraklarRequestModelCopyWith<$Res> {
+class _$EvraklarRequestModelCopyWithImpl<$Res, $Val extends EvraklarRequestModel> implements $EvraklarRequestModelCopyWith<$Res> {
   _$EvraklarRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -75,23 +70,16 @@ class _$EvraklarRequestModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$EvraklarRequestModelImplCopyWith<$Res>
-    implements $EvraklarRequestModelCopyWith<$Res> {
-  factory _$$EvraklarRequestModelImplCopyWith(_$EvraklarRequestModelImpl value,
-          $Res Function(_$EvraklarRequestModelImpl) then) =
-      __$$EvraklarRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$EvraklarRequestModelImplCopyWith<$Res> implements $EvraklarRequestModelCopyWith<$Res> {
+  factory _$$EvraklarRequestModelImplCopyWith(_$EvraklarRequestModelImpl value, $Res Function(_$EvraklarRequestModelImpl) then) = __$$EvraklarRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? belgeTipi, String? urlGetir, String? belgeNo});
 }
 
 /// @nodoc
-class __$$EvraklarRequestModelImplCopyWithImpl<$Res>
-    extends _$EvraklarRequestModelCopyWithImpl<$Res, _$EvraklarRequestModelImpl>
-    implements _$$EvraklarRequestModelImplCopyWith<$Res> {
-  __$$EvraklarRequestModelImplCopyWithImpl(_$EvraklarRequestModelImpl _value,
-      $Res Function(_$EvraklarRequestModelImpl) _then)
-      : super(_value, _then);
+class __$$EvraklarRequestModelImplCopyWithImpl<$Res> extends _$EvraklarRequestModelCopyWithImpl<$Res, _$EvraklarRequestModelImpl> implements _$$EvraklarRequestModelImplCopyWith<$Res> {
+  __$$EvraklarRequestModelImplCopyWithImpl(_$EvraklarRequestModelImpl _value, $Res Function(_$EvraklarRequestModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -121,11 +109,9 @@ class __$$EvraklarRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
-  const _$EvraklarRequestModelImpl(
-      {this.belgeTipi, this.urlGetir, this.belgeNo});
+  const _$EvraklarRequestModelImpl({this.belgeTipi, this.urlGetir, this.belgeNo});
 
-  factory _$EvraklarRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EvraklarRequestModelImplFromJson(json);
+  factory _$EvraklarRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$EvraklarRequestModelImplFromJson(json);
 
   @override
   final String? belgeTipi;
@@ -144,10 +130,8 @@ class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EvraklarRequestModelImpl &&
-            (identical(other.belgeTipi, belgeTipi) ||
-                other.belgeTipi == belgeTipi) &&
-            (identical(other.urlGetir, urlGetir) ||
-                other.urlGetir == urlGetir) &&
+            (identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi) &&
+            (identical(other.urlGetir, urlGetir) || other.urlGetir == urlGetir) &&
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
   }
 
@@ -158,10 +142,7 @@ class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl>
-      get copyWith =>
-          __$$EvraklarRequestModelImplCopyWithImpl<_$EvraklarRequestModelImpl>(
-              this, _$identity);
+  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl> get copyWith => __$$EvraklarRequestModelImplCopyWithImpl<_$EvraklarRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -172,13 +153,9 @@ class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
 }
 
 abstract class _EvraklarRequestModel implements EvraklarRequestModel {
-  const factory _EvraklarRequestModel(
-      {final String? belgeTipi,
-      final String? urlGetir,
-      final String? belgeNo}) = _$EvraklarRequestModelImpl;
+  const factory _EvraklarRequestModel({final String? belgeTipi, final String? urlGetir, final String? belgeNo}) = _$EvraklarRequestModelImpl;
 
-  factory _EvraklarRequestModel.fromJson(Map<String, dynamic> json) =
-      _$EvraklarRequestModelImpl.fromJson;
+  factory _EvraklarRequestModel.fromJson(Map<String, dynamic> json) = _$EvraklarRequestModelImpl.fromJson;
 
   @override
   String? get belgeTipi;
@@ -188,6 +165,5 @@ abstract class _EvraklarRequestModel implements EvraklarRequestModel {
   String? get belgeNo;
   @override
   @JsonKey(ignore: true)
-  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
