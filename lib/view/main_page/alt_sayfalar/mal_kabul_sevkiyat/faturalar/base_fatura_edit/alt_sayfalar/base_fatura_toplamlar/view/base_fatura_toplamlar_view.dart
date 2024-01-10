@@ -312,7 +312,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   child: CustomTextField(
                     labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
                     enabled: enable,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     controller: tevkifatController,
                     inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
                     suffix: IconButton(

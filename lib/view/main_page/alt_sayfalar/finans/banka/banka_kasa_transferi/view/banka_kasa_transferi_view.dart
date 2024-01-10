@@ -188,7 +188,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                             labelText: "Döviz Tutarı",
                             controller: _dovizTutariController,
                             isMust: true,
-                            keyboardType: const TextInputType.numberWithOptions(signed: true),
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             isFormattedString: true,
                             onChanged: (value) {
                               viewModel.setDovizTutari(value.toDoubleWithFormattedString);
@@ -209,7 +209,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                           controller: _dovizKuruController,
                           isMust: true,
                           isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(signed: true),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (value) {
                             if (_dovizKuruController.text != "") {
                               viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
@@ -230,7 +230,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                           labelText: "Tutar",
                           controller: _tutarController,
                           isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(signed: true),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);

@@ -165,6 +165,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        if (widget.model.model is BaseSiparisEditModel) {}
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         final result = await getSiparisBaglantisi();
@@ -518,6 +519,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 },
                 icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
+              onClear: () => viewModel.setCariKodu(null),
               onTap: () async {
                 final result = await Get.toNamed(
                   "mainPage/cariRehberi",
@@ -539,8 +541,15 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               readOnly: true,
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text((jsonDecode(viewModel.baseSiparisEditModel.arrBelgeNo ?? "[]") as List?)?.firstOrNull ?? "")),
+              onClear: () => viewModel.setBelgeNo(null),
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/siparisRehberi", arguments: BaseSiparisEditModel(pickerBelgeTuru: widget.model.editTipiEnum?.rawValue));
+                final result = await Get.toNamed(
+                  "/mainPage/siparisRehberi",
+                  arguments: BaseSiparisEditModel(
+                    pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
+                    cariKodu: viewModel.baseSiparisEditModel.cariKodu,
+                  ),
+                );
                 if (result is List) {
                   final List<BaseSiparisEditModel> list = result.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
                   viewModel.setBelgeNo(list);
@@ -580,7 +589,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     viewModel.setKalemList(list);
                     if (_cariKoduController.text.isEmpty) {
                       final cariModel = await getCari();
+                      viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
+                      viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
+                      viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;
+                      viewModel.baseSiparisEditModel.plasiyerKodu = cariModel?.plasiyerKodu;
+                      viewModel.baseSiparisEditModel.cariAdi = cariModel?.cariAdi;
                       viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
+                      viewModel.baseSiparisEditModel.kosulKodu = cariModel?.kosulKodu;
                     }
                     _kalemlerController.text = "${list.length} adet Kalem Seçildi.";
                   }

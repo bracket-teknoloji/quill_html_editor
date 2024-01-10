@@ -91,6 +91,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
                   focusNode: _tutarFocusNode,
                   controller: _tutarController,
                   isFormattedString: true,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   isMust: true,
                 ),
               ),

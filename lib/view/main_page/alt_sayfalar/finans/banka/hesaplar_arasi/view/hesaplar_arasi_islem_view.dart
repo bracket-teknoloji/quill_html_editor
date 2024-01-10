@@ -236,7 +236,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                           labelText: "Tutar",
                           controller: _tutarController,
                           isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(signed: true),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);

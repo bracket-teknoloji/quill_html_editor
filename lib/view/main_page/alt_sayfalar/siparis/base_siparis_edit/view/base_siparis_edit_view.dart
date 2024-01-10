@@ -112,8 +112,10 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+        if (widget.model.model is BaseSiparisEditModel){
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
+        }
         BaseSiparisEditModel.instance.isNew = true;
         final CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {

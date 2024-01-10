@@ -201,7 +201,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         controller: dovizTipiController,
                         readOnly: true,
                         isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(signed: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
                         onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
@@ -212,7 +212,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         labelText: "Döviz Kuru",
                         controller: dovizKuruController,
                         isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(signed: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (value) {
                           if (dovizKuruController.text != "") {
@@ -241,7 +241,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         labelText: "Döviz Tutarı",
                         controller: dovizTutariController,
                         isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(signed: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (value) {
                           viewModel.setDovizTutari(value.toDoubleWithFormattedString);
@@ -255,7 +255,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         labelText: "Tutar",
                         controller: tutarController,
                         isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(signed: true),
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (value) {
                           viewModel.setTutar(value.toDoubleWithFormattedString);

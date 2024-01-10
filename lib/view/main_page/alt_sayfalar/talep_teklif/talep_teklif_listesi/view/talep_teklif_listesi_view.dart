@@ -191,7 +191,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                 editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
               ),
             );
-            if (result) {
+            if (result == true) {
               await viewModel.resetPage();
             }
           },
