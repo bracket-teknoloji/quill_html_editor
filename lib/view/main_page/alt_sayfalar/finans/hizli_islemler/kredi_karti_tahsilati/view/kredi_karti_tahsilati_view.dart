@@ -68,6 +68,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         Get.back();
         return;
       }
+      await viewModel.getSiradakiKod();
+      _belgeNoController.text = viewModel.model.belgeNo ?? "";
+      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
+      _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
       if (widget.cariListesiModel != null) {
         viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
         viewModel.setCariKodu(widget.cariListesiModel!.cariKodu);
@@ -93,9 +97,6 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         await getBankaSozlesmesi();
         if (viewModel.model.sozlesmeKodu == null) return;
       }
-      _belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
-      _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
     super.initState();
   }
@@ -407,26 +408,24 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     if (viewModel.bankaSozlesmesiList.ext.isNullOrEmpty) {
       await viewModel.getBankaSozlesmesi();
     }
-    if (viewModel.bankaSozlesmesiList.ext.isNotNullOrEmpty) {
-      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-        context,
-        title: "Banka Sözleşmesi",
-        groupValue: viewModel.model.sozlesmeKodu,
-        children: viewModel.bankaSozlesmesiList!
-            .map(
-              (e) => BottomSheetModel(
-                title: e.sozlesmeAdi ?? "",
-                description: e.bankaTanimi,
-                value: e,
-                groupValue: e.sozlesmeKodu,
-              ),
-            )
-            .toList(),
-      );
-      if (result is BankaSozlesmesiModel) {
-        _sozlesmeController.text = result.sozlesmeAdi ?? "";
-        viewModel.setSozlesmeKodu(result.sozlesmeKodu);
-      }
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Banka Sözleşmesi",
+      groupValue: viewModel.model.sozlesmeKodu,
+      children: viewModel.bankaSozlesmesiList!
+          .map(
+            (e) => BottomSheetModel(
+              title: e.sozlesmeAdi ?? "",
+              description: e.bankaTanimi,
+              value: e,
+              groupValue: e.sozlesmeKodu,
+            ),
+          )
+          .toList(),
+    );
+    if (result is BankaSozlesmesiModel) {
+      _sozlesmeController.text = result.sozlesmeAdi ?? "";
+      viewModel.setSozlesmeKodu(result.sozlesmeKodu);
     }
   }
 
