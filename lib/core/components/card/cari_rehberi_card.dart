@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../base/state/base_state.dart";
@@ -39,9 +41,9 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
               if (model.cariIl != null) Text("${model.cariIl}/${model.cariIlce}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) else const SizedBox(),
               Row(
                 children: [
-                  if (model.efaturaMi == true) const Badge(label: Text("E-Fatura")) else const SizedBox(),
-                  if (model.boylam != null && model.enlem != null) const Badge(label: Text("Konum")) else const SizedBox(),
-                  if (model.dovizli == true) Badge(label: Text("Dövizli ${model.dovizAdi}")) else const SizedBox(),
+                  if (model.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura) else const SizedBox(),
+                  if (model.boylam != null && model.enlem != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum) else const SizedBox(),
+                  if (model.dovizli == true) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli) else const SizedBox(),
                 ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
               ),
             ],
