@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -10,6 +11,8 @@ part "stok_listesi_view_model.g.dart";
 class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 
 abstract class _StokListesiViewModelBase with Store {
+  final List<String> selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"];
+
   @observable
   String? bakiyeGroupValue = "Tümü";
 
@@ -27,11 +30,21 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void setSearchValue(String value) => searchValue = value;
   @observable
-  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel();
+  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
+  @observable
+  StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
 
   @action
   void resetSelectedArr() {
     bottomSheetModel = bottomSheetModel.copyWith(
+      arrGrupKodu: null,
+      arrKod1: null,
+      arrKod2: null,
+      arrKod3: null,
+      arrKod4: null,
+      arrKod5: null,
+    );
+    bottomSheetModelTemp = bottomSheetModelTemp.copyWith(
       arrGrupKodu: null,
       arrKod1: null,
       arrKod2: null,
@@ -47,11 +60,17 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void changeArrGrupKodu(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
 
+  @action
+  void changeArrGrupKoduTemp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrGrupKodu: value);
+
   @computed
   List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
 
   @action
   void changeArrKod1(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
+
+  @action
+  void changeArrKod1Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
@@ -59,11 +78,17 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void changeArrKod2(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
 
+  @action
+  void changeArrKod2Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
+
   @computed
   List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
 
   @action
   void changeArrKod3(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
+
+  @action
+  void changeArrKod3Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
@@ -71,11 +96,17 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void changeArrKod4(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
 
+  @action
+  void changeArrKod4Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
+
   @computed
   List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
   @action
   void changeArrKod5(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
+
+  @action
+  void changeArrKod5Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);
 
   @observable
   String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
@@ -142,9 +173,23 @@ abstract class _StokListesiViewModelBase with Store {
   @action
   void setSelectedWithIndex(int index) => bakiyeGroupValue = selectedList[index];
 
-  @observable
-  ObservableList<String> selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"].asObservable();
+  @action
+  void changeBakiyeDurumu(String? value) => bottomSheetModel = bottomSheetModel.copyWith(bakiyeDurumu: value);
+
+  @action
+  void changeBakiyeDurumuTemp(int? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(bakiyeDurumu: selectedList[value ?? 0].substring(0, 1));
 
   @computed
   String? get bakiye => bakiyeGroupValue?.substring(0, 1);
+
+  @computed
+  bool get hasAnyFilters =>
+      bottomSheetModel.arrGrupKodu.ext.isNotNullOrEmpty ||
+      bottomSheetModel.arrKod1.ext.isNotNullOrEmpty ||
+      bottomSheetModel.arrKod2.ext.isNotNullOrEmpty ||
+      bottomSheetModel.arrKod3.ext.isNotNullOrEmpty ||
+      bottomSheetModel.arrKod4.ext.isNotNullOrEmpty ||
+      bottomSheetModel.arrKod5.ext.isNotNullOrEmpty ||
+      (bottomSheetModel.bakiyeDurumu != null &&
+      bottomSheetModel.bakiyeDurumu != "T");
 }
