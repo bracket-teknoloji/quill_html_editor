@@ -18,9 +18,15 @@ abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   double get toplamTutar => ortalamaVadeTarihiListesi.map((e) => e.tutar ?? 0).whereNotNull().fold(0, (previousValue, element) => previousValue + element);
 
   @computed
-  double get ortalamaVadeTarihi =>
-      ortalamaVadeTarihiListesi.map((e) => e.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0).whereNotNull().fold(0, (previousValue, element) => previousValue + element) /
-      toplamKayitSayisi;
+  double get ortalamaVadeTarihi {
+    double toplamTutar = 0;
+    double toplamVadeTarihi = 0;
+    for (var item in ortalamaVadeTarihiListesi) {
+      toplamTutar += item.tutar ?? 0;
+      toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
+    }
+    return toplamVadeTarihi / toplamTutar;
+  }
 
   @computed
   double get ortalamaVadeTarihi2 => ortalamaVadeTarihi.isNaN ? 0 : ortalamaVadeTarihi;
@@ -28,7 +34,7 @@ abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   @computed
   DateTime get ortalamaVadeTarihiDateTime {
     if (ortalamaVadeTarihi2 == 0) {
-      return DateTime.now();
+      return DateTime.now().dateTimeWithoutTime!;
     }
     return DateTime.now().add(Duration(days: ortalamaVadeTarihi2.round()));
   }
