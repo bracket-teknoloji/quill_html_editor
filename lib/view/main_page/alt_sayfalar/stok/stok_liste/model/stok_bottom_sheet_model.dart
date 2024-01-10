@@ -97,7 +97,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "stok_bottom_sheet_model.freezed.dart";
 part "stok_bottom_sheet_model.g.dart";
 
-@freezed
+@unfreezed
 class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
   StokBottomSheetModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal)

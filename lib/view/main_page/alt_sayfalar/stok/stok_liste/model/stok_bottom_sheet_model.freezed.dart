@@ -21,37 +21,70 @@ StokBottomSheetModel _$StokBottomSheetModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$StokBottomSheetModel {
   int? get sayfa => throw _privateConstructorUsedError;
+  set sayfa(int? value) => throw _privateConstructorUsedError;
   String? get bakiyeDurumu => throw _privateConstructorUsedError;
+  set bakiyeDurumu(String? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
+  set menuKodu(String? value) => throw _privateConstructorUsedError;
   String? get resimleriGoster => throw _privateConstructorUsedError;
+  set resimleriGoster(String? value) => throw _privateConstructorUsedError;
   String? get siralama => throw _privateConstructorUsedError;
+  set siralama(String? value) => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
+  set searchText(String? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get belgeTarihi => throw _privateConstructorUsedError;
+  set belgeTarihi(String? value) => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
+  set ekranTipi(String? value) => throw _privateConstructorUsedError;
   int? get faturaTipi => throw _privateConstructorUsedError;
+  set faturaTipi(int? value) => throw _privateConstructorUsedError;
   String? get resimGoster => throw _privateConstructorUsedError;
+  set resimGoster(String? value) => throw _privateConstructorUsedError;
   bool? get kisitYok => throw _privateConstructorUsedError;
+  set kisitYok(bool? value) => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
   bool? get okutuldu => throw _privateConstructorUsedError;
+  set okutuldu(bool? value) => throw _privateConstructorUsedError;
   String? get seriTakibiVar => throw _privateConstructorUsedError;
-  List<BaseGrupKoduModel>? get arrGrupKodu => throw _privateConstructorUsedError;
+  set seriTakibiVar(String? value) => throw _privateConstructorUsedError;
+  List<BaseGrupKoduModel>? get arrGrupKodu =>
+      throw _privateConstructorUsedError;
+  set arrGrupKodu(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod1 => throw _privateConstructorUsedError;
+  set arrKod1(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod2 => throw _privateConstructorUsedError;
+  set arrKod2(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod3 => throw _privateConstructorUsedError;
+  set arrKod3(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod4 => throw _privateConstructorUsedError;
+  set arrKod4(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrKod5 => throw _privateConstructorUsedError;
+  set arrKod5(List<BaseGrupKoduModel>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith => throw _privateConstructorUsedError;
+  $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $StokBottomSheetModelCopyWith<$Res> {
-  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value, $Res Function(StokBottomSheetModel) then) = _$StokBottomSheetModelCopyWithImpl<$Res, StokBottomSheetModel>;
+  factory $StokBottomSheetModelCopyWith(StokBottomSheetModel value,
+          $Res Function(StokBottomSheetModel) then) =
+      _$StokBottomSheetModelCopyWithImpl<$Res, StokBottomSheetModel>;
   @useResult
   $Res call(
       {int? sayfa,
@@ -80,7 +113,9 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StokBottomSheetModelCopyWithImpl<$Res, $Val extends StokBottomSheetModel> implements $StokBottomSheetModelCopyWith<$Res> {
+class _$StokBottomSheetModelCopyWithImpl<$Res,
+        $Val extends StokBottomSheetModel>
+    implements $StokBottomSheetModelCopyWith<$Res> {
   _$StokBottomSheetModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -213,8 +248,11 @@ class _$StokBottomSheetModelCopyWithImpl<$Res, $Val extends StokBottomSheetModel
 }
 
 /// @nodoc
-abstract class _$$StokBottomSheetModelImplCopyWith<$Res> implements $StokBottomSheetModelCopyWith<$Res> {
-  factory _$$StokBottomSheetModelImplCopyWith(_$StokBottomSheetModelImpl value, $Res Function(_$StokBottomSheetModelImpl) then) = __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
+abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
+    implements $StokBottomSheetModelCopyWith<$Res> {
+  factory _$$StokBottomSheetModelImplCopyWith(_$StokBottomSheetModelImpl value,
+          $Res Function(_$StokBottomSheetModelImpl) then) =
+      __$$StokBottomSheetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -244,8 +282,12 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res> implements $StokBottomS
 }
 
 /// @nodoc
-class __$$StokBottomSheetModelImplCopyWithImpl<$Res> extends _$StokBottomSheetModelCopyWithImpl<$Res, _$StokBottomSheetModelImpl> implements _$$StokBottomSheetModelImplCopyWith<$Res> {
-  __$$StokBottomSheetModelImplCopyWithImpl(_$StokBottomSheetModelImpl _value, $Res Function(_$StokBottomSheetModelImpl) _then) : super(_value, _then);
+class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
+    extends _$StokBottomSheetModelCopyWithImpl<$Res, _$StokBottomSheetModelImpl>
+    implements _$$StokBottomSheetModelImplCopyWith<$Res> {
+  __$$StokBottomSheetModelImplCopyWithImpl(_$StokBottomSheetModelImpl _value,
+      $Res Function(_$StokBottomSheetModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -344,27 +386,27 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res> extends _$StokBottomSheetMo
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
       arrGrupKodu: freezed == arrGrupKodu
-          ? _value._arrGrupKodu
+          ? _value.arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
       arrKod1: freezed == arrKod1
-          ? _value._arrKod1
+          ? _value.arrKod1
           : arrKod1 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
       arrKod2: freezed == arrKod2
-          ? _value._arrKod2
+          ? _value.arrKod2
           : arrKod2 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
       arrKod3: freezed == arrKod3
-          ? _value._arrKod3
+          ? _value.arrKod3
           : arrKod3 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
       arrKod4: freezed == arrKod4
-          ? _value._arrKod4
+          ? _value.arrKod4
           : arrKod4 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
       arrKod5: freezed == arrKod5
-          ? _value._arrKod5
+          ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
     ));
@@ -393,128 +435,79 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.stokKodu,
       this.okutuldu,
       this.seriTakibiVar,
-      final List<BaseGrupKoduModel>? arrGrupKodu = const [],
-      final List<BaseGrupKoduModel>? arrKod1 = const [],
-      final List<BaseGrupKoduModel>? arrKod2 = const [],
-      final List<BaseGrupKoduModel>? arrKod3 = const [],
-      final List<BaseGrupKoduModel>? arrKod4 = const [],
-      final List<BaseGrupKoduModel>? arrKod5 = const []})
-      : _arrGrupKodu = arrGrupKodu,
-        _arrKod1 = arrKod1,
-        _arrKod2 = arrKod2,
-        _arrKod3 = arrKod3,
-        _arrKod4 = arrKod4,
-        _arrKod5 = arrKod5,
-        super._();
+      this.arrGrupKodu = const [],
+      this.arrKod1 = const [],
+      this.arrKod2 = const [],
+      this.arrKod3 = const [],
+      this.arrKod4 = const [],
+      this.arrKod5 = const []})
+      : super._();
 
-  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) => _$$StokBottomSheetModelImplFromJson(json);
+  factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StokBottomSheetModelImplFromJson(json);
 
   @override
-  final int? sayfa;
+  int? sayfa;
   @override
-  final String? bakiyeDurumu;
+  String? bakiyeDurumu;
   @override
-  final String? menuKodu;
+  String? menuKodu;
   @override
-  final String? resimleriGoster;
-  @override
-  @JsonKey()
-  final String? siralama;
-  @override
-  final String? searchText;
-  @override
-  final String? belgeNo;
-  @override
-  final String? belgeTarihi;
-  @override
-  final String? belgeTipi;
-  @override
-  final String? cariKodu;
+  String? resimleriGoster;
   @override
   @JsonKey()
-  final String? ekranTipi;
+  String? siralama;
   @override
-  final int? faturaTipi;
+  String? searchText;
   @override
-  final String? resimGoster;
+  String? belgeNo;
   @override
-  final bool? kisitYok;
+  String? belgeTarihi;
   @override
-  final String? stokKodu;
+  String? belgeTipi;
   @override
-  final bool? okutuldu;
-  @override
-  final String? seriTakibiVar;
-  final List<BaseGrupKoduModel>? _arrGrupKodu;
+  String? cariKodu;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrGrupKodu {
-    final value = _arrGrupKodu;
-    if (value == null) return null;
-    if (_arrGrupKodu is EqualUnmodifiableListView) return _arrGrupKodu;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<BaseGrupKoduModel>? _arrKod1;
+  String? ekranTipi;
+  @override
+  int? faturaTipi;
+  @override
+  String? resimGoster;
+  @override
+  bool? kisitYok;
+  @override
+  String? stokKodu;
+  @override
+  bool? okutuldu;
+  @override
+  String? seriTakibiVar;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrKod1 {
-    final value = _arrKod1;
-    if (value == null) return null;
-    if (_arrKod1 is EqualUnmodifiableListView) return _arrKod1;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<BaseGrupKoduModel>? _arrKod2;
+  List<BaseGrupKoduModel>? arrGrupKodu;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrKod2 {
-    final value = _arrKod2;
-    if (value == null) return null;
-    if (_arrKod2 is EqualUnmodifiableListView) return _arrKod2;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<BaseGrupKoduModel>? _arrKod3;
+  List<BaseGrupKoduModel>? arrKod1;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrKod3 {
-    final value = _arrKod3;
-    if (value == null) return null;
-    if (_arrKod3 is EqualUnmodifiableListView) return _arrKod3;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<BaseGrupKoduModel>? _arrKod4;
+  List<BaseGrupKoduModel>? arrKod2;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrKod4 {
-    final value = _arrKod4;
-    if (value == null) return null;
-    if (_arrKod4 is EqualUnmodifiableListView) return _arrKod4;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<BaseGrupKoduModel>? _arrKod5;
+  List<BaseGrupKoduModel>? arrKod3;
   @override
   @JsonKey()
-  List<BaseGrupKoduModel>? get arrKod5 {
-    final value = _arrKod5;
-    if (value == null) return null;
-    if (_arrKod5 is EqualUnmodifiableListView) return _arrKod5;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  List<BaseGrupKoduModel>? arrKod4;
+  @override
+  @JsonKey()
+  List<BaseGrupKoduModel>? arrKod5;
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith => __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(this, _$identity);
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
+      get copyWith =>
+          __$$StokBottomSheetModelImplCopyWithImpl<_$StokBottomSheetModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -526,80 +519,105 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
 
 abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   factory _StokBottomSheetModel(
-      {final int? sayfa,
-      final String? bakiyeDurumu,
-      final String? menuKodu,
-      final String? resimleriGoster,
-      final String? siralama,
-      final String? searchText,
-      final String? belgeNo,
-      final String? belgeTarihi,
-      final String? belgeTipi,
-      final String? cariKodu,
-      final String? ekranTipi,
-      final int? faturaTipi,
-      final String? resimGoster,
-      final bool? kisitYok,
-      final String? stokKodu,
-      final bool? okutuldu,
-      final String? seriTakibiVar,
-      final List<BaseGrupKoduModel>? arrGrupKodu,
-      final List<BaseGrupKoduModel>? arrKod1,
-      final List<BaseGrupKoduModel>? arrKod2,
-      final List<BaseGrupKoduModel>? arrKod3,
-      final List<BaseGrupKoduModel>? arrKod4,
-      final List<BaseGrupKoduModel>? arrKod5}) = _$StokBottomSheetModelImpl;
+      {int? sayfa,
+      String? bakiyeDurumu,
+      String? menuKodu,
+      String? resimleriGoster,
+      String? siralama,
+      String? searchText,
+      String? belgeNo,
+      String? belgeTarihi,
+      String? belgeTipi,
+      String? cariKodu,
+      String? ekranTipi,
+      int? faturaTipi,
+      String? resimGoster,
+      bool? kisitYok,
+      String? stokKodu,
+      bool? okutuldu,
+      String? seriTakibiVar,
+      List<BaseGrupKoduModel>? arrGrupKodu,
+      List<BaseGrupKoduModel>? arrKod1,
+      List<BaseGrupKoduModel>? arrKod2,
+      List<BaseGrupKoduModel>? arrKod3,
+      List<BaseGrupKoduModel>? arrKod4,
+      List<BaseGrupKoduModel>? arrKod5}) = _$StokBottomSheetModelImpl;
   _StokBottomSheetModel._() : super._();
 
-  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) = _$StokBottomSheetModelImpl.fromJson;
+  factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) =
+      _$StokBottomSheetModelImpl.fromJson;
 
   @override
   int? get sayfa;
+  set sayfa(int? value);
   @override
   String? get bakiyeDurumu;
+  set bakiyeDurumu(String? value);
   @override
   String? get menuKodu;
+  set menuKodu(String? value);
   @override
   String? get resimleriGoster;
+  set resimleriGoster(String? value);
   @override
   String? get siralama;
+  set siralama(String? value);
   @override
   String? get searchText;
+  set searchText(String? value);
   @override
   String? get belgeNo;
+  set belgeNo(String? value);
   @override
   String? get belgeTarihi;
+  set belgeTarihi(String? value);
   @override
   String? get belgeTipi;
+  set belgeTipi(String? value);
   @override
   String? get cariKodu;
+  set cariKodu(String? value);
   @override
   String? get ekranTipi;
+  set ekranTipi(String? value);
   @override
   int? get faturaTipi;
+  set faturaTipi(int? value);
   @override
   String? get resimGoster;
+  set resimGoster(String? value);
   @override
   bool? get kisitYok;
+  set kisitYok(bool? value);
   @override
   String? get stokKodu;
+  set stokKodu(String? value);
   @override
   bool? get okutuldu;
+  set okutuldu(bool? value);
   @override
   String? get seriTakibiVar;
+  set seriTakibiVar(String? value);
   @override
   List<BaseGrupKoduModel>? get arrGrupKodu;
+  set arrGrupKodu(List<BaseGrupKoduModel>? value);
   @override
   List<BaseGrupKoduModel>? get arrKod1;
+  set arrKod1(List<BaseGrupKoduModel>? value);
   @override
   List<BaseGrupKoduModel>? get arrKod2;
+  set arrKod2(List<BaseGrupKoduModel>? value);
   @override
   List<BaseGrupKoduModel>? get arrKod3;
+  set arrKod3(List<BaseGrupKoduModel>? value);
   @override
   List<BaseGrupKoduModel>? get arrKod4;
+  set arrKod4(List<BaseGrupKoduModel>? value);
   @override
   List<BaseGrupKoduModel>? get arrKod5;
+  set arrKod5(List<BaseGrupKoduModel>? value);
   @override
   @JsonKey(ignore: true)
-  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
