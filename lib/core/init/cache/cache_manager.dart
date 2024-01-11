@@ -42,6 +42,7 @@ class CacheManager {
   static late Box<ListSiparisEditModel> faturaEditListBox;
   static late Box<BaseSiparisEditModel> talepTeklifEditBox;
   static late Box<ListSiparisEditModel> talepTeklifEditListBox;
+  static late Box<int> finansOzelRaporOrderBox;
 
   static late Box<Map> profilParametreBox;
 
@@ -92,6 +93,7 @@ class CacheManager {
     faturaEditListBox = await Hive.openBox<ListSiparisEditModel>("faturaEditList");
     talepTeklifEditBox = await Hive.openBox<BaseSiparisEditModel>("talepTeklifEdit");
     talepTeklifEditListBox = await Hive.openBox<ListSiparisEditModel>("talepTeklifEditList");
+    finansOzelRaporOrderBox = await Hive.openBox("finansOzelRaporOrder");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
     // await hesapBilgileriBox.clear();
@@ -101,6 +103,19 @@ class CacheManager {
         "value",
         BaseProfilParametreModel().toJson(),
       );
+    }
+    finansOzelRaporOrderBox.clear();
+    if (finansOzelRaporOrderBox.isEmpty) {
+      await finansOzelRaporOrderBox.put("Fatura", 0);
+      await finansOzelRaporOrderBox.put("Sipariş", 1);
+      await finansOzelRaporOrderBox.put("Müşteri Çeki", 2);
+      await finansOzelRaporOrderBox.put("Müşteri Senedi", 3);
+      await finansOzelRaporOrderBox.put("Banka", 4);
+      await finansOzelRaporOrderBox.put("İrsaliye", 5);
+      await finansOzelRaporOrderBox.put("Borç Çeki", 6);
+      await finansOzelRaporOrderBox.put("Borç Senedi", 7);
+      await finansOzelRaporOrderBox.put("Teklif", 8);
+      await finansOzelRaporOrderBox.put("Kasa", 9);
     }
     if (isLicenseVerifiedBox.isEmpty) {
       await isLicenseVerifiedBox.put("value", false);
@@ -131,6 +146,7 @@ class CacheManager {
   static String getCompanies(String query) => companiesBox.get(query);
   static AccountResponseModel? getAccounts(String query) => accountsBox.get(query);
   static bool getUzaktanMi(String? sirketAdi) => isUzaktanBox.get(sirketAdi ?? "") ?? true;
+  static int getFinansOzetOrder(String? key) => finansOzelRaporOrderBox.get(key) ?? 0;
 
   static MainPageModel? get getAnaVeri => anaVeriBox.get("data");
   static LoginDialogModel get getVerifiedUser => verifiedUsersBox.get("data");
@@ -167,6 +183,7 @@ class CacheManager {
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
 
   //* Setters
+  static void setFinansOzetOrder(String key, int value) => finansOzelRaporOrderBox.put(key, value);
   static void setLogout(bool value) => preferencesBox.put("logout", value);
   static void setToken(String token) => tokenBox.put("token", token);
   static void setPref(String key, String value) => preferencesBox.put(key, value);
