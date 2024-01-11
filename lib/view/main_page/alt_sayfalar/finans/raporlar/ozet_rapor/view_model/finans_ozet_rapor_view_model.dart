@@ -13,6 +13,18 @@ part "finans_ozet_rapor_view_model.g.dart";
 class FinansOzetRaporViewModel = _FinansOzetRaporViewModelBase with _$FinansOzetRaporViewModel;
 
 abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
+  final List<String> raporlarList = [
+    "Fatura",
+    "Sipariş",
+    "Müşteri Çeki",
+    "Müşteri Senedi",
+    "Banka",
+    "İrsaliye",
+    "Borç Çeki",
+    "Borç Senedi",
+    "Teklif",
+    "Kasa",
+  ];
   @observable
   FinansOzetRaporRequestModel requestModel = FinansOzetRaporRequestModel(iadeDurumu: "H", kdvDahil: true);
 

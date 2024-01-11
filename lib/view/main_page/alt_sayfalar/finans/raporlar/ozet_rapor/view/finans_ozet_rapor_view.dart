@@ -1,12 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/ondalik_utils.dart";
-import "../model/finans_ozet_rapor_model.dart";
 import "../view_model/finans_ozet_rapor_view_model.dart";
 
 class FinansOzetRaporView extends StatefulWidget {
@@ -69,23 +68,46 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
                     } else if (viewModel.gunSonuRaporuList!.isEmpty) {
                       return const Center(child: Text("Veri bulunamadı"));
                     }
-                    return ListView.builder(
-                      itemCount: viewModel.gunSonuRaporuList!.length,
-                      itemBuilder: (context, index) {
-                        final FinansOzetRaporModel model = viewModel.gunSonuRaporuList![index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(model.tabloTipi ?? ""),
-                            subtitle: Text(viewModel.toplamAlisFaturasi?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? ""),
-                          ),
-                        );
+                    return ReorderableListView.builder(
+                      itemCount: viewModel.raporlarList.length,
+                      onReorder: (oldIndex, newIndex) {
+                        if (oldIndex < newIndex) {
+                          newIndex -= 1;
+                        }
+
+                        // CacheManager.setFinansOzetOrder(viewModel.raporlarList[oldIndex], newIndex);
+                        //create a new list and add the item at the new index
+                        final List<String> newList = [];
+                        for (int i = 0; i < newIndex; i++) {
+                          newList.add(viewModel.raporlarList[i]);
+                        }
+                        newList.add(viewModel.raporlarList[oldIndex]);
+                        for (int i = newIndex; i < viewModel.raporlarList.length; i++) {
+                          newList.add(viewModel.raporlarList[i]);
+                        }
+                        // CacheManager.setFinansOzetOrder(viewModel.raporlarList[oldIndex], newIndex);
                       },
+                      itemBuilder: (context, index) => Card(
+                        key: Key(index.toString()),
+                        child: ListTile(
+                          title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                          subtitle: Text("s" * index),
+                        ),
+                      ),
                     );
                   },
                 ),
               ),
             ),
           ],
+        ),
+      );
+
+  Card customCard(int index) => Card(
+        key: Key(index.toString()),
+        child: ListTile(
+          title: Text(index.toStringIfNotNull ?? ""),
+          subtitle: const Text("a"),
         ),
       );
 }
