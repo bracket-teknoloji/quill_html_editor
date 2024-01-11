@@ -284,12 +284,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                         child: Listener(
                           onPointerDown: (event) {
                             if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                              dialogManager.showCariGridViewDialog(object);
+                              showCariGrid(object);
                             }
                           },
                           child: ListTile(
                             onLongPress: () {
-                              dialogManager.showCariGridViewDialog(object);
+                              showCariGrid(object);
                             },
                             onTap: () {
                               if (widget.isGetData) {
@@ -373,6 +373,17 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 )),
         ).paddingAll(UIHelper.lowSize),
       );
+
+  Future<void> showCariGrid(CariListesiModel object) async {
+    await dialogManager.showCariGridViewDialog(
+      object,
+      onSelected: (p0) {
+        if (p0) {
+          viewModel.resetPage();
+        }
+      },
+    );
+  }
 
   Widget? bottomButtonBar() => Observer(
         builder: (_) => BottomBarWidget(
@@ -477,7 +488,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           iconWidget: Icons.list_alt_outlined,
           onTap: () {
             Get.back();
-            dialogManager.showCariGridViewDialog(object);
+            showCariGrid(object);
           },
         ),
         BottomSheetModel(
