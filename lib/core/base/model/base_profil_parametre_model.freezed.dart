@@ -32,6 +32,7 @@ mixin _$BaseProfilParametreModel {
   bool get stokYazdirDizaynVeYaziciHatirla =>
       throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
+  bool get finansOzelRaporGrafikGoster => throw _privateConstructorUsedError;
   NetFectDizaynList? get netFectDizaynList =>
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
@@ -59,6 +60,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool stokResimleriGoster,
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
+      bool finansOzelRaporGrafikGoster,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -87,6 +89,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? stokResimleriGoster = null,
     Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
+    Object? finansOzelRaporGrafikGoster = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -131,6 +134,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.stokSecildigindeYazdir
           : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
+          ? _value.finansOzelRaporGrafikGoster
+          : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -163,6 +170,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool stokResimleriGoster,
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
+      bool finansOzelRaporGrafikGoster,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -190,6 +198,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? stokResimleriGoster = null,
     Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
+    Object? finansOzelRaporGrafikGoster = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -234,6 +243,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.stokSecildigindeYazdir
           : stokSecildigindeYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      finansOzelRaporGrafikGoster: null == finansOzelRaporGrafikGoster
+          ? _value.finansOzelRaporGrafikGoster
+          : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -260,6 +273,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.stokResimleriGoster = false,
       this.stokYazdirDizaynVeYaziciHatirla = false,
       this.stokSecildigindeYazdir = false,
+      this.finansOzelRaporGrafikGoster = false,
       this.netFectDizaynList,
       this.yaziciList})
       : super._();
@@ -298,6 +312,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @JsonKey()
   final bool stokSecildigindeYazdir;
   @override
+  @JsonKey()
+  final bool finansOzelRaporGrafikGoster;
+  @override
   final NetFectDizaynList? netFectDizaynList;
   @override
   final YaziciList? yaziciList;
@@ -329,6 +346,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool stokResimleriGoster,
       final bool stokYazdirDizaynVeYaziciHatirla,
       final bool stokSecildigindeYazdir,
+      final bool finansOzelRaporGrafikGoster,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
@@ -356,6 +374,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get stokYazdirDizaynVeYaziciHatirla;
   @override
   bool get stokSecildigindeYazdir;
+  @override
+  bool get finansOzelRaporGrafikGoster;
   @override
   NetFectDizaynList? get netFectDizaynList;
   @override

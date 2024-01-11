@@ -19,6 +19,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool stokResimleriGoster,
     @Default(false) bool stokYazdirDizaynVeYaziciHatirla,
     @Default(false) bool stokSecildigindeYazdir,
+    @Default(false) bool finansOzelRaporGrafikGoster,
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;
