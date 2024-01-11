@@ -13,5 +13,6 @@
     "scrollbar.shadow": "#00000000"
   },
   "docwriter.language": "Turkish",
-  "docwriter.hotkey.mac": "⌥ + ."
+  "docwriter.hotkey.mac": "⌥ + .",
+  "cloudcode.duetAI.inlineSuggestions.enableAuto": false
 }

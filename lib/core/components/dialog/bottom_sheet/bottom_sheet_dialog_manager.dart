@@ -82,10 +82,23 @@ class BottomSheetDialogManager {
                 endIndent: 10,
                 indent: 10,
               ),
-              if (body == null && ((children?.length ?? 0) > 20))
-                TextField(
+              if (body == null && ((children?.length ?? 0) > 20 && (children?.length ?? 0) < 100))
+                CustomTextField(
                   focusNode: focusNode,
-                  decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+                  labelText: "Aramak istediğiniz metni yazınız.",
+                  onChanged: (String value) {
+                    if (value == "") {
+                      children2 = children;
+                    }
+                    children2 = children2!
+                        .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
+                        .toList();
+                  },
+                ).paddingAll(UIHelper.midSize),
+              if (body == null && ((children?.length ?? 0) > 100 && (children?.length ?? 0) < 20))
+                CustomTextField(
+                  focusNode: focusNode,
+                  labelText: "Aramak istediğiniz metni yazınız.",
                   onSubmitted: (String value) {
                     if (value == "") {
                       children2 = children;
@@ -180,10 +193,15 @@ class BottomSheetDialogManager {
                   endIndent: 0,
                   indent: 0,
                 ),
-                if ((children?.length ?? 0) > 15)
+                if ((children?.length ?? 0) > 15 && (children?.length ?? 0) < 100)
                   TextField(
                     decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
                     onChanged: viewModel.changeSearchValue,
+                  ).paddingAll(UIHelper.midSize),
+                if ((children?.length ?? 0) >= 100)
+                  TextField(
+                    decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+                    onSubmitted: viewModel.changeSearchValue,
                   ).paddingAll(UIHelper.midSize),
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
