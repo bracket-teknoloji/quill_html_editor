@@ -194,7 +194,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                 suffix: IconButton(
                   onPressed: () async {
                     if (viewModel.model.cariKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu));
+                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
                     } else {
                       dialogManager.showErrorSnackBar("Cari seçiniz");
                     }
