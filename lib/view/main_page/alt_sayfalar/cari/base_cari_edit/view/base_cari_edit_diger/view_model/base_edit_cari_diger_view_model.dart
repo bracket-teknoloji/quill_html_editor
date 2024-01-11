@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_grup_kodu_model.dart";
 
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -81,32 +82,32 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
   }
 
   @action
-  void changeKod1(String? value) {
-    model = model?.copyWith(kod1: value);
+  void changeKod1(BaseGrupKoduModel? value) {
+    model = model?.copyWith(kod1: value?.grupKodu, kod1Tanimi: value?.grupAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKod2(String? value) {
-    model = model?.copyWith(kod2: value);
+  void changeKod2(BaseGrupKoduModel? value) {
+    model = model?.copyWith(kod2: value?.grupKodu, kod2Tanimi: value?.grupAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKod3(String? value) {
-    model = model?.copyWith(kod3: value);
+  void changeKod3(BaseGrupKoduModel? value) {
+    model = model?.copyWith(kod3: value?.grupKodu, kod3Tanimi: value?.grupAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKod4(String? value) {
-    model = model?.copyWith(kod4: value);
+  void changeKod4(BaseGrupKoduModel? value) {
+    model = model?.copyWith(kod4: value?.grupKodu, kod4Tanimi: value?.grupAdi);
     CariSaveRequestModel.setInstance(model);
   }
 
   @action
-  void changeKod5(String? value) {
-    model = model?.copyWith(kod5: value);
+  void changeKod5(BaseGrupKoduModel? value) {
+    model = model?.copyWith(kod5: value?.grupKodu, kod5Tanimi: value?.grupAdi);
     CariSaveRequestModel.setInstance(model);
   }
 

@@ -80,11 +80,11 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   void initState() {
     viewModel.setModel(CariSaveRequestModel.instance);
     grupKoduController = TextEditingController(text: viewModel.model?.grupKodu);
-    kod1Controller = TextEditingController(text: viewModel.model?.kod1);
-    kod2Controller = TextEditingController(text: viewModel.model?.kod2);
-    kod3Controller = TextEditingController(text: viewModel.model?.kod3);
-    kod4Controller = TextEditingController(text: viewModel.model?.kod4);
-    kod5Controller = TextEditingController(text: viewModel.model?.kod5);
+    kod1Controller = TextEditingController(text: viewModel.model?.kod1Tanimi);
+    kod2Controller = TextEditingController(text: viewModel.model?.kod2Tanimi);
+    kod3Controller = TextEditingController(text: viewModel.model?.kod3Tanimi);
+    kod4Controller = TextEditingController(text: viewModel.model?.kod4Tanimi);
+    kod5Controller = TextEditingController(text: viewModel.model?.kod5Tanimi);
     bilgiController = TextEditingController(text: viewModel.model?.bilgi);
     subeController = TextEditingController(text: viewModel.model?.subeKodu);
     konumController = TextEditingController(text: viewModel.model?.adres);
@@ -231,7 +231,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       );
                       if (result is BaseGrupKoduModel) {
                         kod1Controller.text = result.grupAdi ?? "";
-                        viewModel.changeKod1(result.grupKodu);
+                        viewModel.changeKod1(result);
                       }
                     },
                   ),
@@ -261,7 +261,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       if (result is BaseGrupKoduModel) {
                         kod2Controller.text = result.grupAdi ?? "";
 
-                        viewModel.changeKod2(result.grupKodu);
+                        viewModel.changeKod2(result);
                       }
                     },
                   ),
@@ -285,7 +285,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       );
                       if (result is BaseGrupKoduModel) {
                         kod3Controller.text = result.grupAdi ?? "";
-                        viewModel.changeKod3(result.grupKodu);
+                        viewModel.changeKod3(result);
                       }
                     },
                   ),
@@ -314,7 +314,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       );
                       if (result is BaseGrupKoduModel) {
                         kod4Controller.text = result.grupAdi ?? "";
-                        viewModel.changeKod4(result.grupKodu);
+                        viewModel.changeKod4(result);
                       }
                     },
                   ),
@@ -338,7 +338,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                       );
                       if (result is BaseGrupKoduModel) {
                         kod5Controller.text = result.grupAdi ?? "";
-                        viewModel.changeKod5(result.grupKodu);
+                        viewModel.changeKod5(result);
                       }
                     },
                   ),
