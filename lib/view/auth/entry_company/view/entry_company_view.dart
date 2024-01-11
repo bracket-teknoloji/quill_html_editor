@@ -19,7 +19,7 @@ import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/entry_company/view_model/entry_company_view_model.dart";
-import "package:picker/view/auth/model/companies.dart";
+import "package:picker/view/auth/model/company_model.dart";
 import "package:picker/view/auth/model/isletme_model.dart";
 import "package:picker/view/main_page/model/main_page_model.dart";
 

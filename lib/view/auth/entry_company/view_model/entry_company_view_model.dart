@@ -3,7 +3,7 @@ import "package:mobx/mobx.dart";
 import "../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../../../../core/init/network/login/api_urls.dart";
-import "../../model/companies.dart";
+import "../../model/company_model.dart";
 import "../../model/isletme_model.dart";
 
 part "entry_company_view_model.g.dart";
