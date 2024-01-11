@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -65,10 +66,12 @@ abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
       final List<FinansOzetRaporModel> list = (result.data as List).map((e) => e as FinansOzetRaporModel).toList().cast<FinansOzetRaporModel>();
       setGunSonuRaporuList(list);
     }
-    final result2 = await networkManager.dioGet(path: ApiUrls.getAylikTutarlar, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
-    if (result2.success ?? false) {
-      final List<FinansOzetRaporModel> list = (result2.data as List).map((e) => e as FinansOzetRaporModel).toList().cast<FinansOzetRaporModel>();
-      setAylikTutarlarList(list);
+    if (CacheManager.getProfilParametre.finansOzelRaporGrafikGoster) {
+      final result2 = await networkManager.dioGet(path: ApiUrls.getAylikTutarlar, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
+      if (result2.success ?? false) {
+        final List<FinansOzetRaporModel> list = (result2.data as List).map((e) => e as FinansOzetRaporModel).toList().cast<FinansOzetRaporModel>();
+        setAylikTutarlarList(list);
+      }
     }
   }
 }
