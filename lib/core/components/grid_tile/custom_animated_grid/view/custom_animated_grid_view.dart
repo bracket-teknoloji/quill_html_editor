@@ -35,7 +35,8 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
   bool get siparisMi => widget.islemTipi == IslemTipiEnum.siparis;
   bool get kasaMi => widget.islemTipi == IslemTipiEnum.kasa;
-  bool get raporMu => widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor;
+  bool get raporMu =>
+      widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor || widget.islemTipi == IslemTipiEnum.cariSerbest || widget.islemTipi == IslemTipiEnum.stokSerbest;
   List<GridItemModel> result = MenuItemConstants().getList();
   @override
   void initState() {
@@ -45,6 +46,8 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler);
+      } else if (widget.islemTipi == IslemTipiEnum.cariSerbest) {
+        viewModel.setGridItemModel(getSerbestRaporList(widget.islemTipi));
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.firstOrNull?.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
       }
@@ -169,5 +172,11 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
       return null;
     }
     return result.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList();
+  }
+
+  List<GridItemModel>? getSerbestRaporList(IslemTipiEnum menu) {
+    if (menu == IslemTipiEnum.cariSerbest) return MenuItemConstants.getCariSerbestRapor;
+    if (menu == IslemTipiEnum.stokSerbest) return MenuItemConstants.getStokSerbestRapor;
+    return null;
   }
 }

@@ -253,6 +253,8 @@ class DialogManager {
 
   void showCariRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showCariSerbestRaporlarGridViewDialog() =>
+      _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
   void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
         body: CustomAnimatedGridView<StokListesiModel>(model: model, title: model?.stokAdi, islemTipi: tip ?? IslemTipiEnum.stok),

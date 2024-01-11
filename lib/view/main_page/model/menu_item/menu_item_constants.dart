@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../core/components/dialog/dialog_manager.dart";
 import "../../../../core/constants/color_palette.dart";
@@ -22,9 +23,12 @@ class MenuItemConstants {
   static List<GridItemModel> get getGridItemModel =>
       _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
 
+  static List<GridItemModel>? get getCariSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.cari);
+
+  static List<GridItemModel>? get getStokSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.stok);
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
     final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
-    if (serbestRaporList.ext.isNullOrEmpty || CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true) {
+    if (serbestRaporList.ext.isNullOrEmpty || (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true&& AccountModel.instance.admin !="E")) {
       return [];
     }
     return List.generate(
