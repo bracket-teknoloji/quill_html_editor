@@ -309,9 +309,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                         BottomSheetModel(
                           title: "Cari'ye Yapılan Son Satışlar",
                           iconWidget: Icons.info_outline_rounded,
-                          onTap: () {
+                          onTap: () async {
                             Get.back();
-                            Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: BaseSiparisEditModel.instance.cariModel);
+                            if (BaseSiparisEditModel.instance.cariKodu == null) {
+                              dialogManager.showAlertDialog("Cari kodu bulunamadı. Lütfen cari seçiniz.");
+                              return;
+                            }
+                            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+                            Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: cariModel);
                           },
                         ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
                         BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_scanner),
