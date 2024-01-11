@@ -56,7 +56,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<CekSenetListesiModel>? cekSenetListesiListesi;
 
   @observable
-  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "VADE_TARIHI_AZ", durum: "B", yer: "P");
+  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "BELGE_NO_ZA", durum: "B", yer: "P");
 
   @computed
   double get toplamTutar => cekSenetListesiListesi?.fold(0, (previousValue, element) => (previousValue ?? 0) + (element.tutar ?? 0)) ?? 0;

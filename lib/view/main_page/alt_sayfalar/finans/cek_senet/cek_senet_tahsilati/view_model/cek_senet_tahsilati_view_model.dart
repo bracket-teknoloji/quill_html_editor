@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
@@ -23,7 +24,15 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   double get toplamTutar => model.kalemler?.map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
 
   @computed
-  int get ortalamaVadeGunu => model.kalemler?.map((e) => e.vadeTarihi?.difference(DateTime.now()).inDays ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get ortalamaVadeGunu {
+    double toplamTutari = 0;
+    double toplamVadeTarihi = 0;
+    for (var item in model.kalemler ?? []) {
+      toplamTutari += item.tutar ?? 0;
+      toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
+    }
+    return (toplamVadeTarihi / toplamTutari).isNaN ? 0 : (toplamVadeTarihi / toplamTutari);
+  }
 
   @action
   void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value);

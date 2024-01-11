@@ -16,12 +16,12 @@ mixin _$CekSenetTahsilatiViewModel on _CekSenetTahsilatiViewModelBase, Store {
       (_$toplamTutarComputed ??= Computed<double>(() => super.toplamTutar,
               name: '_CekSenetTahsilatiViewModelBase.toplamTutar'))
           .value;
-  Computed<int>? _$ortalamaVadeGunuComputed;
+  Computed<double>? _$ortalamaVadeGunuComputed;
 
   @override
-  int get ortalamaVadeGunu => (_$ortalamaVadeGunuComputed ??= Computed<int>(
-          () => super.ortalamaVadeGunu,
-          name: '_CekSenetTahsilatiViewModelBase.ortalamaVadeGunu'))
+  double get ortalamaVadeGunu => (_$ortalamaVadeGunuComputed ??=
+          Computed<double>(() => super.ortalamaVadeGunu,
+              name: '_CekSenetTahsilatiViewModelBase.ortalamaVadeGunu'))
       .value;
 
   late final _$modelAtom =

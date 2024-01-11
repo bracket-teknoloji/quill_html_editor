@@ -174,10 +174,14 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                 builder: (_) => CustomTextField(
                   labelText: "Asıl Borçlu",
                   controller: _asilBorcluController,
-                  readOnly: true,
-                  suffixMore: true,
                   onClear: () => viewModel.setAsilCari(null),
-                  onTap: getAsilBorclu,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      await getAsilBorclu();
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
+                  ),
+                  onChanged: viewModel.setAsilCari,
                 ).yetkiVarMi(viewModel.model.ciroMu && widget.cekSenetListesiEnum.cekMi),
               ),
               Row(

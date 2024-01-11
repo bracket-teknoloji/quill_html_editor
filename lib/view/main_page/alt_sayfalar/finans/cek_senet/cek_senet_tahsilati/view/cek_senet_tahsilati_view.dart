@@ -81,7 +81,24 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   AppBar appBar() => AppBar(
         title: Text("${widget.cekSenetListesiEnum.title} Tahsilatı"),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
+          IconButton(
+            onPressed: () async {
+              await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: loc(context).generalStrings.options,
+                children: [
+                  BottomSheetModel(
+                    title: "Serbest Raporlar",
+                    iconWidget: Icons.area_chart_outlined,
+                    onTap: () async {
+                      dialogManager.showCariSerbestRaporlarGridViewDialog();
+                    },
+                  ),
+                ],
+              );
+            },
+            icon: const Icon(Icons.more_vert_outlined),
+          ),
           IconButton(
             onPressed: () {
               if (viewModel.model.kalemler.ext.isNullOrEmpty) {
@@ -93,7 +110,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                   viewModel.model.guid = const Uuid().v4();
                   final result = await viewModel.postData();
                   if (result.success ?? false) {
-                    dialogManager.showInfoSnackBar("Kaydedildi");
+                    dialogManager.showSuccessSnackBar("Kaydedildi");
                     Get.back(result: true);
                   }
                 });
@@ -190,7 +207,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                                Text("Vade Günü: ${item.vadeTarihi?.difference(DateTime.now()).inDays} (${item.vadeTarihi.toDateString})"),
+                                Text("Vade Günü: ${item.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays} (${item.vadeTarihi.toDateString})"),
                               ],
                             ),
                             subtitle: Column(
@@ -262,7 +279,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
             children: [
               Observer(
                 builder: (_) => Text(
-                  "Ort. Vade: ${viewModel.ortalamaVadeGunu}",
+                  "Ort. Vade: ${viewModel.ortalamaVadeGunu.round()}",
                 ),
               ),
             ],
