@@ -6,12 +6,22 @@ part of 'cek_senet_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetListesiModelImpl _$$CekSenetListesiModelImplFromJson(Map<String, dynamic> json) => _$CekSenetListesiModelImpl(
+_$CekSenetListesiModelImpl _$$CekSenetListesiModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CekSenetListesiModelImpl(
       isCiroTipli: json['IS_CIRO_TIPLI'] as bool?,
-      cikisTarihi: json['CIKIS_TARIHI'] == null ? null : DateTime.parse(json['CIKIS_TARIHI'] as String),
-      odemeTarihi: json['ODEME_TARIHI'] == null ? null : DateTime.parse(json['ODEME_TARIHI'] as String),
-      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
-      vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+      cikisTarihi: json['CIKIS_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['CIKIS_TARIHI'] as String),
+      odemeTarihi: json['ODEME_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['ODEME_TARIHI'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      vadeTarihi: json['VADE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['VADE_TARIHI'] as String),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       getDovizTutari: (json['GetDovizTutari'] as num?)?.toDouble(),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
@@ -50,7 +60,8 @@ _$CekSenetListesiModelImpl _$$CekSenetListesiModelImplFromJson(Map<String, dynam
       yeri: json['YERI'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetListesiModelImplToJson(_$CekSenetListesiModelImpl instance) {
+Map<String, dynamic> _$$CekSenetListesiModelImplToJson(
+    _$CekSenetListesiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

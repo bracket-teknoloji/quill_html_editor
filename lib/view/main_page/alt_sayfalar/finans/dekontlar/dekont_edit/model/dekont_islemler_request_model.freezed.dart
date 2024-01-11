@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-DekontIslemlerRequestModel _$DekontIslemlerRequestModelFromJson(Map<String, dynamic> json) {
+DekontIslemlerRequestModel _$DekontIslemlerRequestModelFromJson(
+    Map<String, dynamic> json) {
   return _DekontIslemlerRequestModel.fromJson(json);
 }
 
@@ -27,7 +28,8 @@ mixin _$DekontIslemlerRequestModel {
   String? get guid => throw _privateConstructorUsedError;
   set guid(String? value) => throw _privateConstructorUsedError;
   List<DekontKalemler>? get kalemler => throw _privateConstructorUsedError;
-  set kalemler(List<DekontKalemler>? value) => throw _privateConstructorUsedError;
+  set kalemler(List<DekontKalemler>? value) =>
+      throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
@@ -51,13 +53,16 @@ mixin _$DekontIslemlerRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DekontIslemlerRequestModelCopyWith<DekontIslemlerRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $DekontIslemlerRequestModelCopyWith<DekontIslemlerRequestModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontIslemlerRequestModelCopyWith<$Res> {
-  factory $DekontIslemlerRequestModelCopyWith(DekontIslemlerRequestModel value, $Res Function(DekontIslemlerRequestModel) then) =
-      _$DekontIslemlerRequestModelCopyWithImpl<$Res, DekontIslemlerRequestModel>;
+  factory $DekontIslemlerRequestModelCopyWith(DekontIslemlerRequestModel value,
+          $Res Function(DekontIslemlerRequestModel) then) =
+      _$DekontIslemlerRequestModelCopyWithImpl<$Res,
+          DekontIslemlerRequestModel>;
   @useResult
   $Res call(
       {String? dekontIslemTuru,
@@ -70,11 +75,14 @@ abstract class $DekontIslemlerRequestModelCopyWith<$Res> {
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? plasiyerAdi});
 }
 
 /// @nodoc
-class _$DekontIslemlerRequestModelCopyWithImpl<$Res, $Val extends DekontIslemlerRequestModel> implements $DekontIslemlerRequestModelCopyWith<$Res> {
+class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
+        $Val extends DekontIslemlerRequestModel>
+    implements $DekontIslemlerRequestModelCopyWith<$Res> {
   _$DekontIslemlerRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -147,8 +155,11 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res, $Val extends DekontIslemler
 }
 
 /// @nodoc
-abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res> implements $DekontIslemlerRequestModelCopyWith<$Res> {
-  factory _$$DekontIslemlerRequestModelImplCopyWith(_$DekontIslemlerRequestModelImpl value, $Res Function(_$DekontIslemlerRequestModelImpl) then) =
+abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res>
+    implements $DekontIslemlerRequestModelCopyWith<$Res> {
+  factory _$$DekontIslemlerRequestModelImplCopyWith(
+          _$DekontIslemlerRequestModelImpl value,
+          $Res Function(_$DekontIslemlerRequestModelImpl) then) =
       __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -163,13 +174,19 @@ abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res> implements $Dekon
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? plasiyerAdi});
 }
 
 /// @nodoc
-class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res> extends _$DekontIslemlerRequestModelCopyWithImpl<$Res, _$DekontIslemlerRequestModelImpl>
+class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
+    extends _$DekontIslemlerRequestModelCopyWithImpl<$Res,
+        _$DekontIslemlerRequestModelImpl>
     implements _$$DekontIslemlerRequestModelImplCopyWith<$Res> {
-  __$$DekontIslemlerRequestModelImplCopyWithImpl(_$DekontIslemlerRequestModelImpl _value, $Res Function(_$DekontIslemlerRequestModelImpl) _then) : super(_value, _then);
+  __$$DekontIslemlerRequestModelImplCopyWithImpl(
+      _$DekontIslemlerRequestModelImpl _value,
+      $Res Function(_$DekontIslemlerRequestModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -252,7 +269,9 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
       @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi})
       : super._();
 
-  factory _$DekontIslemlerRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontIslemlerRequestModelImplFromJson(json);
+  factory _$DekontIslemlerRequestModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$DekontIslemlerRequestModelImplFromJson(json);
 
   @override
   String? dekontIslemTuru;
@@ -284,7 +303,9 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl> get copyWith => __$$DekontIslemlerRequestModelImplCopyWithImpl<_$DekontIslemlerRequestModelImpl>(this, _$identity);
+  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
+      get copyWith => __$$DekontIslemlerRequestModelImplCopyWithImpl<
+          _$DekontIslemlerRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -306,10 +327,12 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi}) = _$DekontIslemlerRequestModelImpl;
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? plasiyerAdi}) = _$DekontIslemlerRequestModelImpl;
   _DekontIslemlerRequestModel._() : super._();
 
-  factory _DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) = _$DekontIslemlerRequestModelImpl.fromJson;
+  factory _DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) =
+      _$DekontIslemlerRequestModelImpl.fromJson;
 
   @override
   String? get dekontIslemTuru;
@@ -352,5 +375,6 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   set plasiyerAdi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

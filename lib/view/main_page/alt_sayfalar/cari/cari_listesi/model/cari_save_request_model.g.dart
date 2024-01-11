@@ -65,6 +65,16 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel kod5(String? kod5);
 
+  CariSaveRequestModel kod1Tanimi(String? kod1Tanimi);
+
+  CariSaveRequestModel kod2Tanimi(String? kod2Tanimi);
+
+  CariSaveRequestModel kod3Tanimi(String? kod3Tanimi);
+
+  CariSaveRequestModel kod4Tanimi(String? kod4Tanimi);
+
+  CariSaveRequestModel kod5Tanimi(String? kod5Tanimi);
+
   CariSaveRequestModel bilgi(String? bilgi);
 
   CariSaveRequestModel kilit(String? kilit);
@@ -181,6 +191,11 @@ abstract class _$CariSaveRequestModelCWProxy {
     String? kod3,
     String? kod4,
     String? kod5,
+    String? kod1Tanimi,
+    String? kod2Tanimi,
+    String? kod3Tanimi,
+    String? kod4Tanimi,
+    String? kod5Tanimi,
     String? bilgi,
     String? kilit,
     String? bagliCari,
@@ -322,6 +337,26 @@ class _$CariSaveRequestModelCWProxyImpl
 
   @override
   CariSaveRequestModel kod5(String? kod5) => this(kod5: kod5);
+
+  @override
+  CariSaveRequestModel kod1Tanimi(String? kod1Tanimi) =>
+      this(kod1Tanimi: kod1Tanimi);
+
+  @override
+  CariSaveRequestModel kod2Tanimi(String? kod2Tanimi) =>
+      this(kod2Tanimi: kod2Tanimi);
+
+  @override
+  CariSaveRequestModel kod3Tanimi(String? kod3Tanimi) =>
+      this(kod3Tanimi: kod3Tanimi);
+
+  @override
+  CariSaveRequestModel kod4Tanimi(String? kod4Tanimi) =>
+      this(kod4Tanimi: kod4Tanimi);
+
+  @override
+  CariSaveRequestModel kod5Tanimi(String? kod5Tanimi) =>
+      this(kod5Tanimi: kod5Tanimi);
 
   @override
   CariSaveRequestModel bilgi(String? bilgi) => this(bilgi: bilgi);
@@ -501,6 +536,11 @@ class _$CariSaveRequestModelCWProxyImpl
     Object? kod3 = const $CopyWithPlaceholder(),
     Object? kod4 = const $CopyWithPlaceholder(),
     Object? kod5 = const $CopyWithPlaceholder(),
+    Object? kod1Tanimi = const $CopyWithPlaceholder(),
+    Object? kod2Tanimi = const $CopyWithPlaceholder(),
+    Object? kod3Tanimi = const $CopyWithPlaceholder(),
+    Object? kod4Tanimi = const $CopyWithPlaceholder(),
+    Object? kod5Tanimi = const $CopyWithPlaceholder(),
     Object? bilgi = const $CopyWithPlaceholder(),
     Object? kilit = const $CopyWithPlaceholder(),
     Object? bagliCari = const $CopyWithPlaceholder(),
@@ -659,6 +699,26 @@ class _$CariSaveRequestModelCWProxyImpl
           ? _value.kod5
           // ignore: cast_nullable_to_non_nullable
           : kod5 as String?,
+      kod1Tanimi: kod1Tanimi == const $CopyWithPlaceholder()
+          ? _value.kod1Tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : kod1Tanimi as String?,
+      kod2Tanimi: kod2Tanimi == const $CopyWithPlaceholder()
+          ? _value.kod2Tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : kod2Tanimi as String?,
+      kod3Tanimi: kod3Tanimi == const $CopyWithPlaceholder()
+          ? _value.kod3Tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : kod3Tanimi as String?,
+      kod4Tanimi: kod4Tanimi == const $CopyWithPlaceholder()
+          ? _value.kod4Tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : kod4Tanimi as String?,
+      kod5Tanimi: kod5Tanimi == const $CopyWithPlaceholder()
+          ? _value.kod5Tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : kod5Tanimi as String?,
       bilgi: bilgi == const $CopyWithPlaceholder()
           ? _value.bilgi
           // ignore: cast_nullable_to_non_nullable
@@ -866,6 +926,11 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       kod3: json['KOD3'] as String?,
       kod4: json['KOD4'] as String?,
       kod5: json['KOD5'] as String?,
+      kod1Tanimi: json['KOD1_TANIMI'] as String?,
+      kod2Tanimi: json['KOD2_TANIMI'] as String?,
+      kod3Tanimi: json['KOD3_TANIMI'] as String?,
+      kod4Tanimi: json['KOD4_TANIMI'] as String?,
+      kod5Tanimi: json['KOD5_TANIMI'] as String?,
       bilgi: json['BILGI'] as String?,
       kilit: json['KILIT'] as String?,
       bagliCari: json['BAGLI_CARI'] as String?,
@@ -943,6 +1008,11 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
   writeNotNull('KOD3', instance.kod3);
   writeNotNull('KOD4', instance.kod4);
   writeNotNull('KOD5', instance.kod5);
+  writeNotNull('KOD1_TANIMI', instance.kod1Tanimi);
+  writeNotNull('KOD2_TANIMI', instance.kod2Tanimi);
+  writeNotNull('KOD3_TANIMI', instance.kod3Tanimi);
+  writeNotNull('KOD4_TANIMI', instance.kod4Tanimi);
+  writeNotNull('KOD5_TANIMI', instance.kod5Tanimi);
   writeNotNull('BILGI', instance.bilgi);
   writeNotNull('KILIT', instance.kilit);
   writeNotNull('BAGLI_CARI', instance.bagliCari);

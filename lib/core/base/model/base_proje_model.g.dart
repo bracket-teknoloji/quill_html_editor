@@ -6,7 +6,8 @@ part of 'base_proje_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseProjeModel _$BaseProjeModelFromJson(Map<String, dynamic> json) => BaseProjeModel(
+BaseProjeModel _$BaseProjeModelFromJson(Map<String, dynamic> json) =>
+    BaseProjeModel(
       projeKodu: json['PROJE_KODU'] as String?,
       projeAciklama: json['PROJE_ACIKLAMA'] as String?,
       aktif: json['AKTIF'] as String?,

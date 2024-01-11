@@ -6,7 +6,9 @@ part of 'cek_senet_evrak_ekle_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(Map<String, dynamic> json) => _$CekSenetEvrakEkleModelImpl(
+_$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CekSenetEvrakEkleModelImpl(
       aciklama: json['ACIKLAMA'] as String?,
       base64Data: json['BASE64_DATA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
@@ -15,7 +17,8 @@ _$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(Map<String, d
       islemKodu: json['ISLEM_KODU'] as int?,
     );
 
-Map<String, dynamic> _$$CekSenetEvrakEkleModelImplToJson(_$CekSenetEvrakEkleModelImpl instance) {
+Map<String, dynamic> _$$CekSenetEvrakEkleModelImplToJson(
+    _$CekSenetEvrakEkleModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

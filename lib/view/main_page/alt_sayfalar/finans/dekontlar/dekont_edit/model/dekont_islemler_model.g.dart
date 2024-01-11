@@ -6,9 +6,13 @@ part of 'dekont_islemler_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$DekontIslemlerModelImpl _$$DekontIslemlerModelImplFromJson(Map<String, dynamic> json) => _$DekontIslemlerModelImpl(
+_$DekontIslemlerModelImpl _$$DekontIslemlerModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DekontIslemlerModelImpl(
       inckeyno: json['INCKEYNO'] as int?,
-      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
       seriNo: json['SERI_NO'] as String?,
       dekontNo: json['DEKONT_NO'] as int?,
       siraNo: json['SIRA_NO'] as int?,
@@ -30,7 +34,8 @@ _$DekontIslemlerModelImpl _$$DekontIslemlerModelImplFromJson(Map<String, dynamic
       muhasebeHesapTipi: json['MUHASEBE_HESAP_TIPI'] as String?,
     );
 
-Map<String, dynamic> _$$DekontIslemlerModelImplToJson(_$DekontIslemlerModelImpl instance) {
+Map<String, dynamic> _$$DekontIslemlerModelImplToJson(
+    _$DekontIslemlerModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

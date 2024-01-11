@@ -145,7 +145,8 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelTarihSeciniz = json['genelTarihSeciniz'] as String?
   ..genelIthalatTipiSeciniz = json['genelIthalatTipiSeciniz'] as String?
   ..genelGirisDepoSeciniz = json['genelGirisDepoSeciniz'] as String?
-  ..genelGirisVeCikisDepolarAyni = json['genelGirisVeCikisDepolarAyni'] as String?
+  ..genelGirisVeCikisDepolarAyni =
+      json['genelGirisVeCikisDepolarAyni'] as String?
   ..genelAciklamaGiriniz = json['genelAciklamaGiriniz'] as String?
   ..genelOzelKod1Seciniz = json['genelOzelKod1Seciniz'] as String?
   ..genelOzelKod2Seciniz = json['genelOzelKod2Seciniz'] as String?
@@ -157,7 +158,8 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelMuhasebeKoduSeciniz = json['genelMuhasebeKoduSeciniz'] as String?
   ..genelFiyatGiriniz = json['genelFiyatGiriniz'] as String?
   ..genelAdet = json['genelAdet'] as String?
-  ..genelAramaIcinEnAzXHarfGiriniz = json['genelAramaIcinEnAzXHarfGiriniz'] as String?
+  ..genelAramaIcinEnAzXHarfGiriniz =
+      json['genelAramaIcinEnAzXHarfGiriniz'] as String?
   ..genelAra = json['genelAra'] as String?
   ..genelDovizKuru = json['genelDovizKuru'] as String?
   ..genelTemizle = json['genelTemizle'] as String?
@@ -174,7 +176,8 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelIslemMiktari = json['genelIslemMiktari'] as String?
   ..genelKaynakHucreSeciniz = json['genelKaynakHucreSeciniz'] as String?
   ..genelHedefHucreSeciniz = json['genelHedefHucreSeciniz'] as String?
-  ..genelKaynakVeHedefHucrelerAyni = json['genelKaynakVeHedefHucrelerAyni'] as String?
+  ..genelKaynakVeHedefHucrelerAyni =
+      json['genelKaynakVeHedefHucrelerAyni'] as String?
   ..genelYetersizBakiye = json['genelYetersizBakiye'] as String?
   ..genelHedefHucre = json['genelHedefHucre'] as String?
   ..genelKaynakHucre = json['genelKaynakHucre'] as String?
@@ -218,8 +221,10 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelKullanicilar = json['genelKullanicilar'] as String?
   ..genelCariKoduBos = json['genelCariKoduBos'] as String?
   ..genelHucreIslemTuruBos = json['genelHucreIslemTuruBos'] as String?
-  ..genelKullaniciAdiVeyaSifreYanlis = json['genelKullaniciAdiVeyaSifreYanlis'] as String?
-  ..genelKullaniciKilitliDurumda = json['genelKullaniciKilitliDurumda'] as String?
+  ..genelKullaniciAdiVeyaSifreYanlis =
+      json['genelKullaniciAdiVeyaSifreYanlis'] as String?
+  ..genelKullaniciKilitliDurumda =
+      json['genelKullaniciKilitliDurumda'] as String?
   ..genelStokKoduBos = json['genelStokKoduBos'] as String?
   ..genelBelgeZatenKayitli = json['genelBelgeZatenKayitli'] as String?
   ..genelKayitYapildi = json['genelKayitYapildi'] as String?
@@ -232,18 +237,22 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..genelProfilim = json['genelProfilim'] as String?
   ..genelKullaniciBulunamadi = json['genelKullaniciBulunamadi'] as String?
   ..genelKayitBulunamadi = json['genelKayitBulunamadi'] as String?
-  ..genelCariEFaturaMukellefidir = json['genelCariEFaturaMukellefidir'] as String?
+  ..genelCariEFaturaMukellefidir =
+      json['genelCariEFaturaMukellefidir'] as String?
   ..genelCariEArsivMukellefidir = json['genelCariEArsivMukellefidir'] as String?
-  ..genelCariIleTeslimCariAyniOlamaz = json['genelCariIleTeslimCariAyniOlamaz'] as String?
+  ..genelCariIleTeslimCariAyniOlamaz =
+      json['genelCariIleTeslimCariAyniOlamaz'] as String?
   ..genelYeniBelgeNo = json['genelYeniBelgeNo'] as String?
   ..genelStokHareketleri = json['genelStokHareketleri'] as String?
-  ..genelBelgeKayitliDegisiklikYapilamaz = json['genelBelgeKayitliDegisiklikYapilamaz'] as String?
+  ..genelBelgeKayitliDegisiklikYapilamaz =
+      json['genelBelgeKayitliDegisiklikYapilamaz'] as String?
   ..genelBelgeTipi = json['genelBelgeTipi'] as String?
   ..genelBelgeTipiSeciniz = json['genelBelgeTipiSeciniz'] as String?
   ..genelKasa = json['genelKasa'] as String?
   ..genelKasaSeciniz = json['genelKasaSeciniz'] as String?
   ..genel15HaneliBelgeGiriniz = json['genel15HaneliBelgeGiriniz'] as String?
-  ..genelBelgeSerisiniKontrolEdin = json['genelBelgeSerisiniKontrolEdin'] as String?
+  ..genelBelgeSerisiniKontrolEdin =
+      json['genelBelgeSerisiniKontrolEdin'] as String?
   ..genelTopluDepo = json['genelTopluDepo'] as String?
   ..genelXXXSeciniz = json['genelXXXSeciniz'] as String?
   ..genelEFatura = json['genelEFatura'] as String?
@@ -291,24 +300,32 @@ LangModel _$LangModelFromJson(Map<String, dynamic> json) => LangModel()
   ..faturaAnaMalGrubu = json['faturaAnaMalGrubu'] as String?
   ..faturaMalGrubu = json['faturaMalGrubu'] as String?
   ..faturaSerbest = json['faturaSerbest'] as String?
-  ..faturaGenelToplamEksiyeDustu = json['faturaGenelToplamEksiyeDustu'] as String?
+  ..faturaGenelToplamEksiyeDustu =
+      json['faturaGenelToplamEksiyeDustu'] as String?
   ..faturaCikisYeriSeciniz = json['faturaCikisYeriSeciniz'] as String?
   ..faturaMasrafKoduSeciniz = json['faturaMasrafKoduSeciniz'] as String?
-  ..faturaFarkliTeslimCariSeciniz = json['faturaFarkliTeslimCariSeciniz'] as String?
+  ..faturaFarkliTeslimCariSeciniz =
+      json['faturaFarkliTeslimCariSeciniz'] as String?
   ..faturaKalemGiriniz = json['faturaKalemGiriniz'] as String?
-  ..faturaSeriEFaturaIcinKullaniliyor = json['faturaSeriEFaturaIcinKullaniliyor'] as String?
-  ..faturaSeriEArsivIcinKullaniliyor = json['faturaSeriEArsivIcinKullaniliyor'] as String?
+  ..faturaSeriEFaturaIcinKullaniliyor =
+      json['faturaSeriEFaturaIcinKullaniliyor'] as String?
+  ..faturaSeriEArsivIcinKullaniliyor =
+      json['faturaSeriEArsivIcinKullaniliyor'] as String?
   ..faturaSeriXXXIleBaslamali = json['faturaSeriXXXIleBaslamali'] as String?
   ..faturaEFaturaOlusturulmus = json['faturaEFaturaOlusturulmus'] as String?
   ..faturaEArsivOlusturulmus = json['faturaEArsivOlusturulmus'] as String?
   ..depoGiris = json['depoGiris'] as String?
   ..depoCikis = json['depoCikis'] as String?
   ..depoKalan = json['depoKalan'] as String?
-  ..servisKullaniciDogrulamaServisiCalismiyor = json['servisKullaniciDogrulamaServisiCalismiyor'] as String?
-  ..servisKullaniciDogrulanamadi = json['servisKullaniciDogrulanamadi'] as String?
+  ..servisKullaniciDogrulamaServisiCalismiyor =
+      json['servisKullaniciDogrulamaServisiCalismiyor'] as String?
+  ..servisKullaniciDogrulanamadi =
+      json['servisKullaniciDogrulanamadi'] as String?
   ..servisOzelKodNoTanimliDegil = json['servisOzelKodNoTanimliDegil'] as String?
-  ..servisPickerBelgeTuruTanimliDegil = json['servisPickerBelgeTuruTanimliDegil'] as String?
-  ..servisPickerYetkinizBulunmuyor = json['servisPickerYetkinizBulunmuyor'] as String?
+  ..servisPickerBelgeTuruTanimliDegil =
+      json['servisPickerBelgeTuruTanimliDegil'] as String?
+  ..servisPickerYetkinizBulunmuyor =
+      json['servisPickerYetkinizBulunmuyor'] as String?
   ..servisSunucuHatasi = json['servisSunucuHatasi'] as String?
   ..servisYeniBelgeNoAlinamadi = json['servisYeniBelgeNoAlinamadi'] as String?;
 
@@ -328,8 +345,10 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('menuMalKabulIade', instance.menuMalKabulIade);
   writeNotNull('menuTransfer', instance.menuTransfer);
   writeNotNull('menuTransferDAT', instance.menuTransferDAT);
-  writeNotNull('menuTransferAmbarGirisFisi', instance.menuTransferAmbarGirisFisi);
-  writeNotNull('menuTransferAmbarCikisFisi', instance.menuTransferAmbarCikisFisi);
+  writeNotNull(
+      'menuTransferAmbarGirisFisi', instance.menuTransferAmbarGirisFisi);
+  writeNotNull(
+      'menuTransferAmbarCikisFisi', instance.menuTransferAmbarCikisFisi);
   writeNotNull('menuHucreTakibi', instance.menuHucreTakibi);
   writeNotNull('menuHucreTakibiYerlestir', instance.menuHucreTakibiYerlestir);
   writeNotNull('menuHucreTakibiBosalt', instance.menuHucreTakibiBosalt);
@@ -337,7 +356,8 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('menuHucreTakibiAra', instance.menuHucreTakibiAra);
   writeNotNull('menuHucreTakibiListe', instance.menuHucreTakibiListe);
   writeNotNull('menuSevkiyat', instance.menuSevkiyat);
-  writeNotNull('menuSevkiyatSatisIrsaliyesi', instance.menuSevkiyatSatisIrsaliyesi);
+  writeNotNull(
+      'menuSevkiyatSatisIrsaliyesi', instance.menuSevkiyatSatisIrsaliyesi);
   writeNotNull('menuSevkiyatMalToplama', instance.menuSevkiyatMalToplama);
   writeNotNull('menuSayim', instance.menuSayim);
   writeNotNull('menuSayimSayim', instance.menuSayimSayim);
@@ -459,19 +479,23 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('genelTarihSeciniz', instance.genelTarihSeciniz);
   writeNotNull('genelIthalatTipiSeciniz', instance.genelIthalatTipiSeciniz);
   writeNotNull('genelGirisDepoSeciniz', instance.genelGirisDepoSeciniz);
-  writeNotNull('genelGirisVeCikisDepolarAyni', instance.genelGirisVeCikisDepolarAyni);
+  writeNotNull(
+      'genelGirisVeCikisDepolarAyni', instance.genelGirisVeCikisDepolarAyni);
   writeNotNull('genelAciklamaGiriniz', instance.genelAciklamaGiriniz);
   writeNotNull('genelOzelKod1Seciniz', instance.genelOzelKod1Seciniz);
   writeNotNull('genelOzelKod2Seciniz', instance.genelOzelKod2Seciniz);
   writeNotNull('genelStokSeciniz', instance.genelStokSeciniz);
   writeNotNull('genelHareketTuruSeciniz', instance.genelHareketTuruSeciniz);
-  writeNotNull('genelHucreMiktarlariUyumsuz', instance.genelHucreMiktarlariUyumsuz);
-  writeNotNull('genelSeriMiktarlariUyumsuz', instance.genelSeriMiktarlariUyumsuz);
+  writeNotNull(
+      'genelHucreMiktarlariUyumsuz', instance.genelHucreMiktarlariUyumsuz);
+  writeNotNull(
+      'genelSeriMiktarlariUyumsuz', instance.genelSeriMiktarlariUyumsuz);
   writeNotNull('genelXBulunamadi', instance.genelXBulunamadi);
   writeNotNull('genelMuhasebeKoduSeciniz', instance.genelMuhasebeKoduSeciniz);
   writeNotNull('genelFiyatGiriniz', instance.genelFiyatGiriniz);
   writeNotNull('genelAdet', instance.genelAdet);
-  writeNotNull('genelAramaIcinEnAzXHarfGiriniz', instance.genelAramaIcinEnAzXHarfGiriniz);
+  writeNotNull('genelAramaIcinEnAzXHarfGiriniz',
+      instance.genelAramaIcinEnAzXHarfGiriniz);
   writeNotNull('genelAra', instance.genelAra);
   writeNotNull('genelDovizKuru', instance.genelDovizKuru);
   writeNotNull('genelTemizle', instance.genelTemizle);
@@ -488,7 +512,8 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('genelIslemMiktari', instance.genelIslemMiktari);
   writeNotNull('genelKaynakHucreSeciniz', instance.genelKaynakHucreSeciniz);
   writeNotNull('genelHedefHucreSeciniz', instance.genelHedefHucreSeciniz);
-  writeNotNull('genelKaynakVeHedefHucrelerAyni', instance.genelKaynakVeHedefHucrelerAyni);
+  writeNotNull('genelKaynakVeHedefHucrelerAyni',
+      instance.genelKaynakVeHedefHucrelerAyni);
   writeNotNull('genelYetersizBakiye', instance.genelYetersizBakiye);
   writeNotNull('genelHedefHucre', instance.genelHedefHucre);
   writeNotNull('genelKaynakHucre', instance.genelKaynakHucre);
@@ -527,13 +552,16 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('genelToplananMallar', instance.genelToplananMallar);
   writeNotNull('genelMalKontroleGonder', instance.genelMalKontroleGonder);
   writeNotNull('genelTamamlandi', instance.genelTamamlandi);
-  writeNotNull('genelIslemiOnayliyorMusunuz', instance.genelIslemiOnayliyorMusunuz);
+  writeNotNull(
+      'genelIslemiOnayliyorMusunuz', instance.genelIslemiOnayliyorMusunuz);
   writeNotNull('genelTamamla', instance.genelTamamla);
   writeNotNull('genelKullanicilar', instance.genelKullanicilar);
   writeNotNull('genelCariKoduBos', instance.genelCariKoduBos);
   writeNotNull('genelHucreIslemTuruBos', instance.genelHucreIslemTuruBos);
-  writeNotNull('genelKullaniciAdiVeyaSifreYanlis', instance.genelKullaniciAdiVeyaSifreYanlis);
-  writeNotNull('genelKullaniciKilitliDurumda', instance.genelKullaniciKilitliDurumda);
+  writeNotNull('genelKullaniciAdiVeyaSifreYanlis',
+      instance.genelKullaniciAdiVeyaSifreYanlis);
+  writeNotNull(
+      'genelKullaniciKilitliDurumda', instance.genelKullaniciKilitliDurumda);
   writeNotNull('genelStokKoduBos', instance.genelStokKoduBos);
   writeNotNull('genelBelgeZatenKayitli', instance.genelBelgeZatenKayitli);
   writeNotNull('genelKayitYapildi', instance.genelKayitYapildi);
@@ -546,18 +574,23 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('genelProfilim', instance.genelProfilim);
   writeNotNull('genelKullaniciBulunamadi', instance.genelKullaniciBulunamadi);
   writeNotNull('genelKayitBulunamadi', instance.genelKayitBulunamadi);
-  writeNotNull('genelCariEFaturaMukellefidir', instance.genelCariEFaturaMukellefidir);
-  writeNotNull('genelCariEArsivMukellefidir', instance.genelCariEArsivMukellefidir);
-  writeNotNull('genelCariIleTeslimCariAyniOlamaz', instance.genelCariIleTeslimCariAyniOlamaz);
+  writeNotNull(
+      'genelCariEFaturaMukellefidir', instance.genelCariEFaturaMukellefidir);
+  writeNotNull(
+      'genelCariEArsivMukellefidir', instance.genelCariEArsivMukellefidir);
+  writeNotNull('genelCariIleTeslimCariAyniOlamaz',
+      instance.genelCariIleTeslimCariAyniOlamaz);
   writeNotNull('genelYeniBelgeNo', instance.genelYeniBelgeNo);
   writeNotNull('genelStokHareketleri', instance.genelStokHareketleri);
-  writeNotNull('genelBelgeKayitliDegisiklikYapilamaz', instance.genelBelgeKayitliDegisiklikYapilamaz);
+  writeNotNull('genelBelgeKayitliDegisiklikYapilamaz',
+      instance.genelBelgeKayitliDegisiklikYapilamaz);
   writeNotNull('genelBelgeTipi', instance.genelBelgeTipi);
   writeNotNull('genelBelgeTipiSeciniz', instance.genelBelgeTipiSeciniz);
   writeNotNull('genelKasa', instance.genelKasa);
   writeNotNull('genelKasaSeciniz', instance.genelKasaSeciniz);
   writeNotNull('genel15HaneliBelgeGiriniz', instance.genel15HaneliBelgeGiriniz);
-  writeNotNull('genelBelgeSerisiniKontrolEdin', instance.genelBelgeSerisiniKontrolEdin);
+  writeNotNull(
+      'genelBelgeSerisiniKontrolEdin', instance.genelBelgeSerisiniKontrolEdin);
   writeNotNull('genelTopluDepo', instance.genelTopluDepo);
   writeNotNull('genelXXXSeciniz', instance.genelXXXSeciniz);
   writeNotNull('genelEFatura', instance.genelEFatura);
@@ -605,25 +638,35 @@ Map<String, dynamic> _$LangModelToJson(LangModel instance) {
   writeNotNull('faturaAnaMalGrubu', instance.faturaAnaMalGrubu);
   writeNotNull('faturaMalGrubu', instance.faturaMalGrubu);
   writeNotNull('faturaSerbest', instance.faturaSerbest);
-  writeNotNull('faturaGenelToplamEksiyeDustu', instance.faturaGenelToplamEksiyeDustu);
+  writeNotNull(
+      'faturaGenelToplamEksiyeDustu', instance.faturaGenelToplamEksiyeDustu);
   writeNotNull('faturaCikisYeriSeciniz', instance.faturaCikisYeriSeciniz);
   writeNotNull('faturaMasrafKoduSeciniz', instance.faturaMasrafKoduSeciniz);
-  writeNotNull('faturaFarkliTeslimCariSeciniz', instance.faturaFarkliTeslimCariSeciniz);
+  writeNotNull(
+      'faturaFarkliTeslimCariSeciniz', instance.faturaFarkliTeslimCariSeciniz);
   writeNotNull('faturaKalemGiriniz', instance.faturaKalemGiriniz);
-  writeNotNull('faturaSeriEFaturaIcinKullaniliyor', instance.faturaSeriEFaturaIcinKullaniliyor);
-  writeNotNull('faturaSeriEArsivIcinKullaniliyor', instance.faturaSeriEArsivIcinKullaniliyor);
+  writeNotNull('faturaSeriEFaturaIcinKullaniliyor',
+      instance.faturaSeriEFaturaIcinKullaniliyor);
+  writeNotNull('faturaSeriEArsivIcinKullaniliyor',
+      instance.faturaSeriEArsivIcinKullaniliyor);
   writeNotNull('faturaSeriXXXIleBaslamali', instance.faturaSeriXXXIleBaslamali);
   writeNotNull('faturaEFaturaOlusturulmus', instance.faturaEFaturaOlusturulmus);
   writeNotNull('faturaEArsivOlusturulmus', instance.faturaEArsivOlusturulmus);
   writeNotNull('depoGiris', instance.depoGiris);
   writeNotNull('depoCikis', instance.depoCikis);
   writeNotNull('depoKalan', instance.depoKalan);
-  writeNotNull('servisKullaniciDogrulamaServisiCalismiyor', instance.servisKullaniciDogrulamaServisiCalismiyor);
-  writeNotNull('servisKullaniciDogrulanamadi', instance.servisKullaniciDogrulanamadi);
-  writeNotNull('servisOzelKodNoTanimliDegil', instance.servisOzelKodNoTanimliDegil);
-  writeNotNull('servisPickerBelgeTuruTanimliDegil', instance.servisPickerBelgeTuruTanimliDegil);
-  writeNotNull('servisPickerYetkinizBulunmuyor', instance.servisPickerYetkinizBulunmuyor);
+  writeNotNull('servisKullaniciDogrulamaServisiCalismiyor',
+      instance.servisKullaniciDogrulamaServisiCalismiyor);
+  writeNotNull(
+      'servisKullaniciDogrulanamadi', instance.servisKullaniciDogrulanamadi);
+  writeNotNull(
+      'servisOzelKodNoTanimliDegil', instance.servisOzelKodNoTanimliDegil);
+  writeNotNull('servisPickerBelgeTuruTanimliDegil',
+      instance.servisPickerBelgeTuruTanimliDegil);
+  writeNotNull('servisPickerYetkinizBulunmuyor',
+      instance.servisPickerYetkinizBulunmuyor);
   writeNotNull('servisSunucuHatasi', instance.servisSunucuHatasi);
-  writeNotNull('servisYeniBelgeNoAlinamadi', instance.servisYeniBelgeNoAlinamadi);
+  writeNotNull(
+      'servisYeniBelgeNoAlinamadi', instance.servisYeniBelgeNoAlinamadi);
   return val;
 }

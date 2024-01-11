@@ -65,12 +65,15 @@ mixin _$DekontIslemlerModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DekontIslemlerModelCopyWith<DekontIslemlerModel> get copyWith => throw _privateConstructorUsedError;
+  $DekontIslemlerModelCopyWith<DekontIslemlerModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontIslemlerModelCopyWith<$Res> {
-  factory $DekontIslemlerModelCopyWith(DekontIslemlerModel value, $Res Function(DekontIslemlerModel) then) = _$DekontIslemlerModelCopyWithImpl<$Res, DekontIslemlerModel>;
+  factory $DekontIslemlerModelCopyWith(
+          DekontIslemlerModel value, $Res Function(DekontIslemlerModel) then) =
+      _$DekontIslemlerModelCopyWithImpl<$Res, DekontIslemlerModel>;
   @useResult
   $Res call(
       {int? inckeyno,
@@ -97,7 +100,8 @@ abstract class $DekontIslemlerModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DekontIslemlerModelCopyWithImpl<$Res, $Val extends DekontIslemlerModel> implements $DekontIslemlerModelCopyWith<$Res> {
+class _$DekontIslemlerModelCopyWithImpl<$Res, $Val extends DekontIslemlerModel>
+    implements $DekontIslemlerModelCopyWith<$Res> {
   _$DekontIslemlerModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -220,8 +224,11 @@ class _$DekontIslemlerModelCopyWithImpl<$Res, $Val extends DekontIslemlerModel> 
 }
 
 /// @nodoc
-abstract class _$$DekontIslemlerModelImplCopyWith<$Res> implements $DekontIslemlerModelCopyWith<$Res> {
-  factory _$$DekontIslemlerModelImplCopyWith(_$DekontIslemlerModelImpl value, $Res Function(_$DekontIslemlerModelImpl) then) = __$$DekontIslemlerModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontIslemlerModelImplCopyWith<$Res>
+    implements $DekontIslemlerModelCopyWith<$Res> {
+  factory _$$DekontIslemlerModelImplCopyWith(_$DekontIslemlerModelImpl value,
+          $Res Function(_$DekontIslemlerModelImpl) then) =
+      __$$DekontIslemlerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -249,8 +256,12 @@ abstract class _$$DekontIslemlerModelImplCopyWith<$Res> implements $DekontIsleml
 }
 
 /// @nodoc
-class __$$DekontIslemlerModelImplCopyWithImpl<$Res> extends _$DekontIslemlerModelCopyWithImpl<$Res, _$DekontIslemlerModelImpl> implements _$$DekontIslemlerModelImplCopyWith<$Res> {
-  __$$DekontIslemlerModelImplCopyWithImpl(_$DekontIslemlerModelImpl _value, $Res Function(_$DekontIslemlerModelImpl) _then) : super(_value, _then);
+class __$$DekontIslemlerModelImplCopyWithImpl<$Res>
+    extends _$DekontIslemlerModelCopyWithImpl<$Res, _$DekontIslemlerModelImpl>
+    implements _$$DekontIslemlerModelImplCopyWith<$Res> {
+  __$$DekontIslemlerModelImplCopyWithImpl(_$DekontIslemlerModelImpl _value,
+      $Res Function(_$DekontIslemlerModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -393,7 +404,8 @@ class _$DekontIslemlerModelImpl extends _DekontIslemlerModel {
       this.muhasebeHesapTipi})
       : super._();
 
-  factory _$DekontIslemlerModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontIslemlerModelImplFromJson(json);
+  factory _$DekontIslemlerModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DekontIslemlerModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -441,7 +453,9 @@ class _$DekontIslemlerModelImpl extends _DekontIslemlerModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith => __$$DekontIslemlerModelImplCopyWithImpl<_$DekontIslemlerModelImpl>(this, _$identity);
+  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
+      __$$DekontIslemlerModelImplCopyWithImpl<_$DekontIslemlerModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -476,7 +490,8 @@ abstract class _DekontIslemlerModel extends DekontIslemlerModel {
       String? muhasebeHesapTipi}) = _$DekontIslemlerModelImpl;
   _DekontIslemlerModel._() : super._();
 
-  factory _DekontIslemlerModel.fromJson(Map<String, dynamic> json) = _$DekontIslemlerModelImpl.fromJson;
+  factory _DekontIslemlerModel.fromJson(Map<String, dynamic> json) =
+      _$DekontIslemlerModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -543,5 +558,6 @@ abstract class _DekontIslemlerModel extends DekontIslemlerModel {
   set muhasebeHesapTipi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

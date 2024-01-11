@@ -89,36 +89,43 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AccountResponseModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AccountResponseModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AccountResponseModel _$AccountResponseModelFromJson(Map<String, dynamic> json) => AccountResponseModel()
-  ..firma = json['FIRMA'] as String?
-  ..email = json['EMAIL'] as String?
-  ..parola = json['PAROLA'] as String?
-  ..pickerLisansiVar = json['PICKER_LISANSI_VAR'] as String?
-  ..wsLan = json['WS_LAN'] as String?
-  ..wsWan = json['WS_WAN'] as String?
-  ..webServis = json['WEB_SERVIS'] as String?
-  ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
-  ..kullaniciSayisi = json['KULLANICI_SAYISI'] as int?
-  ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
-  ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
-  ..sozlesmeBitisKalanGun = json['SOZLESME_BITIS_KALAN_GUN'] as int?
-  ..karsilamaMesaji = json['KARSILAMA_MESAJI']
-  ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
-  ..karsilamaSaniye = json['KARSILAMA_SANIYE'] as int?
-  ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
-  ..maxApkVersion = json['MAX_APK_VERSION'] as int?
-  ..maxWsVersion = json['MAX_WS_VERSION'] as String?
-  ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
-  ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true;
+AccountResponseModel _$AccountResponseModelFromJson(
+        Map<String, dynamic> json) =>
+    AccountResponseModel()
+      ..firma = json['FIRMA'] as String?
+      ..email = json['EMAIL'] as String?
+      ..parola = json['PAROLA'] as String?
+      ..pickerLisansiVar = json['PICKER_LISANSI_VAR'] as String?
+      ..wsLan = json['WS_LAN'] as String?
+      ..wsWan = json['WS_WAN'] as String?
+      ..webServis = json['WEB_SERVIS'] as String?
+      ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
+      ..kullaniciSayisi = json['KULLANICI_SAYISI'] as int?
+      ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
+      ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
+      ..sozlesmeBitisKalanGun = json['SOZLESME_BITIS_KALAN_GUN'] as int?
+      ..karsilamaMesaji = json['KARSILAMA_MESAJI']
+      ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
+      ..karsilamaSaniye = json['KARSILAMA_SANIYE'] as int?
+      ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
+      ..maxApkVersion = json['MAX_APK_VERSION'] as int?
+      ..maxWsVersion = json['MAX_WS_VERSION'] as String?
+      ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
+      ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true;
 
-Map<String, dynamic> _$AccountResponseModelToJson(AccountResponseModel instance) {
+Map<String, dynamic> _$AccountResponseModelToJson(
+    AccountResponseModel instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

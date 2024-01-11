@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CariListesiRequestModel _$CariListesiRequestModelFromJson(Map<String, dynamic> json) {
+CariListesiRequestModel _$CariListesiRequestModelFromJson(
+    Map<String, dynamic> json) {
   return _CariListesiRequestModel.fromJson(json);
 }
 
@@ -47,12 +48,15 @@ mixin _$CariListesiRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CariListesiRequestModelCopyWith<CariListesiRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $CariListesiRequestModelCopyWith<CariListesiRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CariListesiRequestModelCopyWith<$Res> {
-  factory $CariListesiRequestModelCopyWith(CariListesiRequestModel value, $Res Function(CariListesiRequestModel) then) = _$CariListesiRequestModelCopyWithImpl<$Res, CariListesiRequestModel>;
+  factory $CariListesiRequestModelCopyWith(CariListesiRequestModel value,
+          $Res Function(CariListesiRequestModel) then) =
+      _$CariListesiRequestModelCopyWithImpl<$Res, CariListesiRequestModel>;
   @useResult
   $Res call(
       {bool? eFaturaGoster,
@@ -80,7 +84,9 @@ abstract class $CariListesiRequestModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CariListesiRequestModelCopyWithImpl<$Res, $Val extends CariListesiRequestModel> implements $CariListesiRequestModelCopyWith<$Res> {
+class _$CariListesiRequestModelCopyWithImpl<$Res,
+        $Val extends CariListesiRequestModel>
+    implements $CariListesiRequestModelCopyWith<$Res> {
   _$CariListesiRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -208,8 +214,12 @@ class _$CariListesiRequestModelCopyWithImpl<$Res, $Val extends CariListesiReques
 }
 
 /// @nodoc
-abstract class _$$CariListesiRequestModelImplCopyWith<$Res> implements $CariListesiRequestModelCopyWith<$Res> {
-  factory _$$CariListesiRequestModelImplCopyWith(_$CariListesiRequestModelImpl value, $Res Function(_$CariListesiRequestModelImpl) then) = __$$CariListesiRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$CariListesiRequestModelImplCopyWith<$Res>
+    implements $CariListesiRequestModelCopyWith<$Res> {
+  factory _$$CariListesiRequestModelImplCopyWith(
+          _$CariListesiRequestModelImpl value,
+          $Res Function(_$CariListesiRequestModelImpl) then) =
+      __$$CariListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -238,8 +248,14 @@ abstract class _$$CariListesiRequestModelImplCopyWith<$Res> implements $CariList
 }
 
 /// @nodoc
-class __$$CariListesiRequestModelImplCopyWithImpl<$Res> extends _$CariListesiRequestModelCopyWithImpl<$Res, _$CariListesiRequestModelImpl> implements _$$CariListesiRequestModelImplCopyWith<$Res> {
-  __$$CariListesiRequestModelImplCopyWithImpl(_$CariListesiRequestModelImpl _value, $Res Function(_$CariListesiRequestModelImpl) _then) : super(_value, _then);
+class __$$CariListesiRequestModelImplCopyWithImpl<$Res>
+    extends _$CariListesiRequestModelCopyWithImpl<$Res,
+        _$CariListesiRequestModelImpl>
+    implements _$$CariListesiRequestModelImplCopyWith<$Res> {
+  __$$CariListesiRequestModelImplCopyWithImpl(
+      _$CariListesiRequestModelImpl _value,
+      $Res Function(_$CariListesiRequestModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -397,7 +413,8 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
         _arrGrupKodu = arrGrupKodu,
         super._();
 
-  factory _$CariListesiRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$CariListesiRequestModelImplFromJson(json);
+  factory _$CariListesiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CariListesiRequestModelImplFromJson(json);
 
   @override
   final bool? eFaturaGoster;
@@ -517,7 +534,9 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl> get copyWith => __$$CariListesiRequestModelImplCopyWithImpl<_$CariListesiRequestModelImpl>(this, _$identity);
+  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
+      get copyWith => __$$CariListesiRequestModelImplCopyWithImpl<
+          _$CariListesiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -553,7 +572,8 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
       final String? siparisKarsilanmaDurumu}) = _$CariListesiRequestModelImpl;
   _CariListesiRequestModel._() : super._();
 
-  factory _CariListesiRequestModel.fromJson(Map<String, dynamic> json) = _$CariListesiRequestModelImpl.fromJson;
+  factory _CariListesiRequestModel.fromJson(Map<String, dynamic> json) =
+      _$CariListesiRequestModelImpl.fromJson;
 
   @override
   bool? get eFaturaGoster;
@@ -603,5 +623,6 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
   String? get siparisKarsilanmaDurumu;
   @override
   @JsonKey(ignore: true)
-  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

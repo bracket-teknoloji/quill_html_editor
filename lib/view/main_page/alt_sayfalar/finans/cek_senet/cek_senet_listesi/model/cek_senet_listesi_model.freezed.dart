@@ -115,12 +115,15 @@ mixin _$CekSenetListesiModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CekSenetListesiModelCopyWith<CekSenetListesiModel> get copyWith => throw _privateConstructorUsedError;
+  $CekSenetListesiModelCopyWith<CekSenetListesiModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetListesiModelCopyWith<$Res> {
-  factory $CekSenetListesiModelCopyWith(CekSenetListesiModel value, $Res Function(CekSenetListesiModel) then) = _$CekSenetListesiModelCopyWithImpl<$Res, CekSenetListesiModel>;
+  factory $CekSenetListesiModelCopyWith(CekSenetListesiModel value,
+          $Res Function(CekSenetListesiModel) then) =
+      _$CekSenetListesiModelCopyWithImpl<$Res, CekSenetListesiModel>;
   @useResult
   $Res call(
       {bool? isCiroTipli,
@@ -167,7 +170,9 @@ abstract class $CekSenetListesiModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CekSenetListesiModelCopyWithImpl<$Res, $Val extends CekSenetListesiModel> implements $CekSenetListesiModelCopyWith<$Res> {
+class _$CekSenetListesiModelCopyWithImpl<$Res,
+        $Val extends CekSenetListesiModel>
+    implements $CekSenetListesiModelCopyWith<$Res> {
   _$CekSenetListesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -390,8 +395,11 @@ class _$CekSenetListesiModelCopyWithImpl<$Res, $Val extends CekSenetListesiModel
 }
 
 /// @nodoc
-abstract class _$$CekSenetListesiModelImplCopyWith<$Res> implements $CekSenetListesiModelCopyWith<$Res> {
-  factory _$$CekSenetListesiModelImplCopyWith(_$CekSenetListesiModelImpl value, $Res Function(_$CekSenetListesiModelImpl) then) = __$$CekSenetListesiModelImplCopyWithImpl<$Res>;
+abstract class _$$CekSenetListesiModelImplCopyWith<$Res>
+    implements $CekSenetListesiModelCopyWith<$Res> {
+  factory _$$CekSenetListesiModelImplCopyWith(_$CekSenetListesiModelImpl value,
+          $Res Function(_$CekSenetListesiModelImpl) then) =
+      __$$CekSenetListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -439,8 +447,12 @@ abstract class _$$CekSenetListesiModelImplCopyWith<$Res> implements $CekSenetLis
 }
 
 /// @nodoc
-class __$$CekSenetListesiModelImplCopyWithImpl<$Res> extends _$CekSenetListesiModelCopyWithImpl<$Res, _$CekSenetListesiModelImpl> implements _$$CekSenetListesiModelImplCopyWith<$Res> {
-  __$$CekSenetListesiModelImplCopyWithImpl(_$CekSenetListesiModelImpl _value, $Res Function(_$CekSenetListesiModelImpl) _then) : super(_value, _then);
+class __$$CekSenetListesiModelImplCopyWithImpl<$Res>
+    extends _$CekSenetListesiModelCopyWithImpl<$Res, _$CekSenetListesiModelImpl>
+    implements _$$CekSenetListesiModelImplCopyWith<$Res> {
+  __$$CekSenetListesiModelImplCopyWithImpl(_$CekSenetListesiModelImpl _value,
+      $Res Function(_$CekSenetListesiModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -703,7 +715,8 @@ class _$CekSenetListesiModelImpl extends _CekSenetListesiModel {
       this.yeri})
       : super._();
 
-  factory _$CekSenetListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$CekSenetListesiModelImplFromJson(json);
+  factory _$CekSenetListesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CekSenetListesiModelImplFromJson(json);
 
   @override
   bool? isCiroTipli;
@@ -796,7 +809,10 @@ class _$CekSenetListesiModelImpl extends _CekSenetListesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl> get copyWith => __$$CekSenetListesiModelImplCopyWithImpl<_$CekSenetListesiModelImpl>(this, _$identity);
+  _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl>
+      get copyWith =>
+          __$$CekSenetListesiModelImplCopyWithImpl<_$CekSenetListesiModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -851,7 +867,8 @@ abstract class _CekSenetListesiModel extends CekSenetListesiModel {
       String? yeri}) = _$CekSenetListesiModelImpl;
   _CekSenetListesiModel._() : super._();
 
-  factory _CekSenetListesiModel.fromJson(Map<String, dynamic> json) = _$CekSenetListesiModelImpl.fromJson;
+  factory _CekSenetListesiModel.fromJson(Map<String, dynamic> json) =
+      _$CekSenetListesiModelImpl.fromJson;
 
   @override
   bool? get isCiroTipli;
@@ -988,5 +1005,6 @@ abstract class _CekSenetListesiModel extends CekSenetListesiModel {
   set yeri(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

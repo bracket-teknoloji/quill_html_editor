@@ -6,7 +6,9 @@ part of 'kasa_islemleri_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(Map<String, dynamic> json) => _$KasaIslemleriRequestModelImpl(
+_$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$KasaIslemleriRequestModelImpl(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
@@ -20,7 +22,8 @@ _$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(Map<Str
       refKey: json['RefKey'] as String?,
     );
 
-Map<String, dynamic> _$$KasaIslemleriRequestModelImplToJson(_$KasaIslemleriRequestModelImpl instance) {
+Map<String, dynamic> _$$KasaIslemleriRequestModelImplToJson(
+    _$KasaIslemleriRequestModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

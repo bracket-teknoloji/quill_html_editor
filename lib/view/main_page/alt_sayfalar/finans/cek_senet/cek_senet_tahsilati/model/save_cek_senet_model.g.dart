@@ -6,17 +6,24 @@ part of 'save_cek_senet_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(Map<String, dynamic> json) => _$SaveCekSenetModelImpl(
+_$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SaveCekSenetModelImpl(
       belgeTipi: json['BELGE_TIPI'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       guid: json['GUID'] as String?,
       islemKodu: json['ISLEM_KODU'] as int?,
-      kalemler: (json['KALEMLER'] as List<dynamic>?)?.map((e) => CekSenetKalemlerModel.fromJson(e as Map<String, dynamic>)).toList(),
+      kalemler: (json['KALEMLER'] as List<dynamic>?)
+          ?.map(
+              (e) => CekSenetKalemlerModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       pickerTahsilatTuru: json['PickerTahsilatTuru'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       tag: json['TAG'] as String?,
-      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['_YeniKayit'] as bool?,
       projeKodu: json['PROJE_KODU'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
@@ -31,7 +38,8 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(Map<String, dynamic> js
       tutar: (json['TUTAR'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$$SaveCekSenetModelImplToJson(_$SaveCekSenetModelImpl instance) {
+Map<String, dynamic> _$$SaveCekSenetModelImplToJson(
+    _$SaveCekSenetModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -65,7 +73,9 @@ Map<String, dynamic> _$$SaveCekSenetModelImplToJson(_$SaveCekSenetModelImpl inst
   return val;
 }
 
-_$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(Map<String, dynamic> json) => _$CekSenetKalemlerModelImpl(
+_$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CekSenetKalemlerModelImpl(
       cariRaporKodu: json['CARI_RAPOR_KODU'] as String?,
       cekBanka: json['CEK_BANKA'] as String?,
       seriNo: json['SERI_NO'] as String?,
@@ -82,9 +92,13 @@ _$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(Map<String, dyn
       sira: json['SIRA'] as int?,
       dovizTipi: json['DOVIZ_TIPI'] as int?,
       tag: json['TAG'] as String?,
-      tarih: json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
-      vadeTarihi: json['VADE_TARIHI'] == null ? null : DateTime.parse(json['VADE_TARIHI'] as String),
+      vadeTarihi: json['VADE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['VADE_TARIHI'] as String),
       dovizKuru: (json['DOVIZ_KURU'] as num?)?.toDouble(),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       asilCari: json['ASIL_CARI'] as String?,
@@ -100,7 +114,8 @@ _$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(Map<String, dyn
       duzenlendigiYer: json['DUZENLENDIGI_YER'] as String?,
     );
 
-Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(_$CekSenetKalemlerModelImpl instance) {
+Map<String, dynamic> _$$CekSenetKalemlerModelImplToJson(
+    _$CekSenetKalemlerModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

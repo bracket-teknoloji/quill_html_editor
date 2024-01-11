@@ -9,7 +9,8 @@ part of 'base_cari_edit_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
-  late final _$isValidateAtom = Atom(name: '_BaseCariEditViewModelBase.isValidate', context: context);
+  late final _$isValidateAtom =
+      Atom(name: '_BaseCariEditViewModelBase.isValidate', context: context);
 
   @override
   bool get isValidate {
@@ -24,7 +25,9 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
     });
   }
 
-  late final _$isDownloadCompletedSuccesfullyAtom = Atom(name: '_BaseCariEditViewModelBase.isDownloadCompletedSuccesfully', context: context);
+  late final _$isDownloadCompletedSuccesfullyAtom = Atom(
+      name: '_BaseCariEditViewModelBase.isDownloadCompletedSuccesfully',
+      context: context);
 
   @override
   bool? get isDownloadCompletedSuccesfully {
@@ -34,12 +37,14 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   set isDownloadCompletedSuccesfully(bool? value) {
-    _$isDownloadCompletedSuccesfullyAtom.reportWrite(value, super.isDownloadCompletedSuccesfully, () {
+    _$isDownloadCompletedSuccesfullyAtom
+        .reportWrite(value, super.isDownloadCompletedSuccesfully, () {
       super.isDownloadCompletedSuccesfully = value;
     });
   }
 
-  late final _$messageAtom = Atom(name: '_BaseCariEditViewModelBase.message', context: context);
+  late final _$messageAtom =
+      Atom(name: '_BaseCariEditViewModelBase.message', context: context);
 
   @override
   String? get message {
@@ -54,11 +59,13 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
     });
   }
 
-  late final _$_BaseCariEditViewModelBaseActionController = ActionController(name: '_BaseCariEditViewModelBase', context: context);
+  late final _$_BaseCariEditViewModelBaseActionController =
+      ActionController(name: '_BaseCariEditViewModelBase', context: context);
 
   @override
   void changeMessage(String? value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(name: '_BaseCariEditViewModelBase.changeMessage');
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController
+        .startAction(name: '_BaseCariEditViewModelBase.changeMessage');
     try {
       return super.changeMessage(value);
     } finally {
@@ -68,7 +75,9 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   void changeIsDownloadCompletedSuccesfully(bool? value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(name: '_BaseCariEditViewModelBase.changeIsDownloadCompletedSuccesfully');
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(
+        name:
+            '_BaseCariEditViewModelBase.changeIsDownloadCompletedSuccesfully');
     try {
       return super.changeIsDownloadCompletedSuccesfully(value);
     } finally {
@@ -78,7 +87,8 @@ mixin _$BaseCariEditViewModel on _BaseCariEditViewModelBase, Store {
 
   @override
   void setIsValidate(bool value) {
-    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController.startAction(name: '_BaseCariEditViewModelBase.setIsValidate');
+    final _$actionInfo = _$_BaseCariEditViewModelBaseActionController
+        .startAction(name: '_BaseCariEditViewModelBase.setIsValidate');
     try {
       return super.setIsValidate(value);
     } finally {

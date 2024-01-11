@@ -33,18 +33,27 @@ mixin _$TcmbBankalarModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TcmbBankalarModelCopyWith<TcmbBankalarModel> get copyWith => throw _privateConstructorUsedError;
+  $TcmbBankalarModelCopyWith<TcmbBankalarModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TcmbBankalarModelCopyWith<$Res> {
-  factory $TcmbBankalarModelCopyWith(TcmbBankalarModel value, $Res Function(TcmbBankalarModel) then) = _$TcmbBankalarModelCopyWithImpl<$Res, TcmbBankalarModel>;
+  factory $TcmbBankalarModelCopyWith(
+          TcmbBankalarModel value, $Res Function(TcmbBankalarModel) then) =
+      _$TcmbBankalarModelCopyWithImpl<$Res, TcmbBankalarModel>;
   @useResult
-  $Res call({String? bankakodu, String? bankaadi, String? subekodu, String? subeadi, String? sehiradi});
+  $Res call(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi});
 }
 
 /// @nodoc
-class _$TcmbBankalarModelCopyWithImpl<$Res, $Val extends TcmbBankalarModel> implements $TcmbBankalarModelCopyWith<$Res> {
+class _$TcmbBankalarModelCopyWithImpl<$Res, $Val extends TcmbBankalarModel>
+    implements $TcmbBankalarModelCopyWith<$Res> {
   _$TcmbBankalarModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -87,16 +96,28 @@ class _$TcmbBankalarModelCopyWithImpl<$Res, $Val extends TcmbBankalarModel> impl
 }
 
 /// @nodoc
-abstract class _$$TcmbBankalarModelImplCopyWith<$Res> implements $TcmbBankalarModelCopyWith<$Res> {
-  factory _$$TcmbBankalarModelImplCopyWith(_$TcmbBankalarModelImpl value, $Res Function(_$TcmbBankalarModelImpl) then) = __$$TcmbBankalarModelImplCopyWithImpl<$Res>;
+abstract class _$$TcmbBankalarModelImplCopyWith<$Res>
+    implements $TcmbBankalarModelCopyWith<$Res> {
+  factory _$$TcmbBankalarModelImplCopyWith(_$TcmbBankalarModelImpl value,
+          $Res Function(_$TcmbBankalarModelImpl) then) =
+      __$$TcmbBankalarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? bankakodu, String? bankaadi, String? subekodu, String? subeadi, String? sehiradi});
+  $Res call(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi});
 }
 
 /// @nodoc
-class __$$TcmbBankalarModelImplCopyWithImpl<$Res> extends _$TcmbBankalarModelCopyWithImpl<$Res, _$TcmbBankalarModelImpl> implements _$$TcmbBankalarModelImplCopyWith<$Res> {
-  __$$TcmbBankalarModelImplCopyWithImpl(_$TcmbBankalarModelImpl _value, $Res Function(_$TcmbBankalarModelImpl) _then) : super(_value, _then);
+class __$$TcmbBankalarModelImplCopyWithImpl<$Res>
+    extends _$TcmbBankalarModelCopyWithImpl<$Res, _$TcmbBankalarModelImpl>
+    implements _$$TcmbBankalarModelImplCopyWith<$Res> {
+  __$$TcmbBankalarModelImplCopyWithImpl(_$TcmbBankalarModelImpl _value,
+      $Res Function(_$TcmbBankalarModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -135,9 +156,16 @@ class __$$TcmbBankalarModelImplCopyWithImpl<$Res> extends _$TcmbBankalarModelCop
 /// @nodoc
 @JsonSerializable()
 class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
-  _$TcmbBankalarModelImpl({this.bankakodu, this.bankaadi, this.subekodu, this.subeadi, this.sehiradi}) : super._();
+  _$TcmbBankalarModelImpl(
+      {this.bankakodu,
+      this.bankaadi,
+      this.subekodu,
+      this.subeadi,
+      this.sehiradi})
+      : super._();
 
-  factory _$TcmbBankalarModelImpl.fromJson(Map<String, dynamic> json) => _$$TcmbBankalarModelImplFromJson(json);
+  factory _$TcmbBankalarModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TcmbBankalarModelImplFromJson(json);
 
   @override
   String? bankakodu;
@@ -153,7 +181,9 @@ class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith => __$$TcmbBankalarModelImplCopyWithImpl<_$TcmbBankalarModelImpl>(this, _$identity);
+  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
+      __$$TcmbBankalarModelImplCopyWithImpl<_$TcmbBankalarModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -164,10 +194,16 @@ class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
 }
 
 abstract class _TcmbBankalarModel extends TcmbBankalarModel {
-  factory _TcmbBankalarModel({String? bankakodu, String? bankaadi, String? subekodu, String? subeadi, String? sehiradi}) = _$TcmbBankalarModelImpl;
+  factory _TcmbBankalarModel(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi}) = _$TcmbBankalarModelImpl;
   _TcmbBankalarModel._() : super._();
 
-  factory _TcmbBankalarModel.fromJson(Map<String, dynamic> json) = _$TcmbBankalarModelImpl.fromJson;
+  factory _TcmbBankalarModel.fromJson(Map<String, dynamic> json) =
+      _$TcmbBankalarModelImpl.fromJson;
 
   @override
   String? get bankakodu;
@@ -186,5 +222,6 @@ abstract class _TcmbBankalarModel extends TcmbBankalarModel {
   set sehiradi(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

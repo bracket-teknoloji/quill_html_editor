@@ -30,8 +30,10 @@ mixin _$SaveCekSenetModel {
   set guid(String? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   set islemKodu(int? value) => throw _privateConstructorUsedError;
-  List<CekSenetKalemlerModel>? get kalemler => throw _privateConstructorUsedError;
-  set kalemler(List<CekSenetKalemlerModel>? value) => throw _privateConstructorUsedError;
+  List<CekSenetKalemlerModel>? get kalemler =>
+      throw _privateConstructorUsedError;
+  set kalemler(List<CekSenetKalemlerModel>? value) =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: "PickerTahsilatTuru")
   String? get pickerTahsilatTuru => throw _privateConstructorUsedError;
   @JsonKey(name: "PickerTahsilatTuru")
@@ -73,12 +75,15 @@ mixin _$SaveCekSenetModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SaveCekSenetModelCopyWith<SaveCekSenetModel> get copyWith => throw _privateConstructorUsedError;
+  $SaveCekSenetModelCopyWith<SaveCekSenetModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SaveCekSenetModelCopyWith<$Res> {
-  factory $SaveCekSenetModelCopyWith(SaveCekSenetModel value, $Res Function(SaveCekSenetModel) then) = _$SaveCekSenetModelCopyWithImpl<$Res, SaveCekSenetModel>;
+  factory $SaveCekSenetModelCopyWith(
+          SaveCekSenetModel value, $Res Function(SaveCekSenetModel) then) =
+      _$SaveCekSenetModelCopyWithImpl<$Res, SaveCekSenetModel>;
   @useResult
   $Res call(
       {String? belgeTipi,
@@ -106,7 +111,8 @@ abstract class $SaveCekSenetModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel> implements $SaveCekSenetModelCopyWith<$Res> {
+class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel>
+    implements $SaveCekSenetModelCopyWith<$Res> {
   _$SaveCekSenetModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -234,8 +240,11 @@ class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel> impl
 }
 
 /// @nodoc
-abstract class _$$SaveCekSenetModelImplCopyWith<$Res> implements $SaveCekSenetModelCopyWith<$Res> {
-  factory _$$SaveCekSenetModelImplCopyWith(_$SaveCekSenetModelImpl value, $Res Function(_$SaveCekSenetModelImpl) then) = __$$SaveCekSenetModelImplCopyWithImpl<$Res>;
+abstract class _$$SaveCekSenetModelImplCopyWith<$Res>
+    implements $SaveCekSenetModelCopyWith<$Res> {
+  factory _$$SaveCekSenetModelImplCopyWith(_$SaveCekSenetModelImpl value,
+          $Res Function(_$SaveCekSenetModelImpl) then) =
+      __$$SaveCekSenetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -264,8 +273,12 @@ abstract class _$$SaveCekSenetModelImplCopyWith<$Res> implements $SaveCekSenetMo
 }
 
 /// @nodoc
-class __$$SaveCekSenetModelImplCopyWithImpl<$Res> extends _$SaveCekSenetModelCopyWithImpl<$Res, _$SaveCekSenetModelImpl> implements _$$SaveCekSenetModelImplCopyWith<$Res> {
-  __$$SaveCekSenetModelImplCopyWithImpl(_$SaveCekSenetModelImpl _value, $Res Function(_$SaveCekSenetModelImpl) _then) : super(_value, _then);
+class __$$SaveCekSenetModelImplCopyWithImpl<$Res>
+    extends _$SaveCekSenetModelCopyWithImpl<$Res, _$SaveCekSenetModelImpl>
+    implements _$$SaveCekSenetModelImplCopyWith<$Res> {
+  __$$SaveCekSenetModelImplCopyWithImpl(_$SaveCekSenetModelImpl _value,
+      $Res Function(_$SaveCekSenetModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -414,7 +427,8 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
       this.tutar})
       : super._();
 
-  factory _$SaveCekSenetModelImpl.fromJson(Map<String, dynamic> json) => _$$SaveCekSenetModelImplFromJson(json);
+  factory _$SaveCekSenetModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SaveCekSenetModelImplFromJson(json);
 
   @override
   String? belgeTipi;
@@ -467,7 +481,9 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith => __$$SaveCekSenetModelImplCopyWithImpl<_$SaveCekSenetModelImpl>(this, _$identity);
+  _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith =>
+      __$$SaveCekSenetModelImplCopyWithImpl<_$SaveCekSenetModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -503,7 +519,8 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
       double? tutar}) = _$SaveCekSenetModelImpl;
   _SaveCekSenetModel._() : super._();
 
-  factory _SaveCekSenetModel.fromJson(Map<String, dynamic> json) = _$SaveCekSenetModelImpl.fromJson;
+  factory _SaveCekSenetModel.fromJson(Map<String, dynamic> json) =
+      _$SaveCekSenetModelImpl.fromJson;
 
   @override
   String? get belgeTipi;
@@ -579,10 +596,12 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
   set tutar(double? value);
   @override
   @JsonKey(ignore: true)
-  _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
-CekSenetKalemlerModel _$CekSenetKalemlerModelFromJson(Map<String, dynamic> json) {
+CekSenetKalemlerModel _$CekSenetKalemlerModelFromJson(
+    Map<String, dynamic> json) {
   return _CekSenetKalemlerModel.fromJson(json);
 }
 
@@ -663,12 +682,15 @@ mixin _$CekSenetKalemlerModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CekSenetKalemlerModelCopyWith<CekSenetKalemlerModel> get copyWith => throw _privateConstructorUsedError;
+  $CekSenetKalemlerModelCopyWith<CekSenetKalemlerModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetKalemlerModelCopyWith<$Res> {
-  factory $CekSenetKalemlerModelCopyWith(CekSenetKalemlerModel value, $Res Function(CekSenetKalemlerModel) then) = _$CekSenetKalemlerModelCopyWithImpl<$Res, CekSenetKalemlerModel>;
+  factory $CekSenetKalemlerModelCopyWith(CekSenetKalemlerModel value,
+          $Res Function(CekSenetKalemlerModel) then) =
+      _$CekSenetKalemlerModelCopyWithImpl<$Res, CekSenetKalemlerModel>;
   @useResult
   $Res call(
       {String? cariRaporKodu,
@@ -704,11 +726,14 @@ abstract class $CekSenetKalemlerModelCopyWith<$Res> {
       String? ibanNo,
       String? duzenlendigiYer,
       @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) bool? refKodSorulsunMu});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu});
 }
 
 /// @nodoc
-class _$CekSenetKalemlerModelCopyWithImpl<$Res, $Val extends CekSenetKalemlerModel> implements $CekSenetKalemlerModelCopyWith<$Res> {
+class _$CekSenetKalemlerModelCopyWithImpl<$Res,
+        $Val extends CekSenetKalemlerModel>
+    implements $CekSenetKalemlerModelCopyWith<$Res> {
   _$CekSenetKalemlerModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -896,8 +921,12 @@ class _$CekSenetKalemlerModelCopyWithImpl<$Res, $Val extends CekSenetKalemlerMod
 }
 
 /// @nodoc
-abstract class _$$CekSenetKalemlerModelImplCopyWith<$Res> implements $CekSenetKalemlerModelCopyWith<$Res> {
-  factory _$$CekSenetKalemlerModelImplCopyWith(_$CekSenetKalemlerModelImpl value, $Res Function(_$CekSenetKalemlerModelImpl) then) = __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>;
+abstract class _$$CekSenetKalemlerModelImplCopyWith<$Res>
+    implements $CekSenetKalemlerModelCopyWith<$Res> {
+  factory _$$CekSenetKalemlerModelImplCopyWith(
+          _$CekSenetKalemlerModelImpl value,
+          $Res Function(_$CekSenetKalemlerModelImpl) then) =
+      __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -934,12 +963,18 @@ abstract class _$$CekSenetKalemlerModelImplCopyWith<$Res> implements $CekSenetKa
       String? ibanNo,
       String? duzenlendigiYer,
       @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) bool? refKodSorulsunMu});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu});
 }
 
 /// @nodoc
-class __$$CekSenetKalemlerModelImplCopyWithImpl<$Res> extends _$CekSenetKalemlerModelCopyWithImpl<$Res, _$CekSenetKalemlerModelImpl> implements _$$CekSenetKalemlerModelImplCopyWith<$Res> {
-  __$$CekSenetKalemlerModelImplCopyWithImpl(_$CekSenetKalemlerModelImpl _value, $Res Function(_$CekSenetKalemlerModelImpl) _then) : super(_value, _then);
+class __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>
+    extends _$CekSenetKalemlerModelCopyWithImpl<$Res,
+        _$CekSenetKalemlerModelImpl>
+    implements _$$CekSenetKalemlerModelImplCopyWith<$Res> {
+  __$$CekSenetKalemlerModelImplCopyWithImpl(_$CekSenetKalemlerModelImpl _value,
+      $Res Function(_$CekSenetKalemlerModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -1157,9 +1192,11 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
       this.ibanNo,
       this.duzenlendigiYer,
       @JsonKey(includeFromJson: false, includeToJson: false) this.dovizAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.refKodSorulsunMu});
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.refKodSorulsunMu});
 
-  factory _$CekSenetKalemlerModelImpl.fromJson(Map<String, dynamic> json) => _$$CekSenetKalemlerModelImplFromJson(json);
+  factory _$CekSenetKalemlerModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CekSenetKalemlerModelImplFromJson(json);
 
   @override
   String? cariRaporKodu;
@@ -1240,7 +1277,9 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl> get copyWith => __$$CekSenetKalemlerModelImplCopyWithImpl<_$CekSenetKalemlerModelImpl>(this, _$identity);
+  _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl>
+      get copyWith => __$$CekSenetKalemlerModelImplCopyWithImpl<
+          _$CekSenetKalemlerModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1285,9 +1324,11 @@ abstract class _CekSenetKalemlerModel implements CekSenetKalemlerModel {
       String? ibanNo,
       String? duzenlendigiYer,
       @JsonKey(includeFromJson: false, includeToJson: false) String? dovizAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) bool? refKodSorulsunMu}) = _$CekSenetKalemlerModelImpl;
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? refKodSorulsunMu}) = _$CekSenetKalemlerModelImpl;
 
-  factory _CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) = _$CekSenetKalemlerModelImpl.fromJson;
+  factory _CekSenetKalemlerModel.fromJson(Map<String, dynamic> json) =
+      _$CekSenetKalemlerModelImpl.fromJson;
 
   @override
   String? get cariRaporKodu;
@@ -1397,5 +1438,6 @@ abstract class _CekSenetKalemlerModel implements CekSenetKalemlerModel {
   set refKodSorulsunMu(bool? value);
   @override
   @JsonKey(ignore: true)
-  _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -29,12 +29,15 @@ mixin _$EBelgePdfModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EBelgePdfModelCopyWith<EBelgePdfModel> get copyWith => throw _privateConstructorUsedError;
+  $EBelgePdfModelCopyWith<EBelgePdfModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EBelgePdfModelCopyWith<$Res> {
-  factory $EBelgePdfModelCopyWith(EBelgePdfModel value, $Res Function(EBelgePdfModel) then) = _$EBelgePdfModelCopyWithImpl<$Res, EBelgePdfModel>;
+  factory $EBelgePdfModelCopyWith(
+          EBelgePdfModel value, $Res Function(EBelgePdfModel) then) =
+      _$EBelgePdfModelCopyWithImpl<$Res, EBelgePdfModel>;
   @useResult
   $Res call({int? islemKodu, @JsonKey(name: "FileModel") FileModel? fileModel});
 
@@ -42,7 +45,8 @@ abstract class $EBelgePdfModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel> implements $EBelgePdfModelCopyWith<$Res> {
+class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
+    implements $EBelgePdfModelCopyWith<$Res> {
   _$EBelgePdfModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -82,8 +86,11 @@ class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel> implements
 }
 
 /// @nodoc
-abstract class _$$EBelgePdfModelImplCopyWith<$Res> implements $EBelgePdfModelCopyWith<$Res> {
-  factory _$$EBelgePdfModelImplCopyWith(_$EBelgePdfModelImpl value, $Res Function(_$EBelgePdfModelImpl) then) = __$$EBelgePdfModelImplCopyWithImpl<$Res>;
+abstract class _$$EBelgePdfModelImplCopyWith<$Res>
+    implements $EBelgePdfModelCopyWith<$Res> {
+  factory _$$EBelgePdfModelImplCopyWith(_$EBelgePdfModelImpl value,
+          $Res Function(_$EBelgePdfModelImpl) then) =
+      __$$EBelgePdfModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? islemKodu, @JsonKey(name: "FileModel") FileModel? fileModel});
@@ -93,8 +100,12 @@ abstract class _$$EBelgePdfModelImplCopyWith<$Res> implements $EBelgePdfModelCop
 }
 
 /// @nodoc
-class __$$EBelgePdfModelImplCopyWithImpl<$Res> extends _$EBelgePdfModelCopyWithImpl<$Res, _$EBelgePdfModelImpl> implements _$$EBelgePdfModelImplCopyWith<$Res> {
-  __$$EBelgePdfModelImplCopyWithImpl(_$EBelgePdfModelImpl _value, $Res Function(_$EBelgePdfModelImpl) _then) : super(_value, _then);
+class __$$EBelgePdfModelImplCopyWithImpl<$Res>
+    extends _$EBelgePdfModelCopyWithImpl<$Res, _$EBelgePdfModelImpl>
+    implements _$$EBelgePdfModelImplCopyWith<$Res> {
+  __$$EBelgePdfModelImplCopyWithImpl(
+      _$EBelgePdfModelImpl _value, $Res Function(_$EBelgePdfModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -118,9 +129,12 @@ class __$$EBelgePdfModelImplCopyWithImpl<$Res> extends _$EBelgePdfModelCopyWithI
 /// @nodoc
 @JsonSerializable()
 class _$EBelgePdfModelImpl extends _EBelgePdfModel {
-  _$EBelgePdfModelImpl({this.islemKodu, @JsonKey(name: "FileModel") this.fileModel}) : super._();
+  _$EBelgePdfModelImpl(
+      {this.islemKodu, @JsonKey(name: "FileModel") this.fileModel})
+      : super._();
 
-  factory _$EBelgePdfModelImpl.fromJson(Map<String, dynamic> json) => _$$EBelgePdfModelImplFromJson(json);
+  factory _$EBelgePdfModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EBelgePdfModelImplFromJson(json);
 
   @override
   int? islemKodu;
@@ -131,7 +145,9 @@ class _$EBelgePdfModelImpl extends _EBelgePdfModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith => __$$EBelgePdfModelImplCopyWithImpl<_$EBelgePdfModelImpl>(this, _$identity);
+  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
+      __$$EBelgePdfModelImplCopyWithImpl<_$EBelgePdfModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -142,10 +158,13 @@ class _$EBelgePdfModelImpl extends _EBelgePdfModel {
 }
 
 abstract class _EBelgePdfModel extends EBelgePdfModel {
-  factory _EBelgePdfModel({int? islemKodu, @JsonKey(name: "FileModel") FileModel? fileModel}) = _$EBelgePdfModelImpl;
+  factory _EBelgePdfModel(
+      {int? islemKodu,
+      @JsonKey(name: "FileModel") FileModel? fileModel}) = _$EBelgePdfModelImpl;
   _EBelgePdfModel._() : super._();
 
-  factory _EBelgePdfModel.fromJson(Map<String, dynamic> json) = _$EBelgePdfModelImpl.fromJson;
+  factory _EBelgePdfModel.fromJson(Map<String, dynamic> json) =
+      _$EBelgePdfModelImpl.fromJson;
 
   @override
   int? get islemKodu;
@@ -157,7 +176,8 @@ abstract class _EBelgePdfModel extends EBelgePdfModel {
   set fileModel(FileModel? value);
   @override
   @JsonKey(ignore: true)
-  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 FileModel _$FileModelFromJson(Map<String, dynamic> json) {
@@ -173,18 +193,25 @@ mixin _$FileModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FileModelCopyWith<FileModel> get copyWith => throw _privateConstructorUsedError;
+  $FileModelCopyWith<FileModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FileModelCopyWith<$Res> {
-  factory $FileModelCopyWith(FileModel value, $Res Function(FileModel) then) = _$FileModelCopyWithImpl<$Res, FileModel>;
+  factory $FileModelCopyWith(FileModel value, $Res Function(FileModel) then) =
+      _$FileModelCopyWithImpl<$Res, FileModel>;
   @useResult
-  $Res call({String? byteData, String? uzanti, DateTime? dosyaTarihi, String? dosyaAdi});
+  $Res call(
+      {String? byteData,
+      String? uzanti,
+      DateTime? dosyaTarihi,
+      String? dosyaAdi});
 }
 
 /// @nodoc
-class _$FileModelCopyWithImpl<$Res, $Val extends FileModel> implements $FileModelCopyWith<$Res> {
+class _$FileModelCopyWithImpl<$Res, $Val extends FileModel>
+    implements $FileModelCopyWith<$Res> {
   _$FileModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -222,16 +249,27 @@ class _$FileModelCopyWithImpl<$Res, $Val extends FileModel> implements $FileMode
 }
 
 /// @nodoc
-abstract class _$$FileModelImplCopyWith<$Res> implements $FileModelCopyWith<$Res> {
-  factory _$$FileModelImplCopyWith(_$FileModelImpl value, $Res Function(_$FileModelImpl) then) = __$$FileModelImplCopyWithImpl<$Res>;
+abstract class _$$FileModelImplCopyWith<$Res>
+    implements $FileModelCopyWith<$Res> {
+  factory _$$FileModelImplCopyWith(
+          _$FileModelImpl value, $Res Function(_$FileModelImpl) then) =
+      __$$FileModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? byteData, String? uzanti, DateTime? dosyaTarihi, String? dosyaAdi});
+  $Res call(
+      {String? byteData,
+      String? uzanti,
+      DateTime? dosyaTarihi,
+      String? dosyaAdi});
 }
 
 /// @nodoc
-class __$$FileModelImplCopyWithImpl<$Res> extends _$FileModelCopyWithImpl<$Res, _$FileModelImpl> implements _$$FileModelImplCopyWith<$Res> {
-  __$$FileModelImplCopyWithImpl(_$FileModelImpl _value, $Res Function(_$FileModelImpl) _then) : super(_value, _then);
+class __$$FileModelImplCopyWithImpl<$Res>
+    extends _$FileModelCopyWithImpl<$Res, _$FileModelImpl>
+    implements _$$FileModelImplCopyWith<$Res> {
+  __$$FileModelImplCopyWithImpl(
+      _$FileModelImpl _value, $Res Function(_$FileModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -265,9 +303,11 @@ class __$$FileModelImplCopyWithImpl<$Res> extends _$FileModelCopyWithImpl<$Res, 
 /// @nodoc
 @JsonSerializable()
 class _$FileModelImpl implements _FileModel {
-  const _$FileModelImpl({this.byteData, this.uzanti, this.dosyaTarihi, this.dosyaAdi});
+  const _$FileModelImpl(
+      {this.byteData, this.uzanti, this.dosyaTarihi, this.dosyaAdi});
 
-  factory _$FileModelImpl.fromJson(Map<String, dynamic> json) => _$$FileModelImplFromJson(json);
+  factory _$FileModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FileModelImplFromJson(json);
 
   @override
   final String? byteData;
@@ -288,20 +328,25 @@ class _$FileModelImpl implements _FileModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FileModelImpl &&
-            (identical(other.byteData, byteData) || other.byteData == byteData) &&
+            (identical(other.byteData, byteData) ||
+                other.byteData == byteData) &&
             (identical(other.uzanti, uzanti) || other.uzanti == uzanti) &&
-            (identical(other.dosyaTarihi, dosyaTarihi) || other.dosyaTarihi == dosyaTarihi) &&
-            (identical(other.dosyaAdi, dosyaAdi) || other.dosyaAdi == dosyaAdi));
+            (identical(other.dosyaTarihi, dosyaTarihi) ||
+                other.dosyaTarihi == dosyaTarihi) &&
+            (identical(other.dosyaAdi, dosyaAdi) ||
+                other.dosyaAdi == dosyaAdi));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, byteData, uzanti, dosyaTarihi, dosyaAdi);
+  int get hashCode =>
+      Object.hash(runtimeType, byteData, uzanti, dosyaTarihi, dosyaAdi);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith => __$$FileModelImplCopyWithImpl<_$FileModelImpl>(this, _$identity);
+  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith =>
+      __$$FileModelImplCopyWithImpl<_$FileModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -312,9 +357,14 @@ class _$FileModelImpl implements _FileModel {
 }
 
 abstract class _FileModel implements FileModel {
-  const factory _FileModel({final String? byteData, final String? uzanti, final DateTime? dosyaTarihi, final String? dosyaAdi}) = _$FileModelImpl;
+  const factory _FileModel(
+      {final String? byteData,
+      final String? uzanti,
+      final DateTime? dosyaTarihi,
+      final String? dosyaAdi}) = _$FileModelImpl;
 
-  factory _FileModel.fromJson(Map<String, dynamic> json) = _$FileModelImpl.fromJson;
+  factory _FileModel.fromJson(Map<String, dynamic> json) =
+      _$FileModelImpl.fromJson;
 
   @override
   String? get byteData;
@@ -326,5 +376,6 @@ abstract class _FileModel implements FileModel {
   String? get dosyaAdi;
   @override
   @JsonKey(ignore: true)
-  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

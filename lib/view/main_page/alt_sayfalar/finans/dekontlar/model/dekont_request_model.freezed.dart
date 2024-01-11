@@ -29,18 +29,22 @@ mixin _$DekontRequestModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DekontRequestModelCopyWith<DekontRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $DekontRequestModelCopyWith<DekontRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontRequestModelCopyWith<$Res> {
-  factory $DekontRequestModelCopyWith(DekontRequestModel value, $Res Function(DekontRequestModel) then) = _$DekontRequestModelCopyWithImpl<$Res, DekontRequestModel>;
+  factory $DekontRequestModelCopyWith(
+          DekontRequestModel value, $Res Function(DekontRequestModel) then) =
+      _$DekontRequestModelCopyWithImpl<$Res, DekontRequestModel>;
   @useResult
   $Res call({int? sayfa, String? ekranTipi, String? searchText});
 }
 
 /// @nodoc
-class _$DekontRequestModelCopyWithImpl<$Res, $Val extends DekontRequestModel> implements $DekontRequestModelCopyWith<$Res> {
+class _$DekontRequestModelCopyWithImpl<$Res, $Val extends DekontRequestModel>
+    implements $DekontRequestModelCopyWith<$Res> {
   _$DekontRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -73,16 +77,23 @@ class _$DekontRequestModelCopyWithImpl<$Res, $Val extends DekontRequestModel> im
 }
 
 /// @nodoc
-abstract class _$$DekontRequestModelImplCopyWith<$Res> implements $DekontRequestModelCopyWith<$Res> {
-  factory _$$DekontRequestModelImplCopyWith(_$DekontRequestModelImpl value, $Res Function(_$DekontRequestModelImpl) then) = __$$DekontRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontRequestModelImplCopyWith<$Res>
+    implements $DekontRequestModelCopyWith<$Res> {
+  factory _$$DekontRequestModelImplCopyWith(_$DekontRequestModelImpl value,
+          $Res Function(_$DekontRequestModelImpl) then) =
+      __$$DekontRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? sayfa, String? ekranTipi, String? searchText});
 }
 
 /// @nodoc
-class __$$DekontRequestModelImplCopyWithImpl<$Res> extends _$DekontRequestModelCopyWithImpl<$Res, _$DekontRequestModelImpl> implements _$$DekontRequestModelImplCopyWith<$Res> {
-  __$$DekontRequestModelImplCopyWithImpl(_$DekontRequestModelImpl _value, $Res Function(_$DekontRequestModelImpl) _then) : super(_value, _then);
+class __$$DekontRequestModelImplCopyWithImpl<$Res>
+    extends _$DekontRequestModelCopyWithImpl<$Res, _$DekontRequestModelImpl>
+    implements _$$DekontRequestModelImplCopyWith<$Res> {
+  __$$DekontRequestModelImplCopyWithImpl(_$DekontRequestModelImpl _value,
+      $Res Function(_$DekontRequestModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -114,7 +125,8 @@ class __$$DekontRequestModelImplCopyWithImpl<$Res> extends _$DekontRequestModelC
 class _$DekontRequestModelImpl implements _DekontRequestModel {
   _$DekontRequestModelImpl({this.sayfa, this.ekranTipi = "L", this.searchText});
 
-  factory _$DekontRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontRequestModelImplFromJson(json);
+  factory _$DekontRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DekontRequestModelImplFromJson(json);
 
   @override
   int? sayfa;
@@ -132,7 +144,9 @@ class _$DekontRequestModelImpl implements _DekontRequestModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith => __$$DekontRequestModelImplCopyWithImpl<_$DekontRequestModelImpl>(this, _$identity);
+  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
+      __$$DekontRequestModelImplCopyWithImpl<_$DekontRequestModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -143,9 +157,13 @@ class _$DekontRequestModelImpl implements _DekontRequestModel {
 }
 
 abstract class _DekontRequestModel implements DekontRequestModel {
-  factory _DekontRequestModel({int? sayfa, String? ekranTipi, String? searchText}) = _$DekontRequestModelImpl;
+  factory _DekontRequestModel(
+      {int? sayfa,
+      String? ekranTipi,
+      String? searchText}) = _$DekontRequestModelImpl;
 
-  factory _DekontRequestModel.fromJson(Map<String, dynamic> json) = _$DekontRequestModelImpl.fromJson;
+  factory _DekontRequestModel.fromJson(Map<String, dynamic> json) =
+      _$DekontRequestModelImpl.fromJson;
 
   @override
   int? get sayfa;
@@ -158,5 +176,6 @@ abstract class _DekontRequestModel implements DekontRequestModel {
   set searchText(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CekSenetEvrakEkleModel _$CekSenetEvrakEkleModelFromJson(Map<String, dynamic> json) {
+CekSenetEvrakEkleModel _$CekSenetEvrakEkleModelFromJson(
+    Map<String, dynamic> json) {
   return _CekSenetEvrakEkleModel.fromJson(json);
 }
 
@@ -35,18 +36,29 @@ mixin _$CekSenetEvrakEkleModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CekSenetEvrakEkleModelCopyWith<CekSenetEvrakEkleModel> get copyWith => throw _privateConstructorUsedError;
+  $CekSenetEvrakEkleModelCopyWith<CekSenetEvrakEkleModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CekSenetEvrakEkleModelCopyWith<$Res> {
-  factory $CekSenetEvrakEkleModelCopyWith(CekSenetEvrakEkleModel value, $Res Function(CekSenetEvrakEkleModel) then) = _$CekSenetEvrakEkleModelCopyWithImpl<$Res, CekSenetEvrakEkleModel>;
+  factory $CekSenetEvrakEkleModelCopyWith(CekSenetEvrakEkleModel value,
+          $Res Function(CekSenetEvrakEkleModel) then) =
+      _$CekSenetEvrakEkleModelCopyWithImpl<$Res, CekSenetEvrakEkleModel>;
   @useResult
-  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
+  $Res call(
+      {String? aciklama,
+      String? base64Data,
+      String? belgeNo,
+      String? belgeTipi,
+      int? boyutByte,
+      int? islemKodu});
 }
 
 /// @nodoc
-class _$CekSenetEvrakEkleModelCopyWithImpl<$Res, $Val extends CekSenetEvrakEkleModel> implements $CekSenetEvrakEkleModelCopyWith<$Res> {
+class _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
+        $Val extends CekSenetEvrakEkleModel>
+    implements $CekSenetEvrakEkleModelCopyWith<$Res> {
   _$CekSenetEvrakEkleModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -94,16 +106,32 @@ class _$CekSenetEvrakEkleModelCopyWithImpl<$Res, $Val extends CekSenetEvrakEkleM
 }
 
 /// @nodoc
-abstract class _$$CekSenetEvrakEkleModelImplCopyWith<$Res> implements $CekSenetEvrakEkleModelCopyWith<$Res> {
-  factory _$$CekSenetEvrakEkleModelImplCopyWith(_$CekSenetEvrakEkleModelImpl value, $Res Function(_$CekSenetEvrakEkleModelImpl) then) = __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>;
+abstract class _$$CekSenetEvrakEkleModelImplCopyWith<$Res>
+    implements $CekSenetEvrakEkleModelCopyWith<$Res> {
+  factory _$$CekSenetEvrakEkleModelImplCopyWith(
+          _$CekSenetEvrakEkleModelImpl value,
+          $Res Function(_$CekSenetEvrakEkleModelImpl) then) =
+      __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
+  $Res call(
+      {String? aciklama,
+      String? base64Data,
+      String? belgeNo,
+      String? belgeTipi,
+      int? boyutByte,
+      int? islemKodu});
 }
 
 /// @nodoc
-class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res> extends _$CekSenetEvrakEkleModelCopyWithImpl<$Res, _$CekSenetEvrakEkleModelImpl> implements _$$CekSenetEvrakEkleModelImplCopyWith<$Res> {
-  __$$CekSenetEvrakEkleModelImplCopyWithImpl(_$CekSenetEvrakEkleModelImpl _value, $Res Function(_$CekSenetEvrakEkleModelImpl) _then) : super(_value, _then);
+class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>
+    extends _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
+        _$CekSenetEvrakEkleModelImpl>
+    implements _$$CekSenetEvrakEkleModelImplCopyWith<$Res> {
+  __$$CekSenetEvrakEkleModelImplCopyWithImpl(
+      _$CekSenetEvrakEkleModelImpl _value,
+      $Res Function(_$CekSenetEvrakEkleModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -147,9 +175,16 @@ class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res> extends _$CekSenetEvrakEk
 /// @nodoc
 @JsonSerializable()
 class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
-  _$CekSenetEvrakEkleModelImpl({this.aciklama, this.base64Data, this.belgeNo, this.belgeTipi, this.boyutByte, this.islemKodu});
+  _$CekSenetEvrakEkleModelImpl(
+      {this.aciklama,
+      this.base64Data,
+      this.belgeNo,
+      this.belgeTipi,
+      this.boyutByte,
+      this.islemKodu});
 
-  factory _$CekSenetEvrakEkleModelImpl.fromJson(Map<String, dynamic> json) => _$$CekSenetEvrakEkleModelImplFromJson(json);
+  factory _$CekSenetEvrakEkleModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CekSenetEvrakEkleModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -172,7 +207,9 @@ class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl> get copyWith => __$$CekSenetEvrakEkleModelImplCopyWithImpl<_$CekSenetEvrakEkleModelImpl>(this, _$identity);
+  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
+      get copyWith => __$$CekSenetEvrakEkleModelImplCopyWithImpl<
+          _$CekSenetEvrakEkleModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -183,9 +220,16 @@ class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
 }
 
 abstract class _CekSenetEvrakEkleModel implements CekSenetEvrakEkleModel {
-  factory _CekSenetEvrakEkleModel({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu}) = _$CekSenetEvrakEkleModelImpl;
+  factory _CekSenetEvrakEkleModel(
+      {String? aciklama,
+      String? base64Data,
+      String? belgeNo,
+      String? belgeTipi,
+      int? boyutByte,
+      int? islemKodu}) = _$CekSenetEvrakEkleModelImpl;
 
-  factory _CekSenetEvrakEkleModel.fromJson(Map<String, dynamic> json) = _$CekSenetEvrakEkleModelImpl.fromJson;
+  factory _CekSenetEvrakEkleModel.fromJson(Map<String, dynamic> json) =
+      _$CekSenetEvrakEkleModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -207,5 +251,6 @@ abstract class _CekSenetEvrakEkleModel implements CekSenetEvrakEkleModel {
   set islemKodu(int? value);
   @override
   @JsonKey(ignore: true)
-  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

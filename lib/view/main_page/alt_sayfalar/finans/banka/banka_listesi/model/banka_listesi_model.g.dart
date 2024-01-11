@@ -6,7 +6,9 @@ part of 'banka_listesi_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BankaListesiModelImpl _$$BankaListesiModelImplFromJson(Map<String, dynamic> json) => _$BankaListesiModelImpl(
+_$BankaListesiModelImpl _$$BankaListesiModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$BankaListesiModelImpl(
       bankaKodu: json['BANKA_KODU'] as String?,
       bankasubeKodu: json['BANKASUBE_KODU'] as String?,
       hesapKodu: json['HESAP_KODU'] as String?,
@@ -28,7 +30,8 @@ _$BankaListesiModelImpl _$$BankaListesiModelImplFromJson(Map<String, dynamic> js
       baglihesapKodu: json['BAGLIHESAP_KODU'] as String?,
     );
 
-Map<String, dynamic> _$$BankaListesiModelImplToJson(_$BankaListesiModelImpl instance) {
+Map<String, dynamic> _$$BankaListesiModelImplToJson(
+    _$BankaListesiModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

@@ -40,12 +40,15 @@ mixin _$KasaListesiModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $KasaListesiModelCopyWith<KasaListesiModel> get copyWith => throw _privateConstructorUsedError;
+  $KasaListesiModelCopyWith<KasaListesiModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KasaListesiModelCopyWith<$Res> {
-  factory $KasaListesiModelCopyWith(KasaListesiModel value, $Res Function(KasaListesiModel) then) = _$KasaListesiModelCopyWithImpl<$Res, KasaListesiModel>;
+  factory $KasaListesiModelCopyWith(
+          KasaListesiModel value, $Res Function(KasaListesiModel) then) =
+      _$KasaListesiModelCopyWithImpl<$Res, KasaListesiModel>;
   @useResult
   $Res call(
       {String? kasaKodu,
@@ -68,7 +71,8 @@ abstract class $KasaListesiModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel> implements $KasaListesiModelCopyWith<$Res> {
+class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel>
+    implements $KasaListesiModelCopyWith<$Res> {
   _$KasaListesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -171,8 +175,11 @@ class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel> implem
 }
 
 /// @nodoc
-abstract class _$$KasaListesiModelImplCopyWith<$Res> implements $KasaListesiModelCopyWith<$Res> {
-  factory _$$KasaListesiModelImplCopyWith(_$KasaListesiModelImpl value, $Res Function(_$KasaListesiModelImpl) then) = __$$KasaListesiModelImplCopyWithImpl<$Res>;
+abstract class _$$KasaListesiModelImplCopyWith<$Res>
+    implements $KasaListesiModelCopyWith<$Res> {
+  factory _$$KasaListesiModelImplCopyWith(_$KasaListesiModelImpl value,
+          $Res Function(_$KasaListesiModelImpl) then) =
+      __$$KasaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -196,8 +203,12 @@ abstract class _$$KasaListesiModelImplCopyWith<$Res> implements $KasaListesiMode
 }
 
 /// @nodoc
-class __$$KasaListesiModelImplCopyWithImpl<$Res> extends _$KasaListesiModelCopyWithImpl<$Res, _$KasaListesiModelImpl> implements _$$KasaListesiModelImplCopyWith<$Res> {
-  __$$KasaListesiModelImplCopyWithImpl(_$KasaListesiModelImpl _value, $Res Function(_$KasaListesiModelImpl) _then) : super(_value, _then);
+class __$$KasaListesiModelImplCopyWithImpl<$Res>
+    extends _$KasaListesiModelCopyWithImpl<$Res, _$KasaListesiModelImpl>
+    implements _$$KasaListesiModelImplCopyWith<$Res> {
+  __$$KasaListesiModelImplCopyWithImpl(_$KasaListesiModelImpl _value,
+      $Res Function(_$KasaListesiModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -316,7 +327,8 @@ class _$KasaListesiModelImpl extends _KasaListesiModel {
       this.dovizAdi})
       : super._();
 
-  factory _$KasaListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$KasaListesiModelImplFromJson(json);
+  factory _$KasaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KasaListesiModelImplFromJson(json);
 
   @override
   final String? kasaKodu;
@@ -356,7 +368,9 @@ class _$KasaListesiModelImpl extends _KasaListesiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith => __$$KasaListesiModelImplCopyWithImpl<_$KasaListesiModelImpl>(this, _$identity);
+  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
+      __$$KasaListesiModelImplCopyWithImpl<_$KasaListesiModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -387,7 +401,8 @@ abstract class _KasaListesiModel extends KasaListesiModel {
       final String? dovizAdi}) = _$KasaListesiModelImpl;
   _KasaListesiModel._() : super._();
 
-  factory _KasaListesiModel.fromJson(Map<String, dynamic> json) = _$KasaListesiModelImpl.fromJson;
+  factory _KasaListesiModel.fromJson(Map<String, dynamic> json) =
+      _$KasaListesiModelImpl.fromJson;
 
   @override
   String? get kasaKodu;
@@ -425,5 +440,6 @@ abstract class _KasaListesiModel extends KasaListesiModel {
   String? get dovizAdi;
   @override
   @JsonKey(ignore: true)
-  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

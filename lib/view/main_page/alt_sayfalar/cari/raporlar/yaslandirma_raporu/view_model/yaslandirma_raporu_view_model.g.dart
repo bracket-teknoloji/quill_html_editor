@@ -12,13 +12,21 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
   Computed<String>? _$sureAraligiGroupValueComputed;
 
   @override
-  String get sureAraligiGroupValue => (_$sureAraligiGroupValueComputed ??= Computed<String>(() => super.sureAraligiGroupValue, name: '_YaslandirmaRaporuViewModelBase.sureAraligiGroupValue')).value;
+  String get sureAraligiGroupValue => (_$sureAraligiGroupValueComputed ??=
+          Computed<String>(() => super.sureAraligiGroupValue,
+              name: '_YaslandirmaRaporuViewModelBase.sureAraligiGroupValue'))
+      .value;
   Computed<String>? _$odemeTipiGroupValueComputed;
 
   @override
-  String get odemeTipiGroupValue => (_$odemeTipiGroupValueComputed ??= Computed<String>(() => super.odemeTipiGroupValue, name: '_YaslandirmaRaporuViewModelBase.odemeTipiGroupValue')).value;
+  String get odemeTipiGroupValue => (_$odemeTipiGroupValueComputed ??=
+          Computed<String>(() => super.odemeTipiGroupValue,
+              name: '_YaslandirmaRaporuViewModelBase.odemeTipiGroupValue'))
+      .value;
 
-  late final _$_sureAraligiGroupValueAtom = Atom(name: '_YaslandirmaRaporuViewModelBase._sureAraligiGroupValue', context: context);
+  late final _$_sureAraligiGroupValueAtom = Atom(
+      name: '_YaslandirmaRaporuViewModelBase._sureAraligiGroupValue',
+      context: context);
 
   @override
   String get _sureAraligiGroupValue {
@@ -28,12 +36,15 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   set _sureAraligiGroupValue(String value) {
-    _$_sureAraligiGroupValueAtom.reportWrite(value, super._sureAraligiGroupValue, () {
+    _$_sureAraligiGroupValueAtom
+        .reportWrite(value, super._sureAraligiGroupValue, () {
       super._sureAraligiGroupValue = value;
     });
   }
 
-  late final _$_odemeTipiGroupValueAtom = Atom(name: '_YaslandirmaRaporuViewModelBase._odemeTipiGroupValue', context: context);
+  late final _$_odemeTipiGroupValueAtom = Atom(
+      name: '_YaslandirmaRaporuViewModelBase._odemeTipiGroupValue',
+      context: context);
 
   @override
   String get _odemeTipiGroupValue {
@@ -43,12 +54,14 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   set _odemeTipiGroupValue(String value) {
-    _$_odemeTipiGroupValueAtom.reportWrite(value, super._odemeTipiGroupValue, () {
+    _$_odemeTipiGroupValueAtom.reportWrite(value, super._odemeTipiGroupValue,
+        () {
       super._odemeTipiGroupValue = value;
     });
   }
 
-  late final _$odemeTipiValueAtom = Atom(name: '_YaslandirmaRaporuViewModelBase.odemeTipiValue', context: context);
+  late final _$odemeTipiValueAtom = Atom(
+      name: '_YaslandirmaRaporuViewModelBase.odemeTipiValue', context: context);
 
   @override
   ObservableList<String> get odemeTipiValue {
@@ -63,7 +76,8 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom = Atom(name: '_YaslandirmaRaporuViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom =
+      Atom(name: '_YaslandirmaRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -78,7 +92,9 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom = Atom(name: '_YaslandirmaRaporuViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(
+      name: '_YaslandirmaRaporuViewModelBase.futureController',
+      context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -93,11 +109,14 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
     });
   }
 
-  late final _$_YaslandirmaRaporuViewModelBaseActionController = ActionController(name: '_YaslandirmaRaporuViewModelBase', context: context);
+  late final _$_YaslandirmaRaporuViewModelBaseActionController =
+      ActionController(
+          name: '_YaslandirmaRaporuViewModelBase', context: context);
 
   @override
   void changeSureAraligi(int? index) {
-    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController.startAction(name: '_YaslandirmaRaporuViewModelBase.changeSureAraligi');
+    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController
+        .startAction(name: '_YaslandirmaRaporuViewModelBase.changeSureAraligi');
     try {
       return super.changeSureAraligi(index);
     } finally {
@@ -107,7 +126,8 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   void changeOdemeTipi(int? index) {
-    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController.startAction(name: '_YaslandirmaRaporuViewModelBase.changeOdemeTipi');
+    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController
+        .startAction(name: '_YaslandirmaRaporuViewModelBase.changeOdemeTipi');
     try {
       return super.changeOdemeTipi(index);
     } finally {
@@ -117,7 +137,8 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController.startAction(name: '_YaslandirmaRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController
+        .startAction(name: '_YaslandirmaRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
@@ -127,7 +148,8 @@ mixin _$YaslandirmaRaporuViewModel on _YaslandirmaRaporuViewModelBase, Store {
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController.startAction(name: '_YaslandirmaRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_YaslandirmaRaporuViewModelBaseActionController
+        .startAction(name: '_YaslandirmaRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {

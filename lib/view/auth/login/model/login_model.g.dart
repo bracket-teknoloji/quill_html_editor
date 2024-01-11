@@ -53,7 +53,11 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
   int get hashCode => typeId.hashCode;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TokenModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TokenModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -63,7 +67,16 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
 TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
   $checkKeys(
     json,
-    allowedKeys: const ['access_token', 'token_type', 'expires_in', 'USER_JSON', '.issued', '.expires', 'error', 'error_description'],
+    allowedKeys: const [
+      'access_token',
+      'token_type',
+      'expires_in',
+      'USER_JSON',
+      '.issued',
+      '.expires',
+      'error',
+      'error_description'
+    ],
   );
   return TokenModel()
     ..accessToken = json['access_token'] as String?
