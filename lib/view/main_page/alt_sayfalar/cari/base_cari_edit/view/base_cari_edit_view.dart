@@ -92,6 +92,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
         );
         if (result.data != null && result.data!.isNotEmpty && result.success == true) {
           CariDetayModel.setInstance(result.data[0]);
+          CariListesiModel.setInstance((result.data[0] as CariDetayModel).cariList?.firstOrNull);
           CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first));
           if (widget.model?.baseEditEnum == BaseEditEnum.kopyala) {
             final String? kod = await CariNetworkManager.getSiradakiKod(kod: "");
