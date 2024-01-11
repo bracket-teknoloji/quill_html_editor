@@ -40,18 +40,25 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
             child: Card(
               elevation: UIHelper.highSize,
               child: QuillHtmlEditor(
-                hintText: "Buraya notlarınızı yazabilirsiniz.",
+                hintText: "Buraya notlarınızı yazabilirsiniz...",
+                hintTextStyle: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5), fontSize: 16),
                 text: model.ekAciklama ?? "",
                 controller: controller,
                 isEnabled: enable,
                 minHeight: height,
                 hintTextAlign: TextAlign.start,
                 padding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
-                hintTextPadding: EdgeInsets.zero,
                 inputAction: InputAction.newline,
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.background,
-                onTextChanged: (String text) => text != "" ? model.ekAciklama = text : null,
+                onTextChanged: (String text) => model.ekAciklama = text != "" ? text : null,
+                onEditorCreated: () async {
+                  if (model.ekAciklama != null) {
+                    await controller.insertText(model.ekAciklama ?? "");
+                  } else {
+                    await controller.insertText("");
+                  }
+                },
                 loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
               ),
             ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
