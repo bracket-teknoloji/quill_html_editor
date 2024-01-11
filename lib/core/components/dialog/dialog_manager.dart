@@ -178,11 +178,12 @@ class DialogManager {
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showCariGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cari, title: model?.cariAdi ?? model?.cariKodu),
+  Future<void> showCariGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async => _baseDialog(
+        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: IslemTipiEnum.cari, title: model?.cariAdi ?? model?.cariKodu, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
+        
       ).show();
   void showCariIslemleriGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
         body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cariIslemleri, title: model?.cariAdi ?? model?.cariKodu),
