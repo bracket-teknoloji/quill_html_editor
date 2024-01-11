@@ -51,6 +51,11 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.kod3,
     this.kod4,
     this.kod5,
+    this.kod1Tanimi,
+    this.kod2Tanimi,
+    this.kod3Tanimi,
+    this.kod4Tanimi,
+    this.kod5Tanimi,
     this.bilgi,
     this.kilit,
     this.bagliCari,
@@ -123,6 +128,11 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? kod3;
   String? kod4;
   String? kod5;
+  String? kod1Tanimi;
+  String? kod2Tanimi;
+  String? kod3Tanimi;
+  String? kod4Tanimi;
+  String? kod5Tanimi;
   String? bilgi;
   String? kilit;
   String? bagliCari;
@@ -199,6 +209,11 @@ class CariSaveRequestModel with NetworkManagerMixin {
         kod3: model?.kod3,
         kod4: model?.kod4,
         kod5: model?.kod5,
+        kod1Tanimi: model?.kod1Tanimi,
+        kod2Tanimi: model?.kod2Tanimi,
+        kod3Tanimi: model?.kod3Tanimi,
+        kod4Tanimi: model?.kod4Tanimi,
+        kod5Tanimi: model?.kod5Tanimi,
         bilgi: model?.bilgi,
         kilit: model?.kilit,
         bagliCari: model?.bagliCari,
