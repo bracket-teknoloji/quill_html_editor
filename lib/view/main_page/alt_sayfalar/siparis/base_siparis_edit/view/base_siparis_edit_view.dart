@@ -157,7 +157,17 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (bool? value) async {
+          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+            Get.back(result: true);
+          }
+          await dialogManager.showAreYouSureDialog(() {
+            Get.back(result: true);
+            BaseSiparisEditModel.resetInstance();
+          });
+        },
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
@@ -328,17 +338,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             ),
           ),
         ),
-        onWillPop: () async {
-          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
-          }
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() {
-            result = true;
-            BaseSiparisEditModel.resetInstance();
-          });
-          return result;
-        },
       );
 
   BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) => BottomSheetModel(

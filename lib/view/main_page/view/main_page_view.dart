@@ -35,8 +35,9 @@ class _MainPageViewState extends BaseState<MainPageView> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
         if (lastItems.isNotEmpty) {
           setState(() {
             items = lastItems.last;
@@ -44,7 +45,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
             title2.removeLast();
             lastItems.removeLast();
           });
-          return false;
+          return;
         } else {
           if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
             scaffoldKey.currentState!.closeDrawer();
@@ -53,7 +54,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
           } else {
             dialogManager.showExitDialog();
           }
-          return false;
+          return;
         }
       },
       child: Scaffold(

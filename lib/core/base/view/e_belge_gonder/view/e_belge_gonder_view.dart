@@ -90,10 +90,11 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (bool? value) async {
           Get.back(result: true);
-          return false;
+          return;
         },
         child: Scaffold(
           appBar: AppBar(
@@ -355,9 +356,9 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
     } else {
       if (result.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
-        _dizaynController.text = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynAdi ?? "";
-        viewModel.model.dizaynAdi = result.firstWhere((element) => element.varsayilanMi ?? false).dizaynKodu;
-        viewModel.setDizaynNo(result.firstWhere((element) => element.varsayilanMi ?? false).id ?? 0);
+        _dizaynController.text = result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynKodu;
+        viewModel.setDizaynNo(result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.id ?? 0);
         return;
       }
       final selectedDizaynModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
