@@ -104,19 +104,7 @@ class CacheManager {
         BaseProfilParametreModel().toJson(),
       );
     }
-    finansOzelRaporOrderBox.clear();
-    if (finansOzelRaporOrderBox.isEmpty) {
-      await finansOzelRaporOrderBox.put("Fatura", 0);
-      await finansOzelRaporOrderBox.put("Sipariş", 1);
-      await finansOzelRaporOrderBox.put("Müşteri Çeki", 2);
-      await finansOzelRaporOrderBox.put("Müşteri Senedi", 3);
-      await finansOzelRaporOrderBox.put("Banka", 4);
-      await finansOzelRaporOrderBox.put("İrsaliye", 5);
-      await finansOzelRaporOrderBox.put("Borç Çeki", 6);
-      await finansOzelRaporOrderBox.put("Borç Senedi", 7);
-      await finansOzelRaporOrderBox.put("Teklif", 8);
-      await finansOzelRaporOrderBox.put("Kasa", 9);
-    }
+    await  finansOzelRaporOrderBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {
       await isLicenseVerifiedBox.put("value", false);
     }
@@ -158,12 +146,6 @@ class CacheManager {
   static List getSubeListesi() => subeListesiBox.get("value") ?? [];
   static bool getIsLicenseVerified(String key) => key == "demo@netfect.com" ? true : (isLicenseVerifiedBox.get(key) ?? false);
 
-  /// Cari Kodu ile arayacaksın
-  /// ```dart
-  /// // Örnek
-  /// BaseSiparisEditModel.instance.cariKodu
-  /// ```
-  /// {@end-tool}
   static BaseSiparisEditModel? getSiparisEdit(String cariKodu) => siparisEditBox.get(cariKodu);
   static List<BaseSiparisEditModel?> getSiparisEditList(EditTipiEnum siparisTipi) =>
       siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
