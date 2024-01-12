@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -7,6 +8,7 @@ import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bo
 import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../view_model/finans_ozet_rapor_view_model.dart";
+
 
 class FinansOzetRaporView extends StatefulWidget {
   const FinansOzetRaporView({super.key});
@@ -24,7 +26,13 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
   void initState() {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (CacheManager.finansOzelRaporOrderBox.isEmpty) {
+        viewModel.raporlarList.forEachIndexed((index, element) async {
+          await CacheManager.finansOzelRaporOrderBox.put(element, index);
+        });
+      }
       await viewModel.getGunSonuRaporu();
     });
     super.initState();
@@ -85,15 +93,25 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
                         for (int i = newIndex; i < viewModel.raporlarList.length; i++) {
                           newList.add(viewModel.raporlarList[i]);
                         }
-                        // CacheManager.setFinansOzetOrder(viewModel.raporlarList[oldIndex], newIndex);
+                        // print(viewModel.raporlarList[newIndex]);
+                        // print(viewModel.raporlarList[oldIndex]);
+                        CacheManager.setFinansOzetOrder(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[oldIndex])], newIndex);
+                        if (oldIndex < newIndex) {
+                          CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex - 1);
+                        } else {
+                          CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex + 1);
+                        }
                       },
-                      itemBuilder: (context, index) => Card(
-                        key: Key(index.toString()),
-                        child: ListTile(
-                          title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
-                          subtitle: Text("s" * index),
-                        ),
-                      ),
+                      itemBuilder: (context, index) {
+                        print(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]);
+                        return Card(
+                          key: Key(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                          child: ListTile(
+                            title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                            subtitle: Text("s" * index),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
