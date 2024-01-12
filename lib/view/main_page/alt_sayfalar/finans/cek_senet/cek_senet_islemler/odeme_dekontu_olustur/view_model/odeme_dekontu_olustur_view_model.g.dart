@@ -27,10 +27,14 @@ mixin _$OdemeDekontuOlusturViewModel
     return super.model;
   }
 
+  bool _modelIsInitialized = false;
+
   @override
   set model(TahsilatRequestModel value) {
-    _$modelAtom.reportWrite(value, super.model, () {
+    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
+        () {
       super.model = value;
+      _modelIsInitialized = true;
     });
   }
 

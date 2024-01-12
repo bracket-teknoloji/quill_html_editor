@@ -28,10 +28,14 @@ mixin _$EBelgeGelenGidenKutusuViewModel
     return super.eBelgeEnum;
   }
 
+  bool _eBelgeEnumIsInitialized = false;
+
   @override
   set eBelgeEnum(EBelgeEnum value) {
-    _$eBelgeEnumAtom.reportWrite(value, super.eBelgeEnum, () {
+    _$eBelgeEnumAtom.reportWrite(
+        value, _eBelgeEnumIsInitialized ? super.eBelgeEnum : null, () {
       super.eBelgeEnum = value;
+      _eBelgeEnumIsInitialized = true;
     });
   }
 

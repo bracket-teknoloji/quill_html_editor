@@ -34,10 +34,14 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
     return super.requestModel;
   }
 
+  bool _requestModelIsInitialized = false;
+
   @override
   set requestModel(EvraklarRequestModel value) {
-    _$requestModelAtom.reportWrite(value, super.requestModel, () {
+    _$requestModelAtom.reportWrite(
+        value, _requestModelIsInitialized ? super.requestModel : null, () {
       super.requestModel = value;
+      _requestModelIsInitialized = true;
     });
   }
 

@@ -180,7 +180,7 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteCekSenetModelImpl &&

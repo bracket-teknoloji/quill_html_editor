@@ -83,10 +83,14 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     return super.editTipiEnum;
   }
 
+  bool _editTipiEnumIsInitialized = false;
+
   @override
   set editTipiEnum(EditTipiEnum value) {
-    _$editTipiEnumAtom.reportWrite(value, super.editTipiEnum, () {
+    _$editTipiEnumAtom.reportWrite(
+        value, _editTipiEnumIsInitialized ? super.editTipiEnum : null, () {
       super.editTipiEnum = value;
+      _editTipiEnumIsInitialized = true;
     });
   }
 

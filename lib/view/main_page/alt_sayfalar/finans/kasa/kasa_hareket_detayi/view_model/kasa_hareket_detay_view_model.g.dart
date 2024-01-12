@@ -35,11 +35,17 @@ mixin _$KasaHareketDetayViewModel on _KasaHareketDetayViewModelBase, Store {
     return super.kasaIslemleriRequestModel;
   }
 
+  bool _kasaIslemleriRequestModelIsInitialized = false;
+
   @override
   set kasaIslemleriRequestModel(KasaIslemleriRequestModel value) {
-    _$kasaIslemleriRequestModelAtom
-        .reportWrite(value, super.kasaIslemleriRequestModel, () {
+    _$kasaIslemleriRequestModelAtom.reportWrite(
+        value,
+        _kasaIslemleriRequestModelIsInitialized
+            ? super.kasaIslemleriRequestModel
+            : null, () {
       super.kasaIslemleriRequestModel = value;
+      _kasaIslemleriRequestModelIsInitialized = true;
     });
   }
 

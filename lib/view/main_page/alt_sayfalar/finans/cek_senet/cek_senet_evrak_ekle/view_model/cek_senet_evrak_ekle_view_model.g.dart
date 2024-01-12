@@ -18,10 +18,14 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
     return super.model;
   }
 
+  bool _modelIsInitialized = false;
+
   @override
   set model(CekSenetEvrakEkleModel value) {
-    _$modelAtom.reportWrite(value, super.model, () {
+    _$modelAtom.reportWrite(value, _modelIsInitialized ? super.model : null,
+        () {
       super.model = value;
+      _modelIsInitialized = true;
     });
   }
 

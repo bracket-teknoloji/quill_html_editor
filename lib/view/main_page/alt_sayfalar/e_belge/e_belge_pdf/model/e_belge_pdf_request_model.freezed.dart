@@ -163,7 +163,7 @@ class _$EBelgePdfRequestModelImpl implements _EBelgePdfRequestModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EBelgePdfRequestModelImpl &&
