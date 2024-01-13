@@ -435,11 +435,11 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.success == true) {
-      final List<StokListesiModel>? list = response.data as List<StokListesiModel>?;
+      final List<StokListesiModel> list = (response.data as List).map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
       if (list.isEmptyOrNull) {
         return null;
       }
-      return list?.firstOrNull;
+      return list.firstOrNull;
     }
     return null;
   }
