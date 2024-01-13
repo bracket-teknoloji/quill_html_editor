@@ -785,7 +785,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     //   });
     //   data2["ArrKod5"] = liste;
     // }
-    final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.bottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel());
+    final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: (viewModel.bottomSheetModel..resimGoster = viewModel.resimleriGoster).toJsonWithList(), bodyModel: StokListesiModel());
     if (response.success ?? false) {
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 
