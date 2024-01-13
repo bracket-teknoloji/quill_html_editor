@@ -45,8 +45,8 @@
         <meta-data
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
-        <meta-data
+        <!-- <meta-data
             android:name="io.flutter.embedding.android.EnableImpeller"
-            android:value="true" />
+            android:value="true" /> -->
     </application>
 </manifest>
