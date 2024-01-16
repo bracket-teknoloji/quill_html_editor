@@ -159,12 +159,15 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   // final BaseSiparisEditModel newModel = widget.model.copyWith(
                   //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
                   // );
-                  await dialogManager.showEBelgeGridViewDialog(
+                  final result = await dialogManager.showEBelgeGridViewDialog(
                     model: widget.model,
                     onSelected: (value) {
                       widget.onUpdated?.call(value);
                     },
                   );
+                  if (result == true) {
+                    widget.onUpdated?.call(true);
+                  }
                 },
               ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
               BottomSheetModel(
