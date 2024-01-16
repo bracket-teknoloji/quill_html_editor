@@ -79,8 +79,10 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     stokKoduController = TextEditingController(text: viewModel.stokListesiModel.stokKodu);
     stokAdiController = TextEditingController(text: viewModel.stokListesiModel.stokAdi);
     depoController = TextEditingController(
-      text:
-          CacheManager.getAnaVeri?.paramModel?.depoList?.firstWhereOrNull((element) => element.depoKodu == (model?.stokList?.firstOrNull?.depoKodu ?? viewModel.stokListesiModel.depoKodu))?.depoTanimi ?? "",
+      text: CacheManager.getAnaVeri?.paramModel?.depoList
+              ?.firstWhereOrNull((element) => element.depoKodu == (model?.stokList?.firstOrNull?.depoKodu ?? viewModel.stokListesiModel.depoKodu))
+              ?.depoTanimi ??
+          "",
     );
     muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.muhdetayAdi ?? viewModel.stokListesiModel.muhdetayAdi);
     olcuBirimi1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi ?? viewModel.stokListesiModel.olcuBirimi);
@@ -260,23 +262,11 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 enabled: enable,
                 suffix: IconButton(
                   onPressed: () async {
-                    final List<StokMuhasebeKoduModel> list = await getMuhasebeKodlari();
-                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Muhasebe Kodu",
-                      children: list
-                          .map(
-                            (e) => BottomSheetModel(
-                              title: "${e.adi ?? ""}\n${e.muhKodu.toStringIfNotNull}",
-                              description: "${e.alisHesabi} \n${e.satisHesabi}",
-                              onTap: () => Get.back(result: e),
-                            ),
-                          )
-                          .toList(),
-                    );
+                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.stokListesiModel.muhdetayKodu);
                     if (result != null) {
                       muhasebeDetayKoduController.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNotNull}";
                       viewModel.stokListesiModel.muhdetayAdi = result.adi;
+                      viewModel.stokListesiModel.muhdetayKodu = result.muhKodu;
                     }
                   },
                   icon: const Icon(Icons.more_horiz_outlined),
