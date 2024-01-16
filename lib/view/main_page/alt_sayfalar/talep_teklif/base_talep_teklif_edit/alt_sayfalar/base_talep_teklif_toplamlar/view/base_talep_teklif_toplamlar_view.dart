@@ -481,7 +481,10 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
       iskontoTipi2Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
       iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
-    if (model.vadeTarihi?.isBefore(DateTime.now()) ?? false) {
+    // if (model.vadeTarihi?.isBefore(DateTime.now()) ?? false) {
+    //   viewModel.model.vadeGunu = 0;
+    // }
+    if (model.vadeGunu == null) {
       viewModel.model.vadeGunu = 0;
     }
     vadeGunuController = TextEditingController(
