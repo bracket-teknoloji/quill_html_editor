@@ -280,9 +280,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 readOnly: true,
                 suffixMore: true,
                 onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi = p0,
-                onTap: () {
-                  baseOlcuBirimleriController(controller: 1);
-                },
+                onTap: () => baseOlcuBirimleriController(controller: 1),
                 controller: olcuBirimi1Controller,
               ),
               CustomTextField(
