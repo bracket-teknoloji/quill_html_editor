@@ -517,15 +517,23 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu, dynamic groupValue, bool? alisMi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari());
     }
-    return await showBottomSheetDialog(
+    return await showRadioBottomSheetDialog(
       context,
+      groupValue: groupValue,
       title: "Muhasebe Kodu Seçiniz",
       children: viewModel.muhasebeKoduList
-          ?.map((StokMuhasebeKoduModel e) => BottomSheetModel(title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "", description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}", value: e))
+          ?.map(
+            (StokMuhasebeKoduModel e) => BottomSheetModel(
+              title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
+              description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}",
+              value: e,
+              groupValue:alisMi== true ? e.alisHesabi : alisMi == false ? e.satisHesabi : e.muhKodu,
+            ),
+          )
           .toList(),
     );
   }

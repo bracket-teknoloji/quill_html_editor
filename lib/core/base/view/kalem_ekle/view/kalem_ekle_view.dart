@@ -296,7 +296,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         controller: muhKoduController,
                         valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context);
+                          final result =
+                              await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.kalemModel.muhasebeKodu, alisMi: !(editTipi?.satisMi ?? false));
                           if (result != null) {
                             if (editTipi?.satisMi ?? false) {
                               viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
@@ -783,8 +784,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
       viewModel.setYapKod(widget.stokListesiModel?.yapkod);
       viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip ?? viewModel.model?.satDovTip;
-      viewModel.kalemModel.dovizTipi ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.satDovTip;
-      viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? viewModel.model?.alisDovizAdi;
+      viewModel.kalemModel.dovizTipi ??= editTipi?.satisMi == true ? widget.stokListesiModel?.satDovTip : viewModel.model?.alisDovTip;
+      viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
     }
     kalemAdiController.text = viewModel.kalemModel.kalemAdi ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
     ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? "";
