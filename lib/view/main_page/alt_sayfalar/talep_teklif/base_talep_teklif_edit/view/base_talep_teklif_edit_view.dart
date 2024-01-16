@@ -105,11 +105,15 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             BaseSiparisEditModel.instance.belgeNo = widget.model.model?.belgeNo;
             BaseSiparisEditModel.instance.isNew = true;
+            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
+            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
           } else if (widget.model.baseEditEnum == BaseEditEnum.revize) {
             BaseSiparisEditModel.instance.isNew = true;
             BaseSiparisEditModel.instance.yeniKayit = true;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.teklifRevizeIslemi = true;
+            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
+            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {

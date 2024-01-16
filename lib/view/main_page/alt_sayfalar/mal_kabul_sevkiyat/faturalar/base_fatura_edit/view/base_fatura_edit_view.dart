@@ -139,6 +139,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
+            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
               viewModel.changeIsBaseSiparisEmpty(true);
