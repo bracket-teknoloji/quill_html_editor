@@ -145,7 +145,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             if (cariModel is CariListesiModel) {
               viewModel.changeIsBaseSiparisEmpty(true);
               BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-              BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+              BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
               BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
               BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
               BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;

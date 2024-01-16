@@ -990,6 +990,8 @@ class IslemlerMenuItemConstants<T> {
                   element.siparisSira = element.sira;
                 }
                 result.kalemList = kalemList;
+                result.depoTanimi ??= siparisModel.depoTanimi;
+
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
