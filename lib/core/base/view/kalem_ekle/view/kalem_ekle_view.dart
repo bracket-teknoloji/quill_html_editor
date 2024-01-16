@@ -1,5 +1,6 @@
 import "dart:developer";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -58,6 +59,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController kdvOraniController;
   late final TextEditingController fiyatController;
   late final TextEditingController muhKoduController;
+  late final TextEditingController serilerController;
   TextEditingController? isk1Controller;
   TextEditingController? isk1TipiController;
   TextEditingController? isk2TipiController;
@@ -108,6 +110,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ),
           IconButton(
             onPressed: () {
+              if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+                dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar ?? 0}) ile seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
+              }
               if (formKey.currentState?.validate() ?? false) {
                 if (!yetkiController.lokalDepoUygulamasiAcikMi) {
                   viewModel.kalemModel.depoKodu = 0;
@@ -660,6 +665,22 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ],
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
                 ),
+                Observer(
+                  builder: (_) => CustomTextField(
+                    labelText: "Seriler",
+                    isMust: true,
+                    controller: serilerController,
+                    suffixMore: true,
+                    readOnly: true,
+                    onTap: serilerOnTap,
+                    validator: (value) {
+                      if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+                        return "Girdiğiniz miktar (${viewModel.kalemModel.miktar ?? 0}) ile seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
+                      }
+                      return null;
+                    },
+                  ).yetkiVarMi(viewModel.model?.seriCikislardaAcik == true && kDebugMode),
+                ),
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi),
@@ -770,6 +791,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kdvOraniController = TextEditingController();
     fiyatController = TextEditingController();
     muhKoduController = TextEditingController();
+    serilerController = TextEditingController();
   }
 
   Future<void> controllerFiller() async {
@@ -781,9 +803,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu;
       viewModel.kalemModel.stokSatDovizAdi ??= viewModel.model?.satisDovizAdi;
       viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi;
-      viewModel.kalemModel.stokSatDovTip ??= viewModel.model?.satDovTip ?? viewModel.model?.satDovTip;
+      viewModel.kalemModel.stokSatDovTip ??= widget.stokListesiModel?.satDovTip ?? viewModel.model?.satDovTip;
       viewModel.setYapKod(widget.stokListesiModel?.yapkod);
-      viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip ?? viewModel.model?.satDovTip;
+      viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizTipi ??= editTipi?.satisMi == true ? widget.stokListesiModel?.satDovTip : viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
     }
@@ -889,6 +911,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk6TipiController?.dispose();
     isk6YuzdeController?.dispose();
     muhKoduController.dispose();
+    serilerController.dispose();
   }
 
   String getIskTipiAciklama(num? value) => parametreModel.listIskTip?.firstWhereOrNull((element) => element.iskontoTipi == value)?.aciklama ?? "";
@@ -1005,6 +1028,14 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       case 6:
         viewModel.setIskonto6(double.tryParse(value) ?? 0);
       default:
+    }
+  }
+
+  Future<void> serilerOnTap() async {
+    if ((viewModel.kalemModel.miktar ?? 0) < 1) {
+      dialogManager.showErrorSnackBar("Lütfen önce miktar giriniz.");
+    } else {
+      final result = await Get.toNamed("/seriListesi", arguments: viewModel.kalemModel);
     }
   }
 }
