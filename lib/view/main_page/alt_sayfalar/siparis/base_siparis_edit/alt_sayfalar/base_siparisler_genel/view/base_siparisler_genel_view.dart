@@ -199,6 +199,8 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                     isMust: true,
                     suffixMore: true,
                     controller: belgeTipiController,
+
+                    // valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
                       if (result != null) {

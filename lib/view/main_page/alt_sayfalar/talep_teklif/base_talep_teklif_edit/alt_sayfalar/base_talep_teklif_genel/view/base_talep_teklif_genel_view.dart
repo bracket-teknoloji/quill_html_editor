@@ -256,7 +256,6 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
-
                           if (result is BelgeTipiModel) {
                             _belgeTipiController.text = result.belgeTipi ?? "";
                             viewModel.setBelgeTipi(result.belgeTipiId);
