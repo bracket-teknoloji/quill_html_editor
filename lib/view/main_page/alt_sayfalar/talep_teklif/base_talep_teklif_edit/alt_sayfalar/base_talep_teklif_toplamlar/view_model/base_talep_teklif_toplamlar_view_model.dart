@@ -44,7 +44,7 @@ abstract class _BaseTalepTeklifToplamlarViewModelBase with Store {
   }
 
   @action
-  void setVadeTarihi(DateTime value) {
+  void setVadeTarihi(DateTime? value) {
     model = model.copyWith(vadeTarihi: value);
     BaseSiparisEditModel.setInstance(model);
   }

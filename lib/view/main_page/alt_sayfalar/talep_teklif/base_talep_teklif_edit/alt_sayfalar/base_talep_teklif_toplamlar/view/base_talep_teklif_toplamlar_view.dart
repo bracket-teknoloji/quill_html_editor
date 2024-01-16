@@ -355,7 +355,10 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     enabled: enable,
                     controller: vadeGunuController,
                     keyboardType: TextInputType.number,
-                    onChanged: (String value) => model.vadeGunu = int.tryParse(value),
+                    onChanged: (value) {
+                      model.vadeGunu = int.tryParse(value);
+                      viewModel.setVadeTarihi(DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)));
+                    },
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi.toDateString)),
                     suffix: IconButton(
                       onPressed: () async {

@@ -121,7 +121,7 @@ mixin _$BaseTalepTeklifToplamlarViewModel
   }
 
   @override
-  void setVadeTarihi(DateTime value) {
+  void setVadeTarihi(DateTime? value) {
     final _$actionInfo =
         _$_BaseTalepTeklifToplamlarViewModelBaseActionController.startAction(
             name: '_BaseTalepTeklifToplamlarViewModelBase.setVadeTarihi');

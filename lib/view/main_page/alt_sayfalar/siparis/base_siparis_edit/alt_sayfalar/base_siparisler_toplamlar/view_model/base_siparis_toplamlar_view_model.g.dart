@@ -115,7 +115,7 @@ mixin _$BaseSiparisToplamlarViewModel
   }
 
   @override
-  void setVadeTarihi(DateTime value) {
+  void setVadeTarihi(DateTime? value) {
     final _$actionInfo = _$_BaseSiparisToplamlarViewModelBaseActionController
         .startAction(name: '_BaseSiparisToplamlarViewModelBase.setVadeTarihi');
     try {

@@ -474,7 +474,10 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                     enabled: enable,
                     controller: vadeGunuController,
                     keyboardType: TextInputType.number,
-                    onChanged: (value) => model.vadeGunu = int.tryParse(value),
+                    onChanged: (value) {
+                      model.vadeGunu = int.tryParse(value);
+                      viewModel.setVadeTarihi(DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)));
+                    },
                     valueWidget: Observer(
                       builder: (_) => Text(viewModel.model.vadeTarihi?.toDateString ?? ""),
                     ),
