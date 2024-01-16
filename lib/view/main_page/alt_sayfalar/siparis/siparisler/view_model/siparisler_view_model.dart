@@ -21,8 +21,8 @@ abstract class _SiparislerViewModelBase with Store {
     "Tarih (Z-A)": "TARIH_ZA",
     "Cari Adı (A-Z)": "CARI_ADI_AZ",
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
-    "Vade Günü (A-Z)": "VADE_GUNU_AZ",
-    "Vade Günü (Z-A)": "VADE_GUNU_ZA",
+    "Vade Günü (A-Z)": "VADE_AZ",
+    "Vade Günü (Z-A)": "VADE_ZA",
   };
 
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
