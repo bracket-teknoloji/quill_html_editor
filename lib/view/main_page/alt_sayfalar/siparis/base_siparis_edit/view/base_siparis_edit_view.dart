@@ -164,6 +164,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         onPopInvoked: (bool? value) async {
           if (widget.model.baseEditEnum == BaseEditEnum.goruntule || value == true) {
             Get.back(result: true);
+            return;
           }
           await dialogManager.showAreYouSureDialog(() {
             Get.back(result: true);
