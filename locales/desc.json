@@ -41,7 +41,7 @@
     "actions": "actions",
     "other": "other",
     "general": "general",
-    "alert": "alert",
+    "warning": "warning",
     "refresh": "refresh",
     "apply": "apply"
   }

@@ -85,7 +85,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariylaGonderildiMi),
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
-                  ColorfulBadge(label: Text(loc(context).generalStrings.alert), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
+                  ColorfulBadge(label: Text(loc(context).generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
                   ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
                   Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),

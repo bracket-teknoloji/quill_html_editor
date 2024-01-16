@@ -89,7 +89,7 @@ class LocalegeneralStrings {
   String get actions => _data["actions"]!;
   String get other => _data["other"]!;
   String get general => _data["general"]!;
-  String get alert => _data["alert"]!;
+  String get warning => _data["warning"]!;
   String get refresh => _data["refresh"]!;
   String get apply => _data["apply"]!;
 }
