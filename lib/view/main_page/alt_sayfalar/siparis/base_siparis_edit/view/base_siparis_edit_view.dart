@@ -107,6 +107,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
+            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
@@ -160,7 +162,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   Widget build(BuildContext context) => PopScope(
         canPop: false,
         onPopInvoked: (bool? value) async {
-          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+          if (widget.model.baseEditEnum == BaseEditEnum.goruntule || value == true) {
             Get.back(result: true);
           }
           await dialogManager.showAreYouSureDialog(() {

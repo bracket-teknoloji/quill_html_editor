@@ -109,11 +109,14 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 )
                               : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
                           onTap: () {
-                            Get.back();
+                            // Get.back();
+                            Navigator.of(context).pop(true);
                             if (value.arguments != null) {
-                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                              // Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                              Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
                             } else {
-                              Get.toNamed(value.onTap.toString());
+                              // Get.toNamed(value.onTap.toString());
+                              Navigator.pushNamed(context, value.onTap.toString());
                             }
                           },
                         ),

@@ -174,18 +174,18 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           builder: (_) => SwitchListTile.adaptive(
                             title: const Text("Resimleri Göster"),
                             value: viewModel.resimleriGoster == "E",
-                            onChanged: (value) {
+                            onChanged: (value) async {
                               viewModel.setResimleriGoster();
                               if (viewModel.resimleriGoster == "E") {
                                 viewModel.setStokListesi(null);
                                 viewModel.resetSayfa();
-                                getData();
                                 Get.back();
+                                await getData();
                               } else {
                                 viewModel.setStokListesi(null);
                                 viewModel.resetSayfa();
-                                getData();
                                 Get.back();
+                                await getData();
                               }
                             },
                           ),
@@ -605,13 +605,18 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           },
                           // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                           leading: CircleAvatar(
-                            child: stok.resimUrlKucuk == null
+                            child: stok.resimUrlKucuk == null && viewModel.resimleriGoster != "E"
                                 ? Text((stok.stokAdi ?? "  ").substring(0, 1))
                                 : SizedBox(
                                     height: UIHelper.highSize * 3,
                                     width: UIHelper.highSize * 3,
                                     child: InkWell(
-                                      onTap: () => Get.to(ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? "")),
+                                      borderRadius: UIHelper.lowBorderRadius,
+                                      onTap: () {
+                                        if (stok.resimUrl != null) {
+                                          Get.to(ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? ""));
+                                        }
+                                      },
                                       child: ImageWidget(path: stok.resimUrlKucuk),
                                     ),
                                   ),
@@ -785,7 +790,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     //   });
     //   data2["ArrKod5"] = liste;
     // }
-    final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: (viewModel.bottomSheetModel..resimGoster = viewModel.resimleriGoster).toJsonWithList(), bodyModel: StokListesiModel());
+    final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      data: (viewModel.bottomSheetModel.copyWith(resimGoster: viewModel.resimleriGoster, ekranTipi: null, menuKodu: "STOK_STOK")).toJsonWithList(),
+      bodyModel: StokListesiModel(),
+    );
     if (response.success ?? false) {
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 

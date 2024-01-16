@@ -84,21 +84,24 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: appBar,
-        body: body,
-        bottomNavigationBar: BottomBarWidget(
-          isScrolledDown: true,
-          children: [
-            FooterButton(
-              children: [
-                ListTile(
-                  subtitle: const Text("Toplam Kayıt:"),
-                  trailing: Observer(builder: (_) => Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? "")),
-                ),
-              ],
-            ),
-          ],
+  Widget build(BuildContext context) => PopScope(
+        canPop: true,
+        child: Scaffold(
+          appBar: appBar,
+          body: body,
+          bottomNavigationBar: BottomBarWidget(
+            isScrolledDown: true,
+            children: [
+              FooterButton(
+                children: [
+                  ListTile(
+                    subtitle: const Text("Toplam Kayıt:"),
+                    trailing: Observer(builder: (_) => Text(((viewModel.paramData?["TOPLAM_KAYIT_SAYISI"] as double?) ?? 0.0).toIntIfDouble.toStringIfNotNull ?? "")),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       );
 

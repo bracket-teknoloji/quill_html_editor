@@ -330,7 +330,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         controller: _ozelKod1Controller,
                         enabled: enable,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
-                        onClear: () => viewModel.setOzelKod1(null),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
                           if (result != null) {
