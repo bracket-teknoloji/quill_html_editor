@@ -12,6 +12,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -211,6 +212,7 @@ class PickerApp extends StatelessWidget {
             ),
           ),
           //* Seri İşlemleri
+          GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
           GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(
@@ -224,7 +226,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),
 
               //* E-Fatura - E-Arşiv - E-İrsaliye
-              GetPage(name: "/eBelgeGonder", page: () => EBelgeGonderView(model: Get.arguments)),
+              GetPage(name: "/eBelgeGonder", page: () => EBelgeGonderView(model: Get.arguments), popGesture: false),
 
               //* Cari
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
