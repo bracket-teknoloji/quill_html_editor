@@ -792,7 +792,11 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     // }
     final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
-      data: (viewModel.bottomSheetModel.copyWith(resimGoster: viewModel.resimleriGoster, ekranTipi: null, menuKodu: "STOK_STOK")).toJsonWithList(),
+      data: (viewModel.bottomSheetModel.copyWith(
+        resimGoster: viewModel.resimleriGoster,
+        menuKodu: "STOK_STOK",
+        searchText: viewModel.searchValue,
+      )).toJsonWithList(),
       bodyModel: StokListesiModel(),
     );
     if (response.success ?? false) {
