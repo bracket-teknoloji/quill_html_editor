@@ -103,90 +103,93 @@ class _MainPageViewState extends BaseState<MainPageView> {
         ],
       );
 
-  SafeArea body(BuildContext context) => SafeArea(
-        child: Stack(
-          children: [
-            GridView.builder(
-              padding: UIHelper.lowPadding,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                //* indexteki itemi burada alıyoruz
-                final item = items[index];
-                return AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  delay: const Duration(milliseconds: 50),
-                  child: FadeInAnimation(
-                    child: CustomGridTile(
-                      // color: item.color,
-                      model: item,
-                      // title: item.title.toString(),
-                      onTap: () {
-                        if (item.altMenuVarMi) {
-                          if (item.altMenuler?.length == 1) {
-                            item.altMenuler?.firstOrNull?.onTap?.call();
-                            return;
+  PopScope body(BuildContext context) => PopScope(
+    canPop: false,
+    child: SafeArea(
+          child: Stack(
+            children: [
+              GridView.builder(
+                padding: UIHelper.lowPadding,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: items.length,
+                itemBuilder: (context, index) {
+                  //* indexteki itemi burada alıyoruz
+                  final item = items[index];
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 500),
+                    delay: const Duration(milliseconds: 50),
+                    child: FadeInAnimation(
+                      child: CustomGridTile(
+                        // color: item.color,
+                        model: item,
+                        // title: item.title.toString(),
+                        onTap: () {
+                          if (item.altMenuVarMi) {
+                            if (item.altMenuler?.length == 1) {
+                              item.altMenuler?.firstOrNull?.onTap?.call();
+                              return;
+                            }
+                            setState(() {
+                              lastItems.add(items);
+                              title2.add(item.title.toString());
+                              items = item.altMenuler!.where((element) {
+                                element.color ??= item.color;
+                                if (element.icon.ext.isNullOrEmpty) {
+                                  element.icon = item.icon;
+                                }
+                                return element.yetkiKontrol;
+                              }).toList();
+                            });
+                          } else {
+                            items[index].onTap?.call();
                           }
-                          setState(() {
-                            lastItems.add(items);
-                            title2.add(item.title.toString());
-                            items = item.altMenuler!.where((element) {
-                              element.color ??= item.color;
-                              if (element.icon.ext.isNullOrEmpty) {
-                                element.icon = item.icon;
-                              }
-                              return element.yetkiKontrol;
-                            }).toList();
-                          });
-                        } else {
-                          items[index].onTap?.call();
-                        }
-                      },
+                        },
+                      ),
                     ),
+                  );
+                },
+              ),
+              Visibility(
+                visible: !kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
+                child: SizedBox(
+                  width: UIHelper.highSize * 3,
+                  child: GestureDetector(
+                    onHorizontalDragStart: (details) {
+                      if (Directionality.of(context) == TextDirection.ltr) {
+                        return;
+                      }
+                      if (details.localPosition.dx < 50) {
+                        setState(() {
+                          items = lastItems.last;
+                          title2.removeLast();
+                          lastItems.removeLast();
+                        });
+                      }
+                    },
+                    onHorizontalDragEnd: (details) {
+                      if (Directionality.of(context) == TextDirection.rtl) {
+                        return;
+                      }
+                      if (details.primaryVelocity! > 0) {
+                        setState(() {
+                          items = lastItems.last;
+                          title2.removeLast();
+                          lastItems.removeLast();
+                        });
+                      }
+                    },
                   ),
-                );
-              },
-            ),
-            Visibility(
-              visible: !kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
-              child: SizedBox(
-                width: UIHelper.highSize * 3,
-                child: GestureDetector(
-                  onHorizontalDragStart: (details) {
-                    if (Directionality.of(context) == TextDirection.ltr) {
-                      return;
-                    }
-                    if (details.localPosition.dx < 50) {
-                      setState(() {
-                        items = lastItems.last;
-                        title2.removeLast();
-                        lastItems.removeLast();
-                      });
-                    }
-                  },
-                  onHorizontalDragEnd: (details) {
-                    if (Directionality.of(context) == TextDirection.rtl) {
-                      return;
-                    }
-                    if (details.primaryVelocity! > 0) {
-                      setState(() {
-                        items = lastItems.last;
-                        title2.removeLast();
-                        lastItems.removeLast();
-                      });
-                    }
-                  },
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      );
+  );
 
   SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
         child: ButtonBar(
