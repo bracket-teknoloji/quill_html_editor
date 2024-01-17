@@ -127,6 +127,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.isNew = false;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
+            BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
 
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
@@ -141,6 +142,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
             BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
+            BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
               viewModel.changeIsBaseSiparisEmpty(true);
