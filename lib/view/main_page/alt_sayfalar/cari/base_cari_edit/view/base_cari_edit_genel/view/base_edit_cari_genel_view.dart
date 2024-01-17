@@ -227,14 +227,16 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 onTap: () async {
                   ulkeler ??= await getUlkeData();
                   if (mounted) {
-                    final UlkeModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    final UlkeModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
+                      groupValue: viewModel.model?.ulkeKodu,
                       title: "Ülkeler",
                       children: List.generate(
                         ulkeler!.length,
                         (int index) => BottomSheetModel(
                           title: ulkeler?[index].ulkeAdi ?? "",
                           value: ulkeler?[index],
+                          groupValue: ulkeler?[index].ulkeKodu,
                           description: ulkeler?[index].ulkeKodu,
                         ),
                       ),
