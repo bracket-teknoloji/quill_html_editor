@@ -29,9 +29,9 @@ class _ImageWidgetState extends BaseState<ImageWidget> {
               ),
             );
           } else if (snapshot.hasError) {
-            return Center(child: Icon(Icons.camera_alt_outlined, color: theme.iconTheme.color?.withOpacity(0.5)));
+            return Center(child: Icon(Icons.camera_alt_outlined, color: theme.iconTheme.color?.withOpacity(0.5), size: UIHelper.midSize * 2));
           } else {
-            return Center(child: Icon(Icons.camera_alt_outlined, color: theme.iconTheme.color?.withOpacity(0.5)));
+            return Center(child: Icon(Icons.camera_alt_outlined, color: theme.iconTheme.color?.withOpacity(0.5), size: UIHelper.midSize * 2));
           }
         },
       );
