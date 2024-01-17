@@ -605,6 +605,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           },
                           // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                           leading: CircleAvatar(
+                            backgroundColor: theme.scaffoldBackgroundColor,
                             child: stok.resimUrlKucuk == null && viewModel.resimleriGoster != "E"
                                 ? Text((stok.stokAdi ?? "  ").substring(0, 1))
                                 : SizedBox(
@@ -614,7 +615,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       borderRadius: UIHelper.lowBorderRadius,
                                       onTap: () {
                                         if (stok.resimUrl != null) {
-                                          Get.to(ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? ""));
+                                          Get.to(() => ImageView(path: stok.resimUrl ?? "", title: stok.stokKodu ?? ""));
                                         }
                                       },
                                       child: ImageWidget(path: stok.resimUrlKucuk),
