@@ -86,6 +86,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     _dizaynController.dispose();
     _gonderimSekliController.dispose();
     _cariEPostaController.dispose();
+    BaseSiparisEditModel.resetInstance();
     super.dispose();
   }
 
