@@ -135,6 +135,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+          BaseSiparisEditModel.instance.vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu??0)).dateTimeWithoutTime;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;

@@ -143,6 +143,8 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+          BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
+          BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
           BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
           BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
