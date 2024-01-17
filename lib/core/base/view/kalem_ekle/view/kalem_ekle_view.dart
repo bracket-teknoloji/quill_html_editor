@@ -829,7 +829,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
-    muhKoduController.text = viewModel.kalemModel.muhasebeKodu ?? "";
+    muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
     malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
     kdvOraniController.text = viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
