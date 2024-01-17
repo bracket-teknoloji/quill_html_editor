@@ -169,7 +169,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
-                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E" && model.resmiBelgeNo != null),
+                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),
                 CustomTextField(
                   enabled: enable,
                   labelText: "Belge No",
