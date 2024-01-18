@@ -202,6 +202,10 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (result is MapEntry) {
                             viewModel.setSenaryo(result.value);
                             _senaryoController.text = result.key;
+                            final result2 = await viewModel.sendSenaryo();
+                            if (result2.success == true) {
+                              dialogManager.showSuccessSnackBar(result2.message ?? "Başarılı");
+                            }
                           }
                         },
                       ),

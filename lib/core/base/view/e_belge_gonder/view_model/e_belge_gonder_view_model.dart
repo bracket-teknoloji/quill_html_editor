@@ -107,6 +107,17 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() async {
+    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)), showLoading: true);
+    if (result.success == true) {
+      log("EBelge gönderildi");
+    } else {
+      log("EBelge gönderilemedi");
+    }
+    return result;
+  }
+
+  @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendEBelge() async {
     final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.faturaGonder.toJson(), showLoading: true);
     if (result.success == true) {

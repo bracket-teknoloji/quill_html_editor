@@ -89,6 +89,14 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     return _$sendTaslakAsyncAction.run(() => super.sendTaslak());
   }
 
+  late final _$sendSenaryoAsyncAction =
+      AsyncAction('_EBelgeGonderViewModelBase.sendSenaryo', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() {
+    return _$sendSenaryoAsyncAction.run(() => super.sendSenaryo());
+  }
+
   late final _$sendEBelgeAsyncAction =
       AsyncAction('_EBelgeGonderViewModelBase.sendEBelge', context: context);
 
