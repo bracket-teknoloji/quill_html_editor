@@ -338,7 +338,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(viewModel.model?.hizmetMi ?? false),
+                      ).yetkiVarMi((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Yapılandırma Kodu",
