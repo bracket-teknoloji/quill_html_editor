@@ -327,6 +327,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel ebelgeZarfid(String? ebelgeZarfid);
 
+  BaseSiparisEditModel efattanTutar(double? efattanTutar);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -494,6 +496,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     bool? efattanAlisFat,
     int? efaturaInckeyno,
     String? ebelgeZarfid,
+    double? efattanTutar,
   });
 }
 
@@ -1078,6 +1081,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(ebelgeZarfid: ebelgeZarfid);
 
   @override
+  BaseSiparisEditModel efattanTutar(double? efattanTutar) =>
+      this(efattanTutar: efattanTutar);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1246,6 +1253,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? efattanAlisFat = const $CopyWithPlaceholder(),
     Object? efaturaInckeyno = const $CopyWithPlaceholder(),
     Object? ebelgeZarfid = const $CopyWithPlaceholder(),
+    Object? efattanTutar = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1890,6 +1898,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.ebelgeZarfid
           // ignore: cast_nullable_to_non_nullable
           : ebelgeZarfid as String?,
+      efattanTutar: efattanTutar == const $CopyWithPlaceholder()
+          ? _value.efattanTutar
+          // ignore: cast_nullable_to_non_nullable
+          : efattanTutar as double?,
     );
   }
 }
@@ -3272,13 +3284,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       efattanAlisFat: fields[157] as bool?,
       efaturaInckeyno: fields[158] as int?,
       ebelgeZarfid: fields[159] as String?,
+      efattanTutar: fields[160] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(160)
+      ..writeByte(161)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3598,7 +3611,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(158)
       ..write(obj.efaturaInckeyno)
       ..writeByte(159)
-      ..write(obj.ebelgeZarfid);
+      ..write(obj.ebelgeZarfid)
+      ..writeByte(160)
+      ..write(obj.efattanTutar);
   }
 
   @override
@@ -4138,6 +4153,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       efattanAlisFat: json['EFATTAN_ALIS_FAT'] as bool?,
       efaturaInckeyno: json['EFATURA_INCKEYNO'] as int?,
       ebelgeZarfid: json['EBELGE_ZARFID'] as String?,
+      efattanTutar: (json['EFATTAN_TUTAR'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4310,6 +4326,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EFATTAN_ALIS_FAT', instance.efattanAlisFat);
   writeNotNull('EFATURA_INCKEYNO', instance.efaturaInckeyno);
   writeNotNull('EBELGE_ZARFID', instance.ebelgeZarfid);
+  writeNotNull('EFATTAN_TUTAR', instance.efattanTutar);
   return val;
 }
 

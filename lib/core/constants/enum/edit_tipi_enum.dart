@@ -201,6 +201,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get ekAlan1GorunsunMu {
+    if (talepTeklifMi) {
+      return false;
+    }
     if (satisMi) {
       return yetkiController.satisEkAlan1AktifMi;
     } else {
@@ -209,12 +212,16 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get ekAlan2GorunsunMu {
+    if (talepTeklifMi) {
+      return false;
+    }
     if (satisMi) {
       return yetkiController.satisEkAlan2AktifMi;
     } else {
       return yetkiController.alisEkAlan2AktifMi;
     }
   }
+  
 
   bool get eklensinMi {
     switch (this) {

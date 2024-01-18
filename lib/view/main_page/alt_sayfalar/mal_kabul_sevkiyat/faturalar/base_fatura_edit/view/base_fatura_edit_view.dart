@@ -144,7 +144,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-            if (cariModel is CariListesiModel) {
+            if (cariModel is CariListesiModel) {  
               viewModel.changeIsBaseSiparisEmpty(true);
               BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
               BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;

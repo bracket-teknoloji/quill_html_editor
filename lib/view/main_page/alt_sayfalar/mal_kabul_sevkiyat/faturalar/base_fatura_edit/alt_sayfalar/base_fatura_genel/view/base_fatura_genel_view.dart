@@ -15,7 +15,6 @@ import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
@@ -165,11 +164,10 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     subtitle: Text.rich(
                       TextSpan(
                         children: [
-                          TextSpan(text: "Genel Toplam: ${model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                          TextSpan(text: " / ${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizAdi != null),
+                          TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                         ].nullCheckWithGeneric,
                       ),
-                    ),
+                    ).yetkiVarMi(model.efattanTutar != null),
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),

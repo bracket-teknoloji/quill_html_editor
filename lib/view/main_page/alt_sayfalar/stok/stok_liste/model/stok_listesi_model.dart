@@ -202,6 +202,7 @@ class StokListesiModel with NetworkManagerMixin {
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
   bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri?.paramModel?.karmaKoliUyg == "E";
+  bool get hizmetMi => stokKodu?.startsWith("HIZ") ?? false;
 }
 
 @HiveType(typeId: 2)

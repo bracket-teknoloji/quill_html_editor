@@ -405,6 +405,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? efaturaInckeyno;
   @HiveField(159)
   String? ebelgeZarfid;
+  // @JsonKey(includeFromJson: false, includeToJson: false)
+  @HiveField(160)
+  double? efattanTutar;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -567,6 +570,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efattanAlisFat,
     this.efaturaInckeyno,
     this.ebelgeZarfid,
+    this.efattanTutar,
   });
 
   BaseSiparisEditModel._init();
