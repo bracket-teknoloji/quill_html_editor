@@ -147,6 +147,16 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         kutuTuru: "GET",
         islemKodu: 11,
       );
+  factory EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel model) => EBelgeListesiModel(
+        belgeTuru: model.belgeTuru,
+        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+        belgeNo: model.belgeNo,
+        resmiBelgeNo: model.resmiBelgeNo,
+        cariKodu: model.cariKodu,
+        senaryoTipi: model.efaturaSenaryo,
+        kutuTuru: "GIK",
+        islemKodu: 10,
+      );
 }
 
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
