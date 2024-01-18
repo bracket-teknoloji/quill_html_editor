@@ -897,6 +897,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         kdvDahilMi: model.kdvTutari != null,
         kdvDahil: model.kdvTutari != null ? "E" : "H",
         aciklama: model.aciklama,
+        efaturaSenaryo: model.senaryoTipi,
       );
 
   factory BaseSiparisEditModel.cariKoduDegistir(BaseSiparisEditModel model) => BaseSiparisEditModel(
