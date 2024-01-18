@@ -302,12 +302,14 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   controller: ekAlan1Controller,
                   onChanged: (p0) {
                     viewModel.kalemModel.ekalan1 = p0;
-                    if (kalemAdiController.text != viewModel.model?.stokAdi) {
-                      viewModel.kalemModel
-                        ..kalemAdi = p0
-                        ..kalemAdiDegisti = true
-                        ..kalemAdiDegistimi = true;
+                    if (viewModel.kalemModel.kalemAdiDegisti ?? false) {
+                      viewModel.kalemModel.kalemAdi = p0;
                       kalemAdiController.text = p0;
+                    }
+                  },
+                  onTap: () {
+                    if (viewModel.kalemModel.kalemAdiDegistimi ?? false) {
+                      dialogManager.showInfoDialog("Ek Alan 1 açıkken Ek Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
                     }
                   },
                 ).yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
