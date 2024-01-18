@@ -270,10 +270,22 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 CustomTextField(
                   labelText: "Kalem Adı",
                   controller: kalemAdiController,
-                  onChanged: (p0) => viewModel.kalemModel
-                    ..kalemAdi = p0
-                    ..kalemAdiDegisti = true
-                    ..kalemAdiDegistimi = true,
+                  onChanged: (p0) {
+                    viewModel.kalemModel.kalemAdi = p0;
+                    if (kalemAdiController.text != viewModel.model?.stokAdi) {
+                      if (editTipi?.ekAlan1GorunsunMu ?? false) {
+                        viewModel.kalemModel
+                          ..ekalan1 = p0
+                          ..kalemAdiDegisti = true
+                          ..kalemAdiDegistimi = true;
+                        ekAlan1Controller.text = p0;
+                      }
+                    } else {
+                      viewModel.kalemModel
+                        ..kalemAdiDegisti = null
+                        ..kalemAdiDegistimi = null;
+                    }
+                  },
                 ),
                 // Observer(
                 //   builder: (_) => Row(
@@ -285,60 +297,73 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //   ),
                 // ),
 
-                CustomTextField(labelText: "Ek Alan 1", controllerText: widget.kalemModel?.ekalan1, onChanged: (p0) => viewModel.kalemModel.ekalan1 = p0)
-                    .yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
-                CustomTextField(labelText: "Ek Alan 2", controllerText: widget.kalemModel?.ekalan2, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
-                    .yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Muh. Kodu",
-                        suffixMore: true,
-                        readOnly: true,
-                        isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
-                        onClear: () => viewModel.setMuhasebeKodu(null),
-                        controller: muhKoduController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
-                        onTap: () async {
-                          final result =
-                              await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.kalemModel.muhasebeKodu, alisMi: !(editTipi?.satisMi ?? false));
-                          if (result != null) {
-                            if (editTipi?.satisMi ?? false) {
-                              viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
-                              muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
-                            } else {
-                              viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
-                              muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                CustomTextField(
+                  labelText: "Ek Alan 1",
+                  controller: ekAlan1Controller,
+                  onChanged: (p0) {
+                    viewModel.kalemModel.ekalan1 = p0;
+                    if (kalemAdiController.text != viewModel.model?.stokAdi) {
+                      viewModel.kalemModel
+                        ..kalemAdi = p0
+                        ..kalemAdiDegisti = true
+                        ..kalemAdiDegistimi = true;
+                      kalemAdiController.text = p0;
+                    }
+                  },
+                ).yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
+                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                Observer(
+                  builder: (_) => Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Muh. Kodu",
+                          suffixMore: true,
+                          readOnly: true,
+                          isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
+                          onClear: () => viewModel.setMuhasebeKodu(null),
+                          controller: muhKoduController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
+                          onTap: () async {
+                            final result =
+                                await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.kalemModel.muhasebeKodu, alisMi: !(editTipi?.satisMi ?? false));
+                            if (result != null) {
+                              if (editTipi?.satisMi ?? false) {
+                                viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
+                                muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
+                              } else {
+                                viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
+                                muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                              }
                             }
-                          }
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Yapılandırma Kodu",
-                        valueWidget: Observer(
-                          builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
+                          },
                         ),
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: yapKodController,
-                        onTap: () async {
-                          final result = await Get.toNamed(
-                            "/mainPage/yapilandirmaRehberi",
-                            arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
-                              ..stokKodu = viewModel.kalemModel.stokKodu,
-                          );
-                          if (result is YapilandirmaRehberiModel) {
-                            yapKodController.text = result.yapacik ?? "";
-                            viewModel.setYapKod(result.yapkod);
-                          }
-                        },
-                      ),
-                    ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
-                  ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
+                      ).yetkiVarMi(viewModel.model?.hizmetMi ?? false),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Yapılandırma Kodu",
+                          valueWidget: Observer(
+                            builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
+                          ),
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: yapKodController,
+                          onTap: () async {
+                            final result = await Get.toNamed(
+                              "/mainPage/yapilandirmaRehberi",
+                              arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
+                                ..stokKodu = viewModel.kalemModel.stokKodu,
+                            );
+                            if (result is YapilandirmaRehberiModel) {
+                              yapKodController.text = result.yapacik ?? "";
+                              viewModel.setYapKod(result.yapkod);
+                            }
+                          },
+                        ),
+                      ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
+                    ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
