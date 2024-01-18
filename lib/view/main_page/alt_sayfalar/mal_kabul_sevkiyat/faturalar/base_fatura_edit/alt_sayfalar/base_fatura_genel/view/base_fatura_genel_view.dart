@@ -219,6 +219,10 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   controller: _teslimCariController,
                   enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
+                  onClear: () {
+                    viewModel.setTeslimCariAdi(null);
+                    viewModel.setTeslimCariKodu(null);
+                  },
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result != null) {
