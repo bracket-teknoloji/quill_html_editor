@@ -146,7 +146,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SizedBox(width: width * 0.7, child: Text(kalemModel?.ekalan1 ?? kalemModel?.ekalan2 ?? kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
+            SizedBox(width: width * 0.7, child: Text(kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)),
             const Icon(Icons.more_vert_outlined),
           ],
         ),
