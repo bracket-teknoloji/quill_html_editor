@@ -257,7 +257,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                   const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
-              Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+              Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.cariAdi != null),
               Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               Text(
                 "${(model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
