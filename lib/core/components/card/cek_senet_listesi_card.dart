@@ -107,7 +107,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                       .nullCheckWithGeneric,
                 ),
               ),
-              Text("${model.getCekBankaAdi} ${model.getCekSubeAdi}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.getCekBankaAdi != null || model.getCekSubeAdi != null),
+              Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.getCekBankaAdi != null || model.getCekSubeAdi != null),
               Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),
             ],
           ),
@@ -128,9 +128,9 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         BottomSheetModel(
           title: loc(context).generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
-          onTap: () {
+          onTap: () async {
             Get.back();
-            dialogManager.showCekSenetGridViewDialog(model);
+            await dialogManager.showCekSenetGridViewDialog(model, onSelected: widget.onUpdate);
           },
         ),
         BottomSheetModel(
