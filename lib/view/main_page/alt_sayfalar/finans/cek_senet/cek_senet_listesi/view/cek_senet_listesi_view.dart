@@ -351,6 +351,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
               return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
             }
             return ListView.builder(
+              physics: const AlwaysScrollableScrollPhysics(),
               controller: _scrollController,
               padding: UIHelper.lowPadding,
               itemCount: viewModel.cekSenetListesiListesi?.length ?? 0,
