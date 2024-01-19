@@ -33,11 +33,13 @@ extension CekSenetExtensions on CekSenetListesiEnum {
   String get dekontAciklama {
     switch (this) {
       case CekSenetListesiEnum.senetBorc:
-      case CekSenetListesiEnum.senetMusteri:
         return "No. Senet Ode.";
+      case CekSenetListesiEnum.senetMusteri:
+        return "No. Senet Tah.";
       case CekSenetListesiEnum.cekBorc:
-      case CekSenetListesiEnum.cekMusteri:
         return "No. Çek Ode.";
+      case CekSenetListesiEnum.cekMusteri:
+        return "No. Çek. Tah.";
     }
   }
 
