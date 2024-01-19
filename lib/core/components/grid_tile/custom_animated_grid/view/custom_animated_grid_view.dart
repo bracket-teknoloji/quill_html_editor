@@ -104,58 +104,71 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                     minHeight: context.sized.dynamicHeight(0.2),
                     maxHeight: context.sized.dynamicHeight(0.6),
                   ),
-                  child: GridView.builder(
-                    padding: UIHelper.zeroPadding,
-                    shrinkWrap: true,
-                    primary: false,
-                    // physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
-                      childAspectRatio: context.isLandscape ? 1.2 : 1,
-                    ),
-                    itemCount: viewModel.gridItemModelList?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      final item = viewModel.gridItemModelList?[index];
-                      return AnimationConfiguration.staggeredList(
-                        position: index,
-                        duration: const Duration(milliseconds: 900),
-                        delay: const Duration(milliseconds: 50),
-                        child: SlideAnimation(
-                          delay: const Duration(milliseconds: 30),
-                          child: FadeInAnimation(
-                            child: AnimatedIslemlerGridTile(
-                              icon: item?.icon ?? "monitoring",
-                              iconWidget: item?.iconData,
-                              altMenuler: item?.altMenuler,
-                              menuTipi: item?.menuTipi,
-                              altMenuVarMi: item?.altMenuVarMi,
-                              color: item?.color,
-                              name: item?.name.toString(),
-                              title: item?.title.toString(),
-                              onTap: item?.isEnabled == false && item?.menuTipi == "IS"
-                                  ? null
-                                  : () async {
-                                      if (item?.altMenuVarMi == true) {
-                                        viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
-                                        viewModel.setGridItemModel(null);
-                                        // await Future.delayed(const Duration(milliseconds: 500));
-                                        viewModel.setGridItemModel(item?.altMenuler);
-                                      } else {
-                                        if (item?.route != null && item?.menuTipi != "SR") {
-                                          Get.back();
-                                          Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
-                                        } else {
-                                          Get.back();
-                                          final result = await item?.onTap?.call();
-                                          if (result is bool) {
-                                            widget.onSelected?.call(result);
-                                          }
-                                        }
-                                      }
-                                    },
-                            ),
-                          ),
+                  child: Observer(
+                    builder: (_) {
+                      if (viewModel.gridItemModelList.ext.isNullOrEmpty) {
+                        return const Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("İşlem bulunamadı."),
+                          ],
+                        );
+                      }
+                      return GridView.builder(
+                        padding: UIHelper.zeroPadding,
+                        shrinkWrap: true,
+                        primary: false,
+                        // physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
+                          childAspectRatio: context.isLandscape ? 1.2 : 1,
                         ),
+                        itemCount: viewModel.gridItemModelList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final item = viewModel.gridItemModelList?[index];
+                          return AnimationConfiguration.staggeredList(
+                            position: index,
+                            duration: const Duration(milliseconds: 900),
+                            delay: const Duration(milliseconds: 50),
+                            child: SlideAnimation(
+                              delay: const Duration(milliseconds: 30),
+                              child: FadeInAnimation(
+                                child: AnimatedIslemlerGridTile(
+                                  icon: item?.icon ?? "monitoring",
+                                  iconWidget: item?.iconData,
+                                  altMenuler: item?.altMenuler,
+                                  menuTipi: item?.menuTipi,
+                                  altMenuVarMi: item?.altMenuVarMi,
+                                  color: item?.color,
+                                  name: item?.name.toString(),
+                                  title: item?.title.toString(),
+                                  onTap: item?.isEnabled == false && item?.menuTipi == "IS"
+                                      ? null
+                                      : () async {
+                                          if (item?.altMenuVarMi == true) {
+                                            viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                            viewModel.setGridItemModel(null);
+                                            // await Future.delayed(const Duration(milliseconds: 500));
+                                            viewModel.setGridItemModel(item?.altMenuler);
+                                          } else {
+                                            if (item?.route != null && item?.menuTipi != "SR") {
+                                              Get.back();
+                                              Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                            } else {
+                                              Get.back();
+                                              final result = await item?.onTap?.call();
+                                              if (result is bool) {
+                                                widget.onSelected?.call(result);
+                                              }
+                                            }
+                                          }
+                                        },
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
