@@ -139,13 +139,15 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(bankaMuhtelifTahsilat);
       islemlerList.add(bnkaMuhtelifOdeme);
     } else if (islemtipi == IslemTipiEnum.cekSenet) {
-      if ((model as CekSenetListesiModel).cekSenetListesiEnum.borcMu) {
+      final CekSenetListesiModel cekModel = model as CekSenetListesiModel;
+      if (cekModel.cekSenetListesiEnum.borcMu) {
         islemlerList.add(odemeDekontOlustur);
       } else {
-        islemlerList.add(cariHesabaCirola);
-        islemlerList.add(tahsilHesabaCirola);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P", cariHesabaCirola);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P", tahsilHesabaCirola);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P", kasaTahsilEt);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "T", tahsilatDekontOlustur);
       }
-      islemlerList.add(kasaTahsilEt);
     } else if (islemtipi == IslemTipiEnum.tahsilatOdeme) {
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(nakitTahsilat(model));
@@ -636,6 +638,8 @@ class IslemlerMenuItemConstants<T> {
   //* Çek Senet
   GridItemModel? get odemeDekontOlustur =>
       GridItemModel.islemler(title: "Ödeme Dekont Oluştur", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/odemeDekontOlustur", arguments: model));
+  GridItemModel? get tahsilatDekontOlustur =>
+      GridItemModel.islemler(title: "Tahsil Dekontu Oluştur", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/odemeDekontOlustur", arguments: model));
   GridItemModel? get cariHesabaCirola =>
       GridItemModel.islemler(title: "Cari Hesaba Cirola", iconData: Icons.add_outlined, onTap: () async => await Get.toNamed("/mainPage/cariHesabaCirola", arguments: model));
   GridItemModel? get tahsilHesabaCirola =>
