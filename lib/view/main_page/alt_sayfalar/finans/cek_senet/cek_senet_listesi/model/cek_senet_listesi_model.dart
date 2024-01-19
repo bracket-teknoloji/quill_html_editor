@@ -61,6 +61,12 @@ class CekSenetListesiModel with _$CekSenetListesiModel, NetworkManagerMixin {
 extension CekSenetExtensions on CekSenetListesiModel {
   String get ciroTipiString => ciroTipi == "A" ? "Asıl" : "Ciro";
 
+  bool get portfolyoMu => yeri == "P";
+
+  bool get cariMi => yeri == "C";
+
+  bool get tahsilMi => yeri == "T";
+
   String get yerAciklamaDurum => "${yerAciklama ?? ""} - $durumString";
 
   String get durumString {

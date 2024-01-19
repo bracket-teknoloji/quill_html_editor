@@ -590,6 +590,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get eBelgeMi => eArsivMi || eFaturaMi || eIrsaliyeMi;
 
+  bool get muhtelifMi => cariKodu == ("0" * 15);
+
   bool get eFaturaSerisindenMi => _yetkiController.eFaturaSerisindenMi(belgeNo ?? "");
 
   bool get eArsivSerisindenMi => _yetkiController.eArsivSerisindenMi(belgeNo ?? "");
