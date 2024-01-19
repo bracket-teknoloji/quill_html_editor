@@ -189,7 +189,7 @@ class PickerApp extends StatelessWidget {
         opaqueRoute: false,
         theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
-        themeMode: ThemeMode.dark,
+        themeMode: kDebugMode? ThemeMode.light:  ThemeMode.dark,
         home: const SplashAuthView(),
         getPages: <GetPage>[
           GetPage(name: "/login", page: () => const LoginView()),
@@ -304,6 +304,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/tahsilHesabaCirola", page: () => HesabaCirolaView(model: Get.arguments, cirolaEnum: CirolaEnum.tahsil)),
               GetPage(name: "/kasadanTahsilEt", page: () => KasadanTahsilEtView(model: Get.arguments)),
               GetPage(name: "/odemeDekontOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
+              GetPage(name: "/tahsilDekontuOlustur", page: () => OdemeDekontuOlusturView(model: Get.arguments)),
 
               //* * Ortalama Vade Tarihi Hesaplama
               GetPage(name: "/ortalamaVadeTarihiHesaplama", page: () => const OrtalamaVadeTarihiHesaplamaView()),
