@@ -113,6 +113,7 @@ class AppThemeLight extends AppTheme {
           elevation: 0,
         ),
         cardTheme: CardTheme(
+          elevation: 0,
           color: colorManager.surfaceVariant.withOpacity(0.3),
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
