@@ -62,9 +62,9 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   ).marginOnly(bottom: UIHelper.midSize),
                 ],
               ),
-              const Divider(
-                endIndent: 0,
-                indent: 0,
+              Divider(
+                indent: UIHelper.midSize,
+                endIndent: UIHelper.midSize,
               ),
               Expanded(
                 child: ListView.separated(
