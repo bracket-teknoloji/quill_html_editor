@@ -7,7 +7,9 @@
     "changeCompany": "Şirket Değiştir",
     "remote": "Uzak",
     "local": "Yerel",
-    "releaseNotes": "Sürüm Yenilikleri"
+    "releaseNotes": "Sürüm Yenilikleri",
+    "themeChange": "Temayı Değiştir",
+    "darkMode": "Karanlık Tema"
   },
   "serviceOperations": {
     "isWebServicesWorking": "Web Servisleri Çalışıyor Mu?",
@@ -42,6 +44,7 @@
     "general": "Genel",
     "warning": "Uyarı",
     "refresh": "Yenile",
-    "apply": "Uygula"
+    "apply": "Uygula",
+    "themeChange": "Tema Değiştir"
   }
 }

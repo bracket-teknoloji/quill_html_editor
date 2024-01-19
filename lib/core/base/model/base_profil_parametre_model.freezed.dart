@@ -33,6 +33,7 @@ mixin _$BaseProfilParametreModel {
       throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
   bool get finansOzelRaporGrafikGoster => throw _privateConstructorUsedError;
+  bool get acikTemaMi => throw _privateConstructorUsedError;
   NetFectDizaynList? get netFectDizaynList =>
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
@@ -61,6 +62,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
+      bool acikTemaMi,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -90,6 +92,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
     Object? finansOzelRaporGrafikGoster = null,
+    Object? acikTemaMi = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -138,6 +141,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.finansOzelRaporGrafikGoster
           : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      acikTemaMi: null == acikTemaMi
+          ? _value.acikTemaMi
+          : acikTemaMi // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -171,6 +178,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
+      bool acikTemaMi,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -199,6 +207,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? stokYazdirDizaynVeYaziciHatirla = null,
     Object? stokSecildigindeYazdir = null,
     Object? finansOzelRaporGrafikGoster = null,
+    Object? acikTemaMi = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -247,6 +256,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.finansOzelRaporGrafikGoster
           : finansOzelRaporGrafikGoster // ignore: cast_nullable_to_non_nullable
               as bool,
+      acikTemaMi: null == acikTemaMi
+          ? _value.acikTemaMi
+          : acikTemaMi // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -274,6 +287,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.stokYazdirDizaynVeYaziciHatirla = false,
       this.stokSecildigindeYazdir = false,
       this.finansOzelRaporGrafikGoster = false,
+      this.acikTemaMi = false,
       this.netFectDizaynList,
       this.yaziciList})
       : super._();
@@ -315,6 +329,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @JsonKey()
   final bool finansOzelRaporGrafikGoster;
   @override
+  @JsonKey()
+  final bool acikTemaMi;
+  @override
   final NetFectDizaynList? netFectDizaynList;
   @override
   final YaziciList? yaziciList;
@@ -347,6 +364,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool stokYazdirDizaynVeYaziciHatirla,
       final bool stokSecildigindeYazdir,
       final bool finansOzelRaporGrafikGoster,
+      final bool acikTemaMi,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
@@ -376,6 +394,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get stokSecildigindeYazdir;
   @override
   bool get finansOzelRaporGrafikGoster;
+  @override
+  bool get acikTemaMi;
   @override
   NetFectDizaynList? get netFectDizaynList;
   @override

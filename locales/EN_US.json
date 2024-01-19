@@ -8,7 +8,9 @@
     "changeCompany": "Change",
     "remote": "Remote",
     "local": "local",
-    "releaseNotes": "Release Notes"
+    "releaseNotes": "Release Notes",
+    "themeChange": "Change Theme",
+    "darkMode": "Dark Mode"
   },
   "serviceOperations": {
     "isWebServicesWorking": "Are Web Services Working?",
@@ -43,6 +45,7 @@
     "general": "General",
     "warning": "Warning",
     "refresh": "Refresh",
-    "apply": "Apply"
+    "apply": "Apply",
+    "themeChange": "Change Theme"
   }
 }

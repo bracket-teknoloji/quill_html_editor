@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../view/add_company/model/account_model.dart";
 import "../../../../view/add_company/model/account_response_model.dart";
@@ -193,6 +195,18 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           },
         ),
         DrawerModel(
+          title: loc(context).rightDrawer.themeChange,
+          iconWidget: Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
+          onTap: () async {
+            if (Get.isDarkMode) {
+              Get.changeThemeMode(ThemeMode.light);
+            } else {
+              Get.changeThemeMode(ThemeMode.dark);
+            }
+            CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(acikTemaMi: Get.isDarkMode));
+          },
+        ).isDebug(),
+        DrawerModel(
           title: loc(context).rightDrawer.releaseNotes,
           iconWidget: Icons.new_releases_outlined,
           onTap: () {
@@ -201,7 +215,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             return Get.toNamed("/mainPage/surumYenilikleri");
           },
         ),
-      ];
+      ].nullCheckWithGeneric.cast<DrawerModel>();
 
   AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
   String get _urlAdi {

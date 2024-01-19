@@ -45,6 +45,8 @@ class LocalerightDrawer {
   String get remote => _data["remote"]!;
   String get local => _data["local"]!;
   String get releaseNotes => _data["releaseNotes"]!;
+  String get themeChange => _data["themeChange"]!;
+  String get darkMode => _data["darkMode"]!;
 }
 
 class LocaleserviceOperations {
@@ -92,4 +94,5 @@ class LocalegeneralStrings {
   String get warning => _data["warning"]!;
   String get refresh => _data["refresh"]!;
   String get apply => _data["apply"]!;
+  String get themeChange => _data["themeChange"]!;
 }

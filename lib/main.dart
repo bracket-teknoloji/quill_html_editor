@@ -189,7 +189,7 @@ class PickerApp extends StatelessWidget {
         opaqueRoute: false,
         theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
-        themeMode: kDebugMode? ThemeMode.light:  ThemeMode.dark,
+        themeMode: CacheManager.getProfilParametre.acikTemaMi ? ThemeMode.light : ThemeMode.dark,
         home: const SplashAuthView(),
         getPages: <GetPage>[
           GetPage(name: "/login", page: () => const LoginView()),

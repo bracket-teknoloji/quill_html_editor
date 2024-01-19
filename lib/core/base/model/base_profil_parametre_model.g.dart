@@ -27,6 +27,7 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           json['STOK_SECILDIGINDE_YAZDIR'] as bool? ?? false,
       finansOzelRaporGrafikGoster:
           json['FINANS_OZEL_RAPOR_GRAFIK_GOSTER'] as bool? ?? false,
+      acikTemaMi: json['ACIK_TEMA_MI'] as bool? ?? false,
       netFectDizaynList: json['NET_FECT_DIZAYN_LIST'] == null
           ? null
           : NetFectDizaynList.fromJson(
@@ -51,6 +52,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
         instance.stokYazdirDizaynVeYaziciHatirla,
     'STOK_SECILDIGINDE_YAZDIR': instance.stokSecildigindeYazdir,
     'FINANS_OZEL_RAPOR_GRAFIK_GOSTER': instance.finansOzelRaporGrafikGoster,
+    'ACIK_TEMA_MI': instance.acikTemaMi,
   };
 
   void writeNotNull(String key, dynamic value) {
