@@ -33,6 +33,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   CekSenetListesiModel get model => widget.model;
   late final TextEditingController _kayitTarihiController;
   late final TextEditingController _seriController;
+  late final TextEditingController _teminatHesabiController;
   late final TextEditingController _odemeHesabiController;
   late final TextEditingController _projeController;
   late final TextEditingController _plasiyerController;
@@ -43,15 +44,16 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   void initState() {
     viewModel = OdemeDekontuOlusturViewModel(model: TahsilatRequestModel.fromCekSenetListesiModel(model));
     viewModel.model.yeniKayit = true;
-    viewModel.model.aciklama = viewModel.aciklama;
+    viewModel.model.aciklama = "${model.belgeNo} ${model.cekSenetListesiEnum.dekontAciklama}";
     viewModel.model.tag = "DekontModel";
-    viewModel.model.dekontIslemTuru = model.cekSenetListesiEnum.cekMi ? "BCO" : "BSO";
+    viewModel.model.dekontIslemTuru = model.cekSenetListesiEnum.dekontIslemTuru;
     _kayitTarihiController = TextEditingController(text: model.tarih.toDateString);
     _seriController = TextEditingController();
+    _teminatHesabiController = TextEditingController(text: model.verilenAdi);
     _odemeHesabiController = TextEditingController();
     _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerKodu);
-    _aciklamaController = TextEditingController(text: viewModel.aciklama);
+    _aciklamaController = TextEditingController(text: viewModel.model.aciklama);
     super.initState();
   }
 
@@ -59,6 +61,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   void dispose() {
     _kayitTarihiController.dispose();
     _seriController.dispose();
+    _teminatHesabiController.dispose();
     _odemeHesabiController.dispose();
     _projeController.dispose();
     _plasiyerController.dispose();
@@ -70,7 +73,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: "Senet Ödeme Dekontu",
+            title: widget.model.cekSenetListesiEnum.dekontTitle,
             subtitle: model.belgeNo ?? "",
           ),
           actions: [
@@ -113,7 +116,13 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
                 onTap: setSeri,
               ),
               CustomTextField(
-                labelText: "Ödeme Hesabı",
+                labelText: "Tahsil/Teminat Hesabı",
+                controller: _teminatHesabiController,
+                readOnly: true,
+                valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? "")),
+              ).yetkiVarMi(!widget.model.cekSenetListesiEnum.borcMu),
+              CustomTextField(
+                labelText: !widget.model.cekSenetListesiEnum.borcMu ? "Virman Hesap" : "Ödeme Hesabı",
                 controller: _odemeHesabiController,
                 readOnly: true,
                 isMust: true,
@@ -181,11 +190,12 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
         arrHesapTipi: "[0]",
         belgeTipi: viewModel.model.dekontIslemTuru,
         menuKodu: "YONE_BHRE",
+        bankaKodu: model.verilenBankaKodu,
       ),
     );
     if (result is BankaListesiModel) {
       viewModel.setOdemeHesabi(result.hesapKodu);
-      _odemeHesabiController.text = result.bankaAdi ?? "";
+      _odemeHesabiController.text = result.hesapAdi ?? result.hesapKodu ?? "";
     }
   }
 
