@@ -208,6 +208,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
             children: [
               Row(
                 children: [
+                  const ColorfulBadge(label: Text("Muhtelif"), badgeColorEnum: BadgeColorEnum.muhtelif).yetkiVarMi(model.muhtelifMi),
                   // ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
                   ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
                   ColorfulBadge(
