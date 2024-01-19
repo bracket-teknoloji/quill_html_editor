@@ -80,12 +80,14 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
             IconButton(
               onPressed: () async {
                 if (_formKey.currentState?.validate() ?? false) {
-                  viewModel.model.guid = const Uuid().v4();
-                  final result = await viewModel.saveData();
-                  if (result.success ?? false) {
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                  }
+                  dialogManager.showAreYouSureDialog(() async {
+                    viewModel.model.guid = const Uuid().v4();
+                    final result = await viewModel.saveData();
+                    if (result.success ?? false) {
+                      Get.back(result: true);
+                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                    }
+                  });
                 }
               },
               icon: const Icon(Icons.save_outlined),
