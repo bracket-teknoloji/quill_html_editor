@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../../core/base/model/base_proje_model.dart";
@@ -46,14 +48,18 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
     viewModel.model.yeniKayit = true;
     viewModel.model.aciklama = "${model.belgeNo} ${model.cekSenetListesiEnum.dekontAciklama}";
     viewModel.model.tag = "DekontModel";
+    viewModel.model.tarih = DateTime.now().dateTimeWithoutTime;
     viewModel.model.dekontIslemTuru = model.cekSenetListesiEnum.dekontIslemTuru;
-    _kayitTarihiController = TextEditingController(text: model.tarih.toDateString);
+    _kayitTarihiController = TextEditingController(text: viewModel.model.tarih.toDateString);
     _seriController = TextEditingController();
     _teminatHesabiController = TextEditingController(text: model.verilenAdi);
     _odemeHesabiController = TextEditingController();
     _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerKodu);
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      _plasiyerController.text = (await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(CariListesiModel(cariKodu: model.cariKodu))))?.plasiyerAciklama ?? "";
+    });
     super.initState();
   }
 
@@ -211,7 +217,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
     final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
     if (result is PlasiyerList) {
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
-      _projeController.text = result.plasiyerAciklama ?? "";
+      _plasiyerController.text = result.plasiyerAciklama ?? "";
     }
   }
 }
