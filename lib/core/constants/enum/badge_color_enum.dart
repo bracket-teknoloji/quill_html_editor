@@ -2,7 +2,27 @@ import "package:flutter/material.dart";
 
 import "../color_palette.dart";
 
-enum BadgeColorEnum { dovizli, kapali, cari, fatura, tamamlanmamis, merkezeGonderildi, seri, esYap, konum, kilitli, irsaliye, tipAciklama, karmaKoli, eFatura, basarili, taslak, uyari, hata }
+enum BadgeColorEnum {
+  dovizli,
+  kapali,
+  cari,
+  fatura,
+  tamamlanmamis,
+  merkezeGonderildi,
+  seri,
+  esYap,
+  konum,
+  kilitli,
+  irsaliye,
+  tipAciklama,
+  karmaKoli,
+  eFatura,
+  basarili,
+  taslak,
+  uyari,
+  hata,
+  muhtelif,
+}
 
 extension BadgeColorExtensions on BadgeColorEnum? {
   Color get getColor {
@@ -30,6 +50,7 @@ extension BadgeColorExtensions on BadgeColorEnum? {
       case BadgeColorEnum.uyari:
         return ColorPalette.gamboge;
       case BadgeColorEnum.esYap:
+      case BadgeColorEnum.muhtelif:
         return ColorPalette.asparagus;
       case BadgeColorEnum.karmaKoli:
         return ColorPalette.mulberry;
