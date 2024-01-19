@@ -17,6 +17,30 @@ extension CekSenetExtensions on CekSenetListesiEnum {
     }
   }
 
+  String get dekontTitle {
+    switch (this) {
+      case CekSenetListesiEnum.cekBorc:
+        return "Çek Ödeme Dekontu";
+      case CekSenetListesiEnum.cekMusteri:
+        return "Çek Tahsil Dekontu";
+      case CekSenetListesiEnum.senetBorc:
+        return "Senet Ödeme Dekontu";
+      case CekSenetListesiEnum.senetMusteri:
+        return "Senet Tahsil Dekontu";
+    }
+  }
+
+  String get dekontAciklama {
+    switch (this) {
+      case CekSenetListesiEnum.senetBorc:
+      case CekSenetListesiEnum.senetMusteri:
+        return "No. Senet Ode.";
+      case CekSenetListesiEnum.cekBorc:
+      case CekSenetListesiEnum.cekMusteri:
+        return "No. Çek Ode.";
+    }
+  }
+
   String get belgeTipi {
     switch (this) {
       case CekSenetListesiEnum.cekMusteri:
@@ -101,6 +125,19 @@ extension CekSenetExtensions on CekSenetListesiEnum {
       case CekSenetListesiEnum.senetMusteri:
       case CekSenetListesiEnum.senetBorc:
         return false;
+    }
+  }
+
+  String get dekontIslemTuru {
+    switch (this) {
+      case CekSenetListesiEnum.cekBorc:
+        return "BCO";
+      case CekSenetListesiEnum.senetBorc:
+        return "BSO";
+      case CekSenetListesiEnum.cekMusteri:
+        return "DCT";
+      case CekSenetListesiEnum.senetMusteri:
+        return "DST";
     }
   }
 
