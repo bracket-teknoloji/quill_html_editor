@@ -329,6 +329,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel efattanTutar(double? efattanTutar);
 
+  BaseSiparisEditModel efattanDoviz(double? efattanDoviz);
+
+  BaseSiparisEditModel efattanDovizAdi(String? efattanDovizAdi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -497,6 +501,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? efaturaInckeyno,
     String? ebelgeZarfid,
     double? efattanTutar,
+    double? efattanDoviz,
+    String? efattanDovizAdi,
   });
 }
 
@@ -1085,6 +1091,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(efattanTutar: efattanTutar);
 
   @override
+  BaseSiparisEditModel efattanDoviz(double? efattanDoviz) =>
+      this(efattanDoviz: efattanDoviz);
+
+  @override
+  BaseSiparisEditModel efattanDovizAdi(String? efattanDovizAdi) =>
+      this(efattanDovizAdi: efattanDovizAdi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1254,6 +1268,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? efaturaInckeyno = const $CopyWithPlaceholder(),
     Object? ebelgeZarfid = const $CopyWithPlaceholder(),
     Object? efattanTutar = const $CopyWithPlaceholder(),
+    Object? efattanDoviz = const $CopyWithPlaceholder(),
+    Object? efattanDovizAdi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1902,6 +1918,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.efattanTutar
           // ignore: cast_nullable_to_non_nullable
           : efattanTutar as double?,
+      efattanDoviz: efattanDoviz == const $CopyWithPlaceholder()
+          ? _value.efattanDoviz
+          // ignore: cast_nullable_to_non_nullable
+          : efattanDoviz as double?,
+      efattanDovizAdi: efattanDovizAdi == const $CopyWithPlaceholder()
+          ? _value.efattanDovizAdi
+          // ignore: cast_nullable_to_non_nullable
+          : efattanDovizAdi as String?,
     );
   }
 }
@@ -3285,13 +3309,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       efaturaInckeyno: fields[158] as int?,
       ebelgeZarfid: fields[159] as String?,
       efattanTutar: fields[160] as double?,
+      efattanDoviz: fields[161] as double?,
+      efattanDovizAdi: fields[162] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(161)
+      ..writeByte(163)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3613,7 +3639,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(159)
       ..write(obj.ebelgeZarfid)
       ..writeByte(160)
-      ..write(obj.efattanTutar);
+      ..write(obj.efattanTutar)
+      ..writeByte(161)
+      ..write(obj.efattanDoviz)
+      ..writeByte(162)
+      ..write(obj.efattanDovizAdi);
   }
 
   @override
@@ -4154,6 +4184,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       efaturaInckeyno: json['EFATURA_INCKEYNO'] as int?,
       ebelgeZarfid: json['EBELGE_ZARFID'] as String?,
       efattanTutar: (json['EFATTAN_TUTAR'] as num?)?.toDouble(),
+      efattanDoviz: (json['EFATTAN_DOVIZ'] as num?)?.toDouble(),
+      efattanDovizAdi: json['EFATTAN_DOVIZ_ADI'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4327,6 +4359,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EFATURA_INCKEYNO', instance.efaturaInckeyno);
   writeNotNull('EBELGE_ZARFID', instance.ebelgeZarfid);
   writeNotNull('EFATTAN_TUTAR', instance.efattanTutar);
+  writeNotNull('EFATTAN_DOVIZ', instance.efattanDoviz);
+  writeNotNull('EFATTAN_DOVIZ_ADI', instance.efattanDovizAdi);
   return val;
 }
 

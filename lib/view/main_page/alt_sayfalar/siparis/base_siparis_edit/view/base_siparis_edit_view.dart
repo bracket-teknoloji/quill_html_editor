@@ -97,7 +97,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
-            BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
+          BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
           BaseSiparisEditModel.instance.kdvDahilMi ??= BaseSiparisEditModel.instance.kdvDahil == "E";
           BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
@@ -135,7 +135,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-          BaseSiparisEditModel.instance.vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu??0)).dateTimeWithoutTime;
+          BaseSiparisEditModel.instance.vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
@@ -316,7 +316,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             bottom: TabBar(
               controller: tabController,
               tabs: [
-                const Tab(child: Text("Genel")),
+                Tab(child: Text(loc(context).generalStrings.general)),
                 if (yetkiController.siparisDigerSekmesiGoster) Tab(child: Text(loc(context).generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),

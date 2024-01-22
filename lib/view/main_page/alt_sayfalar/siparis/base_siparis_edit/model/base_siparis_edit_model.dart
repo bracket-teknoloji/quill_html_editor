@@ -408,6 +408,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   // @JsonKey(includeFromJson: false, includeToJson: false)
   @HiveField(160)
   double? efattanTutar;
+  @HiveField(161)
+  double? efattanDoviz;
+  @HiveField(162)
+  String? efattanDovizAdi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -571,6 +575,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efaturaInckeyno,
     this.ebelgeZarfid,
     this.efattanTutar,
+    this.efattanDoviz,
+    this.efattanDovizAdi,
   });
 
   BaseSiparisEditModel._init();
