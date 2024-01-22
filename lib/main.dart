@@ -12,6 +12,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -232,6 +233,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariListesi", page: () => CariListesiView(isGetData: Get.arguments)),
               GetPage(name: "/cariListesiOzel", page: () => CariListesiView(isGetData: true, cariRequestModel: Get.arguments)),
               GetPage(name: "/cariRehberi", page: () => CariRehberiView(cariRequestModel: Get.arguments)),
+              GetPage(name: "/MuhtelifCariEkle", page: MuhtelifCariEkleView.new),
               GetPage(name: "/cariEdit", page: () => BaseCariEditingView(model: Get.arguments)),
               GetPage(name: "/cariHareketleri", page: () => CariHareketleriView(cari: Get.arguments)),
               GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
