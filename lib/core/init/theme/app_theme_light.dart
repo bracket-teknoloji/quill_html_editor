@@ -47,10 +47,11 @@ class AppThemeLight extends AppTheme {
           borderRadius: UIHelper.lowBorderRadius,
         ),
         brightness: Brightness.light,
-        textTheme: GoogleFonts.dmSansTextTheme()
-            .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.light).onPrimaryContainer)
-            .copyWith(bodySmall: TextStyle(fontSize: 12, color: colorManager.onPrimaryContainer)),
-        splashFactory: InkRipple.splashFactory,
+        textTheme: GoogleFonts.dmSansTextTheme().apply(
+          bodyColor: colorManager.onSecondaryContainer,
+          displayColor: colorManager.onSecondaryContainer,
+          decorationColor: colorManager.onSecondaryContainer,
+        ),
         bottomAppBarTheme: BottomAppBarTheme(
           elevation: 0,
           surfaceTintColor: colorManager.shadow,
@@ -94,7 +95,7 @@ class AppThemeLight extends AppTheme {
           style: ElevatedButton.styleFrom(
             splashFactory: InkRipple.splashFactory,
             backgroundColor: UIHelper.primaryColor,
-            foregroundColor: colorManager.onPrimaryContainer,
+            foregroundColor: colorManager.primaryContainer,
             shape: RoundedRectangleBorder(
               borderRadius: UIHelper.lowBorderRadius,
             ),
@@ -184,7 +185,7 @@ class AppThemeLight extends AppTheme {
           ),
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
-          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 20),
+          titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
           scrolledUnderElevation: 0,
           elevation: 0,
         ),
