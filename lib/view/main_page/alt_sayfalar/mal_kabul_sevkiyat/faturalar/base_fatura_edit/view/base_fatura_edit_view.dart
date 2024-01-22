@@ -144,7 +144,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-            if (cariModel is CariListesiModel) {  
+            if (cariModel is CariListesiModel) {
               viewModel.changeIsBaseSiparisEmpty(true);
               BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
               BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
@@ -261,6 +261,34 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                             dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                           },
                         ),
+                        BottomSheetModel(
+                          title: "Kalemleri KDV'ye Göre Birleştir",
+                          iconWidget: Icons.person_outline_outlined,
+                          onTap: () async {
+                            Get.back();
+                            final List<KalemModel> newList = [];
+                            if (BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+                              for (KalemModel item in BaseSiparisEditModel.instance.kalemList ?? []) {
+                                if (newList.any((element) => element.kdvOrani == item.kdvOrani)) {
+                                  final int index = newList.indexWhere((element) => element.kdvOrani == item.kdvOrani);
+                                  newList[index] = newList[index]
+                                    // ..miktar = (newList[index].miktar ?? 0) + (item.miktar ?? 0)
+                                    ..dovizFiyati = (newList[index].dovizFiyati ?? 0) + (item.dovizFiyati ?? 0)
+                                    ..brutFiyat = (newList[index].brutFiyat ?? 0) + ((item.brutFiyat ?? 0) * (item.miktar ?? 0));
+                                } else {
+                                  newList.add(item..brutFiyat = (item.brutFiyat ?? 0) * (item.miktar ?? 0));
+                                }
+                              }
+                              BaseSiparisEditModel.instance.kalemList = newList;
+                              if (tabController.index == 2) {
+                                tabController.animateTo(3);
+                                await Future.delayed(const Duration(milliseconds: 100));
+                                tabController.animateTo(2);
+                              }
+                              // setState(() {});
+                            }
+                          },
+                        ).yetkiKontrol(BaseSiparisEditModel.instance.efattanTutar != null),
                         // topluIskontoBottomSheetModel(context),
                         BottomSheetModel(
                           title: "PDF Görüntüle",
@@ -367,7 +395,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               bottom: TabBar(
                 controller: tabController,
                 tabs: [
-                  const Tab(child: Text("Genel")),
+                  Tab(child: Text(loc(context).generalStrings.general)),
                   Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar")),

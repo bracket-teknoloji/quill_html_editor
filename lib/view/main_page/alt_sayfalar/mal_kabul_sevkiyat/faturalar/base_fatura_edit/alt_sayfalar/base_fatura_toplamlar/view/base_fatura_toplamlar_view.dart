@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -64,8 +66,36 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
         child: Padding(
           padding: UIHelper.lowPaddingOnlyTop,
           child: Column(
-            children: <Widget>[toplamlarCard().paddingAll(UIHelper.lowSize), textFields()],
+            children: <Widget>[
+              eBelgeCard().paddingSymmetric(horizontal: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),
+              toplamlarCard().paddingAll(UIHelper.lowSize),
+              textFields(),
+            ],
           ),
+        ),
+      );
+
+  Card eBelgeCard() => Card(
+        child: ListTile(
+          onTap: () async => Get.toNamed(
+            "/mainPage/eBelgePdf",
+            arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
+          ),
+          contentPadding: UIHelper.lowPaddingHorizontal,
+          leading: const Icon(Icons.info_outline),
+          title: Text(eBelgeButtonText),
+          subtitle: model.efattanTutar != null
+              ? Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                      TextSpan(text: "\nGenel Döviz Tutarı: ${model.efattanDoviz.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.efattanDovizAdi ?? ""}")
+                          .yetkiVarMi(model.efattanDoviz != null),
+                    ].nullCheckWithGeneric,
+                  ),
+                )
+              : null,
+          trailing: const Icon(Icons.open_in_new_outlined),
         ),
       );
 
@@ -490,5 +520,25 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     vadeGunuController.dispose();
     eFaturaSenaryoController.dispose();
     istisnaKoduController.dispose();
+  }
+
+  String get eBelgeButtonText {
+    if (model.efaturaMi == "E" || model.cariEfaturami == "E") {
+      if (model.efaturaDurumu == "TAS") {
+        return "E-Fatura Taslağı (${model.resmiBelgeNo})";
+      }
+      return "E-Fatura (${model.resmiBelgeNo})";
+    } else if (model.earsivMi == "E") {
+      if (model.earsivDurumu == "TAS") {
+        return "E-Arşiv Taslağı (${model.resmiBelgeNo})";
+      }
+      return "E-Arşiv (${model.resmiBelgeNo})";
+    } else {
+      if (model.eirsaliyeDurumu == "TAS") {
+        return "E-İrsaliye Taslağı (${model.resmiBelgeNo})";
+      } else {
+        return "E-Fatura (${model.resmiBelgeNo})";
+      }
+    }
   }
 }
