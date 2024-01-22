@@ -238,7 +238,7 @@ class BottomSheetDialogManager {
                                                   subtitle: viewModel.getFilteredList![index].description != null
                                                       ? Text(viewModel.getFilteredList![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
                                                       : null,
-                                                ),
+                                                ).paddingSymmetric(horizontal: UIHelper.midSize),
                                                 if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
                                                   Padding(
                                                     padding: UIHelper.lowPaddingVertical,
@@ -531,7 +531,11 @@ class BottomSheetDialogManager {
               title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
               description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}",
               value: e,
-              groupValue:alisMi== true ? e.alisHesabi : alisMi == false ? e.satisHesabi : e.muhKodu,
+              groupValue: alisMi == true
+                  ? e.alisHesabi
+                  : alisMi == false
+                      ? e.satisHesabi
+                      : e.muhKodu,
             ),
           )
           .toList(),
