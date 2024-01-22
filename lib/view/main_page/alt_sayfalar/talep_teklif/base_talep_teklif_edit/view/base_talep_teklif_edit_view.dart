@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -118,6 +119,8 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
@@ -125,7 +128,15 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         BaseSiparisEditModel.instance.isNew = true;
         final CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
-          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+          final result = await Get.toNamed(
+            "mainPage/cariRehberi",
+            arguments: CariListesiRequestModel(
+              menuKodu: "CARI_CREH",
+              belgeTuru: model.editTipiEnum?.rawValue,
+              siparisKarsilanmaDurumu: null,
+              eFaturaGoster: null,
+            ),
+          );
           if (result is CariListesiModel) {
             cariModel = result;
           } else {
@@ -216,7 +227,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
             bottom: TabBar(
               controller: tabController,
               tabs: [
-                const Tab(child: Text("Genel")),
+                 Tab(child: Text(loc(context).generalStrings.general)),
                 Tab(child: Text(loc(context).generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
