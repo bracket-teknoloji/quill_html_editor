@@ -279,7 +279,10 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
+            final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
+            if (result is KalemModel) {
+              BaseSiparisEditModel.instance.kalemList?[index] = result;
+            }
             viewModel.updateKalemList();
           },
         ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
