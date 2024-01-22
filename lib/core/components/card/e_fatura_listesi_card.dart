@@ -2,6 +2,7 @@
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -56,9 +57,10 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
                 cariOlustur.yetkiKontrol(model.kayitliCariKodu == null),
-                alisFaturasiOlustur,
-                dekontOlustur,
-                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi),
+                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu),
+                yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
+                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu),
+                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
                 faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
@@ -92,13 +94,12 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                 // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
-              Text(model.onayAciklama ?? model.cevapAciklama ?? ""),
               LayoutBuilder(
                 builder: (context, constraints) {
                   final efaturaList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
-                    Text("Onay: ${model.onayAciklama ?? ""}"),
+                    Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? UIHelper.primaryColor : null)),
                     InkWell(
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
@@ -155,10 +156,15 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   );
                 },
               ),
-              Text(
-                "Kontrol: ${model.kontrolEdildi == "E" ? model.kontrolAciklama : "Hayır"}",
-                style: TextStyle(color: model.kontrolEdildi == "E" ? ColorPalette.mantis : null),
-              ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.kontrolAciklama != null),
+              Row(
+                children: [
+                  Text(
+                    "Kontrol: ${model.kontrolEdildi == "E" ? model.kontrolAciklama : "Hayır"}",
+                    style: TextStyle(color: model.kontrolEdildi == "E" ? ColorPalette.mantis : null),
+                  ).paddingSymmetric(vertical: UIHelper.lowSize),
+                  Icon(Icons.check_circle_outline_outlined, size: UIHelper.midSize * 2, color: ColorPalette.mantis).paddingOnly(right: UIHelper.lowSize).yetkiVarMi(model.kontrolEdildi == "E"),
+                ],
+              ),
             ],
           ),
         ),
@@ -216,10 +222,104 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     widget.onRefresh.call(result.success == true);
                     if (result.success == true) {
                       Get.back();
+                      controller.dispose();
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                     }
                   },
                   child: const Text("Kaydet"),
+                ).paddingAll(UIHelper.lowSize),
+              ],
+            ),
+          );
+        },
+      );
+
+  BottomSheetModel get yanitGonder => BottomSheetModel(
+        title: "Yanıt Gönder",
+        iconWidget: Icons.reply_all_outlined,
+        onTap: () async {
+          Get.back();
+          final TextEditingController controller = TextEditingController();
+          await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: "Yanıt Gönder",
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomTextField(
+                  labelText: "Açıklama",
+                  controller: controller,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 20,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if (controller.text.ext.isNullOrEmpty) {
+                            dialogManager.showAlertDialog("Açıklama boş olamaz.");
+                          }
+                          final result = await networkManager.dioPost(
+                            path: ApiUrls.eBelgeIslemi,
+                            bodyModel: EBelgeListesiModel(),
+                            showLoading: true,
+                            data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                                  ..kabul = "H"
+                                  ..aciklama = controller.text.ext.isNullOrEmpty ? null : controller.text
+                                  ..islemKodu = EBelgeIslemKoduEnum.eBelgeYanit.value
+                                  ..kutuTuru = "GET")
+                                .toJson(),
+                          );
+                          widget.onRefresh.call(result.success == true);
+                          if (result.success == true) {
+                            Get.back();
+                            controller.dispose();
+                            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                          }
+                        },
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed),
+                          foregroundColor: MaterialStatePropertyAll(Colors.white),
+                        ),
+                        child: const Text("Red"),
+                      ),
+                    ),
+                    const Spacer(),
+                    Expanded(
+                      flex: 20,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          final result = await networkManager.dioPost(
+                            path: ApiUrls.eBelgeIslemi,
+                            bodyModel: EBelgeListesiModel(),
+                            showLoading: true,
+                            data: (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                                  ..kabul = "E"
+                                  ..aciklama = controller.text.ext.isNullOrEmpty ? null : controller.text
+                                  ..islemKodu = EBelgeIslemKoduEnum.eBelgeYanit.value
+                                  ..kutuTuru = "GET")
+                                .toJson(),
+                          );
+                          widget.onRefresh.call(result.success == true);
+                          if (result.success == true) {
+                            Get.back();
+                            controller.dispose();
+                            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                          }
+                        },
+                        style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis),
+                          foregroundColor: MaterialStatePropertyAll(Colors.white),
+                        ),
+                        child: const Text("Kabul"),
+                      ),
+                    ),
+                  ],
+                ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                ElevatedButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  onPressed: () async {},
+                  child: const Text("İptal"),
                 ).paddingAll(UIHelper.lowSize),
               ],
             ),
@@ -517,6 +617,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 belgeTipi: 2,
                 tipi: 2,
                 efattanTutar: widget.eBelgeListesiModel.genelToplam,
+                efattanDovizAdi: widget.eBelgeListesiModel.dovizAdi,
+                efattanDoviz: widget.eBelgeListesiModel.dovizTutari,
                 efaturaMi: "E",
               ),
               baseEditEnum: BaseEditEnum.taslak,
