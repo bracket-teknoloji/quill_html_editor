@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -176,7 +177,14 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   enabled: isEkle,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
-                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                    final result = await Get.toNamed(
+                      "mainPage/cariRehberi",
+                      arguments: CariListesiRequestModel(
+                        menuKodu: "CARI_CREH",
+                        belgeTuru: model.getEditTipiEnum?.rawValue,
+                        eFaturaGoster: null,
+                      ),
+                    );
                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
                       _plasiyerController.text = result.plasiyerAciklama ?? "";

@@ -2,6 +2,8 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -161,13 +163,17 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
                     title: Text(eBelgeButtonText),
-                    subtitle: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                        ].nullCheckWithGeneric,
-                      ),
-                    ).yetkiVarMi(model.efattanTutar != null),
+                    subtitle: model.efattanTutar != null
+                        ? Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                                TextSpan(text: "\nGenel Döviz Tutarı: ${model.efattanDoviz.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.efattanDovizAdi ?? ""}")
+                                    .yetkiVarMi(model.efattanDoviz != null),
+                              ].nullCheckWithGeneric,
+                            ),
+                          )
+                        : null,
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),
@@ -198,7 +204,14 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   enabled: isEkle,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
-                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                    final result = await Get.toNamed(
+                      "mainPage/cariRehberi",
+                      arguments: CariListesiRequestModel(
+                        menuKodu: "CARI_CREH",
+                        belgeTuru: "MS",
+                        siparisKarsilanmaDurumu: "K",
+                      ),
+                    );
                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
                       _plasiyerController.text = result.plasiyerAciklama ?? "";
