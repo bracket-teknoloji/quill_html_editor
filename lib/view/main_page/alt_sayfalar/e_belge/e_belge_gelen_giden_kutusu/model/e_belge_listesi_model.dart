@@ -172,6 +172,7 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   EBelgeListesiModel get eBelgeEslestir => copyWith(islemKodu: 20);
 
+  bool get yanitBekliyorMu => onayAciklama == "Yanıt Bekliyor";
   EBelgeListesiModel get taslakSil => eArsivMi ? eArsivTaslakSil : eFaturaTaslakSil;
 
   EBelgeRequestModel get durumSorgula => EBelgeRequestModel(
