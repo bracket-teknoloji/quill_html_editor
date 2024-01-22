@@ -56,6 +56,8 @@ mixin _$EBelgeIslemModel {
   set gonderimSekliEposta(bool? value) => throw _privateConstructorUsedError;
   bool? get internetFaturasi => throw _privateConstructorUsedError;
   set internetFaturasi(bool? value) => throw _privateConstructorUsedError;
+  String? get kabul => throw _privateConstructorUsedError;
+  set kabul(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -87,7 +89,8 @@ abstract class $EBelgeIslemModelCopyWith<$Res> {
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? gonderimSekliEposta,
-      bool? internetFaturasi});
+      bool? internetFaturasi,
+      String? kabul});
 }
 
 /// @nodoc
@@ -121,6 +124,7 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
     Object? dovizliOlustur = freezed,
     Object? gonderimSekliEposta = freezed,
     Object? internetFaturasi = freezed,
+    Object? kabul = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -195,6 +199,10 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      kabul: freezed == kabul
+          ? _value.kabul
+          : kabul // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -225,7 +233,8 @@ abstract class _$$EBelgeIslemModelImplCopyWith<$Res>
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? gonderimSekliEposta,
-      bool? internetFaturasi});
+      bool? internetFaturasi,
+      String? kabul});
 }
 
 /// @nodoc
@@ -257,6 +266,7 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
     Object? dovizliOlustur = freezed,
     Object? gonderimSekliEposta = freezed,
     Object? internetFaturasi = freezed,
+    Object? kabul = freezed,
   }) {
     return _then(_$EBelgeIslemModelImpl(
       aciklama: freezed == aciklama
@@ -331,6 +341,10 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      kabul: freezed == kabul
+          ? _value.kabul
+          : kabul // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -356,7 +370,8 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
       this.dizaynNo,
       this.dovizliOlustur,
       this.gonderimSekliEposta,
-      this.internetFaturasi})
+      this.internetFaturasi,
+      this.kabul})
       : super._();
 
   factory _$EBelgeIslemModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -398,10 +413,12 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
   bool? gonderimSekliEposta;
   @override
   bool? internetFaturasi;
+  @override
+  String? kabul;
 
   @override
   String toString() {
-    return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi, kopyaSayisi: $kopyaSayisi, yaziciAdi: $yaziciAdi, dizaynNo: $dizaynNo, dovizliOlustur: $dovizliOlustur, gonderimSekliEposta: $gonderimSekliEposta, internetFaturasi: $internetFaturasi)';
+    return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi, kopyaSayisi: $kopyaSayisi, yaziciAdi: $yaziciAdi, dizaynNo: $dizaynNo, dovizliOlustur: $dovizliOlustur, gonderimSekliEposta: $gonderimSekliEposta, internetFaturasi: $internetFaturasi, kabul: $kabul)';
   }
 
   @JsonKey(ignore: true)
@@ -438,7 +455,8 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? gonderimSekliEposta,
-      bool? internetFaturasi}) = _$EBelgeIslemModelImpl;
+      bool? internetFaturasi,
+      String? kabul}) = _$EBelgeIslemModelImpl;
   _EBelgeIslemModel._() : super._();
 
   factory _EBelgeIslemModel.fromJson(Map<String, dynamic> json) =
@@ -498,6 +516,9 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
   @override
   bool? get internetFaturasi;
   set internetFaturasi(bool? value);
+  @override
+  String? get kabul;
+  set kabul(String? value);
   @override
   @JsonKey(ignore: true)
   _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>

@@ -29,6 +29,7 @@ _$EBelgeIslemModelImpl _$$EBelgeIslemModelImplFromJson(
       dovizliOlustur: json['DOVIZLI_OLUSTUR'] as bool?,
       gonderimSekliEposta: json['GONDERIM_SEKLI_EPOSTA'] as bool?,
       internetFaturasi: json['INTERNET_FATURASI'] as bool?,
+      kabul: json['KABUL'] as String?,
     );
 
 Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
@@ -59,5 +60,6 @@ Map<String, dynamic> _$$EBelgeIslemModelImplToJson(
   writeNotNull('DOVIZLI_OLUSTUR', instance.dovizliOlustur);
   writeNotNull('GONDERIM_SEKLI_EPOSTA', instance.gonderimSekliEposta);
   writeNotNull('INTERNET_FATURASI', instance.internetFaturasi);
+  writeNotNull('KABUL', instance.kabul);
   return val;
 }

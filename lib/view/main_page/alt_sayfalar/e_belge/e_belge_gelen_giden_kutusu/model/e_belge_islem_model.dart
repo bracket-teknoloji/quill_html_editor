@@ -27,6 +27,7 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
     bool? dovizliOlustur,
     bool? gonderimSekliEposta,
     bool? internetFaturasi,
+    String? kabul,
   }) = _EBelgeIslemModel;
 
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
