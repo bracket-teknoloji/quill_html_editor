@@ -13,7 +13,9 @@ import "package:picker/core/components/floating_action_button/custom_floating_ac
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
@@ -25,6 +27,7 @@ import "../view_model/cari_rehberi_view_model.dart";
 
 class CariRehberiView extends StatefulWidget {
   final CariListesiRequestModel cariRequestModel;
+
   const CariRehberiView({super.key, required this.cariRequestModel});
 
   @override
@@ -61,6 +64,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     searchFocusNode = FocusNode();
     searchFocusNode.requestFocus();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      viewModel.cariListesiRequestModel = viewModel.cariListesiRequestModel?.copyWith(eFaturaGoster: widget.cariRequestModel.eFaturaGoster, belgeTuru: widget.cariRequestModel.belgeTuru);
       viewModel.changeBagliCariKodu(widget.cariRequestModel.kod);
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
@@ -136,9 +140,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         ],
         bottom: AppBarPreferedSizedBottom(
           children: [
-            filtreleButton(),
-            siralaButton(),
-          ],
+            filtreleButton,
+            siralaButton,
+            digerButton.yetkiVarMi(BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false),
+          ].whereType<AppBarButton>().toList(),
         ),
       );
 
@@ -196,7 +201,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         ),
       );
 
-  AppBarButton siralaButton() => AppBarButton(
+  AppBarButton get siralaButton => AppBarButton(
         icon: Icons.sort_by_alpha_outlined,
         child: Text(loc(context).generalStrings.sort),
         onPressed: () async {
@@ -216,7 +221,32 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           }
         },
       );
-  AppBarButton filtreleButton() => AppBarButton(
+  AppBarButton get digerButton => AppBarButton(
+        icon: Icons.more_horiz_outlined,
+        onPressed: () async {
+          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: loc(context).generalStrings.options,
+            children: [
+              BottomSheetModel(
+                title: "Muhtelif Cari Oluştur",
+                iconWidget: Icons.person_outline_outlined,
+                onTap: () async {
+                  Get.back();
+                  final result = await Get.toNamed("mainPage/MuhtelifCariEkle");
+                  if (result is CariListesiModel) {
+                    Get.back(result: result);
+                  }
+                },
+              ),
+            ],
+          );
+          if (result != null) {
+            viewModel.changeSiralama(result);
+          }
+        },
+      );
+  AppBarButton get filtreleButton => AppBarButton(
         icon: Icons.filter_alt_outlined,
         child: Text(loc(context).generalStrings.filter),
         onPressed: () async {

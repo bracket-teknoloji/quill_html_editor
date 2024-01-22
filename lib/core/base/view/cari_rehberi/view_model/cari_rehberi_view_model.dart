@@ -3,7 +3,6 @@ import "package:mobx/mobx.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_grup_kodu_model.dart";
 import "../../../view_model/mobx_network_mixin.dart";
@@ -56,7 +55,6 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     eFaturaGoster: true,
     sayfa: 1,
     siralama: "AZ",
-    belgeTuru: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
   );
 
   @computed
