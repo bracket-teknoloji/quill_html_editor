@@ -95,7 +95,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
               bottom: TabBar(
                 controller: _tabController,
                 tabs: [
-                  const Tab(child: Text("Genel")),
+                  Tab(child: Text(loc(context).generalStrings.general)),
                   if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const Tab(child: Text("Fiyat Listesi")),
                   const Tab(child: Text("Fiyat")),
                   const Tab(child: Text("Seriler")),
