@@ -124,15 +124,19 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 // viewModel.kalemModel.brutTutar = viewModel.;
                 viewModel.kalemModel.kalemList?.map((e) => e.miktar = viewModel.kalemModel.miktar2).toList();
                 BaseSiparisEditModel.instance.kalemList ??= [];
+                // if (widget.kalemModel != null) {
+                //   Get.back(result: viewModel.kalemModel);
+                // }
                 if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                   //replace
-                  BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
-                      viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null);
+                  Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
+                  // BaseSiparisEditModel.instance.kalemList?[BaseSiparisEditModel.instance.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
+                  //     viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null);
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
+                  Get.back();
                 }
                 dialogManager.showSuccessSnackBar("Kalem Eklendi");
-                Get.back();
               } else {
                 dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz");
               }
