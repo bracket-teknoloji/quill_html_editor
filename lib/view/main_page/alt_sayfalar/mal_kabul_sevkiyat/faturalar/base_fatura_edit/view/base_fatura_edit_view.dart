@@ -282,13 +282,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                               BaseSiparisEditModel.instance.kalemList = newList;
                               if (tabController.index == 2) {
                                 tabController.animateTo(3);
-                                await Future.delayed(const Duration(milliseconds: 100));
+                                await Future.delayed(const Duration(milliseconds: 500));
                                 tabController.animateTo(2);
                               }
                               // setState(() {});
                             }
                           },
-                        ).yetkiKontrol(BaseSiparisEditModel.instance.efattanTutar != null),
+                        ).yetkiKontrol(BaseSiparisEditModel.instance.efattanTutar != null && tabController.index == 2),
                         // topluIskontoBottomSheetModel(context),
                         BottomSheetModel(
                           title: "PDF Görüntüle",
