@@ -9,6 +9,7 @@ extension WidgetExtension on Widget {
   Widget get withSafeArea => SafeArea(child: this);
   Widget get withSizedBox => SizedBox(width: (Get.width - UIHelper.midSize) * 0.45, child: this);
   Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox();
+  Widget? get sizedBoxMi => this is SizedBox ? null : this;
 }
 
 extension RowExtension on Row {

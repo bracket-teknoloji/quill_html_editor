@@ -34,6 +34,9 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     String? belgeTuru,
     String? vergiNo,
     String? siparisKarsilanmaDurumu,
+        bool? kisitYok,
+        String? secildi,
+        String? teslimCari,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
@@ -53,7 +56,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   factory CariRequestModel.fromCariListesiModel(CariListesiModel model) => CariRequestModel(
         filterText: "",
         kod: [model.cariKodu ?? ""],
-        sayfa: 1,
+        // sayfa: 1,
         eFaturaGoster: true,
         plasiyerKisitiYok: true,
         // belgeTuru: model,

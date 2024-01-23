@@ -249,7 +249,7 @@ class BottomSheetDialogManager {
                                                           if (item?.description != null)
                                                             Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))),
                                                         ].nullCheckWithGeneric,
-                                                      ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null),
+                                                      ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null).sizedBoxMi,
                                                     ).paddingSymmetric(horizontal: UIHelper.midSize),
                                                     if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
                                                       Padding(
