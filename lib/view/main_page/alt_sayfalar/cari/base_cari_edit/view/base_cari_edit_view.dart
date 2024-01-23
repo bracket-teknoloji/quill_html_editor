@@ -42,7 +42,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   late final TabController tabController;
   List<Tab> get tabs => <Widget>[
         Tab(child: Text(loc(context).generalStrings.general)),
-        Tab(child: Text(loc(context).generalStrings.general)),
+        Tab(child: Text(loc(context).generalStrings.other)),
         const Tab(child: Text("Özet")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("Banka")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("İletişim")).yetkiVarMi(goruntulenecekMi),
@@ -70,13 +70,13 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
 
   @override
   void initState() {
-    tabController = TabController(length: tabs.length, vsync: this);
-    tabController.addListener(() async {
-      if (tabController.index != 0 && !tabController.indexIsChanging) {
-        await vergiNoChecker();
-      }
-    });
+    tabController = TabController(length: goruntulenecekMi ? 5 : 2, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+      tabController.addListener(() async {
+        if (tabController.index != 0 && !tabController.indexIsChanging) {
+          await vergiNoChecker();
+        }
+      });
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
         if (widget.model?.baseEditEnum == BaseEditEnum.kopyala) {
           CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(widget.model?.model));
