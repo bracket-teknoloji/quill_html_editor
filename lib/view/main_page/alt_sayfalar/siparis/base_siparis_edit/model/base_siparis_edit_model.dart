@@ -412,6 +412,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double? efattanDoviz;
   @HiveField(162)
   String? efattanDovizAdi;
+  @HiveField(163)
+  CariListesiModel? muhtelifCariModel;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -577,6 +579,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efattanTutar,
     this.efattanDoviz,
     this.efattanDovizAdi,
+    this.muhtelifCariModel,
   });
 
   BaseSiparisEditModel._init();
