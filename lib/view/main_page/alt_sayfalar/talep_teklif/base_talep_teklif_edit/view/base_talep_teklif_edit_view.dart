@@ -139,6 +139,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           );
           if (result is CariListesiModel) {
             cariModel = result;
+            if (result.muhtelifMi) {
+              BaseSiparisEditModel.instance.muhtelifCariModel = result;
+            }
           } else {
             cariModel = null;
           }
@@ -227,7 +230,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
             bottom: TabBar(
               controller: tabController,
               tabs: [
-                 Tab(child: Text(loc(context).generalStrings.general)),
+                Tab(child: Text(loc(context).generalStrings.general)),
                 Tab(child: Text(loc(context).generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
