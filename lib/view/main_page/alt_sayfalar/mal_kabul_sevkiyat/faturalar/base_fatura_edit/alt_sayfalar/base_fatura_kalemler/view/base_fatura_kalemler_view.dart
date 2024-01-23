@@ -311,7 +311,6 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
-                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? result.satisKdvOrani : result.alisKdvOrani,
               );
             }
           },
@@ -326,7 +325,9 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
                 stokAdi: stokModel.stokAdi,
                 stokKodu: stokModel.stokKodu,
-                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? stokModel.satisKdv : stokModel.alisKdv,
+                stokAlisKdv: stokModel.alisKdv,
+                stokSatisKdv: stokModel.satisKdv,
+                // kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? stokModel.satisKdv : stokModel.alisKdv,
               );
               viewModel.updateKalemList();
               // viewModel.addKalemList(KalemModel.fromStokListesiModel(stokModel));
