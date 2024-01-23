@@ -10,9 +10,11 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -133,12 +135,17 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       groupValue: viewModel.selected["Şirket"],
       children: List.generate(
         viewModel.sirketList?.length ?? 0,
-        (index) => BottomSheetModel(
-          iconWidget: Icons.storage_outlined,
-          title: viewModel.sirketList?[index].company ?? "",
-          value: viewModel.sirketList?[index],
-          groupValue: viewModel.sirketList?[index].company,
-        ),
+        (index) {
+          final CompanyModel? model = viewModel.sirketList?[index];
+          return BottomSheetModel(
+            iconWidget: Icons.storage_outlined,
+            title: model?.company ?? "",
+            description: "${model?.year}",
+            descriptionWidget: model?.isDevredilmis == true ? ColorfulBadge(label: Text("Devredildi (${model?.devSirket})"), badgeColorEnum: BadgeColorEnum.kapali) : null,
+            value: model,
+            groupValue: model?.company,
+          );
+        },
       ),
     );
     if (result is CompanyModel) {
