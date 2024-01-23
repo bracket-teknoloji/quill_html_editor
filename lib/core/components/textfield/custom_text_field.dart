@@ -14,6 +14,7 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String? labelText;
   final String? valueText;
+  final TextSpan? descriptionWidget;
   final Widget? valueWidget;
   final bool? isMust;
   final bool? readOnly;
@@ -34,6 +35,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isFormattedString;
   final bool? isDateTime;
   final bool? isTime;
+  final AutofillHints? autoFillHint;
   const CustomTextField({
     super.key,
     this.controller,
@@ -59,6 +61,8 @@ class CustomTextField extends StatefulWidget {
     this.onClear,
     this.isDateTime,
     this.isTime,
+    this.autoFillHint,
+    this.descriptionWidget,
   });
 
   @override
@@ -196,7 +200,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 children: <Widget>[
                   Text.rich(
                     TextSpan(
-                      children: <InlineSpan>[
+                      children: [
                         TextSpan(
                           text: widget.labelText ?? "",
                           style: (widget.enabled != false ? (widget.isMust ?? false) : false)
@@ -204,7 +208,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
                         TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)),
-                      ],
+                        widget.descriptionWidget,
+                      ].nullCheckWithGeneric,
                     ),
                   ),
                   if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
