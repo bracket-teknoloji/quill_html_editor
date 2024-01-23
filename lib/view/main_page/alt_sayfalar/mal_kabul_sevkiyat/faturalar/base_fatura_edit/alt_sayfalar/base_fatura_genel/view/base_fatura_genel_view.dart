@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -202,13 +203,23 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   suffixMore: true,
                   controller: _cariController,
                   enabled: isEkle,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                  valueWidget: Observer(
+                    builder: (_) => Wrap(
+                      children: [
+                        Text(viewModel.model.cariKodu ?? ""),
+                        // Text(
+                        //   viewModel.model.getTitle,
+                        //   style: const TextStyle(color: ColorPalette.mantis),
+                        // ).paddingOnly(left: UIHelper.lowSize),
+                      ],
+                    ),
+                  ),
                   onTap: () async {
                     final result = await Get.toNamed(
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(
                         menuKodu: "CARI_CREH",
-                        belgeTuru: "MS",
+                        belgeTuru: model.getEditTipiEnum?.rawValue,
                         siparisKarsilanmaDurumu: "K",
                       ),
                     );
