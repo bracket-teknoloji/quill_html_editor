@@ -109,9 +109,8 @@ class AppThemeLight extends AppTheme {
           actionsPadding: EdgeInsets.zero,
           alignment: Alignment.center,
           contentTextStyle: const TextStyle(
-            fontSize: 16,
+            fontSize: 14,
           ),
-          elevation: 0,
         ),
         cardTheme: CardTheme(
           elevation: 0,
@@ -176,8 +175,11 @@ class AppThemeLight extends AppTheme {
           ),
         ),
         buttonBarTheme: ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),
+        // scaffoldBackgroundColor: colorManager.surfaceVariant.withOpacity(0.3),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
+          // backgroundColor: Colors.transparent,
+          // foregroundColor: colorManager.onPrimat,
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: colorManager.background,
             systemNavigationBarColor: colorManager.background,
