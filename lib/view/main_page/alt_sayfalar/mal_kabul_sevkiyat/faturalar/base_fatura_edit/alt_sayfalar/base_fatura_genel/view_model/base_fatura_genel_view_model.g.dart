@@ -205,6 +205,17 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
+  void setBelgeNo(String? value) {
+    final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
+        .startAction(name: '_BaseFaturaGenelViewModelBase.setBelgeNo');
+    try {
+      return super.setBelgeNo(value);
+    } finally {
+      _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setTopluDepoKodu(int? value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setTopluDepoKodu');
