@@ -14,7 +14,7 @@ class MuhtelifCariEkleView extends StatefulWidget {
 }
 
 class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
-  CariListesiModel cariModel = CariListesiModel(cariKodu: "0" * 15);
+  CariListesiModel cariModel = CariListesiModel(kodu: "0" * 15, requestVersion: 6, islemKodu: 4, cariKodu: "0" * 15);
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -22,7 +22,7 @@ class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
           actions: [
             IconButton(
               onPressed: () {
-                if (cariModel.cariAdi.ext.isNullOrEmpty) {
+                if (cariModel.adi.ext.isNullOrEmpty) {
                   dialogManager.showAlertDialog("Unvan Giriniz.");
                 } else {
                   dialogManager.showAreYouSureDialog(() {
@@ -40,7 +40,13 @@ class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              CustomTextField(labelText: "Unvan", isMust: true, onChanged: (value) => cariModel.cariAdi = value),
+              CustomTextField(
+                labelText: "Unvan",
+                isMust: true,
+                onChanged: (value) => cariModel
+                  ..adi = value
+                  ..cariAdi = value,
+              ),
               CustomTextField(
                 labelText: "İl",
                 onChanged: (value) => cariModel
