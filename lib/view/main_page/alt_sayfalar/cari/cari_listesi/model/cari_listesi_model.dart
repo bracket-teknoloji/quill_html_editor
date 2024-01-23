@@ -402,6 +402,8 @@ class CariListesiModel with NetworkManagerMixin {
         email: model?.ePosta,
         sahisFirmasiMi: model?.vergiNo?.length == 11,
       );
+
+  bool get muhtelifMi => cariKodu == "0" * 15;
 }
 
 @JsonSerializable(explicitToJson: true)
