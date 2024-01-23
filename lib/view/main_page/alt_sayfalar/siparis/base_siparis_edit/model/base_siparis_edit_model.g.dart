@@ -335,6 +335,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel muhtelifCariModel(CariListesiModel? muhtelifCariModel);
 
+  BaseSiparisEditModel cariTitle(String? cariTitle);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -506,6 +508,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     double? efattanDoviz,
     String? efattanDovizAdi,
     CariListesiModel? muhtelifCariModel,
+    String? cariTitle,
   });
 }
 
@@ -1106,6 +1109,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(muhtelifCariModel: muhtelifCariModel);
 
   @override
+  BaseSiparisEditModel cariTitle(String? cariTitle) =>
+      this(cariTitle: cariTitle);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1278,6 +1285,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? efattanDoviz = const $CopyWithPlaceholder(),
     Object? efattanDovizAdi = const $CopyWithPlaceholder(),
     Object? muhtelifCariModel = const $CopyWithPlaceholder(),
+    Object? cariTitle = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1938,6 +1946,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.muhtelifCariModel
           // ignore: cast_nullable_to_non_nullable
           : muhtelifCariModel as CariListesiModel?,
+      cariTitle: cariTitle == const $CopyWithPlaceholder()
+          ? _value.cariTitle
+          // ignore: cast_nullable_to_non_nullable
+          : cariTitle as String?,
     );
   }
 }
@@ -3324,13 +3336,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       efattanDoviz: fields[161] as double?,
       efattanDovizAdi: fields[162] as String?,
       muhtelifCariModel: fields[163] as CariListesiModel?,
+      cariTitle: fields[164] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(164)
+      ..writeByte(165)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3658,7 +3671,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(162)
       ..write(obj.efattanDovizAdi)
       ..writeByte(163)
-      ..write(obj.muhtelifCariModel);
+      ..write(obj.muhtelifCariModel)
+      ..writeByte(164)
+      ..write(obj.cariTitle);
   }
 
   @override
@@ -4205,6 +4220,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ? null
           : CariListesiModel.fromJson(
               json['MUHTELIF_CARI_MODEL'] as Map<String, dynamic>),
+      cariTitle: json['CARI_TITLE'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4381,6 +4397,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EFATTAN_DOVIZ', instance.efattanDoviz);
   writeNotNull('EFATTAN_DOVIZ_ADI', instance.efattanDovizAdi);
   writeNotNull('MUHTELIF_CARI_MODEL', instance.muhtelifCariModel?.toJson());
+  writeNotNull('CARI_TITLE', instance.cariTitle);
   return val;
 }
 

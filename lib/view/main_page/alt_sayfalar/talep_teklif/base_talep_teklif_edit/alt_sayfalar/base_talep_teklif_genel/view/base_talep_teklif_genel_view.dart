@@ -3,6 +3,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/constants/color_palette.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -175,19 +177,44 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   suffixMore: true,
                   controller: _cariController,
                   enabled: isEkle,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+                  valueWidget: Observer(
+                    builder: (_) => Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: viewModel.model.cariKodu ?? ""),
+                          const TextSpan(text: "  "),
+                          TextSpan(
+                            text: viewModel.model.cariTitle,
+                            style: const TextStyle(color: ColorPalette.mantis),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                   onTap: () async {
-                    final result = await Get.toNamed(
+                    final cariModel = await Get.toNamed(
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(
                         menuKodu: "CARI_CREH",
                         belgeTuru: model.getEditTipiEnum?.rawValue,
-                        eFaturaGoster: null,
                       ),
+                    );
+                    if (cariModel == null) return null;
+                    final result = await networkManager.getCariModel(
+                      CariRequestModel.fromCariListesiModel(cariModel)
+                        ..secildi = "E"
+                        ..kisitYok = true
+                        ..teslimCari = "E"
+                        ..eFaturaGoster = true,
                     );
                     if (result is CariListesiModel) {
                       _cariController.text = result.cariAdi ?? "";
                       _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                          ? "E-Fatura"
+                          : result.efaturaCarisi == "H"
+                              ? "E-Arşiv"
+                              : null;
                       viewModel.setCariAdi(result.cariAdi);
                       viewModel.setCariKodu(result.cariKodu);
                       viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));

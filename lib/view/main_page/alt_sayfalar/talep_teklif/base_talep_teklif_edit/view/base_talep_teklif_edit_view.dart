@@ -134,11 +134,16 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               menuKodu: "CARI_CREH",
               belgeTuru: model.editTipiEnum?.rawValue,
               siparisKarsilanmaDurumu: null,
-              eFaturaGoster: null,
             ),
           );
           if (result is CariListesiModel) {
-            cariModel = result;
+            cariModel = await networkManager.getCariModel(
+            CariRequestModel.fromCariListesiModel(result)
+              ..secildi = "E"
+              ..kisitYok = true
+              ..teslimCari = "E"
+              ..eFaturaGoster = true,
+          );
             if (result.muhtelifMi) {
               BaseSiparisEditModel.instance.muhtelifCariModel = result;
             }
@@ -146,10 +151,22 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
             cariModel = null;
           }
         } else {
-          cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+          cariModel = await networkManager.getCariModel(
+            CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
+              ..secildi = "E"
+              ..kisitYok = true
+              ..teslimCari = "E"
+              ..eFaturaGoster = true,
+          );
         }
         if (cariModel is CariListesiModel) {
           viewModel.changeIsBaseSiparisEmpty(true);
+
+          BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
+              ? "E-Fatura"
+              : cariModel.efaturaCarisi == "H"
+                  ? "E-Arşiv"
+                  : null;
           BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;

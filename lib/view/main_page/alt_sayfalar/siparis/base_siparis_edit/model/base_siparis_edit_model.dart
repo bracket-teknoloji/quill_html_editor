@@ -414,6 +414,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? efattanDovizAdi;
   @HiveField(163)
   CariListesiModel? muhtelifCariModel;
+  @HiveField(164)
+  String? cariTitle;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -580,19 +582,20 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efattanDoviz,
     this.efattanDovizAdi,
     this.muhtelifCariModel,
+    this.cariTitle,
   });
 
   BaseSiparisEditModel._init();
 
-  String get getTitle {
-    if (eArsivSerisindenMi) {
+  String? getTitle(String? belgeNo) {
+    if (_yetkiController.eArsivSerisindenMi(belgeNo ?? "")) {
       return "E-Arşiv";
-    } else if (eFaturaSerisindenMi) {
+    } else if (_yetkiController.eFaturaSerisindenMi(belgeNo ?? "")) {
       return "E-Fatura";
-    } else if (eIrsaliyeSerisindenMi) {
+    } else if (_yetkiController.eIrsaliyeSerisindenMi(belgeNo ?? "")) {
       return "E-İrsaliye";
     }
-    return "E-Belge";
+    return null;
   }
 
   YetkiController get _yetkiController => YetkiController();

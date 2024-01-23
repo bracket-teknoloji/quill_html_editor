@@ -129,12 +129,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
 
-            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-            if (cariModel is CariListesiModel) {
-              viewModel.changeIsBaseSiparisEmpty(true);
-              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-            }
+            // final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+            // if (cariModel is CariListesiModel) {
+            //   viewModel.changeIsBaseSiparisEmpty(true);
+            //   BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+            //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+            // }
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
@@ -196,6 +196,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           final cariModel = await getCari();
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
+            BaseSiparisEditModel.instance.cariTitle =  cariModel.efaturaCarisi == "E" ? "E-Fatura" : cariModel.efaturaCarisi == "H" ?"E-Arşiv" : null;
             BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
             BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
             BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
@@ -567,8 +568,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   "mainPage/cariRehberi",
                   arguments: CariListesiRequestModel(
                     menuKodu: "CARI_CREH",
-                    belgeTuru: "MS",
-                    siparisKarsilanmaDurumu: "K",
+                    belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                   ),
                 );
                 if (result is CariListesiModel) {
@@ -631,6 +631,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     viewModel.setKalemList(list);
                     if (_cariKoduController.text.isEmpty) {
                       final cariModel = await getCari();
+                      viewModel.baseSiparisEditModel.cariTitle = cariModel?.efaturaCarisi == "E" ? "E-Fatura" : cariModel?.efaturaCarisi == "H" ?"E-Arşiv" : null;
                       viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
                       viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
                       viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;

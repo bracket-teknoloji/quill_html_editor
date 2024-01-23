@@ -11,7 +11,6 @@ import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bot
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/model_extensions.dart";
