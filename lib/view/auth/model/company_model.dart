@@ -10,6 +10,10 @@ class CompanyModel with NetworkManagerMixin {
   String? company;
   @JsonKey(name: "YIL")
   int? year;
+  @JsonKey(name: "DEVSIRKET")
+  String? devSirket;
+  @JsonKey(name: "isDevredilmis")
+  bool? isDevredilmis;
 
   CompanyModel();
   @override
@@ -17,11 +21,7 @@ class CompanyModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$CompanyModelToJson(this);
-
-  @override
-  String toString() => "company: $company,\n year: $year";
-
-  //operator == and hashCode
+  
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

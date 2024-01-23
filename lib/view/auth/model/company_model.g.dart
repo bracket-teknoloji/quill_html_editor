@@ -8,7 +8,9 @@ part of 'company_model.dart';
 
 CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) => CompanyModel()
   ..company = json['SIRKET'] as String?
-  ..year = json['YIL'] as int?;
+  ..year = json['YIL'] as int?
+  ..devSirket = json['DEVSIRKET'] as String?
+  ..isDevredilmis = json['isDevredilmis'] as bool?;
 
 Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) {
   final val = <String, dynamic>{};
@@ -21,5 +23,7 @@ Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) {
 
   writeNotNull('SIRKET', instance.company);
   writeNotNull('YIL', instance.year);
+  writeNotNull('DEVSIRKET', instance.devSirket);
+  writeNotNull('isDevredilmis', instance.isDevredilmis);
   return val;
 }
