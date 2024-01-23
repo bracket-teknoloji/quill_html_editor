@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 class BottomSheetModel {
   final String title;
   final String? description;
+  final Widget? descriptionWidget;
   final String? icon;
   final dynamic value;
   final dynamic groupValue;
@@ -13,6 +14,7 @@ class BottomSheetModel {
   BottomSheetModel({
     required this.title,
     this.description,
+    this.descriptionWidget,
     this.icon,
     this.value,
     this.onTap,
