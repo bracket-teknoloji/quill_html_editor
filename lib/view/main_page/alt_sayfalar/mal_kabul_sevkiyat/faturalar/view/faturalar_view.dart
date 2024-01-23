@@ -386,7 +386,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                     controller: _plasiyerController,
                     onTap: () async {
                       final List<PlasiyerList?>? result =
-                          await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? ""));
+                          await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"));
                       if (result != null) {
                         _plasiyerController.text = result.map((PlasiyerList? e) => e?.plasiyerAciklama).join(", ");
                         viewModel.setPlasiyerArr(result.map((PlasiyerList? e) => e?.plasiyerKodu).toList());
