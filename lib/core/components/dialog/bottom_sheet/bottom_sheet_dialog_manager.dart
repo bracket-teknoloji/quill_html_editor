@@ -23,6 +23,7 @@ import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
@@ -166,6 +167,7 @@ class BottomSheetDialogManager {
   Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
+    final double height = children!.map((e) => e.descriptionWidget != null ? 70.0 : 60.0).sum;
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,
@@ -206,59 +208,71 @@ class BottomSheetDialogManager {
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
                     // if viewModel.getFilteredList are not fit to screen, it will be scrollable
-                    height: viewModel.getFilteredList!.length * 50 < Get.height * 0.8 ? (viewModel.getFilteredList?.length ?? 0) * 50 : Get.height * 0.8,
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: SafeArea(
-                              child: Observer(
-                                builder: (_) => Column(
-                                  children: [
-                                    Wrap(
-                                      children: <Widget>[
-                                        ...List.generate(
-                                          viewModel.getFilteredList!.length,
-                                          (int index) => Observer(
-                                            builder: (_) => Wrap(
-                                              children: [
-                                                RadioListTile(
-                                                  toggleable: true,
-                                                  activeColor: UIHelper.primaryColor,
-                                                  onChanged: (dynamic value) {
-                                                    if (viewModel.getFilteredList?[index].onTap != null) {
-                                                      viewModel.getFilteredList?[index].onTap!();
-                                                    } else {
-                                                      Get.back(result: viewModel.getFilteredList![index].value);
-                                                    }
-                                                  },
-                                                  value: viewModel.getFilteredList?[index].groupValue ?? "",
-                                                  groupValue: groupValue,
-                                                  title: Text(viewModel.getFilteredList![index].title),
-                                                  subtitle: viewModel.getFilteredList![index].description != null
-                                                      ? Text(viewModel.getFilteredList![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
-                                                      : null,
-                                                ).paddingSymmetric(horizontal: UIHelper.midSize),
-                                                if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
-                                                  Padding(
-                                                    padding: UIHelper.lowPaddingVertical,
-                                                    child: const Divider(),
-                                                  )
-                                                else
-                                                  Container(),
-                                              ],
-                                            ),
+                    height: height < Get.height * 0.8 ? height : Get.height * 0.8,
+                    child: Scrollbar(
+                      interactive: true,
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: SafeArea(
+                                child: Observer(
+                                  builder: (_) => Column(
+                                    children: [
+                                      Wrap(
+                                        children: <Widget>[
+                                          ...List.generate(
+                                            viewModel.getFilteredList!.length,
+                                            (int index) {
+                                              final BottomSheetModel? item = viewModel.getFilteredList?[index];
+                                              return Observer(
+                                                builder: (_) => Wrap(
+                                                  children: [
+                                                    RadioListTile(
+                                                      toggleable: true,
+                                                      activeColor: UIHelper.primaryColor,
+                                                      onChanged: (dynamic value) {
+                                                        if (item?.onTap != null) {
+                                                          item?.onTap!();
+                                                        } else {
+                                                          Get.back(result: item?.value);
+                                                        }
+                                                      },
+                                                      value: item?.groupValue ?? "",
+                                                      groupValue: groupValue,
+                                                      title: Text(item?.title ?? ""),
+                                                      subtitle: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          item?.descriptionWidget,
+                                                          if (item?.description != null)
+                                                            Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))),
+                                                        ].nullCheckWithGeneric,
+                                                      ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null),
+                                                    ).paddingSymmetric(horizontal: UIHelper.midSize),
+                                                    if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
+                                                      Padding(
+                                                        padding: UIHelper.lowPaddingVertical,
+                                                        child: const Divider(),
+                                                      )
+                                                    else
+                                                      Container(),
+                                                  ],
+                                                ),
+                                              );
+                                            },
                                           ),
-                                        ),
-                                      ],
-                                    ).paddingOnly(bottom: UIHelper.midSize),
-                                  ],
+                                        ],
+                                      ).paddingOnly(bottom: UIHelper.midSize),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 else
