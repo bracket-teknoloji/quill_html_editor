@@ -102,7 +102,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
-              title: "${widget.model.getTitle} Gönder",
+              title: "${widget.model.getTitle(widget.model.belgeNo)} Gönder",
               subtitle: widget.model.belgeNo,
             ),
           ),
