@@ -332,7 +332,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               // viewModel.addKalemList(KalemModel.fromStokListesiModel(stokModel));
             }
           },
-        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && (model?.kalemStoktanMi ?? false)),
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
