@@ -196,7 +196,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           final cariModel = await getCari();
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
-            BaseSiparisEditModel.instance.cariTitle =  cariModel.efaturaCarisi == "E" ? "E-Fatura" : cariModel.efaturaCarisi == "H" ?"E-Arşiv" : null;
+            BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
+                ? "E-Fatura"
+                : cariModel.efaturaCarisi == "H"
+                    ? "E-Arşiv"
+                    : null;
             BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
             BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
             BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
@@ -277,7 +281,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                                     ..dovizFiyati = (newList[index].dovizFiyati ?? 0) + (item.dovizFiyati ?? 0)
                                     ..brutFiyat = (newList[index].brutFiyat ?? 0) + ((item.brutFiyat ?? 0) * (item.miktar ?? 0));
                                 } else {
-                                  newList.add(item..brutFiyat = (item.brutFiyat ?? 0) * (item.miktar ?? 0));
+                                  newList.add(
+                                    item
+                                      ..brutFiyat = (item.brutFiyat ?? 0) * (item.miktar ?? 0)
+                                      ..miktar = 1,
+                                  );
                                 }
                               }
                               BaseSiparisEditModel.instance.kalemList = newList;
@@ -631,7 +639,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     viewModel.setKalemList(list);
                     if (_cariKoduController.text.isEmpty) {
                       final cariModel = await getCari();
-                      viewModel.baseSiparisEditModel.cariTitle = cariModel?.efaturaCarisi == "E" ? "E-Fatura" : cariModel?.efaturaCarisi == "H" ?"E-Arşiv" : null;
+                      viewModel.baseSiparisEditModel.cariTitle = cariModel?.efaturaCarisi == "E"
+                          ? "E-Fatura"
+                          : cariModel?.efaturaCarisi == "H"
+                              ? "E-Arşiv"
+                              : null;
                       viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
                       viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
                       viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;
