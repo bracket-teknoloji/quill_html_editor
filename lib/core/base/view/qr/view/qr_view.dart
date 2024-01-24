@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:kartal/kartal.dart";
@@ -91,6 +93,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
     qrViewController.scannedDataStream.listen((scanData) {
       if (scanData.code != null) {
         qrViewController.pauseCamera();
+        log(scanData.code ?? "");
         Navigator.pop(context, scanData.code);
       }
     });

@@ -83,6 +83,17 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
   }
 
   @override
+  void addSeriList(SeriList model) {
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
+        .startAction(name: '_SeriListesiViewModelBase.addSeriList');
+    try {
+      return super.addSeriList(model);
+    } finally {
+      _$_SeriListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 kalemModel: ${kalemModel},

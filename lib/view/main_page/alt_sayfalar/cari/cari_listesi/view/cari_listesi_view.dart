@@ -138,13 +138,14 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         resizeToAvoidBottomInset: true,
         extendBody: true,
         extendBodyBehindAppBar: false,
-        appBar: appBar(context),
+        // appBar: ,
         floatingActionButton: fab(),
-        body: body(),
+        body: CustomScrollView(slivers: [appBar(context), body()]),
         bottomNavigationBar: bottomButtonBar(),
       );
 
-  AppBar appBar(BuildContext context) => AppBar(
+  SliverAppBar appBar(BuildContext context) => SliverAppBar(
+        floating: true,
         title: Observer(
           builder: (_) => (viewModel.searchBar
               ? CustomAppBarTextField(
@@ -272,10 +273,10 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               ? (viewModel.cariListesi?.isEmpty ?? false)
                   ? Center(child: Observer(builder: (_) => Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı")))
                   : const ListViewShimmer()
-              : ListView.builder(
-                  primary: false,
-                  controller: _scrollController,
-                  shrinkWrap: true,
+              : SliverList.builder(
+                  // primary: false,
+                  // controller: _scrollController,
+                  // shrinkWrap: true,
                   itemCount: (viewModel.cariListesi?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index < (viewModel.cariListesi?.length ?? 0)) {

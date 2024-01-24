@@ -240,6 +240,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
                       viewModel.model.efaturaTipi = result.efaturaTipi;
+                      _plasiyerController.text = result.plasiyerAciklama;
                       _belgeNoController.text = "";
                       await getBelgeNo();
                     }

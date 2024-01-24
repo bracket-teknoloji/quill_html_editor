@@ -4,6 +4,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -710,7 +711,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       }
                       return null;
                     },
-                  ).yetkiVarMi(viewModel.model?.seriCikislardaAcik == true && kDebugMode),
+                  ).yetkiVarMi(viewModel.model?.seriCikislardaAcik == true && kDebugMode && !editTipi.siparisMi),
                 ),
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
@@ -1067,6 +1068,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       dialogManager.showErrorSnackBar("Lütfen önce miktar giriniz.");
     } else {
       final result = await Get.toNamed("/seriListesi", arguments: viewModel.kalemModel);
+      if (result is List<SeriList>) {
+        serilerController.text = "${result.length} kalem";
+        viewModel.kalemModel.seriList = result;
+      }
     }
   }
 }

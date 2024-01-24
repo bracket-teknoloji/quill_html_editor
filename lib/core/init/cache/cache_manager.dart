@@ -66,7 +66,7 @@ class CacheManager {
     Hive.registerAdapter(EditTipiEnumAdapter());
     Hive.registerAdapter(ListSiparisEditModelAdapter());
     Hive.registerAdapter(StokListAdapter());
-    Hive.registerAdapter(SeriListAdapter());
+    Hive.registerAdapter(SeriListImplAdapter());
     initHiveBoxes();
   }
 

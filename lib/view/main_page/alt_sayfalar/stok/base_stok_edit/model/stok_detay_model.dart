@@ -4,6 +4,7 @@ import "package:hive_flutter/hive_flutter.dart";
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 
+part "stok_detay_model.freezed.dart";
 part "stok_detay_model.g.dart";
 
 @JsonSerializable()
@@ -53,26 +54,72 @@ class FiyatList {
   Map<String, dynamic> toJson() => _$FiyatListToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
-@HiveType(typeId: 196)
-class SeriList {
-  SeriList();
-  @HiveField(0)
-  String? stokKodu;
-  @HiveField(1)
-  int? depoKodu;
-  @HiveField(2)
-  double? miktar;
-  @HiveField(3)
-  String? seriNo;
-  @HiveField(4)
-  int? inckeyno;
-  @HiveField(5)
-  String? depoTanimi;
+// @JsonSerializable(explicitToJson: true)
+// @HiveType(typeId: 196)
+// class SeriList {
+//   SeriList();
+//   @HiveField(0)
+//   String? stokKodu;
+//   @HiveField(1)
+//   int? depoKodu;
+//   @HiveField(2)
+//   double? miktar;
+//   @HiveField(3)
+//   String? seriNo;
+//   @HiveField(4)
+//   int? inckeyno;
+//   @HiveField(5)
+//   String? depoTanimi;
+//   @HiveField(6)
+//   int? hareketId;
+//   @HiveField(7)
+//   String? barkod;
+//   @HiveField(8)
+//   String? gckod;
+//   @HiveField(9)
+//   String? seri1;
+//   @HiveField(10)
+//   int? requestVersion;
+//   @HiveField(11)
+//   String? tempBarkod;
+//   @HiveField(12)
+//   String? seri2;
+//   @HiveField(13)
+//   String? seri3;
+//   @HiveField(14)
+//   String? seri4;
 
-  int? hareketId;
+//   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
 
+//   Map<String, dynamic> toJson() => _$SeriListToJson(this);
+// }
+
+@unfreezed
+abstract class SeriList extends HiveObject with _$SeriList {
+  @JsonSerializable(explicitToJson: true)
+  SeriList._();
+  @HiveType(typeId: 196)
+  factory SeriList({
+    @HiveField(0) String? stokKodu,
+    @HiveField(1) int? depoKodu,
+    @HiveField(2) double? miktar,
+    @HiveField(3) String? seriNo,
+    @HiveField(4) int? inckeyno,
+    @HiveField(5) String? depoTanimi,
+    @HiveField(6) int? hareketId,
+    @HiveField(7) String? barkod,
+    @HiveField(8) String? gckod,
+    @HiveField(9) String? seri1,
+    @HiveField(10) int? requestVersion,
+    @HiveField(11) String? tempBarkod,
+    @HiveField(12) String? seri2,
+    @HiveField(13) String? seri3,
+    @HiveField(14) String? seri4,
+    @HiveField(15) String? acik1,
+    @HiveField(16) String? acik2,
+    @HiveField(17) String? acik3,
+    @HiveField(18) String? acik4,
+    @HiveField(19) DateTime? sonKullanmaTarihi,
+  }) = _SeriList;
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SeriListToJson(this);
 }

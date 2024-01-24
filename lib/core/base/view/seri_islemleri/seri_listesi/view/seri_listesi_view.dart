@@ -1,13 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view_model/seri_listesi_view_model.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 class SeriListesiView extends StatefulWidget {
   final KalemModel kalemModel;
@@ -38,7 +41,12 @@ class _SeriListesiViewState extends State<SeriListesiView> {
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.check_outlined)),
+            IconButton(
+              onPressed: () {
+                Get.back(result: viewModel.kalemModel.seriList);
+              },
+              icon: const Icon(Icons.check_outlined),
+            ),
           ],
         ),
         body: Column(
@@ -58,12 +66,46 @@ class _SeriListesiViewState extends State<SeriListesiView> {
                 ),
                 Expanded(
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () async {
+                      final result = await Get.toNamed("/seriDetayi", arguments: widget.kalemModel);
+                      if (result is SeriList) {
+                        viewModel.addSeriList(result);
+                      }
+                    },
                     label: const Text("Seri Girişi"),
                     icon: const Icon(Icons.edit_outlined),
                   ).paddingAll(UIHelper.lowSize),
                 ),
               ],
+            ).yetkiVarMi(viewModel.kalanMiktar == 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty),
+            Expanded(
+              child: Observer(
+                builder: (_) {
+                  if (viewModel.kalemModel.seriList.ext.isNullOrEmpty) {
+                    return const Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.dashboard_outlined),
+                          Text("Seri Listesi Boş"),
+                        ],
+                      ),
+                    );
+                  }
+                  return Observer(
+                    builder: (_) => ListView.builder(
+                      itemCount: viewModel.kalemModel.seriList?.length ?? 0,
+                      itemBuilder: (context, index) => Card(
+                        child: ListTile(
+                          title: Text(viewModel.kalemModel.seriList?[index].seri1 ?? ""),
+                          subtitle: Text(viewModel.kalemModel.seriList?[index].miktar.toIntIfDouble.toStringIfNotNull ?? ""),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ).paddingAll(UIHelper.lowSize),

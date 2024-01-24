@@ -104,6 +104,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
     model = model.copyWith(tarih: value.dateTimeWithoutTime);
     BaseSiparisEditModel.setInstance(model);
   }
+
   @action
   void setBelgeNo(String? value) {
     model = model.copyWith(belgeNo: value);
@@ -155,7 +156,4 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
     }
     BaseSiparisEditModel.setInstance(model);
   }
-
-  // @computed
-  // String get getCariTipi => model.getTitle() ?? "";
 }
