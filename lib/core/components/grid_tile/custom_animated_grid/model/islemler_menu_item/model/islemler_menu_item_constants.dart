@@ -1073,7 +1073,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get eFaturaGonder {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
-      title: "${siparisModel.getTitle} Gönder",
+      title: "${siparisModel.getTitle(siparisModel.belgeNo)} Gönder",
       iconData: Icons.send_outlined,
       onTap: () async {
         final BaseSiparisEditModel? newSiparisModel = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model as BaseSiparisEditModel));
