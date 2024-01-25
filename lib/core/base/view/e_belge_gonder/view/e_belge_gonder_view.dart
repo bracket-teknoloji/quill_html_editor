@@ -117,7 +117,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                   valueWidget: Text(model.cariKodu ?? ""),
                   suffix: IconButton(
                     onPressed: () async {
-                      dialogManager.showCariGridViewDialog(CariListesiModel.fromSiparisModel(widget.model));
+                      dialogManager.showCariIslemleriGridViewDialog(CariListesiModel.fromSiparisModel(widget.model));
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ),
