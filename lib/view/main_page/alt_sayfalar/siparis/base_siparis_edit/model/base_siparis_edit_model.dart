@@ -1286,7 +1286,7 @@ class KalemModel with NetworkManagerMixin {
     if (seriList?.isNotEmpty == true) {
       return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     } else if (siparisSira != null) {
-      return "Sipariş $siparisNo  (${siparisSira ?? 0})";
+      return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
     } else if (teklifNo != null) {
       return "${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
     } else {
