@@ -266,18 +266,11 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
         onTap: () {
           dialogManager.showColorfulSnackBar(
-            "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama ?? ""}' : ""}",
+            model.eFaturaMi
+                ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
+                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
             badge.badgeColorEnum.getColor,
-          );
-          switch (model.efaturaDurumu) {
-            case "HAT":
-            case "BEK":
-            case "TAS":
-              dialogManager.showInfoSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
-            case "TMM":
-              dialogManager.showSuccessSnackBar("Durum Kodu: ${model.efaturaGibDurumKodu ?? 0}\n${model.efaturaDurumAciklama ?? ""}");
-            default:
-          }
+          ); 
         },
         child: badge,
       );
