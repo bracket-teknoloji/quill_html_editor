@@ -215,7 +215,7 @@ class PickerApp extends StatelessWidget {
           ),
           //* Seri İşlemleri
           GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
-          GetPage(name: "/seriDetayi", page: () => SeriDetayiView(kalemModel: Get.arguments)),
+          GetPage(name: "/seriDetayi", page: () => SeriDetayiView(hareketKalan: Get.arguments)),
           GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(

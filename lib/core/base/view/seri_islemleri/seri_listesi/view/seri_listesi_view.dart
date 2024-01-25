@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view_model/seri_listesi_view_model.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -20,7 +22,7 @@ class SeriListesiView extends StatefulWidget {
   State<SeriListesiView> createState() => _SeriListesiViewState();
 }
 
-class _SeriListesiViewState extends State<SeriListesiView> {
+class _SeriListesiViewState extends BaseState<SeriListesiView> {
   late final SeriListesiViewModel viewModel;
   @override
   void initState() {
@@ -67,7 +69,7 @@ class _SeriListesiViewState extends State<SeriListesiView> {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () async {
-                      final result = await Get.toNamed("/seriDetayi", arguments: widget.kalemModel);
+                      final result = await Get.toNamed("/seriDetayi", arguments: (viewModel.hareketMiktari, viewModel.kalanMiktar));
                       if (result is SeriList) {
                         viewModel.addSeriList(result);
                       }
@@ -77,7 +79,7 @@ class _SeriListesiViewState extends State<SeriListesiView> {
                   ).paddingAll(UIHelper.lowSize),
                 ),
               ],
-            ).yetkiVarMi(viewModel.kalanMiktar == 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty),
+            ).yetkiVarMi(viewModel.kalanMiktar != 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty),
             Expanded(
               child: Observer(
                 builder: (_) {
@@ -93,16 +95,37 @@ class _SeriListesiViewState extends State<SeriListesiView> {
                       ),
                     );
                   }
-                  return Observer(
-                    builder: (_) => ListView.builder(
-                      itemCount: viewModel.kalemModel.seriList?.length ?? 0,
-                      itemBuilder: (context, index) => Card(
+                  return ListView.builder(
+                    itemCount: viewModel.kalemModel.seriList?.length ?? 0,
+                    itemBuilder: (context, index) {
+                      final SeriList model = viewModel.kalemModel.seriList![index];
+                      return Card(
                         child: ListTile(
-                          title: Text(viewModel.kalemModel.seriList?[index].seri1 ?? ""),
-                          subtitle: Text(viewModel.kalemModel.seriList?[index].miktar.toIntIfDouble.toStringIfNotNull ?? ""),
+                          title: Text(model.seri1 ?? ""),
+                          subtitle: Text(model.miktar.toIntIfDouble.toStringIfNotNull ?? ""),
+                          onTap: () async {
+                            await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: model.seri1 ?? "",
+                              children: [
+                                BottomSheetModel(title: loc(context).generalStrings.edit, iconWidget: Icons.edit_outlined),
+                                BottomSheetModel(
+                                  title: loc(context).generalStrings.delete,
+                                  iconWidget: Icons.delete_outline_outlined,
+                                  onTap: () {
+                                    Get.back();
+                                    dialogManager.showAreYouSureDialog(() {
+                                      viewModel.removeSeriList(model.seri1 ?? "");
+                                    });
+                                  },
+                                ),
+                                BottomSheetModel(title: loc(context).generalStrings.print, iconWidget: Icons.print_outlined),
+                              ],
+                            );
+                          },
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   );
                 },
               ),

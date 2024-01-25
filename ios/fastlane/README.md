@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios toCrashlytics
+
+```sh
+[bundle exec] fastlane ios toCrashlytics
+```
+
+Upload symbols to Crashlytics
+
 ### ios prepare_for_build
 
 ```sh

@@ -9,8 +9,10 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 class SeriDetayiView extends StatefulWidget {
-  final KalemModel kalemModel;
-  const SeriDetayiView({super.key, required this.kalemModel});
+
+  /// İlki Hareket Miktarı, İkincisi Kalan Miktar
+  final (int, int) hareketKalan;
+  const SeriDetayiView({super.key, required this.hareketKalan});
 
   @override
   State<SeriDetayiView> createState() => _SeriDetayiViewState();

@@ -94,6 +94,17 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
   }
 
   @override
+  void removeSeriList(String seri1) {
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
+        .startAction(name: '_SeriListesiViewModelBase.removeSeriList');
+    try {
+      return super.removeSeriList(seri1);
+    } finally {
+      _$_SeriListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 kalemModel: ${kalemModel},

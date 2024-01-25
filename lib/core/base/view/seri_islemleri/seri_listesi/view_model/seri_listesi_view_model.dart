@@ -1,6 +1,7 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -21,13 +22,18 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
   int get hareketMiktari => (kalemModel.miktar ?? 0).toInt();
 
   @computed
-  int get kalanMiktar => hareketMiktari - (kalemModel.seriList?.length ?? 0);
+  int get kalanMiktar => hareketMiktari - (kalemModel.seriList?.map((e) => e.miktar).sum.toInt() ?? 0);
 
   @action
   void setKalemModel(KalemModel model) => kalemModel = model;
 
   @action
-  void addSeriList(SeriList model) => kalemModel = kalemModel.copyWith(seriList: [...?kalemModel.seriList , model]);
+  void addSeriList(SeriList model) => kalemModel = kalemModel.copyWith(seriList: [...?kalemModel.seriList, model]);
+
+  @action
+  void removeSeriList(String seri1) {
+    kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList?.where((element) => element.seri1 != seri1).toList());
+  }
 
   @action
   Future<void> getStok() async {
