@@ -343,7 +343,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
                               }
                             }
-                          },
+                          }, 
                         ),
                       ).yetkiVarMi((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)),
                       Expanded(
