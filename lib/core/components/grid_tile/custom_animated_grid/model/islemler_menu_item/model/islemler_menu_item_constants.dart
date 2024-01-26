@@ -65,6 +65,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(stokYazdir);
       islemlerList.add(fiyatGor);
       islemlerList.add(seriHareketleri);
+      islemlerList.add(seriBakiyeleri);
       islemlerList.addAll(raporlar!);
     } else if (islemtipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
@@ -404,6 +405,7 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel? get stokYazdir => GridItemModel.islemler(title: "Yazdır", iconData: Icons.print_outlined, onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
   GridItemModel? get seriHareketleri => GridItemModel.islemler(title: "Seri Hareketleri", iconData: Icons.dynamic_form_outlined, onTap: () async => Get.toNamed("/seriHareketleri", arguments: model));
+  GridItemModel? get seriBakiyeleri => GridItemModel.islemler(title: "Seri Bakiye Durumu", iconData: Icons.dynamic_form_outlined, onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model));
   GridItemModel? get fiyatGor => GridItemModel.islemler(title: "Fiyat Gör", iconData: Icons.monetization_on_outlined, onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model));
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(
