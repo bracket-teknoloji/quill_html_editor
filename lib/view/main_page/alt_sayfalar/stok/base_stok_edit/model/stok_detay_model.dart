@@ -95,7 +95,7 @@ class FiyatList {
 // }
 
 @unfreezed
-abstract class SeriList extends HiveObject with _$SeriList {
+abstract class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
   @JsonSerializable(explicitToJson: true)
   SeriList._();
   @HiveType(typeId: 196)
@@ -120,6 +120,13 @@ abstract class SeriList extends HiveObject with _$SeriList {
     @HiveField(17) String? acik3,
     @HiveField(18) String? acik4,
     @HiveField(19) DateTime? sonKullanmaTarihi,
+    @HiveField(20) String? stokAdi,
+    @HiveField(21) String? hucreKodu,
   }) = _SeriList;
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
+
+  @override
+  SeriList fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
 }
+
+

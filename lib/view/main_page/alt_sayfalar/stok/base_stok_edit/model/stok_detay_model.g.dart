@@ -37,13 +37,15 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
       acik3: fields[17] as String?,
       acik4: fields[18] as String?,
       sonKullanmaTarihi: fields[19] as DateTime?,
+      stokAdi: fields[20] as String?,
+      hucreKodu: fields[21] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$SeriListImpl obj) {
     writer
-      ..writeByte(20)
+      ..writeByte(22)
       ..writeByte(0)
       ..write(obj.stokKodu)
       ..writeByte(1)
@@ -83,7 +85,11 @@ class SeriListImplAdapter extends TypeAdapter<_$SeriListImpl> {
       ..writeByte(18)
       ..write(obj.acik4)
       ..writeByte(19)
-      ..write(obj.sonKullanmaTarihi);
+      ..write(obj.sonKullanmaTarihi)
+      ..writeByte(20)
+      ..write(obj.stokAdi)
+      ..writeByte(21)
+      ..write(obj.hucreKodu);
   }
 
   @override
@@ -197,6 +203,8 @@ _$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
       sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
           ? null
           : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
+      stokAdi: json['STOK_ADI'] as String?,
+      hucreKodu: json['HUCRE_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$SeriListImplToJson(_$SeriListImpl instance) {
@@ -229,5 +237,7 @@ Map<String, dynamic> _$$SeriListImplToJson(_$SeriListImpl instance) {
   writeNotNull('ACIK4', instance.acik4);
   writeNotNull(
       'SON_KULLANMA_TARIHI', instance.sonKullanmaTarihi?.toIso8601String());
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('HUCRE_KODU', instance.hucreKodu);
   return val;
 }
