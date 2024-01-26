@@ -23,7 +23,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bo
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SeriHareketleriView extends StatefulWidget {
-  final StokListesiModel model;
+  final StokListesiModel? model;
   const SeriHareketleriView({super.key, required this.model});
 
   @override
@@ -36,8 +36,11 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
 
   @override
   void initState() {
-    _stokKoduController = TextEditingController(text: widget.model.stokKodu ?? "");
-    viewModel.setStokKodu(widget.model.stokKodu ?? "");
+    _stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
+    if (widget.model != null) {
+      viewModel.setStokListesiModel(widget.model!);
+    }
+    viewModel.setStokKodu(widget.model?.stokKodu ?? "");
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
@@ -64,7 +67,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
             }
             return AppBarTitle(
               title: "Seri Hareketleri (${viewModel.seriHareketleriList?.length ?? 0})",
-              subtitle: widget.model.stokKodu,
+              subtitle: widget.model?.stokKodu,
             );
           },
         ),
@@ -110,7 +113,11 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                     iconWidget: Icons.list_alt,
                     onTap: () async {
                       Get.back();
-                      final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu));
+                      if (viewModel.stokListesiModel == null) {
+                        dialogManager.showAlertDialog("Önce Stok Ekleyin");
+                        return;
+                      }
+                      final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model?.stokKodu));
                       if (result is StokListesiModel) {
                         dialogManager.showStokGridViewDialog(result);
                       }
@@ -127,7 +134,11 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
-          final result = await Get.toNamed("/seriGirisi", arguments: SeriHareketleriModel.ekle(widget.model));
+          if (viewModel.stokListesiModel == null) {
+            dialogManager.showAlertDialog("Önce Stok Ekleyin");
+            return;
+          }
+          final result = await Get.toNamed("/seriGirisi", arguments: SeriHareketleriModel.ekle(viewModel.stokListesiModel!));
           if (result == true) {
             await viewModel.getData();
           }
@@ -164,6 +175,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
               );
               if (result is StokListesiModel) {
                 _stokKoduController.text = result.stokKodu ?? "";
+                viewModel.stokListesiModel = result;
                 viewModel.setStokKodu(result.stokKodu ?? "");
                 await viewModel.getData();
               }

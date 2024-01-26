@@ -9,7 +9,6 @@ import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../view_model/finans_ozet_rapor_view_model.dart";
 
-
 class FinansOzetRaporView extends StatefulWidget {
   const FinansOzetRaporView({super.key});
 
@@ -102,16 +101,13 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
                           CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex + 1);
                         }
                       },
-                      itemBuilder: (context, index) {
-                        print(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]);
-                        return Card(
-                          key: Key(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
-                          child: ListTile(
-                            title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
-                            subtitle: Text("s" * index),
-                          ),
-                        );
-                      },
+                      itemBuilder: (context, index) => Card(
+                        key: Key(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                        child: ListTile(
+                          title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                          subtitle: Text("s" * index),
+                        ),
+                      ),
                     );
                   },
                 ),

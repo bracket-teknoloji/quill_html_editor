@@ -60,6 +60,7 @@ _$SiparisEditRequestModelImpl _$$SiparisEditRequestModelImplFromJson(
       refBelgeTuru: json['RefBelgeTuru'] as String?,
       arrBelgeTipi: json['ArrBelgeTipi'] as String?,
       arrBelgeNo: json['ArrBelgeNo'] as String?,
+      bakiyeDurumu: json['BakiyeDurumu'] as String?,
     );
 
 Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
@@ -124,5 +125,6 @@ Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
   writeNotNull('RefBelgeTuru', instance.refBelgeTuru);
   writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
   writeNotNull('ArrBelgeNo', instance.arrBelgeNo);
+  writeNotNull('BakiyeDurumu', instance.bakiyeDurumu);
   return val;
 }

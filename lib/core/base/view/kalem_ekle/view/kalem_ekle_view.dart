@@ -1,9 +1,9 @@
 import "dart:developer";
 
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -130,7 +130,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 // }
                 viewModel.kalemModel.sira = widget.kalemModel?.sira ?? (BaseSiparisEditModel.instance.kalemList?.length ?? 0) + 1;
                 if (widget.kalemModel != null) {
-                   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
+                  Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
                 } else {
                   BaseSiparisEditModel.instance.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
                   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
@@ -716,7 +716,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       }
                       return null;
                     },
-                  ).yetkiVarMi(viewModel.model?.seriCikislardaAcik == true && kDebugMode && !editTipi.siparisMi),
+                  ).yetkiVarMi((model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true && !editTipi.siparisMi),
                 ),
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
@@ -910,6 +910,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     if (widget.kalemModel == null) {
       await getDovizData();
     } else {
+      serilerController.text = viewModel.kalemModel.seriList.ext.isNotNullOrEmpty ? "${viewModel.kalemModel.seriList?.length ?? 0} kalemler" : "";
       dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
       viewModel.kalemModel.dovizAdi ??= viewModel.model?.alisDovizAdi ?? mainCurrency;
       viewModel.kalemModel.dovizliFiyat = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);

@@ -3,16 +3,17 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view_model/seri_detayi_view_model.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_detayi_model.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 class SeriDetayiView extends StatefulWidget {
-
   /// İlki Hareket Miktarı, İkincisi Kalan Miktar
-  final (int, int) hareketKalan;
-  const SeriDetayiView({super.key, required this.hareketKalan});
+  final SeriDetayiModel seriDetayiModel;
+  const SeriDetayiView({super.key, required this.seriDetayiModel});
 
   @override
   State<SeriDetayiView> createState() => _SeriDetayiViewState();
@@ -25,6 +26,9 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   @override
   void initState() {
     formKey = GlobalKey<FormState>();
+    if (widget.seriDetayiModel.seriList != null){
+    viewModel.seriModel = widget.seriDetayiModel.seriList!;
+    }
     super.initState();
   }
 
@@ -48,6 +52,30 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
               icon: const Icon(Icons.check_outlined),
             ),
           ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: BottomBarWidget(
+            isScrolledDown: true,
+            children: [
+              FooterButton(
+                children: [
+                  const Text("Hareket Miktarı"),
+                  Observer(
+                    builder: (_) => Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull??""),
+                  ),
+                ],
+              ),
+              FooterButton(
+                children: [
+                  const Text("Kalan Miktar"),
+                  Observer(
+                    builder: (_) => Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull??""),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
         body: SingleChildScrollView(
           child: Form(
@@ -108,7 +136,16 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         controllerText: viewModel.seriModel.miktar.toIntIfDouble.toStringIfNotNull,
-                        onChanged: (value) => viewModel.setMiktar(double.tryParse(value) ?? 0),
+                        validator: (value) {
+                          if ((widget.seriDetayiModel.kalanMiktar??0) < (int.tryParse(value ?? "") ?? 0)) {
+                            return "Kalan fazla girilemez.";
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          viewModel.setMiktar(double.tryParse(value) ?? 0);
+                          formKey.currentState?.validate();
+                        },
                       ),
                     ),
                   ],

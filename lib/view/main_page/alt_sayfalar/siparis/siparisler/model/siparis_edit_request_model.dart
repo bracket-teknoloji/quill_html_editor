@@ -68,6 +68,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? refBelgeTuru,
     String? arrBelgeTipi,
     String? arrBelgeNo,
+    String? bakiyeDurumu,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();

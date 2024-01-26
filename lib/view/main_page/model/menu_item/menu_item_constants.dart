@@ -28,7 +28,7 @@ class MenuItemConstants {
   static List<GridItemModel>? get getStokSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.stok);
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
     final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
-    if (serbestRaporList.ext.isNullOrEmpty || (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true&& AccountModel.instance.admin !="E")) {
+    if (serbestRaporList.ext.isNullOrEmpty || (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true && AccountModel.instance.admin != "E")) {
       return [];
     }
     return List.generate(
@@ -315,6 +315,13 @@ class MenuItemConstants {
         //😳  GridItemModel.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
         //😳]),
         //😳GridItemModel.item(name: "stok_StokListesi", title: "Paketleme"),
+        GridItemModel.altmenu(
+          name: null,
+          title: "Seri İşlemleri",
+          altMenuler: [
+            GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri" , route: "/seriHareketleri"),
+          ],
+        ),
         GridItemModel.altmenu(
           name: "stok_Raporlar",
           title: "Raporlar",

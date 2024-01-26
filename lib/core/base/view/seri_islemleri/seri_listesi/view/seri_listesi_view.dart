@@ -3,11 +3,15 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_detayi_model.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view_model/seri_listesi_view_model.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -28,7 +32,18 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
   void initState() {
     viewModel = SeriListesiViewModel(widget.kalemModel);
     viewModel.setKalemModel(widget.kalemModel);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getStok();
+      if (((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? viewModel.stokModel?.seriCikistaOtomatikMi : viewModel.stokModel?.seriCikistaOtomatikMi) ?? false) &&
+          viewModel.kalanMiktar != 0) {
+        dialogManager.showAreYouSureDialog(
+          () async {
+            await seriNoUret();
+          },
+          title: "Otomatik Seri  Üretilsin Mi?",
+        );
+      }
+    });
     super.initState();
   }
 
@@ -42,7 +57,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
             ),
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
+            // IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
             IconButton(
               onPressed: () {
                 Get.back(result: viewModel.kalemModel.seriList);
@@ -55,31 +70,49 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Stok Kodu: ${viewModel.kalemModel.stokKodu ?? ""}"),
-            Text("Depo Kodu: ${viewModel.kalemModel.depoKodu ?? 0}"),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    label: const Text("Seri Rehberi"),
-                    icon: const Icon(Icons.safety_divider),
-                  ).paddingAll(UIHelper.lowSize),
-                ),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      final result = await Get.toNamed("/seriDetayi", arguments: (viewModel.hareketMiktari, viewModel.kalanMiktar));
-                      if (result is SeriList) {
-                        viewModel.addSeriList(result);
-                      }
-                    },
-                    label: const Text("Seri Girişi"),
-                    icon: const Icon(Icons.edit_outlined),
-                  ).paddingAll(UIHelper.lowSize),
-                ),
-              ],
-            ).yetkiVarMi(viewModel.kalanMiktar != 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty),
+            Text("Stok Kodu: ${viewModel.kalemModel.stokKodu ?? ""}").paddingAll(UIHelper.lowSize),
+            Text("Depo Kodu: ${viewModel.kalemModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
+            Observer(
+              builder: (_) => Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () {},
+                      label: const Text("Seri Rehberi"),
+                      icon: Icon(
+                        Icons.safety_divider,
+                        size: UIHelper.midSize * 2,
+                      ),
+                    ).paddingAll(UIHelper.lowSize),
+                  ),
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        final result = await Get.toNamed("/seriDetayi", arguments: SeriDetayiModel(kalanMiktar: viewModel.kalanMiktar, hareketMiktari: viewModel.hareketMiktari));
+                        if (result is SeriList) {
+                          viewModel.addSeriList(result);
+                        }
+                      },
+                      label: const Text("Seri Girişi"),
+                      icon: Icon(
+                        Icons.edit_outlined,
+                        size: UIHelper.midSize * 2,
+                      ),
+                    ).paddingAll(UIHelper.lowSize),
+                  ),
+                  Expanded(
+                    child: ElevatedButton.icon(
+                      onPressed: seriNoUret,
+                      label: const Text("Seri Üret"),
+                      icon: Icon(
+                        Icons.add_outlined,
+                        size: UIHelper.midSize * 2,
+                      ),
+                    ).paddingAll(UIHelper.lowSize),
+                  ).yetkiVarMi((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? viewModel.stokModel?.seriCikistaOtomatikMi : viewModel.stokModel?.seriCikistaOtomatikMi) ?? false),
+                ],
+              ).yetkiVarMi(viewModel.kalanMiktar != 0 || viewModel.kalemModel.seriList.ext.isNullOrEmpty),
+            ),
             Expanded(
               child: Observer(
                 builder: (_) {
@@ -102,13 +135,36 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                       return Card(
                         child: ListTile(
                           title: Text(model.seri1 ?? ""),
-                          subtitle: Text(model.miktar.toIntIfDouble.toStringIfNotNull ?? ""),
+                          subtitle: CustomLayoutBuilder(
+                            splitCount: 2,
+                            children: [
+                              Text("Miktar: ${model.miktar.toIntIfDouble.toStringIfNotNull ?? ""}"),
+                              Text("Son Kul. Tarihi: ${model.sonKullanmaTarihi?.toDateString ?? ""}"),
+                            ],
+                          ),
                           onTap: () async {
                             await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
                               title: model.seri1 ?? "",
                               children: [
-                                BottomSheetModel(title: loc(context).generalStrings.edit, iconWidget: Icons.edit_outlined),
+                                BottomSheetModel(
+                                  title: loc(context).generalStrings.edit,
+                                  iconWidget: Icons.edit_outlined,
+                                  onTap: () async {
+                                    Get.back();
+                                    final result = await Get.toNamed(
+                                      "/seriDetayi",
+                                      arguments: SeriDetayiModel(
+                                        kalanMiktar: (viewModel.kalanMiktar.toDouble() + (model.miktar ?? 0)).toInt(),
+                                        hareketMiktari: viewModel.hareketMiktari,
+                                        seriList: model,
+                                      ),
+                                    );
+                                    if (result is SeriList) {
+                                      viewModel.updateSeriList(result, model.seri1 ?? "");
+                                    }
+                                  },
+                                ),
                                 BottomSheetModel(
                                   title: loc(context).generalStrings.delete,
                                   iconWidget: Icons.delete_outline_outlined,
@@ -134,6 +190,18 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
         ).paddingAll(UIHelper.lowSize),
         bottomNavigationBar: bottomBar(),
       );
+
+  Future<void> seriNoUret() async {
+    final result = await viewModel.seriNoUret();
+    if (result != null) {
+      viewModel.addSeriList(
+        SeriList(
+          seri1: result.seriNo,
+          miktar: viewModel.kalanMiktar.toDouble(),
+        ),
+      );
+    }
+  }
 
   BottomBarWidget bottomBar() => BottomBarWidget(
         isScrolledDown: true,

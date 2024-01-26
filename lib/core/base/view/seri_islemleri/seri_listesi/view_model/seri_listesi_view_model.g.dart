@@ -68,6 +68,14 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
     return _$getStokAsyncAction.run(() => super.getStok());
   }
 
+  late final _$seriNoUretAsyncAction =
+      AsyncAction('_SeriListesiViewModelBase.seriNoUret', context: context);
+
+  @override
+  Future<SeriUretModel?> seriNoUret() {
+    return _$seriNoUretAsyncAction.run(() => super.seriNoUret());
+  }
+
   late final _$_SeriListesiViewModelBaseActionController =
       ActionController(name: '_SeriListesiViewModelBase', context: context);
 
@@ -88,6 +96,17 @@ mixin _$SeriListesiViewModel on _SeriListesiViewModelBase, Store {
         .startAction(name: '_SeriListesiViewModelBase.addSeriList');
     try {
       return super.addSeriList(model);
+    } finally {
+      _$_SeriListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateSeriList(SeriList model, String seri1) {
+    final _$actionInfo = _$_SeriListesiViewModelBaseActionController
+        .startAction(name: '_SeriListesiViewModelBase.updateSeriList');
+    try {
+      return super.updateSeriList(model, seri1);
     } finally {
       _$_SeriListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
