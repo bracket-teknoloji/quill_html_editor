@@ -13,6 +13,7 @@ import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 
@@ -215,9 +216,10 @@ class PickerApp extends StatelessWidget {
           ),
           //* Seri İşlemleri
           GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
-          GetPage(name: "/seriDetayi", page: () => SeriDetayiView(hareketKalan: Get.arguments)),
+          GetPage(name: "/seriDetayi", page: () => SeriDetayiView(seriDetayiModel: Get.arguments)),
           GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
+          GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
