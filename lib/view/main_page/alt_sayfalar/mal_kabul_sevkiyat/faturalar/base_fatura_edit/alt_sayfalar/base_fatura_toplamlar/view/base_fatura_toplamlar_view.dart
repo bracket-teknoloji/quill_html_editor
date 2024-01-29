@@ -429,7 +429,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(model.sFaturaMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "E-Fatura Senaryo",
@@ -495,6 +495,9 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     // }
     if (model.vadeGunu == null) {
       viewModel.model.vadeGunu = 0;
+      viewModel.model.vadeTarihi = DateTime.now().dateTimeWithoutTime;
+    } else {
+      viewModel.model.vadeTarihi = DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0));
     }
     vadeGunuController = TextEditingController(
       text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toStringIfNotNull,

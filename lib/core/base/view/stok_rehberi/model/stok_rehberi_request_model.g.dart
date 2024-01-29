@@ -20,6 +20,7 @@ _$StokRehberiRequestModelImpl _$$StokRehberiRequestModelImplFromJson(
       resimGoster: json['ResimGoster'] as String?,
       stokKodu: json['StokKodu'] as String?,
       seriTakibiVar: json['SeriTakibiVar'] as String?,
+      depoKodu: json['DepoKodu'] as int?,
     );
 
 Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(
@@ -43,5 +44,6 @@ Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(
   writeNotNull('ResimGoster', instance.resimGoster);
   writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull('SeriTakibiVar', instance.seriTakibiVar);
+  writeNotNull('DepoKodu', instance.depoKodu);
   return val;
 }

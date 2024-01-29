@@ -9,6 +9,9 @@ import "package:picker/core/components/button/elevated_buttons/footer_button.dar
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 class SeriDetayiView extends StatefulWidget {
   /// İlki Hareket Miktarı, İkincisi Kalan Miktar
@@ -26,9 +29,15 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   @override
   void initState() {
     formKey = GlobalKey<FormState>();
-    if (widget.seriDetayiModel.seriList != null){
-    viewModel.seriModel = widget.seriDetayiModel.seriList!;
+    if (widget.seriDetayiModel.seriList != null) {
+      viewModel.seriModel = widget.seriDetayiModel.seriList!;
     }
+    if ((viewModel.seriModel.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0) || widget.seriDetayiModel.miktarKadarSor == true) {
+      viewModel.seriModel.miktar = 1;
+    }
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      formKey.currentState?.validate();
+    });
     super.initState();
   }
 
@@ -61,17 +70,13 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
               FooterButton(
                 children: [
                   const Text("Hareket Miktarı"),
-                  Observer(
-                    builder: (_) => Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull??""),
-                  ),
+                  Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull ?? ""),
                 ],
               ),
               FooterButton(
                 children: [
                   const Text("Kalan Miktar"),
-                  Observer(
-                    builder: (_) => Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull??""),
-                  ),
+                  Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull ?? ""),
                 ],
               ),
             ],
@@ -82,6 +87,12 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
             key: formKey,
             child: Column(
               children: [
+                const Card(
+                  child: ListTile(
+                    leading: Icon(Icons.info_outline),
+                    title: Text("Her 1 miktar için seri giriniz."),
+                  ),
+                ).yetkiVarMi(widget.seriDetayiModel.miktarKadarSor == true),
                 CustomTextField(
                   labelText: "Seri 1",
                   controllerText: viewModel.seriModel.seri1,
@@ -113,6 +124,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                   onChanged: viewModel.setSeri4,
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Observer(
@@ -132,18 +144,19 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Miktar",
+                        readOnly: widget.seriDetayiModel.miktarKadarSor == true,
                         isMust: true,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
-                        controllerText: viewModel.seriModel.miktar.toIntIfDouble.toStringIfNotNull,
+                        controllerText: viewModel.seriModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar),
                         validator: (value) {
-                          if ((widget.seriDetayiModel.kalanMiktar??0) < (int.tryParse(value ?? "") ?? 0)) {
-                            return "Kalan fazla girilemez.";
+                          if ((widget.seriDetayiModel.kalanMiktar ?? 0) < value.toDoubleWithFormattedString) {
+                            return "Kalandan fazla girilemez.";
                           }
                           return null;
                         },
                         onChanged: (value) {
-                          viewModel.setMiktar(double.tryParse(value) ?? 0);
+                          viewModel.setMiktar(value.toDoubleWithFormattedString);
                           formKey.currentState?.validate();
                         },
                       ),
@@ -151,6 +164,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: CustomTextField(
@@ -169,6 +183,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                   ],
                 ),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: CustomTextField(
@@ -187,7 +202,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                   ],
                 ),
               ],
-            ),
+            ).paddingAll(UIHelper.lowSize),
           ),
         ),
       );

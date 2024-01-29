@@ -60,7 +60,11 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
             // IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
             IconButton(
               onPressed: () {
-                Get.back(result: viewModel.kalemModel.seriList);
+                if (viewModel.kalanMiktar == 0) {
+                  Get.back(result: viewModel.kalemModel.seriList);
+                } else {
+                  dialogManager.showErrorSnackBar("Kalan Miktar (${viewModel.kalanMiktar})");
+                }
               },
               icon: const Icon(Icons.check_outlined),
             ),
@@ -70,14 +74,45 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Observer(
+              builder: (_) => Text(
+                "Stok Adı: ${viewModel.stokModel?.stokAdi ?? ""}",
+                overflow: TextOverflow.ellipsis,
+              ).paddingAll(UIHelper.lowSize),
+            ),
             Text("Stok Kodu: ${viewModel.kalemModel.stokKodu ?? ""}").paddingAll(UIHelper.lowSize),
             Text("Depo Kodu: ${viewModel.kalemModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
+            Observer(
+              builder: (_) => const Card(
+                child: ListTile(
+                  leading: Icon(Icons.info_outline),
+                  title: Text("Her 1 miktar için seri giriniz."),
+                ),
+              ).yetkiVarMi(viewModel.stokModel?.seriMiktarKadarSor == true),
+            ),
             Observer(
               builder: (_) => Row(
                 children: [
                   Expanded(
                     child: ElevatedButton.icon(
-                      onPressed: () {},
+                      onPressed: () async {
+                        final result = await Get.toNamed("/seriRehberi", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu);
+                        if (result is! SeriList) {
+                          return;
+                        }
+                        final result2 = await Get.toNamed(
+                          "/seriDetayi",
+                          arguments: SeriDetayiModel(
+                            kalanMiktar: viewModel.kalanMiktar,
+                            hareketMiktari: viewModel.hareketMiktari,
+                            miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
+                            seriList: result..seri1 = result.seriNo,
+                          ),
+                        );
+                        if (result2 is SeriList) {
+                          viewModel.addSeriList(result);
+                        }
+                      },
                       label: const Text("Seri Rehberi"),
                       icon: Icon(
                         Icons.safety_divider,
@@ -88,7 +123,14 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () async {
-                        final result = await Get.toNamed("/seriDetayi", arguments: SeriDetayiModel(kalanMiktar: viewModel.kalanMiktar, hareketMiktari: viewModel.hareketMiktari));
+                        final result = await Get.toNamed(
+                          "/seriDetayi",
+                          arguments: SeriDetayiModel(
+                            kalanMiktar: viewModel.kalanMiktar,
+                            hareketMiktari: viewModel.hareketMiktari,
+                            miktarKadarSor: viewModel.stokModel?.seriMiktarKadarSor,
+                          ),
+                        );
                         if (result is SeriList) {
                           viewModel.addSeriList(result);
                         }

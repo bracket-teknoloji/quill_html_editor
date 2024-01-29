@@ -22,16 +22,29 @@ StokRehberiRequestModel _$StokRehberiRequestModelFromJson(
 /// @nodoc
 mixin _$StokRehberiRequestModel {
   String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get belgeTarihi => throw _privateConstructorUsedError;
+  set belgeTarihi(String? value) => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
+  set ekranTipi(String? value) => throw _privateConstructorUsedError;
   int? get faturaTipi => throw _privateConstructorUsedError;
+  set faturaTipi(int? value) => throw _privateConstructorUsedError;
   bool? get kisitYok => throw _privateConstructorUsedError;
+  set kisitYok(bool? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
+  set menuKodu(String? value) => throw _privateConstructorUsedError;
   String? get resimGoster => throw _privateConstructorUsedError;
+  set resimGoster(String? value) => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
   String? get seriTakibiVar => throw _privateConstructorUsedError;
+  set seriTakibiVar(String? value) => throw _privateConstructorUsedError;
+  int? get depoKodu => throw _privateConstructorUsedError;
+  set depoKodu(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,7 +69,8 @@ abstract class $StokRehberiRequestModelCopyWith<$Res> {
       String? menuKodu,
       String? resimGoster,
       String? stokKodu,
-      String? seriTakibiVar});
+      String? seriTakibiVar,
+      int? depoKodu});
 }
 
 /// @nodoc
@@ -84,6 +98,7 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
     Object? resimGoster = freezed,
     Object? stokKodu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? depoKodu = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -130,6 +145,10 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -154,7 +173,8 @@ abstract class _$$StokRehberiRequestModelImplCopyWith<$Res>
       String? menuKodu,
       String? resimGoster,
       String? stokKodu,
-      String? seriTakibiVar});
+      String? seriTakibiVar,
+      int? depoKodu});
 }
 
 /// @nodoc
@@ -181,6 +201,7 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
     Object? resimGoster = freezed,
     Object? stokKodu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? depoKodu = freezed,
   }) {
     return _then(_$StokRehberiRequestModelImpl(
       belgeNo: freezed == belgeNo
@@ -227,6 +248,10 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -235,7 +260,7 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
-  const _$StokRehberiRequestModelImpl(
+  _$StokRehberiRequestModelImpl(
       {this.belgeNo,
       this.belgeTarihi,
       this.belgeTipi,
@@ -246,83 +271,42 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
       this.menuKodu,
       this.resimGoster,
       this.stokKodu,
-      this.seriTakibiVar});
+      this.seriTakibiVar,
+      this.depoKodu});
 
   factory _$StokRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StokRehberiRequestModelImplFromJson(json);
 
   @override
-  final String? belgeNo;
+  String? belgeNo;
   @override
-  final String? belgeTarihi;
+  String? belgeTarihi;
   @override
-  final String? belgeTipi;
+  String? belgeTipi;
   @override
-  final String? cariKodu;
+  String? cariKodu;
   @override
   @JsonKey()
-  final String? ekranTipi;
+  String? ekranTipi;
   @override
-  final int? faturaTipi;
+  int? faturaTipi;
   @override
-  final bool? kisitYok;
+  bool? kisitYok;
   @override
-  final String? menuKodu;
+  String? menuKodu;
   @override
-  final String? resimGoster;
+  String? resimGoster;
   @override
-  final String? stokKodu;
+  String? stokKodu;
   @override
-  final String? seriTakibiVar;
+  String? seriTakibiVar;
+  @override
+  int? depoKodu;
 
   @override
   String toString() {
-    return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu, seriTakibiVar: $seriTakibiVar)';
+    return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu, seriTakibiVar: $seriTakibiVar, depoKodu: $depoKodu)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StokRehberiRequestModelImpl &&
-            (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.belgeTarihi, belgeTarihi) ||
-                other.belgeTarihi == belgeTarihi) &&
-            (identical(other.belgeTipi, belgeTipi) ||
-                other.belgeTipi == belgeTipi) &&
-            (identical(other.cariKodu, cariKodu) ||
-                other.cariKodu == cariKodu) &&
-            (identical(other.ekranTipi, ekranTipi) ||
-                other.ekranTipi == ekranTipi) &&
-            (identical(other.faturaTipi, faturaTipi) ||
-                other.faturaTipi == faturaTipi) &&
-            (identical(other.kisitYok, kisitYok) ||
-                other.kisitYok == kisitYok) &&
-            (identical(other.menuKodu, menuKodu) ||
-                other.menuKodu == menuKodu) &&
-            (identical(other.resimGoster, resimGoster) ||
-                other.resimGoster == resimGoster) &&
-            (identical(other.stokKodu, stokKodu) ||
-                other.stokKodu == stokKodu) &&
-            (identical(other.seriTakibiVar, seriTakibiVar) ||
-                other.seriTakibiVar == seriTakibiVar));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      belgeNo,
-      belgeTarihi,
-      belgeTipi,
-      cariKodu,
-      ekranTipi,
-      faturaTipi,
-      kisitYok,
-      menuKodu,
-      resimGoster,
-      stokKodu,
-      seriTakibiVar);
 
   @JsonKey(ignore: true)
   @override
@@ -340,44 +324,59 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
 }
 
 abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
-  const factory _StokRehberiRequestModel(
-      {final String? belgeNo,
-      final String? belgeTarihi,
-      final String? belgeTipi,
-      final String? cariKodu,
-      final String? ekranTipi,
-      final int? faturaTipi,
-      final bool? kisitYok,
-      final String? menuKodu,
-      final String? resimGoster,
-      final String? stokKodu,
-      final String? seriTakibiVar}) = _$StokRehberiRequestModelImpl;
+  factory _StokRehberiRequestModel(
+      {String? belgeNo,
+      String? belgeTarihi,
+      String? belgeTipi,
+      String? cariKodu,
+      String? ekranTipi,
+      int? faturaTipi,
+      bool? kisitYok,
+      String? menuKodu,
+      String? resimGoster,
+      String? stokKodu,
+      String? seriTakibiVar,
+      int? depoKodu}) = _$StokRehberiRequestModelImpl;
 
   factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) =
       _$StokRehberiRequestModelImpl.fromJson;
 
   @override
   String? get belgeNo;
+  set belgeNo(String? value);
   @override
   String? get belgeTarihi;
+  set belgeTarihi(String? value);
   @override
   String? get belgeTipi;
+  set belgeTipi(String? value);
   @override
   String? get cariKodu;
+  set cariKodu(String? value);
   @override
   String? get ekranTipi;
+  set ekranTipi(String? value);
   @override
   int? get faturaTipi;
+  set faturaTipi(int? value);
   @override
   bool? get kisitYok;
+  set kisitYok(bool? value);
   @override
   String? get menuKodu;
+  set menuKodu(String? value);
   @override
   String? get resimGoster;
+  set resimGoster(String? value);
   @override
   String? get stokKodu;
+  set stokKodu(String? value);
   @override
   String? get seriTakibiVar;
+  set seriTakibiVar(String? value);
+  @override
+  int? get depoKodu;
+  set depoKodu(int? value);
   @override
   @JsonKey(ignore: true)
   _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>

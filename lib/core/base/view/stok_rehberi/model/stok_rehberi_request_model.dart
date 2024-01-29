@@ -6,10 +6,10 @@ import "../../../../constants/extensions/date_time_extensions.dart";
 part "stok_rehberi_request_model.freezed.dart";
 part "stok_rehberi_request_model.g.dart";
 
-@freezed
+@unfreezed
 class StokRehberiRequestModel with _$StokRehberiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
-  const factory StokRehberiRequestModel({
+  factory StokRehberiRequestModel({
     String? belgeNo,
     String? belgeTarihi,
     String? belgeTipi,
@@ -21,6 +21,7 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
     String? resimGoster,
     String? stokKodu,
     String? seriTakibiVar,
+    int? depoKodu,
   }) = _StokRehberiRequestModel;
 
   factory StokRehberiRequestModel.fromJson(Map<String, dynamic> json) => _$StokRehberiRequestModelFromJson(json);

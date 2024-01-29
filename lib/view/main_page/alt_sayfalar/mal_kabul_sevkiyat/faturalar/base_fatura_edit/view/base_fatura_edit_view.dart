@@ -626,7 +626,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   dialogManager.showAlertDialog("Lütfen Cari veya Sipariş seçiniz.");
                   return;
                 } else {
-                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: viewModel.baseSiparisEditModel..belgeTuru = "MS");
+                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: viewModel.baseSiparisEditModel..belgeTuru = model.editTipiEnum?.rawValue);
                   if (result is List) {
                     List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
                     list = list

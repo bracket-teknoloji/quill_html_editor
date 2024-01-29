@@ -16,6 +16,7 @@ import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle
 import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -220,6 +221,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
+          GetPage(name: "/seriRehberi", page: () => SeriRehberiView(stokModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),

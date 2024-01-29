@@ -223,7 +223,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                   dicParams: DicParams(
                                     belgeNo: BaseSiparisEditModel.instance.belgeNo,
                                     cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                    belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+                                    belgeTipi: model.editTipiEnum?.rawValue,
                                   ),
                                 ),
                               ),

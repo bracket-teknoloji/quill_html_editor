@@ -112,7 +112,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           IconButton(
             onPressed: () {
               if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
-                dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar ?? 0}) ile seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
+                dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
+                return;
               }
               if (formKey.currentState?.validate() ?? false) {
                 if (!yetkiController.lokalDepoUygulamasiAcikMi) {
@@ -661,6 +662,24 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ),
                   ],
                 ),
+                Observer(
+                  builder: (_) => CustomTextField(
+                    labelText: "Seriler",
+                    isMust: true,
+                    controller: serilerController,
+                    suffixMore: true,
+                    readOnly: true,
+                    onTap: serilerOnTap,
+                    validator: (value) {
+                      if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+                        return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
+                      }
+                      return null;
+                    },
+                  ).yetkiVarMi(
+                    (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true && !editTipi.siparisMi && yetkiController.seriUygulamasiAcikMi,
+                  ),
+                ),
                 ...List.generate(
                   editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
                   (index) => Row(
@@ -701,22 +720,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ),
                     ],
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
-                ),
-                Observer(
-                  builder: (_) => CustomTextField(
-                    labelText: "Seriler",
-                    isMust: true,
-                    controller: serilerController,
-                    suffixMore: true,
-                    readOnly: true,
-                    onTap: serilerOnTap,
-                    validator: (value) {
-                      if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
-                        return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ile seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
-                      }
-                      return null;
-                    },
-                  ).yetkiVarMi((model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true && !editTipi.siparisMi),
                 ),
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
@@ -759,7 +762,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     return null;
   }
 
-  String getAciklamaLabel(int index) => "${StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"} $index";
+  String getAciklamaLabel(int index) => "${editTipi?.rawValue} $index";
 
   Future<void> getData() async {
     if (widget.stokListesiModel != null) {

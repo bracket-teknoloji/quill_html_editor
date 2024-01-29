@@ -36,6 +36,7 @@ final class YetkiController {
   bool get projeUygulamasiAcikMi => _isTrue(_paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => _isTrue(_paramModel?.plasiyerUygulamasi, skipAdmin: true);
   bool get lokalDepoUygulamasiAcikMi => _isTrue(_paramModel?.lokalDepoUygulamasiAcik, skipAdmin: true);
+  bool get seriUygulamasiAcikMi => _isTrue(_paramModel?.seriUygulamasiAcik, skipAdmin: true);
 
   bool get alisEkAlan1AktifMi => _isTrue(_paramModel?.alisEkAlan1Aktif, skipAdmin: true);
   bool get alisEkAlan2AktifMi => _isTrue(_paramModel?.alisSatirdaEkAlan2Aktif, skipAdmin: true);
@@ -315,7 +316,7 @@ final class YetkiController {
   // bool get satisFatEkle => _isTrue(_yetkiModel?.ekle);
 
   //! E-FATURA
-  bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
+  bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod1Aktif, skipAdmin: true);
   bool ebelgeOzelKod2AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
   bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
   bool get ebelgeEFaturaGelenKutusu => _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
