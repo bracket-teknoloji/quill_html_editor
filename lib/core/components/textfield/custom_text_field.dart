@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
 import "../../constants/color_palette.dart";
 import "../../constants/extensions/list_extensions.dart";
@@ -207,7 +208,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               ? TextStyle(color: UIHelper.primaryColor)
                               : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
-                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)),
+                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
                         widget.descriptionWidget,
                       ].nullCheckWithGeneric,
                     ),
