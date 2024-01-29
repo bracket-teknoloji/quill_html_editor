@@ -11,6 +11,11 @@ class SeriModel with _$SeriModel, NetworkManagerMixin {
   factory SeriModel({
     String? seriNo,
     String? aciklama,
+    String? stokKodu,
+        String? stokAdi,
+        int? depoKodu,
+        int? miktar,
+        String? depoTanimi,
   }) = _SeriModel;
 
   factory SeriModel.fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);

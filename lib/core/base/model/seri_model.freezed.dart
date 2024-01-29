@@ -22,6 +22,11 @@ SeriModel _$SeriModelFromJson(Map<String, dynamic> json) {
 mixin _$SeriModel {
   String? get seriNo => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  String? get stokAdi => throw _privateConstructorUsedError;
+  int? get depoKodu => throw _privateConstructorUsedError;
+  int? get miktar => throw _privateConstructorUsedError;
+  String? get depoTanimi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +39,14 @@ abstract class $SeriModelCopyWith<$Res> {
   factory $SeriModelCopyWith(SeriModel value, $Res Function(SeriModel) then) =
       _$SeriModelCopyWithImpl<$Res, SeriModel>;
   @useResult
-  $Res call({String? seriNo, String? aciklama});
+  $Res call(
+      {String? seriNo,
+      String? aciklama,
+      String? stokKodu,
+      String? stokAdi,
+      int? depoKodu,
+      int? miktar,
+      String? depoTanimi});
 }
 
 /// @nodoc
@@ -52,6 +64,11 @@ class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
   $Res call({
     Object? seriNo = freezed,
     Object? aciklama = freezed,
+    Object? stokKodu = freezed,
+    Object? stokAdi = freezed,
+    Object? depoKodu = freezed,
+    Object? miktar = freezed,
+    Object? depoTanimi = freezed,
   }) {
     return _then(_value.copyWith(
       seriNo: freezed == seriNo
@@ -61,6 +78,26 @@ class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -74,7 +111,14 @@ abstract class _$$SeriModelImplCopyWith<$Res>
       __$$SeriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? seriNo, String? aciklama});
+  $Res call(
+      {String? seriNo,
+      String? aciklama,
+      String? stokKodu,
+      String? stokAdi,
+      int? depoKodu,
+      int? miktar,
+      String? depoTanimi});
 }
 
 /// @nodoc
@@ -90,6 +134,11 @@ class __$$SeriModelImplCopyWithImpl<$Res>
   $Res call({
     Object? seriNo = freezed,
     Object? aciklama = freezed,
+    Object? stokKodu = freezed,
+    Object? stokAdi = freezed,
+    Object? depoKodu = freezed,
+    Object? miktar = freezed,
+    Object? depoTanimi = freezed,
   }) {
     return _then(_$SeriModelImpl(
       seriNo: freezed == seriNo
@@ -100,6 +149,26 @@ class __$$SeriModelImplCopyWithImpl<$Res>
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -107,7 +176,15 @@ class __$$SeriModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SeriModelImpl extends _SeriModel {
-  _$SeriModelImpl({this.seriNo, this.aciklama}) : super._();
+  _$SeriModelImpl(
+      {this.seriNo,
+      this.aciklama,
+      this.stokKodu,
+      this.stokAdi,
+      this.depoKodu,
+      this.miktar,
+      this.depoTanimi})
+      : super._();
 
   factory _$SeriModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SeriModelImplFromJson(json);
@@ -116,6 +193,16 @@ class _$SeriModelImpl extends _SeriModel {
   final String? seriNo;
   @override
   final String? aciklama;
+  @override
+  final String? stokKodu;
+  @override
+  final String? stokAdi;
+  @override
+  final int? depoKodu;
+  @override
+  final int? miktar;
+  @override
+  final String? depoTanimi;
 
   @JsonKey(ignore: true)
   @override
@@ -132,8 +219,14 @@ class _$SeriModelImpl extends _SeriModel {
 }
 
 abstract class _SeriModel extends SeriModel {
-  factory _SeriModel({final String? seriNo, final String? aciklama}) =
-      _$SeriModelImpl;
+  factory _SeriModel(
+      {final String? seriNo,
+      final String? aciklama,
+      final String? stokKodu,
+      final String? stokAdi,
+      final int? depoKodu,
+      final int? miktar,
+      final String? depoTanimi}) = _$SeriModelImpl;
   _SeriModel._() : super._();
 
   factory _SeriModel.fromJson(Map<String, dynamic> json) =
@@ -143,6 +236,16 @@ abstract class _SeriModel extends SeriModel {
   String? get seriNo;
   @override
   String? get aciklama;
+  @override
+  String? get stokKodu;
+  @override
+  String? get stokAdi;
+  @override
+  int? get depoKodu;
+  @override
+  int? get miktar;
+  @override
+  String? get depoTanimi;
   @override
   @JsonKey(ignore: true)
   _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>

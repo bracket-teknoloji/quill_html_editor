@@ -10,6 +10,11 @@ _$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
     _$SeriModelImpl(
       seriNo: json['SERI_NO'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      depoKodu: json['DEPO_KODU'] as int?,
+      miktar: json['MIKTAR'] as int?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
     );
 
 Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) {
@@ -23,5 +28,10 @@ Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) {
 
   writeNotNull('SERI_NO', instance.seriNo);
   writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
   return val;
 }
