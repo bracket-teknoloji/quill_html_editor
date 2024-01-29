@@ -403,10 +403,12 @@ class BottomSheetDialogManager {
             .toList(),
       );
 
-  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue, {String? filter}) async {
     final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
     final List<DepoList> depoList = CacheManager.getAnaVeri?.paramModel?.depoList ?? <DepoList>[];
-    final List<DepoList> filteredDepoList = depoList.where((DepoList element) => onayList?.contains(element.depoKodu) ?? true).toList();
+    final List<DepoList> filteredDepoList = depoList
+        .where((DepoList element) => onayList?.contains(element.depoKodu) ?? true && (element.subeKodu == null || (element.subeKodu != null && element.subeKodu == CacheManager.getVeriTabani["Şube"])))
+        .toList();
     return await showRadioBottomSheetDialog(
       context,
       title: "Depo seç",
@@ -415,6 +417,7 @@ class BottomSheetDialogManager {
           .map(
             (DepoList e) => BottomSheetModel(
               title: e.depoTanimi ?? "",
+              description: e.depoKodu.toStringIfNotNull,
               value: e,
               groupValue: e.depoKodu,
             ),
