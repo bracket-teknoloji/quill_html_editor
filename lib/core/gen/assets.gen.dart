@@ -71,6 +71,10 @@ class $AssetsLottiesGen {
   LottieGenImage get chartLottie =>
       const LottieGenImage('assets/lotties/chart_lottie.json');
 
+  /// File path: assets/lotties/location_lottie.json
+  LottieGenImage get locationLottie =>
+      const LottieGenImage('assets/lotties/location_lottie.json');
+
   /// File path: assets/lotties/person.lottie
   String get person => 'assets/lotties/person.lottie';
 
@@ -79,7 +83,8 @@ class $AssetsLottiesGen {
       const LottieGenImage('assets/lotties/person_lottie.json');
 
   /// List of all assets
-  List<dynamic> get values => [chartLottie, person, personLottie];
+  List<dynamic> get values =>
+      [chartLottie, locationLottie, person, personLottie];
 }
 
 class $AssetsSplashGen {

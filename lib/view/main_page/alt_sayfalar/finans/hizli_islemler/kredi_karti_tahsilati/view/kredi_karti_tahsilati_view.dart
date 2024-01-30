@@ -59,7 +59,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _tutarController = TextEditingController();
     _krediKartiNoController = TextEditingController();
     _referansKoduController = TextEditingController();
-    _plasiyerController = TextEditingController();
+    _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -193,8 +193,8 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                 onTap: () async => await getCari(),
                 suffix: IconButton(
                   onPressed: () async {
-                    if (viewModel.model.cariKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
+                    if (viewModel.model.hesapKodu != null) {
+                      dialogManager.showCariIslemleriGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
                     } else {
                       dialogManager.showErrorSnackBar("Cari seçiniz");
                     }

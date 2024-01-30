@@ -11,6 +11,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:location/location.dart";
 import "package:package_info_plus/package_info_plus.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
@@ -30,7 +31,7 @@ class AccountModel with NetworkManagerMixin {
   }
   static AccountModel instance = AccountModel.getValue();
 
-  static void setFromAccountResponseModel(AccountResponseModel? model) {
+  static Future<void> setFromAccountResponseModel(AccountResponseModel? model) async {
     instance.uyeEmail = model?.email;
     instance.uyeSifre = model?.parola;
   }
@@ -298,4 +299,32 @@ class AccountModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$AccountModelToJson(this);
+
+  Future<void> getLocation() async {
+    final Location location = Location();
+
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    LocationData locationData;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    locationData = await location.getLocation();
+    log(locationData.toString());
+    // instance.gk
+  }
 }

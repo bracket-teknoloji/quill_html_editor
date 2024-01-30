@@ -187,11 +187,11 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                     onTap: () async => await getCari(),
                     suffix: IconButton(
                       onPressed: () async {
-                    if (viewModel.model.cariKodu != null) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
-                    } else {
-                      dialogManager.showErrorSnackBar("Cari seçiniz");
-                    }
+                        if (viewModel.model.hesapKodu != null) {
+                          dialogManager.showCariIslemleriGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
+                        } else {
+                          dialogManager.showErrorSnackBar("Cari seçiniz");
+                        }
                       },
                       icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                     ),

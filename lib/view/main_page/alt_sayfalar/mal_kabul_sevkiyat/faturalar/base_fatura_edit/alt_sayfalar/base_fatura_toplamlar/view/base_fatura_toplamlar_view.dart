@@ -497,7 +497,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       viewModel.model.vadeGunu = 0;
       viewModel.model.vadeTarihi = DateTime.now().dateTimeWithoutTime;
     } else {
-      viewModel.model.vadeTarihi = DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0));
+      viewModel.model.vadeTarihi ??= DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0));
     }
     vadeGunuController = TextEditingController(
       text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toStringIfNotNull,

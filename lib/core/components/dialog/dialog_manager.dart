@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/gen/assets.gen.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -293,6 +294,10 @@ class DialogManager {
         onCancel: () {},
         btnCancelText: "Hayır",
       ).show();
+
+      Future<void> showLocationDialog() async => await _baseDialog(
+        customHeader: Assets.lotties.locationLottie.lottie(),
+      );
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 

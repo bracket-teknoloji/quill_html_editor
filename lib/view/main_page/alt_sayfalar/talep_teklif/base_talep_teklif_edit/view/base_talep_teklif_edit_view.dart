@@ -126,7 +126,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         BaseSiparisEditModel.instance.isNew = true;
-        final CariListesiModel? cariModel;
+        CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
           final result = await Get.toNamed(
             "mainPage/cariRehberi",
@@ -136,17 +136,17 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               siparisKarsilanmaDurumu: null,
             ),
           );
-          if (result is CariListesiModel) {
+          if (result.muhtelifMi) {
+            BaseSiparisEditModel.instance.muhtelifCariModel = result;
+            cariModel = result;
+          } else if (result is CariListesiModel) {
             cariModel = await networkManager.getCariModel(
-            CariRequestModel.fromCariListesiModel(result)
-              ..secildi = "E"
-              ..kisitYok = true
-              ..teslimCari = "E"
-              ..eFaturaGoster = true,
-          );
-            if (result.muhtelifMi) {
-              BaseSiparisEditModel.instance.muhtelifCariModel = result;
-            }
+              CariRequestModel.fromCariListesiModel(result)
+                ..secildi = "E"
+                ..kisitYok = true
+                ..teslimCari = "E"
+                ..eFaturaGoster = true,
+            );
           } else {
             cariModel = null;
           }

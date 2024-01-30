@@ -129,6 +129,8 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
       AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
+      await dialogManager.showLocationDialog();
+      await AccountModel.instance.getLocation();
       final response = await networkManager.getToken(
         path: ApiUrls.token,
         queryParameters: {

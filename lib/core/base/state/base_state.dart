@@ -23,4 +23,5 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   double get height => MediaQuery.sizeOf(context).height;
   ThemeData get theme => Theme.of(context);
   LocaleBase loc(BuildContext context) => Localizations.of<LocaleBase>(context, LocaleBase)!;
+  NavigatorState navigator(BuildContext context) => Navigator.of(context);
 }

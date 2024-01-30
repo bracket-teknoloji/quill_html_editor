@@ -3,7 +3,7 @@
 <plist version="1.0">
 	<dict>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
-		<true/>
+		<true />
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
@@ -24,11 +24,12 @@
 		</array>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
-		<!-- <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra
-		gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string> -->
+		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
 		<key>CFBundleGetInfoString</key>
 		<string></string>
 		<key>CFBundleIdentifier</key>
@@ -68,6 +69,7 @@
 		<key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>
+			<string>location</string>
 			<string>remote-notification</string>
 		</array>
 		<key>UILaunchStoryboardName</key>
