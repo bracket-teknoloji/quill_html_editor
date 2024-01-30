@@ -1,6 +1,7 @@
 import "dart:developer";
 import "dart:io";
 
+import "package:app_settings/app_settings.dart";
 import "package:awesome_dialog/awesome_dialog.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -295,9 +296,32 @@ class DialogManager {
         btnCancelText: "Hayır",
       ).show();
 
-      Future<void> showLocationDialog() async => await _baseDialog(
+  Future<void> showLocationDialog() async {
+    final result = await AccountModel.instance.getLocation();
+    if (result is String) {
+      await showSettingsDialog(result);
+    } else {
+      return _baseDialog(
         customHeader: Assets.lotties.locationLottie.lottie(),
-      );
+        dialogType: DialogType.question,
+        body: const Text("Konumunuza ulaşmak için izin verin."),
+        onOk: () async {},
+        onCancel: () {},
+      ).show();
+    }
+  }
+
+  Future<void> showSettingsDialog(String value) async => _baseDialog(
+        dialogType: DialogType.question,
+        body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+        onOk: () async {
+          final result = await AccountModel.instance.getLocation();
+          if (result is String) {
+            await AppSettings.openAppSettings();
+          }
+        },
+        onCancel: () {},
+      ).show();
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 

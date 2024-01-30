@@ -2,8 +2,6 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:location/location.dart";
-import "package:picker/core/components/drawer/right_drawer/map_deneme.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
@@ -184,8 +182,10 @@ class _EndDrawerState extends BaseState<EndDrawer> {
         DrawerModel(
           title: "${CacheManager.getVeriTabani["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
           iconWidget: Icons.location_on_outlined,
-          onTap: () {
-            Get.to(MapSample.new);
+          onTap: () async {
+            Get.back();
+            await dialogManager.showLocationDialog();
+            log("message");
           },
         ),
         DrawerModel(

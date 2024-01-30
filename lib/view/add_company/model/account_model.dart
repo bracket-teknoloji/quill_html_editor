@@ -148,6 +148,8 @@ class AccountModel with NetworkManagerMixin {
   @HiveField(52)
   String? konumBoylam;
 
+  final Location location = Location();
+
   Future<void> init() async {
     if (isDebug) {
       debugMu = isDebug;
@@ -300,9 +302,7 @@ class AccountModel with NetworkManagerMixin {
   @override
   Map<String, dynamic> toJson() => _$AccountModelToJson(this);
 
-  Future<void> getLocation() async {
-    final Location location = Location();
-
+  Future<String?> getLocation() async {
     bool serviceEnabled;
     PermissionStatus permissionGranted;
     LocationData locationData;
@@ -311,20 +311,21 @@ class AccountModel with NetworkManagerMixin {
     if (!serviceEnabled) {
       serviceEnabled = await location.requestService();
       if (!serviceEnabled) {
-        return;
+        return null;
       }
     }
 
     permissionGranted = await location.hasPermission();
     if (permissionGranted == PermissionStatus.denied) {
       permissionGranted = await location.requestPermission();
+      if (permissionGranted == PermissionStatus.denied) {}
       if (permissionGranted != PermissionStatus.granted) {
-        return;
+        return "Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.";
       }
     }
-
     locationData = await location.getLocation();
     log(locationData.toString());
+    return null;
     // instance.gk
   }
 }
