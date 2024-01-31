@@ -17,6 +17,7 @@ import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_b
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -406,6 +407,11 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/talTekSatisTalepAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisTalebi)),
               GetPage(name: "/talTekSatisTeklifAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisTeklifi)),
               GetPage(name: "/talTekAlisTalepAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisTalebi)),
+
+              //* Transfer
+              GetPage(name: "/transferDepo", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi)),
+              GetPage(name: "/transferAmbarGiris", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi)),
+              GetPage(name: "/transferAmbarCikis", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi)),
 
               //* Serbest Raporlar
               //*

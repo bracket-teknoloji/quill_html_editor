@@ -319,7 +319,7 @@ class MenuItemConstants {
           name: null,
           title: "Seri İşlemleri",
           altMenuler: [
-            GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri" , route: "/seriHareketleri"),
+            GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri", route: "/seriHareketleri"),
           ],
         ),
         GridItemModel.altmenu(
@@ -395,7 +395,9 @@ class MenuItemConstants {
       icon: "trolley",
       color: ColorPalette.slateGray,
       altMenuler: <GridItemModel>[
-        // GridItemModel.item(name: "", title: "Depo Transferi", icon: ""),
+        GridItemModel.item(name: "transfer_DAT", title: "Depo Transferi", route: "/mainPage/transferDepo"),
+        GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris"),
+        GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
       ],
     ),

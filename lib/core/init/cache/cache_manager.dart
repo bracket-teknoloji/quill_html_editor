@@ -42,6 +42,8 @@ class CacheManager {
   static late Box<ListSiparisEditModel> faturaEditListBox;
   static late Box<BaseSiparisEditModel> talepTeklifEditBox;
   static late Box<ListSiparisEditModel> talepTeklifEditListBox;
+  static late Box<BaseSiparisEditModel> transferEditBox;
+  static late Box<ListSiparisEditModel> transferEditListBox;
   static late Box<int> finansOzelRaporOrderBox;
 
   static late Box<Map> profilParametreBox;
@@ -93,6 +95,8 @@ class CacheManager {
     faturaEditListBox = await Hive.openBox<ListSiparisEditModel>("faturaEditList");
     talepTeklifEditBox = await Hive.openBox<BaseSiparisEditModel>("talepTeklifEdit");
     talepTeklifEditListBox = await Hive.openBox<ListSiparisEditModel>("talepTeklifEditList");
+    talepTeklifEditBox = await Hive.openBox<BaseSiparisEditModel>("transferEdit");
+    transferEditListBox = await Hive.openBox<ListSiparisEditModel>("transferEditList");
     finansOzelRaporOrderBox = await Hive.openBox("finansOzelRaporOrder");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
@@ -193,6 +197,7 @@ class CacheManager {
   static void setSiparisEdit(BaseSiparisEditModel value) => siparisEditBox.put(value.belgeNo, value);
   static void setFaturaEdit(BaseSiparisEditModel value) => faturaEditBox.put(value.belgeNo, value);
   static void setTalepTeklifEdit(BaseSiparisEditModel value) => talepTeklifEditBox.put(value.belgeNo, value);
+  static void setTransferEdit(BaseSiparisEditModel value) => transferEditBox.put(value.belgeNo, value);
   static void addSiparisEditListItem(BaseSiparisEditModel value) {
     if (siparisEditListBox.get(StaticVariables.getSiparisString) == null) {
       siparisEditListBox.put(
@@ -261,6 +266,30 @@ class CacheManager {
         ListSiparisEditModel(
           list: [
             ...?talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list,
+            value,
+          ],
+        ),
+      );
+    }
+  }
+  static void addTransferEditListItem(BaseSiparisEditModel value) {
+    if (transferEditListBox.get(StaticVariables.getSiparisString) == null) {
+      transferEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(),
+      );
+    }
+    if (transferEditListBox.get(StaticVariables.getSiparisString)?.list?.any((element) => element.belgeNo == value.belgeNo) ?? false) {
+      transferEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(list: transferEditListBox.get(StaticVariables.getSiparisString)?.list?.map((e) => e.belgeNo == value.belgeNo ? value : e).toList()),
+      );
+    } else {
+      transferEditListBox.put(
+        StaticVariables.getSiparisString,
+        ListSiparisEditModel(
+          list: [
+            ...?transferEditListBox.get(StaticVariables.getSiparisString)?.list,
             value,
           ],
         ),
@@ -348,6 +377,29 @@ class CacheManager {
       list.removeWhere((element) => element.uuid == uuid);
     }
     await talepTeklifEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+    return true;
+  }
+  static void removeTransferEdit(String key) => transferEditBox.delete(key);
+  static void removeTransferEditList(int index) {
+    final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeAt(index);
+    }
+    transferEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+  }
+
+  static Future<bool> removeTransferEditListWithUuid(String? uuid) async {
+    final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeWhere((element) => element.uuid == uuid);
+    }
+    await transferEditListBox.put(
       StaticVariables.getSiparisString,
       ListSiparisEditModel(list: list),
     );

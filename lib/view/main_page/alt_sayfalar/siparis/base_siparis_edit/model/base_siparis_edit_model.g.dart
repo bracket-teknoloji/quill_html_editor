@@ -337,6 +337,18 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel cariTitle(String? cariTitle);
 
+  BaseSiparisEditModel hedefDepo(int? hedefDepo);
+
+  BaseSiparisEditModel girisDepo(int? girisDepo);
+
+  BaseSiparisEditModel cikisSubeKodu(int? cikisSubeKodu);
+
+  BaseSiparisEditModel girisSubeKodu(int? girisSubeKodu);
+
+  BaseSiparisEditModel lokalDat(String? lokalDat);
+
+  BaseSiparisEditModel masrafKodu(String? masrafKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -509,6 +521,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? efattanDovizAdi,
     CariListesiModel? muhtelifCariModel,
     String? cariTitle,
+    int? hedefDepo,
+    int? girisDepo,
+    int? cikisSubeKodu,
+    int? girisSubeKodu,
+    String? lokalDat,
+    String? masrafKodu,
   });
 }
 
@@ -1113,6 +1131,27 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(cariTitle: cariTitle);
 
   @override
+  BaseSiparisEditModel hedefDepo(int? hedefDepo) => this(hedefDepo: hedefDepo);
+
+  @override
+  BaseSiparisEditModel girisDepo(int? girisDepo) => this(girisDepo: girisDepo);
+
+  @override
+  BaseSiparisEditModel cikisSubeKodu(int? cikisSubeKodu) =>
+      this(cikisSubeKodu: cikisSubeKodu);
+
+  @override
+  BaseSiparisEditModel girisSubeKodu(int? girisSubeKodu) =>
+      this(girisSubeKodu: girisSubeKodu);
+
+  @override
+  BaseSiparisEditModel lokalDat(String? lokalDat) => this(lokalDat: lokalDat);
+
+  @override
+  BaseSiparisEditModel masrafKodu(String? masrafKodu) =>
+      this(masrafKodu: masrafKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1286,6 +1325,12 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? efattanDovizAdi = const $CopyWithPlaceholder(),
     Object? muhtelifCariModel = const $CopyWithPlaceholder(),
     Object? cariTitle = const $CopyWithPlaceholder(),
+    Object? hedefDepo = const $CopyWithPlaceholder(),
+    Object? girisDepo = const $CopyWithPlaceholder(),
+    Object? cikisSubeKodu = const $CopyWithPlaceholder(),
+    Object? girisSubeKodu = const $CopyWithPlaceholder(),
+    Object? lokalDat = const $CopyWithPlaceholder(),
+    Object? masrafKodu = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -1950,6 +1995,30 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.cariTitle
           // ignore: cast_nullable_to_non_nullable
           : cariTitle as String?,
+      hedefDepo: hedefDepo == const $CopyWithPlaceholder()
+          ? _value.hedefDepo
+          // ignore: cast_nullable_to_non_nullable
+          : hedefDepo as int?,
+      girisDepo: girisDepo == const $CopyWithPlaceholder()
+          ? _value.girisDepo
+          // ignore: cast_nullable_to_non_nullable
+          : girisDepo as int?,
+      cikisSubeKodu: cikisSubeKodu == const $CopyWithPlaceholder()
+          ? _value.cikisSubeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : cikisSubeKodu as int?,
+      girisSubeKodu: girisSubeKodu == const $CopyWithPlaceholder()
+          ? _value.girisSubeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : girisSubeKodu as int?,
+      lokalDat: lokalDat == const $CopyWithPlaceholder()
+          ? _value.lokalDat
+          // ignore: cast_nullable_to_non_nullable
+          : lokalDat as String?,
+      masrafKodu: masrafKodu == const $CopyWithPlaceholder()
+          ? _value.masrafKodu
+          // ignore: cast_nullable_to_non_nullable
+          : masrafKodu as String?,
     );
   }
 }
@@ -3337,13 +3406,19 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       efattanDovizAdi: fields[162] as String?,
       muhtelifCariModel: fields[163] as CariListesiModel?,
       cariTitle: fields[164] as String?,
+      hedefDepo: fields[165] as int?,
+      girisDepo: fields[166] as int?,
+      cikisSubeKodu: fields[167] as int?,
+      girisSubeKodu: fields[168] as int?,
+      lokalDat: fields[169] as String?,
+      masrafKodu: fields[170] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(165)
+      ..writeByte(171)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3673,7 +3748,19 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(163)
       ..write(obj.muhtelifCariModel)
       ..writeByte(164)
-      ..write(obj.cariTitle);
+      ..write(obj.cariTitle)
+      ..writeByte(165)
+      ..write(obj.hedefDepo)
+      ..writeByte(166)
+      ..write(obj.girisDepo)
+      ..writeByte(167)
+      ..write(obj.cikisSubeKodu)
+      ..writeByte(168)
+      ..write(obj.girisSubeKodu)
+      ..writeByte(169)
+      ..write(obj.lokalDat)
+      ..writeByte(170)
+      ..write(obj.masrafKodu);
   }
 
   @override
@@ -4221,6 +4308,12 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           : CariListesiModel.fromJson(
               json['MUHTELIF_CARI_MODEL'] as Map<String, dynamic>),
       cariTitle: json['CARI_TITLE'] as String?,
+      hedefDepo: json['HEDEF_DEPO'] as int?,
+      girisDepo: json['GIRIS_DEPO'] as int?,
+      cikisSubeKodu: json['CIKIS_SUBE_KODU'] as int?,
+      girisSubeKodu: json['GIRIS_SUBE_KODU'] as int?,
+      lokalDat: json['LOKAL_DAT'] as String?,
+      masrafKodu: json['MASRAF_KODU'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4398,6 +4491,12 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EFATTAN_DOVIZ_ADI', instance.efattanDovizAdi);
   writeNotNull('MUHTELIF_CARI_MODEL', instance.muhtelifCariModel?.toJson());
   writeNotNull('CARI_TITLE', instance.cariTitle);
+  writeNotNull('HEDEF_DEPO', instance.hedefDepo);
+  writeNotNull('GIRIS_DEPO', instance.girisDepo);
+  writeNotNull('CIKIS_SUBE_KODU', instance.cikisSubeKodu);
+  writeNotNull('GIRIS_SUBE_KODU', instance.girisSubeKodu);
+  writeNotNull('LOKAL_DAT', instance.lokalDat);
+  writeNotNull('MASRAF_KODU', instance.masrafKodu);
   return val;
 }
 

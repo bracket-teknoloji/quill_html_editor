@@ -28,6 +28,12 @@ enum EditTipiEnum {
   alisTalebi,
   @HiveField(8)
   satisTalebi,
+  @HiveField(9)
+  depoTransferi,
+  @HiveField(10)
+  ambarGirisi,
+  @HiveField(11)
+  ambarCikisi
 }
 
 extension NullableEditTipiEnumExtension on EditTipiEnum? {
@@ -74,6 +80,10 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.satisTalebi:
         return YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? "");
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
+        return 0;
     }
   }
 }
@@ -101,6 +111,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return "ATAL";
       case EditTipiEnum.satisTalebi:
         return "STAL";
+      case EditTipiEnum.depoTransferi:
+        return "DC";
+
+      case EditTipiEnum.ambarGirisi:
+        return "AG";
+      case EditTipiEnum.ambarCikisi:
+        return "AC";
     }
   }
 
@@ -124,6 +141,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return "Alış Talebi";
       case EditTipiEnum.satisTalebi:
         return "Satış Talebi";
+      case EditTipiEnum.depoTransferi:
+        return "Depo Transferi";
+      case EditTipiEnum.ambarGirisi:
+        return "Ambar Giriş Fişi";
+      case EditTipiEnum.ambarCikisi:
+        return "Ambar Çıkış Fişi";
     }
   }
 
@@ -147,6 +170,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return "AlisTalebi";
       case EditTipiEnum.satisTalebi:
         return "SatisTalebi";
+      case EditTipiEnum.depoTransferi:
+        return "DepoTransferi";
+      //TODO Aşağıdaki veriler yalnız onları düzelt.
+      case EditTipiEnum.ambarGirisi:
+        return "AmbarGirisi";
+      case EditTipiEnum.ambarCikisi:
+        return "AmbarCikisi";
     }
   }
 
@@ -162,6 +192,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
       case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
         return false;
     }
   }
@@ -178,6 +211,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisIrsaliye:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
         return false;
     }
   }
@@ -221,7 +257,6 @@ extension EditTipiEnumExtension on EditTipiEnum {
       return yetkiController.alisEkAlan2AktifMi;
     }
   }
-  
 
   bool get eklensinMi {
     switch (this) {
@@ -243,6 +278,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.alisTalebiEkle;
       case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiEkle;
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatEkle;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAGEkle;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferACEkle;
     }
   }
 
@@ -266,6 +307,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.alisTalebiDuzenle;
       case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiDuzenle;
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatDuzenle;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAGDuzenle;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferACDuzenle;
     }
   }
 
@@ -289,6 +336,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.alisTalebiSil;
       case EditTipiEnum.satisTalebi:
         return yetkiController.satisTalebiSil;
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatSil;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAGSil;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferACSil;
     }
   }
 
@@ -304,6 +357,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
         return false;
     }
   }
@@ -315,11 +371,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.depoTransferi:
         return false;
       case EditTipiEnum.satisFatura:
       case EditTipiEnum.satisIrsaliye:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
         return true;
     }
   }
@@ -351,6 +410,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTalebi:
         CacheManager.setTalepTeklifEdit(BaseSiparisEditModel.instance);
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
+        CacheManager.setTransferEdit(BaseSiparisEditModel.instance);
     }
   }
 
@@ -368,6 +431,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTalebi:
         CacheManager.addTalepTeklifEditListItem(BaseSiparisEditModel.instance);
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
+        CacheManager.addTransferEditListItem(BaseSiparisEditModel.instance);
     }
   }
 

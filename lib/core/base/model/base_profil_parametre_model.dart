@@ -12,6 +12,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool siparisYeniKaydaHazirla,
     @Default(false) bool faturaYeniKaydaHazirla,
     @Default(false) bool talepTeklifYeniKaydaHazirla,
+    @Default(false) bool transferYeniKaydaHazirla,
     @Default(false) bool siparisEkAlan,
     @Default(false) bool siparisMiktar,
     @Default(false) bool siparisVade,

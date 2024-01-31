@@ -1,0 +1,60 @@
+import "package:mobx/mobx.dart";
+
+import "../../../../../../core/constants/static_variables/static_variables.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+part "base_transfer_editing_view_model.g.dart";
+
+class BaseTransferEditingViewModel = _BaseTransferEditingViewModelBase with _$BaseTransferEditingViewModel;
+
+abstract class _BaseTransferEditingViewModelBase with Store {
+  @computed
+  BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
+
+  @observable
+  bool updateKalemler = false;
+
+  @action
+  void changeUpdateKalemler() => updateKalemler = !updateKalemler;
+  @observable
+  int pageIndex = 0;
+
+  @observable
+  bool isValid = StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ?? false;
+
+  @action
+  void changeIsValid() => isValid = StaticVariables.instance.siparisGenelFormKey.currentState?.validate() ?? false;
+
+  @action
+  void changePageIndex(int value) => pageIndex = value;
+  @observable
+  bool isLastPage = false;
+
+  @action
+  void changeIsLastPage(bool value) => isLastPage = value;
+
+  @computed
+  int get getKalemCount => BaseSiparisEditModel.instance.getKalemSayisi;
+
+  @observable
+  bool isBaseSiparisEmpty = BaseSiparisEditModel.instance.isEmpty;
+
+  @action
+  void changeIsBaseSiparisEmpty(bool value) => isBaseSiparisEmpty = value;
+  @action
+  void changeFuture() {
+    changeIsBaseSiparisEmpty(BaseSiparisEditModel.instance.isEmpty);
+  }
+
+  @observable
+  bool yeniKaydaHazirlaMi = CacheManager.getProfilParametre.siparisYeniKaydaHazirla;
+
+  @action
+  void changeYeniKaydaHazirlaMi() {
+    yeniKaydaHazirlaMi = !yeniKaydaHazirlaMi;
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(transferYeniKaydaHazirla: yeniKaydaHazirlaMi),
+    );
+  }
+}

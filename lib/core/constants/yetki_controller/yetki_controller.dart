@@ -404,4 +404,21 @@ final class YetkiController {
   bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index) ?? false));
   bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index) ?? false));
   bool satisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index) ?? false));
+
+  //! TRANSFER
+
+  //* Ekle
+  bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
+  bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);
+  bool get transferACEkle => _isTrue(_yetkiModel?.transferAcKaydet);
+
+  //* Düzenle
+  bool get transferDatDuzenle => _isTrue(_yetkiModel?.transferDatDuzelt);
+  bool get transferAGDuzenle => _isTrue(_yetkiModel?.transferAgDuzelt);
+  bool get transferACDuzenle => _isTrue(_yetkiModel?.transferAcDuzelt);
+
+  //* Sil
+  bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
+  bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
+  bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
 }

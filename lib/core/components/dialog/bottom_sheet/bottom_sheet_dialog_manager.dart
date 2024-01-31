@@ -168,6 +168,7 @@ class BottomSheetDialogManager {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null ? 70.0 : 60.0).sum;
+    final FocusNode focusNode = FocusNode();
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,
@@ -195,16 +196,7 @@ class BottomSheetDialogManager {
                   endIndent: 0,
                   indent: 0,
                 ),
-                if ((children?.length ?? 0) > 15 && (children?.length ?? 0) < 100)
-                  TextField(
-                    decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
-                    onChanged: viewModel.changeSearchValue,
-                  ).paddingAll(UIHelper.midSize),
-                if ((children?.length ?? 0) >= 100)
-                  TextField(
-                    decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
-                    onSubmitted: viewModel.changeSearchValue,
-                  ).paddingAll(UIHelper.midSize),
+                if ((children?.length ?? 0) > 15) SearchField(focusNode: focusNode, viewModel: viewModel).paddingAll(UIHelper.midSize),
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
                     // if viewModel.getFilteredList are not fit to screen, it will be scrollable
@@ -1251,4 +1243,38 @@ class BottomSheetDialogManager {
     }
     return null;
   }
+}
+
+class SearchField extends StatefulWidget {
+  const SearchField({
+    super.key,
+    required this.focusNode,
+    required this.viewModel,
+    this.children,
+  });
+
+  final FocusNode focusNode;
+  final List<BottomSheetModel>? children;
+  final BottomSheetStateManager viewModel;
+
+  @override
+  State<SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<SearchField> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      widget.focusNode.requestFocus();
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => TextField(
+        focusNode: widget.focusNode,
+        decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
+        onChanged: (widget.children?.length ?? 0) < 100 ? widget.viewModel.changeSearchValue : null,
+        onSubmitted: (widget.children?.length ?? 0) >= 100 ? widget.viewModel.changeSearchValue : null,
+      );
 }

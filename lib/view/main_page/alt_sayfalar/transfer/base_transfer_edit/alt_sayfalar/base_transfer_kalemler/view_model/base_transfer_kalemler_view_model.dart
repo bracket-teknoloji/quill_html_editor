@@ -1,0 +1,22 @@
+import "package:mobx/mobx.dart";
+
+import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+part "base_transfer_kalemler_view_model.g.dart";
+
+class BaseTransferKalemlerViewModel = BaseTransferKalemlerViewModelBase with _$BaseTransferKalemlerViewModel;
+
+abstract class BaseTransferKalemlerViewModelBase with Store {
+  @observable
+  ObservableList<KalemModel>? kalemList;
+
+  @action
+  void removeAtKalemList(int index) {
+    kalemList?.removeAt(index);
+    BaseSiparisEditModel.instance.kalemList = kalemList;
+    updateKalemList();
+  }
+
+  @action
+  void updateKalemList() => kalemList = BaseSiparisEditModel.instance.kalemList?.asObservable();
+}

@@ -31,6 +31,12 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         return EditTipiEnum.alisTalebi;
       case 8:
         return EditTipiEnum.satisTalebi;
+      case 9:
+        return EditTipiEnum.depoTransferi;
+      case 10:
+        return EditTipiEnum.ambarGirisi;
+      case 11:
+        return EditTipiEnum.ambarCikisi;
       default:
         return EditTipiEnum.musteri;
     }
@@ -65,6 +71,15 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         break;
       case EditTipiEnum.satisTalebi:
         writer.writeByte(8);
+        break;
+      case EditTipiEnum.depoTransferi:
+        writer.writeByte(9);
+        break;
+      case EditTipiEnum.ambarGirisi:
+        writer.writeByte(10);
+        break;
+      case EditTipiEnum.ambarCikisi:
+        writer.writeByte(11);
         break;
     }
   }

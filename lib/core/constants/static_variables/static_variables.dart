@@ -40,6 +40,10 @@ class StaticVariables {
   bool get isFaturaValid => faturaGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> faturaGenelFormKey = GlobalKey<FormState>();
 
+  //* Transfer
+  bool get isTransferValid => TransferGenelFormKey.currentState?.validate() ?? false;
+  GlobalKey<FormState> TransferGenelFormKey = GlobalKey<FormState>();
+
   bool isMusteriSiparisleri = false;
   bool isSatisFaturasi = false;
 

@@ -24,6 +24,7 @@ mixin _$BaseProfilParametreModel {
   bool get siparisYeniKaydaHazirla => throw _privateConstructorUsedError;
   bool get faturaYeniKaydaHazirla => throw _privateConstructorUsedError;
   bool get talepTeklifYeniKaydaHazirla => throw _privateConstructorUsedError;
+  bool get transferYeniKaydaHazirla => throw _privateConstructorUsedError;
   bool get siparisEkAlan => throw _privateConstructorUsedError;
   bool get siparisMiktar => throw _privateConstructorUsedError;
   bool get siparisVade => throw _privateConstructorUsedError;
@@ -54,6 +55,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       {bool siparisYeniKaydaHazirla,
       bool faturaYeniKaydaHazirla,
       bool talepTeklifYeniKaydaHazirla,
+      bool transferYeniKaydaHazirla,
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
@@ -84,6 +86,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? siparisYeniKaydaHazirla = null,
     Object? faturaYeniKaydaHazirla = null,
     Object? talepTeklifYeniKaydaHazirla = null,
+    Object? transferYeniKaydaHazirla = null,
     Object? siparisEkAlan = null,
     Object? siparisMiktar = null,
     Object? siparisVade = null,
@@ -108,6 +111,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
       talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
           ? _value.talepTeklifYeniKaydaHazirla
           : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
+          ? _value.transferYeniKaydaHazirla
+          : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
               as bool,
       siparisEkAlan: null == siparisEkAlan
           ? _value.siparisEkAlan
@@ -170,6 +177,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       {bool siparisYeniKaydaHazirla,
       bool faturaYeniKaydaHazirla,
       bool talepTeklifYeniKaydaHazirla,
+      bool transferYeniKaydaHazirla,
       bool siparisEkAlan,
       bool siparisMiktar,
       bool siparisVade,
@@ -199,6 +207,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? siparisYeniKaydaHazirla = null,
     Object? faturaYeniKaydaHazirla = null,
     Object? talepTeklifYeniKaydaHazirla = null,
+    Object? transferYeniKaydaHazirla = null,
     Object? siparisEkAlan = null,
     Object? siparisMiktar = null,
     Object? siparisVade = null,
@@ -223,6 +232,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
       talepTeklifYeniKaydaHazirla: null == talepTeklifYeniKaydaHazirla
           ? _value.talepTeklifYeniKaydaHazirla
           : talepTeklifYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
+              as bool,
+      transferYeniKaydaHazirla: null == transferYeniKaydaHazirla
+          ? _value.transferYeniKaydaHazirla
+          : transferYeniKaydaHazirla // ignore: cast_nullable_to_non_nullable
               as bool,
       siparisEkAlan: null == siparisEkAlan
           ? _value.siparisEkAlan
@@ -279,6 +292,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       {this.siparisYeniKaydaHazirla = false,
       this.faturaYeniKaydaHazirla = false,
       this.talepTeklifYeniKaydaHazirla = false,
+      this.transferYeniKaydaHazirla = false,
       this.siparisEkAlan = false,
       this.siparisMiktar = false,
       this.siparisVade = false,
@@ -304,6 +318,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool talepTeklifYeniKaydaHazirla;
+  @override
+  @JsonKey()
+  final bool transferYeniKaydaHazirla;
   @override
   @JsonKey()
   final bool siparisEkAlan;
@@ -356,6 +373,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       {final bool siparisYeniKaydaHazirla,
       final bool faturaYeniKaydaHazirla,
       final bool talepTeklifYeniKaydaHazirla,
+      final bool transferYeniKaydaHazirla,
       final bool siparisEkAlan,
       final bool siparisMiktar,
       final bool siparisVade,
@@ -378,6 +396,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get faturaYeniKaydaHazirla;
   @override
   bool get talepTeklifYeniKaydaHazirla;
+  @override
+  bool get transferYeniKaydaHazirla;
   @override
   bool get siparisEkAlan;
   @override

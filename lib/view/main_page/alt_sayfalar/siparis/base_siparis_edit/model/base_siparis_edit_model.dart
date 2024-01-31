@@ -416,6 +416,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   CariListesiModel? muhtelifCariModel;
   @HiveField(164)
   String? cariTitle;
+  @HiveField(165)
+  int? hedefDepo;
+  @HiveField(166)
+  int? girisDepo;
+  @HiveField(167)
+  int? cikisSubeKodu;
+  @HiveField(168)
+  int? girisSubeKodu;
+  @HiveField(169)
+  String? lokalDat;
+  @HiveField(170)
+  String? masrafKodu;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -583,6 +595,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.efattanDovizAdi,
     this.muhtelifCariModel,
     this.cariTitle,
+    this.hedefDepo,
+    this.girisDepo,
+    this.cikisSubeKodu,
+    this.girisSubeKodu,
+    this.lokalDat,
+    this.masrafKodu,
   });
 
   BaseSiparisEditModel._init();
