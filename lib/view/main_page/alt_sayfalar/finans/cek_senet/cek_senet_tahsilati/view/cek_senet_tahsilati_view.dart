@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
@@ -306,11 +307,11 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   }
 
   Future<void> getCariIslemleri() async {
-    if (viewModel.model.cariKodu == null) {
-      dialogManager.showInfoSnackBar("Lütfen cari seçiniz");
-      return;
+    if (viewModel.model.cariKodu != null) {
+      final result = await networkManager.getCariModel(CariRequestModel.fromSaveCekSenetModel(viewModel.model));
+      dialogManager.showCariIslemleriGridViewDialog(result);
     } else {
-      dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
+      dialogManager.showErrorSnackBar("Cari seçiniz");
     }
   }
 

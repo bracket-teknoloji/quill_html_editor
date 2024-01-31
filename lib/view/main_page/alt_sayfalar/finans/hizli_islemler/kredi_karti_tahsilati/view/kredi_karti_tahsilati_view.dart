@@ -18,6 +18,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view_model/kredi_karti_tahsilati_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -193,11 +194,12 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                 onTap: () async => await getCari(),
                 suffix: IconButton(
                   onPressed: () async {
-                    if (viewModel.model.hesapKodu != null) {
-                      dialogManager.showCariIslemleriGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
-                    } else {
-                      dialogManager.showErrorSnackBar("Cari seçiniz");
-                    }
+                        if (viewModel.model.hesapKodu != null) {
+                          final result = await networkManager.getCariModel(CariRequestModel.fromTahsilatRequestModel(viewModel.model));
+                          dialogManager.showCariIslemleriGridViewDialog(result);
+                        } else {
+                          dialogManager.showErrorSnackBar("Cari seçiniz");
+                        }
                   },
                   icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),

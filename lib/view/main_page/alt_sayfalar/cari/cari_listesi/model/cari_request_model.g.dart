@@ -9,7 +9,7 @@ part of 'cari_request_model.dart';
 _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CariRequestModelImpl(
-      filterText: json['FilterText'] as String?,
+      filterText: json['FilterText'] as String? ?? "",
       kod: (json['Kod'] as List<dynamic>?)?.map((e) => e as String).toList(),
       sayfa: json['Sayfa'] as int?,
       ilce: json['Ilce'] as String?,

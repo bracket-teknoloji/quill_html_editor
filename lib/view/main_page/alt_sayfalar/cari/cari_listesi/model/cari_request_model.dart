@@ -1,4 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/tahsilat_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -13,7 +15,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
 
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory CariRequestModel({
-    String? filterText,
+    @Default("") String? filterText,
     List<String>? kod,
     int? sayfa,
     String? ilce,
@@ -34,9 +36,9 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     String? belgeTuru,
     String? vergiNo,
     String? siparisKarsilanmaDurumu,
-        bool? kisitYok,
-        String? secildi,
-        String? teslimCari,
+    bool? kisitYok,
+    String? secildi,
+    String? teslimCari,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
@@ -61,4 +63,23 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
         plasiyerKisitiYok: true,
         // belgeTuru: model,
       );
+
+  factory CariRequestModel.fromTahsilatRequestModel(TahsilatRequestModel model) => CariRequestModel(
+        filterText: "",
+        kod: [model.hesapKodu ?? ""],
+        // sayfa: 1,
+        eFaturaGoster: true,
+        plasiyerKisitiYok: true,
+        // belgeTuru: model,
+      );
+
+      factory CariRequestModel.fromSaveCekSenetModel(SaveCekSenetModel model) => CariRequestModel(
+        filterText: "",
+        kod: [model.cariKodu ?? ""],
+        // sayfa: 1,
+        eFaturaGoster: true,
+        plasiyerKisitiYok: true,
+        // belgeTuru: model,
+      );
+
 }

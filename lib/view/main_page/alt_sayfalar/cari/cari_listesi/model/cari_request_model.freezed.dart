@@ -432,7 +432,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$CariRequestModelImpl extends _CariRequestModel {
   _$CariRequestModelImpl(
-      {this.filterText,
+      {this.filterText = "",
       this.kod,
       this.sayfa,
       this.ilce,
@@ -462,6 +462,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       _$$CariRequestModelImplFromJson(json);
 
   @override
+  @JsonKey()
   String? filterText;
   @override
   List<String>? kod;

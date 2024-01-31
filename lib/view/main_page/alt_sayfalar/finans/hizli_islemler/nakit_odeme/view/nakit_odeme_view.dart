@@ -16,6 +16,7 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view_model/nakit_odeme_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -188,7 +189,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                     suffix: IconButton(
                       onPressed: () async {
                         if (viewModel.model.hesapKodu != null) {
-                          dialogManager.showCariIslemleriGridViewDialog(CariListesiModel(cariKodu: viewModel.model.cariKodu, cariAdi: _cariController.text));
+                          final result = await networkManager.getCariModel(CariRequestModel.fromTahsilatRequestModel(viewModel.model));
+                          dialogManager.showCariIslemleriGridViewDialog(result);
                         } else {
                           dialogManager.showErrorSnackBar("Cari seçiniz");
                         }
@@ -413,6 +415,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       _cariHareketiAciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
       _kasaHareketiAciklamaController.text = "${result.cariAdi ?? ""} .KODU: ${result.cariKodu ?? ""}";
+      _plasiyerController.text = result.plasiyerAciklama ?? "";
+      viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
       viewModel.setAciklama(_kasaHareketiAciklamaController.text);
       viewModel.setHedefAciklama(result.cariAdi);
       viewModel.setHesapKodu(result.cariKodu);
