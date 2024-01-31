@@ -58,7 +58,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
-            await Get.toNamed("/mainPage/TransferStokRehberi");
+            await Get.toNamed("/mainPage/talepTeklifStokRehberi");
             viewModel.updateKalemList();
           },
           child: const Icon(Icons.add),
@@ -76,7 +76,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
                 controller: _searchTextController,
                 onSubmitted: (String p0) async {
                   if (p0.ext.isNotNullOrNoEmpty) {
-                    await Get.toNamed("/mainPage/TransferStokRehberi", arguments: p0);
+                    await Get.toNamed("/mainPage/talepTeklifStokRehberi", arguments: p0);
                     viewModel.updateKalemList();
                   }
                 },

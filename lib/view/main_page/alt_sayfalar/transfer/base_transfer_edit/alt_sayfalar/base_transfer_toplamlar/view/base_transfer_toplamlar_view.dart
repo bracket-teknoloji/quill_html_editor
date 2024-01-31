@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -99,15 +100,6 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                   Text.rich(
                     TextSpan(
                       children: <InlineSpan>[
-                        const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
-                        TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
-                      ],
-                    ),
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      children: <InlineSpan>[
                         const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
                         TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
                         TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
@@ -170,6 +162,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
   Padding textFields() => Padding(
         padding: UIHelper.lowPaddingHorizontal,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Column(
               children: [
@@ -460,6 +453,17 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
             //     ),
             //   ],
             // ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
+            ElevatedButton(
+              onPressed: !enable
+                  ? null
+                  : () async {
+                      final result = await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler", arguments: model.eirsBilgiModel);
+                      if (result is EIrsaliyeBilgiModel) {
+                        model.eirsBilgiModel = result;
+                      }
+                    },
+              child: const Text("E-İrsaliye Ek Bilgiler"),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E"),
           ],
         ),
       );

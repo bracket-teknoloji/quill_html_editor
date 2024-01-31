@@ -150,7 +150,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
         padding: UIHelper.lowPadding,
         child: SingleChildScrollView(
           child: Form(
-            key: StaticVariables.instance.TransferGenelFormKey,
+            key: StaticVariables.instance.transferGenelFormKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

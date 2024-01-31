@@ -11,7 +11,6 @@ import "../../base/model/edit_fatura_model.dart";
 import "../../base/model/print_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
@@ -22,7 +21,6 @@ import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
-import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TransferlerCard extends StatefulWidget {
@@ -72,7 +70,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                 iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
+                  await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
                 },
               ),
               BottomSheetModel(
@@ -80,7 +78,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                 iconWidget: Icons.edit_outlined,
                 onTap: () async {
                   Get.back();
-                  final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
+                  final result = await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                   if (result != null) {
                     widget.onUpdated?.call(result);
                   }
@@ -150,26 +148,26 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   );
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-              BottomSheetModel(
-                title: "E-Belge İşlemleri",
-                iconWidget: Icons.receipt_long_outlined,
-                onTap: () async {
-                  Get.back();
-                  // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                  // final BaseSiparisEditModel newModel = widget.model.copyWith(
-                  //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
-                  // );
-                  final result = await dialogManager.showEBelgeGridViewDialog(
-                    model: widget.model,
-                    onSelected: (value) {
-                      widget.onUpdated?.call(value);
-                    },
-                  );
-                  if (result == true) {
-                    widget.onUpdated?.call(true);
-                  }
-                },
-              ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
+              // BottomSheetModel(
+              //   title: "E-Belge İşlemleri",
+              //   iconWidget: Icons.receipt_long_outlined,
+              //   onTap: () async {
+              //     Get.back();
+              //     // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+              //     // final BaseSiparisEditModel newModel = widget.model.copyWith(
+              //     //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+              //     // );
+              //     final result = await dialogManager.showEBelgeGridViewDialog(
+              //       model: widget.model,
+              //       onSelected: (value) {
+              //         widget.onUpdated?.call(value);
+              //       },
+              //     );
+              //     if (result == true) {
+              //       widget.onUpdated?.call(true);
+              //     }
+              //   },
+              // ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
@@ -262,15 +260,15 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
         ),
       );
 
-  InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
-        onTap: () {
-          dialogManager.showColorfulSnackBar(
-            model.eFaturaMi
-                ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
-                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
-            badge.badgeColorEnum.getColor,
-          );
-        },
-        child: badge,
-      );
+  // InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
+  //       onTap: () {
+  //         dialogManager.showColorfulSnackBar(
+  //           model.eFaturaMi
+  //               ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
+  //               : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
+  //           badge.badgeColorEnum.getColor,
+  //         );
+  //       },
+  //       child: badge,
+  //     );
 }

@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
@@ -12,6 +13,7 @@ import "package:picker/core/components/floating_action_button/custom_floating_ac
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -163,6 +165,10 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
   Widget fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrolledDown && widget.editTipiEnum.eklensinMi,
+          onPressed: () async {
+            await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
+            await viewModel.resetPage();
+          },
         ),
       );
 

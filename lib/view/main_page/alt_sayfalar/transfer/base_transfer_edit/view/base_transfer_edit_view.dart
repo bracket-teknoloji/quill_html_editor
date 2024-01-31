@@ -57,7 +57,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
     if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
       tabController.addListener(() {
         if (tabController.indexIsChanging && tabController.previousIndex == 0) {
-          final result = StaticVariables.instance.TransferGenelFormKey.currentState?.validate();
+          final result = StaticVariables.instance.transferGenelFormKey.currentState?.validate();
           if (result == null || !result) {
             dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
             tabController.animateTo(tabController.previousIndex);
