@@ -100,7 +100,7 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
               // case "Müşteri Senedi":
               // case "Borç Senedi":
               // case "Müşteri Çeki":
-                // Get.toNamed("/mainPage/cekSenetGoruntule", arguments: CekSenetListesiModel());
+              // Get.toNamed("/mainPage/cekSenetGoruntule", arguments: CekSenetListesiModel());
               case "Borç Çeki":
               case "Protestolu Senet":
               case "Karşılıksız Çek":
@@ -141,7 +141,8 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            dialogManager.showCariIslemleriGridViewDialog(await getCari());
+            final result = await dialogManager.showCariIslemleriGridViewDialog(await getCari());
+            widget.update.call(result);
           },
         ),
       ].nullCheckWithGeneric,
