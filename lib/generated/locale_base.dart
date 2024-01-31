@@ -95,4 +95,6 @@ class LocalegeneralStrings {
   String get refresh => _data["refresh"]!;
   String get apply => _data["apply"]!;
   String get themeChange => _data["themeChange"]!;
+  String get cancel => _data["cancel"]!;
+  String get ok => _data["ok"]!;
 }

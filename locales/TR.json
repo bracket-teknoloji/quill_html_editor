@@ -45,6 +45,8 @@
     "warning": "Uyarı",
     "refresh": "Yenile",
     "apply": "Uygula",
-    "themeChange": "Tema Değiştir"
+    "themeChange": "Tema Değiştir",
+    "cancel": "İptal",
+    "ok": "Tamam"
   }
 }

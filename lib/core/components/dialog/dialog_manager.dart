@@ -9,6 +9,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/gen/assets.gen.dart";
+import "package:picker/generated/locale_base.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -313,7 +314,7 @@ class DialogManager {
 
   Future<void> showSettingsDialog(String value) async => _baseDialog(
         dialogType: DialogType.question,
-        body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
+        body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", textAlign: TextAlign.center),
         onOk: () async {
           final result = await AccountModel.instance.getLocation();
           if (result is String) {
@@ -534,9 +535,9 @@ class DialogManager {
         desc: desc,
         btnOkOnPress: onOk,
         btnCancelOnPress: onCancel,
-        btnOkText: btnOkText,
+        btnOkText: btnOkText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.ok,
         dialogType: dialogType ?? DialogType.noHeader,
-        btnCancelText: btnCancelText,
+        btnCancelText: btnCancelText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.cancel,
         btnOkColor: btnOkColor ?? UIHelper.primaryColor,
         btnCancelColor: btnCancelColor ?? ColorPalette.slateGray,
         dismissOnBackKeyPress: false,

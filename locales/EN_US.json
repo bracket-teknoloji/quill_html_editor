@@ -46,6 +46,8 @@
     "warning": "Warning",
     "refresh": "Refresh",
     "apply": "Apply",
-    "themeChange": "Change Theme"
+    "themeChange": "Change Theme",
+    "cancel": "Cancel",
+    "ok": "Ok"
   }
 }

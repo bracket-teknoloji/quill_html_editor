@@ -1,5 +1,3 @@
-import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
@@ -182,11 +180,11 @@ class _EndDrawerState extends BaseState<EndDrawer> {
         DrawerModel(
           title: "${CacheManager.getVeriTabani["Şube"]} - ${CacheManager.getIsletmeSube["Şube"]}",
           iconWidget: Icons.location_on_outlined,
-          onTap: () async {
-            Get.back();
-            await dialogManager.showLocationDialog();
-            log("message");
-          },
+          // onTap: () async {
+          //   Get.back();
+          //   await dialogManager.showLocationDialog();
+          //   log("message");
+          // },
         ),
         DrawerModel(
           title: "v${AppInfoModel.instance.version}",
