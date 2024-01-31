@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";

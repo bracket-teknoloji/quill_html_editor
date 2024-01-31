@@ -5,62 +5,44 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="4.050252">
+      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="3.319371">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000218">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000223">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: latest_testflight_build_number" time="7.306665">
+      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="4.857858">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: increment_build_number" time="2.026126">
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.495914">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: get_version_number" time="0.072249">
+      <testcase classname="fastlane.lanes" name="4: get_version_number" time="0.094291">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: get_build_number" time="0.182128">
+      <testcase classname="fastlane.lanes" name="5: get_build_number" time="0.199545">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: git_add" time="0.120305">
+      <testcase classname="fastlane.lanes" name="6: git_add" time="0.135954">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="07: git_commit" time="0.146418">
+      <testcase classname="fastlane.lanes" name="7: git_commit" time="0.184264">
         
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="08: git_tag_exists" time="0.120521">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="09: add_git_tag" time="0.202108">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="10: push_to_git_remote" time="1.400934">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="11: push_git_tags" time="1.828699">
+          <failure message="/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:229:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing&apos;&#10;Fastfile:48:in `block (2 levels) in parsing_binding&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/lane.rb:41:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:45:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/runner.rb:45:in `execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/lane_manager.rb:46:in `cruise_lane&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/command_line_handler.rb:34:in `handle&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/commands_generator.rb:110:in `block (2 levels) in run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/commands_generator.rb:354:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/commands_generator.rb:43:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in `take_off&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/fastlane-2.219.0/bin/fastlane:23:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/bin/fastlane:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/bin/fastlane:25:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli/exec.rb:58:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli/exec.rb:58:in `kernel_load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli/exec.rb:23:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli.rb:492:in `exec&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/vendor/thor/lib/thor/command.rb:27:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/vendor/thor/lib/thor.rb:392:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli.rb:34:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/vendor/thor/lib/thor/base.rb:485:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/cli.rb:28:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/exe/bundle:37:in `block in &lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/bundler-2.4.18/exe/bundle:29:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/bin/bundle:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.1.2/bin/bundle:25:in `&lt;main&gt;&apos;&#10;&#10;Exit status of command &apos;git commit -m Build\ number\ has\ been\ incremented\ to\ V1.4.3+133 ./&apos; was 1 instead of 0.&#10;Üzerinde bulunulan dal: master&#10;Dalınız &apos;origin/master&apos; ile güncel.&#10;&#10;İşleme için hazırlanmamış değişiklikler:&#10;  (işlenecekleri güncellemek için &quot;git add &lt;dosya&gt;...&quot; kullanın)&#10;  (çalışma dizinindeki değişiklikleri atmak için&#10;    &quot;git restore &lt;dosya&gt;...&quot; kullanın)&#10;	değiştirildi:         ../lib/core/components/card/tahsilat_odeme_kayitlari_card.dart&#10;&#10;İşlemeye eklenen değişiklik yok (&quot;git add&quot; ve/veya &quot;git commit -a&quot; kullanın)&#10;" />
         
       </testcase>
     
