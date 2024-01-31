@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -51,6 +52,8 @@ class CekSenetListesiModel with _$CekSenetListesiModel, NetworkManagerMixin {
     String? yeri,
   }) = _CekSenetListesiModel;
   factory CekSenetListesiModel.fromJson(Map<String, dynamic> json) => _$CekSenetListesiModelFromJson(json);
+
+  // factory CekSenetListesiModel.fromCariHareketleriModel(CariHareketleriModel model) => CekSenetListesiModel
 
   CekSenetListesiModel._();
 

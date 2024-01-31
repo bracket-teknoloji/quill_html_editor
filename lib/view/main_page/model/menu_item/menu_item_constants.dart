@@ -400,7 +400,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
       ],
-    ),
+    ).isDebug(),
 
     //* Üretim
     //*
