@@ -3,7 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_diger/view/base_transfer_diger_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_diger/view/base_talep_teklif_diger_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_genel/view/base_transfer_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_kalemler/view/base_transfer_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_toplamlar/view/base_transfer_toplamlar_view.dart";
