@@ -13,6 +13,8 @@ extension DateTimeExtension on DateTime? {
   String? get toDateTimeHypenString => this == null ? null : DateFormat("dd.MM.dd_MM_yyyy_HH_mm_ss").format(this!);
 
   TimeOfDay? get toTimeOfDay => this == null ? null : TimeOfDay(hour: this!.hour, minute: this!.minute);
+
+  String? get getTime => this == null ? null : DateFormat("HH:mm:ss").format(this!);
 }
 
 extension DateTimeExtensionWithTime on DateTime {
@@ -44,4 +46,5 @@ extension StringExtension on String? {
 
 extension TimeOfDayExtensions on TimeOfDay {
   String get toTimeString => "${hour.toString().padLeft(2, "0")}:${minute.toString().padLeft(2, "0")}";
+  // String get toTimeSecondString => "${hour.toString().padLeft(2, "0")}:${minute.toString().padLeft(2, "0")}:${s.toString().padLeft(2, "0")}";
 }
