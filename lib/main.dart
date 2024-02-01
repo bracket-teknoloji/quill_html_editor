@@ -414,6 +414,10 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/transferAmbarGiris", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi)),
               GetPage(name: "/transferAmbarCikis", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi)),
 
+
+              //* * Transfer Açıklama Düzenleme
+              GetPage(name: "/transferDepoAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.depoTransferi)),
+
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
 
