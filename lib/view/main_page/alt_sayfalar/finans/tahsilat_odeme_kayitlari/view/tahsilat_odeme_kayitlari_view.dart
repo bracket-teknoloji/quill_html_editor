@@ -145,10 +145,8 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                         ? const Center(child: Text("Veri bulunamadı"))
                         : ListView.builder(
                             padding: UIHelper.lowPadding,
-                            primary: false,
-                            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                            physics: const AlwaysScrollableScrollPhysics(),
                             controller: _scrollController,
-                            shrinkWrap: true,
                             itemCount: viewModel.getCariHareketleriListesi?.length,
                             itemBuilder: (context, index) {
                               final CariHareketleriModel item = viewModel.getCariHareketleriListesi![index];

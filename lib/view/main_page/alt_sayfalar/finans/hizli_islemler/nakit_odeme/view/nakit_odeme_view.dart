@@ -70,7 +70,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
         viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
-        if (viewModel.model.cariKodu == null) return;
+        if (viewModel.model.hesapKodu == null) return;
       }
       await getKasa();
       if (viewModel.model.kasaKodu == null) return;
