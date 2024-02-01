@@ -1,4 +1,5 @@
 import "dart:convert";
+import "dart:developer";
 
 import "package:json_annotation/json_annotation.dart";
 
@@ -38,6 +39,9 @@ class UserJson {
     if (json == null) {
       return UserJson();
     }
+    log(json);
+    // final encoded = base64.encode("ÜĞŞİÖÇ".codeUnits);
+    // log(utf8.decode(encoded.codeUnits));
     return _$UserJsonFromJson(
       jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),
     );

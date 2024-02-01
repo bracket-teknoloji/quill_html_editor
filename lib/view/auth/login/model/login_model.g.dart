@@ -64,30 +64,15 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-TokenModel _$TokenModelFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    allowedKeys: const [
-      'access_token',
-      'token_type',
-      'expires_in',
-      'USER_JSON',
-      '.issued',
-      '.expires',
-      'error',
-      'error_description'
-    ],
-  );
-  return TokenModel()
-    ..accessToken = json['access_token'] as String?
-    ..tokenType = json['token_type'] as String?
-    ..expiresIn = json['expires_in'] as int?
-    ..userJson = UserJson.fromJson(json['USER_JSON'] as String?)
-    ..issued = json['.issued'] as String?
-    ..expires = json['.expires'] as String?
-    ..error = json['error'] as String?
-    ..errorDescription = json['error_description'] as String?;
-}
+TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel()
+  ..accessToken = json['access_token'] as String?
+  ..tokenType = json['token_type'] as String?
+  ..expiresIn = json['expires_in'] as int?
+  ..userJson = UserJson.fromJson(json['USER_JSON'] as String?)
+  ..issued = json['.issued'] as String?
+  ..expires = json['.expires'] as String?
+  ..error = json['error'] as String?
+  ..errorDescription = json['error_description'] as String?;
 
 Map<String, dynamic> _$TokenModelToJson(TokenModel instance) {
   final val = <String, dynamic>{};
