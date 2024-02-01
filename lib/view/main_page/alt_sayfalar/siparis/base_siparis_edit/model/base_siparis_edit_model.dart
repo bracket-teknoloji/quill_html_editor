@@ -432,6 +432,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? eirsaliye;
   @HiveField(172)
   int? girisDepoKodu;
+  @HiveField(173)
+  String? topluGirisDepoTanimi;
+  @HiveField(174)
+  String? topluCikisDepoTanimi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -607,6 +611,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.masrafKodu,
     this.eirsaliye,
     this.girisDepoKodu,
+    this.topluGirisDepoTanimi,
+    this.topluCikisDepoTanimi,
   });
 
   BaseSiparisEditModel._init();

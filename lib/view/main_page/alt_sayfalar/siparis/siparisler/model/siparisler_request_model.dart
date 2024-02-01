@@ -42,6 +42,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     bool? kisitYok,
     String? arrBelgeTipi,
     String? arrBelgeNo,
+    String? lokalDAT,
   }) = _SiparislerRequestModel;
 
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
