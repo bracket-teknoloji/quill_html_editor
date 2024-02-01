@@ -148,26 +148,26 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   );
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
-              // BottomSheetModel(
-              //   title: "E-Belge İşlemleri",
-              //   iconWidget: Icons.receipt_long_outlined,
-              //   onTap: () async {
-              //     Get.back();
-              //     // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-              //     // final BaseSiparisEditModel newModel = widget.model.copyWith(
-              //     //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
-              //     // );
-              //     final result = await dialogManager.showEBelgeGridViewDialog(
-              //       model: widget.model,
-              //       onSelected: (value) {
-              //         widget.onUpdated?.call(value);
-              //       },
-              //     );
-              //     if (result == true) {
-              //       widget.onUpdated?.call(true);
-              //     }
-              //   },
-              // ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
+              BottomSheetModel(
+                title: "E-Belge İşlemleri",
+                iconWidget: Icons.receipt_long_outlined,
+                onTap: () async {
+                  Get.back();
+                  // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                  // final BaseSiparisEditModel newModel = widget.model.copyWith(
+                  //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+                  // );
+                  final result = await dialogManager.showEBelgeGridViewDialog(
+                    model: widget.model,
+                    onSelected: (value) {
+                      widget.onUpdated?.call(value);
+                    },
+                  );
+                  if (result == true) {
+                    widget.onUpdated?.call(true);
+                  }
+                },
+              ).yetkiKontrol(widget.model.ebelgeCheckbox == "E"),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_outline_outlined,
@@ -220,22 +220,23 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
               //   ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               // ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.cariAdi != null),
+              Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.resmiBelgeNo != null),
               LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) => Wrap(
                   crossAxisAlignment: WrapCrossAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
 
                   children: <Widget>[
-                    Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}"),
+                    Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}").yetkiVarMi(model.hedefDepo != null),
                     Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
                     Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-                    // Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+                    Text("Cari Kodu: ${model.cariKodu ?? ""}").yetkiVarMi(model.cariKodu != null),
                     // Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
                     Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
                     Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
                     Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.genelToplam != null),
+                    Text("Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                   ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
                 ),
               ),

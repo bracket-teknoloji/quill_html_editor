@@ -10,13 +10,14 @@ part "base_transfer_genel_view_model.g.dart";
 class BaseTransferGenelViewModel = _BaseTransferGenelViewModelBase with _$BaseTransferGenelViewModel;
 
 abstract class _BaseTransferGenelViewModelBase with Store {
-  final Map<String, int> belgeTipi = <String, int>{
-    "Kapalı": 1,
-    "Açık": 2,
-    "İade": 3,
-    "Zayi İade": 4,
-    "İhracat": 5,
+  final Map<String, String> hareketTuruMap = <String, String>{
+    "Masraf Merkezi": "A",
+    "Depolar": "B",
+    "Üretim": "C",
+    "Muhtelif": "D",
+    "Konsinye": "F",
   };
+
 
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
@@ -62,8 +63,14 @@ abstract class _BaseTransferGenelViewModelBase with Store {
   }
 
   @action
-  void setBelgeTipi(int? value) {
-    model = model.copyWith(belgeTipi: value, tipi: value);
+  void setHareketTuru(String? value) {
+    model = model.copyWith(hareketTuru: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setCikisSube(int? value) {
+    model = model.copyWith(cikisSubeKodu: value);
     BaseSiparisEditModel.setInstance(model);
   }
 
@@ -92,8 +99,26 @@ abstract class _BaseTransferGenelViewModelBase with Store {
   }
 
   @action
-  void setTopluDepoKodu(int? value) {
-    model = model.copyWith(topluDepo: value);
+  void setTopluGirisDepoKodu(DepoList? value) {
+    model = model.copyWith(girisDepoKodu: value?.depoKodu, topluGirisDepoTanimi: value?.depoTanimi);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTopluCikisDepoKodu(DepoList? value) {
+    model = model.copyWith(cikisDepoKodu: value?.depoKodu, topluCikisDepoTanimi: value?.depoTanimi);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setLokalDepo(bool value) {
+    model = model.copyWith(lokalDat: value? "E" : "H");
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setEIrsaliye(bool value) {
+    model = model.copyWith(ebelgeCheckbox: value? "E" : "H");
     BaseSiparisEditModel.setInstance(model);
   }
 

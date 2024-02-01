@@ -112,11 +112,22 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
-  void setBelgeTipi(int? value) {
+  void setHareketTuru(String? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setBelgeTipi');
+        .startAction(name: '_BaseTransferGenelViewModelBase.setHareketTuru');
     try {
-      return super.setBelgeTipi(value);
+      return super.setHareketTuru(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCikisSube(int? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setCikisSube');
+    try {
+      return super.setCikisSube(value);
     } finally {
       _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -167,11 +178,46 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
-  void setTopluDepoKodu(int? value) {
-    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
-        .startAction(name: '_BaseTransferGenelViewModelBase.setTopluDepoKodu');
+  void setTopluGirisDepoKodu(DepoList? value) {
+    final _$actionInfo =
+        _$_BaseTransferGenelViewModelBaseActionController.startAction(
+            name: '_BaseTransferGenelViewModelBase.setTopluGirisDepoKodu');
     try {
-      return super.setTopluDepoKodu(value);
+      return super.setTopluGirisDepoKodu(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTopluCikisDepoKodu(DepoList? value) {
+    final _$actionInfo =
+        _$_BaseTransferGenelViewModelBaseActionController.startAction(
+            name: '_BaseTransferGenelViewModelBase.setTopluCikisDepoKodu');
+    try {
+      return super.setTopluCikisDepoKodu(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLokalDepo(bool value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setLokalDepo');
+    try {
+      return super.setLokalDepo(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEIrsaliye(bool value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setEIrsaliye');
+    try {
+      return super.setEIrsaliye(value);
     } finally {
       _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
     }

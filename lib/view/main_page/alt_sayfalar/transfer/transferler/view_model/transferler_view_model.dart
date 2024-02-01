@@ -2,6 +2,7 @@ import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -30,6 +31,12 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
     "Vade Günü (A-Z)": "VADE_GUNU_AZ",
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
+  };
+
+  final Map<String, String?> transferTipiMap = {
+    "Tümü": null,
+    "Lokal": "E",
+    "Şube": "H",
   };
 
   @observable
@@ -122,6 +129,21 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void addFaturaList(List<BaseSiparisEditModel>? value) => transferList = transferList?..addAll(value ?? []);
+
+  @action
+  void setLokalDAT(String? value) => faturaRequestModel = faturaRequestModel.copyWith(lokalDAT: value);
+
+  @action
+  void setBaslangicTarihi(String? date) => faturaRequestModel = faturaRequestModel.copyWith(baslamaTarihi: date);
+
+  @action
+  void setBitisTarihi(String? date) => faturaRequestModel = faturaRequestModel.copyWith(bitisTarihi: date);
+
+  @action
+  void setOzelKod2(String? value) => faturaRequestModel = faturaRequestModel.copyWith(ozelKod2: value);
+
+  @action
+  void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(baslamaTarihi: null, bitisTarihi: null, ozelKod2: null, lokalDAT: null);
 
   @action
   Future<void> getData() async {

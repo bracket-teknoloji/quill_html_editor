@@ -10,8 +10,11 @@ import "package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import "package:picker/core/components/card/transferler_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
@@ -19,6 +22,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view_model/transferler_view_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 class TransferlerView extends StatefulWidget {
   final EditTipiEnum editTipiEnum;
@@ -30,12 +34,19 @@ class TransferlerView extends StatefulWidget {
 
 class _TransferlerViewState extends BaseState<TransferlerView> {
   late final TransferlerViewModel viewModel;
-
   late final ScrollController _scrollController;
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController ozelKod1Controller;
+  late final TextEditingController ozelKod2Controller;
 
   @override
   void initState() {
     _scrollController = ScrollController();
+    baslangicTarihiController = TextEditingController();
+    bitisTarihiController = TextEditingController();
+    ozelKod1Controller = TextEditingController();
+    ozelKod2Controller = TextEditingController();
     viewModel = TransferlerViewModel(pickerBelgeTuru: widget.editTipiEnum.rawValue, editTipiEnum: widget.editTipiEnum);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
@@ -53,6 +64,16 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
       });
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    baslangicTarihiController.dispose();
+    bitisTarihiController.dispose();
+    ozelKod1Controller.dispose();
+    ozelKod2Controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -83,7 +104,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
           children: <AppBarButton?>[
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              // onPressed: () async => await filtrele(),
+              onPressed: () async => await filter(),
               child: Text(loc(context).generalStrings.filter),
             ),
             AppBarButton(
@@ -220,4 +241,79 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
           },
         ),
       );
+
+  Future<void> filter() async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: loc(context).generalStrings.filter,
+      body: Column(
+        children: [
+          RaporFiltreDateTimeBottomSheetView(
+            filterOnChanged: (index) {
+              viewModel.setBaslangicTarihi(baslangicTarihiController.text);
+              viewModel.setBitisTarihi(bitisTarihiController.text);
+            },
+            baslangicTarihiController: baslangicTarihiController,
+            bitisTarihiController: bitisTarihiController,
+          ),
+          CustomTextField(
+            labelText: "Özel Kod 2",
+            controller: ozelKod2Controller,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.ozelKod2 ?? "")),
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, true);
+              if (result is ListOzelKodTum) {
+                ozelKod2Controller.text = result.aciklama ?? "";
+                viewModel.setOzelKod2(result.kod);
+              }
+            },
+          ),
+          Observer(
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: viewModel.transferTipiMap.keys.toList(),
+              filterOnChanged: (index) {
+                viewModel.setLokalDAT(viewModel.transferTipiMap.values.toList()[index ?? 0]);
+              },
+              title: "Transfer Tipi",
+              childrenValueList: viewModel.transferTipiMap.values.toList(),
+              groupValue: viewModel.faturaRequestModel.lokalDAT,
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                    // resetFilters();
+                    viewModel.resetFilter();
+                    baslangicTarihiController.text = "";
+                    bitisTarihiController.text = "";
+                    ozelKod2Controller.text = "";
+                    viewModel.resetPage();
+                  },
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  child: const Text("Temizle"),
+                ),
+              ),
+              SizedBox(width: context.sized.dynamicWidth(0.02)),
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.back();
+                    viewModel.setFaturaList(null);
+                    viewModel.setDahaVarMi(true);
+                    viewModel.resetPage();
+                  },
+                  child: Text(loc(context).generalStrings.apply),
+                ),
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ),
+    );
+  }
 }

@@ -275,6 +275,61 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   @override
+  void setLokalDAT(String? value) {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setLokalDAT');
+    try {
+      return super.setLokalDAT(value);
+    } finally {
+      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBaslangicTarihi(String? date) {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setBaslangicTarihi');
+    try {
+      return super.setBaslangicTarihi(date);
+    } finally {
+      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBitisTarihi(String? date) {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setBitisTarihi');
+    try {
+      return super.setBitisTarihi(date);
+    } finally {
+      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOzelKod2(String? value) {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.setOzelKod2');
+    try {
+      return super.setOzelKod2(value);
+    } finally {
+      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetFilter() {
+    final _$actionInfo = _$_TransferlerViewModelBaseActionController
+        .startAction(name: '_TransferlerViewModelBase.resetFilter');
+    try {
+      return super.resetFilter();
+    } finally {
+      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 editTipiEnum: ${editTipiEnum},
