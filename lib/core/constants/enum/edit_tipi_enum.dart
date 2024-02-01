@@ -187,12 +187,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisIrsaliye:
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.depoTransferi:
         return true;
       case EditTipiEnum.satici:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
       case EditTipiEnum.alisTalebi:
-      case EditTipiEnum.depoTransferi:
       case EditTipiEnum.ambarGirisi:
       case EditTipiEnum.ambarCikisi:
         return false;
@@ -465,6 +465,8 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return "/mainPage/talTekAlisTalepAciklamaDuzenle";
       case EditTipiEnum.satisTalebi:
         return "/mainPage/talTekSatisTalepAciklamaDuzenle";
+      case EditTipiEnum.depoTransferi:
+        return "/mainPage/transferDepoAciklamaDuzenle";
       default:
         throw Exception("Açıklama düzenleme route bulunamadı");
     }

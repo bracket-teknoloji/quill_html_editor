@@ -7,12 +7,12 @@ import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
 import "package:flutter/foundation.dart";
-import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
 import "package:package_info_plus/package_info_plus.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/init/app_info/app_info.dart";
@@ -179,6 +179,7 @@ class AccountModel with NetworkManagerMixin {
       final list = await NetworkInterface.list(
         includeLoopback: true,
         type: InternetAddressType.IPv4,
+        includeLinkLocal: true,
       );
       for (var interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {
@@ -190,8 +191,7 @@ class AccountModel with NetworkManagerMixin {
     }
     konumDate = DateTime.now();
     konumTarihi = getKonumTarihi;
-
-    uygulamaGuncellemeTarihi = "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}";
+    uygulamaGuncellemeTarihi = DateTime.now().toDateTimeString();
     if (kIsWeb) {
       wifidenBagli = "E";
     } else if (await Connectivity().checkConnectivity() == ConnectivityResult.wifi) {
@@ -203,7 +203,8 @@ class AccountModel with NetworkManagerMixin {
     cihazTimeZoneDakika = DateTime.now().timeZoneOffset.inMinutes;
     //* Cihaz ve Sim Bilgileri
     uygulamaDili = "tr";
-    cihazDili = Get.locale?.languageCode ?? "tr";
+    // cihazDili = Get.locale?.languageCode ?? "tr";
+    cihazDili = "tr";
     cihazSistemVersiyonu = "20";
     cihazTarihi = getKonumTarihi;
     cihazTarihiUtc = DateTime.now().toUtc();
@@ -288,7 +289,7 @@ class AccountModel with NetworkManagerMixin {
     kuruluHesaplar = CacheManager.accountsBox.values.map((e) => (e as AccountResponseModel).email).join(";");
   }
 
-  String get getKonumTarihi => "${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day} ${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}";
+  String get getKonumTarihi => DateTime.now().toDateTimeString() ?? "";
 
   bool get isDebug =>
       CacheManager.accountsBox.values.any(
