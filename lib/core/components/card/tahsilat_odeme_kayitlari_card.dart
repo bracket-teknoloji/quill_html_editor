@@ -140,8 +140,14 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            final result = await dialogManager.showCariIslemleriGridViewDialog(await getCari());
-            widget.update.call(result);
+            await dialogManager.showCariIslemleriGridViewDialog(
+              await getCari(),
+              onselected: (value) {
+                if (value) {
+                  widget.update.call(value);
+                }
+              },
+            );
           },
         ),
       ].nullCheckWithGeneric,

@@ -117,8 +117,14 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
-            await dialogManager.showOdemeTahsilatGridViewDialog(model: null);
-            // viewModel.resetPage();
+            await dialogManager.showOdemeTahsilatGridViewDialog(
+              model: null,
+              onSelected: (p0) {
+                if (p0) {
+                  viewModel.resetPage();
+                }
+              },
+            );
           },
         ),
       );
