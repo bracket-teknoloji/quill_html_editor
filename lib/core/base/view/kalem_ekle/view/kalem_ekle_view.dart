@@ -42,6 +42,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   EditTipiEnum? get editTipi => model.getEditTipiEnum;
   bool get satisMi => editTipi?.satisMi ?? false;
+  bool get transferMi => editTipi?.transferMi ?? false;
   late final TextEditingController kalemAdiController;
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
@@ -114,6 +115,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
               if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
                 dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
                 return;
+              }
+              if (transferMi) {
+                if (model.girisDepoKodu == (model.cikisDepoKodu ?? viewModel.model?.depoKodu)) {
+                  dialogManager.showAlertDialog("Giriş ve Çıkış depo kodu aynı olamaz.");
+                }
               }
               if (formKey.currentState?.validate() ?? false) {
                 if (!yetkiController.lokalDepoUygulamasiAcikMi) {
@@ -215,7 +221,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     ),
                                   ],
                                 ),
-                              ).yetkiVarMi(!editTipi.talepTeklifMi),
+                              ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
                               Text.rich(
                                 TextSpan(
                                   children: [
@@ -227,7 +233,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ).yetkiVarMi(!transferMi),
                               Text.rich(
                                 TextSpan(
                                   children: [
@@ -251,7 +257,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     ),
                                   ],
                                 ),
-                              ),
+                              ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
                               Text.rich(
                                 TextSpan(
                                   children: [
@@ -324,7 +330,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     }
                   },
                 ).yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
-                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
+                    .yetkiVarMi((editTipi?.ekAlan2GorunsunMu ?? false) && !transferMi),
                 Observer(
                   builder: (_) => Row(
                     children: [
@@ -351,7 +358,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)),
+                      ).yetkiVarMi((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false) && !transferMi),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Yapılandırma Kodu",
@@ -374,7 +381,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null),
+                      ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null && !transferMi),
                     ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
                   ),
                 ),
@@ -410,7 +417,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(yetkiController.siparisSatirdaTeslimTarihiSor),
+                    ).yetkiVarMi(yetkiController.siparisSatirdaTeslimTarihiSor && !transferMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Koşul",
@@ -426,7 +433,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulSatirdaSor),
+                    ).yetkiVarMi(yetkiController.siparisKosulSatirdaSor && !transferMi),
                   ],
                 ),
                 Row(
@@ -451,7 +458,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
+                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi && !transferMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Proje",
@@ -468,7 +475,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !transferMi),
                   ],
                 ),
                 Row(
@@ -528,7 +535,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(!editTipi.talepTeklifMi),
+                    ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Ölçü Birimi",
@@ -586,7 +593,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(viewModel.model?.dovizliMi ?? false),
+                      ).yetkiVarMi((viewModel.model?.dovizliMi ?? false) && !transferMi),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Döviz Kuru",
@@ -600,7 +607,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                           },
                         ),
-                      ).yetkiVarMi(viewModel.kalemModel.dovizliMi),
+                      ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
                     ],
                   ),
                 ),
@@ -617,7 +624,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       log(viewModel.kalemModel.brutFiyat.toString());
                       fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                     },
-                  ).yetkiVarMi(viewModel.kalemModel.dovizliMi),
+                  ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -644,7 +651,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           },
                         ),
                       ),
-                    ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
+                    ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Fiyat",
@@ -677,7 +684,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       return null;
                     },
                   ).yetkiVarMi(
-                    (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true && !editTipi.siparisMi && yetkiController.seriUygulamasiAcikMi,
+                    (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
+                        !editTipi.siparisMi &&
+                        yetkiController.seriUygulamasiAcikMi &&
+                        !transferMi,
                   ),
                 ),
                 ...List.generate(
@@ -719,31 +729,31 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ),
                       ),
                     ],
-                  ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
+                  ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                 ),
                 Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
-                    .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi),
+                    .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(1)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(1) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(2), controllerText: widget.kalemModel?.aciklama2, onChanged: (value) => viewModel.kalemModel.aciklama2 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(2)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(2) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(3), controllerText: widget.kalemModel?.aciklama3, onChanged: (value) => viewModel.kalemModel.aciklama3 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(3)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(3) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(4), controllerText: widget.kalemModel?.aciklama4, onChanged: (value) => viewModel.kalemModel.aciklama4 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(4)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(4) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(5), controllerText: widget.kalemModel?.aciklama5, onChanged: (value) => viewModel.kalemModel.aciklama5 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(5)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(5) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(6), controllerText: widget.kalemModel?.aciklama6, onChanged: (value) => viewModel.kalemModel.aciklama6 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(6)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(6) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(7), controllerText: widget.kalemModel?.aciklama7, onChanged: (value) => viewModel.kalemModel.aciklama7 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(7)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(7) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(8), controllerText: widget.kalemModel?.aciklama8, onChanged: (value) => viewModel.kalemModel.aciklama8 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(8)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(8) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(9), controllerText: widget.kalemModel?.aciklama9, onChanged: (value) => viewModel.kalemModel.aciklama9 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(9)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(9) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(10), controllerText: widget.kalemModel?.aciklama10, onChanged: (value) => viewModel.kalemModel.aciklama10 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(10)),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(10) && !transferMi),
                 const SizedBox(height: 50),
               ],
             ),
