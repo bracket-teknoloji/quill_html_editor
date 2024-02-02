@@ -187,8 +187,15 @@ class DialogManager {
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) async => _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: tip ?? IslemTipiEnum.cariIslemleri, title: model?.cariAdi ?? model?.cariKodu),
+  Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, {void Function(bool)? onselected}) async => _baseDialog(
+        body: CustomAnimatedGridView<CariListesiModel>(
+          cariListesiModel: model,
+          model: model,
+          islemTipi: IslemTipiEnum.cariIslemleri,
+          title: model?.cariAdi ?? model?.cariKodu,
+          onSelected: onselected,
+          
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
