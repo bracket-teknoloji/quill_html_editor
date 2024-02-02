@@ -212,6 +212,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         widget.descriptionWidget,
                       ].nullCheckWithGeneric,
                     ),
+                    style: const TextStyle(fontSize: 15),
                   ),
                   if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
                   if (widget.valueWidget != null) widget.valueWidget!,

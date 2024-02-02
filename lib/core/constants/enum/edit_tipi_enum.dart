@@ -345,6 +345,25 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get transferMi {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
+        return true;
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.satisTalebi:
+        return false;
+    }
+  }
+
   bool get siparisMi {
     switch (this) {
       case EditTipiEnum.musteri:

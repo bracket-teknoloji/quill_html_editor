@@ -168,7 +168,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                     if (value?.length != 15) {
                       return "15 basamaklı olmalıdır.";
                     }
-                    if (viewModel.model.ebelgeCheckbox == "E" && (parametreModel.arrEIrsSeri?.any((element) => !(value?.startsWith(element) ?? true)) ?? false)) {
+                    if (viewModel.model.ebelgeCheckbox == "E" && !(parametreModel.arrEIrsSeri?.any((element) => value?.startsWith(element) ?? true) ?? false)) {
                       return "E-İrsaliye için ${parametreModel.arrEIrsSeri?.join(", ")} serisi kullanılmalı.";
                     }
                     return null;
@@ -421,6 +421,15 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             viewModel.setTopluCikisDepoKodu(result);
                           }
                         },
+                        validator: (value) {
+                          if (value == "") {
+                            return null;
+                          }
+                          if (model.cikisDepoKodu == model.girisDepoKodu) {
+                            return "Giriş ve Çıkış depolar aynı olamaz.";
+                          }
+                          return null;
+                        },
                       ),
                     ),
                     Expanded(
@@ -439,6 +448,15 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             _topluGirisDepoController.text = result.depoTanimi ?? "";
                             viewModel.setTopluGirisDepoKodu(result);
                           }
+                        },
+                        validator: (value) {
+                          if (value == "") {
+                            return "Depo Kodu boş bırakılamaz.";
+                          }
+                          if (model.cikisDepoKodu == model.girisDepoKodu) {
+                            return "Giriş ve Çıkış depolar aynı olamaz.";
+                          }
+                          return null;
                         },
                       ),
                     ),

@@ -294,6 +294,14 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             title: loc(context).generalStrings.options,
             children: [
               BottomSheetModel(
+                title: "Seri Hareket kaydı",
+                iconWidget: Icons.dynamic_form_outlined,
+                onTap: () async {
+                  Get.back();
+                  Get.toNamed("/seriGirisi");
+                },
+              ),
+              BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_2_outlined,
                 onTap: () async {
@@ -301,40 +309,40 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                   dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                 },
               ),
-              topluIskontoBottomSheetModel(context),
-              BottomSheetModel(
-                title: "PDF Görüntüle",
-                iconWidget: Icons.picture_as_pdf_outlined,
-                onTap: () async {
-                  Get.back();
-                  final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
-                      .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
-                      .whereType<NetFectDizaynList>()
-                      .toList();
-                  final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                    Get.context!,
-                    title: "PDF Görüntüle",
-                    children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
-                  );
-                  if (result is NetFectDizaynList) {
-                    Get.to(
-                      () => PDFViewerView(
-                        title: result.dizaynAdi ?? "Serbest Raporlar",
-                        pdfData: PdfModel(
-                          dizaynId: result.id,
-                          raporOzelKod: result.ozelKod,
-                          etiketSayisi: result.kopyaSayisi,
-                          dicParams: DicParams(
-                            belgeNo: BaseSiparisEditModel.instance.belgeNo,
-                            cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                            belgeTipi: widget.model.editTipiEnum?.rawValue,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                },
-              ),
+              // topluIskontoBottomSheetModel(context),
+              // BottomSheetModel(
+              //   title: "PDF Görüntüle",
+              //   iconWidget: Icons.picture_as_pdf_outlined,
+              //   onTap: () async {
+              //     Get.back();
+              //     final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
+              //         .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
+              //         .whereType<NetFectDizaynList>()
+              //         .toList();
+              //     final result = await bottomSheetDialogManager.showBottomSheetDialog(
+              //       Get.context!,
+              //       title: "PDF Görüntüle",
+              //       children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
+              //     );
+              //     if (result is NetFectDizaynList) {
+              //       Get.to(
+              //         () => PDFViewerView(
+              //           title: result.dizaynAdi ?? "Serbest Raporlar",
+              //           pdfData: PdfModel(
+              //             dizaynId: result.id,
+              //             raporOzelKod: result.ozelKod,
+              //             etiketSayisi: result.kopyaSayisi,
+              //             dicParams: DicParams(
+              //               belgeNo: BaseSiparisEditModel.instance.belgeNo,
+              //               cariKodu: BaseSiparisEditModel.instance.cariKodu,
+              //               belgeTipi: widget.model.editTipiEnum?.rawValue,
+              //             ),
+              //           ),
+              //         ),
+              //       );
+              //     }
+              //   },
+              // ),
               BottomSheetModel(
                 title: "Döviz Kurları",
                 iconWidget: Icons.attach_money_outlined,
