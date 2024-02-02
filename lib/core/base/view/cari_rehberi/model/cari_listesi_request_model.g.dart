@@ -15,6 +15,8 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
       menuKodu: json['MenuKodu'] as String? ?? "CARI_CREH",
       filterText: json['FilterText'] as String? ?? "",
       kod: json['Kod'] as String? ?? "",
+      filtreler:
+          (json['Filtreler'] as List<dynamic>?)?.map((e) => e as int).toList(),
       arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -60,6 +62,7 @@ Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
   writeNotNull('MenuKodu', instance.menuKodu);
   writeNotNull('FilterText', instance.filterText);
   writeNotNull('Kod', instance.kod);
+  writeNotNull('Filtreler', instance.filtreler);
   writeNotNull('ArrPlasiyer', instance.arrPlasiyer);
   writeNotNull('ArrKod1', instance.arrKod1);
   writeNotNull('ArrKod2', instance.arrKod2);

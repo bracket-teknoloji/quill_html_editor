@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../core/components/dialog/dialog_manager.dart";
@@ -45,8 +46,9 @@ class MenuItemConstants {
       title: "Cari",
       icon: "supervisor",
       color: ColorPalette.ecru,
-      altMenuler: <GridItemModel>[
+      altMenuler: [
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
+        GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi").isDebug(),
         //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
         GridItemModel.altmenu(
           name: "cari_Raporlar",
@@ -64,9 +66,9 @@ class MenuItemConstants {
             GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
             GridItemModel.item(name: "cari_Raporlar", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
-          ],
+          ].nullCheckWithGeneric,
         ),
-      ],
+      ].whereType<GridItemModel>().toList(),
     ),
     //*E-Belge
     //*

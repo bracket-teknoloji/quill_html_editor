@@ -319,7 +319,6 @@ class AccountModel with NetworkManagerMixin {
     permissionGranted = await location.hasPermission();
     if (permissionGranted == PermissionStatus.denied) {
       permissionGranted = await location.requestPermission();
-      if (permissionGranted == PermissionStatus.denied) {}
       if (permissionGranted != PermissionStatus.granted) {
         return "Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.";
       }

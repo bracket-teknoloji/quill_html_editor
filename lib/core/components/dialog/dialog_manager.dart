@@ -8,6 +8,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:location/location.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/generated/locale_base.dart";
 
@@ -305,18 +306,25 @@ class DialogManager {
       ).show();
 
   Future<void> showLocationDialog() async {
-    final result = await AccountModel.instance.getLocation();
-    if (result is String) {
-      await showSettingsDialog(result);
-    } else {
-      return _baseDialog(
+      final Location location = Location();
+      if (await location.hasPermission() != PermissionStatus.granted){
+        _baseDialog(
         customHeader: Assets.lotties.locationLottie.lottie(),
         dialogType: DialogType.question,
         body: const Text("Konumunuza ulaşmak için izin verin."),
         onOk: () async {},
         onCancel: () {},
       ).show();
-    }
+      await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+
+      }
+       _baseDialog(
+        customHeader: Assets.lotties.locationLottie.lottie(),
+        dialogType: DialogType.question,
+        body: const Text("Konumunuza ulaşmak için izin verin."),
+        onOk: () async {},
+        onCancel: () {},
+      ).show();
   }
 
   Future<void> showSettingsDialog(String value) async => _baseDialog(

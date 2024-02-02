@@ -18,6 +18,7 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
     @Default("CARI_CREH") String? menuKodu,
     @Default("") String? filterText,
     @Default("") String? kod,
+    List<int>? filtreler,
     List<String>? arrPlasiyer,
     List<String>? arrKod1,
     List<String>? arrKod2,

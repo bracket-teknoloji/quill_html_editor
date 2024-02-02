@@ -28,6 +28,7 @@ mixin _$CariListesiRequestModel {
   String? get menuKodu => throw _privateConstructorUsedError;
   String? get filterText => throw _privateConstructorUsedError;
   String? get kod => throw _privateConstructorUsedError;
+  List<int>? get filtreler => throw _privateConstructorUsedError;
   List<String>? get arrPlasiyer => throw _privateConstructorUsedError;
   List<String>? get arrKod1 => throw _privateConstructorUsedError;
   List<String>? get arrKod2 => throw _privateConstructorUsedError;
@@ -65,6 +66,7 @@ abstract class $CariListesiRequestModelCopyWith<$Res> {
       String? menuKodu,
       String? filterText,
       String? kod,
+      List<int>? filtreler,
       List<String>? arrPlasiyer,
       List<String>? arrKod1,
       List<String>? arrKod2,
@@ -103,6 +105,7 @@ class _$CariListesiRequestModelCopyWithImpl<$Res,
     Object? menuKodu = freezed,
     Object? filterText = freezed,
     Object? kod = freezed,
+    Object? filtreler = freezed,
     Object? arrPlasiyer = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -145,6 +148,10 @@ class _$CariListesiRequestModelCopyWithImpl<$Res,
           ? _value.kod
           : kod // ignore: cast_nullable_to_non_nullable
               as String?,
+      filtreler: freezed == filtreler
+          ? _value.filtreler
+          : filtreler // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       arrPlasiyer: freezed == arrPlasiyer
           ? _value.arrPlasiyer
           : arrPlasiyer // ignore: cast_nullable_to_non_nullable
@@ -229,6 +236,7 @@ abstract class _$$CariListesiRequestModelImplCopyWith<$Res>
       String? menuKodu,
       String? filterText,
       String? kod,
+      List<int>? filtreler,
       List<String>? arrPlasiyer,
       List<String>? arrKod1,
       List<String>? arrKod2,
@@ -266,6 +274,7 @@ class __$$CariListesiRequestModelImplCopyWithImpl<$Res>
     Object? menuKodu = freezed,
     Object? filterText = freezed,
     Object? kod = freezed,
+    Object? filtreler = freezed,
     Object? arrPlasiyer = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -308,6 +317,10 @@ class __$$CariListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.kod
           : kod // ignore: cast_nullable_to_non_nullable
               as String?,
+      filtreler: freezed == filtreler
+          ? _value._filtreler
+          : filtreler // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       arrPlasiyer: freezed == arrPlasiyer
           ? _value._arrPlasiyer
           : arrPlasiyer // ignore: cast_nullable_to_non_nullable
@@ -387,6 +400,7 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
       this.menuKodu = "CARI_CREH",
       this.filterText = "",
       this.kod = "",
+      final List<int>? filtreler,
       final List<String>? arrPlasiyer,
       final List<String>? arrKod1,
       final List<String>? arrKod2,
@@ -403,7 +417,8 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
       this.teslimCari,
       this.sehir,
       this.siparisKarsilanmaDurumu})
-      : _arrPlasiyer = arrPlasiyer,
+      : _filtreler = filtreler,
+        _arrPlasiyer = arrPlasiyer,
         _arrKod1 = arrKod1,
         _arrKod2 = arrKod2,
         _arrKod3 = arrKod3,
@@ -433,6 +448,16 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
   @override
   @JsonKey()
   final String? kod;
+  final List<int>? _filtreler;
+  @override
+  List<int>? get filtreler {
+    final value = _filtreler;
+    if (value == null) return null;
+    if (_filtreler is EqualUnmodifiableListView) return _filtreler;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<String>? _arrPlasiyer;
   @override
   List<String>? get arrPlasiyer {
@@ -554,6 +579,7 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
       final String? menuKodu,
       final String? filterText,
       final String? kod,
+      final List<int>? filtreler,
       final List<String>? arrPlasiyer,
       final List<String>? arrKod1,
       final List<String>? arrKod2,
@@ -588,6 +614,8 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
   String? get filterText;
   @override
   String? get kod;
+  @override
+  List<int>? get filtreler;
   @override
   List<String>? get arrPlasiyer;
   @override
