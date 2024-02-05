@@ -13,9 +13,9 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   final Map<String, int> belgeTipi = <String, int>{
     "Kapalı": 1,
     "Açık": 2,
-    "İade": 3,
-    "Zayi İade": 4,
-    "İhracat": 5,
+    "İade": 4,
+    "Zayi İade": 5,
+    "İhracat": 6,
   };
 
   @observable
