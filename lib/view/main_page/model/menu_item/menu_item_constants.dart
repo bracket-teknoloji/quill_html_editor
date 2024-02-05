@@ -406,7 +406,15 @@ class MenuItemConstants {
 
     //* Üretim
     //*
-    GridItemModel.anamenu(name: "URET", title: "Üretim", icon: "factory_2", color: ColorPalette.outerSpace, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(
+      name: "URET",
+      title: "Üretim",
+      icon: "factory_2",
+      color: ColorPalette.outerSpace,
+      altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
+      ],
+    ).isDebug(),
     GridItemModel.anamenu(
       name: "yazdirma_Serbest",
       title: "Serbest Raporlar",

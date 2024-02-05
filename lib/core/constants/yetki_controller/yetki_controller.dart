@@ -421,4 +421,22 @@ final class YetkiController {
   bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
   bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
   bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
+
+  //* lokal DAT
+
+  //TODO Sayfaya parametreleri ekle
+  bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
+  bool transferLokalDatBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
+  bool get transferDatLokalDATSeciliGelmesin => _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
+  bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
+  bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
+  // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
+
+
+  //! Üretim
+
+  //* İş Emirleri
+  bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
+  bool get uretimIsEmriDuzenle => _isTrue(_yetkiModel?.uretimIsEmriDuzelt);
+  bool get uretimIsEmriSil => _isTrue(_yetkiModel?.uretimIsEmriSil);
 }

@@ -317,7 +317,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: true,
                         controller: _belgeTipiController,
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(
                             context,

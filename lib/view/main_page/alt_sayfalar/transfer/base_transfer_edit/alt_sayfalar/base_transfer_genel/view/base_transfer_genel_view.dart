@@ -72,6 +72,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
 
   @override
   void initState() {
+    if (!yetkiController.transferDatLokalDATSeciliGelmesin && viewModel.model.lokalDat == null) {
+      viewModel.setLokalDepo(true);
+    }
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _cariController = TextEditingController(text: model.cariAdi);
     _gidecegiSubeController = TextEditingController(text: model.teslimCariAdi);
@@ -235,6 +238,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           : result.efaturaCarisi == "H"
                               ? "E-Arşiv"
                               : null;
+                      if (yetkiController.transferDatCarininDepoGetir) {
+                        viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
+                      }
                       viewModel.setCariAdi(result.cariAdi);
                       viewModel.setCariKodu(result.cariKodu);
                       viewModel.model.vadeGunu = result.vadeGunu;
@@ -277,7 +283,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         child: Observer(
                           builder: (_) => Switch.adaptive(
                             value: viewModel.model.ebelgeCheckbox == "E",
-                            onChanged: enable
+                            onChanged: enable && !yetkiController.transferDatEIrsaliyeIsaretleyemesin
                                 ? (bool value) {
                                     viewModel.setEIrsaliye(value);
                                     if (value) {
@@ -408,6 +414,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Toplu Çıkış Depo",
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("toplu_depo"),
                         readOnly: true,
                         suffixMore: true,
                         controller: _topluCikisDepoController,
@@ -436,7 +443,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       child: CustomTextField(
                         labelText: "Toplu Giriş Depo",
                         readOnly: true,
-                        isMust: true,
+                        isMust: true && yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A1"),
                         suffixMore: true,
                         controller: _topluGirisDepoController,
                         enabled: enable,
@@ -478,103 +485,135 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                     }
                   },
                 ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                CustomTextField(
+                  labelText: "Açıklama",
+                  enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),
+                  isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A"),
+                  controllerText: viewModel.model.aciklama,
+                  onChanged: (value) => viewModel.model.aciklama = value,
+                ),
+                CustomTextField(
+                  labelText: "İş Emri",
+                  enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),
+                  isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A"),
+                  controllerText: viewModel.model.aciklama,
+                  onTap: () async {
+                    await Get.toNamed("/isEmriRehberi");
+                  },
+                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
 
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",
                   child: Column(
                     children: <Widget>[
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A1"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A1"),
                         onChanged: (value) => viewModel.setAciklama(1, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
                         controller: _aciklama1Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A2"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A2"),
                         onChanged: (value) => viewModel.setAciklama(2, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
                         controller: _aciklama2Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A3"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A3"),
                         onChanged: (value) => viewModel.setAciklama(3, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
                         controller: _aciklama3Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A4"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A4"),
                         onChanged: (value) => viewModel.setAciklama(4, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
                         controller: _aciklama4Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A5"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A5"),
                         onChanged: (value) => viewModel.setAciklama(5, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
                         controller: _aciklama5Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A6"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A6"),
                         onChanged: (value) => viewModel.setAciklama(6, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
                         controller: _aciklama6Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A7"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A7"),
                         onChanged: (value) => viewModel.setAciklama(7, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
                         controller: _aciklama7Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A8"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A8"),
                         onChanged: (value) => viewModel.setAciklama(8, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
                         controller: _aciklama8Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A9"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A9"),
                         onChanged: (value) => viewModel.setAciklama(9, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
                         controller: _aciklama9Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A10"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A10"),
                         onChanged: (value) => viewModel.setAciklama(10, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
                         controller: _aciklama10Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A11"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A11"),
                         onChanged: (value) => viewModel.setAciklama(11, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
                         controller: _aciklama11Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A12"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A12"),
                         onChanged: (value) => viewModel.setAciklama(12, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
                         controller: _aciklama12Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A13"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A13"),
                         onChanged: (value) => viewModel.setAciklama(13, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
                         controller: _aciklama13Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A14"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A14"),
                         onChanged: (value) => viewModel.setAciklama(14, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
                         controller: _aciklama14Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A15"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A15"),
                         onChanged: (value) => viewModel.setAciklama(15, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
                         controller: _aciklama15Controller,
                       ),
                       CustomTextField(
-                        enabled: enable,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A16"),
+                        isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A16"),
                         onChanged: (value) => viewModel.setAciklama(16, value),
                         labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
                         controller: _aciklama16Controller,

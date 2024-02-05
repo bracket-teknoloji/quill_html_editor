@@ -198,12 +198,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   : null,
               label: Wrap(
                 direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: <Widget>[
                   Text.rich(
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: widget.labelText ?? "",
+                          text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
                           style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                               ? TextStyle(color: UIHelper.primaryColor)
                               : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
@@ -212,9 +214,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         widget.descriptionWidget,
                       ].nullCheckWithGeneric,
                     ),
-                    style: const TextStyle(fontSize: 15),
+                    // style: const TextStyle(fontSize: 15),
                   ),
-                  if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                  // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
                   if (widget.valueWidget != null) widget.valueWidget!,
                 ],
               ).yetkiVarMi(widget.labelText != null),

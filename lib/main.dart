@@ -12,6 +12,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
+import 'package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart';
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
@@ -421,6 +423,13 @@ class PickerApp extends StatelessWidget {
 
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
+
+              //* Üretim
+
+              //* * İş Emirleri
+
+          GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
+          GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
 
               //* Serbest Raporlar
               //*
