@@ -176,7 +176,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 onTap: () async {
                   Get.back();
                   final CariListesiModel? cariListesiModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                  dialogManager.showCariGridViewDialog(
+                  dialogManager.showCariIslemleriGridViewDialog(
                     cariListesiModel,
                   );
                 },
@@ -229,7 +229,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   // mainAxisAlignment: MainAxisAlignment.start,
 
                   children: <Widget>[
-                    Text("Tipi: ${model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+                    Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
                     Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
                     Text("Cari Kodu: ${model.cariKodu ?? ""}"),
                     Text("Koşul: ${model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),
@@ -270,7 +270,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
                 : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
             badge.badgeColorEnum.getColor,
-          ); 
+          );
         },
         child: badge,
       );
