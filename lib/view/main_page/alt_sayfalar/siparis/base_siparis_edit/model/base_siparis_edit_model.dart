@@ -720,6 +720,17 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
+  String get tipiName {
+    final Map<String, int> belgeTipiMap = <String, int>{
+      "Kapalı": 1,
+      "Açık": 2,
+      "İade": 4,
+      "Zayi İade": 5,
+      "İhracat": 6,
+    };
+    return belgeTipiMap.entries.firstWhereOrNull((element) => element.value == tipi)?.key ?? "";
+  }
+
   bool get dovizliMi => kalemList?.any((element) => element.dovizliMi) == true;
 
   bool get teklifFaturayaDonerMi {
