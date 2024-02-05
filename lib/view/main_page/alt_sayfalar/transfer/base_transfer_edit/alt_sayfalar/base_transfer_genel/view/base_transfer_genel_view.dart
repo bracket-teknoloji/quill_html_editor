@@ -2,10 +2,12 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -53,6 +55,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
   late final TextEditingController _topluGirisDepoController;
   late final TextEditingController _topluCikisDepoController;
   late final TextEditingController _ozelKod2Controller;
+  late final TextEditingController _isEmriController;
+  late final TextEditingController _projeController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
   late final TextEditingController _aciklama3Controller;
@@ -87,6 +91,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
       text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
           model.ozelKod2,
     );
+    _isEmriController = TextEditingController();
+    _projeController = TextEditingController(text: model.projeAciklama);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
     _aciklama3Controller = TextEditingController(text: model.acik3);
@@ -124,6 +130,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _topluGirisDepoController.dispose();
     _topluCikisDepoController.dispose();
     _ozelKod2Controller.dispose();
+    _isEmriController.dispose();
+    _projeController.dispose();
     _aciklama1Controller.dispose();
     _aciklama2Controller.dispose();
     _aciklama3Controller.dispose();
@@ -443,7 +451,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       child: CustomTextField(
                         labelText: "Toplu Giriş Depo",
                         readOnly: true,
-                        isMust: true && yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A1"),
+                        isMust: true,
+                        //  && yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A1"),
                         suffixMore: true,
                         controller: _topluGirisDepoController,
                         enabled: enable,
@@ -469,22 +478,63 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                     ),
                   ],
                 ),
-                CustomTextField(
-                  labelText: "Özel Kod 2",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: _ozelKod2Controller,
-                  enabled: enable,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                  onClear: () => viewModel.setOzelKod2(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
-                    if (result != null) {
-                      _ozelKod2Controller.text = result.aciklama ?? "";
-                      viewModel.setOzelKod2(result.kod);
-                    }
-                  },
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Özel Kod 2",
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: _ozelKod2Controller,
+                        enabled: enable,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                        onClear: () => viewModel.setOzelKod2(null),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
+                          if (result != null) {
+                            _ozelKod2Controller.text = result.aciklama ?? "";
+                            viewModel.setOzelKod2(result.kod);
+                          }
+                        },
+                      ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "İş Emri",
+                        suffixMore: true,
+                        readOnly: true,
+                        controller: _isEmriController,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
+                        onClear: () => viewModel.changeIsEmri(null),
+                        onTap: () async {
+                          final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+                          if (result is IsEmirleriModel) {
+                            viewModel.changeIsEmri(result);
+                            _isEmriController.text = result.stokKodu ?? "";
+                          }
+                        },
+                      ).yetkiVarMi(yetkiController.transferIsEmriSorulsun),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Proje",
+                    readOnly: true,
+                    isMust: true,
+                    suffixMore: true,
+                    controller: _projeController,
+                    enabled: enable && yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                    onTap: () async {
+                      final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                      if (result is BaseProjeModel) {
+                        _projeController.text = result.projeAciklama ?? "";
+                        viewModel.setProje(result);
+                      }
+                    },
+                  ),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
                 CustomTextField(
                   labelText: "Açıklama",
                   enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),
@@ -492,15 +542,6 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   controllerText: viewModel.model.aciklama,
                   onChanged: (value) => viewModel.model.aciklama = value,
                 ),
-                CustomTextField(
-                  labelText: "İş Emri",
-                  enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),
-                  isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A"),
-                  controllerText: viewModel.model.aciklama,
-                  onTap: () async {
-                    await Get.toNamed("/isEmriRehberi");
-                  },
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
 
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",

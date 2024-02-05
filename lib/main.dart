@@ -12,8 +12,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
-import 'package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart';
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
@@ -22,6 +20,8 @@ import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehb
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -428,8 +428,9 @@ class PickerApp extends StatelessWidget {
 
               //* * İş Emirleri
 
-          GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
-          GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
+              GetPage(name: "/isEmriRehberiOzel", page: () => const IsEmriRehberiView(isGetData: true)),
+              GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
+              GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
 
               //* Serbest Raporlar
               //*

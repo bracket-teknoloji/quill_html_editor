@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -17,7 +18,6 @@ abstract class _BaseTransferGenelViewModelBase with Store {
     "Muhtelif": "D",
     "Konsinye": "F",
   };
-
 
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
@@ -60,6 +60,12 @@ abstract class _BaseTransferGenelViewModelBase with Store {
     kdvDahil = value;
     BaseSiparisEditModel.instance.kdvDahil = value ? "E" : "H";
     BaseSiparisEditModel.instance.kdvDahilMi = value;
+  }
+
+  @action
+  void changeIsEmri(IsEmirleriModel? value) {
+    BaseSiparisEditModel.instance.isemriAciklama = value?.stokKodu;
+    BaseSiparisEditModel.instance.isemriNo = value?.isemriNo;
   }
 
   @action
@@ -112,13 +118,13 @@ abstract class _BaseTransferGenelViewModelBase with Store {
 
   @action
   void setLokalDepo(bool value) {
-    model = model.copyWith(lokalDat: value? "E" : "H");
+    model = model.copyWith(lokalDat: value ? "E" : "H");
     BaseSiparisEditModel.setInstance(model);
   }
 
   @action
   void setEIrsaliye(bool value) {
-    model = model.copyWith(ebelgeCheckbox: value? "E" : "H");
+    model = model.copyWith(ebelgeCheckbox: value ? "E" : "H");
     BaseSiparisEditModel.setInstance(model);
   }
 

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -14,7 +15,8 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_re
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view_model/is_emri_rehberi_view_model.dart";
 
 class IsEmriRehberiView extends StatefulWidget {
-  const IsEmriRehberiView({super.key});
+  final bool? isGetData;
+  const IsEmriRehberiView({super.key, this.isGetData});
 
   @override
   State<IsEmriRehberiView> createState() => _IsEmriRehberiViewState();
@@ -29,6 +31,18 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
     _scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
+      _scrollController.addListener(() async {
+        if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+          viewModel.setIsScrollDown(false);
+        }
+        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
+          viewModel.setIsScrollDown(true);
+        }
+        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+          await viewModel.getData();
+          viewModel.setIsScrollDown(true);
+        }
+      });
     });
     super.initState();
   }
@@ -50,7 +64,12 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
         title: Observer(
           builder: (_) {
             if (viewModel.searchBar) {
-              return const CustomAppBarTextField();
+              return CustomAppBarTextField(
+                onFieldSubmitted: (value) async {
+                  viewModel.requestModel.searchText = value;
+                  await viewModel.resetPage();
+                },
+              );
             }
             return AppBarTitle(
               title: "İş Emri Rehberi",
@@ -75,7 +94,7 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
-          await viewModel.getData();
+          await viewModel.resetPage();
         },
         child: Observer(
           builder: (_) {
@@ -93,6 +112,11 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                 final IsEmirleriModel item = viewModel.isEmriList![index];
                 return Card(
                   child: ListTile(
+                    onTap: () {
+                      if (widget.isGetData ?? false) {
+                        Get.back(result: item);
+                      }
+                    },
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

@@ -407,6 +407,8 @@ final class YetkiController {
 
   //! TRANSFER
 
+  bool get transferIsEmriSorulsun => _isTrue(_paramModel?.satisSatirdaIsEmriSorulsun, skipAdmin: true);
+
   //* Ekle
   bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
   bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);
@@ -427,6 +429,7 @@ final class YetkiController {
   //TODO Sayfaya parametreleri ekle
   bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
   bool transferLokalDatBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
+  bool transferLokalDatGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true);
   bool get transferDatLokalDATSeciliGelmesin => _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
   bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
   bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);

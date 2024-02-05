@@ -357,6 +357,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel topluCikisDepoTanimi(String? topluCikisDepoTanimi);
 
+  BaseSiparisEditModel isemriNo(String? isemriNo);
+
+  BaseSiparisEditModel isemriAciklama(String? isemriAciklama);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -539,6 +543,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? girisDepoKodu,
     String? topluGirisDepoTanimi,
     String? topluCikisDepoTanimi,
+    String? isemriNo,
+    String? isemriAciklama,
   });
 }
 
@@ -1180,6 +1186,13 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(topluCikisDepoTanimi: topluCikisDepoTanimi);
 
   @override
+  BaseSiparisEditModel isemriNo(String? isemriNo) => this(isemriNo: isemriNo);
+
+  @override
+  BaseSiparisEditModel isemriAciklama(String? isemriAciklama) =>
+      this(isemriAciklama: isemriAciklama);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1363,6 +1376,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? girisDepoKodu = const $CopyWithPlaceholder(),
     Object? topluGirisDepoTanimi = const $CopyWithPlaceholder(),
     Object? topluCikisDepoTanimi = const $CopyWithPlaceholder(),
+    Object? isemriNo = const $CopyWithPlaceholder(),
+    Object? isemriAciklama = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2067,6 +2082,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.topluCikisDepoTanimi
           // ignore: cast_nullable_to_non_nullable
           : topluCikisDepoTanimi as String?,
+      isemriNo: isemriNo == const $CopyWithPlaceholder()
+          ? _value.isemriNo
+          // ignore: cast_nullable_to_non_nullable
+          : isemriNo as String?,
+      isemriAciklama: isemriAciklama == const $CopyWithPlaceholder()
+          ? _value.isemriAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : isemriAciklama as String?,
     );
   }
 }
@@ -3464,13 +3487,15 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       girisDepoKodu: fields[172] as int?,
       topluGirisDepoTanimi: fields[173] as String?,
       topluCikisDepoTanimi: fields[174] as String?,
+      isemriNo: fields[175] as String?,
+      isemriAciklama: fields[176] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(175)
+      ..writeByte(177)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3820,7 +3845,11 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(173)
       ..write(obj.topluGirisDepoTanimi)
       ..writeByte(174)
-      ..write(obj.topluCikisDepoTanimi);
+      ..write(obj.topluCikisDepoTanimi)
+      ..writeByte(175)
+      ..write(obj.isemriNo)
+      ..writeByte(176)
+      ..write(obj.isemriAciklama);
   }
 
   @override
@@ -4378,6 +4407,8 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       girisDepoKodu: json['GIRIS_DEPO_KODU'] as int?,
       topluGirisDepoTanimi: json['TOPLU_GIRIS_DEPO_TANIMI'] as String?,
       topluCikisDepoTanimi: json['TOPLU_CIKIS_DEPO_TANIMI'] as String?,
+      isemriNo: json['ISEMRI_NO'] as String?,
+      isemriAciklama: json['ISEMRI_ACIKLAMA'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4565,6 +4596,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('GIRIS_DEPO_KODU', instance.girisDepoKodu);
   writeNotNull('TOPLU_GIRIS_DEPO_TANIMI', instance.topluGirisDepoTanimi);
   writeNotNull('TOPLU_CIKIS_DEPO_TANIMI', instance.topluCikisDepoTanimi);
+  writeNotNull('ISEMRI_NO', instance.isemriNo);
+  writeNotNull('ISEMRI_ACIKLAMA', instance.isemriAciklama);
   return val;
 }
 

@@ -112,6 +112,17 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
+  void changeIsEmri(IsEmirleriModel? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.changeIsEmri');
+    try {
+      return super.changeIsEmri(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHareketTuru(String? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
         .startAction(name: '_BaseTransferGenelViewModelBase.setHareketTuru');

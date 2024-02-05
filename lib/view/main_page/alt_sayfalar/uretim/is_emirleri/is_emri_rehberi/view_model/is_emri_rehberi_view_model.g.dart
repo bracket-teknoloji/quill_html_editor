@@ -41,6 +41,22 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
+  late final _$dahaVarMiAtom =
+      Atom(name: '_IsEmriRehberiViewModelBase.dahaVarMi', context: context);
+
+  @override
+  bool get dahaVarMi {
+    _$dahaVarMiAtom.reportRead();
+    return super.dahaVarMi;
+  }
+
+  @override
+  set dahaVarMi(bool value) {
+    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
+      super.dahaVarMi = value;
+    });
+  }
+
   late final _$isEmriListAtom =
       Atom(name: '_IsEmriRehberiViewModelBase.isEmriList', context: context);
 
@@ -61,16 +77,33 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
       Atom(name: '_IsEmriRehberiViewModelBase.requestModel', context: context);
 
   @override
-  CariRequestModel get requestModel {
+  SiparislerRequestModel get requestModel {
     _$requestModelAtom.reportRead();
     return super.requestModel;
   }
 
   @override
-  set requestModel(CariRequestModel value) {
+  set requestModel(SiparislerRequestModel value) {
     _$requestModelAtom.reportWrite(value, super.requestModel, () {
       super.requestModel = value;
     });
+  }
+
+  late final _$changeSearchBarAsyncAction = AsyncAction(
+      '_IsEmriRehberiViewModelBase.changeSearchBar',
+      context: context);
+
+  @override
+  Future<void> changeSearchBar() {
+    return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
+  }
+
+  late final _$resetPageAsyncAction =
+      AsyncAction('_IsEmriRehberiViewModelBase.resetPage', context: context);
+
+  @override
+  Future<void> resetPage() {
+    return _$resetPageAsyncAction.run(() => super.resetPage());
   }
 
   late final _$getDataAsyncAction =
@@ -85,11 +118,22 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
       ActionController(name: '_IsEmriRehberiViewModelBase', context: context);
 
   @override
-  void changeSearchBar() {
+  void setDahaVarMi(bool value) {
     final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.changeSearchBar');
+        .startAction(name: '_IsEmriRehberiViewModelBase.setDahaVarMi');
     try {
-      return super.changeSearchBar();
+      return super.setDahaVarMi(value);
+    } finally {
+      _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
+        .startAction(name: '_IsEmriRehberiViewModelBase.setSearchText');
+    try {
+      return super.setSearchText(value);
     } finally {
       _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -118,6 +162,28 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   @override
+  void addIsEmirleriList(List<IsEmirleriModel>? list) {
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
+        .startAction(name: '_IsEmriRehberiViewModelBase.addIsEmirleriList');
+    try {
+      return super.addIsEmirleriList(list);
+    } finally {
+      _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetSayfa() {
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
+        .startAction(name: '_IsEmriRehberiViewModelBase.resetSayfa');
+    try {
+      return super.resetSayfa();
+    } finally {
+      _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void increaseSayfa() {
     final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
         .startAction(name: '_IsEmriRehberiViewModelBase.increaseSayfa');
@@ -133,6 +199,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     return '''
 isScrollDown: ${isScrollDown},
 searchBar: ${searchBar},
+dahaVarMi: ${dahaVarMi},
 isEmriList: ${isEmriList},
 requestModel: ${requestModel}
     ''';
