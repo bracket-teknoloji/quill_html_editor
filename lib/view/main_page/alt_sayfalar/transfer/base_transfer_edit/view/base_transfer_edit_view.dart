@@ -135,7 +135,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
               siparisKarsilanmaDurumu: null,
             ),
           );
-          if (result.muhtelifMi) {
+          if (result is CariListesiModel && result.muhtelifMi) {
             BaseSiparisEditModel.instance.muhtelifCariModel = result;
             cariModel = result;
           } else if (result is CariListesiModel) {
