@@ -46,7 +46,7 @@ import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
-  IslemTipiEnum islemtipi;
+  IslemTipiEnum islemTipi;
   ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
   EditTipiEnum? siparisTipi;
   List<GridItemModel?> islemlerList = [];
@@ -58,8 +58,8 @@ class IslemlerMenuItemConstants<T> {
   YetkiController get _yetkiController => YetkiController();
   BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
-  IslemlerMenuItemConstants({required this.islemtipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
-    if (islemtipi == IslemTipiEnum.stok) {
+  IslemlerMenuItemConstants({required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
+    if (islemTipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);
       islemlerList.add(stokYazdir);
@@ -67,7 +67,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
       islemlerList.addAll(raporlar!);
-    } else if (islemtipi == IslemTipiEnum.cari) {
+    } else if (islemTipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
         islemlerList.add(cariSatisTeklifi);
@@ -92,7 +92,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar!);
       }
-    } else if (islemtipi == IslemTipiEnum.siparis) {
+    } else if (islemTipi == IslemTipiEnum.siparis) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
@@ -107,13 +107,13 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(kopyala);
         islemlerList.addAll(raporlar!);
       }
-    } else if (islemtipi == IslemTipiEnum.cariIslemleri) {
+    } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
       islemlerList.add(cariKarti);
       islemlerList.add(cariHareketleri);
       islemlerList.addAll(raporlar!);
       islemlerList.add(cariIslemleri);
       islemlerList.add(paylas);
-    } else if (islemtipi == IslemTipiEnum.kasa) {
+    } else if (islemTipi == IslemTipiEnum.kasa) {
       if (model != null) {
         islemlerList.add(kasaHareketleri);
       }
@@ -125,11 +125,11 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
       islemlerList.addAll(raporlar ?? []);
-    } else if (islemtipi == IslemTipiEnum.cariHareketleri) {
+    } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
       islemlerList.add(nakitTahsilat(model));
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(krediKartiTahsilati(model));
-    } else if (islemtipi == IslemTipiEnum.banka) {
+    } else if (islemTipi == IslemTipiEnum.banka) {
       if (model != null) {
         islemlerList.add(bankaHareketleri);
       }
@@ -139,7 +139,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(hesaplarArasiEftHavale);
       islemlerList.add(bankaMuhtelifTahsilat);
       islemlerList.add(bnkaMuhtelifOdeme);
-    } else if (islemtipi == IslemTipiEnum.cekSenet) {
+    } else if (islemTipi == IslemTipiEnum.cekSenet) {
       final CekSenetListesiModel cekModel = model as CekSenetListesiModel;
       if (cekModel.cekSenetListesiEnum.borcMu) {
         islemlerList.add(odemeDekontOlustur);
@@ -149,7 +149,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(cekModel.yeri == "P", kasaTahsilEt);
         islemlerList.addIfConditionTrue(cekModel.yeri == "T", tahsilatDekontOlustur);
       }
-    } else if (islemtipi == IslemTipiEnum.tahsilatOdeme) {
+    } else if (islemTipi == IslemTipiEnum.tahsilatOdeme) {
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(nakitTahsilat(model));
       islemlerList.add(krediKartiTahsilati(model));
@@ -157,7 +157,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cekTahsilati);
       islemlerList.add(borcSenedi);
       islemlerList.add(borcCeki);
-    } else if (islemtipi == IslemTipiEnum.talepTeklif) {
+    } else if (islemTipi == IslemTipiEnum.talepTeklif) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList.add(siparisPDFGoruntule);
@@ -173,14 +173,14 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
-    } else if (islemtipi == IslemTipiEnum.fatura) {
+    } else if (islemTipi == IslemTipiEnum.fatura) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(faturaBelgeNoDegistir);
       islemlerList.add(kopyala);
       islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
-    } else if (islemtipi == IslemTipiEnum.eBelge) {
+    } else if (islemTipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       // islemlerList.add(eBelgeGoruntule);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule);
@@ -191,6 +191,11 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addIfConditionTrue(!siparisModel.uyariMi && !siparisModel.basariliMi && siparisModel.getEditTipiEnum.satisFaturasiMi, eFaturaGonder);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
+    } else if (islemTipi == IslemTipiEnum.depoTransferi) {
+      islemlerList.add(siparisPDFGoruntule);
+      islemlerList.add(siparisCariKoduDegistir);
+      islemlerList.add(faturaBelgeNoDegistir);
+      islemlerList.add(kopyala);
     }
   }
 
@@ -204,7 +209,7 @@ class IslemlerMenuItemConstants<T> {
         title: "Kopyala",
         iconData: Icons.copy_outlined,
         onTap: () async => await Get.toNamed(
-          islemtipi.route,
+          islemTipi.route,
           arguments: BaseEditModel(
             model: model,
             baseEditEnum: BaseEditEnum.kopyala,
@@ -1219,7 +1224,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get faturaBelgeNoDegistir {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
-      title: "Fatura Belge No Değiştir",
+      title: "Belge No Değiştir",
       iconData: Icons.edit_outlined,
       isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi,
       onTap: () async {

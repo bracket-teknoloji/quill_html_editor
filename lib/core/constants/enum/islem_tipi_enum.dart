@@ -16,6 +16,7 @@ enum IslemTipiEnum {
   fatura,
   talepTeklif,
   eBelge,
+  depoTransferi,
 }
 
 extension IslemTipiEnumExtension on IslemTipiEnum {
@@ -43,6 +44,8 @@ extension IslemTipiEnumExtension on IslemTipiEnum {
       return "/mainPage/faturaEdit";
     } else if (this == IslemTipiEnum.talepTeklif) {
       return "/mainPage/talTekEdit";
+    } else if (this == IslemTipiEnum.depoTransferi) {
+      return "/mainPage/transferEdit";
     } else {
       return "/mainPage/rapor";
     }
