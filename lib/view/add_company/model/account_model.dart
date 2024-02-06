@@ -6,7 +6,8 @@ import "package:android_id/android_id.dart";
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:connectivity_plus/connectivity_plus.dart";
 import "package:device_info_plus/device_info_plus.dart";
-import "package:flutter/foundation.dart";
+import "package:encrypt/encrypt.dart";
+import "package:flutter/foundation.dart" hide Key;
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
@@ -172,6 +173,7 @@ class AccountModel with NetworkManagerMixin {
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
+    // print(aesEncrypt("saldkfjas"));
     if (kIsWeb) {
       platform = "web";
     } else {
@@ -328,4 +330,151 @@ class AccountModel with NetworkManagerMixin {
     return null;
     // instance.gk
   }
+
+  String aesEncrypt(String text) {
+    try {
+      print(getAesKey());
+      final key = Key.fromUtf8(getAesKey().codeUnits.toString());
+
+      final iv = IV.fromLength(16);
+
+      final encrypter = Encrypter(AES(key, mode: AESMode.cbc, padding: "PKCS7"));
+
+      final encrypted = encrypter.encrypt(text, iv: iv);
+
+      return encrypted.base64;
+    } on Exception catch (e) {
+      // TODO
+      return "";
+    }
+  }
+
+  String getAesKey() => (() {
+        int t;
+        final buf = List<int>.filled(61, 0);
+
+        t = -817074313;
+        buf[0] = t >> 5;
+        t = 504536449;
+        buf[1] = t >> 9;
+        t = -241918;
+        buf[2] = t >> 13;
+        t = -2053619;
+        buf[3] = t >> 14;
+        t = -343897;
+        buf[4] = t >> 12;
+        t = 1959542227;
+        buf[5] = t >> 24;
+        t = -1822352597;
+        buf[6] = t >> 10;
+        t = -61702648;
+        buf[7] = t >> 21;
+        t = -131138934;
+        buf[8] = t >> 20;
+        t = -43778766;
+        buf[9] = t >> 19;
+        t = -1218471685;
+        buf[10] = t >> 6;
+        t = -1169818100;
+        buf[11] = t >> 23;
+        t = 1394970807;
+        buf[12] = t >> 6;
+        t = 105700244;
+        buf[13] = t >> 3;
+        t = -207675268;
+        buf[14] = t >> 7;
+        t = 990694175;
+        buf[15] = t >> 3;
+        t = 1335555854;
+        buf[16] = t >> 14;
+        t = -940;
+        buf[17] = t >> 5;
+        t = -1024514;
+        buf[18] = t >> 13;
+        t = -170162;
+        buf[19] = t >> 11;
+        t = 839504750;
+        buf[20] = t >> 10;
+        t = 402403039;
+        buf[21] = t >> 22;
+        t = -2121385325;
+        buf[22] = t >> 19;
+        t = 91697754;
+        buf[23] = t >> 8;
+        t = 741561788;
+        buf[24] = t >> 16;
+        t = 1724206056;
+        buf[25] = t >> 21;
+        t = 1671651219;
+        buf[26] = t >> 12;
+        t = 437659142;
+        buf[27] = t >> 23;
+        t = 219829411;
+        buf[28] = t >> 9;
+        t = 1425737036;
+        buf[29] = t >> 5;
+        t = -869408486;
+        buf[30] = t >> 16;
+        t = -1037107022;
+        buf[31] = t >> 16;
+        t = 350289615;
+        buf[32] = t >> 10;
+        t = 2013583627;
+        buf[33] = t >> 2;
+        t = -1668771963;
+        buf[34] = t >> 22;
+        t = 570685603;
+        buf[35] = t >> 19;
+        t = -1704733839;
+        buf[36] = t >> 16;
+        t = -824735594;
+        buf[37] = t >> 17;
+        t = -14855;
+        buf[38] = t >> 9;
+        t = -256896;
+        buf[39] = t >> 11;
+        t = -42818;
+        buf[40] = t >> 9;
+        t = -640452821;
+        buf[41] = t >> 18;
+        t = -720900900;
+        buf[42] = t >> 22;
+        t = -937;
+        buf[43] = t >> 5;
+        t = -1050808720;
+        buf[44] = t >> 23;
+        t = -701528227;
+        buf[45] = t >> 23;
+        t = -1641635114;
+        buf[46] = t >> 1;
+        t = -815548650;
+        buf[47] = t >> 7;
+        t = -966389181;
+        buf[48] = t >> 13;
+        t = -604584708;
+        buf[49] = t >> 12;
+        t = 808109569;
+        buf[50] = t >> 5;
+        t = -912567662;
+        buf[51] = t >> 11;
+        t = -335226669;
+        buf[52] = t >> 1;
+        t = -1706076159;
+        buf[53] = t >> 14;
+        t = 1897990053;
+        buf[54] = t >> 19;
+        t = -527355389;
+        buf[55] = t >> 11;
+        t = -515617193;
+        buf[56] = t >> 19;
+        t = 449448516;
+        buf[57] = t >> 6;
+        t = -1611890403;
+        buf[58] = t >> 23;
+        t = -1516162058;
+        buf[59] = t >> 4;
+        t = -926598666;
+        buf[60] = t >> 2;
+        return buf.toString();
+      })();
 }
