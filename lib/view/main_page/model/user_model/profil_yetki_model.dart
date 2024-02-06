@@ -1875,6 +1875,10 @@ class ProfilYetkiModel {
   int? siparisSatSipKacGunlukKayitlarListelensin;
   @JsonKey(name: "cari_Rap_BorcAlacakDokumu")
   bool? cariRapBorcAlacakDokumu;
+  @JsonKey(name: "sirket_Proje_YetkiTuru")
+  String? sirketProjeYetkiTuru;
+  @JsonKey(name: "transfer_DAT_VarsayilanHarTuru")
+  String? transferDatVarsayilanHarTuru;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

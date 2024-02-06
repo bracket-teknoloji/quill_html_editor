@@ -1605,7 +1605,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_SatSip_TekrarEdenBarkod'] as String?
       ..siparisSatSipKacGunlukKayitlarListelensin =
           json['siparis_SatSip_KacGunlukKayitlarListelensin'] as int?
-      ..cariRapBorcAlacakDokumu = json['cari_Rap_BorcAlacakDokumu'] as bool?;
+      ..cariRapBorcAlacakDokumu = json['cari_Rap_BorcAlacakDokumu'] as bool?
+      ..sirketProjeYetkiTuru = json['sirket_Proje_YetkiTuru'] as String?
+      ..transferDatVarsayilanHarTuru =
+          json['transfer_DAT_VarsayilanHarTuru'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -3068,6 +3071,9 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('siparis_SatSip_KacGunlukKayitlarListelensin',
       instance.siparisSatSipKacGunlukKayitlarListelensin);
   writeNotNull('cari_Rap_BorcAlacakDokumu', instance.cariRapBorcAlacakDokumu);
+  writeNotNull('sirket_Proje_YetkiTuru', instance.sirketProjeYetkiTuru);
+  writeNotNull(
+      'transfer_DAT_VarsayilanHarTuru', instance.transferDatVarsayilanHarTuru);
   return val;
 }
 
