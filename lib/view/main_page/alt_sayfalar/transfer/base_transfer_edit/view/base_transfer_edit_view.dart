@@ -1,8 +1,12 @@
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_diger/view/base_talep_teklif_diger_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_genel/view/base_transfer_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_kalemler/view/base_transfer_kalemler_view.dart";
@@ -50,10 +54,17 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
   late BaseEditModel<SiparisEditRequestModel> model;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  late final TextEditingController _cariKoduController;
+  late final TextEditingController _siparisController;
+  late final TextEditingController _kalemlerController;
+
   @override
   void initState() {
+    _cariKoduController = TextEditingController();
+    _siparisController = TextEditingController();
+    _kalemlerController = TextEditingController();
     StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.alisFatura;
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: yetkiController.transferDatDigerSekmesiGoster ? 4 : 3, vsync: this);
     if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
       tabController.addListener(() {
         if (tabController.indexIsChanging && tabController.previousIndex == 0) {
@@ -63,7 +74,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             tabController.animateTo(tabController.previousIndex);
           }
         }
-        if (tabController.index == (3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+        if (tabController.index == (yetkiController.transferDatDigerSekmesiGoster ? 3 : 3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
           viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
@@ -118,6 +129,14 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        //TODO parametreleri ekle
+        if (yetkiController.transferLokalDatSiparisBaglantisi) {
+          final result = await getSiparisBaglantisi();
+          if (result != true && !yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi) {
+            Get.back();
+          }
+          if (result == true) {}
+        }
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
@@ -125,62 +144,71 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         BaseSiparisEditModel.instance.isNew = true;
-        CariListesiModel? cariModel;
-        if (widget.model.model?.cariKodu == null) {
-          final result = await Get.toNamed(
-            "mainPage/cariRehberi",
-            arguments: CariListesiRequestModel(
-              menuKodu: "CARI_CREH",
-              belgeTuru: model.editTipiEnum?.rawValue,
-              siparisKarsilanmaDurumu: null,
-            ),
-          );
-          if (result is CariListesiModel && result.muhtelifMi) {
-            BaseSiparisEditModel.instance.muhtelifCariModel = result;
-            cariModel = result;
-          } else if (result is CariListesiModel) {
-            cariModel = await networkManager.getCariModel(
-              CariRequestModel.fromCariListesiModel(result)
-                ..secildi = "E"
-                ..kisitYok = true
-                ..teslimCari = "E"
-                ..eFaturaGoster = true,
-            );
-          } else {
-            cariModel = null;
-          }
-        } else {
-          cariModel = await networkManager.getCariModel(
-            CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
-              ..secildi = "E"
-              ..kisitYok = true
-              ..teslimCari = "E"
-              ..eFaturaGoster = true,
-          );
-        }
-        if (cariModel is CariListesiModel) {
-          viewModel.changeIsBaseSiparisEmpty(true);
+        // CariListesiModel? cariModel;
+        // if (widget.model.model?.cariKodu == null && !yetkiController.transferLokalDatSiparisBaglantisi) {
+        //   final result = await Get.toNamed(
+        //     "mainPage/cariRehberi",
+        //     arguments: CariListesiRequestModel(
+        //       menuKodu: "CARI_CREH",
+        //       belgeTuru: model.editTipiEnum?.rawValue,
+        //       siparisKarsilanmaDurumu: null,
+        //     ),
+        //   );
+        //   if (result is CariListesiModel && result.muhtelifMi) {
+        //     BaseSiparisEditModel.instance.muhtelifCariModel = result;
+        //     cariModel = result;
+        //   } else if (result is CariListesiModel) {
+        //     cariModel = await networkManager.getCariModel(
+        //       CariRequestModel.fromCariListesiModel(result)
+        //         ..secildi = "E"
+        //         ..kisitYok = true
+        //         ..teslimCari = "E"
+        //         ..eFaturaGoster = true,
+        //     );
+        //   } else {
+        //     cariModel = null;
+        //   }
+        // } else {
+        //   cariModel = await networkManager.getCariModel(
+        //     CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
+        //       ..secildi = "E"
+        //       ..kisitYok = true
+        //       ..teslimCari = "E"
+        //       ..eFaturaGoster = true,
+        //   );
+        // }
+        // if (cariModel is CariListesiModel) {
+        //   viewModel.changeIsBaseSiparisEmpty(true);
 
-          BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
-              ? "E-Fatura"
-              : cariModel.efaturaCarisi == "H"
-                  ? "E-Arşiv"
-                  : null;
-          BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-          // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-          BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
-          BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+        //   BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
+        //       ? "E-Fatura"
+        //       : cariModel.efaturaCarisi == "H"
+        //           ? "E-Arşiv"
+        //           : null;
+        BaseSiparisEditModel.instance.cikisDepoKodu = yetkiController.transferLokalDatCikisDepo?.depoKodu;
+        BaseSiparisEditModel.instance.girisDepoKodu = yetkiController.transferLokalDatGirisDepo?.depoKodu;
+        BaseSiparisEditModel.instance.topluCikisDepoTanimi = yetkiController.transferLokalDatCikisDepo?.depoTanimi;
+        BaseSiparisEditModel.instance.topluGirisDepoTanimi = yetkiController.transferLokalDatGirisDepo?.depoTanimi;
+        if (!yetkiController.transferDatLokalDATSeciliGelmesin) {
+          BaseSiparisEditModel.instance.lokalDat = "E";
+        } else {
+          BaseSiparisEditModel.instance.lokalDat = "H";
         }
+        BaseSiparisEditModel.instance.tag = "FaturaModel";
+        // BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+        // BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+        // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
+        BaseSiparisEditModel.instance.tipi = 2;
+        BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+        // BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+        // BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
+        // BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
+        // BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+        // BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+        // BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+        // BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+        // BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+        // }
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -192,6 +220,10 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
   @override
   void dispose() {
+    BaseSiparisEditModel.resetInstance();
+    _cariKoduController.dispose();
+    _siparisController.dispose();
+    _kalemlerController.dispose();
     tabController.dispose();
     super.dispose();
   }
@@ -247,10 +279,10 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
               controller: tabController,
               tabs: [
                 Tab(child: Text(loc(context).generalStrings.general)),
-                Tab(child: Text(loc(context).generalStrings.other)),
+                Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(yetkiController.transferDatDigerSekmesiGoster),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
-              ].whereType<Widget>().toList(),
+              ].whereNot((element) => element is SizedBox).toList(),
             ),
           ),
           body: Observer(
@@ -267,10 +299,10 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     }
                   },
                 ),
-                BaseTransferDigerView(model: model),
+                BaseTransferDigerView(model: model).yetkiVarMi(yetkiController.transferDatDigerSekmesiGoster),
                 BaseTransferKalemlerView(model: model),
                 BaseTransferToplamlarView(model: model),
-              ].whereType<Widget>().toList(),
+              ].whereNot((element) => element is SizedBox).toList(),
             ),
           ),
         ),
@@ -551,5 +583,173 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         ),
       );
     }
+  }
+
+  Future<bool?> getSiparisBaglantisi() async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Sipariş Bağlantısı",
+        body: Column(
+          children: [
+            Row(
+              children: [
+                const Icon(Icons.info_outline).paddingOnly(right: UIHelper.lowSize),
+                const Text("Cari veya Sipariş seçiniz."),
+              ],
+            ).paddingAll(UIHelper.lowSize),
+            CustomTextField(
+              labelText: "Cari",
+              controller: _cariKoduController,
+              readOnly: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.baseSiparisEditModel.cariKodu ?? "")),
+              suffix: IconButton(
+                onPressed: () async {
+                  if (_cariKoduController.text.isEmpty) {
+                    dialogManager.showAlertDialog("Lütfen Cari seçiniz.");
+                    return;
+                  }
+                  dialogManager.showCariGridViewDialog(CariListesiModel());
+                },
+                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+              ),
+              onClear: () => viewModel.setCariKodu(null),
+              onTap: () async {
+                final result = await Get.toNamed(
+                  "mainPage/cariRehberi",
+                  arguments: CariListesiRequestModel(
+                    menuKodu: "CARI_CREH",
+                    belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                  ),
+                );
+                if (result is CariListesiModel) {
+                  _cariKoduController.text = result.cariAdi ?? "";
+                  viewModel.setCariKodu(result);
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Sipariş",
+              controller: _siparisController,
+              readOnly: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text((jsonDecode(viewModel.baseSiparisEditModel.arrBelgeNo ?? "[]") as List?)?.firstOrNull ?? "")),
+              onClear: () => viewModel.setBelgeNo(null),
+              onTap: () async {
+                final result = await Get.toNamed(
+                  "/mainPage/siparisRehberi",
+                  arguments: BaseSiparisEditModel(
+                    pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
+                    cariKodu: viewModel.baseSiparisEditModel.cariKodu,
+                  ),
+                );
+                if (result is List) {
+                  final List<BaseSiparisEditModel> list = result.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+                  viewModel.setBelgeNo(list);
+                  if (list.length == 1) {
+                    // if (_cariKoduController.text.isEmpty) {
+                    //   final cariModel = await getCari();
+                    //   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
+                    // }
+                    _siparisController.text = list.firstOrNull?.belgeNo ?? "";
+                  } else {
+                    _siparisController.text = "${list.length} adet Sipariş Seçildi.";
+                  }
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Kalemler",
+              controller: _kalemlerController,
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              onTap: () async {
+                if (_siparisController.text.isEmpty && _cariKoduController.text.isEmpty) {
+                  dialogManager.showAlertDialog("Lütfen Cari veya Sipariş seçiniz.");
+                  return;
+                } else {
+                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: viewModel.baseSiparisEditModel..belgeTuru = "MS");
+                  if (result is List) {
+                    List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
+                    final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [list.firstOrNull?.cariKodu ?? ""]));
+                    BaseSiparisEditModel.instance.cariAdi = cariModel?.cariAdi;
+                    BaseSiparisEditModel.instance.cariKodu = cariModel?.cariKodu;
+                    BaseSiparisEditModel.instance.vadeGunu = cariModel?.vadeGunu;
+                    list = list
+                        .map(
+                          (KalemModel e) => e
+                            ..miktar = e.kalan
+                            ..kalan = 0,
+                        )
+                        .toList();
+                    viewModel.setKalemList(list);
+                    if (_cariKoduController.text.isEmpty) {
+                      final cariModel = await getCari();
+                      viewModel.baseSiparisEditModel.cariTitle = cariModel?.efaturaCarisi == "E"
+                          ? "E-Fatura"
+                          : cariModel?.efaturaCarisi == "H"
+                              ? "E-Arşiv"
+                              : null;
+                      viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
+                      viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
+                      viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;
+                      viewModel.baseSiparisEditModel.plasiyerKodu = cariModel?.plasiyerKodu;
+                      viewModel.baseSiparisEditModel.cariAdi = cariModel?.cariAdi;
+                      viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
+                      viewModel.baseSiparisEditModel.kosulKodu = cariModel?.kosulKodu;
+                    }
+                    _kalemlerController.text = "${list.length} adet Kalem Seçildi.";
+                  }
+                }
+              },
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.back(result: false);
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(UIHelper.secondaryColor)),
+                    child: const Text("İptal"),
+                  ),
+                ),
+                SizedBox(width: UIHelper.lowSize),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      if (_kalemlerController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Lütfen Kalem seçiniz.");
+                        return;
+                      }
+                      Get.back(result: true);
+                      if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
+                      } else {
+                        dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
+                      }
+                    },
+                    child: const Text("Kaydet"),
+                  ),
+                ),
+              ],
+            ).paddingAll(UIHelper.lowSize),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
+  Future<CariListesiModel?> getCari() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getCariler,
+      bodyModel: CariListesiModel(),
+      showLoading: true,
+      queryParameters: {
+        "filterText": "",
+        "Kod": viewModel.baseSiparisEditModel.cariKodu,
+        "EFaturaGoster": true,
+        "KisitYok": true,
+        "BelgeTuru": widget.model.editTipiEnum?.rawValue,
+        "PlasiyerKisitiYok": true,
+      },
+    );
+    return result.data.first;
   }
 }

@@ -1,4 +1,7 @@
+import "dart:convert";
+
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -57,4 +60,30 @@ abstract class _BaseTransferEditingViewModelBase with Store {
       CacheManager.getProfilParametre.copyWith(transferYeniKaydaHazirla: yeniKaydaHazirlaMi),
     );
   }
+
+   @observable
+  BaseSiparisEditModel baseSiparisEditModel = BaseSiparisEditModel.instance;
+
+  @action
+  void setCariKodu(CariListesiModel? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(
+      cariKodu: value?.cariKodu,
+      cariAdi: value?.cariAdi,
+      belgeTipi: int.tryParse(value?.odemeTipi ?? "0"),
+    );
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
+
+  @action
+  void setBelgeNo(List<BaseSiparisEditModel>? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(arrBelgeNo: jsonEncode(value?.map((e) => e.belgeNo).toList()));
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
+
+  @action
+  void setKalemList(List<KalemModel>? value) {
+    baseSiparisEditModel = baseSiparisEditModel.copyWith(kalemList: value);
+    BaseSiparisEditModel.setInstance(baseSiparisEditModel);
+  }
+
 }

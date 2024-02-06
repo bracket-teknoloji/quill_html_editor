@@ -79,6 +79,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     if (!yetkiController.transferDatLokalDATSeciliGelmesin && viewModel.model.lokalDat == null) {
       viewModel.setLokalDepo(true);
     }
+    if (yetkiController.transferLokalDatHareketTuru != null && viewModel.model.hareketTuru == null) {
+      viewModel.setHareketTuru(yetkiController.transferLokalDatHareketTuru);
+    }
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _cariController = TextEditingController(text: model.cariAdi);
     _gidecegiSubeController = TextEditingController(text: model.teslimCariAdi);
@@ -91,7 +94,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
       text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
           model.ozelKod2,
     );
-    _isEmriController = TextEditingController();
+    _isEmriController = TextEditingController(text: model.isemriAciklama);
     _projeController = TextEditingController(text: model.projeAciklama);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
@@ -246,9 +249,10 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           : result.efaturaCarisi == "H"
                               ? "E-Arşiv"
                               : null;
-                      if (yetkiController.transferDatCarininDepoGetir) {
-                        viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
-                      }
+                      //TODO DEPO KODUNU ZEKİ ABİYE SOR
+                      // if (yetkiController.transferDatCarininDepoGetir) {
+                      //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
+                      // }
                       viewModel.setCariAdi(result.cariAdi);
                       viewModel.setCariKodu(result.cariKodu);
                       viewModel.model.vadeGunu = result.vadeGunu;
@@ -316,7 +320,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           isMust: true,
                           suffixMore: true,
                           controller: _gidecegiSubeController,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisDepoKodu.toStringIfNotNull ?? "")),
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisSubeKodu.toIntIfDouble.toStringIfNotNull ?? "")),
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                               context,
@@ -377,6 +381,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         labelText: "Hareket Türü",
                         readOnly: true,
                         isMust: true,
+                        enabled: enable && !yetkiController.transferLokalDatHarTuruDegismesin,
                         suffixMore: true,
                         controller: _hareketTuruController,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.hareketTuru ?? "")),
@@ -457,7 +462,6 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         controller: _topluGirisDepoController,
                         enabled: enable,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.girisDepoKodu.toStringIfNotNull ?? "")),
-                        onClear: () => viewModel.setTopluGirisDepoKodu(null),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
                           if (result != null) {
@@ -517,23 +521,21 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                     ),
                   ],
                 ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Proje",
-                    readOnly: true,
-                    isMust: true,
-                    suffixMore: true,
-                    controller: _projeController,
-                    enabled: enable && yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                    onTap: () async {
-                      final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                      if (result is BaseProjeModel) {
-                        _projeController.text = result.projeAciklama ?? "";
-                        viewModel.setProje(result);
-                      }
-                    },
-                  ),
+                CustomTextField(
+                  labelText: "Proje",
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  controller: _projeController,
+                  enabled: enable && yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  onTap: () async {
+                    final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                    if (result is BaseProjeModel) {
+                      _projeController.text = result.projeAciklama ?? "";
+                      viewModel.setProje(result);
+                    }
+                  },
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
                 CustomTextField(
                   labelText: "Açıklama",

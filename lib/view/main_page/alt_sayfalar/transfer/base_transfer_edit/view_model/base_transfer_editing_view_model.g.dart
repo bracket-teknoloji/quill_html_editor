@@ -124,6 +124,24 @@ mixin _$BaseTransferEditingViewModel
     });
   }
 
+  late final _$baseSiparisEditModelAtom = Atom(
+      name: '_BaseTransferEditingViewModelBase.baseSiparisEditModel',
+      context: context);
+
+  @override
+  BaseSiparisEditModel get baseSiparisEditModel {
+    _$baseSiparisEditModelAtom.reportRead();
+    return super.baseSiparisEditModel;
+  }
+
+  @override
+  set baseSiparisEditModel(BaseSiparisEditModel value) {
+    _$baseSiparisEditModelAtom.reportWrite(value, super.baseSiparisEditModel,
+        () {
+      super.baseSiparisEditModel = value;
+    });
+  }
+
   late final _$_BaseTransferEditingViewModelBaseActionController =
       ActionController(
           name: '_BaseTransferEditingViewModelBase', context: context);
@@ -217,6 +235,42 @@ mixin _$BaseTransferEditingViewModel
   }
 
   @override
+  void setCariKodu(CariListesiModel? value) {
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setCariKodu');
+    try {
+      return super.setCariKodu(value);
+    } finally {
+      _$_BaseTransferEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBelgeNo(List<BaseSiparisEditModel>? value) {
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setBelgeNo');
+    try {
+      return super.setBelgeNo(value);
+    } finally {
+      _$_BaseTransferEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKalemList(List<KalemModel>? value) {
+    final _$actionInfo = _$_BaseTransferEditingViewModelBaseActionController
+        .startAction(name: '_BaseTransferEditingViewModelBase.setKalemList');
+    try {
+      return super.setKalemList(value);
+    } finally {
+      _$_BaseTransferEditingViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 updateKalemler: ${updateKalemler},
@@ -225,6 +279,7 @@ isValid: ${isValid},
 isLastPage: ${isLastPage},
 isBaseSiparisEmpty: ${isBaseSiparisEmpty},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
+baseSiparisEditModel: ${baseSiparisEditModel},
 model: ${model},
 getKalemCount: ${getKalemCount}
     ''';
