@@ -54,7 +54,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
   Widget build(BuildContext context) => Card(
         child: ListTile(
           onLongPress: () async {
-            await dialogManager.showFaturaGridViewDialog(
+            await dialogManager.showTransferGridViewDialog(
               model: widget.model,
               onSelected: (value) {
                 widget.onUpdated?.call(value);
@@ -63,7 +63,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
           },
           onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: model.cariAdi ?? "",
+            title: model.belgeNo ?? "",
             children: <BottomSheetModel?>[
               BottomSheetModel(
                 title: loc(context).generalStrings.view,
@@ -140,7 +140,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                 iconWidget: Icons.list_alt_outlined,
                 onTap: () async {
                   Get.back();
-                  await dialogManager.showFaturaGridViewDialog(
+                  await dialogManager.showTransferGridViewDialog(
                     model: widget.model,
                     onSelected: (value) {
                       widget.onUpdated?.call(value);
