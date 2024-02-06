@@ -174,6 +174,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (widget.model.model is BaseSiparisEditModel) {}
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
+        //TODO parametre ekle
         final result = await getSiparisBaglantisi();
         if (model.editTipiEnum.irsaliyeMi) {
           BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
@@ -194,6 +195,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.isNew = true;
           final cariModel = await getCari();
+
           if (cariModel is CariListesiModel) {
             viewModel.changeIsBaseSiparisEmpty(true);
             BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"

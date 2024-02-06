@@ -104,6 +104,7 @@ dependencies:
   stack_trace: ^1.11.0
   location: ^5.0.3
   google_maps_flutter: ^2.5.3
+  encrypt: ^5.0.3
 
 dev_dependencies:
   flutter_test:
