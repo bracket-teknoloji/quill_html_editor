@@ -102,9 +102,17 @@ class $AssetsSplashGen {
   AssetGenImage get pickerLogoTuruncu1024 =>
       const AssetGenImage('assets/splash/PickerLogoTuruncu1024.png');
 
+  /// File path: assets/splash/mapMarker.png
+  AssetGenImage get mapMarker =>
+      const AssetGenImage('assets/splash/mapMarker.png');
+
   /// List of all assets
-  List<dynamic> get values =>
-      [pickerLogoTuruncuPng, pickerLogoTuruncuSvg, pickerLogoTuruncu1024];
+  List<dynamic> get values => [
+        pickerLogoTuruncuPng,
+        pickerLogoTuruncuSvg,
+        pickerLogoTuruncu1024,
+        mapMarker
+      ];
 }
 
 class $AssetsTranslationsGen {

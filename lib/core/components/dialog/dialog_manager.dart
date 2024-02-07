@@ -195,7 +195,6 @@ class DialogManager {
           islemTipi: IslemTipiEnum.cariIslemleri,
           title: model?.cariAdi ?? model?.cariKodu,
           onSelected: onselected,
-          
         ),
         onOk: () {},
         btnOkText: "İptal",
@@ -312,35 +311,39 @@ class DialogManager {
       ).show();
 
   Future<void> showLocationDialog() async {
-      final Location location = Location();
-      if (await location.hasPermission() != PermissionStatus.granted){
-        _baseDialog(
-        customHeader: Assets.lotties.locationLottie.lottie(),
-        dialogType: DialogType.question,
-        body: const Text("Konumunuza ulaşmak için izin verin."),
-        onOk: () async {},
-        onCancel: () {},
-      ).show();
-      await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+    final Location location = Location();
 
-      }
-       _baseDialog(
+    final PermissionStatus permissionStatus = await location.hasPermission();
+    if (permissionStatus != PermissionStatus.granted || permissionStatus != PermissionStatus.grantedLimited) {
+      _baseDialog(
         customHeader: Assets.lotties.locationLottie.lottie(),
         dialogType: DialogType.question,
-        body: const Text("Konumunuza ulaşmak için izin verin."),
-        onOk: () async {},
+        body: const Text("Konumunuza ulaşmak için izin vermeniz gerekiyor."),
+        onOk: () async {
+          final result = await location.requestPermission();
+          if (result != PermissionStatus.granted || result != PermissionStatus.grantedLimited) {
+             await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+          }
+        },
         onCancel: () {},
       ).show();
+    } else {
+      await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+    }
+    //  _baseDialog(
+    //   customHeader: Assets.lotties.locationLottie.lottie(),
+    //   dialogType: DialogType.question,
+    //   body: const Text("Konumunuza ulaşmak için izin verin."),
+    //   onOk: () async {},
+    //   onCancel: () {},
+    // ).show();
   }
 
   Future<void> showSettingsDialog(String value) async => _baseDialog(
         dialogType: DialogType.question,
         body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", textAlign: TextAlign.center),
         onOk: () async {
-          final result = await AccountModel.instance.getLocation();
-          if (result is String) {
-            await AppSettings.openAppSettings();
-          }
+          await AppSettings.openAppSettings();
         },
         onCancel: () {},
       ).show();

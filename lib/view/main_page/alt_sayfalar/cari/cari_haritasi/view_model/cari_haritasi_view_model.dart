@@ -1,3 +1,4 @@
+import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
@@ -13,9 +14,19 @@ abstract class _CariHaritasiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<CariListesiModel>? cariList;
 
   @observable
+  bool isLocationEnabled = false;
+
+  @observable
+  LatLng? currentPosition;
 
   @observable
   CariListesiRequestModel requestModel = CariListesiRequestModel(filtreler: [1], menuKodu: "CARI_HARI");
+
+  @action
+  void setIsLocationEnabled(bool? value) => isLocationEnabled = value??false;
+
+  @action
+  void setCurrentPosition(LatLng? position) => currentPosition = position;
 
   @action
   void setCariList(List<CariListesiModel>? list) => cariList = list?.asObservable();

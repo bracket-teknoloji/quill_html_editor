@@ -25,6 +25,38 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
+  late final _$isLocationEnabledAtom = Atom(
+      name: '_CariHaritasiViewModelBase.isLocationEnabled', context: context);
+
+  @override
+  bool get isLocationEnabled {
+    _$isLocationEnabledAtom.reportRead();
+    return super.isLocationEnabled;
+  }
+
+  @override
+  set isLocationEnabled(bool value) {
+    _$isLocationEnabledAtom.reportWrite(value, super.isLocationEnabled, () {
+      super.isLocationEnabled = value;
+    });
+  }
+
+  late final _$currentPositionAtom = Atom(
+      name: '_CariHaritasiViewModelBase.currentPosition', context: context);
+
+  @override
+  LatLng? get currentPosition {
+    _$currentPositionAtom.reportRead();
+    return super.currentPosition;
+  }
+
+  @override
+  set currentPosition(LatLng? value) {
+    _$currentPositionAtom.reportWrite(value, super.currentPosition, () {
+      super.currentPosition = value;
+    });
+  }
+
   late final _$requestModelAtom =
       Atom(name: '_CariHaritasiViewModelBase.requestModel', context: context);
 
@@ -53,6 +85,28 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
       ActionController(name: '_CariHaritasiViewModelBase', context: context);
 
   @override
+  void setIsLocationEnabled(bool? value) {
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
+        .startAction(name: '_CariHaritasiViewModelBase.setIsLocationEnabled');
+    try {
+      return super.setIsLocationEnabled(value);
+    } finally {
+      _$_CariHaritasiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCurrentPosition(LatLng? position) {
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
+        .startAction(name: '_CariHaritasiViewModelBase.setCurrentPosition');
+    try {
+      return super.setCurrentPosition(position);
+    } finally {
+      _$_CariHaritasiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCariList(List<CariListesiModel>? list) {
     final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
         .startAction(name: '_CariHaritasiViewModelBase.setCariList');
@@ -67,6 +121,8 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
   String toString() {
     return '''
 cariList: ${cariList},
+isLocationEnabled: ${isLocationEnabled},
+currentPosition: ${currentPosition},
 requestModel: ${requestModel}
     ''';
   }
