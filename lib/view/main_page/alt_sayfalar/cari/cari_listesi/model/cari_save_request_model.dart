@@ -96,6 +96,7 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.kosulKoduAciklama,
     this.ulkeKoduAciklama,
     this.dovizKoduAciklama,
+    this.efatAktif,
   });
   int? requestVersion;
   int? islemKodu;
@@ -177,6 +178,7 @@ class CariSaveRequestModel with NetworkManagerMixin {
   String? kurfarkiborcAdi;
   String? kurfarkialacakAdi;
   String? muhAdi;
+  bool? efatAktif;
 
   @override
   CariSaveRequestModel fromJson(Map<String, dynamic> json) => _$CariSaveRequestModelFromJson(json);
@@ -254,5 +256,14 @@ class CariSaveRequestModel with NetworkManagerMixin {
         kosulKoduAciklama: model?.kosulKodu,
         ulkeKoduAciklama: model?.ulkeAdi,
         dovizKoduAciklama: model?.dovizAdi,
+        efatAktif: model?.efatAktif,
       );
+
+  factory CariSaveRequestModel.mukellefiyetDegistir(CariSaveRequestModel? model) => CariSaveRequestModel(
+        requestVersion: 6,
+        kodu: model?.kodu,
+        islemKodu: model?.efatAktif == true ? 6 : 5,
+      );
+
+  String get efaturaButonAciklama => efatAktif == true ? "Pasifleştir" : "Aktifleştir";
 }

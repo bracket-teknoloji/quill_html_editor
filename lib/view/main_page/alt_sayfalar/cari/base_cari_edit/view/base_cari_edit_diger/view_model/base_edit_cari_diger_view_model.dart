@@ -1,5 +1,9 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -11,10 +15,19 @@ part "base_edit_cari_diger_view_model.g.dart";
 
 class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEditCariDigerViewModel;
 
-abstract class _BaseEditCariDigerViewModelBase with Store {
+abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> kilitMap = <String, String>{"Kilitli Değil": "H", "Kilitli (Fatura)": "F", "Kilitli (Tüm İşlemler)": "T"};
+
+  final Map<String, String> senaryoMap = {
+    "Temel": "TEM",
+    "Ticari": "TIC",
+  };
+
   @observable
   CariSaveRequestModel? model;
+
+  @computed
+  String get efaturaButonAciklama => model?.efatAktif == true ? "Pasifleştir" : "Aktifleştir";
 
   @action
   void changeModel(CariSaveRequestModel? value) {
@@ -42,6 +55,12 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
   @action
   void changeMuhaseKodu(StokMuhasebeKoduModel? value) {
     model = model?.copyWith(muhasebeKodu: value?.hesapKodu, muhAdi: value?.adi);
+    CariSaveRequestModel.setInstance(model);
+  }
+
+  @action
+  void changeEfaturaMi() {
+    model = model?.copyWith(efatAktif: !(model?.efatAktif ?? false));
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -75,9 +94,22 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
     CariSaveRequestModel.setInstance(model);
   }
 
+
+  @action
+  void setSenaryo(String? value) {
+    model = model?.copyWith(efaturaSenaryo: value);
+    CariSaveRequestModel.setInstance(model);
+  }
+
+
   @action
   void changeKilit(String? value) {
     model = model?.copyWith(kilit: value);
+    CariSaveRequestModel.setInstance(model);
+  }
+  @action
+  void changeKonum((double enlem, double boylam)? value) {
+    model = model?.copyWith(enlem: value?.$1, boylam: value?.$2);
     CariSaveRequestModel.setInstance(model);
   }
 
@@ -175,5 +207,14 @@ abstract class _BaseEditCariDigerViewModelBase with Store {
         model = model?.copyWith(kull8n: val);
     }
     CariSaveRequestModel.setInstance(model);
+  }
+
+  @action
+  Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() async {
+    final result = await networkManager.dioPost(path: ApiUrls.saveCari, bodyModel: CariListesiModel(), data: CariSaveRequestModel.mukellefiyetDegistir(model), showLoading: true);
+    if (result.success == true) {
+      changeEfaturaMi();
+    }
+    return result;
   }
 }

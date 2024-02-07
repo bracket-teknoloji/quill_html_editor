@@ -14,6 +14,7 @@ import "package:kartal/kartal.dart";
 import "package:location/location.dart";
 import "package:package_info_plus/package_info_plus.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:pointycastle/export.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/init/app_info/app_info.dart";
@@ -332,9 +333,14 @@ class AccountModel with NetworkManagerMixin {
   }
 
   String aesEncrypt(String text) {
+    final result = decrypt(
+      Uint8List.fromList(text.codeUnits),
+      Uint8List.fromList("{N???tF???ctBr@ck???t_123654**-/?Br@ck???tT???kn0l0ji=\$&()??}".codeUnits),
+      IV.fromLength(16).bytes,
+    );
     try {
-      print(getAesKey());
-      final key = Key.fromUtf8(getAesKey().codeUnits.toString());
+      print(result);
+      final key = Key.fromUtf8("{N???tF???ctBr@ck???t_123654**-/?Br@ck???tT???kn0l0ji=\$&()??}");
 
       final iv = IV.fromLength(16);
 
@@ -347,6 +353,22 @@ class AccountModel with NetworkManagerMixin {
       // TODO
       return "";
     }
+  }
+
+  static Uint8List decrypt(Uint8List ciphertext, Uint8List key, Uint8List iv) {
+    final CBCBlockCipher cipher = CBCBlockCipher(AESEngine());
+    final ParametersWithIV<KeyParameter> params = ParametersWithIV<KeyParameter>(KeyParameter(key), iv);
+    final PaddedBlockCipherParameters<ParametersWithIV<KeyParameter>, Null> paddingParams = PaddedBlockCipherParameters<ParametersWithIV<KeyParameter>, Null>(params, null);
+    final PaddedBlockCipherImpl paddingCipher = PaddedBlockCipherImpl(PKCS7Padding(), cipher);
+    paddingCipher.init(false, paddingParams);
+    return paddingCipher.process(ciphertext);
+  }
+
+  static Uint8List generateKey(Uint8List salt, Uint8List passphrase) {
+    final KeyDerivator derivator = PBKDF2KeyDerivator(HMac(SHA1Digest(), 64));
+    final Pbkdf2Parameters params = Pbkdf2Parameters(salt, 5, 16);
+    derivator.init(params);
+    return derivator.process(passphrase);
   }
 
   String getAesKey() => (() {
@@ -475,6 +497,7 @@ class AccountModel with NetworkManagerMixin {
         buf[59] = t >> 4;
         t = -926598666;
         buf[60] = t >> 2;
-        return buf.toString();
+        log(buf.toString());
+        return base64Encode(buf);
       })();
 }

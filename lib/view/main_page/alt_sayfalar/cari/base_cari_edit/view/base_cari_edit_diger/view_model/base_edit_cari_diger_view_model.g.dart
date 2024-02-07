@@ -9,6 +9,14 @@ part of 'base_edit_cari_diger_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
+  Computed<String>? _$efaturaButonAciklamaComputed;
+
+  @override
+  String get efaturaButonAciklama => (_$efaturaButonAciklamaComputed ??=
+          Computed<String>(() => super.efaturaButonAciklama,
+              name: '_BaseEditCariDigerViewModelBase.efaturaButonAciklama'))
+      .value;
+
   late final _$modelAtom =
       Atom(name: '_BaseEditCariDigerViewModelBase.model', context: context);
 
@@ -23,6 +31,15 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
     });
+  }
+
+  late final _$postFaturaTipiAsyncAction = AsyncAction(
+      '_BaseEditCariDigerViewModelBase.postFaturaTipi',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() {
+    return _$postFaturaTipiAsyncAction.run(() => super.postFaturaTipi());
   }
 
   late final _$_BaseEditCariDigerViewModelBaseActionController =
@@ -79,6 +96,17 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
         .startAction(name: '_BaseEditCariDigerViewModelBase.changeMuhaseKodu');
     try {
       return super.changeMuhaseKodu(value);
+    } finally {
+      _$_BaseEditCariDigerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeEfaturaMi() {
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeEfaturaMi');
+    try {
+      return super.changeEfaturaMi();
     } finally {
       _$_BaseEditCariDigerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -142,11 +170,33 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   }
 
   @override
+  void setSenaryo(String? value) {
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.setSenaryo');
+    try {
+      return super.setSenaryo(value);
+    } finally {
+      _$_BaseEditCariDigerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeKilit(String? value) {
     final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
         .startAction(name: '_BaseEditCariDigerViewModelBase.changeKilit');
     try {
       return super.changeKilit(value);
+    } finally {
+      _$_BaseEditCariDigerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeKonum((double, double)? value) {
+    final _$actionInfo = _$_BaseEditCariDigerViewModelBaseActionController
+        .startAction(name: '_BaseEditCariDigerViewModelBase.changeKonum');
+    try {
+      return super.changeKonum(value);
     } finally {
       _$_BaseEditCariDigerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -254,7 +304,8 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
   @override
   String toString() {
     return '''
-model: ${model}
+model: ${model},
+efaturaButonAciklama: ${efaturaButonAciklama}
     ''';
   }
 }

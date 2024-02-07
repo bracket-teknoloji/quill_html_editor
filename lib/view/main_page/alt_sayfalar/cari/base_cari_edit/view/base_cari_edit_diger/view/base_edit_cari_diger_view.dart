@@ -5,6 +5,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_diger/view_model/base_edit_cari_diger_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
@@ -75,6 +77,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   late final TextEditingController muhasebeKoduController;
   late final TextEditingController kurFarkiBorcMuhasebeKoduController;
   late final TextEditingController kurFarkiAlacakMuhasebeKoduController;
+  late final TextEditingController eFaturaSenaryoController;
 
   @override
   void initState() {
@@ -87,7 +90,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     kod5Controller = TextEditingController(text: viewModel.model?.kod5Tanimi);
     bilgiController = TextEditingController(text: viewModel.model?.bilgi);
     subeController = TextEditingController(text: viewModel.model?.subeKodu);
-    konumController = TextEditingController(text: viewModel.model?.adres);
+    konumController = TextEditingController(text: viewModel.model?.enlem == null ? "" : "${viewModel.model?.enlem}, ${viewModel.model?.boylam}");
     kilitController = TextEditingController(text: viewModel.kilitMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.kilit)?.key ?? "");
     bagliCariController = TextEditingController(text: viewModel.model?.bagliCariAciklama);
     kosulKoduController = TextEditingController(text: viewModel.model?.kosulKoduAciklama);
@@ -113,6 +116,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     muhasebeKoduController = TextEditingController(text: viewModel.model?.muhAdi);
     kurFarkiBorcMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkiborcAdi);
     kurFarkiAlacakMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkialacakAdi);
+    eFaturaSenaryoController =
+        TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
 
     viewModel.changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""));
     viewModel.changeKilit(viewModel.model?.kilit);
@@ -174,6 +179,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     n6Controller.dispose();
     n7Controller.dispose();
     n8Controller.dispose();
+    eFaturaSenaryoController.dispose();
     super.dispose();
   }
 
@@ -185,7 +191,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
         key: StaticVariables.instance.cariKartiDigerFormKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
-          children: <Widget>[
+          children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -425,6 +431,17 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
             ),
             CustomTextField(
+              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("konum"),
+              readOnly: true,
+              suffixMore: true,
+              labelText: "Konum",
+              controller: konumController,
+              onClear: () => viewModel.changeKonum(null),
+              onTap: () async {
+                final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (viewModel.model?.enlem, viewModel.model?.boylam));
+              },
+            ).isDebug(),
+            CustomTextField(
               enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("kilit"),
               readOnly: true,
               suffixMore: true,
@@ -625,7 +642,51 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 ],
               ),
             ).yetkiVarMi(parametreModel.mapCariKullSahalar != null),
-          ],
+            CustomWidgetWithLabel(
+              text: "E-İşlemler",
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CustomTextField(
+                    labelText: "E-Fatura Senaryo",
+                    enabled: enabled,
+                    isMust: true,
+                    readOnly: true,
+                    controller: eFaturaSenaryoController,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.efaturaSenaryo ?? "")),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "E-Fatura Senaryo",
+                        children: List.generate(
+                          viewModel.senaryoMap.length,
+                          (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                        ),
+                      );
+                      if (result is MapEntry) {
+                        viewModel.setSenaryo(result.value);
+                        eFaturaSenaryoController.text = result.key;
+                      }
+                    },
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final result = await viewModel.postFaturaTipi();
+                      if (result.success == true) {
+                        dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                      } else {
+                        dialogManager.showErrorSnackBar(result.message ?? "Hata");
+                      }
+                    },
+                    child: Observer(
+                      builder: (_) => Text("E-Fatura Mükellefiyetini ${viewModel.efaturaButonAciklama}"),
+                    ),
+                  ).paddingAll(UIHelper.lowSize),
+                ],
+              ),
+            ).yetkiVarMi(parametreModel.eFaturaAktif == true && (widget.model?.isDuzenle ?? false)),
+          ].whereType<Widget>().toList(),
         ),
       ),
     );

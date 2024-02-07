@@ -155,6 +155,8 @@ abstract class _$CariSaveRequestModelCWProxy {
 
   CariSaveRequestModel dovizKoduAciklama(String? dovizKoduAciklama);
 
+  CariSaveRequestModel efatAktif(bool? efatAktif);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -236,6 +238,7 @@ abstract class _$CariSaveRequestModelCWProxy {
     String? kosulKoduAciklama,
     String? ulkeKoduAciklama,
     String? dovizKoduAciklama,
+    bool? efatAktif,
   });
 }
 
@@ -499,6 +502,9 @@ class _$CariSaveRequestModelCWProxyImpl
       this(dovizKoduAciklama: dovizKoduAciklama);
 
   @override
+  CariSaveRequestModel efatAktif(bool? efatAktif) => this(efatAktif: efatAktif);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariSaveRequestModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -581,6 +587,7 @@ class _$CariSaveRequestModelCWProxyImpl
     Object? kosulKoduAciklama = const $CopyWithPlaceholder(),
     Object? ulkeKoduAciklama = const $CopyWithPlaceholder(),
     Object? dovizKoduAciklama = const $CopyWithPlaceholder(),
+    Object? efatAktif = const $CopyWithPlaceholder(),
   }) {
     return CariSaveRequestModel(
       requestVersion: requestVersion == const $CopyWithPlaceholder()
@@ -879,6 +886,10 @@ class _$CariSaveRequestModelCWProxyImpl
           ? _value.dovizKoduAciklama
           // ignore: cast_nullable_to_non_nullable
           : dovizKoduAciklama as String?,
+      efatAktif: efatAktif == const $CopyWithPlaceholder()
+          ? _value.efatAktif
+          // ignore: cast_nullable_to_non_nullable
+          : efatAktif as bool?,
     );
   }
 }
@@ -967,6 +978,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       muhAdi: json['MUH_ADI'] as String?,
       kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
       kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
+      efatAktif: json['EFAT_AKTIF'] as bool?,
     );
 
 Map<String, dynamic> _$CariSaveRequestModelToJson(
@@ -1049,5 +1061,6 @@ Map<String, dynamic> _$CariSaveRequestModelToJson(
   writeNotNull('KURFARKIBORC_ADI', instance.kurfarkiborcAdi);
   writeNotNull('KURFARKIALACAK_ADI', instance.kurfarkialacakAdi);
   writeNotNull('MUH_ADI', instance.muhAdi);
+  writeNotNull('EFAT_AKTIF', instance.efatAktif);
   return val;
 }
