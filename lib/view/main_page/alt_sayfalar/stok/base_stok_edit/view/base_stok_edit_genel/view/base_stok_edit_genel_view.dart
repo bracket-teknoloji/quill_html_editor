@@ -156,82 +156,92 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Observer(
-                      builder: (_) {
-                        if (viewModel.stokListesiModel.resimBase64 != null) {
-                          return InkWell(
-                            child: Image.memory(
-                              base64Decode(viewModel.stokListesiModel.resimBase64!),
-                              fit: BoxFit.fitHeight,
-                            ).paddingAll(UIHelper.lowSize),
-                            onTap: () async {
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Observer(
+                        builder: (_) {
+                          if (viewModel.stokListesiModel.resimBase64 != null) {
+                            return InkWell(
+                              child: SizedBox(
+                                height: kTextTabBarHeight,
+                                child: Image.memory(
+                                  base64Decode(viewModel.stokListesiModel.resimBase64!),
+                                  fit: BoxFit.
+
+                                      /// Yukarıdaki kod Dart programlama dilinde bir yorumdur.
+                                      /// Hiçbir şey yapmıyor ancak diğer geliştiricilere kod
+                                      /// hakkında bilgi veya açıklama sağlamak için kullanılıyor.
+                                      fitHeight,
+                                ).paddingAll(UIHelper.lowSize),
+                              ),
+                              onTap: () async {
+                                final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                                  context,
+                                  title: "Kaynak tipi",
+                                  children: [
+                                    BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+                                    BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+                                    BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
+                                  ],
+                                );
+                                if (sourceType is ImageSource) {
+                                  viewModel.setImage(await imageCompresser(sourceType));
+                                } else {
+                                  dialogManager.showAreYouSureDialog(() {
+                                    viewModel.setImage(null);
+                                  });
+                                }
+                              },
+                            );
+                          }
+                          return IconButton(
+                            onPressed: () async {
                               final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
                                 context,
                                 title: "Kaynak tipi",
                                 children: [
                                   BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
                                   BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                                  BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
                                 ],
                               );
-                              if (sourceType is ImageSource) {
+                              //image picker
+                              if (sourceType != null) {
                                 viewModel.setImage(await imageCompresser(sourceType));
-                              } else {
-                                dialogManager.showAreYouSureDialog(() {
-                                  viewModel.setImage(null);
-                                });
                               }
                             },
-                          );
-                        }
-                        return IconButton(
-                          onPressed: () async {
-                            final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                              context,
-                              title: "Kaynak tipi",
-                              children: [
-                                BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                                BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                              ],
-                            );
-                            //image picker
-                            if (sourceType != null) {
-                              viewModel.setImage(await imageCompresser(sourceType));
-                            }
-                          },
-                          icon: const Icon(Icons.add),
-                        );
-                      },
-                    ),
-                    //TODO resim göstermeyi ekleyince aç
-                  ).yetkiVarMi(kDebugMode),
-                  Expanded(
-                    flex: 4,
-                    child: CustomTextField(
-                      enabled: enable && (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala),
-                      labelText: "Kodu",
-                      isMust: true,
-                      controller: stokKoduController,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
-                          IconButton(
-                            onPressed: () async {
-                              stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
-                              viewModel.stokListesiModel.stokKodu = stokKoduController.text;
-                            },
                             icon: const Icon(Icons.add),
-                          ),
-                        ].map((e) => SizedBox(width: 35, child: e)).toList(),
+                          );
+                        },
+                      ),
+                      //TODO resim göstermeyi ekleyince aç
+                    ).yetkiVarMi(widget.model.ekleMi).isDebug(),
+                    Expanded(
+                      flex: 4,
+                      child: CustomTextField(
+                        enabled: enable && (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala),
+                        labelText: "Kodu",
+                        isMust: true,
+                        controller: stokKoduController,
+                        suffix: Wrap(
+                          children: [
+                            IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
+                            IconButton(
+                              onPressed: () async {
+                                stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
+                                viewModel.stokListesiModel.stokKodu = stokKoduController.text;
+                              },
+                              icon: const Icon(Icons.add),
+                            ),
+                          ].map((e) => SizedBox(width: 35, child: e)).toList(),
+                        ),
                       ),
                     ),
-                  ),
-                ].whereType<Expanded>().toList(),
+                  ].whereType<Expanded>().toList(),
+                ),
               ),
               CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => viewModel.stokListesiModel.stokAdi = p0),
               CustomTextField(
