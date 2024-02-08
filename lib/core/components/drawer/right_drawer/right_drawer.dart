@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../view/add_company/model/account_model.dart";
 import "../../../../view/add_company/model/account_response_model.dart";

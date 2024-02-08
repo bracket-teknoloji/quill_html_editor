@@ -333,13 +333,12 @@ class AccountModel with NetworkManagerMixin {
   }
 
   String aesEncrypt(String text) {
-    final result = decrypt(
-      Uint8List.fromList(text.codeUnits),
-      Uint8List.fromList("{N???tF???ctBr@ck???t_123654**-/?Br@ck???tT???kn0l0ji=\$&()??}".codeUnits),
-      IV.fromLength(16).bytes,
-    );
+    // final result = decrypt(
+    //   Uint8List.fromList(text.codeUnits),
+    //   Uint8List.fromList("{N???tF???ctBr@ck???t_123654**-/?Br@ck???tT???kn0l0ji=\$&()??}".codeUnits),
+    //   IV.fromLength(16).bytes,
+    // );
     try {
-      print(result);
       final key = Key.fromUtf8("{N???tF???ctBr@ck???t_123654**-/?Br@ck???tT???kn0l0ji=\$&()??}");
 
       final iv = IV.fromLength(16);
@@ -351,7 +350,7 @@ class AccountModel with NetworkManagerMixin {
       return encrypted.base64;
     } on Exception catch (e) {
       // TODO
-      return "";
+      return e.toString();
     }
   }
 
