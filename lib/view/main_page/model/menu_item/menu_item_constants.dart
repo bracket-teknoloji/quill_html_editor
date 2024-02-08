@@ -198,7 +198,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
-        GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri").isDebug(),
+        GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/mainPage/surumYenilikleri"),
         GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
       ].whereType<GridItemModel>().toList(),
     ),
