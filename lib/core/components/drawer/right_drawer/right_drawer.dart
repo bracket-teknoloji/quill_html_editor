@@ -210,7 +210,9 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             }
             CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(acikTemaMi: Get.isDarkMode));
           },
-        ).isDebug(),
+        ),
+        //TODO 
+        // .isDebug(),
         DrawerModel(
           title: loc(context).rightDrawer.releaseNotes,
           iconWidget: Icons.new_releases_outlined,
