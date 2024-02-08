@@ -67,7 +67,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
               },
               icon: Icon(
                 Icons.check_circle,
-                color: UIHelper.primaryColor,
+                color: theme.colorScheme.inversePrimary,
               ),
             ),
             IconButton(

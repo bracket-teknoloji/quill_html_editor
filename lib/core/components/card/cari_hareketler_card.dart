@@ -57,7 +57,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
           }
         },
         icon: Icons.route_outlined,
-        backgroundColor: UIHelper.primaryColor,
+        backgroundColor: theme.colorScheme.inversePrimary,
         foregroundColor: theme.colorScheme.primary,
         label: "Belgeye Git",
       ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun),
@@ -82,7 +82,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                   width: UIHelper.lowSize,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    color: UIHelper.primaryColor,
+                    color: theme.colorScheme.inversePrimary,
                   ),
                 ).yetkiVarMi(slidableList.ext.isNotNullOrEmpty && yetkiController.cariHareketleriHarDetayGorsun),
               ],

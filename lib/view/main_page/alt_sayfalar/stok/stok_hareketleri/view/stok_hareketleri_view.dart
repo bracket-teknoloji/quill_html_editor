@@ -310,7 +310,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   });
                                 },
                                 icon: Icons.delete_forever,
-                                backgroundColor: UIHelper.primaryColor,
+                                backgroundColor: theme.colorScheme.inversePrimary,
                                 foregroundColor: theme.colorScheme.primary,
                                 label: loc(context).generalStrings.delete,
                               ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
@@ -328,7 +328,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: UIHelper.primaryColor,
+                                  backgroundColor: theme.colorScheme.inversePrimary,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket\nDetayı",
                                 ),
@@ -349,7 +349,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: UIHelper.primaryColor,
+                                  backgroundColor: theme.colorScheme.inversePrimary,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket Detayı",
                                 ),
@@ -405,7 +405,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                           width: UIHelper.lowSize,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.rectangle,
-                                            color: UIHelper.primaryColor,
+                                            color: theme.colorScheme.inversePrimary,
                                           ),
                                         ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
                                       ],
