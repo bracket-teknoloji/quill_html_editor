@@ -86,6 +86,7 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
                                 Get.back();
                                 dialogManager.showAreYouSureDialog(() async {
                                   viewModel.logout(model);
+                                  await viewModel.getData();
                                 });
                               },
                             ),
