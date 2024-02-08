@@ -104,15 +104,16 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.alacakBorcHarf}) "),
+                  Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.primary)),
                   Row(
                     children: [
-                      Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.alacakBorcHarf}) "),
                       const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
                           .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null),
-                      // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
-                    ],
+                      const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(widget.cariHareketleriModel.alacakMi),
+                      const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(!widget.cariHareketleriModel.alacakMi),
+                    ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                   ),
-                  Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)),
                 ],
               ),
               Column(
