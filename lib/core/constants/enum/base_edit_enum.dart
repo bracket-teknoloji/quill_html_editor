@@ -4,6 +4,7 @@ extension ToString on BaseEditEnum? {
   String? get name => getName(this);
 
   bool get revizeMi => this == BaseEditEnum.revize;
+  bool get ekleMi => this == BaseEditEnum.ekle;
 
   String? getName(BaseEditEnum? baseEditEnum) {
     switch (baseEditEnum) {
