@@ -20,13 +20,40 @@ abstract class _CariHaritasiViewModelBase with Store, MobxNetworkMixin {
   LatLng? currentPosition;
 
   @observable
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+
+  @observable
+  ObservableSet<Marker> markerSet = ObservableSet();
+
+  @observable
   CariListesiRequestModel requestModel = CariListesiRequestModel(filtreler: [1], menuKodu: "CARI_HARI");
 
   @action
-  void setIsLocationEnabled(bool? value) => isLocationEnabled = value??false;
+  void setIsLocationEnabled(bool? value) => isLocationEnabled = value ?? false;
 
   @action
   void setCurrentPosition(LatLng? position) => currentPosition = position;
+
+  @action
+  void addMarker(Marker marker) {
+    markerSet.add(marker);
+  }
+
+  // @action
+  // Future<void> setMarker(CariListesiModel model) async {
+  //   markerIcon = await Column(
+  //     mainAxisAlignment: MainAxisAlignment.end,
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       Card(
+  //         child: Text(
+  //           model.cariAdi ?? "",
+  //         ),
+  //       ),
+  //       Assets.splash.mapMarker.image(height: 30),
+  //     ],
+  //   ).toBitmapDescriptor();
+  // }
 
   @action
   void setCariList(List<CariListesiModel>? list) => cariList = list?.asObservable();

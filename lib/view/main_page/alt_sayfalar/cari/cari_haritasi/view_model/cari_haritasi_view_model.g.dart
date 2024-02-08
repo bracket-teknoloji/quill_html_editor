@@ -57,6 +57,38 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
     });
   }
 
+  late final _$markerIconAtom =
+      Atom(name: '_CariHaritasiViewModelBase.markerIcon', context: context);
+
+  @override
+  BitmapDescriptor get markerIcon {
+    _$markerIconAtom.reportRead();
+    return super.markerIcon;
+  }
+
+  @override
+  set markerIcon(BitmapDescriptor value) {
+    _$markerIconAtom.reportWrite(value, super.markerIcon, () {
+      super.markerIcon = value;
+    });
+  }
+
+  late final _$markerSetAtom =
+      Atom(name: '_CariHaritasiViewModelBase.markerSet', context: context);
+
+  @override
+  ObservableSet<Marker> get markerSet {
+    _$markerSetAtom.reportRead();
+    return super.markerSet;
+  }
+
+  @override
+  set markerSet(ObservableSet<Marker> value) {
+    _$markerSetAtom.reportWrite(value, super.markerSet, () {
+      super.markerSet = value;
+    });
+  }
+
   late final _$requestModelAtom =
       Atom(name: '_CariHaritasiViewModelBase.requestModel', context: context);
 
@@ -107,6 +139,17 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
   }
 
   @override
+  void addMarker(Marker marker) {
+    final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
+        .startAction(name: '_CariHaritasiViewModelBase.addMarker');
+    try {
+      return super.addMarker(marker);
+    } finally {
+      _$_CariHaritasiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCariList(List<CariListesiModel>? list) {
     final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
         .startAction(name: '_CariHaritasiViewModelBase.setCariList');
@@ -123,6 +166,8 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
 cariList: ${cariList},
 isLocationEnabled: ${isLocationEnabled},
 currentPosition: ${currentPosition},
+markerIcon: ${markerIcon},
+markerSet: ${markerSet},
 requestModel: ${requestModel}
     ''';
   }
