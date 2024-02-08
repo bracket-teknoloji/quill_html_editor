@@ -159,7 +159,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                   Observer(
                     builder: (_) => Icon(
                       Icons.filter_alt_outlined,
-                      color: viewModel.hasFilter ? UIHelper.primaryColor : null,
+                      color: viewModel.hasFilter ? theme.colorScheme.inversePrimary : null,
                       size: UIHelper.midSize * 2,
                     ),
                   ),

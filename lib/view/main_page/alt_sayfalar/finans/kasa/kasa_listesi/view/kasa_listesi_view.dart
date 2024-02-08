@@ -82,7 +82,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                   Icons.filter_alt_outlined,
                   size: 20,
                   fill: 1,
-                  color: viewModel.filtreGroupValue != "T" ? UIHelper.primaryColor : null,
+                  color: viewModel.filtreGroupValue != "T" ? theme.colorScheme.inversePrimary : null,
                 ),
               ),
               onPressed: filtrele,

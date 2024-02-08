@@ -195,7 +195,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                           dialogManager.showErrorSnackBar("Cari seçiniz");
                         }
                       },
-                      icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                      icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                     ),
                   ),
                   Observer(

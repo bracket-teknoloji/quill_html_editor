@@ -130,7 +130,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
               },
               icon: Icon(
                 Icons.data_exploration_outlined,
-                color: UIHelper.primaryColor,
+                color: theme.colorScheme.inversePrimary,
               ),
             ),
             onClear: () {

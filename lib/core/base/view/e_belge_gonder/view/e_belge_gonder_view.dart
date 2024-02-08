@@ -119,7 +119,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     onPressed: () async {
                       dialogManager.showCariIslemleriGridViewDialog(CariListesiModel.fromSiparisModel(widget.model));
                     },
-                    icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                   ),
                 ),
                 CustomTextField(
@@ -130,7 +130,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     onPressed: () async {
                       dialogManager.showSiparisGridViewDialog(model: widget.model);
                     },
-                    icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                   ),
                 ),
                 CustomTextField(
@@ -146,7 +146,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         editTipiEnum: widget.model.getEditTipiEnum,
                       ),
                     ),
-                    icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                   ),
                 ),
                 CustomLayoutBuilder(

@@ -135,7 +135,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 },
                 icon: Icon(
                   Icons.data_exploration_outlined,
-                  color: UIHelper.primaryColor,
+                  color: theme.colorScheme.inversePrimary,
                 ),
               ),
               onClear: () {
@@ -211,7 +211,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 ),
                 icon: Icon(
                   Icons.info_outline,
-                  color: UIHelper.primaryColor,
+                  color: theme.colorScheme.inversePrimary,
                 ),
               ),
               controller: haricStokGrupKodlariController,

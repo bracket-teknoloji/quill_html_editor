@@ -105,7 +105,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.stokListesiModel?.stokKodu ?? "")),
                       controller: stokController,
                       suffix: IconButton(
-                        icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                        icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                         onPressed: () async {
                           dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
                         },

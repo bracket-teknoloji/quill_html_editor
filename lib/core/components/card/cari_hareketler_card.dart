@@ -112,7 +112,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       // widget.cariHareketleriModel.dovizliMi ? const Badge(label: Text("Dövizli")) : Container(),
                     ],
                   ),
-                  Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)),
+                  Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)),
                 ],
               ),
               Column(

@@ -70,7 +70,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 child: ToolBar.scroll(
                   toolBarColor: Colors.transparent,
                   iconColor: theme.colorScheme.onSurface,
-                  activeIconColor: UIHelper.primaryColor,
+                  activeIconColor: theme.colorScheme.inversePrimary,
                   padding: UIHelper.midPadding,
                   iconSize: 20,
                   controller: controller,

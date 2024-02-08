@@ -6,7 +6,6 @@ import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/duration_helper.dart";
-import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomLineChart extends StatefulWidget {
   final List<double>? lineChartValue;
@@ -42,7 +41,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   lineTouchData: LineTouchData(
                     enabled: true,
                     touchTooltipData: LineTouchTooltipData(
-                      tooltipBgColor: UIHelper.primaryColor,
+                      tooltipBgColor: theme.colorScheme.inversePrimary,
                       fitInsideHorizontally: true,
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,

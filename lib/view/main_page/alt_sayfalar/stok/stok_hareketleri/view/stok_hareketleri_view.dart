@@ -185,7 +185,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 },
                                 icon: Icon(
                                   Icons.data_exploration_outlined,
-                                  color: UIHelper.primaryColor,
+                                  color: theme.colorScheme.inversePrimary,
                                 ),
                               ),
                               IconButton(

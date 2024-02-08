@@ -229,7 +229,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   // mainAxisAlignment: MainAxisAlignment.start,
 
                   children: <Widget>[
-                    Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
+                    Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? theme.colorScheme.inversePrimary : null)),
                     Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
                     Text("Cari Kodu: ${model.cariKodu ?? ""}"),
                     Text("Koşul: ${model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),

@@ -73,7 +73,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
 
   Widget buildQrView(BuildContext context) => QRView(
         overlay: QrScannerOverlayShape(
-          borderColor: UIHelper.primaryColor,
+          borderColor: theme.colorScheme.inversePrimary,
           borderRadius: UIHelper.midSize,
           borderWidth: UIHelper.midSize * 2,
           cutOutSize: width * 0.7,

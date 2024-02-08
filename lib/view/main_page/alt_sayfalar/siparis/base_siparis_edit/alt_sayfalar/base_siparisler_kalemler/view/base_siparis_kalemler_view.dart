@@ -149,7 +149,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
-            Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
+            Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
             LayoutBuilder(
               builder: (context, constrains) => Wrap(
                 children: [
@@ -166,7 +166,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                           TextSpan(
                             text:
                                 "(${kalemModel?.iskonto1.toIntIfDouble ?? ""}${kalemModel?.iskonto2 != null ? "+" : ""}${kalemModel?.iskonto2.toIntIfDouble ?? ""}${kalemModel?.iskonto3 != null ? "+" : ""}${kalemModel?.iskonto3.toIntIfDouble ?? ""}${kalemModel?.iskonto4 != null ? "+" : ""}${kalemModel?.iskonto4.toIntIfDouble ?? ""}${kalemModel?.iskonto5 != null ? "+" : ""}${kalemModel?.iskonto5.toIntIfDouble ?? ""}${kalemModel?.iskonto6 != null ? "+" : ""}${kalemModel?.iskonto6.toIntIfDouble ?? ""}) ",
-                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                            style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.inversePrimary),
                           )
                         else
                           null,

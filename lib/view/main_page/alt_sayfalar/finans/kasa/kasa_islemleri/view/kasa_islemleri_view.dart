@@ -110,7 +110,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
           ),
           IconButton(
             onPressed: filter,
-            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
+            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? theme.colorScheme.inversePrimary : null)),
           ),
         ],
       );
@@ -265,7 +265,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                   dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                 }
               },
-              icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+              icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
             ),
             onTap: () async {
               final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);

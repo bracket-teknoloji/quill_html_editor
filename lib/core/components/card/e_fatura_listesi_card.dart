@@ -99,12 +99,12 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   final efaturaList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
-                    Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? UIHelper.primaryColor : null)),
+                    Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? theme.colorScheme.inversePrimary : null)),
                     InkWell(
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
                           Text(" Senaryo: ${model.senaryo ?? ""}"),
                         ],
                       ),
@@ -121,7 +121,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
@@ -139,7 +139,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
@@ -191,7 +191,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: UIHelper.primaryColor)).yetkiVarMi(model.kontrolAciklama != null),
+                Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.inversePrimary))
+                    .yetkiVarMi(model.kontrolAciklama != null),
                 CustomTextField(
                   labelText: "Kontrol Açıklaması",
                   controller: controller,

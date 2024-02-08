@@ -154,8 +154,8 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
-            // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
-            Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
+            // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)).yetkiVarMi(kalemModel?.seriList != null),
+            Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.inversePrimary))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
                 .paddingOnly(bottom: UIHelper.lowSize),
             LayoutBuilder(
@@ -174,7 +174,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                           TextSpan(
                             text:
                                 "(${kalemModel?.iskonto1.toIntIfDouble ?? ""}${kalemModel?.iskonto2 != null ? "+" : ""}${kalemModel?.iskonto2.toIntIfDouble ?? ""}${kalemModel?.iskonto3 != null ? "+" : ""}${kalemModel?.iskonto3.toIntIfDouble ?? ""}${kalemModel?.iskonto4 != null ? "+" : ""}${kalemModel?.iskonto4.toIntIfDouble ?? ""}${kalemModel?.iskonto5 != null ? "+" : ""}${kalemModel?.iskonto5.toIntIfDouble ?? ""}${kalemModel?.iskonto6 != null ? "+" : ""}${kalemModel?.iskonto6.toIntIfDouble ?? ""}) ",
-                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                            style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.inversePrimary),
                           )
                         else
                           null,

@@ -32,7 +32,7 @@ class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
               },
               icon: Icon(
                 Icons.check_circle,
-                color: UIHelper.primaryColor,
+                color: theme.colorScheme.inversePrimary,
               ),
             ),
           ],

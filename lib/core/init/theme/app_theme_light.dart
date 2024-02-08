@@ -178,8 +178,8 @@ class AppThemeLight extends AppTheme {
         // scaffoldBackgroundColor: colorManager.surfaceVariant.withOpacity(0.3),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
-          // backgroundColor: Colors.transparent,
-          // foregroundColor: colorManager.onPrimat,
+          // backgroundColor: colorManager.primary,
+          // foregroundColor: colorManager.oı,
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: colorManager.background,
             systemNavigationBarColor: colorManager.background,

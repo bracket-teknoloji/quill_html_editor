@@ -76,7 +76,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                       ).yetkiVarMi((model.evrakSayisi ?? 0) > 0),
                     ],
                   ),
-                  Text(model.yerAciklamaDurum, style: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)),
+                  Text(model.yerAciklamaDurum, style: TextStyle(color: theme.colorScheme.inversePrimary, fontWeight: FontWeight.bold)),
                 ],
               ),
               Row(

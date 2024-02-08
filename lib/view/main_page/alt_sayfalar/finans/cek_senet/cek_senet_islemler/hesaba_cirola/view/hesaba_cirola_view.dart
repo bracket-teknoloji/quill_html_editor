@@ -10,7 +10,6 @@ import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/cirola_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
-import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../banka/banka_listesi/model/banka_listesi_model.dart";
@@ -118,7 +117,7 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
                   isMust: true,
                   readOnly: true,
                   suffixMore: true,
-                  suffix: IconButton(onPressed: getCariIslemler, icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+                  suffix: IconButton(onPressed: getCariIslemler, icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary)),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
                   onTap: setCari,
                 ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.cari),

@@ -570,7 +570,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   }
                   dialogManager.showCariGridViewDialog(CariListesiModel());
                 },
-                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
               ),
               onClear: () => viewModel.setCariKodu(null),
               onTap: () async {

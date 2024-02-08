@@ -194,14 +194,14 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                 onTap: () async => await getCari(),
                 suffix: IconButton(
                   onPressed: () async {
-                        if (viewModel.model.hesapKodu != null) {
-                          final result = await networkManager.getCariModel(CariRequestModel.fromTahsilatRequestModel(viewModel.model));
-                          dialogManager.showCariIslemleriGridViewDialog(result);
-                        } else {
-                          dialogManager.showErrorSnackBar("Cari seçiniz");
-                        }
+                    if (viewModel.model.hesapKodu != null) {
+                      final result = await networkManager.getCariModel(CariRequestModel.fromTahsilatRequestModel(viewModel.model));
+                      dialogManager.showCariIslemleriGridViewDialog(result);
+                    } else {
+                      dialogManager.showErrorSnackBar("Cari seçiniz");
+                    }
                   },
-                  icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                 ),
               ),
               Observer(
