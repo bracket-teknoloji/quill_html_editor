@@ -3,9 +3,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/base_cari_edit/view/base_cari_edit_diger/view_model/base_edit_cari_diger_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
@@ -439,6 +439,10 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onClear: () => viewModel.changeKonum(null),
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (viewModel.model?.enlem, viewModel.model?.boylam));
+                if (result is LatLng) {
+                  viewModel.changeKonum((result.latitude, result.longitude));
+                  konumController.text = "${result.latitude}, ${result.longitude}";
+                }
               },
             ).isDebug(),
             CustomTextField(

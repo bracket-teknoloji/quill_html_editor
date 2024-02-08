@@ -11,6 +11,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/login_dialog_model.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/view/add_company/model/account_response_model.dart";
+import "package:picker/view/auth/login/model/login_model.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
 
@@ -282,12 +283,18 @@ class _LoginViewState extends BaseState<LoginView> {
     // dialogManager.hideAlertDialog;
     dialogManager.showLoadingDialog("Giriş Yapılıyor");
     log(jsonEncode(instance.toJson()));
+    TokenModel? response;
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      final response = await networkManager.getToken(
-        path: ApiUrls.token,
-        queryParameters: {"deviceInfos": jsonEncode(instance.toJson())},
-        data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
-      );
+      try {
+        response = await networkManager.getToken(
+          path: ApiUrls.token,
+          queryParameters: {"deviceInfos": jsonEncode(instance.toJson())},
+          data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
+        );
+      } on Exception catch (e) {
+        dialogManager.hideAlertDialog;
+        dialogManager.showAlertDialog(e.toString());
+      }
       if (response?.error == null) {
         log(jsonEncode(instance.toJson()), name: "sea");
         instance = instance

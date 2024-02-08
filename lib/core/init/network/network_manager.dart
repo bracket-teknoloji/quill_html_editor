@@ -71,7 +71,8 @@ class NetworkManager {
           if (e.type == DioExceptionType.connectionError) {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error}"));
           } else if (e.type == DioExceptionType.unknown) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz."));
+            print(e.toString());
+            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
           } else if (e.type == DioExceptionType.receiveTimeout || e.type == DioExceptionType.sendTimeout || e.type == DioExceptionType.connectionTimeout) {
             if (e.requestOptions.path == ApiUrls.token) {
               return handler
@@ -139,6 +140,7 @@ class NetworkManager {
     bool showLoading = false,
     bool showError = true,
   }) async {
+    GenericResponseModel<T> responseModel = GenericResponseModel<T>();
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Yükleniyor...");
@@ -160,7 +162,12 @@ class NetworkManager {
         ),
         data: data,
       );
+    responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     } catch (e) {
+      if (showLoading) {
+        DialogManager().hideAlertDialog;
+      }
+      //TODO HATA BULUTA GÖNDERİLECEK
       if (showError) {
         await DialogManager().showAlertDialog(e.toString());
       }
@@ -169,15 +176,13 @@ class NetworkManager {
     if (showLoading) {
       DialogManager().hideAlertDialog;
     }
-    final GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
 
     if (responseModel.success != true) {
       if (showError) {
         await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
       if (responseModel.errorCode == 1) {
-        CacheManager.setLogout(false);
-        Get.offAndToNamed("/login");
+        Get.toNamed("/");
       }
     }
     return responseModel;
@@ -196,6 +201,7 @@ class NetworkManager {
     bool showLoading = false,
     bool showError = true,
   }) async {
+    GenericResponseModel<T> responseModel = GenericResponseModel<T>();
     dynamic response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Lütfen Bekleyiniz...");
@@ -218,11 +224,13 @@ class NetworkManager {
         ),
         data: data,
       );
+      responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     } catch (e) {
+      if (showLoading) {
+        DialogManager().hideAlertDialog;
+      }
+      //TODO HATA BULUTA GÖNDERİLECEK
       if (showError) {
-        if (showLoading) {
-          DialogManager().hideAlertDialog;
-        }
         await DialogManager().showAlertDialog(e.toString());
       }
       return GenericResponseModel<T>(success: false, message: e.toString());
@@ -230,7 +238,6 @@ class NetworkManager {
     if (showLoading) {
       DialogManager().hideAlertDialog;
     }
-    final GenericResponseModel<T> responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
 
     if (responseModel.success != true) {
       if (showError) {

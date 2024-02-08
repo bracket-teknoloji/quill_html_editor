@@ -299,12 +299,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ..aktifIsletmeKodu = viewModel.selected["İşletme"]
                                   ..aktifSubeKodu = viewModel.selected["Şube"]
                                   ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
-                                dialogManager.showLoadingDialog("${viewModel.selected["Şirket"]} şirketine giriş yapılıyor.");
+                                // dialogManager.showLoadingDialog("${viewModel.selected["Şirket"]} şirketine giriş yapılıyor.");
                                 GenericResponseModel<NetworkManagerMixin> response;
                                 response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,
                                   bodyModel: MainPageModel(),
-                                  showError: false,
+                                  showError: true,
+                                  showLoading: true,
                                   data: model,
                                   headers: {
                                     "VERITABANI": viewModel.selected["Şirket"].toString(),
@@ -323,7 +324,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   final result = await networkManager.dioPost<AccountModel>(
                                     path: ApiUrls.saveUyeBilgileri,
                                     bodyModel: AccountModel(),
-                                    showError: false,
+                                    
                                     data: CacheManager.getHesapBilgileri?.toJson(),
                                   );
                                   if (result.success == true) {
@@ -332,7 +333,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   // Get.toNamed("/mainPage");
                                   if (response.message?.ext.isNotNullOrNoEmpty ?? false) dialogManager.showInfoDialog(response.message ?? "");
                                 } else {
-                                  dialogManager.hideAlertDialog;
+                                  // dialogManager.hideAlertDialog;
                                   dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {
