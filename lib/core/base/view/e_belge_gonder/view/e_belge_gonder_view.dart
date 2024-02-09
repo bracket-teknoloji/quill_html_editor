@@ -94,7 +94,6 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   Widget build(BuildContext context) => PopScope(
         canPop: false,
         onPopInvoked: (value) async {
-          
           if (value) {
             return;
           }

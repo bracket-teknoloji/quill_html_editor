@@ -199,13 +199,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
+        canPop: widget.model.baseEditEnum == BaseEditEnum.goruntule,
         onPopInvoked: (didPop) async {
           if (didPop) {
-            return;
-          }
-          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-            Get.back(result: true);
             return;
           }
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
