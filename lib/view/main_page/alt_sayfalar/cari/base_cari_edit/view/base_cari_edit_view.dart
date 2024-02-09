@@ -127,14 +127,16 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (value) async {
           if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
+            return;
           }
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() async => result = true);
-          return result;
+          if (value) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(Get.back);
         },
         child: Scaffold(
           // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc(context).generalStrings.general)), Tab(child: Text(loc(context).generalStrings.general))]),

@@ -114,13 +114,13 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          late final bool result;
-          await dialogManager.showAreYouSureDialog(() async {
-            result = true;
-          });
-          return result;
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (value) async {
+          if (value) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(Get.back);
         },
         child: Scaffold(
           appBar: AppBar(
@@ -134,7 +134,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
             bottom: TabBar(
               controller: _tabController,
               tabs: [
-                 Tab(text: loc(context).generalStrings.general),
+                Tab(text: loc(context).generalStrings.general),
                 Tab(
                   child: Observer(
                     builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),

@@ -127,11 +127,16 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
         onPressed: add,
       );
 
-  WillPopScope body() => WillPopScope(
-        onWillPop: () async {
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() async => result = true);
-          return result;
+  PopScope body() => PopScope(
+        canPop: false,
+        onPopInvoked: (value) async {
+          if (value) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(
+            Get.back,
+            title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
+          );
         },
         child: Form(
           key: _formKey,

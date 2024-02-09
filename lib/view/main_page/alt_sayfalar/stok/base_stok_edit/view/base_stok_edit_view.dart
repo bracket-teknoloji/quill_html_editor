@@ -60,14 +60,16 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) async {
           if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
+            return;
           }
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() async => result = true);
-          return result;
+          if (didPop) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
         },
         child: DefaultTabController(
           length: tabLength,

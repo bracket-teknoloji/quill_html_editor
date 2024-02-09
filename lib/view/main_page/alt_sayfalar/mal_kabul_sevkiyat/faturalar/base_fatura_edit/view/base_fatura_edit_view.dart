@@ -243,7 +243,18 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
+  Widget build(BuildContext context) => PopScope(
+    canPop: false,
+        onPopInvoked: (didPop) async {
+          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+            return;
+          }
+          if (didPop) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+          BaseSiparisEditModel.resetInstance();
+        },
         child: DefaultTabController(
           length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
           child: Scaffold(
@@ -433,17 +444,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             ),
           ),
         ),
-        onWillPop: () async {
-          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
-          }
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() {
-            result = true;
-            BaseSiparisEditModel.resetInstance();
-          });
-          return result;
-        },
       );
 
   Future<void> dovizGuncelle() async {

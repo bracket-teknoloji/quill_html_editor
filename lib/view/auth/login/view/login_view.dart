@@ -70,8 +70,8 @@ class _LoginViewState extends BaseState<LoginView> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async => false,
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
         child: Stack(
           children: [
             WaveWidget(

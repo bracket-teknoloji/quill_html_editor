@@ -13,7 +13,8 @@ import "../../../init/cache/cache_manager.dart";
 import "drawer_model.dart";
 
 class EndDrawer extends StatefulWidget {
-  const EndDrawer({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const EndDrawer({super.key, required this.scaffoldKey});
 
   @override
   State<EndDrawer> createState() => _EndDrawerState();
@@ -210,14 +211,16 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(acikTemaMi: Get.isDarkMode));
           },
         ),
-        //TODO 
+        //TODO
         // .isDebug(),
         DrawerModel(
           title: loc(context).rightDrawer.releaseNotes,
           iconWidget: Icons.new_releases_outlined,
           onTap: () {
             //close Drawer
-            Get.back();
+            if (mounted) {
+              widget.scaffoldKey.currentState!.closeEndDrawer();
+            }
             return Get.toNamed("/mainPage/surumYenilikleri");
           },
         ),

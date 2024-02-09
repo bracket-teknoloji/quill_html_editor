@@ -73,17 +73,27 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          bool? result;
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (value) async {
+          if (value) {
+            return;
+          }
           await dialogManager.showAreYouSureDialog(
-            () async {
-              result = true;
-            },
+            Get.back,
             title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
           );
-          return result ?? false;
         },
+        // onWillPop: () async {
+        //   bool? result;
+        //   await dialogManager.showAreYouSureDialog(
+        //     () async {
+        //       result = true;
+        //     },
+        //     title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
+        //   );
+        //   return result ?? false;
+        // },
         child: Scaffold(
           appBar: AppBar(
             title: const Text("Dekont Kalem Detayı"),

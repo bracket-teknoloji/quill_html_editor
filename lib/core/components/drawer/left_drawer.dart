@@ -9,7 +9,8 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
 
 class LeftDrawer extends StatefulWidget {
-  const LeftDrawer({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const LeftDrawer({super.key, required this.scaffoldKey});
 
   @override
   State<LeftDrawer> createState() => _LeftDrawerState();
@@ -109,14 +110,16 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 )
                               : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
                           onTap: () {
-                            // Get.back();
-                            Navigator.of(context).pop(true);
+                            if (mounted) {
+                              widget.scaffoldKey.currentState!.closeDrawer();
+                            }
+                            // Navigator.of(context).pop();
                             if (value.arguments != null) {
-                              // Get.toNamed(value.onTap.toString(), arguments: value.arguments);
-                              Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
+                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                              // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
                             } else {
-                              // Get.toNamed(value.onTap.toString());
-                              Navigator.pushNamed(context, value.onTap.toString());
+                              Get.toNamed(value.onTap.toString());
+                              // Navigator.pushNamed(context, value.onTap.toString());
                             }
                           },
                         ),

@@ -161,18 +161,17 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) async {
           if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
-          } else {
-            bool result = false;
-            await dialogManager.showAreYouSureDialog(() {
-              result = true;
-              BaseSiparisEditModel.resetInstance();
-            });
-            return result;
+            return;
           }
+          if (didPop) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+          BaseSiparisEditModel.resetInstance();
         },
         child: Scaffold(
           appBar: AppBar(

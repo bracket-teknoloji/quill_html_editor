@@ -91,13 +91,14 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() {
-            result = true;
-          });
-          return result;
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (value) async {
+          
+          if (value) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(Get.back);
         },
         child: Scaffold(
           appBar: AppBar(

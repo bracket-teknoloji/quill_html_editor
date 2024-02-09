@@ -201,7 +201,7 @@ class PickerApp extends StatelessWidget {
         themeMode: CacheManager.getProfilParametre.acikTemaMi ? ThemeMode.light : ThemeMode.dark,
         home: const SplashAuthView(),
         getPages: <GetPage>[
-          GetPage(name: "/login", page: () => const LoginView()),
+          GetPage(name: "/login", page: () => const LoginView(), popGesture: false),
           GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
           GetPage(name: "/addCompany", page: () => const AccountsView()),
           GetPage(name: "/addAccount", page: () => const AddAccountView()),

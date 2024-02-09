@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 
 import "../../../../base/state/base_state.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";

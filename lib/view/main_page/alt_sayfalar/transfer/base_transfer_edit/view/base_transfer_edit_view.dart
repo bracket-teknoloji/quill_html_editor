@@ -229,7 +229,18 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
   }
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvoked: (didPop) async {
+          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+            return;
+          }
+          if (didPop) {
+            return;
+          }
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+          BaseSiparisEditModel.resetInstance();
+        },
         child: Scaffold(
           appBar: AppBar(
             title: AppBarTitle(
@@ -306,17 +317,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             ),
           ),
         ),
-        onWillPop: () async {
-          if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
-            return true;
-          }
-          bool result = false;
-          await dialogManager.showAreYouSureDialog(() {
-            result = true;
-            BaseSiparisEditModel.resetInstance();
-          });
-          return result;
-        },
       );
 
   IconButton seceneklerButton(BuildContext context) => IconButton(
