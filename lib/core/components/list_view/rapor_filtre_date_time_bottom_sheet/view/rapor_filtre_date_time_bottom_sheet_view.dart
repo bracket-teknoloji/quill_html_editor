@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
 import "../../../../base/state/base_state.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
@@ -37,7 +38,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDate
   @override
   void initState() {
     scrollController = ScrollController();
-    if (widget.showBugunFirst ?? false) {
+    if ((widget.showBugunFirst ?? false) && widget.baslangicTarihiController.text.ext.isNullOrEmpty) {
       widget.baslangicTarihiController.text = DateTime.now().toDateString;
       widget.bitisTarihiController.text = DateTime.now().toDateString;
       viewModel.changeGroupValue(1);
