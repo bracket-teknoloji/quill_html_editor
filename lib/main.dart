@@ -178,7 +178,7 @@ class PickerApp extends StatelessWidget {
   Widget build(BuildContext context) => GetMaterialApp(
         title: "Picker",
         // defaultTransition: Transition.rightToLeft,
-        popGesture: true,
+        popGesture: false,
         debugShowCheckedModeBanner: false,
         // locale: context.locale,
         locale: Get.deviceLocale,

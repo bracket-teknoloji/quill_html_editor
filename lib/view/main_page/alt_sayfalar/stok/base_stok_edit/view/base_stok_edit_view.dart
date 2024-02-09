@@ -63,10 +63,11 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
   Widget build(BuildContext context) => PopScope(
         canPop: false,
         onPopInvoked: (didPop) async {
-          if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
+          if (didPop) {
             return;
           }
-          if (didPop) {
+          if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
+            Get.back(result: true);
             return;
           }
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
