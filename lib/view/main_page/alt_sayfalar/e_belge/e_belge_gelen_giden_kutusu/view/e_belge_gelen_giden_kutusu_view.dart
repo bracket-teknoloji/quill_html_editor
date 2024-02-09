@@ -191,6 +191,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 showBugunFirst: true,
                 baslangicTarihiController: _baslangicTarihiController,
                 bitisTarihiController: _bitisTarihiController,
+                isChanged: viewModel.isChanged,
                 filterOnChanged: (index) {
                   viewModel.changeBaslangicTarihi(_baslangicTarihiController.text);
                   viewModel.changeBitisTarihi(_bitisTarihiController.text);

@@ -98,6 +98,9 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   @observable
   int getWeek = 0;
 
+  @observable
+  bool isChanged = false;
+
   @computed
   String get eArsivDateString => DateTime.now().getWeekOfYear(getWeek).join(" - ");
 
@@ -194,7 +197,10 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   void changeSorgulanmasin() => eBelgeRequestModel = eBelgeRequestModel.copyWith(sorgulanmasin: eBelgeRequestModel.sorgulanmasin == null ? true : null);
 
   @action
-  void changeBaslangicTarihi(String? value) => eBelgeRequestModel = eBelgeRequestModel.copyWith(baslamaTarihi: value);
+  void changeBaslangicTarihi(String? value) {
+    isChanged = true;
+    eBelgeRequestModel = eBelgeRequestModel.copyWith(baslamaTarihi: value);
+  }
 
   @action
   void changeBitisTarihi(String? value) => eBelgeRequestModel = eBelgeRequestModel.copyWith(bitisTarihi: value);

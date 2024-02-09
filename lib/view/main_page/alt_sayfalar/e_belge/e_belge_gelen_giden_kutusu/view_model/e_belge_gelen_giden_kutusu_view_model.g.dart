@@ -153,6 +153,22 @@ mixin _$EBelgeGelenGidenKutusuViewModel
     });
   }
 
+  late final _$isChangedAtom = Atom(
+      name: '_EBelgeGelenGidenKutusuViewModelBase.isChanged', context: context);
+
+  @override
+  bool get isChanged {
+    _$isChangedAtom.reportRead();
+    return super.isChanged;
+  }
+
+  @override
+  set isChanged(bool value) {
+    _$isChangedAtom.reportWrite(value, super.isChanged, () {
+      super.isChanged = value;
+    });
+  }
+
   late final _$eBelgeRequestModelAtom = Atom(
       name: '_EBelgeGelenGidenKutusuViewModelBase.eBelgeRequestModel',
       context: context);
@@ -516,6 +532,7 @@ dahaVarMi: ${dahaVarMi},
 isScrolledDown: ${isScrolledDown},
 error: ${error},
 getWeek: ${getWeek},
+isChanged: ${isChanged},
 eBelgeRequestModel: ${eBelgeRequestModel},
 eBelgeListesi: ${eBelgeListesi},
 eArsivDateString: ${eArsivDateString}
