@@ -88,6 +88,17 @@ mixin _$KalemRehberiViewModel on _KalemRehberiViewModelBase, Store {
   }
 
   @override
+  void setRequestModel(SiparislerRequestModel value) {
+    final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
+        .startAction(name: '_KalemRehberiViewModelBase.setRequestModel');
+    try {
+      return super.setRequestModel(value);
+    } finally {
+      _$_KalemRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setKalemList(List<KalemModel>? value) {
     final _$actionInfo = _$_KalemRehberiViewModelBaseActionController
         .startAction(name: '_KalemRehberiViewModelBase.setKalemList');

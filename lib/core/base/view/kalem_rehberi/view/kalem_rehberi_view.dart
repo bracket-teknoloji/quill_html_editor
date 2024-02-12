@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../components/layout/custom_layout_builder.dart";
@@ -16,7 +17,7 @@ import "../view_model/kalem_rehberi_view_model.dart";
 
 /// KalemModel Listesi dönüyor
 class KalemRehberiView extends StatefulWidget {
-  final BaseSiparisEditModel model;
+  final SiparislerRequestModel model;
   const KalemRehberiView({super.key, required this.model});
 
   @override
@@ -28,7 +29,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
 
   @override
   void initState() {
-    viewModel.setModel(widget.model);
+    viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
@@ -50,7 +51,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 if (viewModel.selectedKalemList.isEmpty) {
                   dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
                 } else {
-                  if (widget.model.getEditTipiEnum.faturaMi) {
+                  if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi) {
                     Get.back(
                       result: viewModel.selectedKalemList
                           .map(
