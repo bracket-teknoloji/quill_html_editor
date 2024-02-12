@@ -110,7 +110,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pop(context);
+                            widget.scaffoldKey.currentState!.closeEndDrawer();
                             Get.toNamed("/entryCompany", arguments: false);
                           },
                           child: Row(
@@ -142,7 +142,8 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             ),
                           ),
                           onPressed: () {
-                            Navigator.pop(context);
+                            // Navigator.pop(context);
+                            widget.scaffoldKey.currentState!.closeEndDrawer();
                             dialogManager.showExitDialog();
                           },
                           child: Row(

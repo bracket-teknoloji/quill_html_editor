@@ -302,7 +302,7 @@ class DialogManager {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
-            Get.offAndToNamed("/login");
+            Get.offNamed("/login", arguments: true);
           }
         },
         btnOkText: "Evet",
