@@ -287,7 +287,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ),
+                    ).yetkiVarMi(yetkiController.transferLokalDatGizlenecekAlanlar("kdv_dahil_haric")),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "E-İrsaliye",

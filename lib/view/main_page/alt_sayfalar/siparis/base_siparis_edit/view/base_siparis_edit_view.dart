@@ -144,6 +144,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
+          BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;

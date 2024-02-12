@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
@@ -625,7 +626,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   dialogManager.showAlertDialog("Lütfen Cari veya Sipariş seçiniz.");
                   return;
                 } else {
-                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: viewModel.baseSiparisEditModel..belgeTuru = model.editTipiEnum?.rawValue);
+                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(viewModel.baseSiparisEditModel)..pickerBelgeTuru = "MS"..refBelgeTuru = widget.model.editTipiEnum?.rawValue);
                   if (result is List) {
                     List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
                     list = list
@@ -677,6 +678,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                       }
                       Get.back(result: true);
                       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
+                        dialogManager.showAreYouSureDialog(
+                          () async {
+                            await dovizGuncelle();
+                          },
+                          title: "Döviz Kurları Güncellensin mi?",
+                        );
                       } else {
                         dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
                       }

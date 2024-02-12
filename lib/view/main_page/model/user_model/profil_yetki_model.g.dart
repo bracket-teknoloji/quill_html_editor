@@ -118,7 +118,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sirketKalemKayitKontrolBelgeTipleri =
           json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
       ..sirketAktifDepolar = (json['sirket_aktifDepolar'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => e as int)
           .toList()
       ..sirketSatisDepo = json['sirket_satisDepo'] as int?
       ..sirketSatisDepoOzellestir = json['sirket_satisDepo_Ozellestir'] as bool?
@@ -1608,7 +1608,12 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..cariRapBorcAlacakDokumu = json['cari_Rap_BorcAlacakDokumu'] as bool?
       ..sirketProjeYetkiTuru = json['sirket_Proje_YetkiTuru'] as String?
       ..transferDatVarsayilanHarTuru =
-          json['transfer_DAT_VarsayilanHarTuru'] as String?;
+          json['transfer_DAT_VarsayilanHarTuru'] as String?
+      ..siparisMusSipKdvDurumu = json['siparis_MusSip_KdvDurumu'] as String?
+      ..siparisSaticiSiparisiAciklamaDuzenle =
+          json['siparis_SaticiSiparisi_AciklamaDuzenle'] as bool?
+      ..taltekStekKdvDurumu = json['taltek_STEK_KdvDurumu'] as String?
+      ..taltekStalKdvDurumu = json['taltek_STAL_KdvDurumu'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -3074,6 +3079,11 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('sirket_Proje_YetkiTuru', instance.sirketProjeYetkiTuru);
   writeNotNull(
       'transfer_DAT_VarsayilanHarTuru', instance.transferDatVarsayilanHarTuru);
+  writeNotNull('siparis_MusSip_KdvDurumu', instance.siparisMusSipKdvDurumu);
+  writeNotNull('siparis_SaticiSiparisi_AciklamaDuzenle',
+      instance.siparisSaticiSiparisiAciklamaDuzenle);
+  writeNotNull('taltek_STEK_KdvDurumu', instance.taltekStekKdvDurumu);
+  writeNotNull('taltek_STAL_KdvDurumu', instance.taltekStalKdvDurumu);
   return val;
 }
 

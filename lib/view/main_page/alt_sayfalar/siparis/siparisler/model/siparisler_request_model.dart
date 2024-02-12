@@ -50,10 +50,10 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
   factory SiparislerRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => SiparislerRequestModel(
         menuKodu: "COMM_BREH",
         siralama: "TESLIM_TARIHI_AZ",
-        // kisitYok: true,
+        kisitYok: true,
         ekranTipi: "R",
         arrBelgeTipi: "[2,6]",
-        // siparisDurumu: "A",
+        siparisDurumu: "A",
         pickerBelgeTuru: model.belgeTuru,
         siparisKarsilanmaDurumu: "K",
         siparisSevkEdilenGoster: true,

@@ -267,46 +267,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   },
                 ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.baseEditEnum != BaseEditEnum.taslak),
                 Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        readOnly: true,
-                        isMust: true,
-                        suffixMore: true,
-                        controller: _projeController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                        onTap: () async {
-                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                          if (result is BaseProjeModel) {
-                            _projeController.text = result.projeAciklama ?? "";
-                            viewModel.setProje(result);
-                          }
-                        },
-                      ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Plasiyer",
-                        readOnly: true,
-                        isMust: true,
-                        suffixMore: true,
-                        controller: _plasiyerController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: () async {
-                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                          if (result != null) {
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
-                            viewModel.setPlasiyer(result);
-                          }
-                        },
-                      ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
-                  ],
-                ),
-                Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Expanded(
@@ -355,6 +315,46 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         },
                       ),
                     ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _projeController,
+                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                        onTap: () async {
+                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                          if (result is BaseProjeModel) {
+                            _projeController.text = result.projeAciklama ?? "";
+                            viewModel.setProje(result);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Plasiyer",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _plasiyerController,
+                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                          if (result != null) {
+                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            viewModel.setPlasiyer(result);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
                   ],
                 ),
                 Row(

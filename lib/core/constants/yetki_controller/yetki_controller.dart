@@ -1,4 +1,5 @@
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -115,6 +116,19 @@ final class YetkiController {
 
   //! Sipariş
   bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
+  bool get siparisKdvDahilMi {
+    if (_yetkiModel?.siparisMusSipKdvDurumu == "D") return true;
+    if (_yetkiModel?.siparisMusSipKdvDurumu == "H") return false;
+    return genellikleKdvHaricMi();
+  }
+
+  bool genellikleKdvHaricMi() {
+    if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+      return _paramModel?.satisGenellikleKdvHaric ?? false;
+    } else {
+      return _paramModel?.alisGenellikleKdvHaric ?? false;
+    }
+  }
 
   //* Genel Sipariş Yetkileri
 
@@ -211,6 +225,8 @@ final class YetkiController {
       : _isTrue((_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false) && (_paramModel?.satisSatirdaAciklamalarAktif ?? false));
 
   //* Satıcı Siparişi
+
+  bool get siparisSSKdvDahilMi => _isTrue(_paramModel?.alisGenellikleKdvHaric, skipAdmin: true);
   // bool get alisOzelKod1AktifMi => _isTrue(_paramModel?.alisO);
   // bool get alisOzelKod2AktifMi => _isTrue(_paramModel?.alisOzelKod2Aktif);
   bool get siparisSSGenIsk1AktifMi => _isTrue(_paramModel?.alisGenIsk1Aktif, skipAdmin: true);
@@ -352,6 +368,7 @@ final class YetkiController {
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi ?? "") ?? 0;
 
+
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
   bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStalSil);
@@ -384,7 +401,19 @@ final class YetkiController {
   // bool get stekDigersSekmesiGelsin => _isTrue(_yetkiModel?.diger);
 
   bool get stekOnayIslemleri => _isTrue(_yetkiModel?.taltekStekOnayIslemleri ?? false);
+  bool get stekKdvDahilMi {
+    if (_yetkiModel?.taltekStekKdvDurumu == "D") return true;
+    if (_yetkiModel?.taltekStekKdvDurumu == "H") return false;
+    return genellikleKdvHaricMi();
+  }
+
   bool get stalOnayIslemleri => _isTrue(_yetkiModel?.taltekStalOnayIslemleri ?? false);
+
+  bool get stalKdvDahilMi {
+    if (_yetkiModel?.taltekStalKdvDurumu == "D") return true;
+    if (_yetkiModel?.taltekStalKdvDurumu == "H") return false;
+    return genellikleKdvHaricMi();
+  }
   bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
@@ -437,7 +466,7 @@ final class YetkiController {
   String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
   bool get transferLokalDatHarTuruDegismesin => _isTrue(_yetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
 
-  bool get transferLokalDatSiparisBaglantisi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "E" ||_yetkiModel?.transferDatSipBagSecenegi == "O", skipAdmin: true);
+  bool get transferLokalDatSiparisBaglantisi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "E" || _yetkiModel?.transferDatSipBagSecenegi == "O", skipAdmin: true);
   bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "O", skipAdmin: true);
 
   DepoList? get transferLokalDatCikisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo).firstOrNull;

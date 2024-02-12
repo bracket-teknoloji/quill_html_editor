@@ -772,6 +772,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     switch (efaturaDurumu) {
       case "TMM":
       case "BEK":
+      case "TAS":
         return false;
       default:
         return true;

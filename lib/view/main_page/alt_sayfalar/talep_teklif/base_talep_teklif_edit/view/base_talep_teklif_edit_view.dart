@@ -182,6 +182,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
+         if (widget.model.editTipiEnum?.satisMi == true){
+          BaseSiparisEditModel.instance.kdvDahilMi = widget.model.editTipiEnum.satisTalebiMi ? yetkiController.stalKdvDahilMi : yetkiController.stekKdvDahilMi;
+        }
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
