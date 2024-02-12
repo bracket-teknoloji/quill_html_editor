@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../core/base/model/generic_response_model.dart";
@@ -153,7 +154,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             text: "KDV Dahil",
                             child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (bool value) => viewModel.setKDVDahil(value))),
                           ).paddingAll(UIHelper.lowSize),
-                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi),
+                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.admin == "E"),
                         Expanded(
                           child: CustomWidgetWithLabel(
                             isVertical: true,
