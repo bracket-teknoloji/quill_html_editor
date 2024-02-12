@@ -222,19 +222,21 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                   return const Center(child: CircularProgressIndicator.adaptive());
                 }
                 final BaseSiparisEditModel item = viewModel.transferList![index];
-                return TransferlerCard(
-                  index: index,
-                  model: item,
-                  editTipiEnum: widget.editTipiEnum,
-                  showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
-                  showMiktar: viewModel.ekstraAlanlarMap["MİK"],
-                  showVade: viewModel.ekstraAlanlarMap["VADE"],
-                  onDeleted: () async => await viewModel.resetPage(),
-                  onUpdated: (value) async {
-                    if (value) {
-                      await viewModel.resetPage();
-                    }
-                  },
+                return Observer(
+                  builder: (_) => TransferlerCard(
+                    index: index,
+                    model: item,
+                    editTipiEnum: widget.editTipiEnum,
+                    showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
+                    showMiktar: viewModel.ekstraAlanlarMap["MİK"],
+                    showVade: viewModel.ekstraAlanlarMap["VADE"],
+                    onDeleted: () async => await viewModel.resetPage(),
+                    onUpdated: (value) async {
+                      if (value) {
+                        await viewModel.resetPage();
+                      }
+                    },
+                  ),
                 );
               },
             );

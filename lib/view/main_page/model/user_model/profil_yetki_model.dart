@@ -94,7 +94,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "sirket_KalemKayitKontrol_BelgeTipleri")
   List<dynamic>? sirketKalemKayitKontrolBelgeTipleri;
   @JsonKey(name: "sirket_aktifDepolar")
-  List<String>? sirketAktifDepolar;
+  List<int>? sirketAktifDepolar;
   @JsonKey(name: "sirket_satisDepo")
   int? sirketSatisDepo;
   @JsonKey(name: "sirket_satisDepo_Ozellestir")
@@ -1879,6 +1879,14 @@ class ProfilYetkiModel {
   String? sirketProjeYetkiTuru;
   @JsonKey(name: "transfer_DAT_VarsayilanHarTuru")
   String? transferDatVarsayilanHarTuru;
+  @JsonKey(name: "siparis_MusSip_KdvDurumu")
+  String? siparisMusSipKdvDurumu;
+  @JsonKey(name: "siparis_SaticiSiparisi_AciklamaDuzenle")
+  bool? siparisSaticiSiparisiAciklamaDuzenle;
+    @JsonKey(name: "taltek_STEK_KdvDurumu")
+    String? taltekStekKdvDurumu;
+    @JsonKey(name: "taltek_STAL_KdvDurumu")
+    String? taltekStalKdvDurumu;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 
