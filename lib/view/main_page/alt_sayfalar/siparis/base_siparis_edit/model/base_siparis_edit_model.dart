@@ -1206,6 +1206,14 @@ class KalemModel with NetworkManagerMixin {
   String? kalemStoktanKodu;
   @HiveField(99)
   String? muhasebeTanimi;
+  @HiveField(100)
+  int? hedefDepo;
+  @HiveField(101)
+  int? siparisInckeyno;
+  @HiveField(102)
+  int? sipInckeyno;
+  @HiveField(103)
+  String? muhRefKodu;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1307,6 +1315,11 @@ class KalemModel with NetworkManagerMixin {
     this.teklifNo,
     this.teklifKalemSira,
     this.muhasebeTanimi,
+    this.hedefDepo,
+    this.siparisInckeyno,
+    this.sipInckeyno,
+    this.kalemStoktanKodu,
+    this.muhRefKodu,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(

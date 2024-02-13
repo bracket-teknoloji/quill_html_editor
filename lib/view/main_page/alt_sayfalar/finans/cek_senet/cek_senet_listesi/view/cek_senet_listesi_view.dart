@@ -5,6 +5,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -47,6 +49,8 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
   late final TextEditingController _verilenCariController;
   late final TextEditingController _bankaController;
   late final TextEditingController _vadeTarihiController;
+  late final TextEditingController _baslangicController;
+  late final TextEditingController _bitisController;
   late final ScrollController _scrollController;
 
   @override
@@ -56,6 +60,8 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
     _verilenCariController = TextEditingController();
     _bankaController = TextEditingController();
     _vadeTarihiController = TextEditingController();
+    _baslangicController = TextEditingController();
+    _bitisController = TextEditingController();
     _scrollController = ScrollController();
     viewModel.setBelgeTipi(widget.cekSenetListesiEnum.belgeTipi);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -63,7 +69,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
       _scrollController.addListener(() async {
         if (_scrollController.hasClients) {
           if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-            await viewModel.getData();
+            // await viewModel.getData();
             viewModel.setIsScrolledDown(true);
           }
           if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
@@ -87,6 +93,8 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
     _verilenCariController.dispose();
     _bankaController.dispose();
     _vadeTarihiController.dispose();
+    _baslangicController.dispose();
+    _bitisController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -277,15 +285,28 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                         readOnly: true,
                         onClear: () => viewModel.setVadeTarihi(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                             context,
+                            groupValue: viewModel.cekSenetListesiRequestModel.donemTipi,
                             title: "Vade Tarihi",
                             children: List.generate(
                               viewModel.donemTipiMap.length,
-                              (index) => BottomSheetModel(title: viewModel.donemTipiMap.keys.toList()[index], value: viewModel.donemTipiMap.entries.toList()[index]),
+                              (index) => BottomSheetModel(
+                                title: viewModel.donemTipiMap.keys.toList()[index],
+                                value: viewModel.donemTipiMap.entries.toList()[index],
+                                groupValue: viewModel.donemTipiMap.values.toList()[index],
+                              ),
                             ),
                           );
                           if (result is MapEntry) {
+                            if (result.value == "Özel") {
+                              if (await ozelTarihBottomSheet() == true) {
+                                _vadeTarihiController.text = result.key;
+                              }
+                              return;
+                            }
+                            viewModel.setBaslangicTarihi(null);
+                            viewModel.setBitisTarihi(null);
                             viewModel.setVadeTarihi(result.value);
                             _vadeTarihiController.text = result.key;
                           }
@@ -331,6 +352,29 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
         ),
       );
 
+  Future<bool?> ozelTarihBottomSheet() async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Özel",
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RaporFiltreDateTimeBottomSheetView(
+              filterOnChanged: (index) {},
+              baslangicTarihiController: _baslangicController,
+              bitisTarihiController: _bitisController,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                viewModel.setBaslangicTarihi(_baslangicController.text);
+                viewModel.setBitisTarihi(_bitisController.text);
+                Get.back(result: true);
+              },
+              child: const Text("Uygula"),
+            ),
+          ],
+        ),
+      );
+
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: !viewModel.isScrollDown,
@@ -346,7 +390,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
         child: Observer(
           builder: (_) {
             if (viewModel.cekSenetListesiListesi == null) {
-              return const Center(child: CircularProgressIndicator.adaptive());
+              return const ListViewShimmer();
             } else if (viewModel.cekSenetListesiListesi.ext.isNullOrEmpty) {
               return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
             }

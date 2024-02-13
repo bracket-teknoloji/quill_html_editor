@@ -51,6 +51,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
 
   @override
   void initState() {
+    viewModel.setCariModel(widget.cariListesiModel);
     viewModel.setTarih(DateTime.now());
     viewModel.setGc(false);
     _tarihController = TextEditingController(text: viewModel.model.tarih.toDateStringIfNull);
@@ -154,7 +155,13 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           viewModel.setBankaHesapNo(null);
                           viewModel.setIBAN(null);
                         } else {
+                          if (_tcmbBankaKoduController.text.isEmpty) {
+                            _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
+                          }
                           viewModel.setTCMBBankaKodu(_tcmbBankaKoduController.text);
+                          if (_tcmbSubeKoduController.text.isEmpty) {
+                            _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
+                          }
                           viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
                           viewModel.setBankaHesapNo(_bankaHesapNoController.text);
                           viewModel.setIBAN(_ibanController.text);
@@ -214,12 +221,12 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           labelText: "TCMB Banka Kodu",
                           controller: _tcmbBankaKoduController,
                           onChanged: viewModel.setTCMBBankaKodu,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
+                          // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
                           suffix: IconButton(
                             onPressed: () async {
                               final result = await bottomSheetDialogManager.showTcmbBankalarBottomSheetDialog(context, viewModel.model.tcmbBankaKodu);
                               if (result != null) {
-                                _tcmbBankaKoduController.text = result.bankaadi ?? "";
+                                _tcmbBankaKoduController.text = result.bankakodu ?? "";
                                 viewModel.setTCMBBankaKodu(result.bankakodu);
                               }
                             },
@@ -232,7 +239,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           labelText: "TCMB Şube Kodu",
                           controller: _tcmbSubeKoduController,
                           onChanged: viewModel.setTCMBSubeKodu,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbSubeKodu ?? "")),
+                          // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbSubeKodu ?? "")),
                           suffix: IconButton(
                             onPressed: () async {
                               if (_tcmbBankaKoduController.text == "") {
@@ -241,7 +248,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                               }
                               final result = await bottomSheetDialogManager.showTcmbSubelerBottomSheetDialog(context, viewModel.model.tcmbBankaKodu, viewModel.model.tcmbSubeKodu);
                               if (result != null) {
-                                _tcmbSubeKoduController.text = result.subeadi ?? "";
+                                _tcmbSubeKoduController.text = result.subekodu ?? "";
                                 viewModel.setTCMBSubeKodu(result.subekodu);
                               }
                             },
@@ -282,7 +289,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             }
                           },
                         ),
-                      ),
+                      ).yetkiVarMi(viewModel.cariModel?.dovizli == true),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Döviz Tutarı",
@@ -296,9 +303,9 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           },
                         ),
-                      ),
+                      ).yetkiVarMi(viewModel.model.dovizliMi),
                     ],
-                  ).yetkiVarMi(viewModel.model.dovizliMi),
+                  ),
                   Row(
                     children: [
                       Expanded(
@@ -440,6 +447,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   Future<void> getCari() async {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
+      viewModel.setCariModel(result);
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       _aciklamaController.text = "EFT/HAVALE - ${result.cariAdi ?? ""}";
@@ -506,7 +514,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: viewModel.bankaListesiRequestModel);
     if (result is BankaListesiModel) {
       _hesapController.text = result.hesapAdi ?? "";
-      _dovizTipiController.text = result.dovizAdi ?? "";
+      // _dovizTipiController.text = result.dovizAdi ?? "";
       viewModel.setHesapNo(result);
     }
   }

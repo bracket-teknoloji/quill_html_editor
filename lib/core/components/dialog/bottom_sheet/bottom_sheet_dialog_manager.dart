@@ -167,7 +167,7 @@ class BottomSheetDialogManager {
   Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
-    final double height = children!.map((e) => e.descriptionWidget != null ? 70.0 : 60.0).sum;
+    final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 50.0).sum;
     final FocusNode focusNode = FocusNode();
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
@@ -179,9 +179,7 @@ class BottomSheetDialogManager {
       isScrollControlled: true,
       builder: (BuildContext context) => SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Observer(
             builder: (_) => Wrap(
               children: <Widget>[
@@ -199,7 +197,6 @@ class BottomSheetDialogManager {
                 if ((children?.length ?? 0) > 15) SearchField(focusNode: focusNode, viewModel: viewModel).paddingAll(UIHelper.midSize),
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
-                    // if viewModel.getFilteredList are not fit to screen, it will be scrollable
                     height: height < Get.height * 0.8 ? height : Get.height * 0.8,
                     child: Scrollbar(
                       interactive: true,

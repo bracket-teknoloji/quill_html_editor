@@ -65,6 +65,8 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get faturaMi => satisFaturasiMi || alisFaturasiMi;
 
+  bool get depoTransferiMi => this == EditTipiEnum.depoTransferi;
+
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
     switch (this!) {

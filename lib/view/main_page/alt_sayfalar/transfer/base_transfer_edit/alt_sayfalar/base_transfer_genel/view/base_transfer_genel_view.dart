@@ -287,7 +287,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(yetkiController.transferLokalDatGizlenecekAlanlar("kdv_dahil_haric")),
+                    ).yetkiVarMi(!yetkiController.transferLokalDatGizlenecekAlanlar("kdv_dahil_haric")),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "E-İrsaliye",
@@ -328,7 +328,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                               groupValue: viewModel.model.cikisSubeKodu,
                               children: List.generate(parametreModel.subeList?.length ?? 0, (index) {
                                 final SubeList? item = parametreModel.subeList?[index];
-                                return BottomSheetModel(title: item?.subeAdi ?? "", value: item, groupValue: item?.subeKodu, description: item?.subeKodu.toStringIfNotNull);
+                                return BottomSheetModel(title: item?.subeAdi ?? "", value: item, groupValue: item?.subeKodu ?? 0, description: (item?.subeKodu ?? 0).toStringIfNotNull);
                               }),
                             );
                             if (result is SubeList) {
@@ -527,7 +527,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   isMust: true,
                   suffixMore: true,
                   controller: _projeController,
-                  enabled: enable && yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
+                  enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                   onTap: () async {
                     final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
@@ -536,7 +536,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       viewModel.setProje(result);
                     }
                   },
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
                 CustomTextField(
                   labelText: "Açıklama",
                   enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),

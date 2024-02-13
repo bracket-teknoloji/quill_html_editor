@@ -130,7 +130,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
-        //TODO parametreleri ekle
         if (yetkiController.transferLokalDatSiparisBaglantisi) {
           final result = await getSiparisBaglantisi();
           if (result != true && !yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi) {

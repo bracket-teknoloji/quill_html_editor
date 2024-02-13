@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -47,6 +48,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
   late final TextEditingController yapKodController;
+  late final TextEditingController isEmriController;
   late final TextEditingController teslimTarihiController;
   late final TextEditingController kosulController;
   late final TextEditingController depoController;
@@ -330,8 +332,23 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     }
                   },
                 ).yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
-                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0)
-                    .yetkiVarMi((editTipi?.ekAlan2GorunsunMu ?? false) && !transferMi),
+                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                CustomTextField(
+                  labelText: "İş Emri",
+                  controller: isEmriController,
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+                    if (result is IsEmirleriModel) {
+                      viewModel.setIrsaliyeNo(result.isemriNo);
+                    }
+                  },
+                ).yetkiVarMi(
+                  (parametreModel.satisSatirdaIsEmriSorulsun ?? false) &&
+                      (editTipi?.satisMi ?? false) &&
+                      (editTipi?.depoTransferiMi ?? false) &&
+                      !yetkiController.transferLokalDatGizlenecekAlanlar("FATURA_BOS_GECILMESIN_ISEMR"),
+                ),
                 Observer(
                   builder: (_) => Row(
                     children: [
@@ -827,6 +844,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
     yapKodController = TextEditingController();
+    isEmriController = TextEditingController();
     teslimTarihiController = TextEditingController();
     kosulController = TextEditingController();
     depoController = TextEditingController();
@@ -864,6 +882,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ekAlan2Controller.text = viewModel.kalemModel.ekalan2 ?? "";
     teslimTarihiController.text = viewModel.kalemModel.teslimTarihi?.toDateString ?? "";
     yapKodController.text = viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
+    isEmriController.text = viewModel.kalemModel.irsaliyeNo ?? "";
     isk1Controller?.text = viewModel.kalemModel.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
     isk1TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
@@ -936,6 +955,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ekAlan1Controller.dispose();
     ekAlan2Controller.dispose();
     yapKodController.dispose();
+    isEmriController.dispose();
     teslimTarihiController.dispose();
     kosulController.dispose();
     depoController.dispose();

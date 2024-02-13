@@ -130,6 +130,28 @@ mixin _$CekSenetListesiViewModel on _CekSenetListesiViewModelBase, Store {
   }
 
   @override
+  void setBaslangicTarihi(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBaslangicTarihi');
+    try {
+      return super.setBaslangicTarihi(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBitisTarihi(String? value) {
+    final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
+        .startAction(name: '_CekSenetListesiViewModelBase.setBitisTarihi');
+    try {
+      return super.setBitisTarihi(value);
+    } finally {
+      _$_CekSenetListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setYeri(String? value) {
     final _$actionInfo = _$_CekSenetListesiViewModelBaseActionController
         .startAction(name: '_CekSenetListesiViewModelBase.setYeri');

@@ -368,7 +368,6 @@ final class YetkiController {
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi ?? "") ?? 0;
 
-
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
   bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStalSil);
@@ -414,6 +413,7 @@ final class YetkiController {
     if (_yetkiModel?.taltekStalKdvDurumu == "H") return false;
     return genellikleKdvHaricMi();
   }
+
   bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
@@ -455,7 +455,7 @@ final class YetkiController {
 
   //* lokal DAT
 
-  bool get transferDatDigerSekmesiGoster => _isTrue(_yetkiModel?.transferDatDigerSekmesiGoster, skipAdmin: true);
+  bool get transferDatDigerSekmesiGoster => _isTrue(_yetkiModel?.transferDatDigerSekmesiGoster);
 
   //TODO Sayfaya parametreleri ekle
   bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
@@ -466,8 +466,8 @@ final class YetkiController {
   String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
   bool get transferLokalDatHarTuruDegismesin => _isTrue(_yetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
 
-  bool get transferLokalDatSiparisBaglantisi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "E" || _yetkiModel?.transferDatSipBagSecenegi == "O", skipAdmin: true);
-  bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "O", skipAdmin: true);
+  bool get transferLokalDatSiparisBaglantisi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "E" || _yetkiModel?.transferDatSipBagSecenegi == "O");
+  bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "O");
 
   DepoList? get transferLokalDatCikisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo).firstOrNull;
   DepoList? get transferLokalDatGirisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanGirisDepo).firstOrNull;

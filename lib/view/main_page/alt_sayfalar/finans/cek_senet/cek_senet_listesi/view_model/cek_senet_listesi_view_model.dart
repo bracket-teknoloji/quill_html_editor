@@ -44,6 +44,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     "Gelecek Hafta": "GELECEK_HAFTA",
     "Gelecek Ay": "GELECEK_AY",
     "Gelecek 3 Ay": "GELECEK_3_AY",
+    "Özel" : "Özel",
   };
 
   @observable
@@ -71,6 +72,12 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   void setSearchText(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
 
   @action
+  void setBaslangicTarihi(String? value) =>  cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(baslangicTarihi: value);
+  
+  @action
+  void setBitisTarihi(String? value) =>  cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(bitisTarihi: value);
+
+  @action
   void setYeri(String? value) {
     cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(yer: value);
     if (value != "C" && value != "T" || value != "E") {
@@ -88,7 +95,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   void setBanka(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
 
   @action
-  void setVadeTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(donemTipi: value);
+  void setVadeTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(donemTipi: value, tarihTipi: value != null ? "V" : null);
 
   @action
   void setDurumu(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(durum: value);

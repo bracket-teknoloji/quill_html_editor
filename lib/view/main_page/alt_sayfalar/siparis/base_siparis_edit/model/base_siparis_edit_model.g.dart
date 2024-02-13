@@ -2300,6 +2300,16 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel muhasebeTanimi(String? muhasebeTanimi);
 
+  KalemModel hedefDepo(int? hedefDepo);
+
+  KalemModel siparisInckeyno(int? siparisInckeyno);
+
+  KalemModel sipInckeyno(int? sipInckeyno);
+
+  KalemModel kalemStoktanKodu(String? kalemStoktanKodu);
+
+  KalemModel muhRefKodu(String? muhRefKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2406,6 +2416,11 @@ abstract class _$KalemModelCWProxy {
     String? teklifNo,
     int? teklifKalemSira,
     String? muhasebeTanimi,
+    int? hedefDepo,
+    int? siparisInckeyno,
+    int? sipInckeyno,
+    String? kalemStoktanKodu,
+    String? muhRefKodu,
   });
 }
 
@@ -2747,6 +2762,23 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(muhasebeTanimi: muhasebeTanimi);
 
   @override
+  KalemModel hedefDepo(int? hedefDepo) => this(hedefDepo: hedefDepo);
+
+  @override
+  KalemModel siparisInckeyno(int? siparisInckeyno) =>
+      this(siparisInckeyno: siparisInckeyno);
+
+  @override
+  KalemModel sipInckeyno(int? sipInckeyno) => this(sipInckeyno: sipInckeyno);
+
+  @override
+  KalemModel kalemStoktanKodu(String? kalemStoktanKodu) =>
+      this(kalemStoktanKodu: kalemStoktanKodu);
+
+  @override
+  KalemModel muhRefKodu(String? muhRefKodu) => this(muhRefKodu: muhRefKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2854,6 +2886,11 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? teklifNo = const $CopyWithPlaceholder(),
     Object? teklifKalemSira = const $CopyWithPlaceholder(),
     Object? muhasebeTanimi = const $CopyWithPlaceholder(),
+    Object? hedefDepo = const $CopyWithPlaceholder(),
+    Object? siparisInckeyno = const $CopyWithPlaceholder(),
+    Object? sipInckeyno = const $CopyWithPlaceholder(),
+    Object? kalemStoktanKodu = const $CopyWithPlaceholder(),
+    Object? muhRefKodu = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3253,6 +3290,26 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.muhasebeTanimi
           // ignore: cast_nullable_to_non_nullable
           : muhasebeTanimi as String?,
+      hedefDepo: hedefDepo == const $CopyWithPlaceholder()
+          ? _value.hedefDepo
+          // ignore: cast_nullable_to_non_nullable
+          : hedefDepo as int?,
+      siparisInckeyno: siparisInckeyno == const $CopyWithPlaceholder()
+          ? _value.siparisInckeyno
+          // ignore: cast_nullable_to_non_nullable
+          : siparisInckeyno as int?,
+      sipInckeyno: sipInckeyno == const $CopyWithPlaceholder()
+          ? _value.sipInckeyno
+          // ignore: cast_nullable_to_non_nullable
+          : sipInckeyno as int?,
+      kalemStoktanKodu: kalemStoktanKodu == const $CopyWithPlaceholder()
+          ? _value.kalemStoktanKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kalemStoktanKodu as String?,
+      muhRefKodu: muhRefKodu == const $CopyWithPlaceholder()
+          ? _value.muhRefKodu
+          // ignore: cast_nullable_to_non_nullable
+          : muhRefKodu as String?,
     );
   }
 }
@@ -3973,13 +4030,18 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       teklifNo: fields[96] as String?,
       teklifKalemSira: fields[97] as int?,
       muhasebeTanimi: fields[99] as String?,
-    )..kalemStoktanKodu = fields[98] as String?;
+      hedefDepo: fields[100] as int?,
+      siparisInckeyno: fields[101] as int?,
+      sipInckeyno: fields[102] as int?,
+      kalemStoktanKodu: fields[98] as String?,
+      muhRefKodu: fields[103] as String?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(100)
+      ..writeByte(104)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4179,7 +4241,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(98)
       ..write(obj.kalemStoktanKodu)
       ..writeByte(99)
-      ..write(obj.muhasebeTanimi);
+      ..write(obj.muhasebeTanimi)
+      ..writeByte(100)
+      ..write(obj.hedefDepo)
+      ..writeByte(101)
+      ..write(obj.siparisInckeyno)
+      ..writeByte(102)
+      ..write(obj.sipInckeyno)
+      ..writeByte(103)
+      ..write(obj.muhRefKodu);
   }
 
   @override
@@ -4711,7 +4781,12 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       teklifNo: json['TEKLIF_NO'] as String?,
       teklifKalemSira: json['TEKLIF_KALEM_SIRA'] as int?,
       muhasebeTanimi: json['MUHASEBE_TANIMI'] as String?,
-    )..kalemStoktanKodu = json['KALEM_STOKTAN_KODU'] as String?;
+      hedefDepo: json['HEDEF_DEPO'] as int?,
+      siparisInckeyno: json['SIPARIS_INCKEYNO'] as int?,
+      sipInckeyno: json['SIP_INCKEYNO'] as int?,
+      kalemStoktanKodu: json['KALEM_STOKTAN_KODU'] as String?,
+      muhRefKodu: json['MUH_REF_KODU'] as String?,
+    );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -4823,5 +4898,9 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('TEKLIF_KALEM_SIRA', instance.teklifKalemSira);
   writeNotNull('KALEM_STOKTAN_KODU', instance.kalemStoktanKodu);
   writeNotNull('MUHASEBE_TANIMI', instance.muhasebeTanimi);
+  writeNotNull('HEDEF_DEPO', instance.hedefDepo);
+  writeNotNull('SIPARIS_INCKEYNO', instance.siparisInckeyno);
+  writeNotNull('SIP_INCKEYNO', instance.sipInckeyno);
+  writeNotNull('MUH_REF_KODU', instance.muhRefKodu);
   return val;
 }

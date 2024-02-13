@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
@@ -27,7 +28,13 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DCE", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
+  CariListesiModel? cariModel;
+
+  @observable
   bool bankaDovizliMi = false;
+
+  @action
+  void setCariModel(CariListesiModel? model) => cariModel = model;
 
   @action
   void setBankaDovizliMi(bool value) => bankaDovizliMi = value;

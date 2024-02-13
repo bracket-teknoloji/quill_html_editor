@@ -65,7 +65,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action
-  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList!= null ? [seriList] : [...kalemModel.seriList!, seriList]);
+  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList!, seriList]);
 
   @action
   void setDovizAdi(String? value) => kalemModel = kalemModel.copyWith(dovizAdi: value);
@@ -90,6 +90,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setKosul(String? value) => kalemModel = kalemModel.copyWith(kosulKodu: value);
+
+  @action
+  void setIrsaliyeNo(String? value) => kalemModel = kalemModel.copyWith(irsaliyeNo: value);
 
   @action
   void setMiktar(double? value) => kalemModel = kalemModel.copyWith(miktar: value);
@@ -125,14 +128,10 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
 
   @action
-  void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(
-        iskonto1OranMi: value,
-      );
+  void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(iskonto1OranMi: value);
 
   @action
-  void changeIskonto1OranMi() => kalemModel = kalemModel.copyWith(
-        iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false),
-      );
+  void changeIskonto1OranMi() => kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action
   void increaseMiktar(TextEditingController controller) {
     kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) + 1);

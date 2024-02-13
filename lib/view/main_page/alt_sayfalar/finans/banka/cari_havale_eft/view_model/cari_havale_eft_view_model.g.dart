@@ -60,6 +60,22 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
     });
   }
 
+  late final _$cariModelAtom =
+      Atom(name: '_CariHavaleEftViewModelBase.cariModel', context: context);
+
+  @override
+  CariListesiModel? get cariModel {
+    _$cariModelAtom.reportRead();
+    return super.cariModel;
+  }
+
+  @override
+  set cariModel(CariListesiModel? value) {
+    _$cariModelAtom.reportWrite(value, super.cariModel, () {
+      super.cariModel = value;
+    });
+  }
+
   late final _$bankaDovizliMiAtom = Atom(
       name: '_CariHavaleEftViewModelBase.bankaDovizliMi', context: context);
 
@@ -86,6 +102,17 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 
   late final _$_CariHavaleEftViewModelBaseActionController =
       ActionController(name: '_CariHavaleEftViewModelBase', context: context);
+
+  @override
+  void setCariModel(CariListesiModel? model) {
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
+        .startAction(name: '_CariHavaleEftViewModelBase.setCariModel');
+    try {
+      return super.setCariModel(model);
+    } finally {
+      _$_CariHavaleEftViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setBankaDovizliMi(bool value) {
@@ -314,6 +341,7 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 bankaListesiRequestModel: ${bankaListesiRequestModel},
+cariModel: ${cariModel},
 bankaDovizliMi: ${bankaDovizliMi}
     ''';
   }
