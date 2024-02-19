@@ -5,6 +5,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -56,6 +57,7 @@ class IslemlerMenuItemConstants<T> {
   NetworkManager get _networkManager => NetworkManager();
   ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
   YetkiController get _yetkiController => YetkiController();
+  ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
   BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
   IslemlerMenuItemConstants({required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
@@ -87,7 +89,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(cekTahsilati);
         islemlerList.add(tahsilatSenedi);
         islemlerList.add(paylas);
-        islemlerList.add(kopyala);
+        islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
         islemlerList.add(cariHareketleri);
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar!);
@@ -178,8 +180,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(faturaBelgeNoDegistir);
+      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
       islemlerList.add(kopyala);
-      islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
     } else if (islemTipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       // islemlerList.add(eBelgeGoruntule);
@@ -187,8 +189,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && !siparisModel.eFaturaMi, eBelgeEslestir);
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && siparisModel.eFaturaMi, eBelgeEslestirmeKaldir);
-      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
       islemlerList.addIfConditionTrue(!siparisModel.uyariMi && !siparisModel.basariliMi && siparisModel.getEditTipiEnum.satisFaturasiMi, eFaturaGonder);
+      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi || siparisModel.hataliMi, durumSorgula);
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
     } else if (islemTipi == IslemTipiEnum.depoTransferi) {
@@ -208,6 +210,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",
         iconData: Icons.copy_outlined,
+        isEnabled: siparisTipi?.eklensinMi,
         onTap: () async => await Get.toNamed(
           islemTipi.route,
           arguments: BaseEditModel(
@@ -409,8 +412,18 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: BaseEditEnum.duzenle)),
       );
   GridItemModel? get stokYazdir => GridItemModel.islemler(title: "Yazdır", iconData: Icons.print_outlined, onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
-  GridItemModel? get seriHareketleri => GridItemModel.islemler(title: "Seri Hareketleri", iconData: Icons.dynamic_form_outlined, onTap: () async => Get.toNamed("/seriHareketleri", arguments: model));
-  GridItemModel? get seriBakiyeleri => GridItemModel.islemler(title: "Seri Bakiye Durumu", iconData: Icons.dynamic_form_outlined, onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model));
+  GridItemModel? get seriHareketleri => GridItemModel.islemler(
+        title: "Seri Hareketleri",
+        isEnabled: _userModel?.stokSeriHar,
+        iconData: Icons.dynamic_form_outlined,
+        onTap: () async => Get.toNamed("/seriHareketleri", arguments: model),
+      );
+  GridItemModel? get seriBakiyeleri => GridItemModel.islemler(
+        title: "Seri Bakiye Durumu",
+        isEnabled: _userModel?.stokSeriHar,
+        iconData: Icons.dynamic_form_outlined,
+        onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model),
+      );
   GridItemModel? get fiyatGor => GridItemModel.islemler(title: "Fiyat Gör", iconData: Icons.monetization_on_outlined, onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model));
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(
@@ -605,17 +618,37 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel? get borcCeki => GridItemModel.islemler(title: "Borç Çeki", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cekBorcTahsilat", arguments: model));
-  GridItemModel? get borcSenedi =>
-      GridItemModel.islemler(title: "Borç Senedi", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model));
-  GridItemModel? get cekTahsilati =>
-      GridItemModel.islemler(title: "Senet tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/senetMusteriTahsilat", arguments: model));
-  GridItemModel? get tahsilatSenedi =>
-      GridItemModel.islemler(title: "Çek Tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cekMusteriTahsilat", arguments: model));
+  GridItemModel? get borcCeki => GridItemModel.islemler(
+        title: "Borç Çeki",
+        isEnabled: _userModel?.finansCekBorc,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/cekBorcTahsilat", arguments: model),
+      );
+  GridItemModel? get borcSenedi => GridItemModel.islemler(
+        title: "Borç Senedi",
+        isEnabled: _userModel?.finansCekBorc,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model),
+      );
+  GridItemModel? get cekTahsilati => GridItemModel.islemler(
+        title: "Senet tahsilatı",
+        isEnabled: _userModel?.tahsilatSenetTahsilat,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/senetMusteriTahsilat", arguments: model),
+      );
+  GridItemModel? get tahsilatSenedi => GridItemModel.islemler(
+        title: "Çek Tahsilatı",
+        isEnabled: _userModel?.tahsilatCekTahsilat,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/cekMusteriTahsilat", arguments: model),
+      );
 
   //* Banka
-  GridItemModel? bankaCariEFTHavale({CariListesiModel? model}) =>
-      GridItemModel.islemler(title: "Cari EFT/Havale", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale", arguments: model));
+  GridItemModel? bankaCariEFTHavale({CariListesiModel? model}) => GridItemModel.islemler(
+        title: "Cari EFT/Havale",
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale", arguments: model),
+      );
   GridItemModel? get bankaHareketleri =>
       GridItemModel.islemler(title: "Banka Hareketleri", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaHareketleri", arguments: model));
 
@@ -631,12 +664,24 @@ class IslemlerMenuItemConstants<T> {
 
   //* Kasa
   GridItemModel? get kasaTransferi => GridItemModel.islemler(title: "Kasalar Arası Transferi", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/kasaTransferi"));
-  GridItemModel? krediKartiTahsilati(dynamic value) =>
-      GridItemModel.islemler(title: "Kredi Kartı Tahsilatı", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value));
-  GridItemModel? nakitTahsilat(dynamic value) =>
-      GridItemModel.islemler(title: "Nakit Tahsilat", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value));
-  GridItemModel? nakitOdeme(dynamic value) =>
-      GridItemModel.islemler(title: "Nakit Ödeme", iconData: Icons.local_atm_outlined, onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value));
+  GridItemModel? krediKartiTahsilati(dynamic value) => GridItemModel.islemler(
+        title: "Kredi Kartı Tahsilatı",
+        isEnabled: _userModel?.tahsilatKKartiTahsilat,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/krediKartiTahsilati", arguments: value),
+      );
+  GridItemModel? nakitTahsilat(dynamic value) => GridItemModel.islemler(
+        title: "Nakit Tahsilat",
+        isEnabled: _userModel?.tahsilatNakitTahsilat,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/nakitTahsilat", arguments: value),
+      );
+  GridItemModel? nakitOdeme(dynamic value) => GridItemModel.islemler(
+        title: "Nakit Ödeme",
+        isEnabled: _userModel?.tahsilatNakitOdeme,
+        iconData: Icons.local_atm_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/nakitOdeme", arguments: value),
+      );
   GridItemModel? get muhtelifTahsilat => GridItemModel.islemler(title: "Muhtelif\nTahsilat", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/muhtelifTahsilat"));
   GridItemModel? get muhtelifOdeme => GridItemModel.islemler(title: "Muhtelif\nÖdeme", iconData: Icons.list_alt_rounded, onTap: () async => await Get.toNamed("/mainPage/muhtelifOdeme"));
   GridItemModel? get kasaHareketleri =>
@@ -730,6 +775,7 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel get cariMusteriSiparisi => GridItemModel.islemler(
         title: "Müşteri Siparişi",
+        isEnabled: _yetkiController.siparisMSKaydet,
         icon: "order",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -743,6 +789,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariSaticiSiparisi => GridItemModel.islemler(
         title: "Satıcı Siparişi",
+        isEnabled: !_yetkiController.siparisSSKaydet,
         icon: "order",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -756,6 +803,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariAlisIrsaliyesi => GridItemModel.islemler(
         title: "Alış İrsaliyesi",
+        isEnabled: _yetkiController.alisIrsEkle,
         icon: "pallet",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -769,6 +817,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariSatisIrsaliyesi => GridItemModel.islemler(
         title: "Satış İrsaliyesi",
+        isEnabled: _yetkiController.satisIrsEkle,
         icon: "forklift",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -782,6 +831,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariAlisFaturasi => GridItemModel.islemler(
         title: "Alış Faturası",
+        isEnabled: _yetkiController.alisFatEkle,
         icon: "pallet",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -794,6 +844,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariSatisFaturasi => GridItemModel.islemler(
         title: "Satış Faturası",
+        isEnabled: _yetkiController.satisFatEkle,
         icon: "forklift",
         onTap: () async {
           if (model is CariListesiModel) {

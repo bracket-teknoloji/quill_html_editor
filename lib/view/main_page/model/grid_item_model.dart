@@ -76,7 +76,7 @@ class GridItemModel {
   }) {
     menuTipi = "IS";
     isEnabled ??= true;
-    if (isEnabled == false) {
+    if (isEnabled != true) {
       color = Colors.grey.withOpacity(0.5);
       onTap = null;
     } else {
@@ -112,13 +112,13 @@ class GridItemModel {
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
       altMenuler?.forEach((element) {
-        if (!element.yetkiKontrol) {
+        if (element.name != null && !element.yetkiKontrol) {
           sayac--;
         }
       });
       final result = sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
       if (name == null) {
-        return sayac != 0;
+        return true;
       }
       return result ?? false;
     } else if (menuTipi == "SR") {
