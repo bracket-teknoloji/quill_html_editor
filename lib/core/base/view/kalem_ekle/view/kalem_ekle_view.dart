@@ -703,6 +703,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ).yetkiVarMi(
                     (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
                         !editTipi.siparisMi &&
+                        !editTipi.talepTeklifMi &&
                         yetkiController.seriUygulamasiAcikMi &&
                         !transferMi,
                   ),
