@@ -12,7 +12,7 @@ part of 'base_profil_parametre_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BaseProfilParametreModel _$BaseProfilParametreModelFromJson(
     Map<String, dynamic> json) {
@@ -34,7 +34,13 @@ mixin _$BaseProfilParametreModel {
       throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
   bool get finansOzelRaporGrafikGoster => throw _privateConstructorUsedError;
+  @Deprecated("message")
   bool get acikTemaMi => throw _privateConstructorUsedError;
+
+  /// 1 ise cihaz varsayılanı
+  /// 2 ise açık
+  /// 3 ise karanlık tema
+  ThemeMode get temaModu => throw _privateConstructorUsedError;
   NetFectDizaynList? get netFectDizaynList =>
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
@@ -64,7 +70,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
-      bool acikTemaMi,
+      @Deprecated("message") bool acikTemaMi,
+      ThemeMode temaModu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -96,6 +103,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? stokSecildigindeYazdir = null,
     Object? finansOzelRaporGrafikGoster = null,
     Object? acikTemaMi = null,
+    Object? temaModu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -152,6 +160,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.acikTemaMi
           : acikTemaMi // ignore: cast_nullable_to_non_nullable
               as bool,
+      temaModu: null == temaModu
+          ? _value.temaModu
+          : temaModu // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -186,7 +198,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
-      bool acikTemaMi,
+      @Deprecated("message") bool acikTemaMi,
+      ThemeMode temaModu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -217,6 +230,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? stokSecildigindeYazdir = null,
     Object? finansOzelRaporGrafikGoster = null,
     Object? acikTemaMi = null,
+    Object? temaModu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -273,6 +287,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.acikTemaMi
           : acikTemaMi // ignore: cast_nullable_to_non_nullable
               as bool,
+      temaModu: null == temaModu
+          ? _value.temaModu
+          : temaModu // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -301,7 +319,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.stokYazdirDizaynVeYaziciHatirla = false,
       this.stokSecildigindeYazdir = false,
       this.finansOzelRaporGrafikGoster = false,
-      this.acikTemaMi = false,
+      @Deprecated("message") this.acikTemaMi = false,
+      this.temaModu = ThemeMode.system,
       this.netFectDizaynList,
       this.yaziciList})
       : super._();
@@ -347,7 +366,15 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   final bool finansOzelRaporGrafikGoster;
   @override
   @JsonKey()
+  @Deprecated("message")
   final bool acikTemaMi;
+
+  /// 1 ise cihaz varsayılanı
+  /// 2 ise açık
+  /// 3 ise karanlık tema
+  @override
+  @JsonKey()
+  final ThemeMode temaModu;
   @override
   final NetFectDizaynList? netFectDizaynList;
   @override
@@ -382,7 +409,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool stokYazdirDizaynVeYaziciHatirla,
       final bool stokSecildigindeYazdir,
       final bool finansOzelRaporGrafikGoster,
-      final bool acikTemaMi,
+      @Deprecated("message") final bool acikTemaMi,
+      final ThemeMode temaModu,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
@@ -415,7 +443,14 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   bool get finansOzelRaporGrafikGoster;
   @override
+  @Deprecated("message")
   bool get acikTemaMi;
+  @override
+
+  /// 1 ise cihaz varsayılanı
+  /// 2 ise açık
+  /// 3 ise karanlık tema
+  ThemeMode get temaModu;
   @override
   NetFectDizaynList? get netFectDizaynList;
   @override

@@ -30,6 +30,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       finansOzelRaporGrafikGoster:
           json['FINANS_OZEL_RAPOR_GRAFIK_GOSTER'] as bool? ?? false,
       acikTemaMi: json['ACIK_TEMA_MI'] as bool? ?? false,
+      temaModu: $enumDecodeNullable(_$ThemeModeEnumMap, json['TEMA_MODU']) ??
+          ThemeMode.system,
       netFectDizaynList: json['NET_FECT_DIZAYN_LIST'] == null
           ? null
           : NetFectDizaynList.fromJson(
@@ -56,6 +58,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
     'STOK_SECILDIGINDE_YAZDIR': instance.stokSecildigindeYazdir,
     'FINANS_OZEL_RAPOR_GRAFIK_GOSTER': instance.finansOzelRaporGrafikGoster,
     'ACIK_TEMA_MI': instance.acikTemaMi,
+    'TEMA_MODU': _$ThemeModeEnumMap[instance.temaModu]!,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -68,3 +71,9 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   writeNotNull('YAZICI_LIST', instance.yaziciList?.toJson());
   return val;
 }
+
+const _$ThemeModeEnumMap = {
+  ThemeMode.system: 'system',
+  ThemeMode.light: 'light',
+  ThemeMode.dark: 'dark',
+};

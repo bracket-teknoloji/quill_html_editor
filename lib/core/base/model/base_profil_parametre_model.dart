@@ -1,3 +1,4 @@
+import "package:flutter/material.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../view/main_page/model/param_model.dart";
@@ -21,7 +22,12 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool stokYazdirDizaynVeYaziciHatirla,
     @Default(false) bool stokSecildigindeYazdir,
     @Default(false) bool finansOzelRaporGrafikGoster,
-    @Default(false) bool acikTemaMi,
+    @Default(false) 
+    @Deprecated("message") final bool acikTemaMi,
+    /// 1 ise cihaz varsayılanı
+    /// 2 ise açık
+    /// 3 ise karanlık tema
+    @Default(ThemeMode.system) ThemeMode temaModu,
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;

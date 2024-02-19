@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../view/add_company/model/account_model.dart";
@@ -204,12 +205,24 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           title: loc(context).rightDrawer.themeChange,
           iconWidget: Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
           onTap: () async {
-            if (Get.isDarkMode) {
-              Get.changeThemeMode(ThemeMode.light);
-            } else {
-              Get.changeThemeMode(ThemeMode.dark);
-            }
-            CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(acikTemaMi: Get.isDarkMode));
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: loc(context).rightDrawer.themeChange,
+              groupValue: CacheManager.getProfilParametre.temaModu,
+              children: [
+                BottomSheetModel(title: "Sistem Varsayılanı", iconWidget: Icons.wb_twilight_outlined, groupValue: ThemeMode.system, value: ThemeMode.system),
+                BottomSheetModel(title: "Açık", iconWidget: Icons.wb_sunny_outlined, groupValue: ThemeMode.light, value: ThemeMode.light),
+                BottomSheetModel(title: "Koyu", iconWidget: Icons.dark_mode_outlined, groupValue: ThemeMode.dark, value: ThemeMode.dark),
+              ],
+            );
+            if (result == null) return;
+            Get.changeThemeMode(result);
+            CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(temaModu: result));
+            // if (Get.isDarkMode) {
+            // Get.changeThemeMode(ThemeMode.light);
+            // } else {
+            //   Get.changeThemeMode(ThemeMode.dark);
+            // }
           },
         ),
         //TODO
