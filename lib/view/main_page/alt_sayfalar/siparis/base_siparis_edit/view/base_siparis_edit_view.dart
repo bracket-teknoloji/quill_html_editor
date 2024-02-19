@@ -144,7 +144,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
-          BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
+        BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -290,7 +290,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               ),
               Observer(
                 builder: (_) => Visibility(
-                  visible: viewModel.isLastPage,
+                  visible: viewModel.isLastPage && kaydetButonuYetki,
                   child: IconButton(
                     onPressed: () async {
                       dialogManager.showAreYouSureDialog(() async {
@@ -471,6 +471,21 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       return true;
     } else {
       return false;
+    }
+  }
+
+  bool get kaydetButonuYetki {
+    if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
+    switch (widget.model.baseEditEnum) {
+      case BaseEditEnum.ekle:
+      case BaseEditEnum.kopyala:
+      case BaseEditEnum.revize:
+      case BaseEditEnum.taslak:
+        return widget.model.editTipiEnum?.eklensinMi ?? false;
+      case BaseEditEnum.duzenle:
+        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
+      default:
+        return false;
     }
   }
 }

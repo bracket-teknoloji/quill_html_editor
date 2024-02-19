@@ -249,7 +249,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
               seceneklerButton(context),
               Observer(
                 builder: (_) => Visibility(
-                  visible: viewModel.isLastPage,
+                  visible: viewModel.isLastPage && kaydetButonuYetki,
                   child: IconButton(
                     onPressed: () async {
                       dialogManager.showAreYouSureDialog(() async {
@@ -744,5 +744,20 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
       },
     );
     return result.data.first;
+  }
+
+  bool get kaydetButonuYetki {
+    if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
+    switch (widget.model.baseEditEnum) {
+      case BaseEditEnum.ekle:
+      case BaseEditEnum.kopyala:
+      case BaseEditEnum.revize:
+      case BaseEditEnum.taslak:
+        return widget.model.editTipiEnum?.eklensinMi ?? false;
+      case BaseEditEnum.duzenle:
+        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
+      default:
+        return false;
+    }
   }
 }

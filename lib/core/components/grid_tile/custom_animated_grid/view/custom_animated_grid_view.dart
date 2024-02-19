@@ -43,9 +43,9 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
     // viewModel.setGridItemModel(result.getList().firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler);
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList());
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler);
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList());
       } else if (widget.islemTipi == IslemTipiEnum.cariSerbest) {
         viewModel.setGridItemModel(getSerbestRaporList(widget.islemTipi));
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
@@ -148,7 +148,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                           viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
                                           viewModel.setGridItemModel(null);
                                           // await Future.delayed(const Duration(milliseconds: 1));
-                                          viewModel.setGridItemModel(item?.altMenuler);
+                                          viewModel.setGridItemModel(item?.altMenuler?.where((element) => element.yetkiKontrol).toList());
                                         } else {
                                           if (item?.route != null && item?.menuTipi != "SR") {
                                             Get.back();

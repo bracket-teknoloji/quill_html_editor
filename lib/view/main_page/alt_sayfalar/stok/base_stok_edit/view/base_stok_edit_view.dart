@@ -79,7 +79,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
               title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
               actions: [
                 Visibility(
-                  visible: widget.model?.baseEditEnum != BaseEditEnum.goruntule,
+                  visible: kaydetButonuYetki,
                   child: IconButton(
                     onPressed: () async {
                       if (validate.isEmpty) {
@@ -159,5 +159,20 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
       validate["Şube Kodu"] = 0;
     }
     return validate;
+  }
+
+  bool get kaydetButonuYetki {
+    if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
+    switch (widget.model?.baseEditEnum) {
+      case BaseEditEnum.ekle:
+      case BaseEditEnum.kopyala:
+      case BaseEditEnum.revize:
+      case BaseEditEnum.taslak:
+        return yetkiController.stokKartiYeniKayit;
+      case BaseEditEnum.duzenle:
+        return yetkiController.stokKartiDuzenleme;
+      default:
+        return false;
+    }
   }
 }

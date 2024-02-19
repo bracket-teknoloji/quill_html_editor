@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -130,7 +131,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   Widget build(BuildContext context) => PopScope(
         canPop: false,
         onPopInvoked: (value) async {
-           if (value) {
+          if (value) {
             return;
           }
           if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
@@ -164,7 +165,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
                   }
                 },
                 icon: const Icon(Icons.save_outlined),
-              ).yetkiVarMi(widget.model?.baseEditEnum != BaseEditEnum.goruntule),
+              ).yetkiVarMi(kaydetButonuYetki),
             ],
             bottom: TabBar(
               tabs: tabs,
@@ -230,5 +231,20 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       }
     }
     return true;
+  }
+
+  bool get kaydetButonuYetki {
+    if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
+    switch (widget.model?.baseEditEnum) {
+      case BaseEditEnum.ekle:
+      case BaseEditEnum.kopyala:
+      case BaseEditEnum.revize:
+      case BaseEditEnum.taslak:
+        return widget.model?.editTipiEnum?.eklensinMi ?? false;
+      case BaseEditEnum.duzenle:
+        return widget.model?.editTipiEnum?.duzenlensinMi ?? false;
+      default:
+        return false;
+    }
   }
 }

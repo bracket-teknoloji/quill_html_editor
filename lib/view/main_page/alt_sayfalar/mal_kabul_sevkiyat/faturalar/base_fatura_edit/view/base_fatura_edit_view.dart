@@ -392,7 +392,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 ),
                 Observer(
                   builder: (_) => Visibility(
-                    visible: viewModel.isLastPage && widget.model.baseEditEnum != BaseEditEnum.goruntule,
+                    visible: viewModel.isLastPage && kaydetButonuYetki,
                     child: IconButton(
                       onPressed: () async {
                         await dialogManager.showAreYouSureDialog(() async {
@@ -626,7 +626,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   dialogManager.showAlertDialog("Lütfen Cari veya Sipariş seçiniz.");
                   return;
                 } else {
-                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(viewModel.baseSiparisEditModel)..pickerBelgeTuru = "MS"..refBelgeTuru = widget.model.editTipiEnum?.rawValue);
+                  final result = await Get.toNamed(
+                    "/mainPage/kalemRehberi",
+                    arguments: SiparislerRequestModel.fromBaseSiparisEditModel(viewModel.baseSiparisEditModel)
+                      ..pickerBelgeTuru = "MS"
+                      ..refBelgeTuru = widget.model.editTipiEnum?.rawValue,
+                  );
                   if (result is List) {
                     List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
                     list = list
@@ -726,6 +731,21 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           )
           .toList();
       viewModel.setKalemList(list);
+    }
+  }
+
+  bool get kaydetButonuYetki {
+    if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
+    switch (widget.model.baseEditEnum) {
+      case BaseEditEnum.ekle:
+      case BaseEditEnum.kopyala:
+      case BaseEditEnum.revize:
+      case BaseEditEnum.taslak:
+        return widget.model.editTipiEnum?.eklensinMi ?? false;
+      case BaseEditEnum.duzenle:
+        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
+      default:
+        return false;
     }
   }
 }
