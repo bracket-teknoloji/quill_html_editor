@@ -212,8 +212,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
                   const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
                   const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.earsivMi == "E"),
-                  dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata))
-                      .yetkiVarMi((model.earsivDurumu == "HAT" || model.efaturaDurumu == "HAT") && (model.efaturaMi == "E" || model.earsivMi == "E")),
+                  dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)).yetkiVarMi(model.hataliMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.taslakMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari))
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
