@@ -841,7 +841,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     child: const Text("Filtreyi Temizle"),
                   ),
                 ),
-                SizedBox(width: UIHelper.midSize),
+                const SizedBox(width: UIHelper.midSize),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () async {

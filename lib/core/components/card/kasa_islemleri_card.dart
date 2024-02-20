@@ -162,7 +162,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
             text: dovizliMi
                 ? (model?.tutar != 0 ? " ${model?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : "")
                 : (model?.dovizTutari != 0 ? " ${model?.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model?.dovizAdi ?? ""}" : ""),
-            style: TextStyle(color: ColorPalette.slateGray, fontSize: UIHelper.midSize),
+            style: const TextStyle(color: ColorPalette.slateGray, fontSize: UIHelper.midSize),
           ),
           TextSpan(
             text: dovizliMi

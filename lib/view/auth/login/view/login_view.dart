@@ -237,7 +237,7 @@ class _LoginViewState extends BaseState<LoginView> {
                           Observer(
                             builder: (_) => Text("${viewModel.baglantiTipi} Sunucu", style: TextStyle(color: theme.colorScheme.primary)),
                           ),
-                          Icon(Icons.expand_more_outlined, size: UIHelper.highSize),
+                          const Icon(Icons.expand_more_outlined, size: UIHelper.highSize),
                         ],
                       ),
                     ),

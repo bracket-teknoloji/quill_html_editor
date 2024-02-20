@@ -215,7 +215,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                         onPressed: () async {
                           dialogManager.showInfoDialog("KDV Tutarları\n${viewModel.model.kdvTutarlariVeOranlari}");
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.open_in_new_outlined,
                           size: UIHelper.highSize,
                         ),

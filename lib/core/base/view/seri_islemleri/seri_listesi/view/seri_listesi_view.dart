@@ -114,7 +114,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                         }
                       },
                       label: const Text("Seri Rehberi"),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.safety_divider,
                         size: UIHelper.midSize * 2,
                       ),
@@ -136,7 +136,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                         }
                       },
                       label: const Text("Seri Girişi"),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.edit_outlined,
                         size: UIHelper.midSize * 2,
                       ),
@@ -146,7 +146,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                     child: ElevatedButton.icon(
                       onPressed: seriNoUret,
                       label: const Text("Seri Üret"),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.add_outlined,
                         size: UIHelper.midSize * 2,
                       ),

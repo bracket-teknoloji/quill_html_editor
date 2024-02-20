@@ -22,7 +22,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
   List get liste => list.where((element) => element.yetkiKontrol).toList();
   @override
   Widget build(BuildContext context) => Drawer(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(UIHelper.highSize),
             bottomRight: Radius.circular(UIHelper.highSize),
@@ -44,9 +44,9 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                   },
                   icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
                 ),
-                contentPadding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
+                contentPadding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
               ),
-              Divider(
+              const Divider(
                 indent: UIHelper.midSize,
                 endIndent: UIHelper.midSize,
               ),

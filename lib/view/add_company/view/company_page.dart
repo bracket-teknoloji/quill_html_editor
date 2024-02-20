@@ -54,7 +54,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
               final AccountResponseModel account = Hive.box("accounts").getAt(index);
               return Card(
                 child: ListTile(
-                  contentPadding: EdgeInsets.only(left: UIHelper.midSize, right: UIHelper.lowSize),
+                  contentPadding: const EdgeInsets.only(left: UIHelper.midSize, right: UIHelper.lowSize),
                   onTap: () {
                     bottomSheetDialogManager.showBottomSheetDialog(
                       context,

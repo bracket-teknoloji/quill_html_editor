@@ -711,7 +711,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     child: const Text("İptal"),
                   ),
                 ),
-                SizedBox(width: UIHelper.lowSize),
+                const SizedBox(width: UIHelper.lowSize),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () async {

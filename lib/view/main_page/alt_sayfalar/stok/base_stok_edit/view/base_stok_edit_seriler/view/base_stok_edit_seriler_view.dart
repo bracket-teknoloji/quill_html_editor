@@ -64,7 +64,7 @@ class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
               ),
             ),
             Text("Seri Bakiye Listesi", style: context.textTheme.titleLarge).paddingAll(UIHelper.lowSize),
-            Divider(
+            const Divider(
               indent: UIHelper.lowSize,
               endIndent: UIHelper.lowSize,
             ),

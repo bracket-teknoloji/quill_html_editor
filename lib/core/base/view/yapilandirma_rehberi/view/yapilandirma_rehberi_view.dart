@@ -76,7 +76,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                             await Future.delayed(const Duration(milliseconds: 50));
                                             viewModel.decrementPage();
                                           },
-                                          child: GridTile(
+                                          child: const GridTile(
                                             child: Center(
                                               child: Icon(
                                                 Icons.arrow_back_ios,
@@ -106,12 +106,12 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                           },
                                           child: GridTile(
                                             header: Text(item?.degerAciklama ?? "").paddingAll(UIHelper.lowSize),
-                                            footer: Text(viewModel.isLastPage ? (item?.yapkod ?? "") : "", style: TextStyle(fontSize: UIHelper.midSize)).paddingAll(UIHelper.lowSize),
+                                            footer: Text(viewModel.isLastPage ? (item?.yapkod ?? "") : "", style: const TextStyle(fontSize: UIHelper.midSize)).paddingAll(UIHelper.lowSize),
                                             child: Visibility(
                                               visible: !viewModel.isLastPage,
                                               child: Container(
                                                 alignment: Alignment.centerRight,
-                                                child: Icon(
+                                                child: const Icon(
                                                   Icons.arrow_forward_ios,
                                                   size: UIHelper.highSize,
                                                 ),

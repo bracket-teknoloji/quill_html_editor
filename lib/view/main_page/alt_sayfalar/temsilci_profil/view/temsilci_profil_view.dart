@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../core/base/model/base_network_mixin.dart";
@@ -89,7 +90,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     Observer(
                       builder: (_) => SlideControllerWidget(
                         title: "Dönem",
-                        childrenTitleList: <String>["Şirket Yılı (${DateTime.now().year})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
+                        childrenTitleList: <String>["Şirket Yılı (${CacheManager.getAnaVeri?.sirketModel?.yil ?? ""})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
                         filterOnChanged: (int? value) => viewModel.setDonemValueList(value ?? 0),
                         childrenValueList: viewModel.donemValueList,
                         groupValue: viewModel.donemValueList.firstWhereOrNull((bool element) => element),

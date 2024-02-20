@@ -673,7 +673,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                     child: const Text("İptal"),
                   ),
                 ),
-                SizedBox(width: UIHelper.lowSize),
+                const SizedBox(width: UIHelper.lowSize),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () async {

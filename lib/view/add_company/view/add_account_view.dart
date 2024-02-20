@@ -72,7 +72,9 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(Icons.info_outline_rounded, color: theme.colorScheme.primary),
-                        const Text(" Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true, style: TextStyle(fontSize: 13)),
+                        Expanded(
+                          child: const Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true, style: TextStyle(fontSize: 13), maxLines: 2).paddingOnly(left: UIHelper.lowSize),
+                        ),
                       ],
                     ).paddingAll(UIHelper.lowSize),
                   ],

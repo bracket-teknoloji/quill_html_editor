@@ -93,9 +93,9 @@ class DialogManager {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(bottom: UIHelper.midSize),
-                      child: const Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                     ),
                     Padding(
                       padding: UIHelper.midPaddingHorizontal,
@@ -125,13 +125,13 @@ class DialogManager {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(bottom: UIHelper.midSize),
-              child: const Text("Uyarı"),
+              child: Text("Uyarı"),
             ),
-            Padding(
+            const Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: const Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
+              child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,

@@ -87,7 +87,7 @@ class AppThemeDark extends AppTheme {
           ),
         ),
         applyElevationOverlayColor: true,
-        bottomSheetTheme: BottomSheetThemeData(
+        bottomSheetTheme: const BottomSheetThemeData(
           elevation: 1,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -164,7 +164,7 @@ class AppThemeDark extends AppTheme {
           behavior: SnackBarBehavior.floating,
         ),
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(horizontal: UIHelper.midSize, vertical: UIHelper.midSize),
+          contentPadding: const EdgeInsets.symmetric(horizontal: UIHelper.midSize, vertical: UIHelper.midSize),
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -178,7 +178,7 @@ class AppThemeDark extends AppTheme {
             borderSide: BorderSide(color: UIHelper.primaryColor),
           ),
         ),
-        buttonBarTheme: ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),
+        buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           systemOverlayStyle: SystemUiOverlayStyle(

@@ -184,7 +184,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                               child: const Text("Temizle"),
                             ),
                           ),
-                          SizedBox(width: UIHelper.midSize),
+                          const SizedBox(width: UIHelper.midSize),
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () {

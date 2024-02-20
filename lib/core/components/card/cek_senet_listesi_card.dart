@@ -70,7 +70,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                     spacing: UIHelper.lowSize,
                     children: [
                       Text(model.belgeNo ?? ""),
-                      Icon(
+                      const Icon(
                         Icons.camera_alt_outlined,
                         size: UIHelper.highSize,
                       ).yetkiVarMi((model.evrakSayisi ?? 0) > 0),

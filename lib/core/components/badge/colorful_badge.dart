@@ -18,7 +18,7 @@ class ColorfulBadge extends StatefulWidget {
 class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
-        textStyle: TextStyle(fontSize: UIHelper.midSize),
+        textStyle: const TextStyle(fontSize: UIHelper.midSize),
         label: InkWell(
           onTap: widget.onTap,
           child: widget.label,

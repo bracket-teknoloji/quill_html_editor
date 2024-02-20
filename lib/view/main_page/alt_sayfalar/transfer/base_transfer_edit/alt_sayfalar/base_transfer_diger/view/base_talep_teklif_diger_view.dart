@@ -50,7 +50,7 @@ class _BaseTransferDigerViewState extends BaseState<BaseTransferDigerView> {
                 isEnabled: enable,
                 minHeight: height,
                 hintTextAlign: TextAlign.start,
-                padding: EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
+                padding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
                 inputAction: InputAction.newline,
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.background,

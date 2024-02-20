@@ -141,9 +141,9 @@ class BottomSheetDialogManager {
                                           : null,
                                     ),
                                     if (index != children2!.length - 1)
-                                      Padding(
+                                      const Padding(
                                         padding: UIHelper.lowPaddingVertical,
-                                        child: const Divider(),
+                                        child: Divider(),
                                       )
                                     else
                                       Container(),
@@ -241,9 +241,9 @@ class BottomSheetDialogManager {
                                                       ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null).sizedBoxMi,
                                                     ).paddingSymmetric(horizontal: UIHelper.midSize),
                                                     if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
-                                                      Padding(
+                                                      const Padding(
                                                         padding: UIHelper.lowPaddingVertical,
-                                                        child: const Divider(),
+                                                        child: Divider(),
                                                       )
                                                     else
                                                       Container(),
@@ -338,9 +338,9 @@ class BottomSheetDialogManager {
                                   ),
                                 ),
                                 if (index != children.length - 1)
-                                  Padding(
+                                  const Padding(
                                     padding: UIHelper.lowPaddingVertical,
-                                    child: const Divider(),
+                                    child: Divider(),
                                   )
                                 else
                                   Container(),

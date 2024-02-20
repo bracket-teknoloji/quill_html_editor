@@ -58,7 +58,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
 
   @observable
   TemsilciProfilRequestModel temsilciProfilRequestModel = TemsilciProfilRequestModel()
-    ..donemTipi = "BY"
+    ..donemTipi = "SY"
     ..satisIrsDahil = "H"
     ..iadeDurumu = "H"
     ..kdvDahil = "H";

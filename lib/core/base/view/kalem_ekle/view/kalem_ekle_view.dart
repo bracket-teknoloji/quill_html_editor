@@ -749,7 +749,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ],
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                 ),
-                Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
+                const Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)

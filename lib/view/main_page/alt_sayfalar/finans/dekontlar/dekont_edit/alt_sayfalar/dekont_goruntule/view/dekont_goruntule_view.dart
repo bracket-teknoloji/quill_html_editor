@@ -69,7 +69,7 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                        Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                        const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
                         Text("${viewModel.dekontMap?.values.toList()[index]}").paddingAll(UIHelper.lowSize),
                         // Text("${viewModel.getBilgi(index)} $mainCurrency").paddingAll(UIHelper.lowSize),
                       ],
@@ -94,13 +94,13 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                             children: [
                               Text(item.hesapAdi ?? "", maxLines: 1),
                               if (index != viewModel.dekontListesi.length - 1)
-                                Icon(
+                                const Icon(
                                   Icons.arrow_forward_ios,
                                   size: UIHelper.highSize,
                                 ),
                               if (index != viewModel.dekontListesi.length - 1) Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                               if (index != viewModel.dekontListesi.length - 1)
-                                Icon(
+                                const Icon(
                                   Icons.arrow_forward_ios,
                                   size: UIHelper.highSize,
                                 ),

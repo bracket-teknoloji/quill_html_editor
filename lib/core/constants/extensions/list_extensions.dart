@@ -11,7 +11,7 @@ import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 extension ListExtension<T> on List<T> {
   List<Padding> get withPadding => map(
         (e) => Padding(
-          padding: EdgeInsets.all(UIHelper.lowSize),
+          padding: const EdgeInsets.all(UIHelper.lowSize),
           child: e as Widget,
         ),
       ).toList();

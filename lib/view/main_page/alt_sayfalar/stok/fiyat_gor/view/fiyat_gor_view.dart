@@ -140,7 +140,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
                                           padding: UIHelper.lowPadding,
-                                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 3,
                                             crossAxisSpacing: UIHelper.midSize,
                                             mainAxisSpacing: UIHelper.midSize,
@@ -161,7 +161,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                                                  Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                                                  const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
                                                   Text("${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
@@ -190,7 +190,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           physics: const NeverScrollableScrollPhysics(),
                                           shrinkWrap: true,
                                           padding: UIHelper.lowPadding,
-                                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 3,
                                             crossAxisSpacing: UIHelper.midSize,
                                             mainAxisSpacing: UIHelper.midSize,
@@ -211,7 +211,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
-                                                  Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
+                                                  const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
                                                   Text("${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),

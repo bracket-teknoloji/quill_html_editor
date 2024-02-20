@@ -25,7 +25,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(UIHelper.highSize),
             bottomLeft: Radius.circular(UIHelper.highSize),
@@ -63,7 +63,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   ).marginOnly(bottom: UIHelper.midSize),
                 ],
               ),
-              Divider(
+              const Divider(
                 indent: UIHelper.midSize,
                 endIndent: UIHelper.midSize,
               ),
@@ -218,15 +218,8 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             if (result == null) return;
             Get.changeThemeMode(result);
             CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(temaModu: result));
-            // if (Get.isDarkMode) {
-            // Get.changeThemeMode(ThemeMode.light);
-            // } else {
-            //   Get.changeThemeMode(ThemeMode.dark);
-            // }
           },
         ),
-        //TODO
-        // .isDebug(),
         DrawerModel(
           title: loc(context).rightDrawer.releaseNotes,
           iconWidget: Icons.new_releases_outlined,

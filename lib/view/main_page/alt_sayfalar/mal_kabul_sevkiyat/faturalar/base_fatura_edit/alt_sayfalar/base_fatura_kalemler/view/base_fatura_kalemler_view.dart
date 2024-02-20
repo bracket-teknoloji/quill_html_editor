@@ -311,7 +311,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
                 //TODO efatura_stok değişmiyor
-              );
+              ); 
 
               viewModel.updateKalemList();
             }

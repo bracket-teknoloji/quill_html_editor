@@ -147,7 +147,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                   child: const Text("Tümünü Bırak"),
                 ),
               ),
-              SizedBox(width: UIHelper.lowSize),
+              const SizedBox(width: UIHelper.lowSize),
               Expanded(
                 child: ElevatedButton(
                   onPressed: viewModel.addAllSelectedKalem,
