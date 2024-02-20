@@ -5,6 +5,8 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 import "package:share_plus/share_plus.dart";
 
@@ -68,7 +70,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(fiyatGor);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
-      islemlerList.addAll(raporlar!);
+      islemlerList.addAll(raporlar ?? []);
     } else if (islemTipi == IslemTipiEnum.cari) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
@@ -92,27 +94,27 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
         islemlerList.add(cariHareketleri);
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
-        islemlerList.addAll(raporlar!);
+        islemlerList.addAll(raporlar ?? []);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
         islemlerList.add(siparisPDFGoruntule);
-        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, satisIrsaliyeOlustur);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(siparisCariKoduDegistir);
         islemlerList.add(belgeNoDegistir);
+        islemlerList.add(siparisCariKoduDegistir);
+        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
-        islemlerList.addAll(raporlar!);
+        islemlerList.addAll(raporlar ?? []);
       }
     } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
       islemlerList.add(cariKarti);
       islemlerList.add(cariHareketleri);
-      islemlerList.addAll(raporlar!);
+      islemlerList.addAll(raporlar ?? []);
       islemlerList.add(cariIslemleri);
       islemlerList.add(paylas);
     } else if (islemTipi == IslemTipiEnum.kasa) {
@@ -176,11 +178,10 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemTipi == IslemTipiEnum.fatura) {
-      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(faturaBelgeNoDegistir);
-      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
+      // islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
       islemlerList.add(kopyala);
     } else if (islemTipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -210,7 +211,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",
         iconData: Icons.copy_outlined,
-        isEnabled: siparisTipi?.eklensinMi,
+        isEnabled: (siparisTipi?.eklensinMi ?? false) && (siparisTipi?.kopyalanabilirMi ?? false),
         onTap: () async => await Get.toNamed(
           islemTipi.route,
           arguments: BaseEditModel(
@@ -228,6 +229,7 @@ class IslemlerMenuItemConstants<T> {
       if (siparisModel.tipi != 1) {
         return GridItemModel.islemler(
           title: "Belgeyi Kapat",
+          isEnabled: siparisTipi?.belgeKapatabilirMi,
           iconData: Icons.lock_outline,
           onTap: () async {
             bool? result;
@@ -245,6 +247,7 @@ class IslemlerMenuItemConstants<T> {
       } else {
         return GridItemModel.islemler(
           title: "Belgeyi Aç",
+          isEnabled: AccountModel.instance.admin == "E",
           iconData: Icons.lock_open_outlined,
           onTap: () async {
             bool? result;
@@ -379,6 +382,7 @@ class IslemlerMenuItemConstants<T> {
   BuildContext get context => Get.context!;
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
         title: "PDF Görüntüle",
+        isEnabled: (model as BaseSiparisEditModel).getEditTipiEnum?.yazdirilsinMi,
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
@@ -455,6 +459,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? cariKoduDegistir(String? cariKodu) => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
+        isEnabled: siparisTipi?.cariKoduDegisirMi,
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
@@ -553,8 +558,8 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get siparisCariKoduDegistir => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
+        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi && (siparisTipi?.cariKoduDegisirMi ?? false),
         iconData: Icons.people_alt_outlined,
-        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi,
         onTap: () async {
           final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
           final BaseSiparisEditModel newModel = BaseSiparisEditModel.cariKoduDegistir(siparisModel);
@@ -752,6 +757,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get cariSatisTeklifi => GridItemModel.islemler(
         title: "Satış Teklifi",
         icon: "offer",
+        isEnabled: _yetkiController.satisTeklifiEkle,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
@@ -764,6 +770,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get cariSatisTalebi => GridItemModel.islemler(
         title: "Satış Talebi",
         icon: "offer",
+        isEnabled: _yetkiController.satisTalebiEkle,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
@@ -789,7 +796,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get cariSaticiSiparisi => GridItemModel.islemler(
         title: "Satıcı Siparişi",
-        isEnabled: !_yetkiController.siparisSSKaydet,
+        isEnabled: _yetkiController.siparisSSKaydet,
         icon: "order",
         onTap: () async {
           if (model is CariListesiModel) {
@@ -879,7 +886,7 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            final kalemler = await Get.toNamed("mainPage/kalemRehberi", arguments: siparisModel);
+            final kalemler = await Get.toNamed("mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(siparisModel));
             if (kalemler != null && kalemler is List<KalemModel>) {
               final List<KalemModel> newKalemler = kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
               final TextEditingController controller = TextEditingController();
@@ -950,6 +957,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get talTekRevizeEt => GridItemModel.islemler(
         title: "Revize Et",
         iconData: Icons.app_registration_outlined,
+        isEnabled: siparisTipi?.eklensinMi,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -959,6 +967,7 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel get alistanSatisFaturasiOlustur => GridItemModel.islemler(
         title: "Satış Faturası Oluştur",
+        isEnabled: siparisTipi?.eklensinMi,
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
@@ -972,6 +981,7 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
         title: "Satış İrsaliyesi Oluştur",
+        isEnabled: siparisTipi?.satisMi == true ? EditTipiEnum.satisIrsaliye.eklensinMi : EditTipiEnum.alisIrsaliye.eklensinMi,
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
@@ -1014,6 +1024,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get siparistenFaturaOlustur => GridItemModel.islemler(
         title: "Fatura Oluştur (Siparişten)",
         iconData: Icons.list_alt_outlined,
+        isEnabled: siparisTipi?.satisMi == true ? EditTipiEnum.satisFatura.eklensinMi : EditTipiEnum.alisFatura.eklensinMi,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -1112,7 +1123,7 @@ class IslemlerMenuItemConstants<T> {
   }
 
   Future<List<KalemModel>?> getKalemRehberi(BaseSiparisEditModel model) async {
-    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: model..belgeTuru = "MS");
+    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(model));
     if (result is List) {
       final List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
       return list

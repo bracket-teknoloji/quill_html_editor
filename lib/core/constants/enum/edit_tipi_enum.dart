@@ -182,6 +182,95 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get yazdirilsinMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+        return yetkiController.yazdirmaMusSip;
+      case EditTipiEnum.satici:
+        return yetkiController.yazdirmaSaticiSip;
+      case EditTipiEnum.satisFatura:
+        return yetkiController.yazdirmaSaticiSip;
+      case EditTipiEnum.satisIrsaliye:
+        return yetkiController.yazdirmaSatisIrs;
+      case EditTipiEnum.alisFatura:
+        return yetkiController.yazdirmaAlisFat;
+      case EditTipiEnum.alisIrsaliye:
+        return yetkiController.yazdirmaAlisIrs;
+      case EditTipiEnum.satisTeklifi:
+        return yetkiController.yazdirmaSatisTeklifi;
+      case EditTipiEnum.satisTalebi:
+        return yetkiController.yazdirmaSatisTalebi;
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.yazdirmaDepoTransferi;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.yazdirmaAmbarGirisi;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.yazdirmaAmbarCikisi;
+      case EditTipiEnum.alisTalebi:
+        return false;
+    }
+  }
+
+  bool get kopyalanabilirMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+        return yetkiController.kopyalaMusSip;
+      case EditTipiEnum.alisTalebi:
+        return yetkiController.kopyalaAlisTalebi;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.kopyalaAmbarGirisi;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.kopyalaAmbarCikisi;
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+        return false;
+    }
+  }
+
+  bool get cariKoduDegisirMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+        return yetkiController.cariKoduDegistirMusSip;
+      case EditTipiEnum.satici:
+        return yetkiController.cariKoduDegistirSaticiSip;
+      case EditTipiEnum.satisFatura:
+        return yetkiController.cariKoduDegistirSaticiSip;
+      case EditTipiEnum.satisIrsaliye:
+        return yetkiController.cariKoduDegistirSatisIrs;
+      case EditTipiEnum.alisFatura:
+        return yetkiController.cariKoduDegistirAlisFat;
+      case EditTipiEnum.alisIrsaliye:
+        return yetkiController.cariKoduDegistirAlisIrs;
+      case EditTipiEnum.satisTeklifi:
+        return yetkiController.cariKoduDegistirSatisTeklifi;
+      case EditTipiEnum.alisTalebi:
+        return yetkiController.cariKoduDegistirAlisTalebi;
+      case EditTipiEnum.satisTalebi:
+        return yetkiController.cariKoduDegistirSatisTalebi;
+      case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.ambarCikisi:
+        return false;
+    }
+  }
+
+  bool get belgeKapatabilirMi {
+    switch (this) {
+      case EditTipiEnum.musteri:
+        return yetkiController.belgeKapatMusSip;
+      case EditTipiEnum.satici:
+        return yetkiController.belgeKapatSaticiSip;
+      default:
+        return false;
+    }
+  }
+
   bool get satisMi {
     switch (this) {
       case EditTipiEnum.musteri:

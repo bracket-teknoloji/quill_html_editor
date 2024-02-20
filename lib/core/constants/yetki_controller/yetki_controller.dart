@@ -483,4 +483,39 @@ final class YetkiController {
   bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
   bool get uretimIsEmriDuzenle => _isTrue(_yetkiModel?.uretimIsEmriDuzelt);
   bool get uretimIsEmriSil => _isTrue(_yetkiModel?.uretimIsEmriSil);
+
+  //! Yazdırma
+  bool get yazdirmaMusSip => _isTrue(_yetkiModel?.yazdirmaMusSip);
+  bool get yazdirmaSaticiSip => _isTrue(_yetkiModel?.yazdirmaSaticiSip);
+  bool get yazdirmaAlisFat => _isTrue(_yetkiModel?.yazdirmaAlisFat);
+  bool get yazdirmaSatisFat => _isTrue(_yetkiModel?.yazdirmaSatisFat);
+  bool get yazdirmaAlisIrs => _isTrue(_yetkiModel?.yazdirmaAlisIrs);
+  bool get yazdirmaSatisIrs => _isTrue(_yetkiModel?.yazdirmaSatisIrs);
+  bool get yazdirmaSatisTeklifi => _isTrue(_yetkiModel?.yazdirmaSatisTeklifi);
+  bool get yazdirmaSatisTalebi => _isTrue(_yetkiModel?.yazdirmaSatisTalebi);
+  bool get yazdirmaDepoTransferi => _isTrue(_yetkiModel?.yazdirmaDat);
+  bool get yazdirmaAmbarGirisi => _isTrue(_yetkiModel?.yazdirmaAmbarGiris);
+  bool get yazdirmaAmbarCikisi => _isTrue(_yetkiModel?.yazdirmaAmbarCikis);
+
+  //! Kopyala
+  bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
+  bool get kopyalaAlisTalebi => _isTrue(_yetkiModel?.taltekAtalBelgeKopyala);
+  bool get kopyalaAmbarGirisi => _isTrue(_yetkiModel?.transferAgBelgeKopyala);
+  bool get kopyalaAmbarCikisi => _isTrue(_yetkiModel?.transferAcBelgeKopyala);
+
+  //! Cari Kodu Değiştir
+  bool get cariKoduDegistirMusSip => _isTrue(_yetkiModel?.siparisMusSipCariKoduDegistir);
+  bool get cariKoduDegistirSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSipCariKoduDegistir);
+  bool get cariKoduDegistirAlisFat => _isTrue(_yetkiModel?.malKabulAlisFatCariKoduDegistir);
+  bool get cariKoduDegistirSatisFat => _isTrue(_yetkiModel?.sevkiyatSatisFatCariKoduDegistir);
+  bool get cariKoduDegistirAlisIrs => _isTrue(_yetkiModel?.malKabulAlisIrsCariKoduDegistir);
+  bool get cariKoduDegistirSatisIrs => _isTrue(_yetkiModel?.sevkiyatSatisIrsCariKoduDegistir);
+  bool get cariKoduDegistirSatisTeklifi => _isTrue(_yetkiModel?.taltekStekCariKoduDegistir);
+  bool get cariKoduDegistirSatisTalebi => _isTrue(_yetkiModel?.taltekStalCariKoduDegistir);
+  bool get cariKoduDegistirAlisTalebi => _isTrue(_yetkiModel?.taltekAtalCariKoduDegistir);
+
+  //! Kapatma İşlemi
+  bool get belgeKapatMusSip => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
+  bool get belgeKapatSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
+
 }
