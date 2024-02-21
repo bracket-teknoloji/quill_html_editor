@@ -54,6 +54,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     String? tcmbBankaKodu,
     String? tcmbSubeKodu,
     List<DekontKalemler>? kalemler,
+    String? hedefCariKodu,
   }) = _TahsilatRequestModel;
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
@@ -101,6 +102,16 @@ class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
     @JsonKey(includeToJson: false, includeFromJson: false) String? dovizTipiAdi,
     @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
     @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi,
+    String? cariKodu,
+    String? dekontIslemTuru,
+    String? dekontSeri,
+    String? guid,
+    String? hedefAciklama,
+    String? hedefCariKodu,
+    String? islemModulu,
+    String? tag,
+    int? vadeGunu,
+    bool? yeniKayit,
   }) = _DekontKalemler;
 
   factory DekontKalemler.fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);

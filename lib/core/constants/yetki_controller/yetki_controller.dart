@@ -83,7 +83,12 @@ final class YetkiController {
   //! STOK
 
   bool get stokListesi => _isTrue(_yetkiModel?.stokStokListesi);
+  bool get stokFiyatGorEkrani => _isTrue(_yetkiModel?.stokFiyatGorEkrani);
   bool get stokFiyatOzeti => _isTrue(_yetkiModel?.stokFiyatOzeti);
+
+  //* Seri İşlemleri
+  bool get seriIslemleri => _isTrue(_paramModel?.seriUygulamasiAcik);
+  // bool get seriIslemEkle => _isTrue(_yetkiModel?.kaydet)
 
   //* Stok Kartı
   bool get stokKarti => _isTrue(_yetkiModel?.stokStokKarti);
@@ -485,6 +490,7 @@ final class YetkiController {
   bool get uretimIsEmriSil => _isTrue(_yetkiModel?.uretimIsEmriSil);
 
   //! Yazdırma
+  bool get yazdirmaStokEtiketi => _isTrue(_yetkiModel?.yazdirmaStokEtiketi);
   bool get yazdirmaMusSip => _isTrue(_yetkiModel?.yazdirmaMusSip);
   bool get yazdirmaSaticiSip => _isTrue(_yetkiModel?.yazdirmaSaticiSip);
   bool get yazdirmaAlisFat => _isTrue(_yetkiModel?.yazdirmaAlisFat);
@@ -496,6 +502,7 @@ final class YetkiController {
   bool get yazdirmaDepoTransferi => _isTrue(_yetkiModel?.yazdirmaDat);
   bool get yazdirmaAmbarGirisi => _isTrue(_yetkiModel?.yazdirmaAmbarGiris);
   bool get yazdirmaAmbarCikisi => _isTrue(_yetkiModel?.yazdirmaAmbarCikis);
+  bool get yazdirmaCariHareket => _isTrue(_yetkiModel?.yazdirmaCariHareket);
 
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
@@ -517,5 +524,4 @@ final class YetkiController {
   //! Kapatma İşlemi
   bool get belgeKapatMusSip => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
   bool get belgeKapatSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
-
 }

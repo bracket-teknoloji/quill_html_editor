@@ -131,7 +131,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
         ],
       );
 
-  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+  Widget fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
           if (viewModel.stokListesiModel == null) {

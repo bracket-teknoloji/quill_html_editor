@@ -260,7 +260,15 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                       title: loc(context).generalStrings.actions,
                                       onTap: () async {
                                         Get.back();
-                                        await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(viewModel.cariHareketleriList?[index]));
+                                        await dialogManager.showCariHareketleriGridViewDialog(
+                                          CariListesiModel.fromCariHareketleriModel(viewModel.cariHareketleriList?[index]),
+                                          onSelected: (value) async {
+                                            if (value) {
+                                              viewModel.setCariHareketleri(null);
+                                              return getData().then((value) => viewModel.setCariHareketleri(value));
+                                            }
+                                          },
+                                        );
                                       },
                                     ),
                                     BottomSheetModel(

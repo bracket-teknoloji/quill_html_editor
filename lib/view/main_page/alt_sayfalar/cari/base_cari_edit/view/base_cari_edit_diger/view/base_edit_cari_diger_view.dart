@@ -90,7 +90,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     kod5Controller = TextEditingController(text: viewModel.model?.kod5Tanimi);
     bilgiController = TextEditingController(text: viewModel.model?.bilgi);
     subeController = TextEditingController(text: viewModel.model?.subeKodu);
-    konumController = TextEditingController(text: viewModel.model?.enlem == null ? "" : "${viewModel.model?.enlem}, ${viewModel.model?.boylam}");
+    konumController = TextEditingController(text: viewModel.model?.enlem == null ? "" : "${viewModel.model?.enlem?.toStringAsFixed(5)}, ${viewModel.model?.boylam?.toStringAsFixed(5)}");
     kilitController = TextEditingController(text: viewModel.kilitMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.kilit)?.key ?? "");
     bagliCariController = TextEditingController(text: viewModel.model?.bagliCariAciklama);
     kosulKoduController = TextEditingController(text: viewModel.model?.kosulKoduAciklama);
@@ -441,7 +441,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (viewModel.model?.enlem, viewModel.model?.boylam));
                 if (result is LatLng) {
                   viewModel.changeKonum((result.latitude, result.longitude));
-                  konumController.text = "${result.latitude}, ${result.longitude}";
+                  konumController.text = "${result.latitude.toStringAsFixed(5)}, ${result.longitude.toStringAsFixed(5)}";
                 }
               },
             ).isDebug(),

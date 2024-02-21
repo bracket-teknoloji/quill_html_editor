@@ -156,6 +156,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
               "/mainPage/cariEdit",
               arguments: BaseEditModel(
                 baseEditEnum: BaseEditEnum.ekle,
+                editTipiEnum: EditTipiEnum.cari,
                 model: CariListesiModel(),
                 siradakiKod: siradakiKod,
               ),

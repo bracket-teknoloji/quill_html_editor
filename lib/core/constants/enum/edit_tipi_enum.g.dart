@@ -37,6 +37,8 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         return EditTipiEnum.ambarGirisi;
       case 11:
         return EditTipiEnum.ambarCikisi;
+      case 12:
+        return EditTipiEnum.cari;
       default:
         return EditTipiEnum.musteri;
     }
@@ -80,6 +82,9 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         break;
       case EditTipiEnum.ambarCikisi:
         writer.writeByte(11);
+        break;
+      case EditTipiEnum.cari:
+        writer.writeByte(12);
         break;
     }
   }

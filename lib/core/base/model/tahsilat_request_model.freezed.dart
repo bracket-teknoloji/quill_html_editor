@@ -111,6 +111,8 @@ mixin _$TahsilatRequestModel {
   List<DekontKalemler>? get kalemler => throw _privateConstructorUsedError;
   set kalemler(List<DekontKalemler>? value) =>
       throw _privateConstructorUsedError;
+  String? get hedefCariKodu => throw _privateConstructorUsedError;
+  set hedefCariKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -167,7 +169,8 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       String? iban,
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
-      List<DekontKalemler>? kalemler});
+      List<DekontKalemler>? kalemler,
+      String? hedefCariKodu});
 }
 
 /// @nodoc
@@ -227,6 +230,7 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? tcmbBankaKodu = freezed,
     Object? tcmbSubeKodu = freezed,
     Object? kalemler = freezed,
+    Object? hedefCariKodu = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -401,6 +405,10 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.kalemler
           : kalemler // ignore: cast_nullable_to_non_nullable
               as List<DekontKalemler>?,
+      hedefCariKodu: freezed == hedefCariKodu
+          ? _value.hedefCariKodu
+          : hedefCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -456,7 +464,8 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       String? iban,
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
-      List<DekontKalemler>? kalemler});
+      List<DekontKalemler>? kalemler,
+      String? hedefCariKodu});
 }
 
 /// @nodoc
@@ -513,6 +522,7 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? tcmbBankaKodu = freezed,
     Object? tcmbSubeKodu = freezed,
     Object? kalemler = freezed,
+    Object? hedefCariKodu = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -687,6 +697,10 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.kalemler
           : kalemler // ignore: cast_nullable_to_non_nullable
               as List<DekontKalemler>?,
+      hedefCariKodu: freezed == hedefCariKodu
+          ? _value.hedefCariKodu
+          : hedefCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -737,7 +751,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.iban,
       this.tcmbBankaKodu,
       this.tcmbSubeKodu,
-      this.kalemler})
+      this.kalemler,
+      this.hedefCariKodu})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -831,6 +846,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   String? tcmbSubeKodu;
   @override
   List<DekontKalemler>? kalemler;
+  @override
+  String? hedefCariKodu;
 
   @JsonKey(ignore: true)
   @override
@@ -892,7 +909,8 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? iban,
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
-      List<DekontKalemler>? kalemler}) = _$TahsilatRequestModelImpl;
+      List<DekontKalemler>? kalemler,
+      String? hedefCariKodu}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1032,6 +1050,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   List<DekontKalemler>? get kalemler;
   set kalemler(List<DekontKalemler>? value);
   @override
+  String? get hedefCariKodu;
+  set hedefCariKodu(String? value);
+  @override
   @JsonKey(ignore: true)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1109,6 +1130,26 @@ mixin _$DekontKalemler {
   String? get depoAdi => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   set depoAdi(String? value) => throw _privateConstructorUsedError;
+  String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get dekontIslemTuru => throw _privateConstructorUsedError;
+  set dekontIslemTuru(String? value) => throw _privateConstructorUsedError;
+  String? get dekontSeri => throw _privateConstructorUsedError;
+  set dekontSeri(String? value) => throw _privateConstructorUsedError;
+  String? get guid => throw _privateConstructorUsedError;
+  set guid(String? value) => throw _privateConstructorUsedError;
+  String? get hedefAciklama => throw _privateConstructorUsedError;
+  set hedefAciklama(String? value) => throw _privateConstructorUsedError;
+  String? get hedefCariKodu => throw _privateConstructorUsedError;
+  set hedefCariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get islemModulu => throw _privateConstructorUsedError;
+  set islemModulu(String? value) => throw _privateConstructorUsedError;
+  String? get tag => throw _privateConstructorUsedError;
+  set tag(String? value) => throw _privateConstructorUsedError;
+  int? get vadeGunu => throw _privateConstructorUsedError;
+  set vadeGunu(int? value) => throw _privateConstructorUsedError;
+  bool? get yeniKayit => throw _privateConstructorUsedError;
+  set yeniKayit(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1152,7 +1193,17 @@ abstract class $DekontKalemlerCopyWith<$Res> {
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi});
+      @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi,
+      String? cariKodu,
+      String? dekontIslemTuru,
+      String? dekontSeri,
+      String? guid,
+      String? hedefAciklama,
+      String? hedefCariKodu,
+      String? islemModulu,
+      String? tag,
+      int? vadeGunu,
+      bool? yeniKayit});
 }
 
 /// @nodoc
@@ -1196,6 +1247,16 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
     Object? dovizTipiAdi = freezed,
     Object? exportAdi = freezed,
     Object? depoAdi = freezed,
+    Object? cariKodu = freezed,
+    Object? dekontIslemTuru = freezed,
+    Object? dekontSeri = freezed,
+    Object? guid = freezed,
+    Object? hedefAciklama = freezed,
+    Object? hedefCariKodu = freezed,
+    Object? islemModulu = freezed,
+    Object? tag = freezed,
+    Object? vadeGunu = freezed,
+    Object? yeniKayit = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -1310,6 +1371,46 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
           ? _value.depoAdi
           : depoAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontIslemTuru: freezed == dekontIslemTuru
+          ? _value.dekontIslemTuru
+          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontSeri: freezed == dekontSeri
+          ? _value.dekontSeri
+          : dekontSeri // ignore: cast_nullable_to_non_nullable
+              as String?,
+      guid: freezed == guid
+          ? _value.guid
+          : guid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefAciklama: freezed == hedefAciklama
+          ? _value.hedefAciklama
+          : hedefAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefCariKodu: freezed == hedefCariKodu
+          ? _value.hedefCariKodu
+          : hedefCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vadeGunu: freezed == vadeGunu
+          ? _value.vadeGunu
+          : vadeGunu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yeniKayit: freezed == yeniKayit
+          ? _value.yeniKayit
+          : yeniKayit // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -1352,7 +1453,17 @@ abstract class _$$DekontKalemlerImplCopyWith<$Res>
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi});
+      @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi,
+      String? cariKodu,
+      String? dekontIslemTuru,
+      String? dekontSeri,
+      String? guid,
+      String? hedefAciklama,
+      String? hedefCariKodu,
+      String? islemModulu,
+      String? tag,
+      int? vadeGunu,
+      bool? yeniKayit});
 }
 
 /// @nodoc
@@ -1394,6 +1505,16 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
     Object? dovizTipiAdi = freezed,
     Object? exportAdi = freezed,
     Object? depoAdi = freezed,
+    Object? cariKodu = freezed,
+    Object? dekontIslemTuru = freezed,
+    Object? dekontSeri = freezed,
+    Object? guid = freezed,
+    Object? hedefAciklama = freezed,
+    Object? hedefCariKodu = freezed,
+    Object? islemModulu = freezed,
+    Object? tag = freezed,
+    Object? vadeGunu = freezed,
+    Object? yeniKayit = freezed,
   }) {
     return _then(_$DekontKalemlerImpl(
       aciklama: freezed == aciklama
@@ -1508,6 +1629,46 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
           ? _value.depoAdi
           : depoAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontIslemTuru: freezed == dekontIslemTuru
+          ? _value.dekontIslemTuru
+          : dekontIslemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekontSeri: freezed == dekontSeri
+          ? _value.dekontSeri
+          : dekontSeri // ignore: cast_nullable_to_non_nullable
+              as String?,
+      guid: freezed == guid
+          ? _value.guid
+          : guid // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefAciklama: freezed == hedefAciklama
+          ? _value.hedefAciklama
+          : hedefAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefCariKodu: freezed == hedefCariKodu
+          ? _value.hedefCariKodu
+          : hedefCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemModulu: freezed == islemModulu
+          ? _value.islemModulu
+          : islemModulu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+      vadeGunu: freezed == vadeGunu
+          ? _value.vadeGunu
+          : vadeGunu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yeniKayit: freezed == yeniKayit
+          ? _value.yeniKayit
+          : yeniKayit // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -1543,7 +1704,17 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
       @JsonKey(includeToJson: false, includeFromJson: false) this.plasiyerAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.exportAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) this.depoAdi})
+      @JsonKey(includeToJson: false, includeFromJson: false) this.depoAdi,
+      this.cariKodu,
+      this.dekontIslemTuru,
+      this.dekontSeri,
+      this.guid,
+      this.hedefAciklama,
+      this.hedefCariKodu,
+      this.islemModulu,
+      this.tag,
+      this.vadeGunu,
+      this.yeniKayit})
       : super._();
 
   factory _$DekontKalemlerImpl.fromJson(Map<String, dynamic> json) =>
@@ -1610,6 +1781,26 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? depoAdi;
+  @override
+  String? cariKodu;
+  @override
+  String? dekontIslemTuru;
+  @override
+  String? dekontSeri;
+  @override
+  String? guid;
+  @override
+  String? hedefAciklama;
+  @override
+  String? hedefCariKodu;
+  @override
+  String? islemModulu;
+  @override
+  String? tag;
+  @override
+  int? vadeGunu;
+  @override
+  bool? yeniKayit;
 
   @JsonKey(ignore: true)
   @override
@@ -1657,8 +1848,17 @@ abstract class _DekontKalemler extends DekontKalemler {
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false)
-      String? depoAdi}) = _$DekontKalemlerImpl;
+      @JsonKey(includeToJson: false, includeFromJson: false) String? depoAdi,
+      String? cariKodu,
+      String? dekontIslemTuru,
+      String? dekontSeri,
+      String? guid,
+      String? hedefAciklama,
+      String? hedefCariKodu,
+      String? islemModulu,
+      String? tag,
+      int? vadeGunu,
+      bool? yeniKayit}) = _$DekontKalemlerImpl;
   _DekontKalemler._() : super._();
 
   factory _DekontKalemler.fromJson(Map<String, dynamic> json) =
@@ -1758,6 +1958,36 @@ abstract class _DekontKalemler extends DekontKalemler {
   String? get depoAdi;
   @JsonKey(includeToJson: false, includeFromJson: false)
   set depoAdi(String? value);
+  @override
+  String? get cariKodu;
+  set cariKodu(String? value);
+  @override
+  String? get dekontIslemTuru;
+  set dekontIslemTuru(String? value);
+  @override
+  String? get dekontSeri;
+  set dekontSeri(String? value);
+  @override
+  String? get guid;
+  set guid(String? value);
+  @override
+  String? get hedefAciklama;
+  set hedefAciklama(String? value);
+  @override
+  String? get hedefCariKodu;
+  set hedefCariKodu(String? value);
+  @override
+  String? get islemModulu;
+  set islemModulu(String? value);
+  @override
+  String? get tag;
+  set tag(String? value);
+  @override
+  int? get vadeGunu;
+  set vadeGunu(int? value);
+  @override
+  bool? get yeniKayit;
+  set yeniKayit(bool? value);
   @override
   @JsonKey(ignore: true)
   _$$DekontKalemlerImplCopyWith<_$DekontKalemlerImpl> get copyWith =>

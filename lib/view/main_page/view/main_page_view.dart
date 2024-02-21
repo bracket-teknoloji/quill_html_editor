@@ -51,7 +51,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
             scaffoldKey.currentState!.closeEndDrawer();
             dialogManager.showExitDialog();
           } else {
-            dialogManager.showExitDialog();
+            // dialogManager.showExitDialog();
           }
         }
       },
@@ -60,7 +60,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
         key: scaffoldKey,
         drawerEnableOpenDragGesture: lastItems.isEmpty,
         drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-        endDrawer:  SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+        endDrawer: SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
         body: body(context),
         bottomNavigationBar: bottomBar(scaffoldKey),
       ),

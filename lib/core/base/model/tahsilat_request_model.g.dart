@@ -56,6 +56,7 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>))
           .toList(),
+      hedefCariKodu: json['HEDEF_CARI_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -111,6 +112,7 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('TCMB_BANKA_KODU', instance.tcmbBankaKodu);
   writeNotNull('TCMB_SUBE_KODU', instance.tcmbSubeKodu);
   writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
+  writeNotNull('HEDEF_CARI_KODU', instance.hedefCariKodu);
   return val;
 }
 
@@ -141,6 +143,16 @@ _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
       refkey: json['REFKEY'] as String?,
       plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
       muhasebeHesapTipi: json['MUHASEBE_HESAP_TIPI'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      dekontIslemTuru: json['DEKONT_ISLEM_TURU'] as String?,
+      dekontSeri: json['DEKONT_SERI'] as String?,
+      guid: json['GUID'] as String?,
+      hedefAciklama: json['HEDEF_ACIKLAMA'] as String?,
+      hedefCariKodu: json['HEDEF_CARI_KODU'] as String?,
+      islemModulu: json['ISLEM_MODULU'] as String?,
+      tag: json['TAG'] as String?,
+      vadeGunu: json['VADE_GUNU'] as int?,
+      yeniKayit: json['YENI_KAYIT'] as bool?,
     );
 
 Map<String, dynamic> _$$DekontKalemlerImplToJson(
@@ -176,5 +188,15 @@ Map<String, dynamic> _$$DekontKalemlerImplToJson(
   writeNotNull('REFKEY', instance.refkey);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('MUHASEBE_HESAP_TIPI', instance.muhasebeHesapTipi);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('DEKONT_ISLEM_TURU', instance.dekontIslemTuru);
+  writeNotNull('DEKONT_SERI', instance.dekontSeri);
+  writeNotNull('GUID', instance.guid);
+  writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
+  writeNotNull('HEDEF_CARI_KODU', instance.hedefCariKodu);
+  writeNotNull('ISLEM_MODULU', instance.islemModulu);
+  writeNotNull('TAG', instance.tag);
+  writeNotNull('VADE_GUNU', instance.vadeGunu);
+  writeNotNull('YENI_KAYIT', instance.yeniKayit);
   return val;
 }

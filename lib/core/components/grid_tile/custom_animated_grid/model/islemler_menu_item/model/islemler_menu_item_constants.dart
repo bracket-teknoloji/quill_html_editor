@@ -115,7 +115,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cariKarti);
       islemlerList.add(cariHareketleri);
       islemlerList.addAll(raporlar ?? []);
-      islemlerList.add(cariIslemleri);
+      islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
       islemlerList.add(paylas);
     } else if (islemTipi == IslemTipiEnum.kasa) {
       if (model != null) {
@@ -130,9 +130,15 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(muhtelifOdeme);
       islemlerList.addAll(raporlar ?? []);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
-      islemlerList.add(nakitTahsilat(model));
       islemlerList.add(nakitOdeme(model));
+      islemlerList.add(nakitTahsilat(model));
       islemlerList.add(krediKartiTahsilati(model));
+      islemlerList.add(tahsilatSenedi);
+      islemlerList.add(cekTahsilati);
+      islemlerList.add(borcCeki);
+      islemlerList.add(borcSenedi);
+      islemlerList.add(cariVirman);
+      islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
     } else if (islemTipi == IslemTipiEnum.banka) {
       if (model != null) {
         islemlerList.add(bankaHareketleri);
@@ -173,6 +179,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.add(kopyala);
+        islemlerList.add(cariIslemleri(siparisModel.cariKodu ?? ""));
         islemlerList.add(siparisCariKoduDegistir);
         islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
@@ -211,7 +218,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",
         iconData: Icons.copy_outlined,
-        isEnabled: (siparisTipi?.eklensinMi ?? false) && (siparisTipi?.kopyalanabilirMi ?? false),
+        isEnabled: (siparisTipi?.eklensinMi ?? true) && (siparisTipi?.kopyalanabilirMi ?? true),
         onTap: () async => await Get.toNamed(
           islemTipi.route,
           arguments: BaseEditModel(
@@ -284,6 +291,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? get belgeNoDegistir => GridItemModel.islemler(
         title: "Belge No Değiştir",
+        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi,
         iconData: Icons.edit_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
@@ -412,10 +420,16 @@ class IslemlerMenuItemConstants<T> {
   //* Stok
   GridItemModel? get stokKarti => GridItemModel.islemler(
         title: "Stok Kartı",
+        isEnabled: _yetkiController.stokKarti,
         iconData: Icons.info_outline,
         onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: BaseEditEnum.duzenle)),
       );
-  GridItemModel? get stokYazdir => GridItemModel.islemler(title: "Yazdır", iconData: Icons.print_outlined, onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model));
+  GridItemModel? get stokYazdir => GridItemModel.islemler(
+        title: "Yazdır",
+        isEnabled: _yetkiController.yazdirmaStokEtiketi,
+        iconData: Icons.print_outlined,
+        onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model),
+      );
   GridItemModel? get seriHareketleri => GridItemModel.islemler(
         title: "Seri Hareketleri",
         isEnabled: _userModel?.stokSeriHar,
@@ -428,7 +442,12 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.dynamic_form_outlined,
         onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model),
       );
-  GridItemModel? get fiyatGor => GridItemModel.islemler(title: "Fiyat Gör", iconData: Icons.monetization_on_outlined, onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model));
+  GridItemModel? get fiyatGor => GridItemModel.islemler(
+        title: "Fiyat Gör",
+        isEnabled: _yetkiController.stokFiyatGorEkrani,
+        iconData: Icons.monetization_on_outlined,
+        onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model),
+      );
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(
         title: "Paylaş",
@@ -558,7 +577,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel get siparisCariKoduDegistir => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
-        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi && (siparisTipi?.cariKoduDegisirMi ?? false),
+        isEnabled: (model as BaseSiparisEditModel).islemBilgileriDegistirebilirMi && (siparisTipi?.cariKoduDegisirMi ?? true),
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
@@ -661,6 +680,8 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Banka Kasa Transferi", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaKasaTransferi", arguments: model));
   GridItemModel? get hesaplarArasiVirman =>
       GridItemModel.islemler(title: "Hesaplar Arası Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiVirman"));
+  GridItemModel? get cariVirman =>
+      GridItemModel.islemler(title: "Cari Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model));
   GridItemModel? get hesaplarArasiEftHavale =>
       GridItemModel.islemler(title: "Hesaplar Arası EFT/Havale", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiEftHavale"));
   GridItemModel? get bankaMuhtelifTahsilat =>
@@ -748,7 +769,14 @@ class IslemlerMenuItemConstants<T> {
           if (model is CariListesiModel) {
             final cariModel = await _networkManager.getCariModel(CariRequestModel.fromCariListesiModel(model as CariListesiModel));
             if (cariModel != null) {
-              Get.toNamed("mainPage/cariEdit", arguments: BaseEditModel(model: cariModel, baseEditEnum: BaseEditEnum.duzenle));
+              Get.toNamed(
+                "mainPage/cariEdit",
+                arguments: BaseEditModel(
+                  model: cariModel,
+                  editTipiEnum: EditTipiEnum.cari,
+                  baseEditEnum: BaseEditEnum.duzenle,
+                ),
+              );
             }
           }
         },
@@ -862,11 +890,12 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  GridItemModel get cariIslemleri => GridItemModel.islemler(
+  GridItemModel cariIslemleri(String? cariNo) => GridItemModel.islemler(
         title: "İşlemler",
         iconData: Icons.list_alt_outlined,
         onTap: () async {
-          _dialogManager.showCariGridViewDialog(model as CariListesiModel);
+          final result = await _networkManager.getCariModel(CariRequestModel(kod: [cariNo ?? ""]));
+          _dialogManager.showCariGridViewDialog(result);
         },
       );
 
@@ -1217,6 +1246,7 @@ class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Yazdır",
+      isEnabled: siparisModel.getEditTipiEnum?.yazdirilsinMi,
       iconData: Icons.print_outlined,
       onTap: () async {
         final EBelgeListesiModel model = EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel);

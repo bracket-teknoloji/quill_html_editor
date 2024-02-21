@@ -379,6 +379,8 @@ class CariListesiModel with NetworkManagerMixin {
         cariKodu: model?.cariKodu,
         plasiyerAciklama: model?.plasiyerAciklama,
         plasiyerKodu: model?.plasiyerKodu,
+        bakiye: ((model?.alacak ?? 0) - (model?.borc ?? 0)).abs(),
+        vadeGunu: DateTime.now().compareTo(model?.vadeTarihi ?? DateTime.now()),
       );
 
   factory CariListesiModel.fromSiparisModel(BaseSiparisEditModel? model) => CariListesiModel(

@@ -16,6 +16,7 @@ import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -57,7 +58,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _sozlesmeController = TextEditingController();
     _seriController = TextEditingController();
     _hesapController = TextEditingController();
-    _tutarController = TextEditingController();
+    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _krediKartiNoController = TextEditingController();
     _referansKoduController = TextEditingController();
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");

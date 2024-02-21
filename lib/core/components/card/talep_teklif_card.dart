@@ -180,7 +180,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         iconWidget: Icons.person_outline_outlined,
                         onTap: () async {
                           Get.back();
-                          dialogManager.showCariGridViewDialog(
+                          dialogManager.showCariIslemleriGridViewDialog(
                             await getCari(),
                           );
                         },

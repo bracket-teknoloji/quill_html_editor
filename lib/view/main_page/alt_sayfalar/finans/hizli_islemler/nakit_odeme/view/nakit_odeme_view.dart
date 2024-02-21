@@ -56,7 +56,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _dovizTipiController = TextEditingController();
     _dovizKuruController = TextEditingController();
     _dovizTutariController = TextEditingController();
-    _tutarController = TextEditingController();
+    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController();
     _referansKoduController = TextEditingController();

@@ -65,7 +65,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _dovizTipiController = TextEditingController();
     _dovizTutariController = TextEditingController();
     _dovizKuruController = TextEditingController();
-    _tutarController = TextEditingController();
+    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _masrafTutariController = TextEditingController();
     _bsmvController = TextEditingController();
     _masrafMuhKoduController = TextEditingController();

@@ -221,8 +221,13 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, [IslemTipiEnum? tip]) async => _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(model: model, title: model?.cariAdi, islemTipi: tip ?? IslemTipiEnum.cariHareketleri),
+  Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async => await _baseDialog(
+        body: CustomAnimatedGridView<CariListesiModel>(
+          model: model,
+          title: model?.cariAdi,
+          islemTipi: IslemTipiEnum.cariHareketleri,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -322,7 +327,7 @@ class DialogManager {
         onOk: () async {
           final result = await location.requestPermission();
           if (result != PermissionStatus.granted || result != PermissionStatus.grantedLimited) {
-             await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+            await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
           }
         },
         onCancel: () {},

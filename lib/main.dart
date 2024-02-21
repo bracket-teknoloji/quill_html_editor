@@ -18,6 +18,7 @@ import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detay
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
@@ -278,6 +279,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariEFTHavale", page: () => CariHavaleEftView(cariListesiModel: Get.arguments)),
               GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
               GetPage(name: "/hesaplarArasiVirman", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.virman)),
+              GetPage(name: "/cariVirman", page: () => CariVirmanView(model: Get.arguments)),
               GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),
               GetPage(name: "/bankaMuhtelifTahsilat", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.tahsilat)),
               GetPage(name: "/bankaMuhtelifOdeme", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.odeme)),

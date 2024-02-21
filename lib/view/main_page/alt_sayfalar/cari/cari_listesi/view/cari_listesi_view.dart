@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -259,7 +260,15 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
             isScrolledDown: !viewModel.isScrolledDown,
             onPressed: () async {
               final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
-              Get.toNamed("/mainPage/cariEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, model: CariListesiModel(), siradakiKod: siradakiKod));
+              Get.toNamed(
+                "/mainPage/cariEdit",
+                arguments: BaseEditModel(
+                  baseEditEnum: BaseEditEnum.ekle,
+                  editTipiEnum: EditTipiEnum.cari,
+                  model: CariListesiModel(),
+                  siradakiKod: siradakiKod,
+                ),
+              );
             },
           ),
         ),
@@ -453,12 +462,22 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         BottomSheetModel(
           title: loc(context).generalStrings.view,
           iconWidget: Icons.preview_outlined,
-          onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule)),
+          onTap: () => Get.back(
+            result: CariSeceneklerModel(
+              path: "/mainPage/cariEdit",
+              baseEditEnum: BaseEditEnum.goruntule,
+            ),
+          ),
         ).yetkiKontrol(yetkiController.cariKarti),
         BottomSheetModel(
           title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
-          onTap: () => Get.back(result: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle)),
+          onTap: () => Get.back(
+            result: CariSeceneklerModel(
+              path: "/mainPage/cariEdit",
+              baseEditEnum: BaseEditEnum.duzenle,
+            ),
+          ),
         ).yetkiKontrol(yetkiController.cariKartiDuzenleme),
         BottomSheetModel(
           title: loc(context).generalStrings.delete,
@@ -506,7 +525,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       if (pageName is CariSeceneklerModel) {
         baseEditEnum = pageName.baseEditEnum;
         pageName = pageName.path;
-        final BaseEditModel editModel = BaseEditModel(baseEditEnum: baseEditEnum, model: object);
+        final BaseEditModel editModel = BaseEditModel(
+          baseEditEnum: baseEditEnum,
+          editTipiEnum: EditTipiEnum.cari,
+          model: object,
+        );
         final result = await Get.toNamed(pageName, arguments: editModel);
         if (result != null) {
           await viewModel.resetPage();
