@@ -13,6 +13,9 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   @observable
   TahsilatRequestModel requestModel = TahsilatRequestModel(yeniKayit: true, islemModulu: "B", tag: "DekontModel", dekontIslemTuru: "DCV");
 
+  @computed
+  DateTime? get vadeGunu => requestModel.cariKodu == null && requestModel.vadeGunu != null ? null : DateTime.now().add(Duration(days: requestModel.vadeGunu ?? 0));
+
   @action
   void setTarih(DateTime? time) => requestModel = requestModel.copyWith(tarih: time);
 

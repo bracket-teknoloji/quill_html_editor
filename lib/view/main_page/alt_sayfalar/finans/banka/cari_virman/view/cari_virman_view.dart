@@ -45,7 +45,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     _tahsilatiYapilacakCariController = TextEditingController();
     _odemesiYapilacakCariController = TextEditingController();
     _tutarController = TextEditingController(text: widget.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _vadeGunuController = TextEditingController(text: widget.model?.vadeGunu.toStringIfNotNull);
+    _vadeGunuController = TextEditingController();
     _plasiyerController = TextEditingController();
     _tahsilatYapilanCariAciklamaController = TextEditingController();
     _odemeYapilanCariAciklamaController = TextEditingController();
@@ -127,6 +127,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                         isMust: true,
                         suffixMore: true,
                         readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.dekontSeri ?? "")),
                         onTap: () async => await seriBottomSheet(),
                       ),
                     ),
@@ -169,12 +170,18 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                         labelText: "Tutar",
                         controller: _tutarController,
                         isMust: true,
+                        isFormattedString: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) => viewModel.setTutar(double.tryParse(value)),
                       ),
                     ),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Vade Günü",
                         controller: _vadeGunuController,
+                        keyboardType: TextInputType.number,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.vadeGunu.toDateString)),
+                        onChanged: (value) => viewModel.setVadeGunu(int.tryParse(value)),
                       ),
                     ),
                   ],
@@ -241,6 +248,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);
     } else {
       viewModel.setTahsilatCari(widget.model?.cariKodu);
+
+      viewModel.setVadeGunu(widget.model?.vadeGunu);
+      _vadeGunuController.text = (widget.model?.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = widget.model?.cariAdi ?? "";
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setAciklama(_tahsilatYapilanCariAciklamaController.text);
@@ -263,6 +273,8 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     final result = await Get.toNamed("mainPage/cariListesiOzel");
     if (result is CariListesiModel) {
       viewModel.setTahsilatCari(result.cariKodu);
+      viewModel.setVadeGunu(result.vadeGunu);
+      _vadeGunuController.text = (result.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = result.cariAdi ?? "";
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${result.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setAciklama(_tahsilatYapilanCariAciklamaController.text);
