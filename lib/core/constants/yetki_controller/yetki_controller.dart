@@ -482,6 +482,25 @@ final class YetkiController {
   bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
+  //* Ambar Giriş Fişi
+  bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAgDigerSekmesiGoster);
+  bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle, skipAdmin: true);
+
+  bool get transferAgSiparisBaglantisi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "E" || _yetkiModel?.transferAgSipBagSecenegi == "O");
+  bool get transferAgSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "O");
+
+  DepoList? get transferAgCikisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo).firstOrNull;
+  DepoList? get transferAgGirisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanGirisDepo).firstOrNull;
+
+  //* Ambar Çıkış Fişi
+  bool get transferAcDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAcDigerSekmesiGoster);
+  bool get transferAcAciklamaDuzenle => _isTrue(_yetkiModel?.transferAcAciklamaDuzenle, skipAdmin: true);
+
+  bool get transferAcSiparisBaglantisi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "E" || _yetkiModel?.transferAcSipBagSecenegi == "O");
+  bool get transferAcSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "O");
+
+  DepoList? get transferAcVarsayilanDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferAcVarsayilanDepo).firstOrNull;
+
   //! Üretim
 
   //* İş Emirleri

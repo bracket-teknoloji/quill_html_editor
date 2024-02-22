@@ -57,6 +57,8 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get satisTalebiMi => this == EditTipiEnum.satisTalebi;
 
+  bool get depoTransferiMi => this == EditTipiEnum.depoTransferi;
+
   bool get talepTeklifMi => satisTalebiMi || alisTalebiMi || satisTeklifiMi;
 
   bool get irsaliyeMi => satisIrsaliyesiMi || alisIrsaliyesiMi;
@@ -66,8 +68,6 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
   bool get siparisMi => musteriMi || saticiMi;
 
   bool get faturaMi => satisFaturasiMi || alisFaturasiMi;
-
-  bool get depoTransferiMi => this == EditTipiEnum.depoTransferi;
 
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
@@ -339,6 +339,41 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.alisFatDigerSekmesiGelsin;
       case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsDigerSekmesiGelsin;
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatDigerSekmesiGoster;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAgDigerSekmesiGoster;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferAcDigerSekmesiGoster;
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.cari:
+        return true;
+    }
+  }
+
+  bool get siparisBaglantisiGoster {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferLokalDatSiparisBaglantisi;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAgSiparisBaglantisi;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferAcSiparisBaglantisi;
+      default:
+        return true;
+    }
+  }
+
+  bool get siparisBaglantisiOpsiyonelMi {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAgSiparisBaglantisiOpsiyonelMi;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferAcSiparisBaglantisiOpsiyonelMi;
       default:
         return true;
     }
