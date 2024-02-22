@@ -64,8 +64,8 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
     _cariKoduController = TextEditingController();
     _siparisController = TextEditingController();
     _kalemlerController = TextEditingController();
-    StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.alisFatura;
-    tabController = TabController(length: yetkiController.transferDatDigerSekmesiGoster ? 4 : 3, vsync: this);
+    StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.depoTransferi;
+    tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
       tabController.addListener(() {
         if (tabController.indexIsChanging && tabController.previousIndex == 0) {
@@ -75,7 +75,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             tabController.animateTo(tabController.previousIndex);
           }
         }
-        if (tabController.index == (yetkiController.transferDatDigerSekmesiGoster ? 3 : 3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+        if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
           viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
@@ -130,13 +130,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
-        if (yetkiController.transferLokalDatSiparisBaglantisi) {
-          final result = await getSiparisBaglantisi();
-          if (result != true && !yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi) {
-            Get.back();
-          }
-          if (result == true) {}
-        }
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
@@ -144,47 +137,13 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         BaseSiparisEditModel.instance.isNew = true;
-        // CariListesiModel? cariModel;
-        // if (widget.model.model?.cariKodu == null && !yetkiController.transferLokalDatSiparisBaglantisi) {
-        //   final result = await Get.toNamed(
-        //     "mainPage/cariRehberi",
-        //     arguments: CariListesiRequestModel(
-        //       menuKodu: "CARI_CREH",
-        //       belgeTuru: model.editTipiEnum?.rawValue,
-        //       siparisKarsilanmaDurumu: null,
-        //     ),
-        //   );
-        //   if (result is CariListesiModel && result.muhtelifMi) {
-        //     BaseSiparisEditModel.instance.muhtelifCariModel = result;
-        //     cariModel = result;
-        //   } else if (result is CariListesiModel) {
-        //     cariModel = await networkManager.getCariModel(
-        //       CariRequestModel.fromCariListesiModel(result)
-        //         ..secildi = "E"
-        //         ..kisitYok = true
-        //         ..teslimCari = "E"
-        //         ..eFaturaGoster = true,
-        //     );
-        //   } else {
-        //     cariModel = null;
-        //   }
-        // } else {
-        //   cariModel = await networkManager.getCariModel(
-        //     CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)
-        //       ..secildi = "E"
-        //       ..kisitYok = true
-        //       ..teslimCari = "E"
-        //       ..eFaturaGoster = true,
-        //   );
-        // }
-        // if (cariModel is CariListesiModel) {
-        //   viewModel.changeIsBaseSiparisEmpty(true);
-
-        //   BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
-        //       ? "E-Fatura"
-        //       : cariModel.efaturaCarisi == "H"
-        //           ? "E-Arşiv"
-        //           : null;
+        if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
+          final result = await getSiparisBaglantisi();
+          if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
+            Get.back();
+          }
+          if (result == true) {}
+        }
         BaseSiparisEditModel.instance.cikisDepoKodu = yetkiController.transferLokalDatCikisDepo?.depoKodu;
         BaseSiparisEditModel.instance.girisDepoKodu = yetkiController.transferLokalDatGirisDepo?.depoKodu;
         BaseSiparisEditModel.instance.topluCikisDepoTanimi = yetkiController.transferLokalDatCikisDepo?.depoTanimi;
@@ -195,20 +154,9 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           BaseSiparisEditModel.instance.lokalDat = "H";
         }
         BaseSiparisEditModel.instance.tag = "FaturaModel";
-        // BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-        // BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
         // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
         BaseSiparisEditModel.instance.tipi = 2;
         BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-        // BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-        // BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
-        // BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
-        // BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-        // BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-        // BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-        // BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-        // BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
-        // }
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -287,7 +235,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
               controller: tabController,
               tabs: [
                 Tab(child: Text(loc(context).generalStrings.general)),
-                Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(yetkiController.transferDatDigerSekmesiGoster),
+                Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereNot((element) => element is SizedBox).toList(),
@@ -307,7 +255,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     }
                   },
                 ),
-                BaseTransferDigerView(model: model).yetkiVarMi(yetkiController.transferDatDigerSekmesiGoster),
+                BaseTransferDigerView(model: model).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                 BaseTransferKalemlerView(model: model),
                 BaseTransferToplamlarView(model: model),
               ].whereNot((element) => element is SizedBox).toList(),

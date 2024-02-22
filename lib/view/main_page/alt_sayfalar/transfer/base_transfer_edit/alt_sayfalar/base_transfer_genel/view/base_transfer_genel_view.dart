@@ -261,7 +261,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       await getBelgeNo();
                     }
                   },
-                ),
+                ).yetkiVarMi(widget.model.editTipiEnum?.depoTransferiMi ?? false),
                 Row(
                   children: [
                     Expanded(
@@ -275,7 +275,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ),
+                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "KDV Dahil",
@@ -306,7 +306,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ),
+                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
                   ],
                 ),
                 Observer(
@@ -543,7 +543,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A"),
                   controllerText: viewModel.model.aciklama,
                   onChanged: (value) => viewModel.model.aciklama = value,
-                ),
+                ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
 
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",

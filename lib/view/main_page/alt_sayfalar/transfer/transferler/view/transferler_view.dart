@@ -19,6 +19,7 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view_model/transferler_view_model.dart";
@@ -282,8 +283,8 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
               childrenValueList: viewModel.transferTipiMap.values.toList(),
               groupValue: viewModel.faturaRequestModel.lokalDAT,
             ),
-          ),
-          Row(
+          ).yetkiVarMi(widget.editTipiEnum.depoTransferiMi),
+          Row( 
             children: <Widget>[
               Expanded(
                 child: ElevatedButton(
