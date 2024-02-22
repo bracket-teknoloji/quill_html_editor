@@ -111,6 +111,13 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                         isDateTime: true,
                         isMust: true,
                         readOnly: true,
+                        onTap: () async {
+                          final date = await dialogManager.showDateTimePicker(initialDate: viewModel.requestModel.tarih);
+                          if (date != null) {
+                            viewModel.setTarih(date);
+                            _tarihController.text = date.toDateString;
+                          }
+                        },
                       ),
                     ),
                     Expanded(
