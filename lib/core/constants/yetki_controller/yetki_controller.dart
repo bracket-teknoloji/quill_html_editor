@@ -484,6 +484,7 @@ final class YetkiController {
 
   //* Ambar Giriş Fişi
   bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAgDigerSekmesiGoster);
+  // bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAg);
   bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle, skipAdmin: true);
 
   bool get transferAgSiparisBaglantisi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "E" || _yetkiModel?.transferAgSipBagSecenegi == "O");
