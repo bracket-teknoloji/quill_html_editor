@@ -12,6 +12,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/masraf_kodu/view/masraf_kodu_rehberi_view.dart";
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
@@ -201,7 +202,7 @@ class PickerApp extends StatelessWidget {
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: CacheManager.getProfilParametre.temaModu,
         home: const SplashAuthView(),
-        
+
         getPages: <GetPage>[
           GetPage(name: "/login", page: () => const LoginView(), popGesture: false),
           GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
@@ -283,6 +284,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/hesaplarArasiEftHavale", page: () => const HesaplarArasiIslemView(hesaplarArasiEnum: HesaplarArasiEnum.eftHavale)),
               GetPage(name: "/bankaMuhtelifTahsilat", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.tahsilat)),
               GetPage(name: "/bankaMuhtelifOdeme", page: () => const BankaMuhtelifIslemlerView(bankaMuhtelifIslemlerEnum: BankaMuhtelifIslemlerEnum.odeme)),
+              GetPage(name: "/masrafKoduRehberi", page: () => MasrafKoduRehberiView(tipi: Get.arguments)),
 
               //* * Kasa
               GetPage(name: "/kasaHareketleri", page: () => KasaHareketleriView(model: Get.arguments)),
