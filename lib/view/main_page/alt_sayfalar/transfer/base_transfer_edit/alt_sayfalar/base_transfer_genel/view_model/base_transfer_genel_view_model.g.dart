@@ -123,6 +123,28 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
+  void changeMasrafKodu(MasrafKoduRehberiModel? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.changeMasrafKodu');
+    try {
+      return super.changeMasrafKodu(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changeCikisYeri(String? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.changeCikisYeri');
+    try {
+      return super.changeCikisYeri(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHareketTuru(String? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
         .startAction(name: '_BaseTransferGenelViewModelBase.setHareketTuru');

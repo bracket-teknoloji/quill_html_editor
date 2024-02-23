@@ -1883,10 +1883,10 @@ class ProfilYetkiModel {
   String? siparisMusSipKdvDurumu;
   @JsonKey(name: "siparis_SaticiSiparisi_AciklamaDuzenle")
   bool? siparisSaticiSiparisiAciklamaDuzenle;
-    @JsonKey(name: "taltek_STEK_KdvDurumu")
-    String? taltekStekKdvDurumu;
-    @JsonKey(name: "taltek_STAL_KdvDurumu")
-    String? taltekStalKdvDurumu;
+  @JsonKey(name: "taltek_STEK_KdvDurumu")
+  String? taltekStekKdvDurumu;
+  @JsonKey(name: "taltek_STAL_KdvDurumu")
+  String? taltekStalKdvDurumu;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

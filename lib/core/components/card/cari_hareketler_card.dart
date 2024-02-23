@@ -64,11 +64,14 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
     ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric;
     return InkWell(
       onTap: widget.onTap ?? () {},
-      onLongPress: () async => await dialogManager.showCariHareketleriGridViewDialog(CariListesiModel.fromCariHareketleriModel(widget.cariHareketleriModel), onSelected: (value) async {
-        // if (value == true) {
-        //   await widget.
-        // }
-      }),
+      onLongPress: () async => await dialogManager.showCariHareketleriGridViewDialog(
+        CariListesiModel.fromCariHareketleriModel(widget.cariHareketleriModel),
+        onSelected: (value) async {
+          // if (value == true) {
+          //   await widget.
+          // }
+        },
+      ),
       child: IntrinsicHeight(
         child: Card(
           child: Slidable(

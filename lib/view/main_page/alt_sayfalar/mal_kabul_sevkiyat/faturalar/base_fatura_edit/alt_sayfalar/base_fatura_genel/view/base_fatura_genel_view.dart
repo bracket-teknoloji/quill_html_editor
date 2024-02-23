@@ -82,7 +82,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.belgeTipi));
-    _projeController = TextEditingController(text: model.projeAciklama);
+    _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(text: model.ozelKod1);

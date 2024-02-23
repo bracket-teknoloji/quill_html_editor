@@ -142,6 +142,10 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                   readOnly: true,
                   suffix: IconButton(
                     onPressed: () async {
+                      if (_tahsilatiYapilacakCariController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                        return;
+                      }
                       await dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""])));
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.primary),
@@ -157,6 +161,10 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                   readOnly: true,
                   suffix: IconButton(
                     onPressed: () async {
+                      if (_odemesiYapilacakCariController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Önce Hedef Cari Seçiniz");
+                        return;
+                      }
                       await dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.hedefCariKodu ?? ""])));
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.primary),

@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -52,6 +53,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
   late final TextEditingController _teslimCariController;
   late final TextEditingController _hareketTuruController;
   late final TextEditingController _tarihController;
+  late final TextEditingController _cikisYeriController;
+  late final TextEditingController _masrafKoduController;
   late final TextEditingController _topluGirisDepoController;
   late final TextEditingController _topluCikisDepoController;
   late final TextEditingController _ozelKod2Controller;
@@ -88,6 +91,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _hareketTuruController = TextEditingController(text: viewModel.hareketTuruMap.entries.firstWhereOrNull((element) => element.value == viewModel.model.hareketTuru)?.key);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
+    _masrafKoduController = TextEditingController(text: model.masrafKoduAdi ?? model.masrafKodu);
+    _cikisYeriController = TextEditingController(text: viewModel.cikisYeriMap.entries.firstWhereOrNull((element) => element.value == model.cikisYeri)?.key);
     _topluGirisDepoController = TextEditingController(text: model.topluGirisDepoTanimi);
     _topluCikisDepoController = TextEditingController(text: model.topluCikisDepoTanimi);
     _ozelKod2Controller = TextEditingController(
@@ -95,7 +100,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
           model.ozelKod2,
     );
     _isEmriController = TextEditingController(text: model.isemriAciklama);
-    _projeController = TextEditingController(text: model.projeAciklama);
+    _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
     _aciklama3Controller = TextEditingController(text: model.acik3);
@@ -423,6 +428,60 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Masraf Kodu",
+                        controller: _masrafKoduController,
+                        readOnly: true,
+                        suffixMore: true,
+                        isMust: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafKodu ?? "")),
+                        onTap: () async {
+                          final result = await Get.toNamed(
+                            "mainPage/masrafKoduRehberi",
+                            arguments: viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1,
+                          );
+                          if (result is MasrafKoduRehberiModel) {
+                            _masrafKoduController.text = result.masrafAdi ?? "";
+                            viewModel.changeMasrafKodu(result);
+                          }
+                        },
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Çıkış Yeri",
+                        controller: _cikisYeriController,
+                        readOnly: true,
+                        suffixMore: true,
+                        isMust: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisYeri ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Çıkış Yeri",
+                            groupValue: viewModel.model.cikisYeri,
+                            children: List.generate(
+                              viewModel.cikisYeriMap.length,
+                              (index) => BottomSheetModel(
+                                title: viewModel.cikisYeriMap.entries.toList()[index].key,
+                                value: viewModel.cikisYeriMap.entries.toList()[index],
+                                groupValue: viewModel.cikisYeriMap.entries.toList()[index].value,
+                              ),
+                            ),
+                          );
+                          if (result is MapEntry) {
+                            viewModel.changeCikisYeri(result.value);
+                            _cikisYeriController.text = result.key;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Expanded(
                       child: CustomTextField(
@@ -481,7 +540,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       ),
                     ),
                   ],
-                ),
+                ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
                 Row(
                   children: [
                     Expanded(
@@ -500,8 +559,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             viewModel.setOzelKod2(result.kod);
                           }
                         },
-                      ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
-                    ),
+                      ),
+                    ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "İş Emri",
@@ -532,7 +591,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   onTap: () async {
                     final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                     if (result is BaseProjeModel) {
-                      _projeController.text = result.projeAciklama ?? "";
+                      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                       viewModel.setProje(result);
                     }
                   },

@@ -396,12 +396,12 @@ class MenuItemConstants {
       title: "Transfer",
       icon: "trolley",
       color: ColorPalette.slateGray,
-      altMenuler: <GridItemModel>[
+      altMenuler: [
         GridItemModel.item(name: "transfer_DAT", title: "Depo Transferi", route: "/mainPage/transferDepo"),
-        GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris"),
-        GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
+        GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris").isDebug(),
+        GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis").isDebug(),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
-      ],
+      ].whereType<GridItemModel>().toList(),
     ).isDebug(),
 
     //* Üretim

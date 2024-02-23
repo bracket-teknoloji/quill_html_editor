@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -17,6 +18,14 @@ abstract class _BaseTransferGenelViewModelBase with Store {
     "Üretim": "C",
     "Muhtelif": "D",
     "Konsinye": "F",
+  };
+
+  final Map<String, String> cikisYeriMap = <String, String>{
+    "Masraf Merkezi": "M",
+    "Stok": "S",
+    "Ana Mal Grubu": "A",
+    "Mal Grubu": "G",
+    "Serbest": "F",
   };
 
   @observable
@@ -66,6 +75,18 @@ abstract class _BaseTransferGenelViewModelBase with Store {
   void changeIsEmri(IsEmirleriModel? value) {
     BaseSiparisEditModel.instance.isemriAciklama = value?.stokKodu;
     BaseSiparisEditModel.instance.isemriNo = value?.isemriNo;
+  }
+  
+  @action
+  void changeMasrafKodu(MasrafKoduRehberiModel? value) {
+    model = model.copyWith(masrafKodu: value?.masrafKodu, masrafKoduAdi: value?.masrafAdi);
+    BaseSiparisEditModel.instance.masrafKodu = value?.masrafKodu;
+    BaseSiparisEditModel.instance.masrafKoduAdi = value?.masrafAdi;
+  }
+  @action
+  void changeCikisYeri(String? value) {
+    model = model.copyWith(cikisYeri: value);
+    BaseSiparisEditModel.instance.cikisYeri = value;
   }
 
   @action
