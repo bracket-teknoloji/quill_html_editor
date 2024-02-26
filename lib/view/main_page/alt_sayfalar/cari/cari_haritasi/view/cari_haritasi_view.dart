@@ -37,23 +37,25 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   );
   @override
   void initState() {
+    if (widget.konum != null) {
+      myLocation = CameraPosition(
+        target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
+        zoom: 14.4746,
+      );
+    }
     // setMarker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.konum == null) {
         await setCameraPosition();
       }
       final bool locationEnabled = await isLocationEnabled();
-      if (widget.konum != null) {
-        myLocation = CameraPosition(
-          target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
-          zoom: 14.4746,
-        );
-      }
       if (!locationEnabled) {
         viewModel.setIsLocationEnabled(locationEnabled);
         dialogManager.showLocationDialog();
       }
-      await viewModel.getData();
+      if (widget.isGetData != true) {
+        await viewModel.getData();
+      }
 
       // markerIcon = await setMarker();
     });
@@ -87,7 +89,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         ),
         body: Observer(
           builder: (_) {
-            if (viewModel.cariList == null) {
+            if (viewModel.cariList == null && widget.isGetData != true) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );

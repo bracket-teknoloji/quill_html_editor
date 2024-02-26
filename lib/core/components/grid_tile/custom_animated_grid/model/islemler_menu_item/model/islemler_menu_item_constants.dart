@@ -4,8 +4,10 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 import "package:share_plus/share_plus.dart";
@@ -90,6 +92,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(borcSenedi);
         islemlerList.add(cekTahsilati);
         islemlerList.add(tahsilatSenedi);
+        islemlerList.add(konumAta);
         islemlerList.add(paylas);
         islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
         islemlerList.add(cariHareketleri);
@@ -680,8 +683,7 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Banka Kasa Transferi", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaKasaTransferi", arguments: model));
   GridItemModel? get hesaplarArasiVirman =>
       GridItemModel.islemler(title: "Hesaplar Arası Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiVirman"));
-  GridItemModel? get cariVirman =>
-      GridItemModel.islemler(title: "Cari Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model));
+  GridItemModel? get cariVirman => GridItemModel.islemler(title: "Cari Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model));
   GridItemModel? get hesaplarArasiEftHavale =>
       GridItemModel.islemler(title: "Hesaplar Arası EFT/Havale", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiEftHavale"));
   GridItemModel? get bankaMuhtelifTahsilat =>
@@ -792,6 +794,27 @@ class IslemlerMenuItemConstants<T> {
 
             final BaseSiparisEditModel siparisModel = BaseSiparisEditModel.fromCariListesiModel(cariModel);
             return await Get.toNamed("mainPage/talTekEdit", arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.ekle, editTipiEnum: EditTipiEnum.satisTeklifi));
+          }
+        },
+      );
+  GridItemModel get konumAta => GridItemModel.islemler(
+        title: "Konum Ata",
+        iconData: Icons.location_on_outlined,
+        isEnabled: _userModel?.cariHarita == true && _yetkiController.cariKartiDuzenleme,
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            final result = await Get.toNamed("/mainPage/cariHaritasiOzel");
+            if (result is LatLng) {
+              final saveCari = await _networkManager.dioPost(
+                path: ApiUrls.saveCari,
+                bodyModel: CariListesiModel(),
+                showError: true,
+                showLoading: true,
+                data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
+              );
+                return saveCari.success;
+            }
           }
         },
       );
