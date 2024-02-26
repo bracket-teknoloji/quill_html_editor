@@ -170,6 +170,16 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         } else {
           Get.back();
         }
+        if (BaseSiparisEditModel.instance.dovizliMi &&
+            (widget.model.model?.tarih as DateTime?).toDateString != DateTime.now().toDateString &&
+            BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+          dialogManager.showAreYouSureDialog(
+            () async {
+              await dovizGuncelle();
+            },
+            title: "Kalemlerdeki Fiyatlar, ${DateTime.now().toDateString} tarihli döviz kurlarına göre güncellensin mi?",
+          );
+        }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
         if (widget.model.model is BaseSiparisEditModel) {}
@@ -218,17 +228,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.changeIsBaseSiparisEmpty(false);
-      if (BaseSiparisEditModel.instance.dovizliMi &&
-          BaseSiparisEditModel.instance.yeniKayit == true &&
-          (widget.model.model?.tarih as DateTime?).toDateString != DateTime.now().toDateString &&
-          BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-        dialogManager.showAreYouSureDialog(
-          () async {
-            await dovizGuncelle();
-          },
-          title: "Kalemlerdeki Fiyatlar, ${DateTime.now().toDateString} tarihli döviz kurlarına göre güncellensin mi?",
-        );
-      }
     });
     super.initState();
   }

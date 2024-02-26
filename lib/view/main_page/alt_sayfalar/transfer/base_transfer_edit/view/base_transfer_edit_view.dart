@@ -75,8 +75,8 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             tabController.animateTo(tabController.previousIndex);
           }
         }
-        if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-          viewModel.changeIsLastPage(true);
+        if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+            viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
         }

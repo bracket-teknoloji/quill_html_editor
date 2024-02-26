@@ -11,6 +11,8 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view_model/is_emri_rehberi_view_model.dart";
 
@@ -129,14 +131,14 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                       children: [
                         Text("Stok Kodu: ${item.stokKodu ?? ""}"),
                         Text("YapKod: ${item.yapkod ?? ""}"),
-                        Text("Miktar: ${item.miktar.toIntIfDouble ?? ""} ${item.stokOlcuBirimi ?? ""}"),
-                        Text("Üretilen: ${item.tamamlanan ?? ""}"),
-                        Text("Kalan Miktar: ${item.kalan ?? ""}"),
+                        Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.stokOlcuBirimi ?? ""}"),
+                        Text("Üretilen: ${item.tamamlanan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         Text("Proje Kodu: ${item.projeKodu ?? ""}"),
                         Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
-                        Text("Giriş Depo: ${item.girisDepo}-${item.girisDepoAdi}"),
-                        Text("Çıkış Depo: ${item.cikisDepo}-${item.cikisDepoAdi}"),
-                      ],
+                        Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}").yetkiVarMi(item.girisDepo != null),
+                        Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}").yetkiVarMi(item.cikisDepo != null),
+                      ].whereType<Text>().toList(),
                     ),
                   ),
                 );

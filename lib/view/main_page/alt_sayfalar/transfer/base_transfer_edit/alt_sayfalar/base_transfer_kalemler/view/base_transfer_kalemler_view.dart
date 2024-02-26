@@ -272,14 +272,14 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
   Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: viewModel.kalemList?[index].stokAdi ?? "",
+      title: viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].kalemAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
           title: loc(context).generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            final result = await Get.toNamed("/TransferKalemEkle", arguments: viewModel.kalemList?[index]);
+            final result = await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
             if (result is KalemModel) {
               BaseSiparisEditModel.instance.kalemList?[index] = result;
             }

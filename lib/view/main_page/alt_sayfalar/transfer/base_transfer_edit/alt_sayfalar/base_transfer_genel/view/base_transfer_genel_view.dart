@@ -57,8 +57,10 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
   late final TextEditingController _masrafKoduController;
   late final TextEditingController _topluGirisDepoController;
   late final TextEditingController _topluCikisDepoController;
+  late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
   late final TextEditingController _isEmriController;
+  late final TextEditingController _topluDepoController;
   late final TextEditingController _projeController;
   late final TextEditingController _aciklama1Controller;
   late final TextEditingController _aciklama2Controller;
@@ -93,13 +95,18 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _masrafKoduController = TextEditingController(text: model.masrafKoduAdi ?? model.masrafKodu);
     _cikisYeriController = TextEditingController(text: viewModel.cikisYeriMap.entries.firstWhereOrNull((element) => element.value == model.cikisYeri)?.key);
-    _topluGirisDepoController = TextEditingController(text: model.topluGirisDepoTanimi);
-    _topluCikisDepoController = TextEditingController(text: model.topluCikisDepoTanimi);
+    _topluGirisDepoController = TextEditingController(text: model.topluGirisDepoTanimi ?? model.girisDepoKodu.toStringIfNotNull);
+    _topluCikisDepoController = TextEditingController(text: model.topluCikisDepoTanimi ?? model.cikisDepoKodu.toStringIfNotNull);
+    _ozelKod1Controller = TextEditingController(
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1)?.aciklama ??
+          model.ozelKod1,
+    );
     _ozelKod2Controller = TextEditingController(
       text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
           model.ozelKod2,
     );
     _isEmriController = TextEditingController(text: model.isemriAciklama);
+    _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
@@ -139,6 +146,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _topluCikisDepoController.dispose();
     _ozelKod2Controller.dispose();
     _isEmriController.dispose();
+    _topluDepoController.dispose();
     _projeController.dispose();
     _aciklama1Controller.dispose();
     _aciklama2Controller.dispose();
@@ -262,11 +270,11 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       viewModel.setCariKodu(result.cariKodu);
                       viewModel.model.vadeGunu = result.vadeGunu;
                       viewModel.model.efaturaTipi = result.efaturaTipi;
-                      _belgeNoController.text = "";
-                      await getBelgeNo();
+                      // _belgeNoController.text = "";
+                      // await getBelgeNo();
                     }
                   },
-                ).yetkiVarMi(widget.model.editTipiEnum?.depoTransferiMi ?? false),
+                ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
                 Row(
                   children: [
                     Expanded(
@@ -292,7 +300,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(!yetkiController.transferLokalDatGizlenecekAlanlar("kdv_dahil_haric")),
+                    ).yetkiVarMi(!yetkiController.transferLokalDatGizlenecekAlanlar("kdv_dahil_haric") && !(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "E-İrsaliye",
@@ -300,7 +308,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         child: Observer(
                           builder: (_) => Switch.adaptive(
                             value: viewModel.model.ebelgeCheckbox == "E",
-                            onChanged: enable && !yetkiController.transferDatEIrsaliyeIsaretleyemesin
+                            onChanged: enable && (model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
                                 ? (bool value) {
                                     viewModel.setEIrsaliye(value);
                                     if (value) {
@@ -311,7 +319,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
+                    ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
                   ],
                 ),
                 Observer(
@@ -440,10 +448,10 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         onTap: () async {
                           final result = await Get.toNamed(
                             "mainPage/masrafKoduRehberi",
-                            arguments: viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1,
+                            arguments: viewModel.model.masrafKoduTipi ?? -1,
                           );
                           if (result is MasrafKoduRehberiModel) {
-                            _masrafKoduController.text = result.masrafAdi ?? "";
+                            _masrafKoduController.text = result.masrafAdi ?? result.masrafKodu ?? "";
                             viewModel.changeMasrafKodu(result);
                           }
                         },
@@ -467,12 +475,15 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                               (index) => BottomSheetModel(
                                 title: viewModel.cikisYeriMap.entries.toList()[index].key,
                                 value: viewModel.cikisYeriMap.entries.toList()[index],
+                                description: viewModel.cikisYeriMap.entries.toList()[index].value,
                                 groupValue: viewModel.cikisYeriMap.entries.toList()[index].value,
                               ),
                             ),
                           );
                           if (result is MapEntry) {
                             viewModel.changeCikisYeri(result.value);
+                            viewModel.setMasrafKoduTipi(viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1);
+
                             _cikisYeriController.text = result.key;
                           }
                         },
@@ -542,7 +553,27 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   ],
                 ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Özel Kod 1",
+                        readOnly: true,
+                        suffixMore: true,
+                        isMust: true,
+                        controller: _ozelKod1Controller,
+                        enabled: enable,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                        onClear: () => viewModel.setOzelKod1(null),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
+                          if (result != null) {
+                            _ozelKod1Controller.text = result.aciklama ?? "";
+                            viewModel.setOzelKod1(result.kod);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Özel Kod 2",
@@ -561,48 +592,71 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         },
                       ),
                     ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "İş Emri",
-                        suffixMore: true,
-                        readOnly: true,
-                        controller: _isEmriController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
-                        onClear: () => viewModel.changeIsEmri(null),
-                        onTap: () async {
-                          final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
-                          if (result is IsEmirleriModel) {
-                            viewModel.changeIsEmri(result);
-                            _isEmriController.text = result.stokKodu ?? "";
-                          }
-                        },
-                      ).yetkiVarMi(yetkiController.transferIsEmriSorulsun),
-                    ),
                   ],
                 ),
                 CustomTextField(
-                  labelText: "Proje",
-                  readOnly: true,
-                  isMust: true,
+                  labelText: "İş Emri",
                   suffixMore: true,
-                  controller: _projeController,
-                  enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  readOnly: true,
+                  controller: _isEmriController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
+                  onClear: () => viewModel.changeIsEmri(null),
                   onTap: () async {
-                    final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                    if (result is BaseProjeModel) {
-                      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                      viewModel.setProje(result);
+                    final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+                    if (result is IsEmirleriModel) {
+                      viewModel.changeIsEmri(result);
+                      _isEmriController.text = result.stokKodu ?? "";
                     }
                   },
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
+                ).yetkiVarMi(yetkiController.transferIsEmriSorulsun && !(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Toplu Depo",
+                        readOnly: true,
+                        //  && yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A1"),
+                        suffixMore: true,
+                        controller: _topluDepoController,
+                        enabled: enable,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                          if (result != null) {
+                            _topluDepoController.text = result.depoTanimi ?? "";
+                            viewModel.setDepoKodu(result);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi != true),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        readOnly: true,
+                        isMust: true,
+                        suffixMore: true,
+                        controller: _projeController,
+                        enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("proje"),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                        onTap: () async {
+                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                          if (result is BaseProjeModel) {
+                            _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                            viewModel.setProje(result);
+                          }
+                        },
+                      ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
+                    ),
+                  ],
+                ),
                 CustomTextField(
                   labelText: "Açıklama",
                   enabled: enable && !yetkiController.transferLokalDatDegistirilmeyecekAlanlar("A"),
                   isMust: yetkiController.transferLokalDatBosGecilmeyecekAlanlar("A"),
                   controllerText: viewModel.model.aciklama,
                   onChanged: (value) => viewModel.model.aciklama = value,
-                ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
+                ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
 
                 CustomWidgetWithLabel(
                   text: "Ek Açıklamalar",

@@ -800,7 +800,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get konumAta => GridItemModel.islemler(
         title: "Konum Ata",
         iconData: Icons.location_on_outlined,
-        isEnabled: _userModel?.cariHarita == true && _yetkiController.cariKartiDuzenleme,
+        isEnabled: (_userModel?.cariHarita == true || AccountModel.instance.admin == "E") && _yetkiController.cariKartiDuzenleme,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
@@ -813,7 +813,7 @@ class IslemlerMenuItemConstants<T> {
                 showLoading: true,
                 data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
               );
-                return saveCari.success;
+              return saveCari.success;
             }
           }
         },

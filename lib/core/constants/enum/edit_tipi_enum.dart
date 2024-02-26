@@ -59,6 +59,12 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get depoTransferiMi => this == EditTipiEnum.depoTransferi;
 
+  bool get ambarGirisiMi => this == EditTipiEnum.ambarGirisi;
+
+  bool get ambarCikisiMi => this == EditTipiEnum.ambarCikisi;
+
+  bool get ambarFisiMi => this == EditTipiEnum.ambarGirisi || this == EditTipiEnum.ambarCikisi;
+
   bool get talepTeklifMi => satisTalebiMi || alisTalebiMi || satisTeklifiMi;
 
   bool get irsaliyeMi => satisIrsaliyesiMi || alisIrsaliyesiMi;
@@ -75,18 +81,18 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
       case EditTipiEnum.satici:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.ambarGirisi:
         return YetkiController().alisKademeliIskontoSayisi;
       case EditTipiEnum.musteri:
       case EditTipiEnum.satisFatura:
       case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.ambarCikisi:
         return YetkiController().satisKademeliIskontoSayisi;
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.satisTalebi:
         return YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? "");
       case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.ambarGirisi:
-      case EditTipiEnum.ambarCikisi:
       case EditTipiEnum.cari:
         return 0;
     }
@@ -294,13 +300,34 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.satisTalebi:
       case EditTipiEnum.depoTransferi:
+      case EditTipiEnum.ambarCikisi:
         return true;
       case EditTipiEnum.satici:
       case EditTipiEnum.alisFatura:
       case EditTipiEnum.alisIrsaliye:
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.ambarGirisi:
+      case EditTipiEnum.cari:
+        return false;
+    }
+  }
+
+  bool get eIrsaliyeIsaretleyemesin {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatEIrsaliyeIsaretleyemesin;
       case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferAcEIrsaliyeIsaretleyemesin;
+      case EditTipiEnum.musteri:
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisTeklifi:
+      case EditTipiEnum.satisTalebi:
+      case EditTipiEnum.satici:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+      case EditTipiEnum.alisTalebi:
+      case EditTipiEnum.ambarGirisi:
       case EditTipiEnum.cari:
         return false;
     }

@@ -96,8 +96,20 @@ abstract class _BaseTransferGenelViewModelBase with Store {
   }
 
   @action
+  void setMasrafKoduTipi(int? value) {
+    model = model.copyWith(masrafKoduTipi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setCikisSube(int? value) {
     model = model.copyWith(cikisSubeKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setOzelKod1(String? value) {
+    model = model.copyWith(ozelKod1: value);
     BaseSiparisEditModel.setInstance(model);
   }
 

@@ -156,11 +156,33 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
+  void setMasrafKoduTipi(int? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setMasrafKoduTipi');
+    try {
+      return super.setMasrafKoduTipi(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCikisSube(int? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
         .startAction(name: '_BaseTransferGenelViewModelBase.setCikisSube');
     try {
       return super.setCikisSube(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
     } finally {
       _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
     }

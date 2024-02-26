@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
@@ -192,7 +193,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               Text.rich(
                                 TextSpan(
                                   children: [
-                                    const TextSpan(text: "StkBakiye: "),
+                                    const TextSpan(text: "Stok Bakiye: "),
                                     TextSpan(
                                       text: "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNotNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
                                       style: const TextStyle(fontWeight: FontWeight.bold),
@@ -316,6 +317,24 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //   ),
                 // ),
 
+                //* Ambar Fişi
+                CustomTextField(
+                  labelText: "Ek Alan 1",
+                  controller: ekAlan1Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "mainPage/masrafKoduRehberi",
+                      arguments: model.masrafKoduTipi,
+                    );
+                    if (result is MasrafKoduRehberiModel) {
+                      ekAlan1Controller.text = result.masrafAdi ?? "";
+                      viewModel.kalemModel.ekalan1 = result.masrafKodu;
+                    }
+                  },
+                ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == true),
+                //* Geri Kalanlar
                 CustomTextField(
                   labelText: "Ek Alan 1",
                   controller: ekAlan1Controller,
@@ -331,7 +350,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       dialogManager.showInfoDialog("Ek Alan 1 açıkken Ek Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
                     }
                   },
-                ).yetkiVarMi(editTipi?.ekAlan1GorunsunMu ?? false),
+                ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false),
                 CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
                 CustomTextField(
                   labelText: "İş Emri",
@@ -375,7 +394,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false) && !transferMi),
+                      ).yetkiVarMi(((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) || (editTipi?.ambarFisiMi == true)),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Yapılandırma Kodu",
@@ -475,7 +494,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi && !transferMi),
+                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi && (editTipi?.depoTransferiMi != true)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Proje",
@@ -492,7 +511,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !transferMi),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && (editTipi?.depoTransferiMi != true)),
                   ],
                 ),
                 Row(
@@ -552,7 +571,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
+                    ).yetkiVarMi(!editTipi.talepTeklifMi && (editTipi?.depoTransferiMi != true)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Ölçü Birimi",
@@ -867,6 +886,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     if (widget.kalemModel != null) {
       viewModel.setKalemModel(widget.kalemModel!);
       await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
+      if (editTipi?.ambarFisiMi == true) {
+        viewModel.setKdvOrani(0);
+      }
     } else {
       viewModel.kalemModel.kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList();
       viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu;
@@ -879,7 +901,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
     }
     kalemAdiController.text = viewModel.kalemModel.kalemAdi ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
-    ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? "";
+    ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? model.masrafKodu ?? "";
     ekAlan2Controller.text = viewModel.kalemModel.ekalan2 ?? "";
     teslimTarihiController.text = viewModel.kalemModel.teslimTarihi?.toDateString ?? "";
     yapKodController.text = viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
@@ -902,8 +924,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
     malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
-    kdvOraniController.text = viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
-        (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+    kdvOraniController.text = editTipi?.ambarFisiMi == true
+        ? ""
+        : viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
+            (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = viewModel.kalemModel.kosulKodu ?? model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     dovizTipiController.text = viewModel.kalemModel.dovizliMi ? (viewModel.kalemModel.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? "") : mainCurrency;

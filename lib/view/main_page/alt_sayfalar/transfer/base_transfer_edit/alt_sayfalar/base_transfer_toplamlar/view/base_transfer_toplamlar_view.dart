@@ -181,7 +181,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     CustomTextField(
                       labelText: "Gen. İsk 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                      enabled: enable,
                       controller: genelIskonto1Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -201,7 +201,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     CustomTextField(
                       labelText: "İsk.Tipi 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                      enabled: enable,
                       readOnly: true,
                       suffixMore: true,
                       controller: iskontoTipi1Controller,
@@ -216,13 +216,13 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ),
+                ).yetkiVarMi(yetkiController.genIsk1AktifMi(model.getEditTipiEnum)),
                 Row(
                   children: <CustomTextField>[
                     CustomTextField(
                       labelText: "Gen. İsk 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                      enabled: enable,
                       controller: genelIskonto2Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -242,7 +242,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     CustomTextField(
                       labelText: "İsk.Tipi 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                      enabled: enable,
                       readOnly: true,
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi.toStringIfNotNull ?? "")),
@@ -257,13 +257,13 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ),
+                ).yetkiVarMi(yetkiController.genIsk2AktifMi(model.getEditTipiEnum)),
                 Row(
                   children: <CustomTextField>[
                     CustomTextField(
                       labelText: "Gen. İsk 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                      enabled: enable,
                       controller: genelIskonto3Controller,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       onChanged: (String p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
@@ -283,7 +283,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     CustomTextField(
                       labelText: "İsk.Tipi 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                      enabled: enable,
                       suffixMore: true,
                       readOnly: true,
                       controller: iskontoTipi3Controller,
@@ -298,9 +298,9 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ),
+                ).yetkiVarMi(yetkiController.genIsk3AktifMi(model.getEditTipiEnum)),
               ],
-            ).yetkiVarMi(model.stekMi),
+            ),
             Row(
               children: <Widget>[
                 Expanded(

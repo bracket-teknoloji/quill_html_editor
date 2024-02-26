@@ -31,6 +31,10 @@ final class YetkiController {
 
   //! GENEL
 
+  bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
+  bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
+  bool genIsk3AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk3AktifMi : siparisMSGenIsk3AktifMi;
+
   int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
   int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
 
@@ -479,7 +483,7 @@ final class YetkiController {
 
   bool get transferDatLokalDATSeciliGelmesin => _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
   bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
-  bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
+  bool get transferDatEIrsaliyeIsaretleyemesin => !_isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
   //* Ambar Giriş Fişi
@@ -501,6 +505,8 @@ final class YetkiController {
   bool get transferAcSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "O");
 
   DepoList? get transferAcVarsayilanDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferAcVarsayilanDepo).firstOrNull;
+
+  bool get transferAcEIrsaliyeIsaretleyemesin => !_isTrue(_yetkiModel?.transferAcEIrsIsaretleyemesin);
 
   //! Üretim
 
