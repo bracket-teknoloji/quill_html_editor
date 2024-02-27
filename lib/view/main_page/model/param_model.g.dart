@@ -442,6 +442,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       json['SatisMusteriSiptenSaticiSipAktif'] as bool?
   ..satisSipOnayAktif = json['SatisSipOnayAktif'] as bool?
   ..satisMuhRefKodSorulsun = json['SatisMuhRefKodSorulsun'] as bool?
+  ..alisMuhRefKodSorulsun = json['AlisMuhRefKodSorulsun'] as bool?
   ..satisEkMaliyet1KdvOrani =
       (json['SatisEkMaliyet1KdvOrani'] as num?)?.toDouble()
   ..fatuSatisTeslimCarideBaglanmisCarilerSecilsin =
@@ -753,6 +754,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
       instance.satisMusteriSiptenSaticiSipAktif);
   writeNotNull('SatisSipOnayAktif', instance.satisSipOnayAktif);
   writeNotNull('SatisMuhRefKodSorulsun', instance.satisMuhRefKodSorulsun);
+  writeNotNull('AlisMuhRefKodSorulsun', instance.alisMuhRefKodSorulsun);
   writeNotNull('SatisEkMaliyet1KdvOrani', instance.satisEkMaliyet1KdvOrani);
   writeNotNull('FatuSatisTeslimCarideBaglanmisCarilerSecilsin',
       instance.fatuSatisTeslimCarideBaglanmisCarilerSecilsin);

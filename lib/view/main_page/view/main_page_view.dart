@@ -49,7 +49,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
           if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
             scaffoldKey.currentState!.closeDrawer();
             scaffoldKey.currentState!.closeEndDrawer();
-            dialogManager.showExitDialog();
+            return dialogManager.showExitDialog();
           } else {
             // dialogManager.showExitDialog();
           }
