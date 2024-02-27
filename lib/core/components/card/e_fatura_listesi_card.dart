@@ -99,20 +99,20 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   final efaturaList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
-                    Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? theme.colorScheme.inversePrimary : null)),
+                    Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? UIHelper.primaryColor : null)),
                     InkWell(
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
                           Text(" Senaryo: ${model.senaryo ?? ""}"),
                         ],
                       ),
                     ).yetkiVarMi(!model.gelenMi),
                     Text("Senaryo: ${model.senaryo ?? ""}").yetkiVarMi(model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(!model.dovizliMi),
-                    Text("Genel Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
+                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
                   ];
                   final eArsivList = [
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
@@ -121,7 +121,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
@@ -129,7 +129,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Gönderme Şekli: ${model.gondermeDurumu ?? ""}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(!model.dovizliMi),
-                    Text("Genel Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
+                    Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
                   ];
                   final eIrsaliyeList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
@@ -139,7 +139,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       onTap: showCevapAciklamaSnackBar,
                       child: Row(
                         children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: theme.colorScheme.inversePrimary),
+                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
                           Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
                         ],
                       ),
@@ -191,8 +191,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.inversePrimary))
-                    .yetkiVarMi(model.kontrolAciklama != null),
+                Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: UIHelper.primaryColor)).yetkiVarMi(model.kontrolAciklama != null),
                 CustomTextField(
                   labelText: "Kontrol Açıklaması",
                   controller: controller,
