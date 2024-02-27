@@ -6,6 +6,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/utils/map_utils.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
@@ -92,6 +93,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(borcSenedi);
         islemlerList.add(cekTahsilati);
         islemlerList.add(tahsilatSenedi);
+        islemlerList.addIfConditionTrue(newModel.enlem != null, konumGoster);
         islemlerList.add(konumAta);
         islemlerList.add(paylas);
         islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
@@ -118,6 +120,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cariKarti);
       islemlerList.add(cariHareketleri);
       islemlerList.addAll(raporlar ?? []);
+      islemlerList.add(konumaGit);
       islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
       islemlerList.add(paylas);
     } else if (islemTipi == IslemTipiEnum.kasa) {
@@ -797,6 +800,54 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
+
+  GridItemModel get konumGoster => GridItemModel.islemler(
+        title: "Konum Göster",
+        iconData: Icons.location_on_outlined,
+        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            await Get.toNamed("/mainPage/cariHaritasiGoruntule", arguments: cariModel);
+            // if (result is LatLng) {
+            //   final saveCari = await _networkManager.dioPost(
+            //     path: ApiUrls.saveCari,
+            //     bodyModel: CariListesiModel(),
+            //     showError: true,
+            //     showLoading: true,
+            //     data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
+            //   );
+            //   return saveCari.success;
+            // }
+          }
+        },
+      );
+  GridItemModel get konumaGit => GridItemModel.islemler(
+        title: "Konuma Git",
+        iconData: Icons.location_on_outlined,
+        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E",
+        onTap: () async {
+          if (model is CariListesiModel) {
+            final CariListesiModel cariModel = model as CariListesiModel;
+            try {
+              await MapUtils.openMap(cariModel.enlem ?? 0, cariModel.boylam ?? 0);
+            } on Exception catch (e) {
+              _dialogManager.showAlertDialog(e.toString());
+            }
+            // if (result is LatLng) {
+            //   final saveCari = await _networkManager.dioPost(
+            //     path: ApiUrls.saveCari,
+            //     bodyModel: CariListesiModel(),
+            //     showError: true,
+            //     showLoading: true,
+            //     data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
+            //   );
+            //   return saveCari.success;
+            // }
+          }
+        },
+      );
+
   GridItemModel get konumAta => GridItemModel.islemler(
         title: "Konum Ata",
         iconData: Icons.location_on_outlined,

@@ -17,8 +17,9 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 
 class CariHaritasiView extends StatefulWidget {
   final bool? isGetData;
+  final CariListesiModel? model;
   final (double? enlem, double? boylam)? konum;
-  const CariHaritasiView({super.key, this.isGetData, this.konum});
+  const CariHaritasiView({super.key, this.isGetData, this.konum, this.model});
 
   @override
   State<CariHaritasiView> createState() => CariHaritasiViewState();
@@ -26,6 +27,7 @@ class CariHaritasiView extends StatefulWidget {
 
 class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   CariHaritasiViewModel viewModel = CariHaritasiViewModel();
+  GoogleMapController? _controller;
   double? latMe;
   double? longMe;
   final Location _locationTracker = Location();
@@ -43,9 +45,16 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         zoom: 14.4746,
       );
     }
+    if (widget.model != null) {
+      viewModel.setCariList([widget.model!]);
+      myLocation = CameraPosition(
+        target: LatLng(widget.model?.enlem ?? 0, widget.model?.boylam ?? 0),
+        zoom: 14.4746,
+      );
+    }
     // setMarker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (widget.konum == null) {
+      if ((widget.konum?.$1 == null && widget.konum?.$2 == null) && widget.model == null) {
         await setCameraPosition();
       }
       final bool locationEnabled = await isLocationEnabled();
@@ -53,7 +62,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         viewModel.setIsLocationEnabled(locationEnabled);
         dialogManager.showLocationDialog();
       }
-      if (widget.isGetData != true) {
+      if (widget.isGetData == null) {
         await viewModel.getData();
       }
 
@@ -89,7 +98,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         ),
         body: Observer(
           builder: (_) {
-            if (viewModel.cariList == null && widget.isGetData != true) {
+            if (viewModel.cariList == null && widget.isGetData != null) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
@@ -101,6 +110,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                     mapType: MapType.normal,
                     initialCameraPosition: myLocation,
                     onMapCreated: (controller) async {
+                      _controller = controller;
                       if (widget.isGetData != true) {
                         for (CariListesiModel? model in viewModel.cariList ?? []) {
                           viewModel.addMarker(
@@ -174,7 +184,8 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
       target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
       zoom: 14.4746,
     );
-    setState(() {});
+    _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
+    // setState(() {});
     // if (isLocationEnabled) {
     // }
     // await Location.instance.getLocation().then((value) {
