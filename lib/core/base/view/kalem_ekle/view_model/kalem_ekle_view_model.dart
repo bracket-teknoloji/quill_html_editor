@@ -62,6 +62,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
 
   @action
+  void setMuhasebeReferansKodu(String? value) => kalemModel = kalemModel.copyWith(muhRefKodu: value);
+
+  @action
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action

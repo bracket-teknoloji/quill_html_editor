@@ -64,6 +64,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController kdvOraniController;
   late final TextEditingController fiyatController;
   late final TextEditingController muhKoduController;
+  late final TextEditingController muhRefKoduController;
   late final TextEditingController serilerController;
   TextEditingController? isk1Controller;
   TextEditingController? isk1TipiController;
@@ -373,7 +374,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     children: [
                       Expanded(
                         child: CustomTextField(
-                          labelText: "Muh. Kodu",
+                          labelText: "Muhasebe Kodu",
                           suffixMore: true,
                           readOnly: true,
                           isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
@@ -397,30 +398,48 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ).yetkiVarMi(((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) || (editTipi?.ambarFisiMi == true)),
                       Expanded(
                         child: CustomTextField(
-                          labelText: "Yapılandırma Kodu",
+                          labelText: "Muhasebe Referans Kodu",
                           valueWidget: Observer(
                             builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
                           ),
                           isMust: true,
                           readOnly: true,
                           suffixMore: true,
-                          controller: yapKodController,
+                          controller: muhRefKoduController,
                           onTap: () async {
-                            final result = await Get.toNamed(
-                              "/mainPage/yapilandirmaRehberi",
-                              arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
-                                ..stokKodu = viewModel.kalemModel.stokKodu,
-                            );
-                            if (result is YapilandirmaRehberiModel) {
-                              yapKodController.text = result.yapacik ?? "";
-                              viewModel.setYapKod(result.yapkod);
+                            final result = await bottomSheetDialogManager.showMuhasebeReferansKoduBottomSheetDialog(context, viewModel.kalemModel.muhRefKodu);
+                            if (result != null) {
+                              muhRefKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";
+                              viewModel.setMuhasebeReferansKodu(result.hesapKodu);
                             }
                           },
                         ),
-                      ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null && !transferMi),
+                        //TODO
+                      ).yetkiVarMi(yetkiController.muhRefSorulsun(editTipi)),
                     ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
                   ),
                 ),
+                CustomTextField(
+                  labelText: "Yapılandırma Kodu",
+                  valueWidget: Observer(
+                    builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
+                  ),
+                  isMust: true,
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: yapKodController,
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "/mainPage/yapilandirmaRehberi",
+                      arguments: widget.stokListesiModel ?? viewModel.model ?? StokListesiModel()
+                        ..stokKodu = viewModel.kalemModel.stokKodu,
+                    );
+                    if (result is YapilandirmaRehberiModel) {
+                      yapKodController.text = result.yapacik ?? "";
+                      viewModel.setYapKod(result.yapkod);
+                    }
+                  },
+                ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null && !transferMi),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -724,7 +743,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         !editTipi.siparisMi &&
                         !editTipi.talepTeklifMi &&
                         yetkiController.seriUygulamasiAcikMi &&
-                        !transferMi,
+                        !editTipi.ambarGirisiMi &&
+                        !editTipi.depoTransferiMi,
                   ),
                 ),
                 ...List.generate(
@@ -879,6 +899,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kdvOraniController = TextEditingController();
     fiyatController = TextEditingController();
     muhKoduController = TextEditingController();
+    muhRefKoduController = TextEditingController();
     serilerController = TextEditingController();
   }
 
@@ -922,6 +943,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
     miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
+    muhRefKoduController.text = viewModel.kalemModel.muhRefKodu ?? "";
     malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
     olcuBirimiController.text = viewModel.kalemModel.olcuBirimAdi ?? viewModel.model?.olcuBirimi ?? "";
     kdvOraniController.text = editTipi?.ambarFisiMi == true
@@ -1007,6 +1029,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk6TipiController?.dispose();
     isk6YuzdeController?.dispose();
     muhKoduController.dispose();
+    muhRefKoduController.dispose();
     serilerController.dispose();
   }
 
