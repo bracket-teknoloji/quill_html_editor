@@ -34,6 +34,20 @@ final class YetkiController {
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
   bool genIsk3AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk3AktifMi : siparisMSGenIsk3AktifMi;
+  bool muhRefSorulsun(EditTipiEnum? editTipi) {
+    if (editTipi.talepTeklifMi) {
+      return taltekMuhRefSorulsun;
+    }else if (editTipi?.satisMi == true) {
+      return satisMuhRefSorulsun;
+    } else{
+      return alisMuhRefSorulsun;
+    }
+  }
+
+  bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
+  bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);
+  bool get taltekMuhRefSorulsun => _isTrue(_paramModel?.talTekParam?.firstOrNull?.muhrefkodSorulsun == "E", skipAdmin: true);
+  
 
   int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
   int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;

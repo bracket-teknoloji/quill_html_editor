@@ -570,6 +570,28 @@ class BottomSheetDialogManager {
     );
   }
 
+  Future<StokMuhasebeKoduModel?> showMuhasebeReferansKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
+    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+      final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": "", "HesapTipi": "", "MuhRefKodGelsin": "E", "EkranTipi": "R"};
+      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
+    }
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Muhasebe Kodu Seçiniz",
+      groupValue: groupValue,
+      children: viewModel.muhasebeKoduList
+          ?.map(
+            (StokMuhasebeKoduModel e) => BottomSheetModel(
+              title: e.hesapAdi ?? e.hesapKodu ?? "",
+              description: e.hesapKodu,
+              value: e,
+              groupValue: e.hesapKodu,
+            ),
+          )
+          .toList(),
+    );
+  }
+
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
