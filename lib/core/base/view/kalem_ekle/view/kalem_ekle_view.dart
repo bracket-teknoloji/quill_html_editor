@@ -320,7 +320,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
                 //* Ambar Fişi
                 CustomTextField(
-                  labelText: "Ek Alan 1",
+                  labelText: "Alan 1",
                   controller: ekAlan1Controller,
                   readOnly: true,
                   suffixMore: true,
@@ -337,7 +337,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == true),
                 //* Geri Kalanlar
                 CustomTextField(
-                  labelText: "Ek Alan 1",
+                  labelText: "Alan 1",
                   controller: ekAlan1Controller,
                   onChanged: (p0) {
                     viewModel.kalemModel.ekalan1 = p0;
@@ -348,11 +348,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   },
                   onTap: () {
                     if (viewModel.kalemModel.kalemAdiDegistimi ?? false) {
-                      dialogManager.showInfoDialog("Ek Alan 1 açıkken Ek Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
+                      dialogManager.showInfoDialog("Alan 1 açıkken Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
                     }
                   },
                 ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false),
-                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                CustomTextField(labelText: "Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
                 CustomTextField(
                   labelText: "İş Emri",
                   controller: isEmriController,
@@ -374,7 +374,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     children: [
                       Expanded(
                         child: CustomTextField(
-                          labelText: "Muhasebe Kodu",
+                          labelText: "Muh. Kodu",
                           suffixMore: true,
                           readOnly: true,
                           isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
@@ -398,7 +398,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ).yetkiVarMi(((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) || (editTipi?.ambarFisiMi == true)),
                       Expanded(
                         child: CustomTextField(
-                          labelText: "Muhasebe Referans Kodu",
+                          labelText: "Muh. Ref. Kodu",
                           valueWidget: Observer(
                             builder: (_) => Text(viewModel.kalemModel.yapkod ?? ""),
                           ),
@@ -788,7 +788,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                 ),
                 // TODO Açıklama parametrelerini düzenle
-                const Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
+                const Text("Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)
