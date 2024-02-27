@@ -308,7 +308,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         child: Observer(
                           builder: (_) => Switch.adaptive(
                             value: viewModel.model.ebelgeCheckbox == "E",
-                            onChanged: enable && (model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
+                            onChanged: enable && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
                                 ? (bool value) {
                                     viewModel.setEIrsaliye(value);
                                     if (value) {
