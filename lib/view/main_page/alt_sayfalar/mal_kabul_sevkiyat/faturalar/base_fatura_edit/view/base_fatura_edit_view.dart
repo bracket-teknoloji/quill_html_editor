@@ -74,6 +74,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           tabController.animateTo(tabController.previousIndex);
         }
       }
+      if (tabController.indexIsChanging &&
+          tabController.previousIndex == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1) &&
+          BaseSiparisEditModel.instance.kalemList?.any((element) => element.seriliMi) == true &&
+          BaseSiparisEditModel.instance.kalemList?.any((element) => !element.seriTamamMi) == true) {
+        dialogManager.showErrorSnackBar("Lütfen seri numaraları tamamlayınız.");
+        tabController.animateTo(tabController.previousIndex);
+      }
       if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
@@ -567,7 +574,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                   }
                   dialogManager.showCariGridViewDialog(CariListesiModel());
                 },
-                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onClear: () => viewModel.setCariKodu(null),
               onTap: () async {
