@@ -5,6 +5,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -1349,10 +1350,14 @@ class KalemModel with NetworkManagerMixin {
 
   bool get kalemStoktanMi => kalemStoktanKodu == stokKodu;
 
+  bool get seriliMi => seriList != null;
+
+  bool get seriTamamMi => (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
+
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 
   String get faturaKalemAciklama {
-    if (seriList?.isNotEmpty == true) {
+    if (seriliMi) {
       return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     } else if (siparisSira != null) {
       return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
