@@ -76,7 +76,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       dense: true,
                       onTap: item.onTap,
                       title: Text(
-                        "${items[index].title}",
+                        items[index].title,
                         style: theme.textTheme.bodyMedium,
                       ),
                       horizontalTitleGap: 0,
