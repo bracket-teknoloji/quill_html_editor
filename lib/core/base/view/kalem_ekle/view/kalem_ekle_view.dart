@@ -414,7 +414,6 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                        //TODO
                       ).yetkiVarMi(yetkiController.muhRefSorulsun(editTipi)),
                     ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric,
                   ),
@@ -788,6 +787,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ],
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                 ),
+                // TODO Açıklama parametrelerini düzenle
                 const Text("Ek Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
