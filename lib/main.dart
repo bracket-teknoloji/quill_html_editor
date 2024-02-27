@@ -233,7 +233,7 @@ class PickerApp extends StatelessWidget {
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
-            popGesture: true,
+            popGesture: false,
             children: <GetPage>[
               GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
               GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
@@ -253,6 +253,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariYeniKayit", page: () => CariYeniKayitView(model: Get.arguments)),
               GetPage(name: "/cariHaritasi", page: CariHaritasiView.new),
               GetPage(name: "/cariHaritasiOzel", page: () => CariHaritasiView(isGetData: true, konum: Get.arguments)),
+              GetPage(name: "/cariHaritasiGoruntule", page: () => CariHaritasiView(isGetData: false, model: Get.arguments)),
 
               //* Cari Raporları
               GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
