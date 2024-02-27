@@ -76,7 +76,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           }
         }
         if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-            viewModel.changeIsLastPage(true);
+          viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
         }
@@ -555,7 +555,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                   }
                   dialogManager.showCariGridViewDialog(CariListesiModel());
                 },
-                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onClear: () => viewModel.setCariKodu(null),
               onTap: () async {
