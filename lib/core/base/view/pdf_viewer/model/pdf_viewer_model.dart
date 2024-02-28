@@ -8,16 +8,12 @@ part "pdf_viewer_model.g.dart";
 @unfreezed
 abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   PdfModel._();
-  @JsonSerializable(
-    createFactory: true,
-    explicitToJson: true,
-    createToJson: true,
-  )
+  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
   factory PdfModel({
     String? raporOzelKod,
     bool? standart,
     DicParams? dicParams,
-    @JsonKey(name: "DicParams") Map<String,dynamic>? dicParamsMap,
+    @JsonKey(name: "DicParams", includeToJson: false) Map<String, dynamic>? dicParamsMap,
     int? dizaynId,
     int? etiketSayisi,
   }) = _PdfModel;
@@ -32,8 +28,10 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   PdfModel fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
 
   Map<String, dynamic> toJsonWithDicParamsMap() {
-    if (dicParamsMap!= null) {
-      return toJson()["DIC_PARAMS"] = dicParamsMap ?? {};
+    if (dicParamsMap != null) {
+      final Map<String, dynamic> json = toJson();
+      json["DIC_PARAMS"] = dicParamsMap ?? {};
+      return json;
     } else {
       return toJson();
     }
@@ -163,6 +161,4 @@ class DicParams with _$DicParams {
     String? muhasebeKodu,
   }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
-
-  
 }

@@ -165,6 +165,28 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
   }
 
   @override
+  void setEtiketSayisi(int? sayi) {
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
+        .startAction(name: '_SerbestRaporlarViewModelBase.setEtiketSayisi');
+    try {
+      return super.setEtiketSayisi(sayi);
+    } finally {
+      _$_SerbestRaporlarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDizaynId(int? sayi) {
+    final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
+        .startAction(name: '_SerbestRaporlarViewModelBase.setDizaynId');
+    try {
+      return super.setDizaynId(sayi);
+    } finally {
+      _$_SerbestRaporlarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void resetFuture() {
     final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
         .startAction(name: '_SerbestRaporlarViewModelBase.resetFuture');

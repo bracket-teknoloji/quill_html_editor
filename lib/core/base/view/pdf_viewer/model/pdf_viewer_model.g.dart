@@ -13,6 +13,7 @@ _$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) =>
       dicParams: json['DIC_PARAMS'] == null
           ? null
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
+      dicParamsMap: json['DicParams'] as Map<String, dynamic>?,
       dizaynId: json['DIZAYN_ID'] as int?,
       etiketSayisi: json['ETIKET_SAYISI'] as int?,
     );

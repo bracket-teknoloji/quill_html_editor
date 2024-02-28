@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 
 import "../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../model/serbest_rapor_response_model.dart";
@@ -13,15 +14,20 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   List<SerbestRaporResponseModel>? serbestRaporResponseModelList;
 
   @action
-  void changeSerbestRaporResponseModelList(
-    List<SerbestRaporResponseModel> value,
-  ) {
+  void changeSerbestRaporResponseModelList(List<SerbestRaporResponseModel> value) {
     serbestRaporResponseModelList = value;
     textEditingControllerList = List.generate(
-      serbestRaporResponseModelList!.length,
-      (index) => TextEditingController(
-        text: serbestRaporResponseModelList![index].deger,
-      ),
+      serbestRaporResponseModelList?.length ?? 0,
+      (index) {
+        if (StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")) {
+          print(StaticVariables.instance.serbestDicParams.entries.firstWhere((element) => element.key == serbestRaporResponseModelList?[index].adi).value.toString());
+        }
+        return TextEditingController(
+          text: StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
+              ? StaticVariables.instance.serbestDicParams.entries.firstWhere((element) => element.key == serbestRaporResponseModelList![index].adi).value.toString()
+              : serbestRaporResponseModelList![index].adi,
+        );
+      },
     );
     value.where((element) => element.deger != null).forEach((element) {
       changeDicParams(element.adi!, element.deger!);
@@ -42,7 +48,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   }
 
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Serbest");
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Serbest", dicParamsMap: {});
 
   @observable
   Map<String, dynamic> dicParams = {};
@@ -60,7 +66,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
     if (changeController) {
       changeControllerText(key, value);
     }
-    pdfModel = pdfModel.copyWith(dicParams: dicParamsComputed);
+    pdfModel = pdfModel.copyWith(dicParamsMap: dicParams);
   }
 
   //* Future
@@ -70,9 +76,14 @@ abstract class _SerbestRaporlarViewModelBase with Store {
 
   @action
   void setFuture() {
-    pdfModel = pdfModel..dicParams = DicParams.fromJson(dicParams);
+    pdfModel = pdfModel.copyWith(dicParamsMap: dicParams);
     futureController = ObservableFuture.value(true);
   }
+
+  @action
+  void setEtiketSayisi(int? sayi) => pdfModel = pdfModel.copyWith(etiketSayisi: sayi);
+  @action
+  void setDizaynId(int? sayi) => pdfModel = pdfModel.copyWith(dizaynId: sayi);
 
   @action
   void resetFuture() => futureController = ObservableFuture.value(false);

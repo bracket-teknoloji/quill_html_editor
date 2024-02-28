@@ -297,7 +297,7 @@ class NetworkManager {
 
   Future<GenericResponseModel> getPDF(PdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJson());
+    final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJsonWithDicParamsMap());
     return response;
   }
 

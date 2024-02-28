@@ -38,7 +38,7 @@ class MenuItemConstants {
     );
   }
 
-  final List<GridItemModel> _gridItemModel = <Object?>[
+  List<GridItemModel> gridItemModel = <Object?>[
     //*Cari
     //*
     GridItemModel.anamenu(
@@ -427,7 +427,7 @@ class MenuItemConstants {
     ),
   ].whereType<GridItemModel>().toList();
 
-  List<GridItemModel> getList() => _gridItemModel.where((GridItemModel element) => element.yetkiKontrol).toList();
+  List<GridItemModel> getList() => gridItemModel.where((GridItemModel element) => element.yetkiKontrol).toList();
 
   List<GridItemModel?> getAltMenuList(String name) => getGridItemModel.where((GridItemModel element) => element.name == name).toList();
 

@@ -14,8 +14,6 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   Map<String, dynamic>? paramMap;
 
   bool get plasiyerKoduMu => [
-        "KOD",
-        "KODU",
         "PLASIYER",
         "PLASIYERKOD",
         "PLASIYER_KOD",
@@ -24,8 +22,6 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
       ].contains(rehberTipi);
 
   bool get cariKoduMu => [
-        "KOD",
-        "KODU",
         "CARI",
         "CARIKOD",
         "CARI_KOD",
@@ -34,8 +30,6 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
       ].contains(rehberTipi);
 
   bool get stokKoduMu => [
-        "KOD",
-        "KODU",
         "STOK",
         "STOKKOD",
         "STOK_KOD",

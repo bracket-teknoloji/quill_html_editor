@@ -7,6 +7,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:open_file_plus/open_file_plus.dart";
 import "package:path_provider/path_provider.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
@@ -23,8 +24,9 @@ import "../view_model/pdf_viewer_view_model.dart";
 class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
+  final bool? serbestMi;
   final Future Function()? filterBottomSheet;
-  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title});
+  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title, this.serbestMi});
 
   @override
   State<PDFViewerView> createState() => _PDFViewerViewState();
@@ -38,32 +40,29 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   @override
   void initState() {
-    pdfViewerController = PdfViewerController();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    pdfViewerController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    //* Açılıştaki dialog için
-    Future.delayed(Duration.zero, () async {
+    pdfViewerController = PdfViewerController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final bool result = await widget.filterBottomSheet?.call() ?? true;
       if (result) {
         await getData();
       }
     });
-    //* Sayfa
-    return Scaffold(
-      appBar: appBar(context),
-      bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
-      body: body(),
-    );
   }
+
+  @override
+  void dispose() {
+    pdfViewerController.dispose();
+    StaticVariables.instance.serbestDicParams = {};
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: appBar(context),
+        bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
+        body: body(),
+      );
 
   AppBar appBar(BuildContext context) => AppBar(
         title: AppBarTitle(
@@ -177,7 +176,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
       );
   Future getData() async {
     viewModel.resetFuture();
-    final result = await networkManager.getPDF(widget.pdfData ?? PdfModel());
+    final result = await networkManager.getPDF((widget.serbestMi == true ? widget.pdfData?.copyWith(dicParamsMap: StaticVariables.instance.serbestDicParams) : widget.pdfData) ?? PdfModel());
     if (result.data != null) {
       pdfFile = result.data.first;
       if (result.success == true) {

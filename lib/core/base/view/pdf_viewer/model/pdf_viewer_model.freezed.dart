@@ -26,6 +26,11 @@ mixin _$PdfModel {
   set standart(bool? value) => throw _privateConstructorUsedError;
   DicParams? get dicParams => throw _privateConstructorUsedError;
   set dicParams(DicParams? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "DicParams", includeToJson: false)
+  Map<String, dynamic>? get dicParamsMap => throw _privateConstructorUsedError;
+  @JsonKey(name: "DicParams", includeToJson: false)
+  set dicParamsMap(Map<String, dynamic>? value) =>
+      throw _privateConstructorUsedError;
   int? get dizaynId => throw _privateConstructorUsedError;
   set dizaynId(int? value) => throw _privateConstructorUsedError;
   int? get etiketSayisi => throw _privateConstructorUsedError;
@@ -46,6 +51,8 @@ abstract class $PdfModelCopyWith<$Res> {
       {String? raporOzelKod,
       bool? standart,
       DicParams? dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
       int? dizaynId,
       int? etiketSayisi});
 
@@ -68,6 +75,7 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
     Object? raporOzelKod = freezed,
     Object? standart = freezed,
     Object? dicParams = freezed,
+    Object? dicParamsMap = freezed,
     Object? dizaynId = freezed,
     Object? etiketSayisi = freezed,
   }) {
@@ -84,6 +92,10 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
           ? _value.dicParams
           : dicParams // ignore: cast_nullable_to_non_nullable
               as DicParams?,
+      dicParamsMap: freezed == dicParamsMap
+          ? _value.dicParamsMap
+          : dicParamsMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       dizaynId: freezed == dizaynId
           ? _value.dizaynId
           : dizaynId // ignore: cast_nullable_to_non_nullable
@@ -120,6 +132,8 @@ abstract class _$$PdfModelImplCopyWith<$Res>
       {String? raporOzelKod,
       bool? standart,
       DicParams? dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
       int? dizaynId,
       int? etiketSayisi});
 
@@ -141,6 +155,7 @@ class __$$PdfModelImplCopyWithImpl<$Res>
     Object? raporOzelKod = freezed,
     Object? standart = freezed,
     Object? dicParams = freezed,
+    Object? dicParamsMap = freezed,
     Object? dizaynId = freezed,
     Object? etiketSayisi = freezed,
   }) {
@@ -157,6 +172,10 @@ class __$$PdfModelImplCopyWithImpl<$Res>
           ? _value.dicParams
           : dicParams // ignore: cast_nullable_to_non_nullable
               as DicParams?,
+      dicParamsMap: freezed == dicParamsMap
+          ? _value.dicParamsMap
+          : dicParamsMap // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       dizaynId: freezed == dizaynId
           ? _value.dizaynId
           : dizaynId // ignore: cast_nullable_to_non_nullable
@@ -177,6 +196,7 @@ class _$PdfModelImpl extends _PdfModel {
       {this.raporOzelKod,
       this.standart,
       this.dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false) this.dicParamsMap,
       this.dizaynId,
       this.etiketSayisi})
       : super._();
@@ -190,6 +210,9 @@ class _$PdfModelImpl extends _PdfModel {
   bool? standart;
   @override
   DicParams? dicParams;
+  @override
+  @JsonKey(name: "DicParams", includeToJson: false)
+  Map<String, dynamic>? dicParamsMap;
   @override
   int? dizaynId;
   @override
@@ -214,6 +237,8 @@ abstract class _PdfModel extends PdfModel {
       {String? raporOzelKod,
       bool? standart,
       DicParams? dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
       int? dizaynId,
       int? etiketSayisi}) = _$PdfModelImpl;
   _PdfModel._() : super._();
@@ -230,6 +255,11 @@ abstract class _PdfModel extends PdfModel {
   @override
   DicParams? get dicParams;
   set dicParams(DicParams? value);
+  @override
+  @JsonKey(name: "DicParams", includeToJson: false)
+  Map<String, dynamic>? get dicParamsMap;
+  @JsonKey(name: "DicParams", includeToJson: false)
+  set dicParamsMap(Map<String, dynamic>? value);
   @override
   int? get dizaynId;
   set dizaynId(int? value);

@@ -48,4 +48,6 @@ class StaticVariables {
   bool isSatisFaturasi = false;
 
   EditTipiEnum editTipi = EditTipiEnum.musteri;
+
+  Map<String, dynamic> serbestDicParams = {};
 }
