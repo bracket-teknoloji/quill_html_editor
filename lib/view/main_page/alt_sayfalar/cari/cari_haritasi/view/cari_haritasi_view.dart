@@ -39,19 +39,6 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   );
   @override
   void initState() {
-    if (widget.konum != null) {
-      myLocation = CameraPosition(
-        target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
-        zoom: 14.4746,
-      );
-    }
-    if (widget.model != null) {
-      viewModel.setCariList([widget.model!]);
-      myLocation = CameraPosition(
-        target: LatLng(widget.model?.enlem ?? 0, widget.model?.boylam ?? 0),
-        zoom: 14.4746,
-      );
-    }
     // setMarker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if ((widget.konum?.$1 == null && widget.konum?.$2 == null) && widget.model == null) {
@@ -98,7 +85,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         ),
         body: Observer(
           builder: (_) {
-            if (viewModel.cariList == null && widget.isGetData != null) {
+            if (viewModel.cariList == null && widget.isGetData == null) {
               return const Center(
                 child: CircularProgressIndicator.adaptive(),
               );
@@ -111,6 +98,19 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                     initialCameraPosition: myLocation,
                     onMapCreated: (controller) async {
                       _controller = controller;
+                      if (widget.konum != null) {
+                        myLocation = CameraPosition(
+                          target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
+                          zoom: 14.4746,
+                        );
+                      }
+                      if (widget.model != null) {
+                        viewModel.setCariList([widget.model!]);
+                        myLocation = CameraPosition(
+                          target: LatLng(widget.model?.enlem ?? 0, widget.model?.boylam ?? 0),
+                          zoom: 14.4746,
+                        );
+                      }
                       if (widget.isGetData != true) {
                         for (CariListesiModel? model in viewModel.cariList ?? []) {
                           viewModel.addMarker(
