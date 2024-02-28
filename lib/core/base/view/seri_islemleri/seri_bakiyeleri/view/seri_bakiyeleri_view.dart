@@ -80,7 +80,7 @@ class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                     await viewModel.getData();
                   }
                 },
-                icon: const Icon(Icons.qr_code_scanner_outlined),
+                icon: const Icon(Icons.qr_code_scanner),
               ),
             ),
             Observer(

@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
@@ -151,7 +153,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 viewModel.setFuture();
                 viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
                 viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
-
+                log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
                 Get.back();
               }
             },

@@ -4,8 +4,6 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 
-import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../base/model/base_edit_model.dart";
@@ -170,17 +168,6 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   }
                 },
               ).yetkiKontrol(widget.model.ebelgeCheckbox == "E"),
-              BottomSheetModel(
-                title: "Cari İşlemleri",
-                iconWidget: Icons.person_outline_outlined,
-                onTap: () async {
-                  Get.back();
-                  final CariListesiModel? cariListesiModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                  dialogManager.showCariGridViewDialog(
-                    cariListesiModel,
-                  );
-                },
-              ),
             ].nullCheckWithGeneric,
           ),
           title: Row(

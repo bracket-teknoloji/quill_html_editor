@@ -48,7 +48,7 @@ class MenuItemConstants {
       color: ColorPalette.ecru,
       altMenuler: [
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
-        GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi").isDebug(),
+        GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi"),
         //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
         GridItemModel.altmenu(
           name: "cari_Raporlar",
@@ -398,11 +398,11 @@ class MenuItemConstants {
       color: ColorPalette.slateGray,
       altMenuler: [
         GridItemModel.item(name: "transfer_DAT", title: "Depo Transferi", route: "/mainPage/transferDepo"),
-        GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris").isDebug(),
-        GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis").isDebug(),
+        GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris"),
+        GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
       ].whereType<GridItemModel>().toList(),
-    ).isDebug(),
+    ),
 
     //* Üretim
     //*
@@ -414,7 +414,7 @@ class MenuItemConstants {
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
       ],
-    ).isDebug(),
+    ),
     GridItemModel.anamenu(
       name: "yazdirma_Serbest",
       title: "Serbest Raporlar",

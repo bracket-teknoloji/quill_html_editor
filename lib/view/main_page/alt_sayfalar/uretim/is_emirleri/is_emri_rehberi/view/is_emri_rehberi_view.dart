@@ -27,10 +27,12 @@ class IsEmriRehberiView extends StatefulWidget {
 class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   IsEmriRehberiViewModel viewModel = IsEmriRehberiViewModel();
   late final ScrollController _scrollController;
+  late final TextEditingController _appBarTextController;
 
   @override
   void initState() {
     _scrollController = ScrollController();
+    _appBarTextController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       _scrollController.addListener(() async {
@@ -52,6 +54,7 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _appBarTextController.dispose();
     super.dispose();
   }
 
@@ -67,6 +70,7 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
           builder: (_) {
             if (viewModel.searchBar) {
               return CustomAppBarTextField(
+                controller: _appBarTextController,
                 onFieldSubmitted: (value) async {
                   viewModel.requestModel.searchText = value;
                   await viewModel.resetPage();
@@ -81,9 +85,22 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
         ),
         actions: [
           IconButton(onPressed: () => viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+          IconButton(
+            onPressed: () async {
+              final result = await Get.toNamed("/qr");
+              if (result != null) {
+                viewModel.requestModel.searchText = result;
+                _appBarTextController.text = result;
+                if (!viewModel.searchBar) {
+                  viewModel.changeSearchBar();
+                }
+                await viewModel.resetPage();
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner),
+          ).yetkiVarMi(widget.isGetData == true),
           //TODO sadece rehber olarak kullanıldığında görünecek.
-          // IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code_scanner_outlined)),
-          // IconButton(onPressed: () {}, icon: const Icon(Icons.sort_by_alpha_outlined)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.sort_by_alpha_outlined)).yetkiVarMi(widget.isGetData == true),
         ],
       );
 

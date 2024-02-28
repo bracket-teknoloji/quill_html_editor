@@ -17,6 +17,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
     String? raporOzelKod,
     bool? standart,
     DicParams? dicParams,
+    @JsonKey(name: "DicParams") Map<String,dynamic>? dicParamsMap,
     int? dizaynId,
     int? etiketSayisi,
   }) = _PdfModel;
@@ -29,6 +30,14 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
   factory PdfModel.fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
   @override
   PdfModel fromJson(Map<String, dynamic> json) => _$PdfModelFromJson(json);
+
+  Map<String, dynamic> toJsonWithDicParamsMap() {
+    if (dicParamsMap!= null) {
+      return toJson()["DIC_PARAMS"] = dicParamsMap ?? {};
+    } else {
+      return toJson();
+    }
+  }
 }
 
 // @JsonSerializable()
@@ -154,4 +163,6 @@ class DicParams with _$DicParams {
     String? muhasebeKodu,
   }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
+
+  
 }

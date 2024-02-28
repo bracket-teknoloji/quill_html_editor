@@ -23,7 +23,13 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<IsEmirleriModel>? isEmriList;
 
   @observable
-  SiparislerRequestModel requestModel = SiparislerRequestModel(menuKodu: "URET_ISEM", sayfa: 1);
+  SiparislerRequestModel requestModel = SiparislerRequestModel(
+    menuKodu: "URET_ISEM",
+    sayfa: 1,
+    cariKodu: null,
+    ekranTipi: null,
+    belgeNo: null,
+  );
 
   @action
   Future<void> changeSearchBar() async {
@@ -65,7 +71,7 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getIsEmirleri, bodyModel: IsEmirleriModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getIsEmirleri, bodyModel: IsEmirleriModel(), queryParameters: requestModel.toJson());
     if (result.data is List) {
       setIsEmirleriList(result.data.map((e) => e as IsEmirleriModel).toList().cast<IsEmirleriModel>());
     }

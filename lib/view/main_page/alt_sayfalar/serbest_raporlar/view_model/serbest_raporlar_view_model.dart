@@ -51,11 +51,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   DicParams get dicParamsComputed => DicParams.fromJson(dicParams);
 
   @action
-  void changeDicParams(
-    String key,
-    String value, [
-    bool changeController = true,
-  ]) {
+  void changeDicParams(String key, String value, [bool changeController = true]) {
     if (int.tryParse(key.split("").last) != null) {
       dicParams["KOD${key.split("").last}"] = value;
     } else {
@@ -64,6 +60,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
     if (changeController) {
       changeControllerText(key, value);
     }
+    pdfModel = pdfModel.copyWith(dicParams: dicParamsComputed);
   }
 
   //* Future

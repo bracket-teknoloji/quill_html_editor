@@ -444,7 +444,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   konumController.text = "${result.latitude.toStringAsFixed(5)}, ${result.longitude.toStringAsFixed(5)}";
                 }
               },
-            ).isDebug(),
+            ),
             CustomTextField(
               enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("kilit"),
               readOnly: true,

@@ -218,7 +218,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         },
                       ),
                       //TODO resim göstermeyi ekleyince aç
-                    ).yetkiVarMi(widget.model.ekleMi).isDebug(),
+                    ).yetkiVarMi(widget.model.ekleMi),
                     Expanded(
                       flex: 4,
                       child: CustomTextField(
