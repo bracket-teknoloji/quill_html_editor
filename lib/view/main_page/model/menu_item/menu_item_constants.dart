@@ -18,8 +18,9 @@ import "../main_page_model.dart";
 import "../param_model.dart";
 
 class MenuItemConstants {
-  static final MainPageModel? _anaVeri = CacheManager.getAnaVeri;
-  static final List<NetFectDizaynList> _serbestRapor = _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
+  static  MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
+  
+  static List<NetFectDizaynList> get  _serbestRapor => _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
 
   static List<GridItemModel> get getGridItemModel =>
       _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();

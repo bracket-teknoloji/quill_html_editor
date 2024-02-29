@@ -15,22 +15,20 @@ abstract class _SerbestRaporlarViewModelBase with Store {
 
   @action
   void changeSerbestRaporResponseModelList(List<SerbestRaporResponseModel> value) {
+    if (StaticVariables.instance.serbestDicParams.isNotEmpty) {
+      dicParams = StaticVariables.instance.serbestDicParams;
+    }
     serbestRaporResponseModelList = value;
     textEditingControllerList = List.generate(
       serbestRaporResponseModelList?.length ?? 0,
-      (index) {
-        if (StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")) {
-          print(StaticVariables.instance.serbestDicParams.entries.firstWhere((element) => element.key == serbestRaporResponseModelList?[index].adi).value.toString());
-        }
-        return TextEditingController(
-          text: StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
-              ? StaticVariables.instance.serbestDicParams.entries.firstWhere((element) => element.key == serbestRaporResponseModelList![index].adi).value.toString()
-              : serbestRaporResponseModelList![index].adi,
-        );
-      },
+      (index) => TextEditingController(
+        text: StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
+            ? StaticVariables.instance.serbestDicParams.entries.firstWhere((element) => element.key == serbestRaporResponseModelList![index].adi).value.toString()
+            : serbestRaporResponseModelList?[index].deger ?? "",
+      ),
     );
     value.where((element) => element.deger != null).forEach((element) {
-      changeDicParams(element.adi!, element.deger!);
+      changeDicParams(element.adi!, element.deger!, false);
     });
   }
 

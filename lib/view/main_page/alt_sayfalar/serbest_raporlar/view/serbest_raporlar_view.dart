@@ -48,6 +48,14 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   }
 
   @override
+  void dispose() {
+    viewModel.textEditingControllerList?.forEach((e) {
+      e.dispose();
+    });
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Observer(
         builder: (_) => PDFViewerView(
           filterBottomSheet: filterBottomSheet,
