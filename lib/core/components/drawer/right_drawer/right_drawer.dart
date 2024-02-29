@@ -43,7 +43,12 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   // Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
                   Assets.lotties.personLottie.lottie(height: height * 0.2),
                   Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
-                  Text(CacheManager.getVerifiedUser.account?.firma ?? "", style: theme.textTheme.bodyMedium),
+                  Text(
+                    CacheManager.getVerifiedUser.account?.firma ?? "",
+                    style: theme.textTheme.bodyMedium,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   Text(loc(context).rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
