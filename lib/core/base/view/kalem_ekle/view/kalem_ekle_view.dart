@@ -732,6 +732,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     readOnly: true,
                     onTap: serilerOnTap,
                     validator: (value) {
+                      if (value == "") {
+                        return "Bu alan boş bırakılamaz.";
+                      }
                       if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
                         return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
                       }

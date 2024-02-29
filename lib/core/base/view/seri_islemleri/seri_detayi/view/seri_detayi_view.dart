@@ -25,9 +25,11 @@ class SeriDetayiView extends StatefulWidget {
 class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   final SeriDetayiViewModel viewModel = SeriDetayiViewModel();
   late final GlobalKey<FormState> formKey;
+  late final FocusNode _focusNode;
 
   @override
   void initState() {
+    _focusNode = FocusNode();
     formKey = GlobalKey<FormState>();
     if (widget.seriDetayiModel.seriList != null) {
       viewModel.seriModel = widget.seriDetayiModel.seriList!;
@@ -37,12 +39,14 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       formKey.currentState?.validate();
+      _focusNode.requestFocus();
     });
     super.initState();
   }
 
   @override
   void dispose() {
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -95,6 +99,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                 ).yetkiVarMi(widget.seriDetayiModel.miktarKadarSor == true),
                 CustomTextField(
                   labelText: "Seri 1",
+                  focusNode: _focusNode,
                   controllerText: viewModel.seriModel.seri1,
                   isMust: true,
                   onChanged: viewModel.setSeri1,
