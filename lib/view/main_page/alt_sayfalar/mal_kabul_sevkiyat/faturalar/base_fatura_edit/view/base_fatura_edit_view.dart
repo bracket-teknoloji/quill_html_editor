@@ -16,7 +16,6 @@ import "../../../../../../../core/base/view/cari_rehberi/model/cari_listesi_requ
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
@@ -178,8 +177,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           Get.back();
         }
         if (BaseSiparisEditModel.instance.dovizliMi &&
-            (widget.model.model?.tarih as DateTime?).toDateString != DateTime.now().toDateString &&
-            BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+            model.model?.belgeTarihi != DateTime.now().toDateString &&
+            BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty &&
+            !widget.model.isGoruntule) {
           dialogManager.showAreYouSureDialog(
             () async {
               await dovizGuncelle();
@@ -435,7 +435,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
                 Observer(
                   builder: (_) {
                     if (viewModel.isBaseSiparisEmpty) {
-                      return const ListViewShimmer();
+                      return const Center(child: CircularProgressIndicator.adaptive());
                     } else {
                       return BaseFaturaGenelView(model: model);
                     }
@@ -456,10 +456,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
           e.dovizKuru = result.dovSatis;
-          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
+          // e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
         } else {
           e.dovizKuru = result.dovAlis;
-          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
+          // e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
         }
         return e;
       }).toList();
