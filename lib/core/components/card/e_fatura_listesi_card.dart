@@ -54,12 +54,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               context,
               title: model.cariAdi ?? "",
               children: [
+                //TODO yetkileri ekle
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
-                cariOlustur.yetkiKontrol(model.kayitliCariKodu == null),
-                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu),
+                cariOlustur.yetkiKontrol(model.kayitliCariKodu == null && yetkiController.cariKartiYeniKayit),
+                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
                 yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
-                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu),
+                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
                 eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
