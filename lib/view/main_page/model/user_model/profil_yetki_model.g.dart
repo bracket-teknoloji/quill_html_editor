@@ -1613,7 +1613,21 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisSaticiSiparisiAciklamaDuzenle =
           json['siparis_SaticiSiparisi_AciklamaDuzenle'] as bool?
       ..taltekStekKdvDurumu = json['taltek_STEK_KdvDurumu'] as String?
-      ..taltekStalKdvDurumu = json['taltek_STAL_KdvDurumu'] as String?;
+      ..taltekStalKdvDurumu = json['taltek_STAL_KdvDurumu'] as String?
+      ..transferAgBosGecilmeyecekAlanlar =
+          (json['transfer_AG_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..transferAgGizlenecekAlanlar =
+          (json['transfer_AG_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..transferAgDegismeyecekAlanlar =
+          (json['transfer_AG_DegismeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..sevkiyatSatisFatKdvDurumu =
+          json['sevkiyat_SatisFat_KdvDurumu'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -3084,6 +3098,14 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.siparisSaticiSiparisiAciklamaDuzenle);
   writeNotNull('taltek_STEK_KdvDurumu', instance.taltekStekKdvDurumu);
   writeNotNull('taltek_STAL_KdvDurumu', instance.taltekStalKdvDurumu);
+  writeNotNull('transfer_AG_BosGecilmeyecekAlanlar',
+      instance.transferAgBosGecilmeyecekAlanlar);
+  writeNotNull(
+      'transfer_AG_GizlenecekAlanlar', instance.transferAgGizlenecekAlanlar);
+  writeNotNull('transfer_AG_DegismeyecekAlanlar',
+      instance.transferAgDegismeyecekAlanlar);
+  writeNotNull(
+      'sevkiyat_SatisFat_KdvDurumu', instance.sevkiyatSatisFatKdvDurumu);
   return val;
 }
 

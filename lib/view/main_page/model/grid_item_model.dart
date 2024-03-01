@@ -97,6 +97,9 @@ class GridItemModel {
   bool get yetkiKontrol {
     if (menuTipi == "A") {
       int sayac = 0;
+      if (name == null) {
+        return true;
+      }
       if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
         for (var element in altMenuler!) {
           if (element.yetkiKontrol) {

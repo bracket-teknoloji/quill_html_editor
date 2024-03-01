@@ -18,9 +18,9 @@ import "../main_page_model.dart";
 import "../param_model.dart";
 
 class MenuItemConstants {
-  static  MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
-  
-  static List<NetFectDizaynList> get  _serbestRapor => _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
+  static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
+
+  static List<NetFectDizaynList> get _serbestRapor => _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
 
   static List<GridItemModel> get getGridItemModel =>
       _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
@@ -234,7 +234,15 @@ class MenuItemConstants {
 
     //* Sayım
     //*
-    GridItemModel.anamenu(name: "SYIM", title: "Sayım", icon: "counter", color: ColorPalette.dodgerBlue, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(
+      name: "SYIM",
+      title: "Sayım",
+      icon: "counter",
+      color: ColorPalette.dodgerBlue,
+      altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "sayim_sayim", title: "Sayım", route: "/mainPage/sayimListesi"),
+      ],
+    ).isDebug(),
 
     //* Sevkiyat
     //*
@@ -417,7 +425,7 @@ class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      name: "yazdirma_Serbest",
+      name: null,
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,

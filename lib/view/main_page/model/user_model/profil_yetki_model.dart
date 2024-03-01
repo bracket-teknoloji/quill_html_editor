@@ -1887,6 +1887,14 @@ class ProfilYetkiModel {
   String? taltekStekKdvDurumu;
   @JsonKey(name: "taltek_STAL_KdvDurumu")
   String? taltekStalKdvDurumu;
+  @JsonKey(name: "transfer_AG_BosGecilmeyecekAlanlar")
+  List<String>? transferAgBosGecilmeyecekAlanlar;
+  @JsonKey(name: "transfer_AG_GizlenecekAlanlar")
+  List<String>? transferAgGizlenecekAlanlar;
+  @JsonKey(name: "transfer_AG_DegismeyecekAlanlar")
+  List<String>? transferAgDegismeyecekAlanlar;
+  @JsonKey(name: "sevkiyat_SatisFat_KdvDurumu")
+  String? sevkiyatSatisFatKdvDurumu;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 
