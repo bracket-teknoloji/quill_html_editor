@@ -24,7 +24,8 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
     required this.bitisTarihiController,
     this.baslangicOnTap,
     this.bitisOnTap,
-    this.showBugunFirst, this.isChanged,
+    this.showBugunFirst,
+    this.isChanged,
   });
 
   @override
@@ -38,7 +39,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDate
   @override
   void initState() {
     scrollController = ScrollController();
-    if ((widget.showBugunFirst ?? false) && !(widget.isChanged??false)) {
+    if ((widget.showBugunFirst ?? false) && !(widget.isChanged ?? false)) {
       widget.baslangicTarihiController.text = DateTime.now().toDateString;
       widget.bitisTarihiController.text = DateTime.now().toDateString;
       viewModel.changeGroupValue(1);
