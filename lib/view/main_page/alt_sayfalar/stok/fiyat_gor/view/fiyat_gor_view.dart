@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -92,8 +93,12 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       ),
                     ],
                   ),
-                  onSubmitted: (p0) {
-                    getData();
+                  onSubmitted: (p0) async {
+                    final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: p0));
+                    if (result != null) {
+                      viewModel.setStokListesiModel(result);
+                    }
+                      getData();
                   },
                 ),
                 Observer(

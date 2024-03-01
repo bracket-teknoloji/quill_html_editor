@@ -457,7 +457,7 @@ class NetworkManager {
       data: model.toJson(),
     );
     if (result.success ?? false) {
-      return result.data.first;
+      return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull ;
     }
     return null;
   }
