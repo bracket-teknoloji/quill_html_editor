@@ -58,11 +58,11 @@ Map<String, dynamic> _$$SayimListesiModelImplToJson(
 }
 
 _$FiltreImpl _$$FiltreImplFromJson(Map<String, dynamic> json) => _$FiltreImpl(
-      arrGrupKodu: (json['ARR_GRUP_KODU'] as List<dynamic>?)
+      arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       depoKodu: json['DEPO_KODU'] as int?,
-      seriList: json['SERI_LIST'] as List<dynamic>?,
+      seriList: json['SeriList'] as List<dynamic>?,
       islemKodu: json['ISLEM_KODU'] as int?,
       tipi: json['TIPI'] as String?,
     );
@@ -76,9 +76,9 @@ Map<String, dynamic> _$$FiltreImplToJson(_$FiltreImpl instance) {
     }
   }
 
-  writeNotNull('ARR_GRUP_KODU', instance.arrGrupKodu);
+  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
   writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('SERI_LIST', instance.seriList);
+  writeNotNull('SeriList', instance.seriList);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('TIPI', instance.tipi);
   return val;

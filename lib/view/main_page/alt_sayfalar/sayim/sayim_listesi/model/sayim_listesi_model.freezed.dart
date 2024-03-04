@@ -417,8 +417,10 @@ Filtre _$FiltreFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Filtre {
+  @JsonKey(name: "ArrGrupKodu")
   List<String>? get arrGrupKodu => throw _privateConstructorUsedError;
   int? get depoKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "SeriList")
   List<dynamic>? get seriList => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   String? get tipi => throw _privateConstructorUsedError;
@@ -434,9 +436,9 @@ abstract class $FiltreCopyWith<$Res> {
       _$FiltreCopyWithImpl<$Res, Filtre>;
   @useResult
   $Res call(
-      {List<String>? arrGrupKodu,
+      {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
-      List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
       String? tipi});
 }
@@ -493,9 +495,9 @@ abstract class _$$FiltreImplCopyWith<$Res> implements $FiltreCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<String>? arrGrupKodu,
+      {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
-      List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
       String? tipi});
 }
@@ -546,9 +548,9 @@ class __$$FiltreImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FiltreImpl implements _Filtre {
   const _$FiltreImpl(
-      {final List<String>? arrGrupKodu,
+      {@JsonKey(name: "ArrGrupKodu") final List<String>? arrGrupKodu,
       this.depoKodu,
-      final List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") final List<dynamic>? seriList,
       this.islemKodu,
       this.tipi})
       : _arrGrupKodu = arrGrupKodu,
@@ -559,6 +561,7 @@ class _$FiltreImpl implements _Filtre {
 
   final List<String>? _arrGrupKodu;
   @override
+  @JsonKey(name: "ArrGrupKodu")
   List<String>? get arrGrupKodu {
     final value = _arrGrupKodu;
     if (value == null) return null;
@@ -571,6 +574,7 @@ class _$FiltreImpl implements _Filtre {
   final int? depoKodu;
   final List<dynamic>? _seriList;
   @override
+  @JsonKey(name: "SeriList")
   List<dynamic>? get seriList {
     final value = _seriList;
     if (value == null) return null;
@@ -630,19 +634,21 @@ class _$FiltreImpl implements _Filtre {
 
 abstract class _Filtre implements Filtre {
   const factory _Filtre(
-      {final List<String>? arrGrupKodu,
+      {@JsonKey(name: "ArrGrupKodu") final List<String>? arrGrupKodu,
       final int? depoKodu,
-      final List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") final List<dynamic>? seriList,
       final int? islemKodu,
       final String? tipi}) = _$FiltreImpl;
 
   factory _Filtre.fromJson(Map<String, dynamic> json) = _$FiltreImpl.fromJson;
 
   @override
+  @JsonKey(name: "ArrGrupKodu")
   List<String>? get arrGrupKodu;
   @override
   int? get depoKodu;
   @override
+  @JsonKey(name: "SeriList")
   List<dynamic>? get seriList;
   @override
   int? get islemKodu;

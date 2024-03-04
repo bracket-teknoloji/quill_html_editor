@@ -32,9 +32,9 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
 @freezed
 class Filtre with _$Filtre {
   const factory Filtre({
-    List<String>? arrGrupKodu,
+    @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,
-    List<dynamic>? seriList,
+    @JsonKey(name: "SeriList") List<dynamic>? seriList,
     int? islemKodu,
     String? tipi,
   }) = _Filtre;
@@ -47,5 +47,7 @@ extension SayimExtensions on SayimListesiModel {
 
   bool get serbestMi => tipi == "S";
 
-  bool get filtreliMi => filtre != null;
+  bool get filtreliMi => filtre != null && filtre?.arrGrupKodu != null;
+
+  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0;
 }

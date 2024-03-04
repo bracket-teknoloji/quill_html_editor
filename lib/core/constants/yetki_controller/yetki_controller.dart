@@ -387,6 +387,10 @@ final class YetkiController {
   bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif);
   bool eArsivSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? ""), skipAdmin: true);
 
+
+  //! SAYIM
+  // bool get sayimEkle => _isTrue(_yetkiModel?.sayim);
+
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi ?? "") ?? 0;
@@ -543,6 +547,7 @@ final class YetkiController {
   bool get yazdirmaAmbarGirisi => _isTrue(_yetkiModel?.yazdirmaAmbarGiris);
   bool get yazdirmaAmbarCikisi => _isTrue(_yetkiModel?.yazdirmaAmbarCikis);
   bool get yazdirmaCariHareket => _isTrue(_yetkiModel?.yazdirmaCariHareket);
+  bool get yazdirmaSayim => _isTrue(_yetkiModel?.yazdirmaSayim);
 
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
