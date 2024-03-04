@@ -1223,6 +1223,8 @@ class KalemModel with NetworkManagerMixin {
   int? sipInckeyno;
   @HiveField(103)
   String? muhRefKodu;
+  @HiveField(104)
+    List<dynamic>? sayimListesiModelHucreList;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1329,6 +1331,7 @@ class KalemModel with NetworkManagerMixin {
     this.sipInckeyno,
     this.kalemStoktanKodu,
     this.muhRefKodu,
+    this.sayimListesiModelHucreList,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1350,7 +1353,7 @@ class KalemModel with NetworkManagerMixin {
 
   bool get kalemStoktanMi => kalemStoktanKodu == stokKodu;
 
-  bool get seriliMi => seriList != null;
+  bool get seriliMi => BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true;
 
   bool get seriTamamMi => (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 

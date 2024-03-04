@@ -2334,6 +2334,9 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel muhRefKodu(String? muhRefKodu);
 
+  KalemModel sayimListesiModelHucreList(
+      List<dynamic>? sayimListesiModelHucreList);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2445,6 +2448,7 @@ abstract class _$KalemModelCWProxy {
     int? sipInckeyno,
     String? kalemStoktanKodu,
     String? muhRefKodu,
+    List<dynamic>? sayimListesiModelHucreList,
   });
 }
 
@@ -2803,6 +2807,11 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel muhRefKodu(String? muhRefKodu) => this(muhRefKodu: muhRefKodu);
 
   @override
+  KalemModel sayimListesiModelHucreList(
+          List<dynamic>? sayimListesiModelHucreList) =>
+      this(sayimListesiModelHucreList: sayimListesiModelHucreList);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -2915,6 +2924,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? sipInckeyno = const $CopyWithPlaceholder(),
     Object? kalemStoktanKodu = const $CopyWithPlaceholder(),
     Object? muhRefKodu = const $CopyWithPlaceholder(),
+    Object? sayimListesiModelHucreList = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3334,6 +3344,11 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.muhRefKodu
           // ignore: cast_nullable_to_non_nullable
           : muhRefKodu as String?,
+      sayimListesiModelHucreList:
+          sayimListesiModelHucreList == const $CopyWithPlaceholder()
+              ? _value.sayimListesiModelHucreList
+              // ignore: cast_nullable_to_non_nullable
+              : sayimListesiModelHucreList as List<dynamic>?,
     );
   }
 }
@@ -4065,13 +4080,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       sipInckeyno: fields[102] as int?,
       kalemStoktanKodu: fields[98] as String?,
       muhRefKodu: fields[103] as String?,
+      sayimListesiModelHucreList: (fields[104] as List?)?.cast<dynamic>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(104)
+      ..writeByte(105)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4279,7 +4295,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(102)
       ..write(obj.sipInckeyno)
       ..writeByte(103)
-      ..write(obj.muhRefKodu);
+      ..write(obj.muhRefKodu)
+      ..writeByte(104)
+      ..write(obj.sayimListesiModelHucreList);
   }
 
   @override
@@ -4820,6 +4838,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       sipInckeyno: json['SIP_INCKEYNO'] as int?,
       kalemStoktanKodu: json['KALEM_STOKTAN_KODU'] as String?,
       muhRefKodu: json['MUH_REF_KODU'] as String?,
+      sayimListesiModelHucreList:
+          json['SAYIM_LISTESI_MODEL_HUCRE_LIST'] as List<dynamic>?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -4936,5 +4956,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SIPARIS_INCKEYNO', instance.siparisInckeyno);
   writeNotNull('SIP_INCKEYNO', instance.sipInckeyno);
   writeNotNull('MUH_REF_KODU', instance.muhRefKodu);
+  writeNotNull(
+      'SAYIM_LISTESI_MODEL_HUCRE_LIST', instance.sayimListesiModelHucreList);
   return val;
 }
