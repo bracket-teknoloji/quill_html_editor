@@ -42,10 +42,12 @@ mixin _$SayimListesiModel {
   set depoMiktari(double? value) => throw _privateConstructorUsedError;
   String? get tipi => throw _privateConstructorUsedError;
   set tipi(String? value) => throw _privateConstructorUsedError;
-  Filtre? get filtre => throw _privateConstructorUsedError;
-  set filtre(Filtre? value) => throw _privateConstructorUsedError;
+  SayimFiltreModel? get filtre => throw _privateConstructorUsedError;
+  set filtre(SayimFiltreModel? value) => throw _privateConstructorUsedError;
   String? get filtreStr => throw _privateConstructorUsedError;
   set filtreStr(String? value) => throw _privateConstructorUsedError;
+  DateTime? get bitisTarihi => throw _privateConstructorUsedError;
+  set bitisTarihi(DateTime? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,10 +73,11 @@ abstract class $SayimListesiModelCopyWith<$Res> {
       double? miktar,
       double? depoMiktari,
       String? tipi,
-      Filtre? filtre,
-      String? filtreStr});
+      SayimFiltreModel? filtre,
+      String? filtreStr,
+      DateTime? bitisTarihi});
 
-  $FiltreCopyWith<$Res>? get filtre;
+  $SayimFiltreModelCopyWith<$Res>? get filtre;
 }
 
 /// @nodoc
@@ -103,6 +106,7 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
     Object? tipi = freezed,
     Object? filtre = freezed,
     Object? filtreStr = freezed,
+    Object? bitisTarihi = freezed,
   }) {
     return _then(_value.copyWith(
       fisno: freezed == fisno
@@ -152,22 +156,26 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
       filtre: freezed == filtre
           ? _value.filtre
           : filtre // ignore: cast_nullable_to_non_nullable
-              as Filtre?,
+              as SayimFiltreModel?,
       filtreStr: freezed == filtreStr
           ? _value.filtreStr
           : filtreStr // ignore: cast_nullable_to_non_nullable
               as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $FiltreCopyWith<$Res>? get filtre {
+  $SayimFiltreModelCopyWith<$Res>? get filtre {
     if (_value.filtre == null) {
       return null;
     }
 
-    return $FiltreCopyWith<$Res>(_value.filtre!, (value) {
+    return $SayimFiltreModelCopyWith<$Res>(_value.filtre!, (value) {
       return _then(_value.copyWith(filtre: value) as $Val);
     });
   }
@@ -193,11 +201,12 @@ abstract class _$$SayimListesiModelImplCopyWith<$Res>
       double? miktar,
       double? depoMiktari,
       String? tipi,
-      Filtre? filtre,
-      String? filtreStr});
+      SayimFiltreModel? filtre,
+      String? filtreStr,
+      DateTime? bitisTarihi});
 
   @override
-  $FiltreCopyWith<$Res>? get filtre;
+  $SayimFiltreModelCopyWith<$Res>? get filtre;
 }
 
 /// @nodoc
@@ -224,6 +233,7 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
     Object? tipi = freezed,
     Object? filtre = freezed,
     Object? filtreStr = freezed,
+    Object? bitisTarihi = freezed,
   }) {
     return _then(_$SayimListesiModelImpl(
       fisno: freezed == fisno
@@ -273,11 +283,15 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
       filtre: freezed == filtre
           ? _value.filtre
           : filtre // ignore: cast_nullable_to_non_nullable
-              as Filtre?,
+              as SayimFiltreModel?,
       filtreStr: freezed == filtreStr
           ? _value.filtreStr
           : filtreStr // ignore: cast_nullable_to_non_nullable
               as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -298,7 +312,8 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
       this.depoMiktari,
       this.tipi,
       this.filtre,
-      this.filtreStr})
+      this.filtreStr,
+      this.bitisTarihi})
       : super._();
 
   factory _$SayimListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -327,9 +342,11 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
   @override
   String? tipi;
   @override
-  Filtre? filtre;
+  SayimFiltreModel? filtre;
   @override
   String? filtreStr;
+  @override
+  DateTime? bitisTarihi;
 
   @JsonKey(ignore: true)
   @override
@@ -359,8 +376,9 @@ abstract class _SayimListesiModel extends SayimListesiModel {
       double? miktar,
       double? depoMiktari,
       String? tipi,
-      Filtre? filtre,
-      String? filtreStr}) = _$SayimListesiModelImpl;
+      SayimFiltreModel? filtre,
+      String? filtreStr,
+      DateTime? bitisTarihi}) = _$SayimListesiModelImpl;
   _SayimListesiModel._() : super._();
 
   factory _SayimListesiModel.fromJson(Map<String, dynamic> json) =
@@ -400,53 +418,90 @@ abstract class _SayimListesiModel extends SayimListesiModel {
   String? get tipi;
   set tipi(String? value);
   @override
-  Filtre? get filtre;
-  set filtre(Filtre? value);
+  SayimFiltreModel? get filtre;
+  set filtre(SayimFiltreModel? value);
   @override
   String? get filtreStr;
   set filtreStr(String? value);
+  @override
+  DateTime? get bitisTarihi;
+  set bitisTarihi(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$SayimListesiModelImplCopyWith<_$SayimListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-Filtre _$FiltreFromJson(Map<String, dynamic> json) {
-  return _Filtre.fromJson(json);
+SayimFiltreModel _$SayimFiltreModelFromJson(Map<String, dynamic> json) {
+  return _SayimFiltreModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Filtre {
+mixin _$SayimFiltreModel {
   @JsonKey(name: "ArrGrupKodu")
   List<String>? get arrGrupKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrGrupKodu")
+  set arrGrupKodu(List<String>? value) => throw _privateConstructorUsedError;
   int? get depoKodu => throw _privateConstructorUsedError;
+  set depoKodu(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "SeriList")
   List<dynamic>? get seriList => throw _privateConstructorUsedError;
+  @JsonKey(name: "SeriList")
+  set seriList(List<dynamic>? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
   String? get tipi => throw _privateConstructorUsedError;
+  set tipi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod1")
+  List<String>? get arrKod1 => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod1")
+  set arrKod1(List<String>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod2")
+  List<String>? get arrKod2 => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod2")
+  set arrKod2(List<String>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod3")
+  List<String>? get arrKod3 => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod3")
+  set arrKod3(List<String>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod4")
+  List<String>? get arrKod4 => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod4")
+  set arrKod4(List<String>? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod5")
+  List<String>? get arrKod5 => throw _privateConstructorUsedError;
+  @JsonKey(name: "ArrKod5")
+  set arrKod5(List<String>? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FiltreCopyWith<Filtre> get copyWith => throw _privateConstructorUsedError;
+  $SayimFiltreModelCopyWith<SayimFiltreModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FiltreCopyWith<$Res> {
-  factory $FiltreCopyWith(Filtre value, $Res Function(Filtre) then) =
-      _$FiltreCopyWithImpl<$Res, Filtre>;
+abstract class $SayimFiltreModelCopyWith<$Res> {
+  factory $SayimFiltreModelCopyWith(
+          SayimFiltreModel value, $Res Function(SayimFiltreModel) then) =
+      _$SayimFiltreModelCopyWithImpl<$Res, SayimFiltreModel>;
   @useResult
   $Res call(
       {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
-      String? tipi});
+      String? tipi,
+      @JsonKey(name: "ArrKod1") List<String>? arrKod1,
+      @JsonKey(name: "ArrKod2") List<String>? arrKod2,
+      @JsonKey(name: "ArrKod3") List<String>? arrKod3,
+      @JsonKey(name: "ArrKod4") List<String>? arrKod4,
+      @JsonKey(name: "ArrKod5") List<String>? arrKod5});
 }
 
 /// @nodoc
-class _$FiltreCopyWithImpl<$Res, $Val extends Filtre>
-    implements $FiltreCopyWith<$Res> {
-  _$FiltreCopyWithImpl(this._value, this._then);
+class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
+    implements $SayimFiltreModelCopyWith<$Res> {
+  _$SayimFiltreModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -461,6 +516,11 @@ class _$FiltreCopyWithImpl<$Res, $Val extends Filtre>
     Object? seriList = freezed,
     Object? islemKodu = freezed,
     Object? tipi = freezed,
+    Object? arrKod1 = freezed,
+    Object? arrKod2 = freezed,
+    Object? arrKod3 = freezed,
+    Object? arrKod4 = freezed,
+    Object? arrKod5 = freezed,
   }) {
     return _then(_value.copyWith(
       arrGrupKodu: freezed == arrGrupKodu
@@ -483,15 +543,36 @@ class _$FiltreCopyWithImpl<$Res, $Val extends Filtre>
           ? _value.tipi
           : tipi // ignore: cast_nullable_to_non_nullable
               as String?,
+      arrKod1: freezed == arrKod1
+          ? _value.arrKod1
+          : arrKod1 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod2: freezed == arrKod2
+          ? _value.arrKod2
+          : arrKod2 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod3: freezed == arrKod3
+          ? _value.arrKod3
+          : arrKod3 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod4: freezed == arrKod4
+          ? _value.arrKod4
+          : arrKod4 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod5: freezed == arrKod5
+          ? _value.arrKod5
+          : arrKod5 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$FiltreImplCopyWith<$Res> implements $FiltreCopyWith<$Res> {
-  factory _$$FiltreImplCopyWith(
-          _$FiltreImpl value, $Res Function(_$FiltreImpl) then) =
-      __$$FiltreImplCopyWithImpl<$Res>;
+abstract class _$$SayimFiltreModelImplCopyWith<$Res>
+    implements $SayimFiltreModelCopyWith<$Res> {
+  factory _$$SayimFiltreModelImplCopyWith(_$SayimFiltreModelImpl value,
+          $Res Function(_$SayimFiltreModelImpl) then) =
+      __$$SayimFiltreModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -499,15 +580,20 @@ abstract class _$$FiltreImplCopyWith<$Res> implements $FiltreCopyWith<$Res> {
       int? depoKodu,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
-      String? tipi});
+      String? tipi,
+      @JsonKey(name: "ArrKod1") List<String>? arrKod1,
+      @JsonKey(name: "ArrKod2") List<String>? arrKod2,
+      @JsonKey(name: "ArrKod3") List<String>? arrKod3,
+      @JsonKey(name: "ArrKod4") List<String>? arrKod4,
+      @JsonKey(name: "ArrKod5") List<String>? arrKod5});
 }
 
 /// @nodoc
-class __$$FiltreImplCopyWithImpl<$Res>
-    extends _$FiltreCopyWithImpl<$Res, _$FiltreImpl>
-    implements _$$FiltreImplCopyWith<$Res> {
-  __$$FiltreImplCopyWithImpl(
-      _$FiltreImpl _value, $Res Function(_$FiltreImpl) _then)
+class __$$SayimFiltreModelImplCopyWithImpl<$Res>
+    extends _$SayimFiltreModelCopyWithImpl<$Res, _$SayimFiltreModelImpl>
+    implements _$$SayimFiltreModelImplCopyWith<$Res> {
+  __$$SayimFiltreModelImplCopyWithImpl(_$SayimFiltreModelImpl _value,
+      $Res Function(_$SayimFiltreModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -518,10 +604,15 @@ class __$$FiltreImplCopyWithImpl<$Res>
     Object? seriList = freezed,
     Object? islemKodu = freezed,
     Object? tipi = freezed,
+    Object? arrKod1 = freezed,
+    Object? arrKod2 = freezed,
+    Object? arrKod3 = freezed,
+    Object? arrKod4 = freezed,
+    Object? arrKod5 = freezed,
   }) {
-    return _then(_$FiltreImpl(
+    return _then(_$SayimFiltreModelImpl(
       arrGrupKodu: freezed == arrGrupKodu
-          ? _value._arrGrupKodu
+          ? _value.arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       depoKodu: freezed == depoKodu
@@ -529,7 +620,7 @@ class __$$FiltreImplCopyWithImpl<$Res>
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
       seriList: freezed == seriList
-          ? _value._seriList
+          ? _value.seriList
           : seriList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
       islemKodu: freezed == islemKodu
@@ -540,122 +631,159 @@ class __$$FiltreImplCopyWithImpl<$Res>
           ? _value.tipi
           : tipi // ignore: cast_nullable_to_non_nullable
               as String?,
+      arrKod1: freezed == arrKod1
+          ? _value.arrKod1
+          : arrKod1 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod2: freezed == arrKod2
+          ? _value.arrKod2
+          : arrKod2 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod3: freezed == arrKod3
+          ? _value.arrKod3
+          : arrKod3 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod4: freezed == arrKod4
+          ? _value.arrKod4
+          : arrKod4 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      arrKod5: freezed == arrKod5
+          ? _value.arrKod5
+          : arrKod5 // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FiltreImpl implements _Filtre {
-  const _$FiltreImpl(
-      {@JsonKey(name: "ArrGrupKodu") final List<String>? arrGrupKodu,
+class _$SayimFiltreModelImpl implements _SayimFiltreModel {
+  _$SayimFiltreModelImpl(
+      {@JsonKey(name: "ArrGrupKodu") this.arrGrupKodu,
       this.depoKodu,
-      @JsonKey(name: "SeriList") final List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") this.seriList,
       this.islemKodu,
-      this.tipi})
-      : _arrGrupKodu = arrGrupKodu,
-        _seriList = seriList;
+      this.tipi,
+      @JsonKey(name: "ArrKod1") this.arrKod1,
+      @JsonKey(name: "ArrKod2") this.arrKod2,
+      @JsonKey(name: "ArrKod3") this.arrKod3,
+      @JsonKey(name: "ArrKod4") this.arrKod4,
+      @JsonKey(name: "ArrKod5") this.arrKod5});
 
-  factory _$FiltreImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FiltreImplFromJson(json);
+  factory _$SayimFiltreModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SayimFiltreModelImplFromJson(json);
 
-  final List<String>? _arrGrupKodu;
   @override
   @JsonKey(name: "ArrGrupKodu")
-  List<String>? get arrGrupKodu {
-    final value = _arrGrupKodu;
-    if (value == null) return null;
-    if (_arrGrupKodu is EqualUnmodifiableListView) return _arrGrupKodu;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<String>? arrGrupKodu;
   @override
-  final int? depoKodu;
-  final List<dynamic>? _seriList;
+  int? depoKodu;
   @override
   @JsonKey(name: "SeriList")
-  List<dynamic>? get seriList {
-    final value = _seriList;
-    if (value == null) return null;
-    if (_seriList is EqualUnmodifiableListView) return _seriList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<dynamic>? seriList;
   @override
-  final int? islemKodu;
+  int? islemKodu;
   @override
-  final String? tipi;
+  String? tipi;
+  @override
+  @JsonKey(name: "ArrKod1")
+  List<String>? arrKod1;
+  @override
+  @JsonKey(name: "ArrKod2")
+  List<String>? arrKod2;
+  @override
+  @JsonKey(name: "ArrKod3")
+  List<String>? arrKod3;
+  @override
+  @JsonKey(name: "ArrKod4")
+  List<String>? arrKod4;
+  @override
+  @JsonKey(name: "ArrKod5")
+  List<String>? arrKod5;
 
   @override
   String toString() {
-    return 'Filtre(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, tipi: $tipi)';
+    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FiltreImpl &&
-            const DeepCollectionEquality()
-                .equals(other._arrGrupKodu, _arrGrupKodu) &&
-            (identical(other.depoKodu, depoKodu) ||
-                other.depoKodu == depoKodu) &&
-            const DeepCollectionEquality().equals(other._seriList, _seriList) &&
-            (identical(other.islemKodu, islemKodu) ||
-                other.islemKodu == islemKodu) &&
-            (identical(other.tipi, tipi) || other.tipi == tipi));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_arrGrupKodu),
-      depoKodu,
-      const DeepCollectionEquality().hash(_seriList),
-      islemKodu,
-      tipi);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FiltreImplCopyWith<_$FiltreImpl> get copyWith =>
-      __$$FiltreImplCopyWithImpl<_$FiltreImpl>(this, _$identity);
+  _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
+      __$$SayimFiltreModelImplCopyWithImpl<_$SayimFiltreModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FiltreImplToJson(
+    return _$$SayimFiltreModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Filtre implements Filtre {
-  const factory _Filtre(
-      {@JsonKey(name: "ArrGrupKodu") final List<String>? arrGrupKodu,
-      final int? depoKodu,
-      @JsonKey(name: "SeriList") final List<dynamic>? seriList,
-      final int? islemKodu,
-      final String? tipi}) = _$FiltreImpl;
+abstract class _SayimFiltreModel implements SayimFiltreModel {
+  factory _SayimFiltreModel(
+          {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
+          int? depoKodu,
+          @JsonKey(name: "SeriList") List<dynamic>? seriList,
+          int? islemKodu,
+          String? tipi,
+          @JsonKey(name: "ArrKod1") List<String>? arrKod1,
+          @JsonKey(name: "ArrKod2") List<String>? arrKod2,
+          @JsonKey(name: "ArrKod3") List<String>? arrKod3,
+          @JsonKey(name: "ArrKod4") List<String>? arrKod4,
+          @JsonKey(name: "ArrKod5") List<String>? arrKod5}) =
+      _$SayimFiltreModelImpl;
 
-  factory _Filtre.fromJson(Map<String, dynamic> json) = _$FiltreImpl.fromJson;
+  factory _SayimFiltreModel.fromJson(Map<String, dynamic> json) =
+      _$SayimFiltreModelImpl.fromJson;
 
   @override
   @JsonKey(name: "ArrGrupKodu")
   List<String>? get arrGrupKodu;
+  @JsonKey(name: "ArrGrupKodu")
+  set arrGrupKodu(List<String>? value);
   @override
   int? get depoKodu;
+  set depoKodu(int? value);
   @override
   @JsonKey(name: "SeriList")
   List<dynamic>? get seriList;
+  @JsonKey(name: "SeriList")
+  set seriList(List<dynamic>? value);
   @override
   int? get islemKodu;
+  set islemKodu(int? value);
   @override
   String? get tipi;
+  set tipi(String? value);
+  @override
+  @JsonKey(name: "ArrKod1")
+  List<String>? get arrKod1;
+  @JsonKey(name: "ArrKod1")
+  set arrKod1(List<String>? value);
+  @override
+  @JsonKey(name: "ArrKod2")
+  List<String>? get arrKod2;
+  @JsonKey(name: "ArrKod2")
+  set arrKod2(List<String>? value);
+  @override
+  @JsonKey(name: "ArrKod3")
+  List<String>? get arrKod3;
+  @JsonKey(name: "ArrKod3")
+  set arrKod3(List<String>? value);
+  @override
+  @JsonKey(name: "ArrKod4")
+  List<String>? get arrKod4;
+  @JsonKey(name: "ArrKod4")
+  set arrKod4(List<String>? value);
+  @override
+  @JsonKey(name: "ArrKod5")
+  List<String>? get arrKod5;
+  @JsonKey(name: "ArrKod5")
+  set arrKod5(List<String>? value);
   @override
   @JsonKey(ignore: true)
-  _$$FiltreImplCopyWith<_$FiltreImpl> get copyWith =>
+  _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

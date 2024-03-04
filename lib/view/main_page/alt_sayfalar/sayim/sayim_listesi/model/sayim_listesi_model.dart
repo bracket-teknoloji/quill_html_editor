@@ -19,8 +19,9 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
     double? miktar,
     double? depoMiktari,
     String? tipi,
-    Filtre? filtre,
+    SayimFiltreModel? filtre,
     String? filtreStr,
+    DateTime? bitisTarihi,
   }) = _SayimListesiModel;
 
   factory SayimListesiModel.fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
@@ -29,17 +30,22 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
   SayimListesiModel fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
 }
 
-@freezed
-class Filtre with _$Filtre {
-  const factory Filtre({
+@unfreezed
+class SayimFiltreModel with _$SayimFiltreModel {
+  factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,
     @JsonKey(name: "SeriList") List<dynamic>? seriList,
     int? islemKodu,
     String? tipi,
-  }) = _Filtre;
+    @JsonKey(name: "ArrKod1") List<String>? arrKod1,
+    @JsonKey(name: "ArrKod2") List<String>? arrKod2,
+    @JsonKey(name: "ArrKod3") List<String>? arrKod3,
+    @JsonKey(name: "ArrKod4") List<String>? arrKod4,
+    @JsonKey(name: "ArrKod5") List<String>? arrKod5,
+  }) = _SayimFiltreModel;
 
-  factory Filtre.fromJson(Map<String, dynamic> json) => _$FiltreFromJson(json);
+  factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);
 }
 
 extension SayimExtensions on SayimListesiModel {
@@ -49,5 +55,5 @@ extension SayimExtensions on SayimListesiModel {
 
   bool get filtreliMi => filtre != null && filtre?.arrGrupKodu != null;
 
-  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0;
+  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0 && filtreliMi;
 }

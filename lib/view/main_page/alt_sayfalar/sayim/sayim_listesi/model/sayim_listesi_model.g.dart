@@ -27,8 +27,11 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       tipi: json['TIPI'] as String?,
       filtre: json['FILTRE'] == null
           ? null
-          : Filtre.fromJson(json['FILTRE'] as Map<String, dynamic>),
+          : SayimFiltreModel.fromJson(json['FILTRE'] as Map<String, dynamic>),
       filtreStr: json['FILTRE_STR'] as String?,
+      bitisTarihi: json['BITIS_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['BITIS_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$$SayimListesiModelImplToJson(
@@ -54,10 +57,13 @@ Map<String, dynamic> _$$SayimListesiModelImplToJson(
   writeNotNull('TIPI', instance.tipi);
   writeNotNull('FILTRE', instance.filtre?.toJson());
   writeNotNull('FILTRE_STR', instance.filtreStr);
+  writeNotNull('BITIS_TARIHI', instance.bitisTarihi?.toIso8601String());
   return val;
 }
 
-_$FiltreImpl _$$FiltreImplFromJson(Map<String, dynamic> json) => _$FiltreImpl(
+_$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SayimFiltreModelImpl(
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -65,9 +71,20 @@ _$FiltreImpl _$$FiltreImplFromJson(Map<String, dynamic> json) => _$FiltreImpl(
       seriList: json['SeriList'] as List<dynamic>?,
       islemKodu: json['ISLEM_KODU'] as int?,
       tipi: json['TIPI'] as String?,
+      arrKod1:
+          (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod2:
+          (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod3:
+          (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod4:
+          (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod5:
+          (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$FiltreImplToJson(_$FiltreImpl instance) {
+Map<String, dynamic> _$$SayimFiltreModelImplToJson(
+    _$SayimFiltreModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
@@ -81,5 +98,10 @@ Map<String, dynamic> _$$FiltreImplToJson(_$FiltreImpl instance) {
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('TIPI', instance.tipi);
+  writeNotNull('ArrKod1', instance.arrKod1);
+  writeNotNull('ArrKod2', instance.arrKod2);
+  writeNotNull('ArrKod3', instance.arrKod3);
+  writeNotNull('ArrKod4', instance.arrKod4);
+  writeNotNull('ArrKod5', instance.arrKod5);
   return val;
 }

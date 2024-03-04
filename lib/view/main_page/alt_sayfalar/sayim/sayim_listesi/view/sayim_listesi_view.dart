@@ -1,20 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/card/sayimlar_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view_model/sayim_listesi_view_model.dart";
 
 class SayimListesiView extends StatefulWidget {
@@ -24,15 +18,42 @@ class SayimListesiView extends StatefulWidget {
   State<SayimListesiView> createState() => _SayimListesiViewState();
 }
 
-class _SayimListesiViewState extends State<SayimListesiView> {
+class _SayimListesiViewState extends BaseState<SayimListesiView> {
+  late final TextEditingController depoKoduController;
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
   final SayimListesiViewModel viewModel = SayimListesiViewModel();
+  final GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   void initState() {
+    depoKoduController = TextEditingController();
+    grupKoduController = TextEditingController();
+    kod1Controller = TextEditingController();
+    kod2Controller = TextEditingController();
+    kod3Controller = TextEditingController();
+    kod4Controller = TextEditingController();
+    kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    depoKoduController.dispose();
+    grupKoduController.dispose();
+    kod1Controller.dispose();
+    kod2Controller.dispose();
+    kod3Controller.dispose();
+    kod4Controller.dispose();
+    kod5Controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,9 +73,10 @@ class _SayimListesiViewState extends State<SayimListesiView> {
       );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        //TODO yetkilendirme ekle
-        isScrolledDown: true,
-        onPressed: () {},
+        isScrolledDown: yetkiController.sayimEkle,
+        onPressed: () async {
+          await filterBottomSheet();
+        },
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
@@ -81,40 +103,171 @@ class _SayimListesiViewState extends State<SayimListesiView> {
             return ListView.builder(
               itemCount: viewModel.sayimList?.length ?? 0,
               padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) {
-                final SayimListesiModel model = viewModel.sayimList![index];
-                return Card(
-                  color: model.miktarSifirdanBuyukMu ? ColorPalette.persianRed.withOpacity(0.5) : null,
-                  child: ListTile(
-                    title: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(model.fisno ?? ""),
-                        Row(
-                          children: [
-                            const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.serbestMi),
-                            const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.filtreliMi),
-                          ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
-                        ),
-                      ],
-                    ),
-                    subtitle: CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Başlama Tarihi: ${model.baslangicTarihi?.toDateString ?? ""}"),
-                        Text("Depolar: ${model.depoList?.any((element) => element == -1) == true ? "Tümü" : model.depoList?.first}").yetkiVarMi(model.depoList != null),
-                        Text("Kullanıcı: ${model.kullanicilar}").yetkiVarMi(model.kullanicilar != null),
-                        Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
-                        Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.depoMiktari != null),
-                        Text("Fark: ${model.fark?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
-                      ],
-                    ),
-                  ),
-                );
-              },
+              itemBuilder: (context, index) => SayimlarCard(model: viewModel.sayimList![index]),
             );
           },
         ),
       );
+
+  Future<void> filterBottomSheet() async {
+    if (viewModel.grupKoduList.ext.isNullOrEmpty) {
+      await viewModel.getGrupKodlari();
+    }
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Serbest Sayım Parametreleri",
+      body: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomTextField(
+              labelText: "Depo Kodu",
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              controller: depoKoduController,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 0);
+                if (result != null) {
+                  depoKoduController.text = result.depoTanimi ?? "";
+                  viewModel.filtreModel.depoKodu = result.depoKodu;
+                }
+              },
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Grup Kodu",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: grupKoduController,
+                    onClear: () => viewModel.filtreModel.arrGrupKodu = null,
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                        context,
+                        title: "Grup Kodu",
+                        groupValues: viewModel.filtreModel.arrGrupKodu,
+                        children: viewModel.bottomSheetChildren(0),
+                      );
+                      if (result is List) {
+                        viewModel.filtreModel.arrGrupKodu = result as List<String>;
+                        grupKoduController.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 1",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: kod1Controller,
+                    onClear: () => viewModel.filtreModel.arrKod1 = null,
+                    onTap: () async {
+                      final result =
+                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 1", groupValues: viewModel.filtreModel.arrKod1, children: viewModel.bottomSheetChildren(1));
+                      if (result is List) {
+                        viewModel.filtreModel.arrKod1 = result as List<String>;
+                        kod1Controller.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 2",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: kod2Controller,
+                    onClear: () => viewModel.filtreModel.arrKod2 = null,
+                    onTap: () async {
+                      final result =
+                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 2", groupValues: viewModel.filtreModel.arrKod2, children: viewModel.bottomSheetChildren(2));
+                      if (result is List) {
+                        viewModel.filtreModel.arrKod2 = result as List<String>;
+                        kod2Controller.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 3",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: kod3Controller,
+                    onClear: () => viewModel.filtreModel.arrKod3 = null,
+                    onTap: () async {
+                      final result =
+                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 3", groupValues: viewModel.filtreModel.arrKod3, children: viewModel.bottomSheetChildren(3));
+                      if (result is List) {
+                        viewModel.filtreModel.arrKod3 = result as List<String>;
+                        kod3Controller.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 4",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: kod4Controller,
+                    onClear: () => viewModel.filtreModel.arrKod4 = null,
+                    onTap: () async {
+                      final result =
+                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 4", groupValues: viewModel.filtreModel.arrKod4, children: viewModel.bottomSheetChildren(4));
+                      if (result is List) {
+                        viewModel.filtreModel.arrKod4 = result as List<String>;
+                        kod4Controller.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 5",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: kod5Controller,
+                    onClear: () => viewModel.filtreModel.arrKod5 = null,
+                    onTap: () async {
+                      final result =
+                          await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 5", groupValues: viewModel.filtreModel.arrKod5, children: viewModel.bottomSheetChildren(5));
+                      if (result is List) {
+                        viewModel.filtreModel.arrKod5 = result as List<String>;
+                        kod5Controller.text = result.join(", ");
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (formKey.currentState?.validate() == true) {
+                  final result = await viewModel.postData();
+                  if (result) {
+                    Get.back();
+                    await viewModel.getData();
+                  }
+                }
+              },
+              child: Text(loc(context).generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    );
+  }
 }

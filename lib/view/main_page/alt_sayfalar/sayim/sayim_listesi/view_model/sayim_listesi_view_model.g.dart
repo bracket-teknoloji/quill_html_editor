@@ -25,12 +25,52 @@ mixin _$SayimListesiViewModel on _SayimListesiViewModelBase, Store {
     });
   }
 
+  late final _$grupKoduListAtom =
+      Atom(name: '_SayimListesiViewModelBase.grupKoduList', context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get grupKoduList {
+    _$grupKoduListAtom.reportRead();
+    return super.grupKoduList;
+  }
+
+  @override
+  set grupKoduList(ObservableList<BaseGrupKoduModel>? value) {
+    _$grupKoduListAtom.reportWrite(value, super.grupKoduList, () {
+      super.grupKoduList = value;
+    });
+  }
+
+  late final _$filtreModelAtom =
+      Atom(name: '_SayimListesiViewModelBase.filtreModel', context: context);
+
+  @override
+  SayimFiltreModel get filtreModel {
+    _$filtreModelAtom.reportRead();
+    return super.filtreModel;
+  }
+
+  @override
+  set filtreModel(SayimFiltreModel value) {
+    _$filtreModelAtom.reportWrite(value, super.filtreModel, () {
+      super.filtreModel = value;
+    });
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_SayimListesiViewModelBase.getData', context: context);
 
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
+  }
+
+  late final _$postDataAsyncAction =
+      AsyncAction('_SayimListesiViewModelBase.postData', context: context);
+
+  @override
+  Future<bool> postData() {
+    return _$postDataAsyncAction.run(() => super.postData());
   }
 
   late final _$_SayimListesiViewModelBaseActionController =
@@ -50,7 +90,9 @@ mixin _$SayimListesiViewModel on _SayimListesiViewModelBase, Store {
   @override
   String toString() {
     return '''
-sayimList: ${sayimList}
+sayimList: ${sayimList},
+grupKoduList: ${grupKoduList},
+filtreModel: ${filtreModel}
     ''';
   }
 }
