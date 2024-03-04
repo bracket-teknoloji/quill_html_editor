@@ -295,7 +295,7 @@ DerivedData/
 *.7z
 *.jar
 *.rar
-*.zip
+# *.zip
 *.gz
 *.tgz
 *.bzip
@@ -514,7 +514,7 @@ gradle-app.setting
 *.war
 *.nar
 *.ear
-*.zip
+# *.zip
 *.tar.gz
 *.rar
 
@@ -620,7 +620,6 @@ fabric.properties
 *.war
 *.nar
 *.ear
-*.zip
 *.tar.gz
 *.rar
 
@@ -719,8 +718,6 @@ xcuserdata/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
-*.dSYM.zip
-*.dSYM
 
 # CocoaPods
 #

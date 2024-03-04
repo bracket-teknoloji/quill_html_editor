@@ -5,7 +5,6 @@ update_fastlane
 
 default_platform(:ios)
 
-
 platform :ios do
   desc 'Upload symbols to Crashlytics'
   lane :toCrashlytics do
@@ -39,6 +38,9 @@ platform :ios do
 
     UI.success 'Build number has been incremented'
     UI.success "Build number: #{build_number}"
+
+    upload_symbols_to_crashlytics
+    UI.success 'Symbols have been uploaded to Crashlytics'
 
     git_tag_name = "V#{version_number}+#{build_number}"
 

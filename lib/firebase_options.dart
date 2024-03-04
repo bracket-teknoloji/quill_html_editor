@@ -61,7 +61,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: "AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI",
+    apiKey: "AIzaSyBBAOAiQ4w6lCThs7zRddCOnMJSqE868DM",
     appId: "1:9609536428:ios:efa926df0468deb0579009",
     messagingSenderId: "9609536428",
     projectId: "flutter-picker",
