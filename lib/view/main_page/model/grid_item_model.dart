@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../core/components/dialog/dialog_manager.dart";
 import "../../../core/constants/enum/edit_tipi_enum.dart";
@@ -110,7 +111,7 @@ class GridItemModel {
       } else {
         return false;
       }
-    } else if (_cacheManager?.adminMi == true) {
+    } else if (AccountModel.instance.isDebug) {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;

@@ -35,7 +35,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value);
+  void setGirisTarihi(DateTime? value) => model = model.copyWith(tarih: value.dateTimeWithoutTime);
 
   @action
   void setCariKodu(CariListesiModel? value) {
