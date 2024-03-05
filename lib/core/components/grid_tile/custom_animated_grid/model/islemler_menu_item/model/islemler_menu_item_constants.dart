@@ -93,11 +93,13 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(borcSenedi);
         islemlerList.add(cekTahsilati);
         islemlerList.add(tahsilatSenedi);
+        islemlerList.add(cariVirman);
         islemlerList.addIfConditionTrue(newModel.enlem != null, konumGoster);
         islemlerList.add(konumAta);
         islemlerList.add(paylas);
         islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
         islemlerList.add(cariHareketleri);
+        islemlerList.add(stokHareketleri);
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar ?? []);
       }
@@ -143,7 +145,6 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(cekTahsilati);
       islemlerList.add(borcCeki);
       islemlerList.add(borcSenedi);
-      islemlerList.add(cariVirman);
       islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
     } else if (islemTipi == IslemTipiEnum.banka) {
       if (model != null) {
@@ -1170,7 +1171,12 @@ class IslemlerMenuItemConstants<T> {
 
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
-                  arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+                  arguments: BaseEditModel(
+                    model: result,
+                    baseEditEnum: BaseEditEnum.kopyala,
+                    editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
+                    belgeNo: result.belgeNo,
+                  ),
                 );
                 if (boolean == true) {
                   return true;
