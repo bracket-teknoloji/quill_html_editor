@@ -214,7 +214,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
       );
 
   Future<void> filter() async {
-    await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.filter, body: filterBody);
+    await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.filter, body: filterBody);
   }
 
   Widget get filterBody => Column(
@@ -304,7 +304,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],

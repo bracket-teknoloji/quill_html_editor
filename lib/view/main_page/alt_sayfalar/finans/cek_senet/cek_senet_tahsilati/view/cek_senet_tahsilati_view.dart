@@ -86,7 +86,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.options,
+                title: loc.generalStrings.options,
                 children: [
                   BottomSheetModel(
                     title: "Serbest Raporlar",
@@ -227,10 +227,10 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                             ),
                             onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
-                              title: loc(context).generalStrings.options,
+                              title: loc.generalStrings.options,
                               children: [
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.edit,
+                                  title: loc.generalStrings.edit,
                                   iconWidget: Icons.edit_outlined,
                                   onTap: () {
                                     Get.back();
@@ -238,7 +238,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                                   },
                                 ),
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.delete,
+                                  title: loc.generalStrings.delete,
                                   iconWidget: Icons.delete_outline,
                                   onTap: () {
                                     Get.back();

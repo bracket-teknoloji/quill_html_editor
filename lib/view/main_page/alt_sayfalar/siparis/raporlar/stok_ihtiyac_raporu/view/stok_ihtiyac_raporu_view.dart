@@ -72,7 +72,7 @@ class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Form(
         key: _formKey,
         child: Column(

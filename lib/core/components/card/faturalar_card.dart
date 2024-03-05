@@ -68,7 +68,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             title: model.cariAdi ?? "",
             children: <BottomSheetModel?>[
               BottomSheetModel(
-                title: loc(context).generalStrings.view,
+                title: loc.generalStrings.view,
                 iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
@@ -76,7 +76,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ),
               BottomSheetModel(
-                title: loc(context).generalStrings.edit,
+                title: loc.generalStrings.edit,
                 iconWidget: Icons.edit_outlined,
                 onTap: () async {
                   Get.back();
@@ -87,7 +87,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
               BottomSheetModel(
-                title: loc(context).generalStrings.delete,
+                title: loc.generalStrings.delete,
                 iconWidget: Icons.delete_outline_outlined,
                 onTap: () async {
                   Get.back();
@@ -125,7 +125,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ),
               BottomSheetModel(
-                title: loc(context).generalStrings.print,
+                title: loc.generalStrings.print,
                 iconWidget: Icons.print_outlined,
                 onTap: () async {
                   Get.back();
@@ -138,7 +138,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 },
               ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
               BottomSheetModel(
-                title: loc(context).generalStrings.actions,
+                title: loc.generalStrings.actions,
                 iconWidget: Icons.list_alt_outlined,
                 onTap: () async {
                   Get.back();

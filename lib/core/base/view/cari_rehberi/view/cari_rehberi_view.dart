@@ -204,11 +204,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   AppBarButton get siralaButton => AppBarButton(
         icon: Icons.sort_by_alpha_outlined,
-        child: Text(loc(context).generalStrings.sort),
+        child: Text(loc.generalStrings.sort),
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.sort,
+            title: loc.generalStrings.sort,
             children: List.generate(
               viewModel.siralaMap.length,
               (index) => BottomSheetModel(
@@ -227,7 +227,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.options,
+            title: loc.generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Muhtelif Cari Oluştur",
@@ -249,12 +249,12 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       );
   AppBarButton get filtreleButton => AppBarButton(
         icon: Icons.filter_alt_outlined,
-        child: Text(loc(context).generalStrings.filter),
+        child: Text(loc.generalStrings.filter),
         onPressed: () async {
           await viewModel.getGrupKodlari();
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.filter,
+            title: loc.generalStrings.filter,
             body: Observer(
               builder: (_) => Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -505,7 +505,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       viewModel.resetAll();
                       Get.back();
                     },
-                    child: Text(loc(context).generalStrings.filter),
+                    child: Text(loc.generalStrings.filter),
                   ),
                 ],
               ),

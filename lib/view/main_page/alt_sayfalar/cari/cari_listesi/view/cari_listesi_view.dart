@@ -191,18 +191,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 //   viewModel.resetPage();
                 // }
               },
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: () async => await siralaDialog(context),
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.options,
+                  title: loc.generalStrings.options,
                   children: [
                     BottomSheetModel(
                       title: "Raporlar",
@@ -460,7 +460,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       title: "${object.cariKodu}\n${object.cariAdi}",
       children: [
         BottomSheetModel(
-          title: loc(context).generalStrings.view,
+          title: loc.generalStrings.view,
           iconWidget: Icons.preview_outlined,
           onTap: () => Get.back(
             result: CariSeceneklerModel(
@@ -470,7 +470,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           ),
         ).yetkiKontrol(yetkiController.cariKarti),
         BottomSheetModel(
-          title: loc(context).generalStrings.edit,
+          title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () => Get.back(
             result: CariSeceneklerModel(
@@ -480,7 +480,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           ),
         ).yetkiKontrol(yetkiController.cariKartiDuzenleme),
         BottomSheetModel(
-          title: loc(context).generalStrings.delete,
+          title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline,
           onTap: () async {
             Get.back();
@@ -503,7 +503,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         ).yetkiKontrol(yetkiController.cariKartiSilme),
         BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")).yetkiKontrol(yetkiController.cariHareketleri),
         BottomSheetModel(
-          title: loc(context).generalStrings.actions,
+          title: loc.generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
           onTap: () {
             Get.back();
@@ -542,7 +542,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Future<dynamic> filtreleDialog(BuildContext context) async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: loc(context).generalStrings.filter,
+        title: loc.generalStrings.filter,
         body: Column(
           children: [
             CustomWidgetWithLabel(
@@ -882,7 +882,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       viewModel.changeIlce(viewModel.cariRequestModelTemp.ilce);
                       await viewModel.resetPage();
                     },
-                    child: Text(loc(context).generalStrings.apply),
+                    child: Text(loc.generalStrings.apply),
                   ),
                 ),
               ],

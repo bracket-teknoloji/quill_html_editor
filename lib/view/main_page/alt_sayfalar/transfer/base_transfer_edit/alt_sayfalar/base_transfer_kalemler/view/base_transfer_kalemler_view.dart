@@ -275,7 +275,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
       title: viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].kalemAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
-          title: loc(context).generalStrings.edit,
+          title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -287,7 +287,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
           },
         ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
         BottomSheetModel(
-          title: loc(context).generalStrings.delete,
+          title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () {
             Get.back();

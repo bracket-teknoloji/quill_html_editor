@@ -18,7 +18,7 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BaseGrupKoduModel>? grupKoduList;
 
   @observable
-  SayimFiltreModel filtreModel =  SayimFiltreModel(tipi: "2");
+  SayimFiltreModel filtreModel =  SayimFiltreModel(tipi: "S", islemKodu: 2);
 
   @action
   void setSayimList(List<SayimListesiModel>? value) => sayimList = value?.asObservable();

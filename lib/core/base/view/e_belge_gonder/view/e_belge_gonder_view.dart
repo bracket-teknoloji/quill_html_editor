@@ -281,7 +281,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (siparisModel != null) {
                             viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
                             viewModel.setSiparisModel(siparisModel);
-                            dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+                            dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                           }
                         }
                       });
@@ -299,7 +299,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (result.success ?? false) {
                             final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                             if (siparisModel != null) {
-                              dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+                              dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                               viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
 
                               viewModel.setSiparisModel(siparisModel);
@@ -318,7 +318,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             dialogManager.showAreYouSureDialog(() async {
                               final result = await viewModel.sendEBelge();
                               if (result.success ?? false) {
-                                dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+                                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
                                 Get.back(result: true);
                               }
@@ -327,7 +327,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
                         child: Column(
-                          children: [const Icon(Icons.preview_outlined), Text(loc(context).generalStrings.view)],
+                          children: [const Icon(Icons.preview_outlined), Text(loc.generalStrings.view)],
                         ),
                       ),
                       ElevatedButton(
@@ -335,7 +335,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           dialogManager.showAreYouSureDialog(() async {
                             final result = await viewModel.sendEBelge();
                             if (result.success ?? false) {
-                              dialogManager.showSuccessSnackBar(result.message ?? loc(context).generalStrings.success);
+                              dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
                               Get.back(result: true);
                             }

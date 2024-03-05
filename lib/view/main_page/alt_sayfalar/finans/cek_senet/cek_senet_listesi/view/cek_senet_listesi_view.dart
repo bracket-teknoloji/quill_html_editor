@@ -140,10 +140,10 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.filter,
+                title: loc.generalStrings.filter,
                 body: Observer(
                   builder: (_) => Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -317,7 +317,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           Get.back();
                           await viewModel.getData();
                         },
-                        child: Text(loc(context).generalStrings.apply),
+                        child: Text(loc.generalStrings.apply),
                       ).paddingAll(UIHelper.lowSize),
                     ],
                   ),
@@ -326,11 +326,11 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.sort,
+                  title: loc.generalStrings.sort,
                   groupValue: viewModel.cekSenetListesiRequestModel.sirala,
                   children: List.generate(
                     viewModel.siralaMap.length,
@@ -347,7 +347,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                 }
               },
             ),
-            AppBarButton(icon: Icons.refresh_outlined, onPressed: () async => await viewModel.getData(), child: Text(loc(context).generalStrings.refresh)),
+            AppBarButton(icon: Icons.refresh_outlined, onPressed: () async => await viewModel.getData(), child: Text(loc.generalStrings.refresh)),
           ],
         ),
       );

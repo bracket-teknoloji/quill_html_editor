@@ -88,7 +88,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariylaGonderildiMi),
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
                   const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
-                  ColorfulBadge(label: Text(loc(context).generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
+                  ColorfulBadge(label: Text(loc.generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
                   ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
                   const Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
@@ -380,7 +380,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       );
 
   BottomSheetModel get yazdir => BottomSheetModel(
-        title: loc(context).generalStrings.print,
+        title: loc.generalStrings.print,
         iconWidget: Icons.print_outlined,
         onTap: () async {
           Get.back();
@@ -389,7 +389,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           final TextEditingController kopyaSayisiController = TextEditingController(text: "1");
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.print,
+            title: loc.generalStrings.print,
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -452,7 +452,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                     }
                   },
-                  child: Text(loc(context).generalStrings.print),
+                  child: Text(loc.generalStrings.print),
                 ).paddingAll(UIHelper.lowSize),
               ],
             ).paddingAll(UIHelper.lowSize),

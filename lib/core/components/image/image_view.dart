@@ -21,7 +21,7 @@ class _ImageViewState extends BaseState<ImageView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: loc(context).generalStrings.view,
+            title: loc.generalStrings.view,
             subtitle: widget.title,
           ),
           actions: [

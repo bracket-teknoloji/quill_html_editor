@@ -234,8 +234,8 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             bottom: TabBar(
               controller: tabController,
               tabs: [
-                Tab(child: Text(loc(context).generalStrings.general)),
-                Tab(child: Text(loc(context).generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
+                Tab(child: Text(loc.generalStrings.general)),
+                Tab(child: Text(loc.generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereNot((element) => element is SizedBox).toList(),
@@ -268,7 +268,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         onPressed: () async {
           final result = await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.options,
+            title: loc.generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Seri Hareket kaydı",

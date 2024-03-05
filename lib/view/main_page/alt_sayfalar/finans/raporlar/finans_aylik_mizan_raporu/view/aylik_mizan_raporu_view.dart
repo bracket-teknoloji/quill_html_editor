@@ -39,7 +39,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Form(
         key: formKey,
         child: Column(
@@ -67,7 +67,7 @@ class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
                   Get.back();
                 }
               },
-              child: Text(loc(context).generalStrings.apply),
+              child: Text(loc.generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ],
         ),

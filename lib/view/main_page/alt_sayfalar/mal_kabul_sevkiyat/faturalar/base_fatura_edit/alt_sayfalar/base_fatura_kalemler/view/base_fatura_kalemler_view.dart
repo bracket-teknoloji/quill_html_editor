@@ -276,7 +276,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
       title: kalemList2.kalemAdi ?? kalemList2.stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
-          title: loc(context).generalStrings.edit,
+          title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -288,7 +288,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           },
         ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
-          title: loc(context).generalStrings.delete,
+          title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () {
             Get.back();
@@ -311,7 +311,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
                 //TODO efatura_stok değişmiyor
-              ); 
+              );
 
               viewModel.updateKalemList();
             }

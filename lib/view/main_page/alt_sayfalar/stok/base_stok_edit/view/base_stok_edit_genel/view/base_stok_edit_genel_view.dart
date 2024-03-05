@@ -418,7 +418,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 ),
               ),
               CustomWidgetWithLabel(
-                text: loc(context).generalStrings.other,
+                text: loc.generalStrings.other,
                 child: CustomTextField(
                   // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
                   readOnly: true,

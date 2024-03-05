@@ -79,7 +79,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(loc(context).generalStrings.print),
+          title: Text(loc.generalStrings.print),
           actions: [
             IconButton(
               icon: const Icon(Icons.print_outlined),

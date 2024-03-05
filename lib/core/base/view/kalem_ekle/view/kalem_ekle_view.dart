@@ -108,7 +108,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.options,
+                title: loc.generalStrings.options,
                 children: [BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.money_outlined, onTap: () => Get.toNamed("/dovizKurlari"))],
               );
             },

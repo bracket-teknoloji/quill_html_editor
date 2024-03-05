@@ -81,7 +81,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
             IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
             IconButton(
               onPressed: () async {
-                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.sort, children: viewModel.bottomSheetModelList));
+                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.sort, children: viewModel.bottomSheetModelList));
                 getData();
               },
               icon: const Icon(Icons.sort_by_alpha_outlined),
@@ -90,7 +90,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.filter,
+                  title: loc.generalStrings.filter,
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -243,7 +243,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                                 trailing: Text(viewModel.modelList?[index].miktar.toStringIfNotNull ?? ""),
                                 onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: loc(context).generalStrings.options,
+                                  title: loc.generalStrings.options,
                                   children: [
                                     BottomSheetModel(
                                       title: "Cari Stok Satış Hareketleri",

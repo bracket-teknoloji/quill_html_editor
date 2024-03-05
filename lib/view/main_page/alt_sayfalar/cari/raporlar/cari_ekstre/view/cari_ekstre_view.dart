@@ -65,7 +65,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -140,7 +140,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                   Get.back();
                 }
               },
-              child: Text(loc(context).generalStrings.apply),
+              child: Text(loc.generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ),
         ],

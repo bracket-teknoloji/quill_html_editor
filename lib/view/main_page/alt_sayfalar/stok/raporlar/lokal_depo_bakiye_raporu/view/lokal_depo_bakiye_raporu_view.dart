@@ -76,7 +76,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -220,7 +220,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
               viewModel.setFuture();
               Get.back();
             },
-            child: Text(loc(context).generalStrings.apply),
+            child: Text(loc.generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

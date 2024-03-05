@@ -94,7 +94,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         actions: [
           //😳 IconButton(
           //😳     onPressed: () async {
-          //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc(context).generalStrings.options, children: [
+          //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.options, children: [
           //😳         BottomSheetModel(
           //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
           //😳             title: "Dövizli Fiyat Göster",
@@ -122,11 +122,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.filter,
+                  title: loc.generalStrings.filter,
                   body: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -222,7 +222,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 Get.back();
                                 viewModel.setFuture(getData());
                               },
-                              child: Text(loc(context).generalStrings.apply),
+                              child: Text(loc.generalStrings.apply),
                             ),
                           ),
                         ],
@@ -234,11 +234,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.sort,
+                  title: loc.generalStrings.sort,
                   children: [
                     BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
                     BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
@@ -254,7 +254,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: Text(loc(context).generalStrings.refresh),
+              child: Text(loc.generalStrings.refresh),
               onPressed: () {
                 getData();
               },
@@ -312,7 +312,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 icon: Icons.delete_forever,
                                 backgroundColor: theme.colorScheme.inversePrimary,
                                 foregroundColor: theme.colorScheme.primary,
-                                label: loc(context).generalStrings.delete,
+                                label: loc.generalStrings.delete,
                               ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
                               if (slidableAction != const SizedBox()) {
                                 children2.add(slidableAction);
@@ -360,7 +360,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 if (widget.model != null) {
                                   await bottomSheetDialogManager.showBottomSheetDialog(
                                     context,
-                                    title: loc(context).generalStrings.options,
+                                    title: loc.generalStrings.options,
                                     children: [
                                       BottomSheetModel(
                                         title: "Belgeyi Görüntüle",

@@ -134,7 +134,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
             bottom: TabBar(
               controller: _tabController,
               tabs: [
-                Tab(text: loc(context).generalStrings.general),
+                Tab(text: loc.generalStrings.general),
                 Tab(
                   child: Observer(
                     builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),

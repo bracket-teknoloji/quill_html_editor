@@ -73,7 +73,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -205,7 +205,7 @@ class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
                   dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
                 }
               },
-              child: Text(loc(context).generalStrings.apply),
+              child: Text(loc.generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ),
         ],

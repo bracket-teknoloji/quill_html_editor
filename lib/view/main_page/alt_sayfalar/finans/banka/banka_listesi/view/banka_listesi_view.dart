@@ -88,10 +88,10 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.filter,
+                title: loc.generalStrings.filter,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -145,7 +145,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         Get.back();
                         await viewModel.resetPage();
                       },
-                      child: Text(loc(context).generalStrings.apply),
+                      child: Text(loc.generalStrings.apply),
                     ).paddingAll(UIHelper.lowSize),
                   ],
                 ),
@@ -153,7 +153,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -176,7 +176,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: Text(loc(context).generalStrings.refresh),
+              child: Text(loc.generalStrings.refresh),
               onPressed: () async => await viewModel.resetPage(),
             ),
           ],

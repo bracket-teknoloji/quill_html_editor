@@ -62,7 +62,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
                       children: [
                         BottomSheetModel(
                           iconWidget: Icons.delete_outline,
-                          title: loc(context).generalStrings.delete,
+                          title: loc.generalStrings.delete,
                           onTap: () {
                             Get.back();
                             dialogManager.showAreYouSureDialog(() {

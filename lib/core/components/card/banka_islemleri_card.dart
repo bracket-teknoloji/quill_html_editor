@@ -31,7 +31,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
             title: model?.hesapAdi ?? "",
             children: [
               BottomSheetModel(
-                title: loc(context).generalStrings.delete,
+                title: loc.generalStrings.delete,
                 onTap: deleteData,
                 iconWidget: Icons.delete_outline_outlined,
               ),

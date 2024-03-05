@@ -42,8 +42,8 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
   BaseCariEditViewModel viewModel = BaseCariEditViewModel();
   late final TabController tabController;
   List<Tab> get tabs => <Widget>[
-        Tab(child: Text(loc(context).generalStrings.general)),
-        Tab(child: Text(loc(context).generalStrings.other)),
+        Tab(child: Text(loc.generalStrings.general)),
+        Tab(child: Text(loc.generalStrings.other)),
         const Tab(child: Text("Özet")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("Banka")).yetkiVarMi(goruntulenecekMi),
         const Tab(child: Text("İletişim")).yetkiVarMi(goruntulenecekMi),
@@ -141,7 +141,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
         },
         child: Scaffold(
-          // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc(context).generalStrings.general)), Tab(child: Text(loc(context).generalStrings.general))]),
+          // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),
           appBar: AppBar(
             title: AppBarTitle(
               title: widget.appBarTitle ?? "Cari Kartı",

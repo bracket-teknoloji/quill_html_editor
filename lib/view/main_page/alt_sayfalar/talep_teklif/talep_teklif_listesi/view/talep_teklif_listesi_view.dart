@@ -163,14 +163,14 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                       size: UIHelper.midSize * 2,
                     ),
                   ),
-                  Text(loc(context).generalStrings.filter),
+                  Text(loc.generalStrings.filter),
                 ],
               ),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               onPressed: siralaButtonOnTap,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
             ),
             AppBarButton(
               onPressed: seceneklerButtonOnTap,
@@ -271,7 +271,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   Future<void> filtreleButtonOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -509,7 +509,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                     Get.back();
                     await viewModel.resetPage();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],
@@ -542,7 +542,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   Future<void> seceneklerButtonOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.options,
+      title: loc.generalStrings.options,
       children: [
         BottomSheetModel(
           title: "Görünecek Ekstra Alanlar",

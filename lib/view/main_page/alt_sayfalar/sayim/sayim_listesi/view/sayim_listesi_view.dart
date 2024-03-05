@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/card/sayimlar_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
@@ -245,8 +246,9 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                       final result =
                           await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 5", groupValues: viewModel.filtreModel.arrKod5, children: viewModel.bottomSheetChildren(5));
                       if (result is List) {
-                        viewModel.filtreModel.arrKod5 = result as List<String>;
-                        kod5Controller.text = result.join(", ");
+                        final List<BaseGrupKoduModel> list = result as List<BaseGrupKoduModel>;
+                        viewModel.filtreModel.arrKod5 = list.map((e) => e.grupKodu ?? "").toList();
+                        kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
                       }
                     },
                   ),
@@ -263,7 +265,7 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                   }
                 }
               },
-              child: Text(loc(context).generalStrings.apply),
+              child: Text(loc.generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ],
         ).paddingAll(UIHelper.lowSize),

@@ -116,17 +116,17 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
 
   List<BottomSheetModel?> get bottomSheetItems => [
         BottomSheetModel(
-          title: loc(context).generalStrings.view,
+          title: loc.generalStrings.view,
           iconWidget: Icons.preview_outlined,
           onTap: goruntuleCekSenet,
         ),
         BottomSheetModel(
-          title: loc(context).generalStrings.delete,
+          title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: deleteCekSenet,
         ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
         BottomSheetModel(
-          title: loc(context).generalStrings.actions,
+          title: loc.generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
           onTap: () async {
             Get.back();

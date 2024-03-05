@@ -170,12 +170,12 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       size: UIHelper.midSize * 2,
                     ),
                   ),
-                  Text(loc(context).generalStrings.filter),
+                  Text(loc.generalStrings.filter),
                 ],
               ),
               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.filter,
+                title: loc.generalStrings.filter,
                 body: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -495,13 +495,13 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   getData();
                 }
               },
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
             ),
             AppBarButton(
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.options,
+                  title: loc.generalStrings.options,
                   children: [
                     BottomSheetModel(
                       title: "Görünecek Ekstra Alanlar",

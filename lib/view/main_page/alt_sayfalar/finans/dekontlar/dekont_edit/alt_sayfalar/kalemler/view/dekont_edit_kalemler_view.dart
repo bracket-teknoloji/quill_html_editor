@@ -122,7 +122,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
       title: model.kalemAdi ?? "",
       children: [
         BottomSheetModel(
-          title: loc(context).generalStrings.edit,
+          title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
@@ -139,7 +139,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
           },
         ),
         BottomSheetModel(
-          title: loc(context).generalStrings.delete,
+          title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async {
             Get.back();

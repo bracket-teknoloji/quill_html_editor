@@ -61,7 +61,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         onPressed: () async {
           await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.options,
+            title: loc.generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Kur Girişi",
@@ -226,10 +226,10 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                               onTap: () async {
                                 await bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: loc(context).generalStrings.options,
+                                  title: loc.generalStrings.options,
                                   children: [
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.edit,
+                                      title: loc.generalStrings.edit,
                                       iconWidget: Icons.edit_outlined,
                                       onTap: () async {
                                         Get.back();
@@ -242,7 +242,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                       },
                                     ),
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.delete,
+                                      title: loc.generalStrings.delete,
                                       iconWidget: Icons.delete_outline,
                                       onTap: () {
                                         Get.back();

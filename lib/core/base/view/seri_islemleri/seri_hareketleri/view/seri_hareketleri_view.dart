@@ -82,17 +82,17 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
-                title: loc(context).generalStrings.options,
+                title: loc.generalStrings.options,
                 children: [
                   BottomSheetModel(
-                    title: loc(context).generalStrings.sort,
+                    title: loc.generalStrings.sort,
                     iconWidget: Icons.sort_by_alpha_outlined,
                     onTap: () async {
                       Get.back();
                       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
                         groupValue: viewModel.requestModel.sirala,
-                        title: loc(context).generalStrings.sort,
+                        title: loc.generalStrings.sort,
                         children: List.generate(
                           viewModel.siralaMap.length,
                           (index) => BottomSheetModel(
@@ -232,10 +232,10 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                           onTap: () async {
                             await bottomSheetDialogManager.showBottomSheetDialog(
                               context,
-                              title: loc(context).generalStrings.options,
+                              title: loc.generalStrings.options,
                               children: [
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.edit,
+                                  title: loc.generalStrings.edit,
                                   iconWidget: Icons.edit_outlined,
                                   onTap: () async {
                                     Get.back();
@@ -250,7 +250,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                                   },
                                 ),
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.delete,
+                                  title: loc.generalStrings.delete,
                                   iconWidget: Icons.delete_outline,
                                   onTap: () async {
                                     Get.back();
@@ -258,7 +258,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                                       dialogManager.showAreYouSureDialog(() async {
                                         final result = await viewModel.deleteSeriHareket(item);
                                         if (result) {
-                                          dialogManager.showAlertDialog(loc(context).generalStrings.success);
+                                          dialogManager.showAlertDialog(loc.generalStrings.success);
                                           await viewModel.getData();
                                         }
                                       });

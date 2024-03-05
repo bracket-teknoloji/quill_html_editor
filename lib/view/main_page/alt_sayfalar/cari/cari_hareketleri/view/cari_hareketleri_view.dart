@@ -149,11 +149,11 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   return getData().then((value) => viewModel.setCariHareketleri(value));
                 }
               },
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
             ),
             AppBarButton(
               icon: Icons.refresh_outlined,
-              child: Text(loc(context).generalStrings.refresh),
+              child: Text(loc.generalStrings.refresh),
               onPressed: () {
                 viewModel.setCariHareketleri(null);
                 return getData().then((value) => viewModel.setCariHareketleri(value));
@@ -217,11 +217,11 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               onTap: () {
                                 bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
-                                  title: loc(context).generalStrings.options,
+                                  title: loc.generalStrings.options,
                                   children: [
                                     BottomSheetModel(
                                       iconWidget: Icons.preview_outlined,
-                                      title: loc(context).generalStrings.view,
+                                      title: loc.generalStrings.view,
                                       onTap: () async {
                                         Get.back();
                                         if (model.faturaMi) {
@@ -257,7 +257,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     ).yetkiKontrol(model.resmiBelgeNo != null),
                                     BottomSheetModel(
                                       iconWidget: Icons.list_alt_outlined,
-                                      title: loc(context).generalStrings.actions,
+                                      title: loc.generalStrings.actions,
                                       onTap: () async {
                                         Get.back();
                                         await dialogManager.showCariHareketleriGridViewDialog(
@@ -273,7 +273,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                     ),
                                     BottomSheetModel(
                                       iconWidget: Icons.edit_outlined,
-                                      title: loc(context).generalStrings.edit,
+                                      title: loc.generalStrings.edit,
                                       onTap: () async {
                                         Get.back();
                                         final result = await Get.toNamed(
@@ -287,7 +287,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                       },
                                     ).yetkiKontrol(model.devirMi && yetkiController.cariHareketleriDuzenleme),
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.delete,
+                                      title: loc.generalStrings.delete,
                                       iconWidget: Icons.delete_outline_outlined,
                                       onTap: () async {
                                         Get.back();

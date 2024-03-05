@@ -86,16 +86,16 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                 ),
               ),
               onPressed: filtrele,
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
             ),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: Text(loc(context).generalStrings.sort)),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, onPressed: sirala, child: Text(loc.generalStrings.sort)),
             AppBarButton(
               icon: Icons.refresh_outlined,
               onPressed: () async {
                 viewModel.setKasaListesi(null);
                 await viewModel.getData();
               },
-              child: Text(loc(context).generalStrings.refresh),
+              child: Text(loc.generalStrings.refresh),
             ),
           ],
         ),
@@ -184,7 +184,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
   Future<void> sirala() async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.sort,
+      title: loc.generalStrings.sort,
       groupValue: viewModel.sirala,
       children: List.generate(
         viewModel.siralaMap.length,
@@ -205,7 +205,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
   Future<void> filtrele() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         children: [
           Observer(
@@ -237,7 +237,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                     viewModel.setKasaListesi(null);
                     viewModel.getData();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],

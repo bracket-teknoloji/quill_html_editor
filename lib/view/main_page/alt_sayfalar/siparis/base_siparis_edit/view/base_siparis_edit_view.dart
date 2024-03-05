@@ -184,7 +184,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                 onPressed: () async {
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
-                    title: loc(context).generalStrings.options,
+                    title: loc.generalStrings.options,
                     children: [
                       BottomSheetModel(
                         title: "Cari İşlemleri",
@@ -313,8 +313,8 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
             bottom: TabBar(
               controller: tabController,
               tabs: [
-                Tab(child: Text(loc(context).generalStrings.general)),
-                if (yetkiController.siparisDigerSekmesiGoster) Tab(child: Text(loc(context).generalStrings.other)),
+                Tab(child: Text(loc.generalStrings.general)),
+                if (yetkiController.siparisDigerSekmesiGoster) Tab(child: Text(loc.generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),

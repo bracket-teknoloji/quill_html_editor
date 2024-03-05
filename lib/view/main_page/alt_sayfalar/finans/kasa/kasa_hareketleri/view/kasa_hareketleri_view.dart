@@ -122,7 +122,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                                 title: item?.tipAciklama ?? "",
                                 children: [
                                   BottomSheetModel(
-                                    title: loc(context).generalStrings.delete,
+                                    title: loc.generalStrings.delete,
                                     iconWidget: Icons.delete_outline_outlined,
                                     onTap: () {
                                       Get.back();

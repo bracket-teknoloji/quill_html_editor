@@ -106,11 +106,11 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
             AppBarButton(
               icon: Icons.filter_alt_outlined,
               onPressed: () async => await filter(),
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -135,7 +135,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
               onPressed: () async {
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.options,
+                  title: loc.generalStrings.options,
                   children: <BottomSheetModel>[
                     BottomSheetModel(
                       title: "Görünecek Ekstra Alanlar",
@@ -248,7 +248,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         children: [
           RaporFiltreDateTimeBottomSheetView(
@@ -284,7 +284,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
               groupValue: viewModel.faturaRequestModel.lokalDAT,
             ),
           ).yetkiVarMi(widget.editTipiEnum.depoTransferiMi),
-          Row( 
+          Row(
             children: <Widget>[
               Expanded(
                 child: ElevatedButton(
@@ -310,7 +310,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                     viewModel.setDahaVarMi(true);
                     viewModel.resetPage();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],

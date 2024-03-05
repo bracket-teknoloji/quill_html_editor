@@ -122,14 +122,14 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
           children: [
             AppBarButton(
               onPressed: filterBottomSheet,
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
             ),
             AppBarButton(
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.sort,
+                  title: loc.generalStrings.sort,
                   children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
                 );
                 if (result != null) {
@@ -141,7 +141,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               },
             ),
             AppBarButton(
-              child: Text(loc(context).generalStrings.refresh),
+              child: Text(loc.generalStrings.refresh),
               onPressed: () {
                 viewModel.setKalemList(null);
                 getData();
@@ -203,7 +203,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
           ),
           onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            title: loc(context).generalStrings.options,
+            title: loc.generalStrings.options,
             children: [
               BottomSheetModel(
                 title: "Belgeyi Görüntüle",
@@ -235,7 +235,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   Future filterBottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -378,7 +378,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               getData();
               Get.back();
             },
-            child: Text(loc(context).generalStrings.apply),
+            child: Text(loc.generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

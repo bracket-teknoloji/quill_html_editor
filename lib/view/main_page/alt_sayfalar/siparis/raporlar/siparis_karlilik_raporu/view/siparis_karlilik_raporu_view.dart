@@ -76,7 +76,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Form(
         key: _formKey,
         child: Column(
@@ -233,7 +233,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                   Get.back();
                 }
               },
-              child: Text(loc(context).generalStrings.apply),
+              child: Text(loc.generalStrings.apply),
             ).paddingAll(UIHelper.lowSize),
           ],
         ),

@@ -135,9 +135,9 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
         ],
         bottom: AppBarPreferedSizedBottom(
           children: [
-            AppBarButton(icon: Icons.filter_alt_outlined, hasFilter: false, onPressed: filtrele, child: Text(loc(context).generalStrings.filter)),
-            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child: Text(loc(context).generalStrings.sort)),
-            AppBarButton(icon: Icons.refresh_outlined, hasFilter: false, onPressed: refresh, child: Text(loc(context).generalStrings.refresh)),
+            AppBarButton(icon: Icons.filter_alt_outlined, hasFilter: false, onPressed: filtrele, child: Text(loc.generalStrings.filter)),
+            AppBarButton(icon: Icons.sort_by_alpha_outlined, hasFilter: false, onPressed: sirala, child: Text(loc.generalStrings.sort)),
+            AppBarButton(icon: Icons.refresh_outlined, hasFilter: false, onPressed: refresh, child: Text(loc.generalStrings.refresh)),
           ],
         ),
       );
@@ -182,7 +182,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
 
   Future<void> filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: loc(context).generalStrings.filter,
+        title: loc.generalStrings.filter,
         body: Observer(
           builder: (_) => Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -280,7 +280,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 onTap: () => viewModel.changeDigerGoster(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text(loc(context).generalStrings.other), Observer(builder: (_) => Icon(viewModel.digerGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
+                  children: [Text(loc.generalStrings.other), Observer(builder: (_) => Icon(viewModel.digerGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
                 ),
               ).paddingAll(UIHelper.lowSize),
               Column(
@@ -364,7 +364,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   Get.back();
                   return viewModel.resetPage();
                 },
-                child: Text(loc(context).generalStrings.apply),
+                child: Text(loc.generalStrings.apply),
               ).paddingAll(UIHelper.lowSize),
             ],
           ),
@@ -374,7 +374,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
   Future<void> sirala() async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.sort,
+      title: loc.generalStrings.sort,
       groupValue: viewModel.eBelgeRequestModel.sirala,
       children: List.generate(
         viewModel.siralaMap.length,

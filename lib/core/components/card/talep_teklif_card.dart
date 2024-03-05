@@ -86,7 +86,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                     title: widget.model.belgeNo ?? "",
                     children: [
                       BottomSheetModel(
-                        title: loc(context).generalStrings.view,
+                        title: loc.generalStrings.view,
                         iconWidget: Icons.preview_outlined,
                         onTap: () {
                           Get.back();
@@ -101,7 +101,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.edit,
+                        title: loc.generalStrings.edit,
                         iconWidget: Icons.edit_outlined,
                         onTap: () async {
                           Get.back();
@@ -117,7 +117,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.delete,
+                        title: loc.generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();
@@ -153,7 +153,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.print,
+                        title: loc.generalStrings.print,
                         iconWidget: Icons.print_outlined,
                         onTap: () async {
                           Get.back();
@@ -166,7 +166,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ),
                       BottomSheetModel(
-                        title: loc(context).generalStrings.actions,
+                        title: loc.generalStrings.actions,
                         iconWidget: Icons.list_alt_outlined,
                         onTap: () async {
                           Get.back();

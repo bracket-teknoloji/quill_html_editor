@@ -52,9 +52,8 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   @override
   void initState() {
     viewModel.setCariModel(widget.cariListesiModel);
-    viewModel.setTarih(DateTime.now());
     viewModel.setGc(false);
-    _tarihController = TextEditingController(text: viewModel.model.tarih.toDateStringIfNull);
+    _tarihController = TextEditingController();
     _dekontNoController = TextEditingController();
     _hesapController = TextEditingController();
     _cariController = TextEditingController();
@@ -73,6 +72,8 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      viewModel.setTarih(await dialogManager.showDateTimePicker());
+      _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {
         viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
         viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);

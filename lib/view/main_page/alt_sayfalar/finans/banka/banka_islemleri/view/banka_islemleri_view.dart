@@ -204,7 +204,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         children: [
           CustomTextField(
@@ -284,7 +284,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],

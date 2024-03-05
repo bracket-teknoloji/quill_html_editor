@@ -152,7 +152,7 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   Future<void> secenekler() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.options,
+      title: loc.generalStrings.options,
       children: [
         BottomSheetModel(
           title: "PDF Görüntüle",

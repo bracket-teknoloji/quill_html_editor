@@ -219,7 +219,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         children: [
           Observer(
@@ -317,7 +317,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                     Get.back();
                     viewModel.resetPage();
                   },
-                  child: Text(loc(context).generalStrings.apply),
+                  child: Text(loc.generalStrings.apply),
                 ),
               ),
             ],

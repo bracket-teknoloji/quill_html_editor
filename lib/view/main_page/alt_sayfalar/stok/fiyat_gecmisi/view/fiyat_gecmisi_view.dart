@@ -96,7 +96,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                     onPressed: () async {
                       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                         context,
-                        title: loc(context).generalStrings.sort,
+                        title: loc.generalStrings.sort,
                         groupValue: viewModel.model.sirala,
                         children: List.generate(
                           viewModel.siralaTitleList.length,
@@ -122,7 +122,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                     onPressed: () async {
                       await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
-                        title: loc(context).generalStrings.filter,
+                        title: loc.generalStrings.filter,
                         body: Column(
                           children: [
                             RaporFiltreDateTimeBottomSheetView(
@@ -207,7 +207,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       getData();
                                       Get.back();
                                     },
-                                    child: Text(loc(context).generalStrings.apply),
+                                    child: Text(loc.generalStrings.apply),
                                   ),
                                 ),
                               ],

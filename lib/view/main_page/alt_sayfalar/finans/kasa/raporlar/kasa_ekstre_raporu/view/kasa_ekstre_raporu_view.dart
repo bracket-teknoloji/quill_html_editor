@@ -46,7 +46,7 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: loc(context).generalStrings.filter,
+      title: loc.generalStrings.filter,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -86,7 +86,7 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
                 Get.back();
               }
             },
-            child: Text(loc(context).generalStrings.apply),
+            child: Text(loc.generalStrings.apply),
           ).paddingAll(UIHelper.lowSize),
         ],
       ),

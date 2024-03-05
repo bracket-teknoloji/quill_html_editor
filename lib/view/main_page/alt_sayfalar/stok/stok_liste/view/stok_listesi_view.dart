@@ -169,7 +169,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                     onPressed: () async {
                       await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
-                        title: loc(context).generalStrings.options,
+                        title: loc.generalStrings.options,
                         body: Observer(
                           builder: (_) => SwitchListTile.adaptive(
                             title: const Text("Resimleri Göster"),
@@ -214,7 +214,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             AppBarButton(
               iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? theme.colorScheme.inversePrimary : null)),
-              child: Text(loc(context).generalStrings.filter),
+              child: Text(loc.generalStrings.filter),
               onPressed: () async {
                 if (viewModel.grupKodlari.isEmptyOrNull) {
                   final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
@@ -225,7 +225,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                 }
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.filter,
+                  title: loc.generalStrings.filter,
                   body: Column(
                     children: [
                       Wrap(
@@ -501,7 +501,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     Get.back();
                                     await getData();
                                   },
-                                  child: Text(loc(context).generalStrings.apply),
+                                  child: Text(loc.generalStrings.apply),
                                 ),
                               ),
                             ],
@@ -515,12 +515,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc(context).generalStrings.sort),
+              child: Text(loc.generalStrings.sort),
               // child: const Icon(Icons.sort_by_alpha_outlined),
               onPressed: () async {
                 final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
-                  title: loc(context).generalStrings.sort,
+                  title: loc.generalStrings.sort,
                   groupValue: viewModel.siralama,
                   children: [
                     BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
@@ -653,12 +653,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                               : () async {
                                   final children2 = [
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.view,
+                                      title: loc.generalStrings.view,
                                       iconWidget: Icons.preview_outlined,
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKarti),
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.edit,
+                                      title: loc.generalStrings.edit,
                                       iconWidget: Icons.edit,
                                       onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: stok)),
                                     ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
@@ -680,7 +680,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     ),
                                     //TODO BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
                                     //TODO !!BottomSheetModel(
-                                    // !!  title: loc(context).generalStrings.print,
+                                    // !!  title: loc.generalStrings.print,
                                     //   iconWidget: Icons.print,
                                     //   onTap: () async {
                                     //     // // ignore: use_build_context_synchronously
@@ -695,7 +695,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                     //   },
                                     // ),
                                     BottomSheetModel(
-                                      title: loc(context).generalStrings.actions,
+                                      title: loc.generalStrings.actions,
                                       iconWidget: Icons.list_alt,
                                       onTap: () {
                                         Get.back();
@@ -705,7 +705,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                   ];
                                   children2.insert(
                                     2,
-                                    BottomSheetModel(title: loc(context).generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? ""))
+                                    BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(stok.stokKodu ?? ""))
                                         .yetkiKontrol(yetkiController.stokKartiSilme),
                                   );
                                   final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;

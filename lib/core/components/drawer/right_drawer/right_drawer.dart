@@ -49,7 +49,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(loc(context).rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
+                  Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,7 +59,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       else
                         const SizedBox(),
                       Text(
-                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc(context).rightDrawer.executiveUser,
+                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
                         style: CacheManager.getAnaVeri!.userModel?.admin == "E"
                             ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
                             : theme.textTheme.bodySmall,
@@ -126,7 +126,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                               // Icon(Icons.rule_s)
                               IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
                               Text(
-                                loc(context).rightDrawer.changeCompany,
+                                loc.rightDrawer.changeCompany,
                                 style: theme.textTheme.bodySmall,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
@@ -157,7 +157,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                              Text(loc(context).rightDrawer.exit, style: theme.textTheme.bodySmall),
+                              Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall),
                             ],
                           ),
                         ),
@@ -207,12 +207,12 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           },
         ),
         DrawerModel(
-          title: loc(context).rightDrawer.themeChange,
+          title: loc.rightDrawer.themeChange,
           iconWidget: Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
           onTap: () async {
             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
               context,
-              title: loc(context).rightDrawer.themeChange,
+              title: loc.rightDrawer.themeChange,
               groupValue: CacheManager.getProfilParametre.temaModu,
               children: [
                 BottomSheetModel(title: "Sistem Varsayılanı", iconWidget: Icons.wb_twilight_outlined, groupValue: ThemeMode.system, value: ThemeMode.system),
@@ -226,7 +226,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           },
         ),
         DrawerModel(
-          title: loc(context).rightDrawer.releaseNotes,
+          title: loc.rightDrawer.releaseNotes,
           iconWidget: Icons.new_releases_outlined,
           onTap: () {
             //close Drawer
@@ -241,9 +241,9 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
   String get _urlAdi {
     if (CacheManager.getUzaktanMi(account?.firmaKisaAdi)) {
-      return "${getIP(account?.wsWan ?? "")} (${loc(context).rightDrawer.remote})";
+      return "${getIP(account?.wsWan ?? "")} (${loc.rightDrawer.remote})";
     } else {
-      return "${getIP(account?.wsLan ?? "")} (${loc(context).rightDrawer.local})";
+      return "${getIP(account?.wsLan ?? "")} (${loc.rightDrawer.local})";
     }
   }
 

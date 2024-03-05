@@ -190,7 +190,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                               title: model.seri1 ?? "",
                               children: [
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.edit,
+                                  title: loc.generalStrings.edit,
                                   iconWidget: Icons.edit_outlined,
                                   onTap: () async {
                                     Get.back();
@@ -208,7 +208,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                                   },
                                 ),
                                 BottomSheetModel(
-                                  title: loc(context).generalStrings.delete,
+                                  title: loc.generalStrings.delete,
                                   iconWidget: Icons.delete_outline_outlined,
                                   onTap: () {
                                     Get.back();
@@ -217,7 +217,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                                     });
                                   },
                                 ),
-                                BottomSheetModel(title: loc(context).generalStrings.print, iconWidget: Icons.print_outlined),
+                                BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
                               ],
                             );
                           },

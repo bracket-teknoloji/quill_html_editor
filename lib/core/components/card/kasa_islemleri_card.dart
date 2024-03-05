@@ -44,7 +44,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
             children: [
               BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.receipt_long_outlined).yetkiKontrol(isTahsilat),
               BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isOdeme),
-              BottomSheetModel(title: loc(context).generalStrings.delete, onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
+              BottomSheetModel(title: loc.generalStrings.delete, onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
             ].nullCheckWithGeneric,
           );
         },

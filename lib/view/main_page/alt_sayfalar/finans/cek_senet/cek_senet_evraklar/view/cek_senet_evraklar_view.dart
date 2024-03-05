@@ -98,10 +98,10 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
 
   Future<void> onTap(EvraklarModel? model) async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
-        title: loc(context).generalStrings.options,
+        title: loc.generalStrings.options,
         children: [
           BottomSheetModel(
-            title: loc(context).generalStrings.view,
+            title: loc.generalStrings.view,
             iconWidget: Icons.preview_outlined,
             onTap: () {
               Get.back();
@@ -109,7 +109,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
             },
           ),
           BottomSheetModel(
-            title: loc(context).generalStrings.delete,
+            title: loc.generalStrings.delete,
             iconWidget: Icons.delete_outline_outlined,
             onTap: () async {
               Get.back();
