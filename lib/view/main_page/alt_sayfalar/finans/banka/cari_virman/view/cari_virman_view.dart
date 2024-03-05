@@ -45,7 +45,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     _tahsilatiYapilacakCariController = TextEditingController();
     _odemesiYapilacakCariController = TextEditingController();
     _tutarController = TextEditingController(text: widget.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _vadeGunuController = TextEditingController();
+    _vadeGunuController = TextEditingController(text: viewModel.requestModel.tarih?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toString());
     _plasiyerController = TextEditingController();
     _tahsilatYapilanCariAciklamaController = TextEditingController();
     _odemeYapilanCariAciklamaController = TextEditingController();
