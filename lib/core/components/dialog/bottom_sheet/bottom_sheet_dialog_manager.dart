@@ -1128,8 +1128,6 @@ class BottomSheetDialogManager {
                 final GenericResponseModel<NetworkManagerMixin> result = await NetworkManager().postPrint(context, model: printModel);
                 if (result.success == true) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
-                } else {
-                  await DialogManager().showAlertDialog(result.message ?? "Yazdırma işlemi başarısız.");
                 }
                 Get.back();
                 dizaynController.dispose();

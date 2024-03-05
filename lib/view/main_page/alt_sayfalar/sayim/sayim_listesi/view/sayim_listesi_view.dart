@@ -75,15 +75,11 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: yetkiController.sayimEkle,
-        onPressed: () async {
-          await filterBottomSheet();
-        },
+        onPressed: filterBottomSheet,
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          await viewModel.getData();
-        },
+        onRefresh: viewModel.getData,
         child: Observer(
           builder: (_) {
             if (viewModel.sayimList == null) {
@@ -104,7 +100,14 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
             return ListView.builder(
               itemCount: viewModel.sayimList?.length ?? 0,
               padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => SayimlarCard(model: viewModel.sayimList![index]),
+              itemBuilder: (context, index) => SayimlarCard(
+                model: viewModel.sayimList![index],
+                onChanged: (value) async {
+                  if (value) {
+                    await viewModel.getData();
+                  }
+                },
+              ),
             );
           },
         ),
@@ -153,8 +156,8 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                         children: viewModel.bottomSheetChildren(0),
                       );
                       if (result is List) {
-                        viewModel.filtreModel.arrGrupKodu = result as List<String>;
-                        grupKoduController.text = result.join(", ");
+                        viewModel.filtreModel.arrGrupKodu = result.map((e) => (e as BaseGrupKoduModel).grupKodu ?? "").toList();
+                        grupKoduController.text = result.map((e) => (e as BaseGrupKoduModel).grupAdi ?? "").join(", ");
                       }
                     },
                   ),
@@ -170,8 +173,8 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                       final result =
                           await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 1", groupValues: viewModel.filtreModel.arrKod1, children: viewModel.bottomSheetChildren(1));
                       if (result is List) {
-                        viewModel.filtreModel.arrKod1 = result as List<String>;
-                        kod1Controller.text = result.join(", ");
+                        viewModel.filtreModel.arrKod1 = result.map((e) => (e as BaseGrupKoduModel).grupKodu ?? "").toList();
+                        kod1Controller.text = result.map((e) => (e as BaseGrupKoduModel).grupAdi ?? "").join(", ");
                       }
                     },
                   ),
@@ -191,8 +194,8 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                       final result =
                           await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 2", groupValues: viewModel.filtreModel.arrKod2, children: viewModel.bottomSheetChildren(2));
                       if (result is List) {
-                        viewModel.filtreModel.arrKod2 = result as List<String>;
-                        kod2Controller.text = result.join(", ");
+                        viewModel.filtreModel.arrKod2 = result.map((e) => (e as BaseGrupKoduModel).grupKodu ?? "").toList();
+                        kod2Controller.text = result.map((e) => (e as BaseGrupKoduModel).grupAdi ?? "").join(", ");
                       }
                     },
                   ),
@@ -208,8 +211,8 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                       final result =
                           await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 3", groupValues: viewModel.filtreModel.arrKod3, children: viewModel.bottomSheetChildren(3));
                       if (result is List) {
-                        viewModel.filtreModel.arrKod3 = result as List<String>;
-                        kod3Controller.text = result.join(", ");
+                        viewModel.filtreModel.arrKod3 = result.map((e) => (e as BaseGrupKoduModel).grupKodu ?? "").toList();
+                        kod3Controller.text = result.map((e) => (e as BaseGrupKoduModel).grupAdi ?? "").join(", ");
                       }
                     },
                   ),
@@ -229,8 +232,8 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                       final result =
                           await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(context, title: "Kod 4", groupValues: viewModel.filtreModel.arrKod4, children: viewModel.bottomSheetChildren(4));
                       if (result is List) {
-                        viewModel.filtreModel.arrKod4 = result as List<String>;
-                        kod4Controller.text = result.join(", ");
+                        viewModel.filtreModel.arrKod4 = result.map((e) => (e as BaseGrupKoduModel).grupKodu ?? "").toList();
+                        kod4Controller.text = result.map((e) => (e as BaseGrupKoduModel).grupAdi ?? "").join(", ");
                       }
                     },
                   ),

@@ -70,6 +70,7 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       depoKodu: json['DEPO_KODU'] as int?,
       seriList: json['SeriList'] as List<dynamic>?,
       islemKodu: json['ISLEM_KODU'] as int?,
+      belgeNo: json['BELGE_NO'] as String?,
       tipi: json['TIPI'] as String?,
       arrKod1:
           (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -97,6 +98,7 @@ Map<String, dynamic> _$$SayimFiltreModelImplToJson(
   writeNotNull('DEPO_KODU', instance.depoKodu);
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('TIPI', instance.tipi);
   writeNotNull('ArrKod1', instance.arrKod1);
   writeNotNull('ArrKod2', instance.arrKod2);

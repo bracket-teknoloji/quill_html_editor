@@ -37,6 +37,7 @@ class SayimFiltreModel with _$SayimFiltreModel {
     int? depoKodu,
     @JsonKey(name: "SeriList") List<dynamic>? seriList,
     int? islemKodu,
+    String? belgeNo,
     String? tipi,
     @JsonKey(name: "ArrKod1") List<String>? arrKod1,
     @JsonKey(name: "ArrKod2") List<String>? arrKod2,

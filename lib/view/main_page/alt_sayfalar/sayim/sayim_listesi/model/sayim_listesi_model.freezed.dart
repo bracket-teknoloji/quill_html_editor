@@ -450,6 +450,8 @@ mixin _$SayimFiltreModel {
   set seriList(List<dynamic>? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   set islemKodu(int? value) => throw _privateConstructorUsedError;
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get tipi => throw _privateConstructorUsedError;
   set tipi(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "ArrKod1")
@@ -490,6 +492,7 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
       int? depoKodu,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
+      String? belgeNo,
       String? tipi,
       @JsonKey(name: "ArrKod1") List<String>? arrKod1,
       @JsonKey(name: "ArrKod2") List<String>? arrKod2,
@@ -515,6 +518,7 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
     Object? depoKodu = freezed,
     Object? seriList = freezed,
     Object? islemKodu = freezed,
+    Object? belgeNo = freezed,
     Object? tipi = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -539,6 +543,10 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       tipi: freezed == tipi
           ? _value.tipi
           : tipi // ignore: cast_nullable_to_non_nullable
@@ -580,6 +588,7 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
       int? depoKodu,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
       int? islemKodu,
+      String? belgeNo,
       String? tipi,
       @JsonKey(name: "ArrKod1") List<String>? arrKod1,
       @JsonKey(name: "ArrKod2") List<String>? arrKod2,
@@ -603,6 +612,7 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
     Object? depoKodu = freezed,
     Object? seriList = freezed,
     Object? islemKodu = freezed,
+    Object? belgeNo = freezed,
     Object? tipi = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -627,6 +637,10 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       tipi: freezed == tipi
           ? _value.tipi
           : tipi // ignore: cast_nullable_to_non_nullable
@@ -663,6 +677,7 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
       this.depoKodu,
       @JsonKey(name: "SeriList") this.seriList,
       this.islemKodu,
+      this.belgeNo,
       this.tipi,
       @JsonKey(name: "ArrKod1") this.arrKod1,
       @JsonKey(name: "ArrKod2") this.arrKod2,
@@ -684,6 +699,8 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   @override
   int? islemKodu;
   @override
+  String? belgeNo;
+  @override
   String? tipi;
   @override
   @JsonKey(name: "ArrKod1")
@@ -703,7 +720,7 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
 
   @override
   String toString() {
-    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5)';
+    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, belgeNo: $belgeNo, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5)';
   }
 
   @JsonKey(ignore: true)
@@ -727,6 +744,7 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
           int? depoKodu,
           @JsonKey(name: "SeriList") List<dynamic>? seriList,
           int? islemKodu,
+          String? belgeNo,
           String? tipi,
           @JsonKey(name: "ArrKod1") List<String>? arrKod1,
           @JsonKey(name: "ArrKod2") List<String>? arrKod2,
@@ -754,6 +772,9 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
   @override
   int? get islemKodu;
   set islemKodu(int? value);
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
   @override
   String? get tipi;
   set tipi(String? value);
