@@ -82,6 +82,10 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
           (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
       arrKod5:
           (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      miktar: json['MIKTAR'] as int?,
+      olcuBirimKodu: json['OLCU_BIRIM_KODU'] as int?,
+      projeKodu: json['PROJE_KODU'] as String?,
+      stokKodu: json['STOK_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$SayimFiltreModelImplToJson(
@@ -105,5 +109,9 @@ Map<String, dynamic> _$$SayimFiltreModelImplToJson(
   writeNotNull('ArrKod3', instance.arrKod3);
   writeNotNull('ArrKod4', instance.arrKod4);
   writeNotNull('ArrKod5', instance.arrKod5);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('STOK_KODU', instance.stokKodu);
   return val;
 }

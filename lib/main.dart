@@ -20,6 +20,7 @@ import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_list
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
@@ -348,6 +349,7 @@ class PickerApp extends StatelessWidget {
 
               //* Sayım
               GetPage(name: "/sayimListesi", page: SayimListesiView.new),
+              GetPage(name: "/sayimEdit", page: () => SayimEditView(model: Get.arguments)),
 
 
               //* Sipariş

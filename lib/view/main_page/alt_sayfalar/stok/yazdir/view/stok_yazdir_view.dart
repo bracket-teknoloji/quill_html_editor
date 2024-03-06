@@ -240,7 +240,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                       isVertical: true,
                       text: "Yazıcı ve Dizaynı Hatırla",
                       child: Observer(
-                        builder: (_) => Switch(
+                        builder: (_) => Switch.adaptive(
                           value: viewModel.yaziciVeDizayniHatirla,
                           onChanged: (value) {
                             viewModel.changeYaziciVeDizayniHatirla(value);

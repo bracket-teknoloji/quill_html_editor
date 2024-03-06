@@ -44,6 +44,10 @@ class SayimFiltreModel with _$SayimFiltreModel {
     @JsonKey(name: "ArrKod3") List<String>? arrKod3,
     @JsonKey(name: "ArrKod4") List<String>? arrKod4,
     @JsonKey(name: "ArrKod5") List<String>? arrKod5,
+    int? miktar,
+    int? olcuBirimKodu,
+    String? projeKodu,
+    String? stokKodu,
   }) = _SayimFiltreModel;
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);

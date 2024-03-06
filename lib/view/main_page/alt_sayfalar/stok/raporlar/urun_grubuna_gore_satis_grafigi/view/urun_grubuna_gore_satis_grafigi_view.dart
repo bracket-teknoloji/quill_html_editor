@@ -205,7 +205,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
             ),
             CustomWidgetWithLabel(
               child: Observer(
-                builder: (_) => SwitchListTile(
+                builder: (_) => SwitchListTile.adaptive(
                   contentPadding: UIHelper.midPadding,
                   value: viewModel.irsDahilValue,
                   onChanged: (value) {

@@ -70,14 +70,45 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
         BottomSheetModel(
           title: "Sayıma Başla",
           iconWidget: Icons.play_arrow_outlined,
+          onTap: () async {
+            await Get.toNamed("/mainPage/sayimEdit", arguments: widget.model);
+          },
         ),
         BottomSheetModel(
           title: "Bitirmeyi Geri Al",
           iconWidget: Icons.play_arrow_outlined,
+          onTap: () async {
+            final result = await networkManager.dioPost(
+              path: ApiUrls.saveSayim,
+              bodyModel: SayimListesiModel(),
+              data: SayimFiltreModel(
+                islemKodu: 8,
+                belgeNo: widget.model.fisno,
+              ).toJson(),
+            );
+            if (result.success == true) {
+              Get.back();
+              widget.onChanged(true);
+            }
+          },
         ).yetkiKontrol(widget.model.bitisTarihi != null && widget.model.serbestMi),
         BottomSheetModel(
-          title: "Sayıma Bitir",
+          title: "Sayımı Bitir",
           iconWidget: Icons.stop_outlined,
+          onTap: () async {
+            final result = await networkManager.dioPost(
+              path: ApiUrls.saveSayim,
+              bodyModel: SayimListesiModel(),
+              data: SayimFiltreModel(
+                islemKodu: 5,
+                belgeNo: widget.model.fisno,
+              ).toJson(),
+            );
+            if (result.success == true) {
+              Get.back();
+              widget.onChanged(true);
+            }
+          },
         ).yetkiKontrol(widget.model.bitisTarihi == null && widget.model.serbestMi),
         BottomSheetModel(
           title: loc.generalStrings.delete,

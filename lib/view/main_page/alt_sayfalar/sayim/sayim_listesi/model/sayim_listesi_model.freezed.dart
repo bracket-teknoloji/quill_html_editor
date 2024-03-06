@@ -474,6 +474,14 @@ mixin _$SayimFiltreModel {
   List<String>? get arrKod5 => throw _privateConstructorUsedError;
   @JsonKey(name: "ArrKod5")
   set arrKod5(List<String>? value) => throw _privateConstructorUsedError;
+  int? get miktar => throw _privateConstructorUsedError;
+  set miktar(int? value) => throw _privateConstructorUsedError;
+  int? get olcuBirimKodu => throw _privateConstructorUsedError;
+  set olcuBirimKodu(int? value) => throw _privateConstructorUsedError;
+  String? get projeKodu => throw _privateConstructorUsedError;
+  set projeKodu(String? value) => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -498,7 +506,11 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
       @JsonKey(name: "ArrKod2") List<String>? arrKod2,
       @JsonKey(name: "ArrKod3") List<String>? arrKod3,
       @JsonKey(name: "ArrKod4") List<String>? arrKod4,
-      @JsonKey(name: "ArrKod5") List<String>? arrKod5});
+      @JsonKey(name: "ArrKod5") List<String>? arrKod5,
+      int? miktar,
+      int? olcuBirimKodu,
+      String? projeKodu,
+      String? stokKodu});
 }
 
 /// @nodoc
@@ -525,6 +537,10 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
     Object? arrKod3 = freezed,
     Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
+    Object? miktar = freezed,
+    Object? olcuBirimKodu = freezed,
+    Object? projeKodu = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_value.copyWith(
       arrGrupKodu: freezed == arrGrupKodu
@@ -571,6 +587,22 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      olcuBirimKodu: freezed == olcuBirimKodu
+          ? _value.olcuBirimKodu
+          : olcuBirimKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -594,7 +626,11 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
       @JsonKey(name: "ArrKod2") List<String>? arrKod2,
       @JsonKey(name: "ArrKod3") List<String>? arrKod3,
       @JsonKey(name: "ArrKod4") List<String>? arrKod4,
-      @JsonKey(name: "ArrKod5") List<String>? arrKod5});
+      @JsonKey(name: "ArrKod5") List<String>? arrKod5,
+      int? miktar,
+      int? olcuBirimKodu,
+      String? projeKodu,
+      String? stokKodu});
 }
 
 /// @nodoc
@@ -619,6 +655,10 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
     Object? arrKod3 = freezed,
     Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
+    Object? miktar = freezed,
+    Object? olcuBirimKodu = freezed,
+    Object? projeKodu = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_$SayimFiltreModelImpl(
       arrGrupKodu: freezed == arrGrupKodu
@@ -665,6 +705,22 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      olcuBirimKodu: freezed == olcuBirimKodu
+          ? _value.olcuBirimKodu
+          : olcuBirimKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -683,7 +739,11 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
       @JsonKey(name: "ArrKod2") this.arrKod2,
       @JsonKey(name: "ArrKod3") this.arrKod3,
       @JsonKey(name: "ArrKod4") this.arrKod4,
-      @JsonKey(name: "ArrKod5") this.arrKod5});
+      @JsonKey(name: "ArrKod5") this.arrKod5,
+      this.miktar,
+      this.olcuBirimKodu,
+      this.projeKodu,
+      this.stokKodu});
 
   factory _$SayimFiltreModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SayimFiltreModelImplFromJson(json);
@@ -717,10 +777,18 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   @override
   @JsonKey(name: "ArrKod5")
   List<String>? arrKod5;
+  @override
+  int? miktar;
+  @override
+  int? olcuBirimKodu;
+  @override
+  String? projeKodu;
+  @override
+  String? stokKodu;
 
   @override
   String toString() {
-    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, belgeNo: $belgeNo, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5)';
+    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, belgeNo: $belgeNo, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5, miktar: $miktar, olcuBirimKodu: $olcuBirimKodu, projeKodu: $projeKodu, stokKodu: $stokKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -740,18 +808,21 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
 
 abstract class _SayimFiltreModel implements SayimFiltreModel {
   factory _SayimFiltreModel(
-          {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
-          int? depoKodu,
-          @JsonKey(name: "SeriList") List<dynamic>? seriList,
-          int? islemKodu,
-          String? belgeNo,
-          String? tipi,
-          @JsonKey(name: "ArrKod1") List<String>? arrKod1,
-          @JsonKey(name: "ArrKod2") List<String>? arrKod2,
-          @JsonKey(name: "ArrKod3") List<String>? arrKod3,
-          @JsonKey(name: "ArrKod4") List<String>? arrKod4,
-          @JsonKey(name: "ArrKod5") List<String>? arrKod5}) =
-      _$SayimFiltreModelImpl;
+      {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
+      int? depoKodu,
+      @JsonKey(name: "SeriList") List<dynamic>? seriList,
+      int? islemKodu,
+      String? belgeNo,
+      String? tipi,
+      @JsonKey(name: "ArrKod1") List<String>? arrKod1,
+      @JsonKey(name: "ArrKod2") List<String>? arrKod2,
+      @JsonKey(name: "ArrKod3") List<String>? arrKod3,
+      @JsonKey(name: "ArrKod4") List<String>? arrKod4,
+      @JsonKey(name: "ArrKod5") List<String>? arrKod5,
+      int? miktar,
+      int? olcuBirimKodu,
+      String? projeKodu,
+      String? stokKodu}) = _$SayimFiltreModelImpl;
 
   factory _SayimFiltreModel.fromJson(Map<String, dynamic> json) =
       _$SayimFiltreModelImpl.fromJson;
@@ -803,6 +874,18 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
   List<String>? get arrKod5;
   @JsonKey(name: "ArrKod5")
   set arrKod5(List<String>? value);
+  @override
+  int? get miktar;
+  set miktar(int? value);
+  @override
+  int? get olcuBirimKodu;
+  set olcuBirimKodu(int? value);
+  @override
+  String? get projeKodu;
+  set projeKodu(String? value);
+  @override
+  String? get stokKodu;
+  set stokKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
