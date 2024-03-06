@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../core/components/dialog/dialog_manager.dart";
 import "../../../core/constants/enum/edit_tipi_enum.dart";
@@ -99,7 +98,7 @@ class GridItemModel {
     if (menuTipi == "A") {
       int sayac = 0;
       if (name == null) {
-        return true;
+        return altMenuVarMi;
       }
       if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
         for (var element in altMenuler!) {
@@ -111,7 +110,7 @@ class GridItemModel {
       } else {
         return false;
       }
-    } else if (AccountModel.instance.isDebug) {
+    } else if (_cacheManager?.adminMi == true) {
       return true;
     } else if (menuTipi == "S") {
       int sayac = altMenuler?.length ?? 0;
@@ -122,9 +121,9 @@ class GridItemModel {
       });
       final result = sayac != 0 ? _cacheManager?.profilYetki?.toJson()[name] : false;
       if (name == null) {
-        return true;
+        return altMenuVarMi;
       }
-      return result ?? false;
+      return (result ?? false) && altMenuVarMi;
     } else if (menuTipi == "SR") {
       return true;
     } else {

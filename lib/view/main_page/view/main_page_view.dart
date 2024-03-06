@@ -126,7 +126,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       // title: item.title.toString(),
                       onTap: () {
                         if (item.altMenuVarMi) {
-                          if (item.altMenuler?.length == 1) {
+                          if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
                             item.altMenuler?.firstOrNull?.onTap?.call();
                             return;
                           }
