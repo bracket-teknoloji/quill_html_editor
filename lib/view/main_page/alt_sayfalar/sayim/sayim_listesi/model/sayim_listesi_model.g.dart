@@ -32,6 +32,18 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       bitisTarihi: json['BITIS_TARIHI'] == null
           ? null
           : DateTime.parse(json['BITIS_TARIHI'] as String),
+      id: json['ID'] as int?,
+      depoKodu: json['DEPO_KODU'] as int?,
+      cevrim: json['CEVRIM'] as int?,
+      stokKodu: json['STOK_KODU'] as String?,
+      kayityapankul: json['KAYITYAPANKUL'] as String?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
+      kayittarihi: json['KAYITTARIHI'] == null
+          ? null
+          : DateTime.parse(json['KAYITTARIHI'] as String),
+      barkod: json['BARKOD'] as String?,
     );
 
 Map<String, dynamic> _$$SayimListesiModelImplToJson(
@@ -58,6 +70,16 @@ Map<String, dynamic> _$$SayimListesiModelImplToJson(
   writeNotNull('FILTRE', instance.filtre?.toJson());
   writeNotNull('FILTRE_STR', instance.filtreStr);
   writeNotNull('BITIS_TARIHI', instance.bitisTarihi?.toIso8601String());
+  writeNotNull('ID', instance.id);
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('CEVRIM', instance.cevrim);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
+  writeNotNull('BARKOD', instance.barkod);
   return val;
 }
 
@@ -82,10 +104,15 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
           (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
       arrKod5:
           (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      miktar: json['MIKTAR'] as int?,
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
       olcuBirimKodu: json['OLCU_BIRIM_KODU'] as int?,
       projeKodu: json['PROJE_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
+      kull1s: json['KULL1S'] as String?,
+      kull2s: json['KULL2S'] as String?,
+      kull3s: json['KULL3S'] as String?,
+      kull4s: json['KULL4S'] as String?,
+      kull5s: json['KULL5S'] as String?,
     );
 
 Map<String, dynamic> _$$SayimFiltreModelImplToJson(
@@ -113,5 +140,10 @@ Map<String, dynamic> _$$SayimFiltreModelImplToJson(
   writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('KULL1S', instance.kull1s);
+  writeNotNull('KULL2S', instance.kull2s);
+  writeNotNull('KULL3S', instance.kull3s);
+  writeNotNull('KULL4S', instance.kull4s);
+  writeNotNull('KULL5S', instance.kull5s);
   return val;
 }

@@ -22,6 +22,16 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
     SayimFiltreModel? filtre,
     String? filtreStr,
     DateTime? bitisTarihi,
+    int? id,
+    int? depoKodu,
+    int? cevrim,
+    String? stokKodu,
+    String? kayityapankul,
+    String? depoTanimi,
+    String? stokAdi,
+    String? projeKodu,
+    DateTime? kayittarihi,
+    String? barkod,
   }) = _SayimListesiModel;
 
   factory SayimListesiModel.fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
@@ -44,10 +54,17 @@ class SayimFiltreModel with _$SayimFiltreModel {
     @JsonKey(name: "ArrKod3") List<String>? arrKod3,
     @JsonKey(name: "ArrKod4") List<String>? arrKod4,
     @JsonKey(name: "ArrKod5") List<String>? arrKod5,
-    int? miktar,
+    double? miktar,
     int? olcuBirimKodu,
     String? projeKodu,
     String? stokKodu,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? stokAdi,
+    @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
+    String? kull1s,
+    String? kull2s,
+    String? kull3s,
+    String? kull4s,
+    String? kull5s,
   }) = _SayimFiltreModel;
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);
@@ -61,4 +78,6 @@ extension SayimExtensions on SayimListesiModel {
   bool get filtreliMi => filtre != null && filtre?.arrGrupKodu != null;
 
   bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0 && filtreliMi;
+
+  bool get tumDepolarMi => depoList?.any((element) => element == -1) == true;
 }

@@ -393,6 +393,7 @@ final class YetkiController {
   bool get sayimSil => _isTrue(_yetkiModel?.sayimSerbestSil);
   bool get sayimDepoFarkRaporu => _isTrue(_yetkiModel?.sayimDepoFarkRaporu);
   bool get sayimSayimRaporu => _isTrue(_yetkiModel?.sayimRaporu);
+  bool sayimEkAlanlar(int? value) => _isTrue(_yetkiModel?.sayimEkAlanlar?.contains(value), skipAdmin: true);
 
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;

@@ -56,6 +56,105 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
   }
 
   @override
+  void setProjeKodu(BaseProjeModel? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOlcuBirimi(int? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setOlcuBirimi');
+    try {
+      return super.setOlcuBirimi(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan1(String? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setEkAlan1');
+    try {
+      return super.setEkAlan1(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan2(String? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setEkAlan2');
+    try {
+      return super.setEkAlan2(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan3(String? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setEkAlan3');
+    try {
+      return super.setEkAlan3(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan4(String? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setEkAlan4');
+    try {
+      return super.setEkAlan4(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan5(String? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setEkAlan5');
+    try {
+      return super.setEkAlan5(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void increaseMiktar() {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.increaseMiktar');
+    try {
+      return super.increaseMiktar();
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decreaseMiktar() {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.decreaseMiktar');
+    try {
+      return super.decreaseMiktar();
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 filtreModel: ${filtreModel},

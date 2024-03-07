@@ -148,7 +148,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "malKabul_AlisIrs_BelgeTipleri")
   List<int>? malKabulAlisIrsBelgeTipleri;
   @JsonKey(name: "malKabul_AlisIrs_GizlenecekAlanlar")
-  List<dynamic>? malKabulAlisIrsGizlenecekAlanlar;
+  List<String>? malKabulAlisIrsGizlenecekAlanlar;
   @JsonKey(name: "malKabul_AlisIrs_AciklamaAlanlari")
   List<int>? malKabulAlisIrsAciklamaAlanlari;
   @JsonKey(name: "malKabul_SatinAlma")
@@ -334,11 +334,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "transfer_DAT_Barkod2Sor")
   bool? transferDatBarkod2Sor;
   @JsonKey(name: "transfer_DAT_BosGecilmeyecekAlanlar")
-  List<dynamic>? transferDatBosGecilmeyecekAlanlar;
+  List<String>? transferDatBosGecilmeyecekAlanlar;
   @JsonKey(name: "transfer_DAT_GizlenecekAlanlar")
-  List<dynamic>? transferDatGizlenecekAlanlar;
+  List<String>? transferDatGizlenecekAlanlar;
   @JsonKey(name: "transfer_DAT_DegismeyecekAlanlar")
-  List<dynamic>? transferDatDegismeyecekAlanlar;
+  List<String>? transferDatDegismeyecekAlanlar;
   @JsonKey(name: "transfer_DAT_AciklamaAlanlari")
   List<dynamic>? transferDatAciklamaAlanlari;
   @JsonKey(name: "transfer_DAT_SipBagSecenegi")
@@ -452,7 +452,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "transfer_AC_MinStokMikGoster")
   String? transferAcMinStokMikGoster;
   @JsonKey(name: "transfer_AC_BosGecilmeyecekAlanlar")
-  List<dynamic>? transferAcBosGecilmeyecekAlanlar;
+  List<String>? transferAcBosGecilmeyecekAlanlar;
   @JsonKey(name: "transfer_AC_BarkodluGiris")
   bool? transferAcBarkodluGiris;
   @JsonKey(name: "transfer_AC_MiktarOtomatikGelsin")
@@ -550,9 +550,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_BelgeTipleri")
   List<dynamic>? sevkiyatSatisIrsaliyesiBelgeTipleri;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar")
-  List<dynamic>? sevkiyatSatisIrsaliyesiGizlenecekAlanlar;
+  List<String>? sevkiyatSatisIrsaliyesiGizlenecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar")
-  List<dynamic>? sevkiyatSatisIrsaliyesiDegismeyecekAlanlar;
+  List<String>? sevkiyatSatisIrsaliyesiDegismeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi")
   bool? sevkiyatSatisIrsaliyesi;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesiKayit")
@@ -698,11 +698,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "sevkiyat_SatisFat_AciklamaAlanlari")
   List<int>? sevkiyatSatisFatAciklamaAlanlari;
   @JsonKey(name: "sevkiyat_SatisFat_BosGecilmeyecekAlanlar")
-  List<dynamic>? sevkiyatSatisFatBosGecilmeyecekAlanlar;
+  List<String>? sevkiyatSatisFatBosGecilmeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_GizlenecekAlanlar")
-  List<dynamic>? sevkiyatSatisFatGizlenecekAlanlar;
+  List<String>? sevkiyatSatisFatGizlenecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_DegismeyecekAlanlar")
-  List<dynamic>? sevkiyatSatisFatDegismeyecekAlanlar;
+  List<String>? sevkiyatSatisFatDegismeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_SeriGirisHarYapabilsin")
   bool? sevkiyatSatisFatSeriGirisHarYapabilsin;
   @JsonKey(name: "sevkiyat_SatisFat_CariKoduDegistir")
@@ -832,9 +832,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "sevkemri_MalToplama_GosterilecekEkBilgiler")
   List<String>? sevkemriMalToplamaGosterilecekEkBilgiler;
   @JsonKey(name: "sevkemri_MalToplama_DegistirilemeyecekAlanlar")
-  List<dynamic>? sevkemriMalToplamaDegistirilemeyecekAlanlar;
+  List<String>? sevkemriMalToplamaDegistirilemeyecekAlanlar;
   @JsonKey(name: "sevkemri_MalToplama_GizlenecekAlanlar")
-  List<dynamic>? sevkemriMalToplamaGizlenecekAlanlar;
+  List<String>? sevkemriMalToplamaGizlenecekAlanlar;
   @JsonKey(name: "sevkemri_MalToplama_MiktarBarkoddan")
   bool? sevkemriMalToplamaMiktarBarkoddan;
   @JsonKey(name: "sevkemri_MalToplama_KalemDetayiSorulmasin")
@@ -906,11 +906,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "sayim_BelgeOlusturabilir")
   List<String>? sayimBelgeOlusturabilir;
   @JsonKey(name: "sayim_EkAlanlar")
-  List<dynamic>? sayimEkAlanlar;
+  List<int>? sayimEkAlanlar;
   @JsonKey(name: "sayim_DegismeyecekAlanlar")
-  List<dynamic>? sayimDegismeyecekAlanlar;
+  List<String>? sayimDegismeyecekAlanlar;
   @JsonKey(name: "sayim_GizlenecekAlanlar")
-  List<dynamic>? sayimGizlenecekAlanlar;
+  List<String>? sayimGizlenecekAlanlar;
   @JsonKey(name: "sayim_VarsayilanOlcuBirimi")
   int? sayimVarsayilanOlcuBirimi;
   @JsonKey(name: "sayim_Raporu")
@@ -972,9 +972,9 @@ class ProfilYetkiModel {
   @JsonKey(name: "siparis_MusteriSiparisi_AciklamaAlanlari")
   List<int>? siparisMusteriSiparisiAciklamaAlanlari;
   @JsonKey(name: "siparis_MusteriSiparisi_GizlenecekAlanlar")
-  List<dynamic>? siparisMusteriSiparisiGizlenecekAlanlar;
+  List<String>? siparisMusteriSiparisiGizlenecekAlanlar;
   @JsonKey(name: "siparis_MusteriSiparisi_DegismeyecekAlanlar")
-  List<dynamic>? siparisMusteriSiparisiDegismeyecekAlanlar;
+  List<String>? siparisMusteriSiparisiDegismeyecekAlanlar;
   @JsonKey(name: "siparis_MusSip_EkstraAlanlar")
   List<String>? siparisMusSipEkstraAlanlar;
   @JsonKey(name: "siparis_MusteriSiparisi_SatirAciklamaAlanlari")
@@ -1192,7 +1192,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "cari_CariKarti_DegismeyecekAlanlar")
   List<String>? cariCariKartiDegismeyecekAlanlar;
   @JsonKey(name: "cari_CariKarti_GizlenecekAlanlar")
-  List<dynamic>? cariCariKartiGizlenecekAlanlar;
+  List<String>? cariCariKartiGizlenecekAlanlar;
   @JsonKey(name: "cari_CariHareketleri")
   bool? cariCariHareketleri;
   @JsonKey(name: "cari_CariHar_Kaydet")
@@ -1340,7 +1340,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "dekont_Sil")
   bool? dekontSil;
   @JsonKey(name: "finans_Cek_GizlenecekAlanlar")
-  List<dynamic>? finansCekGizlenecekAlanlar;
+  List<String>? finansCekGizlenecekAlanlar;
   @JsonKey(name: "finans_Cek_Musteri")
   bool? finansCekMusteri;
   @JsonKey(name: "finans_MCEK_Ekle")
@@ -1554,11 +1554,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "uretim_USK_FisiErpUretsin")
   bool? uretimUskFisiErpUretsin;
   @JsonKey(name: "uretim_USK_GizlenecekAlanlar")
-  List<dynamic>? uretimUskGizlenecekAlanlar;
+  List<String>? uretimUskGizlenecekAlanlar;
   @JsonKey(name: "uretim_USK_BosGecilmeyecekAlanlar")
-  List<dynamic>? uretimUskBosGecilmeyecekAlanlar;
+  List<String>? uretimUskBosGecilmeyecekAlanlar;
   @JsonKey(name: "uretim_USK_DegismeyecekAlanlar")
-  List<dynamic>? uretimUskDegismeyecekAlanlar;
+  List<String>? uretimUskDegismeyecekAlanlar;
   @JsonKey(name: "uretim_USK_OlcuBirimi")
   int? uretimUskOlcuBirimi;
   @JsonKey(name: "uretim_USK_OtoYazdir")
@@ -1620,11 +1620,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "taltek_STEK_Aciklamalar_YetkiTuru")
   String? taltekStekAciklamalarYetkiTuru;
   @JsonKey(name: "taltek_STEK_GizlenecekAlanlar")
-  List<dynamic>? taltekStekGizlenecekAlanlar;
+  List<String>? taltekStekGizlenecekAlanlar;
   @JsonKey(name: "taltek_STEK_DegismeyecekAlanlar")
-  List<dynamic>? taltekStekDegismeyecekAlanlar;
+  List<String>? taltekStekDegismeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_BosGecilmeyecekAlanlar")
-  List<dynamic>? taltekStekBosGecilmeyecekAlanlar;
+  List<String>? taltekStekBosGecilmeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_AciklamaAlanlari")
   List<int>? taltekStekAciklamaAlanlari;
   @JsonKey(name: "taltek_STEK_OzelKod1degeri")
@@ -1766,7 +1766,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "uretim_USK")
   bool? uretimUsk;
   @JsonKey(name: "malKabul_AlisIrs_DegismeyecekAlanlar")
-  List<dynamic>? malKabulAlisIrsDegismeyecekAlanlar;
+  List<String>? malKabulAlisIrsDegismeyecekAlanlar;
   @JsonKey(name: "malKabul_AlisIrs_AciklamaDuzenle")
   bool? malKabulAlisIrsAciklamaDuzenle;
   @JsonKey(name: "malKabul_AlisFat_AciklamaDuzenle")
@@ -1834,11 +1834,11 @@ class ProfilYetkiModel {
   @JsonKey(name: "finans_Raporlar_KasaEkstre")
   bool? finansRaporlarKasaEkstre;
   @JsonKey(name: "finans_Kasa_GizlenecekAlanlar")
-  List<dynamic>? finansKasaGizlenecekAlanlar;
+  List<String>? finansKasaGizlenecekAlanlar;
   @JsonKey(name: "finans_Kasa_DegistirilemeyecekAlanlar")
-  List<dynamic>? finansKasaDegistirilemeyecekAlanlar;
+  List<String>? finansKasaDegistirilemeyecekAlanlar;
   @JsonKey(name: "finans_Kasa_BosGecilemeyecekAlanlar")
-  List<dynamic>? finansKasaBosGecilemeyecekAlanlar;
+  List<String>? finansKasaBosGecilemeyecekAlanlar;
   @JsonKey(name: "taltek_STEK_AciklamaDuzenle")
   bool? taltekStekAciklamaDuzenle;
   @JsonKey(name: "taltek_STEK_DipFiyatKDVDurumu")

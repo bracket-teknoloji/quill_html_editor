@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
@@ -8,7 +10,7 @@ class SayimGirisiViewModel = _SayimGirisiViewModelBase with _$SayimGirisiViewMod
 
 abstract class _SayimGirisiViewModelBase with Store {
   @observable
-  SayimFiltreModel filtreModel = SayimFiltreModel(islemKodu: 1);
+  SayimFiltreModel filtreModel = SingletonModels.sayimListesi?.filtre ?? SayimFiltreModel(islemKodu: 1, belgeNo: SingletonModels.sayimListesi?.fisno);
 
   @observable
   StokListesiModel? stokModel;
@@ -16,6 +18,65 @@ abstract class _SayimGirisiViewModelBase with Store {
   @action
   void setStokModel(StokListesiModel? model) {
     stokModel = model;
-    filtreModel = filtreModel.copyWith(stokKodu: model?.stokKodu);
+    filtreModel = filtreModel.copyWith(stokKodu: model?.stokKodu, stokAdi: model?.stokAdi);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setProjeKodu(BaseProjeModel? value) {
+    filtreModel = filtreModel.copyWith(projeKodu: value?.projeKodu, projeAdi: value?.projeAciklama);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setOlcuBirimi(int? value) {
+    filtreModel = filtreModel.copyWith(olcuBirimKodu: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setEkAlan1(String? value) {
+    filtreModel = filtreModel.copyWith(kull1s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setEkAlan2(String? value) {
+    filtreModel = filtreModel.copyWith(kull2s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setEkAlan3(String? value) {
+    filtreModel = filtreModel.copyWith(kull3s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setEkAlan4(String? value) {
+    filtreModel = filtreModel.copyWith(kull4s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setEkAlan5(String? value) {
+    filtreModel = filtreModel.copyWith(kull5s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void increaseMiktar() {
+    filtreModel = filtreModel.copyWith(miktar: (filtreModel.miktar ?? 0) + 1);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void decreaseMiktar() {
+    if (filtreModel.miktar case (0 || null)) {
+      filtreModel = filtreModel.copyWith(miktar: 0);
+    } else {
+      filtreModel = filtreModel.copyWith(miktar: (filtreModel.miktar ?? 0) - 1);
+    }
+    SingletonModels.setFiltreModel = filtreModel;
   }
 }

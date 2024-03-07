@@ -71,7 +71,17 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           title: "Sayıma Başla",
           iconWidget: Icons.play_arrow_outlined,
           onTap: () async {
-            await Get.toNamed("/mainPage/sayimEdit", arguments: widget.model);
+            Get.back();
+            final SayimListesiModel model = widget.model;
+            if (widget.model.tumDepolarMi) {
+              final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, "");
+              if (result != null) {
+                model.depoKodu = result.depoKodu;
+              }
+            } else {
+              model.depoKodu = model.depoList?.first;
+            }
+            await Get.toNamed("/mainPage/sayimEdit", arguments: model);
           },
         ),
         BottomSheetModel(

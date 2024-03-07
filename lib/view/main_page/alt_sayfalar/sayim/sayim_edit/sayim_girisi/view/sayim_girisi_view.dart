@@ -4,8 +4,11 @@ import "package:get/get.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view_model/sayim_girisi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -22,15 +25,25 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
   late final TextEditingController stokController;
   late final TextEditingController stokAdiController;
   late final TextEditingController projeController;
+  late final TextEditingController ekAlan1Controller;
+  late final TextEditingController ekAlan2Controller;
+  late final TextEditingController ekAlan3Controller;
+  late final TextEditingController ekAlan4Controller;
+  late final TextEditingController ekAlan5Controller;
   late final TextEditingController miktarController;
   late final TextEditingController olcuBirimiController;
 
   @override
   void initState() {
-    stokController = TextEditingController();
-    stokAdiController = TextEditingController();
-    projeController = TextEditingController();
-    miktarController = TextEditingController();
+    stokController = TextEditingController(text: viewModel.filtreModel.stokKodu);
+    stokAdiController = TextEditingController(text: viewModel.filtreModel.stokAdi);
+    projeController = TextEditingController(text: viewModel.filtreModel.projeAdi);
+    ekAlan1Controller = TextEditingController(text: viewModel.filtreModel.kull1s);
+    ekAlan2Controller = TextEditingController(text: viewModel.filtreModel.kull2s);
+    ekAlan3Controller = TextEditingController(text: viewModel.filtreModel.kull3s);
+    ekAlan4Controller = TextEditingController(text: viewModel.filtreModel.kull4s);
+    ekAlan5Controller = TextEditingController(text: viewModel.filtreModel.kull5s);
+    miktarController = TextEditingController(text: viewModel.filtreModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
     olcuBirimiController = TextEditingController();
     super.initState();
   }
@@ -40,6 +53,11 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     stokController.dispose();
     stokAdiController.dispose();
     projeController.dispose();
+    ekAlan1Controller.dispose();
+    ekAlan2Controller.dispose();
+    ekAlan3Controller.dispose();
+    ekAlan4Controller.dispose();
+    ekAlan5Controller.dispose();
     miktarController.dispose();
     olcuBirimiController.dispose();
     super.dispose();
@@ -86,6 +104,17 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
               labelText: "Stok Adı",
               readOnly: true,
               controller: stokAdiController,
+              valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.stokKodu ?? "")),
+              suffix: IconButton(
+                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                onPressed: () async {
+                  if (viewModel.stokModel != null) {
+                    dialogManager.showStokGridViewDialog(viewModel.stokModel);
+                  } else {
+                    dialogManager.showAlertDialog("Önce stok seçiniz");
+                  }
+                },
+              ),
             ),
             Row(
               children: [
@@ -96,11 +125,12 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     readOnly: true,
                     suffixMore: true,
                     controller: projeController,
+                    valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.projeKodu ?? "")),
                     onTap: () async {
-                      //TODO GROUP VALUE DEĞİŞTİR
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, "");
+                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.filtreModel.projeKodu);
                       if (result is BaseProjeModel) {
                         projeController.text = result.projeAciklama ?? "";
+                        viewModel.setProjeKodu(result);
                       }
                     },
                   ),
@@ -113,12 +143,54 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     controller: miktarController,
                     suffix: Wrap(
                       children: [
-                        IconButton(onPressed: () {}, icon: const Icon(Icons.remove)),
-                        IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+                        IconButton(
+                          onPressed: () {
+                            viewModel.decreaseMiktar();
+                            miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                          },
+                          icon: const Icon(Icons.remove),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            viewModel.increaseMiktar();
+                            miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                          },
+                          icon: const Icon(Icons.add),
+                        ),
                       ],
                     ),
                   ),
                 ),
+              ],
+            ),
+            CustomLayoutBuilder(
+              splitCount: 2,
+              children: [
+                CustomTextField(
+                  labelText: "Ek Alan 1",
+                  controller: ekAlan1Controller,
+                  onChanged: viewModel.setEkAlan1,
+                ).yetkiVarMi(yetkiController.sayimEkAlanlar(1)),
+                CustomTextField(
+                  labelText: "Ek Alan 2",
+                  controller: ekAlan2Controller,
+                  onChanged: viewModel.setEkAlan2,
+                ).yetkiVarMi(yetkiController.sayimEkAlanlar(2)),
+                CustomTextField(
+                  labelText: "Ek Alan 3",
+                  controller: ekAlan3Controller,
+                  onChanged: viewModel.setEkAlan3,
+                ).yetkiVarMi(yetkiController.sayimEkAlanlar(3)),
+                CustomTextField(
+                  labelText: "Ek Alan 4",
+                  controller: ekAlan4Controller,
+                  onChanged: viewModel.setEkAlan4,
+                ).yetkiVarMi(yetkiController.sayimEkAlanlar(4)),
+                CustomTextField(
+                  labelText: "Ek Alan 5",
+                  controller: ekAlan5Controller,
+                  onChanged: viewModel.setEkAlan5,
+                ).yetkiVarMi(yetkiController.sayimEkAlanlar(5)),
               ],
             ),
             Observer(
@@ -127,7 +199,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                 readOnly: true,
                 suffixMore: true,
                 controller: olcuBirimiController,
-              ).yetkiVarMi(viewModel.stokModel != null),
+              ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
             ),
           ],
         ).paddingAll(UIHelper.lowSize),

@@ -125,4 +125,5 @@ class ApiUrls {
   //* Sayım
   static const String getSayimlar = "Depo/GetSayimlar";
   static const String saveSayim = "Depo/SaveSayim";
+  static const String getSayimKalemleri = "Depo/GetSayimKalemleri";
 }
