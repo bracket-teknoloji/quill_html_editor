@@ -66,12 +66,12 @@
 		<string>Uygulama herhangi bir hata aldığında bize haber vermesi için lütfen bunu onaylayın.</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true />
-		<key>UIBackgroundModes</key>
+		<!-- <key>UIBackgroundModes</key>
 		<array>
 			<string>fetch</string>
 			<string>location</string>
 			<string>remote-notification</string>
-		</array>
+		</array> -->
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen.storyboard</string>
 		<key>UIMainStoryboardFile</key>
