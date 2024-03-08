@@ -77,7 +77,7 @@ extension SayimExtensions on SayimListesiModel {
 
   bool get filtreliMi => filtre != null && filtre?.arrGrupKodu != null;
 
-  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0 && filtreliMi;
+  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0 && serbestMi;
 
   bool get tumDepolarMi => depoList?.any((element) => element == -1) == true;
 }

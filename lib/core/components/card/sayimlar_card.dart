@@ -73,6 +73,10 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           onTap: () async {
             Get.back();
             final SayimListesiModel model = widget.model;
+            if (model.depoList?.any((element) => !(yetkiController.yetkiliDepoList?.map((e) => e.depoKodu).contains(element) ?? false)) ?? false) {
+              dialogManager.showAlertDialog("Gösterilecek depo yok. Sayım yönetiminden depoları kontrol edin veya profilinizdeki yetkili olduğunuz depoları kontrol edin.");
+              return;
+            }
             if (widget.model.tumDepolarMi) {
               final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, "");
               if (result != null) {

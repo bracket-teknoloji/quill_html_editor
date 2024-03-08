@@ -49,6 +49,7 @@ class MenuItemConstants {
       color: ColorPalette.ecru,
       altMenuler: [
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
+        GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", route: "/mainPage/cariAktivite").isDebug(),
         GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi"),
         //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
         GridItemModel.altmenu(

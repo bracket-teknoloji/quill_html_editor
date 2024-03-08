@@ -90,7 +90,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   }
                 },
                 icon: const Icon(Icons.qr_code_scanner),
-              ),
+              ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("barkod")),
               onTap: () async {
                 final stokModel = await Get.toNamed("mainPage/stokListesiOzel");
                 if (stokModel is StokListesiModel) {
@@ -122,6 +122,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   child: CustomTextField(
                     labelText: "Proje",
                     isMust: true,
+                    enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("proje"),
                     readOnly: true,
                     suffixMore: true,
                     controller: projeController,
@@ -134,12 +135,13 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.sayimGizlenecekAlanlar("proje")),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Miktar",
                     isMust: true,
                     readOnly: true,
+                    enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                     controller: miktarController,
                     suffix: Wrap(
                       children: [

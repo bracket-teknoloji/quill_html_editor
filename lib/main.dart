@@ -18,6 +18,7 @@ import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_b
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
@@ -256,6 +257,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/cariHaritasi", page: CariHaritasiView.new),
               GetPage(name: "/cariHaritasiOzel", page: () => CariHaritasiView(isGetData: true, konum: Get.arguments)),
               GetPage(name: "/cariHaritasiGoruntule", page: () => CariHaritasiView(isGetData: false, model: Get.arguments)),
+              GetPage(name: "/cariAktivite", page: CariAktiviteView.new),
 
               //* Cari Raporları
               GetPage(name: "/cariEkstre", page: () => CariEkstreView(model: Get.arguments)),
@@ -350,7 +352,6 @@ class PickerApp extends StatelessWidget {
               //* Sayım
               GetPage(name: "/sayimListesi", page: SayimListesiView.new),
               GetPage(name: "/sayimEdit", page: () => SayimEditView(model: Get.arguments)),
-
 
               //* Sipariş
               GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.musteri, isGetData: Get.arguments))),

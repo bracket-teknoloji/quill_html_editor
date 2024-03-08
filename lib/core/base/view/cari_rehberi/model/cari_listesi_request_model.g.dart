@@ -15,8 +15,16 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
       menuKodu: json['MenuKodu'] as String? ?? "CARI_CREH",
       filterText: json['FilterText'] as String? ?? "",
       kod: json['Kod'] as String? ?? "",
+      cariKodu: json['CariKodu'] as String?,
+      baslamaTarihi: json['BaslamaTarihi'] == null
+          ? null
+          : DateTime.parse(json['BaslamaTarihi'] as String),
+      bitisTarihi: json['BitisTarihi'] == null
+          ? null
+          : DateTime.parse(json['BitisTarihi'] as String),
       filtreler:
           (json['Filtreler'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      kullanici: json['Kullanici'] as String?,
       arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -62,7 +70,11 @@ Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
   writeNotNull('MenuKodu', instance.menuKodu);
   writeNotNull('FilterText', instance.filterText);
   writeNotNull('Kod', instance.kod);
+  writeNotNull('CariKodu', instance.cariKodu);
+  writeNotNull('BaslamaTarihi', instance.baslamaTarihi?.toIso8601String());
+  writeNotNull('BitisTarihi', instance.bitisTarihi?.toIso8601String());
   writeNotNull('Filtreler', instance.filtreler);
+  writeNotNull('Kullanici', instance.kullanici);
   writeNotNull('ArrPlasiyer', instance.arrPlasiyer);
   writeNotNull('ArrKod1', instance.arrKod1);
   writeNotNull('ArrKod2', instance.arrKod2);

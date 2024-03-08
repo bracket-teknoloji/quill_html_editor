@@ -47,8 +47,9 @@ class _SayimEditViewState extends BaseState<SayimEditView> with SingleTickerProv
                 onPressed: () async {
                   final result = await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: SingletonModels.sayimListesi?.filtre?.toJson());
                   if (result.success == true) {
-                    // SingletonModels.setSayimListesi = SingletonModel.sayimListesi?..filtre = SayimFiltreModel(islem);
+                    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = SayimFiltreModel(islemKodu: 1);
                     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                    controller.animateTo(1);
                   }
                 },
                 icon: const Icon(Icons.save_outlined),
