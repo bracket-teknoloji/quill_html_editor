@@ -1,4 +1,5 @@
 import "dart:convert";
+import "dart:developer";
 
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
@@ -1224,7 +1225,7 @@ class KalemModel with NetworkManagerMixin {
   @HiveField(103)
   String? muhRefKodu;
   @HiveField(104)
-    List<dynamic>? sayimListesiModelHucreList;
+  List<dynamic>? sayimListesiModelHucreList;
 
   KalemModel({
     this.iskonto1OranMi,

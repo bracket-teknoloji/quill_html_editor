@@ -10,7 +10,13 @@ class CariAktiviteViewModel = _CariAktiviteViewModelBase with _$CariAktiviteView
 
 abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   @observable
-  CariListesiRequestModel requestModel = CariListesiRequestModel();
+  CariListesiRequestModel requestModel = CariListesiRequestModel(
+    sayfa: null,
+    menuKodu: null,
+    kod: null,
+    filterText: null,
+    siralama: null,
+  );
 
   @observable
   ObservableList<CariAktiviteListesiModel>? aktiviteList;
@@ -28,12 +34,15 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   void setBitisTarihi(DateTime? value) => requestModel = requestModel.copyWith(bitisTarihi: value);
 
   // @action
+  // void setSearchText(String? value) => requestModel = requestModel.copyWith(: value);
+
+  // @action
   // void setKullanici(String? value) => requestModel = requestModel.copyWith(kullanici: value);
 
   @action
   Future<void> getData() async {
     setAktiviteList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel());
+    final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel(), data: requestModel.toJson());
     if (result.success == true) {
       final List<CariAktiviteListesiModel> list = (result.data as List).map((e) => e as CariAktiviteListesiModel).toList();
       setAktiviteList(list);

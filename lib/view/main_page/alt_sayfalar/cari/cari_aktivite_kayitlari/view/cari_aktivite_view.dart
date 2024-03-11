@@ -83,38 +83,43 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
               bitisTarihiController: bitisTarihiController,
             ),
             Expanded(
-              child: Observer(
-                builder: (_) {
-                  if (viewModel.aktiviteList == null) {
-                    return const ListViewShimmer();
-                  }
-                  if (viewModel.aktiviteList?.isEmpty == true) {
-                    return const Center(
-                      child: Text("Sonuç bulunamadı."),
-                    );
-                  }
-                  return ListView.builder(
-                    itemCount: viewModel.aktiviteList?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
-                      return Card(
-                        child: ListTile(
-                          subtitle: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Kullanıcı: ${model.kullaniciAdi}").yetkiVarMi(model.kullaniciAdi != null),
-                              Text("Başlama Tarihi: ${model.bastar.toDateString}").yetkiVarMi(model.bastar != null),
-                              Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
-                              Text("Aktivite: ${model.aktiviteAdi}").yetkiVarMi(model.aktiviteAdi != null),
-                              Text("Kaydeden: ${model.kayityapankul}").yetkiVarMi(model.kayityapankul != null),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
+              child: RefreshIndicator.adaptive(
+                onRefresh: () async {
+                  await viewModel.getData();
                 },
+                child: Observer(
+                  builder: (_) {
+                    if (viewModel.aktiviteList == null) {
+                      return const ListViewShimmer();
+                    }
+                    if (viewModel.aktiviteList?.isEmpty == true) {
+                      return const Center(
+                        child: Text("Sonuç bulunamadı."),
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: viewModel.aktiviteList?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
+                        return Card(
+                          child: ListTile(
+                            subtitle: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Kullanıcı: ${model.kullaniciAdi}").yetkiVarMi(model.kullaniciAdi != null),
+                                Text("Başlama Tarihi: ${model.bastar.toDateString}").yetkiVarMi(model.bastar != null),
+                                Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
+                                Text("Aktivite: ${model.aktiviteAdi}").yetkiVarMi(model.aktiviteAdi != null),
+                                Text("Kaydeden: ${model.kayityapankul}").yetkiVarMi(model.kayityapankul != null),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
             ),
           ],

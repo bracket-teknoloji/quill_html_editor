@@ -128,8 +128,8 @@ class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDate
       initialDate: isBaslangic
           ? (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now())
           : (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()),
-      firstDate: (isBaslangic ? DateTime(2000) : (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now())),
-      lastDate: (isBaslangic ? (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()) : DateTime.now()),
+      firstDate: (isBaslangic ? DateTime(2000) : (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now() : DateTime.now())),
+      lastDate: (isBaslangic ? (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now() : DateTime.now()) : DateTime.now()),
       // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString),
     );
     if (result is DateTime) {

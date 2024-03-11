@@ -41,7 +41,10 @@ extension DateTimeExtensionWithTime on DateTime {
 
 // am extension for String dd.MM.yyyy to DateTime
 extension StringExtension on String? {
-  DateTime toDateTimeDDMMYYYY() => DateFormat("dd.MM.yyyy").parse(this!, true);
+  DateTime? toDateTimeDDMMYYYY() {
+    if (this?.isEmpty ?? true) return null;
+    return DateFormat("dd.MM.yyyy").parse(this!, true);
+  }
 }
 
 extension TimeOfDayExtensions on TimeOfDay {
