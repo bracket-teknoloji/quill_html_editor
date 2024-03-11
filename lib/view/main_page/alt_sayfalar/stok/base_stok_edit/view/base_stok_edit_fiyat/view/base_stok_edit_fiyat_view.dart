@@ -151,8 +151,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: alisFiyat1Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.alisFiat1 = double.tryParse(p0);
-                            stokListesiModel.alisFiat1 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.alisFiat1 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.alisFiat1 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -164,8 +164,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: alisFiyat2Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.alisFiat2 = double.tryParse(p0);
-                            stokListesiModel.alisFiat2 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.alisFiat2 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.alisFiat2 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -181,8 +181,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: alisFiyat3Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.alisFiat3 = double.tryParse(p0);
-                            stokListesiModel.alisFiat3 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.alisFiat3 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.alisFiat3 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -194,8 +194,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: alisFiyat4Controller,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.alisFiat4 = double.tryParse(p0);
-                            stokListesiModel.alisFiat4 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.alisFiat4 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.alisFiat4 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -228,8 +228,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: alisDovizFiyatiController,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.dovAlisFiat = double.tryParse(p0);
-                            stokListesiModel.dovAlisFiat = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.dovAlisFiat = p0.toDoubleWithFormattedString;
+                            stokListesiModel.dovAlisFiat = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -282,8 +282,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           isFormattedString: true,
                           controller: satisFiyat1Controller,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.satisFiat1 = double.tryParse(p0);
-                            stokListesiModel.satisFiat1 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.satisFiat1 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.satisFiat1 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -295,8 +295,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           isFormattedString: true,
                           controller: satisFiyat2Controller,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.satisFiat2 = double.tryParse(p0);
-                            stokListesiModel.satisFiat2 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.satisFiat2 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.satisFiat2 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -312,8 +312,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           isFormattedString: true,
                           controller: satisFiyat3Controller,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.satisFiat3 = double.tryParse(p0);
-                            stokListesiModel.satisFiat3 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.satisFiat3 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.satisFiat3 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -325,8 +325,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           isFormattedString: true,
                           controller: satisFiyat4Controller,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.satisFiat4 = double.tryParse(p0);
-                            stokListesiModel.satisFiat4 = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.satisFiat4 = p0.toDoubleWithFormattedString;
+                            stokListesiModel.satisFiat4 = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),
@@ -359,8 +359,8 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           controller: satisDovizFiyatiController,
                           keyboardType: TextInputType.number,
                           onChanged: (p0) {
-                            stokDetayModel.stokList?.firstOrNull?.dovSatisFiat = double.tryParse(p0);
-                            stokListesiModel.dovSatisFiat = double.tryParse(p0);
+                            stokDetayModel.stokList?.firstOrNull?.dovSatisFiat = p0.toDoubleWithFormattedString;
+                            stokListesiModel.dovSatisFiat = p0.toDoubleWithFormattedString;
                           },
                         ),
                       ),

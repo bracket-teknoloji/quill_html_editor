@@ -260,10 +260,12 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
         ),
       );
 
-  Widget bakiyeWidget(double value, bool odenecekMi) =>
-      Text("Bakiye: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${odenecekMi ? "Ödenecek" : "Tahsil Edilecek"})", style: TextStyle(
-        color: UIHelper.getColorWithValue(odenecekMi ? -1: 1)
-      ),).paddingAll(UIHelper.lowSize);
+  Widget bakiyeWidget(double value, bool odenecekMi) => Text(
+        "Bakiye: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${odenecekMi ? "Ödenecek" : "Tahsil Edilecek"})",
+        style: TextStyle(
+          color: UIHelper.getColorWithValue(odenecekMi ? -1 : 1),
+        ),
+      ).paddingAll(UIHelper.lowSize);
 
   Future<void> seriBottomSheet() async {
     final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(context, viewModel.requestModel.dekontSeri);

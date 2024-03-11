@@ -332,9 +332,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   }
                                   // Get.toNamed("/mainPage");
                                   if (response.message?.ext.isNotNullOrNoEmpty ?? false) dialogManager.showInfoDialog(response.message ?? "");
-                                } else {
-                                  // dialogManager.hideAlertDialog;
-                                  dialogManager.showAlertDialog(response.message.toString());
                                 }
                               } else {
                                 dialogManager.showErrorSnackBar("Boş bırakmayınız.");
