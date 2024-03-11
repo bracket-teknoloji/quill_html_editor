@@ -8,6 +8,7 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -32,6 +33,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   late final TextEditingController _tutarController;
   late final TextEditingController _vadeGunuController;
   late final TextEditingController _plasiyerController;
+  late final TextEditingController _projeController;
   late final TextEditingController _tahsilatYapilanCariAciklamaController;
   late final TextEditingController _odemeYapilanCariAciklamaController;
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -47,6 +49,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     _tutarController = TextEditingController(text: widget.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _vadeGunuController = TextEditingController(text: viewModel.requestModel.tarih?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toString());
     _plasiyerController = TextEditingController();
+    _projeController = TextEditingController();
     _tahsilatYapilanCariAciklamaController = TextEditingController();
     _odemeYapilanCariAciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -70,6 +73,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     _tutarController.dispose();
     _vadeGunuController.dispose();
     _plasiyerController.dispose();
+    _projeController.dispose();
     _tahsilatYapilanCariAciklamaController.dispose();
     _odemeYapilanCariAciklamaController.dispose();
     super.dispose();
@@ -86,11 +90,13 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
             IconButton(
               onPressed: () async {
                 if (formKey.currentState?.validate() == true) {
-                  final result = await viewModel.sendData();
-                  if (result.success == true) {
-                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
-                    Get.back(result: true);
-                  }
+                  dialogManager.showAreYouSureDialog(() async {
+                    final result = await viewModel.sendData();
+                    if (result.success == true) {
+                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
+                      Get.back(result: true);
+                    }
+                  });
                 }
               },
               icon: const Icon(Icons.save_outlined),
@@ -101,6 +107,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
           child: Form(
             key: formKey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -152,6 +159,11 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                   ),
                   onTap: () async => await tahsilatCariBottomSheet(),
                 ),
+                // Observer(
+                //   builder: (_) {
+                //     return bakiyeWidget(viewModel.requestModel.he);
+                //   },
+                // ),
                 CustomTextField(
                   labelText: "Ödeme Yapılacak Cari",
                   controller: _odemesiYapilacakCariController,
@@ -180,7 +192,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                         isMust: true,
                         isFormattedString: true,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        onChanged: (value) => viewModel.setTutar(double.tryParse(value)),
+                        onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                       ),
                     ),
                     Expanded(
@@ -212,7 +224,24 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                           }
                         },
                       ),
-                    ),
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        controller: _projeController,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.projeKodu ?? "")),
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.requestModel.projeKodu);
+                          if (result is PlasiyerList) {
+                            _projeController.text = result?.projeAciklama ?? "";
+                            viewModel.setProjeKodu(result?.projeKodu);
+                          }
+                        },
+                      ),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   ],
                 ),
                 CustomTextField(
@@ -231,6 +260,11 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
         ),
       );
 
+  Widget bakiyeWidget(double value, bool odenecekMi) =>
+      Text("Bakiye: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${odenecekMi ? "Ödenecek" : "Tahsil Edilecek"})", style: TextStyle(
+        color: UIHelper.getColorWithValue(odenecekMi ? -1: 1)
+      ),).paddingAll(UIHelper.lowSize);
+
   Future<void> seriBottomSheet() async {
     final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(context, viewModel.requestModel.dekontSeri);
     if (result is SeriModel) {
@@ -240,6 +274,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   }
 
   Future<void> odemeSekliBottomSheet() async {
+    final projeModel = await yetkiController.varsayilanProje;
+    _projeController.text = projeModel?.projeAciklama ?? "";
+    viewModel.setProjeKodu(projeModel?.projeKodu);
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       groupValue: null,

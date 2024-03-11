@@ -122,6 +122,17 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   }
 
   @override
+  void setProjeKodu(String? proje) {
+    final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
+        name: '_CariVirmanViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(proje);
+    } finally {
+      _$_CariVirmanViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAciklama(String? aciklama) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
         name: '_CariVirmanViewModelBase.setAciklama');

@@ -38,6 +38,9 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   void setPlasiyer(String? plasiyer) => requestModel = requestModel.copyWith(plasiyerKodu: plasiyer);
 
   @action
+  void setProjeKodu(String? proje) => requestModel = requestModel.copyWith(projeKodu: proje);
+
+  @action
   void setAciklama(String? aciklama) => requestModel = requestModel.copyWith(aciklama: aciklama);
 
   @action
