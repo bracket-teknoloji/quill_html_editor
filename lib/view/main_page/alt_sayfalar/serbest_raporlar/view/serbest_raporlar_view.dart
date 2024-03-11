@@ -7,6 +7,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
@@ -74,72 +75,12 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Center(
-            child: Wrap(
-              children: viewModel.serbestRaporResponseModelList
-                      ?.map((e) {
-                        if (e.tipi == "Date") {
-                          return CustomTextField(
-                            fitContent: true,
-                            labelText: e.adi ?? "",
-                            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                            isMust: e.bosGecilebilir != true,
-                            readOnly: true,
-                            isDateTime: true,
-                            // suffix: const Icon(Icons.calendar_today),
-                            onTap: () async {
-                              final DateTime? result = await dialogManager.showDateTimePicker();
-                              if (result != null) {
-                                viewModel.changeDicParams(
-                                  e.adi ?? "",
-                                  result.toDateString,
-                                );
-                              }
-                            },
-                          );
-                        } else if (e.rehberTipi != null) {
-                          return CustomTextField(
-                            fitContent: true,
-                            labelText: e.adi ?? "",
-                            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                            isMust: e.bosGecilebilir != true,
-                            readOnly: true,
-                            suffixMore: true,
-                            onTap: () {
-                              getRehber(e);
-                            },
-                          );
-                        } else {
-                          return CustomTextField(
-                            fitContent: true,
-                            labelText: e.adi ?? "",
-                            readOnly: e.paramMap != null ? true : null,
-                            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
-                            isMust: e.bosGecilebilir != true,
-                            suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
-                            onTap: e.paramMap == null
-                                ? null
-                                : () async {
-                                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                                      context,
-                                      title: "Seçiniz",
-                                      children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList(),
-                                    );
-                                    if (result != null) {
-                                      viewModel.changeDicParams(e.adi ?? "", result.adi);
-                                    }
-                                  },
-                            onChanged: (value) {
-                              viewModel.changeDicParams(e.adi ?? "", value, false);
-                            },
-                          );
-                        }
-                      })
-                      .toList()
-                      .nullCheckWithGeneric ??
-                  [],
-            ),
-          ),
+          CustomLayoutBuilder(splitCount: 2, children: getCustomTextFields),
+          // Center(
+          //   child: Wrap(
+          //     children: getCustomTextFields,
+          //   ),
+          // ),
           ElevatedButton(
             onPressed: () {
               //😳 Düzelt kanki
@@ -162,6 +103,67 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     );
     return Future.value(viewModel.futureController.value);
   }
+
+  List<Widget> get getCustomTextFields =>
+      viewModel.serbestRaporResponseModelList
+          ?.map((e) {
+            if (e.tipi == "Date") {
+              return CustomTextField(
+                labelText: e.adi ?? "",
+                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                isMust: e.bosGecilebilir != true,
+                readOnly: true,
+                isDateTime: true,
+                // suffix: const Icon(Icons.calendar_today),
+                onTap: () async {
+                  final DateTime? result = await dialogManager.showDateTimePicker();
+                  if (result != null) {
+                    viewModel.changeDicParams(
+                      e.adi ?? "",
+                      result.toDateString,
+                    );
+                  }
+                },
+              );
+            } else if (e.rehberTipi != null) {
+              return CustomTextField(
+                labelText: e.adi ?? "",
+                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                isMust: e.bosGecilebilir != true,
+                readOnly: true,
+                suffixMore: true,
+                onTap: () {
+                  getRehber(e);
+                },
+              );
+            } else {
+              return CustomTextField(
+                labelText: e.adi ?? "",
+                readOnly: e.paramMap != null ? true : null,
+                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                isMust: e.bosGecilebilir != true,
+                suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
+                onTap: e.paramMap == null
+                    ? null
+                    : () async {
+                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Seçiniz",
+                          children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList(),
+                        );
+                        if (result != null) {
+                          viewModel.changeDicParams(e.adi ?? "", result.adi);
+                        }
+                      },
+                onChanged: (value) {
+                  viewModel.changeDicParams(e.adi ?? "", value, false);
+                },
+              );
+            }
+          })
+          .toList()
+          .nullCheckWithGeneric ??
+      [];
 
   Future<void> getRehber(SerbestRaporResponseModel model) async {
     if (model.stokKoduMu || model.cariKoduMu) {

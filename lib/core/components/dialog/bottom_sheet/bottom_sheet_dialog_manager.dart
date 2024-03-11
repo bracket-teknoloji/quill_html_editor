@@ -51,6 +51,7 @@ import "view_model/bottom_sheet_state_manager.dart";
 
 class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
+  final NetworkManager _networkManager = NetworkManager();
   Future<dynamic> showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) async {
     List<BottomSheetModel>? children2 = children;
     FocusNode? focusNode;
@@ -475,7 +476,7 @@ class BottomSheetDialogManager {
     required List<BaseGrupKoduModel>? groupValues,
   }) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
+      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showCheckBoxBottomSheetDialog(
@@ -500,7 +501,7 @@ class BottomSheetDialogManager {
 
   Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await NetworkManager().getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
+      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showRadioBottomSheetDialog(
@@ -525,7 +526,7 @@ class BottomSheetDialogManager {
 
   Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu, dynamic groupValue, bool? alisMi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
-      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari());
+      viewModel.changeMuhasebeKoduList(await _networkManager.getMuhasebeKodlari());
     }
     return await showRadioBottomSheetDialog(
       context,
@@ -551,7 +552,7 @@ class BottomSheetDialogManager {
   Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": belgeTipi.value, "HesapTipi": hesapTipi ?? "A", "MuhRefKodGelsin": "H", "EkranTipi": "R"};
-      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
+      viewModel.changeMuhasebeKoduList(await _networkManager.getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
     }
     return await showRadioBottomSheetDialog(
       context,
@@ -573,7 +574,7 @@ class BottomSheetDialogManager {
   Future<StokMuhasebeKoduModel?> showMuhasebeReferansKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": "", "HesapTipi": "", "MuhRefKodGelsin": "E", "EkranTipi": "R"};
-      viewModel.changeMuhasebeKoduList(await NetworkManager().getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
+      viewModel.changeMuhasebeKoduList(await _networkManager.getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
     }
     return await showRadioBottomSheetDialog(
       context,
@@ -630,7 +631,7 @@ class BottomSheetDialogManager {
   }
 
   Future<EIrsaliyeBilgiModel?> showEIrsaliyeSablonBottomSheetDialog(BuildContext context) async {
-    final result = await NetworkManager().dioGet<EIrsaliyeBilgiModel>(
+    final result = await _networkManager.dioGet<EIrsaliyeBilgiModel>(
       path: ApiUrls.getEIrsaliyeSablonlari,
       bodyModel: EIrsaliyeBilgiModel(),
       showLoading: true,
@@ -655,7 +656,7 @@ class BottomSheetDialogManager {
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<BaseProjeModel> projeList = await NetworkManager().getProjeData() ?? <BaseProjeModel>[];
+    final List<BaseProjeModel> projeList = await _networkManager.getProjeData() ?? <BaseProjeModel>[];
     final BaseProjeModel? proje = await showRadioBottomSheetDialog(
       context,
       title: "Proje Seçiniz",
@@ -741,7 +742,7 @@ class BottomSheetDialogManager {
 
   Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model, dynamic groupValue) async {
     List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
-    final result = await NetworkManager().dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson(), showLoading: true);
+    final result = await _networkManager.dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson(), showLoading: true);
     if (result.data is List) {
       bankaHesaplariList = result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>();
     }
@@ -823,7 +824,7 @@ class BottomSheetDialogManager {
   }
 
   Future<double?> showKdvOranlariBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List? list = await NetworkManager().getKDVOrani();
+    final List? list = await _networkManager.getKDVOrani();
     return await showRadioBottomSheetDialog(
       context,
       title: "KDV Oranı Seçiniz",
@@ -877,7 +878,7 @@ class BottomSheetDialogManager {
     required String? belgeNo,
     List<String>? filterText,
   }) async {
-    final result = await NetworkManager().dioGet<KalemListModel>(
+    final result = await _networkManager.dioGet<KalemListModel>(
       path: ApiUrls.getBelgeBaglantilari,
       bodyModel: KalemListModel(),
       showLoading: true,
@@ -904,7 +905,7 @@ class BottomSheetDialogManager {
   }
 
   Future<EFaturaOzelKodModel?> showEFaturaOzelKodBottomSheetDialog(BuildContext context, int? groupValue, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
-    final result = await NetworkManager()
+    final result = await _networkManager
         .dioGet(path: ApiUrls.getEFaturaOzelKodlar, bodyModel: EFaturaOzelKodModel(), showLoading: true, queryParameters: {"CariKodu": cariKodu, "BelgeTipi": belgeTipi, "BelgeNo": belgeNo});
     if (result.data != null) {
       final List<EFaturaOzelKodModel> list = result.data.map((e) => e as EFaturaOzelKodModel).toList().cast<EFaturaOzelKodModel>();
@@ -928,7 +929,7 @@ class BottomSheetDialogManager {
   }
 
   Future<TcmbBankalarModel?> showTcmbBankalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbBankalar, showLoading: true, bodyModel: TcmbBankalarModel());
+    final result = await _networkManager.dioGet(path: ApiUrls.getTcmbBankalar, showLoading: true, bodyModel: TcmbBankalarModel());
     if (result.data is List) {
       final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
       return await showRadioBottomSheetDialog(
@@ -951,7 +952,7 @@ class BottomSheetDialogManager {
   }
 
   Future<TcmbBankalarModel?> showTcmbSubelerBottomSheetDialog(BuildContext context, String? bankaKodu, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), showLoading: true, queryParameters: {"BankaKodu": bankaKodu});
+    final result = await _networkManager.dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), showLoading: true, queryParameters: {"BankaKodu": bankaKodu});
     if (result.data is List) {
       final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
       return await showRadioBottomSheetDialog(
@@ -974,7 +975,7 @@ class BottomSheetDialogManager {
   }
 
   Future<MuhasebeReferansModel?> showReferansKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await _networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
     if (result.data is List) {
       final List<MuhasebeReferansModel> list = result.data.map((e) => e as MuhasebeReferansModel).toList().cast<MuhasebeReferansModel>();
       return await showRadioBottomSheetDialog(
@@ -997,7 +998,7 @@ class BottomSheetDialogManager {
   }
 
   Future<SeriModel?> showSeriKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final result = await NetworkManager().dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel(), showLoading: true);
+    final result = await _networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel(), showLoading: true);
     if (result.data is List) {
       final List<SeriModel> list = result.data.map((e) => e as SeriModel).toList().cast<SeriModel>();
       return await showRadioBottomSheetDialog(
@@ -1125,7 +1126,7 @@ class BottomSheetDialogManager {
             ),
             ElevatedButton(
               onPressed: () async {
-                final GenericResponseModel<NetworkManagerMixin> result = await NetworkManager().postPrint(context, model: printModel);
+                final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(context, model: printModel);
                 if (result.success == true) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
                 }
@@ -1140,7 +1141,7 @@ class BottomSheetDialogManager {
         ),
       );
     } else {
-      final GenericResponseModel<NetworkManagerMixin> result = await NetworkManager().postPrint(
+      final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(
         context,
         model: printModel,
       );
@@ -1214,7 +1215,7 @@ class BottomSheetDialogManager {
           ),
           ElevatedButton(
             onPressed: () async {
-              final result = await NetworkManager().dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.printEBelge.toJson(), showLoading: true);
+              final result = await _networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.printEBelge.toJson(), showLoading: true);
               if (result.success == true) {
                 DialogManager().showSuccessSnackBar("Yazdırıldı.");
               } else {

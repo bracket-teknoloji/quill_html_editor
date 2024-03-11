@@ -1,4 +1,6 @@
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../view/main_page/model/main_page_model.dart";
@@ -33,6 +35,7 @@ final class YetkiController {
 
 
   List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? false).toList();
+  Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
   bool genIsk3AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk3AktifMi : siparisMSGenIsk3AktifMi;
@@ -144,10 +147,10 @@ final class YetkiController {
   bool get siparisKdvDahilMi {
     if (_yetkiModel?.siparisMusSipKdvDurumu == "D") return true;
     if (_yetkiModel?.siparisMusSipKdvDurumu == "H") return false;
-    return genellikleKdvHaricMi();
+    return !genellikleKdvHaricMi;
   }
 
-  bool genellikleKdvHaricMi() {
+  bool get genellikleKdvHaricMi {
     if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
       return _paramModel?.satisGenellikleKdvHaric ?? false;
     } else {
@@ -438,7 +441,7 @@ final class YetkiController {
   bool get stekKdvDahilMi {
     if (_yetkiModel?.taltekStekKdvDurumu == "D") return true;
     if (_yetkiModel?.taltekStekKdvDurumu == "H") return false;
-    return genellikleKdvHaricMi();
+    return !genellikleKdvHaricMi;
   }
 
   bool get stalOnayIslemleri => _isTrue(_yetkiModel?.taltekStalOnayIslemleri ?? false);
@@ -446,7 +449,7 @@ final class YetkiController {
   bool get stalKdvDahilMi {
     if (_yetkiModel?.taltekStalKdvDurumu == "D") return true;
     if (_yetkiModel?.taltekStalKdvDurumu == "H") return false;
-    return genellikleKdvHaricMi();
+    return !genellikleKdvHaricMi;
   }
 
   bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);

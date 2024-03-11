@@ -116,7 +116,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ),
           IconButton(
             onPressed: () {
-              if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+              if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length && seriliMi) {
                 dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
                 return;
               }
@@ -741,12 +741,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       return null;
                     },
                   ).yetkiVarMi(
-                    (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
-                        !editTipi.siparisMi &&
-                        !editTipi.talepTeklifMi &&
-                        yetkiController.seriUygulamasiAcikMi &&
-                        !editTipi.ambarGirisiMi &&
-                        !editTipi.depoTransferiMi,
+                    seriliMi,
                   ),
                 ),
                 ...List.generate(
@@ -820,6 +815,14 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ),
         ),
       );
+
+  bool get seriliMi =>
+      (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
+      !editTipi.siparisMi &&
+      !editTipi.talepTeklifMi &&
+      yetkiController.seriUygulamasiAcikMi &&
+      !editTipi.ambarGirisiMi &&
+      !editTipi.depoTransferiMi;
 
   String? miktar2Validator(String? p0) {
     if (viewModel.model?.koliMi == true) {
