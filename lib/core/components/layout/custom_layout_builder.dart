@@ -16,19 +16,29 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
 
   @override
   Widget build(BuildContext context) => LayoutBuilder(
-        builder: (context, constraints) {
-          final double width = constraints.maxWidth;
-          final double itemWidth = width / widget.splitCount;
-          return Wrap(
-            children: children
-                .map(
-                  (e) => SizedBox(
-                    width: itemWidth,
-                    child: e,
-                  ),
-                )
-                .toList(),
-          );
-        },
+        builder: (context, constraints) => Column(
+          children: columnItems,
+        ),
       );
+
+  double get rowValue => children.length / widget.splitCount;
+
+  List<Widget> get columnItems {
+    final List<Widget> list = <Widget>[];
+    if (rowValue % 1 != 0) {
+      int sayac = 0;
+      while (sayac < children.length - 1) {
+        list.add(Row(children: [children[sayac], widget.children[sayac + 1]].map((e) => Expanded(child: e)).toList()));
+        sayac += 2;
+      }
+      list.add(widget.children.last);
+    } else {
+      int sayac = 0;
+      while (sayac < children.length) {
+        list.add(Row(children: [children[sayac], widget.children[sayac + 1]].map((e) => Expanded(child: e)).toList()));
+        sayac += 2;
+      }
+    }
+    return list;
+  }
 }
