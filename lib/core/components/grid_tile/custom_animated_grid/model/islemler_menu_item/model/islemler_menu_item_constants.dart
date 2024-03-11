@@ -694,7 +694,12 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(title: "Banka Kasa Transferi", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/bankaKasaTransferi", arguments: model));
   GridItemModel? get hesaplarArasiVirman =>
       GridItemModel.islemler(title: "Hesaplar Arası Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiVirman"));
-  GridItemModel? get cariVirman => GridItemModel.islemler(title: "Cari Virman", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model));
+  GridItemModel? get cariVirman => GridItemModel.islemler(
+        title: "Cari Virman",
+        isEnabled: _userModel?.cariVirman,
+        iconData: Icons.sync_alt_outlined,
+        onTap: () async => await Get.toNamed("/mainPage/cariVirman", arguments: model),
+      );
   GridItemModel? get hesaplarArasiEftHavale =>
       GridItemModel.islemler(title: "Hesaplar Arası EFT/Havale", iconData: Icons.sync_alt_outlined, onTap: () async => await Get.toNamed("/mainPage/hesaplarArasiEftHavale"));
   GridItemModel? get bankaMuhtelifTahsilat =>
