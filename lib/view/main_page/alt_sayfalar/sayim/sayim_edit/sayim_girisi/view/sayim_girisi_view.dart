@@ -67,13 +67,6 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
   Widget build(BuildContext context) => SingleChildScrollView(
         child: Column(
           children: [
-            Card(
-              child: SwitchListTile.adaptive(
-                value: false,
-                onChanged: (value) {},
-                title: const Text("Otomatik Sayım Etiketi Yazdır"),
-              ),
-            ),
             CustomTextField(
               labelText: "Stok",
               isMust: true,
@@ -160,7 +153,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                           icon: const Icon(Icons.add),
                         ),
                       ],
-                    ),
+                    ).yetkiVarMi(!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")),
                   ),
                 ),
               ],
@@ -202,6 +195,20 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                 suffixMore: true,
                 controller: olcuBirimiController,
               ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
+            ),
+            Card(
+              child: SwitchListTile.adaptive(
+                value: false,
+                onChanged: (value) {},
+                title: const Text("Otomatik Sayım Etiketi Yazdır"),
+              ),
+            ),
+            Card(
+              child: SwitchListTile.adaptive(
+                value: false,
+                onChanged: (value) {},
+                title: const Text("Stok Seçildiğinde Hemen Kaydet"),
+              ),
             ),
           ],
         ).paddingAll(UIHelper.lowSize),

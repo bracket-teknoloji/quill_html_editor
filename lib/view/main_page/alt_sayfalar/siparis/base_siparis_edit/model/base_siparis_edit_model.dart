@@ -1,5 +1,4 @@
 import "dart:convert";
-import "dart:developer";
 
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
@@ -890,7 +889,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   double get getDovizliAraToplam =>
-      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0) -
+      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) -
       ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
 
   double get getDovizliToplamTutar => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizGenelToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);

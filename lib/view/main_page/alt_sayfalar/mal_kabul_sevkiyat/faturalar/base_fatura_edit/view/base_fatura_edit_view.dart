@@ -457,10 +457,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
           e.dovizKuru = result.dovSatis;
-          // e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
+          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
         } else {
           e.dovizKuru = result.dovAlis;
-          // e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
+          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
         }
         return e;
       }).toList();

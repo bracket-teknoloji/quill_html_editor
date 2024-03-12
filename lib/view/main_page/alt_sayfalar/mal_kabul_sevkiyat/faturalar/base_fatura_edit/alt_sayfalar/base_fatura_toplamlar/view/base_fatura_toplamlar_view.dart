@@ -104,6 +104,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Text>[
                 Text.rich(
                   TextSpan(
@@ -113,6 +114,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     ],
                   ),
                 ),
+                //TODO Mal ağırlığını ekle
                 const Text.rich(
                   TextSpan(
                     children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: ColorPalette.slateGray)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))],
@@ -131,6 +133,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <StatelessWidget>[
                 Text.rich(
                   TextSpan(
@@ -165,6 +168,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Observer>[
                 Observer(
                   builder: (_) => Text.rich(
