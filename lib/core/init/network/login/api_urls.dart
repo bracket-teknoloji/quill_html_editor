@@ -24,6 +24,7 @@ class ApiUrls {
   static const String surumYenilikleri = "https://storews.netfect.com/api/Picker/GetSurumYenilikleri";
   static const String token = "token";
   static const String veriTabanlari = "General/GetVeritabanlari";
+  static const String getGenelRehber = "General/GetGenelRehber";
 
   //*Cariler
   static const String deleteCari = "Cari/DeleteCari";

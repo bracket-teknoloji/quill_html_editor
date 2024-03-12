@@ -1,16 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/kullanicilar_model.dart";
+import "package:picker/core/components/card/cari_aktivite_card.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view_model/cari_aktivite_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 
@@ -65,14 +67,25 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
           ),
           actions: [
             IconButton(
-              onPressed: () async {},
+              onPressed: getFilter,
               icon: const Icon(Icons.filter_alt_outlined),
             ),
           ],
         ),
         body: Column(
           children: [
-            CustomTextField(labelText: "Ara...", controller: searchController),
+            CustomTextField(
+              labelText: "Ara...",
+              controller: searchController,
+              onClear: () async {
+                viewModel.setSearchText(null);
+                await viewModel.getData();
+              },
+              onSubmitted: (value) async {
+                viewModel.setSearchText(value);
+                await viewModel.getData();
+              },
+            ),
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (value) async {
                 viewModel.setBaslangicTarihi(baslangicTarihiController.text.toDateTimeDDMMYYYY());
@@ -101,21 +114,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                       itemCount: viewModel.aktiviteList?.length ?? 0,
                       itemBuilder: (context, index) {
                         final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
-                        return Card(
-                          child: ListTile(
-                            subtitle: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Kullanıcı: ${model.kullaniciAdi}").yetkiVarMi(model.kullaniciAdi != null),
-                                Text("Başlama Tarihi: ${model.bastar.toDateString}").yetkiVarMi(model.bastar != null),
-                                Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
-                                Text("Aktivite: ${model.aktiviteAdi}").yetkiVarMi(model.aktiviteAdi != null),
-                                Text("Kaydeden: ${model.kayityapankul}").yetkiVarMi(model.kayityapankul != null),
-                              ],
-                            ),
-                          ),
-                        );
+                        return CariAktiviteCard(model: model);
                       },
                     );
                   },
@@ -125,4 +124,70 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
           ],
         ).paddingAll(UIHelper.lowSize),
       );
+
+  Future<void> getFilter() async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: loc.generalStrings.filter,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          CustomTextField(
+            labelText: "Cari",
+            suffixMore: true,
+            readOnly: true,
+            controller: cariController,
+            onClear: () => viewModel.setCariKodu(null),
+            valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.cariKodu ?? "")),
+            suffix: IconButton(
+              onPressed: () async {
+                if (viewModel.requestModel.cariKodu == null) {
+                  dialogManager.showAlertDialog("Lütfen bir cari seçiniz.");
+                  return;
+                } else {
+                  final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""]));
+                  if (result is CariListesiModel) {
+                    dialogManager.showCariIslemleriGridViewDialog(result);
+                  }
+                }
+              },
+              icon: Icon(
+                Icons.open_in_new_outlined,
+                color: UIHelper.primaryColor,
+              ),
+            ),
+            onTap: () async {
+              final result = await Get.toNamed("mainPage/cariListesiOzel");
+              if (result is CariListesiModel) {
+                cariController.text = result.cariAdi ?? "";
+                viewModel.setCariKodu(result.cariKodu);
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Kullanıcı",
+            suffixMore: true,
+            readOnly: true,
+            controller: kullaniciController,
+            valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.kullanici ?? "")),
+            onClear: () => viewModel.setKullanici(null),
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showKullanicilarBottomSheetDialog(context, viewModel.requestModel.kullanici);
+              if (result is KullanicilarModel) {
+                kullaniciController.text = result.adi ?? "";
+                viewModel.setKullanici(result.kodu);
+              }
+            },
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Get.back();
+              await viewModel.getData();
+            },
+            child: Text(loc.generalStrings.apply),
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    );
+  }
 }

@@ -39,6 +39,7 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
     String? teslimCari,
     String? sehir,
     String? siparisKarsilanmaDurumu,
+    String? searchText,
   }) = _CariListesiRequestModel;
 
   factory CariListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CariListesiRequestModelFromJson(json);

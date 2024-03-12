@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -91,7 +92,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
 
   factory EBelgeListesiModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+        ebelgeTuru: model.getEBelgeTuruEnum?.value,
         resmiBelgeNo: model.resmiBelgeNo,
         islemKodu: 1,
         tarih: model.tarih,

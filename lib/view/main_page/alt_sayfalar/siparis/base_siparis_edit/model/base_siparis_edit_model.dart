@@ -5,6 +5,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:uuid/uuid.dart";
 
@@ -445,6 +446,12 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? masrafKoduAdi;
   @HiveField(178)
   int? masrafKoduTipi;
+  @HiveField(179)
+  String? eirsaliyeMi;
+  @HiveField(180)
+  String? eirsaliyeDurumAciklama;
+  @HiveField(181)
+  int? eirsaliyeGibDurumKodu;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -664,15 +671,13 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi ?? 0) > 0;
 
-  bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" || earsivMi == "E");
-
-  bool get uyariMi => (earsivDurumu == "BEK" || efaturaDurumu == "BEK") && (efaturaMi == "E" || earsivMi == "E");
+  // bool get taslakMi => (earsivDurumu == "TAS" || efaturaDurumu == "TAS") && (efaturaMi == "E" || earsivMi == "E");
 
   bool get eArsivMi => earsivMi == "E";
 
   bool get eFaturaMi => efaturaMi == "E";
 
-  bool get eIrsaliyeMi => getEditTipiEnum?.irsaliyeMi == true;
+  bool get eIrsaliyeMi => eirsaliyeMi == "E";
 
   bool get siparislestiMi => siparislesti == "E";
 
@@ -682,7 +687,38 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get kapaliMi => tipi == 1;
 
-  bool get basariliMi => eArsivMi ? earsivDurumu == "TMM" : efaturaDurumu == "TMM" && (getEditTipiEnum?.satisMi ?? false);
+  bool get basariliMi {
+    if (eArsivMi) {
+      return earsivDurumu == "TMM";
+    } else if (eFaturaMi) {
+      return efaturaDurumu == "TMM" && (getEditTipiEnum?.satisMi ?? false);
+    } else if (eIrsaliyeMi) {
+      return eirsaliyeDurumu == "TMM";
+    }
+    return false;
+  }
+
+  bool get uyariMi {
+    if (eArsivMi) {
+      return earsivDurumu == "BEK";
+    } else if (eFaturaMi) {
+      return efaturaDurumu == "BEK" && (getEditTipiEnum?.satisMi ?? false);
+    } else if (eIrsaliyeMi) {
+      return eirsaliyeDurumu == "BEK";
+    }
+    return false;
+  }
+
+  bool get taslakMi {
+    if (eArsivMi) {
+      return earsivDurumu == "TAS";
+    } else if (eFaturaMi) {
+      return efaturaDurumu == "TAS" && (getEditTipiEnum?.satisMi ?? false);
+    } else if (eIrsaliyeMi) {
+      return eirsaliyeDurumu == "TAS";
+    }
+    return false;
+  }
 
   bool get hataliMi => efaturaGibDurumKodu == -1;
 
@@ -759,11 +795,25 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return siparislestiMi || irsaliyelestiMi;
   }
 
+  String get faturaTipi {
+    if (eFaturaSerisindenMi) {
+      return "EFT";
+    } else if (eArsivSerisindenMi) {
+      return "EAR";
+    } else if (eIrsaliyeSerisindenMi) {
+      return "EIR";
+    } else {
+      return "Sipariş";
+    }
+  }
+
   bool get teklifSipariseDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
 
   bool get teklifRevizeEdilebilirMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
 
   EditTipiEnum? get getEditTipiEnum => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == belgeTuru);
+
+  EBelgeTuruEnum? get getEBelgeTuruEnum => EBelgeTuruEnum.values.firstWhereOrNull((element) => element.value == faturaTipi);
 
   // bool get muhtelifCariMi => cariKodu ;
 
@@ -888,9 +938,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return araToplam ?? 0;
   }
 
-  double get getDovizliAraToplam =>
-      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) -
-      ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
+  double get getDovizliAraToplam => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
 
   double get getDovizliToplamTutar => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizGenelToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0);
 

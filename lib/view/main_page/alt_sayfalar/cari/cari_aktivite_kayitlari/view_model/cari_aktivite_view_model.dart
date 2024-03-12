@@ -25,6 +25,9 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   void setCariKodu(String? value) => requestModel = requestModel.copyWith(cariKodu: value);
 
   @action
+  void setKullanici(String? value) => requestModel = requestModel.copyWith(kullanici: value);
+
+  @action
   void setAktiviteList(List<CariAktiviteListesiModel>? value) => aktiviteList = value?.asObservable();
 
   @action
@@ -32,6 +35,9 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setBitisTarihi(DateTime? value) => requestModel = requestModel.copyWith(bitisTarihi: value);
+
+  @action
+  void setSearchText(String? value) => requestModel = requestModel.copyWith(searchText: value);
 
   // @action
   // void setSearchText(String? value) => requestModel = requestModel.copyWith(: value);

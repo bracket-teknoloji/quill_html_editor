@@ -22,6 +22,18 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
       kayityapankul: json['KAYITYAPANKUL'] as String?,
+      bittar: json['BITTAR'] == null
+          ? null
+          : DateTime.parse(json['BITTAR'] as String),
+      sonucAciklama: json['SONUC_ACIKLAMA'] as String?,
+      sure: (json['SURE'] as num?)?.toDouble(),
+      aciklama: json['ACIKLAMA'] as String?,
+      duzeltmetarihi: json['DUZELTMETARIHI'] == null
+          ? null
+          : DateTime.parse(json['DUZELTMETARIHI'] as String),
+      duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
+      ilgiliKisi: json['ILGILI_KISI'] as String?,
+      bolum: json['BOLUM'] as String?,
     );
 
 Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
@@ -43,5 +55,13 @@ Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
   writeNotNull('BASTAR', instance.bastar?.toIso8601String());
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('BITTAR', instance.bittar?.toIso8601String());
+  writeNotNull('SONUC_ACIKLAMA', instance.sonucAciklama);
+  writeNotNull('SURE', instance.sure);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
+  writeNotNull('ILGILI_KISI', instance.ilgiliKisi);
+  writeNotNull('BOLUM', instance.bolum);
   return val;
 }

@@ -15,6 +15,7 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/model/kullanicilar_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -458,6 +459,20 @@ class NetworkManager {
     );
     if (result.success ?? false) {
       return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull ;
+    }
+    return null;
+  }
+
+
+  Future<List<KullanicilarModel>?> getKullanicilar() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu" :  3},
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as KullanicilarModel).toList() ;
     }
     return null;
   }

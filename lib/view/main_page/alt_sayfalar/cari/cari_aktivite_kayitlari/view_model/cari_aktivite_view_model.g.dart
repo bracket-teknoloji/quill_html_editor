@@ -64,6 +64,17 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
   }
 
   @override
+  void setKullanici(String? value) {
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
+        .startAction(name: '_CariAktiviteViewModelBase.setKullanici');
+    try {
+      return super.setKullanici(value);
+    } finally {
+      _$_CariAktiviteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAktiviteList(List<CariAktiviteListesiModel>? value) {
     final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
         .startAction(name: '_CariAktiviteViewModelBase.setAktiviteList');
@@ -91,6 +102,17 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
         .startAction(name: '_CariAktiviteViewModelBase.setBitisTarihi');
     try {
       return super.setBitisTarihi(value);
+    } finally {
+      _$_CariAktiviteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
+        .startAction(name: '_CariAktiviteViewModelBase.setSearchText');
+    try {
+      return super.setSearchText(value);
     } finally {
       _$_CariAktiviteViewModelBaseActionController.endAction(_$actionInfo);
     }
