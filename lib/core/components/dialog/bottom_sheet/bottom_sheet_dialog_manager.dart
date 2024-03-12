@@ -13,6 +13,7 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/e_fatura_ozel_kod_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/model/kullanicilar_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
@@ -832,6 +833,20 @@ class BottomSheetDialogManager {
       children: list
           ?.map(
             (e) => BottomSheetModel(title: e.toString(), value: e, groupValue: e),
+          )
+          .toList(),
+    );
+  }
+
+  Future<KullanicilarModel?> showKullanicilarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<KullanicilarModel>? list = await _networkManager.getKullanicilar();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Kullanıcı Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.kodu, description: e.kodu),
           )
           .toList(),
     );

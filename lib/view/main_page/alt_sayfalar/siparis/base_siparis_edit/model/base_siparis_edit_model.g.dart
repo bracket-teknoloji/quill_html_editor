@@ -3587,13 +3587,16 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       isemriAciklama: fields[176] as String?,
       masrafKoduAdi: fields[177] as String?,
       masrafKoduTipi: fields[178] as int?,
-    );
+    )
+      ..eirsaliyeMi = fields[179] as String?
+      ..eirsaliyeDurumAciklama = fields[180] as String?
+      ..eirsaliyeGibDurumKodu = fields[181] as int?;
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(179)
+      ..writeByte(182)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -3951,7 +3954,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(177)
       ..write(obj.masrafKoduAdi)
       ..writeByte(178)
-      ..write(obj.masrafKoduTipi);
+      ..write(obj.masrafKoduTipi)
+      ..writeByte(179)
+      ..write(obj.eirsaliyeMi)
+      ..writeByte(180)
+      ..write(obj.eirsaliyeDurumAciklama)
+      ..writeByte(181)
+      ..write(obj.eirsaliyeGibDurumKodu);
   }
 
   @override
@@ -4529,7 +4538,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       isemriAciklama: json['ISEMRI_ACIKLAMA'] as String?,
       masrafKoduAdi: json['MASRAF_KODU_ADI'] as String?,
       masrafKoduTipi: json['MASRAF_KODU_TIPI'] as int?,
-    );
+    )
+      ..eirsaliyeMi = json['EIRSALIYE_MI'] as String?
+      ..eirsaliyeDurumAciklama = json['EIRSALIYE_DURUM_ACIKLAMA'] as String?
+      ..eirsaliyeGibDurumKodu = json['EIRSALIYE_GIB_DURUM_KODU'] as int?;
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -4720,6 +4732,9 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('ISEMRI_ACIKLAMA', instance.isemriAciklama);
   writeNotNull('MASRAF_KODU_ADI', instance.masrafKoduAdi);
   writeNotNull('MASRAF_KODU_TIPI', instance.masrafKoduTipi);
+  writeNotNull('EIRSALIYE_MI', instance.eirsaliyeMi);
+  writeNotNull('EIRSALIYE_DURUM_ACIKLAMA', instance.eirsaliyeDurumAciklama);
+  writeNotNull('EIRSALIYE_GIB_DURUM_KODU', instance.eirsaliyeGibDurumKodu);
   return val;
 }
 
