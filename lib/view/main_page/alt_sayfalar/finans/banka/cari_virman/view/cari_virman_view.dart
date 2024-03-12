@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/text/bakiye_text.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -159,11 +160,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                   ),
                   onTap: () async => await tahsilatCariBottomSheet(),
                 ),
-                // Observer(
-                //   builder: (_) {
-                //     return bakiyeWidget(viewModel.requestModel.he);
-                //   },
-                // ),
+                Observer(
+                  builder: (_) => BakiyeText(value: viewModel.requestModel.tahsilatBakiye),
+                ),
                 CustomTextField(
                   labelText: "Ödeme Yapılacak Cari",
                   controller: _odemesiYapilacakCariController,
@@ -182,6 +181,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.primary),
                   ),
                   onTap: () async => await odemeCariBottomSheet(),
+                ),
+                Observer(
+                  builder: (_) => BakiyeText(value: viewModel.requestModel.odemeBakiye),
                 ),
                 Row(
                   children: [
@@ -260,13 +262,6 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
         ),
       );
 
-  Widget bakiyeWidget(double value, bool odenecekMi) => Text(
-        "Bakiye: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${odenecekMi ? "Ödenecek" : "Tahsil Edilecek"})",
-        style: TextStyle(
-          color: UIHelper.getColorWithValue(odenecekMi ? -1 : 1),
-        ),
-      ).paddingAll(UIHelper.lowSize);
-
   Future<void> seriBottomSheet() async {
     final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(context, viewModel.requestModel.dekontSeri);
     if (result is SeriModel) {
@@ -289,13 +284,14 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
       ],
     );
     if (result == false) {
-      viewModel.setOdemeCari(widget.model?.cariKodu);
+        viewModel.setOdemeCari(widget.model?.cariKodu);
+        viewModel.setOdemeBakiye(widget.model?.bakiye ?? 0);
       _odemesiYapilacakCariController.text = widget.model?.cariAdi ?? "";
       _odemeYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);
     } else {
       viewModel.setTahsilatCari(widget.model?.cariKodu);
-
+      viewModel.setTahsilatBakiye(widget.model?.bakiye ?? 0);
       viewModel.setVadeGunu(widget.model?.vadeGunu);
       _vadeGunuController.text = (widget.model?.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = widget.model?.cariAdi ?? "";
@@ -310,6 +306,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     final result = await Get.toNamed("mainPage/cariListesiOzel");
     if (result is CariListesiModel) {
       viewModel.setOdemeCari(result.cariKodu);
+      viewModel.setOdemeBakiye(result.bakiye ?? 0);
       _odemesiYapilacakCariController.text = result.cariAdi ?? "";
       _odemeYapilanCariAciklamaController.text = "CARİ VİR. ${result.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);
@@ -321,6 +318,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
     if (result is CariListesiModel) {
       viewModel.setTahsilatCari(result.cariKodu);
       viewModel.setVadeGunu(result.vadeGunu);
+      viewModel.setTahsilatBakiye(result.bakiye ?? 0);
       _vadeGunuController.text = (result.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = result.cariAdi ?? "";
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${result.cariAdi} (BANKA İŞLEMİ)";

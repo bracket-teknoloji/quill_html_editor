@@ -56,6 +56,28 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
   }
 
   @override
+  void setTahsilatBakiye(double? value) {
+    final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
+        name: '_CariVirmanViewModelBase.setTahsilatBakiye');
+    try {
+      return super.setTahsilatBakiye(value);
+    } finally {
+      _$_CariVirmanViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOdemeBakiye(double? value) {
+    final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
+        name: '_CariVirmanViewModelBase.setOdemeBakiye');
+    try {
+      return super.setOdemeBakiye(value);
+    } finally {
+      _$_CariVirmanViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSeri(String? seri) {
     final _$actionInfo = _$_CariVirmanViewModelBaseActionController.startAction(
         name: '_CariVirmanViewModelBase.setSeri');

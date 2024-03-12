@@ -57,6 +57,8 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
           ?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>))
           .toList(),
       hedefCariKodu: json['HEDEF_CARI_KODU'] as String?,
+      tahsilatBakiye: (json['TAHSILAT_BAKIYE'] as num?)?.toDouble(),
+      odemeBakiye: (json['ODEME_BAKIYE'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -113,6 +115,8 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
   writeNotNull('TCMB_SUBE_KODU', instance.tcmbSubeKodu);
   writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
   writeNotNull('HEDEF_CARI_KODU', instance.hedefCariKodu);
+  writeNotNull('TAHSILAT_BAKIYE', instance.tahsilatBakiye);
+  writeNotNull('ODEME_BAKIYE', instance.odemeBakiye);
   return val;
 }
 

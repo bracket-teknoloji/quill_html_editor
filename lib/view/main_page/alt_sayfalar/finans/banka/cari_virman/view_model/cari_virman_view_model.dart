@@ -20,6 +20,12 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   void setTarih(DateTime? time) => requestModel = requestModel.copyWith(tarih: time);
 
   @action
+  void setTahsilatBakiye(double? value) => requestModel = requestModel.copyWith(tahsilatBakiye: value ?? 2);
+
+  @action
+  void setOdemeBakiye(double? value) => requestModel = requestModel.copyWith(odemeBakiye: value ?? 2);
+
+  @action
   void setSeri(String? seri) => requestModel = requestModel.copyWith(dekontSeri: seri);
 
   @action

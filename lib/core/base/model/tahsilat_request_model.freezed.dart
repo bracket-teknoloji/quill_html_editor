@@ -113,6 +113,10 @@ mixin _$TahsilatRequestModel {
       throw _privateConstructorUsedError;
   String? get hedefCariKodu => throw _privateConstructorUsedError;
   set hedefCariKodu(String? value) => throw _privateConstructorUsedError;
+  double? get tahsilatBakiye => throw _privateConstructorUsedError;
+  set tahsilatBakiye(double? value) => throw _privateConstructorUsedError;
+  double? get odemeBakiye => throw _privateConstructorUsedError;
+  set odemeBakiye(double? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -170,7 +174,9 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
       List<DekontKalemler>? kalemler,
-      String? hedefCariKodu});
+      String? hedefCariKodu,
+      double? tahsilatBakiye,
+      double? odemeBakiye});
 }
 
 /// @nodoc
@@ -231,6 +237,8 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? tcmbSubeKodu = freezed,
     Object? kalemler = freezed,
     Object? hedefCariKodu = freezed,
+    Object? tahsilatBakiye = freezed,
+    Object? odemeBakiye = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -409,6 +417,14 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.hedefCariKodu
           : hedefCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      tahsilatBakiye: freezed == tahsilatBakiye
+          ? _value.tahsilatBakiye
+          : tahsilatBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
+      odemeBakiye: freezed == odemeBakiye
+          ? _value.odemeBakiye
+          : odemeBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -465,7 +481,9 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
       List<DekontKalemler>? kalemler,
-      String? hedefCariKodu});
+      String? hedefCariKodu,
+      double? tahsilatBakiye,
+      double? odemeBakiye});
 }
 
 /// @nodoc
@@ -523,6 +541,8 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? tcmbSubeKodu = freezed,
     Object? kalemler = freezed,
     Object? hedefCariKodu = freezed,
+    Object? tahsilatBakiye = freezed,
+    Object? odemeBakiye = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -701,6 +721,14 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.hedefCariKodu
           : hedefCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      tahsilatBakiye: freezed == tahsilatBakiye
+          ? _value.tahsilatBakiye
+          : tahsilatBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
+      odemeBakiye: freezed == odemeBakiye
+          ? _value.odemeBakiye
+          : odemeBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -752,7 +780,9 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.tcmbBankaKodu,
       this.tcmbSubeKodu,
       this.kalemler,
-      this.hedefCariKodu})
+      this.hedefCariKodu,
+      this.tahsilatBakiye,
+      this.odemeBakiye})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -848,6 +878,10 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   List<DekontKalemler>? kalemler;
   @override
   String? hedefCariKodu;
+  @override
+  double? tahsilatBakiye;
+  @override
+  double? odemeBakiye;
 
   @JsonKey(ignore: true)
   @override
@@ -910,7 +944,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       String? tcmbBankaKodu,
       String? tcmbSubeKodu,
       List<DekontKalemler>? kalemler,
-      String? hedefCariKodu}) = _$TahsilatRequestModelImpl;
+      String? hedefCariKodu,
+      double? tahsilatBakiye,
+      double? odemeBakiye}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1052,6 +1088,12 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   String? get hedefCariKodu;
   set hedefCariKodu(String? value);
+  @override
+  double? get tahsilatBakiye;
+  set tahsilatBakiye(double? value);
+  @override
+  double? get odemeBakiye;
+  set odemeBakiye(double? value);
   @override
   @JsonKey(ignore: true)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
