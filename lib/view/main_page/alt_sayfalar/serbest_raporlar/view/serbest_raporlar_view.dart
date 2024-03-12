@@ -41,6 +41,7 @@ class SerbestRaporlarView extends StatefulWidget {
 
 class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   void initState() {
     viewModel.setDizaynId(widget.dizaynList?.id);
@@ -72,33 +73,40 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: loc.generalStrings.filter,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          CustomLayoutBuilder(splitCount: 2, children: getCustomTextFields),
-          // Center(
-          //   child: Wrap(
-          //     children: getCustomTextFields,
-          //   ),
-          // ),
-          ElevatedButton(
-            onPressed: () {
-              //😳 Düzelt kanki
-              if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
-                dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-              } else {
-                // viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
-                // viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
-                // viewModel.pdfModel.dicParamsMap = viewModel.dicParams;
-                log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
-                StaticVariables.instance.serbestDicParams = viewModel.dicParams;
-                Get.back();
-                viewModel.setFuture();
-              }
-            },
-            child: Text(loc.generalStrings.apply),
-          ).paddingAll(UIHelper.midSize),
-        ],
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CustomLayoutBuilder(
+              splitCount: 2,
+              lastItemExpanded: true,
+              children: getCustomTextFields,
+            ).paddingAll(UIHelper.lowSize),
+            ElevatedButton(
+              onPressed: () {
+                //😳 Düzelt kanki
+                if (_formKey.currentState?.validate() ?? false) {
+                  dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                  return;
+                }
+                // if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
+                //   dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                // }
+                else {
+                  // viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
+                  // viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
+                  // viewModel.pdfModel.dicParamsMap = viewModel.dicParams;
+                  log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
+                  StaticVariables.instance.serbestDicParams = viewModel.dicParams;
+                  Get.back();
+                  viewModel.setFuture();
+                }
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.midSize),
+          ],
+        ),
       ),
     );
     return Future.value(viewModel.futureController.value);
@@ -132,9 +140,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 isMust: e.bosGecilebilir != true,
                 readOnly: true,
                 suffixMore: true,
-                onTap: () {
-                  getRehber(e);
-                },
+                onTap: () => getRehber(e),
               );
             } else {
               return CustomTextField(

@@ -54,9 +54,9 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               Text("Bitiş Tarihi: ${model.bitisTarihi?.toDateString ?? ""}").yetkiVarMi(model.bitisTarihi != null),
               Text("Depolar: ${model.depoList?.any((element) => element == -1) == true ? "Tümü" : model.depoList?.first}").yetkiVarMi(model.depoList != null),
               Text("Kullanıcı: ${model.kullanicilar}").yetkiVarMi(model.kullanicilar != null),
-              Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
-              Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.depoMiktari != null),
-              Text("Fark: ${model.fark?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
+              Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
+              Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
+              Text("Fark: ${model.fark?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
             ],
           ),
         ),
@@ -123,7 +123,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               widget.onChanged(true);
             }
           },
-        ).yetkiKontrol(widget.model.bitisTarihi == null && widget.model.serbestMi),
+        ).yetkiKontrol(widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi),
         BottomSheetModel(
           title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
