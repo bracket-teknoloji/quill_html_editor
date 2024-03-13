@@ -9,6 +9,7 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
   CariAktiviteListesiModel._();
   factory CariAktiviteListesiModel({
     int? id,
+    int? islemKodu,
     String? cariKodu,
     String? cariAdi,
     String? kullaniciAdi,

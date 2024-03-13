@@ -25,6 +25,24 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
     });
   }
 
+  late final _$aktiviteBitirilsinMiAtom = Atom(
+      name: '_CariAktiviteEditViewModelBase.aktiviteBitirilsinMi',
+      context: context);
+
+  @override
+  bool get aktiviteBitirilsinMi {
+    _$aktiviteBitirilsinMiAtom.reportRead();
+    return super.aktiviteBitirilsinMi;
+  }
+
+  @override
+  set aktiviteBitirilsinMi(bool value) {
+    _$aktiviteBitirilsinMiAtom.reportWrite(value, super.aktiviteBitirilsinMi,
+        () {
+      super.aktiviteBitirilsinMi = value;
+    });
+  }
+
   late final _$saveCariAktiviteAsyncAction = AsyncAction(
       '_CariAktiviteEditViewModelBase.saveCariAktivite',
       context: context);
@@ -37,6 +55,18 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   late final _$_CariAktiviteEditViewModelBaseActionController =
       ActionController(
           name: '_CariAktiviteEditViewModelBase', context: context);
+
+  @override
+  void setAktiviteBitirilsinMi(bool value) {
+    final _$actionInfo =
+        _$_CariAktiviteEditViewModelBaseActionController.startAction(
+            name: '_CariAktiviteEditViewModelBase.setAktiviteBitirilsinMi');
+    try {
+      return super.setAktiviteBitirilsinMi(value);
+    } finally {
+      _$_CariAktiviteEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setModel(CariAktiviteListesiModel value) {
@@ -140,7 +170,8 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   @override
   String toString() {
     return '''
-model: ${model}
+model: ${model},
+aktiviteBitirilsinMi: ${aktiviteBitirilsinMi}
     ''';
   }
 }

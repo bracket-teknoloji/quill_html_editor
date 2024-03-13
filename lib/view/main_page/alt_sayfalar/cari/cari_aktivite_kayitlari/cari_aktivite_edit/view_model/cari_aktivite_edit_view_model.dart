@@ -1,4 +1,3 @@
-import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
@@ -14,6 +13,12 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
   @observable
   CariAktiviteListesiModel model = CariAktiviteListesiModel();
 
+  @observable
+  bool aktiviteBitirilsinMi = false;
+
+  @action
+  void setAktiviteBitirilsinMi(bool value) => aktiviteBitirilsinMi = value;
+
   @action
   void setModel(CariAktiviteListesiModel value) => model = value;
 
@@ -21,7 +26,7 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
   void setBaslangicTarihi(DateTime? value) => model = model.copyWith(bastar: value);
 
   @action
-  void setSaat(DateTime? value) => model = model.copyWith(bastar: DateTime(model.bastar!.year, model.bastar!.month, model.bastar!.day,value!.hour, value.minute, value.second));
+  void setSaat(DateTime? value) => model = model.copyWith(bastar: DateTime(model.bastar!.year, model.bastar!.month, model.bastar!.day, value!.hour, value.minute, value.second));
 
   @action
   void setCari(String? value) => model = model.copyWith(cariKodu: value);
@@ -40,8 +45,13 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
-  
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async => networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: model.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async {
+    model = model.copyWith(islemKodu: 1);
+    if (aktiviteBitirilsinMi) {
+      model = model.copyWith(bittar: DateTime.now());
+    }
+    return networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: model..toJson(), showLoading: true);
+  }
 }

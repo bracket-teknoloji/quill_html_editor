@@ -903,15 +903,14 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: list
           ?.map(
-            (e) => BottomSheetModel(title: e.aktiviteAdi ?? "", value: e, groupValue: e.aktiviteTipi),
+            (e) => BottomSheetModel(title: e.aktiviteAdi ?? "", value: e, groupValue: e.aktiviteTipi, description: e.aktiviteTipi.toStringIfNotNull),
           )
           .toList(),
     );
   }
 
   Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<ListOzelKodTum> list =
-        _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
+    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
@@ -925,8 +924,7 @@ class BottomSheetDialogManager {
   }
 
   Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<ListOzelKodTum> list =
-        _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
+    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
@@ -1129,8 +1127,7 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          _paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ??
-              <NetFectDizaynList?>[];
+          _paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {

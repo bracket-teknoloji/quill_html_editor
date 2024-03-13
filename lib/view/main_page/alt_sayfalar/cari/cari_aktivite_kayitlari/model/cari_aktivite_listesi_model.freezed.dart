@@ -23,6 +23,8 @@ CariAktiviteListesiModel _$CariAktiviteListesiModelFromJson(
 mixin _$CariAktiviteListesiModel {
   int? get id => throw _privateConstructorUsedError;
   set id(int? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get cariAdi => throw _privateConstructorUsedError;
@@ -70,6 +72,7 @@ abstract class $CariAktiviteListesiModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
+      int? islemKodu,
       String? cariKodu,
       String? cariAdi,
       String? kullaniciAdi,
@@ -103,6 +106,7 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? id = freezed,
+    Object? islemKodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? kullaniciAdi = freezed,
@@ -124,6 +128,10 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
@@ -204,6 +212,7 @@ abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
+      int? islemKodu,
       String? cariKodu,
       String? cariAdi,
       String? kullaniciAdi,
@@ -236,6 +245,7 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? islemKodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? kullaniciAdi = freezed,
@@ -257,6 +267,10 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
@@ -331,6 +345,7 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
 class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   _$CariAktiviteListesiModelImpl(
       {this.id,
+      this.islemKodu,
       this.cariKodu,
       this.cariAdi,
       this.kullaniciAdi,
@@ -354,6 +369,8 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
 
   @override
   int? id;
+  @override
+  int? islemKodu;
   @override
   String? cariKodu;
   @override
@@ -405,6 +422,7 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
 abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   factory _CariAktiviteListesiModel(
       {int? id,
+      int? islemKodu,
       String? cariKodu,
       String? cariAdi,
       String? kullaniciAdi,
@@ -429,6 +447,9 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   @override
   int? get id;
   set id(int? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
   @override
   String? get cariKodu;
   set cariKodu(String? value);

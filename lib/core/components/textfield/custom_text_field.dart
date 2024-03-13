@@ -137,6 +137,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
+                        if (widget.suffix != null) widget.suffix!,
                         Observer(
                           builder: (_) => Visibility(
                             visible: (viewModel.showClearButton) && (widget.isMust != true),
@@ -156,7 +157,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             ),
                           ),
                         ).yetkiVarMi(widget.onClear != null),
-                        if (widget.suffix != null) widget.suffix!,
                         if (widget.isDateTime == true)
                           IconButton(
                             padding: EdgeInsets.zero,

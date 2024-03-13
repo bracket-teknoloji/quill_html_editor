@@ -40,7 +40,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
   void initState() {
     viewModel.setCariKodu(widget.cariModel?.cariKodu);
     searchController = TextEditingController();
-    cariController = TextEditingController();
+    cariController = TextEditingController(text: widget.cariModel?.cariAdi);
     kullaniciController = TextEditingController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
@@ -79,13 +79,16 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: true,
           onPressed: () async {
-            await Get.toNamed(
+            final result = await Get.toNamed(
               "/mainPage/cariAktiviteEdit",
               arguments: BaseEditModel<CariAktiviteListesiModel>(
                 baseEditEnum: BaseEditEnum.ekle,
-                model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: widget.cariModel?.cariAdi),
+                model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: cariController.text, kullaniciAdi: kullaniciController.text),
               ),
             );
+            if (result == true) {
+              await viewModel.getData();
+            }
           },
         ).yetkiVarMi(yetkiController.cariAktiviteYeniKayit),
         body: Column(
