@@ -73,7 +73,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       bodyModel: DizaynModel(),
       showLoading: true,
       queryParameters: {
-        "ModulID": siparisEditModel.eArsivSerisindenMi ? 100 : 99,
+        "ModulID": siparisEditModel.getModulID,
         "ERPDizaynlari": true,
       },
     );
@@ -108,7 +108,8 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() async {
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)), showLoading: true);
+    final result =
+        await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)), showLoading: true);
     if (result.success == true) {
       log("EBelge gönderildi");
     } else {

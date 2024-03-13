@@ -709,6 +709,17 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return false;
   }
 
+  int get getModulID {
+    if (eArsivMi) {
+      return 100;
+    } else if (eFaturaMi) {
+      return 99;
+    } else if (getEditTipiEnum?.irsaliyeMi ?? false) {
+      return 104;
+    }
+    throw Exception("Modul ID Bulunamadı");
+  }
+
   bool get taslakMi {
     if (eArsivMi) {
       return earsivDurumu == "TAS";

@@ -97,7 +97,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
           if (value) {
             return;
           }
-          await dialogManager.showAreYouSureDialog(Get.back);
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
         },
         child: Scaffold(
           appBar: AppBar(

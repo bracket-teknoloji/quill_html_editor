@@ -163,7 +163,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
 extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   EBelgeListesiModel get printEBelge => copyWith(islemKodu: 22);
 
-  EBelgeListesiModel get taslakGonder => copyWith(islemKodu: 2);
+  EBelgeListesiModel get taslakGonder => copyWith(islemKodu: eFaturaMi ? 2 : 16);
 
   EBelgeListesiModel get faturaGonder => copyWith(islemKodu: 3);
 
