@@ -28,7 +28,7 @@ class _CariAktiviteCardState extends State<CariAktiviteCard> {
                 ],
               ),
               Text("Başlama Tarihi: ${model.bastar.toDateString}").yetkiVarMi(model.bastar != null),
-              Text("Başlama Tarihi: ${model.bittar.toDateString}").yetkiVarMi(model.bittar != null),
+              Text("Bitiş Tarihi: ${model.bittar.toDateString}").yetkiVarMi(model.bittar != null),
               Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
               Text("İlgili Kişi: ${model.ilgiliKisi}").yetkiVarMi(model.ilgiliKisi != null),
               Text("Aktivite: ${model.aktiviteAdi}").yetkiVarMi(model.aktiviteAdi != null),

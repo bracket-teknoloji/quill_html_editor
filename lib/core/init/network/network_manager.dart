@@ -163,7 +163,7 @@ class NetworkManager {
         ),
         data: data,
       );
-    responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+      responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
     } catch (e) {
       if (showLoading) {
         DialogManager().hideAlertDialog;
@@ -458,21 +458,60 @@ class NetworkManager {
       data: model.toJson(),
     );
     if (result.success ?? false) {
-      return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull ;
+      return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull;
     }
     return null;
   }
-
 
   Future<List<KullanicilarModel>?> getKullanicilar() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
       bodyModel: KullanicilarModel(),
       showLoading: true,
-      data: {"RehberKodu" :  3},
+      data: {"RehberKodu": 3},
     );
     if (result.success ?? false) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList() ;
+      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+    }
+    return null;
+  }
+
+  Future<List<KullanicilarModel>?> getCariAktiviteBolumler() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu": 4},
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+    }
+    return null;
+  }
+
+
+  Future<List<KullanicilarModel>?> getIlgiliKisiler() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu": 5},
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+    }
+    return null;
+  }
+
+  Future<List<KullanicilarModel>?> getCariAktiviteAciklamalar() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu": 6},
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
   }

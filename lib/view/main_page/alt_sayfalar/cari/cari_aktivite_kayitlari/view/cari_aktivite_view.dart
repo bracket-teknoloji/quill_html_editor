@@ -1,13 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/kullanicilar_model.dart";
 import "package:picker/core/components/card/cari_aktivite_card.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view_model/cari_aktivite_view_model.dart";
@@ -72,6 +76,18 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             ),
           ],
         ),
+        floatingActionButton: CustomFloatingActionButton(
+          isScrolledDown: true,
+          onPressed: () async {
+            await Get.toNamed(
+              "/mainPage/cariAktiviteEdit",
+              arguments: BaseEditModel<CariAktiviteListesiModel>(
+                baseEditEnum: BaseEditEnum.ekle,
+                model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: widget.cariModel?.cariAdi),
+              ),
+            );
+          },
+        ).yetkiVarMi(yetkiController.cariAktiviteYeniKayit),
         body: Column(
           children: [
             CustomTextField(

@@ -1,12 +1,12 @@
 enum BaseEditEnum { ekle, duzenle, goruntule, kopyala, revize, taslak }
 
 extension ToString on BaseEditEnum? {
-  String? get name => getName(this);
+  String? get name => _getName(this);
 
   bool get revizeMi => this == BaseEditEnum.revize;
   bool get ekleMi => this == BaseEditEnum.ekle;
 
-  String? getName(BaseEditEnum? baseEditEnum) {
+  String? _getName(BaseEditEnum? baseEditEnum) {
     switch (baseEditEnum) {
       case BaseEditEnum.ekle:
         return "Yeni Kayıt";

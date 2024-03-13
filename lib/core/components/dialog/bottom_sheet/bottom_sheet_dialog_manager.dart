@@ -53,6 +53,7 @@ import "view_model/bottom_sheet_state_manager.dart";
 class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
   final NetworkManager _networkManager = NetworkManager();
+  ParamModel? get _paramModel => CacheManager.getAnaVeri?.paramModel;
   Future<dynamic> showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) async {
     List<BottomSheetModel>? children2 = children;
     FocusNode? focusNode;
@@ -388,7 +389,7 @@ class BottomSheetDialogManager {
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children: CacheManager.getAnaVeri?.paramModel?.depoList
+        children: _paramModel?.depoList
             ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
             .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
             .toList(),
@@ -396,7 +397,7 @@ class BottomSheetDialogManager {
 
   Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue, {String? filter}) async {
     final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
-    final List<DepoList> depoList = CacheManager.getAnaVeri?.paramModel?.depoList ?? <DepoList>[];
+    final List<DepoList> depoList = _paramModel?.depoList ?? <DepoList>[];
     final List<DepoList> filteredDepoList = depoList
         .where((DepoList element) => onayList?.contains(element.depoKodu) ?? true && (element.subeKodu == null || (element.subeKodu != null && element.subeKodu == CacheManager.getVeriTabani["Şube"])))
         .toList();
@@ -422,7 +423,7 @@ class BottomSheetDialogManager {
         context,
         title: "Ödeme Kodu seç",
         groupValue: groupValue,
-        children: CacheManager.getAnaVeri?.paramModel?.listCariOdemeKodu
+        children: _paramModel?.listCariOdemeKodu
             ?.map(
               (ListCariOdemeKodu e) => BottomSheetModel(
                 title: e.aciklama ?? "",
@@ -449,7 +450,7 @@ class BottomSheetDialogManager {
 
   /// `GroupValues must be a list of String`
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
-    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
@@ -595,7 +596,7 @@ class BottomSheetDialogManager {
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
@@ -677,7 +678,7 @@ class BottomSheetDialogManager {
   }
 
   Future<DovizList?> showDovizBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<DovizList> dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList ?? <DovizList>[];
+    final List<DovizList> dovizList = _paramModel?.dovizList ?? <DovizList>[];
     final DovizList? doviz = await showRadioBottomSheetDialog(
       context,
       title: "Döviz Seçiniz",
@@ -696,7 +697,7 @@ class BottomSheetDialogManager {
   }
 
   Future<YaziciList?> showYaziciBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<YaziciList>? yaziciList = CacheManager.getAnaVeri?.paramModel?.yaziciList;
+    final List<YaziciList>? yaziciList = _paramModel?.yaziciList;
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Yazıcı Seçiniz",
@@ -723,7 +724,7 @@ class BottomSheetDialogManager {
   }
 
   Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<NetFectDizaynList> netFectDizaynList = CacheManager.getAnaVeri?.paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
+    final List<NetFectDizaynList> netFectDizaynList = _paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,
       title: "Dizayn Seçiniz",
@@ -792,7 +793,7 @@ class BottomSheetDialogManager {
     // return olcuBirimi;
   }
   Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<ListIskTip> iskontoTipiList = CacheManager.getAnaVeri?.paramModel?.listIskTip ?? <ListIskTip>[];
+    final List<ListIskTip> iskontoTipiList = _paramModel?.listIskTip ?? <ListIskTip>[];
     final ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(
       context,
       title: "İskonto Tipi Seçiniz",
@@ -852,9 +853,65 @@ class BottomSheetDialogManager {
     );
   }
 
+  Future<KullanicilarModel?> showIlgiliKisilerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<KullanicilarModel>? list = await _networkManager.getIlgiliKisiler();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Kişi Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.adi),
+          )
+          .toList(),
+    );
+  }
+
+  Future<KullanicilarModel?> showCariAktiviteAciklamalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<KullanicilarModel>? list = await _networkManager.getCariAktiviteAciklamalar();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Açıklama Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.adi),
+          )
+          .toList(),
+    );
+  }
+
+  Future<KullanicilarModel?> showCariAktiviteBolumlerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<KullanicilarModel>? list = await _networkManager.getCariAktiviteBolumler();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Bölüm Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.adi),
+          )
+          .toList(),
+    );
+  }
+
+  Future<CariAktiviteTipleri?> showCariAktiviteTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<CariAktiviteTipleri>? list = _paramModel?.cariAktiviteTipleri;
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Aktivite Tipi Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.aktiviteAdi ?? "", value: e, groupValue: e.aktiviteTipi),
+          )
+          .toList(),
+    );
+  }
+
   Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListOzelKodTum> list =
-        CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
+        _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
@@ -869,7 +926,7 @@ class BottomSheetDialogManager {
 
   Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListOzelKodTum> list =
-        CacheManager.getAnaVeri?.paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
+        _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
@@ -1036,7 +1093,7 @@ class BottomSheetDialogManager {
   }
 
   Future<KasaList?> showKasaBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<KasaList> list = CacheManager.getAnaVeri?.paramModel?.kasaList ?? <KasaList>[];
+    final List<KasaList> list = _paramModel?.kasaList ?? <KasaList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",
@@ -1051,7 +1108,7 @@ class BottomSheetDialogManager {
 
   Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar, {EditTipiEnum? editTipiEnum}) async {
     if (printModel.yaziciAdi == null) {
-      final List<YaziciList?> yaziciListe = CacheManager.getAnaVeri?.paramModel?.yaziciList ?? <YaziciList?>[];
+      final List<YaziciList?> yaziciListe = _paramModel?.yaziciList ?? <YaziciList?>[];
       if (yaziciListe.length == 1) {
         printModel = printModel.copyWith(yaziciAdi: yaziciListe.first?.yaziciAdi, yaziciTipi: yaziciListe.first?.yaziciTipi);
       } else if (yaziciListe.length > 1) {
@@ -1072,7 +1129,7 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ??
+          _paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ??
               <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
