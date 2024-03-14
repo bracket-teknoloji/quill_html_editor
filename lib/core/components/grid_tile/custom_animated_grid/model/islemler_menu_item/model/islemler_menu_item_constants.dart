@@ -100,7 +100,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
         islemlerList.add(cariHareketleri);
         islemlerList.add(stokHareketleri);
-        islemlerList.addIfConditionTrue(_yetkiController., cariAktivite);
+        islemlerList.add(cariAktivite);
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar ?? []);
       }
@@ -228,7 +228,7 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get cariAktivite => GridItemModel.islemler(
         iconData: Icons.sync_alt_outlined,
-        //TODO ISDEBUG KALDIR
+        //TODO ISDEBUG KALDIR 
         isEnabled: _yetkiController.cariAktivite && AccountModel.instance.isDebug,
         title: "Cari Aktivite",
         onTap: () async => Get.toNamed("mainPage/cariAktivite", arguments: model),
