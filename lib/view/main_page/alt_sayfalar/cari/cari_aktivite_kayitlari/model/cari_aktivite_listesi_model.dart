@@ -33,3 +33,7 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
   @override
   CariAktiviteListesiModel? fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);
 }
+
+extension CariAktiviteExtensions on CariAktiviteListesiModel {
+  bool get bittiMi => bittar != null;
+}

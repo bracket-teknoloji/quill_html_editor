@@ -452,6 +452,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? eirsaliyeDurumAciklama;
   @HiveField(181)
   int? eirsaliyeGibDurumKodu;
+  @HiveField(182)
+  int? cariDovizkodu;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -633,6 +635,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.isemriAciklama,
     this.masrafKoduAdi,
     this.masrafKoduTipi,
+    this.eirsaliyeDurumAciklama,
+    this.eirsaliyeMi,
+    this.cariDovizkodu,
+    this.eirsaliyeGibDurumKodu,
   });
 
   BaseSiparisEditModel._init();
@@ -709,7 +715,21 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return false;
   }
 
-  int get getModulID {
+  String get gibDurumKodu {
+    final String value;
+    if (eArsivMi) {
+      value = "$earsivGibDurumKodu\n$earsivDurumAciklama";
+    } else if (eFaturaMi) {
+      value = "$efaturaGibDurumKodu\n$efaturaDurumAciklama";
+    } else if (eIrsaliyeMi) {
+      value = "$eirsaliyeGibDurumKodu\n$eirsaliyeDurumAciklama";
+    } else {
+      value = "";
+    }
+    return "Durum Kodu: $value";
+  }
+
+  int? get getModulID {
     if (eArsivMi) {
       return 100;
     } else if (eFaturaMi) {
@@ -717,7 +737,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     } else if (getEditTipiEnum?.irsaliyeMi ?? false) {
       return 104;
     }
-    throw Exception("Modul ID Bulunamadı");
+    return null;
   }
 
   bool get taslakMi {

@@ -52,6 +52,6 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
     if (aktiviteBitirilsinMi) {
       model = model.copyWith(bittar: DateTime.now());
     }
-    return networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: model..toJson(), showLoading: true);
+    return networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: model.toJson(), showLoading: true);
   }
 }

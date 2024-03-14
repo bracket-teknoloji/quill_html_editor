@@ -203,12 +203,6 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
-                  ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
-                  const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
-                  ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalasanSayi != null),
-                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
-                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                   ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
                   const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
                   const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.eirsaliyeMi == "E"),
@@ -218,6 +212,12 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)).yetkiVarMi(model.uyariMi),
                   dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariliMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.efatOnayDurumKodu == "1"),
+                  ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
+                  const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
+                  ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalasanSayi != null),
+                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
+                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
+                  ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
@@ -265,9 +265,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
         onTap: () {
           dialogManager.showColorfulSnackBar(
-            model.eFaturaMi
-                ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
-                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
+            model.gibDurumKodu,
             badge.badgeColorEnum.getColor,
           );
         },

@@ -7,8 +7,10 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/view_model/cari_aktivite_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -38,6 +40,8 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
 
   bool get kayitYetkisi => widget.model.baseEditEnum?.ekleMi == true ? yetkiController.cariAktiviteYeniKayit : yetkiController.cariAktiviteDuzenleme;
 
+  bool get enabled => widget.model.baseEditEnum?.goruntuleMi != true;
+
   @override
   void initState() {
     if (widget.model.model != null) {
@@ -49,12 +53,16 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
     baslangicTarihiController = TextEditingController(text: viewModel.model.bastar?.toDateString);
     saatController = TextEditingController(text: viewModel.model.bastar?.getTime);
     cariController = TextEditingController(text: cariAktiviteModel.cariAdi);
-    bolumController = TextEditingController();
-    ilgiliKisiController = TextEditingController();
+    bolumController = TextEditingController(text: cariAktiviteModel.bolum);
+    ilgiliKisiController = TextEditingController(text: cariAktiviteModel.ilgiliKisi);
     kullaniciController = TextEditingController(text: cariAktiviteModel.kullaniciAdi);
-    aktiviteTipiController = TextEditingController();
-    aciklamaController = TextEditingController();
+    aktiviteTipiController = TextEditingController(text: cariAktiviteModel.aktiviteAdi);
+    aciklamaController = TextEditingController(text: cariAktiviteModel.aciklama);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model.baseEditEnum.ekleMi && !yetkiController.cariAktiviteAtayabilir) {
+        kullaniciController.text = CacheManager.getAnaVeri!.userModel?.kuladi ?? "";
+        viewModel.setKullanici(kullaniciController.text);
+      }
       if (widget.model.baseEditEnum?.ekleMi == true) {
         await getAktiviteTipi();
       }
@@ -94,7 +102,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 }
               },
               icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(kayitYetkisi),
+            ).yetkiVarMi(kayitYetkisi && enabled),
           ],
         ),
         body: SingleChildScrollView(
@@ -110,12 +118,13 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                       title: const Text("Aktivite Bitirilsin"),
                     ),
                   ),
-                ),
+                ).yetkiVarMi(widget.model.baseEditEnum.ekleMi),
                 Row(
                   children: [
                     Expanded(
                       child: CustomTextField(
                         labelText: "Başlama Tarihi",
+                        enabled: enabled,
                         controller: baslangicTarihiController,
                         isDateTime: true,
                         readOnly: true,
@@ -131,6 +140,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Saat",
+                        enabled: enabled,
                         controller: saatController,
                         readOnly: true,
                         isDateTime: true,
@@ -147,6 +157,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 ),
                 CustomTextField(
                   labelText: "Cari",
+                  enabled: enabled,
                   controller: cariController,
                   readOnly: true,
                   isMust: true,
@@ -175,6 +186,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                   controller: kullaniciController,
                   suffixMore: true,
                   readOnly: true,
+                  enabled: yetkiController.cariAktiviteAtayabilir && enabled,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.kullaniciAdi ?? "")),
                   onClear: () => viewModel.setKullanici(null),
                   onTap: () async {
@@ -187,14 +199,17 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 ),
                 CustomTextField(
                   labelText: "Aktivite Tipi",
+                  enabled: enabled,
                   controller: aktiviteTipiController,
                   suffixMore: true,
                   readOnly: true,
                   isMust: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
                   onTap: getAktiviteTipi,
                 ),
                 CustomTextField(
                   labelText: "Bölüm/Departman",
+                  enabled: enabled,
                   controller: bolumController,
                   maxLength: 100,
                   onChanged: viewModel.setBolum,
@@ -211,6 +226,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 ),
                 CustomTextField(
                   labelText: "İlgili Kişi",
+                  enabled: enabled,
                   controller: ilgiliKisiController,
                   maxLength: 100,
                   onChanged: viewModel.setIlgiliKisi,
@@ -227,6 +243,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 ),
                 CustomTextField(
                   labelText: "Açıklama/Konu",
+                  enabled: enabled,
                   controller: aciklamaController,
                   maxLength: 500,
                   onChanged: viewModel.setAciklama,
