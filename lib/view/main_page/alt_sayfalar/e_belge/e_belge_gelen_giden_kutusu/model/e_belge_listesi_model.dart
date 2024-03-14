@@ -167,6 +167,16 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   EBelgeListesiModel get faturaGonder => copyWith(islemKodu: 3);
 
+  EBelgeListesiModel get eBelgeGonder {
+    if (eIrsaliyeMi) {
+      return eIrsaliyeGonder;
+    } else {
+      return faturaGonder;
+    }
+  }
+
+  EBelgeListesiModel get eIrsaliyeGonder => copyWith(islemKodu: 17);
+
   EBelgeListesiModel get eArsivTaslakSil => copyWith(islemKodu: 8);
 
   EBelgeListesiModel get eFaturaTaslakSil => copyWith(islemKodu: 9);
@@ -217,4 +227,16 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   String get onayDurumuString => "${cevapKodu ?? "0"} - ${cevapAciklama ?? "0"}";
 
   String get getDizaynAdi => "${dizaynNo ?? ""} - ${dizaynAdi ?? ""}";
+
+  String get getTitle {
+    if (eArsivMi){
+      return "E-Arşiv";
+    } else if (eFaturaMi) {
+      return "E-Fatura";
+    } else if (eIrsaliyeMi) {
+      return "E-İrsaliye";
+    } else {
+      return "E-Belge";
+    }
+  }
 }

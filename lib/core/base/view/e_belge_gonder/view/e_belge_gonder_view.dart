@@ -229,7 +229,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       builder: (_) => SwitchListTile.adaptive(
                         value: model.dovizliOlustur ?? false,
                         onChanged: viewModel.setDovizOlustur,
-                        title: const Text("Döviz Oluştur"),
+                        title: const Text("Dövizli Oluştur"),
                       ).yetkiVarMi(widget.model.dovizliMi),
                     ),
                     Observer(
@@ -247,16 +247,16 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         },
                         title: const Text("Gönderim Şekli E-Posta"),
                       ),
-                    ),
+                    ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi),
                     Observer(
                       builder: (_) => SwitchListTile.adaptive(
                         value: model.internetFaturasi ?? false,
                         onChanged: viewModel.setInternetFaturasi,
                         title: const Text("İnternet Tipli"),
-                      ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                      ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi),
                     ),
                   ],
-                ).yetkiVarMi(viewModel.siparisEditModel.eArsivSerisindenMi),
+                ).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
                 Observer(
                   builder: (_) => Visibility(
                     visible: model.gonderimSekliEPosta ?? false,

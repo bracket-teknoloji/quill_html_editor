@@ -61,7 +61,7 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
 
   AppBar get appBar => AppBar(
         title: Observer(
-          builder: (_) => AppBarTitle(title: "E-Fatura", subtitle: viewModel.model.resmiBelgeNo),
+          builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo),
         ),
         actions: [
           IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
