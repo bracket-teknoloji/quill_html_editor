@@ -120,8 +120,8 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addAll(raporlar ?? []);
       }
     } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
-      islemlerList.add(cariKarti);
-      islemlerList.add(cariHareketleri);
+      islemlerList.addIfConditionTrue(_yetkiController.cariKarti, cariKarti);
+      islemlerList.addIfConditionTrue(_yetkiController.cariHareketleri, cariHareketleri);
       islemlerList.addAll(raporlar ?? []);
       islemlerList.add(konumaGit);
       islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
@@ -228,7 +228,7 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get cariAktivite => GridItemModel.islemler(
         iconData: Icons.sync_alt_outlined,
-        //TODO ISDEBUG KALDIR 
+        //TODO ISDEBUG KALDIR
         isEnabled: _yetkiController.cariAktivite && AccountModel.instance.isDebug,
         title: "Cari Aktivite",
         onTap: () async => Get.toNamed("mainPage/cariAktivite", arguments: model),

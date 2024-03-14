@@ -11,10 +11,12 @@ import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 class CariAktiviteCard extends StatefulWidget {
   final CariAktiviteListesiModel model;
-  const CariAktiviteCard({super.key, required this.model});
+  final void Function(bool) onRefresh;
+  const CariAktiviteCard({super.key, required this.model, required this.onRefresh});
 
   @override
   State<CariAktiviteCard> createState() => _CariAktiviteCardState();
@@ -55,33 +57,44 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   title: loc.generalStrings.view,
                   iconWidget: Icons.preview_outlined,
                   onTap: () async {
+                    Get.back();
                     Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: model));
                   },
                 ).yetkiKontrol(model.bittiMi),
                 BottomSheetModel(
                   title: loc.generalStrings.edit,
                   iconWidget: Icons.edit_outlined,
-                  onTap: () async {},
+                  onTap: () async {
+                    Get.back();
+                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model: model));
+                    if (result == true) {
+                      widget.onRefresh.call(true);
+                    }
+                  },
                 ).yetkiKontrol(!model.bittiMi),
                 BottomSheetModel(
                   title: loc.generalStrings.delete,
                   iconWidget: Icons.delete_outline_outlined,
                   onTap: () async {
-                    final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 3));
-                    if (result.success == true) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      //TODO sayfa yenile
-                    }
+                    Get.back();
+                    dialogManager.showAreYouSureDialog(() async {
+                      final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 3));
+                      if (result.success == true) {
+                        dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                        widget.onRefresh.call(true);
+                      }
+                    });
                   },
-                ).yetkiKontrol(false),
+                ).yetkiKontrol(yetkiController.cariAktiviteSilme),
                 BottomSheetModel(
                   title: "Bitirmeyi Geri Al",
                   iconWidget: Icons.remove_done_outlined,
                   onTap: () async {
+                    Get.back();
                     final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 8));
                     if (result.success == true) {
                       dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      //TODO sayfa yenile
+                      widget.onRefresh.call(true);
                     }
                   },
                 ).yetkiKontrol(model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl),
@@ -89,18 +102,21 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   title: "Bitir",
                   iconWidget: Icons.done_outline_outlined,
                   onTap: () async {
-                    final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 8));
-                    if (result.success == true) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      //TODO sayfa yenile
+                    Get.back();
+                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.bitir, model: model));
+                    if (result == true) {
+                      widget.onRefresh.call(true);
                     }
                   },
                 ).yetkiKontrol(!model.bittiMi),
                 BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,
-                  onTap: () async {},
-                ).yetkiKontrol(false),
+                  onTap: () async {
+                    Get.back();
+                    dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [model.cariKodu ?? ""])));
+                  },
+                ).yetkiKontrol(yetkiController.cariListesi),
               ].nullCheckWithGeneric,
             );
           },

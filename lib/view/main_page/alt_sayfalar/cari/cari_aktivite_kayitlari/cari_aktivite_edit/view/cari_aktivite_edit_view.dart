@@ -44,6 +44,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
 
   @override
   void initState() {
+    viewModel.setBaseEditEnum(widget.model.baseEditEnum);
     if (widget.model.model != null) {
       viewModel.setModel(widget.model.model!);
     }
@@ -102,7 +103,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                 }
               },
               icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(kayitYetkisi && enabled),
+            ).yetkiVarMi(kayitYetkisi && widget.model.baseEditEnum != BaseEditEnum.goruntule),
           ],
         ),
         body: SingleChildScrollView(
@@ -124,7 +125,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Başlama Tarihi",
-                        enabled: enabled,
+                        enabled: widget.model.baseEditEnum.ekleMi,
                         controller: baslangicTarihiController,
                         isDateTime: true,
                         readOnly: true,
@@ -140,7 +141,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Saat",
-                        enabled: enabled,
+                        enabled: widget.model.baseEditEnum.ekleMi,
                         controller: saatController,
                         readOnly: true,
                         isDateTime: true,

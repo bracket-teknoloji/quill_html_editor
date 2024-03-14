@@ -114,6 +114,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+
+        BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
+        if (widget.model.editTipiEnum?.satisMi ?? false) {
+          BaseSiparisEditModel.instance.kdvDahil = yetkiController.siparisKdvDahilMi ? "E" : "H";
+        BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
+        }
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         if (widget.model.model is BaseSiparisEditModel) {
           BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
@@ -144,7 +151,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
-        BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;

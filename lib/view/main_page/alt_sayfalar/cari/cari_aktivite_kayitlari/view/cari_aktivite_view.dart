@@ -133,7 +133,14 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                       itemCount: viewModel.aktiviteList?.length ?? 0,
                       itemBuilder: (context, index) {
                         final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
-                        return CariAktiviteCard(model: model);
+                        return CariAktiviteCard(
+                          model: model,
+                          onRefresh: (value) async {
+                            if (value) {
+                              await viewModel.getData();
+                            }
+                          },
+                        );
                       },
                     );
                   },

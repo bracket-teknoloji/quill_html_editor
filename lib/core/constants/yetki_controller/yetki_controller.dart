@@ -1,5 +1,6 @@
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
@@ -34,7 +35,7 @@ final class YetkiController {
 
   //! GENEL
 
-  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? userModel?.adminMi ?? false).toList();
+  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu.toStringIfNotNull) ?? userModel?.adminMi ?? false).toList();
   Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;

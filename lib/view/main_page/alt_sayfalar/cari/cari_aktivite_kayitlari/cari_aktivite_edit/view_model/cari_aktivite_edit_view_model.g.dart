@@ -25,6 +25,22 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
     });
   }
 
+  late final _$baseEditEnumAtom = Atom(
+      name: '_CariAktiviteEditViewModelBase.baseEditEnum', context: context);
+
+  @override
+  BaseEditEnum? get baseEditEnum {
+    _$baseEditEnumAtom.reportRead();
+    return super.baseEditEnum;
+  }
+
+  @override
+  set baseEditEnum(BaseEditEnum? value) {
+    _$baseEditEnumAtom.reportWrite(value, super.baseEditEnum, () {
+      super.baseEditEnum = value;
+    });
+  }
+
   late final _$aktiviteBitirilsinMiAtom = Atom(
       name: '_CariAktiviteEditViewModelBase.aktiviteBitirilsinMi',
       context: context);
@@ -55,6 +71,17 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   late final _$_CariAktiviteEditViewModelBaseActionController =
       ActionController(
           name: '_CariAktiviteEditViewModelBase', context: context);
+
+  @override
+  void setBaseEditEnum(BaseEditEnum? value) {
+    final _$actionInfo = _$_CariAktiviteEditViewModelBaseActionController
+        .startAction(name: '_CariAktiviteEditViewModelBase.setBaseEditEnum');
+    try {
+      return super.setBaseEditEnum(value);
+    } finally {
+      _$_CariAktiviteEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setAktiviteBitirilsinMi(bool value) {
@@ -171,6 +198,7 @@ mixin _$CariAktiviteEditViewModel on _CariAktiviteEditViewModelBase, Store {
   String toString() {
     return '''
 model: ${model},
+baseEditEnum: ${baseEditEnum},
 aktiviteBitirilsinMi: ${aktiviteBitirilsinMi}
     ''';
   }

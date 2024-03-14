@@ -2,6 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 
@@ -14,7 +15,13 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
   CariAktiviteListesiModel model = CariAktiviteListesiModel();
 
   @observable
+  BaseEditEnum? baseEditEnum;
+
+  @observable
   bool aktiviteBitirilsinMi = false;
+
+  @action
+  void setBaseEditEnum(BaseEditEnum? value) => baseEditEnum = value;
 
   @action
   void setAktiviteBitirilsinMi(bool value) => aktiviteBitirilsinMi = value;
@@ -48,7 +55,7 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async {
-    model = model.copyWith(islemKodu: 1);
+    model = model.copyWith(islemKodu: baseEditEnum.islemKodu);
     if (aktiviteBitirilsinMi) {
       model = model.copyWith(bittar: DateTime.now());
     }
