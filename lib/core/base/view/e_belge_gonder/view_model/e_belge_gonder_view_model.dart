@@ -1,6 +1,7 @@
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view/e_belge_gonder/model/model/dizayn_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -72,10 +73,14 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getDizaynlar,
       bodyModel: DizaynModel(),
       showLoading: true,
-      queryParameters: {
-        "ModulID": siparisEditModel.getModulID,
-        "ERPDizaynlari": true,
-      },
+      queryParameters: DizaynRequestModel(
+        modulId: siparisEditModel.getModulID,
+        erpDizaynlari: true,
+      ).toJson(),
+      //  {
+      //   "ModulID": siparisEditModel.getModulID,
+      //   "ERPDizaynlari": true,
+      // },
     );
     if (result.success == true) {
       return result.data.map((e) => e as DizaynModel).toList().cast<DizaynModel>();

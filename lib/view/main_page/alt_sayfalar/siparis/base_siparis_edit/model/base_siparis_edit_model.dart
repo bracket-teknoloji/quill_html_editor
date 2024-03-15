@@ -730,11 +730,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   int? get getModulID {
-    if (eArsivMi) {
+    if (eArsivSerisindenMi) {
       return 100;
-    } else if (eFaturaMi) {
+    } else if (eFaturaSerisindenMi) {
       return 99;
-    } else if (getEditTipiEnum?.irsaliyeMi ?? false) {
+    } else if (eIrsaliyeSerisindenMi) {
       return 104;
     }
     return null;

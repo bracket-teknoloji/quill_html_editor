@@ -206,7 +206,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && !siparisModel.eFaturaMi, eBelgeEslestir);
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && siparisModel.eFaturaMi, eBelgeEslestirmeKaldir);
       islemlerList.addIfConditionTrue(
-        !siparisModel.uyariMi && !siparisModel.basariliMi && siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.ebelgeCheckbox == "E"),
+        !siparisModel.uyariMi && !siparisModel.basariliMi && (siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.ebelgeCheckbox == "E")),
         eFaturaGonder,
       );
       islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi || siparisModel.hataliMi, durumSorgula);
