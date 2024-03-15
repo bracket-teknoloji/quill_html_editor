@@ -22,6 +22,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
@@ -413,6 +414,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/faturaAlisIrsaliyesiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisIrsaliye)),
               GetPage(name: "/faturaSatisFaturasiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisFatura)),
               GetPage(name: "/faturaSatisIrsaliyesiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.satisIrsaliye)),
+
+              //* * İrsaliye Faturalaştırma
+              GetPage(name: "/irsaliyeFaturalastir", page: () => IrsaliyeFaturalastirView(model: Get.arguments)),
 
               //* Profil
               GetPage(name: "/temsilciProfil", page: TemsilciProfilView.new),

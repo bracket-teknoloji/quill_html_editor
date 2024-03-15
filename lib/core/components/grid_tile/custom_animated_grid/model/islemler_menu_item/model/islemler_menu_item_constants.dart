@@ -193,9 +193,12 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemTipi == IslemTipiEnum.fatura) {
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true && AccountModel.instance.isDebug, irsaliyeFaturalastir);
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(faturaBelgeNoDegistir);
+      islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
       // islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
       islemlerList.add(kopyala);
     } else if (islemTipi == IslemTipiEnum.eBelge) {
@@ -1087,7 +1090,7 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel get alistanSatisFaturasiOlustur => GridItemModel.islemler(
         title: "Satış Faturası Oluştur",
-        isEnabled: siparisTipi?.eklensinMi,
+        isEnabled: EditTipiEnum.satisFatura.eklensinMi,
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {
@@ -1099,9 +1102,23 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
+  GridItemModel get irsaliyeFaturalastir => GridItemModel.islemler(
+        title: "Fatura Oluştur",
+        isEnabled: siparisTipi?.satisMi == true ? EditTipiEnum.satisFatura.eklensinMi : EditTipiEnum.alisFatura.eklensinMi,
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            return await Get.toNamed(
+              "mainPage/irsaliyeFaturalastir",
+              arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura),
+            );
+          }
+        },
+      );
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
         title: "Satış İrsaliyesi Oluştur",
-        isEnabled: siparisTipi?.satisMi == true ? EditTipiEnum.satisIrsaliye.eklensinMi : EditTipiEnum.alisIrsaliye.eklensinMi,
+        isEnabled: EditTipiEnum.satisIrsaliye.eklensinMi,
         iconData: Icons.list_alt_outlined,
         onTap: () async {
           if (model is BaseSiparisEditModel) {

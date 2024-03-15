@@ -252,7 +252,7 @@ class NetworkManager {
   }
 
   Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true, bool showLoading = true}) =>
-      dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: const EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
+      dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
 
   Future<MemoryImage?> getImage(String? path) async {
     if (path == null) {
@@ -488,7 +488,6 @@ class NetworkManager {
     }
     return null;
   }
-
 
   Future<List<KullanicilarModel>?> getIlgiliKisiler() async {
     final result = await dioPost<KullanicilarModel>(

@@ -135,7 +135,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                               }
                               return;
                             }
-                            final result = await networkManager.deleteFatura(const EditFaturaModel().fromJson(widget.model.toJson()));
+                            final result = await networkManager.deleteFatura(EditFaturaModel().fromJson(widget.model.toJson()));
                             if (result.success == true) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();

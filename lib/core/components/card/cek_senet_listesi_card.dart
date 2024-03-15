@@ -184,7 +184,7 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
     await dialogManager.showAreYouSureDialog(() async {
       final result = await networkManager.dioPost(
         path: ApiUrls.deleteCekSenet,
-        bodyModel: const EditFaturaModel(),
+        bodyModel: EditFaturaModel(),
         showLoading: true,
         data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
       );

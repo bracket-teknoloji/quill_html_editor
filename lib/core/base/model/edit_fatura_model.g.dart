@@ -27,6 +27,11 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+      irsaliyedenFatura: json['IRSALIYEDEN_FATURA'] as bool?,
+      resmiBelgeNo: json['RESMI_BELGE_NO'] as String?,
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
     );
 
 Map<String, dynamic> _$$EditFaturaModelImplToJson(
@@ -55,5 +60,8 @@ Map<String, dynamic> _$$EditFaturaModelImplToJson(
   writeNotNull('TAG', instance.tag);
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
+  writeNotNull('IRSALIYEDEN_FATURA', instance.irsaliyedenFatura);
+  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
   return val;
 }

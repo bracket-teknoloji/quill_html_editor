@@ -26,7 +26,7 @@ class ApiUrls {
   static const String veriTabanlari = "General/GetVeritabanlari";
   static const String getGenelRehber = "General/GetGenelRehber";
 
-  //*Cariler
+  //* Cariler
   static const String deleteCari = "Cari/DeleteCari";
   static const String deleteCariHareket = "Cari/DeleteCariHareket";
   static const String getAktiviteler = "Cari/GetAktiviteler";
@@ -44,7 +44,7 @@ class ApiUrls {
   static const String eBelgeIslemi = "EBelge/EBelgeIslemi";
   static const String getEFaturalar = "EBelge/GetEFaturalar";
 
-  //*Stoklar
+  //* Stoklar
   static const String barkodUret = "Stok/BarkodUret";
   static const String deleteStok = "Stok/DeleteStok";
   static const String deleteStokHareket = "Stok/DeleteStokHareket";
@@ -93,7 +93,7 @@ class ApiUrls {
   static const String getAylikTutarlar = "Finans/GetAylikTutarlar";
   static const String getMasrafKodlari = "Finans/GetMasrafKodlari";
 
-  //*Fatura
+  //* Fatura
   static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";
   static const String deleteFatura = "Fatura/DeleteFatura";
   static const String getBelgeBaglantilari = "Fatura/GetBelgeBaglantilari";
@@ -105,11 +105,12 @@ class ApiUrls {
   static const String getFaturalar = "Fatura/GetFaturalar";
   static const String saveFatura = "Fatura/SaveFatura";
   static const String talepTeklifSiparislestir = "Fatura/TalepTeklifSiparislestir";
+  static const String saveIrsaliyedenFatura = "Fatura/SaveIrsaliyedenFatura";
 
-  //*Temsilci
+  //* Temsilci
   static const String getPlasiyerOzetRaporu = "Finans/GetPlasiyerOzetRaporu";
 
-  //*User
+  //* User
   static const String getOturumlar = "User/GetOturumlar";
 
   //* Servis

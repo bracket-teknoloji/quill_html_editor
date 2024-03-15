@@ -7,11 +7,11 @@ import "base_network_mixin.dart";
 part "edit_fatura_model.freezed.dart";
 part "edit_fatura_model.g.dart";
 
-@freezed
+@unfreezed
 class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
-  const EditFaturaModel._();
+  EditFaturaModel._();
 
-  const factory EditFaturaModel({
+  factory EditFaturaModel({
     @JsonKey(name: "BelgeTipi") int? belgeTipi,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
     bool? remoteTempBelge,
@@ -28,6 +28,9 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     @Default("FaturaModel") String? tag,
     int? islemKodu,
     List<KalemModel>? kalemler,
+    bool? irsaliyedenFatura,
+    String? resmiBelgeNo,
+    DateTime? tarih,
   }) = _EditFaturaModel;
 
   factory EditFaturaModel.fromJson(Map<String, Object?> json) => _$EditFaturaModelFromJson(json);
