@@ -955,7 +955,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     kdvOraniController.text = editTipi?.ambarFisiMi == true
         ? ""
         : viewModel.kalemModel.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.oran) ??
-            (StaticVariables.instance.isMusteriSiparisleri ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+            (model.getEditTipiEnum?.satisMi == true ? (widget.stokListesiModel?.satisKdv ?? 0) : (widget.stokListesiModel?.alisKdv ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     // projeController.text = teslimTarihiController.text = model.teslimTarihi.toDateString;
     kosulController.text = viewModel.kalemModel.kosulKodu ?? model.kosulKodu ?? BaseSiparisEditModel.instance.kosulKodu ?? "";
     dovizTipiController.text = viewModel.kalemModel.dovizliMi ? (viewModel.kalemModel.dovizAdi ?? viewModel.model?.satisDovizAdi ?? viewModel.model?.alisDovizAdi ?? "") : mainCurrency;
@@ -1136,7 +1136,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     }
   }
 
-  String get getDovizAdi => StaticVariables.instance.isMusteriSiparisleri ? (viewModel.kalemModel.stokSatDovizAdi ?? "") : (viewModel.kalemModel.stokAlisDovizAdi ?? "");
+  String get getDovizAdi => model.getEditTipiEnum?.satisMi == true ? (viewModel.kalemModel.stokSatDovizAdi ?? "") : (viewModel.kalemModel.stokAlisDovizAdi ?? "");
 
   void setIskonto(int index, String value) {
     switch (index) {

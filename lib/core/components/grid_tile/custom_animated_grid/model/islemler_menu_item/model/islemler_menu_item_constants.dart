@@ -35,7 +35,6 @@ import "../../../../../../constants/enum/edit_tipi_enum.dart";
 import "../../../../../../constants/enum/islem_tipi_enum.dart";
 import "../../../../../../constants/extensions/list_extensions.dart";
 import "../../../../../../constants/extensions/model_extensions.dart";
-import "../../../../../../constants/static_variables/static_variables.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../../../constants/yetki_controller/yetki_controller.dart";
 import "../../../../../../init/cache/cache_manager.dart";
@@ -430,7 +429,7 @@ class IslemlerMenuItemConstants<T> {
                   dizaynId: result.id,
                   raporOzelKod: result.ozelKod,
                   etiketSayisi: result.kopyaSayisi,
-                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS"),
+                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: siparisModel?.getEditTipiEnum?.rawValue),
                 ),
               ),
             );

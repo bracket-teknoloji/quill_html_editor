@@ -1,10 +1,10 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 import "../../../model/base_grup_kodu_model.dart";
 
 part "stok_rehberi_view_model.g.dart";
@@ -63,7 +63,7 @@ abstract class _StokRehberiViewModelBase with Store {
     siralama: "AZ",
     belgeNo: BaseSiparisEditModel.instance.belgeNo,
     belgeTarihi: BaseSiparisEditModel.instance.tarih.toDateString,
-    belgeTipi: StaticVariables.instance.isMusteriSiparisleri ? "MS" : "SS",
+    belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
     ekranTipi: "R",
     resimGoster: "E",
     faturaTipi: 2,

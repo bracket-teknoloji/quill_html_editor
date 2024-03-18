@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../view_model/mobx_network_mixin.dart";
 import "../../stok_rehberi/model/stok_rehberi_request_model.dart";
@@ -37,7 +37,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   bool get dovizliMi => kalemModel.dovizliMi;
 
   @computed
-  String get dovizAdi => StaticVariables.instance.isMusteriSiparisleri ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
+  String get dovizAdi => BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
   List<String> get olcuBirimiMap => [

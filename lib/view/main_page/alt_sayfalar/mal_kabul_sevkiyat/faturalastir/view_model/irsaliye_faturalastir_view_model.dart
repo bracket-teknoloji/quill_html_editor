@@ -1,7 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "irsaliye_faturalastir_view_model.g.dart";

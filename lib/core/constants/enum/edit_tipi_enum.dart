@@ -124,12 +124,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return "STAL";
       case EditTipiEnum.depoTransferi:
         return "DC";
-
       case EditTipiEnum.ambarGirisi:
         return "AG";
       case EditTipiEnum.ambarCikisi:
         return "AC";
-
       case EditTipiEnum.cari:
         return "";
     }

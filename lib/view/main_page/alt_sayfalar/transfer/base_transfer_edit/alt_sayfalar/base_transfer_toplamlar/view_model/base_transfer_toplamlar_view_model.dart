@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -152,7 +152,7 @@ abstract class _BaseTransferToplamlarViewModelBase with Store {
         "8/10": 0.8,
         "9/10": 0.9,
       };
-  int get getTevkifatPay => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
-  int get getTevkifatPayda => StaticVariables.instance.isMusteriSiparisleri ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
+  int get getTevkifatPay => model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
+  int get getTevkifatPayda => model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
   double get getTevkifatOranlari => getTevkifatPay / getTevkifatPayda;
 }

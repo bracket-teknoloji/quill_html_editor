@@ -143,7 +143,7 @@ final class YetkiController {
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
 
   //! Sipariş
-  bool get _musteriSiparisiMi => StaticVariables.instance.isMusteriSiparisleri;
+  bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
   bool get siparisKdvDahilMi {
     if (_yetkiModel?.siparisMusSipKdvDurumu == "D") return true;
     if (_yetkiModel?.siparisMusSipKdvDurumu == "H") return false;
