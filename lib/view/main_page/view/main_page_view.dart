@@ -196,7 +196,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
               child: Row(
                 children: [
-                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
                       .marginOnly(right: 5),
                   Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
                 ],
@@ -208,7 +208,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               },
               child: Row(
                 children: [
-                  Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
+                  const Icon(Icons.storage_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: 5),
                   Text("${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})", style: theme.textTheme.bodyMedium),
                 ],
               ),

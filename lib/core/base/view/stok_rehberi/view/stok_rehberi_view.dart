@@ -264,7 +264,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
           ),
           //TODO Bu butonu ekle
           // IconButton(onPressed: () async {}, icon: const Icon(Icons.more_vert_outlined)),
-          IconButton(onPressed: () => Get.back(result: true), icon: Icon(Icons.check_circle, color: UIHelper.primaryColor)),
+          IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor)),
         ],
       );
 

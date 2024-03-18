@@ -21,7 +21,6 @@ import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";

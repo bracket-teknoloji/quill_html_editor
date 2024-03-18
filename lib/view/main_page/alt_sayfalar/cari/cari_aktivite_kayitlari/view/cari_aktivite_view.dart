@@ -177,7 +177,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                   }
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.open_in_new_outlined,
                 color: UIHelper.primaryColor,
               ),

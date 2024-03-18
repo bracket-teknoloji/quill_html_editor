@@ -555,7 +555,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                   }
                   dialogManager.showCariGridViewDialog(CariListesiModel());
                 },
-                icon: Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onClear: () => viewModel.setCariKodu(null),
               onTap: () async {

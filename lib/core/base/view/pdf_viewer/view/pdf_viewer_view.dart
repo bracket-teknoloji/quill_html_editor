@@ -167,10 +167,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-            IconButton(onPressed: () => pdfViewerController.firstPage(), icon: const Icon(Icons.first_page_outlined)),
-            IconButton(onPressed: () => pdfViewerController.previousPage(), icon: const Icon(Icons.arrow_back_outlined)),
-            IconButton(onPressed: () => pdfViewerController.nextPage(), icon: const Icon(Icons.arrow_forward_outlined)),
-            Observer(builder: (_) => IconButton(onPressed: () => pdfViewerController.lastPage(), icon: const Icon(Icons.last_page_outlined))),
+            FloatingActionButton.small(onPressed: () => pdfViewerController.firstPage(), child: const Icon(Icons.first_page_outlined)),
+            FloatingActionButton.small(onPressed: () => pdfViewerController.previousPage(), child: const Icon(Icons.arrow_back_outlined)),
+            FloatingActionButton.small(onPressed: () => pdfViewerController.nextPage(), child: const Icon(Icons.arrow_forward_outlined)),
+            FloatingActionButton.small(onPressed: () => pdfViewerController.lastPage(), child: const Icon(Icons.last_page_outlined)),
           ],
         ),
       );

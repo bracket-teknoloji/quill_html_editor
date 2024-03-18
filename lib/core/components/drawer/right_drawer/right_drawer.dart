@@ -55,7 +55,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (CacheManager.getAnaVeri!.userModel!.admin == "E")
-                        Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize)
+                        const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize)
                       else
                         const SizedBox(),
                       Text(
@@ -156,7 +156,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                              const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
                               Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall),
                             ],
                           ),

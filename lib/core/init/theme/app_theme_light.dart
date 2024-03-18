@@ -16,7 +16,7 @@ class AppThemeLight extends AppTheme {
   ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2), brightness: Brightness.light);
   @override
   ThemeData get theme => ThemeData(
-        cupertinoOverrideTheme: CupertinoThemeData(
+        cupertinoOverrideTheme: const CupertinoThemeData(
           primaryColor: UIHelper.primaryColor,
           applyThemeToAll: true,
         ),
@@ -27,12 +27,12 @@ class AppThemeLight extends AppTheme {
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
-        tabBarTheme: TabBarTheme(
+        tabBarTheme: const TabBarTheme(
           indicatorColor: UIHelper.primaryColor,
           labelColor: UIHelper.primaryColor,
           labelPadding: UIHelper.lowPadding,
-          labelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
-          unselectedLabelStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+          labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+          unselectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
         ),
         segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
@@ -61,7 +61,7 @@ class AppThemeLight extends AppTheme {
           textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),
         ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
-        progressIndicatorTheme: ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
           menuStyle: const MenuStyle(),
           inputDecorationTheme: InputDecorationTheme(
@@ -171,7 +171,7 @@ class AppThemeLight extends AppTheme {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
-            borderSide: BorderSide(color: UIHelper.primaryColor),
+            borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
         buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),

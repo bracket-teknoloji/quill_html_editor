@@ -91,7 +91,7 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Icon(Icons.search_off_outlined, size: 100, color: Colors.grey.shade300),
+                    Icon(Icons.dashboard_outlined, size: 100, color: Colors.grey.shade300),
                     const Text("Sayım listesi boş"),
                   ],
                 ),

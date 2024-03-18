@@ -123,7 +123,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             enableSuggestions: true,
             decoration: InputDecoration(
               enabled: widget.enabled ?? true,
-              errorStyle: TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+              errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: UIHelper.primaryColor.withOpacity(0.7),
@@ -207,7 +207,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         TextSpan(
                           text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
                           style: (widget.enabled != false ? (widget.isMust ?? false) : false)
-                              ? TextStyle(color: UIHelper.primaryColor)
+                              ? const TextStyle(color: UIHelper.primaryColor)
                               : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
                         TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
