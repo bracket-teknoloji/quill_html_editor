@@ -182,7 +182,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                       controller: genelIskonto1Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (String p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                      onChanged: (String p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
                       valueWidget: Observer(
                         builder: (_) => Text(
                           viewModel.isGenIsk1T
@@ -230,7 +230,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                               : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         ),
                       ),
-                      onChanged: (String p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                      onChanged: (String p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
                       suffix: IconButton(
                         onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
                         icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
@@ -263,7 +263,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                       enabled: enable && yetkiController.siparisGenIsk3AktifMi,
                       controller: genelIskonto3Controller,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (String p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                      onChanged: (String p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
                       isFormattedString: true,
                       valueWidget: Observer(
                         builder: (_) => Text(

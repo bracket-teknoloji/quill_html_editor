@@ -71,14 +71,12 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
 
   @action
   void setGenIsk1(double? value) {
-    if (value == 0) {
+    if (value == 0 || value == null) {
       model = model.copyWith(genIsk1o: 0);
+    BaseSiparisEditModel.setInstance(model);
       return;
-    }
-    if (isGenIsk1T) {
-      model = model.copyWith(
-        genIsk1o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100,
-      );
+    } else if (isGenIsk1T) {
+      model = model.copyWith(genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100);
     } else {
       model = model.copyWith(genIsk1o: value);
     }
@@ -87,14 +85,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
 
   @action
   void setGenIsk2(double? value) {
-    if (value == 0) {
+    if (value == 0 || value == null) {
       model = model.copyWith(genIsk2o: 0);
+    BaseSiparisEditModel.setInstance(model);
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(
-        genIsk2o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100,
-      );
+      model = model.copyWith(genIsk2o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk2o: value);
     }
@@ -103,12 +100,13 @@ abstract class _BaseSiparisToplamlarViewModelBase with Store {
 
   @action
   void setGenIsk3(double? value) {
-    if (value == 0) {
+    if (value == 0 || value == null) {
       model = model.copyWith(genIsk3o: 0);
+    BaseSiparisEditModel.setInstance(model);
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3o: (value ?? 0) / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100);
+      model = model.copyWith(genIsk3o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100);
     } else {
       model = model.copyWith(genIsk3o: value);
     }

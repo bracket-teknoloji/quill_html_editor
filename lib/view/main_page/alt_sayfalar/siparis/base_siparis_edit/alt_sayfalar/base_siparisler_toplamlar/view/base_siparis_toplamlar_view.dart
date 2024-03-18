@@ -260,7 +260,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (p0) => viewModel.setGenIsk1(
-                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),
+                    p0.toDoubleWithFormattedString,
                   ),
                   valueWidget: Observer(
                     builder: (_) => Text(
@@ -319,7 +319,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                     ),
                   ),
                   onChanged: (p0) => viewModel.setGenIsk2(
-                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),
+                    p0.toDoubleWithFormattedString,
                   ),
                   suffix: IconButton(
                     onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
@@ -364,7 +364,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                   controller: genelIskonto3Controller,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (p0) => viewModel.setGenIsk3(
-                    double.tryParse(p0.replaceAll(RegExp(r","), ".")),
+                    p0.toDoubleWithFormattedString,
                   ),
                   valueWidget: Observer(
                     builder: (_) => Text(

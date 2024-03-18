@@ -945,6 +945,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get toplamDovizBrutTutar => kalemList?.map((e) => e.getDovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamNetTutar => kalemList?.map((e) => e.netFiyat ?? 0).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
+  double get tutarToIskonto1 => (genIsk1t ?? 0) / (toplamAraToplam != 0 ? toplamAraToplam : 1) * 100;
+
   double get genelToplamTutar {
     if (kdvDahilMi ?? false) {
       genelToplam = toplamBrutTutar - getToplamIskonto;

@@ -225,7 +225,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: genelIskonto1Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (String p0) => viewModel.setGenIsk1(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                  onChanged: (String p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
                   valueWidget: Observer(
                     builder: (_) => Text(
                       viewModel.isGenIsk1T
@@ -274,7 +274,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     ),
                   ),
-                  onChanged: (String p0) => viewModel.setGenIsk2(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                  onChanged: (String p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
                   suffix: IconButton(
                     onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
                     icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
@@ -308,7 +308,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: genelIskonto3Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (String p0) => viewModel.setGenIsk3(double.tryParse(p0.replaceAll(RegExp(r","), "."))),
+                  onChanged: (String p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
                   valueWidget: Observer(
                     builder: (_) => Text(
                       viewModel.isGenIsk3T
@@ -478,9 +478,9 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       );
 
   void initControllers() {
-    genelIskonto1Controller = TextEditingController(text: model.genIsk1o.toIntIfDouble.toStringIfNotNull);
-    genelIskonto2Controller = TextEditingController(text: model.genIsk2o.toIntIfDouble.toStringIfNotNull);
-    genelIskonto3Controller = TextEditingController(text: model.genIsk3o.toIntIfDouble.toStringIfNotNull);
+    genelIskonto1Controller = TextEditingController(text: model.genIsk1o.commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    genelIskonto2Controller = TextEditingController(text: model.genIsk2o.commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    genelIskonto3Controller = TextEditingController(text: model.genIsk3o.commaSeparatedWithDecimalDigits(OndalikEnum.oran));
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi.toStringIfNotNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi.toStringIfNotNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi.toStringIfNotNull);
