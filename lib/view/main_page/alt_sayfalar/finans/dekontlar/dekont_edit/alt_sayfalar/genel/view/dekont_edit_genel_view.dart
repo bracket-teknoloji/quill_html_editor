@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
@@ -23,6 +24,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   late final TextEditingController _tarihController;
   late final TextEditingController _seriController;
   late final TextEditingController _plasiyerController;
+  late final TextEditingController _projeController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -30,6 +32,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
     _tarihController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.tarih?.toDateString ?? "");
     _seriController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.seriAdi ?? "");
     _plasiyerController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.plasiyerAdi ?? "");
+    _projeController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.projeAdi ?? "");
     if ((widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak) && viewModel.dekontIslemlerRequestModel.seriAdi == null) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
         if (viewModel.dekontIslemlerRequestModel.tarih == null) {
@@ -48,6 +51,7 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
     _tarihController.dispose();
     _seriController.dispose();
     _plasiyerController.dispose();
+    _projeController.dispose();
     super.dispose();
   }
 
@@ -84,7 +88,16 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
               controller: _plasiyerController,
               valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.plasiyerKodu ?? "")),
               onTap: setPlasiyer,
-            ),
+            ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+            CustomTextField(
+              labelText: "Proje",
+              suffixMore: true,
+              isMust: true,
+              readOnly: true,
+              controller: _projeController,
+              valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.projeKodu ?? "")),
+              onTap: setProje,
+            ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
           ],
         ).paddingAll(UIHelper.lowSize),
       );
@@ -110,6 +123,14 @@ class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
     if (result != null) {
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       viewModel.setPlasiyerKodu(result);
+    }
+  }
+
+  Future<void> setProje() async {
+    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, true);
+    if (result != null) {
+      _projeController.text = result.projeAciklama ?? "";
+      viewModel.setProjeKodu(result);
     }
   }
 }

@@ -132,6 +132,7 @@ _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
       hesapKodu: json['HESAP_KODU'] as String?,
       hesapTipi: json['HESAP_TIPI'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
@@ -179,6 +180,7 @@ Map<String, dynamic> _$$DekontKalemlerImplToJson(
   writeNotNull('HESAP_KODU', instance.hesapKodu);
   writeNotNull('HESAP_TIPI', instance.hesapTipi);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('TUTAR', instance.tutar);
   writeNotNull('DEPO_KODU', instance.depoKodu);

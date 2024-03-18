@@ -599,6 +599,10 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           );
           if (siparisModel == null) {
             return;
+          }else {
+            siparisModel.genIsk1t = widget.eBelgeListesiModel.iskontoTutari;
+            siparisModel.genIsk1o = siparisModel.tutarToIskonto1;
+
           }
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",
@@ -617,6 +621,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ebelgeZarfid: widget.eBelgeListesiModel.zarfid,
                 belgeTipi: 2,
                 tipi: 2,
+                genIsk1t: widget.eBelgeListesiModel.iskontoTutari,
+                // genIsk1O: widget.eBelgeListesiModel.isk,
                 efattanTutar: widget.eBelgeListesiModel.genelToplam,
                 efattanDovizAdi: widget.eBelgeListesiModel.dovizAdi,
                 efattanDoviz: widget.eBelgeListesiModel.dovizTutari,

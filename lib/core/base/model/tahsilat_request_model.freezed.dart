@@ -1126,6 +1126,8 @@ mixin _$DekontKalemler {
   set hesapTipi(String? value) => throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
+  String? get projeKodu => throw _privateConstructorUsedError;
+  set projeKodu(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
   double? get tutar => throw _privateConstructorUsedError;
@@ -1160,6 +1162,10 @@ mixin _$DekontKalemler {
   String? get plasiyerAdi => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   set plasiyerAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? get projeAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  set projeAdi(String? value) => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get dovizTipiAdi => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -1216,6 +1222,7 @@ abstract class $DekontKalemlerCopyWith<$Res> {
       String? hesapKodu,
       String? hesapTipi,
       String? plasiyerKodu,
+      String? projeKodu,
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
@@ -1232,6 +1239,7 @@ abstract class $DekontKalemlerCopyWith<$Res> {
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
+      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
@@ -1271,6 +1279,7 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
     Object? hesapKodu = freezed,
     Object? hesapTipi = freezed,
     Object? plasiyerKodu = freezed,
+    Object? projeKodu = freezed,
     Object? tarih = freezed,
     Object? tutar = freezed,
     Object? depoKodu = freezed,
@@ -1286,6 +1295,7 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
     Object? muhasebeHesapTipi = freezed,
     Object? kalemAdi = freezed,
     Object? plasiyerAdi = freezed,
+    Object? projeAdi = freezed,
     Object? dovizTipiAdi = freezed,
     Object? exportAdi = freezed,
     Object? depoAdi = freezed,
@@ -1340,6 +1350,10 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
       plasiyerKodu: freezed == plasiyerKodu
           ? _value.plasiyerKodu
           : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       tarih: freezed == tarih
           ? _value.tarih
@@ -1400,6 +1414,10 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
       plasiyerAdi: freezed == plasiyerAdi
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
               as String?,
       dovizTipiAdi: freezed == dovizTipiAdi
           ? _value.dovizTipiAdi
@@ -1476,6 +1494,7 @@ abstract class _$$DekontKalemlerImplCopyWith<$Res>
       String? hesapKodu,
       String? hesapTipi,
       String? plasiyerKodu,
+      String? projeKodu,
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
@@ -1492,6 +1511,7 @@ abstract class _$$DekontKalemlerImplCopyWith<$Res>
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
+      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
@@ -1529,6 +1549,7 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
     Object? hesapKodu = freezed,
     Object? hesapTipi = freezed,
     Object? plasiyerKodu = freezed,
+    Object? projeKodu = freezed,
     Object? tarih = freezed,
     Object? tutar = freezed,
     Object? depoKodu = freezed,
@@ -1544,6 +1565,7 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
     Object? muhasebeHesapTipi = freezed,
     Object? kalemAdi = freezed,
     Object? plasiyerAdi = freezed,
+    Object? projeAdi = freezed,
     Object? dovizTipiAdi = freezed,
     Object? exportAdi = freezed,
     Object? depoAdi = freezed,
@@ -1598,6 +1620,10 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
       plasiyerKodu: freezed == plasiyerKodu
           ? _value.plasiyerKodu
           : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       tarih: freezed == tarih
           ? _value.tarih
@@ -1658,6 +1684,10 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
       plasiyerAdi: freezed == plasiyerAdi
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
               as String?,
       dovizTipiAdi: freezed == dovizTipiAdi
           ? _value.dovizTipiAdi
@@ -1729,6 +1759,7 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
       this.hesapKodu,
       this.hesapTipi,
       this.plasiyerKodu,
+      this.projeKodu,
       this.tarih,
       this.tutar,
       this.depoKodu,
@@ -1744,6 +1775,7 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
       this.muhasebeHesapTipi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.plasiyerAdi,
+      @JsonKey(includeToJson: false, includeFromJson: false) this.projeAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.exportAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.depoAdi,
@@ -1783,6 +1815,8 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
   @override
   String? plasiyerKodu;
   @override
+  String? projeKodu;
+  @override
   DateTime? tarih;
   @override
   double? tutar;
@@ -1814,6 +1848,9 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? plasiyerAdi;
+  @override
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? projeAdi;
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? dovizTipiAdi;
@@ -1871,6 +1908,7 @@ abstract class _DekontKalemler extends DekontKalemler {
       String? hesapKodu,
       String? hesapTipi,
       String? plasiyerKodu,
+      String? projeKodu,
       DateTime? tarih,
       double? tutar,
       int? depoKodu,
@@ -1887,6 +1925,7 @@ abstract class _DekontKalemler extends DekontKalemler {
       @JsonKey(includeToJson: false, includeFromJson: false) String? kalemAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? plasiyerAdi,
+      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       String? dovizTipiAdi,
       @JsonKey(includeToJson: false, includeFromJson: false) String? exportAdi,
@@ -1937,6 +1976,9 @@ abstract class _DekontKalemler extends DekontKalemler {
   String? get plasiyerKodu;
   set plasiyerKodu(String? value);
   @override
+  String? get projeKodu;
+  set projeKodu(String? value);
+  @override
   DateTime? get tarih;
   set tarih(DateTime? value);
   @override
@@ -1985,6 +2027,11 @@ abstract class _DekontKalemler extends DekontKalemler {
   String? get plasiyerAdi;
   @JsonKey(includeToJson: false, includeFromJson: false)
   set plasiyerAdi(String? value);
+  @override
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? get projeAdi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  set projeAdi(String? value);
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get dovizTipiAdi;

@@ -32,6 +32,8 @@ mixin _$DekontIslemlerRequestModel {
       throw _privateConstructorUsedError;
   String? get plasiyerKodu => throw _privateConstructorUsedError;
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
+  String? get projeKodu => throw _privateConstructorUsedError;
+  set projeKodu(String? value) => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
   set tag(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
@@ -50,6 +52,10 @@ mixin _$DekontIslemlerRequestModel {
   String? get plasiyerAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set plasiyerAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get projeAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set projeAdi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -70,13 +76,15 @@ abstract class $DekontIslemlerRequestModelCopyWith<$Res> {
       String? guid,
       List<DekontKalemler>? kalemler,
       String? plasiyerKodu,
+      String? projeKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi});
+      String? plasiyerAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi});
 }
 
 /// @nodoc
@@ -98,12 +106,14 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
     Object? guid = freezed,
     Object? kalemler = freezed,
     Object? plasiyerKodu = freezed,
+    Object? projeKodu = freezed,
     Object? tag = freezed,
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
     Object? dekontNo = freezed,
     Object? seriAdi = freezed,
     Object? plasiyerAdi = freezed,
+    Object? projeAdi = freezed,
   }) {
     return _then(_value.copyWith(
       dekontIslemTuru: freezed == dekontIslemTuru
@@ -126,6 +136,10 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
           ? _value.plasiyerKodu
           : plasiyerKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -150,6 +164,10 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -169,13 +187,15 @@ abstract class _$$DekontIslemlerRequestModelImplCopyWith<$Res>
       String? guid,
       List<DekontKalemler>? kalemler,
       String? plasiyerKodu,
+      String? projeKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi});
+      String? plasiyerAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi});
 }
 
 /// @nodoc
@@ -196,12 +216,14 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
     Object? guid = freezed,
     Object? kalemler = freezed,
     Object? plasiyerKodu = freezed,
+    Object? projeKodu = freezed,
     Object? tag = freezed,
     Object? tarih = freezed,
     Object? yeniKayit = freezed,
     Object? dekontNo = freezed,
     Object? seriAdi = freezed,
     Object? plasiyerAdi = freezed,
+    Object? projeAdi = freezed,
   }) {
     return _then(_$DekontIslemlerRequestModelImpl(
       dekontIslemTuru: freezed == dekontIslemTuru
@@ -224,6 +246,10 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
           ? _value.plasiyerKodu
           : plasiyerKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       tag: freezed == tag
           ? _value.tag
           : tag // ignore: cast_nullable_to_non_nullable
@@ -248,6 +274,10 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -261,12 +291,14 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
       this.guid,
       this.kalemler,
       this.plasiyerKodu,
+      this.projeKodu,
       this.tag = "DekontModel",
       this.tarih,
       @JsonKey(name: "_YeniKayit") this.yeniKayit,
       this.dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) this.seriAdi,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi})
+      @JsonKey(includeFromJson: false, includeToJson: false) this.plasiyerAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi})
       : super._();
 
   factory _$DekontIslemlerRequestModelImpl.fromJson(
@@ -284,6 +316,8 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @override
   String? plasiyerKodu;
   @override
+  String? projeKodu;
+  @override
   @JsonKey()
   String? tag;
   @override
@@ -299,6 +333,9 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? plasiyerAdi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? projeAdi;
 
   @JsonKey(ignore: true)
   @override
@@ -322,13 +359,16 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
       String? guid,
       List<DekontKalemler>? kalemler,
       String? plasiyerKodu,
+      String? projeKodu,
       String? tag,
       DateTime? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit,
       int? dekontNo,
       @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      String? plasiyerAdi}) = _$DekontIslemlerRequestModelImpl;
+      String? plasiyerAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? projeAdi}) = _$DekontIslemlerRequestModelImpl;
   _DekontIslemlerRequestModel._() : super._();
 
   factory _DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) =
@@ -349,6 +389,9 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   @override
   String? get plasiyerKodu;
   set plasiyerKodu(String? value);
+  @override
+  String? get projeKodu;
+  set projeKodu(String? value);
   @override
   String? get tag;
   set tag(String? value);
@@ -373,6 +416,11 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   String? get plasiyerAdi;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set plasiyerAdi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get projeAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set projeAdi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>

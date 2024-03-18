@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_proje_model.dart";
 
 import "../../../../../../../../../core/base/model/seri_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -34,6 +35,17 @@ abstract class _DekontEditGenelViewModelBase with Store {
       plasiyerKodu: value?.plasiyerKodu,
       plasiyerAdi: value?.plasiyerAciklama,
       kalemler: dekontIslemlerRequestModel.kalemler?.map((e) => e.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama)).toList(),
+    );
+    setSingleton();
+  }
+
+  @action
+  void setProjeKodu(BaseProjeModel? value) {
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
+      projeKodu: value?.projeKodu,
+      projeAdi: value?.projeAciklama,
+      kalemler: dekontIslemlerRequestModel.kalemler?.map((e) => e.copyWith(projeKodu: value?.projeKodu,
+      projeAdi: value?.projeAciklama,)).toList(),
     );
     setSingleton();
   }

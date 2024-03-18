@@ -17,12 +17,14 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
     String? guid,
     List<DekontKalemler>? kalemler,
     String? plasiyerKodu,
+    String? projeKodu,
     @Default("DekontModel") String? tag,
     DateTime? tarih,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
     int? dekontNo,
     @JsonKey(includeFromJson: false, includeToJson: false) String? seriAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
   }) = _DekontIslemlerRequestModel;
 
   factory DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) => _$DekontIslemlerRequestModelFromJson(json);

@@ -16,6 +16,7 @@ _$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(
           ?.map((e) => DekontKalemler.fromJson(e as Map<String, dynamic>))
           .toList(),
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
       tag: json['TAG'] as String? ?? "DekontModel",
       tarih: json['TARIH'] == null
           ? null
@@ -39,6 +40,7 @@ Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(
   writeNotNull('GUID', instance.guid);
   writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('TAG', instance.tag);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('_YeniKayit', instance.yeniKayit);

@@ -47,7 +47,8 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
       } else if (widget.baseEditEnum == BaseEditEnum.taslak) {
         final EBelgeListesiModel model = widget.eBelgeModel!;
-        final CariListesiModel? cariModel = await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, filterText: "", eFaturaGoster: true, kod: [""]));
+        final CariListesiModel? cariModel =
+            await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, filterText: "", eFaturaGoster: true, kod: [widget.eBelgeModel?.cariKodu ?? ""]));
         SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
         SingletonDekontIslemlerRequestModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
@@ -70,7 +71,6 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
             hesapTipi: "M",
             ba: "B",
             hesapAdi: "Muhasebe Kodu Seçiniz",
-            hesapKodu: cariModel?.cariKodu,
             kalemAdi: "Muhasebe Kodu Seçiniz",
             tutar: (model.genelToplam ?? 0) - (model.kdvTutari ?? 0),
             belgeNo: model.resmiBelgeNo,
@@ -83,7 +83,6 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
             hesapTipi: "M",
             ba: "B",
             hesapAdi: "Muhasebe Kodu Seçiniz",
-            hesapKodu: cariModel?.cariKodu,
             kalemAdi: "Muhasebe Kodu Seçiniz",
             tutar: model.kdvTutari,
             belgeNo: model.resmiBelgeNo,
@@ -177,12 +176,17 @@ class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerPr
           } else if (SingletonDekontIslemlerRequestModel.instance.kalemler.ext.isNullOrEmpty) {
             dialogManager.showErrorSnackBar("Kalem ekleyin.");
             _tabController.animateTo(1);
+          } else if (SingletonDekontIslemlerRequestModel.instance.kalemler?.any((element) => element.hesapKodu == null) == true) {
+            dialogManager.showErrorSnackBar("Hesap kodu boş olan kalem var.");
+            _tabController.animateTo(1);
           } else {
-            final result = await viewModel.postData();
-            if (result.success ?? false) {
-              dialogManager.showSuccessSnackBar("İşlem Başarılı");
-              Get.back();
-            }
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.postData();
+              if (result.success ?? false) {
+                dialogManager.showSuccessSnackBar("İşlem Başarılı");
+                Get.back();
+              }
+            });
           }
         },
         icon: const Icon(Icons.save_outlined),

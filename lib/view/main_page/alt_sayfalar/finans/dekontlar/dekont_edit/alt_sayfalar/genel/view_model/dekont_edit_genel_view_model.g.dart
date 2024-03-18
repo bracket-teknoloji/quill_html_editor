@@ -75,6 +75,17 @@ mixin _$DekontEditGenelViewModel on _DekontEditGenelViewModelBase, Store {
   }
 
   @override
+  void setProjeKodu(BaseProjeModel? value) {
+    final _$actionInfo = _$_DekontEditGenelViewModelBaseActionController
+        .startAction(name: '_DekontEditGenelViewModelBase.setProjeKodu');
+    try {
+      return super.setProjeKodu(value);
+    } finally {
+      _$_DekontEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 dekontIslemlerRequestModel: ${dekontIslemlerRequestModel}
