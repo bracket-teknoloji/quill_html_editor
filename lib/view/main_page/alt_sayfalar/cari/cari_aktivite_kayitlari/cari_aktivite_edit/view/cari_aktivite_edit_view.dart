@@ -111,15 +111,6 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
             key: formKey,
             child: Column(
               children: [
-                Card(
-                  child: Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      value: viewModel.aktiviteBitirilsinMi,
-                      onChanged: viewModel.setAktiviteBitirilsinMi,
-                      title: const Text("Aktivite Bitirilsin"),
-                    ),
-                  ),
-                ).yetkiVarMi(widget.model.baseEditEnum.ekleMi),
                 Row(
                   children: [
                     Expanded(
@@ -258,6 +249,25 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> {
                     },
                     icon: const Icon(Icons.more_horiz_outlined),
                   ),
+                ),
+                Card(
+                  child: Observer(
+                    builder: (_) => SwitchListTile.adaptive(
+                      value: viewModel.aktiviteBitirilsinMi,
+                      onChanged: viewModel.setAktiviteBitirilsinMi,
+                      title: const Text("Aktivite Bitirilsin"),
+                    ),
+                  ),
+                ).yetkiVarMi(widget.model.baseEditEnum.ekleMi),
+                Observer(
+                  builder: (_) => const CustomTextField(
+                    labelText: "",
+                  ).yetkiVarMi(viewModel.aktiviteBitirilsinMi),
+                ),
+                Observer(
+                  builder: (_) => const CustomTextField(
+                    labelText: "",
+                  ).yetkiVarMi(viewModel.aktiviteBitirilsinMi),
                 ),
               ],
             ).paddingAll(UIHelper.lowSize),
