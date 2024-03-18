@@ -14,6 +14,7 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       kullaniciAdi: json['KULLANICI_ADI'] as String?,
+      kullaniciTitle: json['KULLANICI_TITLE'] as String?,
       aktiviteTipi: json['AKTIVITE_TIPI'] as int?,
       aktiviteAdi: json['AKTIVITE_ADI'] as String?,
       bastar: json['BASTAR'] == null
@@ -35,6 +36,10 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
       duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
       ilgiliKisi: json['ILGILI_KISI'] as String?,
       bolum: json['BOLUM'] as String?,
+      listDetay: (json['LIST_DETAY'] as List<dynamic>?)
+          ?.map((e) =>
+              CariAktiviteListesiModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
@@ -52,6 +57,7 @@ Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('KULLANICI_ADI', instance.kullaniciAdi);
+  writeNotNull('KULLANICI_TITLE', instance.kullaniciTitle);
   writeNotNull('AKTIVITE_TIPI', instance.aktiviteTipi);
   writeNotNull('AKTIVITE_ADI', instance.aktiviteAdi);
   writeNotNull('BASTAR', instance.bastar?.toIso8601String());
@@ -65,5 +71,7 @@ Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
   writeNotNull('ILGILI_KISI', instance.ilgiliKisi);
   writeNotNull('BOLUM', instance.bolum);
+  writeNotNull(
+      'LIST_DETAY', instance.listDetay?.map((e) => e.toJson()).toList());
   return val;
 }

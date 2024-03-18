@@ -31,6 +31,8 @@ mixin _$CariAktiviteListesiModel {
   set cariAdi(String? value) => throw _privateConstructorUsedError;
   String? get kullaniciAdi => throw _privateConstructorUsedError;
   set kullaniciAdi(String? value) => throw _privateConstructorUsedError;
+  String? get kullaniciTitle => throw _privateConstructorUsedError;
+  set kullaniciTitle(String? value) => throw _privateConstructorUsedError;
   int? get aktiviteTipi => throw _privateConstructorUsedError;
   set aktiviteTipi(int? value) => throw _privateConstructorUsedError;
   String? get aktiviteAdi => throw _privateConstructorUsedError;
@@ -57,6 +59,10 @@ mixin _$CariAktiviteListesiModel {
   set ilgiliKisi(String? value) => throw _privateConstructorUsedError;
   String? get bolum => throw _privateConstructorUsedError;
   set bolum(String? value) => throw _privateConstructorUsedError;
+  List<CariAktiviteListesiModel>? get listDetay =>
+      throw _privateConstructorUsedError;
+  set listDetay(List<CariAktiviteListesiModel>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -76,6 +82,7 @@ abstract class $CariAktiviteListesiModelCopyWith<$Res> {
       String? cariKodu,
       String? cariAdi,
       String? kullaniciAdi,
+      String? kullaniciTitle,
       int? aktiviteTipi,
       String? aktiviteAdi,
       DateTime? bastar,
@@ -88,7 +95,8 @@ abstract class $CariAktiviteListesiModelCopyWith<$Res> {
       DateTime? duzeltmetarihi,
       String? duzeltmeyapankul,
       String? ilgiliKisi,
-      String? bolum});
+      String? bolum,
+      List<CariAktiviteListesiModel>? listDetay});
 }
 
 /// @nodoc
@@ -110,6 +118,7 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? kullaniciAdi = freezed,
+    Object? kullaniciTitle = freezed,
     Object? aktiviteTipi = freezed,
     Object? aktiviteAdi = freezed,
     Object? bastar = freezed,
@@ -123,6 +132,7 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
     Object? duzeltmeyapankul = freezed,
     Object? ilgiliKisi = freezed,
     Object? bolum = freezed,
+    Object? listDetay = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -145,6 +155,10 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
           ? _value.kullaniciAdi
           : kullaniciAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      kullaniciTitle: freezed == kullaniciTitle
+          ? _value.kullaniciTitle
+          : kullaniciTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       aktiviteTipi: freezed == aktiviteTipi
           ? _value.aktiviteTipi
           : aktiviteTipi // ignore: cast_nullable_to_non_nullable
@@ -197,6 +211,10 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
           ? _value.bolum
           : bolum // ignore: cast_nullable_to_non_nullable
               as String?,
+      listDetay: freezed == listDetay
+          ? _value.listDetay
+          : listDetay // ignore: cast_nullable_to_non_nullable
+              as List<CariAktiviteListesiModel>?,
     ) as $Val);
   }
 }
@@ -216,6 +234,7 @@ abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res>
       String? cariKodu,
       String? cariAdi,
       String? kullaniciAdi,
+      String? kullaniciTitle,
       int? aktiviteTipi,
       String? aktiviteAdi,
       DateTime? bastar,
@@ -228,7 +247,8 @@ abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res>
       DateTime? duzeltmetarihi,
       String? duzeltmeyapankul,
       String? ilgiliKisi,
-      String? bolum});
+      String? bolum,
+      List<CariAktiviteListesiModel>? listDetay});
 }
 
 /// @nodoc
@@ -249,6 +269,7 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? kullaniciAdi = freezed,
+    Object? kullaniciTitle = freezed,
     Object? aktiviteTipi = freezed,
     Object? aktiviteAdi = freezed,
     Object? bastar = freezed,
@@ -262,6 +283,7 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
     Object? duzeltmeyapankul = freezed,
     Object? ilgiliKisi = freezed,
     Object? bolum = freezed,
+    Object? listDetay = freezed,
   }) {
     return _then(_$CariAktiviteListesiModelImpl(
       id: freezed == id
@@ -284,6 +306,10 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
           ? _value.kullaniciAdi
           : kullaniciAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      kullaniciTitle: freezed == kullaniciTitle
+          ? _value.kullaniciTitle
+          : kullaniciTitle // ignore: cast_nullable_to_non_nullable
+              as String?,
       aktiviteTipi: freezed == aktiviteTipi
           ? _value.aktiviteTipi
           : aktiviteTipi // ignore: cast_nullable_to_non_nullable
@@ -336,6 +362,10 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
           ? _value.bolum
           : bolum // ignore: cast_nullable_to_non_nullable
               as String?,
+      listDetay: freezed == listDetay
+          ? _value.listDetay
+          : listDetay // ignore: cast_nullable_to_non_nullable
+              as List<CariAktiviteListesiModel>?,
     ));
   }
 }
@@ -349,6 +379,7 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
       this.cariKodu,
       this.cariAdi,
       this.kullaniciAdi,
+      this.kullaniciTitle,
       this.aktiviteTipi,
       this.aktiviteAdi,
       this.bastar,
@@ -361,7 +392,8 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
       this.duzeltmetarihi,
       this.duzeltmeyapankul,
       this.ilgiliKisi,
-      this.bolum})
+      this.bolum,
+      this.listDetay})
       : super._();
 
   factory _$CariAktiviteListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -377,6 +409,8 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   String? cariAdi;
   @override
   String? kullaniciAdi;
+  @override
+  String? kullaniciTitle;
   @override
   int? aktiviteTipi;
   @override
@@ -403,6 +437,8 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   String? ilgiliKisi;
   @override
   String? bolum;
+  @override
+  List<CariAktiviteListesiModel>? listDetay;
 
   @JsonKey(ignore: true)
   @override
@@ -421,24 +457,27 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
 
 abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   factory _CariAktiviteListesiModel(
-      {int? id,
-      int? islemKodu,
-      String? cariKodu,
-      String? cariAdi,
-      String? kullaniciAdi,
-      int? aktiviteTipi,
-      String? aktiviteAdi,
-      DateTime? bastar,
-      DateTime? kayittarihi,
-      String? kayityapankul,
-      DateTime? bittar,
-      String? sonucAciklama,
-      double? sure,
-      String? aciklama,
-      DateTime? duzeltmetarihi,
-      String? duzeltmeyapankul,
-      String? ilgiliKisi,
-      String? bolum}) = _$CariAktiviteListesiModelImpl;
+          {int? id,
+          int? islemKodu,
+          String? cariKodu,
+          String? cariAdi,
+          String? kullaniciAdi,
+          String? kullaniciTitle,
+          int? aktiviteTipi,
+          String? aktiviteAdi,
+          DateTime? bastar,
+          DateTime? kayittarihi,
+          String? kayityapankul,
+          DateTime? bittar,
+          String? sonucAciklama,
+          double? sure,
+          String? aciklama,
+          DateTime? duzeltmetarihi,
+          String? duzeltmeyapankul,
+          String? ilgiliKisi,
+          String? bolum,
+          List<CariAktiviteListesiModel>? listDetay}) =
+      _$CariAktiviteListesiModelImpl;
   _CariAktiviteListesiModel._() : super._();
 
   factory _CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) =
@@ -459,6 +498,9 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   @override
   String? get kullaniciAdi;
   set kullaniciAdi(String? value);
+  @override
+  String? get kullaniciTitle;
+  set kullaniciTitle(String? value);
   @override
   int? get aktiviteTipi;
   set aktiviteTipi(int? value);
@@ -498,6 +540,9 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   @override
   String? get bolum;
   set bolum(String? value);
+  @override
+  List<CariAktiviteListesiModel>? get listDetay;
+  set listDetay(List<CariAktiviteListesiModel>? value);
   @override
   @JsonKey(ignore: true)
   _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl>

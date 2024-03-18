@@ -1,3 +1,4 @@
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 
 class SingletonModels {
@@ -8,6 +9,13 @@ class SingletonModels {
   static set setSayimListesi(SayimListesiModel? value) => _sayimListesi = value;
 
   static set setFiltreModel(SayimFiltreModel? value) => _sayimListesi = _sayimListesi?..filtre = value;
+
+
+  static CariAktiviteListesiModel? _cariAktiviteListesi;
+
+  static CariAktiviteListesiModel? get cariAktiviteListesi => _cariAktiviteListesi;
+
+  static set setCariAktiviteListesi(CariAktiviteListesiModel? value) => _cariAktiviteListesi = value;
 
   
 }

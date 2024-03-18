@@ -13,6 +13,7 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     String? cariKodu,
     String? cariAdi,
     String? kullaniciAdi,
+    String? kullaniciTitle,
     int? aktiviteTipi,
     String? aktiviteAdi,
     DateTime? bastar,
@@ -26,6 +27,7 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     String? duzeltmeyapankul,
     String? ilgiliKisi,
     String? bolum,
+    List<CariAktiviteListesiModel>? listDetay,
   }) = _CariAktiviteListesiModel;
 
   factory CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);
