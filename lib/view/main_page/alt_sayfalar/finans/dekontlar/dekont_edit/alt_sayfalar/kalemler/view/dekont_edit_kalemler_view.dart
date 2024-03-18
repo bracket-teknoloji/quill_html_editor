@@ -75,9 +75,7 @@ class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
                             ),
                           ],
                         ),
-                        Observer(
-                          builder: (_) => Text(item.kalemAdi ?? ""),
-                        ),
+                        Text(item.kalemAdi ?? ""),
                       ],
                     ),
                     subtitle: Column(
