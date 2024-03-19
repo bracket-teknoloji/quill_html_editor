@@ -457,7 +457,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(model.eFaturaSerisindenMi),
+                ).yetkiVarMi(model.eFaturaSerisindenMi && yetkiController.eFaturaAktif),
               ],
             ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
 

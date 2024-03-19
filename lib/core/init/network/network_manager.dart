@@ -515,6 +515,19 @@ class NetworkManager {
     return null;
   }
 
+  Future<List<KullanicilarModel>?> getCariAktiviteSonucAciklamalar() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu": 7},
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+    }
+    return null;
+  }
+
   Future<BaseSiparisEditModel?> getFatura(BuildContext context, SiparisEditRequestModel model) async {
     final result = await dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getFaturalar,

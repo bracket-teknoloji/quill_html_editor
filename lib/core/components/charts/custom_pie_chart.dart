@@ -1,5 +1,6 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -53,7 +54,8 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                             titlePositionPercentageOffset: 0.5,
                             showTitle: true,
                             value: widget.pieChartValue?[index] ?? 0,
-                            title: widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].toString() ?? "",
+                            title:
+                                "${widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].toString() ?? ""}\n%${(((widget.pieChartValue?[index] ?? 0) / widget.pieChartValue.sum) * 100).round().commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
                             titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
                             radius: radius,
                           );

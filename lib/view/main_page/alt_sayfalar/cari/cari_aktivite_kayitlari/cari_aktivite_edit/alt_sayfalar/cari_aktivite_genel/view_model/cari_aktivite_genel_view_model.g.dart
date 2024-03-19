@@ -195,6 +195,28 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
   }
 
   @override
+  void setSonucAciklama(String? value) {
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setSonucAciklama');
+    try {
+      return super.setSonucAciklama(value);
+    } finally {
+      _$CariAktiviteGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSure(double? value) {
+    final _$actionInfo = _$CariAktiviteGenelViewModelBaseActionController
+        .startAction(name: 'CariAktiviteGenelViewModelBase.setSure');
+    try {
+      return super.setSure(value);
+    } finally {
+      _$CariAktiviteGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},

@@ -9,6 +9,7 @@ import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -19,7 +20,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 
 class CariAktiviteGenelView extends StatefulWidget {
   final BaseEditModel<CariAktiviteListesiModel> model;
-  final bool Function(bool value) onSave;
+  final Function(GlobalKey<FormState> value) onSave;
   const CariAktiviteGenelView({super.key, required this.model, required this.onSave});
 
   @override
@@ -36,6 +37,8 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
   late final TextEditingController kullaniciController;
   late final TextEditingController aktiviteTipiController;
   late final TextEditingController aciklamaController;
+  late final TextEditingController sonucAciklamaController;
+  late final TextEditingController sureController;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool get kayitYetkisi => widget.model.baseEditEnum?.ekleMi == true ? yetkiController.cariAktiviteYeniKayit : yetkiController.cariAktiviteDuzenleme;
@@ -47,8 +50,10 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
     viewModel.setBaseEditEnum(widget.model.baseEditEnum);
     if (SingletonModels.cariAktiviteListesi != null) {
       viewModel.setModel(SingletonModels.cariAktiviteListesi!);
+      viewModel.setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
     } else if (widget.model.model != null) {
       viewModel.setModel(widget.model.model!);
+      viewModel.setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
     }
     if (widget.model.baseEditEnum?.ekleMi == true) {
       viewModel.setBaslangicTarihi(DateTime.now());
@@ -58,15 +63,18 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
     cariController = TextEditingController(text: viewModel.model.cariAdi);
     bolumController = TextEditingController(text: viewModel.model.bolum);
     ilgiliKisiController = TextEditingController(text: viewModel.model.ilgiliKisi);
-    kullaniciController = TextEditingController(text: viewModel.model.kullaniciTitle);
-    aktiviteTipiController = TextEditingController(text: viewModel.model.aktiviteAdi);
+    kullaniciController = TextEditingController(text: viewModel.model.kullaniciTitle ?? viewModel.model.kullaniciAdi);
+    aktiviteTipiController = TextEditingController(text: viewModel.model.aktiviteAdi ?? viewModel.model.aktiviteTipi.toStringIfNotNull);
     aciklamaController = TextEditingController(text: viewModel.model.aciklama);
+    sonucAciklamaController = TextEditingController(text: viewModel.model.sonucAciklama);
+    sureController = TextEditingController(text: viewModel.model.sure.commaSeparatedWithDecimalDigits(OndalikEnum.oran));
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      widget.onSave(formKey);
       if (widget.model.baseEditEnum.ekleMi && viewModel.model.kullaniciTitle == null) {
-        kullaniciController.text = CacheManager.getAnaVeri!.userModel?.adiSoyadi ?? "";
-        viewModel.setKullanici(KullanicilarModel(adi: kullaniciController.text, kodu: CacheManager.getAnaVeri!.userModel?.kuladi));
+        kullaniciController.text = CacheManager.getAnaVeri?.userModel?.adiSoyadi ?? "";
+        viewModel.setKullanici(KullanicilarModel(adi: kullaniciController.text, kodu: CacheManager.getAnaVeri?.userModel?.kuladi));
       }
-      if (widget.model.baseEditEnum?.ekleMi == true && viewModel.model.aktiviteTipi == null && !yetkiController.cariAktiviteAtayabilir) {
+      if (widget.model.baseEditEnum?.ekleMi == true && viewModel.model.aktiviteTipi == null && !yetkiController.cariAktiviteDetayliMi) {
         await getAktiviteTipi();
       }
     });
@@ -180,7 +188,7 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
                 isMust: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
                 onTap: getAktiviteTipi,
-              ).yetkiVarMi(!yetkiController.cariAktiviteAtayabilir),
+              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
               CustomTextField(
                 labelText: "Bölüm/Departman",
                 enabled: enabled,
@@ -197,7 +205,7 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
                   },
                   icon: const Icon(Icons.more_horiz_outlined),
                 ),
-              ),
+              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
               CustomTextField(
                 labelText: "İlgili Kişi",
                 enabled: enabled,
@@ -214,7 +222,7 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
                   },
                   icon: const Icon(Icons.more_horiz_outlined),
                 ),
-              ),
+              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
               CustomTextField(
                 labelText: "Açıklama/Konu",
                 enabled: enabled,
@@ -242,14 +250,32 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
                 ),
               ).yetkiVarMi(widget.model.baseEditEnum.ekleMi),
               Observer(
-                builder: (_) => const CustomTextField(
-                  labelText: "",
-                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteAtayabilir),
+                builder: (_) => CustomTextField(
+                  labelText: "Sonuç Açıklaması",
+                  isMust: true,
+                  controller: sonucAciklamaController,
+                  onChanged: viewModel.setSonucAciklama,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await bottomSheetDialogManager.showCariAktiviteSonucAciklamalarBottomSheetDialog(context, viewModel.model.sonucAciklama);
+                      if (result != null) {
+                        sonucAciklamaController.text = result.adi ?? "";
+                        viewModel.setAciklama(result.adi);
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
+                  ),
+                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi),
               ),
               Observer(
-                builder: (_) => const CustomTextField(
-                  labelText: "",
-                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteAtayabilir),
+                builder: (_) => CustomTextField(
+                  labelText: "Süre (Saat)",
+                  controller: sureController,
+                  isFormattedString: true,
+                  isMust: true,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => viewModel.setSure(value.toDoubleWithFormattedString),
+                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi),
               ),
             ],
           ).paddingAll(UIHelper.lowSize),

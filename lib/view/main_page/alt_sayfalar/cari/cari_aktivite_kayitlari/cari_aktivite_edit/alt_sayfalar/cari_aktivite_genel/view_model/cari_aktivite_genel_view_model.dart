@@ -4,6 +4,7 @@ import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/kullanicilar_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -27,34 +28,78 @@ abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
   void setBaseEditEnum(BaseEditEnum? value) => baseEditEnum = value;
 
   @action
-  void setAktiviteBitirilsinMi(bool value) => aktiviteBitirilsinMi = value;
+  void setAktiviteBitirilsinMi(bool value) {
+    aktiviteBitirilsinMi = value;
+    model = model.copyWith(aktiviteBitirilsin: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setModel(CariAktiviteListesiModel value) => model = value;
+  void setModel(CariAktiviteListesiModel value) {
+    model = value;
+    SingletonModels.setCariAktiviteListesi = model;
+    setAktiviteBitirilsinMi(model.aktiviteBitirilsin == true);
+  }
 
   @action
-  void setBaslangicTarihi(DateTime? value) => model = model.copyWith(bastar: value);
+  void setBaslangicTarihi(DateTime? value) {
+    model = model.copyWith(bastar: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setSaat(DateTime? value) => model = model.copyWith(bastar: DateTime(model.bastar!.year, model.bastar!.month, model.bastar!.day, value!.hour, value.minute, value.second));
+  void setSaat(DateTime? value) {
+    model = model.copyWith(bastar: DateTime(model.bastar!.year, model.bastar!.month, model.bastar!.day, value!.hour, value.minute, value.second));
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setCari(CariListesiModel? value) => model = model.copyWith(cariKodu: value?.cariKodu, cariAdi: value?.cariAdi);
+  void setCari(CariListesiModel? value) {
+    model = model.copyWith(cariKodu: value?.cariKodu, cariAdi: value?.cariAdi);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setBolum(String? value) => model = model.copyWith(bolum: value);
+  void setBolum(String? value) {
+    model = model.copyWith(bolum: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setIlgiliKisi(String? value) => model = model.copyWith(ilgiliKisi: value);
+  void setIlgiliKisi(String? value) {
+    model = model.copyWith(ilgiliKisi: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setKullanici(KullanicilarModel? value) => model = model.copyWith(kullaniciAdi: value?.kodu, kullaniciTitle: value?.adi);
+  void setKullanici(KullanicilarModel? value) {
+    model = model.copyWith(kullaniciAdi: value?.kodu, kullaniciTitle: value?.adi);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setAktiviteTipi(CariAktiviteTipleri? value) => model = model.copyWith(aktiviteTipi: value?.aktiviteTipi, aktiviteAdi: value?.aktiviteAdi);
+  void setAktiviteTipi(CariAktiviteTipleri? value) {
+    model = model.copyWith(aktiviteTipi: value?.aktiviteTipi, aktiviteAdi: value?.aktiviteAdi);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
-  void setAciklama(String? value) => model = model.copyWith(aciklama: value);
+  void setAciklama(String? value) {
+    model = model.copyWith(aciklama: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
+
+  @action
+  void setSonucAciklama(String? value) {
+    model = model.copyWith(sonucAciklama: value);
+    SingletonModels.setCariAktiviteListesi = model;
+  }
+
+  @action
+  void setSure(double? value) {
+    model = model.copyWith(sure: value, bittar: model.bastar?.add(Duration(seconds: (value??0).toInt() * 360)));
+    SingletonModels.setCariAktiviteListesi = model;
+  }
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async {

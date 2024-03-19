@@ -673,7 +673,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                         eFaturaSenaryoController.text = result.key;
                       }
                     },
-                  ),
+                  ).yetkiVarMi(yetkiController.eFaturaAktif),
                   ElevatedButton(
                     onPressed: () async {
                       final result = await viewModel.postFaturaTipi();

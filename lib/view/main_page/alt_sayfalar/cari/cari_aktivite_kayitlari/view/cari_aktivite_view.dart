@@ -140,6 +140,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                               await viewModel.getData();
                             }
                           },
+                          updatedModel: () async => await viewModel.getNewItem(model.id),
                         );
                       },
                     );

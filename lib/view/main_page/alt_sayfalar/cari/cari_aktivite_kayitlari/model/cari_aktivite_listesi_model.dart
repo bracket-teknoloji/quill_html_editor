@@ -24,9 +24,11 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     double? sure,
     String? aciklama,
     DateTime? duzeltmetarihi,
+    DateTime? tarih,
     String? duzeltmeyapankul,
     String? ilgiliKisi,
     String? bolum,
+    @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
     List<CariAktiviteListesiModel>? listDetay,
   }) = _CariAktiviteListesiModel;
 

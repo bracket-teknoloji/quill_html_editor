@@ -49,6 +49,14 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$getNewItemAsyncAction =
+      AsyncAction('_CariAktiviteViewModelBase.getNewItem', context: context);
+
+  @override
+  Future<CariAktiviteListesiModel?> getNewItem(int? value) {
+    return _$getNewItemAsyncAction.run(() => super.getNewItem(value));
+  }
+
   late final _$_CariAktiviteViewModelBaseActionController =
       ActionController(name: '_CariAktiviteViewModelBase', context: context);
 

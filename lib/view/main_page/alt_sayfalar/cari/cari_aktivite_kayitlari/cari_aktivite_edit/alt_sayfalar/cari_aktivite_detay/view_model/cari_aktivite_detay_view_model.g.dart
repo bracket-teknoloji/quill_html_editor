@@ -25,6 +25,44 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
     });
   }
 
+  late final _$_CariAktiviteDetayViewModelBaseActionController =
+      ActionController(
+          name: '_CariAktiviteDetayViewModelBase', context: context);
+
+  @override
+  void addAktivite(CariAktiviteListesiModel value) {
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.addAktivite');
+    try {
+      return super.addAktivite(value);
+    } finally {
+      _$_CariAktiviteDetayViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void deleteAktivite(CariAktiviteListesiModel value) {
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.deleteAktivite');
+    try {
+      return super.deleteAktivite(value);
+    } finally {
+      _$_CariAktiviteDetayViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void replaceAktivite(
+      CariAktiviteListesiModel oldItem, CariAktiviteListesiModel newItem) {
+    final _$actionInfo = _$_CariAktiviteDetayViewModelBaseActionController
+        .startAction(name: '_CariAktiviteDetayViewModelBase.replaceAktivite');
+    try {
+      return super.replaceAktivite(oldItem, newItem);
+    } finally {
+      _$_CariAktiviteDetayViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

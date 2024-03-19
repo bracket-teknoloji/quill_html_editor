@@ -33,9 +33,13 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
       duzeltmetarihi: json['DUZELTMETARIHI'] == null
           ? null
           : DateTime.parse(json['DUZELTMETARIHI'] as String),
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
       duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
       ilgiliKisi: json['ILGILI_KISI'] as String?,
       bolum: json['BOLUM'] as String?,
+      aktiviteBitirilsin: json['AKTIVITE_BITIRILSIN'] as bool?,
       listDetay: (json['LIST_DETAY'] as List<dynamic>?)
           ?.map((e) =>
               CariAktiviteListesiModel.fromJson(e as Map<String, dynamic>))
@@ -68,6 +72,7 @@ Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
   writeNotNull('SURE', instance.sure);
   writeNotNull('ACIKLAMA', instance.aciklama);
   writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
   writeNotNull('ILGILI_KISI', instance.ilgiliKisi);
   writeNotNull('BOLUM', instance.bolum);

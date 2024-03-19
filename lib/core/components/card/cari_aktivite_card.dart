@@ -16,7 +16,8 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 class CariAktiviteCard extends StatefulWidget {
   final CariAktiviteListesiModel model;
   final void Function(bool) onRefresh;
-  const CariAktiviteCard({super.key, required this.model, required this.onRefresh});
+  final Future<CariAktiviteListesiModel?> Function() updatedModel;
+  const CariAktiviteCard({super.key, required this.model, required this.onRefresh, required this.updatedModel});
 
   @override
   State<CariAktiviteCard> createState() => _CariAktiviteCardState();
@@ -58,7 +59,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   iconWidget: Icons.preview_outlined,
                   onTap: () async {
                     Get.back();
-                    Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: model));
+                    Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: await widget.updatedModel.call()));
                   },
                 ).yetkiKontrol(model.bittiMi),
                 BottomSheetModel(
@@ -66,7 +67,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   iconWidget: Icons.edit_outlined,
                   onTap: () async {
                     Get.back();
-                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model: model));
+                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model:  await widget.updatedModel.call()));
                     if (result == true) {
                       widget.onRefresh.call(true);
                     }

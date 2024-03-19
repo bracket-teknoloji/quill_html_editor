@@ -881,6 +881,20 @@ class BottomSheetDialogManager {
     );
   }
 
+  Future<KullanicilarModel?> showCariAktiviteSonucAciklamalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final List<KullanicilarModel>? list = await _networkManager.getCariAktiviteAciklamalar();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Açıklama Seçiniz",
+      groupValue: groupValue,
+      children: list
+          ?.map(
+            (e) => BottomSheetModel(title: e.adi ?? "", value: e, groupValue: e.adi),
+          )
+          .toList(),
+    );
+  }
+
   Future<KullanicilarModel?> showCariAktiviteBolumlerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<KullanicilarModel>? list = await _networkManager.getCariAktiviteBolumler();
     return await showRadioBottomSheetDialog(
