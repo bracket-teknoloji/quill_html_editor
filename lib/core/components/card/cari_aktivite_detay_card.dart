@@ -4,7 +4,6 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 
 class CariAktiviteDetayCard extends StatefulWidget {
@@ -39,24 +38,26 @@ class _CariAktiviteDetayCardState extends BaseState<CariAktiviteDetayCard> {
               title: widget.model.aktiviteAdi ?? "",
               children: [
                 BottomSheetModel(
-                    title: loc.generalStrings.edit,
-                    iconWidget: Icons.edit_outlined,
-                    onTap: () async {
-                      final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: widget.model);
-                      if (result is CariAktiviteListesiModel) {
-                        widget.onAktiviteDuzenle.call(result);
-                        // SingletonModels.setCariAktiviteListesi = SingletonModels.cariAktiviteListesi..listDetay = SingletonModels.cariAktiviteListesi.listDetay;
-                      }
-                    }),
+                  title: loc.generalStrings.edit,
+                  iconWidget: Icons.edit_outlined,
+                  onTap: () async {
+                    final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: widget.model);
+                    if (result is CariAktiviteListesiModel) {
+                      widget.onAktiviteDuzenle.call(result);
+                      // SingletonModels.setCariAktiviteListesi = SingletonModels.cariAktiviteListesi..listDetay = SingletonModels.cariAktiviteListesi.listDetay;
+                    }
+                  },
+                ),
                 BottomSheetModel(
-                    title: loc.generalStrings.delete,
-                    iconWidget: Icons.delete_outline_outlined,
-                    onTap: () async {
-                      Get.back();
-                      dialogManager.showAreYouSureDialog(() async {
-                        widget.onAktiviteSil.call();
-                      });
-                    }),
+                  title: loc.generalStrings.delete,
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    dialogManager.showAreYouSureDialog(() async {
+                      widget.onAktiviteSil.call();
+                    });
+                  },
+                ),
               ],
             );
           },
