@@ -43,6 +43,25 @@ mixin _$IrsaliyeFaturalastirViewModel
     });
   }
 
+  late final _$getSiradakiBelgeNoAsyncAction = AsyncAction(
+      '_IrsaliyeFaturalastirViewModelBase.getSiradakiBelgeNo',
+      context: context);
+
+  @override
+  Future<String?> getSiradakiBelgeNo(EditTipiEnum value) {
+    return _$getSiradakiBelgeNoAsyncAction
+        .run(() => super.getSiradakiBelgeNo(value));
+  }
+
+  late final _$sendFaturaAsyncAction = AsyncAction(
+      '_IrsaliyeFaturalastirViewModelBase.sendFatura',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> sendFatura() {
+    return _$sendFaturaAsyncAction.run(() => super.sendFatura());
+  }
+
   late final _$_IrsaliyeFaturalastirViewModelBaseActionController =
       ActionController(
           name: '_IrsaliyeFaturalastirViewModelBase', context: context);
