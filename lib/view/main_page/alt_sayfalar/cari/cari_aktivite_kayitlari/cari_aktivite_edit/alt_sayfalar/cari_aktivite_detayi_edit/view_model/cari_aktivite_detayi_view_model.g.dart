@@ -25,6 +25,14 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
     });
   }
 
+  late final _$getDataAsyncAction =
+      AsyncAction('_CariAktiviteDetayiViewModelBase.getData', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
+  }
+
   late final _$_CariAktiviteDetayiViewModelBaseActionController =
       ActionController(
           name: '_CariAktiviteDetayiViewModelBase', context: context);

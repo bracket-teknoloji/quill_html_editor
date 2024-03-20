@@ -35,6 +35,8 @@ mixin _$CariAktiviteListesiModel {
   set kullaniciTitle(String? value) => throw _privateConstructorUsedError;
   int? get aktiviteTipi => throw _privateConstructorUsedError;
   set aktiviteTipi(int? value) => throw _privateConstructorUsedError;
+  int? get aktiviteId => throw _privateConstructorUsedError;
+  set aktiviteId(int? value) => throw _privateConstructorUsedError;
   String? get aktiviteAdi => throw _privateConstructorUsedError;
   set aktiviteAdi(String? value) => throw _privateConstructorUsedError;
   DateTime? get bastar => throw _privateConstructorUsedError;
@@ -90,6 +92,7 @@ abstract class $CariAktiviteListesiModelCopyWith<$Res> {
       String? kullaniciAdi,
       String? kullaniciTitle,
       int? aktiviteTipi,
+      int? aktiviteId,
       String? aktiviteAdi,
       DateTime? bastar,
       DateTime? kayittarihi,
@@ -128,6 +131,7 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
     Object? kullaniciAdi = freezed,
     Object? kullaniciTitle = freezed,
     Object? aktiviteTipi = freezed,
+    Object? aktiviteId = freezed,
     Object? aktiviteAdi = freezed,
     Object? bastar = freezed,
     Object? kayittarihi = freezed,
@@ -172,6 +176,10 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
       aktiviteTipi: freezed == aktiviteTipi
           ? _value.aktiviteTipi
           : aktiviteTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      aktiviteId: freezed == aktiviteId
+          ? _value.aktiviteId
+          : aktiviteId // ignore: cast_nullable_to_non_nullable
               as int?,
       aktiviteAdi: freezed == aktiviteAdi
           ? _value.aktiviteAdi
@@ -254,6 +262,7 @@ abstract class _$$CariAktiviteListesiModelImplCopyWith<$Res>
       String? kullaniciAdi,
       String? kullaniciTitle,
       int? aktiviteTipi,
+      int? aktiviteId,
       String? aktiviteAdi,
       DateTime? bastar,
       DateTime? kayittarihi,
@@ -291,6 +300,7 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
     Object? kullaniciAdi = freezed,
     Object? kullaniciTitle = freezed,
     Object? aktiviteTipi = freezed,
+    Object? aktiviteId = freezed,
     Object? aktiviteAdi = freezed,
     Object? bastar = freezed,
     Object? kayittarihi = freezed,
@@ -335,6 +345,10 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
       aktiviteTipi: freezed == aktiviteTipi
           ? _value.aktiviteTipi
           : aktiviteTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      aktiviteId: freezed == aktiviteId
+          ? _value.aktiviteId
+          : aktiviteId // ignore: cast_nullable_to_non_nullable
               as int?,
       aktiviteAdi: freezed == aktiviteAdi
           ? _value.aktiviteAdi
@@ -411,6 +425,7 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
       this.kullaniciAdi,
       this.kullaniciTitle,
       this.aktiviteTipi,
+      this.aktiviteId,
       this.aktiviteAdi,
       this.bastar,
       this.kayittarihi,
@@ -445,6 +460,8 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   String? kullaniciTitle;
   @override
   int? aktiviteTipi;
+  @override
+  int? aktiviteId;
   @override
   String? aktiviteAdi;
   @override
@@ -501,6 +518,7 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
           String? kullaniciAdi,
           String? kullaniciTitle,
           int? aktiviteTipi,
+          int? aktiviteId,
           String? aktiviteAdi,
           DateTime? bastar,
           DateTime? kayittarihi,
@@ -543,6 +561,9 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   @override
   int? get aktiviteTipi;
   set aktiviteTipi(int? value);
+  @override
+  int? get aktiviteId;
+  set aktiviteId(int? value);
   @override
   String? get aktiviteAdi;
   set aktiviteAdi(String? value);

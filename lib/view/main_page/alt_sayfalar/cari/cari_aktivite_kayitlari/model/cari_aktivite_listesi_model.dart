@@ -15,6 +15,7 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     String? kullaniciAdi,
     String? kullaniciTitle,
     int? aktiviteTipi,
+    int? aktiviteId,
     String? aktiviteAdi,
     DateTime? bastar,
     DateTime? kayittarihi,

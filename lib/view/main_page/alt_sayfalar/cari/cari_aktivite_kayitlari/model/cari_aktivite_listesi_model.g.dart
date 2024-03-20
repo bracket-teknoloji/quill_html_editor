@@ -16,6 +16,7 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
       kullaniciAdi: json['KULLANICI_ADI'] as String?,
       kullaniciTitle: json['KULLANICI_TITLE'] as String?,
       aktiviteTipi: json['AKTIVITE_TIPI'] as int?,
+      aktiviteId: json['AKTIVITE_ID'] as int?,
       aktiviteAdi: json['AKTIVITE_ADI'] as String?,
       bastar: json['BASTAR'] == null
           ? null
@@ -63,6 +64,7 @@ Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
   writeNotNull('KULLANICI_ADI', instance.kullaniciAdi);
   writeNotNull('KULLANICI_TITLE', instance.kullaniciTitle);
   writeNotNull('AKTIVITE_TIPI', instance.aktiviteTipi);
+  writeNotNull('AKTIVITE_ID', instance.aktiviteId);
   writeNotNull('AKTIVITE_ADI', instance.aktiviteAdi);
   writeNotNull('BASTAR', instance.bastar?.toIso8601String());
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());

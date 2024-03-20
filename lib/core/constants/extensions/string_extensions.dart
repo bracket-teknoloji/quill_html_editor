@@ -9,4 +9,13 @@ extension StringExtensions on String? {
       return this!;
     }
   }
+
+   String belgeNoToResmiBelgeNo(String belgeNo, DateTime? tarih) {
+    // belgeNo is like as "EFT000000000012" and resmiBelgeNo should be "EFT2023000000012"
+    if (belgeNo.length == 15) {
+      return belgeNo.substring(0, 3) + (tarih?.year.toString() ?? "") + belgeNo.substring(6, 15);
+    } else {
+      return "";
+    }
+  }
 }

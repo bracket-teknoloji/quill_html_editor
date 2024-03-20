@@ -57,8 +57,14 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
               icon: const Icon(Icons.save_outlined),
               onPressed: () async {
                 if (formKey.currentState?.validate() == true) {
-                  Get.back(result: viewModel.model..kayittarihi = DateTime.now());
-                  dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+                  dialogManager.showAreYouSureDialog(() async {
+                    viewModel.model.kayittarihi = DateTime.now();
+                    final result = await viewModel.getData();
+                    if (result.success == true) {
+                      Get.back(result: viewModel.model..kayittarihi = DateTime.now());
+                      dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+                    }
+                  });
                 }
               },
             ),
