@@ -577,7 +577,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       queryParameters: {
         "Seri": seri ?? _belgeNoController.text,
         "BelgeTipi": widget.model.editTipiEnum?.rawValue,
-        "EIrsaliye": widget.model.editTipiEnum.irsaliyeMi ? "E" : "H",
+        "EIrsaliye": model.eBelgeMi ? "E" : "H",
         "CariKodu": model.cariKodu ?? "",
       },
       showLoading: true,

@@ -131,6 +131,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (result.success == true) {
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
+          // BaseSiparisEditModel.instance.teslimTarihi = null;
+          // BaseSiparisEditModel.instance.istenilenTeslimTarihi = null;
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {

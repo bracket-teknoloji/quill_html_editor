@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/talep_teklif/talep_teklif_listesi/model/talep_teklif_listesi_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -57,6 +58,15 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
         mevcutBelgeNo: model.belgeNo,
         tipi: model.tipi,
         belgeTipi: model.tipi,
+      );
+
+  factory EditFaturaModel.forIrsaliyelestir(BaseSiparisEditModel? model) => EditFaturaModel(
+        cariKodu: model?.cariKodu,
+        irsaliyedenFatura: true,
+        belgeNo: model?.belgeNo,
+        pickerBelgeTuru: model?.belgeTuru,
+        belgeTuru: model?.belgeTuru,
+        tarih: DateTime.now().dateTimeWithoutTime,
       );
 
   @override
