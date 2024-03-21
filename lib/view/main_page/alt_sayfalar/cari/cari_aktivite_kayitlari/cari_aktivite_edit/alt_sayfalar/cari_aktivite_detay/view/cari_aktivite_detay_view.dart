@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/components/card/cari_aktivite_detay_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -24,7 +27,7 @@ class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: !widget.baseEditEnum.goruntuleMi,
           onPressed: () async {
-            final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit");
+            final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum));
             if (result is CariAktiviteListesiModel) {
               viewModel.addAktivite(result);
             }
@@ -44,7 +47,13 @@ class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
                     model: item,
                     baseEditEnum: widget.baseEditEnum,
                     onAktiviteSil: () async {
-                      viewModel.deleteAktivite(item);
+                      GenericResponseModel<NetworkManagerMixin>? result;
+                      if (widget.baseEditEnum.duzenleMi) {
+                        result = await viewModel.deleteDetay(item.id);
+                      }
+                      if (result?.success == true || (widget.baseEditEnum.ekleMi)) {
+                        viewModel.deleteAktivite(item);
+                      }
                     },
                     onAktiviteDuzenle: (value) async {
                       viewModel.replaceAktivite(item, value);

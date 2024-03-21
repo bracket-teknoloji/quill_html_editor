@@ -25,6 +25,15 @@ mixin _$CariAktiviteDetayViewModel on _CariAktiviteDetayViewModelBase, Store {
     });
   }
 
+  late final _$deleteDetayAsyncAction = AsyncAction(
+      '_CariAktiviteDetayViewModelBase.deleteDetay',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>?> deleteDetay(int? id) {
+    return _$deleteDetayAsyncAction.run(() => super.deleteDetay(id));
+  }
+
   late final _$_CariAktiviteDetayViewModelBaseActionController =
       ActionController(
           name: '_CariAktiviteDetayViewModelBase', context: context);

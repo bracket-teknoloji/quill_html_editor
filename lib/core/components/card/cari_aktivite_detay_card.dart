@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -41,7 +42,8 @@ class _CariAktiviteDetayCardState extends BaseState<CariAktiviteDetayCard> {
                   title: loc.generalStrings.edit,
                   iconWidget: Icons.edit_outlined,
                   onTap: () async {
-                    final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: widget.model);
+                    Get.back();
+                    final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel(model: widget.model, baseEditEnum: widget.baseEditEnum));
                     if (result is CariAktiviteListesiModel) {
                       widget.onAktiviteDuzenle.call(result);
                       // SingletonModels.setCariAktiviteListesi = SingletonModels.cariAktiviteListesi..listDetay = SingletonModels.cariAktiviteListesi.listDetay;

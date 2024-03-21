@@ -1,13 +1,17 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view_model/cari_aktivite_detayi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 
 class CariAktiviteDetayiEditView extends StatefulWidget {
-  final CariAktiviteListesiModel? model;
+  final BaseEditModel<CariAktiviteListesiModel>? model;
   const CariAktiviteDetayiEditView({super.key, this.model});
 
   @override
@@ -25,8 +29,8 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
 
   @override
   void initState() {
-    if (widget.model != null) {
-      viewModel.setModel(widget.model!);
+    if (widget.model?.model != null) {
+      viewModel.setModel(widget.model!.model!);
     } else {
       viewModel.setTarih(DateTime.now());
     }
@@ -56,11 +60,15 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
             IconButton(
               icon: const Icon(Icons.save_outlined),
               onPressed: () async {
+                GenericResponseModel<NetworkManagerMixin>? result;
                 if (formKey.currentState?.validate() == true) {
                   dialogManager.showAreYouSureDialog(() async {
                     viewModel.model.kayittarihi = DateTime.now();
-                    final result = await viewModel.getData();
-                    if (result.success == true) {
+                    if (widget.model?.baseEditEnum?.duzenleMi == true) {
+                      result = await viewModel.getData();
+                    }
+
+                    if (result?.success == true || (widget.model?.baseEditEnum?.ekleMi == true)) {
                       Get.back(result: viewModel.model..kayittarihi = DateTime.now());
                       dialogManager.showSuccessSnackBar(loc.generalStrings.success);
                     }
