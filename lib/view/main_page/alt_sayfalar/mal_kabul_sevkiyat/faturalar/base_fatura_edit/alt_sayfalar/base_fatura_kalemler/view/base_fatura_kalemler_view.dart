@@ -329,6 +329,10 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 stokKodu: stokModel.stokKodu,
                 stokAlisKdv: stokModel.alisKdv,
                 stokSatisKdv: stokModel.satisKdv,
+                paketMi: stokModel.paketMi,
+                seriGirislerdeAcik: stokModel.seriGirislerdeAcik,
+                seriCikislardaAcik: stokModel.seriCikislardaAcik,
+                seriMiktarKadarSor: stokModel.seriMiktarKadarSor,
                 // kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? stokModel.satisKdv : stokModel.alisKdv,
               );
               viewModel.updateKalemList();
