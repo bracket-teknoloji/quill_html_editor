@@ -57,7 +57,7 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
         child: Observer(
           builder: (_) {
             if (viewModel.bankaHareketleriListesi == null) {
-              return const ListViewShimmer().paddingAll(UIHelper.lowSize);
+              return const ListViewShimmer();
             } else if ((viewModel.bankaHareketleriListesi?.length ?? 0) < 1) {
               return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
             }

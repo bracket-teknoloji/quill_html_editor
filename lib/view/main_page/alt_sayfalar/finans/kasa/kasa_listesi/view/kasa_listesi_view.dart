@@ -108,7 +108,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         },
         child: Observer(
           builder: (_) => viewModel.getKasaListesi == null
-              ? const ListViewShimmer().paddingAll(UIHelper.lowSize)
+              ? const ListViewShimmer()
               : viewModel.getKasaListesi.ext.isNullOrEmpty
                   ? const Center(
                       child: Text("Kasa bulunamadı"),

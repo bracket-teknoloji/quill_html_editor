@@ -420,7 +420,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                     ),
             );
           } else {
-            return const ListViewShimmer().paddingAll(UIHelper.lowSize);
+            return const ListViewShimmer();
           }
         },
       );

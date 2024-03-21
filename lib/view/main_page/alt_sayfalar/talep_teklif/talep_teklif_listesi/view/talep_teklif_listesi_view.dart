@@ -204,7 +204,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
         child: Observer(
           builder: (_) {
             if (viewModel.talepTeklifListesiModelList == null) {
-              return const ListViewShimmer().paddingAll(UIHelper.lowSize);
+              return const ListViewShimmer();
             } else if (viewModel.talepTeklifListesiModelList!.isEmpty) {
               return const Center(child: Text("Kayıt Bulunamadı."));
             } else {

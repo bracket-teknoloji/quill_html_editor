@@ -198,7 +198,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                         children: [Icon(Icons.crisis_alert_outlined, color: theme.colorScheme.primary), const Text("Cari Hareket Detayı Bulunamadı")],
                       ),
                     )
-                  : const ListViewShimmer().paddingAll(UIHelper.lowSize)
+                  : const ListViewShimmer()
               : Observer(
                   builder: (_) => SlidableAutoCloseBehavior(
                     child: ListView.builder(

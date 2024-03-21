@@ -148,7 +148,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
           builder: (_) => viewModel.eBelgeListesi.ext.isNullOrEmpty
               ? (viewModel.eBelgeListesi?.isEmpty ?? false)
                   ? Center(child: Text(viewModel.error ?? "E-Belge Kaydı Bulunamadı.", textAlign: TextAlign.center))
-                  : const ListViewShimmer().paddingAll(UIHelper.lowSize)
+                  : const ListViewShimmer()
               : ListView.builder(
                   primary: false,
                   controller: _scrollController,

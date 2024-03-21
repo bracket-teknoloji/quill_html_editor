@@ -87,7 +87,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
         body: Observer(
           builder: (_) {
             if (viewModel.kalemList == null) {
-              return const ListViewShimmer().paddingAll(UIHelper.lowSize);
+              return const ListViewShimmer();
             } else if (viewModel.kalemList!.isEmpty) {
               return const Center(child: Text("Kayıt bulunamadı"));
             }

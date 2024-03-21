@@ -188,7 +188,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
         child: Observer(
           builder: (_) {
             if (viewModel.bankaListesi == null) {
-              return const ListViewShimmer().paddingAll(UIHelper.lowSize);
+              return const ListViewShimmer();
             } else if (viewModel.bankaListesi!.isEmpty) {
               return Center(child: Text(viewModel.errorText ?? "Banka bulunamadı.", textAlign: TextAlign.center));
             } else {

@@ -327,7 +327,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                   builder: (_) => viewModel.stokListesi.ext.isNullOrEmpty
                       ? (viewModel.stokListesi?.isEmpty ?? false)
                           ? const Center(child: Text("Stok Bulunamadı"))
-                          : const ListViewShimmer().paddingAll(UIHelper.lowSize)
+                          : const ListViewShimmer()
                       : Observer(
                           builder: (_) => ListView.builder(
                             primary: false,

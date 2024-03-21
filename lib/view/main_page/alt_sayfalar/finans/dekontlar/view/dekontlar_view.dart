@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/card/dekontlar_card.dart";
@@ -80,9 +81,7 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
         child: Observer(
           builder: (_) {
             if (viewModel.dekontListesi == null) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
+              return const ListViewShimmer();
             } else if (viewModel.dekontListesi!.isEmpty) {
               return const Center(
                 child: Text("Dekont bulunamadı"),
