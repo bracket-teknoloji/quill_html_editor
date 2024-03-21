@@ -196,6 +196,10 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get showBadge => gelen != "E" || taslak != "E";
 
+  String? get seciliCariKodu => gelenMi ? kayitliCariKodu : cariKodu;
+
+  bool get cariKayitliMi => gelenMi ? kayitliCariKodu != null : cariKodu != null;
+
   bool get uyariMi => showBadge && gondermeDurumu == "BEK";
 
   bool get gelenMi => gelen == "E";
@@ -229,7 +233,7 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   String get getDizaynAdi => "${dizaynNo ?? ""} - ${dizaynAdi ?? ""}";
 
   String get getTitle {
-    if (eArsivMi){
+    if (eArsivMi) {
       return "E-Arşiv";
     } else if (eFaturaMi) {
       return "E-Fatura";

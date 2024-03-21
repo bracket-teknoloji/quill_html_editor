@@ -57,7 +57,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 //TODO yetkileri ekle
                 eBelgeGoruntule,
                 faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
-                cariOlustur.yetkiKontrol(model.kayitliCariKodu == null && yetkiController.cariKartiYeniKayit),
+                cariOlustur.yetkiKontrol(!model.cariKayitliMi && yetkiController.cariKartiYeniKayit),
                 alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
                 yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
                 dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
@@ -67,7 +67,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
                 zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
                 cariIslemleri
-                    .yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.kayitliCariKodu != null && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.kayitliCariKodu != null),
+                    .yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.cariKayitliMi && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.cariKayitliMi),
                 yazdir.yetkiKontrol(!(model.gelenMi && model.eArsivMi)),
               ].nullCheckWithGeneric,
             );
@@ -469,7 +469,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             path: ApiUrls.getCariler,
             bodyModel: CariListesiModel(),
             showLoading: true,
-            queryParameters: {"filterText": "", "Kod": model.kayitliCariKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTuru, "PlasiyerKisitiYok": true},
+            queryParameters: {"filterText": "", "Kod": model.seciliCariKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTuru, "PlasiyerKisitiYok": true},
           );
 
           dialogManager.showCariGridViewDialog((result.data as List).firstOrNull);
@@ -556,7 +556,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         iconWidget: Icons.add_outlined,
         onTap: () async {
           Get.back();
-          if (widget.eBelgeListesiModel.kayitliCariKodu == null) {
+          if (widget.eBelgeListesiModel.seciliCariKodu == null) {
             final result = await dialogManager.showAreYouSureDialog(
               () async {
                 final result = await Get.toNamed(
