@@ -78,7 +78,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           yetkiController.seriUygulamasiAcikMi &&
           BaseSiparisEditModel.instance.kalemList?.any((element) => element.seriliMi) == true &&
           BaseSiparisEditModel.instance.kalemList?.any((element) => !element.seriTamamMi) == true) {
-        dialogManager.showErrorSnackBar("Lütfen seri numaraları tamamlayınız.");
+        dialogManager.showErrorSnackBar("Kalemlerde seri eksik.");
         tabController.animateTo(tabController.previousIndex);
       }
       if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {

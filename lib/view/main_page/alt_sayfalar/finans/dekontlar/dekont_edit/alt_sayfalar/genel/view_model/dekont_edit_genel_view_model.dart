@@ -44,8 +44,14 @@ abstract class _DekontEditGenelViewModelBase with Store {
     dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
       projeKodu: value?.projeKodu,
       projeAdi: value?.projeAciklama,
-      kalemler: dekontIslemlerRequestModel.kalemler?.map((e) => e.copyWith(projeKodu: value?.projeKodu,
-      projeAdi: value?.projeAciklama,)).toList(),
+      kalemler: dekontIslemlerRequestModel.kalemler
+          ?.map(
+            (e) => e.copyWith(
+              projeKodu: value?.projeKodu,
+              projeAdi: value?.projeAciklama,
+            ),
+          )
+          .toList(),
     );
     setSingleton();
   }

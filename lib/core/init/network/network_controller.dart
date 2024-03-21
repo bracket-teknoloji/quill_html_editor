@@ -14,13 +14,13 @@ class NetworkController extends GetxController {
     _connectivity.onConnectivityChanged.listen(initConnectivity);
   }
 
-  Future<void> initConnectivity(ConnectivityResult result) async {
-    if (connectivityResult != result && result == ConnectivityResult.none) {
-      connectivityResult = result;
+  Future<void> initConnectivity(List<ConnectivityResult>? result) async {
+    if (connectivityResult != result?.firstOrNull && result?.firstOrNull == ConnectivityResult.none) {
+      connectivityResult = result?.firstOrNull;
       DialogManager().internetConnectionDialog();
       isOffline = true;
-    } else if (result == ConnectivityResult.mobile || result == ConnectivityResult.wifi) {
-      connectivityResult = result;
+    } else if (result?.firstOrNull == ConnectivityResult.mobile || result?.firstOrNull == ConnectivityResult.wifi) {
+      connectivityResult = result?.firstOrNull;
       if (isOffline) {
         DialogManager().hideAlertDialog;
         isOffline = false;

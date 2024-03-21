@@ -1443,7 +1443,7 @@ class KalemModel with NetworkManagerMixin {
   String get faturaKalemAciklama {
     if (seriliMi) {
       return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
-    } else if (siparisSira != null) {
+    } else if (siparisNo != null) {
       return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
     } else if (teklifNo != null) {
       return "${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
@@ -1565,6 +1565,17 @@ class KalemModel with NetworkManagerMixin {
         koliBilesenOrani: model.koliBilesenOrani,
         koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
         koliBilesenKolikdv: model.koliBilesenKolikdv,
+      );
+  factory KalemModel.fromStokListesiModel(StokListesiModel model) => KalemModel(
+        brutFiyat: model.bulunanFiyat,
+        stokAlisKdv: model.alisKdv,
+        stokSatisKdv: model.satisKdv,
+        stokKodu: model.stokKodu,
+        stokAdi: model.stokAdi,
+        paketMi: model.paketMi,
+        seriGirislerdeAcik: model.seriGirislerdeAcik,
+        seriCikislardaAcik: model.seriCikislardaAcik,
+        seriMiktarKadarSor: model.seriMiktarKadarSor,
       );
   @override
   Map<String, dynamic> toJson() => _$KalemModelToJson(this);
