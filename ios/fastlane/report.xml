@@ -5,67 +5,67 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="3.302111">
+      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="3.086904">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000361">
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000435">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="02: latest_testflight_build_number" time="6.557533">
+      <testcase classname="fastlane.lanes" name="02: latest_testflight_build_number" time="6.099736">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="03: increment_build_number" time="3.648164">
+      <testcase classname="fastlane.lanes" name="03: increment_build_number" time="2.492763">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="04: get_version_number" time="0.23445">
+      <testcase classname="fastlane.lanes" name="04: get_version_number" time="0.078688">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="05: get_build_number" time="0.269525">
+      <testcase classname="fastlane.lanes" name="05: get_build_number" time="0.20669">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="06: upload_symbols_to_crashlytics" time="101.742805">
+      <testcase classname="fastlane.lanes" name="06: upload_symbols_to_crashlytics" time="84.718178">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="07: git_add" time="0.298341">
+      <testcase classname="fastlane.lanes" name="07: git_add" time="0.146174">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.310232">
+      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.165616">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="09: git_tag_exists" time="0.25465">
+      <testcase classname="fastlane.lanes" name="09: git_tag_exists" time="0.130254">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="10: add_git_tag" time="0.238047">
+      <testcase classname="fastlane.lanes" name="10: add_git_tag" time="0.133779">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="11: push_to_git_remote" time="1.719672">
+      <testcase classname="fastlane.lanes" name="11: push_to_git_remote" time="1.412769">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="12: push_git_tags" time="1.076784">
+      <testcase classname="fastlane.lanes" name="12: push_git_tags" time="0.724407">
         
       </testcase>
     
