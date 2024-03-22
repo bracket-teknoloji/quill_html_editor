@@ -158,6 +158,9 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                           if ((widget.seriDetayiModel.kalanMiktar ?? 0) < value.toDoubleWithFormattedString) {
                             return "Kalandan fazla girilemez.";
                           }
+                          if (value case (null || "")) {
+                            return "Bu alan boş bırakılamaz.";
+                          }
                           return null;
                         },
                         onChanged: (value) {

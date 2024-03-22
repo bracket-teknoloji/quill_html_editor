@@ -150,7 +150,7 @@ class AppThemeLight extends AppTheme {
         ),
         snackBarTheme: SnackBarThemeData(
           showCloseIcon: true,
-          closeIconColor: colorManager.onBackground,
+          // closeIconColor: colorManager.onBackground,
           backgroundColor: UIHelper.primaryColor,
           contentTextStyle: TextStyle(color: colorManager.onBackground),
           insetPadding: UIHelper.lowPadding,

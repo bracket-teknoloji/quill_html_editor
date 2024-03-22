@@ -34,8 +34,7 @@ final class YetkiController {
 
   //! GENEL
 
-  List<DepoList>? get yetkiliDepoList =>
-      _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? userModel?.adminMi ?? false).toList();
+  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? userModel?.adminMi ?? false).toList();
   Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
@@ -96,7 +95,7 @@ final class YetkiController {
   bool get cariHareketleriPlasiyerKendiniGorsun => _isTrue(_yetkiModel?.stokCariHarPlasiyerKendiniGorsun);
 
   //* Cari Aktivite
-  bool get cariAktivite => _isTrue(_yetkiModel?.cariAktivite );
+  bool get cariAktivite => _isTrue(_yetkiModel?.cariAktivite);
   bool get cariAktiviteDetayliMi => _isTrue(_paramModel?.cariAktiviteUygulamasi == "D", skipAdmin: true);
   bool get cariAktiviteYeniKayit => _isTrue(_yetkiModel?.cariAktiviteEkle);
   bool get cariAktiviteDuzenleme => _isTrue(_yetkiModel?.cariAktiviteDuzelt);
@@ -116,6 +115,13 @@ final class YetkiController {
 
   //* Stok Kartı
   bool get stokKarti => _isTrue(_yetkiModel?.stokStokKarti);
+  bool get stokDepoBakiyeDurumu => _isTrue(
+        _yetkiModel?.stokDepoBakiyeDurumu == null
+            ? true
+            : _yetkiModel?.stokDepoBakiyeDurumu == "E"
+                ? true
+                : false,
+      );
   bool get stokKartiYeniKayit => _isTrue(_yetkiModel?.stokStokKartiKaydet);
   bool get stokKartiDuzenleme => _isTrue(_yetkiModel?.stokStokKartiDuzelt);
   bool get stokKartiSilme => _isTrue(_yetkiModel?.stokStokKartiSil);

@@ -26,6 +26,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
@@ -210,7 +211,7 @@ class PickerApp extends StatelessWidget {
         home: const SplashAuthView(),
 
         getPages: <GetPage>[
-          GetPage(name: "/login", page: () => const LoginView(), popGesture: false),
+          GetPage(name: "/login", page: () => const LoginView()),
           GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
           GetPage(name: "/addCompany", page: () => const AccountsView()),
           GetPage(name: "/addAccount", page: () => const AddAccountView()),
@@ -380,6 +381,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
               GetPage(name: "/stokFiyatGor", page: () => FiyatGorView(model: Get.arguments)),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
+              GetPage(name: "/depoBakiyeDurumu", page: () => DepoBakiyeDurumuView(model: Get.arguments)),
               GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
 
               GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
@@ -493,7 +495,7 @@ Future<void> firebaseInitialized() async {
       return true;
     };
   }
-  if (!Platform.isWindows && (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized || !Platform.isIOS || !Platform.isMacOS)) {
+  if (!Platform.isWindows && (!Platform.isIOS || !Platform.isMacOS)) {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     final FirebaseMessaging messaging = FirebaseMessaging.instance;
     await messaging.requestPermission();
@@ -505,13 +507,15 @@ Future<void> firebaseInitialized() async {
     // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
     // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
     // FirebaseMessaging.onSurfaceMessage((message) async => print(message));
-    await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
-    FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-      AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
-      FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
+    if (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
+      await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
+      FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+      PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+        AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+        FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        return true;
+      };
+    }
   }
 }

@@ -34,7 +34,7 @@ mixin _$BaseProfilParametreModel {
       throw _privateConstructorUsedError;
   bool get stokSecildigindeYazdir => throw _privateConstructorUsedError;
   bool get finansOzelRaporGrafikGoster => throw _privateConstructorUsedError;
-  @Deprecated("message")
+  @Deprecated("DENEME123")
   bool get acikTemaMi => throw _privateConstructorUsedError;
 
   /// 1 ise cihaz varsayılanı
@@ -70,7 +70,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
-      @Deprecated("message") bool acikTemaMi,
+      @Deprecated("DENEME123") bool acikTemaMi,
       ThemeMode temaModu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
@@ -198,7 +198,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool stokYazdirDizaynVeYaziciHatirla,
       bool stokSecildigindeYazdir,
       bool finansOzelRaporGrafikGoster,
-      @Deprecated("message") bool acikTemaMi,
+      @Deprecated("DENEME123") bool acikTemaMi,
       ThemeMode temaModu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
@@ -319,7 +319,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.stokYazdirDizaynVeYaziciHatirla = false,
       this.stokSecildigindeYazdir = false,
       this.finansOzelRaporGrafikGoster = false,
-      @Deprecated("message") this.acikTemaMi = false,
+      @Deprecated("DENEME123") this.acikTemaMi = false,
       this.temaModu = ThemeMode.system,
       this.netFectDizaynList,
       this.yaziciList})
@@ -366,7 +366,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   final bool finansOzelRaporGrafikGoster;
   @override
   @JsonKey()
-  @Deprecated("message")
+  @Deprecated("DENEME123")
   final bool acikTemaMi;
 
   /// 1 ise cihaz varsayılanı
@@ -409,7 +409,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool stokYazdirDizaynVeYaziciHatirla,
       final bool stokSecildigindeYazdir,
       final bool finansOzelRaporGrafikGoster,
-      @Deprecated("message") final bool acikTemaMi,
+      @Deprecated("DENEME123") final bool acikTemaMi,
       final ThemeMode temaModu,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
@@ -443,7 +443,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   bool get finansOzelRaporGrafikGoster;
   @override
-  @Deprecated("message")
+  @Deprecated("DENEME123")
   bool get acikTemaMi;
   @override
 

@@ -2,6 +2,7 @@
 
 import "dart:ui";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -678,7 +679,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         dialogManager.showStokGridViewDialog(stok, IslemTipiEnum.stokRapor);
                                       },
                                     ),
-                                    //TODO BottomSheetModel(title: "Depo Bakiye Durumu", iconWidget: Icons.list_alt),
+                                    BottomSheetModel(
+                                      title: "Depo Bakiye Durumu",
+                                      iconWidget: Icons.list_alt,
+                                      onTap: () async {
+                                        Get.back();
+                                        await Get.toNamed("/mainPage/depoBakiyeDurumu", arguments: stok);
+                                      },
+                                    ).yetkiKontrol(yetkiController.stokDepoBakiyeDurumu && kDebugMode),
                                     //TODO !!BottomSheetModel(
                                     // !!  title: loc.generalStrings.print,
                                     //   iconWidget: Icons.print,

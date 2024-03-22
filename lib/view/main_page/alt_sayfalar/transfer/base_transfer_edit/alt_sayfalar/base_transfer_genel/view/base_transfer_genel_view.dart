@@ -512,7 +512,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           }
                         },
                         validator: (value) {
-                          if (value == "") {
+                          if (value == "" && !yetkiController.transferLokalDatBosGecilmeyecekAlanlar("toplu_depo")) {
                             return null;
                           }
                           if (model.cikisDepoKodu == model.girisDepoKodu) {
