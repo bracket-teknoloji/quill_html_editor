@@ -1,6 +1,4 @@
 PODS:
-  - aespack (0.0.1):
-    - Flutter
   - app_settings (5.1.1):
     - Flutter
   - app_tracking_transparency (0.0.1):
@@ -214,7 +212,6 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - aespack (from `.symlinks/plugins/aespack/ios`)
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - app_tracking_transparency (from `.symlinks/plugins/app_tracking_transparency/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
@@ -271,8 +268,6 @@ SPEC REPOS:
     - SwiftyGif
 
 EXTERNAL SOURCES:
-  aespack:
-    :path: ".symlinks/plugins/aespack/ios"
   app_settings:
     :path: ".symlinks/plugins/app_settings/ios"
   app_tracking_transparency:
@@ -329,7 +324,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
-  aespack: d17013131ac17772a01c0d264ec867664e748912
   app_settings: 017320c6a680cdc94c799949d95b84cb69389ebc
   app_tracking_transparency: 5b1745ef9ade815f7455cb6a0848349589afb7c5
   connectivity_plus: e2dad488011aeb593e219360e804c43cc1af5770
