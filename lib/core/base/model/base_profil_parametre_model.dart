@@ -22,8 +22,8 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool stokYazdirDizaynVeYaziciHatirla,
     @Default(false) bool stokSecildigindeYazdir,
     @Default(false) bool finansOzelRaporGrafikGoster,
-    @Default(false) 
-    @Deprecated("message") final bool acikTemaMi,
+    @Default(false) @Deprecated("DENEME123") final bool acikTemaMi,
+
     /// 1 ise cihaz varsayılanı
     /// 2 ise açık
     /// 3 ise karanlık tema

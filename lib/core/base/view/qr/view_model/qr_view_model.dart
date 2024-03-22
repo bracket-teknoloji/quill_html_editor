@@ -11,6 +11,15 @@ abstract class _QRViewModelBase with Store {
   @observable
   bool isCameraReverse = false;
 
+  @observable
+  String? value;
+
+  @computed
+  bool get isValueEmpty => value == null;
+
+  @action
+  void setValue(String? result) => value = result;
+
   @action
   void changeFlash() {
     isFlashOpen = !isFlashOpen;
