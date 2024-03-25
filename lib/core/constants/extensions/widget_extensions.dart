@@ -4,14 +4,10 @@ import "dart:ui" as ui;
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
-import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 extension WidgetExtension on Widget {
-  Widget get withSafeArea => SafeArea(child: this);
-  Widget get withSizedBox => SizedBox(width: (Get.width - UIHelper.midSize) * 0.45, child: this);
   Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox();
   Widget? get sizedBoxMi => this is SizedBox ? null : this;
 
@@ -72,10 +68,6 @@ extension WidgetExtension on Widget {
 
     return byteData!.buffer.asUint8List();
   }
-}
-
-extension RowExtension on Row {
-  Row get withExpanded => Row(children: children.map((e) => Expanded(child: e)).toList());
 }
 
 extension YetkiExtension2 on dynamic {

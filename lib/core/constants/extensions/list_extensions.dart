@@ -1,6 +1,5 @@
 //extension on a list for padding all items
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -15,14 +14,7 @@ extension ListExtension<T> on List<T> {
           child: e as Widget,
         ),
       ).toList();
-
-  List<Widget> get withSizedBox => map(
-        (e) => SizedBox(
-          width: (Get.width - UIHelper.midSize) * 0.45,
-          child: e as Widget,
-        ),
-      ).toList();
-
+      
   List<T> get nullCheck => where((element) => element != null).toList().cast<T>();
 }
 

@@ -474,9 +474,9 @@ final class YetkiController {
     return false;
   }
 
-  bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index) ?? false));
-  bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index) ?? false));
-  bool satisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index) ?? false));
+  bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)));
+  bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)));
+  bool satisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)));
 
   //! TRANSFER
 
@@ -502,9 +502,9 @@ final class YetkiController {
   bool get transferDatDigerSekmesiGoster => _isTrue(_yetkiModel?.transferDatDigerSekmesiGoster);
 
   //TODO Sayfaya parametreleri ekle
-  bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
-  bool transferLokalDatBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
-  bool transferLokalDatGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatGizlenecekAlanlar?.contains(index) ?? false, skipAdmin: true);
+  bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalDatBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalDatGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool get transferDatAciklamaDuzenle => _isTrue(_yetkiModel?.transferDatAciklamaDuzenle, skipAdmin: true);
 
   String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
