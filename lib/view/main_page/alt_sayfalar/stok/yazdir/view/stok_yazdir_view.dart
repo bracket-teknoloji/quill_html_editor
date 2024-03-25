@@ -1,6 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
@@ -81,6 +84,28 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
         appBar: AppBar(
           title: Text(loc.generalStrings.print),
           actions: [
+            IconButton(
+              icon: const Icon(Icons.picture_as_pdf_outlined),
+              onPressed: () async {
+                if (formKey.currentState?.validate() == true) {
+                  return;
+                }
+                if (viewModel.printModel is NetFectDizaynList) {
+                  // Get.back();
+                  Get.to(
+                    () => PDFViewerView(
+                      title: viewModel.printModel.raporOzelKod,
+                      pdfData: PdfModel(
+                        dizaynId: viewModel.printModel.dizaynId,
+                        raporOzelKod: viewModel.printModel.raporOzelKod,
+                        etiketSayisi: viewModel.printModel.etiketSayisi,
+                        dicParams: DicParams(stokKodu: widget.model?.stokKodu),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
             IconButton(
               icon: const Icon(Icons.print_outlined),
               onPressed: () async => postPrint(),
@@ -232,9 +257,9 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     child: CustomWidgetWithLabel(
                       isVertical: true,
                       text: "Stok Seçildiğinde Yazdır",
-                      child: Observer(builder: (_) => Switch(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
+                      child: Observer(builder: (_) => Switch.adaptive(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
                     ).paddingAll(UIHelper.lowSize),
-                  ),
+                  ).yetkiVarMi(widget.model == null),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       isVertical: true,
@@ -317,7 +342,12 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   Future<void> postPrint() async {
     if (formKey.currentState?.validate() ?? false) {
       final result = await networkManager.postPrint(context, model: viewModel.printModel);
-      if (result.success == true) {}
+      if (result.success == true) {
+        dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
+        if (widget.model != null) {
+          Get.back(result: result.success);
+        }
+      }
     }
   }
 

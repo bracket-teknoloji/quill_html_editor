@@ -2,7 +2,6 @@
 
 import "dart:ui";
 
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -53,17 +52,23 @@ class StokListesiView extends StatefulWidget {
 }
 
 class _StokListesiViewState extends BaseState<StokListesiView> {
-  StokListesiViewModel viewModel = StokListesiViewModel();
+  final StokListesiViewModel viewModel = StokListesiViewModel();
   List<StokListesiModel>? get stokListesi => viewModel.stokListesi ?? [];
   late final ScrollController scrollController;
-  TextEditingController grupKoduController = TextEditingController();
-  TextEditingController kod1Controller = TextEditingController();
-  TextEditingController kod2Controller = TextEditingController();
-  TextEditingController kod3Controller = TextEditingController();
-  TextEditingController kod4Controller = TextEditingController();
-  TextEditingController kod5Controller = TextEditingController();
+  late final TextEditingController grupKoduController;
+  late final TextEditingController kod1Controller;
+  late final TextEditingController kod2Controller;
+  late final TextEditingController kod3Controller;
+  late final TextEditingController kod4Controller;
+  late final TextEditingController kod5Controller;
   @override
   void initState() {
+    grupKoduController = TextEditingController();
+    kod1Controller = TextEditingController();
+    kod2Controller = TextEditingController();
+    kod3Controller = TextEditingController();
+    kod4Controller = TextEditingController();
+    kod5Controller = TextEditingController();
     scrollController = ScrollController();
     if (widget.requestModel != null) {
       viewModel.bottomSheetModel = widget.requestModel!;
@@ -93,15 +98,14 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   @override
   void dispose() {
     bottomSheetDialogManager.clearSelectedData();
-    // viewModel.setBottomSheetModel(StokBottomSheetModel());
     scrollController.dispose();
-    super.dispose();
     grupKoduController.dispose();
     kod1Controller.dispose();
     kod2Controller.dispose();
     kod3Controller.dispose();
     kod4Controller.dispose();
     kod5Controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -686,22 +690,20 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                         Get.back();
                                         await Get.toNamed("/mainPage/depoBakiyeDurumu", arguments: stok);
                                       },
-                                    ).yetkiKontrol(yetkiController.stokDepoBakiyeDurumu && kDebugMode),
-                                    //TODO !!BottomSheetModel(
-                                    // !!  title: loc.generalStrings.print,
-                                    //   iconWidget: Icons.print,
-                                    //   onTap: () async {
-                                    //     // // ignore: use_build_context_synchronously
-                                    //     // await bottomSheetDialogManager.showBottomSheetDialog(context,
-                                    //     //     title: "fdsfg",
-                                    //     //     body: Image(
-                                    //     //       image: result,
-                                    //     //       errorBuilder: (context, error, stackTrace) {
-                                    //     //         return const Icon(Icons.image_not_supported_outlined);
-                                    //     //       },
-                                    //     //     ));
-                                    //   },
-                                    // ),
+                                    ).yetkiKontrol(yetkiController.stokDepoBakiyeDurumu),
+                                    BottomSheetModel(
+                                      title: loc.generalStrings.print,
+                                      iconWidget: Icons.print,
+                                      onTap: () async {
+                                        Get.back();
+                                        final result = await Get.toNamed("mainPage/stokYazdir", arguments: stok);
+                                        if (result == true) {
+                                          viewModel.setStokListesi(null);
+                                          viewModel.resetSayfa();
+                                          await getData();
+                                        }
+                                      },
+                                    ).yetkiKontrol(yetkiController.yazdirmaStokEtiketi),
                                     BottomSheetModel(
                                       title: loc.generalStrings.actions,
                                       iconWidget: Icons.list_alt,
@@ -741,70 +743,13 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       );
 
   Future<void> getData() async {
-    // final StokBottomSheetModel? requestModel = widget.requestModel;
-    // Map data2 = {
-    //   "MenuKodu": requestModel?.menuKodu ?? "STOK_STOK",
-    //   "ResimGoster": requestModel?.resimleriGoster ?? viewModel.resimleriGoster,
-    //   "Siralama": requestModel?.siralama ?? viewModel.siralama,
-    //   "Sayfa": viewModel.sayfa,
-    //   "BakiyeDurumu": viewModel.bakiye ?? "",
-    // };
-    // if (requestModel != null) {
-    //   data2 = requestModel.toJson();
-    //   data2["SeriTakibiVar"] = requestModel.seriTakibiVar;
-    //   data2["Sayfa"] = viewModel.sayfa;
-    // }
-    // if (!viewModel.bottomSheetModel.arrGrupKodu.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrGrupKodu?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrGrupKodu"] = liste;
-    // }
-    // if (viewModel.searchValue.isNotEmpty) {
-    //   data2["SearchText"] = viewModel.searchValue;
-    // }
-    // if (!viewModel.bottomSheetModel.arrKod1.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrKod1?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrKod1"] = liste;
-    // }
-    // if (!viewModel.bottomSheetModel.arrKod2.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrKod2?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrKod2"] = liste;
-    // }
-    // if (!viewModel.bottomSheetModel.arrKod3.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrKod3?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrKod3"] = liste;
-    // }
-    // if (!viewModel.bottomSheetModel.arrKod4.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrKod4?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrKod4"] = liste;
-    // }
-    // if (!viewModel.bottomSheetModel.arrKod5.isEmptyOrNull) {
-    //   final List<String> liste = [];
-    //   viewModel.bottomSheetModel.arrKod5?.forEach((element) {
-    //     liste.add(element.grupKodu ?? "");
-    //   });
-    //   data2["ArrKod5"] = liste;
-    // }
     final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
       data: (viewModel.bottomSheetModel.copyWith(
         resimGoster: viewModel.resimleriGoster,
         menuKodu: "STOK_STOK",
         searchText: viewModel.searchValue,
+        sayfa: viewModel.sayfa,
       )).toJsonWithList(),
       bodyModel: StokListesiModel(),
     );

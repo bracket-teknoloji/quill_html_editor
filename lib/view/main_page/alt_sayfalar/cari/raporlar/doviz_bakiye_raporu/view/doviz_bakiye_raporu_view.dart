@@ -164,15 +164,13 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                 Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
               ],
             ),
-            Observer(
-              builder: (_) => ElevatedButton(
-                onPressed: () {
-                  viewModel.setFuture();
-                  Get.back();
-                },
-                child: Text(loc.generalStrings.apply),
-              ).paddingAll(UIHelper.lowSize),
-            ),
+            ElevatedButton(
+              onPressed: () {
+                viewModel.setFuture();
+                Get.back();
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
           ],
         ),
       );

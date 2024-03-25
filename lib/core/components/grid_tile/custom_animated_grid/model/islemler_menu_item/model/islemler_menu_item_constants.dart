@@ -70,6 +70,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);
       islemlerList.add(stokYazdir);
+      islemlerList.add(depoBakiyeDurumu);
       islemlerList.add(fiyatGor);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
@@ -453,6 +454,12 @@ class IslemlerMenuItemConstants<T> {
         isEnabled: _yetkiController.yazdirmaStokEtiketi,
         iconData: Icons.print_outlined,
         onTap: () async => Get.toNamed("/mainPage/stokYazdir", arguments: model),
+      );
+  GridItemModel? get depoBakiyeDurumu => GridItemModel.islemler(
+        title: "Depo Bakiye Durumu",
+        isEnabled: _yetkiController.stokDepoBakiyeDurumu,
+        iconData: Icons.warehouse_outlined,
+        onTap: () async => Get.toNamed("/mainPage/depoBakiyeDurumu", arguments: model),
       );
   GridItemModel? get seriHareketleri => GridItemModel.islemler(
         title: "Seri Hareketleri",

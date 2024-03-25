@@ -13,25 +13,25 @@ class SlideControllerWidget extends StatefulWidget {
   final dynamic groupValue;
   final bool? scroll;
   final void Function(int? index) filterOnChanged;
-  const SlideControllerWidget({super.key, required this.childrenTitleList, required this.filterOnChanged, required this.childrenValueList, required this.groupValue, this.title, this.scroll = true});
+  const SlideControllerWidget({super.key, required this.childrenTitleList, required this.filterOnChanged, required this.childrenValueList, required this.groupValue, this.title, this.scroll = true})
+      : assert(childrenTitleList.length == childrenValueList.length);
 
   @override
   State<SlideControllerWidget> createState() => _SlideControllerWidgetState();
 }
 
 class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
-  ScrollController? scrollController;
+  late final ScrollController scrollController;
 
   @override
   void initState() {
-    if (widget.childrenTitleList.length != widget.childrenValueList.length) {
-      throw Exception("childrenTitleList ve childrenValueList uzunlukları eşit olmalıdır");
-    }
     scrollController = ScrollController();
-    Future.delayed(Duration.zero, () async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.scroll ?? false) {
-        await scrollController?.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-        await scrollController?.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+        await scrollController.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+        if (!scrollController.hasClients) {
+          await scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+        }
       }
     });
     super.initState();
@@ -39,7 +39,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
 
   @override
   void dispose() {
-    scrollController?.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 

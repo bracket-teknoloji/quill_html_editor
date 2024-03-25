@@ -245,10 +245,6 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(item.hesapAdi ?? ""),
-                                  Text(
-                                    "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
-                                    style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye)),
-                                  ),
                                 ],
                               ),
                               subtitle: Column(
@@ -259,7 +255,16 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                                       ColorfulBadge(badgeColorEnum: BadgeColorEnum.dovizli, label: Text("Dövizli ${item.dovizAdi ?? ""}")).yetkiVarMi((item.dovizTipi ?? 0) > 1),
                                     ],
                                   ),
-                                  Text(item.hesapKodu ?? ""),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(item.hesapKodu ?? ""),
+                                      Text(
+                                        "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
+                                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye), fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
                                   Text(item.subeAdi ?? ""),
                                   Text(item.bankaAdi ?? ""),
                                 ],

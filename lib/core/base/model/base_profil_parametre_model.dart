@@ -22,9 +22,9 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool stokYazdirDizaynVeYaziciHatirla,
     @Default(false) bool stokSecildigindeYazdir,
     @Default(false) bool finansOzelRaporGrafikGoster,
-    @Default(false) @Deprecated("DENEME123") final bool acikTemaMi,
+    @Default(false) @Deprecated("Bunun yerine temaModu kullanılacak.") final bool acikTemaMi,
 
-    /// 1 ise cihaz varsayılanı
+    /// 1 ise sistem varsayılanı
     /// 2 ise açık
     /// 3 ise karanlık tema
     @Default(ThemeMode.system) ThemeMode temaModu,

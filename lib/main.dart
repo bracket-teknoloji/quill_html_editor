@@ -1,5 +1,4 @@
 import "dart:developer";
-import "dart:io";
 import "dart:ui";
 
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
@@ -186,14 +185,10 @@ class PickerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GetMaterialApp(
         title: "Picker",
-        // defaultTransition: Transition.rightToLeft,
-        popGesture: false,
+        popGesture: true,
         debugShowCheckedModeBanner: false,
-        // locale: context.locale,
         locale: Get.deviceLocale,
         fallbackLocale: const Locale("en"),
-        // supportedLocales: context.supportedLocales,
-        // localizationsDelegates: context.localizationDelegates,
         supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
         localizationsDelegates: const <LocalizationsDelegate>[
           GlobalWidgetsLocalizations.delegate,
@@ -201,7 +196,6 @@ class PickerApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           LocDelegate(),
         ],
-
         scrollBehavior: const MaterialScrollBehavior()
             .copyWith(dragDevices: <PointerDeviceKind>{PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.stylus, PointerDeviceKind.unknown, PointerDeviceKind.trackpad}),
         opaqueRoute: false,
@@ -209,7 +203,6 @@ class PickerApp extends StatelessWidget {
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: CacheManager.getProfilParametre.temaModu,
         home: const SplashAuthView(),
-
         getPages: <GetPage>[
           GetPage(name: "/login", page: () => const LoginView()),
           GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
@@ -474,18 +467,13 @@ class PickerApp extends StatelessWidget {
 }
 
 Future<void> firebaseInitialized() async {
-  if (kIsWeb) {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    final FirebaseMessaging messaging = FirebaseMessaging.instance;
-    await messaging.requestPermission();
-    await FirebaseMessaging.instance.setAutoInitEnabled(true);
-    AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken(vapidKey: "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE");
-    await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
-    log("fcmToken: ${AccountModel.instance.fcmToken}");
-    // print token
-    // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
-    // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
-    // FirebaseMessaging.onSurfaceMessage((message) async => print(message));
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
+  final FirebaseMessaging messaging = FirebaseMessaging.instance;
+  await messaging.requestPermission();
+  await messaging.setAutoInitEnabled(true);
+  AccountModel.instance.fcmToken = await messaging.getToken(vapidKey: !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE");
+  log("fcmToken: ${AccountModel.instance.fcmToken}");
+  if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
@@ -494,28 +482,5 @@ Future<void> firebaseInitialized() async {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
     };
-  }
-  if (!Platform.isWindows && (!Platform.isIOS || !Platform.isMacOS)) {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    final FirebaseMessaging messaging = FirebaseMessaging.instance;
-    await messaging.requestPermission();
-    await FirebaseMessaging.instance.setAutoInitEnabled(true);
-    AccountModel.instance.fcmToken = await FirebaseMessaging.instance.getToken();
-    await messaging.setForegroundNotificationPresentationOptions(sound: true, alert: true, badge: true);
-    log("fcmToken: ${AccountModel.instance.fcmToken}");
-    // print token
-    // FirebaseMessaging.onMessageOpenedApp.listen((event) => print(event.toMap().toString()));
-    // messaging.getNotificationSettings().then((value) => print(value.authorizationStatus));
-    // FirebaseMessaging.onSurfaceMessage((message) async => print(message));
-    if (await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
-      await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
-      FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-      PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-        AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
-        FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-        return true;
-      };
-    }
   }
 }

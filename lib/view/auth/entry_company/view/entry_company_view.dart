@@ -324,14 +324,13 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   final result = await networkManager.dioPost<AccountModel>(
                                     path: ApiUrls.saveUyeBilgileri,
                                     bodyModel: AccountModel(),
-                                    
                                     data: CacheManager.getHesapBilgileri?.toJson(),
                                   );
                                   if (result.success == true) {
                                     log("Session Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");
-                                  if (response.message?.ext.isNotNullOrNoEmpty ?? false) dialogManager.showInfoDialog(response.message ?? "");
+                                  if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
                                 }
                               } else {
                                 dialogManager.showErrorSnackBar("Boş bırakmayınız.");
