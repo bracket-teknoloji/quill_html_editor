@@ -170,7 +170,7 @@ class BottomSheetDialogManager {
   Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
-    final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 50.0).sum;
+    final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
     final FocusNode focusNode = FocusNode();
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
@@ -197,7 +197,7 @@ class BottomSheetDialogManager {
                   endIndent: 0,
                   indent: 0,
                 ),
-                if ((children?.length ?? 0) > 15) SearchField(focusNode: focusNode, viewModel: viewModel).paddingAll(UIHelper.midSize),
+                if ((children?.length ?? 0) > 15) SearchField(viewModel: viewModel).paddingAll(UIHelper.midSize),
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
                     height: height < Get.height * 0.8 ? height : Get.height * 0.8,
@@ -1349,12 +1349,10 @@ class BottomSheetDialogManager {
 class SearchField extends StatefulWidget {
   const SearchField({
     super.key,
-    required this.focusNode,
     required this.viewModel,
     this.children,
   });
 
-  final FocusNode focusNode;
   final List<BottomSheetModel>? children;
   final BottomSheetStateManager viewModel;
 
@@ -1363,17 +1361,25 @@ class SearchField extends StatefulWidget {
 }
 
 class _SearchFieldState extends State<SearchField> {
+  late final FocusNode focusNode;
   @override
   void initState() {
+    focusNode = FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      widget.focusNode.requestFocus();
+      focusNode.requestFocus();
     });
     super.initState();
   }
 
   @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => TextField(
-        focusNode: widget.focusNode,
+        focusNode: focusNode,
         decoration: const InputDecoration(hintText: "Aramak istediğiniz metni yazınız."),
         onChanged: (widget.children?.length ?? 0) < 100 ? widget.viewModel.changeSearchValue : null,
         onSubmitted: (widget.children?.length ?? 0) >= 100 ? widget.viewModel.changeSearchValue : null,
