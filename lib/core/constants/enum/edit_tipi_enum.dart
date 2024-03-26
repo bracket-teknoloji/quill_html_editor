@@ -647,6 +647,21 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  String get getListRoute {
+    switch (this) {
+      case EditTipiEnum.satisFatura:
+        return "/mainPage/sevkiyatSatisFaturasi";
+      case EditTipiEnum.satisIrsaliye:
+        return "/mainPage/sevkiyatSatisIrsaliyesi";
+      case EditTipiEnum.alisFatura:
+        return "/mainPage/malKabulAlisFaturasi";
+      case EditTipiEnum.alisIrsaliye:
+        return "/mainPage/malKabulAlisIrsaliyesi";
+      default:
+        return "";
+    }
+  }
+
   String get aciklamaDuzenleRoute {
     switch (this) {
       case EditTipiEnum.satisFatura:

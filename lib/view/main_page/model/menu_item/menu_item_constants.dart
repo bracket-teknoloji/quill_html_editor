@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/menu_list_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
@@ -43,7 +44,7 @@ class MenuItemConstants {
     //*Cari
     //*
     GridItemModel.anamenu(
-      name: "CARI",
+      name: MenuItemsEnum.cari.yetkiName,
       title: "Cari",
       icon: "supervisor",
       color: ColorPalette.ecru,
@@ -192,7 +193,7 @@ class MenuItemConstants {
     //* Genel
     //*
     GridItemModel.anamenu(
-      name: "GNEL_BEKO",
+      name: null,
       title: "Genel",
       icon: "settings",
       color: ColorPalette.tomato,
@@ -226,8 +227,8 @@ class MenuItemConstants {
           title: "Raporlar",
           icon: "monitoring",
           altMenuler: [
-            GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu"),
-            GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu"),
+            GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Alış Fat. Kalem Raporu", route: "/mainPage/sevkiyatAlisFaturaKalemRaporu"),
+            GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Alış İrs. Kalem Raporu", route: "/mainPage/sevkiyatAlisIrsaliyeKalemRaporu"),
           ],
         ),
       ],
@@ -254,7 +255,15 @@ class MenuItemConstants {
       color: ColorPalette.mountbattenPink,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturası", route: "/mainPage/sevkiyatSatisFaturasi"),
-        GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
+        GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),GridItemModel.altmenu(
+          name: "malKabul_SatisIrs_Raporlar",
+          title: "Raporlar",
+          icon: "monitoring",
+          altMenuler: [
+            GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Satış Fat. Kalem Raporu", route: "/mainPage/sevkiyatSatisFaturaKalemRaporu"),
+            GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Satış İrs. Kalem Raporu", route: "/mainPage/sevkiyatSatisIrsaliyeKalemRaporu"),
+          ],
+        ),
         // GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama").isDebug(),
       ],
     ),

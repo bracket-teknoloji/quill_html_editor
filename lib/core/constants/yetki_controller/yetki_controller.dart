@@ -406,7 +406,7 @@ final class YetkiController {
   bool get sayimSayimRaporu => _isTrue(_yetkiModel?.sayimRaporu);
   bool sayimEkAlanlar(int? value) => _isTrue(_yetkiModel?.sayimEkAlanlar?.contains(value), skipAdmin: true);
   bool sayimGizlenecekAlanlar(String? value) => _isTrue(_yetkiModel?.sayimGizlenecekAlanlar?.contains(value), skipAdmin: true);
-  bool sayimDegistirilmeyecekAlanlar(String? value) => _isTrue(!_isTrue(_yetkiModel?.sayimDegismeyecekAlanlar?.contains(value)));
+  bool sayimDegistirilmeyecekAlanlar(String? value) => !_isTrue(_yetkiModel?.sayimDegismeyecekAlanlar?.contains(value));
 
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;

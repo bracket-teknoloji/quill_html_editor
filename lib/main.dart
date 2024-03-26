@@ -24,6 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view/olcum_girisi_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/mal_kabul_sevkiyat_kalem_raporu/view/mal_kabul_sevkiyat_kalem_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
@@ -400,12 +401,16 @@ class PickerApp extends StatelessWidget {
               //! Faturalar
               GetPage(name: "/faturaEdit", page: () => BaseFaturaEditView(model: Get.arguments)),
               //* Mal Kabul
-              GetPage(name: "/malKabulAlisFaturasi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.alisFatura)),
-              GetPage(name: "/malKabulAlisIrsaliyesi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.alisIrsaliye)),
+              GetPage(name: "/malKabulAlisFaturasi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.alisFatura, isGetData: Get.arguments)),
+              GetPage(name: "/malKabulAlisIrsaliyesi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.alisIrsaliye, isGetData: Get.arguments)),
+              GetPage(name: "/sevkiyatAlisFaturaKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.alisFatura)),
+              GetPage(name: "/sevkiyatAlisIrsaliyeKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.alisIrsaliye)),
 
               //* Sevkiyat
-              GetPage(name: "/sevkiyatSatisFaturasi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.satisFatura)),
-              GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => const FaturalarView(editTipiEnum: EditTipiEnum.satisIrsaliye)),
+              GetPage(name: "/sevkiyatSatisFaturasi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: Get.arguments)),
+              GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisIrsaliye, isGetData: Get.arguments)),
+              GetPage(name: "/sevkiyatSatisFaturaKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.satisFatura)),
+              GetPage(name: "/sevkiyatSatisIrsaliyeKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.satisIrsaliye)),
 
               //* * Faturalar Açıklama Düzenleme
               GetPage(name: "/faturaAlisFaturasiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisFatura)),
@@ -450,7 +455,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/isEmriRehberiOzel", page: () => const IsEmriRehberiView(isGetData: true)),
               GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
               GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
-              
+
               //* Kalite-Kontrol
               GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
 

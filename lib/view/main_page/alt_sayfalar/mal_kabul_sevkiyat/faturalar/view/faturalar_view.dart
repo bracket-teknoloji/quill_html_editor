@@ -35,7 +35,8 @@ import "../view_model/faturalar_view_model.dart";
 
 class FaturalarView extends StatefulWidget {
   final EditTipiEnum editTipiEnum;
-  const FaturalarView({super.key, required this.editTipiEnum});
+  final bool? isGetData;
+  const FaturalarView({super.key, required this.editTipiEnum, this.isGetData});
 
   @override
   State<FaturalarView> createState() => _FaturalarViewState();
@@ -94,6 +95,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         }
       });
     });
+    
     super.initState();
   }
 
@@ -266,6 +268,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               showMiktar: viewModel.ekstraAlanlarMap["MİK"],
                               showVade: viewModel.ekstraAlanlarMap["VADE"],
                               editTipiEnum: widget.editTipiEnum,
+                              isGetData: widget.isGetData,
                               onDeleted: () async {
                                 await viewModel.resetPage();
                               },
