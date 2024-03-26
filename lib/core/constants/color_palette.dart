@@ -17,4 +17,5 @@ class ColorPalette {
   static const Color gamboge = Color.fromRGBO(235, 150, 5, 1);
   static const Color marineBlue = Color.fromRGBO(132, 182, 190, 1);
   static const Color asparagus = Color.fromRGBO(114, 148, 115, 1);
+  static const Color surfGreen = Color.fromRGBO(2, 181, 159, 1);
 }

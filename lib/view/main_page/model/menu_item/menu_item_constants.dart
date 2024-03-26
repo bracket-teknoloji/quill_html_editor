@@ -426,13 +426,32 @@ class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      name: null,
+      name: "GNEL_SRAP",
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,
       altMenuler: <GridItemModel>[
         ...groupBySerbestRaporList(),
         // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
+      ],
+    ),
+    GridItemModel.anamenu(
+      //TODO kalite kontrol parametreleri eklenecek.
+      // name: "KALKON",
+      name: AccountModel.instance.isDebug ? null : "KALKON",
+      title: "Kalite Kontrol",
+      icon: "quality_control",
+      color: ColorPalette.surfGreen,
+      altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "kalite_OlcumGirisi", title: "Ölçüm Girişi", route: "/mainPage/olcumGirisi"),GridItemModel.altmenu(
+          //TODO kalite kontrol parametreleri eklenecek.
+          name: "kalite_kontrol_Raporlar",
+          title: "Raporlar",
+          icon: "monitoring",
+          altMenuler: <GridItemModel>[
+            ..._getSerbestRapor(SerbestRaporDetayKodEnum.kaliteKontrol),
+          ],
+        ),
       ],
     ),
   ].whereType<GridItemModel>().toList();

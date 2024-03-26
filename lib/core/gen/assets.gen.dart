@@ -295,6 +295,10 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
   SvgGenImage get profile =>
       const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/profile.svg');
 
+  /// File path: assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg
+  SvgGenImage get qualityControl => const SvgGenImage(
+      'assets/icons/PickerSvgIcon/AnaMenu/quality_control.svg');
+
   /// File path: assets/icons/PickerSvgIcon/AnaMenu/settings.svg
   SvgGenImage get settings =>
       const SvgGenImage('assets/icons/PickerSvgIcon/AnaMenu/settings.svg');
@@ -328,6 +332,7 @@ class $AssetsIconsPickerSvgIconAnaMenuGen {
         order,
         pallet,
         profile,
+        qualityControl,
         settings,
         shelves,
         supervisor,

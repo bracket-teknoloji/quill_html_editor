@@ -1,4 +1,4 @@
-enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans }
+enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans, kaliteKontrol}
 
 extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
   //return capitalized with method
@@ -18,6 +18,8 @@ extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
         return "Senet";
       case SerbestRaporDetayKodEnum.finans:
         return "Finans";
+      case SerbestRaporDetayKodEnum.kaliteKontrol:
+        return "Kalite Kontrol";
       default:
         throw Exception("Böyle bir değer yok");
     }

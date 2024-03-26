@@ -22,6 +22,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view/olcum_girisi_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
@@ -449,6 +450,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/isEmriRehberiOzel", page: () => const IsEmriRehberiView(isGetData: true)),
               GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
               GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
+              
+              //* Kalite-Kontrol
+              GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
 
               //* Serbest Raporlar
               //*
