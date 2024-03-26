@@ -171,7 +171,6 @@ class BottomSheetDialogManager {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
-    final FocusNode focusNode = FocusNode();
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet(
       context: context,

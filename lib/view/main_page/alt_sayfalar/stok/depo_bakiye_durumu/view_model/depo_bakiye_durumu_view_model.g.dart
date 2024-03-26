@@ -16,6 +16,27 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
           Computed<List<String>?>(() => super.subeAdiList,
               name: '_DepoBakiyeDurumuViewModelBase.subeAdiList'))
       .value;
+  Computed<double>? _$toplamGirisComputed;
+
+  @override
+  double get toplamGiris =>
+      (_$toplamGirisComputed ??= Computed<double>(() => super.toplamGiris,
+              name: '_DepoBakiyeDurumuViewModelBase.toplamGiris'))
+          .value;
+  Computed<double>? _$toplamCikisComputed;
+
+  @override
+  double get toplamCikis =>
+      (_$toplamCikisComputed ??= Computed<double>(() => super.toplamCikis,
+              name: '_DepoBakiyeDurumuViewModelBase.toplamCikis'))
+          .value;
+  Computed<double>? _$toplamBakiyeComputed;
+
+  @override
+  double get toplamBakiye =>
+      (_$toplamBakiyeComputed ??= Computed<double>(() => super.toplamBakiye,
+              name: '_DepoBakiyeDurumuViewModelBase.toplamBakiye'))
+          .value;
 
   late final _$depoBakiyeDurumuListAtom = Atom(
       name: '_DepoBakiyeDurumuViewModelBase.depoBakiyeDurumuList',
@@ -102,7 +123,10 @@ mixin _$DepoBakiyeDurumuViewModel on _DepoBakiyeDurumuViewModelBase, Store {
     return '''
 depoBakiyeDurumuList: ${depoBakiyeDurumuList},
 dicParams: ${dicParams},
-subeAdiList: ${subeAdiList}
+subeAdiList: ${subeAdiList},
+toplamGiris: ${toplamGiris},
+toplamCikis: ${toplamCikis},
+toplamBakiye: ${toplamBakiye}
     ''';
   }
 }
