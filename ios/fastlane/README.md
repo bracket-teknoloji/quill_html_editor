@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Upload symbols to Crashlytics
 
+### ios increaseBuildNumber
+
+```sh
+[bundle exec] fastlane ios increaseBuildNumber
+```
+
+update build number
+
 ### ios prepare_for_build
 
 ```sh
