@@ -5,22 +5,67 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="3.234323">
+      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="3.2718">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000304">
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000224">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="4.198459">
+      <testcase classname="fastlane.lanes" name="02: latest_testflight_build_number" time="4.077796">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="3.889006">
+      <testcase classname="fastlane.lanes" name="03: increment_build_number" time="1.552279">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: get_version_number" time="0.082045">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: get_build_number" time="0.185889">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: upload_symbols_to_crashlytics" time="84.201771">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: git_add" time="0.17119">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.163959">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: git_tag_exists" time="0.12403">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: add_git_tag" time="0.129821">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: push_to_git_remote" time="1.429421">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: push_git_tags" time="0.714414">
         
       </testcase>
     
