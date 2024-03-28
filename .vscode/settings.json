@@ -25,5 +25,6 @@
   "editor.codeLensFontFamily": "JetBrains Mono",
   "chat.editor.fontFamily": "JetBrains Mono",
   "debug.console.fontFamily": "JetBrains Mono",
-  "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "editor.fontWeight": "500"
 }
