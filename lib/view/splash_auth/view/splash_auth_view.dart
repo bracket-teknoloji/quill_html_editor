@@ -170,7 +170,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   Future<void> getSession() async {
     viewModel.setTitle("Lisans bilgileri alınıyor...");
-    final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "");
+    final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
     if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
       viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
       viewModel.setIsError(true);
@@ -181,6 +181,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     AccountModel.instance
       // ..adi = CacheManager.getVerifiedUser.
       ..kullaniciAdi = CacheManager.getVerifiedUser.username
+      ..uyeEmail = CacheManager.getVerifiedUser.account?.email
       ..aktifVeritabani = CacheManager.getVeriTabani["Şirket"]
       ..aktifIsletmeKodu = CacheManager.getVeriTabani["İşletme"]
       ..aktifSubeKodu = CacheManager.getVeriTabani["Şube"];
