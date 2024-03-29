@@ -9,6 +9,14 @@ part of 'olcum_girisi_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
+  Computed<List<OlcumGirisiListesiModel>?>? _$getListComputed;
+
+  @override
+  List<OlcumGirisiListesiModel>? get getList => (_$getListComputed ??=
+          Computed<List<OlcumGirisiListesiModel>?>(() => super.getList,
+              name: '_OlcumGirisiViewModelBase.getList'))
+      .value;
+
   late final _$searchBarAtom =
       Atom(name: '_OlcumGirisiViewModelBase.searchBar', context: context);
 
@@ -22,6 +30,38 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   set searchBar(bool value) {
     _$searchBarAtom.reportWrite(value, super.searchBar, () {
       super.searchBar = value;
+    });
+  }
+
+  late final _$searchTextAtom =
+      Atom(name: '_OlcumGirisiViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
+  late final _$requestModelAtom =
+      Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
+
+  @override
+  OlcumGirisiRequestModel get requestModel {
+    _$requestModelAtom.reportRead();
+    return super.requestModel;
+  }
+
+  @override
+  set requestModel(OlcumGirisiRequestModel value) {
+    _$requestModelAtom.reportWrite(value, super.requestModel, () {
+      super.requestModel = value;
     });
   }
 
@@ -64,6 +104,50 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
+  void setBastar(String? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setBastar');
+    try {
+      return super.setBastar(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBittar(String? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setBittar');
+    try {
+      return super.setBittar(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBelgeTipi(String? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setBelgeTipi');
+    try {
+      return super.setBelgeTipi(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDurum(int? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setDurum');
+    try {
+      return super.setDurum(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOlcumList(List<OlcumGirisiListesiModel>? list) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setOlcumList');
@@ -89,7 +173,10 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   String toString() {
     return '''
 searchBar: ${searchBar},
-olcumList: ${olcumList}
+searchText: ${searchText},
+requestModel: ${requestModel},
+olcumList: ${olcumList},
+getList: ${getList}
     ''';
   }
 }

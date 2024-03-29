@@ -1,5 +1,10 @@
 import "package:flutter/material.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_listesi_model.dart";
 
 class OlcumGirisiListesiCard extends StatefulWidget {
@@ -14,9 +19,34 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
   OlcumGirisiListesiModel get model => widget.model;
 
   @override
-  Widget build(BuildContext context) => const Card(
+  Widget build(BuildContext context) => Card(
         child: ListTile(
-          title: Text("Ölçüm Girişi"),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(model.belgeNo ?? ""),
+              Text(model.tarih.toDateString),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(model.stokAdi ?? model.yapacik ?? ""),
+              Text(model.stokKodu ?? ""),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  Text("Sıra: ${model.sira.toStringIfNotNull ?? ""}").yetkiVarMi(model.sira != null),
+                  Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
+                  Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kabulAdet != null),
+                  Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.retAdet != null),
+                  Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.sartliAdet != null),
+                  Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.olcumAdedi != null),
+                  Text("Yapılandırma Kodu: ${model.yapkod}").yetkiVarMi(model.yapkod != null),
+                ],
+              ),
+            ],
+          ),
         ),
       );
 }

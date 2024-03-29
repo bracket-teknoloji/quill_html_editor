@@ -39,6 +39,14 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         return EditTipiEnum.ambarCikisi;
       case 12:
         return EditTipiEnum.cari;
+      case 13:
+        return EditTipiEnum.isEmri;
+      case 14:
+        return EditTipiEnum.altIsEmri;
+      case 15:
+        return EditTipiEnum.isEmriTakip;
+      case 16:
+        return EditTipiEnum.uretimSonuKaydi;
       default:
         return EditTipiEnum.musteri;
     }
@@ -85,6 +93,18 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         break;
       case EditTipiEnum.cari:
         writer.writeByte(12);
+        break;
+      case EditTipiEnum.isEmri:
+        writer.writeByte(13);
+        break;
+      case EditTipiEnum.altIsEmri:
+        writer.writeByte(14);
+        break;
+      case EditTipiEnum.isEmriTakip:
+        writer.writeByte(15);
+        break;
+      case EditTipiEnum.uretimSonuKaydi:
+        writer.writeByte(16);
         break;
     }
   }

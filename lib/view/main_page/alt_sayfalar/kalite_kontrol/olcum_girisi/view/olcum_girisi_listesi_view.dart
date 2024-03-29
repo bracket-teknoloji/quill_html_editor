@@ -1,13 +1,19 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/card/olcum_girisi_listesi_card.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view_model/olcum_girisi_listesi_view_model.dart";
 
@@ -20,13 +26,31 @@ class OlcumGirisiListesiView extends StatefulWidget {
 
 class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
   final OlcumGirisiViewModel viewModel = OlcumGirisiViewModel();
+  late final TextEditingController baslangicTarihiController;
+  late final TextEditingController bitisTarihiController;
+  late final TextEditingController belgeTipiController;
+  late final TextEditingController durumController;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
+    baslangicTarihiController = TextEditingController();
+    bitisTarihiController = TextEditingController();
+    belgeTipiController = TextEditingController();
+    durumController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getData();
+      await filterBottomSheet();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    baslangicTarihiController.dispose();
+    bitisTarihiController.dispose();
+    belgeTipiController.dispose();
+    durumController.dispose();
+    super.dispose();
   }
 
   @override
@@ -40,7 +64,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         title: Observer(
           builder: (_) {
             if (viewModel.searchBar) {
-              return CustomAppBarTextField(onFieldSubmitted: viewModel.setSearchText);
+              return CustomAppBarTextField(onChanged: viewModel.setSearchText);
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",
@@ -60,8 +84,8 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
           children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
+              onPressed: filterBottomSheet,
               child: Text(loc.generalStrings.filter),
-              onPressed: () {},
             ),
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
@@ -84,14 +108,100 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         },
         child: Observer(
           builder: (_) {
-            if (viewModel.olcumList == null) return const ListViewShimmer();
-            if (viewModel.olcumList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
+            if (viewModel.getList == null) return const ListViewShimmer();
+            if (viewModel.getList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
             return ListView.builder(
-              itemCount: viewModel.olcumList?.length ?? 0,
+              itemCount: viewModel.getList?.length ?? 0,
               padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => OlcumGirisiListesiCard(model: viewModel.olcumList![index]),
+              itemBuilder: (context, index) => OlcumGirisiListesiCard(model: viewModel.getList![index]),
             );
           },
+        ),
+      );
+
+  Future<void> filterBottomSheet() async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.filter,
+        body: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              RaporFiltreDateTimeBottomSheetView(
+                filterOnChanged: (index) {
+                  viewModel.setBastar(baslangicTarihiController.text);
+                  viewModel.setBittar(bitisTarihiController.text);
+                },
+                baslangicTarihiController: baslangicTarihiController,
+                bitisTarihiController: bitisTarihiController,
+              ),
+              CustomTextField(
+                labelText: "Belge Tipi",
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                controller: belgeTipiController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.belgeTipi ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                    context,
+                    title: "Belge Tipi",
+                    groupValue: viewModel.requestModel.belgeTipi,
+                    children: List.generate(viewModel.belgeTipiList.length, (index) {
+                      final EditTipiEnum editTipi = viewModel.belgeTipiList[index];
+                      return BottomSheetModel(
+                        title: editTipi.getName,
+                        description: editTipi.rawValue,
+                        value: editTipi,
+                        groupValue: editTipi.rawValue,
+                      );
+                    }),
+                  );
+                  if (result is EditTipiEnum) {
+                    belgeTipiController.text = result.getName;
+                    viewModel.setBelgeTipi(result.rawValue);
+                  }
+                },
+              ),
+              CustomTextField(
+                labelText: "Durum",
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                controller: durumController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.durum.toStringIfNotNull ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                    context,
+                    title: "Durum",
+                    groupValue: viewModel.requestModel.durum,
+                    children: List.generate(viewModel.durumList.length, (index) {
+                      final String value = viewModel.durumList[index];
+                      return BottomSheetModel(
+                        title: value,
+                        description: index.toString(),
+                        groupValue: index,
+                        value: (value, index),
+                      );
+                    }),
+                  );
+                  if (result is (String, int)) {
+                    durumController.text = result.$1;
+                    viewModel.setDurum(result.$2);
+                  }
+                },
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  if (formKey.currentState?.validate() ?? false) {
+                    Get.back();
+                    await viewModel.getData();
+                  }
+                },
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ).paddingAll(UIHelper.lowSize),
         ),
       );
 }
