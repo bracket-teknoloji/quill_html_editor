@@ -113,6 +113,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
+          viewModel.changeIsBaseSiparisEmpty(true);
         BaseSiparisEditModel.resetInstance();
 
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -127,19 +128,16 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         }
         BaseSiparisEditModel.instance.isNew = true;
-        final CariListesiModel? cariModel;
+        CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
           final result = await Get.toNamed("/mainPage/cariListesiOzel");
           if (result is CariListesiModel) {
             cariModel = result;
-          } else {
-            cariModel = null;
           }
         } else {
           cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
         }
         if (cariModel is CariListesiModel) {
-          viewModel.changeIsBaseSiparisEmpty(true);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
           BaseSiparisEditModel.instance.vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
