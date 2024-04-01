@@ -964,9 +964,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.projeKodu = model.projeKodu;
     }
     viewModel.kalemModel.kalemAdi = kalemAdiController.text;
+    viewModel.kalemModel.belgeTipi = editTipi?.rawValue;
     viewModel.kalemModel.stokKodu = viewModel.kalemModel.stokKodu ?? viewModel.model?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
-    viewModel.kalemModel.teslimTarihi = yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
+    viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi==true) && yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
     viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {

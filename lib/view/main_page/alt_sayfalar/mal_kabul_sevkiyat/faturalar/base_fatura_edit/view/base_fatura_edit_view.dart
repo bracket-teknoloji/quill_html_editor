@@ -114,7 +114,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
       if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.setInstance(widget.model.model);
-        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e..kalemStoktanKodu = e.stokKodu).toList();
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList
+            ?.map(
+              (e) => e
+                ..kalemStoktanKodu = e.stokKodu
+                ..teslimTarihi = null,
+            )
+            .toList();
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.efattanAlisFat = true;
         BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -150,6 +156,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            BaseSiparisEditModel.instance.belgeKodu = null;
+            BaseSiparisEditModel.instance.teslimTarihi = null;
+            BaseSiparisEditModel.instance.teslimCari = null;
+            BaseSiparisEditModel.instance.teslimCariAdi = null;
+            BaseSiparisEditModel.instance.istenilenTeslimTarihi = null;
             BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
             BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
@@ -166,9 +177,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
               BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
             }
-            if ((widget.model.model?.kalemList as List<KalemModel>?).ext.isNotNullOrEmpty) {
-              BaseSiparisEditModel.instance.kalemList = widget.model.model?.kalemList;
-            }
+            // if ((widget.model.model?.kalemList as List<KalemModel>?).ext.isNotNullOrEmpty) {
+            // BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisNo = null..siparisNo = null).toList();
+            // }
             BaseSiparisEditModel.instance.tag = "FaturaModel";
             BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
             BaseSiparisEditModel.instance.isNew = true;
@@ -531,7 +542,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         kalemler: BaseSiparisEditModel.instance.kalemList
             ?.map(
               (e) => e
-                ..siparisNo = e.belgeNo
+                ..siparisNo = null
+                ..siparisSira = null
                 ..belgeNo ??= null,
             )
             .toList(),

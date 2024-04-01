@@ -1123,7 +1123,7 @@ class KalemModel with NetworkManagerMixin {
   @HiveField(13)
   String? belgeNo;
   @HiveField(14)
-  @JsonKey(name: "BelgeTipi")
+  // @JsonKey(name: "BelgeTipi")
   String? belgeTipi;
   @HiveField(15)
   String? cariKodu;
@@ -1443,7 +1443,7 @@ class KalemModel with NetworkManagerMixin {
   String get faturaKalemAciklama {
     if (seriliMi) {
       return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
-    } else if (siparisNo != null) {
+    } else if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
       return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
     } else if (teklifNo != null) {
       return "${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";

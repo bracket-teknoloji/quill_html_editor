@@ -4816,7 +4816,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
           .toList(),
       tempBarkodList: json['TEMP_BARKOD_LIST'] as List<dynamic>?,
       belgeNo: json['BELGE_NO'] as String?,
-      belgeTipi: json['BelgeTipi'] as String?,
+      belgeTipi: json['BELGE_TIPI'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       depoTanimi: json['DEPO_TANIMI'] as String?,
       olcuBirimAdi: json['OLCU_BIRIM_ADI'] as String?,
@@ -4936,7 +4936,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
   writeNotNull('TEMP_BARKOD_LIST', instance.tempBarkodList);
   writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
+  writeNotNull('BELGE_TIPI', instance.belgeTipi);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('DEPO_TANIMI', instance.depoTanimi);
   writeNotNull('OLCU_BIRIM_ADI', instance.olcuBirimAdi);

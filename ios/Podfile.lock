@@ -367,7 +367,7 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 5ae15e16814b5f9ef568963fb2c87aeb49158c66
   rive_common: 3a4c254c6e4db7e4b9e05daeb3d1f47ae4f7bf76
   SDWebImage: 40b0b4053e36c660a764958bff99eed16610acbb
-  SDWebImageWebPCoder: eb09ecbb5a65a1deb5c5f7960fdb788daae0dd43
+  SDWebImageWebPCoder: c94f09adbca681822edad9e532ac752db713eabf
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
   shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   SwiftyGif: 706c60cf65fa2bc5ee0313beece843c8eb8194d4
@@ -377,4 +377,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 17749fd61f061dd3eefd6fcb7c34f0d2ceee204a
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.15.2
