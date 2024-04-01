@@ -129,8 +129,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   isMust: true,
                   suffixMore: true,
                   controller: cariController,
-                  // valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                   onTap: () async {
                     final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {

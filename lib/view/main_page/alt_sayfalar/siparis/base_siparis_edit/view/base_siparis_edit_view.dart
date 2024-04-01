@@ -119,7 +119,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         if (widget.model.editTipiEnum?.satisMi ?? false) {
           BaseSiparisEditModel.instance.kdvDahil = yetkiController.siparisKdvDahilMi ? "E" : "H";
-        BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
+          BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;
         }
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         if (widget.model.model is BaseSiparisEditModel) {
@@ -129,7 +129,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         BaseSiparisEditModel.instance.isNew = true;
         final CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
-          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+          final result = await Get.toNamed("/mainPage/cariListesiOzel");
           if (result is CariListesiModel) {
             cariModel = result;
           } else {

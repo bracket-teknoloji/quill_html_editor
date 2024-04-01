@@ -45,9 +45,8 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSearchBar() {
     searchBar = !searchBar;
-    if (!searchBar) {
-      setSearchText(null);
-    }
+    if (!searchBar) setSearchText(null);
+    
   }
 
   @action
