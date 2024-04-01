@@ -26,21 +26,22 @@ class _QRScannerState extends BaseState<QRScannerView> {
   Barcode? barcode;
   String result = "Scan a code";
 
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      final PermissionStatus status = await Permission.camera.request();
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+  //     final PermissionStatus status = await Permission.camera.request();
 
-      if (status case (PermissionStatus.permanentlyDenied || PermissionStatus.denied)) {
-        // final lastStatus = await Permission.camera.request();
-        // if (lastStatus case (PermissionStatus.denied || PermissionStatus.permanentlyDenied)) {
-        Get.back();
-        dialogManager.showErrorSnackBar("Bu özellik için yetkimiz bulunmuyor. Kameranızı açmak için uygulama yetkilerini kontrol ediniz.");
-        return;
-      }
-    });
-    super.initState();
-  }
+  //     if (status case (PermissionStatus.permanentlyDenied || PermissionStatus.denied)) {
+  //       final lastStatus = await Permission.camera.request();
+  //       if (lastStatus case (PermissionStatus.denied || PermissionStatus.permanentlyDenied)) {
+  //         Get.back();
+  //         dialogManager.showErrorSnackBar("Bu özellik için yetkimiz bulunmuyor. Kameranızı açmak için uygulama yetkilerini kontrol ediniz.");
+  //         return;
+  //       }
+  //     }
+  //   });
+  //   super.initState();
+  // }
 
   @override
   void dispose() {
@@ -102,16 +103,18 @@ class _QRScannerState extends BaseState<QRScannerView> {
         cameraFacing: CameraFacing.back,
       );
   Future<void> _onQRViewCreated(QRViewController controller) async {
+    final PermissionStatus status = await Permission.camera.status;
     qrViewController = controller;
 
+    if (status.isDenied) {
+      await Permission.camera.request();
+    }
     qrViewController.scannedDataStream.listen((scanData) {
       if (scanData.code != null) {
         qrViewController.pauseCamera();
         log(scanData.code ?? "");
-        if (viewModel.isValueEmpty) {
-          viewModel.setValue(scanData.code);
-          Get.back(result: scanData.code);
-        }
+        // Navigator.pop(context, scanData.code);
+        Get.back(result: scanData.code);
       }
     });
   }
