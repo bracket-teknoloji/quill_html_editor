@@ -86,7 +86,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             ElevatedButton(
               onPressed: () {
                 //😳 Düzelt kanki
-                if (_formKey.currentState?.validate() ?? false) {
+                if (!(_formKey.currentState?.validate() ?? false)) {
                   dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
                   return;
                 }
