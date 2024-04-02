@@ -7,8 +7,8 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
 
 mixin MobxNetworkMixin {
-  NetworkManager networkManager = NetworkManager();
-  ParamModel parametreModel = CacheManager.getAnaVeri?.paramModel ?? ParamModel();
-  DialogManager dialogManager = DialogManager();
+  NetworkManager get networkManager => NetworkManager();
+  ParamModel get parametreModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
+  DialogManager get dialogManager => DialogManager();
   LocaleBase loc(BuildContext context) => Localizations.of<LocaleBase>(context, LocaleBase)!;
 }
