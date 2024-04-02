@@ -53,8 +53,15 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
             context,
             title: widget.model.belgeNo ?? "Ölçüm Detayı",
             children: [
-              BottomSheetModel(title: loc.generalStrings.view, iconWidget: Icons.preview_outlined, onTap: () => Get.toNamed("/mainPage/olcumDetay", arguments: widget.model.forDetayRequest)),
-              BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
+              BottomSheetModel(
+                title: loc.generalStrings.view,
+                iconWidget: Icons.preview_outlined,
+                onTap: () {
+                  Get.back();
+                  return Get.toNamed("/mainPage/olcumDetay", arguments: widget.model.forDetayRequest);
+                },
+              ),
+              // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
             ],
           ),
         ),

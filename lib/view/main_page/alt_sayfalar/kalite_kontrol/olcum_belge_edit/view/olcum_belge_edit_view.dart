@@ -85,14 +85,26 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     itemBuilder: (context, index) {
                       final item = viewModel.model?.olcumler?[index];
                       return Card(
-                        child: Text((item?.kayityapankul ?? "") * 10),
+                        child: SizedBox(
+                          width: width * 0.4,
+                          child: ListTile(
+                            title: Text("Ölçüm ${index + 1}"),
+                            subtitle: CustomLayoutBuilder(
+                              splitCount: 1,
+                              children: [
+                                Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                              ],
+                            ),
+                          ),
+                        ),
                       );
                     },
                   ),
                 ).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
                 Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
                 Expanded(
-                  flex: 3,
+                  flex: 5,
                   child: ListView.builder(
                     itemCount: viewModel.model?.prosesler?.length ?? 0,
                     itemBuilder: (context, index) {
