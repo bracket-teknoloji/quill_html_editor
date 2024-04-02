@@ -1,0 +1,76 @@
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+
+part "olcum_belge_edit_model.freezed.dart";
+part "olcum_belge_edit_model.g.dart";
+
+@unfreezed
+class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
+  OlcumBelgeEditModel._();
+  factory OlcumBelgeEditModel({
+    List<OlcumBelgeModel>? belge,
+    List<OlcumOlcumlerModel>? olcumler,
+    List<OlcumProsesModel>? prosesler,
+  }) = _OlcumBelgeEditModel;
+
+  factory OlcumBelgeEditModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeEditModelFromJson(json);
+
+  @override
+  OlcumBelgeEditModel fromJson(Map<String, dynamic> json) => _$OlcumBelgeEditModelFromJson(json);
+}
+
+@unfreezed
+class OlcumBelgeModel with _$OlcumBelgeModel {
+  factory OlcumBelgeModel({
+    String? belgeNo,
+    String? belgeTipi,
+    DateTime? tarih,
+    int? sira,
+    String? stokKodu,
+    String? stokAdi,
+    double? miktar,
+  }) = _OlcumBelgeModel;
+
+  factory OlcumBelgeModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
+}
+
+@unfreezed
+class OlcumOlcumlerModel with _$OlcumOlcumlerModel {
+  factory OlcumOlcumlerModel({
+    int? id,
+    int? belgeSira,
+    String? stokKodu,
+    String? stokAdi,
+    String? olcumlerOperator,
+    String? kayityapankul,
+    DateTime? kayittarihi,
+    int? sira,
+    double? kabulAdet,
+    double? sartliAdet,
+    double? retAdet,
+  }) = _OlcumOlcumlerModel;
+
+  factory OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
+}
+
+@unfreezed
+class OlcumProsesModel with _$OlcumProsesModel {
+  factory OlcumProsesModel({
+    int? id,
+    int? sira,
+    String? proses,
+    String? kriter,
+    String? kabulSarti,
+    String? tolerans,
+    String? ekipman,
+    String? olculecekmi,
+    String? onemlimi,
+    double? altSinir,
+    double? ustSinir,
+    String? tur,
+    int? olcumSikligi,
+    double? numuneMiktari,
+  }) = _OlcumProsesModel;
+
+  factory OlcumProsesModel.fromJson(Map<String, dynamic> json) => _$OlcumProsesModelFromJson(json);
+}

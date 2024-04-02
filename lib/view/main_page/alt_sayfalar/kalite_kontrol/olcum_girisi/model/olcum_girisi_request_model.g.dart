@@ -13,6 +13,7 @@ _$OlcumGirisiRequestModelImpl _$$OlcumGirisiRequestModelImplFromJson(
       belgeTipi: json['BELGE_TIPI'] as String?,
       bastar: json['BASTAR'] as String?,
       bittar: json['BITTAR'] as String?,
+      siralama: json['SIRALAMA'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
@@ -29,5 +30,6 @@ Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
   writeNotNull('BASTAR', instance.bastar);
   writeNotNull('BITTAR', instance.bittar);
+  writeNotNull('SIRALAMA', instance.siralama);
   return val;
 }

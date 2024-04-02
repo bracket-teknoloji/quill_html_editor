@@ -37,14 +37,20 @@ mixin _$OlcumGirisiListesiModel {
   set yapacik(String? value) => throw _privateConstructorUsedError;
   double? get miktar => throw _privateConstructorUsedError;
   set miktar(double? value) => throw _privateConstructorUsedError;
-  int? get olcumAdedi => throw _privateConstructorUsedError;
-  set olcumAdedi(int? value) => throw _privateConstructorUsedError;
-  int? get kabulAdet => throw _privateConstructorUsedError;
-  set kabulAdet(int? value) => throw _privateConstructorUsedError;
-  int? get sartliAdet => throw _privateConstructorUsedError;
-  set sartliAdet(int? value) => throw _privateConstructorUsedError;
-  int? get retAdet => throw _privateConstructorUsedError;
-  set retAdet(int? value) => throw _privateConstructorUsedError;
+  double? get olcumAdedi => throw _privateConstructorUsedError;
+  set olcumAdedi(double? value) => throw _privateConstructorUsedError;
+  double? get kabulAdet => throw _privateConstructorUsedError;
+  set kabulAdet(double? value) => throw _privateConstructorUsedError;
+  double? get sartliAdet => throw _privateConstructorUsedError;
+  set sartliAdet(double? value) => throw _privateConstructorUsedError;
+  double? get retAdet => throw _privateConstructorUsedError;
+  set retAdet(double? value) => throw _privateConstructorUsedError;
+  String? get opkodu => throw _privateConstructorUsedError;
+  set opkodu(String? value) => throw _privateConstructorUsedError;
+  String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
+  int? get belgeSira => throw _privateConstructorUsedError;
+  set belgeSira(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,10 +73,13 @@ abstract class $OlcumGirisiListesiModelCopyWith<$Res> {
       String? yapkod,
       String? yapacik,
       double? miktar,
-      int? olcumAdedi,
-      int? kabulAdet,
-      int? sartliAdet,
-      int? retAdet});
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? belgeTipi,
+      int? belgeSira});
 }
 
 /// @nodoc
@@ -99,6 +108,9 @@ class _$OlcumGirisiListesiModelCopyWithImpl<$Res,
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
+    Object? opkodu = freezed,
+    Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -136,18 +148,30 @@ class _$OlcumGirisiListesiModelCopyWithImpl<$Res,
       olcumAdedi: freezed == olcumAdedi
           ? _value.olcumAdedi
           : olcumAdedi // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       kabulAdet: freezed == kabulAdet
           ? _value.kabulAdet
           : kabulAdet // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       sartliAdet: freezed == sartliAdet
           ? _value.sartliAdet
           : sartliAdet // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       retAdet: freezed == retAdet
           ? _value.retAdet
           : retAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -171,10 +195,13 @@ abstract class _$$OlcumGirisiListesiModelImplCopyWith<$Res>
       String? yapkod,
       String? yapacik,
       double? miktar,
-      int? olcumAdedi,
-      int? kabulAdet,
-      int? sartliAdet,
-      int? retAdet});
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? belgeTipi,
+      int? belgeSira});
 }
 
 /// @nodoc
@@ -202,6 +229,9 @@ class __$$OlcumGirisiListesiModelImplCopyWithImpl<$Res>
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
+    Object? opkodu = freezed,
+    Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
   }) {
     return _then(_$OlcumGirisiListesiModelImpl(
       belgeNo: freezed == belgeNo
@@ -239,18 +269,30 @@ class __$$OlcumGirisiListesiModelImplCopyWithImpl<$Res>
       olcumAdedi: freezed == olcumAdedi
           ? _value.olcumAdedi
           : olcumAdedi // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       kabulAdet: freezed == kabulAdet
           ? _value.kabulAdet
           : kabulAdet // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       sartliAdet: freezed == sartliAdet
           ? _value.sartliAdet
           : sartliAdet // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       retAdet: freezed == retAdet
           ? _value.retAdet
           : retAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -271,7 +313,10 @@ class _$OlcumGirisiListesiModelImpl extends _OlcumGirisiListesiModel {
       this.olcumAdedi,
       this.kabulAdet,
       this.sartliAdet,
-      this.retAdet})
+      this.retAdet,
+      this.opkodu,
+      this.belgeTipi,
+      this.belgeSira})
       : super._();
 
   factory _$OlcumGirisiListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -294,13 +339,19 @@ class _$OlcumGirisiListesiModelImpl extends _OlcumGirisiListesiModel {
   @override
   double? miktar;
   @override
-  int? olcumAdedi;
+  double? olcumAdedi;
   @override
-  int? kabulAdet;
+  double? kabulAdet;
   @override
-  int? sartliAdet;
+  double? sartliAdet;
   @override
-  int? retAdet;
+  double? retAdet;
+  @override
+  String? opkodu;
+  @override
+  String? belgeTipi;
+  @override
+  int? belgeSira;
 
   @JsonKey(ignore: true)
   @override
@@ -327,10 +378,13 @@ abstract class _OlcumGirisiListesiModel extends OlcumGirisiListesiModel {
       String? yapkod,
       String? yapacik,
       double? miktar,
-      int? olcumAdedi,
-      int? kabulAdet,
-      int? sartliAdet,
-      int? retAdet}) = _$OlcumGirisiListesiModelImpl;
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? belgeTipi,
+      int? belgeSira}) = _$OlcumGirisiListesiModelImpl;
   _OlcumGirisiListesiModel._() : super._();
 
   factory _OlcumGirisiListesiModel.fromJson(Map<String, dynamic> json) =
@@ -361,17 +415,26 @@ abstract class _OlcumGirisiListesiModel extends OlcumGirisiListesiModel {
   double? get miktar;
   set miktar(double? value);
   @override
-  int? get olcumAdedi;
-  set olcumAdedi(int? value);
+  double? get olcumAdedi;
+  set olcumAdedi(double? value);
   @override
-  int? get kabulAdet;
-  set kabulAdet(int? value);
+  double? get kabulAdet;
+  set kabulAdet(double? value);
   @override
-  int? get sartliAdet;
-  set sartliAdet(int? value);
+  double? get sartliAdet;
+  set sartliAdet(double? value);
   @override
-  int? get retAdet;
-  set retAdet(int? value);
+  double? get retAdet;
+  set retAdet(double? value);
+  @override
+  String? get opkodu;
+  set opkodu(String? value);
+  @override
+  String? get belgeTipi;
+  set belgeTipi(String? value);
+  @override
+  int? get belgeSira;
+  set belgeSira(int? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumGirisiListesiModelImplCopyWith<_$OlcumGirisiListesiModelImpl>

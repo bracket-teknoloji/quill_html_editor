@@ -27,6 +27,17 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
     "Ölçüm Yapılmayanlar",
   ];
 
+  final Map<String, String> siralaMap = {
+    "Tarih (Artan)": "TARIH_ASC",
+    "Tarih (Azalan)": "TARIH_DESC",
+    "Stok Kodu (A-Z)": "STOK_KODU_ASC",
+    "Belge No (A-Z)": "BELGE_NO_ASC",
+    "Belge No (Z-A)": "BELGE_NO_DESC",
+    "Stok Kodu (Z-A)": "STOK_KODU_DESC",
+    "Stok Adı (A-Z)": "STOK_ADI_ASC",
+    "Stok Adı (Z-A)": "STOK_ADI_DESC",
+  };
+
   @observable
   bool searchBar = false;
 
@@ -46,7 +57,6 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setSearchBar() {
     searchBar = !searchBar;
     if (!searchBar) setSearchText(null);
-    
   }
 
   @action
@@ -57,6 +67,9 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setBelgeTipi(String? value) => requestModel = requestModel.copyWith(belgeTipi: value);
+
+  @action
+  void setSiralama(String? value) => requestModel = requestModel.copyWith(siralama: value);
 
   @action
   void setDurum(int? value) => requestModel = requestModel.copyWith(durum: value);

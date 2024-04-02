@@ -10,6 +10,7 @@ class OlcumGirisiRequestModel with _$OlcumGirisiRequestModel {
     String? belgeTipi,
     String? bastar,
     String? bittar,
+    String? siralama,
   }) = _OlcumGirisiRequestModel;
 
   factory OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) => _$OlcumGirisiRequestModelFromJson(json);

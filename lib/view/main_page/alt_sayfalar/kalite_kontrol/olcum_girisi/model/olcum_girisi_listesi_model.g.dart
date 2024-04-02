@@ -19,10 +19,13 @@ _$OlcumGirisiListesiModelImpl _$$OlcumGirisiListesiModelImplFromJson(
       yapkod: json['YAPKOD'] as String?,
       yapacik: json['YAPACIK'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      olcumAdedi: json['OLCUM_ADEDI'] as int?,
-      kabulAdet: json['KABUL_ADET'] as int?,
-      sartliAdet: json['SARTLI_ADET'] as int?,
-      retAdet: json['RET_ADET'] as int?,
+      olcumAdedi: (json['OLCUM_ADEDI'] as num?)?.toDouble(),
+      kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
+      sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
+      retAdet: (json['RET_ADET'] as num?)?.toDouble(),
+      opkodu: json['OPKODU'] as String?,
+      belgeTipi: json['BELGE_TIPI'] as String?,
+      belgeSira: json['BELGE_SIRA'] as int?,
     );
 
 Map<String, dynamic> _$$OlcumGirisiListesiModelImplToJson(
@@ -47,5 +50,8 @@ Map<String, dynamic> _$$OlcumGirisiListesiModelImplToJson(
   writeNotNull('KABUL_ADET', instance.kabulAdet);
   writeNotNull('SARTLI_ADET', instance.sartliAdet);
   writeNotNull('RET_ADET', instance.retAdet);
+  writeNotNull('OPKODU', instance.opkodu);
+  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('BELGE_SIRA', instance.belgeSira);
   return val;
 }

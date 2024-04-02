@@ -6,7 +6,6 @@ import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart"
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/card/olcum_girisi_listesi_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
@@ -56,7 +55,6 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: appBar(),
-        floatingActionButton: fab(),
         body: body(),
       );
 
@@ -90,17 +88,34 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             AppBarButton(
               icon: Icons.sort_by_alpha_outlined,
               child: Text(loc.generalStrings.sort),
-              onPressed: () {},
+              onPressed: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: loc.generalStrings.sort,
+                  groupValue: viewModel.requestModel.siralama,
+                  children: List.generate(
+                    viewModel.siralaMap.length,
+                    (index) => BottomSheetModel(
+                      title: viewModel.siralaMap.keys.toList()[index],
+                      value: viewModel.siralaMap.entries.toList()[index],
+                      groupValue: viewModel.siralaMap.values.toList()[index],
+                      description: viewModel.siralaMap.values.toList()[index],
+                    ),
+                  ),
+                );
+                if (result is MapEntry) {
+                  viewModel.requestModel.siralama = result.value;
+                  await viewModel.getData();
+                }
+              },
             ),
-            AppBarButton(
-              icon: Icons.more_horiz_outlined,
-              onPressed: () {},
-            ),
+            // AppBarButton(
+            //   icon: Icons.more_horiz_outlined,
+            //   onPressed: () {},
+            // ),
           ],
         ),
       );
-
-  CustomFloatingActionButton fab() => CustomFloatingActionButton(isScrolledDown: true, onPressed: () {});
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
@@ -113,95 +128,100 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             return ListView.builder(
               itemCount: viewModel.getList?.length ?? 0,
               padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => OlcumGirisiListesiCard(model: viewModel.getList![index]),
+              itemBuilder: (context, index) => OlcumGirisiListesiCard(model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi)),
             );
           },
         ),
       );
 
-  Future<void> filterBottomSheet() async => await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: loc.generalStrings.filter,
-        body: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              RaporFiltreDateTimeBottomSheetView(
-                filterOnChanged: (index) {
-                  viewModel.setBastar(baslangicTarihiController.text);
-                  viewModel.setBittar(bitisTarihiController.text);
-                },
-                baslangicTarihiController: baslangicTarihiController,
-                bitisTarihiController: bitisTarihiController,
-              ),
-              CustomTextField(
-                labelText: "Belge Tipi",
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                controller: belgeTipiController,
-                valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.belgeTipi ?? "")),
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                    context,
-                    title: "Belge Tipi",
-                    groupValue: viewModel.requestModel.belgeTipi,
-                    children: List.generate(viewModel.belgeTipiList.length, (index) {
-                      final EditTipiEnum editTipi = viewModel.belgeTipiList[index];
-                      return BottomSheetModel(
-                        title: editTipi.getName,
-                        description: editTipi.rawValue,
-                        value: editTipi,
-                        groupValue: editTipi.rawValue,
-                      );
-                    }),
-                  );
-                  if (result is EditTipiEnum) {
-                    belgeTipiController.text = result.getName;
-                    viewModel.setBelgeTipi(result.rawValue);
-                  }
-                },
-              ),
-              CustomTextField(
-                labelText: "Durum",
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                controller: durumController,
-                valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.durum.toStringIfNotNull ?? "")),
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                    context,
-                    title: "Durum",
-                    groupValue: viewModel.requestModel.durum,
-                    children: List.generate(viewModel.durumList.length, (index) {
-                      final String value = viewModel.durumList[index];
-                      return BottomSheetModel(
-                        title: value,
-                        description: index.toString(),
-                        groupValue: index,
-                        value: (value, index),
-                      );
-                    }),
-                  );
-                  if (result is (String, int)) {
-                    durumController.text = result.$1;
-                    viewModel.setDurum(result.$2);
-                  }
-                },
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  if (formKey.currentState?.validate() ?? false) {
-                    Get.back();
-                    await viewModel.getData();
-                  }
-                },
-                child: Text(loc.generalStrings.apply),
-              ).paddingAll(UIHelper.lowSize),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+  Future<void> filterBottomSheet() async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: loc.generalStrings.filter,
+      body: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            RaporFiltreDateTimeBottomSheetView(
+              filterOnChanged: (index) {
+                viewModel.setBastar(baslangicTarihiController.text);
+                viewModel.setBittar(bitisTarihiController.text);
+              },
+              baslangicTarihiController: baslangicTarihiController,
+              bitisTarihiController: bitisTarihiController,
+            ),
+            CustomTextField(
+              labelText: "Belge Tipi",
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              controller: belgeTipiController,
+              valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.belgeTipi ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Belge Tipi",
+                  groupValue: viewModel.requestModel.belgeTipi,
+                  children: List.generate(viewModel.belgeTipiList.length, (index) {
+                    final EditTipiEnum editTipi = viewModel.belgeTipiList[index];
+                    return BottomSheetModel(
+                      title: editTipi.getName,
+                      description: editTipi.rawValue,
+                      value: editTipi,
+                      groupValue: editTipi.rawValue,
+                    );
+                  }),
+                );
+                if (result is EditTipiEnum) {
+                  belgeTipiController.text = result.getName;
+                  viewModel.setBelgeTipi(result.rawValue);
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Durum",
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              controller: durumController,
+              valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.durum.toStringIfNotNull ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Durum",
+                  groupValue: viewModel.requestModel.durum,
+                  children: List.generate(viewModel.durumList.length, (index) {
+                    final String value = viewModel.durumList[index];
+                    return BottomSheetModel(
+                      title: value,
+                      description: index.toString(),
+                      groupValue: index,
+                      value: (value, index),
+                    );
+                  }),
+                );
+                if (result is (String, int)) {
+                  durumController.text = result.$1;
+                  viewModel.setDurum(result.$2);
+                }
+              },
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                if (formKey.currentState?.validate() ?? false) {
+                  Get.back();
+                  await viewModel.getData();
+                }
+              },
+              child: Text(loc.generalStrings.apply),
+            ).paddingAll(UIHelper.lowSize),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    );
+    if (viewModel.requestModel.belgeTipi == null || viewModel.requestModel.durum == null) {
+      Get.back();
+    }
+  }
 }

@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -45,6 +47,14 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                   Text("Yapılandırma Kodu: ${model.yapkod}").yetkiVarMi(model.yapkod != null),
                 ],
               ),
+            ],
+          ),
+          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: widget.model.belgeNo ?? "Ölçüm Detayı",
+            children: [
+              BottomSheetModel(title: loc.generalStrings.view, iconWidget: Icons.preview_outlined, onTap: () => Get.toNamed("/mainPage/olcumDetay", arguments: widget.model.forDetayRequest)),
+              BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
             ],
           ),
         ),

@@ -29,6 +29,8 @@ mixin _$OlcumGirisiRequestModel {
   set bastar(String? value) => throw _privateConstructorUsedError;
   String? get bittar => throw _privateConstructorUsedError;
   set bittar(String? value) => throw _privateConstructorUsedError;
+  String? get siralama => throw _privateConstructorUsedError;
+  set siralama(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,12 @@ abstract class $OlcumGirisiRequestModelCopyWith<$Res> {
           $Res Function(OlcumGirisiRequestModel) then) =
       _$OlcumGirisiRequestModelCopyWithImpl<$Res, OlcumGirisiRequestModel>;
   @useResult
-  $Res call({int? durum, String? belgeTipi, String? bastar, String? bittar});
+  $Res call(
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama});
 }
 
 /// @nodoc
@@ -63,6 +70,7 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
     Object? belgeTipi = freezed,
     Object? bastar = freezed,
     Object? bittar = freezed,
+    Object? siralama = freezed,
   }) {
     return _then(_value.copyWith(
       durum: freezed == durum
@@ -81,6 +89,10 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
           ? _value.bittar
           : bittar // ignore: cast_nullable_to_non_nullable
               as String?,
+      siralama: freezed == siralama
+          ? _value.siralama
+          : siralama // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -94,7 +106,12 @@ abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res>
       __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? durum, String? belgeTipi, String? bastar, String? bittar});
+  $Res call(
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama});
 }
 
 /// @nodoc
@@ -114,6 +131,7 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
     Object? belgeTipi = freezed,
     Object? bastar = freezed,
     Object? bittar = freezed,
+    Object? siralama = freezed,
   }) {
     return _then(_$OlcumGirisiRequestModelImpl(
       durum: freezed == durum
@@ -132,6 +150,10 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
           ? _value.bittar
           : bittar // ignore: cast_nullable_to_non_nullable
               as String?,
+      siralama: freezed == siralama
+          ? _value.siralama
+          : siralama // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -140,7 +162,7 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   _$OlcumGirisiRequestModelImpl(
-      {this.durum, this.belgeTipi, this.bastar, this.bittar});
+      {this.durum, this.belgeTipi, this.bastar, this.bittar, this.siralama});
 
   factory _$OlcumGirisiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumGirisiRequestModelImplFromJson(json);
@@ -153,10 +175,12 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   String? bastar;
   @override
   String? bittar;
+  @override
+  String? siralama;
 
   @override
   String toString() {
-    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar)';
+    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama)';
   }
 
   @JsonKey(ignore: true)
@@ -179,7 +203,8 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
       {int? durum,
       String? belgeTipi,
       String? bastar,
-      String? bittar}) = _$OlcumGirisiRequestModelImpl;
+      String? bittar,
+      String? siralama}) = _$OlcumGirisiRequestModelImpl;
 
   factory _OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) =
       _$OlcumGirisiRequestModelImpl.fromJson;
@@ -196,6 +221,9 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   @override
   String? get bittar;
   set bittar(String? value);
+  @override
+  String? get siralama;
+  set siralama(String? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>

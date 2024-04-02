@@ -16,14 +16,28 @@ class OlcumGirisiListesiModel with _$OlcumGirisiListesiModel, NetworkManagerMixi
     String? yapkod,
     String? yapacik,
     double? miktar,
-    int? olcumAdedi,
-    int? kabulAdet,
-    int? sartliAdet,
-    int? retAdet,
+    double? olcumAdedi,
+    double? kabulAdet,
+    double? sartliAdet,
+    double? retAdet,
+    String? opkodu,
+    String? belgeTipi,
+    int? belgeSira,
   }) = _OlcumGirisiListesiModel;
 
   factory OlcumGirisiListesiModel.fromJson(Map<String, dynamic> json) => _$OlcumGirisiListesiModelFromJson(json);
 
   @override
   OlcumGirisiListesiModel fromJson(Map<String, dynamic> json) => _$OlcumGirisiListesiModelFromJson(json);
+}
+
+extension OlcumGirisiExtensions on OlcumGirisiListesiModel {
+  OlcumGirisiListesiModel get forDetayRequest => OlcumGirisiListesiModel(
+        stokKodu: stokKodu,
+        yapkod: yapkod,
+        opkodu: opkodu,
+        belgeNo: belgeNo,
+        belgeTipi: belgeTipi,
+        belgeSira: sira,
+      );
 }
