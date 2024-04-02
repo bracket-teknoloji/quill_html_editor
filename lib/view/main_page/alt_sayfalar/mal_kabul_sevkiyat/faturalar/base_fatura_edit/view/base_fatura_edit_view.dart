@@ -217,6 +217,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
           BaseSiparisEditModel.instance.tag = "FaturaModel";
+          
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.isNew = true;
         } else {
