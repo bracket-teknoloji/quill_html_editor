@@ -31,13 +31,13 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
     focusNode = FocusNode();
     barkodKontroller = TextEditingController();
     stokController = TextEditingController();
-    if (widget.model != null) {
-      viewModel.setStokListesiModel(widget.model);
-      barkodKontroller.text = widget.model?.stokKodu.toString() ?? "";
-      stokController.text = widget.model?.stokAdi.toString() ?? "";
-      getData();
-    }
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model != null) {
+        viewModel.setStokListesiModel(widget.model);
+        barkodKontroller.text = widget.model?.stokKodu.toString() ?? "";
+        stokController.text = widget.model?.stokAdi.toString() ?? "";
+        await getData();
+      }
       focusNode.requestFocus();
     });
     super.initState();
@@ -75,8 +75,16 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                           final result = await Get.toNamed("/qr");
                           if (result != null) {
                             barkodKontroller.text = result ?? "";
+                            final stokKodu = await networkManager.getStokModel(
+                              StokRehberiRequestModel(
+                                menuKodu: "STOK_FGOR",
+                                stokKodu: barkodKontroller.text,
+                              ),
+                            );
+                            viewModel.setStokListesiModel(stokKodu);
+                            stokController.text = stokKodu?.stokAdi ?? "";
+                            await getData();
                           }
-                          getData();
                         },
                       ),
                       IconButton(
@@ -98,7 +106,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                     if (result != null) {
                       viewModel.setStokListesiModel(result);
                     }
-                      getData();
+                    getData();
                   },
                 ),
                 Observer(
@@ -240,7 +248,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
   Future<void> getData() async {
     // viewModel.setStokListesiModel(null);
     viewModel.setModelList(null);
-    final result = await networkManager.dioPost<FiyatGorModel>(path: ApiUrls.getFiyatGorFiyatlari, bodyModel: FiyatGorModel(), data: {"StokKodu": barkodKontroller.text});
+    final result = await networkManager.dioPost<FiyatGorModel>(path: ApiUrls.getFiyatGorFiyatlari, bodyModel: FiyatGorModel(), data: {"StokKodu": viewModel.stokListesiModel?.stokKodu});
     viewModel.setModelList(result.data.map((e) => e as FiyatGorModel).toList().cast<FiyatGorModel>());
     // if (result.success == true) {
     // }
