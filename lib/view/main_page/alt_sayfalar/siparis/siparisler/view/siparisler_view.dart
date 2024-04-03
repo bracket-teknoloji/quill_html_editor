@@ -146,7 +146,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     getData();
                   },
                 )
-              : AppBarTitle(title: "${StaticVariables.instance.isMusteriSiparisleri ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString()),
+              : AppBarTitle(title: "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString()),
         ),
         //*Actions
         actions: [

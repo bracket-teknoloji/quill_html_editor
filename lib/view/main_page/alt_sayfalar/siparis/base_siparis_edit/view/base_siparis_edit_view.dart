@@ -52,6 +52,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   @override
   void initState() {
+    viewModel.changeIsBaseSiparisEmpty(true);
     StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.musteri;
     tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
     tabController.addListener(() {
@@ -91,7 +92,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       model.model?.kayitModu = null;
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
           viewModel.changeFuture();
@@ -113,7 +114,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
-          viewModel.changeIsBaseSiparisEmpty(true);
+        viewModel.changeIsBaseSiparisEmpty(true);
         BaseSiparisEditModel.resetInstance();
 
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;

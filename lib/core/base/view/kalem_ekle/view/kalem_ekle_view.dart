@@ -754,7 +754,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           controller: iskontoController(index + 1),
                           keyboardType: TextInputType.number,
                           isFormattedString: true,
-                          suffix: yetkiController.siparisMSISk1YuzdeSor && index == 0
+                          suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
                               ? Observer(
                                   builder: (_) => IconButton(
                                     onPressed: () => viewModel.changeIskonto1OranMi(),

@@ -137,6 +137,11 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                       model.cariKodu = result.cariKodu ?? "";
                       model.vadeGunu = result.vadeGunu ?? 0;
                       cariController.text = result.cariAdi ?? "";
+                      if (yetkiController.plasiyerUygulamasiAcikMi) {
+                        model.plasiyerAciklama = result.plasiyerAciklama;
+                        model.plasiyerKodu = result.plasiyerKodu;
+                        plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
+                      }
                       if (!yetkiController.siparisFarkliTeslimCariAktif) {
                         cariController.text = result.cariAdi ?? "";
                         model.teslimCariAdi = result.cariAdi;

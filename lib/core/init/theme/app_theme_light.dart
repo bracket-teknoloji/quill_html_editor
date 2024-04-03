@@ -57,13 +57,12 @@ class AppThemeLight extends AppTheme {
           surfaceTintColor: colorManager.shadow,
         ),
         tooltipTheme: TooltipThemeData(
-          decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))),
+          decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(50))),
           textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),
         ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
-          menuStyle: const MenuStyle(),
           inputDecorationTheme: InputDecorationTheme(
             errorStyle: const TextStyle(
               fontSize: 12,
@@ -126,7 +125,7 @@ class AppThemeLight extends AppTheme {
             borderRadius: UIHelper.lowBorderRadius,
           ),
           dense: true,
-        ),
+        ),  
         drawerTheme: DrawerThemeData(
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,

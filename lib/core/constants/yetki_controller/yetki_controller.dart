@@ -227,8 +227,8 @@ final class YetkiController {
   bool get siparisMSKosulSatirdaSor => _isTrue(_paramModel?.satisKosulSatirdaSor, skipAdmin: true);
   bool get siparisMSFarkliTeslimCariAktif => _isTrue(_paramModel?.satisFarkliTeslimCariAktif, skipAdmin: true);
   bool get siparisMSMiktar2Sor => _isTrue(_paramModel?.satisMiktar2Sor, skipAdmin: true);
-  bool get siparisMSISk1YuzdeSor => _isTrue(
-        (_paramModel?.satisSatirIsk1YuzdeSor ?? false) && StaticVariables.instance.isMusteriSiparisleri,
+  bool siparisMSISk1YuzdeSor(EditTipiEnum? editTipi) => _isTrue(
+        (_paramModel?.satisSatirIsk1YuzdeSor ?? false) && editTipi.musteriMi,
       );
   bool get siparisMSsatirdaKDVSor => _isTrue(_paramModel?.satisSatirdaKdvSor, skipAdmin: true);
   bool get siparisMSSatisHizmetAktifMi => _isTrue(_paramModel?.satisHizmetAktif, skipAdmin: true);

@@ -611,9 +611,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                           // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
                           leading: CircleAvatar(
                             backgroundColor: theme.scaffoldBackgroundColor,
-                            child: stok.resimUrlKucuk == null && viewModel.resimleriGoster != "E"
-                                ? Text((stok.stokAdi ?? "  ").substring(0, 1))
-                                : SizedBox(
+                            child: stok.resimUrlKucuk != null && viewModel.resimleriGoster == "E"
+                                ? SizedBox(
                                     height: UIHelper.highSize * 3,
                                     width: UIHelper.highSize * 3,
                                     child: InkWell(
@@ -625,7 +624,8 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                                       },
                                       child: ImageWidget(path: stok.resimUrlKucuk),
                                     ),
-                                  ),
+                                  )
+                                : Text((stok.stokAdi ?? "  ").substring(0, 1)),
                           ),
                           trailing: Text(
                             "${(stok.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.olcuBirimi ?? ""}",
