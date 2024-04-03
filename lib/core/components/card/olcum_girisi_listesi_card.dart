@@ -58,7 +58,7 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                 iconWidget: Icons.preview_outlined,
                 onTap: () {
                   Get.back();
-                  return Get.toNamed("/mainPage/olcumDetay", arguments: widget.model.forDetayRequest);
+                  return Get.toNamed("/mainPage/olcumDetay", arguments: widget.model);
                 },
               ),
               // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),

@@ -4,6 +4,8 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
@@ -42,6 +44,34 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             title: "Ölçüm Detayı",
             subtitle: widget.model.belgeNo,
           ),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: loc.generalStrings.options,
+                  children: [
+                    BottomSheetModel(
+                      title: "Proses Ekle",
+                      iconWidget: Icons.add_outlined,
+                      onTap: () async {
+                        Get.back();
+                        Get.toNamed("/mainPage/prosesEkle");
+                      },
+                    ),
+                  ],
+                );
+              },
+              icon: const Icon(Icons.more_vert_outlined),
+            ),
+          ],
+        ),
+        floatingActionButton: CustomFloatingActionButton(
+          isScrolledDown: true,
+          onPressed: () async {
+            final result = await Get.toNamed("/mainPage/olcumEkle", arguments: widget.model);
+            if (result == null) {}
+          },
         ),
         body: Observer(
           builder: (_) {
@@ -76,24 +106,41 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     ),
                   ),
                 ),
-                Text("Ölçümler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
+                Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: ListView.builder(
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: viewModel.model?.olcumler?.length ?? 0,
+                    itemCount: viewModel.model?.prosesler?.length ?? 0,
                     itemBuilder: (context, index) {
-                      final item = viewModel.model?.olcumler?[index];
+                      final item = viewModel.model?.prosesler?[index];
                       return Card(
                         child: SizedBox(
-                          width: width * 0.4,
+                          width: context.width * 0.8,
+                          height: 300,
                           child: ListTile(
-                            title: Text("Ölçüm ${index + 1}"),
-                            subtitle: CustomLayoutBuilder(
-                              splitCount: 1,
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
-                                Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                                Text(item?.proses ?? ""),
+                                const Icon(Icons.engineering_outlined),
+                              ],
+                            ),
+                            subtitle: Wrap(
+                              children: [
+                                Text("Kriter: ${item?.kriter}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kriter != null),
+                                CustomLayoutBuilder(
+                                  splitCount: 2,
+                                  children: [
+                                    Text("Kabul Şartı: ${item?.kabulSarti}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kabulSarti != null),
+                                    Text("Tolerans: ${item?.tolerans}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.tolerans != null),
+                                    Text("Ölçüm Sıklığı: ${item?.olcumSikligi}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.olcumSikligi != null),
+                                    Text("Ekipman: ${item?.ekipman}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.ekipman != null),
+                                    Text("Numune Miktarı: ${item?.numuneMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis)
+                                        .yetkiVarMi(item?.numuneMiktari != null),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -101,32 +148,34 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       );
                     },
                   ),
-                ).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
-                Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
-                Expanded(
-                  flex: 5,
-                  child: ListView.builder(
-                    itemCount: viewModel.model?.prosesler?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      final item = viewModel.model?.prosesler?[index];
-                      return Card(
-                        child: ListTile(
-                          title: Text(item?.proses ?? ""),
-                          subtitle: CustomLayoutBuilder(
-                            splitCount: 2,
-                            children: [
-                              Text("Kriter: ${item?.kriter}").yetkiVarMi(item?.kriter != null),
-                              Text("Kabul Şartı: ${item?.kabulSarti}").yetkiVarMi(item?.kabulSarti != null),
-                              Text("Tolerans: ${item?.tolerans}").yetkiVarMi(item?.tolerans != null),
-                              Text("Ölçüm Sıklığı: ${item?.olcumSikligi}").yetkiVarMi(item?.olcumSikligi != null),
-                              Text("Ekipman: ${item?.ekipman}").yetkiVarMi(item?.ekipman != null),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
                 ).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
+                Text("Ölçümler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
+                Expanded(
+                  flex: 7,
+                  child: viewModel.model?.olcumler?.isEmpty == true
+                      ? const Center(
+                          child: Text("Ölçüm kaydı bulunamadı"),
+                        )
+                      : ListView.builder(
+                          itemCount: viewModel.model?.olcumler?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            final item = viewModel.model?.olcumler?[index];
+                            return Card(
+                              child: ListTile(
+                                title: Text("Ölçüm ${index + 1}"),
+                                subtitle: CustomLayoutBuilder(
+                                  splitCount: 2,
+                                  children: [
+                                    Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                    Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                                    Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
+                ),
               ],
             ).paddingAll(UIHelper.lowSize);
           },

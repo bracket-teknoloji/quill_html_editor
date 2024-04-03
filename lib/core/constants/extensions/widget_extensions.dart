@@ -4,12 +4,19 @@ import "dart:ui" as ui;
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
+import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
+import "package:picker/core/components/hero/hero_widget.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 extension WidgetExtension on Widget {
   Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox();
   Widget? get sizedBoxMi => this is SizedBox ? null : this;
+
+  Widget wrapWithHero(dynamic tag) => InkWell(
+        onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)),
+        child: this,
+      );
 
   Future<BitmapDescriptor> toBitmapDescriptor({
     Size? logicalSize,
