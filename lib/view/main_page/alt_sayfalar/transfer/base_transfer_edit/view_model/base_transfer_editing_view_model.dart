@@ -41,13 +41,13 @@ abstract class _BaseTransferEditingViewModelBase with Store {
   int get getKalemCount => BaseSiparisEditModel.instance.getKalemSayisi;
 
   @observable
-  bool isBaseSiparisEmpty = BaseSiparisEditModel.instance.isEmpty;
+  bool showLoading = BaseSiparisEditModel.instance.isEmpty;
 
   @action
-  void changeIsBaseSiparisEmpty(bool value) => isBaseSiparisEmpty = value;
+  void setLoading(bool value) => showLoading = value;
   @action
   void changeFuture() {
-    changeIsBaseSiparisEmpty(BaseSiparisEditModel.instance.isEmpty);
+    setLoading(BaseSiparisEditModel.instance.isEmpty);
   }
 
   @observable
@@ -61,7 +61,7 @@ abstract class _BaseTransferEditingViewModelBase with Store {
     );
   }
 
-   @observable
+  @observable
   BaseSiparisEditModel baseSiparisEditModel = BaseSiparisEditModel.instance;
 
   @action
@@ -85,5 +85,4 @@ abstract class _BaseTransferEditingViewModelBase with Store {
     baseSiparisEditModel = baseSiparisEditModel.copyWith(kalemList: value);
     BaseSiparisEditModel.setInstance(baseSiparisEditModel);
   }
-
 }

@@ -159,7 +159,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           );
         }
         if (cariModel is CariListesiModel) {
-          viewModel.changeIsBaseSiparisEmpty(true);
+          viewModel.setLoading(true);
 
           BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
               ? "E-Fatura"
@@ -188,7 +188,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      viewModel.changeIsBaseSiparisEmpty(false);
+      viewModel.setLoading(false);
     });
     super.initState();
   }
@@ -271,7 +271,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               children: [
                 Observer(
                   builder: (_) {
-                    if (viewModel.isBaseSiparisEmpty) {
+                    if (viewModel.showLoading) {
                       return const Center(child: CircularProgressIndicator.adaptive());
                     } else {
                       return BaseTalepTeklifGenelView(model: model);

@@ -52,7 +52,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   @override
   void initState() {
-    viewModel.changeIsBaseSiparisEmpty(true);
+    viewModel.setLoading(true);
     tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
@@ -94,7 +94,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
-          viewModel.changeFuture();
+          // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
           BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
@@ -113,7 +113,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
-        viewModel.changeIsBaseSiparisEmpty(true);
+        viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
 
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -153,7 +153,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      viewModel.changeIsBaseSiparisEmpty(false);
+      viewModel.setLoading(false);
     });
     super.initState();
   }
@@ -331,7 +331,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               children: [
                 Observer(
                   builder: (_) {
-                    if (viewModel.isBaseSiparisEmpty) {
+                    if (viewModel.showLoading) {
                       return const Center(child: CircularProgressIndicator.adaptive());
                     } else {
                       return BaseSiparislerGenelView(model: model);

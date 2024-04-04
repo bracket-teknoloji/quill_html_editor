@@ -160,7 +160,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      viewModel.changeIsBaseSiparisEmpty(false);
+      viewModel.setLoading(false);
     });
     super.initState();
   }
@@ -247,7 +247,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
               children: [
                 Observer(
                   builder: (_) {
-                    if (viewModel.isBaseSiparisEmpty) {
+                    if (viewModel.showLoading) {
                       return const Center(child: CircularProgressIndicator.adaptive());
                     } else {
                       return BaseTransferGenelView(model: model);

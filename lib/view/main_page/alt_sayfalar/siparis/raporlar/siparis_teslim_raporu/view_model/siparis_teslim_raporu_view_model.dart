@@ -18,7 +18,7 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   static EditTipiEnum? editTipiEnum = EditTipiEnum.musteri;
   @observable
   PdfModel pdfModel = PdfModel(
-    raporOzelKod: editTipiEnum == EditTipiEnum.musteri ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
+    raporOzelKod: editTipiEnum.musteriMi ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
     standart: true,
     dicParams: DicParams(),
   );

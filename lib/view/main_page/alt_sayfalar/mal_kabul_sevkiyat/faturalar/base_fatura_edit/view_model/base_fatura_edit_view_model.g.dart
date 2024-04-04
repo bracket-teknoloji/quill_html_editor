@@ -99,20 +99,19 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
     });
   }
 
-  late final _$isBaseSiparisEmptyAtom = Atom(
-      name: '_BaseFaturaEditViewModelBase.isBaseSiparisEmpty',
-      context: context);
+  late final _$showLoadingAtom =
+      Atom(name: '_BaseFaturaEditViewModelBase.showLoading', context: context);
 
   @override
-  bool get isBaseSiparisEmpty {
-    _$isBaseSiparisEmptyAtom.reportRead();
-    return super.isBaseSiparisEmpty;
+  bool get showLoading {
+    _$showLoadingAtom.reportRead();
+    return super.showLoading;
   }
 
   @override
-  set isBaseSiparisEmpty(bool value) {
-    _$isBaseSiparisEmptyAtom.reportWrite(value, super.isBaseSiparisEmpty, () {
-      super.isBaseSiparisEmpty = value;
+  set showLoading(bool value) {
+    _$showLoadingAtom.reportWrite(value, super.showLoading, () {
+      super.showLoading = value;
     });
   }
 
@@ -214,12 +213,11 @@ mixin _$BaseFaturaEditViewModel on _BaseFaturaEditViewModelBase, Store {
   }
 
   @override
-  void changeIsBaseSiparisEmpty(bool value) {
-    final _$actionInfo =
-        _$_BaseFaturaEditViewModelBaseActionController.startAction(
-            name: '_BaseFaturaEditViewModelBase.changeIsBaseSiparisEmpty');
+  void setLoading(bool value) {
+    final _$actionInfo = _$_BaseFaturaEditViewModelBaseActionController
+        .startAction(name: '_BaseFaturaEditViewModelBase.setLoading');
     try {
-      return super.changeIsBaseSiparisEmpty(value);
+      return super.setLoading(value);
     } finally {
       _$_BaseFaturaEditViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -256,7 +254,7 @@ updateKalemler: ${updateKalemler},
 pageIndex: ${pageIndex},
 isValid: ${isValid},
 isLastPage: ${isLastPage},
-isBaseSiparisEmpty: ${isBaseSiparisEmpty},
+showLoading: ${showLoading},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
 getKalemCount: ${getKalemCount}
     ''';

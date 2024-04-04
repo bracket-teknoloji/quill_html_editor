@@ -127,7 +127,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-        viewModel.changeIsBaseSiparisEmpty(false);
+        viewModel.setLoading(false);
         return;
       }
       if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
@@ -146,7 +146,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
             // final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             // if (cariModel is CariListesiModel) {
-            //   viewModel.changeIsBaseSiparisEmpty(true);
+            //   viewModel.setLoading(true);
             //   BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
@@ -165,7 +165,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
-              viewModel.changeIsBaseSiparisEmpty(true);
+              viewModel.setLoading(true);
               BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
               BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
               BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
@@ -216,7 +216,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
           BaseSiparisEditModel.instance.tag = "FaturaModel";
-          
+
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.isNew = true;
         } else {
@@ -229,7 +229,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           final cariModel = await getCari();
 
           if (cariModel is CariListesiModel) {
-            viewModel.changeIsBaseSiparisEmpty(true);
+            viewModel.setLoading(true);
             BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
                 ? "E-Fatura"
                 : cariModel.efaturaCarisi == "H"
@@ -248,7 +248,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
       BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
-      viewModel.changeIsBaseSiparisEmpty(false);
+      viewModel.setLoading(false);
     });
     super.initState();
   }
@@ -448,7 +448,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
               children: <Widget>[
                 Observer(
                   builder: (_) {
-                    if (viewModel.isBaseSiparisEmpty) {
+                    if (viewModel.showLoading) {
                       return const Center(child: CircularProgressIndicator.adaptive());
                     } else {
                       return BaseFaturaGenelView(model: model);

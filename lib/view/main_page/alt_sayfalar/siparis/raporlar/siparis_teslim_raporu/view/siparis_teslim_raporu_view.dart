@@ -65,7 +65,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   @override
   Widget build(BuildContext context) => PDFViewerView(
         filterBottomSheet: filterBottomSheet,
-        title: "${widget.editTipiEnum == EditTipiEnum.musteri ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
+        title: "${widget.editTipiEnum.musteriMi ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
         pdfData: viewModel.pdfModel,
       );
 

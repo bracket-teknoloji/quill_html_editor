@@ -91,20 +91,20 @@ mixin _$BaseTalepTeklifEditingViewModel
     });
   }
 
-  late final _$isBaseSiparisEmptyAtom = Atom(
-      name: '_BaseTalepTeklifEditingViewModelBase.isBaseSiparisEmpty',
+  late final _$showLoadingAtom = Atom(
+      name: '_BaseTalepTeklifEditingViewModelBase.showLoading',
       context: context);
 
   @override
-  bool get isBaseSiparisEmpty {
-    _$isBaseSiparisEmptyAtom.reportRead();
-    return super.isBaseSiparisEmpty;
+  bool get showLoading {
+    _$showLoadingAtom.reportRead();
+    return super.showLoading;
   }
 
   @override
-  set isBaseSiparisEmpty(bool value) {
-    _$isBaseSiparisEmptyAtom.reportWrite(value, super.isBaseSiparisEmpty, () {
-      super.isBaseSiparisEmpty = value;
+  set showLoading(bool value) {
+    _$showLoadingAtom.reportWrite(value, super.showLoading, () {
+      super.showLoading = value;
     });
   }
 
@@ -182,13 +182,11 @@ mixin _$BaseTalepTeklifEditingViewModel
   }
 
   @override
-  void changeIsBaseSiparisEmpty(bool value) {
-    final _$actionInfo =
-        _$_BaseTalepTeklifEditingViewModelBaseActionController.startAction(
-            name:
-                '_BaseTalepTeklifEditingViewModelBase.changeIsBaseSiparisEmpty');
+  void setLoading(bool value) {
+    final _$actionInfo = _$_BaseTalepTeklifEditingViewModelBaseActionController
+        .startAction(name: '_BaseTalepTeklifEditingViewModelBase.setLoading');
     try {
-      return super.changeIsBaseSiparisEmpty(value);
+      return super.setLoading(value);
     } finally {
       _$_BaseTalepTeklifEditingViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -228,7 +226,7 @@ updateKalemler: ${updateKalemler},
 pageIndex: ${pageIndex},
 isValid: ${isValid},
 isLastPage: ${isLastPage},
-isBaseSiparisEmpty: ${isBaseSiparisEmpty},
+showLoading: ${showLoading},
 yeniKaydaHazirlaMi: ${yeniKaydaHazirlaMi},
 model: ${model},
 getKalemCount: ${getKalemCount}
