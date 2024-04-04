@@ -64,7 +64,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
     _cariKoduController = TextEditingController();
     _siparisController = TextEditingController();
     _kalemlerController = TextEditingController();
-    StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.depoTransferi;
     tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
       tabController.addListener(() {

@@ -53,7 +53,6 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   @override
   void initState() {
     viewModel.changeIsBaseSiparisEmpty(true);
-    StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.musteri;
     tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {

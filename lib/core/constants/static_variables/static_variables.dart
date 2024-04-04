@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "../../../view/add_company/model/account_model.dart";
 import "../../base/model/base_grup_kodu_model.dart";
 import "../../init/cache/cache_manager.dart";
-import "../enum/edit_tipi_enum.dart";
 
 class StaticVariables {
   //singleton
@@ -43,10 +42,6 @@ class StaticVariables {
   //* Transfer
   bool get isTransferValid => transferGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> transferGenelFormKey = GlobalKey<FormState>();
-
-  bool isSatisFaturasi = false;
-
-  EditTipiEnum editTipi = EditTipiEnum.musteri;
 
   Map<String, dynamic> serbestDicParams = {};
 }

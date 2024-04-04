@@ -60,7 +60,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
   @override
   void initState() {
-    StaticVariables.instance.editTipi = widget.model.editTipiEnum ?? EditTipiEnum.alisFatura;
     tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     _cariKoduController = TextEditingController();
     _siparisController = TextEditingController();
