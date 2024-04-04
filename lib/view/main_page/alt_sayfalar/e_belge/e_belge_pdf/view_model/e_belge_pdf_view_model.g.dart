@@ -69,13 +69,13 @@ mixin _$EBelgePdfViewModel on _EBelgePdfViewModelBase, Store {
       Atom(name: '_EBelgePdfViewModelBase.futureController', context: context);
 
   @override
-  InvalidType get futureController {
+  ObservableFuture<bool?> get futureController {
     _$futureControllerAtom.reportRead();
     return super.futureController;
   }
 
   @override
-  set futureController(InvalidType value) {
+  set futureController(ObservableFuture<bool?> value) {
     _$futureControllerAtom.reportWrite(value, super.futureController, () {
       super.futureController = value;
     });

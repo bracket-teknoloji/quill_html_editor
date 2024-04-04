@@ -45,13 +45,13 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
       name: '_CariHaritasiViewModelBase.currentPosition', context: context);
 
   @override
-  InvalidType get currentPosition {
+  LatLng? get currentPosition {
     _$currentPositionAtom.reportRead();
     return super.currentPosition;
   }
 
   @override
-  set currentPosition(InvalidType value) {
+  set currentPosition(LatLng? value) {
     _$currentPositionAtom.reportWrite(value, super.currentPosition, () {
       super.currentPosition = value;
     });
@@ -61,13 +61,13 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
       Atom(name: '_CariHaritasiViewModelBase.markerIcon', context: context);
 
   @override
-  InvalidType get markerIcon {
+  BitmapDescriptor get markerIcon {
     _$markerIconAtom.reportRead();
     return super.markerIcon;
   }
 
   @override
-  set markerIcon(InvalidType value) {
+  set markerIcon(BitmapDescriptor value) {
     _$markerIconAtom.reportWrite(value, super.markerIcon, () {
       super.markerIcon = value;
     });
@@ -77,13 +77,13 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
       Atom(name: '_CariHaritasiViewModelBase.markerSet', context: context);
 
   @override
-  ObservableSet<InvalidType> get markerSet {
+  ObservableSet<Marker> get markerSet {
     _$markerSetAtom.reportRead();
     return super.markerSet;
   }
 
   @override
-  set markerSet(ObservableSet<InvalidType> value) {
+  set markerSet(ObservableSet<Marker> value) {
     _$markerSetAtom.reportWrite(value, super.markerSet, () {
       super.markerSet = value;
     });
@@ -128,7 +128,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
   }
 
   @override
-  void setCurrentPosition(InvalidType position) {
+  void setCurrentPosition(LatLng? position) {
     final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
         .startAction(name: '_CariHaritasiViewModelBase.setCurrentPosition');
     try {
@@ -139,7 +139,7 @@ mixin _$CariHaritasiViewModel on _CariHaritasiViewModelBase, Store {
   }
 
   @override
-  void addMarker(InvalidType marker) {
+  void addMarker(Marker marker) {
     final _$actionInfo = _$_CariHaritasiViewModelBaseActionController
         .startAction(name: '_CariHaritasiViewModelBase.addMarker');
     try {
