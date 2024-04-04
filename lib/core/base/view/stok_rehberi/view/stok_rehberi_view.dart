@@ -20,7 +20,6 @@ import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
-import "../../../../constants/static_variables/static_variables.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../model/base_edit_model.dart";
@@ -387,7 +386,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                           children: [
                                             const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
                                             ColorfulBadge(
-                                              label: Text("Dövizli ${(StaticVariables.instance.isMusteriSiparisleri ? stok?.satisDovizAdi : stok?.alisDovizAdi) ?? ""}"),
+                                              label: Text("Dövizli ${stok?.satisDovizAdi}"),
                                               badgeColorEnum: BadgeColorEnum.dovizli,
                                             ).yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
                                             const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),

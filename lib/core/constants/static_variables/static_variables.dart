@@ -44,7 +44,6 @@ class StaticVariables {
   bool get isTransferValid => transferGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> transferGenelFormKey = GlobalKey<FormState>();
 
-  bool isMusteriSiparisleri = false;
   bool isSatisFaturasi = false;
 
   EditTipiEnum editTipi = EditTipiEnum.musteri;

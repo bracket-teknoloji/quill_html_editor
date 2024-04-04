@@ -333,9 +333,9 @@ class ParamModel {
   @JsonKey(name: "ArrEIrsSeri")
   List<String>? arrEIrsSeri;
   @JsonKey(name: "ArrEFatSeri")
-  List<String?>? arrEFatSeri;
+  List<String>? arrEFatSeri;
   @JsonKey(name: "ArrEArSeri")
-  List<String?>? arrEArSeri;
+  List<String>? arrEArSeri;
   @JsonKey(name: "Seri_EArsiv")
   String? seriEArsiv;
   @JsonKey(name: "UretimEkAlanKullan")

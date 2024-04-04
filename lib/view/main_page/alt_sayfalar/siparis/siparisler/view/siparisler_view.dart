@@ -28,7 +28,6 @@ import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
-import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -67,7 +66,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   @override
   void initState() {
     viewModel = SiparislerViewModel(pickerBelgeTuru: widget.widgetModel.editTipiEnum.rawValue);
-    StaticVariables.instance.isMusteriSiparisleri = widget.widgetModel.editTipiEnum.musteriMi;
     // BaseSiparisEdit
     BaseSiparisEditModel.instance.belgeTuru = widget.widgetModel.editTipiEnum.rawValue;
     scrollController = ScrollController();

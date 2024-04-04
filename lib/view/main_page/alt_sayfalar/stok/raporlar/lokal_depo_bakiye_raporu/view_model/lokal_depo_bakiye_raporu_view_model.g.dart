@@ -48,13 +48,13 @@ mixin _$LokalDepoBakiyeRaporuViewModel
       context: context);
 
   @override
-  ObservableFuture<bool?> get futureController {
+  InvalidType get futureController {
     _$futureControllerAtom.reportRead();
     return super.futureController;
   }
 
   @override
-  set futureController(ObservableFuture<bool?> value) {
+  set futureController(InvalidType value) {
     _$futureControllerAtom.reportWrite(value, super.futureController, () {
       super.futureController = value;
     });

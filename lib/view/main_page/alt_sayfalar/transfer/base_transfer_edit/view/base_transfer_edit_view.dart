@@ -92,7 +92,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model.baseEditEnum = widget.model.baseEditEnum;
-      model.editTipiEnum = widget.model.editTipiEnum ?? (StaticVariables.instance.isMusteriSiparisleri ? EditTipiEnum.musteri : EditTipiEnum.satici);
+      model.editTipiEnum = widget.model.editTipiEnum;
     }
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {

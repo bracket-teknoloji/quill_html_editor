@@ -9,7 +9,6 @@ import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
 import "../../init/cache/cache_manager.dart";
 import "../enum/edit_tipi_enum.dart";
-import "../static_variables/static_variables.dart";
 import "yetki_model.dart";
 
 final class YetkiController {
@@ -377,7 +376,7 @@ final class YetkiController {
   bool get ebelgeEFaturaGoruntule => _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
   bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
   bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif);
-  bool eFaturaSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? ""), skipAdmin: true);
+  bool eFaturaSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? "") || (_paramModel?.arrEFatSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   bool get ebelgeEIrsaliyeGelenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
@@ -387,7 +386,7 @@ final class YetkiController {
   bool get ebelgeEIrsaliyeGoruntule => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
   bool get ebelgeEIrsaliyeTaslakSil => _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
   bool get eIrsaliyeAktif => _isTrue(_paramModel?.eIrsaliyeAktif);
-  bool eIrsaliyeSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? ""), skipAdmin: true);
+  bool eIrsaliyeSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
@@ -397,7 +396,7 @@ final class YetkiController {
   bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
   bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif);
-  bool eArsivSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? ""), skipAdmin: true);
+  bool eArsivSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? "") || (_paramModel?.arrEArSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   //! SAYIM
   bool get sayimEkle => _isTrue(_yetkiModel?.sayimSerbest);
