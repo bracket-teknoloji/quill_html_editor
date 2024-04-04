@@ -175,7 +175,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                   const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                  Text("${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index,isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
                                             ),
@@ -225,7 +225,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                   const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                  Text("${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
                                             ),
