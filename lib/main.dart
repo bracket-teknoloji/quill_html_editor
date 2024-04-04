@@ -3,6 +3,7 @@ import "dart:ui";
 
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:easy_localization/easy_localization.dart";
+import "package:firebase_app_check/firebase_app_check.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:firebase_crashlytics/firebase_crashlytics.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
@@ -462,7 +463,7 @@ class PickerApp extends StatelessWidget {
               //* Kalite-Kontrol
               GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
               GetPage(name: "/olcumDetay", page: () => OlcumBelgeEditView(model: Get.arguments)),
-              GetPage(name: "/prosesEkle", page: ProsesEkleView.new),
+              GetPage(name: "/prosesEkle", page: () => ProsesEkleView(model: Get.arguments)),
               GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments)),
 
               //* Serbest Raporlar
@@ -483,6 +484,11 @@ class PickerApp extends StatelessWidget {
 
 Future<void> firebaseInitialized() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
+  await FirebaseAppCheck.instance.activate(
+    webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
+    androidProvider: AndroidProvider.playIntegrity,
+    appleProvider: AppleProvider.appAttest,
+  );
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);

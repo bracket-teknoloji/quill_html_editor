@@ -69,7 +69,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: true,
           onPressed: () async {
-            final result = await Get.toNamed("/mainPage/olcumEkle", arguments: widget.model);
+            final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model);
             if (result == null) {}
           },
         ),
@@ -106,7 +106,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     ),
                   ),
                 ),
-                Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
+                const Text("Prosesler").paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
                 Expanded(
                   flex: 2,
                   child: ListView.builder(

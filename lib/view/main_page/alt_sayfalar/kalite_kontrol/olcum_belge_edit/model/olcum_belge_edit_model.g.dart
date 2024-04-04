@@ -9,6 +9,13 @@ part of 'olcum_belge_edit_model.dart';
 _$OlcumBelgeEditModelImpl _$$OlcumBelgeEditModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumBelgeEditModelImpl(
+      belgeNo: json['BELGE_NO'] as String?,
+      belgeTipi: json['BELGE_TIPI'] as String?,
+      belgeSira: json['BELGE_SIRA'] as int?,
+      stokKodu: json['STOK_KODU'] as String?,
+      yapkod: json['YAPKOD'] as String?,
+      opkodu: json['OPKODU'] as String?,
+      kayitOperator: json['KAYIT_OPERATOR'] as String?,
       belge: (json['BELGE'] as List<dynamic>?)
           ?.map((e) => OlcumBelgeModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -30,6 +37,13 @@ Map<String, dynamic> _$$OlcumBelgeEditModelImplToJson(
     }
   }
 
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('BELGE_SIRA', instance.belgeSira);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('YAPKOD', instance.yapkod);
+  writeNotNull('OPKODU', instance.opkodu);
+  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
   writeNotNull('BELGE', instance.belge?.map((e) => e.toJson()).toList());
   writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
   writeNotNull(
@@ -129,7 +143,7 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
       ustSinir: (json['UST_SINIR'] as num?)?.toDouble(),
       tur: json['TUR'] as String?,
       olcumSikligi: json['OLCUM_SIKLIGI'] as int?,
-      numuneMiktari: (json['NUMUNE_MIKTARI'] as num?)?.toDouble(),
+      numuneMiktari: json['NUMUNE_MIKTARI'] as int?,
     );
 
 Map<String, dynamic> _$$OlcumProsesModelImplToJson(

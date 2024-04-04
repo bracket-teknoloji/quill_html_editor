@@ -10,10 +10,22 @@ class OlcumEkleViewModel = _OlcumEkleViewModelBase with _$OlcumEkleViewModel;
 
 abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   @observable
-  OlcumEkleModel requestModel = OlcumEkleModel();
+  OlcumEkleModel requestModel = OlcumEkleModel(prosesler: []);
 
   @action
   void setRequestModel(OlcumEkleModel model) => requestModel = model;
+
+  @action
+  void addProsesModel(OlcumEkleProsesModel model) {
+    if (requestModel.prosesler == null) {
+      requestModel = requestModel.copyWith(prosesler: []);
+    }
+    if (requestModel.prosesler!.any((proses) => proses.prosesId == model.prosesId)) {
+      requestModel = requestModel.copyWith(prosesler: requestModel.prosesler!.map((proses) => proses.prosesId == model.prosesId ? model : proses).toList());
+    } else {
+      requestModel = requestModel.copyWith(prosesler: (requestModel.prosesler ?? []) + [model]);
+    }
+  }
 
   @action
   Future<void> sendData() async {

@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "olcum_ekle_model.freezed.dart";
 part "olcum_ekle_model.g.dart";
@@ -20,7 +20,7 @@ class OlcumEkleModel with _$OlcumEkleModel {
 
   factory OlcumEkleModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleModelFromJson(json);
 
-  factory OlcumEkleModel.fromOlcumGirisiModel(OlcumGirisiListesiModel model) => OlcumEkleModel(
+  factory OlcumEkleModel.fromOlcumGirisiModel(OlcumBelgeModel model) => OlcumEkleModel(
         belgeNo: model.belgeNo,
         belgeTipi: model.belgeTipi,
         stokKodu: model.stokKodu,
@@ -33,17 +33,28 @@ class OlcumEkleProsesModel with _$OlcumEkleProsesModel {
     String? belgeNo,
     int? belgeSira,
     String? yapkod,
+    int? prosesId,
+    int? detayId,
+    String? sonuc,
+    String? sartliKabulNedeni,
+    String? aciklama,
     List<OlcumEkleDetayModel>? detaylar,
   }) = _OlcumEkleProsesModel;
 
   factory OlcumEkleProsesModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleProsesModelFromJson(json);
+
+  factory OlcumEkleProsesModel.fromOlcumProsesModel(OlcumProsesModel model) => OlcumEkleProsesModel(
+        belgeSira: model.sira,
+        prosesId: model.id,
+      );
 }
 
 @unfreezed
 class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
   factory OlcumEkleDetayModel({
-    int? deger,
-    double? zaman,
+    double? deger,
+    int? detayId,
+    DateTime? zaman,
   }) = _OlcumEkleDetayModel;
 
   factory OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleDetayModelFromJson(json);

@@ -8,6 +8,13 @@ part "olcum_belge_edit_model.g.dart";
 class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
   OlcumBelgeEditModel._();
   factory OlcumBelgeEditModel({
+    String? belgeNo,
+    String? belgeTipi,
+    int? belgeSira,
+    String? stokKodu,
+    String? yapkod,
+    String? opkodu,
+    String? kayitOperator,
     List<OlcumBelgeModel>? belge,
     List<OlcumOlcumlerModel>? olcumler,
     List<OlcumProsesModel>? prosesler,
@@ -69,8 +76,16 @@ class OlcumProsesModel with _$OlcumProsesModel {
     double? ustSinir,
     String? tur,
     int? olcumSikligi,
-    double? numuneMiktari,
+    int? numuneMiktari,
   }) = _OlcumProsesModel;
 
   factory OlcumProsesModel.fromJson(Map<String, dynamic> json) => _$OlcumProsesModelFromJson(json);
+}
+
+extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
+  OlcumBelgeModel? get olcumModel => belge?.firstOrNull;
+}
+
+extension OlcumProsesModelExtensions on OlcumProsesModel {
+  bool get olculecekMi => olculecekmi == "E" ? true : false;
 }

@@ -50,6 +50,11 @@ _$OlcumEkleProsesModelImpl _$$OlcumEkleProsesModelImplFromJson(
       belgeNo: json['BELGE_NO'] as String?,
       belgeSira: json['BELGE_SIRA'] as int?,
       yapkod: json['YAPKOD'] as String?,
+      prosesId: json['PROSES_ID'] as int?,
+      detayId: json['DETAY_ID'] as int?,
+      sonuc: json['SONUC'] as String?,
+      sartliKabulNedeni: json['SARTLI_KABUL_NEDENI'] as String?,
+      aciklama: json['ACIKLAMA'] as String?,
       detaylar: (json['DETAYLAR'] as List<dynamic>?)
           ?.map((e) => OlcumEkleDetayModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -68,6 +73,11 @@ Map<String, dynamic> _$$OlcumEkleProsesModelImplToJson(
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_SIRA', instance.belgeSira);
   writeNotNull('YAPKOD', instance.yapkod);
+  writeNotNull('PROSES_ID', instance.prosesId);
+  writeNotNull('DETAY_ID', instance.detayId);
+  writeNotNull('SONUC', instance.sonuc);
+  writeNotNull('SARTLI_KABUL_NEDENI', instance.sartliKabulNedeni);
+  writeNotNull('ACIKLAMA', instance.aciklama);
   writeNotNull('DETAYLAR', instance.detaylar?.map((e) => e.toJson()).toList());
   return val;
 }
@@ -75,8 +85,11 @@ Map<String, dynamic> _$$OlcumEkleProsesModelImplToJson(
 _$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumEkleDetayModelImpl(
-      deger: json['DEGER'] as int?,
-      zaman: (json['ZAMAN'] as num?)?.toDouble(),
+      deger: (json['DEGER'] as num?)?.toDouble(),
+      detayId: json['DETAY_ID'] as int?,
+      zaman: json['ZAMAN'] == null
+          ? null
+          : DateTime.parse(json['ZAMAN'] as String),
     );
 
 Map<String, dynamic> _$$OlcumEkleDetayModelImplToJson(
@@ -90,6 +103,7 @@ Map<String, dynamic> _$$OlcumEkleDetayModelImplToJson(
   }
 
   writeNotNull('DEGER', instance.deger);
-  writeNotNull('ZAMAN', instance.zaman);
+  writeNotNull('DETAY_ID', instance.detayId);
+  writeNotNull('ZAMAN', instance.zaman?.toIso8601String());
   return val;
 }

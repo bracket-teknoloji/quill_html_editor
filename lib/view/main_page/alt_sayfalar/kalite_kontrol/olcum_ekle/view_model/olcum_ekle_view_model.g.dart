@@ -48,6 +48,17 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   }
 
   @override
+  void addProsesModel(OlcumEkleProsesModel model) {
+    final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
+        name: '_OlcumEkleViewModelBase.addProsesModel');
+    try {
+      return super.addProsesModel(model);
+    } finally {
+      _$_OlcumEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 requestModel: ${requestModel}

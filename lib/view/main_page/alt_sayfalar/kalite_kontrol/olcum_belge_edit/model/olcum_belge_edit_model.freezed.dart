@@ -20,6 +20,20 @@ OlcumBelgeEditModel _$OlcumBelgeEditModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OlcumBelgeEditModel {
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
+  String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
+  int? get belgeSira => throw _privateConstructorUsedError;
+  set belgeSira(int? value) => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
+  String? get yapkod => throw _privateConstructorUsedError;
+  set yapkod(String? value) => throw _privateConstructorUsedError;
+  String? get opkodu => throw _privateConstructorUsedError;
+  set opkodu(String? value) => throw _privateConstructorUsedError;
+  String? get kayitOperator => throw _privateConstructorUsedError;
+  set kayitOperator(String? value) => throw _privateConstructorUsedError;
   List<OlcumBelgeModel>? get belge => throw _privateConstructorUsedError;
   set belge(List<OlcumBelgeModel>? value) => throw _privateConstructorUsedError;
   List<OlcumOlcumlerModel>? get olcumler => throw _privateConstructorUsedError;
@@ -42,7 +56,14 @@ abstract class $OlcumBelgeEditModelCopyWith<$Res> {
       _$OlcumBelgeEditModelCopyWithImpl<$Res, OlcumBelgeEditModel>;
   @useResult
   $Res call(
-      {List<OlcumBelgeModel>? belge,
+      {String? belgeNo,
+      String? belgeTipi,
+      int? belgeSira,
+      String? stokKodu,
+      String? yapkod,
+      String? opkodu,
+      String? kayitOperator,
+      List<OlcumBelgeModel>? belge,
       List<OlcumOlcumlerModel>? olcumler,
       List<OlcumProsesModel>? prosesler});
 }
@@ -60,11 +81,46 @@ class _$OlcumBelgeEditModelCopyWithImpl<$Res, $Val extends OlcumBelgeEditModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? belgeNo = freezed,
+    Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
+    Object? stokKodu = freezed,
+    Object? yapkod = freezed,
+    Object? opkodu = freezed,
+    Object? kayitOperator = freezed,
     Object? belge = freezed,
     Object? olcumler = freezed,
     Object? prosesler = freezed,
   }) {
     return _then(_value.copyWith(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
       belge: freezed == belge
           ? _value.belge
           : belge // ignore: cast_nullable_to_non_nullable
@@ -90,7 +146,14 @@ abstract class _$$OlcumBelgeEditModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<OlcumBelgeModel>? belge,
+      {String? belgeNo,
+      String? belgeTipi,
+      int? belgeSira,
+      String? stokKodu,
+      String? yapkod,
+      String? opkodu,
+      String? kayitOperator,
+      List<OlcumBelgeModel>? belge,
       List<OlcumOlcumlerModel>? olcumler,
       List<OlcumProsesModel>? prosesler});
 }
@@ -106,11 +169,46 @@ class __$$OlcumBelgeEditModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? belgeNo = freezed,
+    Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
+    Object? stokKodu = freezed,
+    Object? yapkod = freezed,
+    Object? opkodu = freezed,
+    Object? kayitOperator = freezed,
     Object? belge = freezed,
     Object? olcumler = freezed,
     Object? prosesler = freezed,
   }) {
     return _then(_$OlcumBelgeEditModelImpl(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
       belge: freezed == belge
           ? _value.belge
           : belge // ignore: cast_nullable_to_non_nullable
@@ -130,12 +228,36 @@ class __$$OlcumBelgeEditModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OlcumBelgeEditModelImpl extends _OlcumBelgeEditModel {
-  _$OlcumBelgeEditModelImpl({this.belge, this.olcumler, this.prosesler})
+  _$OlcumBelgeEditModelImpl(
+      {this.belgeNo,
+      this.belgeTipi,
+      this.belgeSira,
+      this.stokKodu,
+      this.yapkod,
+      this.opkodu,
+      this.kayitOperator,
+      this.belge,
+      this.olcumler,
+      this.prosesler})
       : super._();
 
   factory _$OlcumBelgeEditModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumBelgeEditModelImplFromJson(json);
 
+  @override
+  String? belgeNo;
+  @override
+  String? belgeTipi;
+  @override
+  int? belgeSira;
+  @override
+  String? stokKodu;
+  @override
+  String? yapkod;
+  @override
+  String? opkodu;
+  @override
+  String? kayitOperator;
   @override
   List<OlcumBelgeModel>? belge;
   @override
@@ -160,7 +282,14 @@ class _$OlcumBelgeEditModelImpl extends _OlcumBelgeEditModel {
 
 abstract class _OlcumBelgeEditModel extends OlcumBelgeEditModel {
   factory _OlcumBelgeEditModel(
-      {List<OlcumBelgeModel>? belge,
+      {String? belgeNo,
+      String? belgeTipi,
+      int? belgeSira,
+      String? stokKodu,
+      String? yapkod,
+      String? opkodu,
+      String? kayitOperator,
+      List<OlcumBelgeModel>? belge,
       List<OlcumOlcumlerModel>? olcumler,
       List<OlcumProsesModel>? prosesler}) = _$OlcumBelgeEditModelImpl;
   _OlcumBelgeEditModel._() : super._();
@@ -168,6 +297,27 @@ abstract class _OlcumBelgeEditModel extends OlcumBelgeEditModel {
   factory _OlcumBelgeEditModel.fromJson(Map<String, dynamic> json) =
       _$OlcumBelgeEditModelImpl.fromJson;
 
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
+  @override
+  String? get belgeTipi;
+  set belgeTipi(String? value);
+  @override
+  int? get belgeSira;
+  set belgeSira(int? value);
+  @override
+  String? get stokKodu;
+  set stokKodu(String? value);
+  @override
+  String? get yapkod;
+  set yapkod(String? value);
+  @override
+  String? get opkodu;
+  set opkodu(String? value);
+  @override
+  String? get kayitOperator;
+  set kayitOperator(String? value);
   @override
   List<OlcumBelgeModel>? get belge;
   set belge(List<OlcumBelgeModel>? value);
@@ -813,8 +963,8 @@ mixin _$OlcumProsesModel {
   set tur(String? value) => throw _privateConstructorUsedError;
   int? get olcumSikligi => throw _privateConstructorUsedError;
   set olcumSikligi(int? value) => throw _privateConstructorUsedError;
-  double? get numuneMiktari => throw _privateConstructorUsedError;
-  set numuneMiktari(double? value) => throw _privateConstructorUsedError;
+  int? get numuneMiktari => throw _privateConstructorUsedError;
+  set numuneMiktari(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -842,7 +992,7 @@ abstract class $OlcumProsesModelCopyWith<$Res> {
       double? ustSinir,
       String? tur,
       int? olcumSikligi,
-      double? numuneMiktari});
+      int? numuneMiktari});
 }
 
 /// @nodoc
@@ -929,7 +1079,7 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
       numuneMiktari: freezed == numuneMiktari
           ? _value.numuneMiktari
           : numuneMiktari // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ) as $Val);
   }
 }
@@ -956,7 +1106,7 @@ abstract class _$$OlcumProsesModelImplCopyWith<$Res>
       double? ustSinir,
       String? tur,
       int? olcumSikligi,
-      double? numuneMiktari});
+      int? numuneMiktari});
 }
 
 /// @nodoc
@@ -1041,7 +1191,7 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
       numuneMiktari: freezed == numuneMiktari
           ? _value.numuneMiktari
           : numuneMiktari // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
     ));
   }
 }
@@ -1095,7 +1245,7 @@ class _$OlcumProsesModelImpl implements _OlcumProsesModel {
   @override
   int? olcumSikligi;
   @override
-  double? numuneMiktari;
+  int? numuneMiktari;
 
   @override
   String toString() {
@@ -1132,7 +1282,7 @@ abstract class _OlcumProsesModel implements OlcumProsesModel {
       double? ustSinir,
       String? tur,
       int? olcumSikligi,
-      double? numuneMiktari}) = _$OlcumProsesModelImpl;
+      int? numuneMiktari}) = _$OlcumProsesModelImpl;
 
   factory _OlcumProsesModel.fromJson(Map<String, dynamic> json) =
       _$OlcumProsesModelImpl.fromJson;
@@ -1177,8 +1327,8 @@ abstract class _OlcumProsesModel implements OlcumProsesModel {
   int? get olcumSikligi;
   set olcumSikligi(int? value);
   @override
-  double? get numuneMiktari;
-  set numuneMiktari(double? value);
+  int? get numuneMiktari;
+  set numuneMiktari(int? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumProsesModelImplCopyWith<_$OlcumProsesModelImpl> get copyWith =>

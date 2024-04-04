@@ -463,11 +463,11 @@ final class YetkiController {
 
   //! FATURA
   bool faturaAciklamaAlanlari(EditTipiEnum? editTipi, int index) {
-    if (editTipi == EditTipiEnum.satisFatura) {
+    if (editTipi.satisFaturasiMi) {
       return satisFaturaAciklamaAlanlari(index);
-    } else if (editTipi == EditTipiEnum.alisIrsaliye) {
+    } else if (editTipi.alisIrsaliyesiMi) {
       return alisIrsaliyeAciklamaAlanlari(index);
-    } else if (editTipi == EditTipiEnum.alisFatura) {
+    } else if (editTipi.alisFaturasiMi) {
       return alisFaturaAciklamaAlanlari(index);
     }
     return false;
