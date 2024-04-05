@@ -54,7 +54,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
   @override
   void initState() {
     tabController = TabController(length: 4, vsync: this);
-    if (widget.model.baseEditEnum != BaseEditEnum.goruntule) {
+    if (BaseSiparisEditModel.instance.isEmpty &&  (widget.model.baseEditEnum != BaseEditEnum.goruntule)) {
       tabController.addListener(() {
         if (tabController.indexIsChanging && tabController.previousIndex == 0) {
           final result = StaticVariables.instance.talepTeklifGenelFormKey.currentState?.validate();

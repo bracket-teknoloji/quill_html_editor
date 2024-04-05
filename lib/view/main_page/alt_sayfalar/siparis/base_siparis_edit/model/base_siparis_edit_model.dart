@@ -1,4 +1,5 @@
 import "dart:convert";
+import "dart:developer";
 
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
@@ -1008,7 +1009,15 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int get getKalemSayisi => kalemList?.length ?? (kalemAdedi ?? 0);
 
   bool get yurticiMi => tipi != 6;
-  bool get isEmpty => this == BaseSiparisEditModel();
+  bool get isEmpty {
+    log(toJson().toString());
+    log(BaseSiparisEditModel().toJson().toString());
+    log("""
+== ${this == BaseSiparisEditModel()}
+identical (${identical(this, BaseSiparisEditModel())})""");
+    return this == BaseSiparisEditModel();
+  }
+
   bool get isRemoteTempBelgeNull => remoteTempBelge == null;
 
   double get getToplamEkMaliyet => (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);

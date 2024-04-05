@@ -84,7 +84,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     //TODO sayfalama gelince düzenle
     setOlcumList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumGirisiListesiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumGirisiListesiModel(), data: requestModel.toJson());
     if (result.success == true) {
       final List<OlcumGirisiListesiModel> list = (result.data as List).map((e) => e as OlcumGirisiListesiModel).toList();
       setOlcumList(list);

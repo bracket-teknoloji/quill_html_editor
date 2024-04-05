@@ -102,7 +102,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
       model.model?.kayitModu = null;
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
           viewModel.changeFuture();

@@ -332,6 +332,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           readOnly: true,
                           isMust: true,
                           suffixMore: true,
+                          enabled: enable,
                           controller: _gidecegiSubeController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisSubeKodu.toIntIfDouble.toStringIfNotNull ?? "")),
                           onTap: () async {
@@ -443,6 +444,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         controller: _masrafKoduController,
                         readOnly: true,
                         suffixMore: true,
+                        enabled: enable,
                         isMust: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafKodu ?? "")),
                         onTap: () async {
@@ -462,6 +464,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         labelText: "Çıkış Yeri",
                         controller: _cikisYeriController,
                         readOnly: true,
+                        enabled: enable,
                         suffixMore: true,
                         isMust: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisYeri ?? "")),
@@ -598,6 +601,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   labelText: "İş Emri",
                   suffixMore: true,
                   readOnly: true,
+                  enabled: enable,
                   controller: _isEmriController,
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
                   onClear: () => viewModel.changeIsEmri(null),

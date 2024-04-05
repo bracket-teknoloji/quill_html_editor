@@ -60,6 +60,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
 
   @override
   void initState() {
+    viewModel.setLoading(true);
     tabController = TabController(length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3, vsync: this);
     _cariKoduController = TextEditingController();
     _siparisController = TextEditingController();
@@ -127,10 +128,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-        viewModel.setLoading(false);
         return;
       }
-      if (BaseSiparisEditModel.instance.isEmpty && widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
@@ -151,6 +151,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+            BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -201,8 +202,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
           );
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
+        viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
-        if (widget.model.model is BaseSiparisEditModel) {}
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         //TODO parametre ekle
@@ -542,8 +543,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         kalemler: BaseSiparisEditModel.instance.kalemList
             ?.map(
               (e) => e
-                ..siparisNo = null
-                ..siparisSira = null
+                // ..siparisNo = null
+                // ..siparisSira = null
                 ..belgeNo ??= null,
             )
             .toList(),
