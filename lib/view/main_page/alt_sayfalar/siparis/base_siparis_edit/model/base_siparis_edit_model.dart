@@ -1445,7 +1445,7 @@ class KalemModel with NetworkManagerMixin {
 
   bool get seriliMi => BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true;
 
-  bool get seriTamamMi => (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
+  bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 

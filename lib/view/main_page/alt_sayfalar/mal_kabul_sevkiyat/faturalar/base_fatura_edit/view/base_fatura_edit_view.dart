@@ -50,7 +50,7 @@ class BaseFaturaEditView extends StatefulWidget {
   State<BaseFaturaEditView> createState() => _BaseFaturaEditViewState();
 }
 
-class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with SingleTickerProviderStateMixin {
+class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with TickerProviderStateMixin {
   BaseFaturaEditViewModel viewModel = BaseFaturaEditViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;
@@ -71,17 +71,23 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Single
         if (!result) {
           dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
           tabController.animateTo(tabController.previousIndex);
+          return;
         }
       }
-      if (tabController.indexIsChanging &&
+      if (!tabController.indexIsChanging &&
           tabController.previousIndex == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1) &&
           yetkiController.seriUygulamasiAcikMi &&
-          BaseSiparisEditModel.instance.kalemList?.any((element) => element.seriliMi) == true &&
           BaseSiparisEditModel.instance.kalemList?.any((element) => !element.seriTamamMi) == true) {
         dialogManager.showErrorSnackBar("Kalemlerde seri eksik.");
-        tabController.animateTo(tabController.previousIndex);
+        if (tabController.index != (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1)) {
+          tabController.animateTo(widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1);
+
+          return;
+        }
+        // tabController.animateTo(tabController.previousIndex);
+        // return;
       }
-      if (tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+      if (!tabController.indexIsChanging && tabController.index == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 3 : 2) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
         viewModel.changeIsLastPage(true);
       } else {
         viewModel.changeIsLastPage(false);

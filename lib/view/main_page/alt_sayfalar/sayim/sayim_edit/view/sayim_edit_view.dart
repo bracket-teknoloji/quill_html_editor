@@ -18,7 +18,7 @@ class SayimEditView extends StatefulWidget {
   State<SayimEditView> createState() => _SayimEditViewState();
 }
 
-class _SayimEditViewState extends BaseState<SayimEditView> with SingleTickerProviderStateMixin {
+class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderStateMixin {
   late final TabController controller;
   SayimListesiModel get model => widget.model..filtre = null;
   final SayimEditViewModel viewModel = SayimEditViewModel();
