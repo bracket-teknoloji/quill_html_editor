@@ -133,6 +133,14 @@ class ApiUrls {
 
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";
+  static const String getOlcum = "Sigma/GetOlcum";
   static const String getOlcumBelgeDetaylar = "Sigma/GetOlcumBelgeDetaylar";
-  static const String createOlcum = "Sigma/CreateOlcum";
+  static const String getOlcumPersonel = "Sigma/GetOlcumPersonel";
+  static const String olcumEkle = "Sigma/OlcumEkle";
+  static const String operatorEkle = "Sigma/OperatorEkle";
+  static const String sartliKabulEkle = "Sigma/SartlıKabulEkle";
+  static const String getSartliKabuller = "Sigma/GetSartliKabuller";
+  static const String getOperatorler = "Sigma/GetOperatorler";
+  static const String getProsesler = "Sigma/GetProsesler";
+  static const String getProsesBildirim = "Sigma/GetProsesBildirim";
 }

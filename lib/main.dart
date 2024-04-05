@@ -484,6 +484,11 @@ class PickerApp extends StatelessWidget {
 
 Future<void> firebaseInitialized() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
+  await FirebaseAppCheck.instance.activate(
+    webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
+    androidProvider: AndroidProvider.playIntegrity,
+    appleProvider: AppleProvider.appAttest,
+  );
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);
@@ -498,11 +503,5 @@ Future<void> firebaseInitialized() async {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
     };
-  } else {
-    await FirebaseAppCheck.instance.activate(
-      webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
-      androidProvider: AndroidProvider.playIntegrity,
-      appleProvider: AppleProvider.appAttest,
-    );
   }
 }

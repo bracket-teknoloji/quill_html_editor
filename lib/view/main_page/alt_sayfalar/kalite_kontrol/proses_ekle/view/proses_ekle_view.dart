@@ -5,6 +5,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -25,24 +26,40 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
   final ProsesEkleViewModel viewModel = ProsesEkleViewModel();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  late final TextEditingController sartliKabulTuruController;
+  late final TextEditingController operatorController;
+  late final TextEditingController aciklamaController;
+
   @override
   void initState() {
+    sartliKabulTuruController = TextEditingController();
+    operatorController = TextEditingController();
+    aciklamaController = TextEditingController(text: widget.model.kabulSarti);
     viewModel.setProsesDetayListesi(widget.model.numuneMiktari ?? 0);
     super.initState();
   }
 
   @override
+  void dispose() {
+    sartliKabulTuruController.dispose();
+    operatorController.dispose();
+    aciklamaController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const AppBarTitle(
+          title: AppBarTitle(
             title: "Proses Ekle",
+            subtitle: widget.model.id.toStringIfNotNull,
           ),
           actions: [
             IconButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  if (viewModel.prosesDetayListesi.every((element) => (element.deger ?? 0) > (widget.model.altSinir ?? 0) || (element.deger ?? 0) < (widget.model.ustSinir ?? 0))) {
-                    Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.prosesDetayListesi.nonObservableInner));
+                  if (viewModel.prosesDetayListesi.every((element) => ((element.deger ?? 0) > (widget.model.altSinir ?? 0)) && ((element.deger ?? 0) < (widget.model.ustSinir ?? 0)))) {
+                    Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.prosesDetayListesi.nonObservableInner, sonuc: "K"));
                     dialogManager.showSuccessSnackBar("Başarılı");
                   } else {
                     //TODO Ölçüm sonuç bilgileri eklensin
@@ -51,7 +68,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                 }
               },
               icon: const Icon(Icons.save_outlined),
-            ),
+            ).yetkiVarMi(widget.model.olculecekMi),
           ],
         ),
         body: SingleChildScrollView(
@@ -91,6 +108,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   ),
                 ),
                 if (widget.model.olculecekMi) ...buildFormFields(),
+                if (!widget.model.olculecekMi) switchButton(),
               ],
             ).paddingAll(UIHelper.lowSize),
           ),
@@ -106,5 +124,28 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           onChanged: (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
         ),
+      );
+
+  Row switchButton() => Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.prosesDetayListesi.nonObservableInner, sonuc: "K"));
+              },
+              style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis)),
+              child: const Text("Onay"),
+            ).paddingAll(UIHelper.lowSize),
+          ),
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.prosesDetayListesi.nonObservableInner, sonuc: "R"));
+              },
+              style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed)),
+              child: const Text("Ret"),
+            ).paddingAll(UIHelper.lowSize),
+          ),
+        ],
       );
 }

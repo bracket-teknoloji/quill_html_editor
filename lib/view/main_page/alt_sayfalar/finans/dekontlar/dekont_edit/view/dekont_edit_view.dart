@@ -29,7 +29,7 @@ class DekontEditView extends StatefulWidget {
   State<DekontEditView> createState() => _DekontEditViewState();
 }
 
-class _DekontEditViewState extends BaseState<DekontEditView> with SingleTickerProviderStateMixin {
+class _DekontEditViewState extends BaseState<DekontEditView> with TickerProviderStateMixin {
   final DekontEditViewModel viewModel = DekontEditViewModel();
   late final TabController _tabController;
 

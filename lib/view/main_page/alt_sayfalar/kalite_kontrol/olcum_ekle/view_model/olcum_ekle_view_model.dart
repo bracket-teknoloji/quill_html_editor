@@ -30,6 +30,6 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> sendData() async {
     //TODO CariListesiModel'i kaldır
-    final result = await networkManager.dioGet(path: ApiUrls.createOlcum, bodyModel: CariListesiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.olcumEkle, bodyModel: CariListesiModel(), data: requestModel.toJson());
   }
 }

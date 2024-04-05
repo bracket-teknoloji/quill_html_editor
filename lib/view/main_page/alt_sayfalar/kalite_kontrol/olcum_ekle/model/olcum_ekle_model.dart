@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "olcum_ekle_model.freezed.dart";
@@ -58,4 +59,36 @@ class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
   }) = _OlcumEkleDetayModel;
 
   factory OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleDetayModelFromJson(json);
+}
+
+extension OlcumEkleProsesExtensions on OlcumEkleProsesModel? {
+  String get sonucAdi {
+    switch (this?.sonuc) {
+      case null:
+        return "";
+      case "K":
+        return "Kabul";
+      case "R":
+        return "Ret";
+      case "S":
+        return "Şartlı Kabul";
+      default:
+        return "";
+    }
+  }
+
+  BadgeColorEnum get cardColor {
+    switch (this?.sonuc) {
+      case null:
+        return BadgeColorEnum.basarili;
+      case "K":
+        return BadgeColorEnum.basarili;
+      case "R":
+        return BadgeColorEnum.hata;
+      case "S":
+        return BadgeColorEnum.uyari;
+      default:
+        return BadgeColorEnum.uyari;
+    }
+  }
 }
