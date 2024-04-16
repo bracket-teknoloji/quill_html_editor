@@ -5,8 +5,11 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
@@ -14,7 +17,8 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/vie
 
 class OlcumEkleView extends StatefulWidget {
   final OlcumBelgeEditModel model;
-  const OlcumEkleView({super.key, required this.model});
+  final BaseEditEnum baseEditEnum;
+  const OlcumEkleView({super.key, required this.model, required this.baseEditEnum});
 
   @override
   State<OlcumEkleView> createState() => _OlcumEkleViewState();
@@ -25,7 +29,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
 
   @override
   void initState() {
-    viewModel.setRequestModel(OlcumEkleModel.fromOlcumGirisiModel(widget.model.olcumModel!));
+    viewModel.setRequestModel(OlcumEkleModel.fromOlcumBelgeEditModel(widget.model));
     super.initState();
   }
 
@@ -48,7 +52,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                 }
               },
               icon: const Icon(Icons.save_outlined),
-            ),
+            ).yetkiVarMi(widget.baseEditEnum.ekleMi || widget.baseEditEnum.duzenleMi),
           ],
         ),
         body: Column(
@@ -78,20 +82,20 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                 itemBuilder: (context, index) {
                   final proses = widget.model.prosesler![index];
                   return Card(
-                    // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull),
+                    // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
                     child: ListTile(
                       onTap: () async {
                         final result = await Get.toNamed(
                           "/mainPage/prosesEkle",
-                          arguments: proses.copyWith(numunler: viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull),
+                          arguments: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
                         );
-                        if (result is OlcumEkleProsesModel) {
+                        if (result is OlcumProsesModel) {
                           viewModel.addProsesModel(result);
                         }
                       },
                       title: Observer(
                         builder: (_) {
-                          final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull;
+                          final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -99,7 +103,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                               ColorfulBadge(
                                 label: Text(eklenenProses.sonucAdi),
                                 badgeColorEnum: eklenenProses.cardColor,
-                              ).yetkiVarMi(eklenenProses != null),
+                              ).yetkiVarMi(eklenenProses?.sonuc != null),
                             ],
                           );
                         },
@@ -108,14 +112,16 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                         splitCount: 2,
                         children: [
                           Text("Kriter: ${proses.kriter}"),
-                          Text("Açıklama: ${proses.kabulSarti}"),
-                          Text("Tarih: ${proses.kriter}"),
+                          Text("Açıklama: ${proses.kabulSarti ?? ""}"),
                           Text("Ekipman: ${proses.ekipman}"),
+                          Text("Numune Miktarı: ${proses.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
                         ],
                       ),
                       trailing: Observer(
-                        builder: (_) => Icon(viewModel.requestModel.prosesler?.any((element) => element.prosesId == proses.id) ?? false ? Icons.check_box_outlined : Icons.check_box_outline_blank),
-                      ),
+                        builder: (_) => Icon(
+                          viewModel.requestModel.prosesler?.any((element) => (element.id == proses.id) && element.sonuc != null) ?? false ? Icons.check_box_outlined : Icons.check_box_outline_blank,
+                        ),
+                      ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
                     ),
                   );
                 },

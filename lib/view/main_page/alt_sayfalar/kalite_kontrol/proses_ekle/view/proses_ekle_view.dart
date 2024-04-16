@@ -12,7 +12,6 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/proses_ekle/view_model/proses_ekle_view_model.dart";
 
 class ProsesEkleView extends StatefulWidget {
@@ -35,11 +34,11 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
 
   @override
   void initState() {
-    viewModel.ekleModel = OlcumEkleProsesModel.fromOlcumProsesModel(widget.model);
+    viewModel.ekleModel = widget.model;
     viewModel.setProsesDetayListesi(widget.model.numuneMiktari ?? 0);
     numuneControllers = List.generate(widget.model.numuneMiktari ?? 0, (index) {
-      final double? deger = widget.model.numunler?.detaylar?[index].deger;
-      if (widget.model.numunler != null) {
+      final double? deger = widget.model.numuneler?.olcumler?[index].deger;
+      if (widget.model.numuneler != null) {
         viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: deger));
       }
       return TextEditingController(text: deger?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
@@ -72,8 +71,8 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
             IconButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  if (viewModel.ekleModel.detaylar?.every((element) => ((element.deger ?? 0) > (widget.model.altSinir ?? 0)) && ((element.deger ?? 0) < (widget.model.ustSinir ?? 0))) ?? false) {
-                    Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.ekleModel.detaylar, sonuc: "K"));
+                  if (viewModel.ekleModel.olcumler?.every((element) => ((element.deger ?? 0) > (widget.model.altSinir ?? 0)) && ((element.deger ?? 0) < (widget.model.ustSinir ?? 0))) ?? false) {
+                    Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
                     dialogManager.showSuccessSnackBar("Başarılı");
                   } else {
                     //TODO Ölçüm sonuç bilgileri eklensin
@@ -137,6 +136,15 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
         (index) => CustomTextField(
           labelText: "Numune ${index + 1}",
           controller: numuneControllers[index],
+          valueWidget: Observer(
+            builder: (_) => Text(
+              viewModel.ekleModel.olcumler?[index].deger == null ||
+                      ((viewModel.ekleModel.olcumler?[index].deger ?? 0) > (widget.model.altSinir ?? 0) && (viewModel.ekleModel.olcumler?[index].deger ?? 0) < (widget.model.ustSinir ?? 0))
+                  ? ""
+                  : "Aralık Dışında",
+              style: const TextStyle(color: ColorPalette.persianRed),
+            ),
+          ),
           isMust: true,
           isFormattedString: true,
           onChanged: (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
@@ -149,7 +157,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           Expanded(
             child: ElevatedButton(
               onPressed: () {
-                Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.ekleModel.detaylar?.map((e) => e..deger = 1).toList(), sonuc: "K"));
+                Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
               },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis)),
               child: const Text("Onay"),
@@ -158,7 +166,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           Expanded(
             child: ElevatedButton(
               onPressed: () {
-                Get.back(result: OlcumEkleProsesModel.fromOlcumProsesModel(widget.model).copyWith(detaylar: viewModel.ekleModel.detaylar?.map((e) => e..deger = 0).toList(), sonuc: "R"));
+                Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
               },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed)),
               child: const Text("Ret"),

@@ -10,14 +10,20 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
     _$OlcumEkleModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      stokKodu: json['STOK_KODU'] as String?,
       belgeSira: json['BELGE_SIRA'] as int?,
+      stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
-      prosesId: json['PROSES_ID'] as String?,
-      sonuc: json['SONUC'] as String?,
+      opkodu: json['OPKODU'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
+      tarih: json['TARIH'] == null
+          ? null
+          : DateTime.parse(json['TARIH'] as String),
+      sira: json['SIRA'] as int?,
+      stokAdi: json['STOK_ADI'] as String?,
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
+      belgeId: json['BELGE_ID'] as int?,
       prosesler: (json['PROSESLER'] as List<dynamic>?)
-          ?.map((e) => OlcumEkleProsesModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OlcumProsesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -33,79 +39,17 @@ Map<String, dynamic> _$$OlcumEkleModelImplToJson(
 
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('BELGE_SIRA', instance.belgeSira);
+  writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('PROSES_ID', instance.prosesId);
-  writeNotNull('SONUC', instance.sonuc);
+  writeNotNull('OPKODU', instance.opkodu);
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
+  writeNotNull('TARIH', instance.tarih?.toIso8601String());
+  writeNotNull('SIRA', instance.sira);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('BELGE_ID', instance.belgeId);
   writeNotNull(
       'PROSESLER', instance.prosesler?.map((e) => e.toJson()).toList());
-  return val;
-}
-
-_$OlcumEkleProsesModelImpl _$$OlcumEkleProsesModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OlcumEkleProsesModelImpl(
-      belgeNo: json['BELGE_NO'] as String?,
-      belgeSira: json['BELGE_SIRA'] as int?,
-      yapkod: json['YAPKOD'] as String?,
-      prosesId: json['PROSES_ID'] as int?,
-      detayId: json['DETAY_ID'] as int?,
-      sonuc: json['SONUC'] as String?,
-      sartliKabulNedeni: json['SARTLI_KABUL_NEDENI'] as String?,
-      aciklama: json['ACIKLAMA'] as String?,
-      kayitOperator: json['KAYIT_OPERATOR'] as String?,
-      detaylar: (json['DETAYLAR'] as List<dynamic>?)
-          ?.map((e) => OlcumEkleDetayModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$OlcumEkleProsesModelImplToJson(
-    _$OlcumEkleProsesModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_SIRA', instance.belgeSira);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('PROSES_ID', instance.prosesId);
-  writeNotNull('DETAY_ID', instance.detayId);
-  writeNotNull('SONUC', instance.sonuc);
-  writeNotNull('SARTLI_KABUL_NEDENI', instance.sartliKabulNedeni);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
-  writeNotNull('DETAYLAR', instance.detaylar?.map((e) => e.toJson()).toList());
-  return val;
-}
-
-_$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OlcumEkleDetayModelImpl(
-      deger: (json['DEGER'] as num?)?.toDouble(),
-      detayId: json['DETAY_ID'] as int?,
-      zaman: json['ZAMAN'] == null
-          ? null
-          : DateTime.parse(json['ZAMAN'] as String),
-    );
-
-Map<String, dynamic> _$$OlcumEkleDetayModelImplToJson(
-    _$OlcumEkleDetayModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DEGER', instance.deger);
-  writeNotNull('DETAY_ID', instance.detayId);
-  writeNotNull('ZAMAN', instance.zaman?.toIso8601String());
   return val;
 }

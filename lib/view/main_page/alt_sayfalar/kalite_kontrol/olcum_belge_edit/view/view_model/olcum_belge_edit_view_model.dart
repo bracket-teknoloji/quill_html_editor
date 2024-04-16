@@ -1,6 +1,8 @@
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
@@ -33,4 +35,17 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
       log(model?.toJson().toString() ?? "");
     }
   }
+
+  @action
+  Future< List<OlcumProsesModel>?> getProsesler(int? id) async {
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(), queryParameters: {"id": id});
+    if (result.data is List) {
+      final List<OlcumProsesModel>? data = result.data.map((e) => e as OlcumProsesModel).toList().cast<OlcumProsesModel>();
+      return data;
+    }
+    return null;
+  }
+
+  @action
+  Future<GenericResponseModel<NetworkManagerMixin>?> deleteOlcum(int? id) async => await networkManager.dioGet(path: ApiUrls.olcumSil, bodyModel: OlcumBelgeEditModel(), queryParameters: {"id": id});
 }

@@ -74,13 +74,13 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
       Atom(name: '_ProsesEkleViewModelBase.ekleModel', context: context);
 
   @override
-  OlcumEkleProsesModel get ekleModel {
+  OlcumProsesModel get ekleModel {
     _$ekleModelAtom.reportRead();
     return super.ekleModel;
   }
 
   @override
-  set ekleModel(OlcumEkleProsesModel value) {
+  set ekleModel(OlcumProsesModel value) {
     _$ekleModelAtom.reportWrite(value, super.ekleModel, () {
       super.ekleModel = value;
     });

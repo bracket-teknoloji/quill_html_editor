@@ -57,6 +57,23 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$getProseslerAsyncAction = AsyncAction(
+      '_OlcumBelgeEditViewModelBase.getProsesler',
+      context: context);
+
+  @override
+  Future<List<OlcumProsesModel>?> getProsesler(int? id) {
+    return _$getProseslerAsyncAction.run(() => super.getProsesler(id));
+  }
+
+  late final _$deleteOlcumAsyncAction =
+      AsyncAction('_OlcumBelgeEditViewModelBase.deleteOlcum', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>?> deleteOlcum(int? id) {
+    return _$deleteOlcumAsyncAction.run(() => super.deleteOlcum(id));
+  }
+
   late final _$_OlcumBelgeEditViewModelBaseActionController =
       ActionController(name: '_OlcumBelgeEditViewModelBase', context: context);
 

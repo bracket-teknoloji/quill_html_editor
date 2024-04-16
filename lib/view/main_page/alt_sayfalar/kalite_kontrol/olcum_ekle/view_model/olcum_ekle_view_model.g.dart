@@ -48,7 +48,7 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   }
 
   @override
-  void addProsesModel(OlcumEkleProsesModel model) {
+  void addProsesModel(OlcumProsesModel model) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
         name: '_OlcumEkleViewModelBase.addProsesModel');
     try {

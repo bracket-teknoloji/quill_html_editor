@@ -965,8 +965,30 @@ mixin _$OlcumProsesModel {
   set olcumSikligi(int? value) => throw _privateConstructorUsedError;
   int? get numuneMiktari => throw _privateConstructorUsedError;
   set numuneMiktari(int? value) => throw _privateConstructorUsedError;
-  OlcumEkleProsesModel? get numunler => throw _privateConstructorUsedError;
-  set numunler(OlcumEkleProsesModel? value) =>
+  int? get detayId => throw _privateConstructorUsedError;
+  set detayId(int? value) => throw _privateConstructorUsedError;
+  String? get prosesTipi => throw _privateConstructorUsedError;
+  set prosesTipi(String? value) => throw _privateConstructorUsedError;
+  String? get sonuc => throw _privateConstructorUsedError;
+  set sonuc(String? value) => throw _privateConstructorUsedError;
+  String? get sartliKabulNedeni => throw _privateConstructorUsedError;
+  set sartliKabulNedeni(String? value) => throw _privateConstructorUsedError;
+  String? get sartliKabulNedeniAciklama => throw _privateConstructorUsedError;
+  set sartliKabulNedeniAciklama(String? value) =>
+      throw _privateConstructorUsedError;
+  String? get olcumOperatorModelOperator => throw _privateConstructorUsedError;
+  set olcumOperatorModelOperator(String? value) =>
+      throw _privateConstructorUsedError;
+  OlcumProsesModel? get numuneler => throw _privateConstructorUsedError;
+  set numuneler(OlcumProsesModel? value) => throw _privateConstructorUsedError;
+  int? get prosesId => throw _privateConstructorUsedError;
+  set prosesId(int? value) => throw _privateConstructorUsedError;
+  String? get aciklama => throw _privateConstructorUsedError;
+  set aciklama(String? value) => throw _privateConstructorUsedError;
+  String? get kayitOperator => throw _privateConstructorUsedError;
+  set kayitOperator(String? value) => throw _privateConstructorUsedError;
+  List<OlcumEkleDetayModel>? get olcumler => throw _privateConstructorUsedError;
+  set olcumler(List<OlcumEkleDetayModel>? value) =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -996,9 +1018,19 @@ abstract class $OlcumProsesModelCopyWith<$Res> {
       String? tur,
       int? olcumSikligi,
       int? numuneMiktari,
-      OlcumEkleProsesModel? numunler});
+      int? detayId,
+      String? prosesTipi,
+      String? sonuc,
+      String? sartliKabulNedeni,
+      String? sartliKabulNedeniAciklama,
+      String? olcumOperatorModelOperator,
+      OlcumProsesModel? numuneler,
+      int? prosesId,
+      String? aciklama,
+      String? kayitOperator,
+      List<OlcumEkleDetayModel>? olcumler});
 
-  $OlcumEkleProsesModelCopyWith<$Res>? get numunler;
+  $OlcumProsesModelCopyWith<$Res>? get numuneler;
 }
 
 /// @nodoc
@@ -1028,7 +1060,17 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
     Object? tur = freezed,
     Object? olcumSikligi = freezed,
     Object? numuneMiktari = freezed,
-    Object? numunler = freezed,
+    Object? detayId = freezed,
+    Object? prosesTipi = freezed,
+    Object? sonuc = freezed,
+    Object? sartliKabulNedeni = freezed,
+    Object? sartliKabulNedeniAciklama = freezed,
+    Object? olcumOperatorModelOperator = freezed,
+    Object? numuneler = freezed,
+    Object? prosesId = freezed,
+    Object? aciklama = freezed,
+    Object? kayitOperator = freezed,
+    Object? olcumler = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -1087,22 +1129,62 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
           ? _value.numuneMiktari
           : numuneMiktari // ignore: cast_nullable_to_non_nullable
               as int?,
-      numunler: freezed == numunler
-          ? _value.numunler
-          : numunler // ignore: cast_nullable_to_non_nullable
-              as OlcumEkleProsesModel?,
+      detayId: freezed == detayId
+          ? _value.detayId
+          : detayId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      prosesTipi: freezed == prosesTipi
+          ? _value.prosesTipi
+          : prosesTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sonuc: freezed == sonuc
+          ? _value.sonuc
+          : sonuc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sartliKabulNedeni: freezed == sartliKabulNedeni
+          ? _value.sartliKabulNedeni
+          : sartliKabulNedeni // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sartliKabulNedeniAciklama: freezed == sartliKabulNedeniAciklama
+          ? _value.sartliKabulNedeniAciklama
+          : sartliKabulNedeniAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumOperatorModelOperator: freezed == olcumOperatorModelOperator
+          ? _value.olcumOperatorModelOperator
+          : olcumOperatorModelOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numuneler: freezed == numuneler
+          ? _value.numuneler
+          : numuneler // ignore: cast_nullable_to_non_nullable
+              as OlcumProsesModel?,
+      prosesId: freezed == prosesId
+          ? _value.prosesId
+          : prosesId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumler: freezed == olcumler
+          ? _value.olcumler
+          : olcumler // ignore: cast_nullable_to_non_nullable
+              as List<OlcumEkleDetayModel>?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $OlcumEkleProsesModelCopyWith<$Res>? get numunler {
-    if (_value.numunler == null) {
+  $OlcumProsesModelCopyWith<$Res>? get numuneler {
+    if (_value.numuneler == null) {
       return null;
     }
 
-    return $OlcumEkleProsesModelCopyWith<$Res>(_value.numunler!, (value) {
-      return _then(_value.copyWith(numunler: value) as $Val);
+    return $OlcumProsesModelCopyWith<$Res>(_value.numuneler!, (value) {
+      return _then(_value.copyWith(numuneler: value) as $Val);
     });
   }
 }
@@ -1130,10 +1212,20 @@ abstract class _$$OlcumProsesModelImplCopyWith<$Res>
       String? tur,
       int? olcumSikligi,
       int? numuneMiktari,
-      OlcumEkleProsesModel? numunler});
+      int? detayId,
+      String? prosesTipi,
+      String? sonuc,
+      String? sartliKabulNedeni,
+      String? sartliKabulNedeniAciklama,
+      String? olcumOperatorModelOperator,
+      OlcumProsesModel? numuneler,
+      int? prosesId,
+      String? aciklama,
+      String? kayitOperator,
+      List<OlcumEkleDetayModel>? olcumler});
 
   @override
-  $OlcumEkleProsesModelCopyWith<$Res>? get numunler;
+  $OlcumProsesModelCopyWith<$Res>? get numuneler;
 }
 
 /// @nodoc
@@ -1161,7 +1253,17 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
     Object? tur = freezed,
     Object? olcumSikligi = freezed,
     Object? numuneMiktari = freezed,
-    Object? numunler = freezed,
+    Object? detayId = freezed,
+    Object? prosesTipi = freezed,
+    Object? sonuc = freezed,
+    Object? sartliKabulNedeni = freezed,
+    Object? sartliKabulNedeniAciklama = freezed,
+    Object? olcumOperatorModelOperator = freezed,
+    Object? numuneler = freezed,
+    Object? prosesId = freezed,
+    Object? aciklama = freezed,
+    Object? kayitOperator = freezed,
+    Object? olcumler = freezed,
   }) {
     return _then(_$OlcumProsesModelImpl(
       id: freezed == id
@@ -1220,17 +1322,57 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
           ? _value.numuneMiktari
           : numuneMiktari // ignore: cast_nullable_to_non_nullable
               as int?,
-      numunler: freezed == numunler
-          ? _value.numunler
-          : numunler // ignore: cast_nullable_to_non_nullable
-              as OlcumEkleProsesModel?,
+      detayId: freezed == detayId
+          ? _value.detayId
+          : detayId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      prosesTipi: freezed == prosesTipi
+          ? _value.prosesTipi
+          : prosesTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sonuc: freezed == sonuc
+          ? _value.sonuc
+          : sonuc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sartliKabulNedeni: freezed == sartliKabulNedeni
+          ? _value.sartliKabulNedeni
+          : sartliKabulNedeni // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sartliKabulNedeniAciklama: freezed == sartliKabulNedeniAciklama
+          ? _value.sartliKabulNedeniAciklama
+          : sartliKabulNedeniAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumOperatorModelOperator: freezed == olcumOperatorModelOperator
+          ? _value.olcumOperatorModelOperator
+          : olcumOperatorModelOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numuneler: freezed == numuneler
+          ? _value.numuneler
+          : numuneler // ignore: cast_nullable_to_non_nullable
+              as OlcumProsesModel?,
+      prosesId: freezed == prosesId
+          ? _value.prosesId
+          : prosesId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumler: freezed == olcumler
+          ? _value.olcumler
+          : olcumler // ignore: cast_nullable_to_non_nullable
+              as List<OlcumEkleDetayModel>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OlcumProsesModelImpl implements _OlcumProsesModel {
+class _$OlcumProsesModelImpl extends _OlcumProsesModel {
   _$OlcumProsesModelImpl(
       {this.id,
       this.sira,
@@ -1246,7 +1388,18 @@ class _$OlcumProsesModelImpl implements _OlcumProsesModel {
       this.tur,
       this.olcumSikligi,
       this.numuneMiktari,
-      this.numunler});
+      this.detayId,
+      this.prosesTipi,
+      this.sonuc,
+      this.sartliKabulNedeni,
+      this.sartliKabulNedeniAciklama,
+      this.olcumOperatorModelOperator,
+      this.numuneler,
+      this.prosesId,
+      this.aciklama,
+      this.kayitOperator,
+      this.olcumler})
+      : super._();
 
   factory _$OlcumProsesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumProsesModelImplFromJson(json);
@@ -1280,12 +1433,27 @@ class _$OlcumProsesModelImpl implements _OlcumProsesModel {
   @override
   int? numuneMiktari;
   @override
-  OlcumEkleProsesModel? numunler;
-
+  int? detayId;
   @override
-  String toString() {
-    return 'OlcumProsesModel(id: $id, sira: $sira, proses: $proses, kriter: $kriter, kabulSarti: $kabulSarti, tolerans: $tolerans, ekipman: $ekipman, olculecekmi: $olculecekmi, onemlimi: $onemlimi, altSinir: $altSinir, ustSinir: $ustSinir, tur: $tur, olcumSikligi: $olcumSikligi, numuneMiktari: $numuneMiktari, numunler: $numunler)';
-  }
+  String? prosesTipi;
+  @override
+  String? sonuc;
+  @override
+  String? sartliKabulNedeni;
+  @override
+  String? sartliKabulNedeniAciklama;
+  @override
+  String? olcumOperatorModelOperator;
+  @override
+  OlcumProsesModel? numuneler;
+  @override
+  int? prosesId;
+  @override
+  String? aciklama;
+  @override
+  String? kayitOperator;
+  @override
+  List<OlcumEkleDetayModel>? olcumler;
 
   @JsonKey(ignore: true)
   @override
@@ -1302,7 +1470,7 @@ class _$OlcumProsesModelImpl implements _OlcumProsesModel {
   }
 }
 
-abstract class _OlcumProsesModel implements OlcumProsesModel {
+abstract class _OlcumProsesModel extends OlcumProsesModel {
   factory _OlcumProsesModel(
       {int? id,
       int? sira,
@@ -1318,7 +1486,18 @@ abstract class _OlcumProsesModel implements OlcumProsesModel {
       String? tur,
       int? olcumSikligi,
       int? numuneMiktari,
-      OlcumEkleProsesModel? numunler}) = _$OlcumProsesModelImpl;
+      int? detayId,
+      String? prosesTipi,
+      String? sonuc,
+      String? sartliKabulNedeni,
+      String? sartliKabulNedeniAciklama,
+      String? olcumOperatorModelOperator,
+      OlcumProsesModel? numuneler,
+      int? prosesId,
+      String? aciklama,
+      String? kayitOperator,
+      List<OlcumEkleDetayModel>? olcumler}) = _$OlcumProsesModelImpl;
+  _OlcumProsesModel._() : super._();
 
   factory _OlcumProsesModel.fromJson(Map<String, dynamic> json) =
       _$OlcumProsesModelImpl.fromJson;
@@ -1366,10 +1545,202 @@ abstract class _OlcumProsesModel implements OlcumProsesModel {
   int? get numuneMiktari;
   set numuneMiktari(int? value);
   @override
-  OlcumEkleProsesModel? get numunler;
-  set numunler(OlcumEkleProsesModel? value);
+  int? get detayId;
+  set detayId(int? value);
+  @override
+  String? get prosesTipi;
+  set prosesTipi(String? value);
+  @override
+  String? get sonuc;
+  set sonuc(String? value);
+  @override
+  String? get sartliKabulNedeni;
+  set sartliKabulNedeni(String? value);
+  @override
+  String? get sartliKabulNedeniAciklama;
+  set sartliKabulNedeniAciklama(String? value);
+  @override
+  String? get olcumOperatorModelOperator;
+  set olcumOperatorModelOperator(String? value);
+  @override
+  OlcumProsesModel? get numuneler;
+  set numuneler(OlcumProsesModel? value);
+  @override
+  int? get prosesId;
+  set prosesId(int? value);
+  @override
+  String? get aciklama;
+  set aciklama(String? value);
+  @override
+  String? get kayitOperator;
+  set kayitOperator(String? value);
+  @override
+  List<OlcumEkleDetayModel>? get olcumler;
+  set olcumler(List<OlcumEkleDetayModel>? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumProsesModelImplCopyWith<_$OlcumProsesModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OlcumEkleDetayModel _$OlcumEkleDetayModelFromJson(Map<String, dynamic> json) {
+  return _OlcumEkleDetayModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OlcumEkleDetayModel {
+  double? get deger => throw _privateConstructorUsedError;
+  set deger(double? value) => throw _privateConstructorUsedError;
+  int? get detayId => throw _privateConstructorUsedError;
+  set detayId(int? value) => throw _privateConstructorUsedError;
+  DateTime? get zaman => throw _privateConstructorUsedError;
+  set zaman(DateTime? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OlcumEkleDetayModelCopyWith<OlcumEkleDetayModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OlcumEkleDetayModelCopyWith<$Res> {
+  factory $OlcumEkleDetayModelCopyWith(
+          OlcumEkleDetayModel value, $Res Function(OlcumEkleDetayModel) then) =
+      _$OlcumEkleDetayModelCopyWithImpl<$Res, OlcumEkleDetayModel>;
+  @useResult
+  $Res call({double? deger, int? detayId, DateTime? zaman});
+}
+
+/// @nodoc
+class _$OlcumEkleDetayModelCopyWithImpl<$Res, $Val extends OlcumEkleDetayModel>
+    implements $OlcumEkleDetayModelCopyWith<$Res> {
+  _$OlcumEkleDetayModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deger = freezed,
+    Object? detayId = freezed,
+    Object? zaman = freezed,
+  }) {
+    return _then(_value.copyWith(
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as double?,
+      detayId: freezed == detayId
+          ? _value.detayId
+          : detayId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      zaman: freezed == zaman
+          ? _value.zaman
+          : zaman // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OlcumEkleDetayModelImplCopyWith<$Res>
+    implements $OlcumEkleDetayModelCopyWith<$Res> {
+  factory _$$OlcumEkleDetayModelImplCopyWith(_$OlcumEkleDetayModelImpl value,
+          $Res Function(_$OlcumEkleDetayModelImpl) then) =
+      __$$OlcumEkleDetayModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({double? deger, int? detayId, DateTime? zaman});
+}
+
+/// @nodoc
+class __$$OlcumEkleDetayModelImplCopyWithImpl<$Res>
+    extends _$OlcumEkleDetayModelCopyWithImpl<$Res, _$OlcumEkleDetayModelImpl>
+    implements _$$OlcumEkleDetayModelImplCopyWith<$Res> {
+  __$$OlcumEkleDetayModelImplCopyWithImpl(_$OlcumEkleDetayModelImpl _value,
+      $Res Function(_$OlcumEkleDetayModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deger = freezed,
+    Object? detayId = freezed,
+    Object? zaman = freezed,
+  }) {
+    return _then(_$OlcumEkleDetayModelImpl(
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as double?,
+      detayId: freezed == detayId
+          ? _value.detayId
+          : detayId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      zaman: freezed == zaman
+          ? _value.zaman
+          : zaman // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OlcumEkleDetayModelImpl implements _OlcumEkleDetayModel {
+  _$OlcumEkleDetayModelImpl({this.deger, this.detayId, this.zaman});
+
+  factory _$OlcumEkleDetayModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OlcumEkleDetayModelImplFromJson(json);
+
+  @override
+  double? deger;
+  @override
+  int? detayId;
+  @override
+  DateTime? zaman;
+
+  @override
+  String toString() {
+    return 'OlcumEkleDetayModel(deger: $deger, detayId: $detayId, zaman: $zaman)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OlcumEkleDetayModelImplCopyWith<_$OlcumEkleDetayModelImpl> get copyWith =>
+      __$$OlcumEkleDetayModelImplCopyWithImpl<_$OlcumEkleDetayModelImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OlcumEkleDetayModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OlcumEkleDetayModel implements OlcumEkleDetayModel {
+  factory _OlcumEkleDetayModel({double? deger, int? detayId, DateTime? zaman}) =
+      _$OlcumEkleDetayModelImpl;
+
+  factory _OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) =
+      _$OlcumEkleDetayModelImpl.fromJson;
+
+  @override
+  double? get deger;
+  set deger(double? value);
+  @override
+  int? get detayId;
+  set detayId(int? value);
+  @override
+  DateTime? get zaman;
+  set zaman(DateTime? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$OlcumEkleDetayModelImplCopyWith<_$OlcumEkleDetayModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

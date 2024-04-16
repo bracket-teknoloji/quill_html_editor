@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 part "olcum_belge_edit_model.freezed.dart";
 part "olcum_belge_edit_model.g.dart";
@@ -62,7 +62,8 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel {
 }
 
 @unfreezed
-class OlcumProsesModel with _$OlcumProsesModel {
+class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
+  OlcumProsesModel._();
   factory OlcumProsesModel({
     int? id,
     int? sira,
@@ -78,16 +79,71 @@ class OlcumProsesModel with _$OlcumProsesModel {
     String? tur,
     int? olcumSikligi,
     int? numuneMiktari,
-    OlcumEkleProsesModel? numunler,
+    int? detayId,
+    String? prosesTipi,
+    String? sonuc,
+    String? sartliKabulNedeni,
+    String? sartliKabulNedeniAciklama,
+    String? olcumOperatorModelOperator,
+    OlcumProsesModel? numuneler,
+    int? prosesId,
+    String? aciklama,
+    String? kayitOperator,
+    List<OlcumEkleDetayModel>? olcumler,
   }) = _OlcumProsesModel;
 
   factory OlcumProsesModel.fromJson(Map<String, dynamic> json) => _$OlcumProsesModelFromJson(json);
+
+  @override
+  OlcumProsesModel fromJson(Map<String, dynamic> json) => _$OlcumProsesModelFromJson(json);
+
+  // factory OlcumProsesModel.fromOlcumProsesModel()
+}
+
+@unfreezed
+class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
+  factory OlcumEkleDetayModel({
+    double? deger,
+    int? detayId,
+    DateTime? zaman,
+  }) = _OlcumEkleDetayModel;
+
+  factory OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleDetayModelFromJson(json);
 }
 
 extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.firstOrNull;
 }
 
-extension OlcumProsesModelExtensions on OlcumProsesModel {
-  bool get olculecekMi => olculecekmi == "E" ? true : false;
+extension OlcumEkleProsesExtensions on OlcumProsesModel? {
+  bool get olculecekMi => this?.olculecekmi == "E" ? true : false;
+  String get sonucAdi {
+    switch (this?.sonuc) {
+      case null:
+        return "";
+      case "K":
+        return "Kabul";
+      case "R":
+        return "Ret";
+      case "S":
+        return "Şartlı Kabul (${this?.sartliKabulNedeni})";
+      default:
+        return "";
+    }
+  }
+
+  BadgeColorEnum get cardColor {
+    switch (this?.sonuc) {
+      case null:
+        return BadgeColorEnum.basarili;
+      case "K":
+        return BadgeColorEnum.basarili;
+      case "R":
+        return BadgeColorEnum.hata;
+      case "S":
+        return BadgeColorEnum.uyari;
+      default:
+        return BadgeColorEnum.uyari;
+    }
+  }
 }

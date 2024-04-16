@@ -77,7 +77,9 @@ extension WidgetExtension on Widget {
   }
 }
 
-extension YetkiExtension2 on dynamic {
+extension YetkiExtension2 on Object? {
+
+  bool get isNull => this == null;
   Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode
       //  || CacheManager.getHesapBilgileri?.admin == "E"
       )

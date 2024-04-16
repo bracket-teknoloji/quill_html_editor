@@ -144,10 +144,24 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
       tur: json['TUR'] as String?,
       olcumSikligi: json['OLCUM_SIKLIGI'] as int?,
       numuneMiktari: json['NUMUNE_MIKTARI'] as int?,
-      numunler: json['NUMUNLER'] == null
+      detayId: json['DETAY_ID'] as int?,
+      prosesTipi: json['PROSES_TIPI'] as String?,
+      sonuc: json['SONUC'] as String?,
+      sartliKabulNedeni: json['SARTLI_KABUL_NEDENI'] as String?,
+      sartliKabulNedeniAciklama:
+          json['SARTLI_KABUL_NEDENI_ACIKLAMA'] as String?,
+      olcumOperatorModelOperator:
+          json['OLCUM_OPERATOR_MODEL_OPERATOR'] as String?,
+      numuneler: json['NUMUNELER'] == null
           ? null
-          : OlcumEkleProsesModel.fromJson(
-              json['NUMUNLER'] as Map<String, dynamic>),
+          : OlcumProsesModel.fromJson(
+              json['NUMUNELER'] as Map<String, dynamic>),
+      prosesId: json['PROSES_ID'] as int?,
+      aciklama: json['ACIKLAMA'] as String?,
+      kayitOperator: json['KAYIT_OPERATOR'] as String?,
+      olcumler: (json['OLCUMLER'] as List<dynamic>?)
+          ?.map((e) => OlcumEkleDetayModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$OlcumProsesModelImplToJson(
@@ -174,6 +188,44 @@ Map<String, dynamic> _$$OlcumProsesModelImplToJson(
   writeNotNull('TUR', instance.tur);
   writeNotNull('OLCUM_SIKLIGI', instance.olcumSikligi);
   writeNotNull('NUMUNE_MIKTARI', instance.numuneMiktari);
-  writeNotNull('NUMUNLER', instance.numunler?.toJson());
+  writeNotNull('DETAY_ID', instance.detayId);
+  writeNotNull('PROSES_TIPI', instance.prosesTipi);
+  writeNotNull('SONUC', instance.sonuc);
+  writeNotNull('SARTLI_KABUL_NEDENI', instance.sartliKabulNedeni);
+  writeNotNull(
+      'SARTLI_KABUL_NEDENI_ACIKLAMA', instance.sartliKabulNedeniAciklama);
+  writeNotNull(
+      'OLCUM_OPERATOR_MODEL_OPERATOR', instance.olcumOperatorModelOperator);
+  writeNotNull('NUMUNELER', instance.numuneler?.toJson());
+  writeNotNull('PROSES_ID', instance.prosesId);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
+  writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
+  return val;
+}
+
+_$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OlcumEkleDetayModelImpl(
+      deger: (json['DEGER'] as num?)?.toDouble(),
+      detayId: json['DETAY_ID'] as int?,
+      zaman: json['ZAMAN'] == null
+          ? null
+          : DateTime.parse(json['ZAMAN'] as String),
+    );
+
+Map<String, dynamic> _$$OlcumEkleDetayModelImplToJson(
+    _$OlcumEkleDetayModelImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('DEGER', instance.deger);
+  writeNotNull('DETAY_ID', instance.detayId);
+  writeNotNull('ZAMAN', instance.zaman?.toIso8601String());
   return val;
 }

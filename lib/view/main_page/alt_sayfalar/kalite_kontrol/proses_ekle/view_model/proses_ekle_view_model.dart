@@ -1,6 +1,6 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "proses_ekle_view_model.g.dart";
 
@@ -22,16 +22,16 @@ abstract class _ProsesEkleViewModelBase with Store {
   String sonucTuruGroupValue = "S";
 
   @observable
-  OlcumEkleProsesModel ekleModel = OlcumEkleProsesModel(sonuc: "S");
+  OlcumProsesModel ekleModel = OlcumProsesModel(sonuc: "S");
 
   @computed
-  double get ortalamaDeger => (ekleModel.detaylar?.map((element) => element.deger ?? 0).sum ?? 0) / (ekleModel.detaylar?.length ?? 1);
+  double get ortalamaDeger => (ekleModel.olcumler?.map((element) => element.deger ?? 0).sum ?? 0) / (ekleModel.olcumler?.length ?? 1);
 
   @computed
-  double get enKucukDeger => ekleModel.detaylar?.map((element) => element.deger ?? 0).min ?? 0;
+  double get enKucukDeger => ekleModel.olcumler?.map((element) => element.deger ?? 0).min ?? 0;
 
   @computed
-  double get enBuyukDeger => ekleModel.detaylar?.map((element) => element.deger ?? 0).max ?? 0;
+  double get enBuyukDeger => ekleModel.olcumler?.map((element) => element.deger ?? 0).max ?? 0;
 
   @computed
   bool get sartliKabulMu => sonucTuruGroupValue == "S";
@@ -56,13 +56,13 @@ abstract class _ProsesEkleViewModelBase with Store {
 
   @action
   void setProsesDetayListesi(int index) {
-    ekleModel = ekleModel.copyWith(detaylar: List.generate(index, (index) => OlcumEkleDetayModel()));
+    ekleModel = ekleModel.copyWith(olcumler: List.generate(index, (index) => OlcumEkleDetayModel()));
   }
 
   @action
   void setIndexedItem(int index, OlcumEkleDetayModel item) {
-    final List<OlcumEkleDetayModel>? newList = ekleModel.detaylar;
+    final List<OlcumEkleDetayModel>? newList = ekleModel.olcumler;
     newList?[index] = item..zaman = DateTime.now();
-    ekleModel = ekleModel.copyWith(detaylar: newList);
+    ekleModel = ekleModel.copyWith(olcumler: newList);
   }
 }

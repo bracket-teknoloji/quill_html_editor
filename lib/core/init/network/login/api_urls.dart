@@ -134,6 +134,7 @@ class ApiUrls {
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";
   static const String getOlcum = "Sigma/GetOlcum";
+  static const String olcumSil = "Sigma/OlcumSil";
   static const String getOlcumBelgeDetaylar = "Sigma/GetOlcumBelgeDetaylar";
   static const String getOlcumPersonel = "Sigma/GetOlcumPersonel";
   static const String olcumEkle = "Sigma/OlcumEkle";

@@ -464,7 +464,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
               GetPage(name: "/olcumDetay", page: () => OlcumBelgeEditView(model: Get.arguments)),
               GetPage(name: "/prosesEkle", page: () => ProsesEkleView(model: Get.arguments)),
-              GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments)),
+              GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),
+              GetPage(name: "/olcumGoruntule", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.goruntule)),
+              GetPage(name: "/olcumDuzenle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.duzenle)),
 
               //* Serbest Raporlar
               //*
