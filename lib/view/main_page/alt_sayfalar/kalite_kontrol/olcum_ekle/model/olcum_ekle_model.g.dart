@@ -55,6 +55,7 @@ _$OlcumEkleProsesModelImpl _$$OlcumEkleProsesModelImplFromJson(
       sonuc: json['SONUC'] as String?,
       sartliKabulNedeni: json['SARTLI_KABUL_NEDENI'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
+      kayitOperator: json['KAYIT_OPERATOR'] as String?,
       detaylar: (json['DETAYLAR'] as List<dynamic>?)
           ?.map((e) => OlcumEkleDetayModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -78,6 +79,7 @@ Map<String, dynamic> _$$OlcumEkleProsesModelImplToJson(
   writeNotNull('SONUC', instance.sonuc);
   writeNotNull('SARTLI_KABUL_NEDENI', instance.sartliKabulNedeni);
   writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
   writeNotNull('DETAYLAR', instance.detaylar?.map((e) => e.toJson()).toList());
   return val;
 }

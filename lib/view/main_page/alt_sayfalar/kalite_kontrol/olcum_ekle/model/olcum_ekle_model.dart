@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
@@ -6,7 +7,9 @@ part "olcum_ekle_model.freezed.dart";
 part "olcum_ekle_model.g.dart";
 
 @unfreezed
-class OlcumEkleModel with _$OlcumEkleModel {
+class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
+  OlcumEkleModel._();
+
   factory OlcumEkleModel({
     String? belgeNo,
     String? belgeTipi,
@@ -20,6 +23,9 @@ class OlcumEkleModel with _$OlcumEkleModel {
   }) = _OlcumEkleModel;
 
   factory OlcumEkleModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleModelFromJson(json);
+
+  @override
+  OlcumEkleModel fromJson(Map<String, dynamic> json) => _$OlcumEkleModelFromJson(json);
 
   factory OlcumEkleModel.fromOlcumGirisiModel(OlcumBelgeModel model) => OlcumEkleModel(
         belgeNo: model.belgeNo,
@@ -39,6 +45,7 @@ class OlcumEkleProsesModel with _$OlcumEkleProsesModel {
     String? sonuc,
     String? sartliKabulNedeni,
     String? aciklama,
+    String? kayitOperator,
     List<OlcumEkleDetayModel>? detaylar,
   }) = _OlcumEkleProsesModel;
 

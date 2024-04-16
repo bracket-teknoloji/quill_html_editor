@@ -21,17 +21,29 @@ OlcumOperatorModel _$OlcumOperatorModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OlcumOperatorModel {
   int? get id => throw _privateConstructorUsedError;
+  set id(int? value) => throw _privateConstructorUsedError;
   String? get isyeri => throw _privateConstructorUsedError;
+  set isyeri(String? value) => throw _privateConstructorUsedError;
   String? get adi => throw _privateConstructorUsedError;
+  set adi(String? value) => throw _privateConstructorUsedError;
   String? get istasyonKodu => throw _privateConstructorUsedError;
+  set istasyonKodu(String? value) => throw _privateConstructorUsedError;
   String? get istasyonTanimi => throw _privateConstructorUsedError;
+  set istasyonTanimi(String? value) => throw _privateConstructorUsedError;
   String? get durum => throw _privateConstructorUsedError;
+  set durum(String? value) => throw _privateConstructorUsedError;
   String? get sicilno => throw _privateConstructorUsedError;
+  set sicilno(String? value) => throw _privateConstructorUsedError;
   String? get soyadi => throw _privateConstructorUsedError;
+  set soyadi(String? value) => throw _privateConstructorUsedError;
   int? get isletmeKodu => throw _privateConstructorUsedError;
+  set isletmeKodu(int? value) => throw _privateConstructorUsedError;
   String? get sicilNo => throw _privateConstructorUsedError;
+  set sicilNo(String? value) => throw _privateConstructorUsedError;
   String? get kartid => throw _privateConstructorUsedError;
+  set kartid(String? value) => throw _privateConstructorUsedError;
   String? get resim => throw _privateConstructorUsedError;
+  set resim(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -241,8 +253,8 @@ class __$$OlcumOperatorModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OlcumOperatorModelImpl implements _OlcumOperatorModel {
-  const _$OlcumOperatorModelImpl(
+class _$OlcumOperatorModelImpl extends _OlcumOperatorModel {
+  _$OlcumOperatorModelImpl(
       {this.id,
       this.isyeri,
       this.adi,
@@ -254,79 +266,36 @@ class _$OlcumOperatorModelImpl implements _OlcumOperatorModel {
       this.isletmeKodu,
       this.sicilNo,
       this.kartid,
-      this.resim});
+      this.resim})
+      : super._();
 
   factory _$OlcumOperatorModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumOperatorModelImplFromJson(json);
 
   @override
-  final int? id;
+  int? id;
   @override
-  final String? isyeri;
+  String? isyeri;
   @override
-  final String? adi;
+  String? adi;
   @override
-  final String? istasyonKodu;
+  String? istasyonKodu;
   @override
-  final String? istasyonTanimi;
+  String? istasyonTanimi;
   @override
-  final String? durum;
+  String? durum;
   @override
-  final String? sicilno;
+  String? sicilno;
   @override
-  final String? soyadi;
+  String? soyadi;
   @override
-  final int? isletmeKodu;
+  int? isletmeKodu;
   @override
-  final String? sicilNo;
+  String? sicilNo;
   @override
-  final String? kartid;
+  String? kartid;
   @override
-  final String? resim;
-
-  @override
-  String toString() {
-    return 'OlcumOperatorModel(id: $id, isyeri: $isyeri, adi: $adi, istasyonKodu: $istasyonKodu, istasyonTanimi: $istasyonTanimi, durum: $durum, sicilno: $sicilno, soyadi: $soyadi, isletmeKodu: $isletmeKodu, sicilNo: $sicilNo, kartid: $kartid, resim: $resim)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OlcumOperatorModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.isyeri, isyeri) || other.isyeri == isyeri) &&
-            (identical(other.adi, adi) || other.adi == adi) &&
-            (identical(other.istasyonKodu, istasyonKodu) ||
-                other.istasyonKodu == istasyonKodu) &&
-            (identical(other.istasyonTanimi, istasyonTanimi) ||
-                other.istasyonTanimi == istasyonTanimi) &&
-            (identical(other.durum, durum) || other.durum == durum) &&
-            (identical(other.sicilno, sicilno) || other.sicilno == sicilno) &&
-            (identical(other.soyadi, soyadi) || other.soyadi == soyadi) &&
-            (identical(other.isletmeKodu, isletmeKodu) ||
-                other.isletmeKodu == isletmeKodu) &&
-            (identical(other.sicilNo, sicilNo) || other.sicilNo == sicilNo) &&
-            (identical(other.kartid, kartid) || other.kartid == kartid) &&
-            (identical(other.resim, resim) || other.resim == resim));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      isyeri,
-      adi,
-      istasyonKodu,
-      istasyonTanimi,
-      durum,
-      sicilno,
-      soyadi,
-      isletmeKodu,
-      sicilNo,
-      kartid,
-      resim);
+  String? resim;
 
   @JsonKey(ignore: true)
   @override
@@ -343,48 +312,61 @@ class _$OlcumOperatorModelImpl implements _OlcumOperatorModel {
   }
 }
 
-abstract class _OlcumOperatorModel implements OlcumOperatorModel {
-  const factory _OlcumOperatorModel(
-      {final int? id,
-      final String? isyeri,
-      final String? adi,
-      final String? istasyonKodu,
-      final String? istasyonTanimi,
-      final String? durum,
-      final String? sicilno,
-      final String? soyadi,
-      final int? isletmeKodu,
-      final String? sicilNo,
-      final String? kartid,
-      final String? resim}) = _$OlcumOperatorModelImpl;
+abstract class _OlcumOperatorModel extends OlcumOperatorModel {
+  factory _OlcumOperatorModel(
+      {int? id,
+      String? isyeri,
+      String? adi,
+      String? istasyonKodu,
+      String? istasyonTanimi,
+      String? durum,
+      String? sicilno,
+      String? soyadi,
+      int? isletmeKodu,
+      String? sicilNo,
+      String? kartid,
+      String? resim}) = _$OlcumOperatorModelImpl;
+  _OlcumOperatorModel._() : super._();
 
   factory _OlcumOperatorModel.fromJson(Map<String, dynamic> json) =
       _$OlcumOperatorModelImpl.fromJson;
 
   @override
   int? get id;
+  set id(int? value);
   @override
   String? get isyeri;
+  set isyeri(String? value);
   @override
   String? get adi;
+  set adi(String? value);
   @override
   String? get istasyonKodu;
+  set istasyonKodu(String? value);
   @override
   String? get istasyonTanimi;
+  set istasyonTanimi(String? value);
   @override
   String? get durum;
+  set durum(String? value);
   @override
   String? get sicilno;
+  set sicilno(String? value);
   @override
   String? get soyadi;
+  set soyadi(String? value);
   @override
   int? get isletmeKodu;
+  set isletmeKodu(int? value);
   @override
   String? get sicilNo;
+  set sicilNo(String? value);
   @override
   String? get kartid;
+  set kartid(String? value);
   @override
   String? get resim;
+  set resim(String? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumOperatorModelImplCopyWith<_$OlcumOperatorModelImpl> get copyWith =>

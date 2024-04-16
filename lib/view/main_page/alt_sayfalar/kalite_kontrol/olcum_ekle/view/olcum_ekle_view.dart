@@ -36,7 +36,20 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
             title: "Ölçüm Ekle",
             subtitle: viewModel.requestModel.belgeTipi,
           ),
-          actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined))],
+          actions: [
+            IconButton(
+              onPressed: () async {
+                if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
+                  final result = await viewModel.sendData();
+                  if (result?.success == true) {
+                    dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
+                    Get.back(result: true);
+                  }
+                }
+              },
+              icon: const Icon(Icons.save_outlined),
+            ),
+          ],
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +81,10 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                     // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull),
                     child: ListTile(
                       onTap: () async {
-                        final result = await Get.toNamed("/mainPage/prosesEkle", arguments: proses);
+                        final result = await Get.toNamed(
+                          "/mainPage/prosesEkle",
+                          arguments: proses.copyWith(numunler: viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull),
+                        );
                         if (result is OlcumEkleProsesModel) {
                           viewModel.addProsesModel(result);
                         }
@@ -95,7 +111,6 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           Text("Açıklama: ${proses.kabulSarti}"),
                           Text("Tarih: ${proses.kriter}"),
                           Text("Ekipman: ${proses.ekipman}"),
-                          Text("Sonuç: ${viewModel.requestModel.prosesler?.where((element) => element.prosesId == proses.id).firstOrNull?.sonucAdi}"),
                         ],
                       ),
                       trailing: Observer(

@@ -25,6 +25,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
+    model = null;
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeDetaylar, bodyModel: OlcumBelgeEditModel(), data: requestModel?.toJson());
     if (result.data is List) {
       final List<OlcumBelgeEditModel> data = result.data.map((e) => e as OlcumBelgeEditModel).toList().cast<OlcumBelgeEditModel>();

@@ -30,25 +30,108 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
       (_$enBuyukDegerComputed ??= Computed<double>(() => super.enBuyukDeger,
               name: '_ProsesEkleViewModelBase.enBuyukDeger'))
           .value;
-
-  late final _$prosesDetayListesiAtom = Atom(
-      name: '_ProsesEkleViewModelBase.prosesDetayListesi', context: context);
+  Computed<bool>? _$sartliKabulMuComputed;
 
   @override
-  ObservableList<OlcumEkleDetayModel> get prosesDetayListesi {
-    _$prosesDetayListesiAtom.reportRead();
-    return super.prosesDetayListesi;
+  bool get sartliKabulMu =>
+      (_$sartliKabulMuComputed ??= Computed<bool>(() => super.sartliKabulMu,
+              name: '_ProsesEkleViewModelBase.sartliKabulMu'))
+          .value;
+
+  late final _$sonucTuruValueListAtom = Atom(
+      name: '_ProsesEkleViewModelBase.sonucTuruValueList', context: context);
+
+  @override
+  ObservableList<String> get sonucTuruValueList {
+    _$sonucTuruValueListAtom.reportRead();
+    return super.sonucTuruValueList;
   }
 
   @override
-  set prosesDetayListesi(ObservableList<OlcumEkleDetayModel> value) {
-    _$prosesDetayListesiAtom.reportWrite(value, super.prosesDetayListesi, () {
-      super.prosesDetayListesi = value;
+  set sonucTuruValueList(ObservableList<String> value) {
+    _$sonucTuruValueListAtom.reportWrite(value, super.sonucTuruValueList, () {
+      super.sonucTuruValueList = value;
+    });
+  }
+
+  late final _$sonucTuruGroupValueAtom = Atom(
+      name: '_ProsesEkleViewModelBase.sonucTuruGroupValue', context: context);
+
+  @override
+  String get sonucTuruGroupValue {
+    _$sonucTuruGroupValueAtom.reportRead();
+    return super.sonucTuruGroupValue;
+  }
+
+  @override
+  set sonucTuruGroupValue(String value) {
+    _$sonucTuruGroupValueAtom.reportWrite(value, super.sonucTuruGroupValue, () {
+      super.sonucTuruGroupValue = value;
+    });
+  }
+
+  late final _$ekleModelAtom =
+      Atom(name: '_ProsesEkleViewModelBase.ekleModel', context: context);
+
+  @override
+  OlcumEkleProsesModel get ekleModel {
+    _$ekleModelAtom.reportRead();
+    return super.ekleModel;
+  }
+
+  @override
+  set ekleModel(OlcumEkleProsesModel value) {
+    _$ekleModelAtom.reportWrite(value, super.ekleModel, () {
+      super.ekleModel = value;
     });
   }
 
   late final _$_ProsesEkleViewModelBaseActionController =
       ActionController(name: '_ProsesEkleViewModelBase', context: context);
+
+  @override
+  void setSonucTuruGroupValue(int index) {
+    final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
+        name: '_ProsesEkleViewModelBase.setSonucTuruGroupValue');
+    try {
+      return super.setSonucTuruGroupValue(index);
+    } finally {
+      _$_ProsesEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama(String? value) {
+    final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
+        name: '_ProsesEkleViewModelBase.setAciklama');
+    try {
+      return super.setAciklama(value);
+    } finally {
+      _$_ProsesEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOperator(String? value) {
+    final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
+        name: '_ProsesEkleViewModelBase.setOperator');
+    try {
+      return super.setOperator(value);
+    } finally {
+      _$_ProsesEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSartliKabul(String? value) {
+    final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
+        name: '_ProsesEkleViewModelBase.setSartliKabul');
+    try {
+      return super.setSartliKabul(value);
+    } finally {
+      _$_ProsesEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setProsesDetayListesi(int index) {
@@ -75,10 +158,13 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
   @override
   String toString() {
     return '''
-prosesDetayListesi: ${prosesDetayListesi},
+sonucTuruValueList: ${sonucTuruValueList},
+sonucTuruGroupValue: ${sonucTuruGroupValue},
+ekleModel: ${ekleModel},
 ortalamaDeger: ${ortalamaDeger},
 enKucukDeger: ${enKucukDeger},
-enBuyukDeger: ${enBuyukDeger}
+enBuyukDeger: ${enBuyukDeger},
+sartliKabulMu: ${sartliKabulMu}
     ''';
   }
 }

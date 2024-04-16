@@ -213,7 +213,7 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OlcumEkleModelImpl implements _OlcumEkleModel {
+class _$OlcumEkleModelImpl extends _OlcumEkleModel {
   _$OlcumEkleModelImpl(
       {this.belgeNo,
       this.belgeTipi,
@@ -223,7 +223,8 @@ class _$OlcumEkleModelImpl implements _OlcumEkleModel {
       this.prosesId,
       this.sonuc,
       this.kayitOperator,
-      this.prosesler});
+      this.prosesler})
+      : super._();
 
   factory _$OlcumEkleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumEkleModelImplFromJson(json);
@@ -247,11 +248,6 @@ class _$OlcumEkleModelImpl implements _OlcumEkleModel {
   @override
   List<OlcumEkleProsesModel>? prosesler;
 
-  @override
-  String toString() {
-    return 'OlcumEkleModel(belgeNo: $belgeNo, belgeTipi: $belgeTipi, stokKodu: $stokKodu, belgeSira: $belgeSira, yapkod: $yapkod, prosesId: $prosesId, sonuc: $sonuc, kayitOperator: $kayitOperator, prosesler: $prosesler)';
-  }
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -267,7 +263,7 @@ class _$OlcumEkleModelImpl implements _OlcumEkleModel {
   }
 }
 
-abstract class _OlcumEkleModel implements OlcumEkleModel {
+abstract class _OlcumEkleModel extends OlcumEkleModel {
   factory _OlcumEkleModel(
       {String? belgeNo,
       String? belgeTipi,
@@ -278,6 +274,7 @@ abstract class _OlcumEkleModel implements OlcumEkleModel {
       String? sonuc,
       String? kayitOperator,
       List<OlcumEkleProsesModel>? prosesler}) = _$OlcumEkleModelImpl;
+  _OlcumEkleModel._() : super._();
 
   factory _OlcumEkleModel.fromJson(Map<String, dynamic> json) =
       _$OlcumEkleModelImpl.fromJson;
@@ -337,6 +334,8 @@ mixin _$OlcumEkleProsesModel {
   set sartliKabulNedeni(String? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
+  String? get kayitOperator => throw _privateConstructorUsedError;
+  set kayitOperator(String? value) => throw _privateConstructorUsedError;
   List<OlcumEkleDetayModel>? get detaylar => throw _privateConstructorUsedError;
   set detaylar(List<OlcumEkleDetayModel>? value) =>
       throw _privateConstructorUsedError;
@@ -362,6 +361,7 @@ abstract class $OlcumEkleProsesModelCopyWith<$Res> {
       String? sonuc,
       String? sartliKabulNedeni,
       String? aciklama,
+      String? kayitOperator,
       List<OlcumEkleDetayModel>? detaylar});
 }
 
@@ -387,6 +387,7 @@ class _$OlcumEkleProsesModelCopyWithImpl<$Res,
     Object? sonuc = freezed,
     Object? sartliKabulNedeni = freezed,
     Object? aciklama = freezed,
+    Object? kayitOperator = freezed,
     Object? detaylar = freezed,
   }) {
     return _then(_value.copyWith(
@@ -422,6 +423,10 @@ class _$OlcumEkleProsesModelCopyWithImpl<$Res,
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
       detaylar: freezed == detaylar
           ? _value.detaylar
           : detaylar // ignore: cast_nullable_to_non_nullable
@@ -447,6 +452,7 @@ abstract class _$$OlcumEkleProsesModelImplCopyWith<$Res>
       String? sonuc,
       String? sartliKabulNedeni,
       String? aciklama,
+      String? kayitOperator,
       List<OlcumEkleDetayModel>? detaylar});
 }
 
@@ -469,6 +475,7 @@ class __$$OlcumEkleProsesModelImplCopyWithImpl<$Res>
     Object? sonuc = freezed,
     Object? sartliKabulNedeni = freezed,
     Object? aciklama = freezed,
+    Object? kayitOperator = freezed,
     Object? detaylar = freezed,
   }) {
     return _then(_$OlcumEkleProsesModelImpl(
@@ -504,6 +511,10 @@ class __$$OlcumEkleProsesModelImplCopyWithImpl<$Res>
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
+              as String?,
       detaylar: freezed == detaylar
           ? _value.detaylar
           : detaylar // ignore: cast_nullable_to_non_nullable
@@ -524,6 +535,7 @@ class _$OlcumEkleProsesModelImpl implements _OlcumEkleProsesModel {
       this.sonuc,
       this.sartliKabulNedeni,
       this.aciklama,
+      this.kayitOperator,
       this.detaylar});
 
   factory _$OlcumEkleProsesModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -546,11 +558,13 @@ class _$OlcumEkleProsesModelImpl implements _OlcumEkleProsesModel {
   @override
   String? aciklama;
   @override
+  String? kayitOperator;
+  @override
   List<OlcumEkleDetayModel>? detaylar;
 
   @override
   String toString() {
-    return 'OlcumEkleProsesModel(belgeNo: $belgeNo, belgeSira: $belgeSira, yapkod: $yapkod, prosesId: $prosesId, detayId: $detayId, sonuc: $sonuc, sartliKabulNedeni: $sartliKabulNedeni, aciklama: $aciklama, detaylar: $detaylar)';
+    return 'OlcumEkleProsesModel(belgeNo: $belgeNo, belgeSira: $belgeSira, yapkod: $yapkod, prosesId: $prosesId, detayId: $detayId, sonuc: $sonuc, sartliKabulNedeni: $sartliKabulNedeni, aciklama: $aciklama, kayitOperator: $kayitOperator, detaylar: $detaylar)';
   }
 
   @JsonKey(ignore: true)
@@ -579,6 +593,7 @@ abstract class _OlcumEkleProsesModel implements OlcumEkleProsesModel {
       String? sonuc,
       String? sartliKabulNedeni,
       String? aciklama,
+      String? kayitOperator,
       List<OlcumEkleDetayModel>? detaylar}) = _$OlcumEkleProsesModelImpl;
 
   factory _OlcumEkleProsesModel.fromJson(Map<String, dynamic> json) =
@@ -608,6 +623,9 @@ abstract class _OlcumEkleProsesModel implements OlcumEkleProsesModel {
   @override
   String? get aciklama;
   set aciklama(String? value);
+  @override
+  String? get kayitOperator;
+  set kayitOperator(String? value);
   @override
   List<OlcumEkleDetayModel>? get detaylar;
   set detaylar(List<OlcumEkleDetayModel>? value);

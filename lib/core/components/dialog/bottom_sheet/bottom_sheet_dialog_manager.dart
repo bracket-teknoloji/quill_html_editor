@@ -32,6 +32,7 @@ import "package:picker/view/add_company/model/account_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -1112,6 +1113,35 @@ class BottomSheetDialogManager {
       children: list
           .map(
             (KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu),
+          )
+          .toList(),
+    );
+  }
+
+  Future<OlcumOperatorModel?> showOlcumOperatorBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final operatorList = await _networkManager.getOperatorler();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Operatör Seçiniz",
+      groupValue: groupValue,
+      children: operatorList
+          ?.whereNot((element) => element.durum != "A")
+          .map(
+            (OlcumOperatorModel e) => BottomSheetModel(title: e.adi ?? e.sicilno ?? "", value: e, groupValue: e.id),
+          )
+          .toList(),
+    );
+  }
+
+  Future<MuhasebeReferansModel?> showOlcumSartliKabullerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+    final sartliKabullerList = await _networkManager.getSartliKabuller();
+    return await showRadioBottomSheetDialog(
+      context,
+      title: "Şartlı Kabul Seçiniz",
+      groupValue: groupValue,
+      children: sartliKabullerList
+          ?.map(
+            (MuhasebeReferansModel e) => BottomSheetModel(title: e.tanimi ?? e.kodu ?? "", value: e, groupValue: e.kodu),
           )
           .toList(),
     );

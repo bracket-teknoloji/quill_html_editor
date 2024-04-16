@@ -144,6 +144,10 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
       tur: json['TUR'] as String?,
       olcumSikligi: json['OLCUM_SIKLIGI'] as int?,
       numuneMiktari: json['NUMUNE_MIKTARI'] as int?,
+      numunler: json['NUMUNLER'] == null
+          ? null
+          : OlcumEkleProsesModel.fromJson(
+              json['NUMUNLER'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$OlcumProsesModelImplToJson(
@@ -170,5 +174,6 @@ Map<String, dynamic> _$$OlcumProsesModelImplToJson(
   writeNotNull('TUR', instance.tur);
   writeNotNull('OLCUM_SIKLIGI', instance.olcumSikligi);
   writeNotNull('NUMUNE_MIKTARI', instance.numuneMiktari);
+  writeNotNull('NUMUNLER', instance.numunler?.toJson());
   return val;
 }

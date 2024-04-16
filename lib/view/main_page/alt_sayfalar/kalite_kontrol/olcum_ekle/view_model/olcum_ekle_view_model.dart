@@ -1,7 +1,8 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
 
 part "olcum_ekle_view_model.g.dart";
@@ -28,8 +29,5 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<void> sendData() async {
-    //TODO CariListesiModel'i kaldır
-    final result = await networkManager.dioGet(path: ApiUrls.olcumEkle, bodyModel: CariListesiModel(), data: requestModel.toJson());
-  }
+  Future<GenericResponseModel<NetworkManagerMixin>?> sendData() async => await networkManager.dioPost(path: ApiUrls.olcumEkle, bodyModel: OlcumEkleModel(), data: requestModel.toJson());
 }

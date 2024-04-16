@@ -1,11 +1,13 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/model/base_network_mixin.dart";
 
 part "olcum_operator_model.freezed.dart";
 part "olcum_operator_model.g.dart";
 
-@freezed
-class OlcumOperatorModel with _$OlcumOperatorModel {
-  const factory OlcumOperatorModel({
+@unfreezed
+class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
+  OlcumOperatorModel._();
+  factory OlcumOperatorModel({
     int? id,
     String? isyeri,
     String? adi,
@@ -21,4 +23,7 @@ class OlcumOperatorModel with _$OlcumOperatorModel {
   }) = _OlcumOperatorModel;
 
   factory OlcumOperatorModel.fromJson(Map<String, dynamic> json) => _$OlcumOperatorModelFromJson(json);
+
+  @override
+  OlcumOperatorModel fromJson(Map<String, dynamic> json) => _$OlcumOperatorModelFromJson(json);
 }

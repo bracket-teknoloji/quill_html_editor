@@ -16,6 +16,7 @@ import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/core/base/model/edit_fatura_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/model/kullanicilar_model.dart";
+import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -27,6 +28,7 @@ import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -472,6 +474,29 @@ class NetworkManager {
     );
     if (result.success ?? false) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
+    }
+    return null;
+  }
+
+  Future<List<OlcumOperatorModel>?> getOperatorler() async {
+    final result = await dioGet<OlcumOperatorModel>(
+      path: ApiUrls.getOperatorler,
+      bodyModel: OlcumOperatorModel(),
+      showLoading: true,
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as OlcumOperatorModel).toList();
+    }
+    return null;
+  }
+  Future<List<MuhasebeReferansModel>?> getSartliKabuller() async {
+    final result = await dioGet<MuhasebeReferansModel>(
+      path: ApiUrls.getSartliKabuller,
+      bodyModel: MuhasebeReferansModel(),
+      showLoading: true,
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as MuhasebeReferansModel).toList();
     }
     return null;
   }

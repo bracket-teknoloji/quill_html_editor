@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -44,33 +43,35 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             title: "Ölçüm Detayı",
             subtitle: widget.model.belgeNo,
           ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.options,
-                  children: [
-                    BottomSheetModel(
-                      title: "Proses Ekle",
-                      iconWidget: Icons.add_outlined,
-                      onTap: () async {
-                        Get.back();
-                        Get.toNamed("/mainPage/prosesEkle");
-                      },
-                    ),
-                  ],
-                );
-              },
-              icon: const Icon(Icons.more_vert_outlined),
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     onPressed: () async {
+          //       await bottomSheetDialogManager.showBottomSheetDialog(
+          //         context,
+          //         title: loc.generalStrings.options,
+          //         children: [
+          //           BottomSheetModel(
+          //             title: "Proses Ekle",
+          //             iconWidget: Icons.add_outlined,
+          //             onTap: () async {
+          //               Get.back();
+          //               Get.toNamed("/mainPage/prosesEkle");
+          //             },
+          //           ),
+          //         ],
+          //       );
+          //     },
+          //     icon: const Icon(Icons.more_vert_outlined),
+          //   ),
+          // ],
         ),
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: true,
           onPressed: () async {
             final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model);
-            if (result == null) {}
+            if (result != null) {
+              await viewModel.getData();
+            }
           },
         ),
         body: Observer(
