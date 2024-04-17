@@ -541,7 +541,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "Miktar",
                           isMust: true,
                           controller: viewModel.koliMi ? null : miktarController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (value) => viewModel.setMiktar(double.tryParse(value) ?? 0),
                           suffix: Wrap(
                             children: [
@@ -557,7 +557,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         builder: (_) => CustomTextField(
                           labelText: "Miktar 2",
                           controller: miktar2Controller,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           validator: miktar2Validator,
                           isMust: viewModel.model?.koliMi,
                           onChanged: (value) => viewModel.setMiktar2(double.tryParse(value) ?? 0),
@@ -578,7 +578,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Mal. Faz. Miktar",
-                        keyboardType: TextInputType.number,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: malFazMiktarController,
                         onChanged: (value) => viewModel.setMFMiktar(double.tryParse(value) ?? 0),
                         suffix: Wrap(
@@ -752,7 +752,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         child: CustomTextField(
                           labelText: "İsk.${index + 1}${index != 0 ? " %" : ""}",
                           controller: iskontoController(index + 1),
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
                           suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
                               ? Observer(
@@ -770,7 +770,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "İsk.Tipi ${index + 1}",
                           readOnly: true,
                           suffixMore: true,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: iskontoTipiController(index + 1),
                           onClear: () => iskontoFiller(index + 1, null),
                           onTap: () async {
@@ -967,7 +967,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.belgeTipi = editTipi?.rawValue;
     viewModel.kalemModel.stokKodu = viewModel.kalemModel.stokKodu ?? viewModel.model?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
-    viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi==true) && yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
+    viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi == true) && yetkiController.siparisSatirdaTeslimTarihiSor ? BaseSiparisEditModel.instance.teslimTarihi : null;
     viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
     viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", 0));
     if (widget.kalemModel == null) {
