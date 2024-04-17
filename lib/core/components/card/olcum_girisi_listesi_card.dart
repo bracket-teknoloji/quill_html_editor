@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -33,8 +35,15 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(model.stokAdi ?? model.yapacik ?? ""),
-              Text(model.stokKodu ?? ""),
+              Row(
+                children: [
+                  ColorfulBadge(
+                    label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.olcumAdedi != null),
+                    badgeColorEnum: BadgeColorEnum.esYap,
+                  ),
+                ],
+              ),
+              Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}"),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
@@ -43,7 +52,6 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                   Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kabulAdet != null),
                   Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.retAdet != null),
                   Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.sartliAdet != null),
-                  Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.olcumAdedi != null),
                   Text("Yapılandırma Kodu: ${model.yapkod}").yetkiVarMi(model.yapkod != null),
                 ],
               ),

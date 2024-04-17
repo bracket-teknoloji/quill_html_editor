@@ -5,6 +5,7 @@ import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -27,11 +28,19 @@ class OlcumEkleView extends StatefulWidget {
 
 class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   final OlcumEkleViewModel viewModel = OlcumEkleViewModel();
+  late final TextEditingController kayitOperatorController;
 
   @override
   void initState() {
     viewModel.setRequestModel(OlcumEkleModel.fromOlcumBelgeEditModel(widget.model));
+    kayitOperatorController = TextEditingController(text: viewModel.requestModel.kayitOperator);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    kayitOperatorController.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,12 +53,18 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
           actions: [
             IconButton(
               onPressed: () async {
+                if (viewModel.requestModel.kayitOperator == null) {
+                  dialogManager.showAlertDialog("Kayıt Operatörü Seçiniz");
+                  return;
+                }
                 if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
                   final result = await viewModel.sendData(widget.baseEditEnum);
                   if (result?.success == true) {
                     dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
                     Get.back(result: true);
                   }
+                } else {
+                  dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
                 }
               },
               icon: const Icon(Icons.save_outlined),
@@ -74,6 +89,22 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                   ],
                 ),
               ),
+            ),
+            CustomTextField(
+              labelText: "Kayıt Operatörü",
+              readOnly: true,
+              controller: kayitOperatorController,
+              enabled: !widget.baseEditEnum.goruntuleMi,
+              suffixMore: true,
+              isMust: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.kayitOperator ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.requestModel.kayitOperator);
+                if (result != null) {
+                  viewModel.requestModel.kayitOperator = result.sicilno;
+                  kayitOperatorController.text = result.adi ?? "";
+                }
+              },
             ),
             Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize),
             Expanded(

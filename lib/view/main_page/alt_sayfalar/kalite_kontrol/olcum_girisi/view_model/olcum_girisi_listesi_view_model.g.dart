@@ -49,6 +49,22 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
+  late final _$appBarTitleAtom =
+      Atom(name: '_OlcumGirisiViewModelBase.appBarTitle', context: context);
+
+  @override
+  String? get appBarTitle {
+    _$appBarTitleAtom.reportRead();
+    return super.appBarTitle;
+  }
+
+  @override
+  set appBarTitle(String? value) {
+    _$appBarTitleAtom.reportWrite(value, super.appBarTitle, () {
+      super.appBarTitle = value;
+    });
+  }
+
   late final _$requestModelAtom =
       Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
 
@@ -170,6 +186,17 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
+  void setAppBarTitle(String? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setAppBarTitle');
+    try {
+      return super.setAppBarTitle(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setSearchText');
@@ -185,6 +212,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     return '''
 searchBar: ${searchBar},
 searchText: ${searchText},
+appBarTitle: ${appBarTitle},
 requestModel: ${requestModel},
 olcumList: ${olcumList},
 getList: ${getList}

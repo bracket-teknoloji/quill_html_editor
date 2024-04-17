@@ -78,7 +78,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("${viewModel.belgeModel?.stokAdi}").yetkiVarMi(viewModel.belgeModel?.stokAdi != null),
-                      ColorfulBadge(
+                      ColorfulBadge( 
                         label: Text("${viewModel.belgeModel?.sira}"),
                         badgeColorEnum: BadgeColorEnum.cari,
                       ).yetkiVarMi(viewModel.belgeModel?.sira != null),

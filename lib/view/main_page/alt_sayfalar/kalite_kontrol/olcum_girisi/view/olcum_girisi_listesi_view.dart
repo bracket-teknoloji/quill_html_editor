@@ -12,7 +12,6 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view_model/olcum_girisi_listesi_view_model.dart";
 
@@ -36,7 +35,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     belgeTipiController = TextEditingController();
-    durumController = TextEditingController();
+    durumController = TextEditingController(text: viewModel.durumList.indexed.where((element) => element.$1 == viewModel.requestModel.durum).first.$2);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await filterBottomSheet();
     });
@@ -66,7 +65,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",
-              subtitle: "${viewModel.olcumList?.length ?? 0}",
+              subtitle: viewModel.appBarTitle,
             );
           },
         ),
@@ -99,7 +98,6 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                       title: viewModel.siralaMap.keys.toList()[index],
                       value: viewModel.siralaMap.entries.toList()[index],
                       groupValue: viewModel.siralaMap.values.toList()[index],
-                      description: viewModel.siralaMap.values.toList()[index],
                     ),
                   ),
                 );
@@ -185,7 +183,6 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               readOnly: true,
               suffixMore: true,
               controller: durumController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.durum.toStringIfNotNull ?? "")),
               onTap: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
@@ -195,7 +192,6 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                     final String value = viewModel.durumList[index];
                     return BottomSheetModel(
                       title: value,
-                      description: index.toString(),
                       groupValue: index,
                       value: (value, index),
                     );
@@ -211,6 +207,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               onPressed: () async {
                 if (formKey.currentState?.validate() ?? false) {
                   Get.back();
+                  viewModel.setAppBarTitle(belgeTipiController.text);
                   await viewModel.getData();
                 }
               },

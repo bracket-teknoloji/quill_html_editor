@@ -45,7 +45,10 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   String? searchText;
 
   @observable
-  OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel();
+  String? appBarTitle;
+
+  @observable
+  OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel(durum: 0);
 
   @observable
   ObservableList<OlcumGirisiListesiModel>? olcumList;
@@ -76,6 +79,9 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setOlcumList(List<OlcumGirisiListesiModel>? list) => olcumList = list?.asObservable();
+
+  @action
+  void setAppBarTitle(String? value) => appBarTitle = value;
 
   @action
   void setSearchText(String? value) => searchText = value;
