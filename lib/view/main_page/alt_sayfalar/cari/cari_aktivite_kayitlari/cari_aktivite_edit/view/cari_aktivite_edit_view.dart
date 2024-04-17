@@ -49,7 +49,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> with Ti
         appBar: AppBar(
           title: AppBarTitle(
             title: "Cari Aktivite",
-            subtitle: widget.model.baseEditEnum?.name,
+            subtitle: widget.model.baseEditEnum?.getName,
           ),
           actions: [
             IconButton(

@@ -145,7 +145,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           appBar: AppBar(
             title: AppBarTitle(
               title: widget.appBarTitle ?? "Cari Kartı",
-              subtitle: (widget.model?.baseEditEnum ?? BaseEditEnum.ekle).name,
+              subtitle: (widget.model?.baseEditEnum ?? BaseEditEnum.ekle).getName,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
             actions: <Widget>[

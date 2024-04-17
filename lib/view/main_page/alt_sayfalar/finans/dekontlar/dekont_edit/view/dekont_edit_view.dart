@@ -125,7 +125,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with TickerProvider
           appBar: AppBar(
             title: AppBarTitle(
               title: "Genel Dekont",
-              subtitle: widget.baseEditEnum.name,
+              subtitle: widget.baseEditEnum.getName,
             ),
             actions: [
               saveButton,

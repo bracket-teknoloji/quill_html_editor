@@ -91,7 +91,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
       );
 
   AppBar appBar() => AppBar(
-        title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.name),
+        title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.getName),
         actions: [
           Visibility(
             visible: enable,
