@@ -149,10 +149,10 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                 CustomTextField(
                   labelText: "Fiyat",
                   controller: fiyatController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onSubmitted: (p0) {
                     if (p0.isNotEmpty) {
-                      viewModel.model.fiyat = int.tryParse(p0);
+                      viewModel.model.fiyat = double.tryParse(p0);
                       fiyatController.text = viewModel.model.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
                     }
                   },

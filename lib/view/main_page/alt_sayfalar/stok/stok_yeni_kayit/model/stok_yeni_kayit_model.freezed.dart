@@ -58,8 +58,8 @@ mixin _$StokYeniKayitModel {
   set hareketTuru(String? value) => throw _privateConstructorUsedError;
   int? get miktar => throw _privateConstructorUsedError;
   set miktar(int? value) => throw _privateConstructorUsedError;
-  int? get fiyat => throw _privateConstructorUsedError;
-  set fiyat(int? value) => throw _privateConstructorUsedError;
+  double? get fiyat => throw _privateConstructorUsedError;
+  set fiyat(double? value) => throw _privateConstructorUsedError;
   double? get dovizTutari => throw _privateConstructorUsedError;
   set dovizTutari(double? value) => throw _privateConstructorUsedError;
   int? get dovizTipi => throw _privateConstructorUsedError;
@@ -100,7 +100,7 @@ abstract class $StokYeniKayitModelCopyWith<$Res> {
       int? depoKodu,
       String? hareketTuru,
       int? miktar,
-      int? fiyat,
+      double? fiyat,
       double? dovizTutari,
       int? dovizTipi,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit});
@@ -218,7 +218,7 @@ class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel>
       fiyat: freezed == fiyat
           ? _value.fiyat
           : fiyat // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       dovizTutari: freezed == dovizTutari
           ? _value.dovizTutari
           : dovizTutari // ignore: cast_nullable_to_non_nullable
@@ -262,7 +262,7 @@ abstract class _$$StokYeniKayitModelImplCopyWith<$Res>
       int? depoKodu,
       String? hareketTuru,
       int? miktar,
-      int? fiyat,
+      double? fiyat,
       double? dovizTutari,
       int? dovizTipi,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit});
@@ -378,7 +378,7 @@ class __$$StokYeniKayitModelImplCopyWithImpl<$Res>
       fiyat: freezed == fiyat
           ? _value.fiyat
           : fiyat // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       dovizTutari: freezed == dovizTutari
           ? _value.dovizTutari
           : dovizTutari // ignore: cast_nullable_to_non_nullable
@@ -464,7 +464,7 @@ class _$StokYeniKayitModelImpl extends _StokYeniKayitModel {
   @override
   int? miktar;
   @override
-  int? fiyat;
+  double? fiyat;
   @override
   double? dovizTutari;
   @override
@@ -508,7 +508,7 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
       int? depoKodu,
       String? hareketTuru,
       int? miktar,
-      int? fiyat,
+      double? fiyat,
       double? dovizTutari,
       int? dovizTipi,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit}) = _$StokYeniKayitModelImpl;
@@ -574,8 +574,8 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
   int? get miktar;
   set miktar(int? value);
   @override
-  int? get fiyat;
-  set fiyat(int? value);
+  double? get fiyat;
+  set fiyat(double? value);
   @override
   double? get dovizTutari;
   set dovizTutari(double? value);

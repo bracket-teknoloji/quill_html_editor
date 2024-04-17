@@ -308,7 +308,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
-                      keyboardType: TextInputType.number,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.2 Pay",
                       controller: olcuBirimi2PayController,
                       onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2Pay = double.tryParse(p0),
@@ -317,7 +317,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
-                      keyboardType: TextInputType.number,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.2 Payda",
                       controller: olcuBirimi2PaydaController,
                       onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2Payda = double.tryParse(p0),
@@ -341,7 +341,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
-                      keyboardType: TextInputType.number,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.3 Pay",
                       controller: olcuBirimi3PayController,
                       onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3Pay = double.tryParse(p0),
@@ -350,7 +350,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,
-                      keyboardType: TextInputType.number,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.3 Payda",
                       controller: olcuBirimi3PaydaController,
                       onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3Payda = double.tryParse(p0),

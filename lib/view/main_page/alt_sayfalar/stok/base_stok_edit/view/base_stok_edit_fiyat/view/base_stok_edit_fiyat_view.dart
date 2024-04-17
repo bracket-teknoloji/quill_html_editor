@@ -149,7 +149,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Fiyat 1",
                           isFormattedString: true,
                           controller: alisFiyat1Controller,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.alisFiat1 = p0.toDoubleWithFormattedString;
                             stokListesiModel.alisFiat1 = p0.toDoubleWithFormattedString;
@@ -162,7 +162,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Fiyat 2",
                           isFormattedString: true,
                           controller: alisFiyat2Controller,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.alisFiat2 = p0.toDoubleWithFormattedString;
                             stokListesiModel.alisFiat2 = p0.toDoubleWithFormattedString;
@@ -179,7 +179,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Fiyat 3",
                           isFormattedString: true,
                           controller: alisFiyat3Controller,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.alisFiat3 = p0.toDoubleWithFormattedString;
                             stokListesiModel.alisFiat3 = p0.toDoubleWithFormattedString;
@@ -192,7 +192,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Fiyat 4",
                           isFormattedString: true,
                           controller: alisFiyat4Controller,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.alisFiat4 = p0.toDoubleWithFormattedString;
                             stokListesiModel.alisFiat4 = p0.toDoubleWithFormattedString;
@@ -226,7 +226,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Alış Fiyatı",
                           isFormattedString: true,
                           controller: alisDovizFiyatiController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.dovAlisFiat = p0.toDoubleWithFormattedString;
                             stokListesiModel.dovAlisFiat = p0.toDoubleWithFormattedString;
@@ -276,7 +276,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                     children: [
                       Expanded(
                         child: CustomTextField(
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           enabled: isEnabled,
                           labelText: "Fiyat 1",
                           isFormattedString: true,
@@ -289,7 +289,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       ),
                       Expanded(
                         child: CustomTextField(
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           enabled: isEnabled,
                           labelText: "Fiyat 2",
                           isFormattedString: true,
@@ -306,7 +306,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                     children: [
                       Expanded(
                         child: CustomTextField(
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           enabled: isEnabled,
                           labelText: "Fiyat 3",
                           isFormattedString: true,
@@ -319,7 +319,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                       ),
                       Expanded(
                         child: CustomTextField(
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           enabled: isEnabled,
                           labelText: "Fiyat 4",
                           isFormattedString: true,
@@ -357,7 +357,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
                           labelText: "Alış Fiyatı",
                           isFormattedString: true,
                           controller: satisDovizFiyatiController,
-                          keyboardType: TextInputType.number,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (p0) {
                             stokDetayModel.stokList?.firstOrNull?.dovSatisFiat = p0.toDoubleWithFormattedString;
                             stokListesiModel.dovSatisFiat = p0.toDoubleWithFormattedString;

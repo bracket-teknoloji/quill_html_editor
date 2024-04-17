@@ -29,7 +29,7 @@ _$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
       depoKodu: json['DEPO_KODU'] as int?,
       hareketTuru: json['HAREKET_TURU'] as String?,
       miktar: json['MIKTAR'] as int?,
-      fiyat: json['FIYAT'] as int?,
+      fiyat: (json['FIYAT'] as num?)?.toDouble(),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
       dovizTipi: json['DOVIZ_TIPI'] as int?,
       yeniKayit: json['_YeniKayit'] as bool?,

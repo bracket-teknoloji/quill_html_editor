@@ -58,7 +58,7 @@ class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
     int? depoKodu,
     String? hareketTuru,
     int? miktar,
-    int? fiyat,
+    double? fiyat,
     double? dovizTutari,
     int? dovizTipi,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
