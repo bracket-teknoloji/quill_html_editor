@@ -10,6 +10,7 @@ import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -162,10 +163,12 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                       onTap: () async {
                                         Get.back();
                                         final newModel = await viewModel.getProsesler(item?.id);
-                                        final result = await Get.toNamed(
-                                          "/mainPage/olcumGoruntule",
-                                          arguments: viewModel.model?.copyWith(prosesler: newModel),
-                                        );
+                                        if (!newModel.isEmptyOrNull) {
+                                          Get.toNamed(
+                                            "/mainPage/olcumGoruntule",
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel),
+                                          );
+                                        }
                                       },
                                     ),
                                     BottomSheetModel(
@@ -174,10 +177,15 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                       onTap: () async {
                                         Get.back();
                                         final newModel = await viewModel.getProsesler(item?.id);
-                                        final result = await Get.toNamed(
-                                          "/mainPage/olcumDuzenle",
-                                          arguments: viewModel.model?.copyWith(prosesler: newModel),
-                                        );
+                                        if (!newModel.isEmptyOrNull) {
+                                          final result = await Get.toNamed(
+                                            "/mainPage/olcumDuzenle",
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel),
+                                          );
+                                          if (result != null) {
+                                            await viewModel.getData();
+                                          }
+                                        }
                                       },
                                     ),
                                     BottomSheetModel(
