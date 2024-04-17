@@ -2,6 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
@@ -30,6 +31,16 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>?> sendData() async =>
-      await networkManager.dioPost(path: ApiUrls.olcumEkle, bodyModel: OlcumEkleModel(), showLoading: true, data: requestModel.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>?> sendData(BaseEditEnum baseEditEnum) async {
+    OlcumEkleModel newReqModel = requestModel;
+    if (baseEditEnum.ekleMi) {
+      newReqModel = newReqModel.copyWith(belgeId: 0, prosesler: newReqModel.prosesler?.map((e) => e..detayId = 0).toList());
+    }
+    return await networkManager.dioPost(
+      path: ApiUrls.olcumEkle,
+      bodyModel: OlcumEkleModel(),
+      showLoading: true,
+      data: newReqModel.copyWith(prosesler: requestModel.prosesler?.map((e) => e..prosesId = e.id).toList()),
+    );
+  }
 }

@@ -38,7 +38,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future< List<OlcumProsesModel>?> getProsesler(int? id) async {
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(), queryParameters: {"id": id});
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(),showLoading: true, queryParameters: {"id": id});
     if (result.data is List) {
       final List<OlcumProsesModel>? data = result.data.map((e) => e as OlcumProsesModel).toList().cast<OlcumProsesModel>();
       return data;

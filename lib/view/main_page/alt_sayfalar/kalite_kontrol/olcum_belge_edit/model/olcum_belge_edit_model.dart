@@ -85,10 +85,14 @@ class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
     String? sartliKabulNedeni,
     String? sartliKabulNedeniAciklama,
     String? olcumOperatorModelOperator,
-    OlcumProsesModel? numuneler,
+    @JsonKey(includeToJson: false, includeFromJson: false) OlcumProsesModel? numuneler,
     int? prosesId,
     String? aciklama,
     String? kayitOperator,
+    String? olcuBirimi,
+    String? talno,
+    String? form,
+    String? detayAciklama,
     List<OlcumEkleDetayModel>? olcumler,
   }) = _OlcumProsesModel;
 
@@ -126,7 +130,7 @@ extension OlcumEkleProsesExtensions on OlcumProsesModel? {
       case "R":
         return "Ret";
       case "S":
-        return "Şartlı Kabul (${this?.sartliKabulNedeni})";
+        return "Şartlı Kabul (${this?.sartliKabulNedeniAciklama})";
       default:
         return "";
     }

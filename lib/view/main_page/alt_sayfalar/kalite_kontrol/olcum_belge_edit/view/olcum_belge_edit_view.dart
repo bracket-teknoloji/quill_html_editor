@@ -55,7 +55,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
-          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model);
+          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
           if (result != null) {
             await viewModel.getData();
           }
@@ -166,7 +166,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                         if (!newModel.isEmptyOrNull) {
                                           Get.toNamed(
                                             "/mainPage/olcumGoruntule",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel),
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu),
                                           );
                                         }
                                       },
@@ -180,7 +180,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                         if (!newModel.isEmptyOrNull) {
                                           final result = await Get.toNamed(
                                             "/mainPage/olcumDuzenle",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel),
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu),
                                           );
                                           if (result != null) {
                                             await viewModel.getData();

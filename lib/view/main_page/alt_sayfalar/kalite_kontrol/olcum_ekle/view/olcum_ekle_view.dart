@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
@@ -37,14 +38,14 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: "Ölçüm Ekle",
+            title: "Ölçüm ${widget.baseEditEnum.getName}",
             subtitle: viewModel.requestModel.belgeTipi,
           ),
           actions: [
             IconButton(
               onPressed: () async {
                 if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
-                  final result = await viewModel.sendData();
+                  final result = await viewModel.sendData(widget.baseEditEnum);
                   if (result?.success == true) {
                     dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
                     Get.back(result: true);
@@ -85,12 +86,17 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                     // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
                     child: ListTile(
                       onTap: () async {
-                        final result = await Get.toNamed(
-                          "/mainPage/prosesEkle",
-                          arguments: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
-                        );
-                        if (result is OlcumProsesModel) {
-                          viewModel.addProsesModel(result);
+                        if (!widget.baseEditEnum.goruntuleMi || (widget.baseEditEnum.goruntuleMi && proses.olculecekMi)) {
+                          final result = await Get.toNamed(
+                            "/mainPage/prosesEkle",
+                            arguments: BaseEditModel<OlcumProsesModel>(
+                              model: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
+                              baseEditEnum: widget.baseEditEnum,
+                            ),
+                          );
+                          if (result is OlcumProsesModel) {
+                            viewModel.addProsesModel(result);
+                          }
                         }
                       },
                       title: Observer(

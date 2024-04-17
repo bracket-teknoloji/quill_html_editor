@@ -152,13 +152,13 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
           json['SARTLI_KABUL_NEDENI_ACIKLAMA'] as String?,
       olcumOperatorModelOperator:
           json['OLCUM_OPERATOR_MODEL_OPERATOR'] as String?,
-      numuneler: json['NUMUNELER'] == null
-          ? null
-          : OlcumProsesModel.fromJson(
-              json['NUMUNELER'] as Map<String, dynamic>),
       prosesId: json['PROSES_ID'] as int?,
       aciklama: json['ACIKLAMA'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
+      olcuBirimi: json['OLCU_BIRIMI'] as String?,
+      talno: json['TALNO'] as String?,
+      form: json['FORM'] as String?,
+      detayAciklama: json['DETAY_ACIKLAMA'] as String?,
       olcumler: (json['OLCUMLER'] as List<dynamic>?)
           ?.map((e) => OlcumEkleDetayModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -196,10 +196,13 @@ Map<String, dynamic> _$$OlcumProsesModelImplToJson(
       'SARTLI_KABUL_NEDENI_ACIKLAMA', instance.sartliKabulNedeniAciklama);
   writeNotNull(
       'OLCUM_OPERATOR_MODEL_OPERATOR', instance.olcumOperatorModelOperator);
-  writeNotNull('NUMUNELER', instance.numuneler?.toJson());
   writeNotNull('PROSES_ID', instance.prosesId);
   writeNotNull('ACIKLAMA', instance.aciklama);
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
+  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
+  writeNotNull('TALNO', instance.talno);
+  writeNotNull('FORM', instance.form);
+  writeNotNull('DETAY_ACIKLAMA', instance.detayAciklama);
   writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
   return val;
 }

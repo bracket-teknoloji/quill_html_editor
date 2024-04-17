@@ -30,6 +30,13 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
       (_$enBuyukDegerComputed ??= Computed<double>(() => super.enBuyukDeger,
               name: '_ProsesEkleViewModelBase.enBuyukDeger'))
           .value;
+  Computed<ObservableList<OlcumEkleDetayModel>?>? _$olcumlerComputed;
+
+  @override
+  ObservableList<OlcumEkleDetayModel>? get olcumler => (_$olcumlerComputed ??=
+          Computed<ObservableList<OlcumEkleDetayModel>?>(() => super.olcumler,
+              name: '_ProsesEkleViewModelBase.olcumler'))
+      .value;
   Computed<bool>? _$sartliKabulMuComputed;
 
   @override
@@ -88,6 +95,17 @@ mixin _$ProsesEkleViewModel on _ProsesEkleViewModelBase, Store {
 
   late final _$_ProsesEkleViewModelBaseActionController =
       ActionController(name: '_ProsesEkleViewModelBase', context: context);
+
+  @override
+  void setEkleModel(OlcumProsesModel model) {
+    final _$actionInfo = _$_ProsesEkleViewModelBaseActionController.startAction(
+        name: '_ProsesEkleViewModelBase.setEkleModel');
+    try {
+      return super.setEkleModel(model);
+    } finally {
+      _$_ProsesEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setSonucTuruGroupValue(int index) {
@@ -164,6 +182,7 @@ ekleModel: ${ekleModel},
 ortalamaDeger: ${ortalamaDeger},
 enKucukDeger: ${enKucukDeger},
 enBuyukDeger: ${enBuyukDeger},
+olcumler: ${olcumler},
 sartliKabulMu: ${sartliKabulMu}
     ''';
   }

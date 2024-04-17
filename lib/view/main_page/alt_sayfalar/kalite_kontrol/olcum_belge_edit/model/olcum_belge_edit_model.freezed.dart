@@ -979,7 +979,9 @@ mixin _$OlcumProsesModel {
   String? get olcumOperatorModelOperator => throw _privateConstructorUsedError;
   set olcumOperatorModelOperator(String? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? get numuneler => throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false, includeFromJson: false)
   set numuneler(OlcumProsesModel? value) => throw _privateConstructorUsedError;
   int? get prosesId => throw _privateConstructorUsedError;
   set prosesId(int? value) => throw _privateConstructorUsedError;
@@ -987,6 +989,14 @@ mixin _$OlcumProsesModel {
   set aciklama(String? value) => throw _privateConstructorUsedError;
   String? get kayitOperator => throw _privateConstructorUsedError;
   set kayitOperator(String? value) => throw _privateConstructorUsedError;
+  String? get olcuBirimi => throw _privateConstructorUsedError;
+  set olcuBirimi(String? value) => throw _privateConstructorUsedError;
+  String? get talno => throw _privateConstructorUsedError;
+  set talno(String? value) => throw _privateConstructorUsedError;
+  String? get form => throw _privateConstructorUsedError;
+  set form(String? value) => throw _privateConstructorUsedError;
+  String? get detayAciklama => throw _privateConstructorUsedError;
+  set detayAciklama(String? value) => throw _privateConstructorUsedError;
   List<OlcumEkleDetayModel>? get olcumler => throw _privateConstructorUsedError;
   set olcumler(List<OlcumEkleDetayModel>? value) =>
       throw _privateConstructorUsedError;
@@ -1024,10 +1034,15 @@ abstract class $OlcumProsesModelCopyWith<$Res> {
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
       String? aciklama,
       String? kayitOperator,
+      String? olcuBirimi,
+      String? talno,
+      String? form,
+      String? detayAciklama,
       List<OlcumEkleDetayModel>? olcumler});
 
   $OlcumProsesModelCopyWith<$Res>? get numuneler;
@@ -1070,6 +1085,10 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
     Object? prosesId = freezed,
     Object? aciklama = freezed,
     Object? kayitOperator = freezed,
+    Object? olcuBirimi = freezed,
+    Object? talno = freezed,
+    Object? form = freezed,
+    Object? detayAciklama = freezed,
     Object? olcumler = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1169,6 +1188,22 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
           ? _value.kayitOperator
           : kayitOperator // ignore: cast_nullable_to_non_nullable
               as String?,
+      olcuBirimi: freezed == olcuBirimi
+          ? _value.olcuBirimi
+          : olcuBirimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      talno: freezed == talno
+          ? _value.talno
+          : talno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      form: freezed == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as String?,
+      detayAciklama: freezed == detayAciklama
+          ? _value.detayAciklama
+          : detayAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
       olcumler: freezed == olcumler
           ? _value.olcumler
           : olcumler // ignore: cast_nullable_to_non_nullable
@@ -1218,10 +1253,15 @@ abstract class _$$OlcumProsesModelImplCopyWith<$Res>
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
       String? aciklama,
       String? kayitOperator,
+      String? olcuBirimi,
+      String? talno,
+      String? form,
+      String? detayAciklama,
       List<OlcumEkleDetayModel>? olcumler});
 
   @override
@@ -1263,6 +1303,10 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
     Object? prosesId = freezed,
     Object? aciklama = freezed,
     Object? kayitOperator = freezed,
+    Object? olcuBirimi = freezed,
+    Object? talno = freezed,
+    Object? form = freezed,
+    Object? detayAciklama = freezed,
     Object? olcumler = freezed,
   }) {
     return _then(_$OlcumProsesModelImpl(
@@ -1362,6 +1406,22 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
           ? _value.kayitOperator
           : kayitOperator // ignore: cast_nullable_to_non_nullable
               as String?,
+      olcuBirimi: freezed == olcuBirimi
+          ? _value.olcuBirimi
+          : olcuBirimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      talno: freezed == talno
+          ? _value.talno
+          : talno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      form: freezed == form
+          ? _value.form
+          : form // ignore: cast_nullable_to_non_nullable
+              as String?,
+      detayAciklama: freezed == detayAciklama
+          ? _value.detayAciklama
+          : detayAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
       olcumler: freezed == olcumler
           ? _value.olcumler
           : olcumler // ignore: cast_nullable_to_non_nullable
@@ -1394,10 +1454,14 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
       this.sartliKabulNedeni,
       this.sartliKabulNedeniAciklama,
       this.olcumOperatorModelOperator,
-      this.numuneler,
+      @JsonKey(includeToJson: false, includeFromJson: false) this.numuneler,
       this.prosesId,
       this.aciklama,
       this.kayitOperator,
+      this.olcuBirimi,
+      this.talno,
+      this.form,
+      this.detayAciklama,
       this.olcumler})
       : super._();
 
@@ -1445,6 +1509,7 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
   @override
   String? olcumOperatorModelOperator;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? numuneler;
   @override
   int? prosesId;
@@ -1452,6 +1517,14 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
   String? aciklama;
   @override
   String? kayitOperator;
+  @override
+  String? olcuBirimi;
+  @override
+  String? talno;
+  @override
+  String? form;
+  @override
+  String? detayAciklama;
   @override
   List<OlcumEkleDetayModel>? olcumler;
 
@@ -1492,10 +1565,15 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
       String? aciklama,
       String? kayitOperator,
+      String? olcuBirimi,
+      String? talno,
+      String? form,
+      String? detayAciklama,
       List<OlcumEkleDetayModel>? olcumler}) = _$OlcumProsesModelImpl;
   _OlcumProsesModel._() : super._();
 
@@ -1563,7 +1641,9 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
   String? get olcumOperatorModelOperator;
   set olcumOperatorModelOperator(String? value);
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? get numuneler;
+  @JsonKey(includeToJson: false, includeFromJson: false)
   set numuneler(OlcumProsesModel? value);
   @override
   int? get prosesId;
@@ -1574,6 +1654,18 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
   @override
   String? get kayitOperator;
   set kayitOperator(String? value);
+  @override
+  String? get olcuBirimi;
+  set olcuBirimi(String? value);
+  @override
+  String? get talno;
+  set talno(String? value);
+  @override
+  String? get form;
+  set form(String? value);
+  @override
+  String? get detayAciklama;
+  set detayAciklama(String? value);
   @override
   List<OlcumEkleDetayModel>? get olcumler;
   set olcumler(List<OlcumEkleDetayModel>? value);

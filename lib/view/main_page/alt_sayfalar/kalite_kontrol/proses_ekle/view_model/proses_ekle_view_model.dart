@@ -32,9 +32,14 @@ abstract class _ProsesEkleViewModelBase with Store {
 
   @computed
   double get enBuyukDeger => ekleModel.olcumler?.map((element) => element.deger ?? 0).max ?? 0;
+  @computed
+  ObservableList<OlcumEkleDetayModel>? get olcumler => ekleModel.olcumler?.asObservable();
 
   @computed
   bool get sartliKabulMu => sonucTuruGroupValue == "S";
+
+  @action
+  void setEkleModel(OlcumProsesModel model) => ekleModel = model;
 
   @action
   void setSonucTuruGroupValue(int index) {
@@ -63,6 +68,6 @@ abstract class _ProsesEkleViewModelBase with Store {
   void setIndexedItem(int index, OlcumEkleDetayModel item) {
     final List<OlcumEkleDetayModel>? newList = ekleModel.olcumler;
     newList?[index] = item..zaman = DateTime.now();
-    ekleModel = ekleModel.copyWith(olcumler: newList);
+    setEkleModel(ekleModel.copyWith(olcumler: newList));
   }
 }

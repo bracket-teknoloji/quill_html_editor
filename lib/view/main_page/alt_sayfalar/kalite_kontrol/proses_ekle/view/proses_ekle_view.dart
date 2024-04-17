@@ -1,12 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -15,7 +17,7 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_ed
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/proses_ekle/view_model/proses_ekle_view_model.dart";
 
 class ProsesEkleView extends StatefulWidget {
-  final OlcumProsesModel model;
+  final BaseEditModel<OlcumProsesModel> model;
   const ProsesEkleView({super.key, required this.model});
 
   @override
@@ -34,18 +36,18 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
 
   @override
   void initState() {
-    viewModel.ekleModel = widget.model;
-    viewModel.setProsesDetayListesi(widget.model.numuneMiktari ?? 0);
-    numuneControllers = List.generate(widget.model.numuneMiktari ?? 0, (index) {
-      final double? deger = widget.model.numuneler?.olcumler?[index].deger;
-      if (widget.model.numuneler != null) {
+    viewModel.setEkleModel(widget.model.model!);
+    viewModel.setProsesDetayListesi(widget.model.model!.numuneMiktari ?? 0);
+    numuneControllers = List.generate(widget.model.model!.numuneMiktari ?? 0, (index) {
+      final double? deger = widget.model.model!.numuneler?.olcumler?[index].deger;
+      if (widget.model.model?.numuneler != null) {
         viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: deger));
       }
       return TextEditingController(text: deger?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
     });
     sartliKabulTuruController = TextEditingController();
     operatorController = TextEditingController();
-    aciklamaController = TextEditingController(text: widget.model.kabulSarti);
+    aciklamaController = TextEditingController(text: widget.model.model!.kabulSarti);
     super.initState();
   }
 
@@ -64,15 +66,17 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: AppBarTitle(
-            title: "Proses Ekle",
-            subtitle: widget.model.id.toStringIfNotNull,
+            title: "Proses ${widget.model.baseEditEnum?.getName}",
+            subtitle: widget.model.model!.id.toStringIfNotNull,
           ),
           actions: [
             IconButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  if (viewModel.ekleModel.olcumler?.every((element) => ((element.deger ?? 0) > (widget.model.altSinir ?? 0)) && ((element.deger ?? 0) < (widget.model.ustSinir ?? 0))) ?? false) {
-                    Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
+                  if (viewModel.ekleModel.olcumler
+                          ?.every((element) => ((element.deger ?? 0) >= (widget.model.model!.altSinir ?? 0)) && ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0))) ??
+                      false) {
+                    Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
                     dialogManager.showSuccessSnackBar("Başarılı");
                   } else {
                     //TODO Ölçüm sonuç bilgileri eklensin
@@ -84,66 +88,69 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                 }
               },
               icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(widget.model.olculecekMi),
+            ).yetkiVarMi(widget.model.model!.olculecekMi && !(widget.model.baseEditEnum?.goruntuleMi ?? false)),
           ],
         ),
         body: SingleChildScrollView(
           child: Form(
             key: formKey,
-            child: Column(
-              children: [
-                Card(
-                  child: ListTile(
-                    title: Text(widget.model.proses ?? ""),
-                    subtitle: CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Kriter: ${widget.model.kriter}").yetkiVarMi(widget.model.kriter != null),
-                        Text("Tolerans: ${widget.model.tolerans}").yetkiVarMi(widget.model.tolerans != null),
-                        Text("Tür: ${widget.model.tur}").yetkiVarMi(widget.model.tur != null),
-                        Text("Ekipman: ${widget.model.ekipman}").yetkiVarMi(widget.model.ekipman != null),
-                        Text("Alt Sınır: ${widget.model.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.altSinir != null),
-                        Text("Üst Sınır: ${widget.model.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.ustSinir != null),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    subtitle: Observer(
-                      builder: (_) => CustomLayoutBuilder(
+            child: Observer(
+              builder: (_) => Column(
+                children: [
+                  Card(
+                    child: ListTile(
+                      title: Text(widget.model.model!.proses ?? ""),
+                      subtitle: CustomLayoutBuilder(
                         splitCount: 2,
                         children: [
-                          Text("Numune Sayısı: ${widget.model.numuneMiktari}"),
-                          Text("Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          Text("En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          Text("En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                          Text("Kriter: ${widget.model.model!.kriter}").yetkiVarMi(widget.model.model!.kriter != null),
+                          Text("Tolerans: ${widget.model.model!.tolerans}").yetkiVarMi(widget.model.model!.tolerans != null),
+                          Text("Tür: ${widget.model.model!.tur}").yetkiVarMi(widget.model.model!.tur != null),
+                          Text("Ekipman: ${widget.model.model!.ekipman}").yetkiVarMi(widget.model.model!.ekipman != null),
+                          Text("Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.model!.altSinir != null),
+                          Text("Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.model!.ustSinir != null),
                         ],
                       ),
                     ),
                   ),
-                ),
-                if (widget.model.olculecekMi) ...buildFormFields(),
-                if (!widget.model.olculecekMi) switchButton(),
-              ],
-            ).paddingAll(UIHelper.lowSize),
+                  Card(
+                    child: ListTile(
+                      subtitle: Observer(
+                        builder: (_) => CustomLayoutBuilder(
+                          splitCount: 2,
+                          children: [
+                            Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
+                            Text("Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            Text("En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ).yetkiVarMi(widget.model.model!.olculecekMi),
+                  if (widget.model.model!.olculecekMi) ...buildFormFields(),
+                  if (!widget.model.model!.olculecekMi) switchButton(),
+                ],
+              ).paddingAll(UIHelper.lowSize),
+            ),
           ),
         ),
       );
 
   List<Widget> buildFormFields() => List.generate(
-        widget.model.numuneMiktari ?? 0,
+        viewModel.ekleModel.numuneMiktari ?? 0,
         (index) => CustomTextField(
           labelText: "Numune ${index + 1}",
+          enabled: !(widget.model.baseEditEnum?.goruntuleMi ?? false),
           controller: numuneControllers[index],
           valueWidget: Observer(
-            builder: (_) => Text(
-              viewModel.ekleModel.olcumler?[index].deger == null ||
-                      ((viewModel.ekleModel.olcumler?[index].deger ?? 0) > (widget.model.altSinir ?? 0) && (viewModel.ekleModel.olcumler?[index].deger ?? 0) < (widget.model.ustSinir ?? 0))
-                  ? ""
-                  : "Aralık Dışında",
-              style: const TextStyle(color: ColorPalette.persianRed),
-            ),
+            builder: (_) {
+              final OlcumEkleDetayModel? olcum = viewModel.olcumler?[index];
+              return Text(
+                olcum?.deger == null || ((olcum?.deger ?? 0) >= (widget.model.model?.altSinir ?? 0) && (olcum?.deger ?? 0) <= (widget.model.model?.ustSinir ?? 0)) ? "" : "Aralık Dışında",
+                style: const TextStyle(color: ColorPalette.persianRed),
+              );
+            },
           ),
           isMust: true,
           isFormattedString: true,
@@ -157,7 +164,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           Expanded(
             child: ElevatedButton(
               onPressed: () {
-                Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
+                Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
               },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis)),
               child: const Text("Onay"),
@@ -166,7 +173,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           Expanded(
             child: ElevatedButton(
               onPressed: () {
-                Get.back(result: widget.model.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
+                Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
               },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed)),
               child: const Text("Ret"),
