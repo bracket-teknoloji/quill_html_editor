@@ -1,7 +1,7 @@
 enum BaseEditEnum { ekle, duzenle, goruntule, kopyala, revize, taslak, bitir }
 
 extension ToString on BaseEditEnum? {
-  String? get name => _getName(this);
+  String? get getName => _getName(this);
 
   bool get revizeMi => this == BaseEditEnum.revize;
   bool get ekleMi => this == BaseEditEnum.ekle;
