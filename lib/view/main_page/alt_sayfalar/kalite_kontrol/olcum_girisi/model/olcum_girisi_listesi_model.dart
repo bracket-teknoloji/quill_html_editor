@@ -23,6 +23,9 @@ class OlcumGirisiListesiModel with _$OlcumGirisiListesiModel, NetworkManagerMixi
     String? opkodu,
     String? belgeTipi,
     int? belgeSira,
+    String? cariKodu,
+    String? cariAdi,
+    int? kalemAdedi,
   }) = _OlcumGirisiListesiModel;
 
   factory OlcumGirisiListesiModel.fromJson(Map<String, dynamic> json) => _$OlcumGirisiListesiModelFromJson(json);

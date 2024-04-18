@@ -51,6 +51,12 @@ mixin _$OlcumGirisiListesiModel {
   set belgeTipi(String? value) => throw _privateConstructorUsedError;
   int? get belgeSira => throw _privateConstructorUsedError;
   set belgeSira(int? value) => throw _privateConstructorUsedError;
+  String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get cariAdi => throw _privateConstructorUsedError;
+  set cariAdi(String? value) => throw _privateConstructorUsedError;
+  int? get kalemAdedi => throw _privateConstructorUsedError;
+  set kalemAdedi(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -79,7 +85,10 @@ abstract class $OlcumGirisiListesiModelCopyWith<$Res> {
       double? retAdet,
       String? opkodu,
       String? belgeTipi,
-      int? belgeSira});
+      int? belgeSira,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi});
 }
 
 /// @nodoc
@@ -111,6 +120,9 @@ class _$OlcumGirisiListesiModelCopyWithImpl<$Res,
     Object? opkodu = freezed,
     Object? belgeTipi = freezed,
     Object? belgeSira = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? kalemAdedi = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -173,6 +185,18 @@ class _$OlcumGirisiListesiModelCopyWithImpl<$Res,
           ? _value.belgeSira
           : belgeSira // ignore: cast_nullable_to_non_nullable
               as int?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kalemAdedi: freezed == kalemAdedi
+          ? _value.kalemAdedi
+          : kalemAdedi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -201,7 +225,10 @@ abstract class _$$OlcumGirisiListesiModelImplCopyWith<$Res>
       double? retAdet,
       String? opkodu,
       String? belgeTipi,
-      int? belgeSira});
+      int? belgeSira,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi});
 }
 
 /// @nodoc
@@ -232,6 +259,9 @@ class __$$OlcumGirisiListesiModelImplCopyWithImpl<$Res>
     Object? opkodu = freezed,
     Object? belgeTipi = freezed,
     Object? belgeSira = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? kalemAdedi = freezed,
   }) {
     return _then(_$OlcumGirisiListesiModelImpl(
       belgeNo: freezed == belgeNo
@@ -294,6 +324,18 @@ class __$$OlcumGirisiListesiModelImplCopyWithImpl<$Res>
           ? _value.belgeSira
           : belgeSira // ignore: cast_nullable_to_non_nullable
               as int?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kalemAdedi: freezed == kalemAdedi
+          ? _value.kalemAdedi
+          : kalemAdedi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -316,7 +358,10 @@ class _$OlcumGirisiListesiModelImpl extends _OlcumGirisiListesiModel {
       this.retAdet,
       this.opkodu,
       this.belgeTipi,
-      this.belgeSira})
+      this.belgeSira,
+      this.cariKodu,
+      this.cariAdi,
+      this.kalemAdedi})
       : super._();
 
   factory _$OlcumGirisiListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -352,6 +397,12 @@ class _$OlcumGirisiListesiModelImpl extends _OlcumGirisiListesiModel {
   String? belgeTipi;
   @override
   int? belgeSira;
+  @override
+  String? cariKodu;
+  @override
+  String? cariAdi;
+  @override
+  int? kalemAdedi;
 
   @JsonKey(ignore: true)
   @override
@@ -384,7 +435,10 @@ abstract class _OlcumGirisiListesiModel extends OlcumGirisiListesiModel {
       double? retAdet,
       String? opkodu,
       String? belgeTipi,
-      int? belgeSira}) = _$OlcumGirisiListesiModelImpl;
+      int? belgeSira,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi}) = _$OlcumGirisiListesiModelImpl;
   _OlcumGirisiListesiModel._() : super._();
 
   factory _OlcumGirisiListesiModel.fromJson(Map<String, dynamic> json) =
@@ -435,6 +489,15 @@ abstract class _OlcumGirisiListesiModel extends OlcumGirisiListesiModel {
   @override
   int? get belgeSira;
   set belgeSira(int? value);
+  @override
+  String? get cariKodu;
+  set cariKodu(String? value);
+  @override
+  String? get cariAdi;
+  set cariAdi(String? value);
+  @override
+  int? get kalemAdedi;
+  set kalemAdedi(int? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumGirisiListesiModelImplCopyWith<_$OlcumGirisiListesiModelImpl>

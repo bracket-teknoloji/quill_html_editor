@@ -78,7 +78,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text("${viewModel.belgeModel?.stokAdi}").yetkiVarMi(viewModel.belgeModel?.stokAdi != null),
-                      ColorfulBadge( 
+                      ColorfulBadge(
                         label: Text("${viewModel.belgeModel?.sira}"),
                         badgeColorEnum: BadgeColorEnum.cari,
                       ).yetkiVarMi(viewModel.belgeModel?.sira != null),
@@ -95,49 +95,49 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                   ),
                 ),
               ),
-              const Text("Prosesler").paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
-              Expanded(
-                flex: 2,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: viewModel.model?.prosesler?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final item = viewModel.model?.prosesler?[index];
-                    return Card(
-                      child: SizedBox(
-                        width: context.width * 0.8,
-                        height: 300,
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(item?.proses ?? ""),
-                              const Icon(Icons.engineering_outlined),
-                            ],
-                          ),
-                          subtitle: Wrap(
-                            children: [
-                              Text("Kriter: ${item?.kriter}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kriter != null),
-                              CustomLayoutBuilder(
-                                splitCount: 2,
-                                children: [
-                                  Text("Kabul Şartı: ${item?.kabulSarti}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kabulSarti != null),
-                                  Text("Tolerans: ${item?.tolerans}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.tolerans != null),
-                                  Text("Ölçüm Sıklığı: ${item?.olcumSikligi}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.olcumSikligi != null),
-                                  Text("Ekipman: ${item?.ekipman}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.ekipman != null),
-                                  Text("Numune Miktarı: ${item?.numuneMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis)
-                                      .yetkiVarMi(item?.numuneMiktari != null),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
+              // const Text("Prosesler").paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
+              // Expanded(
+              //   flex: 2,
+              //   child: ListView.builder(
+              //     shrinkWrap: true,
+              //     scrollDirection: Axis.horizontal,
+              //     itemCount: viewModel.model?.prosesler?.length ?? 0,
+              //     itemBuilder: (context, index) {
+              //       final item = viewModel.model?.prosesler?[index];
+              //       return Card(
+              //         child: SizedBox(
+              //           width: context.width * 0.8,
+              //           height: 300,
+              //           child: ListTile(
+              //             title: Row(
+              //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //               children: [
+              //                 Text(item?.proses ?? ""),
+              //                 const Icon(Icons.engineering_outlined),
+              //               ],
+              //             ),
+              //             subtitle: Wrap(
+              //               children: [
+              //                 Text("Kriter: ${item?.kriter}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kriter != null),
+              //                 CustomLayoutBuilder(
+              //                   splitCount: 2,
+              //                   children: [
+              //                     Text("Kabul Şartı: ${item?.kabulSarti}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.kabulSarti != null),
+              //                     Text("Tolerans: ${item?.tolerans}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.tolerans != null),
+              //                     Text("Ölçüm Sıklığı: ${item?.olcumSikligi}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.olcumSikligi != null),
+              //                     Text("Ekipman: ${item?.ekipman}", overflow: TextOverflow.ellipsis).yetkiVarMi(item?.ekipman != null),
+              //                     Text("Numune Miktarı: ${item?.numuneMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis)
+              //                         .yetkiVarMi(item?.numuneMiktari != null),
+              //                   ],
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ).yetkiVarMi(viewModel.model?.prosesler.ext.isNotNullOrEmpty ?? false),
               const Text("Ölçümler").paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
               Expanded(
                 flex: 7,

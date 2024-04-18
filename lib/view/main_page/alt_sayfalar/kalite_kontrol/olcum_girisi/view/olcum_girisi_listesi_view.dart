@@ -65,7 +65,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",
-              subtitle: viewModel.appBarTitle,
+              subtitle: "${viewModel.appBarTitle} (${viewModel.getList?.length ?? 0})",
             );
           },
         ),

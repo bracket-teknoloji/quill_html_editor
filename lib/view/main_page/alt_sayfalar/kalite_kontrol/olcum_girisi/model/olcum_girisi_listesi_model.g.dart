@@ -26,6 +26,9 @@ _$OlcumGirisiListesiModelImpl _$$OlcumGirisiListesiModelImplFromJson(
       opkodu: json['OPKODU'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeSira: json['BELGE_SIRA'] as int?,
+      cariKodu: json['CARI_KODU'] as String?,
+      cariAdi: json['CARI_ADI'] as String?,
+      kalemAdedi: json['KALEM_ADEDI'] as int?,
     );
 
 Map<String, dynamic> _$$OlcumGirisiListesiModelImplToJson(
@@ -53,5 +56,8 @@ Map<String, dynamic> _$$OlcumGirisiListesiModelImplToJson(
   writeNotNull('OPKODU', instance.opkodu);
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
   writeNotNull('BELGE_SIRA', instance.belgeSira);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
   return val;
 }

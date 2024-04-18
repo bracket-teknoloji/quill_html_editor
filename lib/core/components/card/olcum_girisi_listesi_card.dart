@@ -43,13 +43,15 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                   ),
                 ],
               ),
-              Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}"),
+              Text("${model.cariAdi ?? ""} - ${model.cariKodu ?? ""}").yetkiVarMi(model.cariKodu != null),
+              Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}").yetkiVarMi(model.stokKodu != null),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
                   Text("Sıra: ${model.sira.toStringIfNotNull ?? ""}").yetkiVarMi(model.sira != null),
                   Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
                   Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kabulAdet != null),
+                  Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kalemAdedi != null),
                   Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.retAdet != null),
                   Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.sartliAdet != null),
                   Text("Yapılandırma Kodu: ${model.yapkod}").yetkiVarMi(model.yapkod != null),
