@@ -76,13 +76,13 @@ class NetworkManager {
           } else if (e.type == DioExceptionType.unknown) {
             print(e.toString());
             return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
-          } else if (e.type case(DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
+          } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
             if (e.requestOptions.path == ApiUrls.token) {
               return handler
                   .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
             } else {
               return handler
-                  .next(DioException(requestOptions: RequestOptions(), message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz.\n${e.message}"));
+                  .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
             }
           } else {
             handler.next(e);
@@ -490,6 +490,7 @@ class NetworkManager {
     }
     return null;
   }
+
   Future<List<MuhasebeReferansModel>?> getSartliKabuller() async {
     final result = await dioGet<MuhasebeReferansModel>(
       path: ApiUrls.getSartliKabuller,
