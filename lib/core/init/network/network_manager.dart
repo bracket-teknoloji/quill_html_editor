@@ -481,7 +481,7 @@ class NetworkManager {
 
   Future<List<OlcumOperatorModel>?> getOperatorler() async {
     final result = await dioGet<OlcumOperatorModel>(
-      path: ApiUrls.getOperatorler,
+      path: ApiUrls.getOlcumPersonel,
       bodyModel: OlcumOperatorModel(),
       showLoading: true,
     );

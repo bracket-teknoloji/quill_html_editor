@@ -126,7 +126,14 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             return ListView.builder(
               itemCount: viewModel.getList?.length ?? 0,
               padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => OlcumGirisiListesiCard(model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi)),
+              itemBuilder: (context, index) => OlcumGirisiListesiCard(
+                model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
+                onTapped: (value) async {
+                  if (value) {
+                    await viewModel.getData();
+                  }
+                },
+              ),
             );
           },
         ),

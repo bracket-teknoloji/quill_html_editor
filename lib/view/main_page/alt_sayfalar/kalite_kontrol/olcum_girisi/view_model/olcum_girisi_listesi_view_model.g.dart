@@ -9,11 +9,11 @@ part of 'olcum_girisi_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
-  Computed<List<OlcumGirisiListesiModel>?>? _$getListComputed;
+  Computed<List<OlcumBelgeModel>?>? _$getListComputed;
 
   @override
-  List<OlcumGirisiListesiModel>? get getList => (_$getListComputed ??=
-          Computed<List<OlcumGirisiListesiModel>?>(() => super.getList,
+  List<OlcumBelgeModel>? get getList => (_$getListComputed ??=
+          Computed<List<OlcumBelgeModel>?>(() => super.getList,
               name: '_OlcumGirisiViewModelBase.getList'))
       .value;
 
@@ -85,13 +85,13 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
       Atom(name: '_OlcumGirisiViewModelBase.olcumList', context: context);
 
   @override
-  ObservableList<OlcumGirisiListesiModel>? get olcumList {
+  ObservableList<OlcumBelgeModel>? get olcumList {
     _$olcumListAtom.reportRead();
     return super.olcumList;
   }
 
   @override
-  set olcumList(ObservableList<OlcumGirisiListesiModel>? value) {
+  set olcumList(ObservableList<OlcumBelgeModel>? value) {
     _$olcumListAtom.reportWrite(value, super.olcumList, () {
       super.olcumList = value;
     });
@@ -175,7 +175,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
-  void setOlcumList(List<OlcumGirisiListesiModel>? list) {
+  void setOlcumList(List<OlcumBelgeModel>? list) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setOlcumList');
     try {

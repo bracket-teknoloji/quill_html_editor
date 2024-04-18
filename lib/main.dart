@@ -463,7 +463,7 @@ class PickerApp extends StatelessWidget {
 
               //* Kalite-Kontrol
               GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
-              GetPage(name: "/olcumKalemSec", page: OlcumKalemSecView.new),
+              GetPage(name: "/olcumKalemSec", page: () => OlcumKalemSecView(model: Get.arguments)),
               GetPage(name: "/olcumDetay", page: () => OlcumBelgeEditView(model: Get.arguments)),
               GetPage(name: "/prosesEkle", page: () => ProsesEkleView(model: Get.arguments)),
               GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),

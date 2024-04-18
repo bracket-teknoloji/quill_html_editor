@@ -16,6 +16,7 @@ _$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
       istasyonTanimi: json['ISTASYON_TANIMI'] as String?,
       durum: json['DURUM'] as String?,
       sicilno: json['SICILNO'] as String?,
+      adiSoyadi: json['ADI_SOYADI'] as String?,
       soyadi: json['SOYADI'] as String?,
       isletmeKodu: json['ISLETME_KODU'] as int?,
       sicilNo: json['SICIL_NO'] as String?,
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$OlcumOperatorModelImplToJson(
   writeNotNull('ISTASYON_TANIMI', instance.istasyonTanimi);
   writeNotNull('DURUM', instance.durum);
   writeNotNull('SICILNO', instance.sicilno);
+  writeNotNull('ADI_SOYADI', instance.adiSoyadi);
   writeNotNull('SOYADI', instance.soyadi);
   writeNotNull('ISLETME_KODU', instance.isletmeKodu);
   writeNotNull('SICIL_NO', instance.sicilNo);

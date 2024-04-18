@@ -28,7 +28,8 @@ class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumBelgeModel with _$OlcumBelgeModel {
+class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
+  OlcumBelgeModel._();
   factory OlcumBelgeModel({
     String? belgeNo,
     String? belgeTipi,
@@ -37,9 +38,23 @@ class OlcumBelgeModel with _$OlcumBelgeModel {
     String? stokKodu,
     String? stokAdi,
     double? miktar,
+    String? yapkod,
+    String? yapacik,
+    double? olcumAdedi,
+    double? kabulAdet,
+    double? sartliAdet,
+    double? retAdet,
+    String? opkodu,
+    String? cariKodu,
+    String? cariAdi,
+    int? kalemAdedi,
+    String? prosesVar,
   }) = _OlcumBelgeModel;
 
   factory OlcumBelgeModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
+
+  @override
+  OlcumBelgeModel fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
 }
 
 @unfreezed
@@ -51,6 +66,7 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel {
     String? stokAdi,
     String? olcumlerOperator,
     String? kayityapankul,
+    String? kayitOperator,
     DateTime? kayittarihi,
     int? sira,
     double? kabulAdet,
@@ -117,6 +133,24 @@ class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
 
 extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.firstOrNull;
+}
+
+extension OlcumBelgeModelExtensions on OlcumBelgeModel {
+  OlcumBelgeModel get forDetayRequest => OlcumBelgeModel(
+        stokKodu: stokKodu,
+        yapkod: yapkod,
+        opkodu: opkodu,
+        belgeNo: belgeNo,
+        belgeTipi: belgeTipi,
+        sira: sira,
+      );
+
+  OlcumBelgeModel get forKalemSec => OlcumBelgeModel(
+        belgeNo: belgeNo,
+        belgeTipi: belgeTipi,
+      );
+
+  bool get prosesVarMi => prosesVar == "E";
 }
 
 extension OlcumEkleProsesExtensions on OlcumProsesModel? {

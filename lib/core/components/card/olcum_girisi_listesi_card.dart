@@ -5,22 +5,24 @@ import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 class OlcumGirisiListesiCard extends StatefulWidget {
-  final OlcumGirisiListesiModel model;
-  const OlcumGirisiListesiCard({super.key, required this.model});
+  final OlcumBelgeModel model;
+  final Future Function(bool) onTapped;
+  const OlcumGirisiListesiCard({super.key, required this.model, required this.onTapped});
 
   @override
   State<OlcumGirisiListesiCard> createState() => _OlcumGirisiListesiCardState();
 }
 
 class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
-  OlcumGirisiListesiModel get model => widget.model;
+  OlcumBelgeModel get model => widget.model;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -66,9 +68,16 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
               BottomSheetModel(
                 title: loc.generalStrings.view,
                 iconWidget: Icons.preview_outlined,
-                onTap: () {
+                onTap: () async {
                   Get.back();
-                  return Get.toNamed("/mainPage/olcumDetay", arguments: widget.model);
+                  final OlcumBelgeModel result = widget.model;
+                  if (EditTipiEnum.values.firstWhere((element) => element.rawValue == result.belgeTipi).kalemSecilecekMi) {
+                    await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
+                    widget.onTapped.call(true);
+                    return;
+                  }
+                  Get.toNamed("/mainPage/olcumDetay", arguments: result);
+                  widget.onTapped.call(true);
                 },
               ),
               // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),

@@ -67,7 +67,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
         appBar: AppBar(
           title: AppBarTitle(
             title: "Proses ${widget.model.baseEditEnum?.getName}",
-            subtitle: widget.model.model!.id.toStringIfNotNull,
+            subtitle: "ID ${widget.model.model!.id.toStringIfNotNull}",
           ),
           actions: [
             IconButton(
@@ -155,7 +155,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
           isMust: true,
           isFormattedString: true,
           onChanged: (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
-          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
         ),
       );
 
@@ -215,7 +215,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.ekleModel.kayitOperator);
                   if (result != null) {
                     viewModel.setOperator(result.sicilno);
-                    operatorController.text = result.adi ?? "";
+                    operatorController.text = result.adiSoyadi ?? "";
                   }
                 },
               ),
@@ -229,6 +229,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   onTap: () async {
                     final result = await bottomSheetDialogManager.showOlcumSartliKabullerBottomSheetDialog(context, viewModel.ekleModel.sartliKabulNedeni);
                     if (result != null) {
+                      viewModel.ekleModel.sartliKabulNedeniAciklama = result.tanimi ?? result.kodu;
                       viewModel.setSartliKabul(result.kodu);
                       sartliKabulTuruController.text = result.tanimi ?? "";
                     }

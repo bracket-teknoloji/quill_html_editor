@@ -63,6 +63,17 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
+      yapkod: json['YAPKOD'] as String?,
+      yapacik: json['YAPACIK'] as String?,
+      olcumAdedi: (json['OLCUM_ADEDI'] as num?)?.toDouble(),
+      kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
+      sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
+      retAdet: (json['RET_ADET'] as num?)?.toDouble(),
+      opkodu: json['OPKODU'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      cariAdi: json['CARI_ADI'] as String?,
+      kalemAdedi: json['KALEM_ADEDI'] as int?,
+      prosesVar: json['PROSES_VAR'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
@@ -82,6 +93,17 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('YAPKOD', instance.yapkod);
+  writeNotNull('YAPACIK', instance.yapacik);
+  writeNotNull('OLCUM_ADEDI', instance.olcumAdedi);
+  writeNotNull('KABUL_ADET', instance.kabulAdet);
+  writeNotNull('SARTLI_ADET', instance.sartliAdet);
+  writeNotNull('RET_ADET', instance.retAdet);
+  writeNotNull('OPKODU', instance.opkodu);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
+  writeNotNull('PROSES_VAR', instance.prosesVar);
   return val;
 }
 
@@ -94,6 +116,7 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       stokAdi: json['STOK_ADI'] as String?,
       olcumlerOperator: json['OLCUMLER_OPERATOR'] as String?,
       kayityapankul: json['KAYITYAPANKUL'] as String?,
+      kayitOperator: json['KAYIT_OPERATOR'] as String?,
       kayittarihi: json['KAYITTARIHI'] == null
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
@@ -119,6 +142,7 @@ Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
   writeNotNull('STOK_ADI', instance.stokAdi);
   writeNotNull('OLCUMLER_OPERATOR', instance.olcumlerOperator);
   writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   writeNotNull('SIRA', instance.sira);
   writeNotNull('KABUL_ADET', instance.kabulAdet);

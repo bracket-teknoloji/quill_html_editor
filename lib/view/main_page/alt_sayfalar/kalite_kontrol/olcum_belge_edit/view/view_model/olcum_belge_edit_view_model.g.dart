@@ -21,13 +21,13 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
       Atom(name: '_OlcumBelgeEditViewModelBase.requestModel', context: context);
 
   @override
-  OlcumGirisiListesiModel? get requestModel {
+  OlcumBelgeModel? get requestModel {
     _$requestModelAtom.reportRead();
     return super.requestModel;
   }
 
   @override
-  set requestModel(OlcumGirisiListesiModel? value) {
+  set requestModel(OlcumBelgeModel? value) {
     _$requestModelAtom.reportWrite(value, super.requestModel, () {
       super.requestModel = value;
     });
@@ -78,7 +78,7 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
       ActionController(name: '_OlcumBelgeEditViewModelBase', context: context);
 
   @override
-  void setRequestModel(OlcumGirisiListesiModel reqModel) {
+  void setRequestModel(OlcumBelgeModel reqModel) {
     final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
         .startAction(name: '_OlcumBelgeEditViewModelBase.setRequestModel');
     try {

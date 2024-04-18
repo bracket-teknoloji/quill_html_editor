@@ -33,7 +33,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   @override
   void initState() {
     viewModel.setRequestModel(OlcumEkleModel.fromOlcumBelgeEditModel(widget.model));
-    kayitOperatorController = TextEditingController(text: viewModel.requestModel.kayitOperator);
+    kayitOperatorController = TextEditingController(text:   viewModel.requestModel.kayitOperator);
     super.initState();
   }
 
@@ -102,7 +102,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                 final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.requestModel.kayitOperator);
                 if (result != null) {
                   viewModel.requestModel.kayitOperator = result.sicilno;
-                  kayitOperatorController.text = result.adi ?? "";
+                  kayitOperatorController.text = result.adiSoyadi ?? "";
                 }
               },
             ),

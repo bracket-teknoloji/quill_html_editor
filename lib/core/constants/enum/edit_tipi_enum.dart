@@ -83,6 +83,19 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get faturaMi => satisFaturasiMi || alisFaturasiMi;
 
+  bool get kalemSecilecekMi {
+    if (this == null) return false;
+    switch (this!) {
+      case EditTipiEnum.satisFatura:
+      case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.alisFatura:
+      case EditTipiEnum.alisIrsaliye:
+        return true;
+      default:
+        return false;
+    }
+  }
+
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
     switch (this!) {

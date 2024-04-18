@@ -1130,9 +1130,8 @@ class BottomSheetDialogManager {
       title: "Operatör Seçiniz",
       groupValue: groupValue,
       children: operatorList
-          ?.whereNot((element) => element.durum != "A")
-          .map(
-            (OlcumOperatorModel e) => BottomSheetModel(title: e.adi ?? e.sicilno ?? "", value: e, groupValue: e.id),
+          ?.map(
+            (OlcumOperatorModel e) => BottomSheetModel(title: e.adiSoyadi ?? e.sicilno ?? "", value: e, groupValue: e.sicilno),
           )
           .toList(),
     );

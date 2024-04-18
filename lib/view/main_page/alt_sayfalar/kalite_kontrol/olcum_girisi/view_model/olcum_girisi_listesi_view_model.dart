@@ -2,7 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_request_model.dart";
 
 part "olcum_girisi_listesi_view_model.g.dart";
@@ -51,10 +51,10 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel(durum: 0);
 
   @observable
-  ObservableList<OlcumGirisiListesiModel>? olcumList;
+  ObservableList<OlcumBelgeModel>? olcumList;
 
   @computed
-  List<OlcumGirisiListesiModel>? get getList => olcumList?.where((element) => element.belgeNo?.toLowerCase().contains(searchText ?? "") ?? false).toList();
+  List<OlcumBelgeModel>? get getList => olcumList?.where((element) => element.belgeNo?.toLowerCase().contains(searchText ?? "") ?? false).toList();
 
   @action
   void setSearchBar() {
@@ -78,7 +78,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setDurum(int? value) => requestModel = requestModel.copyWith(durum: value);
 
   @action
-  void setOlcumList(List<OlcumGirisiListesiModel>? list) => olcumList = list?.asObservable();
+  void setOlcumList(List<OlcumBelgeModel>? list) => olcumList = list?.asObservable();
 
   @action
   void setAppBarTitle(String? value) => appBarTitle = value;
@@ -90,9 +90,9 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     //TODO sayfalama gelince düzenle
     setOlcumList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumGirisiListesiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumBelgeModel(), data: requestModel.toJson());
     if (result.success == true) {
-      final List<OlcumGirisiListesiModel> list = (result.data as List).map((e) => e as OlcumGirisiListesiModel).toList();
+      final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
       setOlcumList(list);
     }
   }

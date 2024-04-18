@@ -353,6 +353,28 @@ mixin _$OlcumBelgeModel {
   set stokAdi(String? value) => throw _privateConstructorUsedError;
   double? get miktar => throw _privateConstructorUsedError;
   set miktar(double? value) => throw _privateConstructorUsedError;
+  String? get yapkod => throw _privateConstructorUsedError;
+  set yapkod(String? value) => throw _privateConstructorUsedError;
+  String? get yapacik => throw _privateConstructorUsedError;
+  set yapacik(String? value) => throw _privateConstructorUsedError;
+  double? get olcumAdedi => throw _privateConstructorUsedError;
+  set olcumAdedi(double? value) => throw _privateConstructorUsedError;
+  double? get kabulAdet => throw _privateConstructorUsedError;
+  set kabulAdet(double? value) => throw _privateConstructorUsedError;
+  double? get sartliAdet => throw _privateConstructorUsedError;
+  set sartliAdet(double? value) => throw _privateConstructorUsedError;
+  double? get retAdet => throw _privateConstructorUsedError;
+  set retAdet(double? value) => throw _privateConstructorUsedError;
+  String? get opkodu => throw _privateConstructorUsedError;
+  set opkodu(String? value) => throw _privateConstructorUsedError;
+  String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get cariAdi => throw _privateConstructorUsedError;
+  set cariAdi(String? value) => throw _privateConstructorUsedError;
+  int? get kalemAdedi => throw _privateConstructorUsedError;
+  set kalemAdedi(int? value) => throw _privateConstructorUsedError;
+  String? get prosesVar => throw _privateConstructorUsedError;
+  set prosesVar(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -373,7 +395,18 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       int? sira,
       String? stokKodu,
       String? stokAdi,
-      double? miktar});
+      double? miktar,
+      String? yapkod,
+      String? yapacik,
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi,
+      String? prosesVar});
 }
 
 /// @nodoc
@@ -396,6 +429,17 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? stokKodu = freezed,
     Object? stokAdi = freezed,
     Object? miktar = freezed,
+    Object? yapkod = freezed,
+    Object? yapacik = freezed,
+    Object? olcumAdedi = freezed,
+    Object? kabulAdet = freezed,
+    Object? sartliAdet = freezed,
+    Object? retAdet = freezed,
+    Object? opkodu = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? kalemAdedi = freezed,
+    Object? prosesVar = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -426,6 +470,50 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.miktar
           : miktar // ignore: cast_nullable_to_non_nullable
               as double?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapacik: freezed == yapacik
+          ? _value.yapacik
+          : yapacik // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumAdedi: freezed == olcumAdedi
+          ? _value.olcumAdedi
+          : olcumAdedi // ignore: cast_nullable_to_non_nullable
+              as double?,
+      kabulAdet: freezed == kabulAdet
+          ? _value.kabulAdet
+          : kabulAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      sartliAdet: freezed == sartliAdet
+          ? _value.sartliAdet
+          : sartliAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      retAdet: freezed == retAdet
+          ? _value.retAdet
+          : retAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kalemAdedi: freezed == kalemAdedi
+          ? _value.kalemAdedi
+          : kalemAdedi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      prosesVar: freezed == prosesVar
+          ? _value.prosesVar
+          : prosesVar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -445,7 +533,18 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       int? sira,
       String? stokKodu,
       String? stokAdi,
-      double? miktar});
+      double? miktar,
+      String? yapkod,
+      String? yapacik,
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi,
+      String? prosesVar});
 }
 
 /// @nodoc
@@ -466,6 +565,17 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? stokAdi = freezed,
     Object? miktar = freezed,
+    Object? yapkod = freezed,
+    Object? yapacik = freezed,
+    Object? olcumAdedi = freezed,
+    Object? kabulAdet = freezed,
+    Object? sartliAdet = freezed,
+    Object? retAdet = freezed,
+    Object? opkodu = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? kalemAdedi = freezed,
+    Object? prosesVar = freezed,
   }) {
     return _then(_$OlcumBelgeModelImpl(
       belgeNo: freezed == belgeNo
@@ -496,13 +606,57 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.miktar
           : miktar // ignore: cast_nullable_to_non_nullable
               as double?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapacik: freezed == yapacik
+          ? _value.yapacik
+          : yapacik // ignore: cast_nullable_to_non_nullable
+              as String?,
+      olcumAdedi: freezed == olcumAdedi
+          ? _value.olcumAdedi
+          : olcumAdedi // ignore: cast_nullable_to_non_nullable
+              as double?,
+      kabulAdet: freezed == kabulAdet
+          ? _value.kabulAdet
+          : kabulAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      sartliAdet: freezed == sartliAdet
+          ? _value.sartliAdet
+          : sartliAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      retAdet: freezed == retAdet
+          ? _value.retAdet
+          : retAdet // ignore: cast_nullable_to_non_nullable
+              as double?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kalemAdedi: freezed == kalemAdedi
+          ? _value.kalemAdedi
+          : kalemAdedi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      prosesVar: freezed == prosesVar
+          ? _value.prosesVar
+          : prosesVar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$OlcumBelgeModelImpl implements _OlcumBelgeModel {
+class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   _$OlcumBelgeModelImpl(
       {this.belgeNo,
       this.belgeTipi,
@@ -510,7 +664,19 @@ class _$OlcumBelgeModelImpl implements _OlcumBelgeModel {
       this.sira,
       this.stokKodu,
       this.stokAdi,
-      this.miktar});
+      this.miktar,
+      this.yapkod,
+      this.yapacik,
+      this.olcumAdedi,
+      this.kabulAdet,
+      this.sartliAdet,
+      this.retAdet,
+      this.opkodu,
+      this.cariKodu,
+      this.cariAdi,
+      this.kalemAdedi,
+      this.prosesVar})
+      : super._();
 
   factory _$OlcumBelgeModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumBelgeModelImplFromJson(json);
@@ -529,11 +695,28 @@ class _$OlcumBelgeModelImpl implements _OlcumBelgeModel {
   String? stokAdi;
   @override
   double? miktar;
-
   @override
-  String toString() {
-    return 'OlcumBelgeModel(belgeNo: $belgeNo, belgeTipi: $belgeTipi, tarih: $tarih, sira: $sira, stokKodu: $stokKodu, stokAdi: $stokAdi, miktar: $miktar)';
-  }
+  String? yapkod;
+  @override
+  String? yapacik;
+  @override
+  double? olcumAdedi;
+  @override
+  double? kabulAdet;
+  @override
+  double? sartliAdet;
+  @override
+  double? retAdet;
+  @override
+  String? opkodu;
+  @override
+  String? cariKodu;
+  @override
+  String? cariAdi;
+  @override
+  int? kalemAdedi;
+  @override
+  String? prosesVar;
 
   @JsonKey(ignore: true)
   @override
@@ -550,7 +733,7 @@ class _$OlcumBelgeModelImpl implements _OlcumBelgeModel {
   }
 }
 
-abstract class _OlcumBelgeModel implements OlcumBelgeModel {
+abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   factory _OlcumBelgeModel(
       {String? belgeNo,
       String? belgeTipi,
@@ -558,7 +741,19 @@ abstract class _OlcumBelgeModel implements OlcumBelgeModel {
       int? sira,
       String? stokKodu,
       String? stokAdi,
-      double? miktar}) = _$OlcumBelgeModelImpl;
+      double? miktar,
+      String? yapkod,
+      String? yapacik,
+      double? olcumAdedi,
+      double? kabulAdet,
+      double? sartliAdet,
+      double? retAdet,
+      String? opkodu,
+      String? cariKodu,
+      String? cariAdi,
+      int? kalemAdedi,
+      String? prosesVar}) = _$OlcumBelgeModelImpl;
+  _OlcumBelgeModel._() : super._();
 
   factory _OlcumBelgeModel.fromJson(Map<String, dynamic> json) =
       _$OlcumBelgeModelImpl.fromJson;
@@ -585,6 +780,39 @@ abstract class _OlcumBelgeModel implements OlcumBelgeModel {
   double? get miktar;
   set miktar(double? value);
   @override
+  String? get yapkod;
+  set yapkod(String? value);
+  @override
+  String? get yapacik;
+  set yapacik(String? value);
+  @override
+  double? get olcumAdedi;
+  set olcumAdedi(double? value);
+  @override
+  double? get kabulAdet;
+  set kabulAdet(double? value);
+  @override
+  double? get sartliAdet;
+  set sartliAdet(double? value);
+  @override
+  double? get retAdet;
+  set retAdet(double? value);
+  @override
+  String? get opkodu;
+  set opkodu(String? value);
+  @override
+  String? get cariKodu;
+  set cariKodu(String? value);
+  @override
+  String? get cariAdi;
+  set cariAdi(String? value);
+  @override
+  int? get kalemAdedi;
+  set kalemAdedi(int? value);
+  @override
+  String? get prosesVar;
+  set prosesVar(String? value);
+  @override
   @JsonKey(ignore: true)
   _$$OlcumBelgeModelImplCopyWith<_$OlcumBelgeModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -608,6 +836,8 @@ mixin _$OlcumOlcumlerModel {
   set olcumlerOperator(String? value) => throw _privateConstructorUsedError;
   String? get kayityapankul => throw _privateConstructorUsedError;
   set kayityapankul(String? value) => throw _privateConstructorUsedError;
+  String? get kayitOperator => throw _privateConstructorUsedError;
+  set kayitOperator(String? value) => throw _privateConstructorUsedError;
   DateTime? get kayittarihi => throw _privateConstructorUsedError;
   set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
   int? get sira => throw _privateConstructorUsedError;
@@ -638,6 +868,7 @@ abstract class $OlcumOlcumlerModelCopyWith<$Res> {
       String? stokAdi,
       String? olcumlerOperator,
       String? kayityapankul,
+      String? kayitOperator,
       DateTime? kayittarihi,
       int? sira,
       double? kabulAdet,
@@ -664,6 +895,7 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
     Object? stokAdi = freezed,
     Object? olcumlerOperator = freezed,
     Object? kayityapankul = freezed,
+    Object? kayitOperator = freezed,
     Object? kayittarihi = freezed,
     Object? sira = freezed,
     Object? kabulAdet = freezed,
@@ -694,6 +926,10 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
       kayityapankul: freezed == kayityapankul
           ? _value.kayityapankul
           : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
               as String?,
       kayittarihi: freezed == kayittarihi
           ? _value.kayittarihi
@@ -734,6 +970,7 @@ abstract class _$$OlcumOlcumlerModelImplCopyWith<$Res>
       String? stokAdi,
       String? olcumlerOperator,
       String? kayityapankul,
+      String? kayitOperator,
       DateTime? kayittarihi,
       int? sira,
       double? kabulAdet,
@@ -758,6 +995,7 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
     Object? stokAdi = freezed,
     Object? olcumlerOperator = freezed,
     Object? kayityapankul = freezed,
+    Object? kayitOperator = freezed,
     Object? kayittarihi = freezed,
     Object? sira = freezed,
     Object? kabulAdet = freezed,
@@ -788,6 +1026,10 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
       kayityapankul: freezed == kayityapankul
           ? _value.kayityapankul
           : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitOperator: freezed == kayitOperator
+          ? _value.kayitOperator
+          : kayitOperator // ignore: cast_nullable_to_non_nullable
               as String?,
       kayittarihi: freezed == kayittarihi
           ? _value.kayittarihi
@@ -823,6 +1065,7 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
       this.stokAdi,
       this.olcumlerOperator,
       this.kayityapankul,
+      this.kayitOperator,
       this.kayittarihi,
       this.sira,
       this.kabulAdet,
@@ -845,6 +1088,8 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
   @override
   String? kayityapankul;
   @override
+  String? kayitOperator;
+  @override
   DateTime? kayittarihi;
   @override
   int? sira;
@@ -857,7 +1102,7 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
 
   @override
   String toString() {
-    return 'OlcumOlcumlerModel(id: $id, belgeSira: $belgeSira, stokKodu: $stokKodu, stokAdi: $stokAdi, olcumlerOperator: $olcumlerOperator, kayityapankul: $kayityapankul, kayittarihi: $kayittarihi, sira: $sira, kabulAdet: $kabulAdet, sartliAdet: $sartliAdet, retAdet: $retAdet)';
+    return 'OlcumOlcumlerModel(id: $id, belgeSira: $belgeSira, stokKodu: $stokKodu, stokAdi: $stokAdi, olcumlerOperator: $olcumlerOperator, kayityapankul: $kayityapankul, kayitOperator: $kayitOperator, kayittarihi: $kayittarihi, sira: $sira, kabulAdet: $kabulAdet, sartliAdet: $sartliAdet, retAdet: $retAdet)';
   }
 
   @JsonKey(ignore: true)
@@ -883,6 +1128,7 @@ abstract class _OlcumOlcumlerModel implements OlcumOlcumlerModel {
       String? stokAdi,
       String? olcumlerOperator,
       String? kayityapankul,
+      String? kayitOperator,
       DateTime? kayittarihi,
       int? sira,
       double? kabulAdet,
@@ -910,6 +1156,9 @@ abstract class _OlcumOlcumlerModel implements OlcumOlcumlerModel {
   @override
   String? get kayityapankul;
   set kayityapankul(String? value);
+  @override
+  String? get kayitOperator;
+  set kayitOperator(String? value);
   @override
   DateTime? get kayittarihi;
   set kayittarihi(DateTime? value);

@@ -15,11 +15,11 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_listesi_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
-  final OlcumGirisiListesiModel model;
+  final OlcumBelgeModel model;
   const OlcumBelgeEditView({super.key, required this.model});
 
   @override
@@ -166,7 +166,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                         if (!newModel.isEmptyOrNull) {
                                           Get.toNamed(
                                             "/mainPage/olcumGoruntule",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu),
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
                                           );
                                         }
                                       },
@@ -180,7 +180,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                         if (!newModel.isEmptyOrNull) {
                                           final result = await Get.toNamed(
                                             "/mainPage/olcumDuzenle",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu),
+                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
                                           );
                                           if (result != null) {
                                             await viewModel.getData();
