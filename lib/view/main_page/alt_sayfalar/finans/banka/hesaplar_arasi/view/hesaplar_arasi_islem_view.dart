@@ -293,7 +293,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                             context,
                             viewModel.model.masrafMuhKodu,
                             hesapTipi: "M",
-                            belgeTipi: widget.hesaplarArasiEnum == HesaplarArasiEnum.eftHavale ? MuhasebeBelgeTipiEnum.hesaplarArasiEft : MuhasebeBelgeTipiEnum.hesaplarArasiVirman,
+                            belgeTipi: widget.hesaplarArasiEnum == HesaplarArasiEnum.eftHavale ? MuhasebeBelgeTipiEnum.hesaplarArasiEft.value : MuhasebeBelgeTipiEnum.hesaplarArasiVirman.value,
                           );
                           if (result != null) {
                             _masrafMuhKoduController.text = result.hesapAdi ?? "";

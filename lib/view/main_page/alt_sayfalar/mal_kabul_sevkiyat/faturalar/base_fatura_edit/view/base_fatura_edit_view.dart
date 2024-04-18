@@ -77,7 +77,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       if (!tabController.indexIsChanging &&
           tabController.previousIndex == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1) &&
           yetkiController.seriUygulamasiAcikMi &&
-          BaseSiparisEditModel.instance.kalemList?.any((element) => !element.seriTamamMi) == true) {
+          BaseSiparisEditModel.instance.kalemList?.any((element) => element.seriEksikMi) == true) {
         dialogManager.showErrorSnackBar("Kalemlerde seri eksik.");
         if (tabController.index != (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1)) {
           tabController.animateTo(widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1);
@@ -277,8 +277,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           if (didPop) {
             return;
           }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
-          BaseSiparisEditModel.resetInstance();
+          await dialogManager.showAreYouSureDialog(() {
+            BaseSiparisEditModel.resetInstance();
+            Get.back(result: true);
+          });
         },
         child: DefaultTabController(
           length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,

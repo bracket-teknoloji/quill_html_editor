@@ -1447,6 +1447,8 @@ class KalemModel with NetworkManagerMixin {
 
   bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 
+  bool get seriEksikMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) < (miktar ??0);
+
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 
   String get faturaKalemAciklama {

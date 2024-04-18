@@ -367,7 +367,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onClear: () => viewModel.changeMuhaseKodu(null),
               onTap: () async {
                 final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   muhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeMuhaseKodu(result);
@@ -384,7 +384,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onClear: () => viewModel.changeKurFarkiBorc(null),
               onTap: () async {
                 final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkiborcKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkiborcKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   kurFarkiBorcMuhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeKurFarkiBorc(result);
@@ -401,7 +401,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onClear: () => viewModel.changeKurFarkiAlacak(null),
               onTap: () async {
                 final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkialacakKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari, hesapTipi: "M");
+                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkialacakKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
                 if (result is StokMuhasebeKoduModel) {
                   kurFarkiAlacakMuhasebeKoduController.text = result.hesapAdi ?? "";
                   viewModel.changeKurFarkiAlacak(result);

@@ -526,9 +526,14 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu, dynamic groupValue, bool? alisMi}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeKoduBottomSheetDialog(BuildContext context, {bool? stokMu, dynamic groupValue, bool? alisMi, Map<String, dynamic>? queryParams}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
-      viewModel.changeMuhasebeKoduList(await _networkManager.getMuhasebeKodlari());
+      viewModel.changeMuhasebeKoduList(
+        await _networkManager.getMuhasebeKodlari(
+          queryParams: queryParams,
+          stokMu: stokMu,
+        ),
+      );
     }
     return await showRadioBottomSheetDialog(
       context,
@@ -551,9 +556,9 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {MuhasebeBelgeTipiEnum? belgeTipi, String? hesapTipi}) async {
+  Future<StokMuhasebeKoduModel?> showMuhasebeMuhasebeKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {String? belgeTipi, String? hesapTipi, bool muhRefKodGelsin = false}) async {
     if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
-      final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": belgeTipi.value, "HesapTipi": hesapTipi ?? "A", "MuhRefKodGelsin": "H", "EkranTipi": "R"};
+      final Map<String, dynamic> queryparams = <String, dynamic>{"BelgeTipi": belgeTipi, "HesapTipi": hesapTipi ?? "A", "MuhRefKodGelsin": muhRefKodGelsin ? "E" : "H", "EkranTipi": "R"};
       viewModel.changeMuhasebeKoduList(await _networkManager.getMuhasebeKodlari(stokMu: false, queryParams: queryparams));
     }
     return await showRadioBottomSheetDialog(

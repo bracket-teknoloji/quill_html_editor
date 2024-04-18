@@ -271,7 +271,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 enabled: enable,
                 suffix: IconButton(
                   onPressed: () async {
-                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.stokListesiModel.muhdetayKodu);
+                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.stokListesiModel.muhdetayKodu, stokMu: true);
                     if (result != null) {
                       muhasebeDetayKoduController.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNotNull}";
                       viewModel.stokListesiModel.muhdetayAdi = result.adi;

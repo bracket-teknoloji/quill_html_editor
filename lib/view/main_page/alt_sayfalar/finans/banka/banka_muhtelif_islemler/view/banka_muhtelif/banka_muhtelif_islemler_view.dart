@@ -370,7 +370,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
       context,
       viewModel.model.hedefHesapKodu,
       hesapTipi: "M",
-      belgeTipi: MuhasebeBelgeTipiEnum.hesaplarArasiVirman,
+      belgeTipi: MuhasebeBelgeTipiEnum.hesaplarArasiVirman.value,
     );
     if (result != null) {
       viewModel.setMuhasebeKodu(result.hesapKodu);

@@ -391,7 +391,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                               context,
                               viewModel.model.masrafMuhKodu,
                               hesapTipi: "M",
-                              belgeTipi: MuhasebeBelgeTipiEnum.cariHavaleEft,
+                              belgeTipi: MuhasebeBelgeTipiEnum.cariHavaleEft.value,
                             );
                             if (result != null) {
                               _masrafMuhKoduController.text = result.hesapAdi ?? "";

@@ -333,7 +333,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         hesapKodu = result.cariKodu ?? "";
       }
     } else if (viewModel.model.muhasebeMi) {
-      final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.dekont, hesapTipi: "M");
+      final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.dekont.value, hesapTipi: "M");
       if (result != null) {
         _hesapController.text = result.hesapAdi ?? "";
         hesapKodu = result.hesapKodu ?? "";

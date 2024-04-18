@@ -377,20 +377,28 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           suffixMore: true,
                           readOnly: true,
                           isMust: BaseSiparisEditModel.instance.faturaIrsaliyeMi,
-                          onClear: () => viewModel.setMuhasebeKodu(null),
+                          onClear: !BaseSiparisEditModel.instance.faturaIrsaliyeMi ? () => viewModel.setMuhasebeKodu(null) : null,
                           controller: muhKoduController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
                           onTap: () async {
-                            final result =
-                                await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.kalemModel.muhasebeKodu, alisMi: !(editTipi?.satisMi ?? false));
+                            final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+                              context,
+                              viewModel.kalemModel.muhasebeKodu,
+                              belgeTipi: editTipi?.rawValue,
+                              hesapTipi: "M",
+                              // groupValue: viewModel.kalemModel.muhasebeKodu,
+                              // alisMi: !(editTipi?.satisMi ?? false),
+                              // stokMu: false,
+                              // queryParams: {},
+                            );
                             if (result != null) {
-                              if (editTipi?.satisMi ?? false) {
-                                viewModel.setMuhasebeKodu(result.satisHesabi ?? "");
-                                muhKoduController.text = result.adi ?? result.satisHesabi ?? "";
-                              } else {
-                                viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
-                                muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
-                              }
+                              viewModel.setMuhasebeKodu(result.hesapKodu ?? "");
+                              muhKoduController.text = result.hesapAdi ?? "";
+                              // if (editTipi?.satisMi ?? false) {
+                              // } else {
+                              //   viewModel.setMuhasebeKodu(result.alisHesabi ?? "");
+                              //   muhKoduController.text = result.adi ?? result.alisHesabi ?? "";
+                              // }
                             }
                           },
                         ),
@@ -539,10 +547,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         builder: (_) => CustomTextField(
                           enabled: !viewModel.koliMi,
                           labelText: "Miktar",
+                          isFormattedString: true,
                           isMust: true,
                           controller: viewModel.koliMi ? null : miktarController,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) => viewModel.setMiktar(double.tryParse(value) ?? 0),
+                          onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                           suffix: Wrap(
                             children: [
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
@@ -557,10 +566,11 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         builder: (_) => CustomTextField(
                           labelText: "Miktar 2",
                           controller: miktar2Controller,
+                          isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           validator: miktar2Validator,
                           isMust: viewModel.model?.koliMi,
-                          onChanged: (value) => viewModel.setMiktar2(double.tryParse(value) ?? 0),
+                          onChanged: (value) => viewModel.setMiktar2(value.toDoubleWithFormattedString),
                           suffix: Wrap(
                             children: [
                               IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
@@ -580,7 +590,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         labelText: "Mal. Faz. Miktar",
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         controller: malFazMiktarController,
-                        onChanged: (value) => viewModel.setMFMiktar(double.tryParse(value) ?? 0),
+                        onChanged: (value) => viewModel.setMFMiktar(value.toDoubleWithFormattedString),
                         suffix: Wrap(
                           children: [
                             IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMFMiktar(malFazMiktarController)),
@@ -932,21 +942,21 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     teslimTarihiController.text = viewModel.kalemModel.teslimTarihi?.toDateString ?? "";
     yapKodController.text = viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
     isEmriController.text = viewModel.kalemModel.irsaliyeNo ?? "";
-    isk1Controller?.text = viewModel.kalemModel.iskonto1.toIntIfDouble.toStringIfNotNull ?? "";
+    isk1Controller?.text = viewModel.kalemModel.iskonto1.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk1TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk1Tipi.toIntIfDouble);
-    isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.toIntIfDouble.toStringIfNotNull ?? "";
+    isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk2TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk2Tipi.toIntIfDouble);
-    isk3YuzdeController?.text = viewModel.kalemModel.iskonto3.toIntIfDouble.toStringIfNotNull ?? "";
+    isk3YuzdeController?.text = viewModel.kalemModel.iskonto3.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk3TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk3Tipi.toIntIfDouble);
-    isk4YuzdeController?.text = viewModel.kalemModel.iskonto4.toIntIfDouble.toStringIfNotNull ?? "";
+    isk4YuzdeController?.text = viewModel.kalemModel.iskonto4.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk4TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk4Tipi.toIntIfDouble);
-    isk5YuzdeController?.text = viewModel.kalemModel.iskonto5.toIntIfDouble.toStringIfNotNull ?? "";
+    isk5YuzdeController?.text = viewModel.kalemModel.iskonto5.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk5TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk5Tipi.toIntIfDouble);
-    isk6YuzdeController?.text = viewModel.kalemModel.iskonto6.toIntIfDouble.toStringIfNotNull ?? "";
+    isk6YuzdeController?.text = viewModel.kalemModel.iskonto6.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk6TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk6Tipi.toIntIfDouble);
     fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-    miktarController.text = viewModel.kalemModel.miktar?.toIntIfDouble.toStringIfNotNull ?? "";
-    miktar2Controller.text = viewModel.kalemModel.miktar2?.toIntIfDouble.toStringIfNotNull ?? "";
+    miktarController.text = viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
+    miktar2Controller.text = viewModel.kalemModel.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
     muhRefKoduController.text = viewModel.kalemModel.muhRefKodu ?? "";
     malFazMiktarController.text = (viewModel.kalemModel.malFazlasiMiktar ?? viewModel.kalemModel.malFazlasiMiktar)?.toIntIfDouble.toStringIfNotNull ?? "";
@@ -1141,17 +1151,17 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   void setIskonto(int index, String value) {
     switch (index) {
       case 1:
-        viewModel.setIskonto1(double.tryParse(value) ?? 0);
+        viewModel.setIskonto1(value.toDoubleWithFormattedString);
       case 2:
-        viewModel.setIskonto2(double.tryParse(value) ?? 0);
+        viewModel.setIskonto2(value.toDoubleWithFormattedString);
       case 3:
-        viewModel.setIskonto3(double.tryParse(value) ?? 0);
+        viewModel.setIskonto3(value.toDoubleWithFormattedString);
       case 4:
-        viewModel.setIskonto4(double.tryParse(value) ?? 0);
+        viewModel.setIskonto4(value.toDoubleWithFormattedString);
       case 5:
-        viewModel.setIskonto5(double.tryParse(value) ?? 0);
+        viewModel.setIskonto5(value.toDoubleWithFormattedString);
       case 6:
-        viewModel.setIskonto6(double.tryParse(value) ?? 0);
+        viewModel.setIskonto6(value.toDoubleWithFormattedString);
       default:
     }
   }
