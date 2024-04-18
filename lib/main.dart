@@ -23,6 +23,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/kalem_sec/view/olcum_kalem_sec_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/olcum_belge_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/view/olcum_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view/olcum_girisi_listesi_view.dart";
@@ -462,6 +463,7 @@ class PickerApp extends StatelessWidget {
 
               //* Kalite-Kontrol
               GetPage(name: "/olcumGirisi", page: OlcumGirisiListesiView.new),
+              GetPage(name: "/olcumKalemSec", page: OlcumKalemSecView.new),
               GetPage(name: "/olcumDetay", page: () => OlcumBelgeEditView(model: Get.arguments)),
               GetPage(name: "/prosesEkle", page: () => ProsesEkleView(model: Get.arguments)),
               GetPage(name: "/olcumEkle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.ekle)),
