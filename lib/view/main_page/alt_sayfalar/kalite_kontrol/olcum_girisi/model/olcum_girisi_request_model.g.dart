@@ -15,6 +15,7 @@ _$OlcumGirisiRequestModelImpl _$$OlcumGirisiRequestModelImplFromJson(
       bittar: json['BITTAR'] as String?,
       siralama: json['SIRALAMA'] as String?,
       searchText: json['SearchText'] as String?,
+      sayfa: json['Sayfa'] as int?,
     );
 
 Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
@@ -33,5 +34,6 @@ Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
   writeNotNull('BITTAR', instance.bittar);
   writeNotNull('SIRALAMA', instance.siralama);
   writeNotNull('SearchText', instance.searchText);
+  writeNotNull('Sayfa', instance.sayfa);
   return val;
 }

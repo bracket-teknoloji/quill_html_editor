@@ -379,6 +379,10 @@ mixin _$OlcumBelgeModel {
   String? get searchText => throw _privateConstructorUsedError;
   @JsonKey(name: "SearchText")
   set searchText(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "Sayfa")
+  int? get sayfa => throw _privateConstructorUsedError;
+  @JsonKey(name: "Sayfa")
+  set sayfa(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -411,7 +415,8 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? cariAdi,
       int? kalemAdedi,
       String? prosesVar,
-      @JsonKey(name: "SearchText") String? searchText});
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
@@ -446,6 +451,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? kalemAdedi = freezed,
     Object? prosesVar = freezed,
     Object? searchText = freezed,
+    Object? sayfa = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -524,6 +530,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -555,7 +565,8 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? cariAdi,
       int? kalemAdedi,
       String? prosesVar,
-      @JsonKey(name: "SearchText") String? searchText});
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
@@ -588,6 +599,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? kalemAdedi = freezed,
     Object? prosesVar = freezed,
     Object? searchText = freezed,
+    Object? sayfa = freezed,
   }) {
     return _then(_$OlcumBelgeModelImpl(
       belgeNo: freezed == belgeNo
@@ -666,6 +678,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -692,7 +708,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.cariAdi,
       this.kalemAdedi,
       this.prosesVar,
-      @JsonKey(name: "SearchText") this.searchText})
+      @JsonKey(name: "SearchText") this.searchText,
+      @JsonKey(name: "Sayfa") this.sayfa})
       : super._();
 
   factory _$OlcumBelgeModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -737,6 +754,9 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   @JsonKey(name: "SearchText")
   String? searchText;
+  @override
+  @JsonKey(name: "Sayfa")
+  int? sayfa;
 
   @JsonKey(ignore: true)
   @override
@@ -773,7 +793,8 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? cariAdi,
       int? kalemAdedi,
       String? prosesVar,
-      @JsonKey(name: "SearchText") String? searchText}) = _$OlcumBelgeModelImpl;
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa}) = _$OlcumBelgeModelImpl;
   _OlcumBelgeModel._() : super._();
 
   factory _OlcumBelgeModel.fromJson(Map<String, dynamic> json) =
@@ -838,6 +859,11 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   String? get searchText;
   @JsonKey(name: "SearchText")
   set searchText(String? value);
+  @override
+  @JsonKey(name: "Sayfa")
+  int? get sayfa;
+  @JsonKey(name: "Sayfa")
+  set sayfa(int? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumBelgeModelImplCopyWith<_$OlcumBelgeModelImpl> get copyWith =>

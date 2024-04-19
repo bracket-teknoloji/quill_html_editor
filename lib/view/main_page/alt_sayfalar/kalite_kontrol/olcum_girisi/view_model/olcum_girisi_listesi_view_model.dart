@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
@@ -45,7 +46,10 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   String? appBarTitle;
 
   @observable
-  OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel(durum: 0);
+  bool dahaVarMi = true;
+
+  @observable
+  OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel(durum: 0, sayfa: 1);
 
   @observable
   ObservableList<OlcumBelgeModel>? olcumList;
@@ -58,9 +62,12 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
     searchBar = !searchBar;
     if (!searchBar) {
       setSearchText(null);
-      getData();
+      resetSayfa();
     }
   }
+
+  @action
+  void setDahaVarMi(bool value) => dahaVarMi = value;
 
   @action
   void setBastar(String? value) => requestModel = requestModel.copyWith(bastar: value);
@@ -81,19 +88,56 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setOlcumList(List<OlcumBelgeModel>? list) => olcumList = list?.asObservable();
 
   @action
+  void addOlcumList(List<OlcumBelgeModel> list) => olcumList!.addAll(list);
+
+  @action
   void setAppBarTitle(String? value) => appBarTitle = value;
+
+  @action
+  void increaseSayfa() => requestModel = requestModel.copyWith(sayfa: (requestModel.sayfa ?? 0) + 1);
+
+  @action
+  void resetSayfa() {
+    requestModel = requestModel.copyWith(sayfa: 1);
+    setOlcumList(null);
+    setDahaVarMi(true);
+    getData();
+  }
 
   @action
   void setSearchText(String? value) => requestModel = requestModel.copyWith(searchText: value);
 
   @action
   Future<void> getData() async {
-    //TODO sayfalama gelince düzenle
-    setOlcumList(null);
+    // setOlcumList(null);
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumBelgeModel(), data: requestModel.toJson());
-    if (result.success == true) {
+    // if (result.success == true) {
+    //   final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
+    //   if (requestModel.sayfa == 1){
+    //   setOlcumList(list);
+    //   }
+    //   if (list.length < parametreModel.sabitSayfalamaOgeSayisi){
+
+    //   }
+    // }
+    if (result.data is List) {
       final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
-      setOlcumList(list);
+      if ((requestModel.sayfa ?? 0) < 2) {
+        // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        if (olcumList.ext.isNullOrEmpty) {
+          setOlcumList(list);
+        } else {
+          addOlcumList(list);
+        }
+      } else {
+        addOlcumList(list);
+      }
+      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
+        setDahaVarMi(false);
+      } else {
+        setDahaVarMi(true);
+        increaseSayfa();
+      }
     }
   }
 }

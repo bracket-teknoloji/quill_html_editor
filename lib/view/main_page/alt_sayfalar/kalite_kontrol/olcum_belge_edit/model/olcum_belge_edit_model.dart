@@ -51,6 +51,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     int? kalemAdedi,
     String? prosesVar,
     @JsonKey(name: "SearchText") String? searchText,
+    @JsonKey(name: "Sayfa") int? sayfa,
   }) = _OlcumBelgeModel;
 
   factory OlcumBelgeModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
@@ -150,6 +151,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forKalemSec => OlcumBelgeModel(
         belgeNo: belgeNo,
         belgeTipi: belgeTipi,
+        sayfa: sayfa,
       );
 
   bool get prosesVarMi => prosesVar == "E";

@@ -12,6 +12,7 @@ class OlcumGirisiRequestModel with _$OlcumGirisiRequestModel {
     String? bittar,
     String? siralama,
     @JsonKey(name: "SearchText") String? searchText,
+    @JsonKey(name: "Sayfa") int? sayfa,
   }) = _OlcumGirisiRequestModel;
 
   factory OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) => _$OlcumGirisiRequestModelFromJson(json);

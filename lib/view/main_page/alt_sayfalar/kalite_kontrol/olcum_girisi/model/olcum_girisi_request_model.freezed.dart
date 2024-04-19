@@ -35,6 +35,10 @@ mixin _$OlcumGirisiRequestModel {
   String? get searchText => throw _privateConstructorUsedError;
   @JsonKey(name: "SearchText")
   set searchText(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "Sayfa")
+  int? get sayfa => throw _privateConstructorUsedError;
+  @JsonKey(name: "Sayfa")
+  set sayfa(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +58,8 @@ abstract class $OlcumGirisiRequestModelCopyWith<$Res> {
       String? bastar,
       String? bittar,
       String? siralama,
-      @JsonKey(name: "SearchText") String? searchText});
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
@@ -77,6 +82,7 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
     Object? bittar = freezed,
     Object? siralama = freezed,
     Object? searchText = freezed,
+    Object? sayfa = freezed,
   }) {
     return _then(_value.copyWith(
       durum: freezed == durum
@@ -103,6 +109,10 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -122,7 +132,8 @@ abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res>
       String? bastar,
       String? bittar,
       String? siralama,
-      @JsonKey(name: "SearchText") String? searchText});
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
@@ -144,6 +155,7 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
     Object? bittar = freezed,
     Object? siralama = freezed,
     Object? searchText = freezed,
+    Object? sayfa = freezed,
   }) {
     return _then(_$OlcumGirisiRequestModelImpl(
       durum: freezed == durum
@@ -170,6 +182,10 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -183,7 +199,8 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
       this.bastar,
       this.bittar,
       this.siralama,
-      @JsonKey(name: "SearchText") this.searchText});
+      @JsonKey(name: "SearchText") this.searchText,
+      @JsonKey(name: "Sayfa") this.sayfa});
 
   factory _$OlcumGirisiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumGirisiRequestModelImplFromJson(json);
@@ -201,10 +218,13 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   @override
   @JsonKey(name: "SearchText")
   String? searchText;
+  @override
+  @JsonKey(name: "Sayfa")
+  int? sayfa;
 
   @override
   String toString() {
-    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, searchText: $searchText)';
+    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, searchText: $searchText, sayfa: $sayfa)';
   }
 
   @JsonKey(ignore: true)
@@ -224,13 +244,13 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
 
 abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   factory _OlcumGirisiRequestModel(
-          {int? durum,
-          String? belgeTipi,
-          String? bastar,
-          String? bittar,
-          String? siralama,
-          @JsonKey(name: "SearchText") String? searchText}) =
-      _$OlcumGirisiRequestModelImpl;
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama,
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa}) = _$OlcumGirisiRequestModelImpl;
 
   factory _OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) =
       _$OlcumGirisiRequestModelImpl.fromJson;
@@ -255,6 +275,11 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   String? get searchText;
   @JsonKey(name: "SearchText")
   set searchText(String? value);
+  @override
+  @JsonKey(name: "Sayfa")
+  int? get sayfa;
+  @JsonKey(name: "Sayfa")
+  set sayfa(int? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>

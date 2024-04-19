@@ -28,22 +28,30 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
   late final TextEditingController bitisTarihiController;
   late final TextEditingController belgeTipiController;
   late final TextEditingController durumController;
+  late final ScrollController _scrollController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
+    _scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     belgeTipiController = TextEditingController();
     durumController = TextEditingController(text: viewModel.durumList.indexed.where((element) => element.$1 == viewModel.requestModel.durum).first.$2);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await filterBottomSheet();
+      _scrollController.addListener(() async {
+        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
+          await viewModel.getData();
+        }
+      });
     });
     super.initState();
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     baslangicTarihiController.dispose();
     bitisTarihiController.dispose();
     belgeTipiController.dispose();
@@ -64,7 +72,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               return CustomAppBarTextField(
                 onFieldSubmitted: (value) async {
                   viewModel.setSearchText(value);
-                  await viewModel.getData();
+                  viewModel.resetSayfa();
                 },
               );
             }
@@ -108,7 +116,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                 );
                 if (result is MapEntry) {
                   viewModel.requestModel.siralama = result.value;
-                  await viewModel.getData();
+                  viewModel.resetSayfa();
                 }
               },
             ),
@@ -121,22 +129,33 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          viewModel.getData();
-        },
+        onRefresh: () async => viewModel.resetSayfa(),
         child: Observer(
           builder: (_) {
             if (viewModel.getList == null) return const ListViewShimmer();
             if (viewModel.getList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
-            return ListView.builder(
-              itemCount: viewModel.getList?.length ?? 0,
-              padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => OlcumGirisiListesiCard(
-                model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
-                onTapped: (value) async {
-                  if (value) {
-                    await viewModel.getData();
+            return Observer(
+              builder: (_) => ListView.builder(
+                controller: _scrollController,
+                itemCount: viewModel.getList?.length != null ? viewModel.getList!.length + 1 : 0,
+                //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
+                padding: UIHelper.lowPadding,
+                primary: false,
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                itemBuilder: (context, index) {
+                  if (index == viewModel.getList?.length) {
+                    return Observer(
+                      builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())),
+                    );
                   }
+                  return OlcumGirisiListesiCard(
+                    model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
+                    onTapped: (value) async {
+                      if (value) {
+                        await viewModel.getData();
+                      }
+                    },
+                  );
                 },
               ),
             );

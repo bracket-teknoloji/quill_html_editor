@@ -49,6 +49,22 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
+  late final _$dahaVarMiAtom =
+      Atom(name: '_OlcumGirisiViewModelBase.dahaVarMi', context: context);
+
+  @override
+  bool get dahaVarMi {
+    _$dahaVarMiAtom.reportRead();
+    return super.dahaVarMi;
+  }
+
+  @override
+  set dahaVarMi(bool value) {
+    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
+      super.dahaVarMi = value;
+    });
+  }
+
   late final _$requestModelAtom =
       Atom(name: '_OlcumGirisiViewModelBase.requestModel', context: context);
 
@@ -98,6 +114,17 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
         .startAction(name: '_OlcumGirisiViewModelBase.setSearchBar');
     try {
       return super.setSearchBar();
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDahaVarMi(bool value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setDahaVarMi');
+    try {
+      return super.setDahaVarMi(value);
     } finally {
       _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -170,11 +197,44 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
+  void addOlcumList(List<OlcumBelgeModel> list) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.addOlcumList');
+    try {
+      return super.addOlcumList(list);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAppBarTitle(String? value) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setAppBarTitle');
     try {
       return super.setAppBarTitle(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void increaseSayfa() {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.increaseSayfa');
+    try {
+      return super.increaseSayfa();
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetSayfa() {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.resetSayfa');
+    try {
+      return super.resetSayfa();
     } finally {
       _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -196,6 +256,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     return '''
 searchBar: ${searchBar},
 appBarTitle: ${appBarTitle},
+dahaVarMi: ${dahaVarMi},
 requestModel: ${requestModel},
 olcumList: ${olcumList},
 getList: ${getList}
