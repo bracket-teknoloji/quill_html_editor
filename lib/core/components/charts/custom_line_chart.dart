@@ -41,7 +41,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   lineTouchData: LineTouchData(
                     enabled: true,
                     touchTooltipData: LineTouchTooltipData(
-                      tooltipBgColor: theme.colorScheme.inversePrimary,
+                      getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? theme.colorScheme.inversePrimary,
                       fitInsideHorizontally: true,
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,
