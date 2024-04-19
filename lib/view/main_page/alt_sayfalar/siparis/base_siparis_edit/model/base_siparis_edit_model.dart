@@ -939,7 +939,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get satirDovizIskonto => kalemList?.map((e) => e.dovizIskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
-  int toplamKalemMiktari([bool miktar2EklensinMi = false]) => (kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => a + b) ?? 0).toInt();
+  int toplamKalemMiktari([bool miktar2EklensinMi = false]) => kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamAraToplam => kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
@@ -1447,7 +1447,7 @@ class KalemModel with NetworkManagerMixin {
 
   bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 
-  bool get seriEksikMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) < (miktar ??0);
+  bool get seriEksikMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) < (miktar ?? 0);
 
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 

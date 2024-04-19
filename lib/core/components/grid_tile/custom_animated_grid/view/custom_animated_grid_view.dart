@@ -139,7 +139,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                                 altMenuVarMi: item?.altMenuVarMi,
                                 color: item?.color,
                                 name: item?.name.toString(),
-                                title: item?.title.toString(),
+                                title: item?.title,
                                 onTap: item?.isEnabled == false && item?.menuTipi == "IS"
                                     ? null
                                     : () async {

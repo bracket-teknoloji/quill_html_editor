@@ -23,7 +23,7 @@ class DeviceInfoModel {
 
       log("Running on ${androidInfo.brand}");
       log("Running on ${androidInfo.serialNumber}");
-      log("Running on ${androidInfo.data.toString()}");
+      log("Running on ${androidInfo.data}");
       log("Running on ${Platform.operatingSystem}");
     } else if (Platform.isIOS) {
       final iosInfo = await deviceInfo.iosInfo;

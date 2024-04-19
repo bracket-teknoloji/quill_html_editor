@@ -132,7 +132,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
                           }
                           setState(() {
                             lastItems.add(items);
-                            title2.add(item.title.toString());
+                            title2.add(item.title);
                             items = item.altMenuler!.where((element) {
                               element.color ??= item.color;
                               if (element.icon.ext.isNullOrEmpty) {

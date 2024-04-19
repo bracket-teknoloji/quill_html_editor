@@ -74,7 +74,7 @@ class NetworkManager {
           if (e.type == DioExceptionType.connectionError) {
             return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}"));
           } else if (e.type == DioExceptionType.unknown) {
-            print(e.toString());
+            print(e);
             return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
           } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
             if (e.requestOptions.path == ApiUrls.token) {

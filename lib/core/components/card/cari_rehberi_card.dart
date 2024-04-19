@@ -62,10 +62,9 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
             children: [
               Text(
                 (model.bakiye == null
-                        ? "0.00 $mainCurrency"
-                        : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
-                            "\n")
-                    .toString(),
+                    ? "0.00 $mainCurrency"
+                    : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
+                        "\n"),
                 style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
               ),
             ],
