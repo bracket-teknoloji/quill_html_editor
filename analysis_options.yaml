@@ -66,6 +66,14 @@ linter:
     prefer_typing_uninitialized_variables: true
     slash_for_doc_comments: true
     use_rethrow_when_possible: true
+    exhaustive_cases: true
+    implicit_call_tearoffs: true
+    invalid_case_patterns: true
+    always_declare_return_types: true
+    noop_primitive_operations: true
+    # avoid_types_on_closure_parameters: true
+    # avoid_catches_without_on_clauses: true
+
     # public_member_api_docs: true
 
 # Additional information about this file can be found at

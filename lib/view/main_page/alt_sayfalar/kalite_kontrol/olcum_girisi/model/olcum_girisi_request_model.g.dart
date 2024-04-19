@@ -14,6 +14,7 @@ _$OlcumGirisiRequestModelImpl _$$OlcumGirisiRequestModelImplFromJson(
       bastar: json['BASTAR'] as String?,
       bittar: json['BITTAR'] as String?,
       siralama: json['SIRALAMA'] as String?,
+      searchText: json['SearchText'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
@@ -31,5 +32,6 @@ Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
   writeNotNull('BASTAR', instance.bastar);
   writeNotNull('BITTAR', instance.bittar);
   writeNotNull('SIRALAMA', instance.siralama);
+  writeNotNull('SearchText', instance.searchText);
   return val;
 }

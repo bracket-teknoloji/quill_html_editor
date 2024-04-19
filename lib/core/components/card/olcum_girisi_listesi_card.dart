@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
@@ -10,6 +11,7 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 class OlcumGirisiListesiCard extends StatefulWidget {
@@ -71,7 +73,7 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                 onTap: () async {
                   Get.back();
                   final OlcumBelgeModel result = widget.model;
-                  if (EditTipiEnum.values.firstWhere((element) => element.rawValue == result.belgeTipi).kalemSecilecekMi) {
+                  if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
                     await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
                     widget.onTapped.call(true);
                     return;
@@ -83,6 +85,13 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
               // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
             ],
           ),
+          onLongPress: () async {
+            if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
+              dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [widget.model.cariKodu ?? ""])));
+            } else {
+              dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu)));
+            }
+          },
         ),
       );
 }

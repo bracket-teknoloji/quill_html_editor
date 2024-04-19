@@ -42,9 +42,6 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   bool searchBar = false;
 
   @observable
-  String? searchText;
-
-  @observable
   String? appBarTitle;
 
   @observable
@@ -54,12 +51,15 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<OlcumBelgeModel>? olcumList;
 
   @computed
-  List<OlcumBelgeModel>? get getList => olcumList?.where((element) => element.belgeNo?.toLowerCase().contains(searchText ?? "") ?? false).toList();
+  List<OlcumBelgeModel>? get getList => olcumList?.where((element) => element.belgeNo?.toLowerCase().contains(requestModel.searchText ?? "") ?? false).toList();
 
   @action
   void setSearchBar() {
     searchBar = !searchBar;
-    if (!searchBar) setSearchText(null);
+    if (!searchBar) {
+      setSearchText(null);
+      getData();
+    }
   }
 
   @action
@@ -84,7 +84,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setAppBarTitle(String? value) => appBarTitle = value;
 
   @action
-  void setSearchText(String? value) => searchText = value;
+  void setSearchText(String? value) => requestModel = requestModel.copyWith(searchText: value);
 
   @action
   Future<void> getData() async {

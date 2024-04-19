@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
@@ -62,6 +63,11 @@ class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
                         dialogManager.showErrorSnackBar("Bu kalemin prosesi bulunmamaktadır.");
                       } else {
                         Get.toNamed("/mainPage/olcumDetay", arguments: item);
+                      }
+                    },
+                    onLongPress: () async {
+                      if (yetkiController.stokKarti) {
+                        dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)));
                       }
                     },
                     title: Column(

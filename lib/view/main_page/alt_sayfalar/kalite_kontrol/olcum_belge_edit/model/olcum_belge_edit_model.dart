@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 part "olcum_belge_edit_model.freezed.dart";
 part "olcum_belge_edit_model.g.dart";
@@ -49,6 +50,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? cariAdi,
     int? kalemAdedi,
     String? prosesVar,
+    @JsonKey(name: "SearchText") String? searchText,
   }) = _OlcumBelgeModel;
 
   factory OlcumBelgeModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
@@ -151,6 +153,8 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
       );
 
   bool get prosesVarMi => prosesVar == "E";
+
+  EditTipiEnum get getEditTipiEnum => EditTipiEnum.values.firstWhere((element) => element.rawValue == belgeTipi);
 }
 
 extension OlcumEkleProsesExtensions on OlcumProsesModel? {

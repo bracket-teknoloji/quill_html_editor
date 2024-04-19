@@ -33,22 +33,6 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
-  late final _$searchTextAtom =
-      Atom(name: '_OlcumGirisiViewModelBase.searchText', context: context);
-
-  @override
-  String? get searchText {
-    _$searchTextAtom.reportRead();
-    return super.searchText;
-  }
-
-  @override
-  set searchText(String? value) {
-    _$searchTextAtom.reportWrite(value, super.searchText, () {
-      super.searchText = value;
-    });
-  }
-
   late final _$appBarTitleAtom =
       Atom(name: '_OlcumGirisiViewModelBase.appBarTitle', context: context);
 
@@ -211,7 +195,6 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   String toString() {
     return '''
 searchBar: ${searchBar},
-searchText: ${searchText},
 appBarTitle: ${appBarTitle},
 requestModel: ${requestModel},
 olcumList: ${olcumList},

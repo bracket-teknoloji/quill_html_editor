@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
@@ -50,6 +51,25 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           title: "Ölçüm Detayı",
           subtitle: widget.model.belgeNo,
         ),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              if (viewModel.model?.stokKodu != null) {
+                bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: widget.model.belgeNo ?? "",
+                  children: [
+                    BottomSheetModel(
+                      title: "Stok İşlemleri",
+                      onTap: () async => dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu))),
+                    ),
+                  ],
+                );
+              }
+            },
+            icon: const Icon(Icons.more_vert_outlined),
+          ),
+        ],
       );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(

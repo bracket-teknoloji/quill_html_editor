@@ -61,7 +61,12 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         title: Observer(
           builder: (_) {
             if (viewModel.searchBar) {
-              return CustomAppBarTextField(onChanged: viewModel.setSearchText);
+              return CustomAppBarTextField(
+                onFieldSubmitted: (value) async {
+                  viewModel.setSearchText(value);
+                  await viewModel.getData();
+                },
+              );
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",

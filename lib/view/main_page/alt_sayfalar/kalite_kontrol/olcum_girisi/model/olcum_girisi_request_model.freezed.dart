@@ -31,6 +31,10 @@ mixin _$OlcumGirisiRequestModel {
   set bittar(String? value) => throw _privateConstructorUsedError;
   String? get siralama => throw _privateConstructorUsedError;
   set siralama(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SearchText")
+  String? get searchText => throw _privateConstructorUsedError;
+  @JsonKey(name: "SearchText")
+  set searchText(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +53,8 @@ abstract class $OlcumGirisiRequestModelCopyWith<$Res> {
       String? belgeTipi,
       String? bastar,
       String? bittar,
-      String? siralama});
+      String? siralama,
+      @JsonKey(name: "SearchText") String? searchText});
 }
 
 /// @nodoc
@@ -71,6 +76,7 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
     Object? bastar = freezed,
     Object? bittar = freezed,
     Object? siralama = freezed,
+    Object? searchText = freezed,
   }) {
     return _then(_value.copyWith(
       durum: freezed == durum
@@ -93,6 +99,10 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
           ? _value.siralama
           : siralama // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -111,7 +121,8 @@ abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res>
       String? belgeTipi,
       String? bastar,
       String? bittar,
-      String? siralama});
+      String? siralama,
+      @JsonKey(name: "SearchText") String? searchText});
 }
 
 /// @nodoc
@@ -132,6 +143,7 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
     Object? bastar = freezed,
     Object? bittar = freezed,
     Object? siralama = freezed,
+    Object? searchText = freezed,
   }) {
     return _then(_$OlcumGirisiRequestModelImpl(
       durum: freezed == durum
@@ -154,6 +166,10 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
           ? _value.siralama
           : siralama // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -162,7 +178,12 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   _$OlcumGirisiRequestModelImpl(
-      {this.durum, this.belgeTipi, this.bastar, this.bittar, this.siralama});
+      {this.durum,
+      this.belgeTipi,
+      this.bastar,
+      this.bittar,
+      this.siralama,
+      @JsonKey(name: "SearchText") this.searchText});
 
   factory _$OlcumGirisiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumGirisiRequestModelImplFromJson(json);
@@ -177,10 +198,13 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   String? bittar;
   @override
   String? siralama;
+  @override
+  @JsonKey(name: "SearchText")
+  String? searchText;
 
   @override
   String toString() {
-    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama)';
+    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, searchText: $searchText)';
   }
 
   @JsonKey(ignore: true)
@@ -200,11 +224,13 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
 
 abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   factory _OlcumGirisiRequestModel(
-      {int? durum,
-      String? belgeTipi,
-      String? bastar,
-      String? bittar,
-      String? siralama}) = _$OlcumGirisiRequestModelImpl;
+          {int? durum,
+          String? belgeTipi,
+          String? bastar,
+          String? bittar,
+          String? siralama,
+          @JsonKey(name: "SearchText") String? searchText}) =
+      _$OlcumGirisiRequestModelImpl;
 
   factory _OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) =
       _$OlcumGirisiRequestModelImpl.fromJson;
@@ -224,6 +250,11 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   @override
   String? get siralama;
   set siralama(String? value);
+  @override
+  @JsonKey(name: "SearchText")
+  String? get searchText;
+  @JsonKey(name: "SearchText")
+  set searchText(String? value);
   @override
   @JsonKey(ignore: true)
   _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>

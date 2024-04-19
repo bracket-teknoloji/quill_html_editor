@@ -74,6 +74,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       cariAdi: json['CARI_ADI'] as String?,
       kalemAdedi: json['KALEM_ADEDI'] as int?,
       prosesVar: json['PROSES_VAR'] as String?,
+      searchText: json['SearchText'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
@@ -104,6 +105,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
   writeNotNull('PROSES_VAR', instance.prosesVar);
+  writeNotNull('SearchText', instance.searchText);
   return val;
 }
 
