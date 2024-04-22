@@ -50,6 +50,9 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? cariAdi,
     int? kalemAdedi,
     String? prosesVar,
+    String? teknikResimVarmi,
+    String? kontrolPlaniVarmi,
+    String? tur,
     @JsonKey(name: "SearchText") String? searchText,
     @JsonKey(name: "Sayfa") int? sayfa,
   }) = _OlcumBelgeModel;
@@ -152,6 +155,20 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
         belgeNo: belgeNo,
         belgeTipi: belgeTipi,
         sayfa: sayfa,
+      );
+
+  OlcumBelgeModel get forTeknikResim => OlcumBelgeModel(
+        stokKodu: stokKodu,
+        yapkod: yapkod,
+        opkodu: opkodu,
+        tur: "T",
+      );
+
+  OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(
+        stokKodu: stokKodu,
+        yapkod: yapkod,
+        opkodu: opkodu,
+        tur: "K",
       );
 
   bool get prosesVarMi => prosesVar == "E";

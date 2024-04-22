@@ -357,6 +357,8 @@ mixin _$DicParams {
   set miktar(int? value) => throw _privateConstructorUsedError;
   String? get yapkod => throw _privateConstructorUsedError;
   set yapkod(String? value) => throw _privateConstructorUsedError;
+  String? get opkodu => throw _privateConstructorUsedError;
+  set opkodu(String? value) => throw _privateConstructorUsedError;
   String? get kasaKodu => throw _privateConstructorUsedError;
   set kasaKodu(String? value) => throw _privateConstructorUsedError;
   String? get muhasebeKodu => throw _privateConstructorUsedError;
@@ -413,6 +415,7 @@ abstract class $DicParamsCopyWith<$Res> {
       String? gorunecekAlanlar,
       int? miktar,
       String? yapkod,
+      String? opkodu,
       String? kasaKodu,
       String? muhasebeKodu});
 }
@@ -469,6 +472,7 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? gorunecekAlanlar = freezed,
     Object? miktar = freezed,
     Object? yapkod = freezed,
+    Object? opkodu = freezed,
     Object? kasaKodu = freezed,
     Object? muhasebeKodu = freezed,
   }) {
@@ -629,6 +633,10 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
           ? _value.yapkod
           : yapkod // ignore: cast_nullable_to_non_nullable
               as String?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       kasaKodu: freezed == kasaKodu
           ? _value.kasaKodu
           : kasaKodu // ignore: cast_nullable_to_non_nullable
@@ -689,6 +697,7 @@ abstract class _$$DicParamsImplCopyWith<$Res>
       String? gorunecekAlanlar,
       int? miktar,
       String? yapkod,
+      String? opkodu,
       String? kasaKodu,
       String? muhasebeKodu});
 }
@@ -743,6 +752,7 @@ class __$$DicParamsImplCopyWithImpl<$Res>
     Object? gorunecekAlanlar = freezed,
     Object? miktar = freezed,
     Object? yapkod = freezed,
+    Object? opkodu = freezed,
     Object? kasaKodu = freezed,
     Object? muhasebeKodu = freezed,
   }) {
@@ -903,6 +913,10 @@ class __$$DicParamsImplCopyWithImpl<$Res>
           ? _value.yapkod
           : yapkod // ignore: cast_nullable_to_non_nullable
               as String?,
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       kasaKodu: freezed == kasaKodu
           ? _value.kasaKodu
           : kasaKodu // ignore: cast_nullable_to_non_nullable
@@ -959,6 +973,7 @@ class _$DicParamsImpl implements _DicParams {
       this.gorunecekAlanlar,
       this.miktar,
       this.yapkod,
+      this.opkodu,
       this.kasaKodu,
       this.muhasebeKodu});
 
@@ -1044,13 +1059,15 @@ class _$DicParamsImpl implements _DicParams {
   @override
   String? yapkod;
   @override
+  String? opkodu;
+  @override
   String? kasaKodu;
   @override
   String? muhasebeKodu;
 
   @override
   String toString() {
-    return 'DicParams(cariKodu: $cariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil, fiyatTipi: $fiyatTipi, tblnfStokfiyatgecmisiId: $tblnfStokfiyatgecmisiId, gorunecekAlanlar: $gorunecekAlanlar, miktar: $miktar, yapkod: $yapkod, kasaKodu: $kasaKodu, muhasebeKodu: $muhasebeKodu)';
+    return 'DicParams(cariKodu: $cariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil, fiyatTipi: $fiyatTipi, tblnfStokfiyatgecmisiId: $tblnfStokfiyatgecmisiId, gorunecekAlanlar: $gorunecekAlanlar, miktar: $miktar, yapkod: $yapkod, opkodu: $opkodu, kasaKodu: $kasaKodu, muhasebeKodu: $muhasebeKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -1108,6 +1125,7 @@ abstract class _DicParams implements DicParams {
       String? gorunecekAlanlar,
       int? miktar,
       String? yapkod,
+      String? opkodu,
       String? kasaKodu,
       String? muhasebeKodu}) = _$DicParamsImpl;
 
@@ -1231,6 +1249,9 @@ abstract class _DicParams implements DicParams {
   @override
   String? get yapkod;
   set yapkod(String? value);
+  @override
+  String? get opkodu;
+  set opkodu(String? value);
   @override
   String? get kasaKodu;
   set kasaKodu(String? value);

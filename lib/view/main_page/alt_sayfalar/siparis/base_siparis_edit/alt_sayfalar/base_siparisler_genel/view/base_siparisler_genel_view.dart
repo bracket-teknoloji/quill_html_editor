@@ -157,6 +157,10 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   controller: teslimCariController,
                   suffix: IconButton(
                     onPressed: () async {
+                      if (teslimCariController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                        return;
+                      }
                       final result = await Get.toNamed(
                         "mainPage/cariRehberi",
                         arguments: CariListesiRequestModel(

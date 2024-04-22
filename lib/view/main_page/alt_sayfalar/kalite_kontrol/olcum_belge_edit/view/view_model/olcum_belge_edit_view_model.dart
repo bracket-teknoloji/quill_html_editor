@@ -27,7 +27,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     model = null;
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeDetaylar, bodyModel: OlcumBelgeEditModel(), data: requestModel?.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeDetaylar, bodyModel: OlcumBelgeEditModel(), data: requestModel?.forDetayRequest.toJson());
     if (result.data is List) {
       final List<OlcumBelgeEditModel> data = result.data.map((e) => e as OlcumBelgeEditModel).toList().cast<OlcumBelgeEditModel>();
       model = data.firstOrNull;
@@ -36,8 +36,8 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future< List<OlcumProsesModel>?> getProsesler(int? id) async {
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(),showLoading: true, queryParameters: {"id": id});
+  Future<List<OlcumProsesModel>?> getProsesler(int? id) async {
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(), showLoading: true, queryParameters: {"id": id});
     if (result.data is List) {
       final List<OlcumProsesModel>? data = result.data.map((e) => e as OlcumProsesModel).toList().cast<OlcumProsesModel>();
       return data;

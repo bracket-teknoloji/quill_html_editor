@@ -74,12 +74,16 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                   Get.back();
                   final OlcumBelgeModel result = widget.model;
                   if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
-                    await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
-                    widget.onTapped.call(true);
+                    final result2 = await Get.toNamed("/mainPage/olcumKalemSec", arguments: result);
+                    if (result2 == true) {
+                      widget.onTapped.call(true);
+                    }
                     return;
                   }
-                  Get.toNamed("/mainPage/olcumDetay", arguments: result);
-                  widget.onTapped.call(true);
+                  final result2 = await Get.toNamed("/mainPage/olcumDetay", arguments: result);
+                  if (result2 == true) {
+                    widget.onTapped.call(true);
+                  }
                 },
               ),
               // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),

@@ -10,6 +10,7 @@ class BasePdfModel with NetworkManagerMixin {
   String? uzanti;
   double? reportWidth;
   double? reportHeight;
+  String? dosyaAdi;
 
   @override
   BasePdfModel fromJson(Map<String, dynamic> json) => _$BasePdfModelFromJson(json);

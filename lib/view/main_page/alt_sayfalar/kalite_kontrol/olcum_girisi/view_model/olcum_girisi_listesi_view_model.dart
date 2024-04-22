@@ -55,7 +55,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<OlcumBelgeModel>? olcumList;
 
   @computed
-  List<OlcumBelgeModel>? get getList => olcumList?.where((element) => element.belgeNo?.toLowerCase().contains(requestModel.searchText ?? "") ?? false).toList();
+  List<OlcumBelgeModel>? get getList => olcumList?.toList();
 
   @action
   void setSearchBar() {

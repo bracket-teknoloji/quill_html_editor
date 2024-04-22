@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -12,11 +13,14 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
@@ -35,7 +39,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
-    });
+    }); 
     super.initState();
   }
 
@@ -54,16 +58,92 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         actions: [
           IconButton(
             onPressed: () async {
-              if (viewModel.model?.stokKodu != null) {
+              if (viewModel.model?.belge?.firstOrNull?.stokKodu != null) {
                 bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: widget.model.belgeNo ?? "",
                   children: [
                     BottomSheetModel(
+                      title: "Teknik Resimleri Görüntüle",
+                      iconWidget: Icons.picture_as_pdf_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await networkManager.dioGet(
+                          path: ApiUrls.getBelgeler,
+                          bodyModel: OlcumPdfModel(),
+                          showLoading: true,
+                          data: viewModel.model?.belge?.firstOrNull?.forTeknikResim,
+                        );
+                        if (result.success == true) {
+                          OlcumPdfModel? selectedItem;
+                          final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
+                          if (list.length == 1) {
+                            selectedItem = list.first;
+                          } else {
+                            selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              groupValue: null,
+                              title: "Teknik Resim Seçiniz",
+                              children: List.generate(list.length, (index) {
+                                final OlcumPdfModel item = list[index];
+                                return BottomSheetModel(title: item.revno ?? "", value: item);
+                              }),
+                            );
+                          }
+                          if (selectedItem != null) {
+                            final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
+                            if (pdfData.data != null) {
+                              Get.to(() => GenelPdfView(model: pdfData.data));
+                            }
+                          }
+                        }
+                      },
+                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.teknikResimVarmi == "E"),
+                    BottomSheetModel(
+                      title: "Kontrol Planlarını Görüntüle",
+                      iconWidget: Icons.picture_as_pdf_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await networkManager.dioGet(
+                          path: ApiUrls.getBelgeler,
+                          bodyModel: OlcumPdfModel(),
+                          showLoading: true,
+                          data: viewModel.model?.belge?.firstOrNull?.forKontrolPlani,
+                        );
+                        if (result.success == true) {
+                          OlcumPdfModel? selectedItem;
+                          final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
+                          if (list.length == 1) {
+                            selectedItem = list.first;
+                          } else {
+                            selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              groupValue: null,
+                              title: "Kontrol Planı Seçiniz",
+                              children: List.generate(list.length, (index) {
+                                final OlcumPdfModel item = list[index];
+                                return BottomSheetModel(title: item.revno ?? "", value: item);
+                              }),
+                            );
+                          }
+                          if (selectedItem != null) {
+                            final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
+                            if (pdfData.data != null) {
+                              Get.to(() => GenelPdfView(model: pdfData.data));
+                            }
+                          }
+                        }
+                      },
+                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E"),
+                    BottomSheetModel(
                       title: "Stok İşlemleri",
-                      onTap: () async => dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu))),
+                      iconWidget: Icons.list_alt_outlined,
+                      onTap: () async {
+                        Get.back();
+                        dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
+                      },
                     ),
-                  ],
+                  ].nullCheckWithGeneric,
                 );
               }
             },

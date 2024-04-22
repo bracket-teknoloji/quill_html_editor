@@ -74,6 +74,9 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       cariAdi: json['CARI_ADI'] as String?,
       kalemAdedi: json['KALEM_ADEDI'] as int?,
       prosesVar: json['PROSES_VAR'] as String?,
+      teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
+      kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
+      tur: json['TUR'] as String?,
       searchText: json['SearchText'] as String?,
       sayfa: json['Sayfa'] as int?,
     );
@@ -106,6 +109,9 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
   writeNotNull('PROSES_VAR', instance.prosesVar);
+  writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
+  writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
+  writeNotNull('TUR', instance.tur);
   writeNotNull('SearchText', instance.searchText);
   writeNotNull('Sayfa', instance.sayfa);
   return val;

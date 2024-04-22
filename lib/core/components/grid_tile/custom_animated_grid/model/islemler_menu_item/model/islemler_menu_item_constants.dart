@@ -447,7 +447,10 @@ class IslemlerMenuItemConstants<T> {
         title: "Stok Kartı",
         isEnabled: _yetkiController.stokKarti,
         iconData: Icons.info_outline,
-        onTap: () async => Get.toNamed("/mainPage/stokEdit", arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: BaseEditEnum.duzenle)),
+        onTap: () async => Get.toNamed(
+          "/mainPage/stokEdit",
+          arguments: BaseEditModel(model: model as StokListesiModel, baseEditEnum: _yetkiController.stokKartiDuzenleme ? BaseEditEnum.duzenle : BaseEditEnum.goruntule),
+        ),
       );
   GridItemModel? get stokYazdir => GridItemModel.islemler(
         title: "Yazdır",

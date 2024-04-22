@@ -10,7 +10,8 @@ BasePdfModel _$BasePdfModelFromJson(Map<String, dynamic> json) => BasePdfModel()
   ..byteData = json['BYTE_DATA'] as String?
   ..uzanti = json['UZANTI'] as String?
   ..reportWidth = (json['REPORT_WIDTH'] as num?)?.toDouble()
-  ..reportHeight = (json['REPORT_HEIGHT'] as num?)?.toDouble();
+  ..reportHeight = (json['REPORT_HEIGHT'] as num?)?.toDouble()
+  ..dosyaAdi = json['DOSYA_ADI'] as String?;
 
 Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) {
   final val = <String, dynamic>{};
@@ -25,5 +26,6 @@ Map<String, dynamic> _$BasePdfModelToJson(BasePdfModel instance) {
   writeNotNull('UZANTI', instance.uzanti);
   writeNotNull('REPORT_WIDTH', instance.reportWidth);
   writeNotNull('REPORT_HEIGHT', instance.reportHeight);
+  writeNotNull('DOSYA_ADI', instance.dosyaAdi);
   return val;
 }

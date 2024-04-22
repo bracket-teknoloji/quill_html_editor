@@ -218,6 +218,28 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       ),
                     ),
                   ),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      if (_cariController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                        return;
+                      }
+                      final result = await Get.toNamed(
+                        "mainPage/cariRehberi",
+                        arguments: CariListesiRequestModel(
+                          kod: model.cariKodu ?? "",
+                          menuKodu: "CARI_CREH",
+                          belgeTuru: widget.model.editTipiEnum?.rawValue,
+                        ),
+                      );
+                      if (result != null && result is CariListesiModel) {
+                        model.cariKodu = result.cariKodu;
+                        model.cariAdi = result.cariAdi;
+                        _cariController.text = result.cariAdi ?? "";
+                      }
+                    },
+                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                  ),
                   onTap: () async {
                     var result = await Get.toNamed(
                       "mainPage/cariRehberi",
@@ -257,6 +279,28 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     viewModel.setTeslimCariAdi(null);
                     viewModel.setTeslimCariKodu(null);
                   },
+                  suffix: IconButton(
+                    onPressed: () async {
+                      if (_teslimCariController.text.isEmpty) {
+                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                        return;
+                      }
+                      final result = await Get.toNamed(
+                        "mainPage/cariRehberi",
+                        arguments: CariListesiRequestModel(
+                          kod: model.cariKodu ?? "",
+                          menuKodu: "CARI_CREH",
+                          belgeTuru: widget.model.editTipiEnum?.rawValue,
+                        ),
+                      );
+                      if (result != null && result is CariListesiModel) {
+                        model.teslimCari = result.cariKodu;
+                        model.teslimCariAdi = result.cariAdi;
+                        _teslimCariController.text = result.cariAdi ?? "";
+                      }
+                    },
+                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                  ),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result != null) {

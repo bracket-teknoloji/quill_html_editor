@@ -157,6 +157,7 @@ class DicParams with _$DicParams {
     String? gorunecekAlanlar,
     int? miktar,
     String? yapkod,
+    String? opkodu,
     String? kasaKodu,
     String? muhasebeKodu,
   }) = _DicParams;

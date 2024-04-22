@@ -28,6 +28,7 @@ import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
@@ -302,6 +303,18 @@ class NetworkManager {
   Future<GenericResponseModel> getPDF(PdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), headers: head, data: model.toJsonWithDicParamsMap());
+    return response;
+  }
+
+  Future<GenericResponseModel> getTeknikResimPdf(OlcumPdfModel model) async {
+    final Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await dioGet<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "T").toJson());
+    return response;
+  }
+
+  Future<GenericResponseModel> getKontrolPlaniPdf(OlcumPdfModel model) async {
+    final Map<String, String> head = getStandardHeader(true, true, true);
+    final response = await dioGet<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "K").toJson());
     return response;
   }
 
