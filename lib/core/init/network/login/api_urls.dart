@@ -144,4 +144,6 @@ class ApiUrls {
   static const String getSartliKabuller = "Sigma/GetSartliKabuller";
   static const String getProsesler = "Sigma/GetProsesler";
   static const String getProsesBildirim = "Sigma/GetProsesBildirim";
+  static const String getBelgeler = "Sigma/GetBelgeler";
+  static const String getBelge = "Sigma/GetBelge";
 }
