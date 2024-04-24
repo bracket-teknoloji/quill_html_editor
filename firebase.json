@@ -1,0 +1,29 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "flutter-picker",
+                    "appId": "1:9609536428:android:5a7b2c579d031d2e579009",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "flutter-picker",
+                    "appId": "1:9609536428:ios:533cdc2b1a920cd3579009",
+                    "uploadDebugSymbols": true,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "macos": {
+                "default": {
+                    "projectId": "flutter-picker",
+                    "appId": "1:9609536428:ios:533cdc2b1a920cd3579009",
+                    "uploadDebugSymbols": true,
+                    "fileOutput": "macos/Runner/GoogleService-Info.plist"
+                }
+            }
+        }
+    }
+}
