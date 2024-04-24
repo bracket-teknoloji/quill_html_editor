@@ -206,17 +206,15 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                     // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
                     child: ListTile(
                       onTap: () async {
-                        if (!widget.baseEditEnum.goruntuleMi || (widget.baseEditEnum.goruntuleMi && proses.olculecekMi)) {
-                          final result = await Get.toNamed(
-                            "/mainPage/prosesEkle",
-                            arguments: BaseEditModel<OlcumProsesModel>(
-                              model: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
-                              baseEditEnum: widget.baseEditEnum,
-                            ),
-                          );
-                          if (result is OlcumProsesModel) {
-                            viewModel.addProsesModel(result);
-                          }
+                        final result = await Get.toNamed(
+                          "/mainPage/prosesEkle",
+                          arguments: BaseEditModel<OlcumProsesModel>(
+                            model: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
+                            baseEditEnum: widget.baseEditEnum,
+                          ),
+                        );
+                        if (result is OlcumProsesModel) {
+                          viewModel.addProsesModel(result);
                         }
                       },
                       title: Observer(

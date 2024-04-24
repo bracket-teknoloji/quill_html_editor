@@ -56,6 +56,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
     _$OlcumBelgeModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
+      belgeSira: json['BELGE_SIRA'] as int?,
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
@@ -93,6 +94,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
 
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
+  writeNotNull('BELGE_SIRA', instance.belgeSira);
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('SIRA', instance.sira);
   writeNotNull('STOK_KODU', instance.stokKodu);

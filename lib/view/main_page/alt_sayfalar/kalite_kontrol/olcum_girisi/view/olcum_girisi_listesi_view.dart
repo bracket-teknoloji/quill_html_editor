@@ -78,7 +78,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",
-              subtitle: "${viewModel.appBarTitle} (${viewModel.getList?.length ?? 0})",
+              subtitle: viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.getList?.length ?? 0})" : null,
             );
           },
         ),
@@ -173,6 +173,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             RaporFiltreDateTimeBottomSheetView(
+              showBugunFirst: false,
               filterOnChanged: (index) {
                 viewModel.setBastar(baslangicTarihiController.text);
                 viewModel.setBittar(bitisTarihiController.text);
@@ -238,8 +239,10 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               onPressed: () async {
                 if (formKey.currentState?.validate() ?? false) {
                   Get.back();
+                  viewModel.setBastar(baslangicTarihiController.text);
+                  viewModel.setBittar(bitisTarihiController.text);
                   viewModel.setAppBarTitle(belgeTipiController.text);
-                  await viewModel.getData();
+                  viewModel.resetSayfa();
                 }
               },
               child: Text(loc.generalStrings.apply),

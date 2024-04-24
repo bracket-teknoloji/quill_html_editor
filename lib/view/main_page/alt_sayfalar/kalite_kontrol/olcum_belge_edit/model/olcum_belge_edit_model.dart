@@ -34,6 +34,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
   factory OlcumBelgeModel({
     String? belgeNo,
     String? belgeTipi,
+    int? belgeSira,
     DateTime? tarih,
     int? sira,
     String? stokKodu,
@@ -64,7 +65,8 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class OlcumOlcumlerModel with _$OlcumOlcumlerModel {
+class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
+  OlcumOlcumlerModel._();
   factory OlcumOlcumlerModel({
     int? id,
     int? belgeSira,
@@ -81,6 +83,9 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel {
   }) = _OlcumOlcumlerModel;
 
   factory OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
+
+  @override
+  OlcumOlcumlerModel fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
 }
 
 @unfreezed
@@ -162,6 +167,12 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
         yapkod: yapkod,
         opkodu: opkodu,
         tur: "T",
+      );
+
+  OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(
+    belgeNo: belgeNo,
+    belgeTipi: belgeTipi,
+    belgeSira: sira,
       );
 
   OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(

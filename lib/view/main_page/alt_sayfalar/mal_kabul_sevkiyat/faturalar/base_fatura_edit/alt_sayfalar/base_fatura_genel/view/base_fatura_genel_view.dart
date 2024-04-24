@@ -239,7 +239,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       }
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                  ),
+                  ).yetkiVarMi(isEkle),
                   onTap: () async {
                     var result = await Get.toNamed(
                       "mainPage/cariRehberi",
@@ -300,7 +300,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       }
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                  ),
+                  ).yetkiVarMi(isEkle),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result != null) {

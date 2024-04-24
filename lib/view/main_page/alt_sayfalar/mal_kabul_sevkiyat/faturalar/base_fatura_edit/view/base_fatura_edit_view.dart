@@ -134,9 +134,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-        return;
-      }
-      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
@@ -387,7 +385,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                             Get.back();
                             await dovizGuncelle();
                           },
-                        ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
+                        ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null && !widget.model.isGoruntule),
                         BottomSheetModel(
                           title: "Cari'ye Yapılan Son Satışlar",
                           iconWidget: Icons.info_outline_rounded,

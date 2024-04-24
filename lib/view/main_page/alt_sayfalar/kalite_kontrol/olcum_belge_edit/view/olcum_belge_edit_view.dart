@@ -9,6 +9,7 @@ import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
@@ -39,7 +40,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
-    }); 
+    });
     super.initState();
   }
 
@@ -241,83 +242,92 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
               const Text("Ölçümler").paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
               Expanded(
                 flex: 7,
-                child: viewModel.model?.olcumler?.isEmpty == true
-                    ? const Center(
-                        child: Text("Ölçüm kaydı bulunamadı"),
-                      )
-                    : ListView.builder(
-                        itemCount: viewModel.model?.olcumler?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          final item = viewModel.model?.olcumler?[index];
-                          final String title = "Ölçüm ${index + 1}";
-                          return Card(
-                            child: ListTile(
-                              onTap: () async {
-                                bottomSheetDialogManager.showBottomSheetDialog(
-                                  context,
-                                  title: title,
-                                  children: [
-                                    BottomSheetModel(
-                                      title: loc.generalStrings.view,
-                                      iconWidget: Icons.preview_outlined,
-                                      onTap: () async {
-                                        Get.back();
-                                        final newModel = await viewModel.getProsesler(item?.id);
-                                        if (!newModel.isEmptyOrNull) {
-                                          Get.toNamed(
-                                            "/mainPage/olcumGoruntule",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
-                                          );
-                                        }
-                                      },
-                                    ),
-                                    BottomSheetModel(
-                                      title: loc.generalStrings.edit,
-                                      iconWidget: Icons.edit_outlined,
-                                      onTap: () async {
-                                        Get.back();
-                                        final newModel = await viewModel.getProsesler(item?.id);
-                                        if (!newModel.isEmptyOrNull) {
-                                          final result = await Get.toNamed(
-                                            "/mainPage/olcumDuzenle",
-                                            arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
-                                          );
-                                          if (result != null) {
-                                            await viewModel.getData();
-                                          }
-                                        }
-                                      },
-                                    ),
-                                    BottomSheetModel(
-                                      title: loc.generalStrings.delete,
-                                      iconWidget: Icons.delete_outline_outlined,
-                                      onTap: () async {
-                                        Get.back();
-                                        dialogManager.showAreYouSureDialog(() async {
-                                          final result = await viewModel.deleteOlcum(item?.id);
-                                          if (result?.success == true) {
-                                            dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
-                                            await viewModel.getData();
-                                          }
-                                        });
-                                      },
-                                    ),
-                                  ],
-                                );
-                              },
-                              title: Text(title),
-                              subtitle: CustomLayoutBuilder(
-                                splitCount: 2,
-                                children: [
-                                  Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
-                                  Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
-                                  Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
+                child: RefreshIndicator.adaptive(
+                  onRefresh: () async {
+                    viewModel.getOlcumler();
+                  },
+                  child: Observer(
+                    builder: (_) => viewModel.model?.olcumler?.isEmptyOrNull == true
+                        ? viewModel.model?.olcumler != null
+                            ? const Center(
+                                child: Text("Ölçüm kaydı bulunamadı"),
+                              )
+                            : const ListViewShimmer()
+                        : ListView.builder(
+                            itemCount: viewModel.model?.olcumler?.length ?? 0,
+                            itemBuilder: (context, index) {
+                              final item = viewModel.model?.olcumler?[index];
+                              final String title = "Ölçüm ${index + 1}";
+                              return Card(
+                                child: ListTile(
+                                  onTap: () async {
+                                    bottomSheetDialogManager.showBottomSheetDialog(
+                                      context,
+                                      title: title,
+                                      children: [
+                                        BottomSheetModel(
+                                          title: loc.generalStrings.view,
+                                          iconWidget: Icons.preview_outlined,
+                                          onTap: () async {
+                                            Get.back();
+                                            final newModel = await viewModel.getProsesler(item?.id);
+                                            if (!newModel.isEmptyOrNull) {
+                                              Get.toNamed(
+                                                "/mainPage/olcumGoruntule",
+                                                arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                        BottomSheetModel(
+                                          title: loc.generalStrings.edit,
+                                          iconWidget: Icons.edit_outlined,
+                                          onTap: () async {
+                                            Get.back();
+                                            final newModel = await viewModel.getProsesler(item?.id);
+                                            if (!newModel.isEmptyOrNull) {
+                                              final result = await Get.toNamed(
+                                                "/mainPage/olcumDuzenle",
+                                                arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
+                                              );
+                                              if (result != null) {
+                                                await viewModel.getData();
+                                              }
+                                            }
+                                          },
+                                        ),
+                                        BottomSheetModel(
+                                          title: loc.generalStrings.delete,
+                                          iconWidget: Icons.delete_outline_outlined,
+                                          onTap: () async {
+                                            Get.back();
+                                            dialogManager.showAreYouSureDialog(() async {
+                                              final result = await viewModel.deleteOlcum(item?.id);
+                                              if (result?.success == true) {
+                                                dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
+                                                await viewModel.getData();
+                                              }
+                                            });
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  title: Text(title),
+                                  subtitle: CustomLayoutBuilder(
+                                    splitCount: 2,
+                                    children: [
+                                      Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                      Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                                      Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ).yetkiVarMi(viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false),
+                  ),
+                ),
               ),
             ],
           ).paddingAll(UIHelper.lowSize);

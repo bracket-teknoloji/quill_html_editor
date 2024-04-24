@@ -163,22 +163,26 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
         children: [
           Expanded(
             child: ElevatedButton(
-              onPressed: () {
-                Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
-              },
+              onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+                  ? () {}
+                  : () {
+                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
+                    },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis)),
               child: const Text("Onay"),
             ).paddingAll(UIHelper.lowSize),
-          ),
+          ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 1)),
           Expanded(
             child: ElevatedButton(
-              onPressed: () {
-                Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
-              },
+              onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+                  ? () {}
+                  : () {
+                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
+                    },
               style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed)),
               child: const Text("Ret"),
             ).paddingAll(UIHelper.lowSize),
-          ),
+          ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 0)),
         ],
       );
 

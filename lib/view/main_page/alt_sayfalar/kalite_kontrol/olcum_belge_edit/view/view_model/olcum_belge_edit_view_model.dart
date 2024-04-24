@@ -25,6 +25,9 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   void setRequestModel(OlcumBelgeModel reqModel) => requestModel = reqModel;
 
   @action
+  void setOlcumlerList(List<OlcumOlcumlerModel>? list) => model = model?.copyWith(olcumler: list);
+
+  @action
   Future<void> getData() async {
     model = null;
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeDetaylar, bodyModel: OlcumBelgeEditModel(), data: requestModel?.forDetayRequest.toJson());
@@ -33,6 +36,17 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
       model = data.firstOrNull;
       log(model?.toJson().toString() ?? "");
     }
+  }
+
+  @action
+  Future<List<OlcumOlcumlerModel>?> getOlcumler() async {
+    setOlcumlerList(null);
+    final result = await networkManager.dioGet(path: ApiUrls.getOlcumler, bodyModel: OlcumOlcumlerModel(), data: model?.belge?.first.forOlcumlerList.toJson());
+    if (result.data is List) {
+      final List<OlcumOlcumlerModel>? data = result.data.map((e) => e as OlcumOlcumlerModel).toList().cast<OlcumOlcumlerModel>();
+      setOlcumlerList(data);
+    }
+    return null;
   }
 
   @action

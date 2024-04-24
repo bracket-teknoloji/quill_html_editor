@@ -343,6 +343,8 @@ mixin _$OlcumBelgeModel {
   set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
   set belgeTipi(String? value) => throw _privateConstructorUsedError;
+  int? get belgeSira => throw _privateConstructorUsedError;
+  set belgeSira(int? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
   int? get sira => throw _privateConstructorUsedError;
@@ -405,6 +407,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
   $Res call(
       {String? belgeNo,
       String? belgeTipi,
+      int? belgeSira,
       DateTime? tarih,
       int? sira,
       String? stokKodu,
@@ -443,6 +446,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
   $Res call({
     Object? belgeNo = freezed,
     Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
     Object? tarih = freezed,
     Object? sira = freezed,
     Object? stokKodu = freezed,
@@ -474,6 +478,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
+              as int?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -573,6 +581,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
   $Res call(
       {String? belgeNo,
       String? belgeTipi,
+      int? belgeSira,
       DateTime? tarih,
       int? sira,
       String? stokKodu,
@@ -609,6 +618,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
   $Res call({
     Object? belgeNo = freezed,
     Object? belgeTipi = freezed,
+    Object? belgeSira = freezed,
     Object? tarih = freezed,
     Object? sira = freezed,
     Object? stokKodu = freezed,
@@ -640,6 +650,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeSira: freezed == belgeSira
+          ? _value.belgeSira
+          : belgeSira // ignore: cast_nullable_to_non_nullable
+              as int?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -734,6 +748,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   _$OlcumBelgeModelImpl(
       {this.belgeNo,
       this.belgeTipi,
+      this.belgeSira,
       this.tarih,
       this.sira,
       this.stokKodu,
@@ -764,6 +779,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   String? belgeNo;
   @override
   String? belgeTipi;
+  @override
+  int? belgeSira;
   @override
   DateTime? tarih;
   @override
@@ -828,6 +845,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   factory _OlcumBelgeModel(
       {String? belgeNo,
       String? belgeTipi,
+      int? belgeSira,
       DateTime? tarih,
       int? sira,
       String? stokKodu,
@@ -860,6 +878,9 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   @override
   String? get belgeTipi;
   set belgeTipi(String? value);
+  @override
+  int? get belgeSira;
+  set belgeSira(int? value);
   @override
   DateTime? get tarih;
   set tarih(DateTime? value);
@@ -1172,7 +1193,7 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
+class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
   _$OlcumOlcumlerModelImpl(
       {this.id,
       this.belgeSira,
@@ -1185,7 +1206,8 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
       this.sira,
       this.kabulAdet,
       this.sartliAdet,
-      this.retAdet});
+      this.retAdet})
+      : super._();
 
   factory _$OlcumOlcumlerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumOlcumlerModelImplFromJson(json);
@@ -1215,11 +1237,6 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
   @override
   double? retAdet;
 
-  @override
-  String toString() {
-    return 'OlcumOlcumlerModel(id: $id, belgeSira: $belgeSira, stokKodu: $stokKodu, stokAdi: $stokAdi, olcumlerOperator: $olcumlerOperator, kayityapankul: $kayityapankul, kayitOperator: $kayitOperator, kayittarihi: $kayittarihi, sira: $sira, kabulAdet: $kabulAdet, sartliAdet: $sartliAdet, retAdet: $retAdet)';
-  }
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -1235,7 +1252,7 @@ class _$OlcumOlcumlerModelImpl implements _OlcumOlcumlerModel {
   }
 }
 
-abstract class _OlcumOlcumlerModel implements OlcumOlcumlerModel {
+abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
   factory _OlcumOlcumlerModel(
       {int? id,
       int? belgeSira,
@@ -1249,6 +1266,7 @@ abstract class _OlcumOlcumlerModel implements OlcumOlcumlerModel {
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet}) = _$OlcumOlcumlerModelImpl;
+  _OlcumOlcumlerModel._() : super._();
 
   factory _OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) =
       _$OlcumOlcumlerModelImpl.fromJson;

@@ -57,6 +57,14 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$getOlcumlerAsyncAction =
+      AsyncAction('_OlcumBelgeEditViewModelBase.getOlcumler', context: context);
+
+  @override
+  Future<List<OlcumOlcumlerModel>?> getOlcumler() {
+    return _$getOlcumlerAsyncAction.run(() => super.getOlcumler());
+  }
+
   late final _$getProseslerAsyncAction = AsyncAction(
       '_OlcumBelgeEditViewModelBase.getProsesler',
       context: context);
@@ -83,6 +91,17 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
         .startAction(name: '_OlcumBelgeEditViewModelBase.setRequestModel');
     try {
       return super.setRequestModel(reqModel);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOlcumlerList(List<OlcumOlcumlerModel>? list) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setOlcumlerList');
+    try {
+      return super.setOlcumlerList(list);
     } finally {
       _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
     }
