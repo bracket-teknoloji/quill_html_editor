@@ -10,7 +10,7 @@ _$BaseGrupKoduModelImpl _$$BaseGrupKoduModelImplFromJson(
         Map<String, dynamic> json) =>
     _$BaseGrupKoduModelImpl(
       modul: json['MODUL'] as String?,
-      grupNo: json['GRUP_NO'] as int?,
+      grupNo: (json['GRUP_NO'] as num?)?.toInt(),
       grupKodu: json['GRUP_KODU'] as String?,
       grupAdi: json['GRUP_ADI'] as String?,
       tip: json['TIP'] as String?,

@@ -9,8 +9,8 @@ part of 'kasa_islemleri_model.dart';
 _$KasaIslemleriModelImpl _$$KasaIslemleriModelImplFromJson(
         Map<String, dynamic> json) =>
     _$KasaIslemleriModelImpl(
-      inckeyno: json['INCKEYNO'] as int?,
-      caharInckeyno: json['CAHAR_INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
+      caharInckeyno: (json['CAHAR_INCKEYNO'] as num?)?.toInt(),
       kasaKodu: json['KASA_KODU'] as String?,
       kasaAdi: json['KASA_ADI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
@@ -41,7 +41,7 @@ _$KasaIslemleriModelImpl _$$KasaIslemleriModelImplFromJson(
       kasaDevirTutari: (json['KASA_DEVIR_TUTARI'] as num?)?.toDouble(),
       kasaDovizDevirTutari:
           (json['KASA_DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble(),
-      kasaDovizTipi: json['KASA_DOVIZ_TIPI'] as int?,
+      kasaDovizTipi: (json['KASA_DOVIZ_TIPI'] as num?)?.toInt(),
       saat: json['SAAT'] as String?,
       kdvOrani: (json['KDV_ORANI'] as num?)?.toDouble(),
       dovizAdi: json['DOVIZ_ADI'] as String?,

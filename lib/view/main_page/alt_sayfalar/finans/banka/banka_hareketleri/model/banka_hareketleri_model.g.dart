@@ -9,19 +9,19 @@ part of 'banka_hareketleri_model.dart';
 _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
         Map<String, dynamic> json) =>
     _$BankaHareketleriModelImpl(
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       netheskodu: json['NETHESKODU'] as String?,
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      harturu: json['HARTURU'] as int?,
+      harturu: (json['HARTURU'] as num?)?.toInt(),
       ba: json['BA'] as String?,
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       aciklama: json['ACIKLAMA'] as String?,
       entegrefkey: json['ENTEGREFKEY'] as String?,
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
-      hareketTipi: json['HAREKET_TIPI'] as int?,
+      hareketTipi: (json['HAREKET_TIPI'] as num?)?.toInt(),
       hesapAdi: json['HESAP_ADI'] as String?,
       hareketAciklama: json['HAREKET_ACIKLAMA'] as String?,
       bankaKodu: json['BANKA_KODU'] as String?,

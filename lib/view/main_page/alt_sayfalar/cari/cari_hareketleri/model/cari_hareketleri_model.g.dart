@@ -9,7 +9,7 @@ part of 'cari_hareketleri_model.dart';
 CariHareketleriModel _$CariHareketleriModelFromJson(
         Map<String, dynamic> json) =>
     CariHareketleriModel()
-      ..inckeyno = json['INCKEYNO'] as int?
+      ..inckeyno = (json['INCKEYNO'] as num?)?.toInt()
       ..cariKodu = json['CARI_KODU'] as String?
       ..cariAdi = json['CARI_ADI'] as String?
       ..tarih =
@@ -26,7 +26,7 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..projeKodu = json['PROJE_KODU'] as String?
       ..projeAciklama = json['PROJE_ACIKLAMA'] as String?
       ..dovizBorc = (json['DOVIZ_BORC'] as num?)?.toDouble()
-      ..dovizTuru = json['DOVIZ_TURU'] as int?
+      ..dovizTuru = (json['DOVIZ_TURU'] as num?)?.toInt()
       ..dovizAdi = json['DOVIZ_ADI'] as String?
       ..refkey = json['REFKEY'] as String?
       ..vadeTarihi = json['VADE_TARIHI'] == null
@@ -36,7 +36,7 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..alacak = (json['ALACAK'] as num?)?.toDouble()
       ..bordroMu = json['BORDRO_MU'] as bool?
       ..dovizAlacak = (json['DOVIZ_ALACAK'] as num?)?.toDouble()
-      ..subeKodu = json['SUBE_KODU'] as int?
+      ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
       ..ebelgeTuru = json['EBELGE_TURU'] as String?
       ..resmiBelgeNo = json['RESMI_BELGE_NO'] as String?;
 

@@ -88,8 +88,8 @@ class IsletmeModelAdapter extends TypeAdapter<IsletmeModel> {
 
 IsletmeModel _$IsletmeModelFromJson(Map<String, dynamic> json) => IsletmeModel(
       sirket: json['SIRKET'] as String?,
-      isletmeKodu: json['ISLETME_KODU'] as int?,
-      subeKodu: json['SUBE_KODU'] as int?,
+      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
       subeAdi: json['SUBE_ADI'] as String?,
       isletmeAdi: json['ISLETME_ADI'] as String?,
       lokalDepoAktif: json['LOKAL_DEPO_AKTIF'] as bool?,

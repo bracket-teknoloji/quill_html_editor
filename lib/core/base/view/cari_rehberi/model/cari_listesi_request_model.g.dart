@@ -11,7 +11,7 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
     _$CariListesiRequestModelImpl(
       eFaturaGoster: json['EFaturaGoster'] as bool?,
       siralama: json['SIRALAMA'] as String? ?? "AZ",
-      sayfa: json['Sayfa'] as int? ?? 1,
+      sayfa: (json['Sayfa'] as num?)?.toInt() ?? 1,
       menuKodu: json['MenuKodu'] as String? ?? "CARI_CREH",
       filterText: json['FilterText'] as String? ?? "",
       kod: json['Kod'] as String? ?? "",
@@ -22,8 +22,9 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
       bitisTarihi: json['BitisTarihi'] == null
           ? null
           : DateTime.parse(json['BitisTarihi'] as String),
-      filtreler:
-          (json['Filtreler'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      filtreler: (json['Filtreler'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
       kullanici: json['Kullanici'] as String?,
       arrPlasiyer: (json['ArrPlasiyer'] as List<dynamic>?)
           ?.map((e) => e as String)

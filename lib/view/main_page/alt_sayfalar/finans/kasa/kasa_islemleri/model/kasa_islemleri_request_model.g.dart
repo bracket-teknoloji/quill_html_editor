@@ -12,7 +12,7 @@ _$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       menuKodu: json['MenuKodu'] as String?,
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
       plasiyerKodu: json['PlasiyerKodu'] as String?,
       hesapTipi: json['HesapTipi'] as String?,
       hesapKodu: json['HesapKodu'] as String?,

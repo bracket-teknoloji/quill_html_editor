@@ -14,7 +14,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynSatisIrs =
           (json['yazdirma_Dizayn_SatisIrs'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSatisTalebi = json['yazdirma_SatisTalebi'] as bool?
       ..yazdirmaSatisTalebiYazicilari =
@@ -23,12 +23,12 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynSatisTalebi =
           (json['yazdirma_Dizayn_SatisTalebi'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSatisTeklifi = json['yazdirma_SatisTeklifi'] as bool?
       ..yazdirmaDizaynSatisTeklifi =
           (json['yazdirma_Dizayn_SatisTeklifi'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSayim = json['yazdirma_Sayim'] as bool?
       ..yazdirmaSayimYazicilari =
@@ -36,7 +36,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..yazdirmaDizaynSayim = (json['yazdirma_Dizayn_Sayim'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
       ..yazdirmaSevkiyatEtiketi = json['yazdirma_Sevkiyat_Etiketi'] as bool?
       ..yazdirmaSevkiyatEtiketiYazicilari =
@@ -45,7 +45,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynSevkiyatEtiketi =
           (json['yazdirma_Dizayn_SevkiyatEtiketi'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSevkiyatEtiketiKopyaSayisiGizle =
           json['yazdirma_Sevkiyat_Etiketi_KopyaSayisiGizle'] as bool?
@@ -54,7 +54,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['yazdirma_Serbest_Yazicilari'] as List<dynamic>?
       ..yazdirmaDizaynSerbest =
           (json['yazdirma_Dizayn_Serbest'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSeriEtiketi = json['yazdirma_SeriEtiketi'] as bool?
       ..yazdirmaSeriEtiketiYazicilari =
@@ -63,7 +63,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynSeriEtiketi =
           (json['yazdirma_Dizayn_SeriEtiketi'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaStokEtiketi = json['yazdirma_Stok_Etiketi'] as bool?
       ..yazdirmaStokEtiketiYazicilari =
@@ -72,12 +72,12 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynStokEtiketi =
           (json['yazdirma_Dizayn_StokEtiketi'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaTahsilatMakbuzu = json['yazdirma_TahsilatMakbuzu'] as bool?
       ..yazdirmaDizaynTahsilatMakbuzu =
           (json['yazdirma_Dizayn_TahsilatMakbuzu'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaUsk = json['yazdirma_USK'] as bool?
       ..yazdirmaUskYazicilari =
@@ -85,7 +85,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..yazdirmaDizaynUSK = (json['yazdirma_Dizayn_USK'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
       ..yazdirmaUretMalTop = json['yazdirma_UretMalTop'] as bool?
       ..yazdirmaUretMalTopYazicilari =
@@ -118,15 +118,18 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sirketKalemKayitKontrolBelgeTipleri =
           json['sirket_KalemKayitKontrol_BelgeTipleri'] as List<dynamic>?
       ..sirketAktifDepolar = (json['sirket_aktifDepolar'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
-      ..sirketSatisDepo = json['sirket_satisDepo'] as int?
+      ..sirketSatisDepo = (json['sirket_satisDepo'] as num?)?.toInt()
       ..sirketSatisDepoOzellestir = json['sirket_satisDepo_Ozellestir'] as bool?
-      ..sirketSatisDepoMusSip = json['sirket_satisDepo_MusSip'] as int?
-      ..sirketSatisDepoSatisFat = json['sirket_satisDepo_SatisFat'] as int?
-      ..sirketSatisDepoSatisIrs = json['sirket_satisDepo_SatisIrs'] as int?
-      ..sirketAlisDepo = json['sirket_alisDepo'] as int?
-      ..sirketIadeDepo = json['sirket_iadeDepo'] as int?
+      ..sirketSatisDepoMusSip =
+          (json['sirket_satisDepo_MusSip'] as num?)?.toInt()
+      ..sirketSatisDepoSatisFat =
+          (json['sirket_satisDepo_SatisFat'] as num?)?.toInt()
+      ..sirketSatisDepoSatisIrs =
+          (json['sirket_satisDepo_SatisIrs'] as num?)?.toInt()
+      ..sirketAlisDepo = (json['sirket_alisDepo'] as num?)?.toInt()
+      ..sirketIadeDepo = (json['sirket_iadeDepo'] as num?)?.toInt()
       ..sirketProjeKodu = json['sirket_projeKodu'] as String?
       ..sirketAktifProjeler = (json['sirket_aktifProjeler'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -158,7 +161,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['malKabul_FiyatDegistirilmesin'] as bool?
       ..malKabulAlisIrsBelgeTipleri =
           (json['malKabul_AlisIrs_BelgeTipleri'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..malKabulAlisIrsGizlenecekAlanlar =
           (json['malKabul_AlisIrs_GizlenecekAlanlar'] as List<dynamic>?)
@@ -166,7 +169,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..malKabulAlisIrsAciklamaAlanlari =
           (json['malKabul_AlisIrs_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..malKabulSatinAlma = json['malKabul_SatinAlma'] as bool?
       ..malKabulSatinAlmaKaydet = json['malKabul_SatinAlma_Kaydet'] as bool?
@@ -191,7 +194,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulAlisIrsSipBagTumKalemlerSecilsin =
           json['malKabul_AlisIrs_SipBag_TumKalemlerSecilsin'] as bool?
       ..malKabulAlisIrsSipBagEslesmeDurumu =
-          json['malKabul_AlisIrs_SipBag_EslesmeDurumu'] as int?
+          (json['malKabul_AlisIrs_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..malKabulAlisIrsBarkodluGiris =
           json['malKabul_AlisIrs_BarkodluGiris'] as bool?
       ..malKabulAlisIrsMiktarOtomatikGelsin =
@@ -216,9 +219,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulAlisIrsOtoBasimYap =
           json['malKabul_AlisIrs_OtoBasimYap'] as bool?
       ..malKabulAlisIrsKacGunlukKayitlarListelensin =
-          json['malKabul_AlisIrs_KacGunlukKayitlarListelensin'] as int?
+          (json['malKabul_AlisIrs_KacGunlukKayitlarListelensin'] as num?)
+              ?.toInt()
       ..malKabulAlisIrsFiyatSirasi =
-          json['malKabul_AlisIrs_FiyatSirasi'] as int?
+          (json['malKabul_AlisIrs_FiyatSirasi'] as num?)?.toInt()
       ..malKabulAlisIrsCariKoduDegistir =
           json['malKabul_AlisIrs_CariKoduDegistir'] as bool?
       ..malKabulAlisIrsCariRehPlaEslesmesin =
@@ -229,7 +233,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulIadeSil = json['malKabul_Iade_Sil'] as bool?
       ..malKabulAlisFaturasiBelgeTipleri =
           (json['malKabul_AlisFaturasi_BelgeTipleri'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..malKabulAlisFaturasi = json['malKabul_AlisFaturasi'] as bool?
       ..malKabulAlisFaturasiKaydet =
@@ -240,14 +244,15 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulAlisFatDigerSekmesiGoster =
           json['malKabul_AlisFat_DigerSekmesiGoster'] as bool?
       ..malKabulAlisFatKacGunlukKayitlarListelensin =
-          json['malKabul_AlisFat_KacGunlukKayitlarListelensin'] as int?
+          (json['malKabul_AlisFat_KacGunlukKayitlarListelensin'] as num?)
+              ?.toInt()
       ..malKabulAlisFatFiyatSirasi =
-          json['malKabul_AlisFat_FiyatSirasi'] as int?
+          (json['malKabul_AlisFat_FiyatSirasi'] as num?)?.toInt()
       ..malKabulAlisFatAciklamalarYetkiTuru =
           json['malKabul_AlisFat_Aciklamalar_YetkiTuru'] as String?
       ..malKabulAlisFatAciklamaAlanlari =
           (json['malKabul_AlisFat_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..malKabulAlisFatCariKoduDegistir =
           json['malKabul_AlisFat_CariKoduDegistir'] as bool?
@@ -278,7 +283,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulAlisFatSipBagTumKalemlerSecilsin =
           json['malKabul_AlisFat_SipBag_TumKalemlerSecilsin'] as bool?
       ..malKabulAlisFatSipBagEslesmeDurumu =
-          json['malKabul_AlisFat_SipBag_EslesmeDurumu'] as int?
+          (json['malKabul_AlisFat_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..malKabulAlisFatRaporlar = json['malKabul_AlisFat_Raporlar'] as bool?
       ..malKabulAlisFatKalemRaporu =
           json['malKabul_AlisFat_KalemRaporu'] as bool?
@@ -293,9 +298,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferDatFiyatGor = json['transfer_DAT_FiyatGor'] as bool?
       ..transferDatOtoEtiketBas = json['transfer_DAT_OtoEtiketBas'] as bool?
       ..transferDatVarsayilanCikisDepo =
-          json['transfer_DAT_VarsayilanCikisDepo'] as int?
+          (json['transfer_DAT_VarsayilanCikisDepo'] as num?)?.toInt()
       ..transferDatVarsayilanGirisDepo =
-          json['transfer_DAT_VarsayilanGirisDepo'] as int?
+          (json['transfer_DAT_VarsayilanGirisDepo'] as num?)?.toInt()
       ..transferDatEIrsIsaretleyemesin =
           json['transfer_DAT_eIrsIsaretleyemesin'] as bool?
       ..transferDatDigerSekmesiGoster =
@@ -314,7 +319,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferDatKalemlerBirlestirilsin =
           json['transfer_DAT_KalemlerBirlestirilsin'] as bool?
       ..transferDatKacGunlukKayitlarListelensin =
-          json['transfer_DAT_KacGunlukKayitlarListelensin'] as int?
+          (json['transfer_DAT_KacGunlukKayitlarListelensin'] as num?)?.toInt()
       ..transferDatOnayIslemleri = json['transfer_DAT_OnayIslemleri'] as bool?
       ..transferDatOnayIslemleriDepolar =
           json['transfer_DAT_OnayIslemleri_Depolar'] as List<dynamic>?
@@ -359,7 +364,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferDatSipBagTumKalemlerSecilsin =
           json['transfer_DAT_SipBag_TumKalemlerSecilsin'] as bool?
       ..transferDatSipBagEslesmeDurumu =
-          json['transfer_DAT_SipBag_EslesmeDurumu'] as int?
+          (json['transfer_DAT_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..transferDatSipBagMalToplananlarGelsin =
           json['transfer_DAT_SipBag_MalToplananlarGelsin'] as bool?
       ..transferDatSipBagSevkOnayliSiparislerGelsin =
@@ -370,8 +375,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAgSil = json['transfer_AG_Sil'] as bool?
       ..transferAgFiyatGor = json['transfer_AG_FiyatGor'] as bool?
       ..transferAgKacGunlukKayitlarListelensin =
-          json['transfer_AG_KacGunlukKayitlarListelensin'] as int?
-      ..transferAgVarsayilanDepo = json['transfer_AG_VarsayilanDepo'] as int?
+          (json['transfer_AG_KacGunlukKayitlarListelensin'] as num?)?.toInt()
+      ..transferAgVarsayilanDepo =
+          (json['transfer_AG_VarsayilanDepo'] as num?)?.toInt()
       ..transferAgDigerSekmesiGoster =
           json['transfer_AG_DigerSekmesiGoster'] as bool?
       ..transferAgBelgeKopyala = json['transfer_AG_BelgeKopyala'] as bool?
@@ -404,7 +410,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAgSipBagTumKalemlerSecilsin =
           json['transfer_AG_SipBag_TumKalemlerSecilsin'] as bool?
       ..transferAgSipBagEslesmeDurumu =
-          json['transfer_AG_SipBag_EslesmeDurumu'] as int?
+          (json['transfer_AG_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..transferAgSipBagMalToplananlarGelsin =
           json['transfer_AG_SipBag_MalToplananlarGelsin'] as bool?
       ..transferAgSipBagSevkOnayliSiparislerGelsin =
@@ -415,8 +421,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAcSil = json['transfer_AC_Sil'] as bool?
       ..transferAcFiyatGor = json['transfer_AC_FiyatGor'] as bool?
       ..transferAcKacGunlukKayitlarListelensin =
-          json['transfer_AC_KacGunlukKayitlarListelensin'] as int?
-      ..transferAcVarsayilanDepo = json['transfer_AC_VarsayilanDepo'] as int?
+          (json['transfer_AC_KacGunlukKayitlarListelensin'] as num?)?.toInt()
+      ..transferAcVarsayilanDepo =
+          (json['transfer_AC_VarsayilanDepo'] as num?)?.toInt()
       ..transferAcEIrsIsaretleyemesin =
           json['transfer_AC_eIrsIsaretleyemesin'] as bool?
       ..transferAcDigerSekmesiGoster =
@@ -459,7 +466,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAcSipBagTumKalemlerSecilsin =
           json['transfer_AC_SipBag_TumKalemlerSecilsin'] as bool?
       ..transferAcSipBagEslesmeDurumu =
-          json['transfer_AC_SipBag_EslesmeDurumu'] as int?
+          (json['transfer_AC_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..transferAcSipBagMalToplananlarGelsin =
           json['transfer_AC_SipBag_MalToplananlarGelsin'] as bool?
       ..transferAcSipBagSevkOnayliSiparislerGelsin =
@@ -555,7 +562,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisIrsSipBagTumKalemlerSecilsin =
           json['sevkiyat_SatisIrs_SipBag_TumKalemlerSecilsin'] as bool?
       ..sevkiyatSatisIrsSipBagEslesmeDurumu =
-          json['sevkiyat_SatisIrs_SipBag_EslesmeDurumu'] as int?
+          (json['sevkiyat_SatisIrs_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..sevkiyatSatisIrsSipBagMalToplananlarGelsin =
           json['sevkiyat_SatisIrs_SipBag_MalToplananlarGelsin'] as bool?
       ..sevkiyatSatisIrsSipBagSevkOnayliSiparislerGelsin =
@@ -569,9 +576,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisIrsOtoBasimYap =
           json['sevkiyat_SatisIrs_OtoBasimYap'] as bool?
       ..sevkiyatSatisIrsKacGunlukKayitlarListelensin =
-          json['sevkiyat_SatisIrs_KacGunlukKayitlarListelensin'] as int?
+          (json['sevkiyat_SatisIrs_KacGunlukKayitlarListelensin'] as num?)
+              ?.toInt()
       ..sevkiyatSatisIrsFiyatSirasi =
-          json['sevkiyat_SatisIrs_FiyatSirasi'] as int?
+          (json['sevkiyat_SatisIrs_FiyatSirasi'] as num?)?.toInt()
       ..sevkiyatSatisIrsSeriGirisHarYapabilsin =
           json['sevkiyat_SatisIrs_SeriGirisHarYapabilsin'] as bool?
       ..sevkiyatSatisIrsEkAlan2Tablodan =
@@ -579,7 +587,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisIrsEkAlan2Hatirla =
           json['sevkiyat_SatisIrs_EkAlan2Hatirla'] as bool?
       ..sevkiyatSatisIrsOlcuBirimi =
-          json['sevkiyat_SatisIrs_OlcuBirimi'] as int?
+          (json['sevkiyat_SatisIrs_OlcuBirimi'] as num?)?.toInt()
       ..sevkiyatSatisIrsCariKoduDegistir =
           json['sevkiyat_SatisIrs_CariKoduDegistir'] as bool?
       ..sevkiyatSatisIrsMaxIskUygulamasi =
@@ -630,7 +638,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisFatBelgeTipleri =
           json['sevkiyat_SatisFat_BelgeTipleri'] as List<dynamic>?
       ..sevkiyatSatisFatVarsayilanBelgeTipi =
-          json['sevkiyat_SatisFat_VarsayilanBelgeTipi'] as int?
+          (json['sevkiyat_SatisFat_VarsayilanBelgeTipi'] as num?)?.toInt()
       ..sevkiyatSatisFat = json['sevkiyat_SatisFat'] as bool?
       ..sevkiyatSatisFatKaydet = json['sevkiyat_SatisFat_Kaydet'] as bool?
       ..sevkiyatSatisFatDuzelt = json['sevkiyat_SatisFat_Duzelt'] as bool?
@@ -646,9 +654,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisFatFiyatDegistirilmesin =
           json['sevkiyat_SatisFat_FiyatDegistirilmesin'] as bool?
       ..sevkiyatSatisFatKacGunlukKayitlarListelensin =
-          json['sevkiyat_SatisFat_KacGunlukKayitlarListelensin'] as int?
+          (json['sevkiyat_SatisFat_KacGunlukKayitlarListelensin'] as num?)
+              ?.toInt()
       ..sevkiyatSatisFatFiyatSirasi =
-          json['sevkiyat_SatisFat_FiyatSirasi'] as int?
+          (json['sevkiyat_SatisFat_FiyatSirasi'] as num?)?.toInt()
       ..sevkiyatSatisFatKalemlerBirlestirilsin =
           json['sevkiyat_SatisFat_KalemlerBirlestirilsin'] as bool?
       ..sevkiyatSatisFatEkAlan2Tablodan =
@@ -659,10 +668,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisFatFiltreSQL =
           json['sevkiyat_SatisFat_FiltreSQL'] as String?
       ..sevkiyatSatisFatOlcuBirimi =
-          json['sevkiyat_SatisFat_OlcuBirimi'] as int?
+          (json['sevkiyat_SatisFat_OlcuBirimi'] as num?)?.toInt()
       ..sevkiyatSatisFatAciklamaAlanlari =
           (json['sevkiyat_SatisFat_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..sevkiyatSatisFatBosGecilmeyecekAlanlar =
           (json['sevkiyat_SatisFat_BosGecilmeyecekAlanlar'] as List<dynamic>?)
@@ -697,7 +706,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisFatSipBagTumKalemlerSecilsin =
           json['sevkiyat_SatisFat_SipBag_TumKalemlerSecilsin'] as bool?
       ..sevkiyatSatisFatSipBagEslesmeDurumu =
-          json['sevkiyat_SatisFat_SipBag_EslesmeDurumu'] as int?
+          (json['sevkiyat_SatisFat_SipBag_EslesmeDurumu'] as num?)?.toInt()
       ..sevkiyatSatisFatSipBagSevkOnayliSiparislerGelsin =
           json['sevkiyat_SatisFat_SipBag_SevkOnayliSiparislerGelsin'] as bool?
       ..sevkiyatSatisFatBarkodluGiris =
@@ -767,7 +776,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSiptenMalTopSevkOnayliSiparislerGelsin =
           json['sevkiyat_SiptenMalTop_SevkOnayliSiparislerGelsin'] as bool?
       ..sevkiyatSiptenMalTopKacGunlukKayitlarListelensin =
-          json['sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin'] as int?
+          (json['sevkiyat_SiptenMalTop_KacGunlukKayitlarListelensin'] as num?)
+              ?.toInt()
       ..sevkemriMalToplama = json['sevkemri_MalToplama'] as bool?
       ..sevkemriMalToplamaAtanabilir =
           json['sevkemri_MalToplamaAtanabilir'] as bool?
@@ -818,7 +828,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkemriMalToplamaFazlaTeslimat =
           json['sevkemri_MalToplama_FazlaTeslimat'] as String?
       ..sevkemriMalToplamaVarsayilanOlcuBirimi =
-          json['sevkemri_MalToplama_VarsayilanOlcuBirimi'] as int?
+          (json['sevkemri_MalToplama_VarsayilanOlcuBirimi'] as num?)?.toInt()
       ..sevkemriMalToplamaSiralamaTipi =
           json['sevkemri_MalToplama_SiralamaTipi'] as String?
       ..sevkemriMalKontrol = json['sevkemri_MalKontrol'] as bool?
@@ -830,7 +840,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               json['sevkemri_MalKontrolTipi'] as Map<String, dynamic>)
       ..sevkemriMalKontrolKullanicilar =
           (json['sevkemri_MalKontrolKullanicilar'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..sevkemriPaketleme = json['sevkemri_Paketleme'] as bool?
       ..sevkemriPaketlemeKlavyeEngelle =
@@ -873,7 +883,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..sayimEkAlanlar = (json['sayim_EkAlanlar'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
       ..sayimDegismeyecekAlanlar =
           (json['sayim_DegismeyecekAlanlar'] as List<dynamic>?)
@@ -883,7 +893,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['sayim_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
-      ..sayimVarsayilanOlcuBirimi = json['sayim_VarsayilanOlcuBirimi'] as int?
+      ..sayimVarsayilanOlcuBirimi =
+          (json['sayim_VarsayilanOlcuBirimi'] as num?)?.toInt()
       ..sayimRaporu = json['sayim_Raporu'] as bool?
       ..paketOlustur = json['paket_Olustur'] as bool?
       ..paketCokluOlustur = json['paket_CokluOlustur'] as bool?
@@ -904,7 +915,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisMusteriSiparisiFiyatDegistirilmesin =
           json['siparis_MusteriSiparisi_FiyatDegistirilmesin'] as bool?
       ..siparisMusteriSiparisiFiyatSirasi =
-          json['siparis_MusteriSiparisi_FiyatSirasi'] as int?
+          (json['siparis_MusteriSiparisi_FiyatSirasi'] as num?)?.toInt()
       ..siparisMusSipBirim1DenKaydet =
           json['siparis_MusSip_Birim1denKaydet'] as bool?
       ..siparisMusteriSiparisiKapatmaIslemi =
@@ -932,7 +943,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['siparis_MusSip_CariKoduDegistir'] as bool?
       ..siparisMusteriSiparisiAciklamaAlanlari =
           (json['siparis_MusteriSiparisi_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..siparisMusteriSiparisiGizlenecekAlanlar =
           (json['siparis_MusteriSiparisi_GizlenecekAlanlar'] as List<dynamic>?)
@@ -950,9 +961,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisMusteriSiparisiSatirAciklamaAlanlari =
           (json['siparis_MusteriSiparisi_SatirAciklamaAlanlari']
                   as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
-      ..siparisMusSipOlcuBirimi = json['siparis_MusSip_OlcuBirimi'] as int?
+      ..siparisMusSipOlcuBirimi =
+          (json['siparis_MusSip_OlcuBirimi'] as num?)?.toInt()
       ..siparisMusSipBakiyesizStokSecilmesin =
           json['siparis_MusSip_BakiyesizStokSecilmesin'] as bool?
       ..siparisMusSipHizliUrunGirisiMiktar2Kullanilsin =
@@ -1003,7 +1015,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisSaticiSiparisiFiyatDegistirilmesin =
           json['siparis_SaticiSiparisi_FiyatDegistirilmesin'] as bool?
       ..siparisSaticiSiparisiFiyatSirasi =
-          json['siparis_SaticiSiparisi_FiyatSirasi'] as int?
+          (json['siparis_SaticiSiparisi_FiyatSirasi'] as num?)?.toInt()
       ..siparisSaticiSipBirim1DenKaydet =
           json['siparis_SaticiSip_Birim1denKaydet'] as bool?
       ..siparisSaticiSiparisiKapatmaIslemi =
@@ -1013,7 +1025,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisSaticiSipDigerSekmesiGoster =
           json['siparis_SaticiSip_DigerSekmesiGoster'] as bool?
       ..siparisSaticiSipOlcuBirimi =
-          json['siparis_SaticiSip_OlcuBirimi'] as int?
+          (json['siparis_SaticiSip_OlcuBirimi'] as num?)?.toInt()
       ..siparisSaticiSipCariKoduDegistir =
           json['siparis_SaticiSip_CariKoduDegistir'] as bool?
       ..siparisSaticiSiparisiRaporlar =
@@ -1142,7 +1154,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..cariOzelHesapKapatma = json['cari_OzelHesapKapatma'] as bool?
       ..cariOzelHesapKapatmaSil = json['cari_OzelHesapKapatma_Sil'] as bool?
       ..cariVadeKontrolu = json['cari_VadeKontrolu'] as bool?
-      ..cariVadeKontroluGun = json['cari_VadeKontrolu_Gun'] as int?
+      ..cariVadeKontroluGun = (json['cari_VadeKontrolu_Gun'] as num?)?.toInt()
       ..cariVadeKontroluBelgeTipleri =
           (json['cari_VadeKontrolu_BelgeTipleri'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -1308,7 +1320,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..yazdirmaDizaynDAT = (json['yazdirma_Dizayn_DAT'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
       ..yazdirmaPaketlemeEtiketi = json['yazdirma_Paketleme_Etiketi'] as bool?
       ..yazdirmaPaketlemeKopyaSayisiGizle =
@@ -1319,7 +1331,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynPaketleme =
           (json['yazdirma_Dizayn_Paketleme'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSatisIrs = json['yazdirma_SatisIrs'] as bool?
       ..yazdirmaSatisFat = json['yazdirma_SatisFat'] as bool?
@@ -1329,7 +1341,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynSatisFat =
           (json['yazdirma_Dizayn_SatisFat'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaAlisFat = json['yazdirma_AlisFat'] as bool?
       ..yazdirmaDizaynAlisFat =
@@ -1340,12 +1352,12 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['yazdirma_MusSip_Yazicilari'] as List<dynamic>?
       ..yazdirmaDizaynMusSip =
           (json['yazdirma_Dizayn_MusSip'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaSaticiSip = json['yazdirma_SaticiSip'] as bool?
       ..yazdirmaDizaynSaticiSip =
           (json['yazdirma_Dizayn_SaticiSip'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaAtal = json['yazdirma_ATAL'] as bool?
       ..yazdirmaAtalYazicilari =
@@ -1353,14 +1365,14 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..yazdirmaDizaynATAL = (json['yazdirma_Dizayn_ATAL'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
       ..yazdirmaOdemeMakbuzu = json['yazdirma_OdemeMakbuzu'] as bool?
       ..yazdirmaOdemeMakbuzuYazicilari =
           json['yazdirma_OdemeMakbuzu_Yazicilari'] as List<dynamic>?
       ..yazdirmaDizaynOdemeMakbuzu =
           (json['yazdirma_Dizayn_OdemeMakbuzu'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaAlisIrs = json['yazdirma_AlisIrs'] as bool?
       ..yazdirmaAlisIrsYazicilari =
@@ -1369,7 +1381,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..yazdirmaDizaynAlisIrs =
           (json['yazdirma_Dizayn_AlisIrs'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..yazdirmaIsEmri = json['yazdirma_IsEmri'] as bool?
       ..yazdirmaAmbarCikis = json['yazdirma_AmbarCikis'] as bool?
@@ -1380,11 +1392,13 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..uretimUskDuzelt = json['uretim_USK_Duzelt'] as bool?
       ..uretimUskSil = json['uretim_USK_Sil'] as bool?
       ..uretimUskKacGunlukKayitlarListelensin =
-          json['uretim_USK_KacGunlukKayitlarListelensin'] as int?
+          (json['uretim_USK_KacGunlukKayitlarListelensin'] as num?)?.toInt()
       ..uretimUskMiktarBarkoddan = json['uretim_USK_MiktarBarkoddan'] as bool?
       ..uretimUskMiktar1Gelsin = json['uretim_USK_Miktar1Gelsin'] as bool?
-      ..sirketDepoUretimGiris = json['sirket_Depo_Uretim_Giris'] as int?
-      ..sirketDepoUretimCikis = json['sirket_Depo_Uretim_Cikis'] as int?
+      ..sirketDepoUretimGiris =
+          (json['sirket_Depo_Uretim_Giris'] as num?)?.toInt()
+      ..sirketDepoUretimCikis =
+          (json['sirket_Depo_Uretim_Cikis'] as num?)?.toInt()
       ..uretimUskIsEmriOtoGelsin = json['uretim_USK_IsEmriOtoGelsin'] as bool?
       ..uretimUskSoruSorulmasin = json['uretim_USK_SoruSorulmasin'] as bool?
       ..uretimUskStokRehberiAcilmasin =
@@ -1404,7 +1418,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['uretim_USK_DegismeyecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
-      ..uretimUskOlcuBirimi = json['uretim_USK_OlcuBirimi'] as int?
+      ..uretimUskOlcuBirimi = (json['uretim_USK_OlcuBirimi'] as num?)?.toInt()
       ..uretimUskOtoYazdir = json['uretim_USK_OtoYazdir'] as String?
       ..uretimUskKalemliYapi = json['uretim_USK_KalemliYapi'] as bool?
       ..uretimUskKalemliYapiStokMevcutaEklensin =
@@ -1464,7 +1478,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..taltekStekAciklamaAlanlari =
           (json['taltek_STEK_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..taltekStekOzelKod1degeri = json['taltek_STEK_OzelKod1degeri'] as String?
       ..taltekStekDipFiyatUygulamasi =
@@ -1487,7 +1501,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..taltekAtalAciklamaAlanlari =
           (json['taltek_ATAL_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..taltekAtalBelgeKopyala = json['taltek_ATAL_BelgeKopyala'] as bool?
       ..taltekStal = json['taltek_STAL'] as bool?
@@ -1517,7 +1531,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..ebelgeEFatGoruntule = json['ebelge_EFatGoruntule'] as bool?
       ..ebelgeEFatAlisFatOlustur = json['ebelge_EFatAlisFatOlustur'] as bool?
       ..ebelgeEFatGonder = json['ebelge_EFatGonder'] as bool?
-      ..ebelgeEFatDizayn = json['ebelge_EFat_Dizayn'] as int?
+      ..ebelgeEFatDizayn = (json['ebelge_EFat_Dizayn'] as num?)?.toInt()
       ..ebelgeEArsiv = json['ebelge_EArsiv'] as bool?
       ..ebelgeEArsivTaslakOlustur = json['ebelge_EArsivTaslakOlustur'] as bool?
       ..ebelgeEArsivTaslakSil = json['ebelge_EArsivTaslakSil'] as bool?
@@ -1525,7 +1539,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..ebelgeEArsivGoruntule = json['ebelge_EArsivGoruntule'] as bool?
       ..ebelgeEArsivSorgula = json['ebelge_EArsivSorgula'] as bool?
       ..ebelgeEArsivGonder = json['ebelge_EArsivGonder'] as bool?
-      ..ebelgeEArsivDizayn = json['ebelge_EArsiv_Dizayn'] as int?
+      ..ebelgeEArsivDizayn = (json['ebelge_EArsiv_Dizayn'] as num?)?.toInt()
       ..ebelgeEIrsaliye = json['ebelge_EIrsaliye'] as bool?
       ..ebelgeEFaturaGidenKutusu = json['ebelge_EFatGidenKutusu'] as bool?
       ..ebelgeEIrsaliyeGidenKutusu =
@@ -1539,7 +1553,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['ebelge_EIrsaliyeTaslakBasim'] as bool?
       ..ebelgeEIrsaliyeGonder = json['ebelge_EIrsaliyeGonder'] as bool?
       ..ebelgeEIrsaliyeGoruntule = json['ebelge_EIrsaliyeGoruntule'] as bool?
-      ..ebelgeEIrsaliyeDizayn = json['ebelge_EIrsaliye_Dizayn'] as int?
+      ..ebelgeEIrsaliyeDizayn =
+          (json['ebelge_EIrsaliye_Dizayn'] as num?)?.toInt()
       ..entegrasyonUetdsesya = json['entegrasyon_UETDSESYA'] as bool?
       ..entegrasyonUetdsesyaIptal = json['entegrasyon_UETDSESYA_Iptal'] as bool?
       ..transferDatTekrarEdenBarkod =
@@ -1576,10 +1591,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..malKabulAlisFaturasiSipBagSecenegi =
           json['malKabul_AlisFaturasi_SipBagSecenegi'] as String?
       ..sevkiyatSatisIrsVarsayilanBelgeTipi =
-          json['sevkiyat_SatisIrs_VarsayilanBelgeTipi'] as int?
+          (json['sevkiyat_SatisIrs_VarsayilanBelgeTipi'] as num?)?.toInt()
       ..sevkiyatSatisIrsaliyesiAciklamaAlanlari =
           (json['sevkiyat_SatisIrsaliyesi_AciklamaAlanlari'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList()
       ..sevkiyatSatisIrsaliyesiAciklamaDuzenle =
           json['sevkiyat_SatisIrsaliyesi_AciklamaDuzenle'] as bool?
@@ -1607,7 +1622,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisMusSipTekrarEdenBarkod =
           json['siparis_MusSip_TekrarEdenBarkod'] as String?
       ..siparisMusSipKacGunlukKayitlarListelensin =
-          json['siparis_MusSip_KacGunlukKayitlarListelensin'] as int?
+          (json['siparis_MusSip_KacGunlukKayitlarListelensin'] as num?)?.toInt()
       ..siparisMusteriSiparisiAciklamaDuzenle =
           json['siparis_MusteriSiparisi_AciklamaDuzenle'] as bool?
       ..stokFiltreSqlTipi = json['stok_FiltreSQLTipi'] as String?
@@ -1664,7 +1679,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..siparisSatSipTekrarEdenBarkod =
           json['siparis_SatSip_TekrarEdenBarkod'] as String?
       ..siparisSatSipKacGunlukKayitlarListelensin =
-          json['siparis_SatSip_KacGunlukKayitlarListelensin'] as int?
+          (json['siparis_SatSip_KacGunlukKayitlarListelensin'] as num?)?.toInt()
       ..cariRapBorcAlacakDokumu = json['cari_Rap_BorcAlacakDokumu'] as bool?
       ..sirketProjeYetkiTuru = json['sirket_Proje_YetkiTuru'] as String?
       ..transferDatVarsayilanHarTuru =
@@ -3172,7 +3187,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(
         Map<String, dynamic> json) =>
     SevkemriMalKontrolTipi()
-      ..kod = json['Kod'] as int?
+      ..kod = (json['Kod'] as num?)?.toInt()
       ..tanim = json['Tanim'] as String?;
 
 Map<String, dynamic> _$SevkemriMalKontrolTipiToJson(

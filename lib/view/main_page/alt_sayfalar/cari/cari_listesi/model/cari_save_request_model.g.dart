@@ -908,8 +908,8 @@ extension $CariSaveRequestModelCopyWith on CariSaveRequestModel {
 CariSaveRequestModel _$CariSaveRequestModelFromJson(
         Map<String, dynamic> json) =>
     CariSaveRequestModel(
-      requestVersion: json['REQUEST_VERSION'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       yeniKayit: json['_YeniKayit'] as bool?,
       sahisFirmasi: json['SahisFirmasi'] as bool?,
       subeKodu: json['SUBE_KODU'] as String?,
@@ -930,7 +930,7 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
       vergiNo: json['VERGI_NO'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       dovizli: json['DOVIZLI'] as String?,
-      dovizKodu: json['DOVIZ_KODU'] as int?,
+      dovizKodu: (json['DOVIZ_KODU'] as num?)?.toInt(),
       grupKodu: json['GRUP_KODU'] as String?,
       kod1: json['KOD1'] as String?,
       kod2: json['KOD2'] as String?,

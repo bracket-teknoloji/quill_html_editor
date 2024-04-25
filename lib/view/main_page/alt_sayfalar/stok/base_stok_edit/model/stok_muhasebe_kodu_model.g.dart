@@ -9,7 +9,7 @@ part of 'stok_muhasebe_kodu_model.dart';
 StokMuhasebeKoduModel _$StokMuhasebeKoduModelFromJson(
         Map<String, dynamic> json) =>
     StokMuhasebeKoduModel()
-      ..muhKodu = json['MUH_KODU'] as int?
+      ..muhKodu = (json['MUH_KODU'] as num?)?.toInt()
       ..adi = json['ADI'] as String?
       ..alisHesabi = json['ALIS_HESABI'] as String?
       ..satisHesabi = json['SATIS_HESABI'] as String?

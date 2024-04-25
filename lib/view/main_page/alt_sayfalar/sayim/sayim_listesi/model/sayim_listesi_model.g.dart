@@ -16,10 +16,11 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       depo: json['DEPO'] as String?,
       aktif: json['AKTIF'] as String?,
       kullanicilarJson: json['KULLANICILAR_JSON'] as String?,
-      depoList:
-          (json['DEPO_LIST'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      depoList: (json['DEPO_LIST'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
       kullaniciList: (json['KULLANICI_LIST'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
       kullanicilar: json['KULLANICILAR'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
@@ -32,9 +33,9 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       bitisTarihi: json['BITIS_TARIHI'] == null
           ? null
           : DateTime.parse(json['BITIS_TARIHI'] as String),
-      id: json['ID'] as int?,
-      depoKodu: json['DEPO_KODU'] as int?,
-      cevrim: json['CEVRIM'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      cevrim: (json['CEVRIM'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       kayityapankul: json['KAYITYAPANKUL'] as String?,
       depoTanimi: json['DEPO_TANIMI'] as String?,
@@ -89,9 +90,9 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      depoKodu: json['DEPO_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       seriList: json['SeriList'] as List<dynamic>?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       tipi: json['TIPI'] as String?,
       arrKod1:
@@ -105,7 +106,7 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       arrKod5:
           (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      olcuBirimKodu: json['OLCU_BIRIM_KODU'] as int?,
+      olcuBirimKodu: (json['OLCU_BIRIM_KODU'] as num?)?.toInt(),
       projeKodu: json['PROJE_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       kull1s: json['KULL1S'] as String?,

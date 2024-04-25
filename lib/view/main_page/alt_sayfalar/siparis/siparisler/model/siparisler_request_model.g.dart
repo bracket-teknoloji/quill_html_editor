@@ -29,7 +29,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrPlasiyerKodu: json['ArrPlasiyerKodu'] as String?,
       arrKod1: json['ArrKod1'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "R",
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       searchText: json['SearchText'] as String?,

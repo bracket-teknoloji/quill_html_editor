@@ -144,7 +144,7 @@ Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
 FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..aS = json['A_S'] as String?
   ..stokKodu = json['STOK_KODU'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..dovizKodu = json['DOVIZ_KODU'] as String?
   ..bastar =
       json['BASTAR'] == null ? null : DateTime.parse(json['BASTAR'] as String)
@@ -182,16 +182,16 @@ Map<String, dynamic> _$FiyatListToJson(FiyatList instance) {
 _$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
     _$SeriListImpl(
       stokKodu: json['STOK_KODU'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       seriNo: json['SERI_NO'] as String?,
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       depoTanimi: json['DEPO_TANIMI'] as String?,
-      hareketId: json['HAREKET_ID'] as int?,
+      hareketId: (json['HAREKET_ID'] as num?)?.toInt(),
       barkod: json['BARKOD'] as String?,
       gckod: json['GCKOD'] as String?,
       seri1: json['SERI1'] as String?,
-      requestVersion: json['REQUEST_VERSION'] as int?,
+      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
       tempBarkod: json['TEMP_BARKOD'] as String?,
       seri2: json['SERI2'] as String?,
       seri3: json['SERI3'] as String?,

@@ -111,15 +111,16 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..wsWan = json['WS_WAN'] as String?
       ..webServis = json['WEB_SERVIS'] as String?
       ..lisansBitisTarihi = json['LISANS_BITIS_TARIHI']
-      ..kullaniciSayisi = json['KULLANICI_SAYISI'] as int?
+      ..kullaniciSayisi = (json['KULLANICI_SAYISI'] as num?)?.toInt()
       ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
       ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
-      ..sozlesmeBitisKalanGun = json['SOZLESME_BITIS_KALAN_GUN'] as int?
+      ..sozlesmeBitisKalanGun =
+          (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
       ..karsilamaMesaji = json['KARSILAMA_MESAJI']
       ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
-      ..karsilamaSaniye = json['KARSILAMA_SANIYE'] as int?
+      ..karsilamaSaniye = (json['KARSILAMA_SANIYE'] as num?)?.toInt()
       ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
-      ..maxApkVersion = json['MAX_APK_VERSION'] as int?
+      ..maxApkVersion = (json['MAX_APK_VERSION'] as num?)?.toInt()
       ..maxWsVersion = json['MAX_WS_VERSION'] as String?
       ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
       ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true;

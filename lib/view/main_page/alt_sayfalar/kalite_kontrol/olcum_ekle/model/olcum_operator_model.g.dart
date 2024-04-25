@@ -9,7 +9,7 @@ part of 'olcum_operator_model.dart';
 _$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumOperatorModelImpl(
-      id: json['ID'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
       isyeri: json['ISYERI'] as String?,
       adi: json['ADI'] as String?,
       istasyonKodu: json['ISTASYON_KODU'] as String?,
@@ -18,7 +18,7 @@ _$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
       sicilno: json['SICILNO'] as String?,
       adiSoyadi: json['ADI_SOYADI'] as String?,
       soyadi: json['SOYADI'] as String?,
-      isletmeKodu: json['ISLETME_KODU'] as int?,
+      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
       sicilNo: json['SICIL_NO'] as String?,
       kartid: json['KARTID'] as String?,
       resim: json['RESIM'] as String?,

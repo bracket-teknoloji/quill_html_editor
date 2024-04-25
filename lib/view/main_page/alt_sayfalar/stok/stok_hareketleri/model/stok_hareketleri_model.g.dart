@@ -9,7 +9,7 @@ part of 'stok_hareketleri_model.dart';
 StokHareketleriModel _$StokHareketleriModelFromJson(
         Map<String, dynamic> json) =>
     StokHareketleriModel()
-      ..inckeyno = json['INCKEYNO'] as int?
+      ..inckeyno = (json['INCKEYNO'] as num?)?.toInt()
       ..cikisIslemi = json['CIKIS_ISLEMI'] as bool?
       ..stokAdi = json['STOK_ADI'] as String?
       ..stokKodu = json['STOK_KODU'] as String?
@@ -27,10 +27,10 @@ StokHareketleriModel _$StokHareketleriModelFromJson(
       ..belgeTipiAciklama = json['BELGE_TIPI_ACIKLAMA'] as String?
       ..cariKodu = json['CARI_KODU'] as String?
       ..ambarIslemi = json['AMBAR_ISLEMI'] as String?
-      ..depoKodu = json['DEPO_KODU'] as int?
+      ..depoKodu = (json['DEPO_KODU'] as num?)?.toInt()
       ..depoAdi = json['DEPO_ADI'] as String?
       ..aciklama = json['ACIKLAMA'] as String?
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
       ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
       ..seriAktif = json['SERI_AKTIF'] as String?
       ..ekalan1 = json['EKALAN1'] as String?

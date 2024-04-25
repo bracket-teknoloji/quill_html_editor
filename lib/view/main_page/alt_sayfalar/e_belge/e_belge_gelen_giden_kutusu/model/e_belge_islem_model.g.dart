@@ -13,8 +13,8 @@ _$EBelgeIslemModelImpl _$$EBelgeIslemModelImplFromJson(
       belgeTuru: json['BELGE_TURU'] as String?,
       ebelgeTuru: json['EBELGE_TURU'] as String?,
       kutuTuru: json['KUTU_TURU'] as String?,
-      inckeyno: json['INCKEYNO'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       resmiBelgeNo: json['RESMI_BELGE_NO'] as String?,
       senaryoTipi: json['SENARYO_TIPI'] as String?,
       zarfid: json['ZARFID'] as String?,
@@ -23,9 +23,9 @@ _$EBelgeIslemModelImpl _$$EBelgeIslemModelImplFromJson(
       iptalTarihi: json['IPTAL_TARIHI'] == null
           ? null
           : DateTime.parse(json['IPTAL_TARIHI'] as String),
-      kopyaSayisi: json['KOPYA_SAYISI'] as int?,
+      kopyaSayisi: (json['KOPYA_SAYISI'] as num?)?.toInt(),
       yaziciAdi: json['YAZICI_ADI'] as String?,
-      dizaynNo: json['DIZAYN_NO'] as int?,
+      dizaynNo: (json['DIZAYN_NO'] as num?)?.toInt(),
       dovizliOlustur: json['DOVIZLI_OLUSTUR'] as bool?,
       gonderimSekliEposta: json['GONDERIM_SEKLI_EPOSTA'] as bool?,
       internetFaturasi: json['INTERNET_FATURASI'] as bool?,

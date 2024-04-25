@@ -22,7 +22,7 @@ _$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       yeniKayit: json['_YeniKayit'] as bool?,
-      dekontNo: json['DEKONT_NO'] as int?,
+      dekontNo: (json['DEKONT_NO'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(

@@ -35,11 +35,11 @@ _$TalepTeklifListesiModelImpl _$$TalepTeklifListesiModelImplFromJson(
       kdv: (json['KDV'] as num?)?.toDouble(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
-      genisk3Tipi: json['GENISK3_TIPI'] as int?,
-      kalemAdedi: json['KALEM_ADEDI'] as int?,
-      tipi: json['TIPI'] as int?,
-      vadeGunu: json['VADE_GUNU'] as int?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
+      genisk3Tipi: (json['GENISK3_TIPI'] as num?)?.toInt(),
+      kalemAdedi: (json['KALEM_ADEDI'] as num?)?.toInt(),
+      tipi: (json['TIPI'] as num?)?.toInt(),
+      vadeGunu: (json['VADE_GUNU'] as num?)?.toInt(),
       tempSipList: json['TEMP_SIP_LIST'] as List<dynamic>?,
       kalemList: (json['KALEM_LIST'] as List<dynamic>?)
           ?.map((e) => KalemListModel.fromJson(e as Map<String, dynamic>))
@@ -91,7 +91,7 @@ _$TalepTeklifListesiModelImpl _$$TalepTeklifListesiModelImplFromJson(
       ekAcik7: json['EK_ACIK7'] as String?,
       ekAcik8: json['EK_ACIK8'] as String?,
       ekAcik9: json['EK_ACIK9'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       tag: json['TAG'] as String? ?? "FaturaModel",
     );
 

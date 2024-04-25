@@ -10,7 +10,7 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
     _$OlcumEkleModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      belgeSira: json['BELGE_SIRA'] as int?,
+      belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
       opkodu: json['OPKODU'] as String?,
@@ -18,10 +18,10 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      sira: json['SIRA'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
       stokAdi: json['STOK_ADI'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
-      belgeId: json['BELGE_ID'] as int?,
+      belgeId: (json['BELGE_ID'] as num?)?.toInt(),
       prosesler: (json['PROSESLER'] as List<dynamic>?)
           ?.map((e) => OlcumProsesModel.fromJson(e as Map<String, dynamic>))
           .toList(),

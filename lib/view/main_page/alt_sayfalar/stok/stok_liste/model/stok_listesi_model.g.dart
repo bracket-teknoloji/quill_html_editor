@@ -1257,13 +1257,13 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       satisFiat3: (json['SATIS_FIAT3'] as num?)?.toDouble(),
       satisFiat4: (json['SATIS_FIAT4'] as num?)?.toDouble(),
       satisKdv: (json['SATIS_KDV'] as num?)?.toDouble(),
-      alisDovTip: json['ALIS_DOV_TIP'] as int?,
+      alisDovTip: (json['ALIS_DOV_TIP'] as num?)?.toInt(),
       bulunanFiyat: (json['BULUNAN_FIYAT'] as num?)?.toDouble(),
-      depoKodu: json['DEPO_KODU'] as int?,
-      fiatBirimi: json['FIAT_BIRIMI'] as int?,
-      muhdetayKodu: json['MUHDETAY_KODU'] as int?,
-      satDovTip: json['SAT_DOV_TIP'] as int?,
-      subeKodu: json['SUBE_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      fiatBirimi: (json['FIAT_BIRIMI'] as num?)?.toInt(),
+      muhdetayKodu: (json['MUHDETAY_KODU'] as num?)?.toInt(),
+      satDovTip: (json['SAT_DOV_TIP'] as num?)?.toInt(),
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
       stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
       stokList: (json['STOK_LIST'] as List<dynamic>?)
           ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
@@ -1307,7 +1307,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       yapilandirmaAktif: json['YAPILANDIRMA_AKTIF'] as bool?,
       yapkod: json['YAPKOD'] as String?,
       yapkodAciklama: json['YAPKOD_ACIKLAMA'] as String?,
-      idx: json['IDX'] as int?,
+      idx: (json['IDX'] as num?)?.toInt(),
       alisKuru: (json['ALIS_KURU'] as num?)?.toDouble(),
       alisKurTarihi: json['ALIS_KUR_TARIHI'] == null
           ? null
@@ -1317,7 +1317,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
       bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
-      bulunanDovizTipi: json['BULUNAN_DOVIZ_TIPI'] as int?,
+      bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
@@ -1425,7 +1425,7 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(
       koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
       koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
       koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       bakiye: (json['BAKIYE'] as num?)?.toDouble(),
     )
       ..muhdetayAdi = json['MUHDETAY_ADI'] as String?
@@ -1473,18 +1473,18 @@ StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(
           ? null
           : DateTime.parse(json['DUZELTMETARIHI'] as String)
       ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
-      ..fiatBirimi = json['FIAT_BIRIMI'] as int?
+      ..fiatBirimi = (json['FIAT_BIRIMI'] as num?)?.toInt()
       ..kilitGenel = json['KILIT_GENEL'] as String?
       ..kilitSaticisip = json['KILIT_SATICISIP'] as String?
       ..kilitMussip = json['KILIT_MUSSIP'] as String?
       ..kilitAlis = json['KILIT_ALIS'] as String?
       ..kilitSatis = json['KILIT_SATIS'] as String?
-      ..subeKodu = json['SUBE_KODU'] as int?
-      ..muhdetayKodu = json['MUHDETAY_KODU'] as int?
-      ..alisDovTip = json['ALIS_DOV_TIP'] as int?
+      ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
+      ..muhdetayKodu = (json['MUHDETAY_KODU'] as num?)?.toInt()
+      ..alisDovTip = (json['ALIS_DOV_TIP'] as num?)?.toInt()
       ..dovAlisFiat = (json['DOV_ALIS_FIAT'] as num?)?.toDouble()
       ..alisDovizAdi = json['ALIS_DOVIZ_ADI'] as String?
-      ..satDovTip = json['SAT_DOV_TIP'] as int?
+      ..satDovTip = (json['SAT_DOV_TIP'] as num?)?.toInt()
       ..dovSatisFiat = (json['DOV_SATIS_FIAT'] as num?)?.toDouble()
       ..satisDovizAdi = json['SATIS_DOVIZ_ADI'] as String?
       ..ureticiKodu = json['URETICI_KODU'] as String?

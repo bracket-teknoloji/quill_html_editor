@@ -17,7 +17,7 @@ CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(
       ..hareketKodu = json['HAREKET_KODU'] as String?
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..projeKodu = json['PROJE_KODU'] as String?
-      ..inckeyno = json['INCKEYNO'] as int?
+      ..inckeyno = (json['INCKEYNO'] as num?)?.toInt()
       ..tarih =
           json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
       ..vadeTarihi = json['VADE_TARIHI'] == null

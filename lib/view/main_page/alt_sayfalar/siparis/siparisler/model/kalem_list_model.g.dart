@@ -9,7 +9,7 @@ part of 'kalem_list_model.dart';
 KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
     KalemListModel()
       ..tempBarkodList = json['TEMP_BARKOD_LIST'] as List<dynamic>?
-      ..sira = json['SIRA'] as int?
+      ..sira = (json['SIRA'] as num?)?.toInt()
       ..belgeNo = json['BELGE_NO'] as String?
       ..tarih =
           json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
@@ -20,7 +20,7 @@ KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
       ..stokKodu = json['STOK_KODU'] as String?
       ..stokAdi = json['STOK_ADI'] as String?
       ..cariKodu = json['CARI_KODU'] as String?
-      ..depoKodu = json['DEPO_KODU'] as int?
+      ..depoKodu = (json['DEPO_KODU'] as num?)?.toInt()
       ..depoTanimi = json['DEPO_TANIMI'] as String?
       ..miktar = (json['MIKTAR'] as num?)?.toDouble()
       ..seriList = json['SERI_LIST'] as List<dynamic>?
@@ -28,10 +28,10 @@ KalemListModel _$KalemListModelFromJson(Map<String, dynamic> json) =>
       ..brutFiyat = (json['BRUT_FIYAT'] as num?)?.toDouble()
       ..dipFiyat = (json['DIP_FIYAT'] as num?)?.toDouble()
       ..iskonto1OranMi = json['ISKONTO1_ORAN_MI'] as bool?
-      ..stokSatDovTip = json['STOK_SAT_DOV_TIP'] as int?
+      ..stokSatDovTip = (json['STOK_SAT_DOV_TIP'] as num?)?.toInt()
       ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
       ..stokSatDovizAdi = json['STOK_SAT_DOVIZ_ADI'] as String?
-      ..olcuBirimKodu = json['OLCU_BIRIM_KODU'] as int?
+      ..olcuBirimKodu = (json['OLCU_BIRIM_KODU'] as num?)?.toInt()
       ..olcuBirimAdi = json['OLCU_BIRIM_ADI'] as String?
       ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
       ..stokOlcuBirimi = json['STOK_OLCU_BIRIMI'] as String?

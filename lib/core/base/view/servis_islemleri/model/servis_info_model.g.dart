@@ -22,7 +22,7 @@ ServisInfoModel _$ServisInfoModelFromJson(Map<String, dynamic> json) =>
       serverIp: json['ServerIP'] as String?,
       appPoolName: json['AppPoolName'] as String?,
       netFectWinService: json['NetFectWinService'] as String?,
-      processId: json['ProcessID'] as int?,
+      processId: (json['ProcessID'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ServisInfoModelToJson(ServisInfoModel instance) {

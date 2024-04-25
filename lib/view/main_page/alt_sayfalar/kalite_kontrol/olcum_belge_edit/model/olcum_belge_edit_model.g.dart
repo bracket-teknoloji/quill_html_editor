@@ -11,7 +11,7 @@ _$OlcumBelgeEditModelImpl _$$OlcumBelgeEditModelImplFromJson(
     _$OlcumBelgeEditModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      belgeSira: json['BELGE_SIRA'] as int?,
+      belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
       opkodu: json['OPKODU'] as String?,
@@ -56,11 +56,11 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
     _$OlcumBelgeModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      belgeSira: json['BELGE_SIRA'] as int?,
+      belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      sira: json['SIRA'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
@@ -73,13 +73,13 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       opkodu: json['OPKODU'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
-      kalemAdedi: json['KALEM_ADEDI'] as int?,
+      kalemAdedi: (json['KALEM_ADEDI'] as num?)?.toInt(),
       prosesVar: json['PROSES_VAR'] as String?,
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
       tur: json['TUR'] as String?,
       searchText: json['SearchText'] as String?,
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
@@ -122,8 +122,8 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
 _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumOlcumlerModelImpl(
-      id: json['ID'] as int?,
-      belgeSira: json['BELGE_SIRA'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
+      belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
       olcumlerOperator: json['OLCUMLER_OPERATOR'] as String?,
@@ -132,7 +132,7 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       kayittarihi: json['KAYITTARIHI'] == null
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
-      sira: json['SIRA'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
       kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
       sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
       retAdet: (json['RET_ADET'] as num?)?.toDouble(),
@@ -166,8 +166,8 @@ Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
 _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumProsesModelImpl(
-      id: json['ID'] as int?,
-      sira: json['SIRA'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
+      sira: (json['SIRA'] as num?)?.toInt(),
       proses: json['PROSES'] as String?,
       kriter: json['KRITER'] as String?,
       kabulSarti: json['KABUL_SARTI'] as String?,
@@ -178,9 +178,9 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
       altSinir: (json['ALT_SINIR'] as num?)?.toDouble(),
       ustSinir: (json['UST_SINIR'] as num?)?.toDouble(),
       tur: json['TUR'] as String?,
-      olcumSikligi: json['OLCUM_SIKLIGI'] as int?,
-      numuneMiktari: json['NUMUNE_MIKTARI'] as int?,
-      detayId: json['DETAY_ID'] as int?,
+      olcumSikligi: (json['OLCUM_SIKLIGI'] as num?)?.toInt(),
+      numuneMiktari: (json['NUMUNE_MIKTARI'] as num?)?.toInt(),
+      detayId: (json['DETAY_ID'] as num?)?.toInt(),
       prosesTipi: json['PROSES_TIPI'] as String?,
       sonuc: json['SONUC'] as String?,
       sartliKabulNedeni: json['SARTLI_KABUL_NEDENI'] as String?,
@@ -188,7 +188,7 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
           json['SARTLI_KABUL_NEDENI_ACIKLAMA'] as String?,
       olcumOperatorModelOperator:
           json['OLCUM_OPERATOR_MODEL_OPERATOR'] as String?,
-      prosesId: json['PROSES_ID'] as int?,
+      prosesId: (json['PROSES_ID'] as num?)?.toInt(),
       aciklama: json['ACIKLAMA'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
       olcuBirimi: json['OLCU_BIRIMI'] as String?,
@@ -247,7 +247,7 @@ _$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumEkleDetayModelImpl(
       deger: (json['DEGER'] as num?)?.toDouble(),
-      detayId: json['DETAY_ID'] as int?,
+      detayId: (json['DETAY_ID'] as num?)?.toInt(),
       zaman: json['ZAMAN'] == null
           ? null
           : DateTime.parse(json['ZAMAN'] as String),

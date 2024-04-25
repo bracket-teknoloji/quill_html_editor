@@ -26,12 +26,12 @@ _$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
           : DateTime.parse(json['TARIH'] as String),
       tutar: (json['TUTAR'] as num?)?.toDouble(),
       stokKodu: json['STOK_KODU'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       hareketTuru: json['HAREKET_TURU'] as String?,
-      miktar: json['MIKTAR'] as int?,
+      miktar: (json['MIKTAR'] as num?)?.toInt(),
       fiyat: (json['FIYAT'] as num?)?.toDouble(),
       dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toDouble(),
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       yeniKayit: json['_YeniKayit'] as bool?,
     );
 

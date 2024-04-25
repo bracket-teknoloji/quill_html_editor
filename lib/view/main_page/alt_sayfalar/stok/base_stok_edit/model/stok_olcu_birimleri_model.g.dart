@@ -9,7 +9,7 @@ part of 'stok_olcu_birimleri_model.dart';
 StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(
         Map<String, dynamic> json) =>
     StokOlcuBirimleriModel()
-      ..birimNo = json['BIRIM_NO'] as int?
+      ..birimNo = (json['BIRIM_NO'] as num?)?.toInt()
       ..olcuBirimi = json['OLCU_BIRIMI'] as String?;
 
 Map<String, dynamic> _$StokOlcuBirimleriModelToJson(

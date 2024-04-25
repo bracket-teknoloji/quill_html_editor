@@ -9,28 +9,28 @@ part of 'dekont_islemler_model.dart';
 _$DekontIslemlerModelImpl _$$DekontIslemlerModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DekontIslemlerModelImpl(
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
       seriNo: json['SERI_NO'] as String?,
-      dekontNo: json['DEKONT_NO'] as int?,
-      siraNo: json['SIRA_NO'] as int?,
+      dekontNo: (json['DEKONT_NO'] as num?)?.toInt(),
+      siraNo: (json['SIRA_NO'] as num?)?.toInt(),
       ba: json['BA'] as String?,
       hesapTipi: json['HESAP_TIPI'] as String?,
       hesapTipiAciklama: json['HESAP_TIPI_ACIKLAMA'] as String?,
       hesapKodu: json['HESAP_KODU'] as String?,
       hesapAdi: json['HESAP_ADI'] as String?,
       tutar: (json['TUTAR'] as num?)?.toDouble(),
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
-      dovizTutari: json['DOVIZ_TUTARI'] as int?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
+      dovizTutari: (json['DOVIZ_TUTARI'] as num?)?.toInt(),
       aciklama: json['ACIKLAMA'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       refkey: json['REFKEY'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
-      exportTipi: json['EXPORT_TIPI'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      exportTipi: (json['EXPORT_TIPI'] as num?)?.toInt(),
       muhasebeHesapTipi: json['MUHASEBE_HESAP_TIPI'] as String?,
     );
 

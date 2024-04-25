@@ -13,8 +13,8 @@ _$CekSenetEvrakEkleModelImpl _$$CekSenetEvrakEkleModelImplFromJson(
       base64Data: json['BASE64_DATA'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      boyutByte: json['BOYUT_BYTE'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      boyutByte: (json['BOYUT_BYTE'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$CekSenetEvrakEkleModelImplToJson(

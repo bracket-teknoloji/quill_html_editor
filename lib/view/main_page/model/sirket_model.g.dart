@@ -55,7 +55,7 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
 SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => SirketModel()
   ..sirket = json['SIRKET'] as String?
   ..devsirket = json['DEVSIRKET'] as String?
-  ..yil = json['YIL'] as int?
+  ..yil = (json['YIL'] as num?)?.toInt()
   ..isDevredilmis = json['isDevredilmis'] as bool?;
 
 Map<String, dynamic> _$SirketModelToJson(SirketModel instance) {

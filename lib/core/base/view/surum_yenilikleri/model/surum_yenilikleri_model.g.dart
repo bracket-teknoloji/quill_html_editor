@@ -9,7 +9,7 @@ part of 'surum_yenilikleri_model.dart';
 _$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SurumYenilikleriModelImpl(
-      surumKodu: json['SURUM_KODU'] as int?,
+      surumKodu: (json['SURUM_KODU'] as num?)?.toInt(),
       versiyon: json['VERSIYON'] as String?,
       surumAdi: json['SURUM_ADI'],
       yer: json['YER'],
@@ -44,7 +44,7 @@ Map<String, dynamic> _$$SurumYenilikleriModelImplToJson(
 
 _$ValueListImpl _$$ValueListImplFromJson(Map<String, dynamic> json) =>
     _$ValueListImpl(
-      id: json['ID'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
       aciklama: json['ACIKLAMA'] as String?,
       talepEden: json['TALEP_EDEN'] as bool?,
     );

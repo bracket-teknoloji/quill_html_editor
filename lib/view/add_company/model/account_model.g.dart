@@ -202,8 +202,8 @@ class AccountModelAdapter extends TypeAdapter<AccountModel> {
 AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..isim = json['ISIM'] as String?
   ..admin = json['ADMIN'] as String?
-  ..aktifIsletmeKodu = json['AKTIF_ISLETME_KODU'] as int?
-  ..aktifSubeKodu = json['AKTIF_SUBE_KODU'] as int?
+  ..aktifIsletmeKodu = (json['AKTIF_ISLETME_KODU'] as num?)?.toInt()
+  ..aktifSubeKodu = (json['AKTIF_SUBE_KODU'] as num?)?.toInt()
   ..aktifVeritabani = json['AKTIF_VERITABANI'] as String?
   ..cihazSistemVersiyonu = json['CIHAZ_SISTEM_VERSIYONU'] as String?
   ..apkDerlemeTarihi = json['APK_DERLEME_TARIHI'] == null
@@ -219,7 +219,7 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..cihazTarihiUtc = json['CIHAZ_TARIHI_UTC'] == null
       ? null
       : DateTime.parse(json['CIHAZ_TARIHI_UTC'] as String)
-  ..cihazTimeZoneDakika = json['CIHAZ_TIME_ZONE_DAKIKA'] as int?
+  ..cihazTimeZoneDakika = (json['CIHAZ_TIME_ZONE_DAKIKA'] as num?)?.toInt()
   ..fcmToken = json['FCM_TOKEN'] as String?
   ..uyeEmail = json['UYE_EMAIL'] as String?
   ..uyeSifre = json['UYE_SIFRE'] as String?
@@ -239,14 +239,14 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..paketAdi = json['PAKET_ADI'] as String?
   ..paramMap = json['PARAM_MAP'] as Map<String, dynamic>? ?? {}
   ..platform = json['PLATFORM'] as String?
-  ..requestVersion = json['REQUEST_VERSION'] as int?
+  ..requestVersion = (json['REQUEST_VERSION'] as num?)?.toInt()
   ..soyadi = json['SOYADI'] as String?
   ..serviceVersion = json['SERVICE_VERSION'] as String?
   ..tzInfo = json['TZ_INFO'] as String?
   ..uygulamaDili = json['UYGULAMA_DILI'] as String?
   ..uygulamaGuncellemeTarihi = json['UYGULAMA_GUNCELLEME_TARIHI'] as String?
   ..uygulamaSurumu = json['UYGULAMA_SURUMU'] as String?
-  ..uygulamaSurumKodu = json['UYGULAMA_SURUM_KODU'] as int?
+  ..uygulamaSurumKodu = (json['UYGULAMA_SURUM_KODU'] as num?)?.toInt()
   ..uzakErisim = json['UZAK_ERISIM'] as String?
   ..wifidenBagli = json['WIFIDEN_BAGLI'] as String?
   ..qrData = json['QR_DATA'] as String?

@@ -9,7 +9,7 @@ part of 'yapilandirma_profil_model.dart';
 _$YapilandirmaProfilModelImpl _$$YapilandirmaProfilModelImplFromJson(
         Map<String, dynamic> json) =>
     _$YapilandirmaProfilModelImpl(
-      sira: json['SIRA'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
       ozellikKodu: json['OZELLIK_KODU'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
       deger: (json['DEGER'] as List<dynamic>?)

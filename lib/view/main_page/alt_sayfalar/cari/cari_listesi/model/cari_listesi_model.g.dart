@@ -1660,14 +1660,14 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       cariTip: json['CARI_TIP'] as String?,
       cariTipAciklama: json['CARI_TIP_ACIKLAMA'] as String?,
       kilit: json['KILIT'] as String?,
-      vadeGunu: json['VADE_GUNU'] as int?,
+      vadeGunu: (json['VADE_GUNU'] as num?)?.toInt(),
       odemeTipi: json['ODEME_TIPI'] as String?,
       hesaptutmasekli: json['HESAPTUTMASEKLI'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
       borcToplami: (json['BORC_TOPLAMI'] as num?)?.toDouble(),
       alacakToplami: (json['ALACAK_TOPLAMI'] as num?)?.toDouble(),
-      genisk1Orani: json['GENISK1_ORANI'] as int?,
+      genisk1Orani: (json['GENISK1_ORANI'] as num?)?.toInt(),
       ulkeKodu: json['ULKE_KODU'] as String?,
       ulkeAdi: json['ULKE_ADI'] as String?,
       cariIl: json['CARI_IL'] as String?,
@@ -1728,9 +1728,9 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       fax: json['FAX'] as String?,
       sahisFirmasiMi: json['SAHIS_FIRMASI_MI'] as bool?,
       dovizli: json['DOVIZLI'] as bool?,
-      dovizKodu: json['DOVIZ_KODU'] as int?,
+      dovizKodu: (json['DOVIZ_KODU'] as num?)?.toInt(),
       dovizAdi: json['DOVIZ_ADI'] as String?,
-      subeKodu: json['SUBE_KODU'] as int?,
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
       kosulKodu: json['KOSUL_KODU'] as String?,
       fiyatGrubu: json['FIYAT_GRUBU'] as String?,
       kull1S: json['KULL1_S'] as String?,
@@ -1749,20 +1749,20 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       efaturaSenaryo: json['EFATURA_SENARYO'] as String?,
       eposta: json['EPOSTA'] as String?,
       ilce: json['ILCE'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       kurfarkialacakKodu: json['KURFARKIALACAK_KODU'] as String?,
       kurfarkiborcKodu: json['KURFARKIBORC_KODU'] as String?,
       muhasebeKodu: json['MUHASEBE_KODU'] as String?,
-      requestVersion: json['REQUEST_VERSION'] as int?,
+      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
       sehir: json['SEHIR'] as String?,
       telefon: json['TELEFON'] as String?,
       tipi: json['TIPI'] as String?,
       vergiNo: json['VERGI_NO'] as String?,
       website: json['WEBSITE'] as String?,
       depoKodlari: (json['DEPO_KODLARI'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
-      idx: json['IDX'] as int?,
+      idx: (json['IDX'] as num?)?.toInt(),
       kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
       kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
     )..muhAdi = json['MUH_ADI'] as String?;
@@ -1890,9 +1890,9 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) {
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
   ..cariKodu = json['CARI_KODU'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
-  ..alacakToplami = json['ALACAK_TOPLAMI'] as int?
+  ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toInt()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
   ..dovizAdi = json['DOVIZ_ADI'] as String?;
 

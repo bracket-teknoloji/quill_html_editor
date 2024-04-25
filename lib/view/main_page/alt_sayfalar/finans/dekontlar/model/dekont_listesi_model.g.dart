@@ -9,13 +9,13 @@ part of 'dekont_listesi_model.dart';
 _$DekontListesiModelImpl _$$DekontListesiModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DekontListesiModelImpl(
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       seri: json['SERI'] as String?,
-      dekontNo: json['DEKONT_NO'] as int?,
+      dekontNo: (json['DEKONT_NO'] as num?)?.toInt(),
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      kalemSayisi: json['KALEM_SAYISI'] as int?,
+      kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
       borcToplami: (json['BORC_TOPLAMI'] as num?)?.toDouble(),
       seriAdi: json['SERI_ADI'] as String?,
     );

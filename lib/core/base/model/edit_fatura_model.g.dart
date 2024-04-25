@@ -9,11 +9,11 @@ part of 'edit_fatura_model.dart';
 _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
         Map<String, dynamic> json) =>
     _$EditFaturaModelImpl(
-      belgeTipi: json['BelgeTipi'] as int?,
+      belgeTipi: (json['BelgeTipi'] as num?)?.toInt(),
       pickerBelgeTuru: json['PickerBelgeTuru'] as String?,
       remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
-      tempBelgeId: json['TEMP_BELGE_ID'] as int?,
-      tipi: json['TIPI'] as int?,
+      tempBelgeId: (json['TEMP_BELGE_ID'] as num?)?.toInt(),
+      tipi: (json['TIPI'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       belgeTuru: json['BELGE_TURU'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
@@ -23,7 +23,7 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
       mevcutCariKodu: json['MEVCUT_CARI_KODU'] as String?,
       paramMap: json['PARAM_MAP'] as Map<String, dynamic>? ?? const {},
       tag: json['TAG'] as String? ?? "FaturaModel",
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map((e) => KalemModel.fromJson(e as Map<String, dynamic>))
           .toList(),

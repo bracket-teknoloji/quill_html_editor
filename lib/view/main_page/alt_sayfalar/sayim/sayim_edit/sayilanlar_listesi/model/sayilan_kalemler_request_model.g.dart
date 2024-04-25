@@ -10,7 +10,7 @@ _$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SayilanKalemlerRequestModelImpl(
       filtreKodu: json['FiltreKodu'] as String?,
-      depoKodu: json['DepoKodu'] as int?,
+      depoKodu: (json['DepoKodu'] as num?)?.toInt(),
       kullaniciAdi: json['KullaniciAdi'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "L",
       belgeNo: json['BelgeNo'] as String?,

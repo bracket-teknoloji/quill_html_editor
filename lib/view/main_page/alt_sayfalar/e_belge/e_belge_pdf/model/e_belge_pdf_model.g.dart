@@ -8,7 +8,7 @@ part of 'e_belge_pdf_model.dart';
 
 _$EBelgePdfModelImpl _$$EBelgePdfModelImplFromJson(Map<String, dynamic> json) =>
     _$EBelgePdfModelImpl(
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       fileModel: json['FileModel'] == null
           ? null
           : FileModel.fromJson(json['FileModel'] as Map<String, dynamic>),

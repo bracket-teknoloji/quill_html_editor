@@ -17,7 +17,7 @@ UrunGrubunaGoreSatisGrafigiRequestModel
           bitisTarihi: json['BitisTarihi'] as String?,
           cariKodu: json['CariKodu'] as String?,
           donemTipi: json['DonemTipi'] as String?,
-          grupNo: json['GrupNo'] as int?,
+          grupNo: (json['GrupNo'] as num?)?.toInt(),
           irsDahil: json['IrsDahil'] as String?,
           projeKodu: json['ProjeKodu'] as String?,
         );

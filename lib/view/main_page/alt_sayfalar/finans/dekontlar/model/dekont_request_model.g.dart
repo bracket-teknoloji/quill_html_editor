@@ -9,7 +9,7 @@ part of 'dekont_request_model.dart';
 _$DekontRequestModelImpl _$$DekontRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DekontRequestModelImpl(
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
       ekranTipi: json['EkranTipi'] as String? ?? "L",
       searchText: json['SearchText'] as String?,
     );

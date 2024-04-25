@@ -12,8 +12,8 @@ _$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      sira: json['SIRA'] as int?,
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       dovAlis: (json['DOV_ALIS'] as num?)?.toDouble(),
       dovSatis: (json['DOV_SATIS'] as num?)?.toDouble(),
       dovizAdi: json['DOVIZ_ADI'] as String?,
@@ -48,8 +48,8 @@ _$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
       tarih: json['Tarih'] == null
           ? null
           : DateTime.parse(json['Tarih'] as String),
-      sira: json['Sira'] as int?,
-      dovizTipi: json['DovizTipi'] as int?,
+      sira: (json['Sira'] as num?)?.toInt(),
+      dovizTipi: (json['DovizTipi'] as num?)?.toInt(),
       alis: (json['Alis'] as num?)?.toDouble(),
       satis: (json['Satis'] as num?)?.toDouble(),
       dovizAdi: json['DovizAdi'] as String?,

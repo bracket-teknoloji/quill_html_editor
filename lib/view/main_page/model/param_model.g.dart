@@ -119,7 +119,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..paramYuklendi = json['ParamYuklendi'] as bool?
   ..kullanici = json['KULLANICI'] as String?
   ..sirket = json['SIRKET'] as String?
-  ..isletmeKodu = json['ISLETME_KODU'] as int?
+  ..isletmeKodu = (json['ISLETME_KODU'] as num?)?.toInt()
   ..mapCariKullSahalar = json['MapCariKullSahalar'] == null
       ? null
       : MapCariKullSahalar.fromJson(
@@ -127,7 +127,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..mapCariEkAlanlar = (json['MapCariEkAlanlar'] as List<dynamic>?)
       ?.map((e) => MapEkAlanlar.fromJson(e as Map<String, dynamic>))
       .toList()
-  ..sabitSayfalamaOgeSayisi = json['sabitSayfalamaOgeSayisi'] as int? ?? 25
+  ..sabitSayfalamaOgeSayisi =
+      (json['sabitSayfalamaOgeSayisi'] as num?)?.toInt() ?? 25
   ..netsisOndalikResponseModel = (json['_NetsisOndalikResponseModel']
           as List<dynamic>?)
       ?.map(
@@ -225,7 +226,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisMalFazMiktarIskontoAcik = json['AlisMalFazMiktarIskontoAcik'] as bool?
   ..alisSatirKademeliIskontoAcik = json['AlisSatirKademeliIskontoAcik'] as bool?
   ..alisSatirKademeliIskontoSayisi =
-      json['AlisSatirKademeliIskontoSayisi'] as int?
+      (json['AlisSatirKademeliIskontoSayisi'] as num?)?.toInt()
   ..alisGenIsk1Aktif = json['AlisGenIsk1Aktif'] as bool?
   ..alisGenIsk2Aktif = json['AlisGenIsk2Aktif'] as bool?
   ..alisGenIsk3Aktif = json['AlisGenIsk3Aktif'] as bool?
@@ -240,13 +241,14 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisSatirdaEkAlan2Aktif = json['AlisSatirdaEkAlan2Aktif'] as bool?
   ..alisEkMaliyet2Aktif = json['AlisEkMaliyet2Aktif'] as bool?
   ..alisEkMaliyet2Adi = json['AlisEkMaliyet2Adi'] as String?
-  ..alisTevkifatPay = json['AlisTevkifatPay'] as int?
-  ..alisTevkifatPayda = json['AlisTevkifatPayda'] as int?
+  ..alisTevkifatPay = (json['AlisTevkifatPay'] as num?)?.toInt()
+  ..alisTevkifatPayda = (json['AlisTevkifatPayda'] as num?)?.toInt()
   ..alisFaturaFiyatSifirGecilsin = json['AlisFaturaFiyatSifirGecilsin'] as bool?
   ..alisFazlaTeslimat = json['AlisFazlaTeslimat'] as bool?
-  ..alisDovizTakipHangiDeger = json['AlisDovizTakipHangiDeger'] as int?
+  ..alisDovizTakipHangiDeger =
+      (json['AlisDovizTakipHangiDeger'] as num?)?.toInt()
   ..alisHizmetAktif = json['AlisHizmetAktif'] as bool?
-  ..alisHizmetDepoKodu = json['AlisHizmetDepoKodu'] as int?
+  ..alisHizmetDepoKodu = (json['AlisHizmetDepoKodu'] as num?)?.toInt()
   ..alisMiktar2Sor = json['AlisMiktar2Sor'] as bool?
   ..alisSatirdaTeslimTarihiSor = json['AlisSatirdaTeslimTarihiSor'] as bool?
   ..alisFisSeriTakibiVar = json['AlisFisSeriTakibiVar'] as bool?
@@ -255,7 +257,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..seriUygulamasiAcik = json['SeriUygulamasiAcik'] as bool?
   ..sirketDovizUygulamasiAcik = json['SirketDovizUygulamasiAcik'] as bool?
   ..sirketDovizUygulamasiDovizKodu =
-      json['SirketDovizUygulamasiDovizKodu'] as int?
+      (json['SirketDovizUygulamasiDovizKodu'] as num?)?.toInt()
   ..plasiyerUygulamasi = json['PlasiyerUygulamasi'] as bool?
   ..paraBirimi = json['ParaBirimi'] as String?
   ..bankaEntegre = json['BankaEntegre'] as bool?
@@ -288,7 +290,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisSatirKademeliIskontoAcik =
       json['SatisSatirKademeliIskontoAcik'] as bool?
   ..satisSatirKademeliIskontoSayisi =
-      json['SatisSatirKademeliIskontoSayisi'] as int?
+      (json['SatisSatirKademeliIskontoSayisi'] as num?)?.toInt()
   ..satisSatirdaKdvSor = json['SatisSatirdaKDVSor'] as bool?
   ..satisGenIsk1Aktif = json['SatisGenIsk1Aktif'] as bool?
   ..satisGenIsk2Aktif = json['SatisGenIsk2Aktif'] as bool?
@@ -304,14 +306,15 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..satisSatirdaEkAlan2Aktif = json['SatisSatirdaEkAlan2Aktif'] as bool?
   ..satisEkMaliyet2Aktif = json['SatisEkMaliyet2Aktif'] as bool?
   ..satisEkMaliyet2Adi = json['SatisEkMaliyet2Adi'] as String?
-  ..satisTevkifatPay = json['SatisTevkifatPay'] as int?
-  ..satisTevkifatPayda = json['SatisTevkifatPayda'] as int?
+  ..satisTevkifatPay = (json['SatisTevkifatPay'] as num?)?.toInt()
+  ..satisTevkifatPayda = (json['SatisTevkifatPayda'] as num?)?.toInt()
   ..satisFaturaFiyatSifirGecilsin =
       json['SatisFaturaFiyatSifirGecilsin'] as bool?
   ..satisFazlaTeslimat = json['SatisFazlaTeslimat'] as bool?
-  ..satisDovizTakipHangiDeger = json['SatisDovizTakipHangiDeger'] as int?
+  ..satisDovizTakipHangiDeger =
+      (json['SatisDovizTakipHangiDeger'] as num?)?.toInt()
   ..satisHizmetAktif = json['SatisHizmetAktif'] as bool?
-  ..satisHizmetDepoKodu = json['SatisHizmetDepoKodu'] as int?
+  ..satisHizmetDepoKodu = (json['SatisHizmetDepoKodu'] as num?)?.toInt()
   ..satisMiktar2Sor = json['SatisMiktar2Sor'] as bool?
   ..satisSubeDatOnaylansin = json['SatisSubeDATOnaylansin'] as bool?
   ..satisSatirdaTeslimTarihiSor = json['SatisSatirdaTeslimTarihiSor'] as bool?
@@ -329,7 +332,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..serideYilOlsun = json['SerideYilOlsun'] as bool?
   ..serideAyOlsun = json['SerideAyOlsun'] as bool?
   ..serideGunOlsun = json['SerideGunOlsun'] as bool?
-  ..seriUzunlugu = json['SeriUzunlugu'] as int?
+  ..seriUzunlugu = (json['SeriUzunlugu'] as num?)?.toInt()
   ..seriEkAlanList = (json['SeriEkAlanList'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList()
@@ -351,7 +354,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..bankaKKartiKasayaIsle = json['bankaKKartiKasayaIsle'] as bool?
   ..kayitliBankaHesapTipleri =
       (json['KayitliBankaHesapTipleri'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList()
   ..kkNoZorunluDegil = json['KKNoZorunluDegil'] as bool?
   ..fifoLifoYontem = json['FifoLifoYontem'] as String?
@@ -360,7 +363,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       ?.map((e) => CariAktiviteTipleri.fromJson(e as Map<String, dynamic>))
       .toList()
   ..cariAktiviteEkAlanlar = (json['CariAktiviteEkAlanlar'] as List<dynamic>?)
-      ?.map((e) => e as int)
+      ?.map((e) => (e as num).toInt())
       .toList()
   ..satisCariDovizTipiniKullan = json['SatisCariDovizTipiniKullan'] as bool?
   ..alisCariDovizTipiniKullan = json['AlisCariDovizTipiniKullan'] as bool?
@@ -393,8 +396,8 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
       ?.map((e) => StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
       .toList()
   ..genelKonumTakibiYapilsin = json['Genel_KonumTakibiYapilsin'] as String?
-  ..genelKonumTakibiDakika = json['Genel_KonumTakibiDakika'] as int?
-  ..genelKonumTakibiMetre = json['Genel_KonumTakibiMetre'] as int?
+  ..genelKonumTakibiDakika = (json['Genel_KonumTakibiDakika'] as num?)?.toInt()
+  ..genelKonumTakibiMetre = (json['Genel_KonumTakibiMetre'] as num?)?.toInt()
   ..uetdsEsyaAktif = json['UetdsEsyaAktif'] as bool?
   ..satistaSiparisKullan = json['SatistaSiparisKullan'] as bool?
   ..alistaSiparisKullan = json['AlistaSiparisKullan'] as bool?
@@ -772,7 +775,7 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) {
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>
     CariAktiviteTipleri()
-      ..aktiviteTipi = json['AKTIVITE_TIPI'] as int?
+      ..aktiviteTipi = (json['AKTIVITE_TIPI'] as num?)?.toInt()
       ..aktiviteAdi = json['AKTIVITE_ADI'] as String?;
 
 Map<String, dynamic> _$CariAktiviteTipleriToJson(CariAktiviteTipleri instance) {
@@ -814,11 +817,11 @@ Map<String, dynamic> _$CekSenParamToJson(CekSenParam instance) {
 }
 
 DepoList _$DepoListFromJson(Map<String, dynamic> json) => DepoList()
-  ..depoKodu = json['DEPO_KODU'] as int?
+  ..depoKodu = (json['DEPO_KODU'] as num?)?.toInt()
   ..depoTanimi = json['DEPO_TANIMI'] as String?
   ..bakiyeTakibi = json['BAKIYE_TAKIBI'] as String?
   ..hucreTakibi = json['HUCRE_TAKIBI'] as String?
-  ..subeKodu = json['SUBE_KODU'] as int?;
+  ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt();
 
 Map<String, dynamic> _$DepoListToJson(DepoList instance) {
   final val = <String, dynamic>{};
@@ -838,8 +841,8 @@ Map<String, dynamic> _$DepoListToJson(DepoList instance) {
 }
 
 DovizList _$DovizListFromJson(Map<String, dynamic> json) => DovizList(
-      dovizKodu: json['DOVIZ_KODU'] as int?,
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizKodu: (json['DOVIZ_KODU'] as num?)?.toInt(),
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       isim: json['ISIM'] as String?,
       alis: (json['ALIS'] as num?)?.toDouble(),
       satis: (json['SATIS'] as num?)?.toDouble(),
@@ -869,9 +872,9 @@ Map<String, dynamic> _$DovizListToJson(DovizList instance) {
 KasaList _$KasaListFromJson(Map<String, dynamic> json) => KasaList()
   ..kasaKodu = json['KASA_KODU'] as String?
   ..kasaTanimi = json['KASA_TANIMI'] as String?
-  ..subeKodu = json['SUBE_KODU'] as int?
+  ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
   ..dovizli = json['DOVIZLI'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..kkartKasasi = json['KKART_KASASI'] as bool?
   ..devirTutari = (json['DEVIR_TUTARI'] as num?)?.toDouble()
   ..dovizDevirTutari = (json['DOVIZ_DEVIR_TUTARI'] as num?)?.toDouble()
@@ -935,7 +938,7 @@ Map<String, dynamic> _$ListCariOdemeKoduToJson(ListCariOdemeKodu instance) {
 
 ListFatuEkMaliyet _$ListFatuEkMaliyetFromJson(Map<String, dynamic> json) =>
     ListFatuEkMaliyet()
-      ..no = json['NO'] as int?
+      ..no = (json['NO'] as num?)?.toInt()
       ..belgeTipi = json['BELGE_TIPI'] as String?
       ..adi = json['ADI'] as String?;
 
@@ -955,7 +958,7 @@ Map<String, dynamic> _$ListFatuEkMaliyetToJson(ListFatuEkMaliyet instance) {
 }
 
 ListIskTip _$ListIskTipFromJson(Map<String, dynamic> json) => ListIskTip()
-  ..iskontoTipi = json['ISKONTO_TIPI'] as int?
+  ..iskontoTipi = (json['ISKONTO_TIPI'] as num?)?.toInt()
   ..aciklama = json['ACIKLAMA'] as String?;
 
 Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) {
@@ -974,11 +977,11 @@ Map<String, dynamic> _$ListIskTipToJson(ListIskTip instance) {
 
 ListOzelKodTum _$ListOzelKodTumFromJson(Map<String, dynamic> json) =>
     ListOzelKodTum()
-      ..kodTipi = json['KOD_TIPI'] as int?
+      ..kodTipi = (json['KOD_TIPI'] as num?)?.toInt()
       ..belgeTipi = json['BELGE_TIPI'] as String?
       ..kod = json['KOD'] as String?
       ..aciklama = json['ACIKLAMA'] as String?
-      ..fiyatSirasi = json['FIYAT_SIRASI'] as int?;
+      ..fiyatSirasi = (json['FIYAT_SIRASI'] as num?)?.toInt();
 
 Map<String, dynamic> _$ListOzelKodTumToJson(ListOzelKodTum instance) {
   final val = <String, dynamic>{};
@@ -1172,7 +1175,7 @@ MustahsilParam _$MustahsilParamFromJson(Map<String, dynamic> json) =>
       ..stopajOrani = (json['STOPAJ_ORANI'] as num?)?.toDouble()
       ..fonOrani = (json['FON_ORANI'] as num?)?.toDouble()
       ..borsaOrani = (json['BORSA_ORANI'] as num?)?.toDouble()
-      ..bagkurOrani = json['BAGKUR_ORANI'] as int?
+      ..bagkurOrani = (json['BAGKUR_ORANI'] as num?)?.toInt()
       ..bagkurYb = json['BAGKUR_YB'] as String?
       ..meraOrani = (json['MERA_ORANI'] as num?)?.toDouble()
       ..borsaUcretDuzenlemesi = json['BORSA_UCRET_DUZENLEMESI'] as String?;
@@ -1198,12 +1201,12 @@ Map<String, dynamic> _$MustahsilParamToJson(MustahsilParam instance) {
 
 NetFectDizaynList _$NetFectDizaynListFromJson(Map<String, dynamic> json) =>
     NetFectDizaynList()
-      ..id = json['ID'] as int?
+      ..id = (json['ID'] as num?)?.toInt()
       ..dizaynYeri = json['DIZAYN_YERI'] as String?
       ..dizaynYolu = json['DIZAYN_YOLU'] as String?
       ..dizaynAdi = json['DIZAYN_ADI'] as String?
       ..ozelKod = json['OZEL_KOD'] as String?
-      ..kopyaSayisi = json['KOPYA_SAYISI'] as int?
+      ..kopyaSayisi = (json['KOPYA_SAYISI'] as num?)?.toInt()
       ..sablonVar = json['SABLON_VAR'] as String?
       ..aktif = json['AKTIF'] as String?
       ..dosyaAdi = json['DOSYA_ADI'] as String?
@@ -1239,13 +1242,13 @@ NetsisOndalikResponseModel _$NetsisOndalikResponseModelFromJson(
         Map<String, dynamic> json) =>
     NetsisOndalikResponseModel()
       ..modul = json['MODUL'] as String?
-      ..miktar = json['MIKTAR'] as int?
-      ..fiyat = json['FIYAT'] as int?
-      ..tutar = json['TUTAR'] as int?
-      ..kur = json['KUR'] as int?
-      ..doviz = json['DOVIZ'] as int?
-      ..dovizFiyati = json['DOVIZ_FIYATI'] as int?
-      ..oran = json['ORAN'] as int?;
+      ..miktar = (json['MIKTAR'] as num?)?.toInt()
+      ..fiyat = (json['FIYAT'] as num?)?.toInt()
+      ..tutar = (json['TUTAR'] as num?)?.toInt()
+      ..kur = (json['KUR'] as num?)?.toInt()
+      ..doviz = (json['DOVIZ'] as num?)?.toInt()
+      ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toInt()
+      ..oran = (json['ORAN'] as num?)?.toInt();
 
 Map<String, dynamic> _$NetsisOndalikResponseModelToJson(
     NetsisOndalikResponseModel instance) {
@@ -1347,7 +1350,7 @@ Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
 
 SubeList _$SubeListFromJson(Map<String, dynamic> json) => SubeList()
   ..sirket = json['SIRKET'] as String?
-  ..isletmeKodu = json['ISLETME_KODU'] as int?
+  ..isletmeKodu = (json['ISLETME_KODU'] as num?)?.toInt()
   ..subeAdi = json['SUBE_ADI'] as String?
   ..isletmeAdi = json['ISLETME_ADI'] as String?
   ..lokalDepoAktif = json['LOKAL_DEPO_AKTIF'] as bool?
@@ -1362,7 +1365,7 @@ SubeList _$SubeListFromJson(Map<String, dynamic> json) => SubeList()
   ..vergiDairesi = json['VERGI_DAIRESI'] as String?
   ..paraBirimi = json['PARA_BIRIMI'] as String?
   ..paraBirimiKusurat = json['PARA_BIRIMI_KUSURAT'] as String?
-  ..subeKodu = json['SUBE_KODU'] as int?
+  ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
   ..cariKodu = json['CARI_KODU'] as String?
   ..cariAdi = json['CARI_ADI'] as String?;
 
@@ -1398,7 +1401,7 @@ Map<String, dynamic> _$SubeListToJson(SubeList instance) {
 }
 
 TalTekParam _$TalTekParamFromJson(Map<String, dynamic> json) => TalTekParam()
-  ..tip = json['TIP'] as int?
+  ..tip = (json['TIP'] as num?)?.toInt()
   ..belgeTipi = json['BELGE_TIPI'] as String?
   ..dovizTakip = json['DOVIZ_TAKIP'] as String?
   ..satirIskontoSayisi = json['SATIR_ISKONTO_SAYISI'] as String?
@@ -1430,10 +1433,10 @@ TalTekParam _$TalTekParamFromJson(Map<String, dynamic> json) => TalTekParam()
   ..aciklar16 = json['ACIKLAR16'] as String?
   ..satirdaKdvSor = json['SATIRDA_KDV_SOR'] as String?
   ..satirTeslimTarSor = json['SATIR_TESLIM_TAR_SOR'] as String?
-  ..dovizTakipHangisi = json['DOVIZ_TAKIP_HANGISI'] as int?
+  ..dovizTakipHangisi = (json['DOVIZ_TAKIP_HANGISI'] as num?)?.toInt()
   ..satirEkalan2Kullan = json['SATIR_EKALAN2_KULLAN'] as String?
   ..hizmetUygulamasi = json['HIZMET_UYGULAMASI'] as String?
-  ..hizmetDepoKodu = json['HIZMET_DEPO_KODU'] as int?
+  ..hizmetDepoKodu = (json['HIZMET_DEPO_KODU'] as num?)?.toInt()
   ..kalemlerdeAciklamaAktif = json['KALEMLERDE_ACIKLAMA_AKTIF'] as String?
   ..onaySistemiKullan = json['ONAY_SISTEMI_KULLAN'] as String?
   ..kdvHaric = json['KDV_HARIC'] as String?

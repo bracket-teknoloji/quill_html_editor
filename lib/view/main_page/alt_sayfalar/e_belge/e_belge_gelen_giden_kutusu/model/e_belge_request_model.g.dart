@@ -18,7 +18,7 @@ _$EBelgeRequestModelImpl _$$EBelgeRequestModelImplFromJson(
       kontrolEdildi: json['KontrolEdildi'] as String?,
       faturaYonu: json['FaturaYonu'] as String?,
       onayDurumu: json['OnayDurumu'] as String?,
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
       senaryo: json['Senaryo'] as String?,
       sirala: json['Sirala'] as String?,
       sorgulanmasin: json['Sorgulanmasin'] as bool?,

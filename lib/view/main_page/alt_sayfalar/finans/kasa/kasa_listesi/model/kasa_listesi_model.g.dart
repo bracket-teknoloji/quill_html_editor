@@ -11,9 +11,9 @@ _$KasaListesiModelImpl _$$KasaListesiModelImplFromJson(
     _$KasaListesiModelImpl(
       kasaKodu: json['KASA_KODU'] as String?,
       kasaTanimi: json['KASA_TANIMI'] as String?,
-      subeKodu: json['SUBE_KODU'] as int?,
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
       dovizli: json['DOVIZLI'] as String?,
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       kkartKasasi: json['KKART_KASASI'] as bool?,
       toplamGiris: (json['TOPLAM_GIRIS'] as num?)?.toDouble(),
       toplamCikis: (json['TOPLAM_CIKIS'] as num?)?.toDouble(),

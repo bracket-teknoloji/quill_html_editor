@@ -9,14 +9,14 @@ part of 'cari_aktivite_listesi_model.dart';
 _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CariAktiviteListesiModelImpl(
-      id: json['ID'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       kullaniciAdi: json['KULLANICI_ADI'] as String?,
       kullaniciTitle: json['KULLANICI_TITLE'] as String?,
-      aktiviteTipi: json['AKTIVITE_TIPI'] as int?,
-      aktiviteId: json['AKTIVITE_ID'] as int?,
+      aktiviteTipi: (json['AKTIVITE_TIPI'] as num?)?.toInt(),
+      aktiviteId: (json['AKTIVITE_ID'] as num?)?.toInt(),
       aktiviteAdi: json['AKTIVITE_ADI'] as String?,
       bastar: json['BASTAR'] == null
           ? null

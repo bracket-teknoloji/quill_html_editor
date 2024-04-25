@@ -9,7 +9,7 @@ part of 'stok_bottom_sheet_model.dart';
 _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
         Map<String, dynamic> json) =>
     _$StokBottomSheetModelImpl(
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
       bakiyeDurumu: json['BakiyeDurumu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       resimleriGoster: json['ResimleriGoster'] as String?,
@@ -20,7 +20,7 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
       belgeTipi: json['BelgeTipi'] as String?,
       cariKodu: json['CariKodu'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "R",
-      faturaTipi: json['FaturaTipi'] as int?,
+      faturaTipi: (json['FaturaTipi'] as num?)?.toInt(),
       resimGoster: json['ResimGoster'] as String?,
       kisitYok: json['KisitYok'] as bool?,
       stokKodu: json['StokKodu'] as String?,

@@ -9,8 +9,8 @@ part of 'siparisler_model.dart';
 SiparislerModel _$SiparislerModelFromJson(Map<String, dynamic> json) =>
     SiparislerModel()
       ..islemId = json['ISLEM_ID'] as String?
-      ..tempKayitTipi = json['TEMP_KAYIT_TIPI'] as int?
-      ..tempBelgeId = json['TEMP_BELGE_ID'] as int?
+      ..tempKayitTipi = (json['TEMP_KAYIT_TIPI'] as num?)?.toInt()
+      ..tempBelgeId = (json['TEMP_BELGE_ID'] as num?)?.toInt()
       ..tempBelgeMi = json['TEMP_BELGE_MI'] as bool?
       ..remoteTempBelge = json['REMOTE_TEMP_BELGE'] as bool?
       ..remoteTempBelgeEtiketi = json['REMOTE_TEMP_BELGE_ETIKETI'] as String?
@@ -30,11 +30,11 @@ SiparislerModel _$SiparislerModelFromJson(Map<String, dynamic> json) =>
       ..belgeNo = json['BELGE_NO'] as String?
       ..belgeTuru = json['BELGE_TURU'] as String?
       ..belgeKodu = json['BELGE_KODU'] as String?
-      ..kalemAdedi = json['KALEM_ADEDI'] as int?
+      ..kalemAdedi = (json['KALEM_ADEDI'] as num?)?.toInt()
       ..cariKodu = json['CARI_KODU'] as String?
       ..cariAdi = json['CARI_ADI'] as String?
-      ..tipi = json['TIPI'] as int?
-      ..vadeGunu = json['VADE_GUNU'] as int?
+      ..tipi = (json['TIPI'] as num?)?.toInt()
+      ..vadeGunu = (json['VADE_GUNU'] as num?)?.toInt()
       ..vadeTarihi = json['VADE_TARIHI'] == null
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String)
@@ -56,11 +56,11 @@ SiparislerModel _$SiparislerModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['KOSUL_TARIHI'] as String)
       ..irsaliyelesti = json['IRSALIYELESTI'] as String?
-      ..irslesenSayi = json['IRSLESEN_SAYI'] as int?
+      ..irslesenSayi = (json['IRSLESEN_SAYI'] as num?)?.toInt()
       ..faturalasti = json['FATURALASTI'] as String?
       ..cYedek6 = json['C_YEDEK6'] as String?
-      ..topluDepo = json['TOPLU_DEPO'] as int?
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..topluDepo = (json['TOPLU_DEPO'] as num?)?.toInt()
+      ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
       ..dovizAdi = json['DOVIZ_ADI'] as String?
       ..kapatilmis = json['KAPATILMIS'] as String?
       ..aciklama = json['ACIKLAMA'] as String?

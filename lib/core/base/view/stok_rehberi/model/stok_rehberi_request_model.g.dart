@@ -14,13 +14,13 @@ _$StokRehberiRequestModelImpl _$$StokRehberiRequestModelImplFromJson(
       belgeTipi: json['BelgeTipi'] as String?,
       cariKodu: json['CariKodu'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "D",
-      faturaTipi: json['FaturaTipi'] as int?,
+      faturaTipi: (json['FaturaTipi'] as num?)?.toInt(),
       kisitYok: json['KisitYok'] as bool?,
       menuKodu: json['MenuKodu'] as String?,
       resimGoster: json['ResimGoster'] as String?,
       stokKodu: json['StokKodu'] as String?,
       seriTakibiVar: json['SeriTakibiVar'] as String?,
-      depoKodu: json['DepoKodu'] as int?,
+      depoKodu: (json['DepoKodu'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(

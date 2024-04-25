@@ -15,7 +15,7 @@ _$YapilandirmaRehberiModelImpl _$$YapilandirmaRehberiModelImplFromJson(
       kodAciklama: json['KOD_ACIKLAMA'] as String?,
       deger: json['DEGER'] as String?,
       degerAciklama: json['DEGER_ACIKLAMA'] as String?,
-      ozellikSira: json['OZELLIK_SIRA'] as int?,
+      ozellikSira: (json['OZELLIK_SIRA'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$YapilandirmaRehberiModelImplToJson(

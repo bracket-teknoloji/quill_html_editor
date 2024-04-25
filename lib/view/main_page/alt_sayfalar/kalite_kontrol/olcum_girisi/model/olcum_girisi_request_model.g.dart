@@ -9,13 +9,13 @@ part of 'olcum_girisi_request_model.dart';
 _$OlcumGirisiRequestModelImpl _$$OlcumGirisiRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$OlcumGirisiRequestModelImpl(
-      durum: json['DURUM'] as int?,
+      durum: (json['DURUM'] as num?)?.toInt(),
       belgeTipi: json['BELGE_TIPI'] as String?,
       bastar: json['BASTAR'] as String?,
       bittar: json['BITTAR'] as String?,
       siralama: json['SIRALAMA'] as String?,
       searchText: json['SearchText'] as String?,
-      sayfa: json['Sayfa'] as int?,
+      sayfa: (json['Sayfa'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(

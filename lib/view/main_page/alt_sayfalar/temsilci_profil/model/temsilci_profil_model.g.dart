@@ -10,7 +10,7 @@ TemsilciProfilModel _$TemsilciProfilModelFromJson(Map<String, dynamic> json) =>
     TemsilciProfilModel()
       ..tabloTipi = json['TABLO_TIPI'] as String?
       ..kayitTipi = json['KAYIT_TIPI'] as String?
-      ..ayKodu = json['AY_KODU'] as int?
+      ..ayKodu = (json['AY_KODU'] as num?)?.toInt()
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
       ..tutar = (json['TUTAR'] as num?)?.toDouble();

@@ -9,8 +9,8 @@ part of 'depo_bakiye_durumu_model.dart';
 _$DepoBakiyeDurumuModelImpl _$$DepoBakiyeDurumuModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DepoBakiyeDurumuModelImpl(
-      subeKodu: json['SUBE_KODU'] as int?,
-      depoKodu: json['DEPO_KODU'] as int?,
+      subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       giris: (json['GIRIS'] as num?)?.toDouble(),
       cikis: (json['CIKIS'] as num?)?.toDouble(),

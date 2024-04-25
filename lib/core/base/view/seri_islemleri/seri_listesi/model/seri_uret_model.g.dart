@@ -10,7 +10,7 @@ _$SeriUretModelImpl _$$SeriUretModelImplFromJson(Map<String, dynamic> json) =>
     _$SeriUretModelImpl(
       seriNo: json['SERI_NO'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
-      sonNo: json['SON_NO'] as int?,
+      sonNo: (json['SON_NO'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SeriUretModelImplToJson(_$SeriUretModelImpl instance) {

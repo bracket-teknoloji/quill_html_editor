@@ -10,7 +10,7 @@ FiyatGorModel _$FiyatGorModelFromJson(Map<String, dynamic> json) =>
     FiyatGorModel()
       ..stokKodu = json['STOK_KODU'] as String?
       ..aS = json['A_S'] as String?
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
+      ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
       ..fiyat1 = (json['FIYAT1'] as num?)?.toDouble()
       ..fiyat2 = (json['FIYAT2'] as num?)?.toDouble()
       ..fiyat3 = (json['FIYAT3'] as num?)?.toDouble()

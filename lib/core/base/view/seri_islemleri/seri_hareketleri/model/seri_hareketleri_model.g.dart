@@ -11,10 +11,10 @@ _$SeriHareketleriModelImpl _$$SeriHareketleriModelImplFromJson(
     _$SeriHareketleriModelImpl(
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       seriNo: json['SERI_NO'] as String?,
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       depoTanimi: json['DEPO_TANIMI'] as String?,
       kayitTipi: json['KAYIT_TIPI'] as String?,
       kayitTipiAdi: json['KAYIT_TIPI_ADI'] as String?,
@@ -26,13 +26,13 @@ _$SeriHareketleriModelImpl _$$SeriHareketleriModelImplFromJson(
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),
-      stharInc: json['STHAR_INC'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      stharInc: (json['STHAR_INC'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       acik1: json['ACIK1'] as String?,
       acik2: json['ACIK2'] as String?,
       aciklama1: json['ACIKLAMA1'] as String?,
       seri1: json['SERI1'] as String?,
-      requestVersion: json['REQUEST_VERSION'] as int?,
+      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
       seri2: json['SERI2'] as String?,
     );
 

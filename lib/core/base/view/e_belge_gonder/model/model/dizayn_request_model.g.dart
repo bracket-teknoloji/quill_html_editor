@@ -9,7 +9,7 @@ part of 'dizayn_request_model.dart';
 _$DizaynRequestModelImpl _$$DizaynRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$DizaynRequestModelImpl(
-      modulId: json['ModulID'] as int?,
+      modulId: (json['ModulID'] as num?)?.toInt(),
       erpDizaynlari: json['ERPDizaynlari'] as bool?,
     );
 

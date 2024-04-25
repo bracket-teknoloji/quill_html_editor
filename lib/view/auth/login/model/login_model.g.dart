@@ -67,7 +67,7 @@ class TokenModelAdapter extends TypeAdapter<TokenModel> {
 TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel()
   ..accessToken = json['access_token'] as String?
   ..tokenType = json['token_type'] as String?
-  ..expiresIn = json['expires_in'] as int?
+  ..expiresIn = (json['expires_in'] as num?)?.toInt()
   ..userJson = UserJson.fromJson(json['USER_JSON'] as String?)
   ..issued = json['.issued'] as String?
   ..expires = json['.expires'] as String?

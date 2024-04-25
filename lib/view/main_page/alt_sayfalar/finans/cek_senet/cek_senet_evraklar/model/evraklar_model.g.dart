@@ -8,14 +8,14 @@ part of 'evraklar_model.dart';
 
 _$EvraklarModelImpl _$$EvraklarModelImplFromJson(Map<String, dynamic> json) =>
     _$EvraklarModelImpl(
-      id: json['ID'] as int?,
+      id: (json['ID'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       aciklama: json['ACIKLAMA'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       resimUrl: json['RESIM_URL'] as String?,
       resimUrlKucuk: json['RESIM_URL_KUCUK'] as String?,
-      boyutByte: json['BOYUT_BYTE'] as int?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      boyutByte: (json['BOYUT_BYTE'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) {

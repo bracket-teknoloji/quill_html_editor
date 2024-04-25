@@ -11,7 +11,7 @@ _$DeleteCekSenetModelImpl _$$DeleteCekSenetModelImplFromJson(
     _$DeleteCekSenetModelImpl(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       pickerTahsilatTuru: json['PickerTahsilatTuru'] as String?,
       tag: json['TAG'] as String?,
     );

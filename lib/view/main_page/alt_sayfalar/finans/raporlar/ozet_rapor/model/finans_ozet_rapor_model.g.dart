@@ -11,7 +11,7 @@ _$FinansOzetRaporModelImpl _$$FinansOzetRaporModelImplFromJson(
     _$FinansOzetRaporModelImpl(
       tabloTipi: json['TABLO_TIPI'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      ayKodu: json['AY_KODU'] as int?,
+      ayKodu: (json['AY_KODU'] as num?)?.toInt(),
       tutar1: (json['TUTAR1'] as num?)?.toDouble(),
       tutar2: (json['TUTAR2'] as num?)?.toDouble(),
     );

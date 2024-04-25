@@ -9,16 +9,16 @@ part of 'fiyat_gecmisi_response_model.dart';
 FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(
         Map<String, dynamic> json) =>
     FiyatGecmisiResponseModel()
-      ..id = json['ID'] as int?
-      ..subeKodu = json['SUBE_KODU'] as int?
+      ..id = (json['ID'] as num?)?.toInt()
+      ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
       ..stokKodu = json['STOK_KODU'] as String?
       ..stokAdi = json['STOK_ADI'] as String?
       ..yer = json['YER'] as String?
       ..aS = json['A_S'] as String?
       ..fiyat = (json['FIYAT'] as num?)?.toDouble()
       ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
-      ..dovizTipi = json['DOVIZ_TIPI'] as int?
-      ..fiyatSirasi = json['FIYAT_SIRASI'] as int?
+      ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
+      ..fiyatSirasi = (json['FIYAT_SIRASI'] as num?)?.toInt()
       ..tarih =
           json['TARIH'] == null ? null : DateTime.parse(json['TARIH'] as String)
       ..fiyatTipi = json['FIYAT_TIPI'] as String?

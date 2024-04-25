@@ -89,14 +89,14 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
 // **************************************************************************
 
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
-  ..id = json['ID'] as int?
+  ..id = (json['ID'] as num?)?.toInt()
   ..kuladi = json['KULADI'] as String?
   ..parola = json['PAROLA'] as String?
   ..adi = json['ADI'] as String?
   ..soyadi = json['SOYADI'] as String?
   ..erpKullanici = json['ERP_KULLANICI'] as String?
   ..erpParola = json['ERP_PAROLA'] as String?
-  ..profilKodu = json['PROFIL_KODU'] as int?
+  ..profilKodu = (json['PROFIL_KODU'] as num?)?.toInt()
   ..profilAdi = json['PROFIL_ADI'] as String?
   ..profilYetki = json['PROFIL_YETKI'] == null
       ? null

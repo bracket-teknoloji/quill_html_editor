@@ -27,21 +27,21 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
           json['hizliTahsilat_SozlesmeKodlari'] as List<dynamic>?,
       siparisMusSipEkstraAlanlar:
           json['siparis_MusSip_EkstraAlanlar'] as List<dynamic>?,
-      sirketAlisDepo: json['sirket_alisDepo'] as int?,
-      sirketSatisDepo: json['sirket_satisDepo'] as int?,
+      sirketAlisDepo: (json['sirket_alisDepo'] as num?)?.toInt(),
+      sirketSatisDepo: (json['sirket_satisDepo'] as num?)?.toInt(),
       transferDATVarsayilanCikisDepo:
-          json['transfer_DAT_VarsayilanCikisDepo'] as int?,
+          (json['transfer_DAT_VarsayilanCikisDepo'] as num?)?.toInt(),
       transferDATVarsayilanGirisDepo:
-          json['transfer_DAT_VarsayilanGirisDepo'] as int?,
+          (json['transfer_DAT_VarsayilanGirisDepo'] as num?)?.toInt(),
       cariRehPlaEslesmesinBelgeTipleri:
           json['cariRehPlaEslesmesinBelgeTipleri'] as List<dynamic>?,
       profilKodu: json['profilKodu'] as String?,
       sirketAktifDepolar: (json['sirket_aktifDepolar'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
       sirketDatYetkiliDepolar:
           (json['sirket_DAT_YetkiliDepolar'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList(),
     );
 

@@ -519,7 +519,7 @@ Map<String, dynamic> _$CariDetayModelToJson(CariDetayModel instance) {
 
 BakiyeList _$BakiyeListFromJson(Map<String, dynamic> json) => BakiyeList()
   ..cariKodu = json['CARI_KODU'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toDouble()
   ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
@@ -551,9 +551,9 @@ BankaList _$BankaListFromJson(Map<String, dynamic> json) => BankaList()
   ..bankahesno = json['BANKAHESNO'] as String?
   ..bankaAdi = json['BANKA_ADI'] as String?
   ..subeAdi = json['SUBE_ADI'] as String?
-  ..dovizTipi = json['DOVIZ_TIPI'] as int?
+  ..dovizTipi = (json['DOVIZ_TIPI'] as num?)?.toInt()
   ..dovizAdi = json['DOVIZ_ADI'] as String?
-  ..borcToplami = json['BORC_TOPLAMI'] as int?
+  ..borcToplami = (json['BORC_TOPLAMI'] as num?)?.toInt()
   ..alacakToplami = (json['ALACAK_TOPLAMI'] as num?)?.toDouble()
   ..bakiye = (json['BAKIYE'] as num?)?.toDouble();
 

@@ -14,8 +14,8 @@ _$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
       dicParamsMap: json['DicParams'] as Map<String, dynamic>?,
-      dizaynId: json['DIZAYN_ID'] as int?,
-      etiketSayisi: json['ETIKET_SAYISI'] as int?,
+      dizaynId: (json['DIZAYN_ID'] as num?)?.toInt(),
+      etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) {
@@ -74,7 +74,7 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
       fiyatTipi: json['FIYAT_TIPI'] as String?,
       tblnfStokfiyatgecmisiId: json['TBLNF_STOKFIYATGECMISI_ID'] as String?,
       gorunecekAlanlar: json['GORUNECEK_ALANLAR'] as String?,
-      miktar: json['MIKTAR'] as int?,
+      miktar: (json['MIKTAR'] as num?)?.toInt(),
       yapkod: json['YAPKOD'] as String?,
       opkodu: json['OPKODU'] as String?,
       kasaKodu: json['KASA_KODU'] as String?,

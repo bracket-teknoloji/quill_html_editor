@@ -12,8 +12,8 @@ _$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
       aciklama: json['ACIKLAMA'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
-      depoKodu: json['DEPO_KODU'] as int?,
-      miktar: json['MIKTAR'] as int?,
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      miktar: (json['MIKTAR'] as num?)?.toInt(),
       depoTanimi: json['DEPO_TANIMI'] as String?,
     );
 

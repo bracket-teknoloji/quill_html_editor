@@ -8,7 +8,7 @@ part of 'company_model.dart';
 
 CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) => CompanyModel()
   ..company = json['SIRKET'] as String?
-  ..year = json['YIL'] as int?
+  ..year = (json['YIL'] as num?)?.toInt()
   ..devSirket = json['DEVSIRKET'] as String?
   ..isDevredilmis = json['isDevredilmis'] as bool?;
 

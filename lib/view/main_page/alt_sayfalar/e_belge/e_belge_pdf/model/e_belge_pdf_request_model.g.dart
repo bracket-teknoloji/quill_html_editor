@@ -11,7 +11,7 @@ _$EBelgePdfRequestModelImpl _$$EBelgePdfRequestModelImplFromJson(
     _$EBelgePdfRequestModelImpl(
       belgeTuru: json['BELGE_TURU'] as String?,
       ebelgeTuru: json['EBELGE_TURU'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       resmiBelgeNo: json['RESMI_BELGE_NO'] as String?,
     );
 

@@ -9,7 +9,7 @@ part of 'cek_senet_hareketleri_model.dart';
 _$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CekSenetHareketleriModelImpl(
-      inckeyno: json['INCKEYNO'] as int?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       yeri: json['YERI'] as String?,
@@ -18,7 +18,7 @@ _$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
           ? null
           : DateTime.parse(json['TARIH'] as String),
       hesapKodu: json['HESAP_KODU'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       islemAdi: json['ISLEM_ADI'] as String?,
       alinanBordroNo: json['ALINAN_BORDRO_NO'] as String?,
       devir: json['DEVIR'] as String?,

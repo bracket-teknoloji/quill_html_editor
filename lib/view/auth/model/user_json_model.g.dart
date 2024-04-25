@@ -11,7 +11,7 @@ UserJson _$UserJsonFromJson(Map<String, dynamic> json) => UserJson()
       ? null
       : ProfilModel.fromJson(json['profilModel'] as Map<String, dynamic>)
   ..yetkiModel = json['yetkiModel'] as Map<String, dynamic>?
-  ..id = json['ID'] as int?
+  ..id = (json['ID'] as num?)?.toInt()
   ..kullaniciAdi = json['KULADI'] as String?
   ..parola = json['PAROLA'] as String?
   ..ad = json['ADI'] as String?

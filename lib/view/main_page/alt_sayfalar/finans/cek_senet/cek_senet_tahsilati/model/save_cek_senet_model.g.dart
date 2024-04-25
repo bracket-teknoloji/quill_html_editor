@@ -13,7 +13,7 @@ _$SaveCekSenetModelImpl _$$SaveCekSenetModelImplFromJson(
       cariAdi: json['CARI_ADI'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       guid: json['GUID'] as String?,
-      islemKodu: json['ISLEM_KODU'] as int?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       kalemler: (json['KALEMLER'] as List<dynamic>?)
           ?.map(
               (e) => CekSenetKalemlerModel.fromJson(e as Map<String, dynamic>))
@@ -89,8 +89,8 @@ _$CekSenetKalemlerModelImpl _$$CekSenetKalemlerModelImplFromJson(
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       raporKodu: json['RAPOR_KODU'] as String?,
       sehir: json['SEHIR'] as String?,
-      sira: json['SIRA'] as int?,
-      dovizTipi: json['DOVIZ_TIPI'] as int?,
+      sira: (json['SIRA'] as num?)?.toInt(),
+      dovizTipi: (json['DOVIZ_TIPI'] as num?)?.toInt(),
       tag: json['TAG'] as String?,
       tarih: json['TARIH'] == null
           ? null

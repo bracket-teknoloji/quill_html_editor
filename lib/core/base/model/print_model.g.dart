@@ -8,8 +8,8 @@ part of 'print_model.dart';
 
 _$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
     _$PrintModelImpl(
-      dizaynId: json['DIZAYN_ID'] as int?,
-      etiketSayisi: json['ETIKET_SAYISI'] as int?,
+      dizaynId: (json['DIZAYN_ID'] as num?)?.toInt(),
+      etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
       raporOzelKod: json['RAPOR_OZEL_KOD'] as String,
       yazdir: json['YAZDIR'] as bool? ?? true,
       yaziciAdi: json['YAZICI_ADI'] as String?,

@@ -9,9 +9,9 @@ part of 'e_fatura_ozel_kod_model.dart';
 _$EFaturaOzelKodModelImpl _$$EFaturaOzelKodModelImplFromJson(
         Map<String, dynamic> json) =>
     _$EFaturaOzelKodModelImpl(
-      tip: json['TIP'] as int?,
+      tip: (json['TIP'] as num?)?.toInt(),
       tipAdi: json['TIP_ADI'] as String?,
-      kod: json['KOD'] as int?,
+      kod: (json['KOD'] as num?)?.toInt(),
       aciklama: json['ACIKLAMA'] as String?,
     );
 
