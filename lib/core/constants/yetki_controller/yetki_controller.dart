@@ -376,6 +376,7 @@ final class YetkiController {
   bool get ebelgeEFaturaGoruntule => _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
   bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
   bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif);
+  bool get eFaturaSenaryoDegistir => _isTrue(_paramModel?.eFaturaSenaryoDegistir);
   bool eFaturaSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? "") || (_paramModel?.arrEFatSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));

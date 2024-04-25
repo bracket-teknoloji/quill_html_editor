@@ -224,18 +224,9 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         dialogManager.showAlertDialog("Önce Cari Seçiniz");
                         return;
                       }
-                      final result = await Get.toNamed(
-                        "mainPage/cariRehberi",
-                        arguments: CariListesiRequestModel(
-                          kod: model.cariKodu ?? "",
-                          menuKodu: "CARI_CREH",
-                          belgeTuru: widget.model.editTipiEnum?.rawValue,
-                        ),
-                      );
-                      if (result != null && result is CariListesiModel) {
-                        model.cariKodu = result.cariKodu;
-                        model.cariAdi = result.cariAdi;
-                        _cariController.text = result.cariAdi ?? "";
+                      final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]));
+                      if (result != null) {
+                        dialogManager.showCariIslemleriGridViewDialog(result);
                       }
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
@@ -285,18 +276,9 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         dialogManager.showAlertDialog("Önce Cari Seçiniz");
                         return;
                       }
-                      final result = await Get.toNamed(
-                        "mainPage/cariRehberi",
-                        arguments: CariListesiRequestModel(
-                          kod: model.cariKodu ?? "",
-                          menuKodu: "CARI_CREH",
-                          belgeTuru: widget.model.editTipiEnum?.rawValue,
-                        ),
-                      );
-                      if (result != null && result is CariListesiModel) {
-                        model.teslimCari = result.cariKodu;
-                        model.teslimCariAdi = result.cariAdi;
-                        _teslimCariController.text = result.cariAdi ?? "";
+                      final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.teslimCari ?? ""]));
+                      if (result != null) {
+                        dialogManager.showCariIslemleriGridViewDialog(result);
                       }
                     },
                     icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),

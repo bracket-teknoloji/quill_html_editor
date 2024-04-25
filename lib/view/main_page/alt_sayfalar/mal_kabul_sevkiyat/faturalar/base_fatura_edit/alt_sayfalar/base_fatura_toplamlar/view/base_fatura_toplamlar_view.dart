@@ -437,7 +437,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                 Expanded(
                   child: CustomTextField(
                     labelText: "E-Fatura Senaryo",
-                    enabled: enable,
+                    enabled: enable && yetkiController.eFaturaSenaryoDegistir,
                     isMust: true,
                     readOnly: true,
                     controller: eFaturaSenaryoController,
