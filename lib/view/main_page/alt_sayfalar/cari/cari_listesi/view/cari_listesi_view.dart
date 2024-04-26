@@ -582,7 +582,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Şehir",

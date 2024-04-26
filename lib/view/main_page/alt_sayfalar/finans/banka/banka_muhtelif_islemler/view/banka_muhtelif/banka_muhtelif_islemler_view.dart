@@ -270,7 +270,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                         }
                       },
                     ),
-                  ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   Expanded(
                     child: CustomTextField(
                       labelText: "Proje",
@@ -287,7 +287,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                         }
                       },
                     ),
-                  ).yetkiVarMi(parametreModel.projeUygulamasiAcik == true),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                 ],
               ),
               CustomTextField(

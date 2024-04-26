@@ -650,8 +650,8 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             viewModel.setProje(result);
                           }
                         },
-                      ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
-                    ),
+                      ),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.transferLokalDatGizlenecekAlanlar("proje")),
                   ],
                 ),
                 CustomTextField(

@@ -351,7 +351,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(yetkiController.cariListesi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Cari Tipi",
@@ -376,7 +376,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(yetkiController.cariListesi),
               ],
             ),
             Row(

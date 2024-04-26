@@ -163,7 +163,7 @@ class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView> {
                 valueWidget: Text(model.plasiyerKodu ?? ""),
                 controllerText: model.plasiyerKodu,
                 readOnly: true,
-              ),
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
             ],
           ).paddingAll(UIHelper.lowSize),
         ),

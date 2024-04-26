@@ -129,7 +129,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                   },
                   suffixMore: true,
                 ),
-              ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
               Expanded(
                 child: CustomTextField(
                   labelText: loc.generalStrings.sort,

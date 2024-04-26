@@ -154,7 +154,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                   },
                   suffixMore: true,
                 ),
-              ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
             ],
           ),
           Row(

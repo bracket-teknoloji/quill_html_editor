@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 class IsEmriDetayView extends StatefulWidget {
   const IsEmriDetayView({super.key});
@@ -9,7 +11,7 @@ class IsEmriDetayView extends StatefulWidget {
   State<IsEmriDetayView> createState() => _IsEmriDetayViewState();
 }
 
-class _IsEmriDetayViewState extends State<IsEmriDetayView> {
+class _IsEmriDetayViewState extends BaseState<IsEmriDetayView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -20,10 +22,10 @@ class _IsEmriDetayViewState extends State<IsEmriDetayView> {
             IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)),
           ],
         ),
-        body: const SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: CustomTextField(
@@ -37,28 +39,27 @@ class _IsEmriDetayViewState extends State<IsEmriDetayView> {
                   ),
                 ],
               ),
-              CustomTextField(
+              const CustomTextField(
                 labelText: "Belge No",
               ),
-              CustomTextField(
+              const CustomTextField(
                 labelText: "Stok Kodu",
-              ),
+              ).yetkiVarMi(yetkiController.stokListesi),
               Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: CustomTextField(
                       labelText: "Miktar",
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     child: CustomTextField(
                       labelText: "Proje",
                     ),
-                  ),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                 ],
               ),
-              
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: CustomTextField(
@@ -72,7 +73,7 @@ class _IsEmriDetayViewState extends State<IsEmriDetayView> {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: CustomTextField(
@@ -86,7 +87,7 @@ class _IsEmriDetayViewState extends State<IsEmriDetayView> {
                   ),
                 ],
               ),
-              CustomTextField(
+              const CustomTextField(
                 labelText: "Açıklama",
               ),
             ],

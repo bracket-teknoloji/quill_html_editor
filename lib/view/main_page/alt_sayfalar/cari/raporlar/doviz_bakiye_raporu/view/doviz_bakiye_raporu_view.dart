@@ -126,7 +126,7 @@ class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
                     },
                     suffixMore: true,
                   ),
-                ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: loc.generalStrings.sort,

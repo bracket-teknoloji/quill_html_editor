@@ -370,7 +370,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         }
                       },
                     ),
-                  ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       text: "Dövizli",

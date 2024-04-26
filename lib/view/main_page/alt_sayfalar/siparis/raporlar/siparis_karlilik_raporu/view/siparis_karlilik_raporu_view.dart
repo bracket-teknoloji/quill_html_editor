@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
@@ -174,7 +175,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                       }
                     },
                   ),
-                ),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Maliyet Tipi",

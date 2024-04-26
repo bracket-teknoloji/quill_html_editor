@@ -273,7 +273,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                               viewModel.setPlasiyerKodu(result.plasiyerKodu);
                             }
                           },
-                        ).yetkiVarMi(parametreModel.plasiyerUygulamasi ?? false),
+                        ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                       ),
                     ],
                   ),

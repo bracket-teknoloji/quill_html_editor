@@ -416,7 +416,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(parametreModel.plasiyerUygulamasi ?? false),
+                      ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                     ],
                   ),
                   CustomTextField(
@@ -433,7 +433,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         viewModel.setProjeKodu(result.projeKodu);
                       }
                     },
-                  ).yetkiVarMi(parametreModel.projeUygulamasiAcik ?? false),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   CustomTextField(
                     labelText: "Açıklama",
                     controller: _aciklamaController,

@@ -3,6 +3,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -293,7 +294,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                 plasiyerController.text = result.plasiyerAciklama ?? "";
               }
             },
-          ),
+          ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
           Row(
             children: [
               Expanded(

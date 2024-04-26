@@ -237,7 +237,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                         }
                       },
                     ),
-                  ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   Expanded(
                     child: CustomTextField(
                       enabled: enable,

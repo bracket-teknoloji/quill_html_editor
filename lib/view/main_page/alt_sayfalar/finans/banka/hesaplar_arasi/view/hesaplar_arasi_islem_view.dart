@@ -320,7 +320,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                       ),
                     ),
                   ],
-                ).yetkiVarMi(parametreModel.plasiyerUygulamasi == true),
+                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 CustomTextField(
                   labelText: "Proje",
                   controller: _projeController,
@@ -335,7 +335,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                       viewModel.setProjeKodu(result.projeKodu);
                     }
                   },
-                ).yetkiVarMi(parametreModel.projeUygulamasiAcik == true),
+                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                 CustomTextField(
                   labelText: "Açıklama",
                   controller: _aciklamaController,
