@@ -18,11 +18,14 @@ class IrsaliyeFaturalastirView extends StatefulWidget {
   const IrsaliyeFaturalastirView({super.key, required this.model});
 
   @override
-  State<IrsaliyeFaturalastirView> createState() => _IrsaliyeFaturalastirViewState();
+  State<IrsaliyeFaturalastirView> createState() =>
+      _IrsaliyeFaturalastirViewState();
 }
 
-class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView> {
-  final IrsaliyeFaturalastirViewModel viewModel = IrsaliyeFaturalastirViewModel();
+class _IrsaliyeFaturalastirViewState
+    extends BaseState<IrsaliyeFaturalastirView> {
+  final IrsaliyeFaturalastirViewModel viewModel =
+      IrsaliyeFaturalastirViewModel();
   late final TextEditingController cariController;
   late final TextEditingController irsaliyeNoController;
   late final TextEditingController irsaliyeTarihiController;
@@ -40,7 +43,8 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
     cariController = TextEditingController(text: model.cariAdi ?? "");
     irsaliyeNoController = TextEditingController(text: model.belgeNo ?? "");
     irsaliyeTarihiController = TextEditingController(text: model.belgeNo ?? "");
-    faturaTarihiController = TextEditingController(text: model.tarih.toDateString);
+    faturaTarihiController =
+        TextEditingController(text: model.tarih.toDateString);
     faturaNoController = TextEditingController(text: model.belgeNo ?? "");
     resmiFaturaNoController = TextEditingController(text: model.belgeNo ?? "");
     istisnaKoduNoController = TextEditingController(text: model.belgeNo ?? "");
@@ -79,7 +83,8 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
                   final result = await viewModel.sendFatura();
                   if (result.success == true) {
                     Get.back(result: true);
-                    dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                    dialogManager.showSuccessSnackBar(
+                        result.message ?? loc.generalStrings.success);
                   }
                 });
               },
@@ -125,7 +130,8 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
                   isDateTime: true,
                   controller: faturaTarihiController,
                   onTap: () async {
-                    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.tarih);
+                    final result = await dialogManager.showDateTimePicker(
+                        initialDate: viewModel.model?.tarih);
                     if (result is DateTime) {
                       viewModel.setFaturaTarihi(result);
                       faturaTarihiController.text = result.toDateString;
@@ -162,10 +168,12 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
       );
 
   Future<void> getSiradakiKod() async {
-    final result = await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!);
+    final result =
+        await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!);
     if (result != "") {
       faturaNoController.text = result ?? "";
-      viewModel.setResmiFaturaNo(result?.belgeNoToResmiBelgeNo(result, viewModel.model?.tarih));
+      viewModel.setResmiFaturaNo(
+          result?.belgeNoToResmiBelgeNo(result, viewModel.model?.tarih));
       resmiFaturaNoController.text = viewModel.requestModel.resmiBelgeNo ?? "";
     }
   }

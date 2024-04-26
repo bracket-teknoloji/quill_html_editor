@@ -150,6 +150,8 @@ class AccountModel with NetworkManagerMixin {
 
   final Location location = Location();
 
+  bool get adminMi => admin == "E";
+
   Future<void> init() async {
     if (isDebug) {
       debugMu = isDebug;

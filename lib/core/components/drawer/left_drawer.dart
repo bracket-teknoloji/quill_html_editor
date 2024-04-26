@@ -19,7 +19,8 @@ class LeftDrawer extends StatefulWidget {
 
 class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
-  List<FavoritesModel> list = CacheManager.getFavoriler.values.toList().where((element) => (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) || AccountModel.instance.admin == "E").toList();
+  List<FavoritesModel> list =
+      CacheManager.getFavoriler.values.toList().where((element) => (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) || AccountModel.instance.adminMi).toList();
   List get liste => list.where((element) => element.yetkiKontrol).toList();
   @override
   Widget build(BuildContext context) => Drawer(
@@ -111,18 +112,18 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 )
                               : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
                           onTap: () {
-                                  if (mounted) {
-                                    widget.scaffoldKey.currentState!.closeDrawer();
-                                  }
-                                  // Navigator.of(context).pop();
-                                  if (value.arguments != null) {
-                                    Get.toNamed(value.onTap.toString(), arguments: value.arguments);
-                                    // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
-                                  } else {
-                                    Get.toNamed(value.onTap.toString());
-                                    // Navigator.pushNamed(context, value.onTap.toString());
-                                  }
-                                },
+                            if (mounted) {
+                              widget.scaffoldKey.currentState!.closeDrawer();
+                            }
+                            // Navigator.of(context).pop();
+                            if (value.arguments != null) {
+                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                              // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
+                            } else {
+                              Get.toNamed(value.onTap.toString());
+                              // Navigator.pushNamed(context, value.onTap.toString());
+                            }
+                          },
                         ),
                       );
                     },
