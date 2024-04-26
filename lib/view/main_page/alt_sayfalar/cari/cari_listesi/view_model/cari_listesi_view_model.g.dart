@@ -9,6 +9,12 @@ part of 'cari_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
+  Computed<bool>? _$getRotaComputed;
+
+  @override
+  bool get getRota => (_$getRotaComputed ??= Computed<bool>(() => super.getRota,
+          name: '_CariListesiViewModelBase.getRota'))
+      .value;
   Computed<Map<String, dynamic>>? _$getCariRequestModelComputed;
 
   @override
@@ -307,6 +313,17 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
         .startAction(name: '_CariListesiViewModelBase.changeKodlariGoster');
     try {
       return super.changeKodlariGoster();
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRota(bool value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.setRota');
+    try {
+      return super.setRota(value);
     } finally {
       _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -735,6 +752,7 @@ grupKodlari: ${grupKodlari},
 sehirler: ${sehirler},
 cariRequestModel: ${cariRequestModel},
 cariRequestModelTemp: ${cariRequestModelTemp},
+getRota: ${getRota},
 getCariRequestModel: ${getCariRequestModel},
 getGrupKod0: ${getGrupKod0},
 getGrupKod1: ${getGrupKod1},

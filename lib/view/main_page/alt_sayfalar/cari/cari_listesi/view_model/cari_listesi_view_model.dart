@@ -71,6 +71,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
+  bool get getRota => cariRequestModel.rotaDisi == "E";
+
+  @computed
   Map<String, dynamic> get getCariRequestModel => cariRequestModel.toJson().map((key, value) => MapEntry(key, value is List ? jsonEncode(value) : value));
 
   @computed
@@ -114,6 +117,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
       getKod();
     }
   }
+
+  @action
+  void setRota(bool value) => cariRequestModel = cariRequestModel.copyWith(rotaDisi: value ? "E" : null);
 
   @action
   void increaseSayfa() => cariRequestModel = cariRequestModel.copyWith(sayfa: (cariRequestModel.sayfa ?? 0) + 1);
@@ -277,6 +283,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
     final responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       bodyModel: BaseGrupKoduModel(),
+      showLoading: true,
       headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
       queryParameters: {"Modul": "CARI", "GrupNo": "-1"},
     );

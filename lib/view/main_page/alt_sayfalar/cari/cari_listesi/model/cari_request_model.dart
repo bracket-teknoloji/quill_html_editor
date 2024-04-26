@@ -39,6 +39,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     bool? kisitYok,
     String? secildi,
     String? teslimCari,
+    String? rotaDisi,
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);

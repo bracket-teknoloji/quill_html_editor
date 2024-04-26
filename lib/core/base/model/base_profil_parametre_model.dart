@@ -28,6 +28,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     /// 2 ise açık
     /// 3 ise karanlık tema
     @Default(ThemeMode.system) ThemeMode temaModu,
+    @Default(false) bool rotaDisiGorunsunMu,
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
   }) = _BaseProfilParametreModel;

@@ -41,6 +41,7 @@ mixin _$BaseProfilParametreModel {
   /// 2 ise açık
   /// 3 ise karanlık tema
   ThemeMode get temaModu => throw _privateConstructorUsedError;
+  bool get rotaDisiGorunsunMu => throw _privateConstructorUsedError;
   NetFectDizaynList? get netFectDizaynList =>
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
@@ -72,6 +73,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool finansOzelRaporGrafikGoster,
       @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
       ThemeMode temaModu,
+      bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -104,6 +106,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? finansOzelRaporGrafikGoster = null,
     Object? acikTemaMi = null,
     Object? temaModu = null,
+    Object? rotaDisiGorunsunMu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -164,6 +167,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.temaModu
           : temaModu // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
+          ? _value.rotaDisiGorunsunMu
+          : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -200,6 +207,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool finansOzelRaporGrafikGoster,
       @Deprecated("Bunun yerine temaModu kullanılacak.") bool acikTemaMi,
       ThemeMode temaModu,
+      bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList});
 }
@@ -231,6 +239,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? finansOzelRaporGrafikGoster = null,
     Object? acikTemaMi = null,
     Object? temaModu = null,
+    Object? rotaDisiGorunsunMu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
   }) {
@@ -291,6 +300,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.temaModu
           : temaModu // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
+      rotaDisiGorunsunMu: null == rotaDisiGorunsunMu
+          ? _value.rotaDisiGorunsunMu
+          : rotaDisiGorunsunMu // ignore: cast_nullable_to_non_nullable
+              as bool,
       netFectDizaynList: freezed == netFectDizaynList
           ? _value.netFectDizaynList
           : netFectDizaynList // ignore: cast_nullable_to_non_nullable
@@ -322,6 +335,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       @Deprecated("Bunun yerine temaModu kullanılacak.")
       this.acikTemaMi = false,
       this.temaModu = ThemeMode.system,
+      this.rotaDisiGorunsunMu = false,
       this.netFectDizaynList,
       this.yaziciList})
       : super._();
@@ -377,6 +391,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @JsonKey()
   final ThemeMode temaModu;
   @override
+  @JsonKey()
+  final bool rotaDisiGorunsunMu;
+  @override
   final NetFectDizaynList? netFectDizaynList;
   @override
   final YaziciList? yaziciList;
@@ -412,6 +429,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool finansOzelRaporGrafikGoster,
       @Deprecated("Bunun yerine temaModu kullanılacak.") final bool acikTemaMi,
       final ThemeMode temaModu,
+      final bool rotaDisiGorunsunMu,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
@@ -452,6 +470,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   /// 2 ise açık
   /// 3 ise karanlık tema
   ThemeMode get temaModu;
+  @override
+  bool get rotaDisiGorunsunMu;
   @override
   NetFectDizaynList? get netFectDizaynList;
   @override

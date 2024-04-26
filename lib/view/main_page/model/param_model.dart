@@ -490,6 +490,8 @@ class ParamModel {
   bool? alisTeslimCarideBaglanmisCarilerSecilsin;
   @JsonKey(name: "FaturaSatisIadeUygulamasi")
   bool? faturaSatisIadeUygulamasi;
+  @JsonKey(name: "CariRotaUygulamasi")
+  String? cariRotaUygulamasi;
   factory ParamModel.fromJson(Map<String, dynamic> json) => _$ParamModelFromJson(json);
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 

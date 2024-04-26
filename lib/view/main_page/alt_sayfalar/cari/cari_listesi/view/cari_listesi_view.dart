@@ -6,6 +6,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -85,6 +86,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     kod3Controller = TextEditingController();
     kod4Controller = TextEditingController();
     kod5Controller = TextEditingController();
+    if (yetkiController.cariKartiRotasUygulamasiAcikMi) {
+      viewModel.setRota(CacheManager.getProfilParametre.rotaDisiGorunsunMu);
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.isGetData) {
         viewModel.changeSearchBar();
@@ -121,7 +125,9 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
   @override
   void dispose() {
     super.dispose();
-    _scrollController.dispose();
+    if (_scrollController.hasClients) {
+      _scrollController.dispose();
+    }
     plasiyerController.dispose();
     sehirController.dispose();
     ilceController.dispose();
@@ -283,8 +289,8 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   : const ListViewShimmer()
               : ListView.builder(
                   primary: false,
+                  physics: const AlwaysScrollableScrollPhysics(),
                   controller: _scrollController,
-                  shrinkWrap: true,
                   itemCount: (viewModel.cariListesi?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index < (viewModel.cariListesi?.length ?? 0)) {
@@ -644,6 +650,18 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   ),
                 ),
               ],
+            ),
+            Card(
+              child: Observer(
+                builder: (_) => SwitchListTile.adaptive(
+                  value: viewModel.getRota,
+                  onChanged: (value) {
+                    viewModel.setRota(value);
+                    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(rotaDisiGorunsunMu: value));
+                  },
+                  title: const Text("Rota Dışı"),
+                ),
+              ).yetkiVarMi(yetkiController.cariKartiRotasUygulamasiAcikMi),
             ),
             InkWell(
               onTap: () => viewModel.changeKodlariGoster(),

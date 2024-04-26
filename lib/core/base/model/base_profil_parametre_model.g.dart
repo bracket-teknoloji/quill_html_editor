@@ -32,6 +32,7 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       acikTemaMi: json['ACIK_TEMA_MI'] as bool? ?? false,
       temaModu: $enumDecodeNullable(_$ThemeModeEnumMap, json['TEMA_MODU']) ??
           ThemeMode.system,
+      rotaDisiGorunsunMu: json['ROTA_DISI_GORUNSUN_MU'] as bool? ?? false,
       netFectDizaynList: json['NET_FECT_DIZAYN_LIST'] == null
           ? null
           : NetFectDizaynList.fromJson(
@@ -59,6 +60,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
     'FINANS_OZEL_RAPOR_GRAFIK_GOSTER': instance.finansOzelRaporGrafikGoster,
     'ACIK_TEMA_MI': instance.acikTemaMi,
     'TEMA_MODU': _$ThemeModeEnumMap[instance.temaModu]!,
+    'ROTA_DISI_GORUNSUN_MU': instance.rotaDisiGorunsunMu,
   };
 
   void writeNotNull(String key, dynamic value) {

@@ -76,6 +76,8 @@ mixin _$CariRequestModel {
   set secildi(String? value) => throw _privateConstructorUsedError;
   String? get teslimCari => throw _privateConstructorUsedError;
   set teslimCari(String? value) => throw _privateConstructorUsedError;
+  String? get rotaDisi => throw _privateConstructorUsedError;
+  set rotaDisi(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -113,7 +115,8 @@ abstract class $CariRequestModelCopyWith<$Res> {
       String? siparisKarsilanmaDurumu,
       bool? kisitYok,
       String? secildi,
-      String? teslimCari});
+      String? teslimCari,
+      String? rotaDisi});
 }
 
 /// @nodoc
@@ -153,6 +156,7 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
     Object? kisitYok = freezed,
     Object? secildi = freezed,
     Object? teslimCari = freezed,
+    Object? rotaDisi = freezed,
   }) {
     return _then(_value.copyWith(
       filterText: freezed == filterText
@@ -251,6 +255,10 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.teslimCari
           : teslimCari // ignore: cast_nullable_to_non_nullable
               as String?,
+      rotaDisi: freezed == rotaDisi
+          ? _value.rotaDisi
+          : rotaDisi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -287,7 +295,8 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
       String? siparisKarsilanmaDurumu,
       bool? kisitYok,
       String? secildi,
-      String? teslimCari});
+      String? teslimCari,
+      String? rotaDisi});
 }
 
 /// @nodoc
@@ -325,6 +334,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
     Object? kisitYok = freezed,
     Object? secildi = freezed,
     Object? teslimCari = freezed,
+    Object? rotaDisi = freezed,
   }) {
     return _then(_$CariRequestModelImpl(
       filterText: freezed == filterText
@@ -423,6 +433,10 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.teslimCari
           : teslimCari // ignore: cast_nullable_to_non_nullable
               as String?,
+      rotaDisi: freezed == rotaDisi
+          ? _value.rotaDisi
+          : rotaDisi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -455,7 +469,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       this.siparisKarsilanmaDurumu,
       this.kisitYok,
       this.secildi,
-      this.teslimCari})
+      this.teslimCari,
+      this.rotaDisi})
       : super._();
 
   factory _$CariRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -513,6 +528,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   String? secildi;
   @override
   String? teslimCari;
+  @override
+  String? rotaDisi;
 
   @JsonKey(ignore: true)
   @override
@@ -554,7 +571,8 @@ abstract class _CariRequestModel extends CariRequestModel {
       String? siparisKarsilanmaDurumu,
       bool? kisitYok,
       String? secildi,
-      String? teslimCari}) = _$CariRequestModelImpl;
+      String? teslimCari,
+      String? rotaDisi}) = _$CariRequestModelImpl;
   _CariRequestModel._() : super._();
 
   factory _CariRequestModel.fromJson(Map<String, dynamic> json) =
@@ -638,6 +656,9 @@ abstract class _CariRequestModel extends CariRequestModel {
   @override
   String? get teslimCari;
   set teslimCari(String? value);
+  @override
+  String? get rotaDisi;
+  set rotaDisi(String? value);
   @override
   @JsonKey(ignore: true)
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>

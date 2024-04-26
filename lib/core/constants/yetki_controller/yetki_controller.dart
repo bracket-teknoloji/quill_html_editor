@@ -82,6 +82,7 @@ final class YetkiController {
   bool get cariKartiYeniKayit => _isTrue(_yetkiModel?.cariCariKartiKaydet);
   bool get cariKartiDuzenleme => _isTrue(_yetkiModel?.cariCariKartiDuzelt);
   bool get cariKartiSilme => _isTrue(_yetkiModel?.cariCariKartiSil);
+  bool get cariKartiRotasUygulamasiAcikMi => _isTrue(_paramModel?.cariRotaUygulamasi == "E", skipAdmin: true);
 
   bool cariKartiDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.cariCariKartiDegismeyecekAlanlar?.contains(index) ?? false));
 
