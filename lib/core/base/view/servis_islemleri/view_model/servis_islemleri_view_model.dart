@@ -25,7 +25,8 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> dbUpdate() async {
-    await networkManager.dbUpdate(CacheManager.getVeriTabani["Şirket"]);
+    final result = await networkManager.dbUpdate(CacheManager.getVeriTabani["Şirket"]);
+    if (result.success == true) dialogManager.showSuccesDialog(result.message);
   }
 
   @action
@@ -35,7 +36,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
       showLoading: true,
     );
-    dialogManager.showSuccesDialog(result.message);
+    if (result.success == true) dialogManager.showSuccesDialog(result.message);
   }
 
   @action
@@ -45,7 +46,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
       showLoading: true,
     );
-    dialogManager.showSuccesDialog(result.message);
+    if (result.success == true) dialogManager.showSuccesDialog(result.message);
   }
 
   @action
@@ -55,7 +56,7 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
       showLoading: true,
     );
-    dialogManager.showSuccesDialog(result.message);
+    if (result.success == true) dialogManager.showSuccesDialog(result.message);
   }
 
   @action
@@ -65,6 +66,6 @@ abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
       bodyModel: ServisInfoModel(),
       showLoading: true,
     );
-    dialogManager.showSuccesDialog(result.message ?? "Servis Yeniden Başlatıldı");
+    if (result.success == true) dialogManager.showSuccesDialog(result.message ?? "Servis Yeniden Başlatıldı");
   }
 }
