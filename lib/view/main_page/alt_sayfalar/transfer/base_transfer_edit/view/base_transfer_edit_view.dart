@@ -141,7 +141,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
             Get.back();
           }
-          if (result == true) {}
         }
         BaseSiparisEditModel.instance.cikisDepoKodu = yetkiController.transferLokalDatCikisDepo?.depoKodu;
         BaseSiparisEditModel.instance.girisDepoKodu = yetkiController.transferLokalDatGirisDepo?.depoKodu;

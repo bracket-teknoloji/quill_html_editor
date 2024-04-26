@@ -291,7 +291,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                         viewModel.setProjeKodu(result.projeKodu);
                       }
                     },
-                  ).yetkiVarMi(parametreModel.projeUygulamasiAcik ?? false),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   CustomTextField(
                     labelText: "Kasa Hareket Açıklama",
                     controller: _kasaHarAciklamaController,

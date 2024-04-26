@@ -445,7 +445,6 @@ class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      //TODO kalite kontrol parametreleri eklenecek.
       // name: "KALKON",
       name: AccountModel.instance.isDebug ? null : "KALKON",
       title: "Kalite Kontrol",
@@ -453,7 +452,6 @@ class MenuItemConstants {
       color: ColorPalette.surfGreen,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "kalite_OlcumGirisi", title: "Ölçüm Girişi", route: "/mainPage/olcumGirisi"),GridItemModel.altmenu(
-          //TODO kalite kontrol parametreleri eklenecek.
           name: "kalite_kontrol_Raporlar",
           title: "Raporlar",
           icon: "monitoring",

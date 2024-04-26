@@ -79,7 +79,6 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                     Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
                     dialogManager.showSuccessSnackBar("Başarılı");
                   } else {
-                    //TODO Ölçüm sonuç bilgileri eklensin
                     final result = await showOlcumSonucBilgileri();
                     if (result != null) {
                       Get.back(result: result);

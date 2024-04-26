@@ -145,14 +145,16 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
         BottomSheetModel(
           title: "Depo Fark Raporu",
           iconWidget: Icons.filter_9_outlined,
-        ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
+          //TODO Buraları ekle
+        ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi && false),
         BottomSheetModel(
           title: "Sayım Raporu (PDF)",
           iconWidget: Icons.filter_9_outlined,
           onTap: () async {
             // final result = await bottomSheetDialogManager.showBottomSh
           },
-        ).yetkiKontrol(yetkiController.sayimSayimRaporu),
+          //TODO Buraları ekle
+        ).yetkiKontrol(yetkiController.sayimSayimRaporu && false),
         BottomSheetModel(
           title: loc.generalStrings.print,
           iconWidget: Icons.print_outlined,
