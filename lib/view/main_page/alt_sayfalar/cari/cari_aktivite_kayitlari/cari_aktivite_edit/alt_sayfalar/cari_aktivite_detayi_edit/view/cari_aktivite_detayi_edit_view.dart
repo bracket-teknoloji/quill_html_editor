@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
@@ -7,6 +8,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view_model/cari_aktivite_detayi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 
@@ -103,8 +105,9 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
                   readOnly: true,
                   suffixMore: true,
                   controller: aktiviteTipiController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showCariAktiviteTipiBottomSheetDialog(context, true);
+                    final result = await bottomSheetDialogManager.showCariAktiviteTipiBottomSheetDialog(context, viewModel.model.aktiviteTipi);
                     if (result != null) {
                       aktiviteTipiController.text = result.aktiviteAdi ?? "";
                       viewModel.setAktiviteTipi(result);

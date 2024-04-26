@@ -9,6 +9,7 @@ import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/utils/map_utils.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
@@ -102,6 +103,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(cariHareketleri);
         islemlerList.add(stokHareketleri);
         islemlerList.add(cariAktivite);
+        islemlerList.add(cariAktiviteKaydiGir);
         islemlerList.add(cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar ?? []);
       }
@@ -235,10 +237,18 @@ class IslemlerMenuItemConstants<T> {
       GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
   GridItemModel? get cariAktivite => GridItemModel.islemler(
         iconData: Icons.sync_alt_outlined,
-        //TODO ISDEBUG KALDIR
-        isEnabled: _yetkiController.cariAktivite && AccountModel.instance.isDebug,
+        isEnabled: _yetkiController.cariAktivite,
         title: "Cari Aktivite",
         onTap: () async => Get.toNamed("mainPage/cariAktivite", arguments: model),
+      );
+  GridItemModel? get cariAktiviteKaydiGir => GridItemModel.islemler(
+        iconData: Icons.add_chart_outlined,
+        isEnabled: _yetkiController.cariAktiviteYeniKayit,
+        title: "Aktivite Kaydı Gir",
+        onTap: () async => Get.toNamed(
+          "mainPage/cariAktiviteEdit",
+          arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: CariAktiviteListesiModel.fromCariListesiModel(model as CariListesiModel)),
+        ),
       );
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",

@@ -25,6 +25,7 @@ class CariAktiviteView extends StatefulWidget {
   const CariAktiviteView({super.key, this.cariModel});
 
   @override
+
   State<CariAktiviteView> createState() => _CariAktiviteViewState();
 }
 
@@ -131,6 +132,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                     }
                     return ListView.builder(
                       itemCount: viewModel.aktiviteList?.length ?? 0,
+                      physics: const AlwaysScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
                         return CariAktiviteCard(

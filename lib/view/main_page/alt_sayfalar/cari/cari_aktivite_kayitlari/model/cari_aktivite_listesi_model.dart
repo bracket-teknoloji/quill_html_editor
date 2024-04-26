@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 part "cari_aktivite_listesi_model.freezed.dart";
 part "cari_aktivite_listesi_model.g.dart";
@@ -37,6 +38,12 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
 
   @override
   CariAktiviteListesiModel? fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);
+
+  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
+    cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+        
+  );
 }
 
 extension CariAktiviteExtensions on CariAktiviteListesiModel {

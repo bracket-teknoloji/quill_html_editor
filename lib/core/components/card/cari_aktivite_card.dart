@@ -2,8 +2,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
@@ -37,10 +39,13 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Kullanıcı: ${model.kullaniciAdi ?? ""}"),
-                  Text("#${model.id}"),
+                  ColorfulBadge(
+                    label: Text("#${model.id}"),
+                    badgeColorEnum: BadgeColorEnum.cari,
+                  ),
                 ],
               ),
-              Text("Başlama Tarihi: ${model.bastar.toDateString}").yetkiVarMi(model.bastar != null),
+              Text("Başlama Tarihi: ${model.bastar?.toDateTimeString()}").yetkiVarMi(model.bastar != null),
               Text("Bitiş Tarihi: ${model.bittar.toDateString}").yetkiVarMi(model.bittiMi),
               Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
               Text("İlgili Kişi: ${model.ilgiliKisi}").yetkiVarMi(model.ilgiliKisi != null),
@@ -67,7 +72,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   iconWidget: Icons.edit_outlined,
                   onTap: () async {
                     Get.back();
-                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model:  await widget.updatedModel.call()));
+                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model: await widget.updatedModel.call()));
                     if (result == true) {
                       widget.onRefresh.call(true);
                     }
@@ -98,7 +103,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                       widget.onRefresh.call(true);
                     }
                   },
-                ).yetkiKontrol(model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl),
+                ).yetkiKontrol(model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl && yetkiController.cariAktiviteDuzenleme),
                 BottomSheetModel(
                   title: "Bitir",
                   iconWidget: Icons.done_outline_outlined,
@@ -109,18 +114,21 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                       widget.onRefresh.call(true);
                     }
                   },
-                ).yetkiKontrol(!model.bittiMi),
+                ).yetkiKontrol(!model.bittiMi && yetkiController.cariAktiviteDuzenleme),
                 BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,
                   onTap: () async {
                     Get.back();
-                    dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [model.cariKodu ?? ""])));
+                    await showCariIslemleriDialog();
                   },
                 ).yetkiKontrol(yetkiController.cariListesi),
               ].nullCheckWithGeneric,
             );
           },
+          onLongPress: () async => await showCariIslemleriDialog(),
         ),
       );
+
+  Future<Future> showCariIslemleriDialog() async => dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [model.cariKodu ?? ""])));
 }
