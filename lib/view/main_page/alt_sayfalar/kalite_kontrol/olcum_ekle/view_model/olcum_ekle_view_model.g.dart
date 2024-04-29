@@ -49,6 +49,28 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
   }
 
   @override
+  void setSeriNo(String? value) {
+    final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
+        name: '_OlcumEkleViewModelBase.setSeriNo');
+    try {
+      return super.setSeriNo(value);
+    } finally {
+      _$_OlcumEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKayitOperatoru(String? value) {
+    final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
+        name: '_OlcumEkleViewModelBase.setKayitOperatoru');
+    try {
+      return super.setKayitOperatoru(value);
+    } finally {
+      _$_OlcumEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addProsesModel(OlcumProsesModel model) {
     final _$actionInfo = _$_OlcumEkleViewModelBaseActionController.startAction(
         name: '_OlcumEkleViewModelBase.addProsesModel');

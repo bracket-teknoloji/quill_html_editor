@@ -18,7 +18,6 @@ class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
     String? adiSoyadi,
     String? soyadi,
     int? isletmeKodu,
-    String? sicilNo,
     String? kartid,
     String? resim,
   }) = _OlcumOperatorModel;

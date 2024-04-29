@@ -90,9 +90,9 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
             ],
           ),
           onLongPress: () async {
-            if (widget.model.getEditTipiEnum.kalemSecilecekMi) {
+            if (widget.model.getEditTipiEnum.kalemSecilecekMi && yetkiController.cariListesi) {
               dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [widget.model.cariKodu ?? ""])));
-            } else {
+            } else if (yetkiController.stokListesi) {
               dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu)));
             }
           },

@@ -35,17 +35,20 @@ class OlcumEkleView extends StatefulWidget {
 class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   final OlcumEkleViewModel viewModel = OlcumEkleViewModel();
   late final TextEditingController kayitOperatorController;
+  late final TextEditingController seriNumarasiController;
 
   @override
   void initState() {
     viewModel.setRequestModel(OlcumEkleModel.fromOlcumBelgeEditModel(widget.model));
-    kayitOperatorController = TextEditingController(text: viewModel.requestModel.kayitOperator);
+    kayitOperatorController = TextEditingController(text: widget.model.kayitOperator);
+    seriNumarasiController = TextEditingController(text: viewModel.requestModel.seriNo);
     super.initState();
   }
 
   @override
   void dispose() {
     kayitOperatorController.dispose();
+    seriNumarasiController.dispose();
     super.dispose();
   }
 
@@ -98,7 +101,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           }
                         }
                       },
-                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.teknikResimVarmi == "E"),
+                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim),
                     BottomSheetModel(
                       title: "Kontrol Planlarını Görüntüle",
                       iconWidget: Icons.picture_as_pdf_outlined,
@@ -134,30 +137,36 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           }
                         }
                       },
-                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E"),
+                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani),
                   ].nullCheckWithGeneric,
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),
-            ),
+            ).yetkiVarMi(widget.model.olcumModel?.kontrolPlaniVarmi == "E" || widget.model.olcumModel?.teknikResimVarmi == "E"),
             IconButton(
               onPressed: () async {
                 if (viewModel.requestModel.kayitOperator == null) {
-                  dialogManager.showAlertDialog("Kayıt Operatörü Seçiniz");
+                  dialogManager.showAlertDialog("Kayıt Operatörü Seçiniz.");
                   return;
                 }
-                if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
-                  final result = await viewModel.sendData(widget.baseEditEnum);
-                  if (result?.success == true) {
-                    dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
-                    Get.back(result: true);
-                  }
-                } else {
-                  dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
+                if (viewModel.requestModel.seriNo == null && widget.model.olcumModel?.seriSorulsunmu == "E") {
+                  dialogManager.showAlertDialog("Seri numarasını doldurunuz.");
+                  return;
                 }
+                dialogManager.showAreYouSureDialog(() async {
+                  if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
+                    final result = await viewModel.sendData(widget.baseEditEnum);
+                    if (result?.success == true) {
+                      dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
+                      Get.back(result: true);
+                    }
+                  } else {
+                    dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
+                  }
+                });
               },
               icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(widget.baseEditEnum.ekleMi || widget.baseEditEnum.duzenleMi),
+            ).yetkiVarMi((widget.baseEditEnum.ekleMi && yetkiController.sigmaOlcumKaydet) || (widget.baseEditEnum.duzenleMi && yetkiController.sigmaOlcumDuzelt)),
           ],
         ),
         body: Column(
@@ -190,11 +199,18 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
               onTap: () async {
                 final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.requestModel.kayitOperator);
                 if (result != null) {
-                  viewModel.requestModel.kayitOperator = result.sicilno;
+                  viewModel.setKayitOperatoru(result.sicilno);
                   kayitOperatorController.text = result.adiSoyadi ?? "";
                 }
               },
             ),
+            CustomTextField(
+              labelText: "Seri Numarası",
+              controller: seriNumarasiController,
+              enabled: !widget.baseEditEnum.goruntuleMi,
+              isMust: true,
+              onChanged: viewModel.setSeriNo,
+            ).yetkiVarMi(widget.model.olcumModel?.seriSorulsunmu == "E"),
             Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize),
             Expanded(
               child: ListView.builder(

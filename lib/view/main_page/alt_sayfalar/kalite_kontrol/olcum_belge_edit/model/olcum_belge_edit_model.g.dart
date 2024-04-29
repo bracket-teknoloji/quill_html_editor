@@ -12,10 +12,12 @@ _$OlcumBelgeEditModelImpl _$$OlcumBelgeEditModelImplFromJson(
       belgeNo: json['BELGE_NO'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeSira: (json['BELGE_SIRA'] as num?)?.toInt(),
+      seriNo: json['SERI_NO'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
       opkodu: json['OPKODU'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
+      kayitOperatorKodu: json['KAYIT_OPERATOR_KODU'] as String?,
       belge: (json['BELGE'] as List<dynamic>?)
           ?.map((e) => OlcumBelgeModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -40,10 +42,12 @@ Map<String, dynamic> _$$OlcumBelgeEditModelImplToJson(
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('BELGE_TIPI', instance.belgeTipi);
   writeNotNull('BELGE_SIRA', instance.belgeSira);
+  writeNotNull('SERI_NO', instance.seriNo);
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('OPKODU', instance.opkodu);
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
+  writeNotNull('KAYIT_OPERATOR_KODU', instance.kayitOperatorKodu);
   writeNotNull('BELGE', instance.belge?.map((e) => e.toJson()).toList());
   writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
   writeNotNull(
@@ -77,6 +81,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       prosesVar: json['PROSES_VAR'] as String?,
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
+      seriSorulsunmu: json['SERI_SORULSUNMU'] as String?,
       tur: json['TUR'] as String?,
       searchText: json['SearchText'] as String?,
       sayfa: (json['Sayfa'] as num?)?.toInt(),
@@ -113,6 +118,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('PROSES_VAR', instance.prosesVar);
   writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
   writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
+  writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
   writeNotNull('TUR', instance.tur);
   writeNotNull('SearchText', instance.searchText);
   writeNotNull('Sayfa', instance.sayfa);
@@ -129,6 +135,7 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       olcumlerOperator: json['OLCUMLER_OPERATOR'] as String?,
       kayityapankul: json['KAYITYAPANKUL'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
+      kayitOperatorKodu: json['KAYIT_OPERATOR_KODU'] as String?,
       kayittarihi: json['KAYITTARIHI'] == null
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
@@ -136,6 +143,7 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
       sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
       retAdet: (json['RET_ADET'] as num?)?.toDouble(),
+      seriNo: json['SERI_NO'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
@@ -155,11 +163,13 @@ Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
   writeNotNull('OLCUMLER_OPERATOR', instance.olcumlerOperator);
   writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
+  writeNotNull('KAYIT_OPERATOR_KODU', instance.kayitOperatorKodu);
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   writeNotNull('SIRA', instance.sira);
   writeNotNull('KABUL_ADET', instance.kabulAdet);
   writeNotNull('SARTLI_ADET', instance.sartliAdet);
   writeNotNull('RET_ADET', instance.retAdet);
+  writeNotNull('SERI_NO', instance.seriNo);
   return val;
 }
 

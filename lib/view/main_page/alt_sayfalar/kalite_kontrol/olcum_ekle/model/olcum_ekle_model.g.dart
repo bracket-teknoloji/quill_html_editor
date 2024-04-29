@@ -20,6 +20,7 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['TARIH'] as String),
       sira: (json['SIRA'] as num?)?.toInt(),
       stokAdi: json['STOK_ADI'] as String?,
+      seriNo: json['SERI_NO'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       belgeId: (json['BELGE_ID'] as num?)?.toInt(),
       prosesler: (json['PROSESLER'] as List<dynamic>?)
@@ -47,6 +48,7 @@ Map<String, dynamic> _$$OlcumEkleModelImplToJson(
   writeNotNull('TARIH', instance.tarih?.toIso8601String());
   writeNotNull('SIRA', instance.sira);
   writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('SERI_NO', instance.seriNo);
   writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('BELGE_ID', instance.belgeId);
   writeNotNull(

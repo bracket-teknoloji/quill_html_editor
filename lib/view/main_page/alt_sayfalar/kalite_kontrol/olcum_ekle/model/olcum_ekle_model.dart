@@ -20,6 +20,7 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
     DateTime? tarih,
     int? sira,
     String? stokAdi,
+    String? seriNo,
     double? miktar,
     int? belgeId,
     List<OlcumProsesModel>? prosesler,
@@ -38,8 +39,8 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
         belgeId: model.olcumler?.firstOrNull?.id,
         yapkod: model.belge?.first.yapkod,
         opkodu: model.belge?.first.opkodu,
-        kayitOperator: model.kayitOperator,
-        prosesler: model.prosesler,
+        kayitOperator: model.kayitOperatorKodu,
+        prosesler: model.prosesler,seriNo: model.seriNo,
       );
 }
 

@@ -19,6 +19,12 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   void setRequestModel(OlcumEkleModel model) => requestModel = model;
 
   @action
+  void setSeriNo(String? value) => requestModel = requestModel.copyWith(seriNo: value);
+
+  @action
+  void setKayitOperatoru(String? value) => requestModel = requestModel.copyWith(kayitOperator: value);
+
+  @action
   void addProsesModel(OlcumProsesModel model) {
     if (requestModel.prosesler == null) {
       requestModel = requestModel.copyWith(prosesler: []);

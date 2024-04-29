@@ -40,6 +40,8 @@ mixin _$OlcumEkleModel {
   set sira(int? value) => throw _privateConstructorUsedError;
   String? get stokAdi => throw _privateConstructorUsedError;
   set stokAdi(String? value) => throw _privateConstructorUsedError;
+  String? get seriNo => throw _privateConstructorUsedError;
+  set seriNo(String? value) => throw _privateConstructorUsedError;
   double? get miktar => throw _privateConstructorUsedError;
   set miktar(double? value) => throw _privateConstructorUsedError;
   int? get belgeId => throw _privateConstructorUsedError;
@@ -71,6 +73,7 @@ abstract class $OlcumEkleModelCopyWith<$Res> {
       DateTime? tarih,
       int? sira,
       String? stokAdi,
+      String? seriNo,
       double? miktar,
       int? belgeId,
       List<OlcumProsesModel>? prosesler});
@@ -99,6 +102,7 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
     Object? tarih = freezed,
     Object? sira = freezed,
     Object? stokAdi = freezed,
+    Object? seriNo = freezed,
     Object? miktar = freezed,
     Object? belgeId = freezed,
     Object? prosesler = freezed,
@@ -144,6 +148,10 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
           ? _value.stokAdi
           : stokAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       miktar: freezed == miktar
           ? _value.miktar
           : miktar // ignore: cast_nullable_to_non_nullable
@@ -179,6 +187,7 @@ abstract class _$$OlcumEkleModelImplCopyWith<$Res>
       DateTime? tarih,
       int? sira,
       String? stokAdi,
+      String? seriNo,
       double? miktar,
       int? belgeId,
       List<OlcumProsesModel>? prosesler});
@@ -205,6 +214,7 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
     Object? tarih = freezed,
     Object? sira = freezed,
     Object? stokAdi = freezed,
+    Object? seriNo = freezed,
     Object? miktar = freezed,
     Object? belgeId = freezed,
     Object? prosesler = freezed,
@@ -250,6 +260,10 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
           ? _value.stokAdi
           : stokAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       miktar: freezed == miktar
           ? _value.miktar
           : miktar // ignore: cast_nullable_to_non_nullable
@@ -280,6 +294,7 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
       this.tarih,
       this.sira,
       this.stokAdi,
+      this.seriNo,
       this.miktar,
       this.belgeId,
       this.prosesler})
@@ -308,6 +323,8 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
   int? sira;
   @override
   String? stokAdi;
+  @override
+  String? seriNo;
   @override
   double? miktar;
   @override
@@ -342,6 +359,7 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
       DateTime? tarih,
       int? sira,
       String? stokAdi,
+      String? seriNo,
       double? miktar,
       int? belgeId,
       List<OlcumProsesModel>? prosesler}) = _$OlcumEkleModelImpl;
@@ -380,6 +398,9 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
   @override
   String? get stokAdi;
   set stokAdi(String? value);
+  @override
+  String? get seriNo;
+  set seriNo(String? value);
   @override
   double? get miktar;
   set miktar(double? value);

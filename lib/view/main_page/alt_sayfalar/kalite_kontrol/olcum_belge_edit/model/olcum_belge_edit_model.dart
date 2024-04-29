@@ -13,10 +13,12 @@ class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
     String? belgeNo,
     String? belgeTipi,
     int? belgeSira,
+    String? seriNo,
     String? stokKodu,
     String? yapkod,
     String? opkodu,
     String? kayitOperator,
+    String? kayitOperatorKodu,
     List<OlcumBelgeModel>? belge,
     List<OlcumOlcumlerModel>? olcumler,
     List<OlcumProsesModel>? prosesler,
@@ -53,6 +55,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? prosesVar,
     String? teknikResimVarmi,
     String? kontrolPlaniVarmi,
+    String? seriSorulsunmu,
     String? tur,
     @JsonKey(name: "SearchText") String? searchText,
     @JsonKey(name: "Sayfa") int? sayfa,
@@ -75,11 +78,13 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
     String? olcumlerOperator,
     String? kayityapankul,
     String? kayitOperator,
+    String? kayitOperatorKodu,
     DateTime? kayittarihi,
     int? sira,
     double? kabulAdet,
     double? sartliAdet,
     double? retAdet,
+    String? seriNo,
   }) = _OlcumOlcumlerModel;
 
   factory OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
@@ -170,9 +175,9 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
       );
 
   OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(
-    belgeNo: belgeNo,
-    belgeTipi: belgeTipi,
-    belgeSira: sira,
+        belgeNo: belgeNo,
+        belgeTipi: belgeTipi,
+        belgeSira: sira,
       );
 
   OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(

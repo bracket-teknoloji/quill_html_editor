@@ -99,7 +99,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           }
                         }
                       },
-                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.teknikResimVarmi == "E"),
+                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim),
                     BottomSheetModel(
                       title: "Kontrol Planlarını Görüntüle",
                       iconWidget: Icons.picture_as_pdf_outlined,
@@ -135,7 +135,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           }
                         }
                       },
-                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E"),
+                    ).yetkiKontrol(viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani),
                     BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -143,7 +143,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                         Get.back();
                         dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
                       },
-                    ),
+                    ).yetkiKontrol(yetkiController.stokListesi),
                   ].nullCheckWithGeneric,
                 );
               }
@@ -154,7 +154,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
       );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true,
+        isScrolledDown: true && yetkiController.sigmaOlcumKaydet,
         onPressed: () async {
           final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
           if (result != null) {
@@ -274,11 +274,18 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                             if (!newModel.isEmptyOrNull) {
                                               Get.toNamed(
                                                 "/mainPage/olcumGoruntule",
-                                                arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
+                                                arguments: viewModel.model?.copyWith(
+                                                  prosesler: newModel,
+                                                  yapkod: widget.model.yapkod,
+                                                  opkodu: widget.model.opkodu,
+                                                  kayitOperator: item?.kayitOperator,
+                                                  kayitOperatorKodu: item?.kayitOperatorKodu,
+                                                  seriNo: item?.seriNo,
+                                                ),
                                               );
                                             }
                                           },
-                                        ),
+                                        ).yetkiKontrol(yetkiController.sigmaOlcumGirisi),
                                         BottomSheetModel(
                                           title: loc.generalStrings.edit,
                                           iconWidget: Icons.edit_outlined,
@@ -288,14 +295,21 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                             if (!newModel.isEmptyOrNull) {
                                               final result = await Get.toNamed(
                                                 "/mainPage/olcumDuzenle",
-                                                arguments: viewModel.model?.copyWith(prosesler: newModel, yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, kayitOperator: item?.kayitOperator),
+                                                arguments: viewModel.model?.copyWith(
+                                                  prosesler: newModel,
+                                                  yapkod: widget.model.yapkod,
+                                                  opkodu: widget.model.opkodu,
+                                                  kayitOperator: item?.kayitOperator,
+                                                  kayitOperatorKodu: item?.kayitOperatorKodu,
+                                                  seriNo: item?.seriNo,
+                                                ),
                                               );
                                               if (result != null) {
-                                                await viewModel.getData();
+                                                await viewModel.getData();  
                                               }
                                             }
                                           },
-                                        ),
+                                        ).yetkiKontrol(yetkiController.sigmaOlcumDuzelt),
                                         BottomSheetModel(
                                           title: loc.generalStrings.delete,
                                           iconWidget: Icons.delete_outline_outlined,
@@ -309,8 +323,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                               }
                                             });
                                           },
-                                        ),
-                                      ],
+                                        ).yetkiKontrol(yetkiController.sigmaOlcumGirSil),
+                                      ].nullCheckWithGeneric,
                                     );
                                   },
                                   title: Text(title),

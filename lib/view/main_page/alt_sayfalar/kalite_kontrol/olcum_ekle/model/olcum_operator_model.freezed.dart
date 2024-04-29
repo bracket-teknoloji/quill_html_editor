@@ -40,8 +40,6 @@ mixin _$OlcumOperatorModel {
   set soyadi(String? value) => throw _privateConstructorUsedError;
   int? get isletmeKodu => throw _privateConstructorUsedError;
   set isletmeKodu(int? value) => throw _privateConstructorUsedError;
-  String? get sicilNo => throw _privateConstructorUsedError;
-  set sicilNo(String? value) => throw _privateConstructorUsedError;
   String? get kartid => throw _privateConstructorUsedError;
   set kartid(String? value) => throw _privateConstructorUsedError;
   String? get resim => throw _privateConstructorUsedError;
@@ -70,7 +68,6 @@ abstract class $OlcumOperatorModelCopyWith<$Res> {
       String? adiSoyadi,
       String? soyadi,
       int? isletmeKodu,
-      String? sicilNo,
       String? kartid,
       String? resim});
 }
@@ -98,7 +95,6 @@ class _$OlcumOperatorModelCopyWithImpl<$Res, $Val extends OlcumOperatorModel>
     Object? adiSoyadi = freezed,
     Object? soyadi = freezed,
     Object? isletmeKodu = freezed,
-    Object? sicilNo = freezed,
     Object? kartid = freezed,
     Object? resim = freezed,
   }) {
@@ -143,10 +139,6 @@ class _$OlcumOperatorModelCopyWithImpl<$Res, $Val extends OlcumOperatorModel>
           ? _value.isletmeKodu
           : isletmeKodu // ignore: cast_nullable_to_non_nullable
               as int?,
-      sicilNo: freezed == sicilNo
-          ? _value.sicilNo
-          : sicilNo // ignore: cast_nullable_to_non_nullable
-              as String?,
       kartid: freezed == kartid
           ? _value.kartid
           : kartid // ignore: cast_nullable_to_non_nullable
@@ -178,7 +170,6 @@ abstract class _$$OlcumOperatorModelImplCopyWith<$Res>
       String? adiSoyadi,
       String? soyadi,
       int? isletmeKodu,
-      String? sicilNo,
       String? kartid,
       String? resim});
 }
@@ -204,7 +195,6 @@ class __$$OlcumOperatorModelImplCopyWithImpl<$Res>
     Object? adiSoyadi = freezed,
     Object? soyadi = freezed,
     Object? isletmeKodu = freezed,
-    Object? sicilNo = freezed,
     Object? kartid = freezed,
     Object? resim = freezed,
   }) {
@@ -249,10 +239,6 @@ class __$$OlcumOperatorModelImplCopyWithImpl<$Res>
           ? _value.isletmeKodu
           : isletmeKodu // ignore: cast_nullable_to_non_nullable
               as int?,
-      sicilNo: freezed == sicilNo
-          ? _value.sicilNo
-          : sicilNo // ignore: cast_nullable_to_non_nullable
-              as String?,
       kartid: freezed == kartid
           ? _value.kartid
           : kartid // ignore: cast_nullable_to_non_nullable
@@ -279,7 +265,6 @@ class _$OlcumOperatorModelImpl extends _OlcumOperatorModel {
       this.adiSoyadi,
       this.soyadi,
       this.isletmeKodu,
-      this.sicilNo,
       this.kartid,
       this.resim})
       : super._();
@@ -307,8 +292,6 @@ class _$OlcumOperatorModelImpl extends _OlcumOperatorModel {
   String? soyadi;
   @override
   int? isletmeKodu;
-  @override
-  String? sicilNo;
   @override
   String? kartid;
   @override
@@ -341,7 +324,6 @@ abstract class _OlcumOperatorModel extends OlcumOperatorModel {
       String? adiSoyadi,
       String? soyadi,
       int? isletmeKodu,
-      String? sicilNo,
       String? kartid,
       String? resim}) = _$OlcumOperatorModelImpl;
   _OlcumOperatorModel._() : super._();
@@ -379,9 +361,6 @@ abstract class _OlcumOperatorModel extends OlcumOperatorModel {
   @override
   int? get isletmeKodu;
   set isletmeKodu(int? value);
-  @override
-  String? get sicilNo;
-  set sicilNo(String? value);
   @override
   String? get kartid;
   set kartid(String? value);
