@@ -1702,7 +1702,13 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList()
       ..sevkiyatSatisFatKdvDurumu =
-          json['sevkiyat_SatisFat_KdvDurumu'] as String?;
+          json['sevkiyat_SatisFat_KdvDurumu'] as String?
+      ..sigmaOlcumGir = json['sigma_OlcumGir'] as bool?
+      ..sigmaOlcumGirKaydet = json['sigma_OlcumGir_Kaydet'] as bool?
+      ..sigmaOlcumGirDuzelt = json['sigma_OlcumGir_Duzelt'] as bool?
+      ..sigmaOlcumGirSil = json['sigma_OlcumGir_Sil'] as bool?
+      ..sigmaTeknikResim = json['sigma_TeknikResim'] as bool?
+      ..sigmaKontrolPlani = json['sigma_KontrolPlani'] as bool?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -3181,6 +3187,12 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.transferAgDegismeyecekAlanlar);
   writeNotNull(
       'sevkiyat_SatisFat_KdvDurumu', instance.sevkiyatSatisFatKdvDurumu);
+  writeNotNull('sigma_OlcumGir', instance.sigmaOlcumGir);
+  writeNotNull('sigma_OlcumGir_Kaydet', instance.sigmaOlcumGirKaydet);
+  writeNotNull('sigma_OlcumGir_Duzelt', instance.sigmaOlcumGirDuzelt);
+  writeNotNull('sigma_OlcumGir_Sil', instance.sigmaOlcumGirSil);
+  writeNotNull('sigma_TeknikResim', instance.sigmaTeknikResim);
+  writeNotNull('sigma_KontrolPlani', instance.sigmaKontrolPlani);
   return val;
 }
 

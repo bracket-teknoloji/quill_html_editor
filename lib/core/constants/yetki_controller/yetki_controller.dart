@@ -587,4 +587,13 @@ final class YetkiController {
   //! Kapatma İşlemi
   bool get belgeKapatMusSip => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
   bool get belgeKapatSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
+
+
+  //! Sigma
+  bool get sigmaOlcumGirisi => _isTrue(_yetkiModel?.sigmaOlcumGir);
+  bool get sigmaOlcumKaydet => _isTrue(_yetkiModel?.sigmaOlcumGirKaydet);
+  bool get sigmaOlcumDuzelt => _isTrue(_yetkiModel?.sigmaOlcumGirDuzelt);
+  bool get sigmaOlcumGirSil => _isTrue(_yetkiModel?.sigmaOlcumGirSil);
+  bool get sigmaTeknikResim => _isTrue(_yetkiModel?.sigmaTeknikResim);
+  bool get sigmaKontrolPlani => _isTrue(_yetkiModel?.sigmaKontrolPlani);
 }

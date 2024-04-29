@@ -476,13 +476,15 @@ class IslemlerMenuItemConstants<T> {
       );
   GridItemModel? get seriHareketleri => GridItemModel.islemler(
         title: "Seri Hareketleri",
-        isEnabled: _userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true),
+        isEnabled: (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) ||
+            AccountModel.instance.admin == "E",
         iconData: Icons.dynamic_form_outlined,
         onTap: () async => Get.toNamed("/seriHareketleri", arguments: model),
       );
   GridItemModel? get seriBakiyeleri => GridItemModel.islemler(
         title: "Seri Bakiye Durumu",
-        isEnabled: _userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true),
+        isEnabled: (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) ||
+            AccountModel.instance.admin == "E",
         iconData: Icons.dynamic_form_outlined,
         onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model),
       );

@@ -17,7 +17,8 @@ enum MenuItemsEnum {
   temsilciProfil("TEMS"),
   transfer("TRNS"),
   uretim("URET"), 
-  uetds("EUTD");
+  uetds("EUTD"),
+  kalkon("KALKON");
 
   final String yetkiName;
   const MenuItemsEnum(this.yetkiName);

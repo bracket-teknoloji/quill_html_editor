@@ -1895,6 +1895,18 @@ class ProfilYetkiModel {
   List<String>? transferAgDegismeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_KdvDurumu")
   String? sevkiyatSatisFatKdvDurumu;
+  @JsonKey(name: "sigma_OlcumGir")
+  bool? sigmaOlcumGir;
+  @JsonKey(name: "sigma_OlcumGir_Kaydet")
+  bool? sigmaOlcumGirKaydet;
+  @JsonKey(name: "sigma_OlcumGir_Duzelt")
+  bool? sigmaOlcumGirDuzelt;
+  @JsonKey(name: "sigma_OlcumGir_Sil")
+  bool? sigmaOlcumGirSil;
+  @JsonKey(name: "sigma_TeknikResim")
+  bool? sigmaTeknikResim;
+  @JsonKey(name: "sigma_KontrolPlani")
+  bool? sigmaKontrolPlani;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

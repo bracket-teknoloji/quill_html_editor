@@ -255,7 +255,8 @@ class MenuItemConstants {
       color: ColorPalette.mountbattenPink,
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "sevkiyat_SatisFat", title: "Satış Faturası", route: "/mainPage/sevkiyatSatisFaturasi"),
-        GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),GridItemModel.altmenu(
+        GridItemModel.item(name: "sevkiyat_SatisIrsaliyesi", title: "Satış İrsaliyesi", route: "/mainPage/sevkiyatSatisIrsaliyesi"),
+        GridItemModel.altmenu(
           name: "malKabul_SatisIrs_Raporlar",
           title: "Raporlar",
           icon: "monitoring",
@@ -445,13 +446,14 @@ class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      // name: "KALKON",
-      name: AccountModel.instance.isDebug ? null : "KALKON",
+      name: MenuItemsEnum.kalkon.yetkiName,
+      // name: AccountModel.instance.isDebug ? null : "KALKON",
       title: "Kalite Kontrol",
       icon: "quality_control",
       color: ColorPalette.surfGreen,
       altMenuler: <GridItemModel>[
-        GridItemModel.item(name: "kalite_OlcumGirisi", title: "Ölçüm Girişi", route: "/mainPage/olcumGirisi"),GridItemModel.altmenu(
+        GridItemModel.item(name: "sigma_OlcumGir", title: "Ölçüm Girişi", route: "/mainPage/olcumGirisi"),
+        GridItemModel.altmenu(
           name: "kalite_kontrol_Raporlar",
           title: "Raporlar",
           icon: "monitoring",
