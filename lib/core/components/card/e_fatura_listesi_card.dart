@@ -66,8 +66,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
                 faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
                 zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
-                cariIslemleri
-                    .yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.cariKayitliMi && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.cariKayitliMi),
+                cariIslemleri.yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.cariKayitliMi && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.cariKayitliMi),
                 yazdir.yetkiKontrol(!(model.gelenMi && model.eArsivMi)),
               ].nullCheckWithGeneric,
             );
@@ -259,6 +258,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                         onPressed: () async {
                           if (controller.text.ext.isNullOrEmpty) {
                             dialogManager.showAlertDialog("Açıklama boş olamaz.");
+                            return;
                           }
                           final result = await networkManager.dioPost(
                             path: ApiUrls.eBelgeIslemi,
@@ -290,6 +290,10 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       flex: 20,
                       child: ElevatedButton(
                         onPressed: () async {
+                          if (controller.text.ext.isNullOrEmpty) {
+                            dialogManager.showAlertDialog("Açıklama boş olamaz.");
+                            return;
+                          }
                           final result = await networkManager.dioPost(
                             path: ApiUrls.eBelgeIslemi,
                             bodyModel: EBelgeListesiModel(),
@@ -319,7 +323,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ).paddingSymmetric(horizontal: UIHelper.lowSize),
                 ElevatedButton(
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    Get.back();
+                  },
                   child: const Text("İptal"),
                 ).paddingAll(UIHelper.lowSize),
               ],
@@ -599,10 +605,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           );
           if (siparisModel == null) {
             return;
-          }else {
+          } else {
             siparisModel.genIsk1t = widget.eBelgeListesiModel.iskontoTutari;
             siparisModel.genIsk1o = siparisModel.tutarToIskonto1;
-
           }
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",

@@ -9,6 +9,7 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/generated/locale_base.dart";
 
@@ -37,6 +38,8 @@ import "logout_model.dart";
 
 class DialogManager {
   late final BuildContext context;
+
+  YetkiController get _yetkiController => YetkiController();
 
   DialogManager() {
     context = Get.context!;
@@ -189,7 +192,9 @@ class DialogManager {
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, {void Function(bool)? onselected}) async => _baseDialog(
+  Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, {void Function(bool)? onselected}) async {
+    if (_yetkiController.cariListesi) {
+      return _baseDialog(
         body: CustomAnimatedGridView<CariListesiModel>(
           cariListesiModel: model,
           model: model,
@@ -201,6 +206,8 @@ class DialogManager {
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
+    }
+  }
 
   Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(
@@ -278,12 +285,16 @@ class DialogManager {
   void showCariSerbestRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) => _baseDialog(
+  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) {
+    if (_yetkiController.stokListesi) {
+      _baseDialog(
         body: CustomAnimatedGridView<StokListesiModel>(model: model, title: model?.stokAdi, islemTipi: tip ?? IslemTipiEnum.stok),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
+    }
+  }
 
   Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
