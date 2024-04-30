@@ -359,6 +359,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
                     if (result is IsEmirleriModel) {
+                      isEmriController.text = result.isemriNo ?? "";
                       viewModel.setIrsaliyeNo(result.isemriNo);
                     }
                   },
@@ -749,9 +750,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       }
                       return null;
                     },
-                  ).yetkiVarMi(
-                    seriliMi,
-                  ),
+                  ).yetkiVarMi(seriliMi),
                 ),
                 ...List.generate(
                   editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
@@ -830,8 +829,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       !editTipi.siparisMi &&
       !editTipi.talepTeklifMi &&
       yetkiController.seriUygulamasiAcikMi &&
-      !editTipi.ambarGirisiMi &&
-      !editTipi.depoTransferiMi;
+      !editTipi.ambarGirisiMi;
 
   String? miktar2Validator(String? p0) {
     if (viewModel.model?.koliMi == true) {

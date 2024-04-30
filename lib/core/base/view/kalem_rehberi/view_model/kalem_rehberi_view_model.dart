@@ -46,7 +46,7 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
   void addSelectedKalem(KalemModel value) => selectedKalemList.add(value);
 
   @action
-  void removeSelectedKalem(KalemModel value) => selectedKalemList.removeWhere((element) => element.stokKodu == value.stokKodu);
+  void removeSelectedKalem(KalemModel value) => selectedKalemList.removeWhere((element) => element.belgeNo == value.belgeNo);
 
   @action
   void addAllSelectedKalem() => selectedKalemList = kalemList?.asObservable() ?? <KalemModel>[].asObservable();
