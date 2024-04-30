@@ -25,8 +25,6 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
-          isThreeLine: true,
-          contentPadding: UIHelper.midPadding,
           onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
           onLongPress: () => dialogManager.showCariGridViewDialog(model),
           leading: CircleAvatar(
