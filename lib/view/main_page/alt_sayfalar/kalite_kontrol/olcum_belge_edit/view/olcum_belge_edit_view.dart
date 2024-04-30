@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
@@ -12,6 +13,8 @@ import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
@@ -20,9 +23,11 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
   final OlcumBelgeModel model;
@@ -142,8 +147,27 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       onTap: () async {
                         Get.back();
                         dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
-                      },
+                      },  
                     ).yetkiKontrol(yetkiController.stokListesi),
+                    BottomSheetModel(
+                      title: "Depo Transferi",
+                      iconWidget: Icons.transform_outlined,
+                      onTap: () async {
+                        Get.back();
+                        if (viewModel.model?.olcumler.ext.isNullOrEmpty == true) {
+                          dialogManager.showAlertDialog("Ölçüm giriniz.");
+                          return;
+                        }
+                        final result = await Get.toNamed(
+                          "/mainPage/transferEdit",
+                          arguments: BaseEditModel<BaseSiparisEditModel>(
+                            baseEditEnum: BaseEditEnum.ekle,
+                            editTipiEnum: EditTipiEnum.depoTransferi,
+                            model: BaseSiparisEditModel(kalemList: [KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)]),
+                          ),
+                        );
+                      },
+                    ).yetkiKontrol(AccountModel.instance.isDebug),
                   ].nullCheckWithGeneric,
                 );
               }
@@ -305,7 +329,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                                 ),
                                               );
                                               if (result != null) {
-                                                await viewModel.getData();  
+                                                await viewModel.getData();
                                               }
                                             }
                                           },

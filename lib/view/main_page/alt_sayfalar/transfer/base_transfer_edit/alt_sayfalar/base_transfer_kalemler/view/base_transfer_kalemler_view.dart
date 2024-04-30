@@ -150,14 +150,20 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
-            const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
+            Row(
+              children: [
+                const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
+                const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
+              ],
+            ),
             Text(kalemModel?.stokKodu ?? ""),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)).yetkiVarMi(kalemModel?.seriList != null),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.inversePrimary))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
                 .paddingOnly(bottom: UIHelper.lowSize),
+
+            Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
                 children: <Widget>[

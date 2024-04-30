@@ -210,7 +210,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
               enabled: !widget.baseEditEnum.goruntuleMi,
               isMust: true,
               onChanged: viewModel.setSeriNo,
-            ).yetkiVarMi(widget.model.olcumModel?.seriSorulsunmu == "E"),
+            ).yetkiVarMi(widget.model.olcumModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi),
             Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize),
             Expanded(
               child: ListView.builder(

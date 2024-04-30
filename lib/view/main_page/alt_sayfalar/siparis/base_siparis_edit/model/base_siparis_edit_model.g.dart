@@ -373,6 +373,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel eirsaliyeGibDurumKodu(int? eirsaliyeGibDurumKodu);
 
+  BaseSiparisEditModel datOnayda(String? datOnayda);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -563,6 +565,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? eirsaliyeMi,
     int? cariDovizkodu,
     int? eirsaliyeGibDurumKodu,
+    String? datOnayda,
   });
 }
 
@@ -1235,6 +1238,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(eirsaliyeGibDurumKodu: eirsaliyeGibDurumKodu);
 
   @override
+  BaseSiparisEditModel datOnayda(String? datOnayda) =>
+      this(datOnayda: datOnayda);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1426,6 +1433,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? eirsaliyeMi = const $CopyWithPlaceholder(),
     Object? cariDovizkodu = const $CopyWithPlaceholder(),
     Object? eirsaliyeGibDurumKodu = const $CopyWithPlaceholder(),
+    Object? datOnayda = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2164,6 +2172,10 @@ class _$BaseSiparisEditModelCWProxyImpl
               ? _value.eirsaliyeGibDurumKodu
               // ignore: cast_nullable_to_non_nullable
               : eirsaliyeGibDurumKodu as int?,
+      datOnayda: datOnayda == const $CopyWithPlaceholder()
+          ? _value.datOnayda
+          // ignore: cast_nullable_to_non_nullable
+          : datOnayda as String?,
     );
   }
 }
@@ -3641,13 +3653,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       eirsaliyeMi: fields[179] as String?,
       cariDovizkodu: fields[182] as int?,
       eirsaliyeGibDurumKodu: fields[181] as int?,
+      datOnayda: fields[183] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(183)
+      ..writeByte(184)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -4013,7 +4026,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(181)
       ..write(obj.eirsaliyeGibDurumKodu)
       ..writeByte(182)
-      ..write(obj.cariDovizkodu);
+      ..write(obj.cariDovizkodu)
+      ..writeByte(183)
+      ..write(obj.datOnayda);
   }
 
   @override
@@ -4596,6 +4611,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       cariDovizkodu: (json['CARI_DOVIZKODU'] as num?)?.toInt(),
       eirsaliyeGibDurumKodu:
           (json['EIRSALIYE_GIB_DURUM_KODU'] as num?)?.toInt(),
+      datOnayda: json['DAT_ONAYDA'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4791,6 +4807,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('EIRSALIYE_DURUM_ACIKLAMA', instance.eirsaliyeDurumAciklama);
   writeNotNull('EIRSALIYE_GIB_DURUM_KODU', instance.eirsaliyeGibDurumKodu);
   writeNotNull('CARI_DOVIZKODU', instance.cariDovizkodu);
+  writeNotNull('DAT_ONAYDA', instance.datOnayda);
   return val;
 }
 

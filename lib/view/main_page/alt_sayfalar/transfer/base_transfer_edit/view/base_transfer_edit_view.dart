@@ -61,6 +61,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
   @override
   void initState() {
+    viewModel.setLoading(true);
     _cariKoduController = TextEditingController();
     _siparisController = TextEditingController();
     _kalemlerController = TextEditingController();
@@ -102,10 +103,9 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
       model.model?.kayitModu = null;
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      if (!widget.model.baseEditEnum.ekleMi) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.success == true) {
-          viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
@@ -137,19 +137,32 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
         BaseSiparisEditModel.instance.isNew = true;
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
-          final result = await getSiparisBaglantisi();
-          if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
-            Get.back();
+          if ((widget.model.model as BaseSiparisEditModel?)?.kalemList != null) {
+            _kalemlerController.text = "${(widget.model.model as BaseSiparisEditModel).kalemList?.length}  adet Kalem Seçildi.";
+            BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
+          } else {
+            final result = await getSiparisBaglantisi();
+            if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
+              Get.back();
+            } else if (result != true) {
+              BaseSiparisEditModel.resetInstance();
+            }
           }
+          BaseSiparisEditModel.instance.belgeTipi = 2;
+          BaseSiparisEditModel.instance.tipi = 2;
+          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+          BaseSiparisEditModel.instance.tag = "FaturaModel";
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+          BaseSiparisEditModel.instance.isNew = true;
         }
         BaseSiparisEditModel.instance.cikisDepoKodu = yetkiController.transferLokalDatCikisDepo?.depoKodu;
         BaseSiparisEditModel.instance.girisDepoKodu = yetkiController.transferLokalDatGirisDepo?.depoKodu;
         BaseSiparisEditModel.instance.topluCikisDepoTanimi = yetkiController.transferLokalDatCikisDepo?.depoTanimi;
         BaseSiparisEditModel.instance.topluGirisDepoTanimi = yetkiController.transferLokalDatGirisDepo?.depoTanimi;
-        if (!yetkiController.transferDatLokalDATSeciliGelmesin) {
-          BaseSiparisEditModel.instance.lokalDat = "E";
-        } else {
+        if (yetkiController.transferDatLokalDATSeciliGelmesin) {
           BaseSiparisEditModel.instance.lokalDat = "H";
+        } else {
+          BaseSiparisEditModel.instance.lokalDat = "E";
         }
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
@@ -159,7 +172,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      viewModel.setLoading(false);
+    viewModel.setLoading(false);
     });
     super.initState();
   }
@@ -188,7 +201,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           appBar: AppBar(
             title: AppBarTitle(
               title: "${model.editTipiEnum?.getName ?? "Talep Teklif"}${widget.model.baseEditEnum.revizeMi ? " (Revize)" : ""}",
-              subtitle: (BaseSiparisEditModel.instance.isNew ?? false) ? "Yeni Belge" : widget.model.model?.belgeNo,
+              subtitle: widget.model.baseEditEnum?.getName,
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
             actions: [
