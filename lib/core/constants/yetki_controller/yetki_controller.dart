@@ -520,12 +520,13 @@ final class YetkiController {
   bool get transferDatLokalDATSeciliGelmesin => _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
   bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
   bool get transferDatEIrsaliyeIsaretleyemesin => !_isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
+  bool get transferDatOnay => _isTrue(_yetkiModel?.transferDatOnayIslemleri);
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
   //* Ambar Giriş Fişi
   bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAgDigerSekmesiGoster);
   // bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAg);
-  bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle, skipAdmin: true);
+  bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle);
 
   bool get transferAgSiparisBaglantisi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "E" || _yetkiModel?.transferAgSipBagSecenegi == "O");
   bool get transferAgSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "O");
@@ -535,7 +536,7 @@ final class YetkiController {
 
   //* Ambar Çıkış Fişi
   bool get transferAcDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAcDigerSekmesiGoster);
-  bool get transferAcAciklamaDuzenle => _isTrue(_yetkiModel?.transferAcAciklamaDuzenle, skipAdmin: true);
+  bool get transferAcAciklamaDuzenle => _isTrue(_yetkiModel?.transferAcAciklamaDuzenle);
 
   bool get transferAcSiparisBaglantisi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "E" || _yetkiModel?.transferAcSipBagSecenegi == "O");
   bool get transferAcSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "O");

@@ -121,7 +121,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                     widget.onUpdated?.call(result);
                   }
                 },
-              ),
+              ).yetkiKontrol(widget.editTipiEnum.aciklamaDuzenlensinMi),
               BottomSheetModel(
                 title: loc.generalStrings.print,
                 iconWidget: Icons.print_outlined,
@@ -134,7 +134,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   );
                   await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                 },
-              ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+              ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && widget.editTipiEnum.yazdirilsinMi),
               BottomSheetModel(
                 title: loc.generalStrings.actions,
                 iconWidget: Icons.list_alt_outlined,
@@ -195,7 +195,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
                   ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalasanSayi != null),
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
-                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
+                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.datOnayda == "E"),
                   ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
                   const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
                   const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.earsivMi == "E"),

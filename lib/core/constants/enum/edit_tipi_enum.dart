@@ -306,6 +306,19 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get aciklamaDuzenlensinMi {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferDatAciklamaDuzenle;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferAgAciklamaDuzenle;
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferAcAciklamaDuzenle;
+      default:
+        return false;
+    }
+  }
+
   bool get cariKoduDegisirMi {
     switch (this) {
       case EditTipiEnum.musteri:

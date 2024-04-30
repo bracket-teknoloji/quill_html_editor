@@ -222,6 +222,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
     } else if (islemTipi == IslemTipiEnum.depoTransferi) {
+      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+      islemlerList.addIfConditionTrue(_yetkiController.transferDatOnay && siparisModel.datOnayda == "E", transferOnayla);
       islemlerList.add(siparisPDFGoruntule);
       islemlerList.add(siparisCariKoduDegistir);
       islemlerList.add(faturaBelgeNoDegistir);
@@ -1281,6 +1283,36 @@ class IslemlerMenuItemConstants<T> {
           ..pickerBelgeTuru = siparisModel.belgeTuru
           ..cariKodu = siparisModel.cariKodu
           ..islemKodu = siparisModel.onaydaMi ? 1 : 3
+          ..tag = "FaturaModel";
+        final result = await _networkManager.dioPost<BaseSiparisEditModel>(
+          path: ApiUrls.saveFatura,
+          bodyModel: BaseSiparisEditModel(),
+          data: newSiparisModel.toJson(),
+          showLoading: true,
+        );
+        if (result.success == true) {
+          _dialogManager.showSuccessSnackBar("Kayıt Başarılı");
+          return true;
+        } else {
+          return false;
+        }
+      },
+    );
+  }
+
+  GridItemModel get transferOnayla {
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Onayla",
+      iconData: Icons.check_circle_outline,
+      onTap: () async {
+        final BaseSiparisEditModel newSiparisModel = BaseSiparisEditModel()
+          ..belgeNo = siparisModel.belgeNo
+          ..belgeTuru = siparisModel.belgeTuru
+          ..pickerBelgeTuru = siparisModel.belgeTuru
+          ..cariKodu = siparisModel.cariKodu
+          ..islemKodu = 1
+          ..lokalDat = siparisModel.lokalDat ?? "H"
           ..tag = "FaturaModel";
         final result = await _networkManager.dioPost<BaseSiparisEditModel>(
           path: ApiUrls.saveFatura,
