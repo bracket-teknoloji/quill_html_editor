@@ -8,6 +8,7 @@ import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -455,6 +456,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? eirsaliyeGibDurumKodu;
   @HiveField(182)
   int? cariDovizkodu;
+  @HiveField(183)
+  String? datOnayda;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -640,6 +643,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.eirsaliyeMi,
     this.cariDovizkodu,
     this.eirsaliyeGibDurumKodu,
+    this.datOnayda,
   });
 
   BaseSiparisEditModel._init();
@@ -1011,10 +1015,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   bool get yurticiMi => tipi != 6;
   bool get isEmpty {
     log(toJson().toString());
-    log(BaseSiparisEditModel().toJson().toString());
-    log("""
-== ${this == BaseSiparisEditModel()}
-identical (${identical(this, BaseSiparisEditModel())})""");
     return this == BaseSiparisEditModel();
   }
 
@@ -1429,6 +1429,13 @@ class KalemModel with NetworkManagerMixin {
         siparisSira: model.sira,
         depoKodu: model.depoKodu,
         stokKodu: model.stokKodu,
+      );
+  factory KalemModel.fromOlcumBelgeModel(OlcumBelgeModel? model) => KalemModel(
+        stokAdi: model?.stokAdi,
+        stokKodu: model?.stokKodu,
+        miktar: model?.miktar,
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
       );
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
