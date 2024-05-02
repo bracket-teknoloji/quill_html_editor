@@ -314,7 +314,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(!(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false) && !(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
+                    ).yetkiVarMi(!(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false)),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "E-İrsaliye",
@@ -399,7 +399,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         ),
                       ),
                     ],
-                  ).yetkiVarMi(viewModel.model.lokalDat != "E"),
+                  ).yetkiVarMi(viewModel.model.lokalDat != "E" && (viewModel.model.getEditTipiEnum?.depoTransferiMi ?? false)),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
