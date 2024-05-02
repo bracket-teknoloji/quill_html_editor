@@ -4158,13 +4158,18 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kalemStoktanKodu: fields[98] as String?,
       muhRefKodu: fields[103] as String?,
       sayimListesiModelHucreList: (fields[104] as List?)?.cast<dynamic>(),
-    );
+    )
+      ..dipFiyat = fields[105] as double?
+      ..stokSatisKuru = fields[106] as double?
+      ..olcuBirimCarpani = fields[107] as double?
+      ..stokBakiye = fields[108] as double?
+      ..stokBirimAgirlik = fields[109] as double?;
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(105)
+      ..writeByte(110)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4374,7 +4379,17 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(103)
       ..write(obj.muhRefKodu)
       ..writeByte(104)
-      ..write(obj.sayimListesiModelHucreList);
+      ..write(obj.sayimListesiModelHucreList)
+      ..writeByte(105)
+      ..write(obj.dipFiyat)
+      ..writeByte(106)
+      ..write(obj.stokSatisKuru)
+      ..writeByte(107)
+      ..write(obj.olcuBirimCarpani)
+      ..writeByte(108)
+      ..write(obj.stokBakiye)
+      ..writeByte(109)
+      ..write(obj.stokBirimAgirlik);
   }
 
   @override
@@ -4928,7 +4943,12 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       muhRefKodu: json['MUH_REF_KODU'] as String?,
       sayimListesiModelHucreList:
           json['SAYIM_LISTESI_MODEL_HUCRE_LIST'] as List<dynamic>?,
-    );
+    )
+      ..dipFiyat = (json['DIP_FIYAT'] as num?)?.toDouble()
+      ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
+      ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
+      ..stokBakiye = (json['STOK_BAKIYE'] as num?)?.toDouble()
+      ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble();
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -5046,5 +5066,10 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('MUH_REF_KODU', instance.muhRefKodu);
   writeNotNull(
       'SAYIM_LISTESI_MODEL_HUCRE_LIST', instance.sayimListesiModelHucreList);
+  writeNotNull('DIP_FIYAT', instance.dipFiyat);
+  writeNotNull('STOK_SATIS_KURU', instance.stokSatisKuru);
+  writeNotNull('OLCU_BIRIM_CARPANI', instance.olcuBirimCarpani);
+  writeNotNull('STOK_BAKIYE', instance.stokBakiye);
+  writeNotNull('STOK_BIRIM_AGIRLIK', instance.stokBirimAgirlik);
   return val;
 }

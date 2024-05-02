@@ -84,9 +84,12 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       ],
                     ),
                   ),
-                  const Text.rich(
+                  Text.rich(
                     TextSpan(
-                      children: <InlineSpan>[TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: ColorPalette.slateGray)), TextSpan(text: "0", style: TextStyle(fontWeight: FontWeight.bold))],
+                      children: <InlineSpan>[
+                        const TextSpan(text: "Mal Ağırlığı\n", style: TextStyle(color: ColorPalette.slateGray)),
+                        TextSpan(text: BaseSiparisEditModel.instance.toplamAgirlik.toIntIfDouble.toStringIfNotNull ?? "0", style: const TextStyle(fontWeight: FontWeight.bold)),
+                      ],
                     ),
                   ),
                   Text.rich(

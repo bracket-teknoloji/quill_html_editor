@@ -944,7 +944,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get satirDovizIskonto => kalemList?.map((e) => e.dovizIskontoTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   int toplamKalemMiktari([bool miktar2EklensinMi = false]) => kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
-
+  double get toplamAgirlik => kalemList?.map((e) => e.kalemAgirlik).sum ?? 0;
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamAraToplam => kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
   double get toplamDovizBrutTutar => kalemList?.map((e) => e.getDovizBrutTutar).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
@@ -1315,6 +1315,16 @@ class KalemModel with NetworkManagerMixin {
   String? muhRefKodu;
   @HiveField(104)
   List<dynamic>? sayimListesiModelHucreList;
+  @HiveField(105)
+  double? dipFiyat;
+  @HiveField(106)
+  double? stokSatisKuru;
+  @HiveField(107)
+  double? olcuBirimCarpani;
+  @HiveField(108)
+  double? stokBakiye;
+  @HiveField(109)
+  double? stokBirimAgirlik;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1445,6 +1455,8 @@ class KalemModel with NetworkManagerMixin {
       return 0;
     }
   }
+
+  double get kalemAgirlik => (miktar ?? 0) * (stokBirimAgirlik ?? 0);
 
   bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
 
