@@ -277,6 +277,58 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool degistirilmeyecekAlanlar(String value) {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferLokalDatDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferLokalAgDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferLokalAcDegistirilmeyecekAlanlar(value);
+      default:
+        return false;
+    }
+  }
+
+  bool bosGecilmeyecekAlanlar(String value) {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferLokalDatBosGecilmeyecekAlanlar(value);
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value);
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferLokalAcBosGecilmeyecekAlanlar(value);
+      default:
+        return false;
+    }
+  }
+
+  bool gizlenecekAlanlar(String value) {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return yetkiController.transferLokalDatGizlenecekAlanlar(value);
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferLokalAgGizlenecekAlanlar(value);
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferLokalAcGizlenecekAlanlar(value);
+      default:
+        return false;
+    }
+  }
+
+  bool aciklamalarGorunecekMi(int value) {
+    switch (this) {
+      case EditTipiEnum.depoTransferi:
+        return true;
+      case EditTipiEnum.ambarGirisi:
+        return yetkiController.transferLokalAgAciklamaAlanlari(value);
+      case EditTipiEnum.ambarCikisi:
+        return yetkiController.transferLokalAcAciklamaAlanlari(value);
+      default:
+        return false;
+    }
+  }
+
   bool get kopyalanabilirMi {
     switch (this) {
       case EditTipiEnum.musteri:
@@ -393,21 +445,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferDatEIrsaliyeIsaretleyemesin;
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferAcEIrsaliyeIsaretleyemesin;
-      case EditTipiEnum.musteri:
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.satisIrsaliye:
-      case EditTipiEnum.satisTeklifi:
-      case EditTipiEnum.satisTalebi:
-      case EditTipiEnum.satici:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-      case EditTipiEnum.alisTalebi:
-      case EditTipiEnum.ambarGirisi:
-      case EditTipiEnum.cari:
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
+      default:
         return false;
     }
   }

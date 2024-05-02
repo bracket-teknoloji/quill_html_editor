@@ -471,6 +471,14 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['transfer_AC_SipBag_MalToplananlarGelsin'] as bool?
       ..transferAcSipBagSevkOnayliSiparislerGelsin =
           json['transfer_AC_SipBag_SevkOnayliSiparislerGelsin'] as bool?
+      ..transferAcGizlenecekAlanlar =
+          (json['transfer_AC_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..transferAcDegismeyecekAlanlar =
+          (json['transfer_AC_DegismeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
       ..transferDepoTalebi = json['transfer_DepoTalebi'] as bool?
       ..transferDepoTalebiSil = json['transfer_DepoTalebi_Sil'] as bool?
       ..transferDepoTalebiMalTop = json['transfer_DepoTalebi_MalTop'] as bool?
@@ -1701,6 +1709,14 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['transfer_AG_DegismeyecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
+      ..transferAgAciklamaAlanlari =
+          (json['transfer_AG_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
+      ..transferAcAciklamaAlanlari =
+          (json['transfer_AC_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..sevkiyatSatisFatKdvDurumu =
           json['sevkiyat_SatisFat_KdvDurumu'] as String?
       ..sigmaOlcumGir = json['sigma_OlcumGir'] as bool?
@@ -2111,6 +2127,10 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.transferAcSipBagMalToplananlarGelsin);
   writeNotNull('transfer_AC_SipBag_SevkOnayliSiparislerGelsin',
       instance.transferAcSipBagSevkOnayliSiparislerGelsin);
+  writeNotNull(
+      'transfer_AC_GizlenecekAlanlar', instance.transferAcGizlenecekAlanlar);
+  writeNotNull('transfer_AC_DegismeyecekAlanlar',
+      instance.transferAcDegismeyecekAlanlar);
   writeNotNull('transfer_DepoTalebi', instance.transferDepoTalebi);
   writeNotNull('transfer_DepoTalebi_Sil', instance.transferDepoTalebiSil);
   writeNotNull('transfer_DepoTalebi_MalTop', instance.transferDepoTalebiMalTop);
@@ -3185,6 +3205,10 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       'transfer_AG_GizlenecekAlanlar', instance.transferAgGizlenecekAlanlar);
   writeNotNull('transfer_AG_DegismeyecekAlanlar',
       instance.transferAgDegismeyecekAlanlar);
+  writeNotNull(
+      'transfer_AG_AciklamaAlanlari', instance.transferAgAciklamaAlanlari);
+  writeNotNull(
+      'transfer_AC_AciklamaAlanlari', instance.transferAcAciklamaAlanlari);
   writeNotNull(
       'sevkiyat_SatisFat_KdvDurumu', instance.sevkiyatSatisFatKdvDurumu);
   writeNotNull('sigma_OlcumGir', instance.sigmaOlcumGir);

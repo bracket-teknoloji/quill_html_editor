@@ -487,6 +487,10 @@ class ProfilYetkiModel {
   bool? transferAcSipBagMalToplananlarGelsin;
   @JsonKey(name: "transfer_AC_SipBag_SevkOnayliSiparislerGelsin")
   bool? transferAcSipBagSevkOnayliSiparislerGelsin;
+  @JsonKey(name: "transfer_AC_GizlenecekAlanlar")
+  List<String>? transferAcGizlenecekAlanlar;
+  @JsonKey(name: "transfer_AC_DegismeyecekAlanlar")
+  List<String>? transferAcDegismeyecekAlanlar;
   @JsonKey(name: "transfer_DepoTalebi")
   bool? transferDepoTalebi;
   @JsonKey(name: "transfer_DepoTalebi_Sil")
@@ -1893,6 +1897,10 @@ class ProfilYetkiModel {
   List<String>? transferAgGizlenecekAlanlar;
   @JsonKey(name: "transfer_AG_DegismeyecekAlanlar")
   List<String>? transferAgDegismeyecekAlanlar;
+  @JsonKey(name: "transfer_AG_AciklamaAlanlari")
+  List<int>? transferAgAciklamaAlanlari;
+  @JsonKey(name: "transfer_AC_AciklamaAlanlari")
+  List<int>? transferAcAciklamaAlanlari;
   @JsonKey(name: "sevkiyat_SatisFat_KdvDurumu")
   String? sevkiyatSatisFatKdvDurumu;
   @JsonKey(name: "sigma_OlcumGir")

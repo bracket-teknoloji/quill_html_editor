@@ -15,11 +15,11 @@ final class YetkiController {
   YetkiController();
   MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
-  UserModel? get userModel => _anaVeri?.userModel;
+  UserModel? get _userModel => _anaVeri?.userModel;
 
   ParamModel? get _paramModel => _anaVeri?.paramModel;
 
-  ProfilYetkiModel? get _yetkiModel => userModel?.profilYetki;
+  ProfilYetkiModel? get _yetkiModel => _userModel?.profilYetki;
 
   /// Verilen değer `null` ise `false` döndürür
   ///
@@ -29,11 +29,11 @@ final class YetkiController {
   /// ! `EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı`
   // bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
   // * Adminse artık her şeye erişiyor 1.3.0
-  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
+  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (_userModel?.adminMi ?? false));
 
   //! GENEL
 
-  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? userModel?.adminMi ?? false).toList();
+  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _userModel?.adminMi ?? false).toList();
   Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
@@ -378,7 +378,8 @@ final class YetkiController {
   bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
   bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif);
   bool get eFaturaSenaryoDegistir => _isTrue(_paramModel?.eFaturaSenaryoDegistir);
-  bool eFaturaSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? "") || (_paramModel?.arrEFatSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
+  bool eFaturaSerisindenMi(String belgeNo) =>
+      _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? "") || (_paramModel?.arrEFatSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   bool get ebelgeEIrsaliyeGelenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
@@ -388,7 +389,8 @@ final class YetkiController {
   bool get ebelgeEIrsaliyeGoruntule => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
   bool get ebelgeEIrsaliyeTaslakSil => _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
   bool get eIrsaliyeAktif => _isTrue(_paramModel?.eIrsaliyeAktif);
-  bool eIrsaliyeSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
+  bool eIrsaliyeSerisindenMi(String belgeNo) =>
+      _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
@@ -398,7 +400,8 @@ final class YetkiController {
   bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
   bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
   bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif);
-  bool eArsivSerisindenMi(String belgeNo) => _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? "") || (_paramModel?.arrEArSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
+  bool eArsivSerisindenMi(String belgeNo) =>
+      _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? "") || (_paramModel?.arrEArSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   //! SAYIM
   bool get sayimEkle => _isTrue(_yetkiModel?.sayimSerbest);
@@ -519,11 +522,15 @@ final class YetkiController {
 
   bool get transferDatLokalDATSeciliGelmesin => _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
   bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
-  bool get transferDatEIrsaliyeIsaretleyemesin => !_isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
+  bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
   bool get transferDatOnay => _isTrue(_yetkiModel?.transferDatOnayIslemleri);
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
   //* Ambar Giriş Fişi
+  bool transferLokalAgDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAgDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAgBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAgBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAgGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAgGizlenecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAgAciklamaAlanlari(int? index) => _isTrue(_yetkiModel?.transferAgAciklamaAlanlari?.contains(index), skipAdmin: true);
   bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAgDigerSekmesiGoster);
   // bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAg);
   bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle);
@@ -535,6 +542,10 @@ final class YetkiController {
   DepoList? get transferAgGirisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanGirisDepo).firstOrNull;
 
   //* Ambar Çıkış Fişi
+  bool transferLokalAcDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAcDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAcBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAcBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAcGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferAcGizlenecekAlanlar?.contains(index), skipAdmin: true);
+  bool transferLokalAcAciklamaAlanlari(int? index) => _isTrue(_yetkiModel?.transferAcAciklamaAlanlari?.contains(index), skipAdmin: true);
   bool get transferAcDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAcDigerSekmesiGoster);
   bool get transferAcAciklamaDuzenle => _isTrue(_yetkiModel?.transferAcAciklamaDuzenle);
 
@@ -543,7 +554,7 @@ final class YetkiController {
 
   DepoList? get transferAcVarsayilanDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferAcVarsayilanDepo).firstOrNull;
 
-  bool get transferAcEIrsaliyeIsaretleyemesin => !_isTrue(_yetkiModel?.transferAcEIrsIsaretleyemesin);
+  bool get transferAcEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferAcEIrsIsaretleyemesin);
 
   //! Üretim
 
@@ -588,7 +599,6 @@ final class YetkiController {
   //! Kapatma İşlemi
   bool get belgeKapatMusSip => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
   bool get belgeKapatSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
-
 
   //! Sigma
   bool get sigmaOlcumGirisi => _isTrue(_yetkiModel?.sigmaOlcumGir);
