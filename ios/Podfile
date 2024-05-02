@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 # Uncomment this line to define a global platform for your project
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '12.0'
+
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -40,6 +42,7 @@ target 'Runner' do
 end
 
 post_install do |installer|
+  source 'https://cdn.cocoapods.org/'
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       xcconfig_path = config.base_configuration_reference.real_path
