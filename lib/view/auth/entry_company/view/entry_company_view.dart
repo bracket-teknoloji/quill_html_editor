@@ -15,6 +15,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -95,6 +96,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         (index) => BottomSheetModel(
           title: viewModel.subeList?[index].subeAdi ?? "",
           value: viewModel.subeList?[index],
+          description: viewModel.subeList?[index].subeKodu.toStringIfNotNull,
           groupValue: viewModel.subeList?[index].subeKodu,
           // onTap: () {
           //   setState(() {
