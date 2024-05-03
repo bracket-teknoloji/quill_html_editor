@@ -209,7 +209,9 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               onPressed: () async {
                 final result = await Get.toNamed("/qr");
                 if (result != null) {
-                  viewModel.setSearchBar();
+                  if (!viewModel.searchBar) {
+                    viewModel.setSearchBar();
+                  }
                   viewModel.setStokListesi(null);
                   viewModel.resetSayfa();
                   viewModel.setSearchValue(result);
