@@ -138,7 +138,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.isNew = true;
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
           if ((widget.model.model as BaseSiparisEditModel?)?.kalemList != null) {
-            _kalemlerController.text = "${(widget.model.model as BaseSiparisEditModel).kalemList?.length}  adet Kalem Seçildi.";
+            BaseSiparisEditModel.instance.olcumBelgeRefKey = (widget.model.model as BaseSiparisEditModel).olcumBelgeRefKey;
             BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
           } else {
             final result = await getSiparisBaglantisi();
@@ -172,7 +172,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-    viewModel.setLoading(false);
+      viewModel.setLoading(false);
     });
     super.initState();
   }

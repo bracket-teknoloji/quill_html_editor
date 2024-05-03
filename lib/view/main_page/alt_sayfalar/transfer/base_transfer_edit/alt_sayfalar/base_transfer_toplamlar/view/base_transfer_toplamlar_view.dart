@@ -219,7 +219,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ).yetkiVarMi(yetkiController.genIsk1AktifMi(model.getEditTipiEnum)),
+                ).yetkiVarMi(yetkiController.genIsk1AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
                 Row(
                   children: <CustomTextField>[
                     CustomTextField(
@@ -260,7 +260,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ).yetkiVarMi(yetkiController.genIsk2AktifMi(model.getEditTipiEnum)),
+                ).yetkiVarMi(yetkiController.genIsk2AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
                 Row(
                   children: <CustomTextField>[
                     CustomTextField(
@@ -301,7 +301,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       },
                     ),
                   ].map((CustomTextField e) => Expanded(child: e)).toList(),
-                ).yetkiVarMi(yetkiController.genIsk3AktifMi(model.getEditTipiEnum)),
+                ).yetkiVarMi(yetkiController.genIsk3AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
               ],
             ),
             Row(
@@ -341,7 +341,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     ),
                     // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                   ),
-                ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
+                ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
               ],
             ),
             Row(

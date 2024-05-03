@@ -147,7 +147,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       onTap: () async {
                         Get.back();
                         dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
-                      },  
+                      },
                     ).yetkiKontrol(yetkiController.stokListesi),
                     BottomSheetModel(
                       title: "Depo Transferi",
@@ -163,7 +163,10 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           arguments: BaseEditModel<BaseSiparisEditModel>(
                             baseEditEnum: BaseEditEnum.ekle,
                             editTipiEnum: EditTipiEnum.depoTransferi,
-                            model: BaseSiparisEditModel(kalemList: [KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)]),
+                            model: BaseSiparisEditModel(
+                              kalemList: [KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)],
+                              olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
+                            ),
                           ),
                         );
                       },

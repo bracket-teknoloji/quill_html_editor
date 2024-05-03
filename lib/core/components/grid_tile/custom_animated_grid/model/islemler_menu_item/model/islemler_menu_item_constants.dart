@@ -255,7 +255,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel? get kopyala => GridItemModel.islemler(
         title: "Kopyala",
         iconData: Icons.copy_outlined,
-        isEnabled: (siparisTipi?.eklensinMi ?? true) && (siparisTipi?.kopyalanabilirMi ?? true),
+        isEnabled: ((siparisTipi?.eklensinMi ?? true) && (siparisTipi?.kopyalanabilirMi ?? true)) || AccountModel.instance.adminMi,
         onTap: () async => await Get.toNamed(
           islemTipi.route,
           arguments: BaseEditModel(
@@ -273,7 +273,7 @@ class IslemlerMenuItemConstants<T> {
       if (siparisModel.tipi != 1) {
         return GridItemModel.islemler(
           title: "Belgeyi Kapat",
-          isEnabled: siparisTipi?.belgeKapatabilirMi,
+          isEnabled: (siparisTipi?.belgeKapatabilirMi ?? false) || AccountModel.instance.adminMi,
           iconData: Icons.lock_outline,
           onTap: () async {
             bool? result;

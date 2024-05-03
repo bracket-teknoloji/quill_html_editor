@@ -458,6 +458,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   int? cariDovizkodu;
   @HiveField(183)
   String? datOnayda;
+  @HiveField(184)
+  String? olcumBelgeRefKey;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -644,6 +646,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.cariDovizkodu,
     this.eirsaliyeGibDurumKodu,
     this.datOnayda,
+    this.olcumBelgeRefKey,
   });
 
   BaseSiparisEditModel._init();
@@ -1446,6 +1449,7 @@ class KalemModel with NetworkManagerMixin {
         miktar: model?.miktar,
         cariAdi: model?.cariAdi,
         cariKodu: model?.cariKodu,
+        
       );
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;

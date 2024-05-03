@@ -501,6 +501,10 @@ final class YetkiController {
   bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
   bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
 
+  bool get transferEkMaliyet1GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
+  bool get transferEkMaliyet2GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
+  bool get transferEkMaliyet3GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
+
   //* lokal DAT
 
   bool get transferDatDigerSekmesiGoster => _isTrue(_yetkiModel?.transferDatDigerSekmesiGoster);
