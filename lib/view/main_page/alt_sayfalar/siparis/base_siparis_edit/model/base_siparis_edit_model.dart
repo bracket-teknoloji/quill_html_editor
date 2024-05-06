@@ -759,7 +759,17 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return false;
   }
 
-  bool get hataliMi => efaturaGibDurumKodu == -1;
+  bool get hataliMi {
+    if (eFaturaMi) {
+      return efaturaDurumu == "HAT";
+    } else if (eIrsaliyeMi) {
+      return eirsaliyeDurumu == "HAT";
+    } else if (eArsivMi) {
+      return earsivDurumu == "HAT";
+    } else {
+      return false;
+    }
+  }
 
   bool get islemBilgileriDegistirebilirMi => (!kapaliMi) && (getEditTipiEnum?.duzenlensinMi ?? false);
 
@@ -1449,7 +1459,6 @@ class KalemModel with NetworkManagerMixin {
         miktar: model?.miktar,
         cariAdi: model?.cariAdi,
         cariKodu: model?.cariKodu,
-        
       );
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
