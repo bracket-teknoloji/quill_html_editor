@@ -41,8 +41,8 @@ class DialogManager {
 
   YetkiController get _yetkiController => YetkiController();
 
-  DialogManager([BuildContext? context]) {
-    this.context = context ?? Get.context!;
+  DialogManager() {
+    context = Get.context!;
   }
 
   ///
