@@ -202,8 +202,10 @@ class _EndDrawerState extends BaseState<EndDrawer> {
           iconWidget: Icons.link_outlined,
           onTap: () async {
             if (_urlAdi == " ") return;
-            await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
-            setState(() {});
+            final result = await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
+            if (result == null) return;
+            widget.scaffoldKey.currentState?.closeEndDrawer();
+            dialogManager.showSuccessSnackBar("Bağlantı yöntemi ${result ? "Uzaktan" : "Yerel"} olarak başarıyla güncellendi.");
           },
         ),
         DrawerModel(

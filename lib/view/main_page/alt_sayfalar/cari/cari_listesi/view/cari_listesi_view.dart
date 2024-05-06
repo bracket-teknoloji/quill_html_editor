@@ -325,11 +325,6 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               direction: Axis.vertical,
                               alignment: WrapAlignment.spaceBetween,
                               children: [
-                                Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                                if (object.cariIl != null)
-                                  Text("${object.cariIl ?? ""}/${object.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
-                                else
-                                  const SizedBox(),
                                 Row(
                                   children: [
                                     const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
@@ -345,6 +340,11 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                                       .toList()
                                       .nullCheckWithGeneric,
                                 ),
+                                Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
+                                if (object.cariIl != null)
+                                  Text("${object.cariIl ?? ""}/${object.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
+                                else
+                                  const SizedBox(),
                               ],
                             ),
                             trailing: Wrap(
