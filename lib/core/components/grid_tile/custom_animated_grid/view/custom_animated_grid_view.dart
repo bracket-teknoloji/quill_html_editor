@@ -37,9 +37,10 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   bool get kasaMi => widget.islemTipi == IslemTipiEnum.kasa;
   bool get raporMu =>
       widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor || widget.islemTipi == IslemTipiEnum.cariSerbest || widget.islemTipi == IslemTipiEnum.stokSerbest;
-  List<GridItemModel> result = MenuItemConstants().getList();
+  late List<GridItemModel> result;
   @override
   void initState() {
+    result = MenuItemConstants(context).getList();
     // viewModel.setGridItemModel(result.getList().firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {

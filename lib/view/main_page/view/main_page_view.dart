@@ -26,11 +26,17 @@ class MainPageView extends StatefulWidget {
 }
 
 class _MainPageViewState extends BaseState<MainPageView> {
-  List<GridItemModel> items = MenuItemConstants().getList();
+  late List<GridItemModel> items;
   List<List<GridItemModel>> lastItems = [];
   bool? yetkiVarMi;
   MainPageModel? model = CacheManager.getAnaVeri;
   List<String> title2 = ["Picker"];
+
+  @override
+  void initState() {
+    items = MenuItemConstants(context).getList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

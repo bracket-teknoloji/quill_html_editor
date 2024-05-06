@@ -19,6 +19,9 @@ import "../main_page_model.dart";
 import "../param_model.dart";
 
 class MenuItemConstants {
+  MenuItemConstants(this.context);
+
+  late final BuildContext context;
   static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
   static List<NetFectDizaynList> get _serbestRapor => _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];

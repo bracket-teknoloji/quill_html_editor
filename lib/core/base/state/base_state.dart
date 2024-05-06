@@ -11,7 +11,7 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
-  DialogManager get dialogManager => DialogManager();
+  DialogManager get dialogManager => DialogManager(context);
   BottomSheetDialogManager get bottomSheetDialogManager => BottomSheetDialogManager();
   AppInfoModel get appInfoModel => AppInfoModel.instance;
   NetworkManager get networkManager => NetworkManager();
