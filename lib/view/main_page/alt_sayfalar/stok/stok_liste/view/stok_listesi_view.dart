@@ -220,7 +220,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
               },
             ),
             AppBarButton(
-              iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? theme.colorScheme.inversePrimary : null)),
+              iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
               child: Text(loc.generalStrings.filter),
               onPressed: () async {
                 if (viewModel.grupKodlari.isEmptyOrNull) {

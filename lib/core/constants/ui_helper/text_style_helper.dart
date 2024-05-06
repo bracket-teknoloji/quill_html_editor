@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../init/theme/app_theme_dark.dart";
 
@@ -6,20 +7,20 @@ class TextStyleHelper {
   static ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
   //* Title
   //*
-  static final TextStyle title = TextStyle(
+  static const TextStyle title = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
-    color: theme.colorScheme.inversePrimary,
+    color: UIHelper.primaryColor,
   );
   static const TextStyle titleBlack = TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
   static TextStyle titleWhite = TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: theme.colorScheme.onSurface);
 
   //* Subtitle
   //*
-  static final TextStyle subtitle = TextStyle(
+  static const TextStyle subtitle = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    color: theme.colorScheme.inversePrimary,
+    color: UIHelper.primaryColor,
   );
   static final TextStyle subtitleBlack = TextStyle(
     fontSize: 14,
@@ -30,10 +31,10 @@ class TextStyleHelper {
 
   //* Body
   //*
-  static final TextStyle caption = TextStyle(
+  static const TextStyle caption = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.normal,
-    color: theme.colorScheme.inversePrimary,
+    color: UIHelper.primaryColor,
   );
   static const TextStyle captionBlack = TextStyle(
     fontSize: 12,

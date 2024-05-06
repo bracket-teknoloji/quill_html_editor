@@ -62,8 +62,8 @@ class _ListViewShimmerState extends BaseState<ListViewShimmer> {
             ),
           ),
           //   Shimmer.fromColors(
-          //     baseColor: theme.colorScheme.inversePrimary.withOpacity(0.5),
-          //     highlightColor: theme.colorScheme.inversePrimary.withOpacity(0.2),
+          //     baseColor: UIHelper.primaryColor.withOpacity(0.5),
+          //     highlightColor: UIHelper.primaryColor.withOpacity(0.2),
           //     // direction: ShimmerDirection.ttb,
           //     child: Card(
           //       child: ListTile(

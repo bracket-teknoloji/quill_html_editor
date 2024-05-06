@@ -109,7 +109,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
           ),
           IconButton(
             onPressed: filter,
-            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? theme.colorScheme.inversePrimary : null)),
+            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
           ),
         ],
       );

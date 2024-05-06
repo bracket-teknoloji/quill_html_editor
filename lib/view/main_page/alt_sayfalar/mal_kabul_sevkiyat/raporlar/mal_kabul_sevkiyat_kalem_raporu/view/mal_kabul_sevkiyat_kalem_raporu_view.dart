@@ -106,7 +106,7 @@ class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevkiyatKa
                   }
                   dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""])));
                 },
-                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);

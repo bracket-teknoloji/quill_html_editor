@@ -134,9 +134,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                     dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                   }
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.data_exploration_outlined,
-                  color: theme.colorScheme.inversePrimary,
+                  color: UIHelper.primaryColor,
                 ),
               ),
               onClear: () {
@@ -210,9 +210,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 onPressed: () => dialogManager.showInfoDialog(
                   "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
                 ),
-                icon: Icon(
+                icon: const Icon(
                   Icons.info_outline,
-                  color: theme.colorScheme.inversePrimary,
+                  color: UIHelper.primaryColor,
                 ),
               ),
               controller: haricStokGrupKodlariController,

@@ -118,7 +118,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.stokListesiModel?.stokKodu ?? "")),
                       controller: stokController,
                       suffix: IconButton(
-                        icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                        icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         onPressed: () async {
                           dialogManager.showStokGridViewDialog(viewModel.stokListesiModel);
                         },
@@ -175,7 +175,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                                 children: [
                                                   Text(viewModel.titleList[index]).paddingAll(UIHelper.lowSize),
                                                   const Divider(endIndent: UIHelper.lowSize, indent: UIHelper.lowSize),
-                                                  Text("${viewModel.getBilgi(index,isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
+                                                  Text("${viewModel.getBilgi(index, isSatis: true).commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} $mainCurrency").paddingAll(UIHelper.lowSize),
                                                 ],
                                               ),
                                             ),

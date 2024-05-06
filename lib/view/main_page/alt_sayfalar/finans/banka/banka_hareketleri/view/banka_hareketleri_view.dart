@@ -86,7 +86,7 @@ class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(model.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.inversePrimary)),
+                        Text(model.hareketAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
                         Text(model.belgeno ?? "").yetkiVarMi(model.belgeno != null),
                         Text(model.aciklama ?? "", style: const TextStyle(fontStyle: FontStyle.italic)),
                       ].where((element) => element is! SizedBox).toList(),

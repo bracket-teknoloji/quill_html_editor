@@ -159,7 +159,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                 suffix: IconButton(
                   onPressed: getCariIslemleri,
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),
                 onTap: getCari,
               ),

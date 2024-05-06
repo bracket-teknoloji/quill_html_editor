@@ -30,9 +30,9 @@ class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
                   });
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.check_circle,
-                color: theme.colorScheme.inversePrimary,
+                color: UIHelper.primaryColor,
               ),
             ),
           ],

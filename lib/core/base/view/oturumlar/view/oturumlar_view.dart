@@ -95,7 +95,7 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
                       },
                       title: Text(
                         "${model.kullaniciAdi ?? ""} (${model.adi ?? ""} ${model.soyadi ?? ""})",
-                        style: TextStyle(color: model.cihazKimligi == AccountModel.instance.cihazKimligi ? theme.colorScheme.inversePrimary : null),
+                        style: TextStyle(color: model.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

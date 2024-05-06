@@ -183,9 +183,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
                                   }
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.data_exploration_outlined,
-                                  color: theme.colorScheme.inversePrimary,
+                                  color: UIHelper.primaryColor,
                                 ),
                               ),
                               IconButton(
@@ -310,7 +310,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   });
                                 },
                                 icon: Icons.delete_forever,
-                                backgroundColor: theme.colorScheme.inversePrimary,
+                                backgroundColor: UIHelper.primaryColor,
                                 foregroundColor: theme.colorScheme.primary,
                                 label: loc.generalStrings.delete,
                               ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
@@ -328,7 +328,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: theme.colorScheme.inversePrimary,
+                                  backgroundColor: UIHelper.primaryColor,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket\nDetayı",
                                 ),
@@ -349,7 +349,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: theme.colorScheme.inversePrimary,
+                                  backgroundColor: UIHelper.primaryColor,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket Detayı",
                                 ),
@@ -403,9 +403,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                         listTile(model),
                                         Container(
                                           width: UIHelper.lowSize,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.rectangle,
-                                            color: theme.colorScheme.inversePrimary,
+                                            color: UIHelper.primaryColor,
                                           ),
                                         ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
                                       ],

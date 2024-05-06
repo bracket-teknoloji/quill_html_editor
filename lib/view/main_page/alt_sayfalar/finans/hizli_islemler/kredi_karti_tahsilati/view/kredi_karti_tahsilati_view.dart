@@ -202,7 +202,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
                       dialogManager.showErrorSnackBar("Cari seçiniz");
                     }
                   },
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),
               ),
               Observer(

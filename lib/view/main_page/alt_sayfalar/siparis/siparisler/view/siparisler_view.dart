@@ -166,7 +166,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   Observer(
                     builder: (_) => Icon(
                       Icons.filter_alt_outlined,
-                      color: viewModel.hasFilter ? theme.colorScheme.inversePrimary : null,
+                      color: viewModel.hasFilter ? UIHelper.primaryColor : null,
                       size: UIHelper.midSize * 2,
                     ),
                   ),

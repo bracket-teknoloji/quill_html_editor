@@ -1,6 +1,7 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/number_extensions.dart";
@@ -41,7 +42,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                   lineTouchData: LineTouchData(
                     enabled: true,
                     touchTooltipData: LineTouchTooltipData(
-                      getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? theme.colorScheme.inversePrimary,
+                      getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? UIHelper.primaryColor,
                       fitInsideHorizontally: true,
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,

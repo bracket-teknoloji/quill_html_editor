@@ -63,7 +63,7 @@ class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
                   Get.back(result: viewModel.selectedSiparisList);
                 }
               },
-              icon: Icon(Icons.check_circle, color: theme.colorScheme.inversePrimary),
+              icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor),
             ),
             IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
           ],

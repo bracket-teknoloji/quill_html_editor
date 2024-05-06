@@ -99,7 +99,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
               controller: stokAdiController,
               valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.stokKodu ?? "")),
               suffix: IconButton(
-                icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 onPressed: () async {
                   if (viewModel.stokModel != null) {
                     dialogManager.showStokGridViewDialog(viewModel.stokModel);

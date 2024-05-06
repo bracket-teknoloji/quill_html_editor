@@ -229,7 +229,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         dialogManager.showCariIslemleriGridViewDialog(result);
                       }
                     },
-                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                    icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ).yetkiVarMi(isEkle),
                   onTap: () async {
                     var result = await Get.toNamed(
@@ -281,7 +281,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         dialogManager.showCariIslemleriGridViewDialog(result);
                       }
                     },
-                    icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                    icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ).yetkiVarMi(isEkle),
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);

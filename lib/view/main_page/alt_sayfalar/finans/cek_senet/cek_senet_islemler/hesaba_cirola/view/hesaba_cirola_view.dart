@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../../core/base/model/base_proje_model.dart";
@@ -117,7 +118,7 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
                   isMust: true,
                   readOnly: true,
                   suffixMore: true,
-                  suffix: IconButton(onPressed: getCariIslemler, icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary)),
+                  suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
                   onTap: setCari,
                 ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.cari),

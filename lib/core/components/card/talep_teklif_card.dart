@@ -261,7 +261,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
               Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               Text(
                 "${(model.sonrakiRevizeNo ?? "").removeZerosFromStart} numaralı belgeye revize edildi.",
-                style: TextStyle(color: theme.colorScheme.inversePrimary),
+                style: const TextStyle(color: UIHelper.primaryColor),
               ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.sonrakiRevizeNo != null),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(

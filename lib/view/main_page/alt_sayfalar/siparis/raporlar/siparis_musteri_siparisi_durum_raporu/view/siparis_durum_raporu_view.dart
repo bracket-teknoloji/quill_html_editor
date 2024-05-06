@@ -304,7 +304,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                         dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                       }
                     },
-                    icon: Icon(Icons.data_exploration_outlined, color: theme.colorScheme.inversePrimary),
+                    icon: const Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
                   ),
                   onClear: () {
                     viewModel.setCariKodu(null);

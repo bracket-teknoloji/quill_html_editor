@@ -95,7 +95,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         }
       });
     });
-    
+
     super.initState();
   }
 
@@ -341,7 +341,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                           await dialogManager.showAlertDialog("Cari Seçiniz");
                         }
                       },
-                      icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                     ),
                     onTap: () async {
                       final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);

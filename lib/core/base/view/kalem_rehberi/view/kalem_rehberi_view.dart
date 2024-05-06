@@ -66,9 +66,9 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                   Get.back(result: viewModel.selectedKalemList);
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.check_circle,
-                color: theme.colorScheme.inversePrimary,
+                color: UIHelper.primaryColor,
               ),
             ),
             IconButton(

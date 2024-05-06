@@ -80,7 +80,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Card(
-            color: theme.colorScheme.inversePrimary,
+            color: UIHelper.primaryColor,
             child: Observer(
               builder: (_) => Text(
                 "Devir Tutarı: ${(widget.model?.dovizli == "E" ? widget.model?.dovizDevirTutari : widget.model?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",

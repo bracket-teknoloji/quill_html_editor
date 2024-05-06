@@ -180,7 +180,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         bottom: AppBarPreferedSizedBottom(
           children: [
             AppBarButton(
-              iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? theme.colorScheme.inversePrimary : null)),
+              iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
               onPressed: () async {
                 await filtreleDialog(context);
                 // if (filterData == null) {

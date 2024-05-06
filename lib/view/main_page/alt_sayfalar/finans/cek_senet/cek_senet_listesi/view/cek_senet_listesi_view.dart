@@ -203,7 +203,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               dialogManager.showInfoDialog("Veren cari seçiniz");
                             }
                           },
-                          icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                          icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         ),
                       ),
                       CustomTextField(
@@ -228,7 +228,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               dialogManager.showInfoDialog("Verilen cari seçiniz");
                             }
                           },
-                          icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                          icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         ),
                       ).yetkiVarMi(viewModel.cekSenetListesiRequestModel.yer == "C"),
                       CustomTextField(

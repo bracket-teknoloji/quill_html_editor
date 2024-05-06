@@ -160,7 +160,7 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
                     }
                     dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.cariKodu ?? ""])));
                   },
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),
               ),
               CustomTextField(

@@ -204,7 +204,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Card(
                           child: Column(
                             children: <Widget>[
-                              Text("Satışlar (Fatura)", style: TextStyleHelper.title),
+                              const Text("Satışlar (Fatura)", style: TextStyleHelper.title),
                               // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
                               // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
                               // Observer(builder: (_) => Row(children: [const Text("Geçen Ay"), Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
@@ -225,7 +225,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text("Satış Performansı", style: TextStyleHelper.title),
+                                  const Text("Satış Performansı", style: TextStyleHelper.title),
                                   OutlinedButton.icon(
                                     onPressed: () async {
                                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -264,7 +264,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Card(
                           child: Column(
                             children: <Widget>[
-                              Text("Alışlar (Fatura)", style: TextStyleHelper.title),
+                              const Text("Alışlar (Fatura)", style: TextStyleHelper.title),
                               Observer(
                                 builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
@@ -291,7 +291,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Card(
                           child: Column(
                             children: <Widget>[
-                              Text("Müşteri Siparişleri", style: TextStyleHelper.title),
+                              const Text("Müşteri Siparişleri", style: TextStyleHelper.title),
                               Observer(
                                 builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
                               ),
@@ -318,7 +318,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         Card(
                           child: Column(
                             children: <Widget>[
-                              Text("Tahsilatlar", style: TextStyleHelper.title),
+                              const Text("Tahsilatlar", style: TextStyleHelper.title),
                               Observer(
                                 builder: (_) =>
                                     ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),

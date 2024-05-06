@@ -40,7 +40,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             children: [
               SizedBox(width: width * 0.6, child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
               IconButton(
-                icon: Icon(Icons.print_outlined, color: theme.colorScheme.inversePrimary),
+                icon: const Icon(Icons.print_outlined, color: UIHelper.primaryColor),
                 onPressed: () async {
                   widget.onPrint?.call();
                   // var result = await Get.toNamed("/qr");
