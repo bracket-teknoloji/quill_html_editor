@@ -94,7 +94,7 @@ class AppThemeLight extends AppTheme {
           style: ElevatedButton.styleFrom(
             splashFactory: InkRipple.splashFactory,
             backgroundColor: UIHelper.primaryColor,
-            foregroundColor: colorManager.primaryContainer,
+            foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: UIHelper.lowBorderRadius,
             ),
@@ -125,7 +125,7 @@ class AppThemeLight extends AppTheme {
             borderRadius: UIHelper.lowBorderRadius,
           ),
           dense: true,
-        ),  
+        ),
         drawerTheme: DrawerThemeData(
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
@@ -163,7 +163,7 @@ class AppThemeLight extends AppTheme {
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
-            borderSide: BorderSide(color: colorManager.onBackground.withOpacity(0.3)),
+            borderSide: BorderSide(color: colorManager.primary.withOpacity(0.2)),
           ),
           border: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
