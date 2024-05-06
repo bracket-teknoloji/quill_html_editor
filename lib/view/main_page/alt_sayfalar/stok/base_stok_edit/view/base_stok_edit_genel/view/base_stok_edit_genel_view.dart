@@ -269,19 +269,21 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               ),
               CustomTextField(
                 enabled: enable,
+                labelText: "Muhasebe Detay Kodu",
+                controller: muhasebeDetayKoduController,
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.stokListesiModel.muhdetayKodu.toStringIfNotNull ?? ""),
+                ),
                 suffix: IconButton(
                   onPressed: () async {
                     final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.stokListesiModel.muhdetayKodu, stokMu: true);
                     if (result != null) {
-                      muhasebeDetayKoduController.text = "${result.adi ?? ""} ${result.muhKodu.toStringIfNotNull}";
-                      viewModel.stokListesiModel.muhdetayAdi = result.adi;
-                      viewModel.stokListesiModel.muhdetayKodu = result.muhKodu;
+                      muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
+                      viewModel.setMuhasebeKodu(result);
                     }
                   },
                   icon: const Icon(Icons.more_horiz_outlined),
                 ),
-                labelText: "Muhasebe Detay Kodu",
-                controller: muhasebeDetayKoduController,
               ),
               CustomTextField(
                 labelText: "Ölçü Birimi 1",

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -48,6 +49,12 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   @action
   void setDepoKodu(int? value) {
     stokListesiModel = stokListesiModel.copyWith(depoKodu: value);
+    StokListesiModel.setInstance(stokListesiModel);
+  }
+
+  @action
+  void setMuhasebeKodu(StokMuhasebeKoduModel? model) {
+    stokListesiModel = stokListesiModel.copyWith(muhdetayAdi: model?.adi, muhdetayKodu: model?.muhKodu);
     StokListesiModel.setInstance(stokListesiModel);
   }
 

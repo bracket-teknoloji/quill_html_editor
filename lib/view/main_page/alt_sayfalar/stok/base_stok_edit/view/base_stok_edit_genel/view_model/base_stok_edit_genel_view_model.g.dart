@@ -126,6 +126,17 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   @override
+  void setMuhasebeKodu(StokMuhasebeKoduModel? model) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setMuhasebeKodu');
+    try {
+      return super.setMuhasebeKodu(model);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 stokListesiModel: ${stokListesiModel},
