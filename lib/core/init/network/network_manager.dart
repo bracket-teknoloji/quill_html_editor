@@ -605,12 +605,12 @@ class NetworkManager {
     return null;
   }
 
-  Future<DovizKurlariModel?> getDovizKurlari(int? dovizKodu) async {
+  Future<DovizKurlariModel?> getDovizKurlari(int? dovizKodu, {DateTime? tarih}) async {
     final result = await dioGet<DovizKurlariModel>(
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
       showLoading: true,
-      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": DateTime.now().toDateString},
+      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih":tarih?.toDateString ?? DateTime.now().toDateString},
     );
     if (result.data is List) {
       return result.data.first;

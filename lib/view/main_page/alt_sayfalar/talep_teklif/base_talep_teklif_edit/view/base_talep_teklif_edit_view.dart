@@ -349,7 +349,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                 iconWidget: Icons.attach_money_outlined,
                 onTap: () async {
                   Get.back();
-                  final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
+                  final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi, tarih: BaseSiparisEditModel.instance.tarih);
                   if (result is DovizKurlariModel) {
                     BaseSiparisEditModel.instance.kalemList?.forEach((element) {
                       if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {

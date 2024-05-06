@@ -472,7 +472,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       );
 
   Future<void> dovizGuncelle() async {
-    final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi);
+    final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi, tarih: BaseSiparisEditModel.instance.tarih);
     if (result is DovizKurlariModel) {
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
