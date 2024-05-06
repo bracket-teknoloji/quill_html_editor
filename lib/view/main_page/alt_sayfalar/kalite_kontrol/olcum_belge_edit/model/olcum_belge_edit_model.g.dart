@@ -81,6 +81,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       prosesVar: json['PROSES_VAR'] as String?,
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
+      datKayitSayisi: (json['DAT_KAYIT_SAYISI'] as num?)?.toInt(),
       seriSorulsunmu: json['SERI_SORULSUNMU'] as String?,
       tur: json['TUR'] as String?,
       searchText: json['SearchText'] as String?,
@@ -118,6 +119,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('PROSES_VAR', instance.prosesVar);
   writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
   writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
+  writeNotNull('DAT_KAYIT_SAYISI', instance.datKayitSayisi);
   writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
   writeNotNull('TUR', instance.tur);
   writeNotNull('SearchText', instance.searchText);

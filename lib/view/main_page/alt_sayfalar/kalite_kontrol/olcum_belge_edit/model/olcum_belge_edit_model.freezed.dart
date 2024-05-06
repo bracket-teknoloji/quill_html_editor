@@ -423,6 +423,8 @@ mixin _$OlcumBelgeModel {
   set teknikResimVarmi(String? value) => throw _privateConstructorUsedError;
   String? get kontrolPlaniVarmi => throw _privateConstructorUsedError;
   set kontrolPlaniVarmi(String? value) => throw _privateConstructorUsedError;
+  int? get datKayitSayisi => throw _privateConstructorUsedError;
+  set datKayitSayisi(int? value) => throw _privateConstructorUsedError;
   String? get seriSorulsunmu => throw _privateConstructorUsedError;
   set seriSorulsunmu(String? value) => throw _privateConstructorUsedError;
   String? get tur => throw _privateConstructorUsedError;
@@ -470,6 +472,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      int? datKayitSayisi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -510,6 +513,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
+    Object? datKayitSayisi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
     Object? searchText = freezed,
@@ -600,6 +604,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
+      datKayitSayisi: freezed == datKayitSayisi
+          ? _value.datKayitSayisi
+          : datKayitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
       seriSorulsunmu: freezed == seriSorulsunmu
           ? _value.seriSorulsunmu
           : seriSorulsunmu // ignore: cast_nullable_to_non_nullable
@@ -650,6 +658,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      int? datKayitSayisi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -688,6 +697,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
+    Object? datKayitSayisi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
     Object? searchText = freezed,
@@ -778,6 +788,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
+      datKayitSayisi: freezed == datKayitSayisi
+          ? _value.datKayitSayisi
+          : datKayitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
       seriSorulsunmu: freezed == seriSorulsunmu
           ? _value.seriSorulsunmu
           : seriSorulsunmu // ignore: cast_nullable_to_non_nullable
@@ -823,6 +837,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.prosesVar,
       this.teknikResimVarmi,
       this.kontrolPlaniVarmi,
+      this.datKayitSayisi,
       this.seriSorulsunmu,
       this.tur,
       @JsonKey(name: "SearchText") this.searchText,
@@ -875,6 +890,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   String? kontrolPlaniVarmi;
   @override
+  int? datKayitSayisi;
+  @override
   String? seriSorulsunmu;
   @override
   String? tur;
@@ -923,6 +940,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      int? datKayitSayisi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -995,6 +1013,9 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   @override
   String? get kontrolPlaniVarmi;
   set kontrolPlaniVarmi(String? value);
+  @override
+  int? get datKayitSayisi;
+  set datKayitSayisi(int? value);
   @override
   String? get seriSorulsunmu;
   set seriSorulsunmu(String? value);

@@ -207,9 +207,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     children: [
                       Text("${viewModel.belgeModel?.stokAdi}").yetkiVarMi(viewModel.belgeModel?.stokAdi != null),
                       ColorfulBadge(
-                        label: Text("${viewModel.belgeModel?.sira}"),
+                        label: Text("DAT Kaydı (${viewModel.belgeModel?.datKayitSayisi})"),
                         badgeColorEnum: BadgeColorEnum.cari,
-                      ).yetkiVarMi(viewModel.belgeModel?.sira != null),
+                      ).yetkiVarMi(viewModel.belgeModel?.datKayitSayisi != null),
                     ],
                   ),
                   subtitle: CustomLayoutBuilder(
@@ -374,4 +374,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           ).paddingAll(UIHelper.lowSize);
         },
       );
+
+  Future<void> showDatBottomSheetDialog(BuildContext context) async {
+    await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "DAT Listesi", groupValue: null);
+  }
 }

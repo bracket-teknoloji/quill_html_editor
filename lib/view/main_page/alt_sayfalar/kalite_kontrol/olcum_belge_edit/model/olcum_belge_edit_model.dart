@@ -55,6 +55,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? prosesVar,
     String? teknikResimVarmi,
     String? kontrolPlaniVarmi,
+    int? datKayitSayisi,
     String? seriSorulsunmu,
     String? tur,
     @JsonKey(name: "SearchText") String? searchText,
