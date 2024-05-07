@@ -3667,13 +3667,13 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       eirsaliyeGibDurumKodu: fields[181] as int?,
       datOnayda: fields[183] as String?,
       olcumBelgeRefKey: fields[184] as String?,
-    );
+    )..dovizListesi = (fields[185] as Map?)?.cast<String, double>();
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(185)
+      ..writeByte(186)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -4043,7 +4043,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(183)
       ..write(obj.datOnayda)
       ..writeByte(184)
-      ..write(obj.olcumBelgeRefKey);
+      ..write(obj.olcumBelgeRefKey)
+      ..writeByte(185)
+      ..write(obj.dovizListesi);
   }
 
   @override
@@ -4643,7 +4645,10 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           (json['EIRSALIYE_GIB_DURUM_KODU'] as num?)?.toInt(),
       datOnayda: json['DAT_ONAYDA'] as String?,
       olcumBelgeRefKey: json['OLCUM_BELGE_REF_KEY'] as String?,
-    );
+    )..dovizListesi = (json['DOVIZ_LISTESI'] as Map<String, dynamic>?)?.map(
+          (k, e) => MapEntry(k, (e as num).toDouble()),
+        ) ??
+        {};
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {
@@ -4840,6 +4845,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('CARI_DOVIZKODU', instance.cariDovizkodu);
   writeNotNull('DAT_ONAYDA', instance.datOnayda);
   writeNotNull('OLCUM_BELGE_REF_KEY', instance.olcumBelgeRefKey);
+  writeNotNull('DOVIZ_LISTESI', instance.dovizListesi);
   return val;
 }
 

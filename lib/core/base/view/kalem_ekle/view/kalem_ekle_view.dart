@@ -131,6 +131,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 if (!viewModel.dovizliMi) {
                   viewModel.kalemModel.dovizKuru = null;
                   viewModel.kalemModel.dovizliFiyat = null;
+                } else {
+                  BaseSiparisEditModel.instance.dovizListesi = BaseSiparisEditModel.instance.dovizListesi?..[viewModel.kalemModel.dovizAdi ?? ""] = viewModel.kalemModel.dovizKuru ?? 0;
                 }
                 // viewModel.kalemModel.brutTutar = viewModel.;
                 viewModel.kalemModel.kalemList?.map((e) => e.miktar = viewModel.kalemModel.miktar2).toList();
@@ -861,34 +863,41 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   Future<void> getDovizData() async {
     if (viewModel.dovizliMi) {
-      final dovizResult = await networkManager.dioGet(
-        path: ApiUrls.getDovizKurlari,
-        bodyModel: DovizKurlariModel(),
-        queryParameters: {"EkranTipi": "D", "DovizTipi": viewModel.kalemModel.dovizKodu, "Tarih": DateTime.now().toDateString},
-      );
-      if (dovizResult.data != null && viewModel.kalemModel.dovizTipi != null) {
-        final List<DovizKurlariModel> list = dovizResult.data.map((e) => e as DovizKurlariModel).toList().cast<DovizKurlariModel>();
-        final result = list.firstWhereOrNull((element) => element.dovizTipi == viewModel.kalemModel.dovizTipi);
-        if (result != null) {
-          if (parametreModel.satisDovizTakipHangiDeger == 1) {
-            viewModel.kalemModel.dovizKuru = result.dovAlis;
-          } else if (parametreModel.satisDovizTakipHangiDeger == 2) {
-            viewModel.kalemModel.dovizKuru = result.dovSatis;
-          } else if (parametreModel.satisDovizTakipHangiDeger == 3) {
-            viewModel.kalemModel.dovizKuru = result.effAlis;
-          } else if (parametreModel.satisDovizTakipHangiDeger == 4) {
-            viewModel.kalemModel.dovizKuru = result.effSatis;
+      if (BaseSiparisEditModel.instance.dovizListesi?[viewModel.kalemModel.dovizAdi] != null) {
+        viewModel.kalemModel.dovizKuru = BaseSiparisEditModel.instance.dovizListesi?[viewModel.kalemModel.dovizAdi];
+      } else {
+        final dovizResult = await networkManager.dioGet(
+          path: ApiUrls.getDovizKurlari,
+          bodyModel: DovizKurlariModel(),
+          queryParameters: {"EkranTipi": "D", "DovizTipi": viewModel.kalemModel.dovizKodu, "Tarih": model.tarih?.toDateString},
+        );
+        if (dovizResult.data != null && viewModel.kalemModel.dovizTipi != null) {
+          final List<DovizKurlariModel> list = dovizResult.data.map((e) => e as DovizKurlariModel).toList().cast<DovizKurlariModel>();
+          final result = list.firstWhereOrNull((element) => element.dovizTipi == viewModel.kalemModel.dovizTipi);
+          if (result != null) {
+            switch (parametreModel.satisDovizTakipHangiDeger) {
+              case 1:
+                viewModel.kalemModel.dovizKuru = result.dovAlis;
+              case 2:
+                viewModel.kalemModel.dovizKuru = result.dovSatis;
+              case 3:
+                viewModel.kalemModel.dovizKuru = result.effAlis;
+              case 4:
+                viewModel.kalemModel.dovizKuru = result.effSatis;
+              default:
+                break;
+            }
           }
-          dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
-          viewModel.kalemModel.dovizliFiyat = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);
-          dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
-        } else {
-          viewModel.kalemModel.dovizKuru = null;
-          viewModel.kalemModel.dovizliFiyat = null;
-          dovizKuruController.text = "";
-          dovizFiyatiController.text = "";
         }
       }
+      dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+      viewModel.kalemModel.dovizliFiyat = (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1);
+      dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
+    } else {
+      viewModel.kalemModel.dovizKuru = null;
+      viewModel.kalemModel.dovizliFiyat = null;
+      dovizKuruController.text = "";
+      dovizFiyatiController.text = "";
     }
   }
 

@@ -460,6 +460,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? datOnayda;
   @HiveField(184)
   String? olcumBelgeRefKey;
+  @HiveField(185)
+  @JsonKey(defaultValue: {})
+  Map<String, double>? dovizListesi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
