@@ -330,6 +330,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       : Observer(
                           builder: (_) => ListView.builder(
                             primary: false,
+                            physics: const AlwaysScrollableScrollPhysics(),
                             padding: UIHelper.zeroPadding,
                             controller: _scrollController,
                             itemCount: viewModel.stokListesi?.length != null ? viewModel.stokListesi!.length + 1 : 0,
