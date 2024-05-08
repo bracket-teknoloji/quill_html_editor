@@ -98,7 +98,6 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         filtreKodu: 2,
         tipi: model.tipi,
         tempBelgeId: model.tempBelgeId,
-        
       );
 
   factory SiparisEditRequestModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => SiparisEditRequestModel(

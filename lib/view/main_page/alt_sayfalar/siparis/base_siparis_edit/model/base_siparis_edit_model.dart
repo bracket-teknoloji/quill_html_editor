@@ -1111,6 +1111,14 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         plasiyerAciklama: model.plasiyerAciklama,
         plasiyerKodu: model.plasiyerKodu,
       );
+
+
+  factory BaseSiparisEditModel.fromOlcumBelgeModel(OlcumBelgeModel model) => BaseSiparisEditModel(
+        cariKodu: model.cariKodu,
+        belgeNo: model.belgeNo,
+        belgeTuru: model.belgeTuru,
+        pickerBelgeTuru: model.belgeTuru,
+      );
 }
 
 @CopyWith()

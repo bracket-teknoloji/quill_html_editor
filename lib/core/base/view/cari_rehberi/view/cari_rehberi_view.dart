@@ -65,7 +65,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     searchFocusNode.requestFocus();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       viewModel.cariListesiRequestModel = viewModel.cariListesiRequestModel?.copyWith(eFaturaGoster: widget.cariRequestModel.eFaturaGoster, belgeTuru: widget.cariRequestModel.belgeTuru);
-      viewModel.changeBagliCariKodu(widget.cariRequestModel.kod);
+      viewModel.changeBagliCariKodu(widget.cariRequestModel.bagliCariKodu);
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
       viewModel.setSiparisKarsilanmaDurumu(widget.cariRequestModel.siparisKarsilanmaDurumu);

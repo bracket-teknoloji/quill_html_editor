@@ -193,13 +193,17 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
   Future<dynamic> showCariIslemleriGridViewDialog(CariListesiModel? model, {void Function(bool)? onselected}) async {
+    if (model == null) {
+      showAlertDialog("Seçili Cari Bulunamadı.");
+      return;
+    }
     if (_yetkiController.cariListesi) {
       return _baseDialog(
         body: CustomAnimatedGridView<CariListesiModel>(
           cariListesiModel: model,
           model: model,
           islemTipi: IslemTipiEnum.cariIslemleri,
-          title: model?.cariAdi ?? model?.cariKodu,
+          title: model.cariAdi ?? model.cariKodu,
           onSelected: onselected,
         ),
         onOk: () {},

@@ -372,7 +372,8 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         ),
                       ),
                     ],
-                  ),
+                    // Muhasebe entegre ve finans aktif
+                  ).yetkiVarMi(parametreModel.finansBankaIslemModulu == "B"),
                   Row(
                     children: [
                       Expanded(
@@ -399,7 +400,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             }
                           },
                         ),
-                      ),
+                      ).yetkiVarMi(parametreModel.finansBankaIslemModulu == "B" && parametreModel.muhasebeEntegre == true),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Plasiyer",
