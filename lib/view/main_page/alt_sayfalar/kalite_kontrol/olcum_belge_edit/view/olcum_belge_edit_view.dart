@@ -23,7 +23,6 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
@@ -150,8 +149,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       },
                     ).yetkiKontrol(yetkiController.stokListesi),
                     BottomSheetModel(
-                      title: "Depo Transferi",
-                      iconWidget: Icons.transform_outlined,
+                      title: "Depo Transferi Ekle",
+                      iconWidget: Icons.add_outlined,
                       onTap: () async {
                         Get.back();
                         if (viewModel.model?.olcumler.ext.isNullOrEmpty == true) {
@@ -162,7 +161,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           "/mainPage/transferEdit",
                           arguments: BaseEditModel<BaseSiparisEditModel>(
                             baseEditEnum: BaseEditEnum.ekle,
-                            editTipiEnum: EditTipiEnum.depoTransferi,
+                            editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
                             model: BaseSiparisEditModel(
                               kalemList: [KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)],
                               olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
@@ -170,7 +169,44 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           ),
                         );
                       },
-                    ).yetkiKontrol(AccountModel.instance.isDebug),
+                    ).yetkiKontrol(yetkiController.transferDatEkle),
+                    BottomSheetModel(
+                      title: "Depo Transferlerini Görüntüle",
+                      iconWidget: Icons.transform_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final bool result = await viewModel.getOlcumDatListesi();
+                        if (result) {
+                          final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Depo Transferi Listesi",
+                            groupValue: "",
+                            children: List.generate(
+                              viewModel.olcumDatListesi?.length ?? 0,
+                              (index) {
+                                final item = viewModel.olcumDatListesi![index];
+                                return BottomSheetModel(
+                                  title: item.belgeNo ?? "",
+                                  description: item.cariKodu,
+                                  groupValue: item.belgeNo,
+                                  value: item,
+                                );
+                              },
+                            ),
+                          );
+                          if (selectedItem is OlcumBelgeModel) {
+                            await Get.toNamed(
+                              "/mainPage/transferEdit",
+                              arguments: BaseEditModel<BaseSiparisEditModel>(
+                                baseEditEnum: BaseEditEnum.goruntule,
+                                editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+                                model: BaseSiparisEditModel.fromOlcumBelgeModel(selectedItem),
+                              ),
+                            );
+                          }
+                        }
+                      },
+                    ).yetkiKontrol(((viewModel.belgeModel?.datAdedi ?? 0) > 0) && yetkiController.transferDatGoruntule),
                   ].nullCheckWithGeneric,
                 );
               }
@@ -207,9 +243,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     children: [
                       Text("${viewModel.belgeModel?.stokAdi}").yetkiVarMi(viewModel.belgeModel?.stokAdi != null),
                       ColorfulBadge(
-                        label: Text("DAT Kaydı (${viewModel.belgeModel?.datKayitSayisi})"),
+                        label: Text("DAT Kaydı (${viewModel.belgeModel?.datAdedi})"),
                         badgeColorEnum: BadgeColorEnum.cari,
-                      ).yetkiVarMi(viewModel.belgeModel?.datKayitSayisi != null),
+                      ).yetkiVarMi(viewModel.belgeModel?.datAdedi != null),
                     ],
                   ),
                   subtitle: CustomLayoutBuilder(

@@ -47,6 +47,8 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         return EditTipiEnum.isEmriTakip;
       case 16:
         return EditTipiEnum.uretimSonuKaydi;
+      case 17:
+        return EditTipiEnum.olcumdenDepoTransferi;
       default:
         return EditTipiEnum.musteri;
     }
@@ -105,6 +107,9 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         break;
       case EditTipiEnum.uretimSonuKaydi:
         writer.writeByte(16);
+        break;
+      case EditTipiEnum.olcumdenDepoTransferi:
+        writer.writeByte(17);
         break;
     }
   }

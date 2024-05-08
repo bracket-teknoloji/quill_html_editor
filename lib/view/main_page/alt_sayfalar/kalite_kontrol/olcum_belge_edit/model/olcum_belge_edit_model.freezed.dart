@@ -415,6 +415,8 @@ mixin _$OlcumBelgeModel {
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get cariAdi => throw _privateConstructorUsedError;
   set cariAdi(String? value) => throw _privateConstructorUsedError;
+  String? get belgeTuru => throw _privateConstructorUsedError;
+  set belgeTuru(String? value) => throw _privateConstructorUsedError;
   int? get kalemAdedi => throw _privateConstructorUsedError;
   set kalemAdedi(int? value) => throw _privateConstructorUsedError;
   String? get prosesVar => throw _privateConstructorUsedError;
@@ -423,8 +425,8 @@ mixin _$OlcumBelgeModel {
   set teknikResimVarmi(String? value) => throw _privateConstructorUsedError;
   String? get kontrolPlaniVarmi => throw _privateConstructorUsedError;
   set kontrolPlaniVarmi(String? value) => throw _privateConstructorUsedError;
-  int? get datKayitSayisi => throw _privateConstructorUsedError;
-  set datKayitSayisi(int? value) => throw _privateConstructorUsedError;
+  int? get datAdedi => throw _privateConstructorUsedError;
+  set datAdedi(int? value) => throw _privateConstructorUsedError;
   String? get seriSorulsunmu => throw _privateConstructorUsedError;
   set seriSorulsunmu(String? value) => throw _privateConstructorUsedError;
   String? get tur => throw _privateConstructorUsedError;
@@ -468,11 +470,12 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? opkodu,
       String? cariKodu,
       String? cariAdi,
+      String? belgeTuru,
       int? kalemAdedi,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
-      int? datKayitSayisi,
+      int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -509,11 +512,12 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? opkodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
+    Object? belgeTuru = freezed,
     Object? kalemAdedi = freezed,
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
-    Object? datKayitSayisi = freezed,
+    Object? datAdedi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
     Object? searchText = freezed,
@@ -588,6 +592,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.cariAdi
           : cariAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTuru: freezed == belgeTuru
+          ? _value.belgeTuru
+          : belgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
       kalemAdedi: freezed == kalemAdedi
           ? _value.kalemAdedi
           : kalemAdedi // ignore: cast_nullable_to_non_nullable
@@ -604,9 +612,9 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
-      datKayitSayisi: freezed == datKayitSayisi
-          ? _value.datKayitSayisi
-          : datKayitSayisi // ignore: cast_nullable_to_non_nullable
+      datAdedi: freezed == datAdedi
+          ? _value.datAdedi
+          : datAdedi // ignore: cast_nullable_to_non_nullable
               as int?,
       seriSorulsunmu: freezed == seriSorulsunmu
           ? _value.seriSorulsunmu
@@ -654,11 +662,12 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? opkodu,
       String? cariKodu,
       String? cariAdi,
+      String? belgeTuru,
       int? kalemAdedi,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
-      int? datKayitSayisi,
+      int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -693,11 +702,12 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? opkodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
+    Object? belgeTuru = freezed,
     Object? kalemAdedi = freezed,
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
-    Object? datKayitSayisi = freezed,
+    Object? datAdedi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
     Object? searchText = freezed,
@@ -772,6 +782,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.cariAdi
           : cariAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTuru: freezed == belgeTuru
+          ? _value.belgeTuru
+          : belgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
       kalemAdedi: freezed == kalemAdedi
           ? _value.kalemAdedi
           : kalemAdedi // ignore: cast_nullable_to_non_nullable
@@ -788,9 +802,9 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
-      datKayitSayisi: freezed == datKayitSayisi
-          ? _value.datKayitSayisi
-          : datKayitSayisi // ignore: cast_nullable_to_non_nullable
+      datAdedi: freezed == datAdedi
+          ? _value.datAdedi
+          : datAdedi // ignore: cast_nullable_to_non_nullable
               as int?,
       seriSorulsunmu: freezed == seriSorulsunmu
           ? _value.seriSorulsunmu
@@ -833,11 +847,12 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.opkodu,
       this.cariKodu,
       this.cariAdi,
+      this.belgeTuru,
       this.kalemAdedi,
       this.prosesVar,
       this.teknikResimVarmi,
       this.kontrolPlaniVarmi,
-      this.datKayitSayisi,
+      this.datAdedi,
       this.seriSorulsunmu,
       this.tur,
       @JsonKey(name: "SearchText") this.searchText,
@@ -882,6 +897,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   String? cariAdi;
   @override
+  String? belgeTuru;
+  @override
   int? kalemAdedi;
   @override
   String? prosesVar;
@@ -890,7 +907,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   String? kontrolPlaniVarmi;
   @override
-  int? datKayitSayisi;
+  int? datAdedi;
   @override
   String? seriSorulsunmu;
   @override
@@ -936,11 +953,12 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? opkodu,
       String? cariKodu,
       String? cariAdi,
+      String? belgeTuru,
       int? kalemAdedi,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
-      int? datKayitSayisi,
+      int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
       @JsonKey(name: "SearchText") String? searchText,
@@ -1002,6 +1020,9 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   String? get cariAdi;
   set cariAdi(String? value);
   @override
+  String? get belgeTuru;
+  set belgeTuru(String? value);
+  @override
   int? get kalemAdedi;
   set kalemAdedi(int? value);
   @override
@@ -1014,8 +1035,8 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   String? get kontrolPlaniVarmi;
   set kontrolPlaniVarmi(String? value);
   @override
-  int? get datKayitSayisi;
-  set datKayitSayisi(int? value);
+  int? get datAdedi;
+  set datAdedi(int? value);
   @override
   String? get seriSorulsunmu;
   set seriSorulsunmu(String? value);

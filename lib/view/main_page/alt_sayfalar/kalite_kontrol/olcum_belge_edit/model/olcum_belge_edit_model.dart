@@ -51,11 +51,12 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? opkodu,
     String? cariKodu,
     String? cariAdi,
+    String? belgeTuru,
     int? kalemAdedi,
     String? prosesVar,
     String? teknikResimVarmi,
     String? kontrolPlaniVarmi,
-    int? datKayitSayisi,
+    int? datAdedi,
     String? seriSorulsunmu,
     String? tur,
     @JsonKey(name: "SearchText") String? searchText,
@@ -173,6 +174,11 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
         yapkod: yapkod,
         opkodu: opkodu,
         tur: "T",
+      );
+
+  OlcumBelgeModel get forDatListesi => OlcumBelgeModel(
+    belgeNo: belgeNo,
+    belgeTipi: belgeTipi,
       );
 
   OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(

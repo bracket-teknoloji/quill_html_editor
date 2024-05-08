@@ -97,7 +97,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
       model.model?.kayitModu = "S";
-    } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+    } else if (widget.model.baseEditEnum ==  BaseEditEnum.goruntule) {
       model.model?.kayitModu = "U";
     } else {
       model.model?.kayitModu = null;

@@ -1,4 +1,4 @@
-class ApiUrls {
+class   ApiUrls {
   static const String createSession = "General/CreateSessionV3";
   static const String deleteDovizKuru = "General/DeleteDovizKuru";
   static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
@@ -147,4 +147,5 @@ class ApiUrls {
   static const String getProsesBildirim = "Sigma/GetProsesBildirim";
   static const String getBelgeler = "Sigma/GetBelgeler";
   static const String getBelge = "Sigma/GetBelge";
+  static const String getDatListesi = "Sigma/GetDatListesi";
 }

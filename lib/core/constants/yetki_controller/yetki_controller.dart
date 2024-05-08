@@ -486,6 +486,11 @@ final class YetkiController {
 
   bool get transferIsEmriSorulsun => _isTrue(_paramModel?.satisSatirdaIsEmriSorulsun, skipAdmin: true);
 
+  //* Görüntüle
+  bool get transferDatGoruntule => _isTrue(_yetkiModel?.transferDat);
+  bool get transferAGGoruntule => _isTrue(_yetkiModel?.transferAg);
+  bool get transferACGoruntule => _isTrue(_yetkiModel?.transferAc);
+
   //* Ekle
   bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
   bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);

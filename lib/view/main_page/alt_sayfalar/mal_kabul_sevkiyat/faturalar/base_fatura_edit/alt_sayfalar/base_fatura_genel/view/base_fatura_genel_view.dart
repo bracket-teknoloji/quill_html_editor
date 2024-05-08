@@ -272,7 +272,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   },
                   suffix: IconButton(
                     onPressed: () async {
-                      if (_teslimCariController.text.isEmpty) {
+                      if (_cariController.text.isEmpty) {
                         dialogManager.showAlertDialog("Önce Cari Seçiniz");
                         return;
                       }

@@ -54,7 +54,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
   Widget build(BuildContext context) => Scaffold(floatingActionButton: fab(), body: body());
 
   Visibility fab() => Visibility(
-        visible: !widget.model.isGoruntule,
+        visible: !widget.model.isGoruntule && !(widget.model.editTipiEnum.olcumdenDepoTransferiMi ?? false),
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
@@ -301,7 +301,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
               viewModel.removeAtKalemList(index);
             });
           },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
+        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null && !(widget.model.editTipiEnum?.olcumdenDepoTransferiMi ?? false)),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,

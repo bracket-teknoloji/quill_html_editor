@@ -49,6 +49,22 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     });
   }
 
+  late final _$olcumDatListesiAtom = Atom(
+      name: '_OlcumBelgeEditViewModelBase.olcumDatListesi', context: context);
+
+  @override
+  ObservableList<OlcumBelgeModel>? get olcumDatListesi {
+    _$olcumDatListesiAtom.reportRead();
+    return super.olcumDatListesi;
+  }
+
+  @override
+  set olcumDatListesi(ObservableList<OlcumBelgeModel>? value) {
+    _$olcumDatListesiAtom.reportWrite(value, super.olcumDatListesi, () {
+      super.olcumDatListesi = value;
+    });
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_OlcumBelgeEditViewModelBase.getData', context: context);
 
@@ -74,6 +90,16 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     return _$getProseslerAsyncAction.run(() => super.getProsesler(id));
   }
 
+  late final _$getOlcumDatListesiAsyncAction = AsyncAction(
+      '_OlcumBelgeEditViewModelBase.getOlcumDatListesi',
+      context: context);
+
+  @override
+  Future<bool> getOlcumDatListesi() {
+    return _$getOlcumDatListesiAsyncAction
+        .run(() => super.getOlcumDatListesi());
+  }
+
   late final _$deleteOlcumAsyncAction =
       AsyncAction('_OlcumBelgeEditViewModelBase.deleteOlcum', context: context);
 
@@ -97,6 +123,17 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   @override
+  void setOlcumDatListesi(List<OlcumBelgeModel>? list) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setOlcumDatListesi');
+    try {
+      return super.setOlcumDatListesi(list);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOlcumlerList(List<OlcumOlcumlerModel>? list) {
     final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
         .startAction(name: '_OlcumBelgeEditViewModelBase.setOlcumlerList');
@@ -112,6 +149,7 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     return '''
 requestModel: ${requestModel},
 model: ${model},
+olcumDatListesi: ${olcumDatListesi},
 belgeModel: ${belgeModel}
     ''';
   }

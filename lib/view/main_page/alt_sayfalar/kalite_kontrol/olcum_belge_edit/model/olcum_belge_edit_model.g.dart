@@ -77,11 +77,12 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       opkodu: json['OPKODU'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
+      belgeTuru: json['BELGE_TURU'] as String?,
       kalemAdedi: (json['KALEM_ADEDI'] as num?)?.toInt(),
       prosesVar: json['PROSES_VAR'] as String?,
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
-      datKayitSayisi: (json['DAT_KAYIT_SAYISI'] as num?)?.toInt(),
+      datAdedi: (json['DAT_ADEDI'] as num?)?.toInt(),
       seriSorulsunmu: json['SERI_SORULSUNMU'] as String?,
       tur: json['TUR'] as String?,
       searchText: json['SearchText'] as String?,
@@ -115,11 +116,12 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('OPKODU', instance.opkodu);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('BELGE_TURU', instance.belgeTuru);
   writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
   writeNotNull('PROSES_VAR', instance.prosesVar);
   writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
   writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
-  writeNotNull('DAT_KAYIT_SAYISI', instance.datKayitSayisi);
+  writeNotNull('DAT_ADEDI', instance.datAdedi);
   writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
   writeNotNull('TUR', instance.tur);
   writeNotNull('SearchText', instance.searchText);

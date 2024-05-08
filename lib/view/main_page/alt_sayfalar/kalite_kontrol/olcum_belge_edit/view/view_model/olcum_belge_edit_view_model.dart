@@ -18,11 +18,17 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @observable
   OlcumBelgeEditModel? model;
 
+  @observable
+  ObservableList<OlcumBelgeModel>? olcumDatListesi;
+
   @computed
   OlcumBelgeModel? get belgeModel => model?.belge?.firstOrNull;
 
   @action
   void setRequestModel(OlcumBelgeModel reqModel) => requestModel = reqModel;
+
+  @action
+  void setOlcumDatListesi(List<OlcumBelgeModel>? list) => olcumDatListesi = list?.asObservable();
 
   @action
   void setOlcumlerList(List<OlcumOlcumlerModel>? list) => model = model?.copyWith(olcumler: list);
@@ -57,6 +63,16 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
       return data;
     }
     return null;
+  }
+
+  @action
+  Future<bool> getOlcumDatListesi() async {
+    final result = await networkManager.dioGet(path: ApiUrls.getDatListesi, bodyModel: OlcumBelgeModel(), showLoading: true, data: requestModel?.forDatListesi.toJson());
+    if (result.data is List) {
+      final List<OlcumBelgeModel> data = result.data.map((e) => e as OlcumBelgeModel).toList().cast<OlcumBelgeModel>();
+      setOlcumDatListesi(data);
+    }
+    return result.success == true;
   }
 
   @action

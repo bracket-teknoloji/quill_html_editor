@@ -232,63 +232,65 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                 //   },
                 // ),
                 // //.yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
-                CustomTextField(
-                  labelText: "Cari",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: _cariController,
-                  enabled: isEkle,
-                  valueWidget: Observer(
-                    builder: (_) => Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: viewModel.model.cariKodu ?? ""),
-                          const TextSpan(text: "  "),
-                          TextSpan(
-                            text: viewModel.model.cariTitle,
-                            style: const TextStyle(color: ColorPalette.mantis),
-                          ),
-                        ],
+                Observer(
+                  builder: (_) => CustomTextField(
+                    labelText: "Cari",
+                    readOnly: true,
+                    isMust: viewModel.model.lokalDat != "E",
+                    suffixMore: true,
+                    controller: _cariController,
+                    enabled: isEkle,
+                    valueWidget: Observer(
+                      builder: (_) => Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: viewModel.model.cariKodu ?? ""),
+                            const TextSpan(text: "  "),
+                            TextSpan(
+                              text: viewModel.model.cariTitle,
+                              style: const TextStyle(color: ColorPalette.mantis),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  onTap: () async {
-                    final cariModel = await Get.toNamed(
-                      "mainPage/cariRehberi",
-                      arguments: CariListesiRequestModel(
-                        menuKodu: "CARI_CREH",
-                        belgeTuru: model.getEditTipiEnum?.rawValue,
-                      ),
-                    );
-                    if (cariModel == null) return null;
-                    final result = await networkManager.getCariModel(
-                      CariRequestModel.fromCariListesiModel(cariModel)
-                        ..secildi = "E"
-                        ..kisitYok = true
-                        ..teslimCari = "E"
-                        ..eFaturaGoster = true,
-                    );
-                    if (result is CariListesiModel) {
-                      _cariController.text = result.cariAdi ?? "";
-                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
-                          ? "E-Fatura"
-                          : result.efaturaCarisi == "H"
-                              ? "E-Arşiv"
-                              : null;
-                      //TODO DEPO KODUNU ZEKİ ABİYE SOR
-                      // if (yetkiController.transferDatCarininDepoGetir) {
-                      //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
-                      // }
-                      viewModel.setCariAdi(result.cariAdi);
-                      viewModel.setCariKodu(result.cariKodu);
-                      viewModel.model.vadeGunu = result.vadeGunu;
-                      viewModel.model.efaturaTipi = result.efaturaTipi;
-                      // _belgeNoController.text = "";
-                      // await getBelgeNo();
-                    }
-                  },
-                ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
+                    onTap: () async {
+                      final cariModel = await Get.toNamed(
+                        "mainPage/cariRehberi",
+                        arguments: CariListesiRequestModel(
+                          menuKodu: "CARI_CREH",
+                          belgeTuru: model.getEditTipiEnum?.rawValue,
+                        ),
+                      );
+                      if (cariModel == null) return null;
+                      final result = await networkManager.getCariModel(
+                        CariRequestModel.fromCariListesiModel(cariModel)
+                          ..secildi = "E"
+                          ..kisitYok = true
+                          ..teslimCari = "E"
+                          ..eFaturaGoster = true,
+                      );
+                      if (result is CariListesiModel) {
+                        _cariController.text = result.cariAdi ?? "";
+                        viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                            ? "E-Fatura"
+                            : result.efaturaCarisi == "H"
+                                ? "E-Arşiv"
+                                : null;
+                        //TODO DEPO KODUNU ZEKİ ABİYE SOR
+                        // if (yetkiController.transferDatCarininDepoGetir) {
+                        //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
+                        // }
+                        viewModel.setCariAdi(result.cariAdi);
+                        viewModel.setCariKodu(result.cariKodu);
+                        viewModel.model.vadeGunu = result.vadeGunu;
+                        viewModel.model.efaturaTipi = result.efaturaTipi;
+                        // _belgeNoController.text = "";
+                        // await getBelgeNo();
+                      }
+                    },
+                  ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
+                ),
                 Row(
                   children: [
                     Expanded(
