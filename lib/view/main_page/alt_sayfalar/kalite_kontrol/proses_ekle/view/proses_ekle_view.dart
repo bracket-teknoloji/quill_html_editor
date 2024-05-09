@@ -47,7 +47,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
     });
     sartliKabulTuruController = TextEditingController();
     operatorController = TextEditingController();
-    aciklamaController = TextEditingController(text: widget.model.model!.kabulSarti);
+    aciklamaController = TextEditingController(text: widget.model.model!.aciklama);
     super.initState();
   }
 
