@@ -28,7 +28,6 @@ import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
-import "../../../../../../add_company/model/account_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 import "../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
@@ -382,7 +381,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
             await Get.toNamed(widget.cekSenetListesiEnum.tahsilatRoute);
             await viewModel.getData();
           },
-        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi && AccountModel.instance.isDebug),
+        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
       );
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
@@ -424,7 +423,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                   builder: (_) => Text("Toplam Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                 ),
               ],
-            ),
+            ), 
           ],
         ),
       );
