@@ -1,0 +1,193 @@
+import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/depo_fark_raporu/view_model/depo_fark_raporu_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+
+final class DepoFarkRaporuView extends StatefulWidget {
+  final SayimListesiModel model;
+  const DepoFarkRaporuView({super.key, required this.model});
+
+  @override
+  State<DepoFarkRaporuView> createState() => _DepoFarkRaporuViewState();
+}
+
+final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
+  final DepoFarkRaporuViewModel viewModel = DepoFarkRaporuViewModel();
+  late final TextEditingController searchTextController;
+
+  @override
+  void initState() {
+    searchTextController = TextEditingController();
+    viewModel.setRequestModel(SayilanKalemlerRequestModel.fromSayimListesiModel(widget.model));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getData();
+    });
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: appBar,
+        body: body,
+        bottomNavigationBar: bottomAppBar,
+      );
+
+  AppBar get appBar => AppBar(
+        title: Observer(
+          builder: (_) => viewModel.searchBar
+              ? CustomAppBarTextField(
+                  controller: searchTextController,
+                  onChanged: viewModel.setSearchText,
+                )
+              : AppBarTitle(
+                  title: "Depo Fark Raporu",
+                  subtitle: widget.model.fisno,
+                ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              viewModel.setSearchBar(!viewModel.searchBar);
+              if (!viewModel.searchBar) {
+                searchTextController.clear();
+              }
+            },
+            icon: Observer(
+              builder: (_) => Icon(
+                viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined,
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: filterBottomSheetDialog,
+            icon: Observer(
+              builder: (_) => const Icon(Icons.more_vert_outlined),
+            ),
+          ),
+        ],
+      );
+
+  BottomBarWidget get bottomAppBar => BottomBarWidget(
+        isScrolledDown: true,
+        children: [
+          FooterButton(
+            children: [
+              const Text("Kayıt Sayısı"),
+              Observer(
+                builder: (_) => Text(viewModel.sayimListesi?.length.toString() ?? "0"),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Depo Mik."),
+              Observer(
+                builder: (_) => Text(viewModel.toplamDepoMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Sayım Mik."),
+              Observer(
+                builder: (_) => Text(viewModel.toplamSayimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Fark"),
+              Observer(
+                builder: (_) => Text(viewModel.toplamFarkMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+              ),
+            ],
+          ),
+        ],
+      );
+
+  RefreshIndicator get body => RefreshIndicator.adaptive(
+        onRefresh: () async {
+          viewModel.setSayimListesi(null);
+          await viewModel.getData();
+        },
+        child: Observer(
+          builder: (_) {
+            if (viewModel.filteredSayimListesi == null) return const ListViewShimmer();
+            if (viewModel.filteredSayimListesi!.isEmpty) return const Center(child: Text("Sayım Listesi Boş"));
+            return ListView.builder(
+              itemCount: viewModel.filteredSayimListesi?.length ?? 0,
+              itemBuilder: (context, index) {
+                final SayimListesiModel item = viewModel.filteredSayimListesi![index];
+                return Card(
+                  color: (item.miktar ?? 0) <= 0 ? ColorPalette.persianRed.withOpacity(0.5) : null,
+                  child: ListTile(
+                    title: Text(item.stokAdi ?? ""),
+                    subtitle: CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Stok Kodu: ${item.stokKodu}"),
+                        Text("Seri 1: ${item.seriNo}").yetkiVarMi(item.seriNo != null),
+                        Text("Seri 2: ${item.seri2}").yetkiVarMi(item.seri2 != null),
+                        Text("Seri 3: ${item.seri3}").yetkiVarMi(item.seri3 != null),
+                        Text("Seri 4: ${item.seri4}").yetkiVarMi(item.seri4 != null),
+                        Text("Son Kul. Tarihi: ${item.sonKullanmaTarihi.toDateString}").yetkiVarMi(item.sonKullanmaTarihi?.toDateString != null),
+                        Text("Depo Miktarı: ${item.stokBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text("Sayım Miktarı: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text("Fark: ${item.depoFark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ).paddingAll(UIHelper.lowSize),
+      );
+
+  Future<void> filterBottomSheetDialog() async {
+    await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: loc.generalStrings.filter,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          //TODO Filtre ekle
+          CustomTextField(
+            labelText: loc.generalStrings.filter,
+            readOnly: true,
+            suffixMore: true,
+            onTap: () {},
+          ),
+          Card(
+            child: Observer(
+              builder: (_) => SwitchListTile.adaptive(title: const Text("Seri Bazında Mı?"), value: viewModel.requestModel.seriBazinda == "E", onChanged: viewModel.setSeriBazindaMi),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Get.back();
+              await viewModel.getData();
+            },
+            child: Text(loc.generalStrings.apply),
+          ),
+        ],
+      ),
+    );
+  }
+}

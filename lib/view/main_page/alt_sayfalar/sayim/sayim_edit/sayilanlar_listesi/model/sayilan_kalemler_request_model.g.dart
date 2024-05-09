@@ -14,6 +14,7 @@ _$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(
       kullaniciAdi: json['KullaniciAdi'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "L",
       belgeNo: json['BelgeNo'] as String?,
+      seriBazinda: json['seriBazinda'] as String?,
     );
 
 Map<String, dynamic> _$$SayilanKalemlerRequestModelImplToJson(
@@ -31,5 +32,6 @@ Map<String, dynamic> _$$SayilanKalemlerRequestModelImplToJson(
   writeNotNull('KullaniciAdi', instance.kullaniciAdi);
   writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('BelgeNo', instance.belgeNo);
+  writeNotNull('seriBazinda', instance.seriBazinda);
   return val;
 }

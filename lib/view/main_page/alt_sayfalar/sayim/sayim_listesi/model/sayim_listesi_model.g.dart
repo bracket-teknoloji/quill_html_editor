@@ -45,6 +45,14 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
       barkod: json['BARKOD'] as String?,
+      stokBakiye: (json['STOK_BAKIYE'] as num?)?.toDouble(),
+      seriNo: json['SERI_NO'] as String?,
+      seri2: json['SERI2'] as String?,
+      seri3: json['SERI3'] as String?,
+      seri4: json['SERI4'] as String?,
+      sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$$SayimListesiModelImplToJson(
@@ -81,6 +89,13 @@ Map<String, dynamic> _$$SayimListesiModelImplToJson(
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   writeNotNull('BARKOD', instance.barkod);
+  writeNotNull('STOK_BAKIYE', instance.stokBakiye);
+  writeNotNull('SERI_NO', instance.seriNo);
+  writeNotNull('SERI2', instance.seri2);
+  writeNotNull('SERI3', instance.seri3);
+  writeNotNull('SERI4', instance.seri4);
+  writeNotNull(
+      'SON_KULLANMA_TARIHI', instance.sonKullanmaTarihi?.toIso8601String());
   return val;
 }
 

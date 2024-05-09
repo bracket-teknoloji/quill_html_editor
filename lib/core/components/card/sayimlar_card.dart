@@ -145,8 +145,12 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
         BottomSheetModel(
           title: "Depo Fark Raporu",
           iconWidget: Icons.filter_9_outlined,
+          onTap: () async {
+            Get.back();
+            final result = await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
+          },
           //TODO Buraları ekle
-        ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi && false),
+        ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
         BottomSheetModel(
           title: "Sayım Raporu (PDF)",
           iconWidget: Icons.filter_9_outlined,

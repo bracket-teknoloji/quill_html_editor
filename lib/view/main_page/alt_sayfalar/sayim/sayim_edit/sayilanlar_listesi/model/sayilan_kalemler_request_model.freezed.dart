@@ -41,6 +41,10 @@ mixin _$SayilanKalemlerRequestModel {
   String? get belgeNo => throw _privateConstructorUsedError;
   @JsonKey(name: "BelgeNo")
   set belgeNo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "seriBazinda")
+  String? get seriBazinda => throw _privateConstructorUsedError;
+  @JsonKey(name: "seriBazinda")
+  set seriBazinda(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,7 +65,8 @@ abstract class $SayilanKalemlerRequestModelCopyWith<$Res> {
       @JsonKey(name: "DepoKodu") int? depoKodu,
       @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
       @JsonKey(name: "EkranTipi") String? ekranTipi,
-      @JsonKey(name: "BelgeNo") String? belgeNo});
+      @JsonKey(name: "BelgeNo") String? belgeNo,
+      @JsonKey(name: "seriBazinda") String? seriBazinda});
 }
 
 /// @nodoc
@@ -83,6 +88,7 @@ class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
     Object? kullaniciAdi = freezed,
     Object? ekranTipi = freezed,
     Object? belgeNo = freezed,
+    Object? seriBazinda = freezed,
   }) {
     return _then(_value.copyWith(
       filtreKodu: freezed == filtreKodu
@@ -105,6 +111,10 @@ class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
           ? _value.belgeNo
           : belgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriBazinda: freezed == seriBazinda
+          ? _value.seriBazinda
+          : seriBazinda // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -123,7 +133,8 @@ abstract class _$$SayilanKalemlerRequestModelImplCopyWith<$Res>
       @JsonKey(name: "DepoKodu") int? depoKodu,
       @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
       @JsonKey(name: "EkranTipi") String? ekranTipi,
-      @JsonKey(name: "BelgeNo") String? belgeNo});
+      @JsonKey(name: "BelgeNo") String? belgeNo,
+      @JsonKey(name: "seriBazinda") String? seriBazinda});
 }
 
 /// @nodoc
@@ -144,6 +155,7 @@ class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
     Object? kullaniciAdi = freezed,
     Object? ekranTipi = freezed,
     Object? belgeNo = freezed,
+    Object? seriBazinda = freezed,
   }) {
     return _then(_$SayilanKalemlerRequestModelImpl(
       filtreKodu: freezed == filtreKodu
@@ -166,6 +178,10 @@ class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
           ? _value.belgeNo
           : belgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      seriBazinda: freezed == seriBazinda
+          ? _value.seriBazinda
+          : seriBazinda // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -179,7 +195,8 @@ class _$SayilanKalemlerRequestModelImpl
       @JsonKey(name: "DepoKodu") this.depoKodu,
       @JsonKey(name: "KullaniciAdi") this.kullaniciAdi,
       @JsonKey(name: "EkranTipi") this.ekranTipi = "L",
-      @JsonKey(name: "BelgeNo") this.belgeNo});
+      @JsonKey(name: "BelgeNo") this.belgeNo,
+      @JsonKey(name: "seriBazinda") this.seriBazinda});
 
   factory _$SayilanKalemlerRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -200,10 +217,13 @@ class _$SayilanKalemlerRequestModelImpl
   @override
   @JsonKey(name: "BelgeNo")
   String? belgeNo;
+  @override
+  @JsonKey(name: "seriBazinda")
+  String? seriBazinda;
 
   @override
   String toString() {
-    return 'SayilanKalemlerRequestModel(filtreKodu: $filtreKodu, depoKodu: $depoKodu, kullaniciAdi: $kullaniciAdi, ekranTipi: $ekranTipi, belgeNo: $belgeNo)';
+    return 'SayilanKalemlerRequestModel(filtreKodu: $filtreKodu, depoKodu: $depoKodu, kullaniciAdi: $kullaniciAdi, ekranTipi: $ekranTipi, belgeNo: $belgeNo, seriBazinda: $seriBazinda)';
   }
 
   @JsonKey(ignore: true)
@@ -228,7 +248,8 @@ abstract class _SayilanKalemlerRequestModel
           @JsonKey(name: "DepoKodu") int? depoKodu,
           @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
           @JsonKey(name: "EkranTipi") String? ekranTipi,
-          @JsonKey(name: "BelgeNo") String? belgeNo}) =
+          @JsonKey(name: "BelgeNo") String? belgeNo,
+          @JsonKey(name: "seriBazinda") String? seriBazinda}) =
       _$SayilanKalemlerRequestModelImpl;
 
   factory _SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) =
@@ -259,6 +280,11 @@ abstract class _SayilanKalemlerRequestModel
   String? get belgeNo;
   @JsonKey(name: "BelgeNo")
   set belgeNo(String? value);
+  @override
+  @JsonKey(name: "seriBazinda")
+  String? get seriBazinda;
+  @JsonKey(name: "seriBazinda")
+  set seriBazinda(String? value);
   @override
   @JsonKey(ignore: true)
   _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl>

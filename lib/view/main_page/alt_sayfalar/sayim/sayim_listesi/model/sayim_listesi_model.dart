@@ -32,6 +32,12 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
     String? projeKodu,
     DateTime? kayittarihi,
     String? barkod,
+    double? stokBakiye,
+    String? seriNo,
+    String? seri2,
+    String? seri3,
+    String? seri4,
+    DateTime? sonKullanmaTarihi,
   }) = _SayimListesiModel;
 
   factory SayimListesiModel.fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
@@ -71,7 +77,9 @@ class SayimFiltreModel with _$SayimFiltreModel {
 }
 
 extension SayimExtensions on SayimListesiModel {
-  double? get fark => (miktar ?? 0) - (depoMiktari ??= 0);
+  double? get fark => (miktar ?? 0) - (depoMiktari ?? 0);
+
+  double? get depoFark => (stokBakiye ?? 0) - (miktar ?? 0);
 
   bool get serbestMi => tipi == "S";
 

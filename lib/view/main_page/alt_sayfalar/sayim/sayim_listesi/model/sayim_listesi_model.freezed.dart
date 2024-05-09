@@ -68,6 +68,18 @@ mixin _$SayimListesiModel {
   set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
   String? get barkod => throw _privateConstructorUsedError;
   set barkod(String? value) => throw _privateConstructorUsedError;
+  double? get stokBakiye => throw _privateConstructorUsedError;
+  set stokBakiye(double? value) => throw _privateConstructorUsedError;
+  String? get seriNo => throw _privateConstructorUsedError;
+  set seriNo(String? value) => throw _privateConstructorUsedError;
+  String? get seri2 => throw _privateConstructorUsedError;
+  set seri2(String? value) => throw _privateConstructorUsedError;
+  String? get seri3 => throw _privateConstructorUsedError;
+  set seri3(String? value) => throw _privateConstructorUsedError;
+  String? get seri4 => throw _privateConstructorUsedError;
+  set seri4(String? value) => throw _privateConstructorUsedError;
+  DateTime? get sonKullanmaTarihi => throw _privateConstructorUsedError;
+  set sonKullanmaTarihi(DateTime? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -105,7 +117,13 @@ abstract class $SayimListesiModelCopyWith<$Res> {
       String? stokAdi,
       String? projeKodu,
       DateTime? kayittarihi,
-      String? barkod});
+      String? barkod,
+      double? stokBakiye,
+      String? seriNo,
+      String? seri2,
+      String? seri3,
+      String? seri4,
+      DateTime? sonKullanmaTarihi});
 
   $SayimFiltreModelCopyWith<$Res>? get filtre;
 }
@@ -147,6 +165,12 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
     Object? projeKodu = freezed,
     Object? kayittarihi = freezed,
     Object? barkod = freezed,
+    Object? stokBakiye = freezed,
+    Object? seriNo = freezed,
+    Object? seri2 = freezed,
+    Object? seri3 = freezed,
+    Object? seri4 = freezed,
+    Object? sonKullanmaTarihi = freezed,
   }) {
     return _then(_value.copyWith(
       fisno: freezed == fisno
@@ -245,6 +269,30 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
           ? _value.barkod
           : barkod // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokBakiye: freezed == stokBakiye
+          ? _value.stokBakiye
+          : stokBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri2: freezed == seri2
+          ? _value.seri2
+          : seri2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri3: freezed == seri3
+          ? _value.seri3
+          : seri3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri4: freezed == seri4
+          ? _value.seri4
+          : seri4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sonKullanmaTarihi: freezed == sonKullanmaTarihi
+          ? _value.sonKullanmaTarihi
+          : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 
@@ -293,7 +341,13 @@ abstract class _$$SayimListesiModelImplCopyWith<$Res>
       String? stokAdi,
       String? projeKodu,
       DateTime? kayittarihi,
-      String? barkod});
+      String? barkod,
+      double? stokBakiye,
+      String? seriNo,
+      String? seri2,
+      String? seri3,
+      String? seri4,
+      DateTime? sonKullanmaTarihi});
 
   @override
   $SayimFiltreModelCopyWith<$Res>? get filtre;
@@ -334,6 +388,12 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
     Object? projeKodu = freezed,
     Object? kayittarihi = freezed,
     Object? barkod = freezed,
+    Object? stokBakiye = freezed,
+    Object? seriNo = freezed,
+    Object? seri2 = freezed,
+    Object? seri3 = freezed,
+    Object? seri4 = freezed,
+    Object? sonKullanmaTarihi = freezed,
   }) {
     return _then(_$SayimListesiModelImpl(
       fisno: freezed == fisno
@@ -432,6 +492,30 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
           ? _value.barkod
           : barkod // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokBakiye: freezed == stokBakiye
+          ? _value.stokBakiye
+          : stokBakiye // ignore: cast_nullable_to_non_nullable
+              as double?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri2: freezed == seri2
+          ? _value.seri2
+          : seri2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri3: freezed == seri3
+          ? _value.seri3
+          : seri3 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seri4: freezed == seri4
+          ? _value.seri4
+          : seri4 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sonKullanmaTarihi: freezed == sonKullanmaTarihi
+          ? _value.sonKullanmaTarihi
+          : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -463,7 +547,13 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
       this.stokAdi,
       this.projeKodu,
       this.kayittarihi,
-      this.barkod})
+      this.barkod,
+      this.stokBakiye,
+      this.seriNo,
+      this.seri2,
+      this.seri3,
+      this.seri4,
+      this.sonKullanmaTarihi})
       : super._();
 
   factory _$SayimListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -517,6 +607,18 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
   DateTime? kayittarihi;
   @override
   String? barkod;
+  @override
+  double? stokBakiye;
+  @override
+  String? seriNo;
+  @override
+  String? seri2;
+  @override
+  String? seri3;
+  @override
+  String? seri4;
+  @override
+  DateTime? sonKullanmaTarihi;
 
   @JsonKey(ignore: true)
   @override
@@ -558,7 +660,13 @@ abstract class _SayimListesiModel extends SayimListesiModel {
       String? stokAdi,
       String? projeKodu,
       DateTime? kayittarihi,
-      String? barkod}) = _$SayimListesiModelImpl;
+      String? barkod,
+      double? stokBakiye,
+      String? seriNo,
+      String? seri2,
+      String? seri3,
+      String? seri4,
+      DateTime? sonKullanmaTarihi}) = _$SayimListesiModelImpl;
   _SayimListesiModel._() : super._();
 
   factory _SayimListesiModel.fromJson(Map<String, dynamic> json) =
@@ -636,6 +744,24 @@ abstract class _SayimListesiModel extends SayimListesiModel {
   @override
   String? get barkod;
   set barkod(String? value);
+  @override
+  double? get stokBakiye;
+  set stokBakiye(double? value);
+  @override
+  String? get seriNo;
+  set seriNo(String? value);
+  @override
+  String? get seri2;
+  set seri2(String? value);
+  @override
+  String? get seri3;
+  set seri3(String? value);
+  @override
+  String? get seri4;
+  set seri4(String? value);
+  @override
+  DateTime? get sonKullanmaTarihi;
+  set sonKullanmaTarihi(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$SayimListesiModelImplCopyWith<_$SayimListesiModelImpl> get copyWith =>

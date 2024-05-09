@@ -30,6 +30,7 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/v
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/proses_ekle/view/proses_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/mal_kabul_sevkiyat_kalem_raporu/view/mal_kabul_sevkiyat_kalem_raporu_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/depo_fark_raporu/view/depo_fark_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
@@ -358,6 +359,7 @@ class PickerApp extends StatelessWidget {
               //* Sayım
               GetPage(name: "/sayimListesi", page: SayimListesiView.new),
               GetPage(name: "/sayimEdit", page: () => SayimEditView(model: Get.arguments)),
+              GetPage(name: "/sayimDepoFarkRaporu", page: () => DepoFarkRaporuView(model: Get.arguments)),
 
               //* Sipariş
               GetPage(name: "/siparisMusteriSiparisi", page: () => SiparislerView(widgetModel: SiparislerWidgetModel(editTipiEnum: EditTipiEnum.musteri, isGetData: Get.arguments))),
