@@ -54,7 +54,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
   Widget build(BuildContext context) => Scaffold(floatingActionButton: fab(), body: body());
 
   Visibility fab() => Visibility(
-        visible: !widget.model.isGoruntule && !(widget.model.editTipiEnum.olcumdenDepoTransferiMi ?? false),
+        visible: !widget.model.isGoruntule && !widget.model.editTipiEnum.olcumdenDepoTransferiMi,
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
