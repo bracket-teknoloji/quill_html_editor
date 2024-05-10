@@ -290,10 +290,6 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       flex: 20,
                       child: ElevatedButton(
                         onPressed: () async {
-                          if (controller.text.ext.isNullOrEmpty) {
-                            dialogManager.showAlertDialog("Açıklama boş olamaz.");
-                            return;
-                          }
                           final result = await networkManager.dioPost(
                             path: ApiUrls.eBelgeIslemi,
                             bodyModel: EBelgeListesiModel(),
