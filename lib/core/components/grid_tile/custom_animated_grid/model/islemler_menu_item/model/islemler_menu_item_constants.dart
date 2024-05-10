@@ -70,6 +70,7 @@ class IslemlerMenuItemConstants<T> {
     if (islemTipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);
+      islemlerList.add(stokHareketleri);
       islemlerList.add(stokYazdir);
       islemlerList.add(depoBakiyeDurumu);
       islemlerList.add(fiyatGor);
