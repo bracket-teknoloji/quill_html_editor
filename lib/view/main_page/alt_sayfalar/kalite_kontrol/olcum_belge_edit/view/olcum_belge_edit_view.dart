@@ -157,7 +157,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           dialogManager.showAlertDialog("Ölçüm giriniz.");
                           return;
                         }
-                        final result = await Get.toNamed(
+                        await Get.toNamed(
                           "/mainPage/transferEdit",
                           arguments: BaseEditModel<BaseSiparisEditModel>(
                             baseEditEnum: BaseEditEnum.ekle,
