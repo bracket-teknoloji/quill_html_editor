@@ -88,6 +88,22 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
     });
   }
 
+  late final _$filtreTuruAtom =
+      Atom(name: '_DepoFarkRaporuViewModelBase.filtreTuru', context: context);
+
+  @override
+  DepoFarkRaporuFiltreEnum get filtreTuru {
+    _$filtreTuruAtom.reportRead();
+    return super.filtreTuru;
+  }
+
+  @override
+  set filtreTuru(DepoFarkRaporuFiltreEnum value) {
+    _$filtreTuruAtom.reportWrite(value, super.filtreTuru, () {
+      super.filtreTuru = value;
+    });
+  }
+
   late final _$requestModelAtom =
       Atom(name: '_DepoFarkRaporuViewModelBase.requestModel', context: context);
 
@@ -121,6 +137,17 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
         .startAction(name: '_DepoFarkRaporuViewModelBase.setSearchBar');
     try {
       return super.setSearchBar(value);
+    } finally {
+      _$_DepoFarkRaporuViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setFiltreTuru(DepoFarkRaporuFiltreEnum value) {
+    final _$actionInfo = _$_DepoFarkRaporuViewModelBaseActionController
+        .startAction(name: '_DepoFarkRaporuViewModelBase.setFiltreTuru');
+    try {
+      return super.setFiltreTuru(value);
     } finally {
       _$_DepoFarkRaporuViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -176,6 +203,7 @@ mixin _$DepoFarkRaporuViewModel on _DepoFarkRaporuViewModelBase, Store {
 sayimListesi: ${sayimListesi},
 searchBar: ${searchBar},
 searchText: ${searchText},
+filtreTuru: ${filtreTuru},
 requestModel: ${requestModel},
 filteredSayimListesi: ${filteredSayimListesi},
 toplamDepoMiktari: ${toplamDepoMiktari},

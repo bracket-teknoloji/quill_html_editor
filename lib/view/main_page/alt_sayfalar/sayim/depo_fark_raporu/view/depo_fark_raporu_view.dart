@@ -10,6 +10,7 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -30,15 +31,24 @@ final class DepoFarkRaporuView extends StatefulWidget {
 final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
   final DepoFarkRaporuViewModel viewModel = DepoFarkRaporuViewModel();
   late final TextEditingController searchTextController;
+  late final TextEditingController filtreController;
 
   @override
   void initState() {
     searchTextController = TextEditingController();
+    filtreController = TextEditingController(text: viewModel.filtreTuru.filtreAdi);
     viewModel.setRequestModel(SayilanKalemlerRequestModel.fromSayimListesiModel(widget.model));
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    searchTextController.dispose();
+    filtreController.dispose();
+    super.dispose();
   }
 
   @override
@@ -90,7 +100,7 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
             children: [
               const Text("Kayıt Sayısı"),
               Observer(
-                builder: (_) => Text(viewModel.sayimListesi?.length.toString() ?? "0"),
+                builder: (_) => Text(viewModel.filteredSayimListesi?.length.toString() ?? "0"),
               ),
             ],
           ),
@@ -170,9 +180,16 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
           //TODO Filtre ekle
           CustomTextField(
             labelText: loc.generalStrings.filter,
+            controller: filtreController,
             readOnly: true,
             suffixMore: true,
-            onTap: () {},
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, viewModel.filtreTuru);
+              if (result is DepoFarkRaporuFiltreEnum) {
+                viewModel.setFiltreTuru(result);
+                filtreController.text = result.filtreAdi;
+              }
+            },
           ),
           Card(
             child: Observer(

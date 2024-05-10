@@ -1,6 +1,7 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
@@ -20,11 +21,15 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   String searchText = "";
 
   @observable
+  DepoFarkRaporuFiltreEnum filtreTuru = DepoFarkRaporuFiltreEnum.tumu;
+
+  @observable
   SayilanKalemlerRequestModel requestModel = SayilanKalemlerRequestModel();
 
   @computed
   ObservableList<SayimListesiModel>? get filteredSayimListesi => sayimListesi
-      ?.where(
+      ?.where((element) => element.filtrele(filtreTuru))
+      .where(
         (element) => element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true || element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
       )
       .toList()
@@ -37,7 +42,7 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   double get toplamSayimMiktari => filteredSayimListesi?.map((element) => element.miktar ?? 0).sum ?? 0;
 
   @computed
-  double get toplamFarkMiktari => filteredSayimListesi?.map((element) => element.depoFark ?? 0).sum ?? 0;
+  double get toplamFarkMiktari => filteredSayimListesi?.map((element) => element.depoFark).sum ?? 0;
 
   @action
   void setSearchBar(bool value) {
@@ -46,6 +51,9 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
       setSearchText("");
     }
   }
+
+  @action
+  void setFiltreTuru(DepoFarkRaporuFiltreEnum value) => filtreTuru = value;
 
   @action
   void setSearchText(String? value) => searchText = value ?? "";
