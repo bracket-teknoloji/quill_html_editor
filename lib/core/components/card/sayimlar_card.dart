@@ -1,12 +1,17 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_pdf_model.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
@@ -31,7 +36,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.miktarSifirdanBuyukMu ? ColorPalette.persianRed.withOpacity(0.5) : null,
+        color: model.miktarSifirdanBuyukMu && model.serbestMi ? ColorPalette.persianRed.withOpacity(0.5) : null,
         child: ListTile(
           onTap: bottomSheet,
           title: Column(
@@ -56,7 +61,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               Text("Kullanıcı: ${model.kullanicilar}").yetkiVarMi(model.kullanicilar != null),
               Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
               Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
-              Text("Fark: ${model.fark?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}").yetkiVarMi(model.serbestMi),
+              Text("Fark: ${model.fark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.serbestMi),
             ],
           ),
         ),
@@ -147,7 +152,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           iconWidget: Icons.filter_9_outlined,
           onTap: () async {
             Get.back();
-            final result = await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
+            await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
           },
           //TODO Buraları ekle
         ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
@@ -155,15 +160,39 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           title: "Sayım Raporu (PDF)",
           iconWidget: Icons.filter_9_outlined,
           onTap: () async {
+            Get.back();
+            final PdfModel pdfModel = PdfModel(
+              etiketSayisi: 1,
+              raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+              dicParams: DicParams(
+                belgeNo: widget.model.fisno,
+              ),
+            );
+            final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
+              context,
+              "",
+            );
+            if (sayimFiltre == null) return;
+            pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
+            // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
+            final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+              context,
+              "",
+              ozelKod: DizaynOzelKodEnum.sayim,
+            );
+            if (dizayn == null) return;
+            pdfModel.dizaynId = dizayn.id;
+            final result = await networkManager.getPDF(pdfModel);
+            if (result.success case (null || false)) return;
+            Get.to(() => GenelPdfView(model: (result.data as List).firstOrNull));
             // final result = await bottomSheetDialogManager.showBottomSh
           },
-          //TODO Buraları ekle
-        ).yetkiKontrol(yetkiController.sayimSayimRaporu && false),
+        ).yetkiKontrol(yetkiController.sayimSayimRaporu),
         BottomSheetModel(
           title: loc.generalStrings.print,
           iconWidget: Icons.print_outlined,
           onTap: () async {
-            await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: "Sayim"), true, true);
+            await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi), true, true);
           },
         ).yetkiKontrol(yetkiController.yazdirmaSayim),
       ].whereType<BottomSheetModel>().toList(),

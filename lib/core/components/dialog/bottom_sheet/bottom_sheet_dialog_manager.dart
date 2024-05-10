@@ -19,6 +19,8 @@ import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
@@ -728,18 +730,19 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue, {DizaynOzelKodEnum? ozelKod}) async {
     final List<NetFectDizaynList> netFectDizaynList = _paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,
       title: "Dizayn Seçiniz",
       groupValue: groupValue,
       children: netFectDizaynList
+          .where((element) => ozelKod != null ? element.ozelKod == ozelKod.ozelKodAdi : true)
           .map(
             (NetFectDizaynList e) => BottomSheetModel(
               title: e.dizaynAdi ?? e.detayKod ?? "",
               value: e,
-              groupValue: e.detayKod,
+              groupValue: e.detayKod ?? e.ozelKod,
             ),
           )
           .toList(),
@@ -1122,6 +1125,16 @@ class BottomSheetDialogManager {
           .toList(),
     );
   }
+
+  Future<DepoFarkRaporuFiltreEnum?> showSayimFiltresiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
+        context,
+        title: "Filtre Seç",
+        groupValue: groupValue,
+        children: List.generate(DepoFarkRaporuFiltreEnum.values.length, (index) {
+          final item = DepoFarkRaporuFiltreEnum.values[index];
+          return BottomSheetModel(title: item.filtreAdi, groupValue: item, value: item);
+        }),
+      );
 
   Future<OlcumOperatorModel?> showOlcumOperatorBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final operatorList = await _networkManager.getOperatorler();
