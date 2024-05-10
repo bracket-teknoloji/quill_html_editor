@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 
 part "sayim_listesi_model.freezed.dart";
 part "sayim_listesi_model.g.dart";
@@ -77,15 +78,47 @@ class SayimFiltreModel with _$SayimFiltreModel {
 }
 
 extension SayimExtensions on SayimListesiModel {
-  double? get fark => (miktar ?? 0) - (depoMiktari ?? 0);
+  double get fark => (miktar ?? 0) - (depoMiktari ?? 0);
 
-  double? get depoFark => (stokBakiye ?? 0) - (miktar ?? 0);
+  double get depoFark => (stokBakiye ?? 0) - (miktar ?? 0);
 
   bool get serbestMi => tipi == "S";
 
   bool get filtreliMi => filtre != null && filtre?.arrGrupKodu != null;
 
-  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0 && serbestMi;
+  bool get miktarSifirdanBuyukMu => (miktar ?? 0) > 0;
 
   bool get tumDepolarMi => depoList?.any((element) => element == -1) == true;
+
+  bool get sayildiMi => miktarSifirdanBuyukMu;
+
+  bool get sayilmadiMi => !sayildiMi;
+
+  bool get fazlaSayildiMi => (stokBakiye ?? 0) < (miktar ?? 0);
+
+  bool get eksikSayildiMi => !fazlaSayildiMi;
+
+  bool get farkVarMi => depoFark != 0;
+
+  bool filtrele(DepoFarkRaporuFiltreEnum filtreTuru) {
+    if (filtreTuru.tumuMu) {
+      return true;
+    }
+    if (filtreTuru.sayilanlarMi) {
+      return sayildiMi;
+    }
+    if (filtreTuru.sayilmayanlarMi) {
+      return sayilmadiMi;
+    }
+    if (filtreTuru.fazlaSayilanlarMi) {
+      return fazlaSayildiMi;
+    }
+    if (filtreTuru.eksikSayilanlarMi) {
+      return eksikSayildiMi;
+    }
+    if (filtreTuru.farkVerenlerMi) {
+      return farkVarMi;
+    }
+    return false;
+  }
 }
