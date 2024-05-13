@@ -74,6 +74,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(stokYazdir);
       islemlerList.add(depoBakiyeDurumu);
       islemlerList.add(fiyatGor);
+      islemlerList.add(stokFiyatOzeti);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
       islemlerList.addAll(raporlar ?? []);
@@ -500,6 +501,14 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.monetization_on_outlined,
         onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model),
       );
+
+  GridItemModel? get stokFiyatOzeti => GridItemModel.islemler(
+        title: "Fiyat Özeti",
+        isEnabled: _yetkiController.stokFiyatOzeti,
+        iconData: Icons.monetization_on_outlined,
+        onTap: () async => Get.toNamed("mainPage/fiyatOzeti", arguments: model),
+      );
+
   //* Cari
   GridItemModel? get paylas => GridItemModel.islemler(
         title: "Paylaş",

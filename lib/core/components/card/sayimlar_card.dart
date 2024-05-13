@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_pdf_model.dart";
 import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
