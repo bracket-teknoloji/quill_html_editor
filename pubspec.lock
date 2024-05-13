@@ -1502,21 +1502,21 @@ packages:
     source: hosted
     version: "3.0.2"
   rive:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: rive
-      sha256: befdee09230cf16a13a2914828ccc5e55d9b76ee5c3400957c0963533010f50a
+      sha256: ae75a6e9cfbf146630bfb1feba97ee582d935508be6b362e4bd197b9c55a6dd3
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.3"
+    version: "0.12.4"
   rive_common:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: rive_common
-      sha256: "496cdd0bc59481b38701a3c31693cfc74942df18cd3d72b9d386f4beed58a8d5"
+      sha256: f4e20d0a99c5040c85624a3eb2b0b6b19e614d93a693c3bb25cf6e7bb2d3d6d3
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.7"
+    version: "0.2.8"
   sanitize_html:
     dependency: transitive
     description:

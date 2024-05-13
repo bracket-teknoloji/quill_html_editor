@@ -257,9 +257,9 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                       subtitle: CustomLayoutBuilder(
                         splitCount: 2,
                         children: [
-                          Text("Kriter: ${proses.kriter}"),
-                          Text("Açıklama: ${proses.kabulSarti ?? ""}"),
-                          Text("Ekipman: ${proses.ekipman}"),
+                          Text("Kriter: ${proses.kriter}").yetkiVarMi(proses.kriter != null),
+                          Text("Açıklama: ${proses.kabulSarti ?? ""}").yetkiVarMi(proses.kabulSarti != null),
+                          Text("Ekipman: ${proses.ekipman}").yetkiVarMi(proses.ekipman != null),
                           Text("Numune Miktarı: ${proses.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
                         ],
                       ),
