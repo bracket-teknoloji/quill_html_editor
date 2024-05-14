@@ -160,7 +160,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                   return;
                 }
                 dialogManager.showAreYouSureDialog(() async {
-                  if (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false) {
+                  if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" || (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
                     final result = await viewModel.sendData(widget.baseEditEnum);
                     if (result?.success == true) {
                       dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);

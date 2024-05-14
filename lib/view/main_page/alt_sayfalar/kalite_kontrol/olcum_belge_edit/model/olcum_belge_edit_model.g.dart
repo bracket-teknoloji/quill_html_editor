@@ -82,6 +82,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       prosesVar: json['PROSES_VAR'] as String?,
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
+      yarimOlcumYapabilirmi: json['YARIM_OLCUM_YAPABILIRMI'] as String?,
       datAdedi: (json['DAT_ADEDI'] as num?)?.toInt(),
       seriSorulsunmu: json['SERI_SORULSUNMU'] as String?,
       tur: json['TUR'] as String?,
@@ -121,6 +122,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('PROSES_VAR', instance.prosesVar);
   writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
   writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
+  writeNotNull('YARIM_OLCUM_YAPABILIRMI', instance.yarimOlcumYapabilirmi);
   writeNotNull('DAT_ADEDI', instance.datAdedi);
   writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
   writeNotNull('TUR', instance.tur);
@@ -202,6 +204,7 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
           json['SARTLI_KABUL_NEDENI_ACIKLAMA'] as String?,
       olcumOperatorModelOperator:
           json['OLCUM_OPERATOR_MODEL_OPERATOR'] as String?,
+      oncekiOlcudeSartlivarmi: json['ONCEKI_OLCUDE_SARTLIVARMI'] as String?,
       prosesId: (json['PROSES_ID'] as num?)?.toInt(),
       aciklama: json['ACIKLAMA'] as String?,
       kayitOperator: json['KAYIT_OPERATOR'] as String?,
@@ -246,6 +249,7 @@ Map<String, dynamic> _$$OlcumProsesModelImplToJson(
       'SARTLI_KABUL_NEDENI_ACIKLAMA', instance.sartliKabulNedeniAciklama);
   writeNotNull(
       'OLCUM_OPERATOR_MODEL_OPERATOR', instance.olcumOperatorModelOperator);
+  writeNotNull('ONCEKI_OLCUDE_SARTLIVARMI', instance.oncekiOlcudeSartlivarmi);
   writeNotNull('PROSES_ID', instance.prosesId);
   writeNotNull('ACIKLAMA', instance.aciklama);
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);

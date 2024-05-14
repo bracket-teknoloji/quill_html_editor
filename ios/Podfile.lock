@@ -3,7 +3,7 @@ PODS:
     - Flutter
   - app_tracking_transparency (0.0.1):
     - Flutter
-  - AppCheckCore (10.19.0):
+  - AppCheckCore (10.19.1):
     - GoogleUtilities/Environment (~> 7.13)
     - GoogleUtilities/UserDefaults (~> 7.13)
     - PromisesObjC (~> 2.3)
@@ -350,7 +350,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_settings: 017320c6a680cdc94c799949d95b84cb69389ebc
   app_tracking_transparency: e169b653478da7bb15a6c61209015378ca73e375
-  AppCheckCore: 58dbd968d93b7c56650c28a1ac404d7a54307c0e
+  AppCheckCore: db04d539b37794558391bc56bc65e2440b01a195
   connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
   cryptography_flutter: 381bdacc984abcfbe3ca45ef7c76566ff061614c
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6

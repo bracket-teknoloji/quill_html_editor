@@ -425,6 +425,9 @@ mixin _$OlcumBelgeModel {
   set teknikResimVarmi(String? value) => throw _privateConstructorUsedError;
   String? get kontrolPlaniVarmi => throw _privateConstructorUsedError;
   set kontrolPlaniVarmi(String? value) => throw _privateConstructorUsedError;
+  String? get yarimOlcumYapabilirmi => throw _privateConstructorUsedError;
+  set yarimOlcumYapabilirmi(String? value) =>
+      throw _privateConstructorUsedError;
   int? get datAdedi => throw _privateConstructorUsedError;
   set datAdedi(int? value) => throw _privateConstructorUsedError;
   String? get seriSorulsunmu => throw _privateConstructorUsedError;
@@ -475,6 +478,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      String? yarimOlcumYapabilirmi,
       int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
@@ -517,6 +521,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
+    Object? yarimOlcumYapabilirmi = freezed,
     Object? datAdedi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
@@ -612,6 +617,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
+      yarimOlcumYapabilirmi: freezed == yarimOlcumYapabilirmi
+          ? _value.yarimOlcumYapabilirmi
+          : yarimOlcumYapabilirmi // ignore: cast_nullable_to_non_nullable
+              as String?,
       datAdedi: freezed == datAdedi
           ? _value.datAdedi
           : datAdedi // ignore: cast_nullable_to_non_nullable
@@ -667,6 +676,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      String? yarimOlcumYapabilirmi,
       int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
@@ -707,6 +717,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
+    Object? yarimOlcumYapabilirmi = freezed,
     Object? datAdedi = freezed,
     Object? seriSorulsunmu = freezed,
     Object? tur = freezed,
@@ -802,6 +813,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.kontrolPlaniVarmi
           : kontrolPlaniVarmi // ignore: cast_nullable_to_non_nullable
               as String?,
+      yarimOlcumYapabilirmi: freezed == yarimOlcumYapabilirmi
+          ? _value.yarimOlcumYapabilirmi
+          : yarimOlcumYapabilirmi // ignore: cast_nullable_to_non_nullable
+              as String?,
       datAdedi: freezed == datAdedi
           ? _value.datAdedi
           : datAdedi // ignore: cast_nullable_to_non_nullable
@@ -852,6 +867,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.prosesVar,
       this.teknikResimVarmi,
       this.kontrolPlaniVarmi,
+      this.yarimOlcumYapabilirmi,
       this.datAdedi,
       this.seriSorulsunmu,
       this.tur,
@@ -907,6 +923,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   String? kontrolPlaniVarmi;
   @override
+  String? yarimOlcumYapabilirmi;
+  @override
   int? datAdedi;
   @override
   String? seriSorulsunmu;
@@ -958,6 +976,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
+      String? yarimOlcumYapabilirmi,
       int? datAdedi,
       String? seriSorulsunmu,
       String? tur,
@@ -1034,6 +1053,9 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   @override
   String? get kontrolPlaniVarmi;
   set kontrolPlaniVarmi(String? value);
+  @override
+  String? get yarimOlcumYapabilirmi;
+  set yarimOlcumYapabilirmi(String? value);
   @override
   int? get datAdedi;
   set datAdedi(int? value);
@@ -1508,6 +1530,9 @@ mixin _$OlcumProsesModel {
   String? get olcumOperatorModelOperator => throw _privateConstructorUsedError;
   set olcumOperatorModelOperator(String? value) =>
       throw _privateConstructorUsedError;
+  String? get oncekiOlcudeSartlivarmi => throw _privateConstructorUsedError;
+  set oncekiOlcudeSartlivarmi(String? value) =>
+      throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? get numuneler => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
@@ -1563,6 +1588,7 @@ abstract class $OlcumProsesModelCopyWith<$Res> {
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      String? oncekiOlcudeSartlivarmi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
@@ -1610,6 +1636,7 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
     Object? sartliKabulNedeni = freezed,
     Object? sartliKabulNedeniAciklama = freezed,
     Object? olcumOperatorModelOperator = freezed,
+    Object? oncekiOlcudeSartlivarmi = freezed,
     Object? numuneler = freezed,
     Object? prosesId = freezed,
     Object? aciklama = freezed,
@@ -1701,6 +1728,10 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
           ? _value.olcumOperatorModelOperator
           : olcumOperatorModelOperator // ignore: cast_nullable_to_non_nullable
               as String?,
+      oncekiOlcudeSartlivarmi: freezed == oncekiOlcudeSartlivarmi
+          ? _value.oncekiOlcudeSartlivarmi
+          : oncekiOlcudeSartlivarmi // ignore: cast_nullable_to_non_nullable
+              as String?,
       numuneler: freezed == numuneler
           ? _value.numuneler
           : numuneler // ignore: cast_nullable_to_non_nullable
@@ -1782,6 +1813,7 @@ abstract class _$$OlcumProsesModelImplCopyWith<$Res>
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      String? oncekiOlcudeSartlivarmi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
@@ -1828,6 +1860,7 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
     Object? sartliKabulNedeni = freezed,
     Object? sartliKabulNedeniAciklama = freezed,
     Object? olcumOperatorModelOperator = freezed,
+    Object? oncekiOlcudeSartlivarmi = freezed,
     Object? numuneler = freezed,
     Object? prosesId = freezed,
     Object? aciklama = freezed,
@@ -1919,6 +1952,10 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
           ? _value.olcumOperatorModelOperator
           : olcumOperatorModelOperator // ignore: cast_nullable_to_non_nullable
               as String?,
+      oncekiOlcudeSartlivarmi: freezed == oncekiOlcudeSartlivarmi
+          ? _value.oncekiOlcudeSartlivarmi
+          : oncekiOlcudeSartlivarmi // ignore: cast_nullable_to_non_nullable
+              as String?,
       numuneler: freezed == numuneler
           ? _value.numuneler
           : numuneler // ignore: cast_nullable_to_non_nullable
@@ -1983,6 +2020,7 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
       this.sartliKabulNedeni,
       this.sartliKabulNedeniAciklama,
       this.olcumOperatorModelOperator,
+      this.oncekiOlcudeSartlivarmi,
       @JsonKey(includeToJson: false, includeFromJson: false) this.numuneler,
       this.prosesId,
       this.aciklama,
@@ -2037,6 +2075,8 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
   String? sartliKabulNedeniAciklama;
   @override
   String? olcumOperatorModelOperator;
+  @override
+  String? oncekiOlcudeSartlivarmi;
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? numuneler;
@@ -2094,6 +2134,7 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
       String? sartliKabulNedeni,
       String? sartliKabulNedeniAciklama,
       String? olcumOperatorModelOperator,
+      String? oncekiOlcudeSartlivarmi,
       @JsonKey(includeToJson: false, includeFromJson: false)
       OlcumProsesModel? numuneler,
       int? prosesId,
@@ -2169,6 +2210,9 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
   @override
   String? get olcumOperatorModelOperator;
   set olcumOperatorModelOperator(String? value);
+  @override
+  String? get oncekiOlcudeSartlivarmi;
+  set oncekiOlcudeSartlivarmi(String? value);
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   OlcumProsesModel? get numuneler;
