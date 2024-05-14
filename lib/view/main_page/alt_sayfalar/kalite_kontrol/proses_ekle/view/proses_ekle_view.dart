@@ -39,7 +39,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
     viewModel.setEkleModel(widget.model.model!);
     viewModel.setProsesDetayListesi(widget.model.model!.numuneMiktari ?? 0);
     numuneControllers = List.generate(widget.model.model!.numuneMiktari ?? 0, (index) {
-      final double? deger = widget.model.model!.numuneler?.olcumler?[index].deger;
+      final double? deger = widget.model.model?.numuneler?.olcumler?[index].deger;
       if (widget.model.model?.numuneler != null) {
         viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: deger));
       }
@@ -167,7 +167,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   : () {
                       Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
                     },
-              style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis)),
+              style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.mantis)),
               child: const Text("Onay"),
             ).paddingAll(UIHelper.lowSize),
           ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 1)),
@@ -178,7 +178,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   : () {
                       Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
                     },
-              style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed)),
+              style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.persianRed)),
               child: const Text("Ret"),
             ).paddingAll(UIHelper.lowSize),
           ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 0)),

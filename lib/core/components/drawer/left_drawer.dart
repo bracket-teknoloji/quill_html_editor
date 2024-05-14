@@ -101,7 +101,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
                           trailing: isEditing
                               ? IconButton(
-                                  style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                                  style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
                                   onPressed: () {
                                     setState(() {
                                       list.removeAt(index);

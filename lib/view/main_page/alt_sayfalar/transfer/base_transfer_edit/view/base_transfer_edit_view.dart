@@ -97,7 +97,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
       model.model?.kayitModu = "S";
-    } else if (widget.model.baseEditEnum ==  BaseEditEnum.goruntule) {
+    } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
       model.model?.kayitModu = "U";
     } else {
       model.model?.kayitModu = null;
@@ -422,7 +422,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                             Expanded(
                               child: ElevatedButton(
                                 onPressed: Get.back,
-                                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                                style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                                 child: const Text("İptal"),
                               ),
                             ),
@@ -666,7 +666,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     onPressed: () {
                       Get.back(result: false);
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(UIHelper.secondaryColor)),
+                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(UIHelper.secondaryColor)),
                     child: const Text("İptal"),
                   ),
                 ),

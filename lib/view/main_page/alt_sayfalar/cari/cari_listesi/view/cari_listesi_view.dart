@@ -863,7 +863,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                     onPressed: () {
                       Get.back();
                       viewModel.resetFilter();

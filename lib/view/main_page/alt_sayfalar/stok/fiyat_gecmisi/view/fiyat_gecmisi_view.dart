@@ -179,7 +179,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                 Expanded(
                                   child: ElevatedButton(
                                     style: ButtonStyle(
-                                      backgroundColor: MaterialStateProperty.all(
+                                      backgroundColor: WidgetStateProperty.all(
                                         theme.colorScheme.onSurface.withOpacity(0.1),
                                       ),
                                     ),

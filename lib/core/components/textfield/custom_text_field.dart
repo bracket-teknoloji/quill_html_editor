@@ -143,7 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             visible: (viewModel.showClearButton) && (widget.isMust != true),
                             child: IconButton(
                               style: ButtonStyle(
-                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
                               ),
                               padding: EdgeInsets.zero,
@@ -164,7 +164,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             onPressed: widget.onTap,
                             icon: const Icon(Icons.date_range_outlined),
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
                               splashFactory: NoSplash.splashFactory,
                             ),
                           ),
@@ -175,7 +175,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             onPressed: widget.onTap,
                             icon: const Icon(Icons.access_time_outlined),
                             style: ButtonStyle(
-                              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                              padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
                               splashFactory: NoSplash.splashFactory,
                             ),
                           ),
@@ -187,7 +187,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               onPressed: widget.onTap,
                               icon: const Icon(Icons.more_horiz_outlined),
                               style: ButtonStyle(
-                                padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                                padding: WidgetStateProperty.all(const EdgeInsets.all(0)),
                                 splashFactory: NoSplash.splashFactory,
                               ),
                             ),

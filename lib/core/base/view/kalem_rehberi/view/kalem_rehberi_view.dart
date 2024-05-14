@@ -143,7 +143,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
               Expanded(
                 child: ElevatedButton(
                   onPressed: viewModel.removeAllSelectedKalem,
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   child: const Text("Tümünü Bırak"),
                 ),
               ),

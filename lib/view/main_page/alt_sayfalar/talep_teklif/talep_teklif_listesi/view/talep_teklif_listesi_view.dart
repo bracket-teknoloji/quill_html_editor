@@ -498,7 +498,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                     await viewModel.resetFilter();
                     await viewModel.resetPage();
                   },
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   child: const Text("Temizle"),
                 ),
               ),

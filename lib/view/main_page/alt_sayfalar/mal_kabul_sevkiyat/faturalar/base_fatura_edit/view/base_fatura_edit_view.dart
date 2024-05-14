@@ -155,7 +155,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            BaseSiparisEditModel.instance.kalemList ??=  widget.model.model.kalemList;
+            BaseSiparisEditModel.instance.kalemList ??= widget.model.model.kalemList;
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
@@ -697,7 +697,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                     onPressed: () {
                       Get.back(result: false);
                     },
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(UIHelper.secondaryColor)),
+                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(UIHelper.secondaryColor)),
                     child: const Text("İptal"),
                   ),
                 ),

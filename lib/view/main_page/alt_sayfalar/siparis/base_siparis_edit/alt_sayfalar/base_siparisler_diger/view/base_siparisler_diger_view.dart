@@ -60,7 +60,7 @@ class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
                 padding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
                 inputAction: InputAction.newline,
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
-                backgroundColor: theme.colorScheme.background,
+                backgroundColor: theme.colorScheme.surface,
                 onTextChanged: (String text) => model.ekAciklama = text != "" ? text : null,
                 onEditorCreated: () async {
                   if (model.ekAciklama != null) {

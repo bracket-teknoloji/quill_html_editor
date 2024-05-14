@@ -297,7 +297,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                     ozelKod2Controller.text = "";
                     viewModel.resetPage();
                   },
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   child: const Text("Temizle"),
                 ),
               ),

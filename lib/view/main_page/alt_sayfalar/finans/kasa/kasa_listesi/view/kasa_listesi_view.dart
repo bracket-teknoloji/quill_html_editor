@@ -220,7 +220,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {
                     Get.back();
                     viewModel.setFiltreGroupValue(0);

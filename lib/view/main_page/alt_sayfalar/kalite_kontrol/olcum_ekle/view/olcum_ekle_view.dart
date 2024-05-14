@@ -41,7 +41,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   void initState() {
     viewModel.setRequestModel(OlcumEkleModel.fromOlcumBelgeEditModel(widget.model));
     kayitOperatorController = TextEditingController(text: widget.model.kayitOperator);
-    seriNumarasiController = TextEditingController(text: viewModel.requestModel.seriNo);
+    seriNumarasiController = TextEditingController(text: widget.model.seriNo);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.prosesler.isEmptyOrNull) {
         dialogManager.showAlertDialog("Proses bulunmamaktadır.");

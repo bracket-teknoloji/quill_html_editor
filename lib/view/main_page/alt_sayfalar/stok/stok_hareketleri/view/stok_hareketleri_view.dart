@@ -211,7 +211,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 viewModel.setCariListesiModel(null);
                                 viewModel.setFuture(getData());
                               },
-                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                               child: const Text("Temizle"),
                             ),
                           ),

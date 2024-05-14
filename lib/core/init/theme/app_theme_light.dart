@@ -23,7 +23,7 @@ class AppThemeLight extends AppTheme {
         // scaffoldBackgroundColor: colorManager.onInverseSurface,
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
-        radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
+        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
@@ -36,11 +36,11 @@ class AppThemeLight extends AppTheme {
         ),
         segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
-            textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
-            overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
+            textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+            backgroundColor: WidgetStateProperty.all(Colors.transparent),
+            foregroundColor: WidgetStateProperty.all(UIHelper.primaryColor),
+            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
           ),
         ),
         toggleButtonsTheme: ToggleButtonsThemeData(
@@ -58,7 +58,7 @@ class AppThemeLight extends AppTheme {
         ),
         tooltipTheme: TooltipThemeData(
           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(50))),
-          textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),
+          textStyle: TextStyle(color: colorManager.onSurface, fontSize: 12),
         ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
@@ -113,7 +113,7 @@ class AppThemeLight extends AppTheme {
         ),
         cardTheme: CardTheme(
           elevation: 0,
-          color: colorManager.surfaceVariant.withOpacity(0.3),
+          color: colorManager.surfaceContainerHighest.withOpacity(0.3),
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
           ),
@@ -139,7 +139,7 @@ class AppThemeLight extends AppTheme {
           style: ButtonStyle(
             splashFactory: InkRipple.splashFactory,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            textStyle: MaterialStateProperty.all(
+            textStyle: WidgetStateProperty.all(
               TextStyle(
                 fontFamily: GoogleFonts.dmSans().fontFamily,
                 fontSize: 15,
@@ -151,7 +151,7 @@ class AppThemeLight extends AppTheme {
           showCloseIcon: true,
           // closeIconColor: colorManager.onBackground,
           backgroundColor: UIHelper.primaryColor,
-          contentTextStyle: TextStyle(color: colorManager.onBackground),
+          contentTextStyle: TextStyle(color: colorManager.onSurface),
           insetPadding: UIHelper.lowPadding,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -180,8 +180,8 @@ class AppThemeLight extends AppTheme {
           // backgroundColor: colorManager.primary,
           // foregroundColor: colorManager.oı,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: colorManager.background,
-            systemNavigationBarColor: colorManager.background,
+            statusBarColor: colorManager.surface,
+            systemNavigationBarColor: colorManager.surface,
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,

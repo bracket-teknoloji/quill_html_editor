@@ -164,7 +164,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
             width: width * 0.5,
             child: ElevatedButton(
               onPressed: () => dialogManager.showCariIslemleriGridViewDialog(model),
-              style: const ButtonStyle(elevation: MaterialStatePropertyAll(10)),
+              style: const ButtonStyle(elevation: WidgetStatePropertyAll(10)),
               child: Text(
                 model?.cariAdi ?? "",
                 overflow: TextOverflow.ellipsis,

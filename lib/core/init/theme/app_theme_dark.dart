@@ -24,7 +24,7 @@ class AppThemeDark extends AppTheme {
         ),
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
-        radioTheme: RadioThemeData(fillColor: MaterialStateProperty.all(UIHelper.primaryColor), overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
+        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
@@ -37,11 +37,11 @@ class AppThemeDark extends AppTheme {
         ),
         segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
-            textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: MaterialStateProperty.all(UIHelper.primaryColor),
-            overlayColor: MaterialStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
+            textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+            backgroundColor: WidgetStateProperty.all(Colors.transparent),
+            foregroundColor: WidgetStateProperty.all(UIHelper.primaryColor),
+            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
           ),
         ),
         toggleButtonsTheme: ToggleButtonsThemeData(
@@ -62,7 +62,7 @@ class AppThemeDark extends AppTheme {
         ),
         tooltipTheme: TooltipThemeData(
           decoration: const BoxDecoration(color: Colors.black, borderRadius: BorderRadius.all(Radius.circular(50))),
-          textStyle: TextStyle(color: colorManager.onBackground, fontSize: 12),
+          textStyle: TextStyle(color: colorManager.onSurface, fontSize: 12),
         ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.highSize, indent: UIHelper.highSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
@@ -118,7 +118,7 @@ class AppThemeDark extends AppTheme {
           elevation: 0,
         ),
         cardTheme: CardTheme(
-          color: colorManager.surfaceVariant.withOpacity(0.3),
+          color: colorManager.surfaceContainerHighest.withOpacity(0.3),
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
           ),
@@ -144,7 +144,7 @@ class AppThemeDark extends AppTheme {
           style: ButtonStyle(
             splashFactory: InkRipple.splashFactory,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            textStyle: MaterialStateProperty.all(
+            textStyle: WidgetStateProperty.all(
               TextStyle(
                 fontFamily: GoogleFonts.dmSans().fontFamily,
                 fontSize: 15,
@@ -154,9 +154,9 @@ class AppThemeDark extends AppTheme {
         ),
         snackBarTheme: SnackBarThemeData(
           showCloseIcon: true,
-          closeIconColor: colorManager.onBackground,
+          closeIconColor: colorManager.onSurface,
           backgroundColor: UIHelper.primaryColor,
-          contentTextStyle: TextStyle(color: colorManager.onBackground),
+          contentTextStyle: TextStyle(color: colorManager.onSurface),
           insetPadding: UIHelper.lowPadding,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -168,7 +168,7 @@ class AppThemeDark extends AppTheme {
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
-            borderSide: BorderSide(color: colorManager.onBackground.withOpacity(0.3)),
+            borderSide: BorderSide(color: colorManager.onSurface.withOpacity(0.3)),
           ),
           border: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -182,8 +182,8 @@ class AppThemeDark extends AppTheme {
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: colorManager.background,
-            systemNavigationBarColor: colorManager.background,
+            statusBarColor: colorManager.surface,
+            systemNavigationBarColor: colorManager.surface,
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,

@@ -111,7 +111,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                         ),
                         child: TextButton(
                           style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
                             ),
                           ),
@@ -143,7 +143,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                         ),
                         child: TextButton(
                           style: ButtonStyle(
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
                             ),
                           ),

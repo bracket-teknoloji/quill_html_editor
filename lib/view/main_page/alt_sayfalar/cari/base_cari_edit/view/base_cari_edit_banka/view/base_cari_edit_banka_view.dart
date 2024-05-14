@@ -40,7 +40,7 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
                         ),
                         IconButton(
                           style: ButtonStyle(
-                            padding: MaterialStateProperty.all(EdgeInsets.zero),
+                            padding: WidgetStateProperty.all(EdgeInsets.zero),
                           ),
                           onPressed: () {
                             Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));

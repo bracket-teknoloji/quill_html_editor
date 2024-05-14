@@ -2,11 +2,9 @@
   "dart.flutterSdkPaths": [
     "/Users/usr/fvm/versions"
   ],
-  // Remove .fvm files from search
   "search.exclude": {
     "**/.fvm": true
   },
-  // Remove from file watching
   "files.watcherExclude": {
     "**/.fvm": true
   },
@@ -27,5 +25,6 @@
   "editor.codeLensFontFamily": "JetBrains Mono",
   "chat.editor.fontFamily": "JetBrains Mono",
   "debug.console.fontFamily": "JetBrains Mono",
-  "editor.fontWeight": "600"
+  "editor.fontWeight": "600",
+  "dart.flutterSdkPath": ".fvm/versions/stable"
 }

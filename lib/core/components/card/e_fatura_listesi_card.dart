@@ -279,8 +279,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           }
                         },
                         style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(ColorPalette.persianRed),
-                          foregroundColor: MaterialStatePropertyAll(Colors.white),
+                          backgroundColor: WidgetStatePropertyAll(ColorPalette.persianRed),
+                          foregroundColor: WidgetStatePropertyAll(Colors.white),
                         ),
                         child: const Text("Red"),
                       ),
@@ -309,8 +309,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           }
                         },
                         style: const ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(ColorPalette.mantis),
-                          foregroundColor: MaterialStatePropertyAll(Colors.white),
+                          backgroundColor: WidgetStatePropertyAll(ColorPalette.mantis),
+                          foregroundColor: WidgetStatePropertyAll(Colors.white),
                         ),
                         child: const Text("Kabul"),
                       ),
@@ -318,7 +318,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   ],
                 ).paddingSymmetric(horizontal: UIHelper.lowSize),
                 ElevatedButton(
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () async {
                     Get.back();
                   },
