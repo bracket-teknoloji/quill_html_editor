@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
@@ -8,15 +9,20 @@ class BaseFaturaKalemlerViewModel = BaseFaturaKalemlerViewModelBase with _$BaseF
 
 abstract class BaseFaturaKalemlerViewModelBase with Store {
   @observable
-  ObservableList<KalemModel> kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable();
+  ObservableList<KalemModel>? kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable();
 
   @action
   void removeAtKalemList(int index) {
-    kalemList.removeAt(index);
+    kalemList?.removeAt(index);
     BaseSiparisEditModel.instance.kalemList = kalemList;
     updateKalemList();
   }
 
   @action
-  void updateKalemList() => kalemList = (BaseSiparisEditModel.instance.kalemList ?? []).asObservable();
+  void updateKalemList() {
+    kalemList = List.generate(
+      BaseSiparisEditModel.instance.kalemList?.length ?? 0,
+      (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
+    ).nullCheckWithGeneric.asObservable();
+  }
 }

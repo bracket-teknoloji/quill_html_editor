@@ -109,17 +109,32 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                         ),
                       )
                     : Observer(
-                        builder: (_) => ListView.builder(
+                        builder: (_) => ReorderableListView.builder(
+                          onReorder: (oldIndex, newIndex) {
+                            if (oldIndex == newIndex) return;
+                            if (newIndex > oldIndex) {
+                              newIndex -= 1;
+                            }
+                            final item = viewModel.kalemList?[oldIndex];
+                            if (item != null) {
+                              final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+                              kalemList?.removeAt(oldIndex);
+                              kalemList?.insert(newIndex, item);
+                              BaseSiparisEditModel.instance.kalemList = kalemList;
+                              viewModel.updateKalemList();
+                            }
+                          },
                           primary: true,
-                          itemCount: viewModel.kalemList.length,
+                          itemCount: viewModel.kalemList?.length ?? 0,
                           itemBuilder: (BuildContext context, int index) {
-                            final KalemModel kalemModel = viewModel.kalemList[index];
+                            final KalemModel? kalemModel = viewModel.kalemList?[index];
                             return Card(
+                              key: Key((kalemModel?.sira ?? index).toString()),
                               child: Column(
                                 children: <Widget>[
                                   kalemListTile(context, index, kalemModel),
-                                  ...List.generate(kalemModel.kalemList?.length ?? 0, (int index2) {
-                                    final KalemModel? model = kalemModel.kalemList?[index2];
+                                  ...List.generate(kalemModel?.kalemList?.length ?? 0, (int index2) {
+                                    final KalemModel? model = kalemModel?.kalemList?[index2];
                                     return Column(
                                       children: <Widget>[
                                         const Divider(),
@@ -270,17 +285,17 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
       );
 
   Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
-    final kalemList2 = viewModel.kalemList[index];
+    final kalemList2 = viewModel.kalemList?[index];
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
-      title: kalemList2.kalemAdi ?? kalemList2.stokAdi ?? "",
+      title: kalemList2?.kalemAdi ?? kalemList2?.stokAdi ?? "",
       children: <BottomSheetModel?>[
         BottomSheetModel(
           title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList[index]);
+            final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
             if (result is KalemModel) {
               BaseSiparisEditModel.instance.kalemList?[index] = result;
             }
@@ -307,7 +322,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel((model?..stokKodu = null)!), baseEditEnum: BaseEditEnum.ekle),
             );
             if (result is SaveStokModel) {
-              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
+              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
                 //TODO efatura_stok değişmiyor
@@ -324,7 +339,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Get.back();
             final stokModel = await Get.toNamed("/mainPage/stokListesi", arguments: true);
             if (stokModel is StokListesiModel) {
-              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList[index].copyWith(
+              BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
                 stokAdi: stokModel.stokAdi,
                 stokKodu: stokModel.stokKodu,
                 stokAlisKdv: stokModel.alisKdv,

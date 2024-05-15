@@ -106,12 +106,27 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
                         ),
                       )
                     : Observer(
-                        builder: (_) => ListView.builder(
+                          builder: (_) => ReorderableListView.builder(
+                          onReorder: (oldIndex, newIndex) {
+                            if (oldIndex == newIndex) return;
+                            if (newIndex > oldIndex) {
+                              newIndex -= 1;
+                            }
+                            final item = viewModel.kalemList?[oldIndex];
+                            if (item != null) {
+                              final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+                              kalemList?.removeAt(oldIndex);
+                              kalemList?.insert(newIndex, item);
+                              BaseSiparisEditModel.instance.kalemList = kalemList;
+                              viewModel.updateKalemList();
+                            }
+                          },
                           primary: true,
                           itemCount: viewModel.kalemList?.length ?? 0,
                           itemBuilder: (BuildContext context, int index) {
                             final KalemModel? kalemModel = viewModel.kalemList?[index];
                             return Card(
+                              key: Key((kalemModel?.sira ?? index).toString()),
                               child: Column(
                                 children: <Widget>[
                                   kalemListTile(context, index, kalemModel),
