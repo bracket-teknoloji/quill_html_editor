@@ -489,6 +489,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               model: CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
                 ..hesaptutmasekli = "Y"
                 ..vadeGunu = 0,
+              editTipiEnum: EditTipiEnum.cari,
               baseEditEnum: BaseEditEnum.kopyala,
             ),
           );
