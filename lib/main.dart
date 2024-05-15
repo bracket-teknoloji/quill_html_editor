@@ -171,18 +171,7 @@ void main() async {
 
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
-    runApp(
-      // EasyLocalization(
-      //   supportedLocales: const [
-      //     Locale("en"),
-      //     Locale("tr"),
-      //   ],
-      //   path: "assets/translations",
-      //   assetLoader: const CodegenLoader(),
-      //   child: const PickerApp(),
-      // ),
-      const PickerApp(),
-    );
+    runApp(const PickerApp());
     //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
     NetworkDependencyInjection.init();
   });

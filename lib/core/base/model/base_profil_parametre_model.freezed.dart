@@ -45,6 +45,7 @@ mixin _$BaseProfilParametreModel {
   NetFectDizaynList? get netFectDizaynList =>
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
+  EditTipiEnum get olcumGirisiBelgeTipi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -75,7 +76,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       ThemeMode temaModu,
       bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
-      YaziciList? yaziciList});
+      YaziciList? yaziciList,
+      EditTipiEnum olcumGirisiBelgeTipi});
 }
 
 /// @nodoc
@@ -109,6 +111,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? rotaDisiGorunsunMu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
+    Object? olcumGirisiBelgeTipi = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -179,6 +182,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.yaziciList
           : yaziciList // ignore: cast_nullable_to_non_nullable
               as YaziciList?,
+      olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
+          ? _value.olcumGirisiBelgeTipi
+          : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
+              as EditTipiEnum,
     ) as $Val);
   }
 }
@@ -209,7 +216,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       ThemeMode temaModu,
       bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
-      YaziciList? yaziciList});
+      YaziciList? yaziciList,
+      EditTipiEnum olcumGirisiBelgeTipi});
 }
 
 /// @nodoc
@@ -242,6 +250,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? rotaDisiGorunsunMu = null,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
+    Object? olcumGirisiBelgeTipi = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -312,6 +321,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.yaziciList
           : yaziciList // ignore: cast_nullable_to_non_nullable
               as YaziciList?,
+      olcumGirisiBelgeTipi: null == olcumGirisiBelgeTipi
+          ? _value.olcumGirisiBelgeTipi
+          : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
+              as EditTipiEnum,
     ));
   }
 }
@@ -337,7 +350,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.temaModu = ThemeMode.system,
       this.rotaDisiGorunsunMu = false,
       this.netFectDizaynList,
-      this.yaziciList})
+      this.yaziciList,
+      this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri})
       : super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -397,6 +411,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   final NetFectDizaynList? netFectDizaynList;
   @override
   final YaziciList? yaziciList;
+  @override
+  @JsonKey()
+  final EditTipiEnum olcumGirisiBelgeTipi;
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +448,9 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final ThemeMode temaModu,
       final bool rotaDisiGorunsunMu,
       final NetFectDizaynList? netFectDizaynList,
-      final YaziciList? yaziciList}) = _$BaseProfilParametreModelImpl;
+      final YaziciList? yaziciList,
+      final EditTipiEnum
+          olcumGirisiBelgeTipi}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -476,6 +495,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   NetFectDizaynList? get netFectDizaynList;
   @override
   YaziciList? get yaziciList;
+  @override
+  EditTipiEnum get olcumGirisiBelgeTipi;
   @override
   @JsonKey(ignore: true)
   _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>

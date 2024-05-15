@@ -11,6 +11,7 @@ class OlcumGirisiRequestModel with _$OlcumGirisiRequestModel {
     String? bastar,
     String? bittar,
     String? siralama,
+    String? qrstring,
     @JsonKey(name: "SearchText") String? searchText,
     @JsonKey(name: "Sayfa") int? sayfa,
   }) = _OlcumGirisiRequestModel;

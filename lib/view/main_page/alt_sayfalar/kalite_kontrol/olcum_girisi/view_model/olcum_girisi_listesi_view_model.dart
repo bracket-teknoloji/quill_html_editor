@@ -2,6 +2,7 @@ import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_request_model.dart";
@@ -51,8 +52,14 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable
   OlcumGirisiRequestModel requestModel = OlcumGirisiRequestModel(durum: 0, sayfa: 1);
 
+  // @observable
+  // OlcumGirisiRequestModel
+
   @observable
   ObservableList<OlcumBelgeModel>? olcumList;
+
+  @observable
+  ObservableList<OlcumBelgeModel>? qrOlcumList;
 
   @computed
   List<OlcumBelgeModel>? get getList => olcumList?.toList();
@@ -76,7 +83,12 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setBittar(String? value) => requestModel = requestModel.copyWith(bittar: value);
 
   @action
-  void setBelgeTipi(String? value) => requestModel = requestModel.copyWith(belgeTipi: value);
+  void setBelgeTipi(EditTipiEnum? value) {
+    requestModel = requestModel.copyWith(belgeTipi: value?.rawValue);
+    if (value != null) {
+      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(olcumGirisiBelgeTipi: value));
+    }
+  }
 
   @action
   void setSiralama(String? value) => requestModel = requestModel.copyWith(siralama: value);
@@ -85,10 +97,16 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void setDurum(int? value) => requestModel = requestModel.copyWith(durum: value);
 
   @action
+  void setQr(String? value) => requestModel = requestModel.copyWith(qrstring: value);
+
+  @action
   void setOlcumList(List<OlcumBelgeModel>? list) => olcumList = list?.asObservable();
 
   @action
-  void addOlcumList(List<OlcumBelgeModel> list) => olcumList!.addAll(list);
+  void setQrOlcumList(List<OlcumBelgeModel>? list) => qrOlcumList = list?.asObservable();
+
+  @action
+  void addOlcumList(List<OlcumBelgeModel> list) => olcumList?.addAll(list);
 
   @action
   void setAppBarTitle(String? value) => appBarTitle = value;
@@ -97,11 +115,11 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   void increaseSayfa() => requestModel = requestModel.copyWith(sayfa: (requestModel.sayfa ?? 0) + 1);
 
   @action
-  void resetSayfa() {
+  Future<void> resetSayfa() async {
     requestModel = requestModel.copyWith(sayfa: 1);
     setOlcumList(null);
     setDahaVarMi(true);
-    getData();
+    await getData();
   }
 
   @action
@@ -110,7 +128,13 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     // setOlcumList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeler, bodyModel: OlcumBelgeModel(), data: requestModel.toJson());
+    final OlcumGirisiRequestModel olcumGirisiRequestModel = requestModel.qrstring != null ? OlcumGirisiRequestModel(qrstring: requestModel.qrstring, sayfa: 1) : requestModel;
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getOlcumBelgeler,
+      bodyModel: OlcumBelgeModel(),
+      showLoading: requestModel.qrstring != null,
+      data: olcumGirisiRequestModel.toJson(),
+    );
     // if (result.success == true) {
     //   final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
     //   if (requestModel.sayfa == 1){
@@ -122,6 +146,12 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
     // }
     if (result.data is List) {
       final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
+      if (requestModel.qrstring != null) {
+        setQrOlcumList(list);
+        //?QR kod varsa işlem bittikten sonra sıfırlayacak.
+        setQr(null);
+        return;
+      }
       if ((requestModel.sayfa ?? 0) < 2) {
         // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         if (olcumList.ext.isNullOrEmpty) {

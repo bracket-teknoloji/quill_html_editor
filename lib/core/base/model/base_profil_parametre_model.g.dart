@@ -40,6 +40,9 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       yaziciList: json['YAZICI_LIST'] == null
           ? null
           : YaziciList.fromJson(json['YAZICI_LIST'] as Map<String, dynamic>),
+      olcumGirisiBelgeTipi: $enumDecodeNullable(
+              _$EditTipiEnumEnumMap, json['OLCUM_GIRISI_BELGE_TIPI']) ??
+          EditTipiEnum.isEmri,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -71,6 +74,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
 
   writeNotNull('NET_FECT_DIZAYN_LIST', instance.netFectDizaynList?.toJson());
   writeNotNull('YAZICI_LIST', instance.yaziciList?.toJson());
+  val['OLCUM_GIRISI_BELGE_TIPI'] =
+      _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!;
   return val;
 }
 
@@ -78,4 +83,25 @@ const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
+};
+
+const _$EditTipiEnumEnumMap = {
+  EditTipiEnum.musteri: 'musteri',
+  EditTipiEnum.satici: 'satici',
+  EditTipiEnum.satisFatura: 'satisFatura',
+  EditTipiEnum.satisIrsaliye: 'satisIrsaliye',
+  EditTipiEnum.alisFatura: 'alisFatura',
+  EditTipiEnum.alisIrsaliye: 'alisIrsaliye',
+  EditTipiEnum.satisTeklifi: 'satisTeklifi',
+  EditTipiEnum.alisTalebi: 'alisTalebi',
+  EditTipiEnum.satisTalebi: 'satisTalebi',
+  EditTipiEnum.depoTransferi: 'depoTransferi',
+  EditTipiEnum.ambarGirisi: 'ambarGirisi',
+  EditTipiEnum.ambarCikisi: 'ambarCikisi',
+  EditTipiEnum.cari: 'cari',
+  EditTipiEnum.isEmri: 'isEmri',
+  EditTipiEnum.altIsEmri: 'altIsEmri',
+  EditTipiEnum.isEmriTakip: 'isEmriTakip',
+  EditTipiEnum.uretimSonuKaydi: 'uretimSonuKaydi',
+  EditTipiEnum.olcumdenDepoTransferi: 'olcumdenDepoTransferi',
 };

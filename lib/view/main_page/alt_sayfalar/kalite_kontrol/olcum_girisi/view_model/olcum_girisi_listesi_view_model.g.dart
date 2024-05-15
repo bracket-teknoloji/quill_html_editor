@@ -97,6 +97,30 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
     });
   }
 
+  late final _$qrOlcumListAtom =
+      Atom(name: '_OlcumGirisiViewModelBase.qrOlcumList', context: context);
+
+  @override
+  ObservableList<OlcumBelgeModel>? get qrOlcumList {
+    _$qrOlcumListAtom.reportRead();
+    return super.qrOlcumList;
+  }
+
+  @override
+  set qrOlcumList(ObservableList<OlcumBelgeModel>? value) {
+    _$qrOlcumListAtom.reportWrite(value, super.qrOlcumList, () {
+      super.qrOlcumList = value;
+    });
+  }
+
+  late final _$resetSayfaAsyncAction =
+      AsyncAction('_OlcumGirisiViewModelBase.resetSayfa', context: context);
+
+  @override
+  Future<void> resetSayfa() {
+    return _$resetSayfaAsyncAction.run(() => super.resetSayfa());
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_OlcumGirisiViewModelBase.getData', context: context);
 
@@ -153,7 +177,7 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
-  void setBelgeTipi(String? value) {
+  void setBelgeTipi(EditTipiEnum? value) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setBelgeTipi');
     try {
@@ -186,11 +210,33 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
+  void setQr(String? value) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setQr');
+    try {
+      return super.setQr(value);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setOlcumList(List<OlcumBelgeModel>? list) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setOlcumList');
     try {
       return super.setOlcumList(list);
+    } finally {
+      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setQrOlcumList(List<OlcumBelgeModel>? list) {
+    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
+        .startAction(name: '_OlcumGirisiViewModelBase.setQrOlcumList');
+    try {
+      return super.setQrOlcumList(list);
     } finally {
       _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -230,17 +276,6 @@ mixin _$OlcumGirisiViewModel on _OlcumGirisiViewModelBase, Store {
   }
 
   @override
-  void resetSayfa() {
-    final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
-        .startAction(name: '_OlcumGirisiViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
-    } finally {
-      _$_OlcumGirisiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_OlcumGirisiViewModelBaseActionController
         .startAction(name: '_OlcumGirisiViewModelBase.setSearchText');
@@ -259,6 +294,7 @@ appBarTitle: ${appBarTitle},
 dahaVarMi: ${dahaVarMi},
 requestModel: ${requestModel},
 olcumList: ${olcumList},
+qrOlcumList: ${qrOlcumList},
 getList: ${getList}
     ''';
   }

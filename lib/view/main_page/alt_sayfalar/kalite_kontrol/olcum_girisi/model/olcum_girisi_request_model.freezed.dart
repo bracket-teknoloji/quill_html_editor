@@ -31,6 +31,8 @@ mixin _$OlcumGirisiRequestModel {
   set bittar(String? value) => throw _privateConstructorUsedError;
   String? get siralama => throw _privateConstructorUsedError;
   set siralama(String? value) => throw _privateConstructorUsedError;
+  String? get qrstring => throw _privateConstructorUsedError;
+  set qrstring(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "SearchText")
   String? get searchText => throw _privateConstructorUsedError;
   @JsonKey(name: "SearchText")
@@ -58,6 +60,7 @@ abstract class $OlcumGirisiRequestModelCopyWith<$Res> {
       String? bastar,
       String? bittar,
       String? siralama,
+      String? qrstring,
       @JsonKey(name: "SearchText") String? searchText,
       @JsonKey(name: "Sayfa") int? sayfa});
 }
@@ -81,6 +84,7 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
     Object? bastar = freezed,
     Object? bittar = freezed,
     Object? siralama = freezed,
+    Object? qrstring = freezed,
     Object? searchText = freezed,
     Object? sayfa = freezed,
   }) {
@@ -104,6 +108,10 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
       siralama: freezed == siralama
           ? _value.siralama
           : siralama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      qrstring: freezed == qrstring
+          ? _value.qrstring
+          : qrstring // ignore: cast_nullable_to_non_nullable
               as String?,
       searchText: freezed == searchText
           ? _value.searchText
@@ -132,6 +140,7 @@ abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res>
       String? bastar,
       String? bittar,
       String? siralama,
+      String? qrstring,
       @JsonKey(name: "SearchText") String? searchText,
       @JsonKey(name: "Sayfa") int? sayfa});
 }
@@ -154,6 +163,7 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
     Object? bastar = freezed,
     Object? bittar = freezed,
     Object? siralama = freezed,
+    Object? qrstring = freezed,
     Object? searchText = freezed,
     Object? sayfa = freezed,
   }) {
@@ -178,6 +188,10 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
           ? _value.siralama
           : siralama // ignore: cast_nullable_to_non_nullable
               as String?,
+      qrstring: freezed == qrstring
+          ? _value.qrstring
+          : qrstring // ignore: cast_nullable_to_non_nullable
+              as String?,
       searchText: freezed == searchText
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
@@ -199,6 +213,7 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
       this.bastar,
       this.bittar,
       this.siralama,
+      this.qrstring,
       @JsonKey(name: "SearchText") this.searchText,
       @JsonKey(name: "Sayfa") this.sayfa});
 
@@ -216,6 +231,8 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   @override
   String? siralama;
   @override
+  String? qrstring;
+  @override
   @JsonKey(name: "SearchText")
   String? searchText;
   @override
@@ -224,7 +241,7 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
 
   @override
   String toString() {
-    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, searchText: $searchText, sayfa: $sayfa)';
+    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, qrstring: $qrstring, searchText: $searchText, sayfa: $sayfa)';
   }
 
   @JsonKey(ignore: true)
@@ -249,6 +266,7 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
       String? bastar,
       String? bittar,
       String? siralama,
+      String? qrstring,
       @JsonKey(name: "SearchText") String? searchText,
       @JsonKey(name: "Sayfa") int? sayfa}) = _$OlcumGirisiRequestModelImpl;
 
@@ -270,6 +288,9 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   @override
   String? get siralama;
   set siralama(String? value);
+  @override
+  String? get qrstring;
+  set qrstring(String? value);
   @override
   @JsonKey(name: "SearchText")
   String? get searchText;

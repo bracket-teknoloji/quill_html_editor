@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/model/param_model.dart";
 import "base_network_mixin.dart";
@@ -31,6 +32,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(false) bool rotaDisiGorunsunMu,
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
+    @Default(EditTipiEnum.isEmri) EditTipiEnum olcumGirisiBelgeTipi,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

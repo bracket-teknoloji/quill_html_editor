@@ -13,6 +13,8 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view_model/olcum_girisi_listesi_view_model.dart";
 
 class OlcumGirisiListesiView extends StatefulWidget {
@@ -33,10 +35,11 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
 
   @override
   void initState() {
+    viewModel.setBelgeTipi(CacheManager.getProfilParametre.olcumGirisiBelgeTipi);
     _scrollController = ScrollController();
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
-    belgeTipiController = TextEditingController();
+    belgeTipiController = TextEditingController(text: CacheManager.getProfilParametre.olcumGirisiBelgeTipi.getName);
     durumController = TextEditingController(text: viewModel.durumList.indexed.where((element) => element.$1 == viewModel.requestModel.durum).first.$2);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await filterBottomSheet();
@@ -92,6 +95,11 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         ],
         bottom: AppBarPreferedSizedBottom(
           children: [
+            AppBarButton(
+              icon: Icons.qr_code_scanner_outlined,
+              onPressed: scanQrCode,
+              child: const Text("Barkod"),
+            ),
             AppBarButton(
               icon: Icons.filter_alt_outlined,
               onPressed: filterBottomSheet,
@@ -205,7 +213,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                 );
                 if (result is EditTipiEnum) {
                   belgeTipiController.text = result.getName;
-                  viewModel.setBelgeTipi(result.rawValue);
+                  viewModel.setBelgeTipi(result);
                 }
               },
             ),
@@ -252,7 +260,46 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
       ),
     );
     if (viewModel.requestModel.belgeTipi == null || viewModel.requestModel.durum == null) {
-      Get.back();
+      viewModel.setOlcumList([]);
+    }
+  }
+
+  Future<void> scanQrCode() async {
+    final result = await Get.toNamed("/qr");
+    if (result is! String) return;
+    viewModel.setQr(result);
+    await viewModel.getData();
+    // viewModel.setOlcumList(null);
+    // await viewModel.resetSayfa();
+    OlcumBelgeModel selectedOlcumModel = OlcumBelgeModel();
+    final length = viewModel.qrOlcumList?.length ?? 0;
+    if (length <= 0) return;
+    if (length == 1) {
+      selectedOlcumModel = viewModel.qrOlcumList!.first;
+    }
+    if (length > 1) {
+      selectedOlcumModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+        context,
+        title: "Ölçüm Seçiniz",
+        groupValue: 0,
+        children: viewModel.qrOlcumList
+            ?.map(
+              (element) => BottomSheetModel(title: element.belgeNo ?? "", value: element, description: element.belgeTipi ?? "", groupValue: ""),
+            )
+            .toList(),
+      );
+    }
+
+    if (selectedOlcumModel.getEditTipiEnum.kalemSecilecekMi) {
+      final result2 = await Get.toNamed("/mainPage/olcumKalemSec", arguments: selectedOlcumModel);
+      if (result2 == true) {
+        viewModel.getData();
+      }
+      return;
+    }
+    final result2 = await Get.toNamed("/mainPage/olcumDetay", arguments: selectedOlcumModel);
+    if (result2 == true) {
+      viewModel.getData();
     }
   }
 }
