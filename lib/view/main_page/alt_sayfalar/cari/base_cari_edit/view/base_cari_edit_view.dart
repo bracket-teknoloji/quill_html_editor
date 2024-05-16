@@ -56,19 +56,6 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
         const BaseCariEditBankaView().yetkiVarMi(goruntulenecekMi),
         const BaseCariEditIletisimView().yetkiVarMi(goruntulenecekMi),
       ].where((Widget element) => element is! SizedBox).toList();
-  Widget? get addSaveButton => widget.model?.baseEditEnum != BaseEditEnum.goruntule
-      ? IconButton(
-          onPressed: () async {
-            if (validate.isEmpty) {
-              await dialogManager.showAreYouSureDialog(() async => await postData());
-            } else {
-              await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
-            }
-          },
-          icon: const Icon(Icons.save_outlined),
-        )
-      : null;
-
   @override
   void initState() {
     tabController = TabController(length: goruntulenecekMi ? 5 : 2, vsync: this);
