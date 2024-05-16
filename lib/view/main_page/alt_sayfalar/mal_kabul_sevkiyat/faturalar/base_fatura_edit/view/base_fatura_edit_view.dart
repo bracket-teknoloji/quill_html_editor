@@ -159,8 +159,31 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList
+                ?.map(
+                  (e) => e
+                    ..belgeTipi = BaseSiparisEditModel.instance.belgeTuru
+                    ..siparisNo = e.belgeNo
+                    ..kalan = null
+                    ..kapali = null
+                    ..tempBarkodList = null
+                    ..hucreList = null
+                    ..inckeyno = null
+                    ..stokSatisKdv = null
+                    ..stokAlisKdv = null
+                    ..belgeNo = null,
+                )
+                .toList();
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             BaseSiparisEditModel.instance.belgeKodu = null;
+            BaseSiparisEditModel.instance.teslimTarihi = null;
+            BaseSiparisEditModel.instance.kapatilmis = null;
+            BaseSiparisEditModel.instance.vadeGunu = null;
+            BaseSiparisEditModel.instance.tempSipList = null;
+            BaseSiparisEditModel.instance.onaylayankul = null;
+            BaseSiparisEditModel.instance.onaytarihi = null;
+            BaseSiparisEditModel.instance.kayittarihi = null;
+            BaseSiparisEditModel.instance.vadeTarihi = null;
             BaseSiparisEditModel.instance.teslimTarihi = null;
             BaseSiparisEditModel.instance.teslimCari = null;
             BaseSiparisEditModel.instance.teslimCariAdi = null;
