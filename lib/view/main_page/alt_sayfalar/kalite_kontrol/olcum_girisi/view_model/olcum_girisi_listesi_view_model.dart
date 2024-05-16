@@ -61,9 +61,6 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableList<OlcumBelgeModel>? qrOlcumList;
 
-  @computed
-  List<OlcumBelgeModel>? get getList => olcumList?.toList();
-
   @action
   void setSearchBar() {
     searchBar = !searchBar;

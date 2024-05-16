@@ -75,13 +75,13 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               return CustomAppBarTextField(
                 onFieldSubmitted: (value) async {
                   viewModel.setSearchText(value);
-                  viewModel.resetSayfa();
+                  await viewModel.resetSayfa();
                 },
               );
             }
             return AppBarTitle(
               title: "Ölçüm Girişi",
-              subtitle: viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.getList?.length ?? 0})" : null,
+              subtitle: viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.olcumList?.length ?? 0})" : null,
             );
           },
         ),
@@ -124,7 +124,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                 );
                 if (result is MapEntry) {
                   viewModel.requestModel.siralama = result.value;
-                  viewModel.resetSayfa();
+                  await viewModel.resetSayfa();
                 }
               },
             ),
@@ -137,27 +137,27 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async => viewModel.resetSayfa(),
+        onRefresh: viewModel.resetSayfa,
         child: Observer(
           builder: (_) {
-            if (viewModel.getList == null) return const ListViewShimmer();
-            if (viewModel.getList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
+            if (viewModel.olcumList == null) return const ListViewShimmer();
+            if (viewModel.olcumList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
             return Observer(
               builder: (_) => ListView.builder(
                 controller: _scrollController,
-                itemCount: viewModel.getList?.length != null ? viewModel.getList!.length + 1 : 0,
+                itemCount: viewModel.olcumList?.length != null ? viewModel.olcumList!.length + 1 : 0,
                 //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
                 padding: UIHelper.lowPadding,
                 primary: false,
                 physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 itemBuilder: (context, index) {
-                  if (index == viewModel.getList?.length) {
+                  if (index == viewModel.olcumList?.length) {
                     return Observer(
                       builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())),
                     );
                   }
                   return OlcumGirisiListesiCard(
-                    model: viewModel.getList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
+                    model: viewModel.olcumList![index].copyWith(belgeTipi: viewModel.requestModel.belgeTipi),
                     onTapped: (value) async {
                       if (value) {
                         await viewModel.getData();
@@ -250,7 +250,8 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                   viewModel.setBastar(baslangicTarihiController.text);
                   viewModel.setBittar(bitisTarihiController.text);
                   viewModel.setAppBarTitle(belgeTipiController.text);
-                  viewModel.resetSayfa();
+                  viewModel.setOlcumList(null);
+                  await viewModel.resetSayfa();
                 }
               },
               child: Text(loc.generalStrings.apply),
@@ -259,7 +260,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-    if (viewModel.requestModel.belgeTipi == null || viewModel.requestModel.durum == null) {
+    if (viewModel.olcumList == null) {
       viewModel.setOlcumList([]);
     }
   }
@@ -271,7 +272,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
     await viewModel.getData();
     // viewModel.setOlcumList(null);
     // await viewModel.resetSayfa();
-    OlcumBelgeModel selectedOlcumModel = OlcumBelgeModel();
+    OlcumBelgeModel? selectedOlcumModel;
     final length = viewModel.qrOlcumList?.length ?? 0;
     if (length <= 0) return;
     if (length == 1) {
@@ -289,7 +290,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             .toList(),
       );
     }
-
+    if (selectedOlcumModel == null) return;
     if (selectedOlcumModel.getEditTipiEnum.kalemSecilecekMi) {
       final result2 = await Get.toNamed("/mainPage/olcumKalemSec", arguments: selectedOlcumModel);
       if (result2 == true) {
