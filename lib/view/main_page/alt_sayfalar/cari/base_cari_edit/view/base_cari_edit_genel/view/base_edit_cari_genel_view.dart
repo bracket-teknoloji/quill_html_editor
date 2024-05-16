@@ -151,6 +151,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                       isMust: true,
                       labelText: "Kodu",
                       controller: kodController,
+                      onChanged: viewModel.changeKodu,
                       suffix: Wrap(
                         children: <IconButton>[
                           IconButton(
