@@ -185,6 +185,7 @@ class AppThemeLight extends AppTheme {
             systemStatusBarContrastEnforced: true,
           ),
           centerTitle: false,
+          backgroundColor: colorManager.surfaceBright,
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
           scrolledUnderElevation: 0,

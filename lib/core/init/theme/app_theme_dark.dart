@@ -186,6 +186,7 @@ class AppThemeDark extends AppTheme {
             systemNavigationBarColor: colorManager.surface,
             systemStatusBarContrastEnforced: true,
           ),
+          backgroundColor: colorManager.surfaceDim,
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
