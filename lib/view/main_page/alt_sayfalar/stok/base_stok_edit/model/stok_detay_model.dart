@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_dat_response_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
@@ -95,7 +96,7 @@ class FiyatList {
 // }
 
 @unfreezed
-abstract class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
+class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
   @JsonSerializable(explicitToJson: true)
   SeriList._();
   @HiveType(typeId: 196)
@@ -127,6 +128,10 @@ abstract class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin 
 
   @override
   SeriList fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
+
+  factory SeriList.fromOlcumDatResponseModel(OlcumDatResponseModel model) => SeriList(
+        seriNo: model.seriNo,
+        stokKodu: model.stokKodu,
+        miktar: model.miktar,
+      );
 }
-
-

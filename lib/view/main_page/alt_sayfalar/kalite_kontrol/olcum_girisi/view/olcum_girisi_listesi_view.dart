@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart";
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
@@ -172,7 +173,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
       );
 
   Future<void> filterBottomSheet() async {
-    await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: loc.generalStrings.filter,
       body: Form(
@@ -246,7 +247,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState?.validate() ?? false) {
-                  Get.back();
+                  Get.back(result: true);
                   viewModel.setBastar(baslangicTarihiController.text);
                   viewModel.setBittar(bitisTarihiController.text);
                   viewModel.setAppBarTitle(belgeTipiController.text);
@@ -260,7 +261,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
         ).paddingAll(UIHelper.lowSize),
       ),
     );
-    if (viewModel.olcumList == null) {
+    if (result != true && viewModel.olcumList.ext.isNullOrEmpty) {
       viewModel.setOlcumList([]);
     }
   }
