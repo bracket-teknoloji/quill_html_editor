@@ -82,7 +82,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               return;
             }
             if (widget.model.tumDepolarMi) {
-              final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, "");
+              final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, model.depoKodu);
               if (result != null) {
                 model.depoKodu = result.depoKodu;
               }

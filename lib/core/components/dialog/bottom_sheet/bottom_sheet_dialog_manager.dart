@@ -387,7 +387,7 @@ class BottomSheetDialogManager {
     viewModel.deleteIsSelectedListMap();
   }
 
-  Future<DepoList?> showDepoBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
+  Future<DepoList?> showDepoBottomSheetDialog(BuildContext context, int? groupValue) async => await showRadioBottomSheetDialog(
         context,
         title: "Depo seç",
         groupValue: groupValue,

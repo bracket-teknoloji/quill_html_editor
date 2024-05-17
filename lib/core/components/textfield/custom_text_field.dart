@@ -31,12 +31,10 @@ class CustomTextField extends StatefulWidget {
   final Function(String value)? onChanged;
   final Function(String value)? onSubmitted;
   final Function()? onClear;
-  final bool? fitContent;
   final bool? suffixMore;
   final bool? isFormattedString;
   final bool? isDateTime;
   final bool? isTime;
-  final AutofillHints? autoFillHint;
   const CustomTextField({
     super.key,
     this.controller,
@@ -55,14 +53,12 @@ class CustomTextField extends StatefulWidget {
     this.onSubmitted,
     this.validator,
     this.valueWidget,
-    this.fitContent,
     this.suffixMore,
     this.inputFormatter,
     this.isFormattedString,
     this.onClear,
     this.isDateTime,
     this.isTime,
-    this.autoFillHint,
     this.descriptionWidget,
   });
 
@@ -76,7 +72,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
-      // if (controller.)
       viewModel.setShowClearButton(controller.text != "");
       controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     });
@@ -89,16 +84,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    if (widget.fitContent ?? false) {
-      return SizedBox(
-        width: Get.width / 2.1,
-        child: textFormField,
-      );
-    } else {
-      return textFormField;
-    }
-  }
+  Widget build(BuildContext context) => textFormField;
 
   Widget get textFormField => TextFieldTapRegion(
         onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),

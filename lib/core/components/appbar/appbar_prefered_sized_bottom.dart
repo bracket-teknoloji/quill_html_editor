@@ -20,7 +20,7 @@ class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeW
 class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: height * 0.07,
+        height: kToolbarHeight,
         child: ListView(
           shrinkWrap: true,
           itemExtent: width * (1 / widget.children.nullCheck.length < 0.2 ? 0.2 : 1 / widget.children.nullCheck.length),
