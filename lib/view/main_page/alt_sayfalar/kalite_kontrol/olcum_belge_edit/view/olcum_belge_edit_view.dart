@@ -11,6 +11,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -27,6 +28,8 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_ed
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
   final OlcumBelgeModel model;
@@ -38,14 +41,26 @@ class OlcumBelgeEditView extends StatefulWidget {
 
 final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   final OlcumBelgeEditViewModel viewModel = OlcumBelgeEditViewModel();
+  late final TextEditingController girisDepoController;
+  late final TextEditingController cikisDepoController;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
+    girisDepoController = TextEditingController();
+    cikisDepoController = TextEditingController();
     viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    girisDepoController.dispose();
+    cikisDepoController.dispose();
+    super.dispose();
   }
 
   @override
@@ -157,13 +172,56 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           dialogManager.showAlertDialog("Ölçüm giriniz.");
                           return;
                         }
+                        if (viewModel.belgeModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi) {
+                          await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Depo Giriniz",
+                            body: Form(
+                              key: _formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  CustomTextField(
+                                    labelText: "Giriş Depo Kodu",
+                                    controller: girisDepoController,
+                                    readOnly: true,
+                                    isMust: true,
+                                    suffixMore: true,
+                                    onTap: girisDepoOnTap,
+                                  ),
+                                  CustomTextField(
+                                    labelText: "Çıkış Depo Kodu",
+                                    controller: cikisDepoController,
+                                    readOnly: true,
+                                    isMust: true,
+                                    suffixMore: true,
+                                    onTap: cikisDepoOnTap,
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: seriDepoApplyButtonOnTap,
+                                    child: Text(loc.generalStrings.apply),
+                                  ).paddingAll(UIHelper.lowSize),
+                                ],
+                              ).paddingAll(UIHelper.lowSize),
+                            ),
+                          );
+                          if (!viewModel.depolarValidation) return;
+                        }
                         await Get.toNamed(
                           "/mainPage/transferEdit",
                           arguments: BaseEditModel<BaseSiparisEditModel>(
                             baseEditEnum: BaseEditEnum.ekle,
                             editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
                             model: BaseSiparisEditModel(
-                              kalemList: [KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)],
+                              girisDepoKodu: viewModel.seriRequestModel.girisDepo,
+                              cikisDepoKodu: viewModel.seriRequestModel.cikisDepo,
+                              topluGirisDepoTanimi: girisDepoController.text,
+                              topluCikisDepoTanimi: cikisDepoController.text,
+                              kalemList: [
+                                KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+                                  ..seriList = viewModel.olcumDatResponseListesi?.map(SeriList.fromOlcumDatResponseModel).toList()
+                                  ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
+                              ],
                               olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
                             ),
                           ),
@@ -216,9 +274,42 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         ],
       );
 
+  Future<void> girisDepoOnTap() async {
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriRequestModel.girisDepo);
+    if (result is DepoList) {
+      if (result.depoKodu != null) {
+        girisDepoController.text = result.depoTanimi ?? "";
+        viewModel.setGirisDepo(result);
+      }
+    }
+  }
+
+  Future<void> cikisDepoOnTap() async {
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriRequestModel.cikisDepo);
+    if (result is DepoList) {
+      if (result.depoKodu != null) {
+        cikisDepoController.text = result.depoTanimi ?? "";
+        viewModel.setCikisDepo(result);
+      }
+    }
+  }
+
+  Future<void> seriDepoApplyButtonOnTap() async {
+    if (_formKey.currentState?.validate() == false) return;
+    if (!viewModel.depolarValidation) return dialogManager.showAlertDialog("Depolar aynı olamaz.");
+    viewModel.setSeriListe(viewModel.model?.olcumler?.map((e) => e.seriNo).toList().nullCheckWithGeneric ?? []);
+    // Get.back();
+    await viewModel.getDatMiktar();
+    Get.back();
+  }
+
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: true && yetkiController.sigmaOlcumKaydet,
         onPressed: () async {
+          if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) {
+            dialogManager.showAlertDialog("Proses bulunmamaktadır.");
+            return;
+          }
           final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
           if (result != null) {
             await viewModel.getData();
@@ -391,12 +482,21 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                     );
                                   },
                                   title: Text(title),
-                                  subtitle: CustomLayoutBuilder(
-                                    splitCount: 2,
+                                  subtitle: Column(
                                     children: [
-                                      Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
-                                      Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
-                                      Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
+                                      const Row(
+                                        children: [
+                                          // ColorfulBadge().yetkiVarMi(item?.)
+                                        ],
+                                      ),
+                                      CustomLayoutBuilder(
+                                        splitCount: 2,
+                                        children: [
+                                          Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                          Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                                          Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),

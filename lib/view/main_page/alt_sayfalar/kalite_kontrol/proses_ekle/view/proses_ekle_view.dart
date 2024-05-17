@@ -39,11 +39,15 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
     viewModel.setEkleModel(widget.model.model!);
     viewModel.setProsesDetayListesi(widget.model.model!.numuneMiktari ?? 0);
     numuneControllers = List.generate(widget.model.model!.numuneMiktari ?? 0, (index) {
-      final double? deger = widget.model.model?.numuneler?.olcumler?[index].deger;
-      if (widget.model.model?.numuneler != null) {
-        viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: deger));
+      try {
+        final double? deger = widget.model.model?.numuneler?.olcumler?[index].deger;
+        if (widget.model.model?.numuneler != null) {
+          viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: deger));
+        }
+        return TextEditingController(text: deger?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
+      } on RangeError {
+        return TextEditingController();
       }
-      return TextEditingController(text: deger?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
     });
     sartliKabulTuruController = TextEditingController();
     operatorController = TextEditingController();

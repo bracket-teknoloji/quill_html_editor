@@ -205,7 +205,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData(StokRehberiRequestModel model) async {
     final result = await networkManager.dioPost(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), showLoading: true, data: model.toJson());
     if (result.success ?? false) {
-      setModel(result.data.first);
+      setModel((result.data as List).firstOrNull);
     }
   }
 }

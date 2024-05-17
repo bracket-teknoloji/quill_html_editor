@@ -16,6 +16,13 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
           Computed<OlcumBelgeModel?>(() => super.belgeModel,
               name: '_OlcumBelgeEditViewModelBase.belgeModel'))
       .value;
+  Computed<bool>? _$depolarValidationComputed;
+
+  @override
+  bool get depolarValidation => (_$depolarValidationComputed ??= Computed<bool>(
+          () => super.depolarValidation,
+          name: '_OlcumBelgeEditViewModelBase.depolarValidation'))
+      .value;
 
   late final _$requestModelAtom =
       Atom(name: '_OlcumBelgeEditViewModelBase.requestModel', context: context);
@@ -65,6 +72,49 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
     });
   }
 
+  late final _$seriRequestModelAtom = Atom(
+      name: '_OlcumBelgeEditViewModelBase.seriRequestModel', context: context);
+
+  @override
+  OlcumSeriRequestModel get seriRequestModel {
+    _$seriRequestModelAtom.reportRead();
+    return super.seriRequestModel;
+  }
+
+  @override
+  set seriRequestModel(OlcumSeriRequestModel value) {
+    _$seriRequestModelAtom.reportWrite(value, super.seriRequestModel, () {
+      super.seriRequestModel = value;
+    });
+  }
+
+  late final _$olcumDatResponseListesiAtom = Atom(
+      name: '_OlcumBelgeEditViewModelBase.olcumDatResponseListesi',
+      context: context);
+
+  @override
+  ObservableList<OlcumDatResponseModel>? get olcumDatResponseListesi {
+    _$olcumDatResponseListesiAtom.reportRead();
+    return super.olcumDatResponseListesi;
+  }
+
+  @override
+  set olcumDatResponseListesi(ObservableList<OlcumDatResponseModel>? value) {
+    _$olcumDatResponseListesiAtom
+        .reportWrite(value, super.olcumDatResponseListesi, () {
+      super.olcumDatResponseListesi = value;
+    });
+  }
+
+  late final _$getDatMiktarAsyncAction = AsyncAction(
+      '_OlcumBelgeEditViewModelBase.getDatMiktar',
+      context: context);
+
+  @override
+  Future<void> getDatMiktar() {
+    return _$getDatMiktarAsyncAction.run(() => super.getDatMiktar());
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_OlcumBelgeEditViewModelBase.getData', context: context);
 
@@ -112,6 +162,40 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
       ActionController(name: '_OlcumBelgeEditViewModelBase', context: context);
 
   @override
+  void setGirisDepo(DepoList? value) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setGirisDepo');
+    try {
+      return super.setGirisDepo(value);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCikisDepo(DepoList? value) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setCikisDepo');
+    try {
+      return super.setCikisDepo(value);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOlcumDatResponseListesi(List<OlcumDatResponseModel>? list) {
+    final _$actionInfo =
+        _$_OlcumBelgeEditViewModelBaseActionController.startAction(
+            name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi');
+    try {
+      return super.setOlcumDatResponseListesi(list);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setRequestModel(OlcumBelgeModel reqModel) {
     final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
         .startAction(name: '_OlcumBelgeEditViewModelBase.setRequestModel');
@@ -150,7 +234,10 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
 requestModel: ${requestModel},
 model: ${model},
 olcumDatListesi: ${olcumDatListesi},
-belgeModel: ${belgeModel}
+seriRequestModel: ${seriRequestModel},
+olcumDatResponseListesi: ${olcumDatResponseListesi},
+belgeModel: ${belgeModel},
+depolarValidation: ${depolarValidation}
     ''';
   }
 }

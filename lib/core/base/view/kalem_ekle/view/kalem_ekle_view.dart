@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
@@ -115,8 +116,14 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ),
           IconButton(
             onPressed: () {
-              if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length && seriliMi) {
+              if (viewModel.model?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length && seriliMi) {
                 dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
+                return;
+              }
+              if (viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.map((e) => e.miktar).sum && seriliMi) {
+                dialogManager.showErrorSnackBar(
+                  "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve serilerin miktar toplamı (${viewModel.kalemModel.seriList?.map((e) => e.miktar).sum.toIntIfDouble})",
+                );
                 return;
               }
               if (transferMi) {

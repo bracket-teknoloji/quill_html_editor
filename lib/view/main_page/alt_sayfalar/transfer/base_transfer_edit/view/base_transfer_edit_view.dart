@@ -129,25 +129,29 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        if ((widget.model.model as BaseSiparisEditModel?)?.kalemList != null) {
+          BaseSiparisEditModel.instance.olcumBelgeRefKey = (widget.model.model as BaseSiparisEditModel).olcumBelgeRefKey;
+          BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
+        } else {
+          final result = await getSiparisBaglantisi();
+          if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
+            Get.back();
+          } else if (result != true) {
+            BaseSiparisEditModel.resetInstance();
+          }
+        }
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
+        BaseSiparisEditModel.instance.girisDepoKodu = widget.model.model?.girisDepoKodu;
+        BaseSiparisEditModel.instance.cikisDepoKodu = widget.model.model?.cikisDepoKodu;
+        BaseSiparisEditModel.instance.topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi;
+        BaseSiparisEditModel.instance.topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi;
         BaseSiparisEditModel.instance.isNew = true;
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
-          if ((widget.model.model as BaseSiparisEditModel?)?.kalemList != null) {
-            BaseSiparisEditModel.instance.olcumBelgeRefKey = (widget.model.model as BaseSiparisEditModel).olcumBelgeRefKey;
-            BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
-          } else {
-            final result = await getSiparisBaglantisi();
-            if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
-              Get.back();
-            } else if (result != true) {
-              BaseSiparisEditModel.resetInstance();
-            }
-          }
           BaseSiparisEditModel.instance.belgeTipi = 2;
           BaseSiparisEditModel.instance.tipi = 2;
           BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
@@ -155,10 +159,10 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.isNew = true;
         }
-        BaseSiparisEditModel.instance.cikisDepoKodu = yetkiController.transferLokalDatCikisDepo?.depoKodu;
-        BaseSiparisEditModel.instance.girisDepoKodu = yetkiController.transferLokalDatGirisDepo?.depoKodu;
-        BaseSiparisEditModel.instance.topluCikisDepoTanimi = yetkiController.transferLokalDatCikisDepo?.depoTanimi;
-        BaseSiparisEditModel.instance.topluGirisDepoTanimi = yetkiController.transferLokalDatGirisDepo?.depoTanimi;
+        BaseSiparisEditModel.instance.cikisDepoKodu ??= yetkiController.transferLokalDatCikisDepo?.depoKodu;
+        BaseSiparisEditModel.instance.girisDepoKodu ??= yetkiController.transferLokalDatGirisDepo?.depoKodu;
+        BaseSiparisEditModel.instance.topluCikisDepoTanimi ??= yetkiController.transferLokalDatCikisDepo?.depoTanimi;
+        BaseSiparisEditModel.instance.topluGirisDepoTanimi ??= yetkiController.transferLokalDatGirisDepo?.depoTanimi;
         if (yetkiController.transferDatLokalDATSeciliGelmesin) {
           BaseSiparisEditModel.instance.lokalDat = "H";
         } else {

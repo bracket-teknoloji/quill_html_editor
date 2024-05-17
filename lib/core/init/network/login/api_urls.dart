@@ -148,4 +148,5 @@ class   ApiUrls {
   static const String getBelgeler = "Sigma/GetBelgeler";
   static const String getBelge = "Sigma/GetBelge";
   static const String getDatListesi = "Sigma/GetDatListesi";
+  static const String getDatMiktar = "Sigma/GetDatMiktar";
 }
