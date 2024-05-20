@@ -53,7 +53,7 @@ class MenuItemConstants {
       color: ColorPalette.ecru,
       altMenuler: [
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
-        GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", route: "/mainPage/cariAktivite").isDebug(),
+        GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", route: "/mainPage/cariAktivite"),
         GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi"),
         //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
         GridItemModel.altmenu(
@@ -211,7 +211,15 @@ class MenuItemConstants {
 
     //* Hücre Takibi
     //*
-    GridItemModel.anamenu(name: "HTAK", title: "Hücre Takibi", icon: "shelves", color: ColorPalette.skyBlue, altMenuler: <GridItemModel>[]),
+    GridItemModel.anamenu(
+      name: "HTAK",
+      title: "Hücre Takibi",
+      icon: "shelves",
+      color: ColorPalette.skyBlue,
+      altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
+      ],
+    ).isDebug(),
 
     //* Mal Kabul
     //*

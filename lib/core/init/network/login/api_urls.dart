@@ -69,6 +69,7 @@ class   ApiUrls {
   static const String getSeriler = "Stok/GetSeriler";
   static const String seriNoUret = "Stok/SeriNoUret";
   static const String getStokDepoDurum = "Stok/GetStokDepoDurum";
+  static const String getHucreListesi = "Stok/GetHucreListesi";
 
   //* Finans
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
