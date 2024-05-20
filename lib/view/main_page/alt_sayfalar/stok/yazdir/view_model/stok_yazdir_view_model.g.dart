@@ -152,6 +152,17 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
   }
 
   @override
+  void setHucreKodu(String? value) {
+    final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
+        name: '_StokYazdirViewModelBase.setHucreKodu');
+    try {
+      return super.setHucreKodu(value);
+    } finally {
+      _$_StokYazdirViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setDizaynId(int? dizaynId) {
     final _$actionInfo = _$_StokYazdirViewModelBaseActionController.startAction(
         name: '_StokYazdirViewModelBase.setDizaynId');

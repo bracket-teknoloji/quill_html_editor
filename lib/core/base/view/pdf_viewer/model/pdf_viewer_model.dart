@@ -112,11 +112,6 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 // }
 @unfreezed
 class DicParams with _$DicParams {
-  @JsonSerializable(
-    createFactory: true,
-    explicitToJson: true,
-    createToJson: true,
-  )
   factory DicParams({
     String? cariKodu,
     String? stokKodu,
@@ -162,6 +157,7 @@ class DicParams with _$DicParams {
     String? muhasebeKodu,
     String? filtre,
     String? depoKodu,
+    String? hucreKodu,
   }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 }

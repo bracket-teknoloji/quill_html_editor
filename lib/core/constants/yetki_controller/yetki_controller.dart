@@ -587,6 +587,7 @@ final class YetkiController {
   bool get yazdirmaAmbarCikisi => _isTrue(_yetkiModel?.yazdirmaAmbarCikis);
   bool get yazdirmaCariHareket => _isTrue(_yetkiModel?.yazdirmaCariHareket);
   bool get yazdirmaSayim => _isTrue(_yetkiModel?.yazdirmaSayim);
+  bool get yazdirmaHucre => _isTrue(_yetkiModel?.yazdirmaHucreEtiketi);
 
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);

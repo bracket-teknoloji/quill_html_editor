@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
@@ -20,7 +21,8 @@ import "../view_model/stok_yazdir_view_model.dart";
 
 class StokYazdirView extends StatefulWidget {
   final StokListesiModel? model;
-  const StokYazdirView({super.key, this.model});
+  final HucreListesiModel? hucreModel;
+  const StokYazdirView({super.key, this.model, this.hucreModel});
 
   @override
   State<StokYazdirView> createState() => _StokYazdirViewState();
@@ -39,6 +41,9 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   @override
   void initState() {
     viewModel.init();
+    if (widget.hucreModel != null) {
+      viewModel.setHucreKodu(widget.hucreModel?.hucreKodu);
+    }
     if (widget.model != null) {
       viewModel.setStokKodu(widget.model);
       stokController = TextEditingController(text: widget.model?.stokAdi);
@@ -153,7 +158,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                     }
                   },
                 ),
-              ),
+              ).yetkiVarMi(widget.hucreModel == null),
               Observer(
                 builder: (_) => Visibility(
                   visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
@@ -223,7 +228,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                         ],
                       ),
                     ),
-                  ),
+                  ).yetkiVarMi(widget.hucreModel == null),
                   Expanded(
                     child: CustomTextField(
                       labelText: "Kopya Sayısı",
@@ -259,7 +264,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                       text: "Stok Seçildiğinde Yazdır",
                       child: Observer(builder: (_) => Switch.adaptive(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
                     ).paddingAll(UIHelper.lowSize),
-                  ).yetkiVarMi(widget.model == null),
+                  ).yetkiVarMi(widget.model == null && widget.hucreModel == null),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       isVertical: true,

@@ -81,6 +81,7 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
       muhasebeKodu: json['MUHASEBE_KODU'] as String?,
       filtre: json['FILTRE'] as String?,
       depoKodu: json['DEPO_KODU'] as String?,
+      hucreKodu: json['HUCRE_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) {
@@ -136,5 +137,6 @@ Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) {
   writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
   writeNotNull('FILTRE', instance.filtre);
   writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('HUCRE_KODU', instance.hucreKodu);
   return val;
 }

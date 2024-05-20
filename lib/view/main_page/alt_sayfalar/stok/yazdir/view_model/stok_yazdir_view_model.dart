@@ -56,6 +56,9 @@ abstract class _StokYazdirViewModelBase with Store {
   }
 
   @action
+  void setHucreKodu(String? value) => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(hucreKodu: value));
+
+  @action
   void setDizaynId(int? dizaynId) => printModel = printModel.copyWith(dizaynId: dizaynId);
 
   @action
@@ -65,21 +68,15 @@ abstract class _StokYazdirViewModelBase with Store {
   void setYaziciAdi(String? yaziciAdi) => printModel = printModel.copyWith(yaziciAdi: yaziciAdi);
 
   @action
-  void setMiktar(int? miktar) => printModel = printModel.copyWith(
-        dicParams: printModel.dicParams?.copyWith(miktar: miktar),
-      );
+  void setMiktar(int? miktar) => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(miktar: miktar));
 
   @action
-  void increaseMiktar() => printModel = printModel.copyWith(
-        dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1),
-      );
+  void increaseMiktar() => printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) + 1));
 
   @action
   void decreaseMiktar() {
     if (printModel.dicParams?.miktar == 0) return;
-    printModel = printModel.copyWith(
-      dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) - 1),
-    );
+    printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(miktar: (printModel.dicParams?.miktar ?? 0) - 1));
   }
 
   @action
