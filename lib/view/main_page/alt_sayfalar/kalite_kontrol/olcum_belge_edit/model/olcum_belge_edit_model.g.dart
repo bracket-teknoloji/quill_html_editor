@@ -74,7 +74,7 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
       sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
       retAdet: (json['RET_ADET'] as num?)?.toDouble(),
-      opkodu: json['OPKODU'] as String?,
+      operasyonKodu: json['OPERASYON_KODU'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
       belgeTuru: json['BELGE_TURU'] as String?,
@@ -83,6 +83,9 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
       teknikResimVarmi: json['TEKNIK_RESIM_VARMI'] as String?,
       kontrolPlaniVarmi: json['KONTROL_PLANI_VARMI'] as String?,
       yarimOlcumYapabilirmi: json['YARIM_OLCUM_YAPABILIRMI'] as String?,
+      operasyonTanimi: json['OPERASYON_TANIMI'] as String?,
+      istasyonKodu: json['ISTASYON_KODU'] as String?,
+      istasyonTanimi: json['ISTASYON_TANIMI'] as String?,
       datAdedi: (json['DAT_ADEDI'] as num?)?.toInt(),
       seriSorulsunmu: json['SERI_SORULSUNMU'] as String?,
       tur: json['TUR'] as String?,
@@ -114,7 +117,7 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('KABUL_ADET', instance.kabulAdet);
   writeNotNull('SARTLI_ADET', instance.sartliAdet);
   writeNotNull('RET_ADET', instance.retAdet);
-  writeNotNull('OPKODU', instance.opkodu);
+  writeNotNull('OPERASYON_KODU', instance.operasyonKodu);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('CARI_ADI', instance.cariAdi);
   writeNotNull('BELGE_TURU', instance.belgeTuru);
@@ -123,6 +126,9 @@ Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
   writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
   writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
   writeNotNull('YARIM_OLCUM_YAPABILIRMI', instance.yarimOlcumYapabilirmi);
+  writeNotNull('OPERASYON_TANIMI', instance.operasyonTanimi);
+  writeNotNull('ISTASYON_KODU', instance.istasyonKodu);
+  writeNotNull('ISTASYON_TANIMI', instance.istasyonTanimi);
   writeNotNull('DAT_ADEDI', instance.datAdedi);
   writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
   writeNotNull('TUR', instance.tur);

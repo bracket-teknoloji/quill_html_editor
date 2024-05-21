@@ -40,6 +40,7 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/tra
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart";
 import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_listesi/view/hucre_listesi_view.dart";
+import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_transferi/view/hucre_transferi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -228,7 +229,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
-          GetPage(name: "/seriRehberi", page: () => SeriRehberiView(stokModel: Get.arguments)),
+          GetPage(name: "/seriRehberi", page  : () => SeriRehberiView(stokModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
@@ -467,6 +468,7 @@ class PickerApp extends StatelessWidget {
 
               //* Hücre Takibi
               GetPage(name: "/hucreListesi", page: HucreListesiView.new),
+              GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
 
 
               //* Serbest Raporlar

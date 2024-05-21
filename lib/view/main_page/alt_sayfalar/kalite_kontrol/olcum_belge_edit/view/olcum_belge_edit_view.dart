@@ -310,7 +310,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             dialogManager.showAlertDialog("Proses bulunmamaktadır.");
             return;
           }
-          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
+          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.operasyonKodu));
           if (result != null) {
             await viewModel.getData();
           }
@@ -431,7 +431,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                                 arguments: viewModel.model?.copyWith(
                                                   prosesler: newModel,
                                                   yapkod: widget.model.yapkod,
-                                                  opkodu: widget.model.opkodu,
+                                                  opkodu: widget.model.operasyonKodu,
                                                   kayitOperator: item?.kayitOperator,
                                                   kayitOperatorKodu: item?.kayitOperatorKodu,
                                                   seriNo: item?.seriNo,
@@ -452,10 +452,11 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                                 arguments: viewModel.model?.copyWith(
                                                   prosesler: newModel,
                                                   yapkod: widget.model.yapkod,
-                                                  opkodu: widget.model.opkodu,
+                                                  opkodu: widget.model.operasyonKodu,
                                                   kayitOperator: item?.kayitOperator,
                                                   kayitOperatorKodu: item?.kayitOperatorKodu,
                                                   seriNo: item?.seriNo,
+                                                  olcumler: [item].nullCheckWithGeneric,
                                                 ),
                                               );
                                               if (result != null) {
