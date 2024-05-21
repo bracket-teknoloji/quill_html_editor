@@ -21,10 +21,19 @@ import "../param_model.dart";
 class MenuItemConstants {
   MenuItemConstants(this.context);
 
-  late final BuildContext context;
+  final BuildContext context;
   static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
-  static List<NetFectDizaynList> get _serbestRapor => _anaVeri?.paramModel?.netFectDizaynList?.where((NetFectDizaynList element) => element.ozelKod == "Serbest").toList() ?? [];
+  static List<NetFectDizaynList> get _serbestRapor => CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
+      ? _anaVeri?.paramModel?.netFectDizaynList
+              ?.where(
+                (NetFectDizaynList element) =>
+                    element.ozelKod == "Serbest" &&
+                    ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) || AccountModel.instance.adminMi),
+              )
+              .toList() ??
+          []
+      : [];
 
   static List<GridItemModel> get getGridItemModel =>
       _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
@@ -439,7 +448,7 @@ class MenuItemConstants {
     //* Üretim
     //*
     GridItemModel.anamenu(
-      name: "URET",
+      name: MenuItemsEnum.uretim.yetkiName,
       title: "Üretim",
       icon: "factory_2",
       color: ColorPalette.outerSpace,
@@ -448,7 +457,7 @@ class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      name: "GNEL_SRAP",
+      name: MenuItemsEnum.genelSerbestRaporlar.yetkiName,
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,
