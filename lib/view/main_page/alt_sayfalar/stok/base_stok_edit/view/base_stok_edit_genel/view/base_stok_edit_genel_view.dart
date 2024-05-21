@@ -225,6 +225,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                         labelText: "Kodu",
                         isMust: true,
                         controller: stokKoduController,
+                        onChanged: (value) => siradakiKod = value,
                         suffix: Wrap(
                           children: [
                             IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
@@ -705,7 +706,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       addSirketBilgileri: true,
       queryParameters: {
         "SonKoduGetir": "H",
-        "Kod": kod ?? "",
+        "Kod": kod != null || kod != "" ? kod : null,
         "Modul": "STOK",
       },
     );
