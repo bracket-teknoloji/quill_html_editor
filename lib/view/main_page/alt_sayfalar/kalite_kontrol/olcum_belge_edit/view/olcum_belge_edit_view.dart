@@ -17,6 +17,7 @@ import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -220,6 +221,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                               kalemList: [
                                 KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
                                   ..seriList = viewModel.olcumDatResponseListesi?.map(SeriList.fromOlcumDatResponseModel).toList()
+                                  ..miktar = viewModel.olcumDatResponseListesi?.map((element) => element.miktar).sum
                                   ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
                               ],
                               olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
@@ -310,7 +312,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             dialogManager.showAlertDialog("Proses bulunmamaktadır.");
             return;
           }
-          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.operasyonKodu));
+          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
           if (result != null) {
             await viewModel.getData();
           }
@@ -431,7 +433,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                                 arguments: viewModel.model?.copyWith(
                                                   prosesler: newModel,
                                                   yapkod: widget.model.yapkod,
-                                                  opkodu: widget.model.operasyonKodu,
+                                                  opkodu: widget.model.opkodu,
                                                   kayitOperator: item?.kayitOperator,
                                                   kayitOperatorKodu: item?.kayitOperatorKodu,
                                                   seriNo: item?.seriNo,
@@ -452,7 +454,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                                 arguments: viewModel.model?.copyWith(
                                                   prosesler: newModel,
                                                   yapkod: widget.model.yapkod,
-                                                  opkodu: widget.model.operasyonKodu,
+                                                  opkodu: widget.model.opkodu,
                                                   kayitOperator: item?.kayitOperator,
                                                   kayitOperatorKodu: item?.kayitOperatorKodu,
                                                   seriNo: item?.seriNo,

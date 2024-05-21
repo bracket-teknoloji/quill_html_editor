@@ -48,7 +48,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     double? kabulAdet,
     double? sartliAdet,
     double? retAdet,
-    String? operasyonKodu,
+    String? opkodu,
     String? cariKodu,
     String? cariAdi,
     String? belgeTuru,
@@ -57,7 +57,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? teknikResimVarmi,
     String? kontrolPlaniVarmi,
     String? yarimOlcumYapabilirmi,
-    String? operasyonTanimi,
+    String? opkoduTanimi,
     String? istasyonKodu,
     String? istasyonTanimi,
     int? datAdedi,
@@ -162,7 +162,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forDetayRequest => OlcumBelgeModel(
         stokKodu: stokKodu,
         yapkod: yapkod,
-        operasyonKodu: operasyonKodu,
+        opkodu: opkodu,
         belgeNo: belgeNo,
         belgeTipi: belgeTipi,
         sira: sira,
@@ -177,7 +177,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forTeknikResim => OlcumBelgeModel(
         stokKodu: stokKodu,
         yapkod: yapkod,
-        operasyonKodu: operasyonKodu,
+        opkodu: opkodu,
         tur: "T",
       );
 
@@ -195,7 +195,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(
         stokKodu: stokKodu,
         yapkod: yapkod,
-        operasyonKodu: operasyonKodu,
+        opkodu: opkodu,
         tur: "K",
       );
 

@@ -409,8 +409,8 @@ mixin _$OlcumBelgeModel {
   set sartliAdet(double? value) => throw _privateConstructorUsedError;
   double? get retAdet => throw _privateConstructorUsedError;
   set retAdet(double? value) => throw _privateConstructorUsedError;
-  String? get operasyonKodu => throw _privateConstructorUsedError;
-  set operasyonKodu(String? value) => throw _privateConstructorUsedError;
+  String? get opkodu => throw _privateConstructorUsedError;
+  set opkodu(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get cariAdi => throw _privateConstructorUsedError;
@@ -428,8 +428,8 @@ mixin _$OlcumBelgeModel {
   String? get yarimOlcumYapabilirmi => throw _privateConstructorUsedError;
   set yarimOlcumYapabilirmi(String? value) =>
       throw _privateConstructorUsedError;
-  String? get operasyonTanimi => throw _privateConstructorUsedError;
-  set operasyonTanimi(String? value) => throw _privateConstructorUsedError;
+  String? get opkoduTanimi => throw _privateConstructorUsedError;
+  set opkoduTanimi(String? value) => throw _privateConstructorUsedError;
   String? get istasyonKodu => throw _privateConstructorUsedError;
   set istasyonKodu(String? value) => throw _privateConstructorUsedError;
   String? get istasyonTanimi => throw _privateConstructorUsedError;
@@ -476,7 +476,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? operasyonKodu,
+      String? opkodu,
       String? cariKodu,
       String? cariAdi,
       String? belgeTuru,
@@ -485,7 +485,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
       String? yarimOlcumYapabilirmi,
-      String? operasyonTanimi,
+      String? opkoduTanimi,
       String? istasyonKodu,
       String? istasyonTanimi,
       int? datAdedi,
@@ -522,7 +522,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
-    Object? operasyonKodu = freezed,
+    Object? opkodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? belgeTuru = freezed,
@@ -531,7 +531,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
     Object? yarimOlcumYapabilirmi = freezed,
-    Object? operasyonTanimi = freezed,
+    Object? opkoduTanimi = freezed,
     Object? istasyonKodu = freezed,
     Object? istasyonTanimi = freezed,
     Object? datAdedi = freezed,
@@ -597,9 +597,9 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.retAdet
           : retAdet // ignore: cast_nullable_to_non_nullable
               as double?,
-      operasyonKodu: freezed == operasyonKodu
-          ? _value.operasyonKodu
-          : operasyonKodu // ignore: cast_nullable_to_non_nullable
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
               as String?,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
@@ -633,9 +633,9 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.yarimOlcumYapabilirmi
           : yarimOlcumYapabilirmi // ignore: cast_nullable_to_non_nullable
               as String?,
-      operasyonTanimi: freezed == operasyonTanimi
-          ? _value.operasyonTanimi
-          : operasyonTanimi // ignore: cast_nullable_to_non_nullable
+      opkoduTanimi: freezed == opkoduTanimi
+          ? _value.opkoduTanimi
+          : opkoduTanimi // ignore: cast_nullable_to_non_nullable
               as String?,
       istasyonKodu: freezed == istasyonKodu
           ? _value.istasyonKodu
@@ -692,7 +692,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? operasyonKodu,
+      String? opkodu,
       String? cariKodu,
       String? cariAdi,
       String? belgeTuru,
@@ -701,7 +701,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
       String? yarimOlcumYapabilirmi,
-      String? operasyonTanimi,
+      String? opkoduTanimi,
       String? istasyonKodu,
       String? istasyonTanimi,
       int? datAdedi,
@@ -736,7 +736,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
-    Object? operasyonKodu = freezed,
+    Object? opkodu = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
     Object? belgeTuru = freezed,
@@ -745,7 +745,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
     Object? yarimOlcumYapabilirmi = freezed,
-    Object? operasyonTanimi = freezed,
+    Object? opkoduTanimi = freezed,
     Object? istasyonKodu = freezed,
     Object? istasyonTanimi = freezed,
     Object? datAdedi = freezed,
@@ -811,9 +811,9 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.retAdet
           : retAdet // ignore: cast_nullable_to_non_nullable
               as double?,
-      operasyonKodu: freezed == operasyonKodu
-          ? _value.operasyonKodu
-          : operasyonKodu // ignore: cast_nullable_to_non_nullable
+      opkodu: freezed == opkodu
+          ? _value.opkodu
+          : opkodu // ignore: cast_nullable_to_non_nullable
               as String?,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
@@ -847,9 +847,9 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.yarimOlcumYapabilirmi
           : yarimOlcumYapabilirmi // ignore: cast_nullable_to_non_nullable
               as String?,
-      operasyonTanimi: freezed == operasyonTanimi
-          ? _value.operasyonTanimi
-          : operasyonTanimi // ignore: cast_nullable_to_non_nullable
+      opkoduTanimi: freezed == opkoduTanimi
+          ? _value.opkoduTanimi
+          : opkoduTanimi // ignore: cast_nullable_to_non_nullable
               as String?,
       istasyonKodu: freezed == istasyonKodu
           ? _value.istasyonKodu
@@ -901,7 +901,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.kabulAdet,
       this.sartliAdet,
       this.retAdet,
-      this.operasyonKodu,
+      this.opkodu,
       this.cariKodu,
       this.cariAdi,
       this.belgeTuru,
@@ -910,7 +910,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.teknikResimVarmi,
       this.kontrolPlaniVarmi,
       this.yarimOlcumYapabilirmi,
-      this.operasyonTanimi,
+      this.opkoduTanimi,
       this.istasyonKodu,
       this.istasyonTanimi,
       this.datAdedi,
@@ -952,7 +952,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   double? retAdet;
   @override
-  String? operasyonKodu;
+  String? opkodu;
   @override
   String? cariKodu;
   @override
@@ -970,7 +970,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @override
   String? yarimOlcumYapabilirmi;
   @override
-  String? operasyonTanimi;
+  String? opkoduTanimi;
   @override
   String? istasyonKodu;
   @override
@@ -1019,7 +1019,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? operasyonKodu,
+      String? opkodu,
       String? cariKodu,
       String? cariAdi,
       String? belgeTuru,
@@ -1028,7 +1028,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
       String? yarimOlcumYapabilirmi,
-      String? operasyonTanimi,
+      String? opkoduTanimi,
       String? istasyonKodu,
       String? istasyonTanimi,
       int? datAdedi,
@@ -1084,8 +1084,8 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   double? get retAdet;
   set retAdet(double? value);
   @override
-  String? get operasyonKodu;
-  set operasyonKodu(String? value);
+  String? get opkodu;
+  set opkodu(String? value);
   @override
   String? get cariKodu;
   set cariKodu(String? value);
@@ -1111,8 +1111,8 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   String? get yarimOlcumYapabilirmi;
   set yarimOlcumYapabilirmi(String? value);
   @override
-  String? get operasyonTanimi;
-  set operasyonTanimi(String? value);
+  String? get opkoduTanimi;
+  set opkoduTanimi(String? value);
   @override
   String? get istasyonKodu;
   set istasyonKodu(String? value);
