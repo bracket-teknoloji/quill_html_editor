@@ -217,6 +217,7 @@ class MenuItemConstants {
       icon: "shelves",
       color: ColorPalette.skyBlue,
       altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "hucre_Transfer", title: "Hücre Transferi", route: "/mainPage/hucreTransferi"),
         GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
       ],
     ).isDebug(),

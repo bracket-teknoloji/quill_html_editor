@@ -151,6 +151,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
             builder: (context, constraints) => Observer(
               builder: (_) => ToggleButtons(
                 constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+                //TODO BU ne amk selected'ı düzelt
                 isSelected: const [true, false],
                 children: const [
                   Text("Stok Kodundan"),
