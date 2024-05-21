@@ -137,7 +137,7 @@ class GridItemModel {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler.ext.isNotNullOrEmpty; //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler.ext.isNotNullOrEmpty && (altMenuler?.any((element) => element.yetkiKontrol) ?? false); //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }

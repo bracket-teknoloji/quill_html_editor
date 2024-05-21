@@ -122,7 +122,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
               }
               if (viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.map((e) => e.miktar).sum && seriliMi) {
                 dialogManager.showErrorSnackBar(
-                  "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve serilerin miktar toplamı (${viewModel.kalemModel.seriList?.map((e) => e.miktar).sum.toIntIfDouble})",
+                  "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve serilerin miktar toplamı (${viewModel.kalemModel.seriList?.map((e) => e.miktar).sum.toIntIfDouble ?? 0})",
                 );
                 return;
               }
@@ -1188,6 +1188,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (result is List<SeriList>) {
         serilerController.text = "${result.length} kalem";
         viewModel.kalemModel.seriList = result;
+        // viewModel.setMiktar(result.map((e) => e.miktar).sum);
       }
     }
   }

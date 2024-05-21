@@ -322,7 +322,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setIsletmeSube(viewModel.userData);
                                   CacheManager.setLogout(true);
                                   await CacheManager.setAnaVeri(model);
-                                  Get.offAndToNamed("/mainPage");
+                                  Get.offAllNamed("/mainPage");
                                   final result = await networkManager.dioPost<AccountModel>(
                                     path: ApiUrls.saveUyeBilgileri,
                                     bodyModel: AccountModel(),

@@ -1112,7 +1112,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
         plasiyerKodu: model.plasiyerKodu,
       );
 
-
   factory BaseSiparisEditModel.fromOlcumBelgeModel(OlcumBelgeModel model) => BaseSiparisEditModel(
         cariKodu: model.cariKodu,
         belgeNo: model.belgeNo,

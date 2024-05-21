@@ -62,6 +62,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                           )
                           .toList(),
                     );
+                    return;
                   }
                   Get.back(result: viewModel.selectedKalemList);
                 }

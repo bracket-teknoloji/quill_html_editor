@@ -52,6 +52,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
         siralama: "TESLIM_TARIHI_AZ",
         kisitYok: true,
         ekranTipi: "R",
+        miktarGetir: "E",
         arrBelgeTipi: "[2,6]",
         siparisDurumu: "A",
         pickerBelgeTuru: model.belgeTuru,

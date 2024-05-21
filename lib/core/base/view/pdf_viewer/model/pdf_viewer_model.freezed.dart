@@ -29,7 +29,8 @@ mixin _$PdfModel {
   @JsonKey(name: "DicParams", includeToJson: false)
   Map<String, dynamic>? get dicParamsMap => throw _privateConstructorUsedError;
   @JsonKey(name: "DicParams", includeToJson: false)
-  set dicParamsMap(Map<String, dynamic>? value) => throw _privateConstructorUsedError;
+  set dicParamsMap(Map<String, dynamic>? value) =>
+      throw _privateConstructorUsedError;
   int? get dizaynId => throw _privateConstructorUsedError;
   set dizaynId(int? value) => throw _privateConstructorUsedError;
   int? get etiketSayisi => throw _privateConstructorUsedError;
@@ -37,20 +38,30 @@ mixin _$PdfModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PdfModelCopyWith<PdfModel> get copyWith => throw _privateConstructorUsedError;
+  $PdfModelCopyWith<PdfModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PdfModelCopyWith<$Res> {
-  factory $PdfModelCopyWith(PdfModel value, $Res Function(PdfModel) then) = _$PdfModelCopyWithImpl<$Res, PdfModel>;
+  factory $PdfModelCopyWith(PdfModel value, $Res Function(PdfModel) then) =
+      _$PdfModelCopyWithImpl<$Res, PdfModel>;
   @useResult
-  $Res call({String? raporOzelKod, bool? standart, DicParams? dicParams, @JsonKey(name: "DicParams", includeToJson: false) Map<String, dynamic>? dicParamsMap, int? dizaynId, int? etiketSayisi});
+  $Res call(
+      {String? raporOzelKod,
+      bool? standart,
+      DicParams? dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
+      int? dizaynId,
+      int? etiketSayisi});
 
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel> implements $PdfModelCopyWith<$Res> {
+class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
+    implements $PdfModelCopyWith<$Res> {
   _$PdfModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -110,19 +121,33 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel> implements $PdfModelCo
 }
 
 /// @nodoc
-abstract class _$$PdfModelImplCopyWith<$Res> implements $PdfModelCopyWith<$Res> {
-  factory _$$PdfModelImplCopyWith(_$PdfModelImpl value, $Res Function(_$PdfModelImpl) then) = __$$PdfModelImplCopyWithImpl<$Res>;
+abstract class _$$PdfModelImplCopyWith<$Res>
+    implements $PdfModelCopyWith<$Res> {
+  factory _$$PdfModelImplCopyWith(
+          _$PdfModelImpl value, $Res Function(_$PdfModelImpl) then) =
+      __$$PdfModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? raporOzelKod, bool? standart, DicParams? dicParams, @JsonKey(name: "DicParams", includeToJson: false) Map<String, dynamic>? dicParamsMap, int? dizaynId, int? etiketSayisi});
+  $Res call(
+      {String? raporOzelKod,
+      bool? standart,
+      DicParams? dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
+      int? dizaynId,
+      int? etiketSayisi});
 
   @override
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class __$$PdfModelImplCopyWithImpl<$Res> extends _$PdfModelCopyWithImpl<$Res, _$PdfModelImpl> implements _$$PdfModelImplCopyWith<$Res> {
-  __$$PdfModelImplCopyWithImpl(_$PdfModelImpl _value, $Res Function(_$PdfModelImpl) _then) : super(_value, _then);
+class __$$PdfModelImplCopyWithImpl<$Res>
+    extends _$PdfModelCopyWithImpl<$Res, _$PdfModelImpl>
+    implements _$$PdfModelImplCopyWith<$Res> {
+  __$$PdfModelImplCopyWithImpl(
+      _$PdfModelImpl _value, $Res Function(_$PdfModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -167,9 +192,17 @@ class __$$PdfModelImplCopyWithImpl<$Res> extends _$PdfModelCopyWithImpl<$Res, _$
 
 @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
 class _$PdfModelImpl extends _PdfModel {
-  _$PdfModelImpl({this.raporOzelKod, this.standart, this.dicParams, @JsonKey(name: "DicParams", includeToJson: false) this.dicParamsMap, this.dizaynId, this.etiketSayisi}) : super._();
+  _$PdfModelImpl(
+      {this.raporOzelKod,
+      this.standart,
+      this.dicParams,
+      @JsonKey(name: "DicParams", includeToJson: false) this.dicParamsMap,
+      this.dizaynId,
+      this.etiketSayisi})
+      : super._();
 
-  factory _$PdfModelImpl.fromJson(Map<String, dynamic> json) => _$$PdfModelImplFromJson(json);
+  factory _$PdfModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PdfModelImplFromJson(json);
 
   @override
   String? raporOzelKod;
@@ -188,7 +221,8 @@ class _$PdfModelImpl extends _PdfModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith => __$$PdfModelImplCopyWithImpl<_$PdfModelImpl>(this, _$identity);
+  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
+      __$$PdfModelImplCopyWithImpl<_$PdfModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -203,12 +237,14 @@ abstract class _PdfModel extends PdfModel {
       {String? raporOzelKod,
       bool? standart,
       DicParams? dicParams,
-      @JsonKey(name: "DicParams", includeToJson: false) Map<String, dynamic>? dicParamsMap,
+      @JsonKey(name: "DicParams", includeToJson: false)
+      Map<String, dynamic>? dicParamsMap,
       int? dizaynId,
       int? etiketSayisi}) = _$PdfModelImpl;
   _PdfModel._() : super._();
 
-  factory _PdfModel.fromJson(Map<String, dynamic> json) = _$PdfModelImpl.fromJson;
+  factory _PdfModel.fromJson(Map<String, dynamic> json) =
+      _$PdfModelImpl.fromJson;
 
   @override
   String? get raporOzelKod;
@@ -232,7 +268,8 @@ abstract class _PdfModel extends PdfModel {
   set etiketSayisi(int? value);
   @override
   @JsonKey(ignore: true)
-  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 DicParams _$DicParamsFromJson(Map<String, dynamic> json) {
@@ -312,7 +349,8 @@ mixin _$DicParams {
   String? get fiyatTipi => throw _privateConstructorUsedError;
   set fiyatTipi(String? value) => throw _privateConstructorUsedError;
   String? get tblnfStokfiyatgecmisiId => throw _privateConstructorUsedError;
-  set tblnfStokfiyatgecmisiId(String? value) => throw _privateConstructorUsedError;
+  set tblnfStokfiyatgecmisiId(String? value) =>
+      throw _privateConstructorUsedError;
   String? get gorunecekAlanlar => throw _privateConstructorUsedError;
   set gorunecekAlanlar(String? value) => throw _privateConstructorUsedError;
   int? get miktar => throw _privateConstructorUsedError;
@@ -334,12 +372,14 @@ mixin _$DicParams {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DicParamsCopyWith<DicParams> get copyWith => throw _privateConstructorUsedError;
+  $DicParamsCopyWith<DicParams> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DicParamsCopyWith<$Res> {
-  factory $DicParamsCopyWith(DicParams value, $Res Function(DicParams) then) = _$DicParamsCopyWithImpl<$Res, DicParams>;
+  factory $DicParamsCopyWith(DicParams value, $Res Function(DicParams) then) =
+      _$DicParamsCopyWithImpl<$Res, DicParams>;
   @useResult
   $Res call(
       {String? cariKodu,
@@ -390,7 +430,8 @@ abstract class $DicParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams> implements $DicParamsCopyWith<$Res> {
+class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
+    implements $DicParamsCopyWith<$Res> {
   _$DicParamsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -633,8 +674,11 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams> implements $DicParam
 }
 
 /// @nodoc
-abstract class _$$DicParamsImplCopyWith<$Res> implements $DicParamsCopyWith<$Res> {
-  factory _$$DicParamsImplCopyWith(_$DicParamsImpl value, $Res Function(_$DicParamsImpl) then) = __$$DicParamsImplCopyWithImpl<$Res>;
+abstract class _$$DicParamsImplCopyWith<$Res>
+    implements $DicParamsCopyWith<$Res> {
+  factory _$$DicParamsImplCopyWith(
+          _$DicParamsImpl value, $Res Function(_$DicParamsImpl) then) =
+      __$$DicParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -686,8 +730,12 @@ abstract class _$$DicParamsImplCopyWith<$Res> implements $DicParamsCopyWith<$Res
 }
 
 /// @nodoc
-class __$$DicParamsImplCopyWithImpl<$Res> extends _$DicParamsCopyWithImpl<$Res, _$DicParamsImpl> implements _$$DicParamsImplCopyWith<$Res> {
-  __$$DicParamsImplCopyWithImpl(_$DicParamsImpl _value, $Res Function(_$DicParamsImpl) _then) : super(_value, _then);
+class __$$DicParamsImplCopyWithImpl<$Res>
+    extends _$DicParamsCopyWithImpl<$Res, _$DicParamsImpl>
+    implements _$$DicParamsImplCopyWith<$Res> {
+  __$$DicParamsImplCopyWithImpl(
+      _$DicParamsImpl _value, $Res Function(_$DicParamsImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -973,7 +1021,8 @@ class _$DicParamsImpl implements _DicParams {
       this.depoKodu,
       this.hucreKodu});
 
-  factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) => _$$DicParamsImplFromJson(json);
+  factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DicParamsImplFromJson(json);
 
   @override
   String? cariKodu;
@@ -1074,7 +1123,8 @@ class _$DicParamsImpl implements _DicParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith => __$$DicParamsImplCopyWithImpl<_$DicParamsImpl>(this, _$identity);
+  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
+      __$$DicParamsImplCopyWithImpl<_$DicParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1132,7 +1182,8 @@ abstract class _DicParams implements DicParams {
       String? depoKodu,
       String? hucreKodu}) = _$DicParamsImpl;
 
-  factory _DicParams.fromJson(Map<String, dynamic> json) = _$DicParamsImpl.fromJson;
+  factory _DicParams.fromJson(Map<String, dynamic> json) =
+      _$DicParamsImpl.fromJson;
 
   @override
   String? get cariKodu;
@@ -1271,5 +1322,6 @@ abstract class _DicParams implements DicParams {
   set hucreKodu(String? value);
   @override
   @JsonKey(ignore: true)
-  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
