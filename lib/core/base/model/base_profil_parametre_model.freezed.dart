@@ -46,6 +46,7 @@ mixin _$BaseProfilParametreModel {
       throw _privateConstructorUsedError;
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
   EditTipiEnum get olcumGirisiBelgeTipi => throw _privateConstructorUsedError;
+  bool get kapaliBelgelerListelenmesinMi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -77,7 +78,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList,
-      EditTipiEnum olcumGirisiBelgeTipi});
+      EditTipiEnum olcumGirisiBelgeTipi,
+      bool kapaliBelgelerListelenmesinMi});
 }
 
 /// @nodoc
@@ -112,6 +114,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
     Object? olcumGirisiBelgeTipi = null,
+    Object? kapaliBelgelerListelenmesinMi = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -186,6 +189,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.olcumGirisiBelgeTipi
           : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
               as EditTipiEnum,
+      kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
+          ? _value.kapaliBelgelerListelenmesinMi
+          : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -217,7 +224,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool rotaDisiGorunsunMu,
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList,
-      EditTipiEnum olcumGirisiBelgeTipi});
+      EditTipiEnum olcumGirisiBelgeTipi,
+      bool kapaliBelgelerListelenmesinMi});
 }
 
 /// @nodoc
@@ -251,6 +259,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? netFectDizaynList = freezed,
     Object? yaziciList = freezed,
     Object? olcumGirisiBelgeTipi = null,
+    Object? kapaliBelgelerListelenmesinMi = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -325,6 +334,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.olcumGirisiBelgeTipi
           : olcumGirisiBelgeTipi // ignore: cast_nullable_to_non_nullable
               as EditTipiEnum,
+      kapaliBelgelerListelenmesinMi: null == kapaliBelgelerListelenmesinMi
+          ? _value.kapaliBelgelerListelenmesinMi
+          : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -351,7 +364,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.rotaDisiGorunsunMu = false,
       this.netFectDizaynList,
       this.yaziciList,
-      this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri})
+      this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri,
+      this.kapaliBelgelerListelenmesinMi = false})
       : super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -414,6 +428,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final EditTipiEnum olcumGirisiBelgeTipi;
+  @override
+  @JsonKey()
+  final bool kapaliBelgelerListelenmesinMi;
 
   @JsonKey(ignore: true)
   @override
@@ -449,8 +466,9 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool rotaDisiGorunsunMu,
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList,
-      final EditTipiEnum
-          olcumGirisiBelgeTipi}) = _$BaseProfilParametreModelImpl;
+      final EditTipiEnum olcumGirisiBelgeTipi,
+      final bool
+          kapaliBelgelerListelenmesinMi}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -497,6 +515,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   YaziciList? get yaziciList;
   @override
   EditTipiEnum get olcumGirisiBelgeTipi;
+  @override
+  bool get kapaliBelgelerListelenmesinMi;
   @override
   @JsonKey(ignore: true)
   _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>

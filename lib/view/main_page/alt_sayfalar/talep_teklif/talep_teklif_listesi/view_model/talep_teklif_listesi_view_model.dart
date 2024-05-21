@@ -192,7 +192,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   void setTeslimatDurumuGroupValue(int? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0]);
 
   @action
-  void setKapaliBelgelerListelenmesin(bool? value) => siparislerRequestModel = siparislerRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
+  void setKapaliBelgelerListelenmesin(bool? value) {
+    siparislerRequestModel = siparislerRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value ?? false));
+  }
 
   @action
   void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);

@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -59,6 +60,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
 
   @override
   void initState() {
+    viewModel.setKapaliBelgelerListelenmesin(CacheManager.getProfilParametre.kapaliBelgelerListelenmesinMi);
     _scrollController = ScrollController();
     _searchController = TextEditingController();
     _baslangicTarihiController = TextEditingController();

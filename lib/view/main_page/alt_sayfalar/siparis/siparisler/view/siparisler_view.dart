@@ -524,7 +524,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Miktar"),
                                   value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                                  onChanged: (value) {
+                                  onChanged: (value) async {
                                     viewModel.changeEkstraAlanlarMap("MİK", value);
                                   },
                                 ),
@@ -539,6 +539,12 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             ],
                           ),
                         );
+                        if (viewModel.ekstraAlanlarMap["MİK"] == true) {
+                          viewModel.resetSayfa();
+                          viewModel.setSiparislerList(null);
+                          viewModel.setDahaVarMi(true);
+                          await getData();
+                        }
                       },
                     ),
                   ],

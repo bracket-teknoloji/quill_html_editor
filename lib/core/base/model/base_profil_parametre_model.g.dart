@@ -43,6 +43,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       olcumGirisiBelgeTipi: $enumDecodeNullable(
               _$EditTipiEnumEnumMap, json['OLCUM_GIRISI_BELGE_TIPI']) ??
           EditTipiEnum.isEmri,
+      kapaliBelgelerListelenmesinMi:
+          json['KAPALI_BELGELER_LISTELENMESIN_MI'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -76,6 +78,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   writeNotNull('YAZICI_LIST', instance.yaziciList?.toJson());
   val['OLCUM_GIRISI_BELGE_TIPI'] =
       _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!;
+  val['KAPALI_BELGELER_LISTELENMESIN_MI'] =
+      instance.kapaliBelgelerListelenmesinMi;
   return val;
 }
 

@@ -199,7 +199,7 @@ abstract class _SiparislerViewModelBase with Store {
   final String? pickerBelgeTuru;
 
   @observable
-  bool kapaliBelgelerListelenmesin = false;
+  bool kapaliBelgelerListelenmesin = CacheManager.getProfilParametre.kapaliBelgelerListelenmesinMi;
 
   @observable
   String? ozelKod1;
@@ -256,7 +256,11 @@ abstract class _SiparislerViewModelBase with Store {
   void setSiralama(String value) => siralama = value;
 
   @action
-  void setKapaliBelgelerListelenmesin(bool value) => kapaliBelgelerListelenmesin = value;
+  void setKapaliBelgelerListelenmesin(bool value) {
+    kapaliBelgelerListelenmesin = value;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value));
+  }
+
   @action
   void setSearchText(String? value) => searchText = value;
   @action

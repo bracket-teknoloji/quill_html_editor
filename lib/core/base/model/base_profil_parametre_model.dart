@@ -33,6 +33,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     NetFectDizaynList? netFectDizaynList,
     YaziciList? yaziciList,
     @Default(EditTipiEnum.isEmri) EditTipiEnum olcumGirisiBelgeTipi,
+    @Default(false) bool kapaliBelgelerListelenmesinMi,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor
