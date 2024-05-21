@@ -323,7 +323,7 @@ class DialogManager {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
-            Get.offNamed("/login", arguments: true);
+            Get.offAllNamed("/login", arguments: true);
           }
         },
         btnOkText: "Evet",
