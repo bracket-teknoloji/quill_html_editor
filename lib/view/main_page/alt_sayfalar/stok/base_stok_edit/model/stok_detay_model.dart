@@ -55,46 +55,6 @@ class FiyatList {
   Map<String, dynamic> toJson() => _$FiyatListToJson(this);
 }
 
-// @JsonSerializable(explicitToJson: true)
-// @HiveType(typeId: 196)
-// class SeriList {
-//   SeriList();
-//   @HiveField(0)
-//   String? stokKodu;
-//   @HiveField(1)
-//   int? depoKodu;
-//   @HiveField(2)
-//   double? miktar;
-//   @HiveField(3)
-//   String? seriNo;
-//   @HiveField(4)
-//   int? inckeyno;
-//   @HiveField(5)
-//   String? depoTanimi;
-//   @HiveField(6)
-//   int? hareketId;
-//   @HiveField(7)
-//   String? barkod;
-//   @HiveField(8)
-//   String? gckod;
-//   @HiveField(9)
-//   String? seri1;
-//   @HiveField(10)
-//   int? requestVersion;
-//   @HiveField(11)
-//   String? tempBarkod;
-//   @HiveField(12)
-//   String? seri2;
-//   @HiveField(13)
-//   String? seri3;
-//   @HiveField(14)
-//   String? seri4;
-
-//   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
-
-//   Map<String, dynamic> toJson() => _$SeriListToJson(this);
-// }
-
 @unfreezed
 class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
   @JsonSerializable(explicitToJson: true)

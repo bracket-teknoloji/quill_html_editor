@@ -10,8 +10,8 @@ import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
-import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_listesi/view_model/hucre_listesi_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view_model/hucre_listesi_view_model.dart";
 
 class HucreListesiView extends StatefulWidget {
   const HucreListesiView({super.key});
