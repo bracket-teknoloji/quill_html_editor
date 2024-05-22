@@ -617,4 +617,7 @@ final class YetkiController {
   bool get sigmaOlcumGirSil => _isTrue(_yetkiModel?.sigmaOlcumGirSil);
   bool get sigmaTeknikResim => _isTrue(_yetkiModel?.sigmaTeknikResim);
   bool get sigmaKontrolPlani => _isTrue(_yetkiModel?.sigmaKontrolPlani);
+
+  //! Hücre
+  bool get hucreHareketleri => _isTrue(_yetkiModel?.hucreHareketleri);
 }

@@ -70,6 +70,8 @@ class   ApiUrls {
   static const String seriNoUret = "Stok/SeriNoUret";
   static const String getStokDepoDurum = "Stok/GetStokDepoDurum";
   static const String getHucreListesi = "Stok/GetHucreListesi";
+  static const String getPaketler = "Stok/GetPaketler";
+  static const String getHucreHareketleri = "Stok/GetHucreHar";
 
   //* Finans
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
@@ -131,6 +133,7 @@ class   ApiUrls {
   static const String getSayimlar = "Depo/GetSayimlar";
   static const String saveSayim = "Depo/SaveSayim";
   static const String getSayimKalemleri = "Depo/GetSayimKalemleri";
+  static const String saveHucreTakibi = "Depo/SaveHucreTakibi";
 
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";

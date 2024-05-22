@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/view/main_page/model/menu_item/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
