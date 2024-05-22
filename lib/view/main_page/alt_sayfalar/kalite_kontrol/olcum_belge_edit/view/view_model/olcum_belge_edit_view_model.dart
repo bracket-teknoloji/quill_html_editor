@@ -7,8 +7,8 @@ import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_dat_response_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_seri_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 part "olcum_belge_edit_view_model.g.dart";
@@ -29,7 +29,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   OlcumSeriRequestModel seriRequestModel = const OlcumSeriRequestModel();
 
   @observable
-  ObservableList<OlcumDatResponseModel>? olcumDatResponseListesi;
+  ObservableList<SeriList>? olcumDatResponseListesi;
 
   @computed
   OlcumBelgeModel? get belgeModel => model?.belge?.firstOrNull;
@@ -51,7 +51,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   void setStokKodu(String? value) => seriRequestModel = seriRequestModel.copyWith(stokKodu: value);
 
   @action
-  void setOlcumDatResponseListesi(List<OlcumDatResponseModel>? list) => olcumDatResponseListesi = list?.asObservable();
+  void setOlcumDatResponseListesi(List<SeriList>? list) => olcumDatResponseListesi = list?.asObservable();
 
   @action
   void setRequestModel(OlcumBelgeModel reqModel) => requestModel = reqModel;
@@ -64,10 +64,10 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getDatMiktar() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getDatMiktar, bodyModel: const OlcumDatResponseModel(), data: seriRequestModel.toJson(), showLoading: true);
+    final result = await networkManager.dioGet(path: ApiUrls.getDatMiktar, bodyModel: SeriList(), data: seriRequestModel.toJson(), showLoading: true);
     if (result.success == true) {
-      final List<OlcumDatResponseModel> data = result.data.map((e) => e as OlcumDatResponseModel).toList().cast<OlcumDatResponseModel>();
-      setOlcumDatResponseListesi(data);
+      final List<SeriList> data = result.data.map((e) => e as SeriList).toList().cast<SeriList>();
+      setOlcumDatResponseListesi(data.map((e) => e..seri1 = e.seriNo).toList());
     }
   }
 

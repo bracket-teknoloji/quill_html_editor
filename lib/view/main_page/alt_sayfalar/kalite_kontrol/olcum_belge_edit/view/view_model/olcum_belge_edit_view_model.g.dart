@@ -93,13 +93,13 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
       context: context);
 
   @override
-  ObservableList<OlcumDatResponseModel>? get olcumDatResponseListesi {
+  ObservableList<SeriList>? get olcumDatResponseListesi {
     _$olcumDatResponseListesiAtom.reportRead();
     return super.olcumDatResponseListesi;
   }
 
   @override
-  set olcumDatResponseListesi(ObservableList<OlcumDatResponseModel>? value) {
+  set olcumDatResponseListesi(ObservableList<SeriList>? value) {
     _$olcumDatResponseListesiAtom
         .reportWrite(value, super.olcumDatResponseListesi, () {
       super.olcumDatResponseListesi = value;
@@ -184,7 +184,7 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   @override
-  void setOlcumDatResponseListesi(List<OlcumDatResponseModel>? list) {
+  void setOlcumDatResponseListesi(List<SeriList>? list) {
     final _$actionInfo =
         _$_OlcumBelgeEditViewModelBaseActionController.startAction(
             name: '_OlcumBelgeEditViewModelBase.setOlcumDatResponseListesi');

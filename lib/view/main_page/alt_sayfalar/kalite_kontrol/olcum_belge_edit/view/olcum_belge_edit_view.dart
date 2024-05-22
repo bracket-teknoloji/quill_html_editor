@@ -29,7 +29,6 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_ed
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/view_model/olcum_belge_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
@@ -220,7 +219,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                               topluCikisDepoTanimi: cikisDepoController.text,
                               kalemList: [
                                 KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
-                                  ..seriList = viewModel.olcumDatResponseListesi?.map(SeriList.fromOlcumDatResponseModel).toList()
+                                  ..seriList = viewModel.olcumDatResponseListesi?.toList()
                                   ..miktar = viewModel.olcumDatResponseListesi?.map((element) => element.miktar).sum
                                   ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
                               ],
