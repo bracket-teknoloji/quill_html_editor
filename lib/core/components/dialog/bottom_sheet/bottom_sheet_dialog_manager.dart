@@ -396,6 +396,15 @@ class BottomSheetDialogManager {
             .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
             .toList(),
       );
+  Future<DepoList?> showHucreDepoBottomSheetDialog(BuildContext context, int? groupValue) async => await showRadioBottomSheetDialog(
+        context,
+        title: "Depo seç",
+        groupValue: groupValue,
+        children: _paramModel?.depoList
+            ?.where((element) => element.hucreTakibi == "E")
+            .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
+            .toList(),
+      );
 
   Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue, {String? filter}) async {
     final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;

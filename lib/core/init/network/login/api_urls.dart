@@ -134,6 +134,7 @@ class   ApiUrls {
   static const String saveSayim = "Depo/SaveSayim";
   static const String getSayimKalemleri = "Depo/GetSayimKalemleri";
   static const String saveHucreTakibi = "Depo/SaveHucreTakibi";
+  static const String getHucredekiStoklar = "Depo/GetHucredekiStoklar";
 
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";

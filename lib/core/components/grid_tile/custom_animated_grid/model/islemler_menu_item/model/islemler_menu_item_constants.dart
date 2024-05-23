@@ -1257,7 +1257,7 @@ class IslemlerMenuItemConstants<T> {
                 }
                 result.kalemList = kalemList;
                 result.depoTanimi ??= siparisModel.depoTanimi;
-
+                BaseSiparisEditModel.resetInstance();
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(
@@ -1358,7 +1358,7 @@ class IslemlerMenuItemConstants<T> {
           .map(
             (KalemModel e) => e
               ..miktar = e.kalan
-              ..kalan = 0,
+              ..kalan = null,
           )
           .toList();
     }

@@ -28,6 +28,8 @@ import "package:picker/view/auth/login/model/login_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_pdf_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -475,6 +477,19 @@ class NetworkManager {
     );
     if (result.success ?? false) {
       return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull;
+    }
+    return null;
+  }
+
+  Future<HucreListesiModel?> getHucreModel(HucreListesiRequestModel model) async {
+    final result = await dioPost<HucreListesiModel>(
+      path: ApiUrls.getStoklar,
+      bodyModel: HucreListesiModel(),
+      showLoading: true,
+      queryParameters: model.toJson(),
+    );
+    if (result.success ?? false) {
+      return (result.data as List).map((e) => e as HucreListesiModel).toList().firstOrNull;
     }
     return null;
   }
