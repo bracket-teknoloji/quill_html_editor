@@ -377,6 +377,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel olcumBelgeRefKey(String? olcumBelgeRefKey);
 
+  BaseSiparisEditModel dovizListesi(Map<String, double>? dovizListesi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -569,6 +571,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? eirsaliyeGibDurumKodu,
     String? datOnayda,
     String? olcumBelgeRefKey,
+    Map<String, double>? dovizListesi,
   });
 }
 
@@ -1249,6 +1252,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(olcumBelgeRefKey: olcumBelgeRefKey);
 
   @override
+  BaseSiparisEditModel dovizListesi(Map<String, double>? dovizListesi) =>
+      this(dovizListesi: dovizListesi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1442,6 +1449,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? eirsaliyeGibDurumKodu = const $CopyWithPlaceholder(),
     Object? datOnayda = const $CopyWithPlaceholder(),
     Object? olcumBelgeRefKey = const $CopyWithPlaceholder(),
+    Object? dovizListesi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2188,6 +2196,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.olcumBelgeRefKey
           // ignore: cast_nullable_to_non_nullable
           : olcumBelgeRefKey as String?,
+      dovizListesi: dovizListesi == const $CopyWithPlaceholder()
+          ? _value.dovizListesi
+          // ignore: cast_nullable_to_non_nullable
+          : dovizListesi as Map<String, double>?,
     );
   }
 }
@@ -3667,7 +3679,8 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       eirsaliyeGibDurumKodu: fields[181] as int?,
       datOnayda: fields[183] as String?,
       olcumBelgeRefKey: fields[184] as String?,
-    )..dovizListesi = (fields[185] as Map?)?.cast<String, double>();
+      dovizListesi: (fields[185] as Map?)?.cast<String, double>(),
+    );
   }
 
   @override
@@ -4645,10 +4658,11 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           (json['EIRSALIYE_GIB_DURUM_KODU'] as num?)?.toInt(),
       datOnayda: json['DAT_ONAYDA'] as String?,
       olcumBelgeRefKey: json['OLCUM_BELGE_REF_KEY'] as String?,
-    )..dovizListesi = (json['DOVIZ_LISTESI'] as Map<String, dynamic>?)?.map(
-          (k, e) => MapEntry(k, (e as num).toDouble()),
-        ) ??
-        {};
+      dovizListesi: (json['DOVIZ_LISTESI'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, (e as num).toDouble()),
+          ) ??
+          {},
+    );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
     BaseSiparisEditModel instance) {

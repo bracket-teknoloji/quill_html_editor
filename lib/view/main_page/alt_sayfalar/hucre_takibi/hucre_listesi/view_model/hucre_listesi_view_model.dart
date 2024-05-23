@@ -29,6 +29,9 @@ abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin {
   void setSearchText(String? value) => searchText = value;
 
   @action
+  void setDepoKodu(int? value) => requestModel = requestModel.copyWith(depoKodu: value);
+
+  @action
   void setHucreListesi(List<HucreListesiModel>? list) => hucreListesi = list?.asObservable();
 
   @action

@@ -1318,7 +1318,11 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
       bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
       bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt(),
-    );
+    )
+      ..yapacik = json['YAPACIK'] as String?
+      ..depoBakiyeListe = (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
+          ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1409,6 +1413,9 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('SATIS_KUR_TARIHI', instance.satisKurTarihi?.toIso8601String());
   writeNotNull('BULUNAN_DOVIZ_FIYATI', instance.bulunanDovizFiyati);
   writeNotNull('BULUNAN_DOVIZ_TIPI', instance.bulunanDovizTipi);
+  writeNotNull('YAPACIK', instance.yapacik);
+  writeNotNull('DEPO_BAKIYE_LISTE',
+      instance.depoBakiyeListe?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -1570,5 +1577,29 @@ Map<String, dynamic> _$StokListToJson(StokList instance) {
   writeNotNull('SATIS_DOVIZ_ADI', instance.satisDovizAdi);
   writeNotNull('URETICI_KODU', instance.ureticiKodu);
   writeNotNull('BIRIM_AGIRLIK', instance.birimAgirlik);
+  return val;
+}
+
+DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>
+    DepoBakiyeListe(
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      giris: (json['GIRIS'] as num?)?.toDouble(),
+      cikis: (json['CIKIS'] as num?)?.toDouble(),
+      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$DepoBakiyeListeToJson(DepoBakiyeListe instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('DEPO_KODU', instance.depoKodu);
+  writeNotNull('GIRIS', instance.giris);
+  writeNotNull('CIKIS', instance.cikis);
+  writeNotNull('BAKIYE', instance.bakiye);
   return val;
 }

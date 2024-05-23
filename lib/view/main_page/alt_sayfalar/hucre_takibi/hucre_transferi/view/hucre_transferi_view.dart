@@ -8,6 +8,7 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/view_model/hucre_transferi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -114,8 +115,16 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     isMust: true,
                     controller: kaynakHucreController,
                     suffixMore: true,
+                    readOnly: true,
                     suffix: IconButton(onPressed: () async {}, icon: const Icon(Icons.qr_code_scanner_outlined)),
-                    onTap: () async {},
+                    onTap: () async {
+                      if (viewModel.model.depoKodu == null) return dialogManager.showAlertDialog("Depo Seçilmedi. Lütfen Deponu Seçiniz!");
+                      final result = await getHucreModel();
+                      if (result is HucreListesiModel) {
+                        kaynakHucreController.text = result.hucreKodu ?? "";
+                        viewModel.setHucreKodu(result.hucreKodu);
+                      }
+                    },
                   ).yetkiVarMi(viewModel.isStok),
                   CustomTextField(
                     labelText: "Stok",
@@ -126,7 +135,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     suffix: IconButton(
                       onPressed: () async {
                         if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
-                        final qr = await Get.toNamed("qr");
+                        final qr = await getQR();
                         if (qr is String) {
                           final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr));
                           updateStok(result);
@@ -179,13 +188,28 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     labelText: "Paket",
                     isMust: true,
                     controller: hedefHucreController,
-                    onTap: () {},
-                  ),
+                    suffix: IconButton(
+                      onPressed: () async {
+                        final qr = await getQR();
+                        if (qr is String) {
+                        }
+                      },
+                      icon: const Icon(Icons.qr_code_scanner_outlined),
+                    ),
+                  ).yetkiVarMi(!viewModel.isStok),
                   CustomTextField(
                     labelText: "Hedef Hücre",
                     isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
                     controller: hedefHucreController,
-                    onTap: () {},
+                    onTap: () async {
+                      final result = await getHucreModel();
+                      if (result is HucreListesiModel) {
+                        hedefHucreController.text = result.hucreKodu ?? "";
+                        viewModel.setHedefHucre(result.hucreKodu);
+                      }
+                    },
                   ),
                 ],
               ),
@@ -193,6 +217,13 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
           ),
         ),
       );
+
+  Future<String?> getQR() async => await Get.toNamed("qr");
+
+  Future<HucreListesiModel?> getHucreModel() async {
+    final result = await Get.toNamed("/mainPage/hucreListesiOzel", arguments: viewModel.model.depoKodu);
+    return result;
+  }
 
   void updateStok(StokListesiModel? result) {
     if (result is StokListesiModel) {

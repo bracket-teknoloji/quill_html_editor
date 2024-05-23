@@ -468,8 +468,8 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/olcumDuzenle", page: () => OlcumEkleView(model: Get.arguments, baseEditEnum: BaseEditEnum.duzenle)),
 
               //* Hücre Takibi
-              GetPage(name: "/hucreListesi", page: () => const HucreListesiView(isGetData: false)),
-              GetPage(name: "/hucreListesiOzel", page: () => const HucreListesiView(isGetData: true)),
+              GetPage(name: "/hucreListesi", page: HucreListesiView.new),
+              GetPage(name: "/hucreListesiOzel", page: () => HucreListesiView(depoKodu: Get.arguments)),
               GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
               GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
 
