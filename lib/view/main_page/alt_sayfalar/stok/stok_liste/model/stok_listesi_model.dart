@@ -93,6 +93,8 @@ class StokListesiModel with NetworkManagerMixin {
   DateTime? satisKurTarihi;
   double? bulunanDovizFiyati;
   int? bulunanDovizTipi;
+  String? yapacik;
+  List<DepoBakiyeListe>? depoBakiyeListe;
 
   static StokListesiModel? _instance;
 
@@ -372,4 +374,23 @@ class StokList {
 
   Map<String, dynamic> toJson() => _$StokListToJson(this);
   double get toplamTutar => (bulunanFiyat ?? 0) * (koliBilesenMiktari ?? 0);
+}
+
+@JsonSerializable()
+class DepoBakiyeListe {
+  int? depoKodu;
+  double? giris;
+  double? cikis;
+  double? bakiye;
+
+  DepoBakiyeListe({
+    this.depoKodu,
+    this.giris,
+    this.cikis,
+    this.bakiye,
+  });
+
+  factory DepoBakiyeListe.fromJson(Map<String, dynamic> json) => _$DepoBakiyeListeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DepoBakiyeListeToJson(this);
 }

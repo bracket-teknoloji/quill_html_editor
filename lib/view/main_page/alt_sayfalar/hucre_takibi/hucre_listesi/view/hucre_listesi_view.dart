@@ -7,14 +7,14 @@ import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view_model/hucre_listesi_view_model.dart";
 
 class HucreListesiView extends StatefulWidget {
-  const HucreListesiView({super.key});
+  final bool isGetData;
+  const HucreListesiView({super.key, required this.isGetData});
 
   @override
   State<HucreListesiView> createState() => _HucreListesiViewState();
@@ -91,6 +91,9 @@ class _HucreListesiViewState extends BaseState<HucreListesiView> {
   Card hucreCard(HucreListesiModel item) => Card(
         child: ListTile(
           onTap: () async {
+            if (widget.isGetData) {
+              Get.back(result: item);
+            }
             if (yetkiController.yazdirmaHucre) {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
