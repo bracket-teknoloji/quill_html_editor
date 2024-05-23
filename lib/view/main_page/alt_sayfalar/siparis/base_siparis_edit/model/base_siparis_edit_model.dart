@@ -650,6 +650,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.eirsaliyeGibDurumKodu,
     this.datOnayda,
     this.olcumBelgeRefKey,
+    this.dovizListesi,
   });
 
   BaseSiparisEditModel._init();
