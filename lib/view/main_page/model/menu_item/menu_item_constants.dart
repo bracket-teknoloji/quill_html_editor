@@ -343,7 +343,7 @@ class MenuItemConstants {
     //* Stok
     //*
     GridItemModel.anamenu(
-      name: "STOK",
+      name: MenuItemsEnum.stok.yetkiName,
       title: "Stok",
       icon: "inventory",
       color: ColorPalette.mantis,
@@ -357,7 +357,7 @@ class MenuItemConstants {
         //😳  GridItemModel.item(name: "stok_SeriHar", title: "Seri Hareketleri"),
         //😳  GridItemModel.item(name: "stok_StokListesi", title: "Seri Etiketi Yazdır"),
         //😳]),
-        //😳GridItemModel.item(name: "stok_StokListesi", title: "Paketleme"),
+        GridItemModel.item(name: "stok_Paketleme", title: "Paketleme", route: "/mainPage/paketleme"),
         GridItemModel.altmenu(
           name: null,
           title: "Seri İşlemleri",

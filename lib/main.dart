@@ -38,6 +38,7 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_e
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/view/fiyat_ozeti_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/view/paketleme_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
@@ -394,6 +395,7 @@ class PickerApp extends StatelessWidget {
               ),
               GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
               GetPage(name: "/fiyatOzeti", page: () => FiyatOzetiView(model: Get.arguments)),
+              GetPage(name: "/paketleme", page: PaketlemeListesiView.new),
 
               //* Stok Raporları
               GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),

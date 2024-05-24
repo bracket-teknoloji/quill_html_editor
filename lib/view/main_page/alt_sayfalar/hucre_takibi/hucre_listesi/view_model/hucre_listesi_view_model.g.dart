@@ -90,6 +90,17 @@ mixin _$HucreListesiViewModel on _HucreListesiViewModelBase, Store {
   }
 
   @override
+  void setDepoKodu(int? value) {
+    final _$actionInfo = _$_HucreListesiViewModelBaseActionController
+        .startAction(name: '_HucreListesiViewModelBase.setDepoKodu');
+    try {
+      return super.setDepoKodu(value);
+    } finally {
+      _$_HucreListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHucreListesi(List<HucreListesiModel>? list) {
     final _$actionInfo = _$_HucreListesiViewModelBaseActionController
         .startAction(name: '_HucreListesiViewModelBase.setHucreListesi');
