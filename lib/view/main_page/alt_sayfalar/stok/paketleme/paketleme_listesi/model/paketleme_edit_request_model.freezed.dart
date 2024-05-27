@@ -23,6 +23,7 @@ PaketlemeEditRequestModel _$PaketlemeEditRequestModelFromJson(
 mixin _$PaketlemeEditRequestModel {
   int? get islemKodu => throw _privateConstructorUsedError;
   int? get paketId => throw _privateConstructorUsedError;
+  int? get kalemId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,7 @@ abstract class $PaketlemeEditRequestModelCopyWith<$Res> {
           $Res Function(PaketlemeEditRequestModel) then) =
       _$PaketlemeEditRequestModelCopyWithImpl<$Res, PaketlemeEditRequestModel>;
   @useResult
-  $Res call({int? islemKodu, int? paketId});
+  $Res call({int? islemKodu, int? paketId, int? kalemId});
 }
 
 /// @nodoc
@@ -55,6 +56,7 @@ class _$PaketlemeEditRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? islemKodu = freezed,
     Object? paketId = freezed,
+    Object? kalemId = freezed,
   }) {
     return _then(_value.copyWith(
       islemKodu: freezed == islemKodu
@@ -64,6 +66,10 @@ class _$PaketlemeEditRequestModelCopyWithImpl<$Res,
       paketId: freezed == paketId
           ? _value.paketId
           : paketId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kalemId: freezed == kalemId
+          ? _value.kalemId
+          : kalemId // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -78,7 +84,7 @@ abstract class _$$PaketlemeEditRequestModelImplCopyWith<$Res>
       __$$PaketlemeEditRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? islemKodu, int? paketId});
+  $Res call({int? islemKodu, int? paketId, int? kalemId});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$PaketlemeEditRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? islemKodu = freezed,
     Object? paketId = freezed,
+    Object? kalemId = freezed,
   }) {
     return _then(_$PaketlemeEditRequestModelImpl(
       islemKodu: freezed == islemKodu
@@ -106,6 +113,10 @@ class __$$PaketlemeEditRequestModelImplCopyWithImpl<$Res>
           ? _value.paketId
           : paketId // ignore: cast_nullable_to_non_nullable
               as int?,
+      kalemId: freezed == kalemId
+          ? _value.kalemId
+          : kalemId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -113,7 +124,8 @@ class __$$PaketlemeEditRequestModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
-  const _$PaketlemeEditRequestModelImpl({this.islemKodu, this.paketId});
+  const _$PaketlemeEditRequestModelImpl(
+      {this.islemKodu, this.paketId, this.kalemId});
 
   factory _$PaketlemeEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PaketlemeEditRequestModelImplFromJson(json);
@@ -122,10 +134,12 @@ class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
   final int? islemKodu;
   @override
   final int? paketId;
+  @override
+  final int? kalemId;
 
   @override
   String toString() {
-    return 'PaketlemeEditRequestModel(islemKodu: $islemKodu, paketId: $paketId)';
+    return 'PaketlemeEditRequestModel(islemKodu: $islemKodu, paketId: $paketId, kalemId: $kalemId)';
   }
 
   @override
@@ -135,12 +149,13 @@ class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
             other is _$PaketlemeEditRequestModelImpl &&
             (identical(other.islemKodu, islemKodu) ||
                 other.islemKodu == islemKodu) &&
-            (identical(other.paketId, paketId) || other.paketId == paketId));
+            (identical(other.paketId, paketId) || other.paketId == paketId) &&
+            (identical(other.kalemId, kalemId) || other.kalemId == kalemId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, islemKodu, paketId);
+  int get hashCode => Object.hash(runtimeType, islemKodu, paketId, kalemId);
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +175,8 @@ class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
 abstract class _PaketlemeEditRequestModel implements PaketlemeEditRequestModel {
   const factory _PaketlemeEditRequestModel(
       {final int? islemKodu,
-      final int? paketId}) = _$PaketlemeEditRequestModelImpl;
+      final int? paketId,
+      final int? kalemId}) = _$PaketlemeEditRequestModelImpl;
 
   factory _PaketlemeEditRequestModel.fromJson(Map<String, dynamic> json) =
       _$PaketlemeEditRequestModelImpl.fromJson;
@@ -169,6 +185,8 @@ abstract class _PaketlemeEditRequestModel implements PaketlemeEditRequestModel {
   int? get islemKodu;
   @override
   int? get paketId;
+  @override
+  int? get kalemId;
   @override
   @JsonKey(ignore: true)
   _$$PaketlemeEditRequestModelImplCopyWith<_$PaketlemeEditRequestModelImpl>

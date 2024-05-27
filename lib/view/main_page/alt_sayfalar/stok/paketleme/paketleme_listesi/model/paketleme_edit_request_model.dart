@@ -8,6 +8,7 @@ class PaketlemeEditRequestModel with _$PaketlemeEditRequestModel {
   const factory PaketlemeEditRequestModel({
     int? islemKodu,
     int? paketId,
+    int? kalemId,
   }) = _PaketlemeEditRequestModel;
 
   factory PaketlemeEditRequestModel.fromJson(Map<String, dynamic> json) => _$PaketlemeEditRequestModelFromJson(json);

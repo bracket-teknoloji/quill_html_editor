@@ -17,6 +17,7 @@ _$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(
       paketKodu: json['PaketKodu'] as String?,
       islemKodu: (json['IslemKodu'] as num?)?.toInt(),
       kisitYok: json['KisitYok'] as bool?,
+      ekranTipi: json['EkranTipi'] as String?,
       paketId: (json['PaketID'] as num?)?.toInt(),
     );
 
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$PaketlemeListesiRequestModelImplToJson(
   writeNotNull('PaketKodu', instance.paketKodu);
   writeNotNull('IslemKodu', instance.islemKodu);
   writeNotNull('KisitYok', instance.kisitYok);
+  writeNotNull('EkranTipi', instance.ekranTipi);
   writeNotNull('PaketID', instance.paketId);
   return val;
 }

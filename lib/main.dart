@@ -26,6 +26,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/view/hucre_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view/hucre_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/view/hucre_transferi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucredeki_stoklar/view/hucredeki_stoklar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/kalem_sec/view/olcum_kalem_sec_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/view/olcum_belge_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/view/olcum_ekle_view.dart";
@@ -38,6 +39,7 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_e
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/view/fiyat_ozeti_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/view/paket_icerigi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/view/paketleme_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
@@ -396,6 +398,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
               GetPage(name: "/fiyatOzeti", page: () => FiyatOzetiView(model: Get.arguments)),
               GetPage(name: "/paketleme", page: PaketlemeListesiView.new),
+              GetPage(name: "/paketIcerigi", page: () => PaketIcerigiView(model: Get.arguments)),
 
               //* Stok Raporları
               GetPage(name: "/stokAmbarMaliyetRaporu", page: () => AmbarMaliyetRaporuView(model: Get.arguments)),
@@ -474,6 +477,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/hucreListesiOzel", page: () => HucreListesiView(depoKodu: Get.arguments)),
               GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
               GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
+              GetPage(name: "/hucredekiStoklar", page: () => HucredekiStoklarView(model: Get.arguments)),
 
               //* Serbest Raporlar
               //*

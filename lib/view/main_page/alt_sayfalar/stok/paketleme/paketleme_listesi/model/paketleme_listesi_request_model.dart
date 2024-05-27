@@ -15,6 +15,7 @@ class PaketlemeListesiRequestModel with _$PaketlemeListesiRequestModel {
     String? paketKodu,
     int? islemKodu,
     bool? kisitYok,
+    String? ekranTipi,
     @JsonKey(name: "PaketID") int? paketId,
   }) = _PaketlemeListesiRequestModel;
 

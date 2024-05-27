@@ -3,7 +3,8 @@ enum PaketIslemlerEnum {
   ekle(0),
   //TODO BU GÜNCELLENECEK
   duzenle(0),
-  sil(2);
+  paketSil(2),
+  paketIcerigiSil(5);
 
   final int islemKodu;
   const PaketIslemlerEnum(this.islemKodu);

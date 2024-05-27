@@ -30,6 +30,7 @@ mixin _$PaketlemeListesiRequestModel {
   String? get paketKodu => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   bool? get kisitYok => throw _privateConstructorUsedError;
+  String? get ekranTipi => throw _privateConstructorUsedError;
   @JsonKey(name: "PaketID")
   int? get paketId => throw _privateConstructorUsedError;
 
@@ -56,6 +57,7 @@ abstract class $PaketlemeListesiRequestModelCopyWith<$Res> {
       String? paketKodu,
       int? islemKodu,
       bool? kisitYok,
+      String? ekranTipi,
       @JsonKey(name: "PaketID") int? paketId});
 }
 
@@ -81,6 +83,7 @@ class _$PaketlemeListesiRequestModelCopyWithImpl<$Res,
     Object? paketKodu = freezed,
     Object? islemKodu = freezed,
     Object? kisitYok = freezed,
+    Object? ekranTipi = freezed,
     Object? paketId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -116,6 +119,10 @@ class _$PaketlemeListesiRequestModelCopyWithImpl<$Res,
           ? _value.kisitYok
           : kisitYok // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ekranTipi: freezed == ekranTipi
+          ? _value.ekranTipi
+          : ekranTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       paketId: freezed == paketId
           ? _value.paketId
           : paketId // ignore: cast_nullable_to_non_nullable
@@ -142,6 +149,7 @@ abstract class _$$PaketlemeListesiRequestModelImplCopyWith<$Res>
       String? paketKodu,
       int? islemKodu,
       bool? kisitYok,
+      String? ekranTipi,
       @JsonKey(name: "PaketID") int? paketId});
 }
 
@@ -166,6 +174,7 @@ class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
     Object? paketKodu = freezed,
     Object? islemKodu = freezed,
     Object? kisitYok = freezed,
+    Object? ekranTipi = freezed,
     Object? paketId = freezed,
   }) {
     return _then(_$PaketlemeListesiRequestModelImpl(
@@ -201,6 +210,10 @@ class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
           ? _value.kisitYok
           : kisitYok // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ekranTipi: freezed == ekranTipi
+          ? _value.ekranTipi
+          : ekranTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
       paketId: freezed == paketId
           ? _value.paketId
           : paketId // ignore: cast_nullable_to_non_nullable
@@ -223,6 +236,7 @@ class _$PaketlemeListesiRequestModelImpl
       this.paketKodu,
       this.islemKodu,
       this.kisitYok,
+      this.ekranTipi,
       @JsonKey(name: "PaketID") this.paketId});
 
   factory _$PaketlemeListesiRequestModelImpl.fromJson(
@@ -247,12 +261,14 @@ class _$PaketlemeListesiRequestModelImpl
   @override
   final bool? kisitYok;
   @override
+  final String? ekranTipi;
+  @override
   @JsonKey(name: "PaketID")
   final int? paketId;
 
   @override
   String toString() {
-    return 'PaketlemeListesiRequestModel(id: $id, stokKodu: $stokKodu, belgeNo: $belgeNo, menuKodu: $menuKodu, depoKodu: $depoKodu, paketKodu: $paketKodu, islemKodu: $islemKodu, kisitYok: $kisitYok, paketId: $paketId)';
+    return 'PaketlemeListesiRequestModel(id: $id, stokKodu: $stokKodu, belgeNo: $belgeNo, menuKodu: $menuKodu, depoKodu: $depoKodu, paketKodu: $paketKodu, islemKodu: $islemKodu, kisitYok: $kisitYok, ekranTipi: $ekranTipi, paketId: $paketId)';
   }
 
   @override
@@ -274,13 +290,15 @@ class _$PaketlemeListesiRequestModelImpl
                 other.islemKodu == islemKodu) &&
             (identical(other.kisitYok, kisitYok) ||
                 other.kisitYok == kisitYok) &&
+            (identical(other.ekranTipi, ekranTipi) ||
+                other.ekranTipi == ekranTipi) &&
             (identical(other.paketId, paketId) || other.paketId == paketId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, stokKodu, belgeNo, menuKodu,
-      depoKodu, paketKodu, islemKodu, kisitYok, paketId);
+      depoKodu, paketKodu, islemKodu, kisitYok, ekranTipi, paketId);
 
   @JsonKey(ignore: true)
   @override
@@ -309,6 +327,7 @@ abstract class _PaketlemeListesiRequestModel
           final String? paketKodu,
           final int? islemKodu,
           final bool? kisitYok,
+          final String? ekranTipi,
           @JsonKey(name: "PaketID") final int? paketId}) =
       _$PaketlemeListesiRequestModelImpl;
 
@@ -332,6 +351,8 @@ abstract class _PaketlemeListesiRequestModel
   int? get islemKodu;
   @override
   bool? get kisitYok;
+  @override
+  String? get ekranTipi;
   @override
   @JsonKey(name: "PaketID")
   int? get paketId;

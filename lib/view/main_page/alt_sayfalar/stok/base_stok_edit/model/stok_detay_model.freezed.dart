@@ -112,6 +112,10 @@ mixin _$SeriList {
   DateTime? get tarih => throw _privateConstructorUsedError;
   @HiveField(22)
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
+  @HiveField(23)
+  int? get refId => throw _privateConstructorUsedError;
+  @HiveField(23)
+  set refId(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -147,7 +151,8 @@ abstract class $SeriListCopyWith<$Res> {
       @HiveField(19) DateTime? sonKullanmaTarihi,
       @HiveField(20) String? stokAdi,
       @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih});
+      @HiveField(22) DateTime? tarih,
+      @HiveField(23) int? refId});
 }
 
 /// @nodoc
@@ -186,6 +191,7 @@ class _$SeriListCopyWithImpl<$Res, $Val extends SeriList>
     Object? stokAdi = freezed,
     Object? hucreKodu = freezed,
     Object? tarih = freezed,
+    Object? refId = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
@@ -280,6 +286,10 @@ class _$SeriListCopyWithImpl<$Res, $Val extends SeriList>
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      refId: freezed == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -315,7 +325,8 @@ abstract class _$$SeriListImplCopyWith<$Res>
       @HiveField(19) DateTime? sonKullanmaTarihi,
       @HiveField(20) String? stokAdi,
       @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih});
+      @HiveField(22) DateTime? tarih,
+      @HiveField(23) int? refId});
 }
 
 /// @nodoc
@@ -352,6 +363,7 @@ class __$$SeriListImplCopyWithImpl<$Res>
     Object? stokAdi = freezed,
     Object? hucreKodu = freezed,
     Object? tarih = freezed,
+    Object? refId = freezed,
   }) {
     return _then(_$SeriListImpl(
       stokKodu: freezed == stokKodu
@@ -446,6 +458,10 @@ class __$$SeriListImplCopyWithImpl<$Res>
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      refId: freezed == refId
+          ? _value.refId
+          : refId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -477,7 +493,8 @@ class _$SeriListImpl extends _SeriList {
       @HiveField(19) this.sonKullanmaTarihi,
       @HiveField(20) this.stokAdi,
       @HiveField(21) this.hucreKodu,
-      @HiveField(22) this.tarih})
+      @HiveField(22) this.tarih,
+      @HiveField(23) this.refId})
       : super._();
 
   factory _$SeriListImpl.fromJson(Map<String, dynamic> json) =>
@@ -552,6 +569,9 @@ class _$SeriListImpl extends _SeriList {
   @override
   @HiveField(22)
   DateTime? tarih;
+  @override
+  @HiveField(23)
+  int? refId;
 
   @JsonKey(ignore: true)
   @override
@@ -591,7 +611,8 @@ abstract class _SeriList extends SeriList {
       @HiveField(19) DateTime? sonKullanmaTarihi,
       @HiveField(20) String? stokAdi,
       @HiveField(21) String? hucreKodu,
-      @HiveField(22) DateTime? tarih}) = _$SeriListImpl;
+      @HiveField(22) DateTime? tarih,
+      @HiveField(23) int? refId}) = _$SeriListImpl;
   _SeriList._() : super._();
 
   factory _SeriList.fromJson(Map<String, dynamic> json) =
@@ -712,6 +733,11 @@ abstract class _SeriList extends SeriList {
   DateTime? get tarih;
   @HiveField(22)
   set tarih(DateTime? value);
+  @override
+  @HiveField(23)
+  int? get refId;
+  @HiveField(23)
+  set refId(int? value);
   @override
   @JsonKey(ignore: true)
   _$$SeriListImplCopyWith<_$SeriListImpl> get copyWith =>
