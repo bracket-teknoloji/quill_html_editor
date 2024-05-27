@@ -1,6 +1,7 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -10,9 +11,12 @@ part "stok_listesi_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
-class StokListesiModel with NetworkManagerMixin {
+class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   StokListesiModel._init();
-
+  @override
+  String? stokAdi;
+  @override
+  String? stokKodu;
   bool? seriBakiyeKontrolu;
   bool? seriCikislardaAcik;
   bool? seriCikistaOtomatikMi;
@@ -25,6 +29,7 @@ class StokListesiModel with NetworkManagerMixin {
   double? alisFiat3;
   double? alisFiat4;
   double? alisKdv;
+  @override
   double? bakiye;
   double? birimAgirlik;
   double? dovAlisFiat;
@@ -80,8 +85,6 @@ class StokListesiModel with NetworkManagerMixin {
   String? resimUrl;
   String? resimUrlKucuk;
   String? satisDovizAdi;
-  String? stokAdi;
-  String? stokKodu;
   String? ureticiKodu;
   bool? yapilandirmaAktif;
   String? yapkod;
@@ -94,6 +97,8 @@ class StokListesiModel with NetworkManagerMixin {
   double? bulunanDovizFiyati;
   int? bulunanDovizTipi;
   String? yapacik;
+  @override
+  double? netMiktar;
   List<DepoBakiyeListe>? depoBakiyeListe;
 
   static StokListesiModel? _instance;

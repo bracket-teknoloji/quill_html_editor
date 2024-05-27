@@ -1320,6 +1320,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt(),
     )
       ..yapacik = json['YAPACIK'] as String?
+      ..netMiktar = (json['NET_MIKTAR'] as num?)?.toDouble()
       ..depoBakiyeListe = (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
           ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
           .toList();
@@ -1333,6 +1334,8 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
     }
   }
 
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('SERI_BAKIYE_KONTROLU', instance.seriBakiyeKontrolu);
   writeNotNull('SERI_CIKISLARDA_ACIK', instance.seriCikislardaAcik);
   writeNotNull('SERI_CIKISTA_OTOMATIK_MI', instance.seriCikistaOtomatikMi);
@@ -1400,8 +1403,6 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('RESIM_URL', instance.resimUrl);
   writeNotNull('RESIM_URL_KUCUK', instance.resimUrlKucuk);
   writeNotNull('SATIS_DOVIZ_ADI', instance.satisDovizAdi);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('URETICI_KODU', instance.ureticiKodu);
   writeNotNull('YAPILANDIRMA_AKTIF', instance.yapilandirmaAktif);
   writeNotNull('YAPKOD', instance.yapkod);
@@ -1414,6 +1415,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('BULUNAN_DOVIZ_FIYATI', instance.bulunanDovizFiyati);
   writeNotNull('BULUNAN_DOVIZ_TIPI', instance.bulunanDovizTipi);
   writeNotNull('YAPACIK', instance.yapacik);
+  writeNotNull('NET_MIKTAR', instance.netMiktar);
   writeNotNull('DEPO_BAKIYE_LISTE',
       instance.depoBakiyeListe?.map((e) => e.toJson()).toList());
   return val;
