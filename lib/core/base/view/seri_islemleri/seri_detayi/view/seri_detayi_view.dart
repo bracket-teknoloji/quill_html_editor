@@ -100,7 +100,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                 CustomTextField(
                   labelText: "Seri 1",
                   focusNode: _focusNode,
-                  controllerText: viewModel.seriModel.seri1,
+                  controllerText: viewModel.seriModel.seri1 ?? viewModel.seriModel.seriNo,
                   isMust: true,
                   onChanged: viewModel.setSeri1,
                   suffix: IconButton(

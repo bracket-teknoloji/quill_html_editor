@@ -176,12 +176,12 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                       final SeriList model = viewModel.kalemModel.seriList![index];
                       return Card(
                         child: ListTile(
-                          title: Text(model.seri1 ?? ""),
+                          title: Text(model.seri1 ?? model.seriNo ?? ""),
                           subtitle: CustomLayoutBuilder(
                             splitCount: 2,
                             children: [
                               Text("Miktar: ${model.miktar.toIntIfDouble.toStringIfNotNull ?? ""}"),
-                              Text("Son Kul. Tarihi: ${model.sonKullanmaTarihi?.toDateString ?? ""}"),
+                              Text("Son Kul. Tarihi: ${model.sonKullanmaTarihi?.toDateString ?? ""}").yetkiVarMi(model.sonKullanmaTarihi != null),
                             ],
                           ),
                           onTap: () async {
