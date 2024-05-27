@@ -1,16 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/view_model/hucre_transferi_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 final class HucreTransferiView extends StatefulWidget {
@@ -145,7 +147,14 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     ),
                     onTap: () async {
                       if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
-                      final result = await Get.toNamed("/mainPage/stokListesiOzel");
+                      final result = await Get.toNamed(
+                        "/mainPage/hucredekiStoklar",
+                        arguments: HucreListesiRequestModel(
+                          depoKodu: viewModel.model.depoKodu,
+                          hucreKodu: viewModel.model.hucreKodu,
+                          filterText: null,
+                        ),
+                      );
                       updateStok(result);
                     },
                   ).yetkiVarMi(viewModel.isStok),
@@ -167,9 +176,9 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                         child: CustomTextField(
                           labelText: "Hücre Miktarı",
                           controller: hucreMiktariController,
+                          readOnly: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
-                          onTap: () {},
                         ),
                       ),
                       Expanded(
@@ -191,8 +200,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     suffix: IconButton(
                       onPressed: () async {
                         final qr = await getQR();
-                        if (qr is String) {
-                        }
+                        if (qr is String) {}
                       },
                       icon: const Icon(Icons.qr_code_scanner_outlined),
                     ),
@@ -215,7 +223,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
               ),
             ),
           ),
-        ),
+        ).paddingAll(UIHelper.lowSize),
       );
 
   Future<String?> getQR() async => await Get.toNamed("qr");
@@ -225,10 +233,12 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
     return result;
   }
 
-  void updateStok(StokListesiModel? result) {
-    if (result is StokListesiModel) {
+  void updateStok(BaseStokMixin? result) {
+    if (result is BaseStokMixin) {
       stokController.text = result.stokKodu ?? "";
       stokAdiController.text = result.stokAdi ?? "";
+      hucreMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
+      islemMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       viewModel.setStokKodu(result.stokKodu);
     }
   }

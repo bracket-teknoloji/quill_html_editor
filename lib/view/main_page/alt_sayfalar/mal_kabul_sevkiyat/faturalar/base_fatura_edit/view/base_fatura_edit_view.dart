@@ -131,7 +131,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         BaseSiparisEditModel.instance.efattanAlisFat = true;
         BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+        BaseSiparisEditModel.instance.tarih ??= DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
       } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {

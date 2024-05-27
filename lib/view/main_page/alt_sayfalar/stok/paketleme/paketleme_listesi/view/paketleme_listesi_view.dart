@@ -10,6 +10,8 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.dart";
@@ -74,39 +76,41 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
                 itemCount: viewModel.filteredPaketlemeListesi?.length ?? 0,
                 itemBuilder: (context, index) {
                   final item = viewModel.filteredPaketlemeListesi![index];
-                  return Card(
-                    child: ListTile(
-                      onTap: () => bottomSheet(item),
-                      title: Text(item.kodu ?? ""),
-                      trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.print_outlined)),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const ColorfulBadge(
-                                label: Text("Kilitli"),
-                                badgeColorEnum: BadgeColorEnum.kilitli,
-                              ).yetkiVarMi(item.kilit == "E"),
-                            ],
-                          ),
-                          Text("Paket Türü: ${item.paketTuruTanimi}").yetkiVarMi(item.paketTuruTanimi != null),
-                          CustomLayoutBuilder(
-                            splitCount: 2,
-                            children: [
-                              Text("Kalem Adedi: ${item.kalemSayisi ?? 0}").yetkiVarMi(item.kalemSayisi != null),
-                              Text("Depo Kodu: ${item.depoKodu}").yetkiVarMi(item.depoKodu != null),
-                            ],
-                          ),
-                          Text("Kaydeden: ${item.kayityapankul}").yetkiVarMi(item.kayityapankul != null),
-                          Text("Kaydeden: ${item.kayittarihi?.toDateString}").yetkiVarMi(item.kayittarihi != null),
-                        ],
-                      ),
-                    ),
-                  );
+                  return card(item);
                 },
               );
             },
+          ),
+        ),
+      );
+
+  Card card(PaketlemeListesiModel item) => Card(
+        child: ListTile(
+          onTap: () => bottomSheet(item),
+          title: Text(item.kodu ?? ""),
+          trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.print_outlined)).yetkiVarMi(yetkiController.yazdirmaPaketlemeEtiketi),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const ColorfulBadge(
+                    label: Text("Kilitli"),
+                    badgeColorEnum: BadgeColorEnum.kilitli,
+                  ).yetkiVarMi(item.kilit == "E"),
+                ],
+              ),
+              Text("Paket Türü: ${item.paketTuruTanimi}").yetkiVarMi(item.paketTuruTanimi != null),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  Text("Kalem Adedi: ${item.kalemSayisi ?? 0}").yetkiVarMi(item.kalemSayisi != null),
+                  Text("Depo Kodu: ${item.depoKodu}").yetkiVarMi(item.depoKodu != null),
+                ],
+              ),
+              Text("Kaydeden: ${item.kayityapankul}").yetkiVarMi(item.kayityapankul != null),
+              Text("Kaydeden: ${item.kayittarihi?.toDateString}").yetkiVarMi(item.kayittarihi != null),
+            ],
           ),
         ),
       );
@@ -116,8 +120,15 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
       context,
       title: item.kodu ?? "",
       children: [
-        BottomSheetModel(title: "Kalemler", iconWidget: Icons.edit_outlined),
-        BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
+        BottomSheetModel(
+          title: "Paket İçeriği",
+          iconWidget: Icons.inventory_outlined,
+          onTap: () async {
+            Get.back();
+            Get.toNamed("/mainPage/paketIcerigi", arguments: item);
+          },
+        ),
+        BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined).yetkiKontrol(yetkiController.stokPaketlemeEkle && item.kilit != "E"),
         BottomSheetModel(
           title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
@@ -131,9 +142,9 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
               }
             });
           },
-        ),
-        BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
-      ],
+        ).yetkiKontrol(yetkiController.stokPaketlemeSil && item.kilit != "E"),
+        BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined).yetkiKontrol(yetkiController.yazdirmaPaketlemeEtiketi),
+      ].nullCheckWithGeneric,
     );
   }
 }

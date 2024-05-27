@@ -57,7 +57,7 @@ abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.savePaket,
       bodyModel: PaketlemeListesiModel(),
       showLoading: true,
-      data: PaketlemeEditRequestModel(islemKodu: PaketIslemlerEnum.sil.islemKodu, paketId: paketID).toJson(),
+      data: PaketlemeEditRequestModel(islemKodu: PaketIslemlerEnum.paketSil.islemKodu, paketId: paketID).toJson(),
     );
     return result;
   }
