@@ -619,6 +619,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 dovizAdi: cariModel.dovizAdi,
                 dovizTipi: cariModel.dovizKodu,
                 efaturaInckeyno: widget.eBelgeListesiModel.inckeyno,
+                tarih: widget.eBelgeListesiModel.tarih,
                 efattanAlisFat: true,
                 ebelgeZarfid: widget.eBelgeListesiModel.zarfid,
                 belgeTipi: 2,
