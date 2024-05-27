@@ -19,6 +19,9 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
         "PLASIYER_KOD",
         "PLASIYERKODU",
         "PLASIYER_KODU",
+      ].contains(rehberTipi);
+
+  bool get secmeliPlasiyerMi => [
         "PLASIYERLER",
       ].contains(rehberTipi);
 
@@ -28,6 +31,9 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
         "CARI_KOD",
         "CARIKODU",
         "CARI_KODU",
+      ].contains(rehberTipi);
+  bool get projeKoduMu => [
+        "PROJE_KODU",
       ].contains(rehberTipi);
 
   bool get stokKoduMu => [

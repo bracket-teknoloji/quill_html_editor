@@ -46,6 +46,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   void initState() {
     viewModel.setDizaynId(widget.dizaynList?.id);
     viewModel.setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
+    
     super.initState();
   }
 
@@ -134,6 +135,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 },
               );
             } else if (e.rehberTipi != null) {
+              if (e.secmeliPlasiyerMi) {
+      viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+    }
               return CustomTextField(
                 labelText: e.adi ?? "",
                 controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
@@ -190,6 +194,23 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "");
+      }
+    } else if (model.secmeliPlasiyerMi) {
+      viewModel.changeDicParams(model.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+      final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: (viewModel.dicParams[model.adi] as String?)?.split("; "));
+      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
+      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
+      if (result != null) {
+        viewModel.changeDicParams(model.adi ?? "", result.map((e) => e?.plasiyerKodu).join("; "));
+      }
+    } else if (model.projeKoduMu) {
+      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, null);
+      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
+      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
+      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
+      if (result != null) {
+        viewModel.changeDicParams(model.adi ?? "", result.projeKodu ?? "");
       }
     } else if (model.grupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
