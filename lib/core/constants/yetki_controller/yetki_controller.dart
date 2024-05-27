@@ -149,6 +149,14 @@ final class YetkiController {
   bool get stokBarkodDuzenle => _isTrue(_yetkiModel?.stokBarkodKayitlariDuzelt);
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
 
+  //* Paketleme
+  bool get stokPaketlemeSil => _isTrue(_yetkiModel?.stokPaketlemeSil);
+  bool get stokPaketlemeEkle => _isTrue(_yetkiModel?.stokPaketlemeEkle);
+  bool get stokPaketlemeCoklu => _isTrue(_yetkiModel?.stokPaketlemeCoklu);
+  bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
+  bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
+
+
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
   bool get siparisKdvDahilMi {
@@ -588,6 +596,7 @@ final class YetkiController {
   bool get yazdirmaCariHareket => _isTrue(_yetkiModel?.yazdirmaCariHareket);
   bool get yazdirmaSayim => _isTrue(_yetkiModel?.yazdirmaSayim);
   bool get yazdirmaHucre => _isTrue(_yetkiModel?.yazdirmaHucreEtiketi);
+  bool get yazdirmaPaketlemeEtiketi => _isTrue(_yetkiModel?.yazdirmaPaketlemeEtiketi);
 
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
