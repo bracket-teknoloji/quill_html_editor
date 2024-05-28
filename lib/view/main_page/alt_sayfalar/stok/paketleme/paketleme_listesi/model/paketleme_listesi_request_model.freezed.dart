@@ -26,10 +26,10 @@ mixin _$PaketlemeListesiRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
-  String? get depoKodu => throw _privateConstructorUsedError;
+  int? get depoKodu => throw _privateConstructorUsedError;
   String? get paketKodu => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
-  bool? get kisitYok => throw _privateConstructorUsedError;
+  String? get kisitYok => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
   @JsonKey(name: "PaketID")
   int? get paketId => throw _privateConstructorUsedError;
@@ -53,10 +53,10 @@ abstract class $PaketlemeListesiRequestModelCopyWith<$Res> {
       String? stokKodu,
       String? belgeNo,
       String? menuKodu,
-      String? depoKodu,
+      int? depoKodu,
       String? paketKodu,
       int? islemKodu,
-      bool? kisitYok,
+      String? kisitYok,
       String? ekranTipi,
       @JsonKey(name: "PaketID") int? paketId});
 }
@@ -106,7 +106,7 @@ class _$PaketlemeListesiRequestModelCopyWithImpl<$Res,
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       paketKodu: freezed == paketKodu
           ? _value.paketKodu
           : paketKodu // ignore: cast_nullable_to_non_nullable
@@ -118,7 +118,7 @@ class _$PaketlemeListesiRequestModelCopyWithImpl<$Res,
       kisitYok: freezed == kisitYok
           ? _value.kisitYok
           : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -145,10 +145,10 @@ abstract class _$$PaketlemeListesiRequestModelImplCopyWith<$Res>
       String? stokKodu,
       String? belgeNo,
       String? menuKodu,
-      String? depoKodu,
+      int? depoKodu,
       String? paketKodu,
       int? islemKodu,
-      bool? kisitYok,
+      String? kisitYok,
       String? ekranTipi,
       @JsonKey(name: "PaketID") int? paketId});
 }
@@ -197,7 +197,7 @@ class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       paketKodu: freezed == paketKodu
           ? _value.paketKodu
           : paketKodu // ignore: cast_nullable_to_non_nullable
@@ -209,7 +209,7 @@ class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
       kisitYok: freezed == kisitYok
           ? _value.kisitYok
           : kisitYok // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as String?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -253,13 +253,13 @@ class _$PaketlemeListesiRequestModelImpl
   @override
   final String? menuKodu;
   @override
-  final String? depoKodu;
+  final int? depoKodu;
   @override
   final String? paketKodu;
   @override
   final int? islemKodu;
   @override
-  final bool? kisitYok;
+  final String? kisitYok;
   @override
   final String? ekranTipi;
   @override
@@ -323,10 +323,10 @@ abstract class _PaketlemeListesiRequestModel
           final String? stokKodu,
           final String? belgeNo,
           final String? menuKodu,
-          final String? depoKodu,
+          final int? depoKodu,
           final String? paketKodu,
           final int? islemKodu,
-          final bool? kisitYok,
+          final String? kisitYok,
           final String? ekranTipi,
           @JsonKey(name: "PaketID") final int? paketId}) =
       _$PaketlemeListesiRequestModelImpl;
@@ -344,13 +344,13 @@ abstract class _PaketlemeListesiRequestModel
   @override
   String? get menuKodu;
   @override
-  String? get depoKodu;
+  int? get depoKodu;
   @override
   String? get paketKodu;
   @override
   int? get islemKodu;
   @override
-  bool? get kisitYok;
+  String? get kisitYok;
   @override
   String? get ekranTipi;
   @override

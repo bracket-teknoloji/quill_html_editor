@@ -1,16 +1,24 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/hucre_takibi_islem_turu_enum.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_request_model.dart";
 
 part "hucre_transferi_view_model.g.dart";
 
 class HucreTransferiViewModel = _HucreTransferiViewModelBase with _$HucreTransferiViewModel;
 
-abstract class _HucreTransferiViewModelBase with Store {
+abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  HucreTransferiModel model = HucreTransferiModel();
+  HucreTransferiModel model = HucreTransferiModel(islemTuru: HucreTakibiIslemTuruEnum.hucreTransferi.kodu);
 
   @observable
   bool isStok = true;
+
+  @observable
+  PaketlemeListesiRequestModel paketRequestModel = PaketlemeListesiRequestModel(menuKodu: "HTAK_HUCT", ekranTipi: "R", kisitYok: "E");
 
   @computed
   List<bool> get isStokList => [isStok, !isStok];
@@ -22,6 +30,9 @@ abstract class _HucreTransferiViewModelBase with Store {
   void setDepoKodu(int? value) => model = model.copyWith(depoKodu: value);
 
   @action
+  void setMiktar(double? value) => model = model.copyWith(miktar: value);
+
+  @action
   void setStokKodu(String? value) => model = model.copyWith(stokKodu: value);
 
   @action
@@ -29,4 +40,34 @@ abstract class _HucreTransferiViewModelBase with Store {
 
   @action
   void setHedefHucre(String? value) => model = model.copyWith(hedefHucre: value);
+
+  @action
+  void setPaketKodu(String? value) => model = model.copyWith(paketKodu: value);
+
+  @action
+  Future<String?> getPaket(String? paketKodu) async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getPaketler,
+      bodyModel: PaketlemeListesiModel(),
+      data: (paketRequestModel.copyWith(depoKodu: model.depoKodu, paketKodu: paketKodu)).toJson(),
+      showLoading: true,
+    );
+    if (result.success == true) {
+      final list = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
+      setPaketKodu(list.firstOrNull?.kodu);
+      return list.firstOrNull?.kodu;
+    }
+    return null;
+  }
+
+  @action
+  Future<bool> sendData() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveHucreTakibi,
+      bodyModel: PaketlemeListesiModel(),
+      data: (isStok ? HucreTransferiModel.forStok(model) : HucreTransferiModel.forPaket(model)).toJson(),
+      showLoading: true,
+    );
+    return result.success ?? false;
+  }
 }

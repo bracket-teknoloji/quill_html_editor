@@ -49,6 +49,38 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
     });
   }
 
+  late final _$paketRequestModelAtom = Atom(
+      name: '_HucreTransferiViewModelBase.paketRequestModel', context: context);
+
+  @override
+  PaketlemeListesiRequestModel get paketRequestModel {
+    _$paketRequestModelAtom.reportRead();
+    return super.paketRequestModel;
+  }
+
+  @override
+  set paketRequestModel(PaketlemeListesiRequestModel value) {
+    _$paketRequestModelAtom.reportWrite(value, super.paketRequestModel, () {
+      super.paketRequestModel = value;
+    });
+  }
+
+  late final _$getPaketAsyncAction =
+      AsyncAction('_HucreTransferiViewModelBase.getPaket', context: context);
+
+  @override
+  Future<String?> getPaket(String? paketKodu) {
+    return _$getPaketAsyncAction.run(() => super.getPaket(paketKodu));
+  }
+
+  late final _$sendDataAsyncAction =
+      AsyncAction('_HucreTransferiViewModelBase.sendData', context: context);
+
+  @override
+  Future<bool> sendData() {
+    return _$sendDataAsyncAction.run(() => super.sendData());
+  }
+
   late final _$_HucreTransferiViewModelBaseActionController =
       ActionController(name: '_HucreTransferiViewModelBase', context: context);
 
@@ -69,6 +101,17 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
         .startAction(name: '_HucreTransferiViewModelBase.setDepoKodu');
     try {
       return super.setDepoKodu(value);
+    } finally {
+      _$_HucreTransferiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMiktar(double? value) {
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
+        .startAction(name: '_HucreTransferiViewModelBase.setMiktar');
+    try {
+      return super.setMiktar(value);
     } finally {
       _$_HucreTransferiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -108,10 +151,22 @@ mixin _$HucreTransferiViewModel on _HucreTransferiViewModelBase, Store {
   }
 
   @override
+  void setPaketKodu(String? value) {
+    final _$actionInfo = _$_HucreTransferiViewModelBaseActionController
+        .startAction(name: '_HucreTransferiViewModelBase.setPaketKodu');
+    try {
+      return super.setPaketKodu(value);
+    } finally {
+      _$_HucreTransferiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},
 isStok: ${isStok},
+paketRequestModel: ${paketRequestModel},
 isStokList: ${isStokList}
     ''';
   }

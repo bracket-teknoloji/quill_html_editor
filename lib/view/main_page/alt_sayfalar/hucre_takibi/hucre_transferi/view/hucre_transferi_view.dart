@@ -30,6 +30,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
   late final TextEditingController stokAdiController;
   late final TextEditingController hucreMiktariController;
   late final TextEditingController islemMiktariController;
+  late final TextEditingController paketController;
   late final TextEditingController hedefHucreController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -41,6 +42,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
     stokAdiController = TextEditingController();
     hucreMiktariController = TextEditingController();
     islemMiktariController = TextEditingController();
+    paketController = TextEditingController();
     hedefHucreController = TextEditingController();
     if (depoList?.length == 1) {
       depoController.text = depoList?.firstOrNull?.depoTanimi ?? "";
@@ -57,6 +59,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
     stokAdiController.dispose();
     hucreMiktariController.dispose();
     islemMiktariController.dispose();
+    paketController.dispose();
     hedefHucreController.dispose();
     super.dispose();
   }
@@ -70,7 +73,12 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
           actions: [
             IconButton(
               onPressed: () async {
-                if (formKey.currentState?.validate() == true) {}
+                if (formKey.currentState?.validate() != true) return;
+                if (!viewModel.isStok) {
+                  final result = await paketChecker(paketController.text);
+                  if (result == null) return;
+                }
+                await sendData();
               },
               icon: const Icon(Icons.save_outlined),
             ),
@@ -171,6 +179,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     ),
                   ).yetkiVarMi(viewModel.isStok),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: CustomTextField(
@@ -188,7 +197,13 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                           controller: islemMiktariController,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
-                          onTap: () {},
+                          onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) return "Lütfen işlem miktarını giriniz!";
+                            if (value.toDoubleWithFormattedString <= 0) return "Lütfen işlem miktarını doğru giriniz!";
+                            if (value.toDoubleWithFormattedString > hucreMiktariController.text.toDoubleWithFormattedString) return "Hücre miktarından büyük olamaz!";
+                            return null;
+                          },
                         ),
                       ),
                     ],
@@ -196,11 +211,12 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                   CustomTextField(
                     labelText: "Paket",
                     isMust: true,
-                    controller: hedefHucreController,
+                    controller: paketController,
                     suffix: IconButton(
                       onPressed: () async {
                         final qr = await getQR();
-                        if (qr is String) {}
+                        if (qr is! String) return;
+                        await paketChecker(qr);
                       },
                       icon: const Icon(Icons.qr_code_scanner_outlined),
                     ),
@@ -218,6 +234,11 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                         viewModel.setHedefHucre(result.hucreKodu);
                       }
                     },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) return "Lütfen hedef hücre giriniz!";
+                      if (value == viewModel.model.hucreKodu) return "Kaynak ile aynı olamaz";
+                      return null;
+                    },
                   ),
                 ],
               ),
@@ -226,7 +247,35 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
         ).paddingAll(UIHelper.lowSize),
       );
 
-  Future<String?> getQR() async => await Get.toNamed("qr");
+  Future<void> sendData() async {
+    final result = await viewModel.sendData();
+    if (result) {
+      viewModel.setStokKodu(null);
+      viewModel.setMiktar(null);
+      stokController.text = "";
+      stokAdiController.text = "";
+      hucreMiktariController.text = "";
+      islemMiktariController.text = "";
+      paketController.text = "";
+      dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+    }
+  }
+
+  Future<String?> paketChecker(String paketKodu) async {
+    final result = await viewModel.getPaket(paketKodu);
+    if (result != null) {
+      paketController.text = result;
+      return result;
+    } else {
+      dialogManager.showErrorSnackBar("Paket Bulunamadı - $paketKodu");
+      return null;
+    }
+  }
+
+  Future<String?> getQR() async {
+    final qr = await Get.toNamed("qr");
+    return qr;
+  }
 
   Future<HucreListesiModel?> getHucreModel() async {
     final result = await Get.toNamed("/mainPage/hucreListesiOzel", arguments: viewModel.model.depoKodu);
@@ -239,6 +288,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
       stokAdiController.text = result.stokAdi ?? "";
       hucreMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       islemMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
+      viewModel.setMiktar(result.getMiktar);
       viewModel.setStokKodu(result.stokKodu);
     }
   }

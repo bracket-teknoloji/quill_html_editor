@@ -11,10 +11,10 @@ class PaketlemeListesiRequestModel with _$PaketlemeListesiRequestModel {
     String? stokKodu,
     String? belgeNo,
     String? menuKodu,
-    String? depoKodu,
+    int? depoKodu,
     String? paketKodu,
     int? islemKodu,
-    bool? kisitYok,
+    String? kisitYok,
     String? ekranTipi,
     @JsonKey(name: "PaketID") int? paketId,
   }) = _PaketlemeListesiRequestModel;

@@ -17,7 +17,7 @@
   "cloudcode.duetAI.inlineSuggestions.enableAuto": false,
   "editor.inlayHints.fontFamily": "JetBrains Mono",
   "scm.inputFontFamily": "JetBrains Mono",
-  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "terminal.integrated.fontFamily": "monospace",
   "notebook.output.fontFamily": "JetBrains Mono",
   "errorLens.fontFamily": "JetBrains Mono",
   "markdown.preview.fontFamily": "JetBrains Mono",

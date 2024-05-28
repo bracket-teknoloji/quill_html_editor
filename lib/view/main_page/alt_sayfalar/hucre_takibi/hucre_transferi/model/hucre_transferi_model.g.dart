@@ -13,9 +13,10 @@ _$HucreTransferiModelImpl _$$HucreTransferiModelImplFromJson(
       hedefHucre: json['HEDEF_HUCRE'] as String?,
       hucreKodu: json['HUCRE_KODU'] as String?,
       islemTuru: json['ISLEM_TURU'] as String?,
-      miktar: (json['MIKTAR'] as num?)?.toInt(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
+      paketKodu: json['PAKET_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$HucreTransferiModelImplToJson(
@@ -35,5 +36,6 @@ Map<String, dynamic> _$$HucreTransferiModelImplToJson(
   writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('PAKET_KODU', instance.paketKodu);
   return val;
 }

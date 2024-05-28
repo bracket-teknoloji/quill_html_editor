@@ -10,11 +10,26 @@ class HucreTransferiModel with _$HucreTransferiModel {
     String? hedefHucre,
     String? hucreKodu,
     String? islemTuru,
-    int? miktar,
+    double? miktar,
     String? stokKodu,
     String? stokAdi,
-    
+    String? paketKodu,
   }) = _HucreTransferiModel;
 
   factory HucreTransferiModel.fromJson(Map<String, dynamic> json) => _$HucreTransferiModelFromJson(json);
+
+  factory HucreTransferiModel.forStok(HucreTransferiModel model) => _HucreTransferiModel(
+        depoKodu: model.depoKodu,
+        hedefHucre: model.hedefHucre,
+        hucreKodu: model.hucreKodu,
+        islemTuru: model.islemTuru,
+        miktar: model.miktar,
+        stokKodu: model.stokKodu,
+        stokAdi: model.stokAdi,
+      );
+  factory HucreTransferiModel.forPaket(HucreTransferiModel model) => _HucreTransferiModel(
+        depoKodu: model.depoKodu,
+        hedefHucre: model.hedefHucre,
+        paketKodu: model.paketKodu,
+      );
 }

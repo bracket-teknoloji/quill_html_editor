@@ -13,10 +13,10 @@ _$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(
       stokKodu: json['StokKodu'] as String?,
       belgeNo: json['BelgeNo'] as String?,
       menuKodu: json['MenuKodu'] as String?,
-      depoKodu: json['DepoKodu'] as String?,
+      depoKodu: (json['DepoKodu'] as num?)?.toInt(),
       paketKodu: json['PaketKodu'] as String?,
       islemKodu: (json['IslemKodu'] as num?)?.toInt(),
-      kisitYok: json['KisitYok'] as bool?,
+      kisitYok: json['KisitYok'] as String?,
       ekranTipi: json['EkranTipi'] as String?,
       paketId: (json['PaketID'] as num?)?.toInt(),
     );
