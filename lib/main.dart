@@ -23,6 +23,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/view/base_hucre_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/view/hucre_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view/hucre_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/view/hucre_transferi_view.dart";
@@ -478,6 +479,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
               GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
               GetPage(name: "/hucredekiStoklar", page: () => HucredekiStoklarView(model: Get.arguments)),
+              GetPage(name: "/hucreEdit", page: BaseHucreEditView.new),
 
               //* Serbest Raporlar
               //*
