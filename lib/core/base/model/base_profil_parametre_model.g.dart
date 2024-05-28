@@ -108,4 +108,7 @@ const _$EditTipiEnumEnumMap = {
   EditTipiEnum.isEmriTakip: 'isEmriTakip',
   EditTipiEnum.uretimSonuKaydi: 'uretimSonuKaydi',
   EditTipiEnum.olcumdenDepoTransferi: 'olcumdenDepoTransferi',
+  EditTipiEnum.uretim: 'uretim',
+  EditTipiEnum.paket: 'paket',
+  EditTipiEnum.belgesizIslem: 'belgesizIslem',
 };
