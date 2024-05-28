@@ -49,6 +49,12 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         return EditTipiEnum.uretimSonuKaydi;
       case 17:
         return EditTipiEnum.olcumdenDepoTransferi;
+      case 18:
+        return EditTipiEnum.uretim;
+      case 19:
+        return EditTipiEnum.paket;
+      case 20:
+        return EditTipiEnum.belgesizIslem;
       default:
         return EditTipiEnum.musteri;
     }
@@ -110,6 +116,15 @@ class EditTipiEnumAdapter extends TypeAdapter<EditTipiEnum> {
         break;
       case EditTipiEnum.olcumdenDepoTransferi:
         writer.writeByte(17);
+        break;
+      case EditTipiEnum.uretim:
+        writer.writeByte(18);
+        break;
+      case EditTipiEnum.paket:
+        writer.writeByte(19);
+        break;
+      case EditTipiEnum.belgesizIslem:
+        writer.writeByte(20);
         break;
     }
   }
