@@ -118,16 +118,23 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   ),
                   Card(
                     child: ListTile(
-                      subtitle: Observer(
-                        builder: (_) => CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
-                            Text("Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          ],
-                        ),
+                      subtitle: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Observer(
+                            builder: (_) => CustomLayoutBuilder(
+                              splitCount: 2,
+                              children: [
+                                Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
+                                Text("Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                                Text("En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                                Text("En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                              ],
+                            ),
+                          ),
+                          Text("Açıklama: ${widget.model.model?.aciklama}").yetkiVarMi(widget.model.model?.aciklama != null),
+                        ],
                       ),
                     ),
                   ).yetkiVarMi(widget.model.model!.olculecekMi),
