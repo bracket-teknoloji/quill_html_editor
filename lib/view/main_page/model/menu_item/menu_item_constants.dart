@@ -226,8 +226,8 @@ class MenuItemConstants {
       icon: "shelves",
       color: ColorPalette.skyBlue,
       altMenuler: <GridItemModel>[
-        GridItemModel.item(name: "hucre_Yerlestir", title: "Hücre Yerleştir", route: "/mainPage/hucreEdit"),
-        GridItemModel.item(name: "hucre_Bosalt", title: "Hücre Boşalt", route: "/mainPage/hucreEdit"),
+        GridItemModel.item(name: "hucre_Yerlestir", title: "Hücre Yerleştir", route: "/mainPage/hucreEditYerlestir"),
+        GridItemModel.item(name: "hucre_Bosalt", title: "Hücre Boşalt", route: "/mainPage/hucreEditBosalt"),
         GridItemModel.item(name: "hucre_Transfer", title: "Hücre Transferi", route: "/mainPage/hucreTransferi"),
         GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
       ],

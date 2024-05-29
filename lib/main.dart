@@ -18,11 +18,13 @@ import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_b
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
+import "package:picker/core/constants/enum/hucre_takibi_islem_turu_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view/cari_aktivite_detayi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/view/cari_aktivite_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/view/belge_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/view/base_hucre_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/view/hucre_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view/hucre_listesi_view.dart";
@@ -479,7 +481,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
               GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
               GetPage(name: "/hucredekiStoklar", page: () => HucredekiStoklarView(model: Get.arguments)),
-              GetPage(name: "/hucreEdit", page: BaseHucreEditView.new),
+              GetPage(name: "/hucreEditYerlestir", page: () => const BaseHucreEditView(islemTuru: HucreTakibiIslemTuruEnum.hucreYerlestir)),
+              GetPage(name: "/hucreEditBosalt", page: () => const BaseHucreEditView(islemTuru: HucreTakibiIslemTuruEnum.hucreBosalt)),
+              GetPage(name: "/belgeRehberi", page: () => BelgeRehberiView(model: Get.arguments)),
 
               //* Serbest Raporlar
               //*
