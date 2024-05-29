@@ -134,7 +134,7 @@ class NetworkManager {
     }
   }
 
-  Future<GenericResponseModel> dioGet<T extends NetworkManagerMixin>({
+  Future<GenericResponseModel<T>> dioGet<T extends NetworkManagerMixin>({
     required String path,
     required T bodyModel,
     Map<String, String>? headers,
