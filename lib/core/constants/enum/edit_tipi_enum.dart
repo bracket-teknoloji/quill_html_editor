@@ -180,9 +180,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.uretim:
         return "USK";
       case EditTipiEnum.cari:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
         return "";
+
+        //? Bu ikisinin değeri elle girildi. Gerçek bir değer değil.
+      case EditTipiEnum.paket:
+        return "PAK";
+      case EditTipiEnum.belgesizIslem:
+        return "BS";
     }
   }
 
