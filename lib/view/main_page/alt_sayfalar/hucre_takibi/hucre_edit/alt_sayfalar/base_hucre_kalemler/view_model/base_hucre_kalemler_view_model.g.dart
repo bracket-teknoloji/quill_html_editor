@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hucre_edit_view_model.dart';
+part of 'base_hucre_kalemler_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,19 +8,27 @@ part of 'hucre_edit_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$HucreEditViewModel on _HucreEditViewModelBase, Store {
-  late final _$sendDataAsyncAction =
-      AsyncAction('_HucreEditViewModelBase.sendData', context: context);
+mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
+  late final _$modelAtom =
+      Atom(name: '_BaseHucreKalemlerViewModelBase.model', context: context);
 
   @override
-  Future<bool> sendData() {
-    return _$sendDataAsyncAction.run(() => super.sendData());
+  HucreTransferiModel get model {
+    _$modelAtom.reportRead();
+    return super.model;
+  }
+
+  @override
+  set model(HucreTransferiModel value) {
+    _$modelAtom.reportWrite(value, super.model, () {
+      super.model = value;
+    });
   }
 
   @override
   String toString() {
     return '''
-
+model: ${model}
     ''';
   }
 }

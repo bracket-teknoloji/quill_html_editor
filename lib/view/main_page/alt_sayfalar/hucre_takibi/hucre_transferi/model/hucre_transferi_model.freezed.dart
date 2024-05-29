@@ -22,12 +22,23 @@ HucreTransferiModel _$HucreTransferiModelFromJson(Map<String, dynamic> json) {
 mixin _$HucreTransferiModel {
   int? get depoKodu => throw _privateConstructorUsedError;
   set depoKodu(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get depoTanimi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set depoTanimi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  BelgeRehberiModel? get belgeModel => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set belgeModel(BelgeRehberiModel? value) =>
+      throw _privateConstructorUsedError;
   String? get hedefHucre => throw _privateConstructorUsedError;
   set hedefHucre(String? value) => throw _privateConstructorUsedError;
   String? get hucreKodu => throw _privateConstructorUsedError;
   set hucreKodu(String? value) => throw _privateConstructorUsedError;
   String? get islemTuru => throw _privateConstructorUsedError;
   set islemTuru(String? value) => throw _privateConstructorUsedError;
+  String? get pickerBelgeTuru => throw _privateConstructorUsedError;
+  set pickerBelgeTuru(String? value) => throw _privateConstructorUsedError;
   double? get miktar => throw _privateConstructorUsedError;
   set miktar(double? value) => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
@@ -36,6 +47,12 @@ mixin _$HucreTransferiModel {
   set stokAdi(String? value) => throw _privateConstructorUsedError;
   String? get paketKodu => throw _privateConstructorUsedError;
   set paketKodu(String? value) => throw _privateConstructorUsedError;
+  String? get belgeTuru => throw _privateConstructorUsedError;
+  set belgeTuru(String? value) => throw _privateConstructorUsedError;
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
+  String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,13 +68,22 @@ abstract class $HucreTransferiModelCopyWith<$Res> {
   @useResult
   $Res call(
       {int? depoKodu,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? depoTanimi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      BelgeRehberiModel? belgeModel,
       String? hedefHucre,
       String? hucreKodu,
       String? islemTuru,
+      String? pickerBelgeTuru,
       double? miktar,
       String? stokKodu,
       String? stokAdi,
-      String? paketKodu});
+      String? paketKodu,
+      String? belgeTuru,
+      String? belgeNo,
+      String? cariKodu});
+
+  $BelgeRehberiModelCopyWith<$Res>? get belgeModel;
 }
 
 /// @nodoc
@@ -74,19 +100,33 @@ class _$HucreTransferiModelCopyWithImpl<$Res, $Val extends HucreTransferiModel>
   @override
   $Res call({
     Object? depoKodu = freezed,
+    Object? depoTanimi = freezed,
+    Object? belgeModel = freezed,
     Object? hedefHucre = freezed,
     Object? hucreKodu = freezed,
     Object? islemTuru = freezed,
+    Object? pickerBelgeTuru = freezed,
     Object? miktar = freezed,
     Object? stokKodu = freezed,
     Object? stokAdi = freezed,
     Object? paketKodu = freezed,
+    Object? belgeTuru = freezed,
+    Object? belgeNo = freezed,
+    Object? cariKodu = freezed,
   }) {
     return _then(_value.copyWith(
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeModel: freezed == belgeModel
+          ? _value.belgeModel
+          : belgeModel // ignore: cast_nullable_to_non_nullable
+              as BelgeRehberiModel?,
       hedefHucre: freezed == hedefHucre
           ? _value.hedefHucre
           : hedefHucre // ignore: cast_nullable_to_non_nullable
@@ -98,6 +138,10 @@ class _$HucreTransferiModelCopyWithImpl<$Res, $Val extends HucreTransferiModel>
       islemTuru: freezed == islemTuru
           ? _value.islemTuru
           : islemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickerBelgeTuru: freezed == pickerBelgeTuru
+          ? _value.pickerBelgeTuru
+          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
               as String?,
       miktar: freezed == miktar
           ? _value.miktar
@@ -115,7 +159,31 @@ class _$HucreTransferiModelCopyWithImpl<$Res, $Val extends HucreTransferiModel>
           ? _value.paketKodu
           : paketKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTuru: freezed == belgeTuru
+          ? _value.belgeTuru
+          : belgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BelgeRehberiModelCopyWith<$Res>? get belgeModel {
+    if (_value.belgeModel == null) {
+      return null;
+    }
+
+    return $BelgeRehberiModelCopyWith<$Res>(_value.belgeModel!, (value) {
+      return _then(_value.copyWith(belgeModel: value) as $Val);
+    });
   }
 }
 
@@ -129,13 +197,23 @@ abstract class _$$HucreTransferiModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? depoKodu,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? depoTanimi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      BelgeRehberiModel? belgeModel,
       String? hedefHucre,
       String? hucreKodu,
       String? islemTuru,
+      String? pickerBelgeTuru,
       double? miktar,
       String? stokKodu,
       String? stokAdi,
-      String? paketKodu});
+      String? paketKodu,
+      String? belgeTuru,
+      String? belgeNo,
+      String? cariKodu});
+
+  @override
+  $BelgeRehberiModelCopyWith<$Res>? get belgeModel;
 }
 
 /// @nodoc
@@ -150,19 +228,33 @@ class __$$HucreTransferiModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? depoKodu = freezed,
+    Object? depoTanimi = freezed,
+    Object? belgeModel = freezed,
     Object? hedefHucre = freezed,
     Object? hucreKodu = freezed,
     Object? islemTuru = freezed,
+    Object? pickerBelgeTuru = freezed,
     Object? miktar = freezed,
     Object? stokKodu = freezed,
     Object? stokAdi = freezed,
     Object? paketKodu = freezed,
+    Object? belgeTuru = freezed,
+    Object? belgeNo = freezed,
+    Object? cariKodu = freezed,
   }) {
     return _then(_$HucreTransferiModelImpl(
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeModel: freezed == belgeModel
+          ? _value.belgeModel
+          : belgeModel // ignore: cast_nullable_to_non_nullable
+              as BelgeRehberiModel?,
       hedefHucre: freezed == hedefHucre
           ? _value.hedefHucre
           : hedefHucre // ignore: cast_nullable_to_non_nullable
@@ -174,6 +266,10 @@ class __$$HucreTransferiModelImplCopyWithImpl<$Res>
       islemTuru: freezed == islemTuru
           ? _value.islemTuru
           : islemTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickerBelgeTuru: freezed == pickerBelgeTuru
+          ? _value.pickerBelgeTuru
+          : pickerBelgeTuru // ignore: cast_nullable_to_non_nullable
               as String?,
       miktar: freezed == miktar
           ? _value.miktar
@@ -191,6 +287,18 @@ class __$$HucreTransferiModelImplCopyWithImpl<$Res>
           ? _value.paketKodu
           : paketKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeTuru: freezed == belgeTuru
+          ? _value.belgeTuru
+          : belgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -200,13 +308,19 @@ class __$$HucreTransferiModelImplCopyWithImpl<$Res>
 class _$HucreTransferiModelImpl implements _HucreTransferiModel {
   _$HucreTransferiModelImpl(
       {this.depoKodu,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.depoTanimi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.belgeModel,
       this.hedefHucre,
       this.hucreKodu,
       this.islemTuru,
+      this.pickerBelgeTuru,
       this.miktar,
       this.stokKodu,
       this.stokAdi,
-      this.paketKodu});
+      this.paketKodu,
+      this.belgeTuru,
+      this.belgeNo,
+      this.cariKodu});
 
   factory _$HucreTransferiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HucreTransferiModelImplFromJson(json);
@@ -214,11 +328,19 @@ class _$HucreTransferiModelImpl implements _HucreTransferiModel {
   @override
   int? depoKodu;
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? depoTanimi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  BelgeRehberiModel? belgeModel;
+  @override
   String? hedefHucre;
   @override
   String? hucreKodu;
   @override
   String? islemTuru;
+  @override
+  String? pickerBelgeTuru;
   @override
   double? miktar;
   @override
@@ -227,10 +349,16 @@ class _$HucreTransferiModelImpl implements _HucreTransferiModel {
   String? stokAdi;
   @override
   String? paketKodu;
+  @override
+  String? belgeTuru;
+  @override
+  String? belgeNo;
+  @override
+  String? cariKodu;
 
   @override
   String toString() {
-    return 'HucreTransferiModel(depoKodu: $depoKodu, hedefHucre: $hedefHucre, hucreKodu: $hucreKodu, islemTuru: $islemTuru, miktar: $miktar, stokKodu: $stokKodu, stokAdi: $stokAdi, paketKodu: $paketKodu)';
+    return 'HucreTransferiModel(depoKodu: $depoKodu, depoTanimi: $depoTanimi, belgeModel: $belgeModel, hedefHucre: $hedefHucre, hucreKodu: $hucreKodu, islemTuru: $islemTuru, pickerBelgeTuru: $pickerBelgeTuru, miktar: $miktar, stokKodu: $stokKodu, stokAdi: $stokAdi, paketKodu: $paketKodu, belgeTuru: $belgeTuru, belgeNo: $belgeNo, cariKodu: $cariKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -251,13 +379,20 @@ class _$HucreTransferiModelImpl implements _HucreTransferiModel {
 abstract class _HucreTransferiModel implements HucreTransferiModel {
   factory _HucreTransferiModel(
       {int? depoKodu,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? depoTanimi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      BelgeRehberiModel? belgeModel,
       String? hedefHucre,
       String? hucreKodu,
       String? islemTuru,
+      String? pickerBelgeTuru,
       double? miktar,
       String? stokKodu,
       String? stokAdi,
-      String? paketKodu}) = _$HucreTransferiModelImpl;
+      String? paketKodu,
+      String? belgeTuru,
+      String? belgeNo,
+      String? cariKodu}) = _$HucreTransferiModelImpl;
 
   factory _HucreTransferiModel.fromJson(Map<String, dynamic> json) =
       _$HucreTransferiModelImpl.fromJson;
@@ -265,6 +400,16 @@ abstract class _HucreTransferiModel implements HucreTransferiModel {
   @override
   int? get depoKodu;
   set depoKodu(int? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get depoTanimi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set depoTanimi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  BelgeRehberiModel? get belgeModel;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set belgeModel(BelgeRehberiModel? value);
   @override
   String? get hedefHucre;
   set hedefHucre(String? value);
@@ -274,6 +419,9 @@ abstract class _HucreTransferiModel implements HucreTransferiModel {
   @override
   String? get islemTuru;
   set islemTuru(String? value);
+  @override
+  String? get pickerBelgeTuru;
+  set pickerBelgeTuru(String? value);
   @override
   double? get miktar;
   set miktar(double? value);
@@ -286,6 +434,15 @@ abstract class _HucreTransferiModel implements HucreTransferiModel {
   @override
   String? get paketKodu;
   set paketKodu(String? value);
+  @override
+  String? get belgeTuru;
+  set belgeTuru(String? value);
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
+  @override
+  String? get cariKodu;
+  set cariKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$HucreTransferiModelImplCopyWith<_$HucreTransferiModelImpl> get copyWith =>
