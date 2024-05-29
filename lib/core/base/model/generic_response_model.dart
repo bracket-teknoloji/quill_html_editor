@@ -46,4 +46,6 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
       data = json["Data"];
     }
   }
+
+  bool get isSucces => success == true;
 }
