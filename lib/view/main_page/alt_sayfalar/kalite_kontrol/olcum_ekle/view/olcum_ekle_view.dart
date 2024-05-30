@@ -181,15 +181,19 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
             Card(
               child: ListTile(
                 title: Text("Belge No: ${viewModel.requestModel.belgeNo ?? ""}"),
-                subtitle: CustomLayoutBuilder(
-                  splitCount: 2,
+                subtitle: Column(
                   children: [
-                    Text("Sıra: ${widget.model.olcumModel?.sira}"),
-                    Text("Belge Tipi: ${widget.model.olcumModel?.belgeTipi ?? ""}"),
-                    Text("Tarih: ${widget.model.olcumModel?.tarih.toDateString}"),
-                    Text("Stok Adı: ${widget.model.olcumModel?.stokAdi}"),
-                    Text("Stok Kodu: ${widget.model.olcumModel?.stokKodu}"),
-                    // Text(widget.model.stok ?? ""),
+                    CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Sıra: ${widget.model.olcumModel?.sira}"),
+                        Text("Belge Tipi: ${widget.model.olcumModel?.belgeTipi ?? ""}"),
+                        Text("Tarih: ${widget.model.olcumModel?.tarih.toDateString}"),
+                        Text("Stok Adı: ${widget.model.olcumModel?.stokAdi}"),
+                        Text("Stok Kodu: ${widget.model.olcumModel?.stokKodu}"),
+                        // Text(widget.model.stok ?? ""),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -226,48 +230,62 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                   final proses = widget.model.prosesler![index];
                   return Card(
                     // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
-                    child: ListTile(
-                      onTap: () async {
-                        final result = await Get.toNamed(
-                          "/mainPage/prosesEkle",
-                          arguments: BaseEditModel<OlcumProsesModel>(
-                            model: proses.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
-                            baseEditEnum: widget.baseEditEnum,
-                          ),
-                        );
-                        if (result is OlcumProsesModel) {
-                          viewModel.addProsesModel(result);
-                        }
-                      },
-                      title: Observer(
-                        builder: (_) {
+                    child: Observer(
+                      builder: (_) => ListTile(
+                        onTap: () async {
                           final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(proses.proses ?? ""),
-                              ColorfulBadge(
-                                label: Text(eklenenProses.sonucAdi),
-                                badgeColorEnum: eklenenProses.cardColor,
-                              ).yetkiVarMi(eklenenProses?.sonuc != null),
-                            ],
+                          final result = await Get.toNamed(
+                            "/mainPage/prosesEkle",
+                            arguments: BaseEditModel<OlcumProsesModel>(
+                              model: eklenenProses?.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
+                              baseEditEnum: widget.baseEditEnum,
+                            ),
                           );
+                          if (result is OlcumProsesModel) {
+                            viewModel.addProsesModel(result);
+                          }
                         },
-                      ),
-                      subtitle: CustomLayoutBuilder(
-                        splitCount: 2,
-                        children: [
-                          Text("Kriter: ${proses.kriter}").yetkiVarMi(proses.kriter != null),
-                          Text("Açıklama: ${proses.kabulSarti ?? ""}").yetkiVarMi(proses.kabulSarti != null),
-                          Text("Ekipman: ${proses.ekipman}").yetkiVarMi(proses.ekipman != null),
-                          Text("Numune Miktarı: ${proses.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                      trailing: Observer(
-                        builder: (_) => Icon(
-                          viewModel.requestModel.prosesler?.any((element) => (element.id == proses.id) && element.sonuc != null) ?? false ? Icons.check_box_outlined : Icons.check_box_outline_blank,
+                        title: Observer(
+                          builder: (_) {
+                            final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(proses.proses ?? ""),
+                                ColorfulBadge(
+                                  label: Text(eklenenProses.sonucAdi),
+                                  badgeColorEnum: eklenenProses.cardColor,
+                                ).yetkiVarMi(eklenenProses?.sonuc != null),
+                              ],
+                            );
+                          },
                         ),
-                      ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
+                        subtitle: Observer(
+                          builder: (_) {
+                            final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomLayoutBuilder(
+                                  splitCount: 2,
+                                  children: [
+                                    Text("Kriter: ${eklenenProses?.kriter}").yetkiVarMi(eklenenProses?.kriter != null),
+                                    Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}").yetkiVarMi(eklenenProses?.kabulSarti != null),
+                                    Text("Ekipman: ${eklenenProses?.ekipman}").yetkiVarMi(eklenenProses?.ekipman != null),
+                                    Text("Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
+                                  ],
+                                ),
+                                Text("Açıklama: ${eklenenProses?.aciklama}").yetkiVarMi(eklenenProses?.aciklama != null),
+                              ],
+                            );
+                          },
+                        ),
+                        trailing: Observer(
+                          builder: (_) => Icon(
+                            viewModel.requestModel.prosesler?.any((element) => (element.id == proses.id) && element.sonuc != null) ?? false ? Icons.check_box_outlined : Icons.check_box_outline_blank,
+                          ),
+                        ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
+                      ),
                     ),
                   );
                 },

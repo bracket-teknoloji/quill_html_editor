@@ -53,6 +53,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     String? cariAdi,
     String? belgeTuru,
     int? kalemAdedi,
+    String? seriNo,
     String? prosesVar,
     String? teknikResimVarmi,
     String? kontrolPlaniVarmi,

@@ -30,7 +30,9 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
       requestModel = requestModel.copyWith(prosesler: []);
     }
     if (requestModel.prosesler!.any((proses) => proses.id == model.id)) {
-      requestModel = requestModel.copyWith(prosesler: requestModel.prosesler!.map((proses) => proses.id == model.id ? model : proses).toList());
+      requestModel = requestModel.copyWith(
+        prosesler: requestModel.prosesler!.map((proses) => proses.id == model.id ? model : proses).toList(),
+      );
     } else {
       requestModel = requestModel.copyWith(prosesler: (requestModel.prosesler ?? []) + [model]);
     }

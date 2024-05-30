@@ -142,7 +142,12 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
         await getBelgeNo();
+
         // BaseSiparisEditModel.instance.belgeNo= await networkManager.getSiradakiBelgeNo(SiradakiBelgeNoModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, sirketKodu: model.sirketKodu));
+      }
+      if (yetkiController.projeUygulamasiAcikMi && viewModel.model.projeKodu == null) {
+        viewModel.setProje(await yetkiController.varsayilanProje);
+        _projeController.text = viewModel.model.projeAciklama ?? viewModel.model.projeKodu ?? "";
       }
     });
     super.initState();

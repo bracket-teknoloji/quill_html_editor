@@ -419,6 +419,8 @@ mixin _$OlcumBelgeModel {
   set belgeTuru(String? value) => throw _privateConstructorUsedError;
   int? get kalemAdedi => throw _privateConstructorUsedError;
   set kalemAdedi(int? value) => throw _privateConstructorUsedError;
+  String? get seriNo => throw _privateConstructorUsedError;
+  set seriNo(String? value) => throw _privateConstructorUsedError;
   String? get prosesVar => throw _privateConstructorUsedError;
   set prosesVar(String? value) => throw _privateConstructorUsedError;
   String? get teknikResimVarmi => throw _privateConstructorUsedError;
@@ -481,6 +483,7 @@ abstract class $OlcumBelgeModelCopyWith<$Res> {
       String? cariAdi,
       String? belgeTuru,
       int? kalemAdedi,
+      String? seriNo,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
@@ -527,6 +530,7 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
     Object? cariAdi = freezed,
     Object? belgeTuru = freezed,
     Object? kalemAdedi = freezed,
+    Object? seriNo = freezed,
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
@@ -617,6 +621,10 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
           ? _value.kalemAdedi
           : kalemAdedi // ignore: cast_nullable_to_non_nullable
               as int?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       prosesVar: freezed == prosesVar
           ? _value.prosesVar
           : prosesVar // ignore: cast_nullable_to_non_nullable
@@ -697,6 +705,7 @@ abstract class _$$OlcumBelgeModelImplCopyWith<$Res>
       String? cariAdi,
       String? belgeTuru,
       int? kalemAdedi,
+      String? seriNo,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
@@ -741,6 +750,7 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
     Object? cariAdi = freezed,
     Object? belgeTuru = freezed,
     Object? kalemAdedi = freezed,
+    Object? seriNo = freezed,
     Object? prosesVar = freezed,
     Object? teknikResimVarmi = freezed,
     Object? kontrolPlaniVarmi = freezed,
@@ -831,6 +841,10 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
           ? _value.kalemAdedi
           : kalemAdedi // ignore: cast_nullable_to_non_nullable
               as int?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
+              as String?,
       prosesVar: freezed == prosesVar
           ? _value.prosesVar
           : prosesVar // ignore: cast_nullable_to_non_nullable
@@ -906,6 +920,7 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
       this.cariAdi,
       this.belgeTuru,
       this.kalemAdedi,
+      this.seriNo,
       this.prosesVar,
       this.teknikResimVarmi,
       this.kontrolPlaniVarmi,
@@ -961,6 +976,8 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   String? belgeTuru;
   @override
   int? kalemAdedi;
+  @override
+  String? seriNo;
   @override
   String? prosesVar;
   @override
@@ -1024,6 +1041,7 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
       String? cariAdi,
       String? belgeTuru,
       int? kalemAdedi,
+      String? seriNo,
       String? prosesVar,
       String? teknikResimVarmi,
       String? kontrolPlaniVarmi,
@@ -1098,6 +1116,9 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   @override
   int? get kalemAdedi;
   set kalemAdedi(int? value);
+  @override
+  String? get seriNo;
+  set seriNo(String? value);
   @override
   String? get prosesVar;
   set prosesVar(String? value);

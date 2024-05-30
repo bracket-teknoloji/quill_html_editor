@@ -13,6 +13,7 @@ import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
@@ -47,8 +48,10 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
 
   @override
   void initState() {
-    girisDepoController = TextEditingController();
-    cikisDepoController = TextEditingController();
+    viewModel.setGirisDepo(yetkiController.transferLokalDatGirisDepo);
+    viewModel.setCikisDepo(yetkiController.transferLokalDatCikisDepo);
+    girisDepoController = TextEditingController(text: yetkiController.transferLokalDatGirisDepo?.depoTanimi);
+    cikisDepoController = TextEditingController(text: yetkiController.transferLokalDatCikisDepo?.depoTanimi);
     viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
@@ -173,7 +176,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           return;
                         }
                         if (viewModel.belgeModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi) {
-                          await bottomSheetDialogManager.showBottomSheetDialog(
+                          final depoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
                             context,
                             title: "Depo Giriniz",
                             body: Form(
@@ -205,7 +208,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                               ).paddingAll(UIHelper.lowSize),
                             ),
                           );
-                          if (!viewModel.depolarValidation) return;
+                          if (!viewModel.depolarValidation || depoValidation != true) return;
                         }
                         await Get.toNamed(
                           "/mainPage/transferEdit",
@@ -301,7 +304,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     viewModel.setSeriListe(viewModel.model?.olcumler?.map((e) => e.seriNo).toList().nullCheckWithGeneric ?? []);
     // Get.back();
     await viewModel.getDatMiktar();
-    Get.back();
+    Get.back(result: true);
   }
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
@@ -414,6 +417,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                               final item = viewModel.model?.olcumler?[index];
                               final String title = "Ölçüm ${index + 1}";
                               return Card(
+                                color: (widget.model.seriNo == item?.seriNo) && widget.model.seriNo != null ? ColorPalette.mantis.withOpacity(0.5) : null,
                                 child: ListTile(
                                   onTap: () async {
                                     bottomSheetDialogManager.showBottomSheetDialog(
@@ -495,8 +499,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                         splitCount: 2,
                                         children: [
                                           Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                          Text("Seri No: ${item?.seriNo}").yetkiVarMi(item?.seriNo != null),
                                           Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
-                                          Text("Operatör: ${item?.olcumlerOperator}").yetkiVarMi(item?.olcumlerOperator != null),
+                                          Text("Operatör: ${item?.kayitOperator}").yetkiVarMi(item?.kayitOperator != null),
                                         ],
                                       ),
                                     ],
