@@ -77,6 +77,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? kod5;
   String? kod5Tanimi;
   String? muhdetayAdi;
+  @override
   String? olcuBirimi;
   String? olcuBirimi2;
   String? olcuBirimi3;

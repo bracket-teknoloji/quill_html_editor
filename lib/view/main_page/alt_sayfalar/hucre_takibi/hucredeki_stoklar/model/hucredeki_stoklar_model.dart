@@ -17,6 +17,7 @@ class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, B
     String? yapkod,
     String? yapacik,
     double? bakiye,
+    String? olcuBirimi,
   }) = _HucredekiStoklarModel;
 
   factory HucredekiStoklarModel.fromJson(Map<String, dynamic> json) => _$HucredekiStoklarModelFromJson(json);
