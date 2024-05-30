@@ -26,7 +26,7 @@ abstract class _BaseHucreGenelViewModelBase with Store {
   EditTipiEnum? selectedEditTipi;
 
   @computed
-  bool get isBelgeVisible => [EditTipiEnum.belgesizIslem, EditTipiEnum.paket].every((element) => element != selectedEditTipi) && selectedEditTipi != null;
+  bool get isBelgeVisible => model.belgeGorunsunMu;
 
   @action
   void setSelectedEditTipi(int? index) {
