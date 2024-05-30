@@ -1,21 +1,27 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/base_hucre_kalemler/view_model/base_hucre_kalemler_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
 
-class BaseHucreKalemlerView extends StatefulWidget {
+final class BaseHucreKalemlerView extends StatefulWidget {
   const BaseHucreKalemlerView({super.key});
 
   @override
   State<BaseHucreKalemlerView> createState() => _BaseHucreKalemlerViewState();
 }
 
-class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
+final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView> {
   final BaseHucreKalemlerViewModel viewModel = BaseHucreKalemlerViewModel();
   late final TextEditingController stokController;
   late final TextEditingController stokAdiController;
@@ -33,7 +39,7 @@ class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
     kalemMiktariController = TextEditingController();
     paketController = TextEditingController();
     islemYapilacakMiktarController = TextEditingController();
-    hucreController = TextEditingController();
+    hucreController = TextEditingController(text: viewModel.model.hucreKodu);
     super.initState();
   }
 
@@ -61,8 +67,7 @@ class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
                     splitCount: 2,
                     children: [
                       Text("Tarih: ${viewModel.model.belgeModel?.tarih.toDateString}").yetkiVarMi(viewModel.model.belgeModel?.tarih != null),
-                      Text("Belge Tipi: ${EditTipiEnum.values.firstWhere((element) => element.rawValue == viewModel.model.belgeModel?.belgeTipi).getName}")
-                          .yetkiVarMi(viewModel.model.belgeModel?.belgeTipi != null),
+                      Text("Belge Tipi: ${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model.belgeTuru)?.getName}").yetkiVarMi(viewModel.model.belgeTuru != null),
                       Text("Cari Kodu: ${viewModel.model.belgeModel?.cariKodu}").yetkiVarMi(viewModel.model.belgeModel?.cariKodu != null),
                     ],
                   ),
@@ -72,14 +77,37 @@ class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
                 labelText: "Stok",
                 readOnly: true,
                 isMust: true,
+                suffixMore: true,
                 controller: stokController,
-                onTap: () async {},
+                suffix: IconButton(
+                  onPressed: () async {
+                    final result = await Get.toNamed("/qr");
+                    if (result is String) {
+                      final BaseStokMixin? stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: result));
+                      updateStok(stok);
+                    }
+                  },
+                  icon: const Icon(Icons.qr_code_scanner),
+                ),
+                onTap: () async {
+                  if (viewModel.model.belgeGorunsunMu) {
+                  } else {
+                    final result = await Get.toNamed("mainPage/stokListesiOzel");
+                    updateStok(result);
+                  }
+                },
               ),
               CustomTextField(
                 labelText: "Stok Adı",
                 readOnly: true,
                 controller: stokAdiController,
-                onTap: () {},
+                suffix: IconButton(
+                  onPressed: () async {
+                    if (viewModel.model.stokKodu == null) return dialogManager.showErrorSnackBar("Stok seçiniz.");
+                    dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)));
+                  },
+                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+                ),
               ),
               CustomTextField(
                 labelText: "Ölçü Birimi",
@@ -94,13 +122,13 @@ class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
                     labelText: "Kalem Miktarı",
                     readOnly: true,
                     controller: kalemMiktariController,
-                  ),
+                  ).yetkiVarMi(viewModel.model.kalemMiktariGorunsunMu),
                   CustomTextField(
                     labelText: "İşlem Yapılacak Miktar",
                     isMust: true,
-                    readOnly: true,
+                    isFormattedString: true,
                     controller: islemYapilacakMiktarController,
-                    onTap: () {},
+                    onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                   ),
                 ],
               ),
@@ -108,11 +136,29 @@ class _BaseHucreKalemlerViewState extends State<BaseHucreKalemlerView> {
                 labelText: "Hücre",
                 controller: hucreController,
                 isMust: true,
+                suffixMore: true,
                 readOnly: true,
-                onTap: () {},
+                onTap: getHucreModel,
               ),
             ],
           ),
         ),
       ).paddingAll(UIHelper.lowSize);
+
+  void updateStok(BaseStokMixin? result) {
+    if (result is BaseStokMixin) {
+      stokController.text = result.stokKodu ?? "";
+      stokAdiController.text = result.stokAdi ?? "";
+      olcuBirimiController.text = result.olcuBirimi ?? "";
+      viewModel.setStok(result);
+    }
+  }
+
+  Future<void> getHucreModel() async {
+    final result = await Get.toNamed("/mainPage/hucreListesiOzel", arguments: viewModel.model.depoKodu);
+    if (result is HucreListesiModel) {
+      hucreController.text = result.hucreKodu ?? "";
+      viewModel.setHucre(result.hucreKodu);
+    }
+  }
 }

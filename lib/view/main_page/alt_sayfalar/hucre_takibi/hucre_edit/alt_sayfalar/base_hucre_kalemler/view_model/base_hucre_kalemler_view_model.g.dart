@@ -25,6 +25,43 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
     });
   }
 
+  late final _$_BaseHucreKalemlerViewModelBaseActionController =
+      ActionController(
+          name: '_BaseHucreKalemlerViewModelBase', context: context);
+
+  @override
+  void setStok(BaseStokMixin? stok) {
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setStok');
+    try {
+      return super.setStok(stok);
+    } finally {
+      _$_BaseHucreKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHucre(String? hucre) {
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setHucre');
+    try {
+      return super.setHucre(hucre);
+    } finally {
+      _$_BaseHucreKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMiktar(double? miktar) {
+    final _$actionInfo = _$_BaseHucreKalemlerViewModelBaseActionController
+        .startAction(name: '_BaseHucreKalemlerViewModelBase.setMiktar');
+    try {
+      return super.setMiktar(miktar);
+    } finally {
+      _$_BaseHucreKalemlerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
