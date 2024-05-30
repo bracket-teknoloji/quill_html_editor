@@ -186,7 +186,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.paket:
         return "PAK";
       case EditTipiEnum.belgesizIslem:
-        return "BS";
+        return "BI";
     }
   }
 

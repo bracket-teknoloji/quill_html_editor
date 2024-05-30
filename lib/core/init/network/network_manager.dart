@@ -625,7 +625,7 @@ class NetworkManager {
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
       showLoading: true,
-      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih":tarih?.toDateString ?? DateTime.now().toDateString},
+      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": tarih?.toDateString ?? DateTime.now().toDateString},
     );
     if (result.data is List) {
       return result.data.first;
