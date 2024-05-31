@@ -19,10 +19,19 @@ class BaseHucreEditView extends StatefulWidget {
 class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with TickerProviderStateMixin {
   final HucreEditViewModel viewModel = HucreEditViewModel();
   late final TabController tabController;
-
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
+    SingletonModels.hucreTransferiModel = HucreTransferiModel();
+    SingletonModels.hucreTransferiModel.pickerBelgeTuru = widget.islemTuru.kodu;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      tabController.addListener(() {
+        if (tabController.indexIsChanging && tabController.index == 1 && !SingletonModels.hucreTransferiModel.kalemlereGidilsinMi) {
+          dialogManager.showAlertDialog("Gerekli alanları doldurunuz");
+          tabController.animateTo(0);
+        }
+      });
+    });
     super.initState();
   }
 
@@ -44,6 +53,11 @@ class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with TickerPr
               onPressed: () async {
                 if (!SingletonModels.hucreTransferiModel.isValid) return dialogManager.showAlertDialog("Lütfen formu eksiksiz doldurunuz!");
                 final result = await viewModel.sendData();
+                if (result) {
+                  SingletonModels.hucreTransferiModel = HucreTransferiModel();
+                  tabController.animateTo(0);
+                  dialogManager.showSuccessSnackBar("İşlem başarıyla gerçekleştirildi");
+                }
               },
               icon: const Icon(Icons.save_outlined),
             ),
@@ -57,6 +71,7 @@ class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with TickerPr
           ),
         ),
         body: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
           children: const [
             BaseHucreGenelView(),

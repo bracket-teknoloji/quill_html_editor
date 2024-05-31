@@ -18,6 +18,7 @@ import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
@@ -393,7 +394,15 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: _paramModel?.depoList
             ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
-            .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
+            .map(
+              (DepoList e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                description: e.depoKodu.toStringIfNotNull,
+                descriptionWidget: e.hucreTakibi == "E" ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
             .toList(),
       );
   Future<DepoList?> showHucreDepoBottomSheetDialog(BuildContext context, int? groupValue) async => await showRadioBottomSheetDialog(

@@ -10,7 +10,7 @@ class HucreListesiViewModel = _HucreListesiViewModelBase with _$HucreListesiView
 
 abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  HucreListesiRequestModel requestModel = HucreListesiRequestModel();
+  HucreListesiRequestModel requestModel = HucreListesiRequestModel(depoKodu: 0);
 
   @observable
   ObservableList<HucreListesiModel>? hucreListesi;

@@ -91,6 +91,8 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                 ),
                 onTap: () async {
                   if (viewModel.model.belgeGorunsunMu) {
+                    final result = await Get.toNamed("mainPage/hucreTakibiStoklar");
+                    updateStok(result);
                   } else {
                     final result = await Get.toNamed("mainPage/stokListesiOzel");
                     updateStok(result);

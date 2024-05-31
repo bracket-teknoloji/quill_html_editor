@@ -28,7 +28,7 @@ class _HucreListesiViewState extends BaseState<HucreListesiView> {
   @override
   void initState() {
     searchController = TextEditingController();
-    viewModel.setDepoKodu(widget.depoKodu);
+    viewModel.setDepoKodu(widget.depoKodu ?? 0);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
     });

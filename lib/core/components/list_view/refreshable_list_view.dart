@@ -8,7 +8,7 @@ class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget
   final Future<void> Function() onRefresh;
   final List<T>? items;
   final Widget Function(T) itemBuilder;
-  const RefreshableListView({super.key,required this.onRefresh, this.items, required this.itemBuilder});
+  const RefreshableListView({super.key, required this.onRefresh, required this.items, required this.itemBuilder});
 
   @override
   Widget build(BuildContext context) => RefreshIndicator.adaptive(
@@ -19,7 +19,7 @@ class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget
   Widget body() {
     if (items == null) return const ListViewShimmer();
     if (items!.isEmpty) return const Center(child: Text("Liste bulunamadı."));
-    return ListView.builder(  
+    return ListView.builder(
       itemCount: items!.length,
       itemBuilder: (context, index) => itemBuilder(items![index]),
     );
