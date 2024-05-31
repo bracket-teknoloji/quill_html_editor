@@ -25,6 +25,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/view/belge_rehberi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/view/hucre_takibi_stoklar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/view/base_hucre_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/view/hucre_hareketleri_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view/hucre_listesi_view.dart";
@@ -481,6 +482,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/hucreTransferi", page: HucreTransferiView.new),
               GetPage(name: "/hucreHareketleri", page: () => HucreHareketleriView(model: Get.arguments)),
               GetPage(name: "/hucredekiStoklar", page: () => HucredekiStoklarView(model: Get.arguments)),
+              GetPage(name: "/hucreTakibiStoklar", page: HucreTakibiStoklarView.new),
               GetPage(name: "/hucreEditYerlestir", page: () => const BaseHucreEditView(islemTuru: HucreTakibiIslemTuruEnum.hucreYerlestir)),
               GetPage(name: "/hucreEditBosalt", page: () => const BaseHucreEditView(islemTuru: HucreTakibiIslemTuruEnum.hucreBosalt)),
               GetPage(name: "/belgeRehberi", page: () => BelgeRehberiView(model: Get.arguments)),
