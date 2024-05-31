@@ -353,6 +353,7 @@ class NetworkManager {
     if (headerSirketBilgileri) {
       final veriTabani = CacheManager.getVeriTabani;
       final Map<String, String> sirketBilgileri = {
+        "User-Agent": "PickeFIosApp",
         "VERITABANI": veriTabani["Şirket"].toString(),
         "ISLETME_KODU": veriTabani["İşletme"].toString(),
         "SUBE_KODU": veriTabani["Şube"].toString(),
