@@ -17,6 +17,7 @@ class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, B
     String? yapkod,
     String? yapacik,
     double? bakiye,
+    double? miktar,
     String? olcuBirimi,
   }) = _HucredekiStoklarModel;
 

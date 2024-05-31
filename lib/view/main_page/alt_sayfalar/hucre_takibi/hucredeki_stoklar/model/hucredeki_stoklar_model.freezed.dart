@@ -29,6 +29,7 @@ mixin _$HucredekiStoklarModel {
   String? get yapkod => throw _privateConstructorUsedError;
   String? get yapacik => throw _privateConstructorUsedError;
   double? get bakiye => throw _privateConstructorUsedError;
+  double? get miktar => throw _privateConstructorUsedError;
   String? get olcuBirimi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $HucredekiStoklarModelCopyWith<$Res> {
       String? yapkod,
       String? yapacik,
       double? bakiye,
+      double? miktar,
       String? olcuBirimi});
 }
 
@@ -77,6 +79,7 @@ class _$HucredekiStoklarModelCopyWithImpl<$Res,
     Object? yapkod = freezed,
     Object? yapacik = freezed,
     Object? bakiye = freezed,
+    Object? miktar = freezed,
     Object? olcuBirimi = freezed,
   }) {
     return _then(_value.copyWith(
@@ -112,6 +115,10 @@ class _$HucredekiStoklarModelCopyWithImpl<$Res,
           ? _value.bakiye
           : bakiye // ignore: cast_nullable_to_non_nullable
               as double?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as double?,
       olcuBirimi: freezed == olcuBirimi
           ? _value.olcuBirimi
           : olcuBirimi // ignore: cast_nullable_to_non_nullable
@@ -138,6 +145,7 @@ abstract class _$$HucredekiStoklarModelImplCopyWith<$Res>
       String? yapkod,
       String? yapacik,
       double? bakiye,
+      double? miktar,
       String? olcuBirimi});
 }
 
@@ -161,6 +169,7 @@ class __$$HucredekiStoklarModelImplCopyWithImpl<$Res>
     Object? yapkod = freezed,
     Object? yapacik = freezed,
     Object? bakiye = freezed,
+    Object? miktar = freezed,
     Object? olcuBirimi = freezed,
   }) {
     return _then(_$HucredekiStoklarModelImpl(
@@ -196,6 +205,10 @@ class __$$HucredekiStoklarModelImplCopyWithImpl<$Res>
           ? _value.bakiye
           : bakiye // ignore: cast_nullable_to_non_nullable
               as double?,
+      miktar: freezed == miktar
+          ? _value.miktar
+          : miktar // ignore: cast_nullable_to_non_nullable
+              as double?,
       olcuBirimi: freezed == olcuBirimi
           ? _value.olcuBirimi
           : olcuBirimi // ignore: cast_nullable_to_non_nullable
@@ -216,6 +229,7 @@ class _$HucredekiStoklarModelImpl extends _HucredekiStoklarModel {
       this.yapkod,
       this.yapacik,
       this.bakiye,
+      this.miktar,
       this.olcuBirimi})
       : super._();
 
@@ -238,6 +252,8 @@ class _$HucredekiStoklarModelImpl extends _HucredekiStoklarModel {
   final String? yapacik;
   @override
   final double? bakiye;
+  @override
+  final double? miktar;
   @override
   final String? olcuBirimi;
 
@@ -266,6 +282,7 @@ abstract class _HucredekiStoklarModel extends HucredekiStoklarModel {
       final String? yapkod,
       final String? yapacik,
       final double? bakiye,
+      final double? miktar,
       final String? olcuBirimi}) = _$HucredekiStoklarModelImpl;
   _HucredekiStoklarModel._() : super._();
 
@@ -288,6 +305,8 @@ abstract class _HucredekiStoklarModel extends HucredekiStoklarModel {
   String? get yapacik;
   @override
   double? get bakiye;
+  @override
+  double? get miktar;
   @override
   String? get olcuBirimi;
   @override

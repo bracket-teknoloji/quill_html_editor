@@ -30,6 +30,8 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? alisFiat4;
   double? alisKdv;
   @override
+  double? miktar;
+  @override
   double? bakiye;
   double? birimAgirlik;
   double? dovAlisFiat;

@@ -17,6 +17,7 @@ _$HucredekiStoklarModelImpl _$$HucredekiStoklarModelImplFromJson(
       yapkod: json['YAPKOD'] as String?,
       yapacik: json['YAPACIK'] as String?,
       bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
       olcuBirimi: json['OLCU_BIRIMI'] as String?,
     );
 
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$HucredekiStoklarModelImplToJson(
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('YAPACIK', instance.yapacik);
   writeNotNull('BAKIYE', instance.bakiye);
+  writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
   return val;
 }

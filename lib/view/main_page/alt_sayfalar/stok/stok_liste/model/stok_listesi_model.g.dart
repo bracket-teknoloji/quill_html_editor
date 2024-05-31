@@ -1319,6 +1319,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
       bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt(),
     )
+      ..miktar = (json['MIKTAR'] as num?)?.toDouble()
       ..yapacik = json['YAPACIK'] as String?
       ..netMiktar = (json['NET_MIKTAR'] as num?)?.toDouble()
       ..depoBakiyeListe = (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
@@ -1348,6 +1349,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('ALIS_FIAT3', instance.alisFiat3);
   writeNotNull('ALIS_FIAT4', instance.alisFiat4);
   writeNotNull('ALIS_KDV', instance.alisKdv);
+  writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('BAKIYE', instance.bakiye);
   writeNotNull('BIRIM_AGIRLIK', instance.birimAgirlik);
   writeNotNull('DOV_ALIS_FIAT', instance.dovAlisFiat);
