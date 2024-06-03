@@ -54,42 +54,44 @@ import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
 class NetworkManager {
-  final Dio dio = Dio(
-    BaseOptions(
-      baseUrl: getBaseUrl,
-      followRedirects: false,
-      validateStatus: (status) => status! < 500,
-      receiveTimeout: const Duration(minutes: 2),
-      connectTimeout: const Duration(seconds: 20),
-      sendTimeout: const Duration(minutes: 2),
-      receiveDataWhenStatusError: true,
-      contentType: Headers.jsonContentType,
-      responseType: ResponseType.json,
-    ),
-  );
+  //create singleton
+  static final NetworkManager _singleton = NetworkManager._internal();
 
-  NetworkManager() {
+  factory NetworkManager() => _singleton;
+
+  NetworkManager._internal() {
+    log("NetworkManager oluşturuldu", name: "NETWORK MANAGER");
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) => handler.next(options),
         onError: (e, handler) {
-          // print(e);
-          if (e.type == DioExceptionType.connectionError) {
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}"));
-          } else if (e.type == DioExceptionType.unknown) {
-            print(e);
-            return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
-          } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
-            if (e.requestOptions.path == ApiUrls.token) {
-              return handler
-                  .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
-            } else {
-              return handler
+          switch (e.type) {
+            case DioExceptionType.connectionError:
+              handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}"));
+            case DioExceptionType.unknown:
+              handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
+            case DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout:
+              handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
+            default:
+              handler
                   .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
-            }
-          } else {
-            handler.next(e);
           }
+          // if (e.type == DioExceptionType.connectionError) {
+          //   return
+          // } else if (e.type == DioExceptionType.unknown) {
+          //   print(e);
+          //   return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
+          // } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
+          //   if (e.requestOptions.path == ApiUrls.token) {
+          //     return handler
+          //         .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
+          //   } else {
+          //     return handler
+          //         .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
+          //   }
+          // } else {
+          //   handler.next(e);
+          // }
         },
       ),
     );
@@ -103,13 +105,28 @@ class NetworkManager {
         settings: TalkerDioLoggerSettings(
           printResponseMessage: true,
           printResponseData: false,
-          printRequestData: false,
+          printErrorData: true,
           requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
           responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
         ),
       ),
     );
   }
+
+  final Dio dio = Dio(
+    BaseOptions(
+      baseUrl: getBaseUrl,
+      preserveHeaderCase: true,
+      followRedirects: false,
+      validateStatus: (status) => status! < 500,
+      receiveTimeout: const Duration(minutes: 2),
+      connectTimeout: const Duration(seconds: 20),
+      sendTimeout: const Duration(minutes: 2),
+      receiveDataWhenStatusError: true,
+      contentType: Headers.jsonContentType,
+      responseType: ResponseType.json,
+    ),
+  );
 
   Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     // final FormData formData = FormData.fromMap(data);
@@ -353,7 +370,7 @@ class NetworkManager {
     if (headerSirketBilgileri) {
       final veriTabani = CacheManager.getVeriTabani;
       final Map<String, String> sirketBilgileri = {
-        "User-Agent": "PickeFIosApp",
+        "User-Agent": "PickerFlutter${AccountModel.instance.platform}App",
         "VERITABANI": veriTabani["Şirket"].toString(),
         "ISLETME_KODU": veriTabani["İşletme"].toString(),
         "SUBE_KODU": veriTabani["Şube"].toString(),
