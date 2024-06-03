@@ -12,7 +12,8 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_s
 import "package:picker/view/main_page/model/param_model.dart";
 
 final class BaseHucreGenelView extends StatefulWidget {
-  const BaseHucreGenelView({super.key});
+  final TabController tabController;
+  const BaseHucreGenelView({super.key, required this.tabController});
 
   @override
   State<BaseHucreGenelView> createState() => _BaseHucreGenelViewState();
@@ -67,7 +68,12 @@ final class _BaseHucreGenelViewState extends BaseState<BaseHucreGenelView> {
                       title: Text(item.getName),
                       groupValue: viewModel.selectedEditTipi?.rawValue,
                       onChanged: (value) {
+                        belgeController.text = "";
+                        // viewModel.
                         viewModel.setSelectedEditTipi(viewModel.valueList.indexOf(viewModel.valueList.where((e) => e.rawValue == value).first));
+                        if ([EditTipiEnum.belgesizIslem, EditTipiEnum.paket].map((e) => e.rawValue).contains(value) && depoController.text.isNotEmpty) {
+                          widget.tabController.animateTo(1);
+                        }
                       },
                     ),
                   );

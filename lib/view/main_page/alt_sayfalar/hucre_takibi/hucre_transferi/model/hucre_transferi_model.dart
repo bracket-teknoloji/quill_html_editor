@@ -50,6 +50,8 @@ extension HucreTransferiModelExtensions on HucreTransferiModel {
 
   bool get belgeGorunsunMu => [EditTipiEnum.belgesizIslem, EditTipiEnum.paket].every((element) => element.rawValue != belgeTuru) && belgeTuru != null;
 
+  bool get paketMi => belgeTuru == "PAK";
+
   EditTipiEnum? get getEditTipi => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == belgeTuru);
 
   bool get kalemMiktariGorunsunMu {

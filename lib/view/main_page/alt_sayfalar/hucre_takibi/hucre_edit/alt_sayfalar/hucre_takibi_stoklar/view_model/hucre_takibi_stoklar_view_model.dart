@@ -14,7 +14,7 @@ abstract class _HucreTakibiStoklarViewModelBase with Store, MobxNetworkMixin {
   ObservableList<HucreTakibiStoklarModel>? hucreTakibiStoklarListesi;
 
   @observable
-  HucreTakibiStoklarRequestModel requestModel = HucreTakibiStoklarRequestModel.fromHucreTransferiModel(SingletonModels.hucreTransferiModel);
+  HucreTakibiStoklarRequestModel requestModel = HucreTakibiStoklarRequestModel.fromHucreTransferiModel(SingletonModels.hucreTransferiModel.copyWith(stokKodu: null));
 
   @action
   void setHucreTakibiStoklarListesi(List<HucreTakibiStoklarModel>? list) => hucreTakibiStoklarListesi = list?.asObservable();
@@ -24,7 +24,7 @@ abstract class _HucreTakibiStoklarViewModelBase with Store, MobxNetworkMixin {
     if (hucreTakibiStoklarListesi != null) {
       setHucreTakibiStoklarListesi(null);
     }
-    final result = await networkManager.dioGet(path: ApiUrls.getHucredekiStoklar, bodyModel: HucreTakibiStoklarModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getHucreTakibiStoklar, bodyModel: HucreTakibiStoklarModel(), queryParameters: requestModel.toJson());
     if (result.success == true) {
       setHucreTakibiStoklarListesi(result.dataList);
     }

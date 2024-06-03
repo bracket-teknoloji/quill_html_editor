@@ -31,7 +31,7 @@ abstract class _BaseHucreGenelViewModelBase with Store {
   @action
   void setSelectedEditTipi(int? index) {
     selectedEditTipi = valueList[index ?? 0];
-    model = model.copyWith(belgeTuru: selectedEditTipi?.rawValue);
+    model = model.copyWith(belgeTuru: selectedEditTipi?.rawValue, belgeNo: null);
     SingletonModels.hucreTransferiModel = model;
   }
 
@@ -43,7 +43,7 @@ abstract class _BaseHucreGenelViewModelBase with Store {
 
   @action
   void setBelge(BelgeRehberiModel? belge) {
-    model = model.copyWith(belgeNo: belge?.belgeNo, belgeModel: belge);
+    model = model.copyWith(belgeNo: belge?.belgeNo, belgeModel: belge, cariKodu: belge?.cariKodu);
     SingletonModels.hucreTransferiModel = model;
   }
 }

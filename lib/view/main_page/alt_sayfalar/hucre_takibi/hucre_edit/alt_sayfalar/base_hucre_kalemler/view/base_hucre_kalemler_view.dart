@@ -9,6 +9,7 @@ import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/base_hucre_kalemler/view_model/base_hucre_kalemler_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
@@ -98,7 +99,23 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                     updateStok(result);
                   }
                 },
-              ),
+              ).yetkiVarMi(!viewModel.model.paketMi),
+              CustomTextField(
+                labelText: "Paket",
+                readOnly: true,
+                isMust: true,
+                controller: paketController,
+                suffix: IconButton(
+                  onPressed: () async {
+                    final result = await Get.toNamed("/qr");
+                    if (result is String) {
+                      paketChecker(result);
+                    }
+                  },
+                  icon: const Icon(Icons.qr_code_scanner),
+                ),
+                onSubmitted: (value) async => paketChecker(value),
+              ).yetkiVarMi(viewModel.model.paketMi),
               CustomTextField(
                 labelText: "Stok Adı",
                 readOnly: true,
@@ -110,13 +127,13 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                   },
                   icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
                 ),
-              ),
+              ).yetkiVarMi(!viewModel.model.paketMi),
               CustomTextField(
                 labelText: "Ölçü Birimi",
                 readOnly: true,
                 controller: olcuBirimiController,
-                onTap: () {},
-              ),
+                // onTap: () {},
+              ).yetkiVarMi(!viewModel.model.paketMi),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
@@ -131,9 +148,14 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                     isFormattedString: true,
                     controller: islemYapilacakMiktarController,
                     onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                    validator: (value) {
+                      if (value case (null || "")) return "Lütfen işlem yapılacak miktarı giriniz.";
+                      if (value.toDoubleWithFormattedString > kalemMiktariController.text.toDoubleWithFormattedString) return "İşlem yapılacak miktar kalem miktarından büyük olamaz.";
+                      return null;
+                    },
                   ),
                 ],
-              ),
+              ).yetkiVarMi(!viewModel.model.paketMi),
               CustomTextField(
                 labelText: "Hücre",
                 controller: hucreController,
@@ -151,8 +173,21 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
     if (result is BaseStokMixin) {
       stokController.text = result.stokKodu ?? "";
       stokAdiController.text = result.stokAdi ?? "";
-      olcuBirimiController.text = result.olcuBirimi ?? "";
+      olcuBirimiController.text = result.getOlcuBirimi ?? "";
+      kalemMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
+      islemYapilacakMiktarController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       viewModel.setStok(result);
+    }
+  }
+
+  Future<String?> paketChecker(String paketKodu) async {
+    final result = await viewModel.getPaket(paketKodu);
+    if (result != null) {
+      paketController.text = result;
+      return result;
+    } else {
+      dialogManager.showErrorSnackBar("Paket Bulunamadı - $paketKodu");
+      return null;
     }
   }
 

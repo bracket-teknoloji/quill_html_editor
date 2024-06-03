@@ -25,6 +25,31 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
     });
   }
 
+  late final _$paketRequestModelAtom = Atom(
+      name: '_BaseHucreKalemlerViewModelBase.paketRequestModel',
+      context: context);
+
+  @override
+  PaketlemeListesiRequestModel get paketRequestModel {
+    _$paketRequestModelAtom.reportRead();
+    return super.paketRequestModel;
+  }
+
+  @override
+  set paketRequestModel(PaketlemeListesiRequestModel value) {
+    _$paketRequestModelAtom.reportWrite(value, super.paketRequestModel, () {
+      super.paketRequestModel = value;
+    });
+  }
+
+  late final _$getPaketAsyncAction =
+      AsyncAction('_BaseHucreKalemlerViewModelBase.getPaket', context: context);
+
+  @override
+  Future<String?> getPaket(String? paketKodu) {
+    return _$getPaketAsyncAction.run(() => super.getPaket(paketKodu));
+  }
+
   late final _$_BaseHucreKalemlerViewModelBaseActionController =
       ActionController(
           name: '_BaseHucreKalemlerViewModelBase', context: context);
@@ -65,7 +90,8 @@ mixin _$BaseHucreKalemlerViewModel on _BaseHucreKalemlerViewModelBase, Store {
   @override
   String toString() {
     return '''
-model: ${model}
+model: ${model},
+paketRequestModel: ${paketRequestModel}
     ''';
   }
 }
