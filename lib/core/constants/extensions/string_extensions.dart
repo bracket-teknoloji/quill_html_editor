@@ -18,4 +18,9 @@ extension StringExtensions on String? {
       return "";
     }
   }
+
+  String? get withoutBlanks {
+    if (this?.isEmpty == true) return null;
+    return this;
+  }
 }
