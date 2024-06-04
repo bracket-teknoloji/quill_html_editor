@@ -6,6 +6,7 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
@@ -1124,7 +1125,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel with NetworkManagerMixin {
+class KalemModel with NetworkManagerMixin, BaseStokMixin {
   @HiveField(0)
   @JsonKey(defaultValue: true, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
@@ -1349,6 +1350,12 @@ class KalemModel with NetworkManagerMixin {
   double? stokBakiye;
   @HiveField(109)
   double? stokBirimAgirlik;
+  @override
+  @HiveField(110)
+  double? bakiye;
+  @override
+  @HiveField(111)
+  double? netMiktar;
 
   KalemModel({
     this.iskonto1OranMi,

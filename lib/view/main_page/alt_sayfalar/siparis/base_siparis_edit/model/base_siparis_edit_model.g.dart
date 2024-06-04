@@ -4193,13 +4193,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..stokSatisKuru = fields[106] as double?
       ..olcuBirimCarpani = fields[107] as double?
       ..stokBakiye = fields[108] as double?
-      ..stokBirimAgirlik = fields[109] as double?;
+      ..stokBirimAgirlik = fields[109] as double?
+      ..bakiye = fields[110] as double?
+      ..netMiktar = fields[111] as double?;
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(110)
+      ..writeByte(112)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4419,7 +4421,11 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(108)
       ..write(obj.stokBakiye)
       ..writeByte(109)
-      ..write(obj.stokBirimAgirlik);
+      ..write(obj.stokBirimAgirlik)
+      ..writeByte(110)
+      ..write(obj.bakiye)
+      ..writeByte(111)
+      ..write(obj.netMiktar);
   }
 
   @override
@@ -4985,7 +4991,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
       ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
       ..stokBakiye = (json['STOK_BAKIYE'] as num?)?.toDouble()
-      ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble();
+      ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble()
+      ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
+      ..netMiktar = (json['NET_MIKTAR'] as num?)?.toDouble();
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -5108,5 +5116,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('OLCU_BIRIM_CARPANI', instance.olcuBirimCarpani);
   writeNotNull('STOK_BAKIYE', instance.stokBakiye);
   writeNotNull('STOK_BIRIM_AGIRLIK', instance.stokBirimAgirlik);
+  writeNotNull('BAKIYE', instance.bakiye);
+  writeNotNull('NET_MIKTAR', instance.netMiktar);
   return val;
 }
