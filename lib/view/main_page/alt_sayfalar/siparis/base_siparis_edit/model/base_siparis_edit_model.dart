@@ -1000,6 +1000,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
+  double get dovizKuru => (genelToplam ?? 0) / (dovizTutari ?? 0);
+
   double iskontoChecker(double result) {
     if (genIsk1o != null && genIsk1o != 0.0) {
       genelIskonto1 = result * (genIsk1o ?? 0) / 100;
@@ -1139,6 +1141,7 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   int? depoKodu;
   @HiveField(5)
   double? kdvOrani;
+  @override
   @HiveField(6)
   double? miktar;
   @HiveField(7)
@@ -1165,8 +1168,10 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   String? depoTanimi;
   @HiveField(17)
   String? olcuBirimAdi;
+  @override
   @HiveField(18)
   String? stokAdi;
+  @override
   @HiveField(19)
   String? stokKodu;
   @HiveField(20)
