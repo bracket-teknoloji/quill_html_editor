@@ -40,7 +40,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
           () async {
             await seriNoUret();
           },
-          title: "Otomatik Seri  Üretilsin Mi?",
+          title: "Otomatik Seri Üretilsin Mi?",
         );
       }
     });
