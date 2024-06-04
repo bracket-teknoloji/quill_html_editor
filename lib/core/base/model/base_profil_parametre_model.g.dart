@@ -45,6 +45,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           EditTipiEnum.isEmri,
       kapaliBelgelerListelenmesinMi:
           json['KAPALI_BELGELER_LISTELENMESIN_MI'] as bool? ?? false,
+      sayimStokSecildigindeHemenKaydet:
+          json['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -80,6 +82,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!;
   val['KAPALI_BELGELER_LISTELENMESIN_MI'] =
       instance.kapaliBelgelerListelenmesinMi;
+  val['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] =
+      instance.sayimStokSecildigindeHemenKaydet;
   return val;
 }
 

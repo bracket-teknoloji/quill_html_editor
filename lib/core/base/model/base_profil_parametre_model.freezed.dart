@@ -47,6 +47,8 @@ mixin _$BaseProfilParametreModel {
   YaziciList? get yaziciList => throw _privateConstructorUsedError;
   EditTipiEnum get olcumGirisiBelgeTipi => throw _privateConstructorUsedError;
   bool get kapaliBelgelerListelenmesinMi => throw _privateConstructorUsedError;
+  bool get sayimStokSecildigindeHemenKaydet =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -79,7 +81,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList,
       EditTipiEnum olcumGirisiBelgeTipi,
-      bool kapaliBelgelerListelenmesinMi});
+      bool kapaliBelgelerListelenmesinMi,
+      bool sayimStokSecildigindeHemenKaydet});
 }
 
 /// @nodoc
@@ -115,6 +118,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? yaziciList = freezed,
     Object? olcumGirisiBelgeTipi = null,
     Object? kapaliBelgelerListelenmesinMi = null,
+    Object? sayimStokSecildigindeHemenKaydet = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -193,6 +197,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.kapaliBelgelerListelenmesinMi
           : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
               as bool,
+      sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
+          ? _value.sayimStokSecildigindeHemenKaydet
+          : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -225,7 +233,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       NetFectDizaynList? netFectDizaynList,
       YaziciList? yaziciList,
       EditTipiEnum olcumGirisiBelgeTipi,
-      bool kapaliBelgelerListelenmesinMi});
+      bool kapaliBelgelerListelenmesinMi,
+      bool sayimStokSecildigindeHemenKaydet});
 }
 
 /// @nodoc
@@ -260,6 +269,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? yaziciList = freezed,
     Object? olcumGirisiBelgeTipi = null,
     Object? kapaliBelgelerListelenmesinMi = null,
+    Object? sayimStokSecildigindeHemenKaydet = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -338,6 +348,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.kapaliBelgelerListelenmesinMi
           : kapaliBelgelerListelenmesinMi // ignore: cast_nullable_to_non_nullable
               as bool,
+      sayimStokSecildigindeHemenKaydet: null == sayimStokSecildigindeHemenKaydet
+          ? _value.sayimStokSecildigindeHemenKaydet
+          : sayimStokSecildigindeHemenKaydet // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -365,7 +379,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.netFectDizaynList,
       this.yaziciList,
       this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri,
-      this.kapaliBelgelerListelenmesinMi = false})
+      this.kapaliBelgelerListelenmesinMi = false,
+      this.sayimStokSecildigindeHemenKaydet = false})
       : super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -431,6 +446,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool kapaliBelgelerListelenmesinMi;
+  @override
+  @JsonKey()
+  final bool sayimStokSecildigindeHemenKaydet;
 
   @JsonKey(ignore: true)
   @override
@@ -467,8 +485,9 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final NetFectDizaynList? netFectDizaynList,
       final YaziciList? yaziciList,
       final EditTipiEnum olcumGirisiBelgeTipi,
+      final bool kapaliBelgelerListelenmesinMi,
       final bool
-          kapaliBelgelerListelenmesinMi}) = _$BaseProfilParametreModelImpl;
+          sayimStokSecildigindeHemenKaydet}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -517,6 +536,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   EditTipiEnum get olcumGirisiBelgeTipi;
   @override
   bool get kapaliBelgelerListelenmesinMi;
+  @override
+  bool get sayimStokSecildigindeHemenKaydet;
   @override
   @JsonKey(ignore: true)
   _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
