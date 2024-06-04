@@ -7,7 +7,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
   final Future<void> Function() onRefresh;
   final List<T>? items;
-  final Widget Function(T) itemBuilder;
+  final Widget Function(T item) itemBuilder;
   const RefreshableListView({super.key, required this.onRefresh, required this.items, required this.itemBuilder});
 
   @override
