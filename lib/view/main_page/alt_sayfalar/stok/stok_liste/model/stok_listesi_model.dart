@@ -211,6 +211,17 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   static void setInstance(StokListesiModel? instance) => _instance = instance;
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
+  String? olcuBirimiSelector(int? olcu) {
+    if (olcu == 1) {
+      return olcuBirimi;
+    } else if (olcu == 2) {
+      return olcuBirimi2;
+    } else if (olcu == 3) {
+      return olcuBirimi3;
+    }
+    return null;
+  }
+
   bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri?.paramModel?.karmaKoliUyg == "E";
   bool get hizmetMi => stokKodu?.startsWith("HIZ") ?? false;
 }
