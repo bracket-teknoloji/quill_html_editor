@@ -113,7 +113,7 @@ class NetworkManager {
     );
   }
 
-  final Dio dio = Dio(
+  Dio dio = Dio(
     BaseOptions(
       baseUrl: getBaseUrl,
       preserveHeaderCase: true,
@@ -128,13 +128,13 @@ class NetworkManager {
     ),
   );
 
-  Future<TokenModel?> getToken({required String path, Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+  Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     // final FormData formData = FormData.fromMap(data);
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     try {
       final response = await dio.request(
-        path,
+        ApiUrls.token,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(
@@ -212,7 +212,7 @@ class NetworkManager {
     return responseModel;
   }
 
-  Future<GenericResponseModel> dioPost<T extends NetworkManagerMixin>({
+  Future<GenericResponseModel<T>> dioPost<T extends NetworkManagerMixin>({
     required String path,
     required T bodyModel,
     Map<String, String>? headers,

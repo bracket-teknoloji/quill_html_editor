@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../core/init/network/network_manager.dart";
 import "../../../add_company/model/account_model.dart";
 
 part "login_view_model.g.dart";
@@ -13,9 +12,6 @@ abstract class _LoginViewModelBase with Store {
 
   @observable
   bool isDebug = AccountModel.instance.uyeEmail == "destek@netfect.com";
-
-  @observable
-  String baseUrl = "";
 
   @observable
   String baglantiTipi = "Uzak";
@@ -32,7 +28,6 @@ abstract class _LoginViewModelBase with Store {
   @action
   void checkDebug() {
     isDebug = AccountModel.instance.isDebug;
-    baseUrl = NetworkManager.getBaseUrl;
   }
 
   @action

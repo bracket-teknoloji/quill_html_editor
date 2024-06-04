@@ -20,7 +20,6 @@ import "../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../core/init/app_info/app_info.dart";
 import "../../../../core/init/cache/cache_manager.dart";
-import "../../../../core/init/network/login/api_urls.dart";
 import "../../../add_company/model/account_model.dart";
 import "../view_model/login_view_model.dart";
 
@@ -287,7 +286,6 @@ class _LoginViewState extends BaseState<LoginView> {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       try {
         response = await networkManager.getToken(
-          path: ApiUrls.token,
           queryParameters: {"deviceInfos": jsonEncode(instance.toJson())},
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );

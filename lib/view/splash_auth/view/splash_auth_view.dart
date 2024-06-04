@@ -132,7 +132,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       // await dialogManager.showLocationDialog();
       // await AccountModel.instance.getLocation();
       final response = await networkManager.getToken(
-        path: ApiUrls.token,
         queryParameters: {
           "deviceInfos": jsonEncode(
             (CacheManager.getHesapBilgileri
