@@ -75,6 +75,7 @@ class   ApiUrls {
   static const String savePaket = "Stok/SavePaket";
   static const String getPaketKalemleri = "Stok/GetPaketKalemleri";
   static const String getHucreHareketleri = "Stok/GetHucreHar";
+  static const String getHucreBakiyeListesi = "Stok/GetHucreBakiyeListesi";
 
   //* Finans
   static const String deleteBankaHareket = "Banka/DeleteBankaHar";
