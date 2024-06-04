@@ -29,10 +29,11 @@ final class YetkiController {
   /// ! `EĞER ParamModel'den geliyorsa skipAdmin: true yapılmalı, YetkiModel'den geliyorsa skipAdmin: false kalmalı`
   // bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (userModel?.adminMi ?? false));
   // * Adminse artık her şeye erişiyor 1.3.0
-  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : (_userModel?.adminMi ?? false));
+  bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : adminMi);
 
   //! GENEL
 
+  bool get adminMi => _userModel?.adminMi ?? false;
   List<DepoList>? get yetkiliDepoList => _paramModel?.depoList?.where((element) => _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _userModel?.adminMi ?? false).toList();
   Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
@@ -155,7 +156,6 @@ final class YetkiController {
   bool get stokPaketlemeCoklu => _isTrue(_yetkiModel?.stokPaketlemeCoklu);
   bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
   bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
-
 
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
@@ -414,11 +414,13 @@ final class YetkiController {
   //! SAYIM
   bool get sayimEkle => _isTrue(_yetkiModel?.sayimSerbest);
   bool get sayimSil => _isTrue(_yetkiModel?.sayimSerbestSil);
+  bool get sayimHemenKaydet => _isTrue(_yetkiModel?.sayimHemenKaydet);
   bool get sayimDepoFarkRaporu => _isTrue(_yetkiModel?.sayimDepoFarkRaporu);
   bool get sayimSayimRaporu => _isTrue(_yetkiModel?.sayimRaporu);
   bool sayimEkAlanlar(int? value) => _isTrue(_yetkiModel?.sayimEkAlanlar?.contains(value), skipAdmin: true);
   bool sayimGizlenecekAlanlar(String? value) => _isTrue(_yetkiModel?.sayimGizlenecekAlanlar?.contains(value), skipAdmin: true);
-  bool sayimDegistirilmeyecekAlanlar(String? value) => !_isTrue(_yetkiModel?.sayimDegismeyecekAlanlar?.contains(value));
+  bool sayimDegistirilmeyecekAlanlar(String? value) => _isTrue(_yetkiModel?.sayimDegismeyecekAlanlar?.contains(value), skipAdmin: true);
+  int get sayimVarsayilanOlcuBirimi => _yetkiModel?.sayimVarsayilanOlcuBirimi ?? 1;
 
   //! TALEP TEKLİF
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
