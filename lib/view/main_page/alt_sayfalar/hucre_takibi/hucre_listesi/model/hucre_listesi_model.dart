@@ -13,6 +13,9 @@ class HucreListesiModel with _$HucreListesiModel, NetworkManagerMixin {
     String? depoTanimi,
     @JsonKey(name: "SeriList") List<dynamic>? seriList,
     bool? eksiyeDusebilir,
+    int? netMiktar,
+    String? stokKodu,
+    String? stokAdi,
   }) = _HucreListesiModel;
 
   factory HucreListesiModel.fromJson(Map<String, dynamic> json) => _$HucreListesiModelFromJson(json);

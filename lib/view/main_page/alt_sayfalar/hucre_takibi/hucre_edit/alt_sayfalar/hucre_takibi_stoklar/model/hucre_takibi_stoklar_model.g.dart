@@ -23,6 +23,11 @@ _$HucreTakibiStoklarModelImpl _$$HucreTakibiStoklarModelImplFromJson(
       yapkod: json['YAPKOD'] as String?,
       yapacik: json['YAPACIK'] as String?,
       olcuBirimi: json['OLCU_BIRIMI'] as String?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
+      seriList: (json['SERI_LIST'] as List<dynamic>?)
+          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      eksiyeDusebilir: json['EKSIYE_DUSEBILIR'] as bool?,
     );
 
 Map<String, dynamic> _$$HucreTakibiStoklarModelImplToJson(
@@ -49,5 +54,8 @@ Map<String, dynamic> _$$HucreTakibiStoklarModelImplToJson(
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('YAPACIK', instance.yapacik);
   writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
+  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
+  writeNotNull('SERI_LIST', instance.seriList?.map((e) => e.toJson()).toList());
+  writeNotNull('EKSIYE_DUSEBILIR', instance.eksiyeDusebilir);
   return val;
 }

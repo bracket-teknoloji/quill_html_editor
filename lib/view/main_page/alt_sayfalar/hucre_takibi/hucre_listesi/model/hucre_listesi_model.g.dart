@@ -14,6 +14,9 @@ _$HucreListesiModelImpl _$$HucreListesiModelImplFromJson(
       depoTanimi: json['DEPO_TANIMI'] as String?,
       seriList: json['SeriList'] as List<dynamic>?,
       eksiyeDusebilir: json['EKSIYE_DUSEBILIR'] as bool?,
+      netMiktar: (json['NET_MIKTAR'] as num?)?.toInt(),
+      stokKodu: json['STOK_KODU'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$HucreListesiModelImplToJson(
@@ -31,5 +34,8 @@ Map<String, dynamic> _$$HucreListesiModelImplToJson(
   writeNotNull('DEPO_TANIMI', instance.depoTanimi);
   writeNotNull('SeriList', instance.seriList);
   writeNotNull('EKSIYE_DUSEBILIR', instance.eksiyeDusebilir);
+  writeNotNull('NET_MIKTAR', instance.netMiktar);
+  writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('STOK_ADI', instance.stokAdi);
   return val;
 }

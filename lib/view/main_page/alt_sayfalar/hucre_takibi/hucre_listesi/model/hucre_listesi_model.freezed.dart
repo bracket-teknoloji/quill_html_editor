@@ -26,6 +26,9 @@ mixin _$HucreListesiModel {
   @JsonKey(name: "SeriList")
   List<dynamic>? get seriList => throw _privateConstructorUsedError;
   bool? get eksiyeDusebilir => throw _privateConstructorUsedError;
+  int? get netMiktar => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  String? get stokAdi => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +47,10 @@ abstract class $HucreListesiModelCopyWith<$Res> {
       int? depoKodu,
       String? depoTanimi,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
-      bool? eksiyeDusebilir});
+      bool? eksiyeDusebilir,
+      int? netMiktar,
+      String? stokKodu,
+      String? stokAdi});
 }
 
 /// @nodoc
@@ -65,6 +71,9 @@ class _$HucreListesiModelCopyWithImpl<$Res, $Val extends HucreListesiModel>
     Object? depoTanimi = freezed,
     Object? seriList = freezed,
     Object? eksiyeDusebilir = freezed,
+    Object? netMiktar = freezed,
+    Object? stokKodu = freezed,
+    Object? stokAdi = freezed,
   }) {
     return _then(_value.copyWith(
       hucreKodu: freezed == hucreKodu
@@ -87,6 +96,18 @@ class _$HucreListesiModelCopyWithImpl<$Res, $Val extends HucreListesiModel>
           ? _value.eksiyeDusebilir
           : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
               as bool?,
+      netMiktar: freezed == netMiktar
+          ? _value.netMiktar
+          : netMiktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -104,7 +125,10 @@ abstract class _$$HucreListesiModelImplCopyWith<$Res>
       int? depoKodu,
       String? depoTanimi,
       @JsonKey(name: "SeriList") List<dynamic>? seriList,
-      bool? eksiyeDusebilir});
+      bool? eksiyeDusebilir,
+      int? netMiktar,
+      String? stokKodu,
+      String? stokAdi});
 }
 
 /// @nodoc
@@ -123,6 +147,9 @@ class __$$HucreListesiModelImplCopyWithImpl<$Res>
     Object? depoTanimi = freezed,
     Object? seriList = freezed,
     Object? eksiyeDusebilir = freezed,
+    Object? netMiktar = freezed,
+    Object? stokKodu = freezed,
+    Object? stokAdi = freezed,
   }) {
     return _then(_$HucreListesiModelImpl(
       hucreKodu: freezed == hucreKodu
@@ -145,6 +172,18 @@ class __$$HucreListesiModelImplCopyWithImpl<$Res>
           ? _value.eksiyeDusebilir
           : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
               as bool?,
+      netMiktar: freezed == netMiktar
+          ? _value.netMiktar
+          : netMiktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -157,7 +196,10 @@ class _$HucreListesiModelImpl extends _HucreListesiModel {
       this.depoKodu,
       this.depoTanimi,
       @JsonKey(name: "SeriList") final List<dynamic>? seriList,
-      this.eksiyeDusebilir})
+      this.eksiyeDusebilir,
+      this.netMiktar,
+      this.stokKodu,
+      this.stokAdi})
       : _seriList = seriList,
         super._();
 
@@ -183,6 +225,12 @@ class _$HucreListesiModelImpl extends _HucreListesiModel {
 
   @override
   final bool? eksiyeDusebilir;
+  @override
+  final int? netMiktar;
+  @override
+  final String? stokKodu;
+  @override
+  final String? stokAdi;
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +253,10 @@ abstract class _HucreListesiModel extends HucreListesiModel {
       final int? depoKodu,
       final String? depoTanimi,
       @JsonKey(name: "SeriList") final List<dynamic>? seriList,
-      final bool? eksiyeDusebilir}) = _$HucreListesiModelImpl;
+      final bool? eksiyeDusebilir,
+      final int? netMiktar,
+      final String? stokKodu,
+      final String? stokAdi}) = _$HucreListesiModelImpl;
   _HucreListesiModel._() : super._();
 
   factory _HucreListesiModel.fromJson(Map<String, dynamic> json) =
@@ -222,6 +273,12 @@ abstract class _HucreListesiModel extends HucreListesiModel {
   List<dynamic>? get seriList;
   @override
   bool? get eksiyeDusebilir;
+  @override
+  int? get netMiktar;
+  @override
+  String? get stokKodu;
+  @override
+  String? get stokAdi;
   @override
   @JsonKey(ignore: true)
   _$$HucreListesiModelImplCopyWith<_$HucreListesiModelImpl> get copyWith =>

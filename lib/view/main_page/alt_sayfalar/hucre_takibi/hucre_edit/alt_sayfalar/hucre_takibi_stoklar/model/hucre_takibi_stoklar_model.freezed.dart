@@ -35,6 +35,9 @@ mixin _$HucreTakibiStoklarModel {
   String? get yapkod => throw _privateConstructorUsedError;
   String? get yapacik => throw _privateConstructorUsedError;
   String? get olcuBirimi => throw _privateConstructorUsedError;
+  String? get depoTanimi => throw _privateConstructorUsedError;
+  List<SeriList>? get seriList => throw _privateConstructorUsedError;
+  bool? get eksiyeDusebilir => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,7 +65,10 @@ abstract class $HucreTakibiStoklarModelCopyWith<$Res> {
       int? depoKodu,
       String? yapkod,
       String? yapacik,
-      String? olcuBirimi});
+      String? olcuBirimi,
+      String? depoTanimi,
+      List<SeriList>? seriList,
+      bool? eksiyeDusebilir});
 }
 
 /// @nodoc
@@ -93,6 +99,9 @@ class _$HucreTakibiStoklarModelCopyWithImpl<$Res,
     Object? yapkod = freezed,
     Object? yapacik = freezed,
     Object? olcuBirimi = freezed,
+    Object? depoTanimi = freezed,
+    Object? seriList = freezed,
+    Object? eksiyeDusebilir = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
@@ -151,6 +160,18 @@ class _$HucreTakibiStoklarModelCopyWithImpl<$Res,
           ? _value.olcuBirimi
           : olcuBirimi // ignore: cast_nullable_to_non_nullable
               as String?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seriList: freezed == seriList
+          ? _value.seriList
+          : seriList // ignore: cast_nullable_to_non_nullable
+              as List<SeriList>?,
+      eksiyeDusebilir: freezed == eksiyeDusebilir
+          ? _value.eksiyeDusebilir
+          : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -178,7 +199,10 @@ abstract class _$$HucreTakibiStoklarModelImplCopyWith<$Res>
       int? depoKodu,
       String? yapkod,
       String? yapacik,
-      String? olcuBirimi});
+      String? olcuBirimi,
+      String? depoTanimi,
+      List<SeriList>? seriList,
+      bool? eksiyeDusebilir});
 }
 
 /// @nodoc
@@ -208,6 +232,9 @@ class __$$HucreTakibiStoklarModelImplCopyWithImpl<$Res>
     Object? yapkod = freezed,
     Object? yapacik = freezed,
     Object? olcuBirimi = freezed,
+    Object? depoTanimi = freezed,
+    Object? seriList = freezed,
+    Object? eksiyeDusebilir = freezed,
   }) {
     return _then(_$HucreTakibiStoklarModelImpl(
       stokKodu: freezed == stokKodu
@@ -266,6 +293,18 @@ class __$$HucreTakibiStoklarModelImplCopyWithImpl<$Res>
           ? _value.olcuBirimi
           : olcuBirimi // ignore: cast_nullable_to_non_nullable
               as String?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seriList: freezed == seriList
+          ? _value._seriList
+          : seriList // ignore: cast_nullable_to_non_nullable
+              as List<SeriList>?,
+      eksiyeDusebilir: freezed == eksiyeDusebilir
+          ? _value.eksiyeDusebilir
+          : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -287,8 +326,12 @@ class _$HucreTakibiStoklarModelImpl extends _HucreTakibiStoklarModel {
       this.depoKodu,
       this.yapkod,
       this.yapacik,
-      this.olcuBirimi})
-      : super._();
+      this.olcuBirimi,
+      this.depoTanimi,
+      final List<SeriList>? seriList,
+      this.eksiyeDusebilir})
+      : _seriList = seriList,
+        super._();
 
   factory _$HucreTakibiStoklarModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HucreTakibiStoklarModelImplFromJson(json);
@@ -321,6 +364,20 @@ class _$HucreTakibiStoklarModelImpl extends _HucreTakibiStoklarModel {
   final String? yapacik;
   @override
   final String? olcuBirimi;
+  @override
+  final String? depoTanimi;
+  final List<SeriList>? _seriList;
+  @override
+  List<SeriList>? get seriList {
+    final value = _seriList;
+    if (value == null) return null;
+    if (_seriList is EqualUnmodifiableListView) return _seriList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final bool? eksiyeDusebilir;
 
   @JsonKey(ignore: true)
   @override
@@ -352,7 +409,10 @@ abstract class _HucreTakibiStoklarModel extends HucreTakibiStoklarModel {
       final int? depoKodu,
       final String? yapkod,
       final String? yapacik,
-      final String? olcuBirimi}) = _$HucreTakibiStoklarModelImpl;
+      final String? olcuBirimi,
+      final String? depoTanimi,
+      final List<SeriList>? seriList,
+      final bool? eksiyeDusebilir}) = _$HucreTakibiStoklarModelImpl;
   _HucreTakibiStoklarModel._() : super._();
 
   factory _HucreTakibiStoklarModel.fromJson(Map<String, dynamic> json) =
@@ -386,6 +446,12 @@ abstract class _HucreTakibiStoklarModel extends HucreTakibiStoklarModel {
   String? get yapacik;
   @override
   String? get olcuBirimi;
+  @override
+  String? get depoTanimi;
+  @override
+  List<SeriList>? get seriList;
+  @override
+  bool? get eksiyeDusebilir;
   @override
   @JsonKey(ignore: true)
   _$$HucreTakibiStoklarModelImplCopyWith<_$HucreTakibiStoklarModelImpl>
