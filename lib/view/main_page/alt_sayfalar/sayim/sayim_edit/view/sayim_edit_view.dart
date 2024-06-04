@@ -4,6 +4,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/static_variables/singleton_models.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/view/sayim_sayilanlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view/sayim_girisi_view.dart";
@@ -45,7 +46,12 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
             Observer(
               builder: (_) => IconButton(
                 onPressed: () async {
-                  final result = await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: SingletonModels.sayimListesi?.filtre?.toJson());
+                  if (!StaticVariables.instance.isSayimValid) {
+                    dialogManager.showErrorSnackBar("Gerekli alanları doldurunuz.");
+                    return;
+                  }
+                  final result =
+                      await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: SingletonModels.sayimListesi?.filtre?.copyWith(depoKodu: model.depoKodu).toJson());
                   if (result.success == true) {
                     SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = SayimFiltreModel(islemKodu: 1);
                     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");

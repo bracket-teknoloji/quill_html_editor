@@ -1178,7 +1178,7 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
       @JsonKey(name: "ArrKod3") this.arrKod3,
       @JsonKey(name: "ArrKod4") this.arrKod4,
       @JsonKey(name: "ArrKod5") this.arrKod5,
-      this.miktar,
+      this.miktar = 1,
       this.olcuBirimKodu,
       this.projeKodu,
       this.stokKodu,
@@ -1223,6 +1223,7 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   @JsonKey(name: "ArrKod5")
   List<String>? arrKod5;
   @override
+  @JsonKey()
   double? miktar;
   @override
   int? olcuBirimKodu;

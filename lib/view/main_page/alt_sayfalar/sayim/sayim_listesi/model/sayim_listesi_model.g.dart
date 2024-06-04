@@ -120,7 +120,7 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
           (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
       arrKod5:
           (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      miktar: (json['MIKTAR'] as num?)?.toDouble(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble() ?? 1,
       olcuBirimKodu: (json['OLCU_BIRIM_KODU'] as num?)?.toInt(),
       projeKodu: json['PROJE_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,

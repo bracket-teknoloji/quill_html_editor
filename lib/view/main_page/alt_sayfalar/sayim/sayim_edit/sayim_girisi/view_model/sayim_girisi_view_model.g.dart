@@ -41,8 +41,35 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
     });
   }
 
+  late final _$hemenKaydetsinMiAtom = Atom(
+      name: '_SayimGirisiViewModelBase.hemenKaydetsinMi', context: context);
+
+  @override
+  bool get hemenKaydetsinMi {
+    _$hemenKaydetsinMiAtom.reportRead();
+    return super.hemenKaydetsinMi;
+  }
+
+  @override
+  set hemenKaydetsinMi(bool value) {
+    _$hemenKaydetsinMiAtom.reportWrite(value, super.hemenKaydetsinMi, () {
+      super.hemenKaydetsinMi = value;
+    });
+  }
+
   late final _$_SayimGirisiViewModelBaseActionController =
       ActionController(name: '_SayimGirisiViewModelBase', context: context);
+
+  @override
+  void setHemenKaydet(bool value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setHemenKaydet');
+    try {
+      return super.setHemenKaydet(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setStokModel(StokListesiModel? model) {
@@ -158,7 +185,8 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
   String toString() {
     return '''
 filtreModel: ${filtreModel},
-stokModel: ${stokModel}
+stokModel: ${stokModel},
+hemenKaydetsinMi: ${hemenKaydetsinMi}
     ''';
   }
 }

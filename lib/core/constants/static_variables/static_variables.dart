@@ -43,5 +43,9 @@ class StaticVariables {
   bool get isTransferValid => transferGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> transferGenelFormKey = GlobalKey<FormState>();
 
+  //* Sayım
+  bool get isSayimValid => sayimGenelFormKey.currentState?.validate() ?? false;
+  GlobalKey<FormState> sayimGenelFormKey = GlobalKey<FormState>();
+
   Map<String, dynamic> serbestDicParams = {};
 }

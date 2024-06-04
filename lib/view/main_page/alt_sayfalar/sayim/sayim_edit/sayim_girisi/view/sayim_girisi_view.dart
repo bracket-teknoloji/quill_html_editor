@@ -9,6 +9,7 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view_model/sayim_girisi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -31,6 +32,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
   late final TextEditingController ekAlan4Controller;
   late final TextEditingController ekAlan5Controller;
   late final TextEditingController miktarController;
+  late final TextEditingController serilerController;
   late final TextEditingController olcuBirimiController;
 
   @override
@@ -45,6 +47,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     ekAlan5Controller = TextEditingController(text: viewModel.filtreModel.kull5s);
     miktarController = TextEditingController(text: viewModel.filtreModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
     olcuBirimiController = TextEditingController();
+    serilerController = TextEditingController();
     super.initState();
   }
 
@@ -60,157 +63,186 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     ekAlan5Controller.dispose();
     miktarController.dispose();
     olcuBirimiController.dispose();
+    serilerController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomTextField(
-              labelText: "Stok",
-              isMust: true,
-              readOnly: true,
-              suffixMore: true,
-              controller: stokController,
-              suffix: IconButton(
-                onPressed: () async {
-                  final stokKodu = await Get.toNamed("qr");
-                  if (stokKodu is String) {
-                    final StokListesiModel? stokModel = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu));
-                    stokController.text = stokModel?.stokKodu ?? "";
-                    stokAdiController.text = stokModel?.stokAdi ?? "";
-                  }
-                },
-                icon: const Icon(Icons.qr_code_scanner),
-              ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("barkod")),
-              onTap: () async {
-                final stokModel = await Get.toNamed("mainPage/stokListesiOzel");
-                if (stokModel is StokListesiModel) {
-                  viewModel.setStokModel(stokModel);
-                  stokController.text = stokModel.stokKodu ?? "";
-                  stokAdiController.text = stokModel.stokAdi ?? "";
-                }
-              },
-            ),
-            CustomTextField(
-              labelText: "Stok Adı",
-              readOnly: true,
-              controller: stokAdiController,
-              valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.stokKodu ?? "")),
-              suffix: IconButton(
-                icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                onPressed: () async {
-                  if (viewModel.stokModel != null) {
-                    dialogManager.showStokGridViewDialog(viewModel.stokModel);
-                  } else {
-                    dialogManager.showAlertDialog("Önce stok seçiniz");
-                  }
-                },
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Proje",
-                    isMust: true,
-                    enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("proje"),
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: projeController,
-                    valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.projeKodu ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.filtreModel.projeKodu);
-                      if (result is BaseProjeModel) {
-                        projeController.text = result.projeAciklama ?? "";
-                        viewModel.setProjeKodu(result);
-                      }
-                    },
-                  ),
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.sayimGizlenecekAlanlar("proje")),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Miktar",
-                    isMust: true,
-                    readOnly: true,
-                    enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
-                    controller: miktarController,
-                    suffix: Wrap(
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            viewModel.decreaseMiktar();
-                            miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
-                          },
-                          icon: const Icon(Icons.remove),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            viewModel.increaseMiktar();
-                            miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
-                          },
-                          icon: const Icon(Icons.add),
-                        ),
-                      ],
-                    ).yetkiVarMi(!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")),
-                  ),
-                ),
-              ],
-            ),
-            CustomLayoutBuilder(
-              splitCount: 2,
-              children: [
-                CustomTextField(
-                  labelText: "Ek Alan 1",
-                  controller: ekAlan1Controller,
-                  onChanged: viewModel.setEkAlan1,
-                ).yetkiVarMi(yetkiController.sayimEkAlanlar(1)),
-                CustomTextField(
-                  labelText: "Ek Alan 2",
-                  controller: ekAlan2Controller,
-                  onChanged: viewModel.setEkAlan2,
-                ).yetkiVarMi(yetkiController.sayimEkAlanlar(2)),
-                CustomTextField(
-                  labelText: "Ek Alan 3",
-                  controller: ekAlan3Controller,
-                  onChanged: viewModel.setEkAlan3,
-                ).yetkiVarMi(yetkiController.sayimEkAlanlar(3)),
-                CustomTextField(
-                  labelText: "Ek Alan 4",
-                  controller: ekAlan4Controller,
-                  onChanged: viewModel.setEkAlan4,
-                ).yetkiVarMi(yetkiController.sayimEkAlanlar(4)),
-                CustomTextField(
-                  labelText: "Ek Alan 5",
-                  controller: ekAlan5Controller,
-                  onChanged: viewModel.setEkAlan5,
-                ).yetkiVarMi(yetkiController.sayimEkAlanlar(5)),
-              ],
-            ),
-            Observer(
-              builder: (_) => CustomTextField(
-                labelText: "Ölçü Birimi",
+        child: Form(
+          key: StaticVariables.instance.sayimGenelFormKey,
+          child: Column(
+            children: [
+              CustomTextField(
+                labelText: "Stok",
+                isMust: true,
                 readOnly: true,
                 suffixMore: true,
-                controller: olcuBirimiController,
-              ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
-            ),
-            Card(
-              child: SwitchListTile.adaptive(
-                value: false,
-                onChanged: (value) {},
-                title: const Text("Otomatik Sayım Etiketi Yazdır"),
+                controller: stokController,
+                suffix: IconButton(
+                  onPressed: () async {
+                    final stokKodu = await Get.toNamed("qr");
+                    if (stokKodu is String) {
+                      final StokListesiModel? stokModel = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu));
+                      setStok(stokModel);
+                    }
+                  },
+                  icon: const Icon(Icons.qr_code_scanner),
+                ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("barkod")),
+                onTap: () async {
+                  final stokModel = await Get.toNamed("mainPage/stokListesiOzel");
+                  setStok(stokModel);
+                },
               ),
-            ),
-            Card(
-              child: SwitchListTile.adaptive(
-                value: false,
-                onChanged: (value) {},
-                title: const Text("Stok Seçildiğinde Hemen Kaydet"),
+              CustomTextField(
+                labelText: "Stok Adı",
+                readOnly: true,
+                controller: stokAdiController,
+                valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.stokKodu ?? "")),
+                suffix: IconButton(
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                  onPressed: () async {
+                    if (viewModel.stokModel != null) {
+                      dialogManager.showStokGridViewDialog(viewModel.stokModel);
+                    } else {
+                      dialogManager.showAlertDialog("Önce stok seçiniz");
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Proje",
+                      isMust: true,
+                      enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("proje"),
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: projeController,
+                      valueWidget: Observer(builder: (context) => Text(viewModel.filtreModel.projeKodu ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.filtreModel.projeKodu);
+                        if (result is BaseProjeModel) {
+                          projeController.text = result.projeAciklama ?? "";
+                          viewModel.setProjeKodu(result);
+                        }
+                      },
+                    ),
+                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !yetkiController.sayimGizlenecekAlanlar("proje")),
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Miktar",
+                      isMust: true,
+                      readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                      enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                      controller: miktarController,
+                      suffix: Wrap(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              viewModel.decreaseMiktar();
+                              miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                            },
+                            icon: const Icon(Icons.remove),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              viewModel.increaseMiktar();
+                              miktarController.text = "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                            },
+                            icon: const Icon(Icons.add),
+                          ),
+                        ],
+                      ).yetkiVarMi(!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")),
+                    ),
+                  ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("miktar")),
+                ],
+              ),
+              //TODO Serileri ekle
+              // Observer(
+              //   builder: (_) => CustomTextField(
+              //     labelText: "Seriler",
+              //     isMust: true,
+              //     controller: serilerController,
+              //     suffixMore: true,
+              //     readOnly: true,
+              //     // onTap: ,
+              //     validator: (value) {
+              //       if (value == "") {
+              //         return "Bu alan boş bırakılamaz.";
+              //       }
+              //       // if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+              //       //   return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
+              //       // }
+              //       return null;
+              //     },
+              //   ),
+              // ),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  CustomTextField(
+                    labelText: "Ek Alan 1",
+                    controller: ekAlan1Controller,
+                    onChanged: viewModel.setEkAlan1,
+                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(1)),
+                  CustomTextField(
+                    labelText: "Ek Alan 2",
+                    controller: ekAlan2Controller,
+                    onChanged: viewModel.setEkAlan2,
+                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(2)),
+                  CustomTextField(
+                    labelText: "Ek Alan 3",
+                    controller: ekAlan3Controller,
+                    onChanged: viewModel.setEkAlan3,
+                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(3)),
+                  CustomTextField(
+                    labelText: "Ek Alan 4",
+                    controller: ekAlan4Controller,
+                    onChanged: viewModel.setEkAlan4,
+                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(4)),
+                  CustomTextField(
+                    labelText: "Ek Alan 5",
+                    controller: ekAlan5Controller,
+                    onChanged: viewModel.setEkAlan5,
+                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(5)),
+                ],
+              ),
+              Observer(
+                builder: (_) => CustomTextField(
+                  labelText: "Ölçü Birimi",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: olcuBirimiController,
+                ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
+              ),
+              Card(
+                child: Observer(
+                  builder: (_) => SwitchListTile.adaptive(
+                    value: viewModel.hemenKaydetsinMi,
+                    onChanged: viewModel.setHemenKaydet,
+                    title: const Text("Stok Seçildiğinde Hemen Kaydet"),
+                  ),
+                ),
+              ).yetkiVarMi(!yetkiController.adminMi && !yetkiController.sayimHemenKaydet),
+              Card(
+                child: SwitchListTile.adaptive(
+                  value: false,
+                  onChanged: (value) {},
+                  title: const Text("Otomatik Sayım Etiketi Yazdır"),
+                ),
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ),
       );
+
+  void setStok(StokListesiModel? stokModel) {
+    if (stokModel is! StokListesiModel) return;
+    viewModel.setStokModel(stokModel);
+    stokController.text = stokModel.stokKodu ?? "";
+    stokAdiController.text = stokModel.stokAdi ?? "";
+    olcuBirimiController.text = stokModel.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";
+  }
 }
