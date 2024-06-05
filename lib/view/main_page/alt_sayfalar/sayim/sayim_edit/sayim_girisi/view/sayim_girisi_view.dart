@@ -15,7 +15,8 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SayimGirisiView extends StatefulWidget {
-  const SayimGirisiView({super.key});
+  final Future<void> Function() onStokSelected;
+  const SayimGirisiView({super.key, required this.onStokSelected});
 
   @override
   State<SayimGirisiView> createState() => _SayimGirisiViewState();
@@ -134,7 +135,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     child: CustomTextField(
                       labelText: "Miktar",
                       isMust: true,
-                      readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                      // readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                       enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                       controller: miktarController,
                       suffix: Wrap(
@@ -160,25 +161,24 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                 ],
               ),
               //TODO Serileri ekle
-              // Observer(
-              //   builder: (_) => CustomTextField(
-              //     labelText: "Seriler",
-              //     isMust: true,
-              //     controller: serilerController,
-              //     suffixMore: true,
-              //     readOnly: true,
-              //     // onTap: ,
-              //     validator: (value) {
-              //       if (value == "") {
-              //         return "Bu alan boş bırakılamaz.";
-              //       }
-              //       // if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
-              //       //   return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
-              //       // }
-              //       return null;
-              //     },
-              //   ),
-              // ),
+
+              Observer(
+                builder: (_) => CustomTextField(
+                  labelText: "Seriler",
+                  isMust: true,
+                  controller: serilerController,
+                  suffixMore: true,
+                  readOnly: true,
+                  // onTap: ,
+                  validator: (value) {
+                    if (value == "") return "Bu alan boş bırakılamaz.";
+                    if (viewModel.stokModel?.seriMiktarKadarSor == true && viewModel.filtreModel.miktar != viewModel.filtreModel.seriList?.length) {
+                      return "Girdiğiniz miktar (${viewModel.filtreModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.filtreModel.seriList?.length ?? 0})";
+                    }
+                    return null;
+                  },
+                ).yetkiVarMi(viewModel.stokModel?.seriGirislerdeAcik == true),
+              ),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
@@ -238,11 +238,14 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
         ),
       );
 
-  void setStok(StokListesiModel? stokModel) {
+  Future<void> setStok(StokListesiModel? stokModel) async {
     if (stokModel is! StokListesiModel) return;
     viewModel.setStokModel(stokModel);
     stokController.text = stokModel.stokKodu ?? "";
     stokAdiController.text = stokModel.stokAdi ?? "";
     olcuBirimiController.text = stokModel.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";
+    if (viewModel.hemenKaydetsinMi) {
+      await widget.onStokSelected();
+    }
   }
 }

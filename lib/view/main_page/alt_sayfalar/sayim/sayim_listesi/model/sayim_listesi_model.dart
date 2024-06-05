@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "sayim_listesi_model.freezed.dart";
 part "sayim_listesi_model.g.dart";
@@ -39,6 +40,7 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
     String? seri3,
     String? seri4,
     DateTime? sonKullanmaTarihi,
+    StokListesiModel? stokModel,
   }) = _SayimListesiModel;
 
   factory SayimListesiModel.fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
@@ -48,7 +50,8 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class SayimFiltreModel with _$SayimFiltreModel {
+class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
+  SayimFiltreModel._();
   factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,
@@ -63,18 +66,27 @@ class SayimFiltreModel with _$SayimFiltreModel {
     @JsonKey(name: "ArrKod5") List<String>? arrKod5,
     @Default(1) double? miktar,
     int? olcuBirimKodu,
-    String? projeKodu, 
+    String? projeKodu,
     String? stokKodu,
-    @JsonKey(includeToJson: false, includeFromJson: false) String? stokAdi,
-    @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
+    String? stokAdi,
+    projeAdi,
     String? kull1s,
     String? kull2s,
     String? kull3s,
     String? kull4s,
     String? kull5s,
+    int? id,
+    int? cevrim,
+    String? fisno,
+    String? kayityapankul,
+    String? depoTanimi,
+    DateTime? kayittarihi,
   }) = _SayimFiltreModel;
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);
+
+  @override
+  SayimFiltreModel fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);
 }
 
 extension SayimExtensions on SayimListesiModel {

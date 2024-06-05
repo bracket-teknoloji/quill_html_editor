@@ -53,6 +53,10 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
       sonKullanmaTarihi: json['SON_KULLANMA_TARIHI'] == null
           ? null
           : DateTime.parse(json['SON_KULLANMA_TARIHI'] as String),
+      stokModel: json['STOK_MODEL'] == null
+          ? null
+          : StokListesiModel.fromJson(
+              json['STOK_MODEL'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SayimListesiModelImplToJson(
@@ -96,6 +100,7 @@ Map<String, dynamic> _$$SayimListesiModelImplToJson(
   writeNotNull('SERI4', instance.seri4);
   writeNotNull(
       'SON_KULLANMA_TARIHI', instance.sonKullanmaTarihi?.toIso8601String());
+  writeNotNull('STOK_MODEL', instance.stokModel?.toJson());
   return val;
 }
 
@@ -124,11 +129,21 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       olcuBirimKodu: (json['OLCU_BIRIM_KODU'] as num?)?.toInt(),
       projeKodu: json['PROJE_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
+      stokAdi: json['STOK_ADI'] as String?,
+      projeAdi: json['PROJE_ADI'],
       kull1s: json['KULL1S'] as String?,
       kull2s: json['KULL2S'] as String?,
       kull3s: json['KULL3S'] as String?,
       kull4s: json['KULL4S'] as String?,
       kull5s: json['KULL5S'] as String?,
+      id: (json['ID'] as num?)?.toInt(),
+      cevrim: (json['CEVRIM'] as num?)?.toInt(),
+      fisno: json['FISNO'] as String?,
+      kayityapankul: json['KAYITYAPANKUL'] as String?,
+      depoTanimi: json['DEPO_TANIMI'] as String?,
+      kayittarihi: json['KAYITTARIHI'] == null
+          ? null
+          : DateTime.parse(json['KAYITTARIHI'] as String),
     );
 
 Map<String, dynamic> _$$SayimFiltreModelImplToJson(
@@ -156,10 +171,18 @@ Map<String, dynamic> _$$SayimFiltreModelImplToJson(
   writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('STOK_KODU', instance.stokKodu);
+  writeNotNull('STOK_ADI', instance.stokAdi);
+  writeNotNull('PROJE_ADI', instance.projeAdi);
   writeNotNull('KULL1S', instance.kull1s);
   writeNotNull('KULL2S', instance.kull2s);
   writeNotNull('KULL3S', instance.kull3s);
   writeNotNull('KULL4S', instance.kull4s);
   writeNotNull('KULL5S', instance.kull5s);
+  writeNotNull('ID', instance.id);
+  writeNotNull('CEVRIM', instance.cevrim);
+  writeNotNull('FISNO', instance.fisno);
+  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
+  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
+  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
   return val;
 }

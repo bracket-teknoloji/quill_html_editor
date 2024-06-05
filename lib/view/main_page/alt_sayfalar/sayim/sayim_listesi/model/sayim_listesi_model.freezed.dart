@@ -80,6 +80,8 @@ mixin _$SayimListesiModel {
   set seri4(String? value) => throw _privateConstructorUsedError;
   DateTime? get sonKullanmaTarihi => throw _privateConstructorUsedError;
   set sonKullanmaTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  StokListesiModel? get stokModel => throw _privateConstructorUsedError;
+  set stokModel(StokListesiModel? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -123,7 +125,8 @@ abstract class $SayimListesiModelCopyWith<$Res> {
       String? seri2,
       String? seri3,
       String? seri4,
-      DateTime? sonKullanmaTarihi});
+      DateTime? sonKullanmaTarihi,
+      StokListesiModel? stokModel});
 
   $SayimFiltreModelCopyWith<$Res>? get filtre;
 }
@@ -171,6 +174,7 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
     Object? seri3 = freezed,
     Object? seri4 = freezed,
     Object? sonKullanmaTarihi = freezed,
+    Object? stokModel = freezed,
   }) {
     return _then(_value.copyWith(
       fisno: freezed == fisno
@@ -293,6 +297,10 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
           ? _value.sonKullanmaTarihi
           : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      stokModel: freezed == stokModel
+          ? _value.stokModel
+          : stokModel // ignore: cast_nullable_to_non_nullable
+              as StokListesiModel?,
     ) as $Val);
   }
 
@@ -347,7 +355,8 @@ abstract class _$$SayimListesiModelImplCopyWith<$Res>
       String? seri2,
       String? seri3,
       String? seri4,
-      DateTime? sonKullanmaTarihi});
+      DateTime? sonKullanmaTarihi,
+      StokListesiModel? stokModel});
 
   @override
   $SayimFiltreModelCopyWith<$Res>? get filtre;
@@ -394,6 +403,7 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
     Object? seri3 = freezed,
     Object? seri4 = freezed,
     Object? sonKullanmaTarihi = freezed,
+    Object? stokModel = freezed,
   }) {
     return _then(_$SayimListesiModelImpl(
       fisno: freezed == fisno
@@ -516,6 +526,10 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
           ? _value.sonKullanmaTarihi
           : sonKullanmaTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      stokModel: freezed == stokModel
+          ? _value.stokModel
+          : stokModel // ignore: cast_nullable_to_non_nullable
+              as StokListesiModel?,
     ));
   }
 }
@@ -553,7 +567,8 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
       this.seri2,
       this.seri3,
       this.seri4,
-      this.sonKullanmaTarihi})
+      this.sonKullanmaTarihi,
+      this.stokModel})
       : super._();
 
   factory _$SayimListesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -619,6 +634,8 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
   String? seri4;
   @override
   DateTime? sonKullanmaTarihi;
+  @override
+  StokListesiModel? stokModel;
 
   @JsonKey(ignore: true)
   @override
@@ -666,7 +683,8 @@ abstract class _SayimListesiModel extends SayimListesiModel {
       String? seri2,
       String? seri3,
       String? seri4,
-      DateTime? sonKullanmaTarihi}) = _$SayimListesiModelImpl;
+      DateTime? sonKullanmaTarihi,
+      StokListesiModel? stokModel}) = _$SayimListesiModelImpl;
   _SayimListesiModel._() : super._();
 
   factory _SayimListesiModel.fromJson(Map<String, dynamic> json) =
@@ -763,6 +781,9 @@ abstract class _SayimListesiModel extends SayimListesiModel {
   DateTime? get sonKullanmaTarihi;
   set sonKullanmaTarihi(DateTime? value);
   @override
+  StokListesiModel? get stokModel;
+  set stokModel(StokListesiModel? value);
+  @override
   @JsonKey(ignore: true)
   _$$SayimListesiModelImplCopyWith<_$SayimListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -818,14 +839,10 @@ mixin _$SayimFiltreModel {
   set projeKodu(String? value) => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
   set stokKodu(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(includeToJson: false, includeFromJson: false)
   String? get stokAdi => throw _privateConstructorUsedError;
-  @JsonKey(includeToJson: false, includeFromJson: false)
   set stokAdi(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? get projeAdi => throw _privateConstructorUsedError;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  set projeAdi(String? value) => throw _privateConstructorUsedError;
+  dynamic get projeAdi => throw _privateConstructorUsedError;
+  set projeAdi(dynamic value) => throw _privateConstructorUsedError;
   String? get kull1s => throw _privateConstructorUsedError;
   set kull1s(String? value) => throw _privateConstructorUsedError;
   String? get kull2s => throw _privateConstructorUsedError;
@@ -836,6 +853,18 @@ mixin _$SayimFiltreModel {
   set kull4s(String? value) => throw _privateConstructorUsedError;
   String? get kull5s => throw _privateConstructorUsedError;
   set kull5s(String? value) => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  set id(int? value) => throw _privateConstructorUsedError;
+  int? get cevrim => throw _privateConstructorUsedError;
+  set cevrim(int? value) => throw _privateConstructorUsedError;
+  String? get fisno => throw _privateConstructorUsedError;
+  set fisno(String? value) => throw _privateConstructorUsedError;
+  String? get kayityapankul => throw _privateConstructorUsedError;
+  set kayityapankul(String? value) => throw _privateConstructorUsedError;
+  String? get depoTanimi => throw _privateConstructorUsedError;
+  set depoTanimi(String? value) => throw _privateConstructorUsedError;
+  DateTime? get kayittarihi => throw _privateConstructorUsedError;
+  set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -865,13 +894,19 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
       int? olcuBirimKodu,
       String? projeKodu,
       String? stokKodu,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? stokAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
+      String? stokAdi,
+      dynamic projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
       String? kull4s,
-      String? kull5s});
+      String? kull5s,
+      int? id,
+      int? cevrim,
+      String? fisno,
+      String? kayityapankul,
+      String? depoTanimi,
+      DateTime? kayittarihi});
 }
 
 /// @nodoc
@@ -909,6 +944,12 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
     Object? kull3s = freezed,
     Object? kull4s = freezed,
     Object? kull5s = freezed,
+    Object? id = freezed,
+    Object? cevrim = freezed,
+    Object? fisno = freezed,
+    Object? kayityapankul = freezed,
+    Object? depoTanimi = freezed,
+    Object? kayittarihi = freezed,
   }) {
     return _then(_value.copyWith(
       arrGrupKodu: freezed == arrGrupKodu
@@ -978,7 +1019,7 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
       projeAdi: freezed == projeAdi
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       kull1s: freezed == kull1s
           ? _value.kull1s
           : kull1s // ignore: cast_nullable_to_non_nullable
@@ -999,6 +1040,30 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
           ? _value.kull5s
           : kull5s // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cevrim: freezed == cevrim
+          ? _value.cevrim
+          : cevrim // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fisno: freezed == fisno
+          ? _value.fisno
+          : fisno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayityapankul: freezed == kayityapankul
+          ? _value.kayityapankul
+          : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayittarihi: freezed == kayittarihi
+          ? _value.kayittarihi
+          : kayittarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -1027,13 +1092,19 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
       int? olcuBirimKodu,
       String? projeKodu,
       String? stokKodu,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? stokAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
+      String? stokAdi,
+      dynamic projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
       String? kull4s,
-      String? kull5s});
+      String? kull5s,
+      int? id,
+      int? cevrim,
+      String? fisno,
+      String? kayityapankul,
+      String? depoTanimi,
+      DateTime? kayittarihi});
 }
 
 /// @nodoc
@@ -1069,6 +1140,12 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
     Object? kull3s = freezed,
     Object? kull4s = freezed,
     Object? kull5s = freezed,
+    Object? id = freezed,
+    Object? cevrim = freezed,
+    Object? fisno = freezed,
+    Object? kayityapankul = freezed,
+    Object? depoTanimi = freezed,
+    Object? kayittarihi = freezed,
   }) {
     return _then(_$SayimFiltreModelImpl(
       arrGrupKodu: freezed == arrGrupKodu
@@ -1135,10 +1212,7 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.stokAdi
           : stokAdi // ignore: cast_nullable_to_non_nullable
               as String?,
-      projeAdi: freezed == projeAdi
-          ? _value.projeAdi
-          : projeAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
+      projeAdi: freezed == projeAdi ? _value.projeAdi! : projeAdi,
       kull1s: freezed == kull1s
           ? _value.kull1s
           : kull1s // ignore: cast_nullable_to_non_nullable
@@ -1159,13 +1233,37 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.kull5s
           : kull5s // ignore: cast_nullable_to_non_nullable
               as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cevrim: freezed == cevrim
+          ? _value.cevrim
+          : cevrim // ignore: cast_nullable_to_non_nullable
+              as int?,
+      fisno: freezed == fisno
+          ? _value.fisno
+          : fisno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayityapankul: freezed == kayityapankul
+          ? _value.kayityapankul
+          : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayittarihi: freezed == kayittarihi
+          ? _value.kayittarihi
+          : kayittarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SayimFiltreModelImpl implements _SayimFiltreModel {
+class _$SayimFiltreModelImpl extends _SayimFiltreModel {
   _$SayimFiltreModelImpl(
       {@JsonKey(name: "ArrGrupKodu") this.arrGrupKodu,
       this.depoKodu,
@@ -1182,13 +1280,20 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
       this.olcuBirimKodu,
       this.projeKodu,
       this.stokKodu,
-      @JsonKey(includeToJson: false, includeFromJson: false) this.stokAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) this.projeAdi,
+      this.stokAdi,
+      this.projeAdi,
       this.kull1s,
       this.kull2s,
       this.kull3s,
       this.kull4s,
-      this.kull5s});
+      this.kull5s,
+      this.id,
+      this.cevrim,
+      this.fisno,
+      this.kayityapankul,
+      this.depoTanimi,
+      this.kayittarihi})
+      : super._();
 
   factory _$SayimFiltreModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SayimFiltreModelImplFromJson(json);
@@ -1232,11 +1337,9 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   @override
   String? stokKodu;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
   String? stokAdi;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? projeAdi;
+  dynamic projeAdi;
   @override
   String? kull1s;
   @override
@@ -1247,11 +1350,18 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   String? kull4s;
   @override
   String? kull5s;
-
   @override
-  String toString() {
-    return 'SayimFiltreModel(arrGrupKodu: $arrGrupKodu, depoKodu: $depoKodu, seriList: $seriList, islemKodu: $islemKodu, belgeNo: $belgeNo, tipi: $tipi, arrKod1: $arrKod1, arrKod2: $arrKod2, arrKod3: $arrKod3, arrKod4: $arrKod4, arrKod5: $arrKod5, miktar: $miktar, olcuBirimKodu: $olcuBirimKodu, projeKodu: $projeKodu, stokKodu: $stokKodu, stokAdi: $stokAdi, projeAdi: $projeAdi, kull1s: $kull1s, kull2s: $kull2s, kull3s: $kull3s, kull4s: $kull4s, kull5s: $kull5s)';
-  }
+  int? id;
+  @override
+  int? cevrim;
+  @override
+  String? fisno;
+  @override
+  String? kayityapankul;
+  @override
+  String? depoTanimi;
+  @override
+  DateTime? kayittarihi;
 
   @JsonKey(ignore: true)
   @override
@@ -1268,7 +1378,7 @@ class _$SayimFiltreModelImpl implements _SayimFiltreModel {
   }
 }
 
-abstract class _SayimFiltreModel implements SayimFiltreModel {
+abstract class _SayimFiltreModel extends SayimFiltreModel {
   factory _SayimFiltreModel(
       {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
@@ -1285,13 +1395,20 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
       int? olcuBirimKodu,
       String? projeKodu,
       String? stokKodu,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? stokAdi,
-      @JsonKey(includeToJson: false, includeFromJson: false) String? projeAdi,
+      String? stokAdi,
+      dynamic projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
       String? kull4s,
-      String? kull5s}) = _$SayimFiltreModelImpl;
+      String? kull5s,
+      int? id,
+      int? cevrim,
+      String? fisno,
+      String? kayityapankul,
+      String? depoTanimi,
+      DateTime? kayittarihi}) = _$SayimFiltreModelImpl;
+  _SayimFiltreModel._() : super._();
 
   factory _SayimFiltreModel.fromJson(Map<String, dynamic> json) =
       _$SayimFiltreModelImpl.fromJson;
@@ -1356,15 +1473,11 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
   String? get stokKodu;
   set stokKodu(String? value);
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
   String? get stokAdi;
-  @JsonKey(includeToJson: false, includeFromJson: false)
   set stokAdi(String? value);
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  String? get projeAdi;
-  @JsonKey(includeToJson: false, includeFromJson: false)
-  set projeAdi(String? value);
+  dynamic get projeAdi;
+  set projeAdi(dynamic value);
   @override
   String? get kull1s;
   set kull1s(String? value);
@@ -1380,6 +1493,24 @@ abstract class _SayimFiltreModel implements SayimFiltreModel {
   @override
   String? get kull5s;
   set kull5s(String? value);
+  @override
+  int? get id;
+  set id(int? value);
+  @override
+  int? get cevrim;
+  set cevrim(int? value);
+  @override
+  String? get fisno;
+  set fisno(String? value);
+  @override
+  String? get kayityapankul;
+  set kayityapankul(String? value);
+  @override
+  String? get depoTanimi;
+  set depoTanimi(String? value);
+  @override
+  DateTime? get kayittarihi;
+  set kayittarihi(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>

@@ -15,7 +15,7 @@ abstract class _SayimGirisiViewModelBase with Store {
   SayimFiltreModel filtreModel = SingletonModels.sayimListesi?.filtre ?? SayimFiltreModel(islemKodu: 1, belgeNo: SingletonModels.sayimListesi?.fisno, miktar: 1);
 
   @observable
-  StokListesiModel? stokModel;
+  StokListesiModel? stokModel = SingletonModels.sayimListesi?.stokModel;
 
   @observable
   bool hemenKaydetsinMi = CacheManager.getProfilParametre.sayimStokSecildigindeHemenKaydet;
@@ -29,7 +29,7 @@ abstract class _SayimGirisiViewModelBase with Store {
   @action
   void setStokModel(StokListesiModel? model) {
     stokModel = model;
-    filtreModel = filtreModel.copyWith(stokKodu: model?.stokKodu, stokAdi: model?.stokAdi, olcuBirimKodu: YetkiController().sayimVarsayilanOlcuBirimi);
+    filtreModel = filtreModel.copyWith(stokKodu: model?.stokKodu, stokAdi: model?.stokAdi, olcuBirimKodu: YetkiController().sayimVarsayilanOlcuBirimi,);
     SingletonModels.setFiltreModel = filtreModel;
   }
 
