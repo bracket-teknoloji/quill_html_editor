@@ -9,11 +9,11 @@ part of 'sayim_sayilanlar_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$SayimSayilanlarViewModel on _SayimSayilanlarViewModelBase, Store {
-  Computed<ObservableList<SayimListesiModel>?>? _$sayimListesiComputed;
+  Computed<ObservableList<SayimFiltreModel>?>? _$sayimListesiComputed;
 
   @override
-  ObservableList<SayimListesiModel>? get sayimListesi =>
-      (_$sayimListesiComputed ??= Computed<ObservableList<SayimListesiModel>?>(
+  ObservableList<SayimFiltreModel>? get sayimListesi =>
+      (_$sayimListesiComputed ??= Computed<ObservableList<SayimFiltreModel>?>(
               () => super.sayimListesi,
               name: '_SayimSayilanlarViewModelBase.sayimListesi'))
           .value;
@@ -22,13 +22,13 @@ mixin _$SayimSayilanlarViewModel on _SayimSayilanlarViewModelBase, Store {
       name: '_SayimSayilanlarViewModelBase._sayimListesi', context: context);
 
   @override
-  ObservableList<SayimListesiModel>? get _sayimListesi {
+  ObservableList<SayimFiltreModel>? get _sayimListesi {
     _$_sayimListesiAtom.reportRead();
     return super._sayimListesi;
   }
 
   @override
-  set _sayimListesi(ObservableList<SayimListesiModel>? value) {
+  set _sayimListesi(ObservableList<SayimFiltreModel>? value) {
     _$_sayimListesiAtom.reportWrite(value, super._sayimListesi, () {
       super._sayimListesi = value;
     });
@@ -66,6 +66,14 @@ mixin _$SayimSayilanlarViewModel on _SayimSayilanlarViewModelBase, Store {
     });
   }
 
+  late final _$deleteItemAsyncAction =
+      AsyncAction('_SayimSayilanlarViewModelBase.deleteItem', context: context);
+
+  @override
+  Future<bool?> deleteItem(SayimFiltreModel model) {
+    return _$deleteItemAsyncAction.run(() => super.deleteItem(model));
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_SayimSayilanlarViewModelBase.getData', context: context);
 
@@ -78,7 +86,7 @@ mixin _$SayimSayilanlarViewModel on _SayimSayilanlarViewModelBase, Store {
       ActionController(name: '_SayimSayilanlarViewModelBase', context: context);
 
   @override
-  void setSayimListesi(List<SayimListesiModel>? value) {
+  void setSayimListesi(List<SayimFiltreModel>? value) {
     final _$actionInfo = _$_SayimSayilanlarViewModelBaseActionController
         .startAction(name: '_SayimSayilanlarViewModelBase.setSayimListesi');
     try {
