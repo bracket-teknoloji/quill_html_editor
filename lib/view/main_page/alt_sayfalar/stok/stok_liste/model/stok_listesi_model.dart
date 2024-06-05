@@ -192,6 +192,8 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   @override
   StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
+  factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
+
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 

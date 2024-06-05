@@ -9,7 +9,7 @@ class SingletonModels {
 
   static set setSayimListesi(SayimListesiModel? value) => _sayimListesi = value;
 
-  static set setFiltreModel(SayimFiltreModel? value) => _sayimListesi = _sayimListesi?..filtre = value;
+  static set setFiltreModel(SayimFiltreModel? value) => _sayimListesi = _sayimListesi?.copyWith(filtre: value);
 
 
   static CariAktiviteListesiModel? _cariAktiviteListesi;
