@@ -197,6 +197,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 
+
   factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
     ..stokKodu = model.stokKodu
     ..stokAdi = model.stokAdi
@@ -230,7 +231,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
 @HiveType(typeId: 2)
 @JsonSerializable(createFactory: true)
-class StokList {
+class StokList with BaseStokMixin {
   StokList({
     this.stokKodu,
     this.stokAdi,
@@ -266,16 +267,19 @@ class StokList {
   String? paketMi;
   @HiveField(7)
   double? satisKdv;
+  @override
   @HiveField(8)
   String? stokAdi;
   @HiveField(9)
   List<dynamic>? stokFiyatList;
+  @override
   @HiveField(10)
   String? stokKodu;
   @HiveField(11)
   List<dynamic>? stokList;
   @HiveField(12)
   int? depoKodu;
+  @override
   @HiveField(13)
   double? bakiye;
   @HiveField(14)
@@ -296,6 +300,7 @@ class StokList {
   double? satisFiat3;
   @HiveField(22)
   double? satisFiat4;
+  @override
   @HiveField(23)
   String? olcuBirimi;
   @HiveField(24)

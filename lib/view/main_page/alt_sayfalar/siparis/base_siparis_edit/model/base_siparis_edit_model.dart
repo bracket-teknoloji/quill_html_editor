@@ -1152,6 +1152,7 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   List<dynamic>? hucreList;
   @HiveField(10)
   List<StokList>? kalemModelHucreList;
+  @override
   @HiveField(11)
   @JsonKey(name: "SeriList")
   List<SeriList>? seriList;
