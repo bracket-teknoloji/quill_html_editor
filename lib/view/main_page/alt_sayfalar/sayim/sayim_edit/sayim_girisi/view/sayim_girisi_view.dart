@@ -1,18 +1,22 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view_model/sayim_girisi_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SayimGirisiView extends StatefulWidget {
@@ -50,6 +54,10 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     miktarController = TextEditingController(text: viewModel.filtreModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
     olcuBirimiController = TextEditingController();
     serilerController = TextEditingController();
+    if (viewModel.filtreModel.seriList.ext.isNotNullOrEmpty) {
+      serilerController.text =
+          "${viewModel.filtreModel.seriList?.length} adet seri.Miktar: ${viewModel.filtreModel.seriList?.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+    }
     super.initState();
   }
 
@@ -170,7 +178,18 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   controller: serilerController,
                   suffixMore: true,
                   readOnly: true,
-                  // onTap: ,
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "seriListesi",
+                      arguments: KalemModel.fromStokListesiModel(viewModel.stokModel!)
+                        ..miktar = viewModel.filtreModel.miktar
+                        ..seriList = viewModel.filtreModel.seriList,
+                    );
+                    if (result is List<SeriList>) {
+                      viewModel.setSeriler(result.map((e) => e.copyWith(depoKodu: viewModel.filtreModel.depoKodu, stokKodu: viewModel.stokModel!.stokKodu)).toList());
+                      serilerController.text = "${result.length} adet seri.Miktar: ${result.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                    }
+                  },
                   validator: (value) {
                     if (value == "") return "Bu alan boş bırakılamaz.";
                     if (viewModel.stokModel?.seriMiktarKadarSor == true && viewModel.filtreModel.miktar != viewModel.filtreModel.seriList?.length) {

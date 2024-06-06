@@ -160,6 +160,17 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
   }
 
   @override
+  void setSeriler(List<SeriList>? list) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setSeriler');
+    try {
+      return super.setSeriler(list);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void increaseMiktar() {
     final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
         .startAction(name: '_SayimGirisiViewModelBase.increaseMiktar');

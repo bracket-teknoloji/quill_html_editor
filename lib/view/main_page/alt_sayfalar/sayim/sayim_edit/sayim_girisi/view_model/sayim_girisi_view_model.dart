@@ -3,6 +3,7 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "sayim_girisi_view_model.g.dart";
@@ -71,6 +72,12 @@ abstract class _SayimGirisiViewModelBase with Store {
   @action
   void setEkAlan5(String? value) {
     filtreModel = filtreModel.copyWith(kull5s: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
+  void setSeriler(List<SeriList>? list) {
+    filtreModel = filtreModel.copyWith(seriList: list);
     SingletonModels.setFiltreModel = filtreModel;
   }
 

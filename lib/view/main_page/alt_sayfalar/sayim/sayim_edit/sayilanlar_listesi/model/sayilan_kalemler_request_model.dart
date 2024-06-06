@@ -13,6 +13,7 @@ class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
     @JsonKey(name: "EkranTipi") @Default("L") String? ekranTipi,
     @JsonKey(name: "BelgeNo") String? belgeNo,
     @JsonKey(name: "seriBazinda") String? seriBazinda,
+    @JsonKey(name: "ID") int? id,
   }) = _SayilanKalemlerRequestModel;
 
   factory SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) => _$SayilanKalemlerRequestModelFromJson(json);
@@ -23,5 +24,6 @@ class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
         filtreKodu: "1",
         ekranTipi: "L",
         belgeNo: model.fisno,
+        id: model.id,
       );
 }
