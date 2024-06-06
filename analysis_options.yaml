@@ -49,6 +49,7 @@ linter:
     unnecessary_lambdas: true
     unnecessary_parenthesis: true
     unnecessary_to_list_in_spreads: true
+    prefer_const_declarations: true
     # unawaited_futures: true
     # unnecessary_null_aware_operator_on_extension_on_nullable: true
     use_build_context_synchronously: false

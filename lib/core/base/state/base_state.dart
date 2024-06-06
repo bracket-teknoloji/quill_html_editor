@@ -6,14 +6,12 @@ import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "../../components/dialog/dialog_manager.dart";
 import "../../constants/yetki_controller/yetki_controller.dart";
-import "../../init/app_info/app_info.dart";
 import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   DialogManager get dialogManager => DialogManager();
   BottomSheetDialogManager get bottomSheetDialogManager => BottomSheetDialogManager();
-  AppInfoModel get appInfoModel => AppInfoModel.instance;
   NetworkManager get networkManager => NetworkManager();
   YetkiController get yetkiController => YetkiController();
   ParamModel get parametreModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
