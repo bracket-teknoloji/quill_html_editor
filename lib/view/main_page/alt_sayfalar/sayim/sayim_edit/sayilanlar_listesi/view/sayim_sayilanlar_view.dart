@@ -90,7 +90,9 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            widget.onEdit.call(model);
+            final result = await viewModel.getSelectedItem(model.id);
+            if (result == null) return;
+            widget.onEdit.call(result);
           },
         ),
         BottomSheetModel(

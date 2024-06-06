@@ -50,4 +50,13 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
       setSayimListesi(result.dataList);
     }
   }
+
+  @action
+  Future<SayimFiltreModel?> getSelectedItem(int? id) async {
+    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(),showLoading: true, queryParameters: requestModel.copyWith(id: id).toJson());
+    if (result.isSucces) {
+      return result.dataList.firstOrNull;
+    }
+    return null;
+  }
 }

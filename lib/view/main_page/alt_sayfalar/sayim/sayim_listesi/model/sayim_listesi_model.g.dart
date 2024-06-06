@@ -111,7 +111,9 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
           ?.map((e) => e as String)
           .toList(),
       depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      seriList: json['SeriList'] as List<dynamic>?,
+      seriList: (json['SeriList'] as List<dynamic>?)
+          ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
+          .toList(),
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       belgeNo: json['BELGE_NO'] as String?,
       tipi: json['TIPI'] as String?,
@@ -158,7 +160,7 @@ Map<String, dynamic> _$$SayimFiltreModelImplToJson(
 
   writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
   writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('SeriList', instance.seriList);
+  writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
   writeNotNull('ISLEM_KODU', instance.islemKodu);
   writeNotNull('BELGE_NO', instance.belgeNo);
   writeNotNull('TIPI', instance.tipi);

@@ -802,9 +802,9 @@ mixin _$SayimFiltreModel {
   int? get depoKodu => throw _privateConstructorUsedError;
   set depoKodu(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "SeriList")
-  List<dynamic>? get seriList => throw _privateConstructorUsedError;
+  List<SeriList>? get seriList => throw _privateConstructorUsedError;
   @JsonKey(name: "SeriList")
-  set seriList(List<dynamic>? value) => throw _privateConstructorUsedError;
+  set seriList(List<SeriList>? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
   set islemKodu(int? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
@@ -881,7 +881,7 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
-      @JsonKey(name: "SeriList") List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") List<SeriList>? seriList,
       int? islemKodu,
       String? belgeNo,
       String? tipi,
@@ -963,7 +963,7 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
       seriList: freezed == seriList
           ? _value.seriList
           : seriList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<SeriList>?,
       islemKodu: freezed == islemKodu
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
@@ -1079,7 +1079,7 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
-      @JsonKey(name: "SeriList") List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") List<SeriList>? seriList,
       int? islemKodu,
       String? belgeNo,
       String? tipi,
@@ -1159,7 +1159,7 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
       seriList: freezed == seriList
           ? _value.seriList
           : seriList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<SeriList>?,
       islemKodu: freezed == islemKodu
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
@@ -1308,7 +1308,7 @@ class _$SayimFiltreModelImpl extends _SayimFiltreModel {
   int? depoKodu;
   @override
   @JsonKey(name: "SeriList")
-  List<dynamic>? seriList;
+  List<SeriList>? seriList;
   @override
   int? islemKodu;
   @override
@@ -1385,7 +1385,7 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
   factory _SayimFiltreModel(
       {@JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
       int? depoKodu,
-      @JsonKey(name: "SeriList") List<dynamic>? seriList,
+      @JsonKey(name: "SeriList") List<SeriList>? seriList,
       int? islemKodu,
       String? belgeNo,
       String? tipi,
@@ -1426,9 +1426,9 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
   set depoKodu(int? value);
   @override
   @JsonKey(name: "SeriList")
-  List<dynamic>? get seriList;
+  List<SeriList>? get seriList;
   @JsonKey(name: "SeriList")
-  set seriList(List<dynamic>? value);
+  set seriList(List<SeriList>? value);
   @override
   int? get islemKodu;
   set islemKodu(int? value);

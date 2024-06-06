@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "sayim_listesi_model.freezed.dart";
@@ -55,7 +56,7 @@ class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
   factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,
-    @JsonKey(name: "SeriList") List<dynamic>? seriList,
+    @JsonKey(name: "SeriList") List<SeriList>? seriList,
     int? islemKodu,
     String? belgeNo,
     String? tipi,

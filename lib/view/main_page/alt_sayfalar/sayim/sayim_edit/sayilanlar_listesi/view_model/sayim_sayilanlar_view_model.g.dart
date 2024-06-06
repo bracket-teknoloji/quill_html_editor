@@ -82,6 +82,15 @@ mixin _$SayimSayilanlarViewModel on _SayimSayilanlarViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$getSelectedItemAsyncAction = AsyncAction(
+      '_SayimSayilanlarViewModelBase.getSelectedItem',
+      context: context);
+
+  @override
+  Future<SayimFiltreModel?> getSelectedItem(int? id) {
+    return _$getSelectedItemAsyncAction.run(() => super.getSelectedItem(id));
+  }
+
   late final _$_SayimSayilanlarViewModelBaseActionController =
       ActionController(name: '_SayimSayilanlarViewModelBase', context: context);
 
