@@ -87,7 +87,7 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
   Future<void> onEdit(SayimFiltreModel model) async {
     final stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu));
     SingletonModels.setSayimListesi = SingletonModels.sayimListesi?.copyWith(
-      filtre: model.copyWith(islemKodu: 2),
+      filtre: model.copyWith(fisno: null, belgeNo: model.fisno, kayittarihi: null, kayityapankul: null, cevrim: null, islemKodu: 1),
       stokModel: stok,
     );
     controller.animateTo(0);
