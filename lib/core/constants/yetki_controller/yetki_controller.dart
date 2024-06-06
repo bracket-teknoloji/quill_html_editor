@@ -12,7 +12,15 @@ import "../enum/edit_tipi_enum.dart";
 import "yetki_model.dart";
 
 final class YetkiController {
-  YetkiController();
+
+  //* Singleton
+  static final YetkiController _singleton = YetkiController._internal();
+
+  YetkiController._internal();
+
+  factory YetkiController() => _singleton;
+
+
   MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
   UserModel? get _userModel => _anaVeri?.userModel;
