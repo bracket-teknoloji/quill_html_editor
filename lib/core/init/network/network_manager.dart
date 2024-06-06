@@ -130,6 +130,7 @@ class NetworkManager {
 
   Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     // final FormData formData = FormData.fromMap(data);
+    dio.options.baseUrl = getBaseUrl;
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     try {

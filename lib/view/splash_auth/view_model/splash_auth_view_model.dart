@@ -6,7 +6,7 @@ class SplashAuthViewModel = _SplashAuthViewModelBase with _$SplashAuthViewModel;
 
 abstract class _SplashAuthViewModelBase with Store {
   @observable
-  String title = "Giriş Yapılıyor...";
+  String title = "Uygulama başlatılıyor...";
 
   @action
   void setTitle(String value) => title = value;

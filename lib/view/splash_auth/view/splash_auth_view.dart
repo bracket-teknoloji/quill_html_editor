@@ -123,14 +123,22 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       );
 
   Future<void> login() async {
-    viewModel.setTitle("Giriş Yapılıyor...");
     viewModel.setIsError(false);
     if (CacheManager.getVerifiedUser.username == null) {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
+      viewModel.setTitle("Lisans bilgileri alınıyor...");
+      final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
+      if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
+        viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
+        viewModel.setIsError(true);
+        return;
+      }
+
       AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
       // await dialogManager.showLocationDialog();
       // await AccountModel.instance.getLocation();
+      viewModel.setTitle("Giriş Yapılıyor...");
       final response = await networkManager.getToken(
         queryParameters: {
           "deviceInfos": jsonEncode(
@@ -168,14 +176,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   }
 
   Future<void> getSession() async {
-    viewModel.setTitle("Lisans bilgileri alınıyor...");
-    final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
-    if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
-      viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
-      viewModel.setIsError(true);
-      return;
-    }
-
     viewModel.setTitle("${CacheManager.getVeriTabani["Şirket"] ?? ""} şirketi için\noturum açılıyor...");
     AccountModel.instance
       // ..adi = CacheManager.getVerifiedUser.
