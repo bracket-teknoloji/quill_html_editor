@@ -130,7 +130,7 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
       projeKodu: json['PROJE_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
-      projeAdi: json['PROJE_ADI'],
+      projeAdi: json['PROJE_ADI'] as String?,
       kull1s: json['KULL1S'] as String?,
       kull2s: json['KULL2S'] as String?,
       kull3s: json['KULL3S'] as String?,

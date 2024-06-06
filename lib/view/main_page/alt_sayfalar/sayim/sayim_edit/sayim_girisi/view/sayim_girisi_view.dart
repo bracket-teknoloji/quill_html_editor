@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
@@ -232,18 +233,19 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   onChanged: (value) {},
                   title: const Text("Otomatik Sayım Etiketi Yazdır"),
                 ),
-              ),
+              ).yetkiVarMi(yetkiController.yazdirmaSayim),
             ],
           ).paddingAll(UIHelper.lowSize),
         ),
       );
 
   Future<void> setStok(StokListesiModel? stokModel) async {
-    if (stokModel is! StokListesiModel) return;
+    if (stokModel is! BaseStokMixin) return;
     viewModel.setStokModel(stokModel);
-    stokController.text = stokModel.stokKodu ?? "";
-    stokAdiController.text = stokModel.stokAdi ?? "";
-    olcuBirimiController.text = stokModel.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";
+    viewModel.setOlcuBirimi(yetkiController.sayimVarsayilanOlcuBirimi);
+    stokController.text = stokModel?.stokKodu ?? "";
+    stokAdiController.text = stokModel?.stokAdi ?? "";
+    olcuBirimiController.text = stokModel?.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";
     if (viewModel.hemenKaydetsinMi) {
       await widget.onStokSelected();
     }

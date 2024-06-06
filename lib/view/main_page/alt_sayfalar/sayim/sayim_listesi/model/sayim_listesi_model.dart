@@ -69,7 +69,7 @@ class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
     String? projeKodu,
     String? stokKodu,
     String? stokAdi,
-    projeAdi,
+    String? projeAdi,
     String? kull1s,
     String? kull2s,
     String? kull3s,

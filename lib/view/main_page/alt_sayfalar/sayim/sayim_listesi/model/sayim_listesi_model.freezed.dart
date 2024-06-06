@@ -841,8 +841,8 @@ mixin _$SayimFiltreModel {
   set stokKodu(String? value) => throw _privateConstructorUsedError;
   String? get stokAdi => throw _privateConstructorUsedError;
   set stokAdi(String? value) => throw _privateConstructorUsedError;
-  dynamic get projeAdi => throw _privateConstructorUsedError;
-  set projeAdi(dynamic value) => throw _privateConstructorUsedError;
+  String? get projeAdi => throw _privateConstructorUsedError;
+  set projeAdi(String? value) => throw _privateConstructorUsedError;
   String? get kull1s => throw _privateConstructorUsedError;
   set kull1s(String? value) => throw _privateConstructorUsedError;
   String? get kull2s => throw _privateConstructorUsedError;
@@ -895,7 +895,7 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
       String? projeKodu,
       String? stokKodu,
       String? stokAdi,
-      dynamic projeAdi,
+      String? projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
@@ -1019,7 +1019,7 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
       projeAdi: freezed == projeAdi
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       kull1s: freezed == kull1s
           ? _value.kull1s
           : kull1s // ignore: cast_nullable_to_non_nullable
@@ -1093,7 +1093,7 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
       String? projeKodu,
       String? stokKodu,
       String? stokAdi,
-      dynamic projeAdi,
+      String? projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
@@ -1212,7 +1212,10 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.stokAdi
           : stokAdi // ignore: cast_nullable_to_non_nullable
               as String?,
-      projeAdi: freezed == projeAdi ? _value.projeAdi! : projeAdi,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
       kull1s: freezed == kull1s
           ? _value.kull1s
           : kull1s // ignore: cast_nullable_to_non_nullable
@@ -1339,7 +1342,7 @@ class _$SayimFiltreModelImpl extends _SayimFiltreModel {
   @override
   String? stokAdi;
   @override
-  dynamic projeAdi;
+  String? projeAdi;
   @override
   String? kull1s;
   @override
@@ -1396,7 +1399,7 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
       String? projeKodu,
       String? stokKodu,
       String? stokAdi,
-      dynamic projeAdi,
+      String? projeAdi,
       String? kull1s,
       String? kull2s,
       String? kull3s,
@@ -1476,8 +1479,8 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
   String? get stokAdi;
   set stokAdi(String? value);
   @override
-  dynamic get projeAdi;
-  set projeAdi(dynamic value);
+  String? get projeAdi;
+  set projeAdi(String? value);
   @override
   String? get kull1s;
   set kull1s(String? value);
