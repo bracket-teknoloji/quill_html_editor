@@ -35,6 +35,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default(EditTipiEnum.isEmri) EditTipiEnum olcumGirisiBelgeTipi,
     @Default(false) bool kapaliBelgelerListelenmesinMi,
     @Default(false) bool sayimStokSecildigindeHemenKaydet,
+    @Default(false) bool sayimOtomatikEtiketYazdir,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

@@ -47,6 +47,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           json['KAPALI_BELGELER_LISTELENMESIN_MI'] as bool? ?? false,
       sayimStokSecildigindeHemenKaydet:
           json['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] as bool? ?? false,
+      sayimOtomatikEtiketYazdir:
+          json['SAYIM_OTOMATIK_ETIKET_YAZDIR'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -84,6 +86,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       instance.kapaliBelgelerListelenmesinMi;
   val['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] =
       instance.sayimStokSecildigindeHemenKaydet;
+  val['SAYIM_OTOMATIK_ETIKET_YAZDIR'] = instance.sayimOtomatikEtiketYazdir;
   return val;
 }
 
