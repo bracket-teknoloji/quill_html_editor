@@ -57,6 +57,23 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
     });
   }
 
+  late final _$otomatikEtiketYazdirAtom = Atom(
+      name: '_SayimGirisiViewModelBase.otomatikEtiketYazdir', context: context);
+
+  @override
+  bool get otomatikEtiketYazdir {
+    _$otomatikEtiketYazdirAtom.reportRead();
+    return super.otomatikEtiketYazdir;
+  }
+
+  @override
+  set otomatikEtiketYazdir(bool value) {
+    _$otomatikEtiketYazdirAtom.reportWrite(value, super.otomatikEtiketYazdir,
+        () {
+      super.otomatikEtiketYazdir = value;
+    });
+  }
+
   late final _$_SayimGirisiViewModelBaseActionController =
       ActionController(name: '_SayimGirisiViewModelBase', context: context);
 
@@ -66,6 +83,17 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
         .startAction(name: '_SayimGirisiViewModelBase.setHemenKaydet');
     try {
       return super.setHemenKaydet(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOtomatikEtiketYazdir(bool value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setOtomatikEtiketYazdir');
+    try {
+      return super.setOtomatikEtiketYazdir(value);
     } finally {
       _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -197,7 +225,8 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
     return '''
 filtreModel: ${filtreModel},
 stokModel: ${stokModel},
-hemenKaydetsinMi: ${hemenKaydetsinMi}
+hemenKaydetsinMi: ${hemenKaydetsinMi},
+otomatikEtiketYazdir: ${otomatikEtiketYazdir}
     ''';
   }
 }

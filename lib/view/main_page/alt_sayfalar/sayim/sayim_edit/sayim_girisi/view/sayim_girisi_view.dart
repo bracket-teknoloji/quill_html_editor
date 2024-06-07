@@ -6,9 +6,12 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -52,7 +55,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     ekAlan4Controller = TextEditingController(text: viewModel.filtreModel.kull4s);
     ekAlan5Controller = TextEditingController(text: viewModel.filtreModel.kull5s);
     miktarController = TextEditingController(text: viewModel.filtreModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
-    olcuBirimiController = TextEditingController();
+    olcuBirimiController = TextEditingController(text: viewModel.stokModel?.olcuBirimi);
     serilerController = TextEditingController();
     if (viewModel.filtreModel.seriList.ext.isNotNullOrEmpty) {
       serilerController.text =
@@ -235,6 +238,8 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: olcuBirimiController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.filtreModel.olcuBirimKodu.toStringIfNotNull ?? "")),
+                  onTap: changeOlcuBirimi,
                 ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
               ),
               Card(
@@ -247,16 +252,35 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                 ),
               ).yetkiVarMi(!yetkiController.adminMi && !yetkiController.sayimHemenKaydet),
               Card(
-                child: SwitchListTile.adaptive(
-                  value: false,
-                  onChanged: (value) {},
-                  title: const Text("Otomatik Sayım Etiketi Yazdır"),
+                child: Observer(
+                  builder: (_) => SwitchListTile.adaptive(
+                    value: viewModel.otomatikEtiketYazdir,
+                    onChanged: viewModel.setOtomatikEtiketYazdir,
+                    title: const Text("Otomatik Sayım Etiketi Yazdır"),
+                  ),
                 ),
               ).yetkiVarMi(yetkiController.yazdirmaSayim),
             ],
           ).paddingAll(UIHelper.lowSize),
         ),
       );
+
+  Future<void> changeOlcuBirimi() async {
+    if (viewModel.stokModel == null) return;
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Ölçü Birimi Seçiniz",
+      groupValue: viewModel.filtreModel.olcuBirimKodu,
+      children: [
+        BottomSheetModel(title: viewModel.stokModel!.olcuBirimi!, value: 1, groupValue: 1).yetkiKontrol(viewModel.stokModel?.olcuBirimi != null),
+        BottomSheetModel(title: viewModel.stokModel!.olcuBirimi2!, value: 2, groupValue: 2).yetkiKontrol(viewModel.stokModel?.olcuBirimi2 != null),
+        BottomSheetModel(title: viewModel.stokModel!.olcuBirimi3!, value: 3, groupValue: 3).yetkiKontrol(viewModel.stokModel?.olcuBirimi3 != null),
+      ].nullCheckWithGeneric,
+    );
+    if (result is! int) return;
+    viewModel.setOlcuBirimi(result);
+    olcuBirimiController.text = viewModel.stokModel?.olcuBirimiSelector(result) ?? "";
+  }
 
   Future<void> setStok(StokListesiModel? stokModel) async {
     if (stokModel is! BaseStokMixin) return;

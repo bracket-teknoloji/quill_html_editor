@@ -20,6 +20,9 @@ abstract class _SayimGirisiViewModelBase with Store {
   @observable
   bool hemenKaydetsinMi = CacheManager.getProfilParametre.sayimStokSecildigindeHemenKaydet;
 
+  @observable
+  bool otomatikEtiketYazdir = CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir;
+
   @action
   void setHemenKaydet(bool value) {
     hemenKaydetsinMi = value;
@@ -27,9 +30,16 @@ abstract class _SayimGirisiViewModelBase with Store {
   }
 
   @action
+  void setOtomatikEtiketYazdir(bool value) {
+    otomatikEtiketYazdir = value;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(sayimOtomatikEtiketYazdir: value));
+  }
+
+  @action
   void setStokModel(StokListesiModel? model) {
     stokModel = model;
     filtreModel = filtreModel.copyWith(stokKodu: model?.stokKodu, stokAdi: model?.stokAdi);
+    SingletonModels.sayimListesi?.stokModel = model;
     SingletonModels.setFiltreModel = filtreModel;
   }
 
