@@ -216,7 +216,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   // mainAxisAlignment: MainAxisAlignment.start,
 
                   children: <Widget>[
-                    Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}").yetkiVarMi(model.hedefDepo != null),
+                    Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}").yetkiVarMi(model.hedefDepo != null && model.topluDepo != null),
                     Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
                     Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
                     Text("Cari Kodu: ${model.cariKodu ?? ""}").yetkiVarMi(model.cariKodu != null),
