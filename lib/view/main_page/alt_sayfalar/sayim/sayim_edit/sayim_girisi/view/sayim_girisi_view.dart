@@ -59,7 +59,7 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     serilerController = TextEditingController();
     if (viewModel.filtreModel.seriList.ext.isNotNullOrEmpty) {
       serilerController.text =
-          "${viewModel.filtreModel.seriList?.length} adet seri.Miktar: ${viewModel.filtreModel.seriList?.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+          "${viewModel.filtreModel.seriList?.length} adet seri. Miktar: ${viewModel.filtreModel.seriList?.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
     }
     super.initState();
   }
