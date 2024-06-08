@@ -308,6 +308,10 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ..kalemAdiDegisti = true
                           ..kalemAdiDegistimi = true;
                         ekAlan1Controller.text = p0;
+                      } else if (editTipi?.talepTeklifMi == true) {
+                        viewModel.kalemModel
+                          ..kalemAdiDegisti = true
+                          ..kalemAdiDegistimi = true;
                       }
                     } else {
                       viewModel.kalemModel
