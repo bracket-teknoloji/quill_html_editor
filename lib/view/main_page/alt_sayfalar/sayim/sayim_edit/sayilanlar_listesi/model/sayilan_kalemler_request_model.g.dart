@@ -9,7 +9,7 @@ part of 'sayilan_kalemler_request_model.dart';
 _$SayilanKalemlerRequestModelImpl _$$SayilanKalemlerRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SayilanKalemlerRequestModelImpl(
-      filtreKodu: json['FiltreKodu'] as String?,
+      filtreKodu: (json['FiltreKodu'] as num?)?.toInt(),
       depoKodu: (json['DepoKodu'] as num?)?.toInt(),
       kullaniciAdi: json['KullaniciAdi'] as String?,
       ekranTipi: json['EkranTipi'] as String? ?? "L",

@@ -22,9 +22,9 @@ SayilanKalemlerRequestModel _$SayilanKalemlerRequestModelFromJson(
 /// @nodoc
 mixin _$SayilanKalemlerRequestModel {
   @JsonKey(name: "FiltreKodu")
-  String? get filtreKodu => throw _privateConstructorUsedError;
+  int? get filtreKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "FiltreKodu")
-  set filtreKodu(String? value) => throw _privateConstructorUsedError;
+  set filtreKodu(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "DepoKodu")
   int? get depoKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "DepoKodu")
@@ -65,7 +65,7 @@ abstract class $SayilanKalemlerRequestModelCopyWith<$Res> {
           SayilanKalemlerRequestModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "FiltreKodu") String? filtreKodu,
+      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
       @JsonKey(name: "DepoKodu") int? depoKodu,
       @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
       @JsonKey(name: "EkranTipi") String? ekranTipi,
@@ -100,7 +100,7 @@ class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
       filtreKodu: freezed == filtreKodu
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
@@ -139,7 +139,7 @@ abstract class _$$SayilanKalemlerRequestModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "FiltreKodu") String? filtreKodu,
+      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
       @JsonKey(name: "DepoKodu") int? depoKodu,
       @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
       @JsonKey(name: "EkranTipi") String? ekranTipi,
@@ -173,7 +173,7 @@ class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
       filtreKodu: freezed == filtreKodu
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       depoKodu: freezed == depoKodu
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
@@ -221,7 +221,7 @@ class _$SayilanKalemlerRequestModelImpl
 
   @override
   @JsonKey(name: "FiltreKodu")
-  String? filtreKodu;
+  int? filtreKodu;
   @override
   @JsonKey(name: "DepoKodu")
   int? depoKodu;
@@ -264,7 +264,7 @@ class _$SayilanKalemlerRequestModelImpl
 abstract class _SayilanKalemlerRequestModel
     implements SayilanKalemlerRequestModel {
   factory _SayilanKalemlerRequestModel(
-      {@JsonKey(name: "FiltreKodu") String? filtreKodu,
+      {@JsonKey(name: "FiltreKodu") int? filtreKodu,
       @JsonKey(name: "DepoKodu") int? depoKodu,
       @JsonKey(name: "KullaniciAdi") String? kullaniciAdi,
       @JsonKey(name: "EkranTipi") String? ekranTipi,
@@ -277,9 +277,9 @@ abstract class _SayilanKalemlerRequestModel
 
   @override
   @JsonKey(name: "FiltreKodu")
-  String? get filtreKodu;
+  int? get filtreKodu;
   @JsonKey(name: "FiltreKodu")
-  set filtreKodu(String? value);
+  set filtreKodu(int? value);
   @override
   @JsonKey(name: "DepoKodu")
   int? get depoKodu;
