@@ -1,12 +1,15 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -45,40 +48,42 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
               builder: (_) => RefreshableListView(
                 onRefresh: viewModel.getData,
                 items: viewModel.sayimListesi,
-                itemBuilder: (sayimModel) => Card(
-                  child: ListTile(
-                    onTap: () {
-                      bottomSheet(sayimModel);
-                    },
-                    title: Row(
-                      children: [
-                        Text(sayimModel.kayittarihi?.toDateTimeString() ?? ""),
-                        const Spacer(),
-                        Text("Kayıt No ${sayimModel.id}"),
-                      ],
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("${sayimModel.stokAdi}"),
-                        CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Stok Kodu: ${sayimModel.stokKodu}"),
-                            Text("Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})"),
-                            Text("Kullanıcı: ${sayimModel.kayityapankul}"),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                itemBuilder: sayilanlarCard,
               ),
             ),
           ),
         ],
       ).paddingAll(UIHelper.lowSize);
+
+  Card sayilanlarCard(SayimFiltreModel sayimModel) => Card(
+        child: ListTile(
+          onTap: () {
+            bottomSheet(sayimModel);
+          },
+          title: Row(
+            children: [
+              Text(sayimModel.kayittarihi?.toDateTimeString() ?? ""),
+              const Spacer(),
+              Text("Kayıt No ${sayimModel.id}"),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("${sayimModel.stokAdi}"),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  Text("Stok Kodu: ${sayimModel.stokKodu}"),
+                  Text("Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})"),
+                  Text("Kullanıcı: ${sayimModel.kayityapankul}"),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
 
   void bottomSheet(SayimFiltreModel model) {
     bottomSheetDialogManager.showBottomSheetDialog(
@@ -109,7 +114,19 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
             });
           },
         ),
-        BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined, onTap: () {}),
+        BottomSheetModel(
+          title: loc.generalStrings.print,
+          iconWidget: Icons.print_outlined,
+          onTap: () async {
+            Get.back();
+            await bottomSheetDialogManager.showPrintBottomSheetDialog(
+              context,
+              PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi, dicParams: DicParams(stokKodu: model.stokKodu, kalemId: model.id.toStringIfNotNull, belgeTipi: "SAYI,")),
+              true,
+              true,
+            );
+          },
+        ),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
