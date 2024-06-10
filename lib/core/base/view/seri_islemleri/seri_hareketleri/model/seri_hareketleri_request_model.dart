@@ -7,6 +7,7 @@ part "seri_hareketleri_request_model.g.dart";
 class SeriHareketleriRequestModel with _$SeriHareketleriRequestModel {
   factory SeriHareketleriRequestModel({
     @JsonKey(name: "StokKodu") String? stokKodu,
+    @JsonKey(name: "SeriNo") String? seriNo,
     @JsonKey(name: "Sirala") String? sirala,
   }) = _SeriHareketleriRequestModel;
 

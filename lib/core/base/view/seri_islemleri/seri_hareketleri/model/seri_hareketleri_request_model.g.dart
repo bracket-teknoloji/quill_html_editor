@@ -10,6 +10,7 @@ _$SeriHareketleriRequestModelImpl _$$SeriHareketleriRequestModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SeriHareketleriRequestModelImpl(
       stokKodu: json['StokKodu'] as String?,
+      seriNo: json['SeriNo'] as String?,
       sirala: json['Sirala'] as String?,
     );
 
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$SeriHareketleriRequestModelImplToJson(
   }
 
   writeNotNull('StokKodu', instance.stokKodu);
+  writeNotNull('SeriNo', instance.seriNo);
   writeNotNull('Sirala', instance.sirala);
   return val;
 }

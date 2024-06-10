@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -17,6 +18,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   };
   @observable
   bool isSearchBarOpened = false;
+
+  @observable
+  ObservableList<bool> selectedActionType = [true, false].asObservable();
 
   @observable
   String searchQuery = "";
@@ -45,6 +49,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setSearchQuery(String query) => searchQuery = query;
 
   @action
+  void onActionTypeChanged(int? index) => selectedActionType = selectedActionType.mapIndexed((index2, e) => index == index2 ? true : false).toList().asObservable();
+
+  @action
   void setIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;
 
   @action
@@ -55,6 +62,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setStokKodu(String? stokKodu) => requestModel = requestModel.copyWith(stokKodu: stokKodu);
+
+  @action
+  void setSeriNo(String? seriNo) => requestModel = requestModel.copyWith(seriNo: seriNo);
 
   @action
   void setSerihareketleriList(List<SeriHareketleriModel>? list) => seriHareketleriList = list?.asObservable();

@@ -36,6 +36,23 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
     });
   }
 
+  late final _$selectedActionTypeAtom = Atom(
+      name: '_SeriHareketleriViewModelBase.selectedActionType',
+      context: context);
+
+  @override
+  ObservableList<bool> get selectedActionType {
+    _$selectedActionTypeAtom.reportRead();
+    return super.selectedActionType;
+  }
+
+  @override
+  set selectedActionType(ObservableList<bool> value) {
+    _$selectedActionTypeAtom.reportWrite(value, super.selectedActionType, () {
+      super.selectedActionType = value;
+    });
+  }
+
   late final _$searchQueryAtom =
       Atom(name: '_SeriHareketleriViewModelBase.searchQuery', context: context);
 
@@ -134,6 +151,17 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   }
 
   @override
+  void onActionTypeChanged(int? index) {
+    final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
+        .startAction(name: '_SeriHareketleriViewModelBase.onActionTypeChanged');
+    try {
+      return super.onActionTypeChanged(index);
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setIsSearchBarOpened() {
     final _$actionInfo =
         _$_SeriHareketleriViewModelBaseActionController.startAction(
@@ -179,6 +207,17 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   }
 
   @override
+  void setSeriNo(String? seriNo) {
+    final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
+        .startAction(name: '_SeriHareketleriViewModelBase.setSeriNo');
+    try {
+      return super.setSeriNo(seriNo);
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSerihareketleriList(List<SeriHareketleriModel>? list) {
     final _$actionInfo =
         _$_SeriHareketleriViewModelBaseActionController.startAction(
@@ -194,6 +233,7 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
   String toString() {
     return '''
 isSearchBarOpened: ${isSearchBarOpened},
+selectedActionType: ${selectedActionType},
 searchQuery: ${searchQuery},
 stokListesiModel: ${stokListesiModel},
 requestModel: ${requestModel},

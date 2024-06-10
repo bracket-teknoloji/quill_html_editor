@@ -25,6 +25,10 @@ mixin _$SeriHareketleriRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "StokKodu")
   set stokKodu(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SeriNo")
+  String? get seriNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "SeriNo")
+  set seriNo(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "Sirala")
   String? get sirala => throw _privateConstructorUsedError;
   @JsonKey(name: "Sirala")
@@ -46,6 +50,7 @@ abstract class $SeriHareketleriRequestModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: "StokKodu") String? stokKodu,
+      @JsonKey(name: "SeriNo") String? seriNo,
       @JsonKey(name: "Sirala") String? sirala});
 }
 
@@ -64,12 +69,17 @@ class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? stokKodu = freezed,
+    Object? seriNo = freezed,
     Object? sirala = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
           ? _value.stokKodu
           : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -90,6 +100,7 @@ abstract class _$$SeriHareketleriRequestModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: "StokKodu") String? stokKodu,
+      @JsonKey(name: "SeriNo") String? seriNo,
       @JsonKey(name: "Sirala") String? sirala});
 }
 
@@ -107,12 +118,17 @@ class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? stokKodu = freezed,
+    Object? seriNo = freezed,
     Object? sirala = freezed,
   }) {
     return _then(_$SeriHareketleriRequestModelImpl(
       stokKodu: freezed == stokKodu
           ? _value.stokKodu
           : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      seriNo: freezed == seriNo
+          ? _value.seriNo
+          : seriNo // ignore: cast_nullable_to_non_nullable
               as String?,
       sirala: freezed == sirala
           ? _value.sirala
@@ -128,6 +144,7 @@ class _$SeriHareketleriRequestModelImpl
     implements _SeriHareketleriRequestModel {
   _$SeriHareketleriRequestModelImpl(
       {@JsonKey(name: "StokKodu") this.stokKodu,
+      @JsonKey(name: "SeriNo") this.seriNo,
       @JsonKey(name: "Sirala") this.sirala});
 
   factory _$SeriHareketleriRequestModelImpl.fromJson(
@@ -138,12 +155,15 @@ class _$SeriHareketleriRequestModelImpl
   @JsonKey(name: "StokKodu")
   String? stokKodu;
   @override
+  @JsonKey(name: "SeriNo")
+  String? seriNo;
+  @override
   @JsonKey(name: "Sirala")
   String? sirala;
 
   @override
   String toString() {
-    return 'SeriHareketleriRequestModel(stokKodu: $stokKodu, sirala: $sirala)';
+    return 'SeriHareketleriRequestModel(stokKodu: $stokKodu, seriNo: $seriNo, sirala: $sirala)';
   }
 
   @JsonKey(ignore: true)
@@ -165,6 +185,7 @@ abstract class _SeriHareketleriRequestModel
     implements SeriHareketleriRequestModel {
   factory _SeriHareketleriRequestModel(
           {@JsonKey(name: "StokKodu") String? stokKodu,
+          @JsonKey(name: "SeriNo") String? seriNo,
           @JsonKey(name: "Sirala") String? sirala}) =
       _$SeriHareketleriRequestModelImpl;
 
@@ -176,6 +197,11 @@ abstract class _SeriHareketleriRequestModel
   String? get stokKodu;
   @JsonKey(name: "StokKodu")
   set stokKodu(String? value);
+  @override
+  @JsonKey(name: "SeriNo")
+  String? get seriNo;
+  @JsonKey(name: "SeriNo")
+  set seriNo(String? value);
   @override
   @JsonKey(name: "Sirala")
   String? get sirala;

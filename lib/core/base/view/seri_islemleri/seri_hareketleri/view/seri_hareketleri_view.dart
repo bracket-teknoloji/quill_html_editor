@@ -152,45 +152,68 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
               builder: (_) => ToggleButtons(
                 constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
                 //TODO BU ne amk selected'ı düzelt
-                isSelected: const [true, false],
+                isSelected: viewModel.selectedActionType,
+                onPressed: (index) {
+                  if (viewModel.selectedActionType[index]) {
+                    return;
+                  }
+                  viewModel.onActionTypeChanged(index);
+                  _stokKoduController.text = "";
+                  viewModel.setSeriNo(null);
+                  viewModel.setStokKodu(null);
+                },
                 children: const [
                   Text("Stok Kodundan"),
                   Text("Seriden"),
                 ],
               ),
             ),
-          ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(false),
-          CustomTextField(
-            labelText: "Stok",
-            readOnly: true,
-            controller: _stokKoduController,
-            suffixMore: true,
-            onTap: () async {
-              final result = await Get.toNamed(
-                "/mainPage/stokListesiOzel",
-                arguments: StokBottomSheetModel(
-                  seriTakibiVar: "E",
-                  resimGoster: "E",
-                  menuKodu: "STOK_SREH",
-                ),
-              );
-              if (result is StokListesiModel) {
-                _stokKoduController.text = result.stokKodu ?? "";
-                viewModel.stokListesiModel = result;
-                viewModel.setStokKodu(result.stokKodu ?? "");
-                await viewModel.getData();
-              }
-            },
-            suffix: IconButton(
-              onPressed: () async {
-                final result = await Get.toNamed("/qr");
-                if (result is String) {
-                  _stokKoduController.text = result;
-                  viewModel.setStokKodu(result);
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          Observer(
+            builder: (_) => CustomTextField(
+              labelText: viewModel.selectedActionType.first ? "Stok" : "Seri",
+              readOnly: viewModel.selectedActionType.first,
+              controller: _stokKoduController,
+              suffixMore: true,
+              onChanged: (value) {
+                if (value.isEmpty) {
+                  return;
+                }
+                if (viewModel.selectedActionType.first) {
+                  viewModel.setSeriNo(null);
+                  viewModel.setStokKodu(value);
+                } else {
+                  viewModel.setSeriNo(null);
+                  viewModel.setSeriNo(value);
+                }
+              },
+              onTap: !viewModel.selectedActionType.first ? null :() async {
+                final result = await Get.toNamed(
+                  "/mainPage/stokListesiOzel",
+                  arguments: StokBottomSheetModel(
+                    seriTakibiVar: "E",
+                    resimGoster: "E",
+                    menuKodu: "STOK_SREH",
+                  ),
+                );
+                if (result is StokListesiModel) {
+                  _stokKoduController.text = result.stokKodu ?? "";
+                  viewModel.stokListesiModel = result;
+                  viewModel.setStokKodu(result.stokKodu ?? "");
                   await viewModel.getData();
                 }
               },
-              icon: const Icon(Icons.qr_code_scanner),
+              suffix: IconButton(
+                onPressed: () async {
+                  final result = await Get.toNamed("/qr");
+                  if (result is String) {
+                    _stokKoduController.text = result;
+                    viewModel.setStokKodu(result);
+                    await viewModel.getData();
+                  }
+                },
+                icon: const Icon(Icons.qr_code_scanner),
+              ),
             ),
           ),
           Expanded(
