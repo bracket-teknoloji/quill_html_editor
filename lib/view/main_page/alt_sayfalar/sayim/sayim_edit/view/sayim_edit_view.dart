@@ -1,11 +1,21 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
+import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/view/sayim_sayilanlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view/sayim_girisi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view_model/sayim_edit_view_model.dart";
@@ -42,7 +52,74 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
             subtitle: "Depo: ${widget.model.depoKodu}",
           ),
           actions: [
-            // IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
+            IconButton(
+              onPressed: () {
+                bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: loc.generalStrings.options,
+                  children: [
+                    BottomSheetModel(
+                      title: "Sayım Raporu (PDF)",
+                      iconWidget: Icons.filter_9_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final PdfModel pdfModel = PdfModel(
+                          etiketSayisi: 1,
+                          raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+                          dicParams: DicParams(
+                            belgeNo: widget.model.fisno,
+                          ),
+                        );
+                        final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
+                          context,
+                          "",
+                        );
+                        if (sayimFiltre == null) return;
+                        pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
+                        // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
+                        final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+                          context,
+                          "",
+                          ozelKod: DizaynOzelKodEnum.sayim,
+                        );
+                        if (dizayn == null) return;
+                        pdfModel.dizaynId = dizayn.id;
+                        final result = await networkManager.getPDF(pdfModel);
+                        if (result.success case (null || false)) return;
+                        Get.to(() => GenelPdfView(model: (result.data as List).firstOrNull));
+                        // final result = await bottomSheetDialogManager.showBottomSh
+                      },
+                    ).yetkiKontrol(yetkiController.sayimSayimRaporu),
+                    BottomSheetModel(
+                      title: "Sayımı Bitir",
+                      iconWidget: Icons.stop_outlined,
+                      onTap: () async {
+                        if (await viewModel.sayimiBitir()) {
+                          Get.back(result: true);
+                        }
+                      },
+                    ).yetkiKontrol(widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi),
+                    BottomSheetModel(
+                      title: "Depo Fark Raporu",
+                      iconWidget: Icons.filter_9_outlined,
+                      onTap: () async {
+                        Get.back();
+                        await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
+                      },
+                    ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
+                    // BottomSheetModel(
+                    //TODO DEPO TRANSFERİ OLUŞTUR
+                    //   title: "Depo Transferi Oluştur",
+                    //   iconWidget: Icons.transform_outlined,
+                    //   onTap: () {
+                    //     Get.toNamed("/mainPage/transferEdit");
+                    //   },
+                    // ).yetkiKontrol(yetkiController.transferDatEkle && kDebugMode),
+                  ].nullCheckWithGeneric,
+                );
+              },
+              icon: const Icon(Icons.more_vert_outlined),
+            ),
             Observer(
               builder: (_) => IconButton(
                 onPressed: () async => await saveSayim(),
@@ -65,7 +142,10 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
         body: TabBarView(
           controller: controller,
           children: [
-            SayimGirisiView(onStokSelected: saveSayim),
+            SayimGirisiView(
+              onStokSelected: saveSayim,
+              resetFiltreModel: resetFiltreModel,
+            ),
             SayimSayilanlarView(onEdit: onEdit),
           ],
         ),
@@ -76,12 +156,36 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
       dialogManager.showErrorSnackBar("Gerekli alanları doldurunuz.");
       return;
     }
+
     final result = await viewModel.sendData(model.depoKodu!);
-    if (result.success == true) {
-      SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = SayimFiltreModel(islemKodu: 1, belgeNo: model.fisno);
-      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-      controller.animateTo(1);
+    if (!result.isSucces) return;
+    dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+    if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
+      SingletonModels.sayimPrintModel = SingletonModels.sayimPrintModel.copyWith(
+        dicParams: SingletonModels.sayimPrintModel.dicParams?.copyWith(
+          kalemId: SingletonModels.sayimListesi?.filtre?.id.toStringIfNotNull,
+          stokKodu: SingletonModels.sayimListesi?.filtre?.stokKodu,
+        ),
+      );
+      final printModel = await bottomSheetDialogManager.showPrintBottomSheetDialog(
+        context,
+        SingletonModels.sayimPrintModel,
+        SingletonModels.sayimPrintModel.dizaynId == null,
+        SingletonModels.sayimPrintModel.etiketSayisi == null,
+      );
+      if (printModel != null) {
+        SingletonModels.sayimPrintModel = printModel;
+      }
     }
+    // if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
+    //   await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: "raporOzelKod"), true, true);
+    // }
+    resetFiltreModel();
+  }
+
+  void resetFiltreModel() {
+    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = SayimFiltreModel(islemKodu: 1, belgeNo: model.fisno);
+    controller.animateTo(1);
   }
 
   Future<void> onEdit(SayimFiltreModel model) async {

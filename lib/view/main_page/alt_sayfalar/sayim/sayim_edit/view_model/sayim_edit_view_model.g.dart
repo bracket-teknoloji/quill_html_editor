@@ -41,6 +41,14 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     return _$sendDataAsyncAction.run(() => super.sendData(depoKodu));
   }
 
+  late final _$sayimiBitirAsyncAction =
+      AsyncAction('_SayimEditViewModelBase.sayimiBitir', context: context);
+
+  @override
+  Future<bool> sayimiBitir() {
+    return _$sayimiBitirAsyncAction.run(() => super.sayimiBitir());
+  }
+
   late final _$_SayimEditViewModelBaseActionController =
       ActionController(name: '_SayimEditViewModelBase', context: context);
 

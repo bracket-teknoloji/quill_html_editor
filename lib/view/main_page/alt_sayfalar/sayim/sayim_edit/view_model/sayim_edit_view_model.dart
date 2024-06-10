@@ -23,4 +23,14 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendData(int depoKodu) async =>
       await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: SingletonModels.sayimListesi?.filtre?.copyWith(depoKodu: depoKodu).toJson(), showLoading: true);
+
+  @action
+  Future<bool> sayimiBitir() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveSayim,
+      bodyModel: SayimListesiModel(),
+      data: SayimFiltreModel(belgeNo: SingletonModels.sayimListesi?.filtre?.belgeNo, islemKodu: 5),
+    );
+    return result.isSucces;
+  }
 }
