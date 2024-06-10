@@ -24,7 +24,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 class SayimGirisiView extends StatefulWidget {
   final Future<void> Function() onStokSelected;
-  const SayimGirisiView({super.key, required this.onStokSelected});
+  final void Function() resetFiltreModel;
+  const SayimGirisiView({super.key, required this.onStokSelected, required this.resetFiltreModel});
 
   @override
   State<SayimGirisiView> createState() => _SayimGirisiViewState();
@@ -86,6 +87,45 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
           key: StaticVariables.instance.sayimGenelFormKey,
           child: Column(
             children: [
+              Observer(
+                builder: (_) => Card(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          "${viewModel.filtreModel.id} numaralı kaydı düzenliyorsunuz.",
+                          maxLines: 2,
+                        ),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            dialogManager.showAreYouSureDialog(() async {
+                              widget.resetFiltreModel();
+                            });
+                          },
+                          child: Text(loc.generalStrings.cancel),
+                        ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                      ),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            dialogManager.showAreYouSureDialog(() async {
+                              final result = await viewModel.deleteItem();
+                              if (result == true) {
+                                dialogManager.showSuccessSnackBar("Başarıyla silindi");
+                                widget.resetFiltreModel();
+                              }
+                            });
+                          },
+                          child: Text(loc.generalStrings.delete),
+                        ),
+                      ),
+                    ],
+                  ),
+                ).yetkiVarMi(viewModel.filtreModel.duzenleMi == true),
+              ),
               CustomTextField(
                 labelText: "Stok",
                 isMust: true,

@@ -97,7 +97,7 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
             Get.back();
             final result = await viewModel.getSelectedItem(model.id);
             if (result == null) return;
-            widget.onEdit.call(result);
+            widget.onEdit.call(result.copyWith(duzenleMi: true));
           },
         ),
         BottomSheetModel(

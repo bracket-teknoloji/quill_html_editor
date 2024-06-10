@@ -74,6 +74,14 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
     });
   }
 
+  late final _$deleteItemAsyncAction =
+      AsyncAction('_SayimGirisiViewModelBase.deleteItem', context: context);
+
+  @override
+  Future<bool?> deleteItem() {
+    return _$deleteItemAsyncAction.run(() => super.deleteItem());
+  }
+
   late final _$_SayimGirisiViewModelBaseActionController =
       ActionController(name: '_SayimGirisiViewModelBase', context: context);
 

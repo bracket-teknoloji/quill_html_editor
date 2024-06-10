@@ -19,8 +19,9 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
   SayilanKalemlerRequestModel requestModel = SayilanKalemlerRequestModel(
     kullaniciAdi: CacheManager.getAnaVeri!.userModel!.kuladi.toString(),
     belgeNo: SingletonModels.sayimListesi?.fisno,
-    filtreKodu: SingletonModels.sayimListesi?.filtre?.tipi,
+    filtreKodu: 3,
     depoKodu: SingletonModels.sayimListesi?.depoKodu,
+    
   );
 
   @observable

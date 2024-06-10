@@ -82,6 +82,7 @@ class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
     String? kayityapankul,
     String? depoTanimi,
     DateTime? kayittarihi,
+    @Default(false) @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi
   }) = _SayimFiltreModel;
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);

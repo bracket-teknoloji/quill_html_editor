@@ -865,6 +865,10 @@ mixin _$SayimFiltreModel {
   set depoTanimi(String? value) => throw _privateConstructorUsedError;
   DateTime? get kayittarihi => throw _privateConstructorUsedError;
   set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? get duzenleMi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set duzenleMi(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -906,7 +910,8 @@ abstract class $SayimFiltreModelCopyWith<$Res> {
       String? fisno,
       String? kayityapankul,
       String? depoTanimi,
-      DateTime? kayittarihi});
+      DateTime? kayittarihi,
+      @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi});
 }
 
 /// @nodoc
@@ -950,6 +955,7 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
     Object? kayityapankul = freezed,
     Object? depoTanimi = freezed,
     Object? kayittarihi = freezed,
+    Object? duzenleMi = freezed,
   }) {
     return _then(_value.copyWith(
       arrGrupKodu: freezed == arrGrupKodu
@@ -1064,6 +1070,10 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
           ? _value.kayittarihi
           : kayittarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      duzenleMi: freezed == duzenleMi
+          ? _value.duzenleMi
+          : duzenleMi // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -1104,7 +1114,8 @@ abstract class _$$SayimFiltreModelImplCopyWith<$Res>
       String? fisno,
       String? kayityapankul,
       String? depoTanimi,
-      DateTime? kayittarihi});
+      DateTime? kayittarihi,
+      @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi});
 }
 
 /// @nodoc
@@ -1146,6 +1157,7 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
     Object? kayityapankul = freezed,
     Object? depoTanimi = freezed,
     Object? kayittarihi = freezed,
+    Object? duzenleMi = freezed,
   }) {
     return _then(_$SayimFiltreModelImpl(
       arrGrupKodu: freezed == arrGrupKodu
@@ -1260,6 +1272,10 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
           ? _value.kayittarihi
           : kayittarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      duzenleMi: freezed == duzenleMi
+          ? _value.duzenleMi
+          : duzenleMi // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -1295,7 +1311,9 @@ class _$SayimFiltreModelImpl extends _SayimFiltreModel {
       this.fisno,
       this.kayityapankul,
       this.depoTanimi,
-      this.kayittarihi})
+      this.kayittarihi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.duzenleMi = false})
       : super._();
 
   factory _$SayimFiltreModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1365,6 +1383,9 @@ class _$SayimFiltreModelImpl extends _SayimFiltreModel {
   String? depoTanimi;
   @override
   DateTime? kayittarihi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? duzenleMi;
 
   @JsonKey(ignore: true)
   @override
@@ -1410,7 +1431,9 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
       String? fisno,
       String? kayityapankul,
       String? depoTanimi,
-      DateTime? kayittarihi}) = _$SayimFiltreModelImpl;
+      DateTime? kayittarihi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool? duzenleMi}) = _$SayimFiltreModelImpl;
   _SayimFiltreModel._() : super._();
 
   factory _SayimFiltreModel.fromJson(Map<String, dynamic> json) =
@@ -1514,6 +1537,11 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
   @override
   DateTime? get kayittarihi;
   set kayittarihi(DateTime? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool? get duzenleMi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set duzenleMi(bool? value);
   @override
   @JsonKey(ignore: true)
   _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
