@@ -1273,7 +1273,7 @@ class BottomSheetDialogManager {
             ),
             ElevatedButton(
               onPressed: () async {
-                final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(context, model: printModel);
+                final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(model: printModel);
                 if (result.success == true) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
                 }
@@ -1289,7 +1289,6 @@ class BottomSheetDialogManager {
       );
     } else {
       final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(
-        context,
         model: printModel,
       );
       if (result.success == true) {

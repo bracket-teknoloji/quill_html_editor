@@ -443,7 +443,7 @@ class NetworkManager {
 
   //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
   //Sadece succes döndürüyor.
-  Future<GenericResponseModel> postPrint(BuildContext context, {required PrintModel model}) async =>
+  Future<GenericResponseModel> postPrint({required PrintModel model}) async =>
       await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {

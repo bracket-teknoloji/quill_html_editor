@@ -346,7 +346,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
 
   Future<void> postPrint() async {
     if (formKey.currentState?.validate() ?? false) {
-      final result = await networkManager.postPrint(context, model: viewModel.printModel);
+      final result = await networkManager.postPrint(model: viewModel.printModel);
       if (result.success == true) {
         dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
         if (widget.model != null) {
