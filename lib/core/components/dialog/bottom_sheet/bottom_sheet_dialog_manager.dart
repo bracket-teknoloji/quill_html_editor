@@ -1230,7 +1230,7 @@ class BottomSheetDialogManager {
       final TextEditingController dizaynController = TextEditingController(text: printModel.dizaynId.toStringIfNotNull);
       final TextEditingController yaziciController = TextEditingController(text: printModel.yaziciAdi);
       final TextEditingController kopyaController = TextEditingController(text: printModel.etiketSayisi.toStringIfNotNull);
-      await showBottomSheetDialog(
+      final returnValue = await showBottomSheetDialog(
         context,
         title: printModel.dicParams?.belgeNo ?? "",
         body: Column(
@@ -1277,16 +1277,19 @@ class BottomSheetDialogManager {
                 if (result.success == true) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
                 }
-                Get.back();
-                dizaynController.dispose();
-                yaziciController.dispose();
-                kopyaController.dispose();
+                Get.back(result: printModel);
               },
               child: const Text("Yazdır"),
             ).paddingAll(UIHelper.lowSize),
           ],
         ),
       );
+      if (returnValue != null) {
+        dizaynController.dispose();
+        yaziciController.dispose();
+        kopyaController.dispose();
+        return returnValue;
+      }
     } else {
       final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(
         model: printModel,
