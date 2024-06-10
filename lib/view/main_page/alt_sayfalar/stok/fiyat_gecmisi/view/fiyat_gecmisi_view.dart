@@ -349,7 +349,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                   null,
                                   null,
                                 );
-                                if (result == true) {
+                                if (result != null) {
                                   getData();
                                 }
                               },

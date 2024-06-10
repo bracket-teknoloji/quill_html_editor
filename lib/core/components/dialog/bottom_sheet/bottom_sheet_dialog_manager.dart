@@ -683,13 +683,14 @@ class BottomSheetDialogManager {
   }
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<BaseProjeModel> projeList = await _networkManager.getProjeData() ?? <BaseProjeModel>[];
+    final List<BaseProjeModel>? projeList = await _networkManager.getProjeData();
+    if (projeList.ext.isNullOrEmpty) return null;
     final BaseProjeModel? proje = await showRadioBottomSheetDialog(
       context,
       title: "Proje Seçiniz",
       groupValue: groupValue,
       children: projeList
-          .map(
+          ?.map(
             (BaseProjeModel e) => BottomSheetModel(
               title: e.projeAciklama ?? e.projeKodu ?? "",
               description: e.projeKodu,
@@ -1182,7 +1183,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<bool?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar, {EditTipiEnum? editTipiEnum}) async {
+  Future<PrintModel?> showPrintBottomSheetDialog(BuildContext context, PrintModel printModel, bool? askDizayn, bool? askMiktar, {EditTipiEnum? editTipiEnum}) async {
     if (printModel.yaziciAdi == null) {
       final List<YaziciList?> yaziciListe = _paramModel?.yaziciList ?? <YaziciList?>[];
       if (yaziciListe.length == 1) {
@@ -1244,9 +1245,8 @@ class BottomSheetDialogManager {
               keyboardType: TextInputType.number,
               onChanged: (String value) {
                 int kopya = int.tryParse(value) ?? 0;
-                if ((int.tryParse(value) ?? 0) <= 0) {
+                if (kopya <= 0) {
                   kopya = 1;
-
                   return;
                 }
                 kopyaController.text = kopya.toString();
@@ -1293,7 +1293,7 @@ class BottomSheetDialogManager {
       );
       if (result.success == true) {
         DialogManager().showSuccessSnackBar("Yazdırıldı.");
-        return true;
+        return printModel;
       }
     }
     return null;
