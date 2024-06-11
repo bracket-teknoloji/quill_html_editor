@@ -145,7 +145,9 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
         BaseSiparisEditModel.instance.isNew = true;
         BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
+        BaseSiparisEditModel.instance.hareketTuru = widget.model.model?.hareketTuru;
         BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
+        BaseSiparisEditModel.instance.projeKodu = widget.model.model?.projeKodu;
         BaseSiparisEditModel.instance.girisDepoKodu = widget.model.model?.girisDepoKodu;
         BaseSiparisEditModel.instance.cikisDepoKodu = widget.model.model?.cikisDepoKodu;
         BaseSiparisEditModel.instance.topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi;
