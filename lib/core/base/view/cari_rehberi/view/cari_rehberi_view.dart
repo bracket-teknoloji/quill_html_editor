@@ -64,7 +64,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
     searchFocusNode = FocusNode();
     searchFocusNode.requestFocus();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      viewModel.cariListesiRequestModel = viewModel.cariListesiRequestModel?.copyWith(eFaturaGoster: widget.cariRequestModel.eFaturaGoster, belgeTuru: widget.cariRequestModel.belgeTuru);
+      viewModel.cariListesiRequestModel = viewModel.cariListesiRequestModel?.copyWith(
+        eFaturaGoster: widget.cariRequestModel.eFaturaGoster,
+        belgeTuru: widget.cariRequestModel.belgeTuru,
+      );
       viewModel.changeBagliCariKodu(widget.cariRequestModel.bagliCariKodu);
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
@@ -152,7 +155,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
-            await Get.toNamed(
+            final result = await Get.toNamed(
               "/mainPage/cariEdit",
               arguments: BaseEditModel(
                 baseEditEnum: BaseEditEnum.ekle,
@@ -161,6 +164,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 siradakiKod: siradakiKod,
               ),
             );
+            if (result is String) {}
           },
         ),
       );

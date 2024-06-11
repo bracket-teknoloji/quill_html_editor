@@ -106,7 +106,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
                         ),
                       )
                     : Observer(
-                          builder: (_) => ReorderableListView.builder(
+                        builder: (_) => ReorderableListView.builder(
                           onReorder: (oldIndex, newIndex) {
                             if (oldIndex == newIndex) return;
                             if (newIndex > oldIndex) {
@@ -172,7 +172,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
               ],
             ),
             Text(kalemModel?.stokKodu ?? ""),
-            Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
+            Text("${kalemModel?.depoKodu ?? ""}(${kalemModel?.depoTanimi ?? ""}) => ${kalemModel?.hedefDepo ?? ""}(${kalemModel?.hedefDepoAdi ?? ""})").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
@@ -184,7 +184,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
                 children: <Widget>[
                   Text("Miktar: ${(kalemModel?.miktar ?? kalemModel?.miktar2).toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
                       .yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
-                  Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
+                  Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? "0"} ${kalemModel?.olcuBirimAdi ?? ""}"),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
                   Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),
                   Text.rich(
@@ -209,8 +209,8 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
                         TextSpan(text: "\n(${kalemModel?.getDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
-                    ).yetkiVarMi(kalemModel?.brutFiyat != null),
-                  ),
+                    ),
+                  ).yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Kur: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency}")
                       .yetkiVarMi(kalemModel?.dovizKuru != null),
                   Text.rich(
@@ -220,8 +220,8 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
                         TextSpan(text: "\n(${kalemModel?.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
-                    ).yetkiVarMi(kalemModel?.brutFiyat != null),
-                  ),
+                    ),
+                  ).yetkiVarMi(kalemModel?.brutFiyat != null),
                   Text("Proje: ${kalemModel?.projeKodu}").yetkiVarMi(kalemModel?.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
                   // Text("Teslim Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),
                   // Text("Kalan Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar != null),

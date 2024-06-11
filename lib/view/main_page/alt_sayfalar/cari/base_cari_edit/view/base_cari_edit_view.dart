@@ -170,12 +170,9 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioPost<CariListesiModel>(
       path: ApiUrls.saveCari,
       bodyModel: CariListesiModel(),
-      addCKey: true,
-      showLoading: true,
-      addSirketBilgileri: true,
       data: CariSaveRequestModel.instance.toJson(),
     );
-    if (response.success == true) {
+    if (response.isSucces) {
       Get.back(result: true);
       dialogManager.showSuccessSnackBar(response.message ?? "Kayıt başarılı");
     }
