@@ -33,6 +33,9 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
       searchText: json['SearchText'] as String?,
+      filtreKodu: (json['FiltreKodu'] as num?)?.toInt(),
+      depoKodu: json['DepoKodu'] as String?,
+      hedefDepoKodu: json['HedefDepoKodu'] as String?,
       belgeNo: json['BelgeNo'] as String? ?? "",
       siparisDurumu: json['SiparisDurumu'] as String?,
       referansStokKodu: json['ReferansStokKodu'] as String?,
@@ -80,6 +83,9 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
   writeNotNull('BitisTarihi', instance.bitisTarihi);
   writeNotNull('SearchText', instance.searchText);
+  writeNotNull('FiltreKodu', instance.filtreKodu);
+  writeNotNull('DepoKodu', instance.depoKodu);
+  writeNotNull('HedefDepoKodu', instance.hedefDepoKodu);
   writeNotNull('BelgeNo', instance.belgeNo);
   writeNotNull('SiparisDurumu', instance.siparisDurumu);
   writeNotNull('ReferansStokKodu', instance.referansStokKodu);

@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -51,7 +52,7 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
 }
 
 @unfreezed
-class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
+class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin, BaseStokMixin {
   SayimFiltreModel._();
   factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
@@ -82,7 +83,7 @@ class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin {
     String? kayityapankul,
     String? depoTanimi,
     DateTime? kayittarihi,
-    @Default(false) @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi
+    @Default(false) @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi,
   }) = _SayimFiltreModel;
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);

@@ -73,6 +73,12 @@ mixin _$SiparislerRequestModel {
   set bitisTarihi(String? value) => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
+  int? get filtreKodu => throw _privateConstructorUsedError;
+  set filtreKodu(int? value) => throw _privateConstructorUsedError;
+  String? get depoKodu => throw _privateConstructorUsedError;
+  set depoKodu(String? value) => throw _privateConstructorUsedError;
+  String? get hedefDepoKodu => throw _privateConstructorUsedError;
+  set hedefDepoKodu(String? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
   set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get siparisDurumu => throw _privateConstructorUsedError;
@@ -132,6 +138,9 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       String? baslamaTarihi,
       String? bitisTarihi,
       String? searchText,
+      int? filtreKodu,
+      String? depoKodu,
+      String? hedefDepoKodu,
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
@@ -182,6 +191,9 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? searchText = freezed,
+    Object? filtreKodu = freezed,
+    Object? depoKodu = freezed,
+    Object? hedefDepoKodu = freezed,
     Object? belgeNo = freezed,
     Object? siparisDurumu = freezed,
     Object? referansStokKodu = freezed,
@@ -290,6 +302,18 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      filtreKodu: freezed == filtreKodu
+          ? _value.filtreKodu
+          : filtreKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefDepoKodu: freezed == hedefDepoKodu
+          ? _value.hedefDepoKodu
+          : hedefDepoKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       belgeNo: freezed == belgeNo
           ? _value.belgeNo
           : belgeNo // ignore: cast_nullable_to_non_nullable
@@ -368,6 +392,9 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       String? baslamaTarihi,
       String? bitisTarihi,
       String? searchText,
+      int? filtreKodu,
+      String? depoKodu,
+      String? hedefDepoKodu,
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
@@ -417,6 +444,9 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? searchText = freezed,
+    Object? filtreKodu = freezed,
+    Object? depoKodu = freezed,
+    Object? hedefDepoKodu = freezed,
     Object? belgeNo = freezed,
     Object? siparisDurumu = freezed,
     Object? referansStokKodu = freezed,
@@ -525,6 +555,18 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String?,
+      filtreKodu: freezed == filtreKodu
+          ? _value.filtreKodu
+          : filtreKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hedefDepoKodu: freezed == hedefDepoKodu
+          ? _value.hedefDepoKodu
+          : hedefDepoKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       belgeNo: freezed == belgeNo
           ? _value.belgeNo
           : belgeNo // ignore: cast_nullable_to_non_nullable
@@ -598,6 +640,9 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.baslamaTarihi,
       this.bitisTarihi,
       this.searchText,
+      this.filtreKodu,
+      this.depoKodu,
+      this.hedefDepoKodu,
       this.belgeNo = "",
       this.siparisDurumu,
       this.referansStokKodu,
@@ -664,6 +709,12 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   String? searchText;
   @override
+  int? filtreKodu;
+  @override
+  String? depoKodu;
+  @override
+  String? hedefDepoKodu;
+  @override
   @JsonKey()
   String? belgeNo;
   @override
@@ -687,7 +738,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
   }
 
   @JsonKey(ignore: true)
@@ -731,6 +782,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       String? baslamaTarihi,
       String? bitisTarihi,
       String? searchText,
+      int? filtreKodu,
+      String? depoKodu,
+      String? hedefDepoKodu,
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
@@ -819,6 +873,15 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get searchText;
   set searchText(String? value);
+  @override
+  int? get filtreKodu;
+  set filtreKodu(int? value);
+  @override
+  String? get depoKodu;
+  set depoKodu(String? value);
+  @override
+  String? get hedefDepoKodu;
+  set hedefDepoKodu(String? value);
   @override
   String? get belgeNo;
   set belgeNo(String? value);

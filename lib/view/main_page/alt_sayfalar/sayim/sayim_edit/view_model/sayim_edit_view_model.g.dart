@@ -33,6 +33,22 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
     });
   }
 
+  late final _$faturaRequestModelAtom = Atom(
+      name: '_SayimEditViewModelBase.faturaRequestModel', context: context);
+
+  @override
+  SiparislerRequestModel get faturaRequestModel {
+    _$faturaRequestModelAtom.reportRead();
+    return super.faturaRequestModel;
+  }
+
+  @override
+  set faturaRequestModel(SiparislerRequestModel value) {
+    _$faturaRequestModelAtom.reportWrite(value, super.faturaRequestModel, () {
+      super.faturaRequestModel = value;
+    });
+  }
+
   late final _$sendDataAsyncAction =
       AsyncAction('_SayimEditViewModelBase.sendData', context: context);
 
@@ -67,6 +83,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
   String toString() {
     return '''
 tabIndex: ${tabIndex},
+faturaRequestModel: ${faturaRequestModel},
 indexSifirMi: ${indexSifirMi}
     ''';
   }

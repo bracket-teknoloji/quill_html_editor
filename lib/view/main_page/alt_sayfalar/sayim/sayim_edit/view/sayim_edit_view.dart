@@ -1,14 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -20,6 +24,8 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_l
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view/sayim_girisi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view_model/sayim_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 class SayimEditView extends StatefulWidget {
   final SayimListesiModel model;
@@ -107,14 +113,34 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
                         await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
                       },
                     ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
-                    // BottomSheetModel(
-                    //TODO DEPO TRANSFERİ OLUŞTUR
-                    //   title: "Depo Transferi Oluştur",
-                    //   iconWidget: Icons.transform_outlined,
-                    //   onTap: () {
-                    //     Get.toNamed("/mainPage/transferEdit");
-                    //   },
-                    // ).yetkiKontrol(yetkiController.transferDatEkle && kDebugMode),
+                    BottomSheetModel(
+                      title: "Depo Transferi Oluştur",
+                      iconWidget: Icons.transform_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final depo = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, widget.model.depoKodu);
+                        if (depo is! DepoList) return;
+                        final listOfKalemler = await viewModel.getKalemler(depo.depoKodu.toString());
+                        if (listOfKalemler.ext.isNullOrEmpty) return;
+                        Get.toNamed(
+                          "/mainPage/transferEdit",
+                          arguments: BaseEditModel<BaseSiparisEditModel>(
+                            editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+                            baseEditEnum: BaseEditEnum.ekle,
+                            model: BaseSiparisEditModel(
+                              girisDepoKodu: depo.depoKodu,
+                              topluGirisDepoTanimi: depo.depoTanimi,
+                              cikisDepoKodu: widget.model.depoKodu,
+                              topluCikisDepoTanimi: widget.model.depoTanimi,
+                              hareketTuru: "B", 
+                              projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
+                              kalemList: listOfKalemler,
+                              aciklama: "Sayım ${widget.model.fisno}",
+                            ),
+                          ),
+                        );
+                      },
+                    ).yetkiKontrol(yetkiController.transferDatEkle),
                   ].nullCheckWithGeneric,
                 );
               },
