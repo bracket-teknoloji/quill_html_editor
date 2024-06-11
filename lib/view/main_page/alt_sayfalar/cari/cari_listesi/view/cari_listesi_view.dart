@@ -498,7 +498,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 queryParameters: {"CariKodu": object.cariKodu ?? ""},
               );
               dialogManager.hideAlertDialog;
-              if (result.success ?? false) {
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
                 await viewModel.resetPage();
               } else {

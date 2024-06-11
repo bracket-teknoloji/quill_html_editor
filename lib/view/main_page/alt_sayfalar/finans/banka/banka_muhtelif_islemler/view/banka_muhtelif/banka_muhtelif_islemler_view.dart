@@ -96,7 +96,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                 dialogManager.showAreYouSureDialog(() async {
                   viewModel.model.guid = const Uuid().v4();
                   final result = await viewModel.postData();
-                  if (result.success ?? false) {
+                  if (result.isSuccess) {
                     Get.back();
                   }
                 });

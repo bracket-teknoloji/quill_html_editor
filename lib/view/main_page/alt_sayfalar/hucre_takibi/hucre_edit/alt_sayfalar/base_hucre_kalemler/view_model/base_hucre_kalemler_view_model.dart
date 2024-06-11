@@ -45,7 +45,7 @@ abstract class _BaseHucreKalemlerViewModelBase with Store, MobxNetworkMixin {
       data: (paketRequestModel.copyWith(depoKodu: model.depoKodu, paketKodu: paketKodu)).toJson(),
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
       // setPaketKodu(list.firstOrNull?.kodu);
       return list.firstOrNull?.kodu;

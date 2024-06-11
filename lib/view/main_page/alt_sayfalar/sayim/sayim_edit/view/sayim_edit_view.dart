@@ -132,7 +132,7 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
                               topluGirisDepoTanimi: depo.depoTanimi,
                               cikisDepoKodu: widget.model.depoKodu,
                               topluCikisDepoTanimi: widget.model.depoTanimi,
-                              hareketTuru: "B", 
+                              hareketTuru: "B",
                               projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
                               kalemList: listOfKalemler,
                               aciklama: "Sayım ${widget.model.fisno}",
@@ -184,7 +184,7 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
     }
 
     final result = await viewModel.sendData(model.depoKodu!);
-    if (!result.isSucces) return;
+    if (!result.isSuccess) return;
     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
     if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
       SingletonModels.sayimPrintModel = SingletonModels.sayimPrintModel.copyWith(

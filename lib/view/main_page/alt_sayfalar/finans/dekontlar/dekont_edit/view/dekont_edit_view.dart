@@ -182,7 +182,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with TickerProvider
           } else {
             dialogManager.showAreYouSureDialog(() async {
               final result = await viewModel.postData();
-              if (result.success ?? false) {
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar("İşlem Başarılı");
                 Get.back();
               }

@@ -83,6 +83,6 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   Future<bool> deleteSeriHareket(SeriHareketleriModel? model) async {
     final result = await networkManager.dioPost(path: ApiUrls.deleteSeriHareketi, bodyModel: SeriHareketleriModel(), showLoading: true, data: model?.toJson());
 
-    return result.success ?? false;
+    return result.isSuccess;
   }
 }

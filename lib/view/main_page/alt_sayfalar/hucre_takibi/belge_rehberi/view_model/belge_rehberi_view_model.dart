@@ -32,7 +32,7 @@ abstract class _BelgeRehberiViewModelBase with Store, MobxNetworkMixin {
       bodyModel: BelgeRehberiModel(),
       queryParameters: requestModel.toJson(),
     );
-    if (result.isSucces) {
+    if (result.isSuccess) {
       setBelgeRehberiList(result.dataList);
     }
   }

@@ -1274,7 +1274,7 @@ class BottomSheetDialogManager {
             ElevatedButton(
               onPressed: () async {
                 final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(model: printModel);
-                if (result.success == true) {
+                if (result.isSuccess) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
                 }
                 Get.back(result: printModel);
@@ -1294,7 +1294,7 @@ class BottomSheetDialogManager {
       final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(
         model: printModel,
       );
-      if (result.success == true) {
+      if (result.isSuccess) {
         DialogManager().showSuccessSnackBar("Yazdırıldı.");
         return printModel;
       }
@@ -1365,7 +1365,7 @@ class BottomSheetDialogManager {
           ElevatedButton(
             onPressed: () async {
               final result = await _networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.printEBelge.toJson(), showLoading: true);
-              if (result.success == true) {
+              if (result.isSuccess) {
                 DialogManager().showSuccessSnackBar("Yazdırıldı.");
               } else {
                 await DialogManager().showAlertDialog(result.message ?? "Yazdırma işlemi başarısız.");

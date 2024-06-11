@@ -26,7 +26,7 @@ abstract class _CekSenetHareketleriViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     final result = await networkManager
         .dioGet(path: ApiUrls.getCekSenetLoglari, bodyModel: CekSenetHareketleriModel(), queryParameters: {"BelgeTipi": cekSenetListesiModel?.belgeTipi, "BelgeNo": cekSenetListesiModel?.belgeNo});
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       setCekSenetHareketleriListesi(result.data.map((e) => e as CekSenetHareketleriModel).toList().cast<CekSenetHareketleriModel>());
     }
   }

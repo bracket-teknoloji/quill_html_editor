@@ -171,7 +171,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                           addCKey: true,
                           addSirketBilgileri: true,
                         );
-                        if (result.success == true) {
+                        if (result.isSuccess) {
                           viewModel.setProjeList(
                             result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>(),
                           );
@@ -240,7 +240,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
       bodyModel: UrunGrubunaGoreSatisGrafigiModel(),
       data: viewModel.model.toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       viewModel.setModelList(
         result.data.map((e) => e as UrunGrubunaGoreSatisGrafigiModel).toList().cast<UrunGrubunaGoreSatisGrafigiModel>(),
       );

@@ -755,7 +755,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
       )).toJsonWithList(),
       bodyModel: StokListesiModel(),
     );
-    if (response.success ?? false) {
+    if (response.isSuccess) {
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
 
       if (viewModel.sayfa == 1) {
@@ -790,7 +790,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
     dialogManager.showAreYouSureDialog(() async {
       final GenericResponseModel response =
           await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu}, showLoading: true);
-      if (response.success ?? false) {
+      if (response.isSuccess) {
         dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetSayfa();
         await getData();

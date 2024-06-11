@@ -137,7 +137,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final GenericResponseModel<NetworkManagerMixin> result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
-        if (result.success == true) {
+        if (result.isSuccess) {
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           // BaseSiparisEditModel.instance.teslimTarihi = null;
@@ -551,7 +551,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
   Future<void> getData() async {
     final GenericResponseModel<NetworkManagerMixin> result =
         await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       // viewModel.changeFuture();
       BaseSiparisEditModel.setInstance(result.data!.first);
     }
@@ -587,7 +587,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       data: newInstance.toJson(),
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       return true;
     } else {

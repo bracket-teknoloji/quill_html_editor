@@ -78,7 +78,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           showLoading: true,
           queryParameters: <String, dynamic>{"CariKodu": widget.model?.model.cariKodu},
         );
-        if (result.data != null && result.data!.isNotEmpty && result.success == true) {
+        if (result.data != null && result.data!.isNotEmpty && result.isSuccess) {
           CariDetayModel.setInstance(result.data[0]);
           CariListesiModel.setInstance((result.data[0] as CariDetayModel).cariList?.firstOrNull);
           CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first));
@@ -172,7 +172,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
       bodyModel: CariListesiModel(),
       data: CariSaveRequestModel.instance.toJson(),
     );
-    if (response.isSucces) {
+    if (response.isSuccess) {
       Get.back(result: true);
       dialogManager.showSuccessSnackBar(response.message ?? "Kayıt başarılı");
     }

@@ -422,7 +422,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     viewModel.setDahaVarMi(false);
     final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel());
-    if (response.success == true && response.data is List) {
+    if (response.isSuccess && response.data is List) {
       if (response.data?.length == parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(true);
         viewModel.increaseSayfa();
@@ -435,7 +435,7 @@ class _StokRehberiViewState extends BaseState<StokRehberiView> {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
     final GenericResponseModel response =
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
-    if (response.success == true) {
+    if (response.isSuccess) {
       final List<StokListesiModel> list = (response.data as List).map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
       if (list.isEmptyOrNull) {
         return null;

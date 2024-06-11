@@ -58,7 +58,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> with Ti
                 await Future.delayed(const Duration(milliseconds: 100));
                 if (formKey?.currentState?.validate() == true) {
                   final result = await viewModel.saveCariAktivite();
-                  if (result.success == true) {
+                  if (result.isSuccess) {
                     dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                     Get.back(result: true);
                   }

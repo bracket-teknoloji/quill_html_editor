@@ -75,7 +75,7 @@ class _DekontlarCardState extends BaseState<DekontlarCard> {
     Get.back();
     dialogManager.showAreYouSureDialog(() async {
       final result = await networkManager.dioPost(path: ApiUrls.deleteDekont, showLoading: true, bodyModel: DekontListesiModel(), queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri});
-      if (result.success ?? false) {
+      if (result.isSuccess) {
         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
         widget.onSelected.call(true);
       }

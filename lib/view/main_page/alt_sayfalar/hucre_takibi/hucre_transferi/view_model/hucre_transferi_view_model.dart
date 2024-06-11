@@ -52,7 +52,7 @@ abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
       data: (paketRequestModel.copyWith(depoKodu: model.depoKodu, paketKodu: paketKodu)).toJson(),
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
       setPaketKodu(list.firstOrNull?.kodu);
       return list.firstOrNull?.kodu;
@@ -68,6 +68,6 @@ abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
       data: (isStok ? HucreTransferiModel.forStok(model) : HucreTransferiModel.forPaket(model)).toJson(),
       showLoading: true,
     );
-    return result.success ?? false;
+    return result.isSuccess;
   }
 }

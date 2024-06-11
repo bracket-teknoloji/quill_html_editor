@@ -279,7 +279,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
       addCKey: true,
       addSirketBilgileri: true,
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       Get.back(result: false);
     } else {
@@ -292,7 +292,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
     final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
 
     dialogManager.hideAlertDialog;
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
     }
     return null;

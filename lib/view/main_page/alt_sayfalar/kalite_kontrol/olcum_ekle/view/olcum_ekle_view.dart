@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
@@ -83,7 +84,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           showLoading: true,
                           data: widget.model.belge?.firstOrNull?.forTeknikResim,
                         );
-                        if (result.success == true) {
+                        if (result.isSuccess) {
                           OlcumPdfModel? selectedItem;
                           final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
                           if (list.length == 1) {
@@ -119,7 +120,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           showLoading: true,
                           data: widget.model.belge?.firstOrNull?.forKontrolPlani,
                         );
-                        if (result.success == true) {
+                        if (result.isSuccess) {
                           OlcumPdfModel? selectedItem;
                           final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
                           if (list.length == 1) {
@@ -162,7 +163,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                 dialogManager.showAreYouSureDialog(() async {
                   if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" || (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
                     final result = await viewModel.sendData(widget.baseEditEnum);
-                    if (result?.success == true) {
+                    if (result.isSuccessAndNotNull) {
                       dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
                       Get.back(result: true);
                     }

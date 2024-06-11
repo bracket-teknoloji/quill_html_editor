@@ -608,7 +608,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       },
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<BaseSiparisEditModel> list = (result.data as List).map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       // BaseSiparisEditModel.instance.belgeNo = list.firstOrNull?.belgeNo;
       viewModel.setBelgeNo(list.firstOrNull?.belgeNo);

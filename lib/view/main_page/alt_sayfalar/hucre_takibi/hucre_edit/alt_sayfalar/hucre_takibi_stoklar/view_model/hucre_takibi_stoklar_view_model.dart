@@ -25,7 +25,7 @@ abstract class _HucreTakibiStoklarViewModelBase with Store, MobxNetworkMixin {
       setHucreTakibiStoklarListesi(null);
     }
     final result = await networkManager.dioGet(path: ApiUrls.getHucreTakibiStoklar, bodyModel: HucreTakibiStoklarModel(), queryParameters: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       setHucreTakibiStoklarListesi(result.dataList);
     }
   }

@@ -133,7 +133,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             //   return;
                             // }
                             final result = await networkManager.deleteFatura(EditFaturaModel.fromSiparislerModel(model));
-                            if (result.success == true) {
+                            if (result.isSuccess) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
                             }

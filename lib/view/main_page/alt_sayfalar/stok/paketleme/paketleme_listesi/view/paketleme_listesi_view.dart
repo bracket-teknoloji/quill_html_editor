@@ -136,7 +136,7 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
             Get.back();
             dialogManager.showAreYouSureDialog(() async {
               final result = await viewModel.deleteItem(item.id);
-              if (result.success == true) {
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                 await viewModel.getData();
               }

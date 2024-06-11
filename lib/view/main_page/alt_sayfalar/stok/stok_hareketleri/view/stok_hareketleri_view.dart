@@ -301,7 +301,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       addSirketBilgileri: true,
                                       queryParameters: {"INCKEYNO": model.inckeyno.toString()},
                                     );
-                                    if (result.success == true) {
+                                    if (result.isSuccess) {
                                       dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
                                       viewModel.setStokHareketleri(await getData()!);
                                     } else {

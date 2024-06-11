@@ -65,7 +65,7 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin {
       },
       data: user.toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar("Başarılı bir şekilde oturum kapatıldı.");
     }
   }

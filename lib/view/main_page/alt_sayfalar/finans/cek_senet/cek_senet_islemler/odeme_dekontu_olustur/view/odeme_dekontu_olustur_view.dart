@@ -89,7 +89,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
                   dialogManager.showAreYouSureDialog(() async {
                     viewModel.model.guid = const Uuid().v4();
                     final result = await viewModel.postData();
-                    if (result.success ?? false) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
                       Get.back(result: true);
                     }

@@ -324,7 +324,7 @@ class IslemlerMenuItemConstants<T> {
       bodyModel: SiparisEditRequestModel(),
       data: EditFaturaModel.fromSiparislerModel(siparisModel..tipi = yeniTipi).toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       _dialogManager.showSuccessSnackBar("Başarılı");
       return result.success!;
     } else {
@@ -375,7 +375,7 @@ class IslemlerMenuItemConstants<T> {
                             "CariKodu": siparisModel?.cariKodu ?? "",
                           },
                         );
-                        if (result.success == true) {
+                        if (result.isSuccess) {
                           final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
                           controller.text = list?.firstOrNull?.belgeNo ?? "";
                         }
@@ -410,7 +410,7 @@ class IslemlerMenuItemConstants<T> {
                                   ..belgeTipi = siparisModel.tipi,
                               ).toJson(),
                             );
-                            if (result.success == true) {
+                            if (result.isSuccess) {
                               updatePage = true;
                               _dialogManager.showSuccessSnackBar("Başarılı");
                               Get.back();
@@ -623,7 +623,7 @@ class IslemlerMenuItemConstants<T> {
                           if (controller.text != "") {
                             _dialogManager.showAreYouSureDialog(() async {
                               final result = await _networkManager.dioPost<KodDegistirModel>(path: ApiUrls.kodDegistir, bodyModel: KodDegistirModel(), data: kodDegistirModel.toJson());
-                              if (result.success == true) {
+                              if (result.isSuccess) {
                                 Get.back();
                                 _dialogManager.showSuccessSnackBar("Başarılı");
                               }
@@ -694,7 +694,7 @@ class IslemlerMenuItemConstants<T> {
                         bodyModel: SiparisEditRequestModel(),
                         data: newModel,
                       );
-                      if (result.success == true) {
+                      if (result.isSuccess) {
                         Get.back(result: true);
                         _dialogManager.showSuccessSnackBar("Başarılı");
                       } else {
@@ -1091,7 +1091,7 @@ class IslemlerMenuItemConstants<T> {
                               ..kalemList = newKalemler,
                           ).toJson(),
                         );
-                        if (result.success == true) {
+                        if (result.isSuccess) {
                           _dialogManager.showSuccessSnackBar("Başarılı");
                           Get.back(result: true);
                           controller.dispose();
@@ -1118,7 +1118,7 @@ class IslemlerMenuItemConstants<T> {
         "CariKodu": siparisModel.cariKodu ?? "",
       },
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       controller.text = list?.firstOrNull?.belgeNo ?? "";
     }
@@ -1310,7 +1310,7 @@ class IslemlerMenuItemConstants<T> {
           data: newSiparisModel.toJson(),
           showLoading: true,
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           _dialogManager.showSuccessSnackBar("Kayıt Başarılı");
           return true;
         } else {
@@ -1340,7 +1340,7 @@ class IslemlerMenuItemConstants<T> {
           data: newSiparisModel.toJson(),
           showLoading: true,
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           _dialogManager.showSuccessSnackBar("Kayıt Başarılı");
           return true;
         } else {
@@ -1403,7 +1403,7 @@ class IslemlerMenuItemConstants<T> {
           bodyModel: EBelgeListesiModel(),
           queryParameters: {"FilterModel": jsonEncode(EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).durumSorgula.toJson())},
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           final EBelgeListesiModel eBelgeListesiModel = result.data!.first;
           _dialogManager.showInfoSnackBar(eBelgeListesiModel.onayDurumuString);
           return true;
@@ -1429,7 +1429,7 @@ class IslemlerMenuItemConstants<T> {
             bodyModel: EBelgeListesiModel(),
             data: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).taslakSil.toJson(),
           );
-          if (result.success == true) {
+          if (result.isSuccess) {
             _dialogManager.showSuccessSnackBar("Başarılı");
             boolean = true;
           } else {
@@ -1471,7 +1471,7 @@ class IslemlerMenuItemConstants<T> {
             bodyModel: EBelgeListesiModel(),
             data: EBelgeListesiModel.eBelgeEslestir(siparisModel).toJson(),
           );
-          if (result.success == true) {
+          if (result.isSuccess) {
             _dialogManager.showSuccessSnackBar("Başarılı");
             boolean = true;
           } else {
@@ -1500,7 +1500,7 @@ class IslemlerMenuItemConstants<T> {
             bodyModel: EBelgeListesiModel(),
             data: EBelgeListesiModel.eBelgeEslestirmeKaldir(siparisModel).toJson(),
           );
-          if (result.success == true) {
+          if (result.isSuccess) {
             _dialogManager.showSuccessSnackBar("Başarılı");
             boolean = true;
           } else {
@@ -1557,7 +1557,7 @@ class IslemlerMenuItemConstants<T> {
                           "CariKodu": siparisModel.cariKodu ?? "",
                         },
                       );
-                      if (result.success == true) {
+                      if (result.isSuccess) {
                         final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
                         controller.text = list?.firstOrNull?.belgeNo ?? "";
                         resmiController.text = belgeNoToResmiBelgeNo(controller.text, siparisModel.tarih);
@@ -1598,7 +1598,7 @@ class IslemlerMenuItemConstants<T> {
                             ..resmiBelgeNo = resmiController.text,
                         ).toJson(),
                       );
-                      if (result.success == true) {
+                      if (result.isSuccess) {
                         _dialogManager.showSuccessSnackBar("Başarılı");
                         boolean = true;
                       } else {

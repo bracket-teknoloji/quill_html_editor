@@ -370,7 +370,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
       bodyModel: FiyatGecmisiResponseModel(),
       data: viewModel.model.toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       viewModel.setModelList(
         result.data.map((e) => e as FiyatGecmisiResponseModel).toList().cast<FiyatGecmisiResponseModel>(),
       );
@@ -383,7 +383,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
       bodyModel: FiyatGecmisiResponseModel(),
       data: {"ID": id, "ISLEM_KODU": islemKodu},
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar("Silindi");
       getData();
     }

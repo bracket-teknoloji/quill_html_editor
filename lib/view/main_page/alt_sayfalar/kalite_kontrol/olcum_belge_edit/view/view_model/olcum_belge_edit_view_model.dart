@@ -65,7 +65,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getDatMiktar() async {
     final result = await networkManager.dioGet(path: ApiUrls.getDatMiktar, bodyModel: SeriList(), data: seriRequestModel.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<SeriList> data = result.data.map((e) => e as SeriList).toList().cast<SeriList>();
       setOlcumDatResponseListesi(data.map((e) => e..seri1 = e.seriNo).toList());
     }
@@ -115,7 +115,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
       final List<OlcumBelgeModel> data = result.data.map((e) => e as OlcumBelgeModel).toList().cast<OlcumBelgeModel>();
       setOlcumDatListesi(data);
     }
-    return result.success == true;
+    return result.isSuccess;
   }
 
   @action

@@ -134,7 +134,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   Future<void> postData() async {
     final result = await networkManager
         .dioPost(path: ApiUrls.saveDovizKuru, showLoading: true, bodyModel: DovizKurlariModel(), data: [DovizKurlariRequestModel.fromDovizKurlariModel(viewModel.dovizKurlariModel!)]);
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar("Başarıyla Kaydedildi");
       Get.back();
     } else {

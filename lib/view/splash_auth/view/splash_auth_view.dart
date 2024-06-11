@@ -201,7 +201,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       Get.offAllNamed("/mainPage");
       if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message.toString());
       final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
-      if (result.success == true) {
+      if (result.isSuccess) {
         log("Başarılı");
       } else {
         log("Başarısız");

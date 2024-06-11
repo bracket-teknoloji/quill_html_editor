@@ -57,7 +57,7 @@ abstract class _DekontlarViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final response = await networkManager.dioGet(path: ApiUrls.getDekontlar, bodyModel: DekontListesiModel(), queryParameters: dekontRequestModel.toJson());
-    if (response.success ?? false) {
+    if (response.isSuccess) {
       final List<DekontListesiModel>? list = response.data?.map((e) => e as DekontListesiModel).toList().cast<DekontListesiModel>();
       if ((dekontRequestModel.sayfa ?? 0) < 2) {
         setDekontListesi(list);

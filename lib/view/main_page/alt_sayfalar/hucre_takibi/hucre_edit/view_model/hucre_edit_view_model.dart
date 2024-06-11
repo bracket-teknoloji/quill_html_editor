@@ -18,6 +18,6 @@ abstract class _HucreEditViewModelBase with Store, MobxNetworkMixin {
       // data: (isStok ? HucreTransferiModel.forStok(model) : HucreTransferiModel.forPaket(model)).toJson(),
       showLoading: true,
     );
-    return result.success ?? false;
+    return result.isSuccess;
   }
 }

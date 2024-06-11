@@ -104,7 +104,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
                 belgeNo: widget.model.fisno,
               ).toJson(),
             );
-            if (result.success == true) {
+            if (result.isSuccess) {
               Get.back();
               widget.onChanged(true);
             }
@@ -122,7 +122,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
                 belgeNo: widget.model.fisno,
               ).toJson(),
             );
-            if (result.success == true) {
+            if (result.isSuccess) {
               Get.back();
               widget.onChanged(true);
             }
@@ -140,7 +140,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
                 belgeNo: widget.model.fisno,
               ).toJson(),
             );
-            if (result.success == true) {
+            if (result.isSuccess) {
               Get.back();
               widget.onChanged(true);
             }

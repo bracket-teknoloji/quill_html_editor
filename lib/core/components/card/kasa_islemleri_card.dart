@@ -115,7 +115,7 @@ class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       () async {
         final result =
             await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": model?.inckeyno}, showLoading: true);
-        if (result.success == true) {
+        if (result.isSuccess) {
           widget.onDeleted?.call(model?.inckeyno);
           dialogManager.showSuccessSnackBar(result.message ?? "");
         } else {

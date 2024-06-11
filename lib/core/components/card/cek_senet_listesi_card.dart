@@ -188,9 +188,9 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         showLoading: true,
         data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
       );
-      if (result.success ?? false) {
+      if (result.isSuccess) {
         dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-        widget.onUpdate?.call(result.success ?? false);
+        widget.onUpdate?.call(result.isSuccess);
       }
     });
   }

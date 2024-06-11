@@ -379,7 +379,7 @@ class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView> {
       bodyModel: BaseEmptyModel(),
       queryParameters: {"BilgiTipi": "KDVGRUP"},
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       viewModel.setKdvOraniList(
         jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>(),
       );

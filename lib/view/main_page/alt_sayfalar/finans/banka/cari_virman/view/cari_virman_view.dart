@@ -93,7 +93,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
                 if (formKey.currentState?.validate() == true) {
                   dialogManager.showAreYouSureDialog(() async {
                     final result = await viewModel.sendData();
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
                       Get.back(result: true);
                     }
@@ -284,8 +284,8 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
       ],
     );
     if (result == false) {
-        viewModel.setOdemeCari(widget.model?.cariKodu);
-        viewModel.setOdemeBakiye(widget.model?.bakiye ?? 0);
+      viewModel.setOdemeCari(widget.model?.cariKodu);
+      viewModel.setOdemeBakiye(widget.model?.bakiye ?? 0);
       _odemesiYapilacakCariController.text = widget.model?.cariAdi ?? "";
       _odemeYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);

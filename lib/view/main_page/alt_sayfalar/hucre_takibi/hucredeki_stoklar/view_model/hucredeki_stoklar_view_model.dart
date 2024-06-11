@@ -39,7 +39,7 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin {
       bodyModel: HucredekiStoklarModel(),
       queryParameters: requestModel?.toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as HucredekiStoklarModel).toList();
       setStoklarListesi(list);
     }

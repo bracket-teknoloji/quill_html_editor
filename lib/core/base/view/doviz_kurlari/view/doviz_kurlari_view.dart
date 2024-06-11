@@ -255,7 +255,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                                               "Tarih": model.tarih.toDateString,
                                             },
                                           );
-                                          if (result.success == true) {
+                                          if (result.isSuccess) {
                                             dialogManager.showSuccessSnackBar(
                                               "Başarıyla Silindi",
                                             );
@@ -287,7 +287,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
         "SabitTarih": viewModel.tarih.toDateString,
       },
     );
-    if (result.success == true && result.data is List) {
+    if (result.isSuccess && result.data is List) {
       viewModel.changeDovizKurlariList(
         result.data.whereType<DovizKurlariModel>().toList(),
       );
@@ -306,7 +306,7 @@ class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
             "Tarih": viewModel.tarih.toDateString,
           },
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           dialogManager.showSuccessSnackBar("Başarıyla Güncellendi");
           await getData();
         }

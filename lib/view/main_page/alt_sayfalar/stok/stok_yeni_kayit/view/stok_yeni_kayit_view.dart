@@ -60,7 +60,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       data: viewModel.model.toJson(),
                     );
                     dialogManager.hideAlertDialog;
-                    if (result.success ?? false) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar("Kayıt başarılı");
                       Get.back();
                     } else {
@@ -286,7 +286,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
     final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
 
     dialogManager.hideAlertDialog;
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       viewModel.setProjeListesi(result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>());
       return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
     }

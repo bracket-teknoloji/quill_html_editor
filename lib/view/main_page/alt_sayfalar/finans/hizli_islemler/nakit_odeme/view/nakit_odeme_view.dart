@@ -112,7 +112,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                   viewModel.setAciklama(_kasaHareketiAciklamaController.text);
                   await dialogManager.showAreYouSureDialog(() async {
                     final result = await viewModel.postData();
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       Get.back(result: true);
                       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
                     }

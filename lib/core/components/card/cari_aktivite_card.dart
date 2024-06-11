@@ -85,7 +85,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                     Get.back();
                     dialogManager.showAreYouSureDialog(() async {
                       final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 3));
-                      if (result.success == true) {
+                      if (result.isSuccess) {
                         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                         widget.onRefresh.call(true);
                       }
@@ -98,7 +98,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   onTap: () async {
                     Get.back();
                     final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 8));
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                       widget.onRefresh.call(true);
                     }

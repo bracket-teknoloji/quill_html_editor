@@ -18,7 +18,7 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BaseGrupKoduModel>? grupKoduList;
 
   @observable
-  SayimFiltreModel filtreModel =  SayimFiltreModel(tipi: "S", islemKodu: 2);
+  SayimFiltreModel filtreModel = SayimFiltreModel(tipi: "S", islemKodu: 2);
 
   @action
   void setSayimList(List<SayimListesiModel>? value) => sayimList = value?.asObservable();
@@ -32,11 +32,11 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
       setSayimList(list);
     }
   }
+
   @action
   Future<bool> postData() async {
     final result = await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: filtreModel.toJson(), showLoading: true);
-    return result.success == true;
-    
+    return result.isSuccess;
   }
 
   Future<void> getGrupKodlari() async {

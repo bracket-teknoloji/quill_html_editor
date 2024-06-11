@@ -319,7 +319,7 @@ class DialogManager {
         dialogType: DialogType.question,
         onOk: () async {
           final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson(), showLoading: true);
-          if (response.success ?? false) {
+          if (response.isSuccess) {
             showLoadingDialog("Çıkış yapılıyor...");
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);

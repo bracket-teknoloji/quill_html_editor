@@ -94,19 +94,18 @@ abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
     CariSaveRequestModel.setInstance(model);
   }
 
-
   @action
   void setSenaryo(String? value) {
     model = model?.copyWith(efaturaSenaryo: value);
     CariSaveRequestModel.setInstance(model);
   }
 
-
   @action
   void changeKilit(String? value) {
     model = model?.copyWith(kilit: value);
     CariSaveRequestModel.setInstance(model);
   }
+
   @action
   void changeKonum((double enlem, double boylam)? value) {
     model = model?.copyWith(enlem: value?.$1, boylam: value?.$2);
@@ -212,7 +211,7 @@ abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() async {
     final result = await networkManager.dioPost(path: ApiUrls.saveCari, bodyModel: CariListesiModel(), data: CariSaveRequestModel.mukellefiyetDegistir(model), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       changeEfaturaMi();
     }
     return result;

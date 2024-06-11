@@ -121,7 +121,7 @@ class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
           data: {"INCKEYNO": model?.inckeyno},
           showLoading: true,
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           widget.onDeleted?.call(model?.inckeyno);
         }
       },

@@ -677,7 +677,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   ElevatedButton(
                     onPressed: () async {
                       final result = await viewModel.postFaturaTipi();
-                      if (result.success == true) {
+                      if (result.isSuccess) {
                         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                       } else {
                         dialogManager.showErrorSnackBar(result.message ?? "Hata");

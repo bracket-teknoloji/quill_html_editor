@@ -45,7 +45,7 @@ abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setPaketlemeListesi(null);
     final result = await networkManager.dioPost(path: ApiUrls.getPaketler, bodyModel: PaketlemeListesiModel(), data: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<PaketlemeListesiModel> paketlemeListesi = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
       setPaketlemeListesi(paketlemeListesi);
     }

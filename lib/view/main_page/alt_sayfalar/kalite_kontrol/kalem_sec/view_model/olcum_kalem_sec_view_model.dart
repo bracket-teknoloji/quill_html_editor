@@ -18,7 +18,6 @@ abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
   @observable
   bool searchBar = false;
 
-
   @observable
   bool dahaVarMi = true;
 
@@ -41,14 +40,11 @@ abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
   @action
   void setOlcumBelgeModel(List<OlcumBelgeModel>? list) => olcumGirisiListesi = list?.asObservable();
 
-
   @action
   void addOlcumBelgeModel(List<OlcumBelgeModel> list) => olcumGirisiListesi!.addAll(list);
 
-
   @action
   void setSearchText(String? value) => requestModel = requestModel?.copyWith(searchText: value);
-
 
   @action
   void increaseSayfa() => requestModel = requestModel?.copyWith(sayfa: (requestModel?.sayfa ?? 0) + 1);
@@ -61,11 +57,10 @@ abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
     getData();
   }
 
-
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeStok, bodyModel: OlcumBelgeModel(), data: requestModel?.forKalemSec);
-    // if (result.success == true) {
+    // if (result.isSuccess) {
     //   final List<OlcumBelgeModel>? newList = (result.data as List?)?.map((e) => e as OlcumBelgeModel).toList().cast<OlcumBelgeModel>();
     //   setOlcumBelgeModel(newList);
     // }

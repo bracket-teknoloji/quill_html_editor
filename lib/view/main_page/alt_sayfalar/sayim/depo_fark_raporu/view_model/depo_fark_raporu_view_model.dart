@@ -71,7 +71,7 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setSayimListesi(null);
     final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimListesiModel(), queryParameters: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<SayimListesiModel> data = (result.data as List).map((e) => e as SayimListesiModel).toList();
       setSayimListesi(data);
     }

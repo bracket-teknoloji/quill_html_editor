@@ -87,7 +87,7 @@ class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
                   dialogManager.showAreYouSureDialog(() async {
                     viewModel.model.guid = const Uuid().v4();
                     final result = await viewModel.postData();
-                    if (result.success ?? false) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                       Get.back(result: true);
                     }

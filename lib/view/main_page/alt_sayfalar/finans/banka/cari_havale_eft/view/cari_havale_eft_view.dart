@@ -126,7 +126,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                   await dialogManager.showAreYouSureDialog(() async {
                     viewModel.model.guid = const Uuid().v4();
                     final result = await viewModel.postData();
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
                       Get.back(result: result);
                     }

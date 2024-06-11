@@ -110,7 +110,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                 dialogManager.showAreYouSureDialog(() async {
                   viewModel.model.guid = const Uuid().v4();
                   final result = await viewModel.postData();
-                  if (result.success ?? false) {
+                  if (result.isSuccess) {
                     dialogManager.showSuccessSnackBar("Kaydedildi");
                     Get.back(result: true);
                   }

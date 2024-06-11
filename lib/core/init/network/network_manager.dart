@@ -304,7 +304,7 @@ class NetworkManager {
     }
     final response = await dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: {"BelgeNo": belgeNo, "BelgeTipi": "STOK", "UrlGetir": "E"});
 
-    if (response.success == true) {
+    if (response.isSuccess) {
       return response.data.map((e) => e as EvraklarModel).toList().cast<EvraklarModel>();
     }
     return null;
@@ -397,7 +397,7 @@ class NetworkManager {
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     final result = await dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
     }
     return null;
@@ -423,7 +423,7 @@ class NetworkManager {
       addSirketBilgileri: false,
       path: ApiUrls.getUyeBilgileri,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<AccountResponseModel>? list = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
       if (list.ext.isNotNullOrEmpty) {
         CacheManager.setIsLicenseVerified(email ?? list?.firstOrNull?.email ?? "", true);
@@ -461,7 +461,7 @@ class NetworkManager {
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {
     final result = await dioGet<SiradakiBelgeNoModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: SiradakiBelgeNoModel(), data: (model..belgeNo = null).toJson());
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       final List<SiradakiBelgeNoModel> list = result.data.map((e) => e as SiradakiBelgeNoModel).toList().cast<SiradakiBelgeNoModel>();
       return list.firstOrNull?.belgeNo;
     }
@@ -475,7 +475,7 @@ class NetworkManager {
       showLoading: true,
       queryParameters: model.toJson(),
     );
-    if ((result.success ?? false) && (result.data is List)) {
+    if ((result.isSuccess) && (result.data is List)) {
       final List<CariListesiModel> list = result.data.map((e) => e as CariListesiModel).toList().cast<CariListesiModel>();
       if (list.length == 1) {
         return list.first;
@@ -497,7 +497,7 @@ class NetworkManager {
       showLoading: true,
       data: model.toJson(),
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull;
     }
     return null;
@@ -510,7 +510,7 @@ class NetworkManager {
       showLoading: true,
       queryParameters: model.toJson(),
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as HucreListesiModel).toList().firstOrNull;
     }
     return null;
@@ -523,7 +523,7 @@ class NetworkManager {
       showLoading: true,
       data: {"RehberKodu": 3},
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
@@ -535,7 +535,7 @@ class NetworkManager {
       bodyModel: OlcumOperatorModel(),
       showLoading: true,
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as OlcumOperatorModel).toList();
     }
     return null;
@@ -547,7 +547,7 @@ class NetworkManager {
       bodyModel: MuhasebeReferansModel(),
       showLoading: true,
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as MuhasebeReferansModel).toList();
     }
     return null;
@@ -560,7 +560,7 @@ class NetworkManager {
       showLoading: true,
       data: {"RehberKodu": 4},
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
@@ -573,7 +573,7 @@ class NetworkManager {
       showLoading: true,
       data: {"RehberKodu": 5},
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
@@ -586,7 +586,7 @@ class NetworkManager {
       showLoading: true,
       data: {"RehberKodu": 6},
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
@@ -599,7 +599,7 @@ class NetworkManager {
       showLoading: true,
       data: {"RehberKodu": 7},
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return (result.data as List).map((e) => e as KullanicilarModel).toList();
     }
     return null;
@@ -613,7 +613,7 @@ class NetworkManager {
       // headers: {"platform": AccountModel.instance.platform ?? ""},
       queryParameters: model.toJson(),
     );
-    if ((result.success ?? false) && result.data is List) {
+    if ((result.isSuccess) && result.data is List) {
       final List<BaseSiparisEditModel> list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       if (result.data.length == 1) {
         return result.data.first;
@@ -636,7 +636,7 @@ class NetworkManager {
       showLoading: true,
       data: model.toJson(),
     );
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       return result.data.first;
     }
     return null;

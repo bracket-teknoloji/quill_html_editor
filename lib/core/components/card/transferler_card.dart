@@ -101,7 +101,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                       return;
                     }
                     final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(widget.model.toJson()));
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar("Silindi");
                       widget.onDeleted?.call();
                     }

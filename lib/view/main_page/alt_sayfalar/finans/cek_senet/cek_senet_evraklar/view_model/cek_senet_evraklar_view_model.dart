@@ -45,7 +45,7 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: requestModel.toJson());
-    if ((result.success ?? false) && result.data is List) {
+    if ((result.isSuccess) && result.data is List) {
       setEvraklarListesi(result.data!.map((e) => e as EvraklarModel).toList().cast<EvraklarModel>());
     }
   }

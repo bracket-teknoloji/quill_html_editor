@@ -49,7 +49,7 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setAktiviteList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel(), data: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<CariAktiviteListesiModel> list = (result.data as List).map((e) => e as CariAktiviteListesiModel).toList();
       setAktiviteList(list);
     }
@@ -58,7 +58,7 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<CariAktiviteListesiModel?> getNewItem(int? value) async {
     final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel(), data: {"ID": value}, showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<CariAktiviteListesiModel> list = (result.data as List).map((e) => e as CariAktiviteListesiModel).toList();
       return list.firstOrNull;
     }

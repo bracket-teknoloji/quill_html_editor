@@ -93,7 +93,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
-        if (result.success == true) {
+        if (result.isSuccess) {
           // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.data!.first);
           BaseSiparisEditModel.instance.isNew = false;
@@ -453,7 +453,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   Future<void> getData() async {
     final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       viewModel.changeFuture();
       BaseSiparisEditModel.setInstance(result.data!.first);
     }
@@ -470,7 +470,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(),
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;
     } else {

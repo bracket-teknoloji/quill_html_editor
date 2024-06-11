@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/generic_response_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -101,7 +102,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                   await dialogManager.showAreYouSureDialog(() async {
                     viewModel.setGuid(const Uuid().v4());
                     final result = await viewModel.saveTahsilat();
-                    if (result?.success ?? false) {
+                    if (result.isSuccessAndNotNull) {
                       dialogManager.showSuccessSnackBar(result?.message ?? "");
                       Get.back(result: true);
                     }

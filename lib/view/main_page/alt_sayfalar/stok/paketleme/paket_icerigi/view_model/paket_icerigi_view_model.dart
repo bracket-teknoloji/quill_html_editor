@@ -20,7 +20,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin {
   PaketlemeListesiRequestModel requestModel = PaketlemeListesiRequestModel(ekranTipi: "L", menuKodu: "STOK_PKET");
 
   @computed
-  double get toplamPaketMiktari => paketIcerigiListesi?.fold(0, (sum, item) => (sum??0) + (item.miktar ??0)) ?? 0;
+  double get toplamPaketMiktari => paketIcerigiListesi?.fold(0, (sum, item) => (sum ?? 0) + (item.miktar ?? 0)) ?? 0;
 
   @action
   void setPaketID(int id) => requestModel = requestModel.copyWith(paketId: id);
@@ -32,7 +32,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setPaketIcerigiListesi(null);
     final result = await networkManager.dioPost(path: ApiUrls.getPaketKalemleri, bodyModel: PaketIcerigiModel(), data: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as PaketIcerigiModel).toList();
       setPaketIcerigiListesi(list);
     }
@@ -44,7 +44,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.savePaket,
       bodyModel: PaketIcerigiModel(),
       showLoading: true,
-      data: PaketlemeEditRequestModel(islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu,kalemId: id, paketId: paketID).toJson(),
+      data: PaketlemeEditRequestModel(islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu, kalemId: id, paketId: paketID).toJson(),
     );
     return result;
   }

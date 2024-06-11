@@ -103,7 +103,7 @@ class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
               onPressed: () async {
                 await dialogManager.showAreYouSureDialog(() async {
                   final result = await viewModel.postData();
-                  if (result.success ?? false) {
+                  if (result.isSuccess) {
                     Get.back(result: true);
                     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                   }

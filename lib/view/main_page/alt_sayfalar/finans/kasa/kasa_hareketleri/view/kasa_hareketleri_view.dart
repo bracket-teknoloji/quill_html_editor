@@ -128,7 +128,7 @@ class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                                       Get.back();
                                       dialogManager.showAreYouSureDialog(() async {
                                         final result = await viewModel.deleteData(item?.inckeyno);
-                                        if (result.success == true) {
+                                        if (result.isSuccess) {
                                           dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
                                           viewModel.kasaIslemleriListesi?.remove(item);
                                         } else {

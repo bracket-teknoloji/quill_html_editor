@@ -54,7 +54,7 @@ class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView> {
             IconButton(
               onPressed: () async {
                 final result = await viewModel.saveData();
-                if (result.success ?? false) {
+                if (result.isSuccess) {
                   Get.back(result: true);
                   dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                 }

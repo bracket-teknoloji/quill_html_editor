@@ -66,7 +66,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<bool> getData({String? name}) async {
     final response = await networkManager.dioGet<CompanyModel>(path: ApiUrls.veriTabanlari, bodyModel: CompanyModel(), showError: true);
-    if (response.success ?? false) {
+    if (response.isSuccess) {
       setSirket(response.data.map((e) => e as CompanyModel).toList().cast<CompanyModel>());
       return true;
     }
@@ -81,7 +81,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"Veritabani": selected["Şirket"]},
       showError: true,
     );
-    if (response.success ?? false) {
+    if (response.isSuccess) {
       final List<IsletmeModel> isletmeModelList = response.data.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
       // set isletmeList with unique isletmeAdi values
       final List<IsletmeModel> data = [];

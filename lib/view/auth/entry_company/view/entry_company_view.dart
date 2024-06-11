@@ -236,7 +236,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                   return;
                 }
                 final result = await networkManager.dbUpdate(sirketController.text);
-                if (result.success == true) {
+                if (result.isSuccess) {
                   dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
                 } else {
                   dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
@@ -328,7 +328,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     bodyModel: AccountModel(),
                                     data: CacheManager.getHesapBilgileri?.toJson(),
                                   );
-                                  if (result.success == true) {
+                                  if (result.isSuccess) {
                                     log("Session Başarılı");
                                   }
                                   // Get.toNamed("/mainPage");

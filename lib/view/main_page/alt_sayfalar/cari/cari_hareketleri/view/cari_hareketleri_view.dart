@@ -295,7 +295,7 @@ class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                                           () async {
                                             final result =
                                                 await networkManager.dioPost(path: ApiUrls.deleteCariHareket, bodyModel: CariHareketleriModel(), queryParameters: {"INCKEYNO": model.inckeyno});
-                                            if (result.success == true) {
+                                            if (result.isSuccess) {
                                               dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                                               viewModel.setCariHareketleri(null);
                                               return getData().then((value) => viewModel.setCariHareketleri(value));

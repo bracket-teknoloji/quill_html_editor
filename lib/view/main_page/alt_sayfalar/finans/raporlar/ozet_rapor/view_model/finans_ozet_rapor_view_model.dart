@@ -74,13 +74,13 @@ abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
   Future<void> getGunSonuRaporu() async {
     setAylikTutarlarList(null);
     final result = await networkManager.dioGet(path: ApiUrls.getGunSonuRaporu, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       final List<FinansOzetRaporModel> list = (result.data as List).map((e) => e as FinansOzetRaporModel).toList().cast<FinansOzetRaporModel>();
       setGunSonuRaporuList(list);
     }
     if (CacheManager.getProfilParametre.finansOzelRaporGrafikGoster) {
       final result2 = await networkManager.dioGet(path: ApiUrls.getAylikTutarlar, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
-      if (result2.success ?? false) {
+      if (result2.isSuccess) {
         final List<FinansOzetRaporModel> list = (result2.data as List).map((e) => e as FinansOzetRaporModel).toList().cast<FinansOzetRaporModel>();
         setAylikTutarlarList(list);
       }

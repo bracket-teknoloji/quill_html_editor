@@ -46,7 +46,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   void initState() {
     viewModel.setDizaynId(widget.dizaynList?.id);
     viewModel.setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
-    
+
     super.initState();
   }
 
@@ -136,8 +136,8 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
               );
             } else if (e.rehberTipi != null) {
               if (e.secmeliPlasiyerMi) {
-      viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
-    }
+                viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+              }
               return CustomTextField(
                 labelText: e.adi ?? "",
                 controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
@@ -298,7 +298,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       bodyModel: SerbestRaporResponseModel(),
       queryParameters: {"ID": widget.dizaynList?.id},
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       viewModel.changeSerbestRaporResponseModelList(
         result.data.map((e) => e as SerbestRaporResponseModel).toList().cast<SerbestRaporResponseModel>(),
       );

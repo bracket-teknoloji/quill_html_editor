@@ -511,7 +511,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       queryParameters: {"Seri": belgeNoController.text, "BelgeTipi": widget.model.editTipiEnum?.rawValue, "EIrsaliye": "H", "CariKodu": model.cariKodu ?? ""},
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       BaseSiparisEditModel.instance.belgeNo = list?.firstOrNull?.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";

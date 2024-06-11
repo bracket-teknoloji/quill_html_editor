@@ -35,7 +35,7 @@ abstract class _HucreHareketleriViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setHucreHareketleriListesi(null);
     final result = await networkManager.dioGet(path: ApiUrls.getHucreHareketleri, bodyModel: HucreHareketleriModel(), queryParameters: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<HucreHareketleriModel> hucreHareketleriListesi = (result.data as List).map((e) => e as HucreHareketleriModel).toList();
       setHucreHareketleriListesi(hucreHareketleriListesi);
     }

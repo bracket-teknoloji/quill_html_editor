@@ -45,7 +45,7 @@ abstract class _DepoBakiyeDurumuViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"StokKodu": dicParams.stokKodu, "SifirHaric": dicParams.sifirHaric},
       showLoading: true,
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<DepoBakiyeDurumuModel> list = (result.data as List).map((e) => e as DepoBakiyeDurumuModel).toList();
       setDepoBakiyeDurumuList(list);
     }

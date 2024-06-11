@@ -710,7 +710,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
         "Modul": "STOK",
       },
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       siradakiKod = result.paramData!["SIRADAKI_NO"];
       if (isOnBuild == true) {
         // dialogManager.hideAlertDialog;

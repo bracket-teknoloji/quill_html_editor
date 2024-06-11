@@ -70,7 +70,7 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
                       result = await viewModel.getData();
                     }
 
-                    if (result?.success == true || (widget.model?.baseEditEnum?.ekleMi == true)) {
+                    if (result.isSuccessAndNotNull || (widget.model?.baseEditEnum?.ekleMi == true)) {
                       Get.back(result: viewModel.model..kayittarihi = DateTime.now());
                       dialogManager.showSuccessSnackBar(loc.generalStrings.success);
                     }

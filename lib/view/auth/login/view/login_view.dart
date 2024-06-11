@@ -317,7 +317,7 @@ class _LoginViewState extends BaseState<LoginView> {
           CacheManager.setToken(response!.accessToken.toString());
           // final uyeBilgiResponse =
           //     await networkManager.dioPost<AccountResponseModel>(bodyModel: AccountResponseModel(), data: AccountModel.instance, addTokenKey: false, path: ApiUrls.getUyeBilgileri);
-          // if (uyeBilgiResponse.success == true) {
+          // if (uyeBilgiResponse.isSuccess) {
           //   CacheManager.setAccounts(uyeBilgiResponse.data.first);
           // }
           Get.toNamed("/entryCompany");

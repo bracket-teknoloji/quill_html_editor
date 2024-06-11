@@ -38,7 +38,7 @@ abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setHucreListesi(null);
     final result = await networkManager.dioGet(path: ApiUrls.getHucreListesi, queryParameters: requestModel.toJson(), bodyModel: HucreListesiModel());
-    if (result.success == true) {
+    if (result.isSuccess) {
       final List<HucreListesiModel> list = (result.data as List).map((e) => e as HucreListesiModel).toList();
       setHucreListesi(list);
     }

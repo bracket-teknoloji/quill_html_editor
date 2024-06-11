@@ -203,7 +203,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             viewModel.setSenaryo(result.value);
                             _senaryoController.text = result.key;
                             final result2 = await viewModel.sendSenaryo();
-                            if (result2.success == true) {
+                            if (result2.isSuccess) {
                               dialogManager.showSuccessSnackBar(result2.message ?? "Başarılı");
                             }
                           }
@@ -276,7 +276,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       }
                       dialogManager.showAreYouSureDialog(() async {
                         final result = await viewModel.sendTaslak();
-                        if (result.success ?? false) {
+                        if (result.isSuccess) {
                           final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                           if (siparisModel != null) {
                             viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
@@ -296,7 +296,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ElevatedButton(
                         onPressed: () async {
                           final result = await viewModel.deleteTaslak();
-                          if (result.success ?? false) {
+                          if (result.isSuccess) {
                             final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                             if (siparisModel != null) {
                               dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
@@ -317,7 +317,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           if (result == true) {
                             dialogManager.showAreYouSureDialog(() async {
                               final result = await viewModel.sendEBelge();
-                              if (result.success ?? false) {
+                              if (result.isSuccess) {
                                 dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
                                 Get.back(result: true);
@@ -334,7 +334,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         onPressed: () async {
                           dialogManager.showAreYouSureDialog(() async {
                             final result = await viewModel.sendEBelge();
-                            if (result.success ?? false) {
+                            if (result.isSuccess) {
                               dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
                               Get.back(result: true);

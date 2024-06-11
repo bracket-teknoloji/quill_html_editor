@@ -61,6 +61,6 @@ abstract class _SeriGirisiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<bool> postData() async {
     final result = await networkManager.dioPost(path: ApiUrls.saveSeriHareketi, bodyModel: SeriHareketleriModel(), data: seriHareketleriModel.toJson());
-    return result.success ?? false;
+    return result.isSuccess;
   }
 }

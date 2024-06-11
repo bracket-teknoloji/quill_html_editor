@@ -77,7 +77,7 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
                 }
                 dialogManager.showAreYouSureDialog(() async {
                   final result = await viewModel.sendFatura();
-                  if (result.success == true) {
+                  if (result.isSuccess) {
                     Get.back(result: true);
                     dialogManager.showSuccessSnackBar(
                       result.message ?? loc.generalStrings.success,

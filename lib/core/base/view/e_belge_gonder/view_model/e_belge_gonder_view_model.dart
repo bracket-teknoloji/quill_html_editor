@@ -82,7 +82,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       //   "ERPDizaynlari": true,
       // },
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       return result.data.map((e) => e as DizaynModel).toList().cast<DizaynModel>();
     } else {
       return [];
@@ -103,7 +103,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendTaslak() async {
     final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakGonder.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
       log("EBelge gönderilemedi");
@@ -115,7 +115,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() async {
     final result =
         await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
       log("EBelge gönderilemedi");
@@ -126,7 +126,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendEBelge() async {
     final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.eBelgeGonder.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
       log("EBelge gönderilemedi");
@@ -137,7 +137,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> deleteTaslak() async {
     final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakSil.toJson(), showLoading: true);
-    if (result.success == true) {
+    if (result.isSuccess) {
       log("EBelge silindi");
     } else {
       log("EBelge silinemedi");

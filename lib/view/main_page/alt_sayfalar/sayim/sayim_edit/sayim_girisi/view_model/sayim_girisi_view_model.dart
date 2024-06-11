@@ -34,7 +34,7 @@ abstract class _SayimGirisiViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: SayimKalemRequestModel.fromSayimFiltreModel(filtreModel).toJson(),
     );
-    return result.isSucces;
+    return result.isSuccess;
   }
 
   @action

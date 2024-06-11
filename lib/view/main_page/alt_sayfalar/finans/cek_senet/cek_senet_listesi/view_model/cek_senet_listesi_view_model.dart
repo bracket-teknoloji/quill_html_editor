@@ -44,7 +44,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     "Gelecek Hafta": "GELECEK_HAFTA",
     "Gelecek Ay": "GELECEK_AY",
     "Gelecek 3 Ay": "GELECEK_3_AY",
-    "Özel" : "Özel",
+    "Özel": "Özel",
   };
 
   @observable
@@ -72,10 +72,10 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   void setSearchText(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
 
   @action
-  void setBaslangicTarihi(String? value) =>  cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(baslangicTarihi: value);
-  
+  void setBaslangicTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(baslangicTarihi: value);
+
   @action
-  void setBitisTarihi(String? value) =>  cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(bitisTarihi: value);
 
   @action
   void setYeri(String? value) {
@@ -113,7 +113,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setCekSenetListesiListesi(null);
     final result = await networkManager.dioGet<CekSenetListesiModel>(path: ApiUrls.getCekSenetler, bodyModel: CekSenetListesiModel(), queryParameters: cekSenetListesiRequestModel.toJson());
-    if (result.success ?? false) {
+    if (result.isSuccess) {
       setCekSenetListesiListesi(result.data.map((e) => e as CekSenetListesiModel).toList().cast<CekSenetListesiModel>());
     }
     setIsScrolledDown(false);

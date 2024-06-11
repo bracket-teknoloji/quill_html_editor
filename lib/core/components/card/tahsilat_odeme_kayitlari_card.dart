@@ -226,7 +226,7 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
           queryParameters: {"REFKEY": widget.cariHareketleriModel.refkey},
           showLoading: true,
         );
-        if (result.success == true) {
+        if (result.isSuccess) {
           widget.update.call(widget.cariHareketleriModel.refkey);
           dialogManager.showSuccessSnackBar(result.message ?? "");
         }

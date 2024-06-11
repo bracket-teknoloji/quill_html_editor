@@ -26,7 +26,7 @@ abstract class _HucreAraViewModelBase with Store, MobxNetworkMixin {
       setStokList(null);
     }
     final result = await networkManager.dioPost(path: ApiUrls.getHucreBakiyeListesi, bodyModel: HucreTakibiStoklarModel(), data: requestModel.toJson());
-    if (result.isSucces) {
+    if (result.isSuccess) {
       setStokList(result.dataList);
     }
   }

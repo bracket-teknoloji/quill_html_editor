@@ -250,7 +250,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
     viewModel.setModelList(null);
     final result = await networkManager.dioPost<FiyatGorModel>(path: ApiUrls.getFiyatGorFiyatlari, bodyModel: FiyatGorModel(), data: {"StokKodu": viewModel.stokListesiModel?.stokKodu});
     viewModel.setModelList(result.data.map((e) => e as FiyatGorModel).toList().cast<FiyatGorModel>());
-    // if (result.success == true) {
+    // if (result.isSuccess) {
     // }
   }
 }

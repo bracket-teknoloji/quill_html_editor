@@ -219,8 +219,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                           .toJson(),
                     );
 
-                    widget.onRefresh.call(result.success == true);
-                    if (result.success == true) {
+                    widget.onRefresh.call(result.isSuccess);
+                    if (result.isSuccess) {
                       Get.back();
                       controller.dispose();
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
@@ -271,8 +271,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                                   ..kutuTuru = "GET")
                                 .toJson(),
                           );
-                          widget.onRefresh.call(result.success == true);
-                          if (result.success == true) {
+                          widget.onRefresh.call(result.isSuccess);
+                          if (result.isSuccess) {
                             Get.back();
                             controller.dispose();
                             dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
@@ -301,8 +301,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                                   ..kutuTuru = "GET")
                                 .toJson(),
                           );
-                          widget.onRefresh.call(result.success == true);
-                          if (result.success == true) {
+                          widget.onRefresh.call(result.isSuccess);
+                          if (result.isSuccess) {
                             Get.back();
                             controller.dispose();
                             dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
@@ -346,8 +346,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       ..kutuTuru = "GET")
                     .toJson(),
               );
-              widget.onRefresh.call(result.success == true);
-              if (result.success == true) {
+              widget.onRefresh.call(result.isSuccess);
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
               }
             },
@@ -371,8 +371,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       ..kutuTuru = "GET")
                     .toJson(),
               );
-              widget.onRefresh.call(result.success == true);
-              if (result.success == true) {
+              widget.onRefresh.call(result.isSuccess);
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
               }
             },
@@ -449,7 +449,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                             ..yaziciAdi = yaziciList?.yaziciAdi)
                           .toJson(),
                     );
-                    if (result.success == true) {
+                    if (result.isSuccess) {
                       Get.back();
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                     }
@@ -514,8 +514,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     ..kutuTuru = "GIK")
                   .toJson(),
             );
-            widget.onRefresh.call(result.success == true);
-            if (result.success == true) {
+            widget.onRefresh.call(result.isSuccess);
+            if (result.isSuccess) {
               dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
             }
           });
@@ -544,8 +544,8 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       ..kutuTuru = "GIK")
                     .toJson(),
               );
-              widget.onRefresh.call(result.success == true);
-              if (result.success == true) {
+              widget.onRefresh.call(result.isSuccess);
+              if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
               }
             },

@@ -142,7 +142,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
       addSirketBilgileri: true,
       data: saveStokModel.toJson(),
     );
-    if (result.success == true) {
+    if (result.isSuccess) {
       dialogManager.showSuccessSnackBar("Başarılı");
       Get.back(result: saveStokModel);
       SaveStokModel.setInstance(SaveStokModel());

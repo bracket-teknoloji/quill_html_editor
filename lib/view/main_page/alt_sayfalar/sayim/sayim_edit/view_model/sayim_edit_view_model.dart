@@ -37,7 +37,7 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
       bodyModel: SayimListesiModel(),
       data: SayimFiltreModel(belgeNo: SingletonModels.sayimListesi?.filtre?.belgeNo, islemKodu: 5),
     );
-    return result.isSucces;
+    return result.isSuccess;
   }
 
   Future<List<KalemModel>?> getKalemler(String hedefDepo) async {
@@ -57,9 +57,8 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: faturaRequestModel.toJson(),
     );
-    if (result.isSucces) {
+    if (result.isSuccess) {
       return result.dataList.first.kalemList;
-
     }
     return null;
   }

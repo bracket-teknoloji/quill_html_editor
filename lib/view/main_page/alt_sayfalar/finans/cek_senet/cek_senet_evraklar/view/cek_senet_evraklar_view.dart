@@ -115,7 +115,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
               Get.back();
               dialogManager.showAreYouSureDialog(() async {
                 final result = await viewModel.deleteEvrak(model!);
-                if (result.success ?? false) {
+                if (result.isSuccess) {
                   dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
                   await viewModel.resetPage();
                 }

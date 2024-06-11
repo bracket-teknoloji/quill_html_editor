@@ -132,7 +132,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
       showLoading: requestModel.qrstring != null,
       data: olcumGirisiRequestModel.toJson(),
     );
-    // if (result.success == true) {
+    // if (result.isSuccess) {
     //   final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
     //   if (requestModel.sayfa == 1){
     //   setOlcumList(list);

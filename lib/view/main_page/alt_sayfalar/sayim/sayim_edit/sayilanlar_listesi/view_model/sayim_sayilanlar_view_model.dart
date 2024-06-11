@@ -21,7 +21,6 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
     belgeNo: SingletonModels.sayimListesi?.fisno,
     filtreKodu: 3,
     depoKodu: SingletonModels.sayimListesi?.depoKodu,
-    
   );
 
   @observable
@@ -40,22 +39,22 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
   Future<bool?> deleteItem(SayimFiltreModel model) async {
     final result =
         await networkManager.dioPost(path: ApiUrls.deleteSayimKalem, bodyModel: SayimFiltreModel(), showLoading: true, queryParameters: SayimKalemRequestModel.fromSayimFiltreModel(model).toJson());
-    return result.isSucces;
+    return result.isSuccess;
   }
 
   @action
   Future<void> getData() async {
     setSayimListesi(null);
     final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(), queryParameters: requestModel.toJson());
-    if (result.success == true) {
+    if (result.isSuccess) {
       setSayimListesi(result.dataList);
     }
   }
 
   @action
   Future<SayimFiltreModel?> getSelectedItem(int? id) async {
-    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(),showLoading: true, queryParameters: requestModel.copyWith(id: id).toJson());
-    if (result.isSucces) {
+    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(), showLoading: true, queryParameters: requestModel.copyWith(id: id).toJson());
+    if (result.isSuccess) {
       return result.dataList.firstOrNull;
     }
     return null;
