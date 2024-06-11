@@ -22,6 +22,7 @@ import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_m
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/app_info/app_info.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
@@ -375,6 +376,8 @@ class NetworkManager {
         "VERITABANI": veriTabani["Şirket"].toString(),
         "ISLETME_KODU": veriTabani["İşletme"].toString(),
         "SUBE_KODU": veriTabani["Şube"].toString(),
+        "Platform": AccountModel.instance.platform ?? "",
+        "X-App-Version": AppInfoModel.instance.version ?? "",
       };
       header.addEntries(sirketBilgileri.entries);
     }
