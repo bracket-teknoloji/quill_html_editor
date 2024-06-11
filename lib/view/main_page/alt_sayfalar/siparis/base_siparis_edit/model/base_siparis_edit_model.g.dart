@@ -379,6 +379,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel dovizListesi(Map<String, double>? dovizListesi);
 
+  BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -572,6 +574,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? datOnayda,
     String? olcumBelgeRefKey,
     Map<String, double>? dovizListesi,
+    String? hedefDepoAdi,
   });
 }
 
@@ -1256,6 +1259,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(dovizListesi: dovizListesi);
 
   @override
+  BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi) =>
+      this(hedefDepoAdi: hedefDepoAdi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1450,6 +1457,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? datOnayda = const $CopyWithPlaceholder(),
     Object? olcumBelgeRefKey = const $CopyWithPlaceholder(),
     Object? dovizListesi = const $CopyWithPlaceholder(),
+    Object? hedefDepoAdi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2200,6 +2208,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.dovizListesi
           // ignore: cast_nullable_to_non_nullable
           : dovizListesi as Map<String, double>?,
+      hedefDepoAdi: hedefDepoAdi == const $CopyWithPlaceholder()
+          ? _value.hedefDepoAdi
+          // ignore: cast_nullable_to_non_nullable
+          : hedefDepoAdi as String?,
     );
   }
 }
@@ -2423,6 +2435,27 @@ abstract class _$KalemModelCWProxy {
   KalemModel sayimListesiModelHucreList(
       List<dynamic>? sayimListesiModelHucreList);
 
+  KalemModel hedefDepoAdi(String? hedefDepoAdi);
+
+  KalemModel sayimKalemRequestModelHucreList(
+      List<dynamic>? sayimKalemRequestModelHucreList);
+
+  KalemModel gc(String? gc);
+
+  KalemModel dipFiyat(double? dipFiyat);
+
+  KalemModel stokSatisKuru(double? stokSatisKuru);
+
+  KalemModel olcuBirimCarpani(double? olcuBirimCarpani);
+
+  KalemModel stokBakiye(double? stokBakiye);
+
+  KalemModel stokBirimAgirlik(double? stokBirimAgirlik);
+
+  KalemModel bakiye(double? bakiye);
+
+  KalemModel netMiktar(double? netMiktar);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2535,6 +2568,16 @@ abstract class _$KalemModelCWProxy {
     String? kalemStoktanKodu,
     String? muhRefKodu,
     List<dynamic>? sayimListesiModelHucreList,
+    String? hedefDepoAdi,
+    List<dynamic>? sayimKalemRequestModelHucreList,
+    String? gc,
+    double? dipFiyat,
+    double? stokSatisKuru,
+    double? olcuBirimCarpani,
+    double? stokBakiye,
+    double? stokBirimAgirlik,
+    double? bakiye,
+    double? netMiktar,
   });
 }
 
@@ -2898,6 +2941,42 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(sayimListesiModelHucreList: sayimListesiModelHucreList);
 
   @override
+  KalemModel hedefDepoAdi(String? hedefDepoAdi) =>
+      this(hedefDepoAdi: hedefDepoAdi);
+
+  @override
+  KalemModel sayimKalemRequestModelHucreList(
+          List<dynamic>? sayimKalemRequestModelHucreList) =>
+      this(sayimKalemRequestModelHucreList: sayimKalemRequestModelHucreList);
+
+  @override
+  KalemModel gc(String? gc) => this(gc: gc);
+
+  @override
+  KalemModel dipFiyat(double? dipFiyat) => this(dipFiyat: dipFiyat);
+
+  @override
+  KalemModel stokSatisKuru(double? stokSatisKuru) =>
+      this(stokSatisKuru: stokSatisKuru);
+
+  @override
+  KalemModel olcuBirimCarpani(double? olcuBirimCarpani) =>
+      this(olcuBirimCarpani: olcuBirimCarpani);
+
+  @override
+  KalemModel stokBakiye(double? stokBakiye) => this(stokBakiye: stokBakiye);
+
+  @override
+  KalemModel stokBirimAgirlik(double? stokBirimAgirlik) =>
+      this(stokBirimAgirlik: stokBirimAgirlik);
+
+  @override
+  KalemModel bakiye(double? bakiye) => this(bakiye: bakiye);
+
+  @override
+  KalemModel netMiktar(double? netMiktar) => this(netMiktar: netMiktar);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3011,6 +3090,16 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? kalemStoktanKodu = const $CopyWithPlaceholder(),
     Object? muhRefKodu = const $CopyWithPlaceholder(),
     Object? sayimListesiModelHucreList = const $CopyWithPlaceholder(),
+    Object? hedefDepoAdi = const $CopyWithPlaceholder(),
+    Object? sayimKalemRequestModelHucreList = const $CopyWithPlaceholder(),
+    Object? gc = const $CopyWithPlaceholder(),
+    Object? dipFiyat = const $CopyWithPlaceholder(),
+    Object? stokSatisKuru = const $CopyWithPlaceholder(),
+    Object? olcuBirimCarpani = const $CopyWithPlaceholder(),
+    Object? stokBakiye = const $CopyWithPlaceholder(),
+    Object? stokBirimAgirlik = const $CopyWithPlaceholder(),
+    Object? bakiye = const $CopyWithPlaceholder(),
+    Object? netMiktar = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3435,6 +3524,47 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
               ? _value.sayimListesiModelHucreList
               // ignore: cast_nullable_to_non_nullable
               : sayimListesiModelHucreList as List<dynamic>?,
+      hedefDepoAdi: hedefDepoAdi == const $CopyWithPlaceholder()
+          ? _value.hedefDepoAdi
+          // ignore: cast_nullable_to_non_nullable
+          : hedefDepoAdi as String?,
+      sayimKalemRequestModelHucreList:
+          sayimKalemRequestModelHucreList == const $CopyWithPlaceholder()
+              ? _value.sayimKalemRequestModelHucreList
+              // ignore: cast_nullable_to_non_nullable
+              : sayimKalemRequestModelHucreList as List<dynamic>?,
+      gc: gc == const $CopyWithPlaceholder()
+          ? _value.gc
+          // ignore: cast_nullable_to_non_nullable
+          : gc as String?,
+      dipFiyat: dipFiyat == const $CopyWithPlaceholder()
+          ? _value.dipFiyat
+          // ignore: cast_nullable_to_non_nullable
+          : dipFiyat as double?,
+      stokSatisKuru: stokSatisKuru == const $CopyWithPlaceholder()
+          ? _value.stokSatisKuru
+          // ignore: cast_nullable_to_non_nullable
+          : stokSatisKuru as double?,
+      olcuBirimCarpani: olcuBirimCarpani == const $CopyWithPlaceholder()
+          ? _value.olcuBirimCarpani
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimCarpani as double?,
+      stokBakiye: stokBakiye == const $CopyWithPlaceholder()
+          ? _value.stokBakiye
+          // ignore: cast_nullable_to_non_nullable
+          : stokBakiye as double?,
+      stokBirimAgirlik: stokBirimAgirlik == const $CopyWithPlaceholder()
+          ? _value.stokBirimAgirlik
+          // ignore: cast_nullable_to_non_nullable
+          : stokBirimAgirlik as double?,
+      bakiye: bakiye == const $CopyWithPlaceholder()
+          ? _value.bakiye
+          // ignore: cast_nullable_to_non_nullable
+          : bakiye as double?,
+      netMiktar: netMiktar == const $CopyWithPlaceholder()
+          ? _value.netMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : netMiktar as double?,
     );
   }
 }
@@ -3680,13 +3810,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       datOnayda: fields[183] as String?,
       olcumBelgeRefKey: fields[184] as String?,
       dovizListesi: (fields[185] as Map?)?.cast<String, double>(),
+      hedefDepoAdi: fields[186] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(186)
+      ..writeByte(187)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -4058,7 +4189,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(184)
       ..write(obj.olcumBelgeRefKey)
       ..writeByte(185)
-      ..write(obj.dovizListesi);
+      ..write(obj.dovizListesi)
+      ..writeByte(186)
+      ..write(obj.hedefDepoAdi);
   }
 
   @override
@@ -4188,20 +4321,23 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kalemStoktanKodu: fields[98] as String?,
       muhRefKodu: fields[103] as String?,
       sayimListesiModelHucreList: (fields[104] as List?)?.cast<dynamic>(),
-    )
-      ..dipFiyat = fields[105] as double?
-      ..stokSatisKuru = fields[106] as double?
-      ..olcuBirimCarpani = fields[107] as double?
-      ..stokBakiye = fields[108] as double?
-      ..stokBirimAgirlik = fields[109] as double?
-      ..bakiye = fields[110] as double?
-      ..netMiktar = fields[111] as double?;
+      hedefDepoAdi: fields[112] as String?,
+      sayimKalemRequestModelHucreList: (fields[113] as List?)?.cast<dynamic>(),
+      gc: fields[114] as String?,
+      dipFiyat: fields[105] as double?,
+      stokSatisKuru: fields[106] as double?,
+      olcuBirimCarpani: fields[107] as double?,
+      stokBakiye: fields[108] as double?,
+      stokBirimAgirlik: fields[109] as double?,
+      bakiye: fields[110] as double?,
+      netMiktar: fields[111] as double?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(112)
+      ..writeByte(115)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4425,7 +4561,13 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(110)
       ..write(obj.bakiye)
       ..writeByte(111)
-      ..write(obj.netMiktar);
+      ..write(obj.netMiktar)
+      ..writeByte(112)
+      ..write(obj.hedefDepoAdi)
+      ..writeByte(113)
+      ..write(obj.sayimKalemRequestModelHucreList)
+      ..writeByte(114)
+      ..write(obj.gc);
   }
 
   @override
@@ -4668,6 +4810,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
             (k, e) => MapEntry(k, (e as num).toDouble()),
           ) ??
           {},
+      hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -4866,6 +5009,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DAT_ONAYDA', instance.datOnayda);
   writeNotNull('OLCUM_BELGE_REF_KEY', instance.olcumBelgeRefKey);
   writeNotNull('DOVIZ_LISTESI', instance.dovizListesi);
+  writeNotNull('HEDEF_DEPO_ADI', instance.hedefDepoAdi);
   return val;
 }
 
@@ -4986,14 +5130,18 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       muhRefKodu: json['MUH_REF_KODU'] as String?,
       sayimListesiModelHucreList:
           json['SAYIM_LISTESI_MODEL_HUCRE_LIST'] as List<dynamic>?,
-    )
-      ..dipFiyat = (json['DIP_FIYAT'] as num?)?.toDouble()
-      ..stokSatisKuru = (json['STOK_SATIS_KURU'] as num?)?.toDouble()
-      ..olcuBirimCarpani = (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble()
-      ..stokBakiye = (json['STOK_BAKIYE'] as num?)?.toDouble()
-      ..stokBirimAgirlik = (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble()
-      ..bakiye = (json['BAKIYE'] as num?)?.toDouble()
-      ..netMiktar = (json['NET_MIKTAR'] as num?)?.toDouble();
+      hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
+      sayimKalemRequestModelHucreList:
+          json['SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST'] as List<dynamic>?,
+      gc: json['GC'] as String?,
+      dipFiyat: (json['DIP_FIYAT'] as num?)?.toDouble(),
+      stokSatisKuru: (json['STOK_SATIS_KURU'] as num?)?.toDouble(),
+      olcuBirimCarpani: (json['OLCU_BIRIM_CARPANI'] as num?)?.toDouble(),
+      stokBakiye: (json['STOK_BAKIYE'] as num?)?.toDouble(),
+      stokBirimAgirlik: (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble(),
+      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
+      netMiktar: (json['NET_MIKTAR'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   final val = <String, dynamic>{};
@@ -5118,5 +5266,9 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('STOK_BIRIM_AGIRLIK', instance.stokBirimAgirlik);
   writeNotNull('BAKIYE', instance.bakiye);
   writeNotNull('NET_MIKTAR', instance.netMiktar);
+  writeNotNull('HEDEF_DEPO_ADI', instance.hedefDepoAdi);
+  writeNotNull('SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST',
+      instance.sayimKalemRequestModelHucreList);
+  writeNotNull('GC', instance.gc);
   return val;
 }

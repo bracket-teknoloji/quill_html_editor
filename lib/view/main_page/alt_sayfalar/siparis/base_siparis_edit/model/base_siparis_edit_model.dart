@@ -464,6 +464,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(185)
   @JsonKey(defaultValue: {})
   Map<String, double>? dovizListesi;
+  @HiveField(186)
+  String? hedefDepoAdi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -652,6 +654,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.datOnayda,
     this.olcumBelgeRefKey,
     this.dovizListesi,
+    this.hedefDepoAdi,
   });
 
   BaseSiparisEditModel._init();
@@ -1362,6 +1365,12 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   @override
   @HiveField(111)
   double? netMiktar;
+  @HiveField(112)
+  String? hedefDepoAdi;
+  @HiveField(113)
+  List<dynamic>? sayimKalemRequestModelHucreList;
+  @HiveField(114)
+  String? gc;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1469,6 +1478,16 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
     this.kalemStoktanKodu,
     this.muhRefKodu,
     this.sayimListesiModelHucreList,
+    this.hedefDepoAdi,
+    this.sayimKalemRequestModelHucreList,
+    this.gc,
+    this.dipFiyat,
+    this.stokSatisKuru,
+    this.olcuBirimCarpani,
+    this.stokBakiye,
+    this.stokBirimAgirlik,
+    this.bakiye,
+    this.netMiktar,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
