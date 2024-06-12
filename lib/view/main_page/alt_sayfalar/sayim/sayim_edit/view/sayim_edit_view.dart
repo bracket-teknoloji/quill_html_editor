@@ -37,12 +37,13 @@ class SayimEditView extends StatefulWidget {
 
 class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderStateMixin {
   late final TabController controller;
-  SayimListesiModel get model => widget.model..filtre = null;
+  SayimListesiModel get model => widget.model;
   final SayimEditViewModel viewModel = SayimEditViewModel();
 
   @override
   void initState() {
     SingletonModels.setSayimListesi = model;
+    SingletonModels.setFiltreModel = model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1);
     controller = TabController(length: 2, vsync: this);
     controller.addListener(() {
       viewModel.setTabIndex(controller.index);
@@ -100,9 +101,11 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
                       title: "Sayımı Bitir",
                       iconWidget: Icons.stop_outlined,
                       onTap: () async {
-                        if (await viewModel.sayimiBitir()) {
-                          Get.back(result: true);
-                        }
+                        dialogManager.showAreYouSureDialog(() async {
+                          if (await viewModel.sayimiBitir()) {
+                            Get.back(result: true);
+                          }
+                        });
                       },
                     ).yetkiKontrol(widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi),
                     BottomSheetModel(
@@ -210,14 +213,14 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
   }
 
   void resetFiltreModel() {
-    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = SayimFiltreModel(islemKodu: 1, belgeNo: model.fisno);
+    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1);
     controller.animateTo(1);
   }
 
   Future<void> onEdit(SayimFiltreModel model) async {
     final stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu));
     SingletonModels.setSayimListesi = SingletonModels.sayimListesi?.copyWith(
-      filtre: model.copyWith(fisno: null, belgeNo: model.fisno, kayittarihi: null, kayityapankul: null, cevrim: null, islemKodu: 1),
+      filtre: widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1),
       stokModel: stok,
     );
     controller.animateTo(0);

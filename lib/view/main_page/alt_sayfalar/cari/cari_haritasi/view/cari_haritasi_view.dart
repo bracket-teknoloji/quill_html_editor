@@ -178,36 +178,11 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
       ).toBitmapDescriptor();
 
   Future<void> setCameraPosition() async {
-    // setState(() {});
     final location = await _locationTracker.getLocation();
     myLocation = CameraPosition(
       target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
       zoom: 14.4746,
     );
     _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
-    // setState(() {});
-    // if (isLocationEnabled) {
-    // }
-    // await Location.instance.getLocation().then((value) {
-    //   setState(() {
-    //     myLocation = CameraPosition(
-    //       target: LatLng(value.altitude ?? 0, value.longitude ?? 0),
-    //       zoom: 14.4746,
-    //     );
-    //   });
-    // });
   }
-
-  // Future<void> checkIsLocationEnabled() async {
-  //   isLocationEnabled = await _locationTracker.serviceEnabled();
-  //   setState(() {});
-  //   if (isLocationEnabled) {
-  //     final location = await _locationTracker.getLocation();
-  //     latMe = location.latitude;
-  //     longMe = location.longitude;
-  //   }
-  //   setState(() {
-  //     isLocationEnabledChecked = true;
-  //   });
-  // }
 }

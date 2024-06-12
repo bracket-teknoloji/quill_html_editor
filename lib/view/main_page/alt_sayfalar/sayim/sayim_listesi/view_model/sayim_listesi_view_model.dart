@@ -27,9 +27,8 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setSayimList(null);
     final result = await networkManager.dioGet(path: ApiUrls.getSayimlar, bodyModel: SayimListesiModel());
-    if (result.data is List) {
-      final List<SayimListesiModel> list = (result.data as List).map((e) => e as SayimListesiModel).toList();
-      setSayimList(list);
+    if (result.isSuccess) {
+      setSayimList(result.dataList);
     }
   }
 

@@ -17,6 +17,7 @@ class CariNetworkManager {
     final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       showError: false,
+      showLoading: true,
       bodyModel: BaseGrupKoduModel(),
       // headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
       queryParameters: <String, dynamic>{"Modul": name?.rawValue ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},

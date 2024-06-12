@@ -139,7 +139,7 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
         child: Observer(
           builder: (_) {
             if (viewModel.filteredSayimListesi == null) return const ListViewShimmer();
-            if (viewModel.filteredSayimListesi!.isEmpty) return const Center(child: Text("Aktif Sayım Emri Bulunamadı."));
+            if (viewModel.filteredSayimListesi!.isEmpty) return const Center(child: Text("Depo Fark Raporları Bulunamadı."));
             return ListView.builder(
               itemCount: viewModel.filteredSayimListesi?.length ?? 0,
               itemBuilder: (context, index) {

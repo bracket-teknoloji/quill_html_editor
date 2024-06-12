@@ -4,8 +4,8 @@ import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
-
 /// Bu widget ile Sayfalama işlemleri yapılır.
+///
 /// Sayfayı yukarı kaydırarak yenileme işlemi yapılmaktadır.
 /// Yenileme işlemi yapıldığında sayfa yenilenir.
 /// Bu widget'ın State'ini yönetmek için `Observer` widget'ı kullanınız.
@@ -20,10 +20,10 @@ class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget
   final Widget Function(T item) itemBuilder;
 
   ///* Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
-  const RefreshableListView({super.key, required this.onRefresh, required this.items, required this.itemBuilder,});
+  const RefreshableListView({super.key, required this.onRefresh, required this.items, required this.itemBuilder});
 
-  @override
   ///* Bu widget adaptive olarak çalışmaktadır. Padding'i önden tanımlanmıştır.
+  @override
   Widget build(BuildContext context) => RefreshIndicator.adaptive(
         onRefresh: onRefresh,
         child: body(),
