@@ -232,7 +232,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "hucre_Arama", title: "Hücre Ara", route: "/mainPage/hucreAra"),
         GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
       ],
-    ).isDebug(),
+    ),
 
     //* Mal Kabul
     //*
@@ -268,7 +268,7 @@ class MenuItemConstants {
       altMenuler: <GridItemModel>[
         GridItemModel.item(name: "sayim_sayim", title: "Sayım", route: "/mainPage/sayimListesi"),
       ],
-    ).isDebug(),
+    ),
 
     //* Sevkiyat
     //*
@@ -350,9 +350,9 @@ class MenuItemConstants {
       title: "Stok",
       icon: "inventory",
       color: ColorPalette.mantis,
-      altMenuler: <GridItemModel>[
+      altMenuler: [
         GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
-        GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", route: "/mainPage/stokBarkodTanimla"),
+        GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", route: "/mainPage/stokBarkodTanimla").isDebug(),
         GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
         GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
         GridItemModel.item(name: "stok_StokListesi", title: "Yazdır", route: "/mainPage/stokYazdir"),
@@ -379,7 +379,7 @@ class MenuItemConstants {
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.stok),
           ],
         ),
-      ],
+      ].whereType<GridItemModel>().toList(),
     ),
 
     //* Tahsilat & Ödeme
