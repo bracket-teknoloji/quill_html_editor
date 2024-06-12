@@ -90,6 +90,7 @@
 //   }
 // }
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -131,6 +132,15 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
 
   @override
   StokBottomSheetModel fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
+
+  factory StokBottomSheetModel.fromSayimFiltreModel(SayimFiltreModel model) => StokBottomSheetModel(
+        arrGrupKodu: model.arrGrupKodu?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod1: model.arrKod1?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod2: model.arrKod2?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod3: model.arrKod3?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod4: model.arrKod4?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod5: model.arrKod5?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+      );
 
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();
