@@ -92,7 +92,9 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(Icons.dashboard_outlined, size: 100, color: Colors.grey.shade300),
-                    const Text("Sayım listesi boş"),
+                    //TODO Bunları da refreshable list'e ekle
+                    const Text("Kayıt bulunamadı."),
+                    const Text("Size atanmış sayım yok veya Sayım emri oluşturulmamış"),
                   ],
                 ),
               );
@@ -264,6 +266,7 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
                   final result = await viewModel.postData();
                   if (result) {
                     Get.back();
+                    dialogManager.showSuccessSnackBar("Yeni bir serbest Rapor oluşturuldu.");
                     await viewModel.getData();
                   }
                 }
