@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
@@ -25,6 +26,16 @@ abstract class _SayimGirisiViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   bool otomatikEtiketYazdir = CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir;
+
+  bool isStokValid(StokListesiModel? stokModel) {
+    if (!(filtreModel.arrGrupKodu?.contains(stokModel?.grupKodu) ?? false) && (filtreModel.arrGrupKodu?.ext.isNotNullOrEmpty ?? false)) return false;
+    if (!(filtreModel.arrKod1?.contains(stokModel?.kod1) ?? false) && (filtreModel.arrKod1?.ext.isNotNullOrEmpty ?? false)) return false;
+    if (!(filtreModel.arrKod2?.contains(stokModel?.kod2) ?? false) && (filtreModel.arrKod1?.ext.isNotNullOrEmpty ?? false)) return false;
+    if (!(filtreModel.arrKod3?.contains(stokModel?.kod3) ?? false) && (filtreModel.arrKod1?.ext.isNotNullOrEmpty ?? false)) return false;
+    if (!(filtreModel.arrKod4?.contains(stokModel?.kod4) ?? false) && (filtreModel.arrKod1?.ext.isNotNullOrEmpty ?? false)) return false;
+    if (!(filtreModel.arrKod5?.contains(stokModel?.kod5) ?? false) && (filtreModel.arrKod1?.ext.isNotNullOrEmpty ?? false)) return false;
+    return true;
+  }
 
   @action
   Future<bool?> deleteItem() async {

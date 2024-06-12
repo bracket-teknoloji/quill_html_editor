@@ -17,9 +17,11 @@ import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayim_girisi/view_model/sayim_girisi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SayimGirisiView extends StatefulWidget {
@@ -143,8 +145,11 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   icon: const Icon(Icons.qr_code_scanner),
                 ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("barkod")),
                 onTap: () async {
-                  final stokModel = await Get.toNamed("mainPage/stokListesiOzel");
+                  final stokModel = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel.fromSayimFiltreModel(viewModel.filtreModel));
                   setStok(stokModel);
+                  //    final stokModel = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(
+                  //   arrGrupKodu: viewModel.filtreModel.arrGrupKodu
+                  // ));
                 },
               ),
               CustomTextField(
@@ -323,6 +328,23 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
   }
 
   Future<void> setStok(StokListesiModel? stokModel) async {
+    if (stokModel is! BaseStokMixin) return;
+    if (!viewModel.isStokValid(stokModel)) {
+      if (AccountModel.instance.adminMi) {
+        bool result = false;
+        await dialogManager.showAreYouSureDialog(
+          () async {
+            result = true;
+          },
+          title: "Seçilen stok filtrelere uymamaktadır. Bu stoğu kullanmak istiyor musunuz?",
+        );
+        if (!result) {
+          return;
+        }
+      } else {
+        return dialogManager.showAlertDialog("Seçilen stok filtrelere uymuyor. Lütfen kontrol ediniz.");
+      }
+    }
     if (stokModel is! BaseStokMixin) return;
     viewModel.setStokModel(stokModel);
     viewModel.setOlcuBirimi(yetkiController.sayimVarsayilanOlcuBirimi);

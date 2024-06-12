@@ -747,13 +747,19 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
   Future<void> getData() async {
     final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
       data: (viewModel.bottomSheetModel.copyWith(
         resimGoster: viewModel.resimleriGoster,
-        menuKodu: "STOK_STOK",
+        menuKodu: widget.requestModel != null ? "STOK_SREH" : "STOK_STOK",
         searchText: viewModel.searchValue,
         sayfa: viewModel.sayfa,
+        arrGrupKodu: widget.requestModel?.arrGrupKodu,
+        arrKod1: widget.requestModel?.arrKod1,
+        arrKod2: widget.requestModel?.arrKod2,
+        arrKod3: widget.requestModel?.arrKod3,
+        arrKod4: widget.requestModel?.arrKod4,
+        arrKod5: widget.requestModel?.arrKod5,
       )).toJsonWithList(),
-      bodyModel: StokListesiModel(),
     );
     if (response.isSuccess) {
       final List<StokListesiModel>? liste = response.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
