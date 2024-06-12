@@ -1,13 +1,65 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/view_model/barkod_tanimla_kayitlari_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-class BarkodTanimlaKayitlariView extends StatefulWidget {
-  const BarkodTanimlaKayitlariView({super.key});
+final class BarkodTanimlaKayitlariView extends StatefulWidget {
+  final StokListesiModel? model;
+  const BarkodTanimlaKayitlariView({super.key, this.model});
 
   @override
   State<BarkodTanimlaKayitlariView> createState() => _BarkodTanimlaKayitlariViewState();
 }
 
-class _BarkodTanimlaKayitlariViewState extends State<BarkodTanimlaKayitlariView> {
+final class _BarkodTanimlaKayitlariViewState extends State<BarkodTanimlaKayitlariView> {
+  final BarkodTanimlaKayitlariViewModel viewModel = BarkodTanimlaKayitlariViewModel();
+
   @override
-  Widget build(BuildContext context) => Container();
+  void initState() {
+    viewModel.setStokKodu(widget.model?.stokKodu);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getData();
+    });
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant BarkodTanimlaKayitlariView oldWidget) {
+    if (oldWidget.model?.stokKodu != widget.model?.stokKodu) {
+      viewModel.setStokKodu(widget.model?.stokKodu);
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+        await viewModel.getData();
+      });
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        floatingActionButton: CustomFloatingActionButton(
+          isScrolledDown: true,
+          onPressed: () async {
+            if (widget.model != null) Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
+          },
+        ),
+        body: Observer(
+          builder: (_) => RefreshableListView<BarkodTanimlaKayitlariModel>(
+            onRefresh: viewModel.getData,
+            items: viewModel.barkodTanimlaKayitlari,
+            itemBuilder: (item) => Card(
+              child: ListTile(
+                title: Text(item.stokKodu ?? ""),
+                subtitle: CustomLayoutBuilder(splitCount: 2, children: [
+                  Text("")
+                ]),
+              ),
+            ),
+          ),
+        ),
+      );
 }

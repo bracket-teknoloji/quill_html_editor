@@ -52,7 +52,11 @@ SaveStokModel _$SaveStokModelFromJson(Map<String, dynamic> json) =>
       ..seriMiktarKadar = json['SERI_MIKTAR_KADAR'] as bool?
       ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
       ..ureticiKodu = json['URETICI_KODU'] as String?
-      ..yeniKayit = json['_YeniKayit'] as bool?;
+      ..yeniKayit = json['_YeniKayit'] as bool?
+      ..stokBarkodModel = json['StokBarkodModel'] == null
+          ? null
+          : BarkodTanimlaKayitlariModel.fromJson(
+              json['StokBarkodModel'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$SaveStokModelToJson(SaveStokModel instance) {
   final val = <String, dynamic>{};
@@ -108,5 +112,6 @@ Map<String, dynamic> _$SaveStokModelToJson(SaveStokModel instance) {
   writeNotNull('SUBE_KODU', instance.subeKodu);
   writeNotNull('URETICI_KODU', instance.ureticiKodu);
   writeNotNull('_YeniKayit', instance.yeniKayit);
+  writeNotNull('StokBarkodModel', instance.stokBarkodModel?.toJson());
   return val;
 }

@@ -1,13 +1,12 @@
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "save_stok_model.g.dart";
 
-@JsonSerializable(
-  explicitToJson: true,
-)
+@JsonSerializable(explicitToJson: true)
 class SaveStokModel with NetworkManagerMixin {
   static SaveStokModel? _instance;
   static SaveStokModel get instance {
@@ -65,6 +64,8 @@ class SaveStokModel with NetworkManagerMixin {
   String? ureticiKodu;
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
+  @JsonKey(name: "StokBarkodModel")
+  BarkodTanimlaKayitlariModel? stokBarkodModel;
   @override
   SaveStokModel fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
 
