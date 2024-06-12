@@ -42,6 +42,7 @@ import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/m
 import "package:picker/view/main_page/alt_sayfalar/sayim/depo_fark_raporu/view/depo_fark_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view/sayim_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view/sayim_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/view/barkod_tanimla_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/depo_bakiye_durumu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/view/fiyat_ozeti_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/view/paket_icerigi_view.dart";
@@ -384,6 +385,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
               GetPage(name: "/stokFiyatGor", page: () => FiyatGorView(model: Get.arguments)),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),
+              GetPage(name: "/stokBarkodTanimla", page: BarkodTanimlaView.new),
               GetPage(name: "/hucreYazdir", page: () => StokYazdirView(hucreModel: Get.arguments)),
               GetPage(name: "/depoBakiyeDurumu", page: () => DepoBakiyeDurumuView(model: Get.arguments)),
               GetPage(name: "/stokFiyatGecmisi", page: FiyatGecmisiView.new),
