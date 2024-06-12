@@ -191,6 +191,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           title: loc.generalStrings.print,
           iconWidget: Icons.print_outlined,
           onTap: () async {
+            Get.back();
             await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi), true, true);
           },
         ).yetkiKontrol(yetkiController.yazdirmaSayim),
