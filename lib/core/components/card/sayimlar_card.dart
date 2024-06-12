@@ -89,7 +89,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
             } else {
               model.depoKodu = model.depoList?.first;
             }
-            await Get.toNamed("/mainPage/sayimEdit", arguments: model);
+            await Get.toNamed("/mainPage/sayimEdit", arguments: model.copyWith());
           },
         ),
         BottomSheetModel(
@@ -114,36 +114,43 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           title: "Sayımı Bitir",
           iconWidget: Icons.stop_outlined,
           onTap: () async {
-            final result = await networkManager.dioPost(
-              path: ApiUrls.saveSayim,
-              bodyModel: SayimListesiModel(),
-              data: SayimFiltreModel(
-                islemKodu: 5,
-                belgeNo: widget.model.fisno,
-              ).toJson(),
-            );
-            if (result.isSuccess) {
-              Get.back();
-              widget.onChanged(true);
-            }
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await networkManager.dioPost(
+                path: ApiUrls.saveSayim,
+                bodyModel: SayimListesiModel(),
+                data: SayimFiltreModel(
+                  islemKodu: 5,
+                  belgeNo: widget.model.fisno,
+                ).toJson(),
+              );
+              if (result.isSuccess) {
+                Get.back();
+                widget.onChanged(true);
+              }
+            });
           },
         ).yetkiKontrol(widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi),
         BottomSheetModel(
           title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async {
-            final result = await networkManager.dioPost(
-              path: ApiUrls.saveSayim,
-              bodyModel: SayimListesiModel(),
-              data: SayimFiltreModel(
-                islemKodu: 3,
-                belgeNo: widget.model.fisno,
-              ).toJson(),
+            Get.back();
+            dialogManager.showAreYouSureDialog(
+              () async {
+                final result = await networkManager.dioPost(
+                  path: ApiUrls.saveSayim,
+                  bodyModel: SayimListesiModel(),
+                  data: SayimFiltreModel(
+                    islemKodu: 3,
+                    belgeNo: widget.model.fisno,
+                  ).toJson(),
+                );
+                if (result.isSuccess) {
+                  widget.onChanged(true);
+                }
+              },
+              title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?",
             );
-            if (result.isSuccess) {
-              Get.back();
-              widget.onChanged(true);
-            }
           },
         ).yetkiKontrol(yetkiController.sayimSil && widget.model.serbestMi),
         BottomSheetModel(
