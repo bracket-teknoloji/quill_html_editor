@@ -69,6 +69,12 @@ class SaveStokModel with NetworkManagerMixin {
   @override
   SaveStokModel fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
 
+  factory SaveStokModel.forDeleteBarkodModel(BarkodTanimlaKayitlariModel model) => SaveStokModel()
+    ..stokBarkodModel = model
+    ..islemKodu = 6
+    ..requestVersion = 1
+    ..kodu = model.stokKodu;
+
   factory SaveStokModel.fromStokListesiModel(StokListesiModel model) => SaveStokModel()
     ..adi = model.stokAdi
     ..kodu = model.stokKodu
