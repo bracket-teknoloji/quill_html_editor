@@ -51,7 +51,7 @@ mixin _$BarkodTanimlaKayitlariViewModel
       context: context);
 
   @override
-  Future<void> deleteItem(BarkodTanimlaKayitlariModel model) {
+  Future<bool> deleteItem(BarkodTanimlaKayitlariModel model) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(model));
   }
 

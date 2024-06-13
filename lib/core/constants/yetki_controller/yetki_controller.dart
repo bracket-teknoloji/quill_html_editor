@@ -12,14 +12,12 @@ import "../enum/edit_tipi_enum.dart";
 import "yetki_model.dart";
 
 final class YetkiController {
-
   //* Singleton
   static final YetkiController _singleton = YetkiController._internal();
 
   YetkiController._internal();
 
   factory YetkiController() => _singleton;
-
 
   MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 
@@ -157,6 +155,8 @@ final class YetkiController {
   bool get stokBarkodEkle => _isTrue(_yetkiModel?.stokBarkodKayitlariEkle);
   bool get stokBarkodDuzenle => _isTrue(_yetkiModel?.stokBarkodKayitlariDuzelt);
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
+  bool stokBarkodGorunecekAlanlar(String value) =>
+      _isTrue((_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar.ext.isNullOrEmpty ?? false) || (_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar?.contains(value) ?? false));
 
   //* Paketleme
   bool get stokPaketlemeSil => _isTrue(_yetkiModel?.stokPaketlemeSil);
