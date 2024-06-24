@@ -155,7 +155,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            BaseSiparisEditModel.instance.kalemList ??= widget.model.model.kalemList;
             // if (widget.model.baseEditEnum?.)
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
@@ -175,6 +174,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                     ..belgeNo = null,
                 )
                 .toList();
+            if (widget.model.model.kalemList != null) {
+              BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
+            }
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             BaseSiparisEditModel.instance.belgeKodu = null;
             BaseSiparisEditModel.instance.teslimTarihi = null;

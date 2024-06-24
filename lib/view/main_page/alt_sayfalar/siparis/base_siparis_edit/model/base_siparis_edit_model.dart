@@ -6,7 +6,6 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
@@ -1125,7 +1124,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel with NetworkManagerMixin, BaseStokMixin {
+class KalemModel with NetworkManagerMixin {
   @HiveField(0)
   @JsonKey(defaultValue: true, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
@@ -1139,7 +1138,6 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   int? depoKodu;
   @HiveField(5)
   double? kdvOrani;
-  @override
   @HiveField(6)
   double? miktar;
   @HiveField(7)
@@ -1150,7 +1148,6 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   List<dynamic>? hucreList;
   @HiveField(10)
   List<StokList>? kalemModelHucreList;
-  @override
   @HiveField(11)
   @JsonKey(name: "SeriList")
   List<SeriList>? seriList;
@@ -1167,10 +1164,8 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   String? depoTanimi;
   @HiveField(17)
   String? olcuBirimAdi;
-  @override
   @HiveField(18)
   String? stokAdi;
-  @override
   @HiveField(19)
   String? stokKodu;
   @HiveField(20)
@@ -1354,10 +1349,8 @@ class KalemModel with NetworkManagerMixin, BaseStokMixin {
   double? stokBakiye;
   @HiveField(109)
   double? stokBirimAgirlik;
-  @override
   @HiveField(110)
   double? bakiye;
-  @override
   @HiveField(111)
   double? netMiktar;
   @HiveField(112)

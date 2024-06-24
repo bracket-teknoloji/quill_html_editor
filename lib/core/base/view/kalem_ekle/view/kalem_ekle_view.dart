@@ -907,8 +907,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     } else {
       viewModel.kalemModel.dovizKuru = null;
       viewModel.kalemModel.dovizliFiyat = null;
-      dovizKuruController.clear();
-      dovizFiyatiController.clear();
+      dovizKuruController.text = "";
+      dovizFiyatiController.text = "";
     }
   }
 
