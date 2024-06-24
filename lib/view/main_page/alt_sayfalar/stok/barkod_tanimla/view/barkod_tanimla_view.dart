@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/view/barkod_tanimla_kayitlari_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/stok_karti/view/barkod_tanimla_stok_karti_view.dart";
@@ -25,7 +26,7 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
 
   @override
   void initState() {
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: yetkiController.stokBarkodStokKartiGorunsun ? 2 : 1, vsync: this);
     searchController = TextEditingController();
     stokController = TextEditingController();
     super.initState();
@@ -49,15 +50,17 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
             IconButton(
               onPressed: saveStok,
               icon: const Icon(Icons.save_outlined),
-            ),
+            ).yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle),
           ],
-          bottom: TabBar(
-            controller: tabController,
-            tabs: const [
-              Tab(text: "Stok Kartı"),
-              Tab(text: "Barkod Kayıtları"),
-            ],
-          ),
+          bottom: yetkiController.stokBarkodStokKartiGorunsun
+              ? TabBar(
+                  controller: tabController,
+                  tabs: [
+                    const Tab(text: "Stok Kartı"),
+                    const Tab(text: "Barkod Kayıtları"),
+                  ].whereType<Tab>().toList(),
+                )
+              : null,
         ),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
@@ -119,11 +122,11 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
                   model: viewModel.stokModel,
                   onChanged: viewModel.setStokModel,
                 ),
-              ),
+              ).yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun),
               Observer(
                 builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
               ),
-            ],
+            ].where((element) => element is! SizedBox).toList(),
           ),
         ).paddingAll(UIHelper.lowSize),
       );

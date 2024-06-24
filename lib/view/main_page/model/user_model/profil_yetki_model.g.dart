@@ -1084,6 +1084,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['stok_BarkodKayitlari_GecerliBarkodTipleri'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
+      ..stokBarkodKayitlariGecerliOlcuBirimleri =
+          (json['stok_BarkodKayitlari_GecerliOlcuBirimleri'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..stokBarkodKayitlari = json['stok_BarkodKayitlari'] as bool?
       ..stokBarkodKayitlariEkle = json['stok_BarkodKayitlari_Ekle'] as bool?
       ..stokBarkodKayitlariDuzelt = json['stok_BarkodKayitlari_Duzelt'] as bool?
@@ -2665,6 +2669,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.stokBarkodTanimlamaGorunecekAlanlar);
   writeNotNull('stok_BarkodKayitlari_GecerliBarkodTipleri',
       instance.stokBarkodKayitlariGecerliBarkodTipleri);
+  writeNotNull('stok_BarkodKayitlari_GecerliOlcuBirimleri',
+      instance.stokBarkodKayitlariGecerliOlcuBirimleri);
   writeNotNull('stok_BarkodKayitlari', instance.stokBarkodKayitlari);
   writeNotNull('stok_BarkodKayitlari_Ekle', instance.stokBarkodKayitlariEkle);
   writeNotNull(

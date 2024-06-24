@@ -155,6 +155,10 @@ final class YetkiController {
   bool get stokBarkodEkle => _isTrue(_yetkiModel?.stokBarkodKayitlariEkle);
   bool get stokBarkodDuzenle => _isTrue(_yetkiModel?.stokBarkodKayitlariDuzelt);
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
+  bool get stokBarkodStokKartiGorunsun => _isTrue(_yetkiModel?.stokBarkodKayitlariGecerliOlcuBirimleri.ext.isNotNullOrEmpty);
+  List<BarkodTipiEnum> get stokBarkodGecerliBarkodTipleri =>
+      BarkodTipiEnum.values.where((element) => _yetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any((element2) => element2 == element.barkodTipi) ?? adminMi).toList();
+
   bool stokBarkodGorunecekAlanlar(String value) =>
       _isTrue((_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar.ext.isNullOrEmpty ?? false) || (_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar?.contains(value) ?? false));
 
@@ -164,9 +168,6 @@ final class YetkiController {
   bool get stokPaketlemeCoklu => _isTrue(_yetkiModel?.stokPaketlemeCoklu);
   bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
   bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
-
-  List<BarkodTipiEnum> get stokBarkodGecerliBarkodTipleri =>
-      BarkodTipiEnum.values.where((element) => _yetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any((element2) => element2 == element.barkodTipi) ?? adminMi).toList();
 
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
