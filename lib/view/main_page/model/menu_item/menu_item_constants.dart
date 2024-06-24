@@ -352,7 +352,7 @@ class MenuItemConstants {
       color: ColorPalette.mantis,
       altMenuler: [
         GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
-        GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", route: "/mainPage/stokBarkodTanimla").isDebug(),
+        GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", route: "/mainPage/stokBarkodTanimla"),
         GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
         GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
         GridItemModel.item(name: "stok_StokListesi", title: "Yazdır", route: "/mainPage/stokYazdir"),
