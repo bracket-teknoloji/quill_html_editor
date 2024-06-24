@@ -6,6 +6,7 @@ import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/save_stok_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_olcu_birimleri_model.dart";
 
 part "barkod_tanimla_edit_view_model.g.dart";
 
@@ -40,5 +41,16 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
           ..kodu = model.stokKodu
           ..requestVersion = 1
           ..stokBarkodModel = model,
+      );
+
+  @action
+  Future<GenericResponseModel<NetworkManagerMixin>> getBarkod() async => await networkManager.dioPost(
+        path: ApiUrls.barkodUret,
+        bodyModel: StokOlcuBirimleriModel(),
+        showLoading: true,
+        data: {
+          "StokKodu": model.stokKodu,
+          "BarkodTipi": model.barkodTipi,
+        },
       );
 }

@@ -33,6 +33,15 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 
+  late final _$getBarkodAsyncAction = AsyncAction(
+      '_BarkodTanimlaEditViewModelBase.getBarkod',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> getBarkod() {
+    return _$getBarkodAsyncAction.run(() => super.getBarkod());
+  }
+
   late final _$_BarkodTanimlaEditViewModelBaseActionController =
       ActionController(
           name: '_BarkodTanimlaEditViewModelBase', context: context);
