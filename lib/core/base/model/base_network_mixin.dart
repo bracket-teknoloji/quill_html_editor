@@ -6,12 +6,8 @@ mixin NetworkManagerMixin on Object {
   String toString() => toJson().toString();
 
   @override
-  bool operator ==(Object other) {
-    if (other is NetworkManagerMixin) {
-      final bool result = other.toJson().toString() == toJson().toString();
-      return result;
-    } else {
-      return false;
-    }
+  bool operator ==(covariant NetworkManagerMixin other) {
+    final bool result = other.toJson().toString() == toJson().toString();
+    return result;
   }
 }

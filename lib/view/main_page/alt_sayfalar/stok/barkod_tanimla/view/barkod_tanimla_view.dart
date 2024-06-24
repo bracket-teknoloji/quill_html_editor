@@ -26,9 +26,18 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
 
   @override
   void initState() {
-    tabController = TabController(length: yetkiController.stokBarkodStokKartiGorunsun ? 2 : 1, vsync: this);
+    int tabLength = 0;
+    if (yetkiController.stokBarkodStokKartiGorunsun) tabLength++;
+    if (yetkiController.stokBarkodKayitlari) tabLength++;
+    tabController = TabController(length: tabLength, vsync: this);
     searchController = TextEditingController();
     stokController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (tabLength == 0) {
+        await dialogManager.showAlertDialog("Barkod alanlarına yetkili değilsiniz. Profil tanımlama ekranından görünecek alanlara yetki vermelisiniz.");
+        Get.back();
+      }
+    });
     super.initState();
   }
 
@@ -56,8 +65,8 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
               ? TabBar(
                   controller: tabController,
                   tabs: [
-                    const Tab(text: "Stok Kartı"),
-                    const Tab(text: "Barkod Kayıtları"),
+                    const Tab(text: "Stok Kartı").yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun),
+                    const Tab(text: "Barkod Kayıtları").yetkiVarMi(yetkiController.stokBarkodKayitlari),
                   ].whereType<Tab>().toList(),
                 )
               : null,
@@ -125,7 +134,7 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
               ).yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun),
               Observer(
                 builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
-              ),
+              ).yetkiVarMi(yetkiController.stokBarkodKayitlari),
             ].where((element) => element is! SizedBox).toList(),
           ),
         ).paddingAll(UIHelper.lowSize),

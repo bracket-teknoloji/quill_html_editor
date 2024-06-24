@@ -155,7 +155,7 @@ final class YetkiController {
   bool get stokBarkodEkle => _isTrue(_yetkiModel?.stokBarkodKayitlariEkle);
   bool get stokBarkodDuzenle => _isTrue(_yetkiModel?.stokBarkodKayitlariDuzelt);
   bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
-  bool get stokBarkodStokKartiGorunsun => _isTrue(_yetkiModel?.stokBarkodKayitlariGecerliOlcuBirimleri.ext.isNotNullOrEmpty);
+  bool get stokBarkodStokKartiGorunsun => _isTrue(_yetkiModel?.stokBarkodKayitlariGecerliOlcuBirimleri?.isNotEmpty);
   List<BarkodTipiEnum> get stokBarkodGecerliBarkodTipleri =>
       BarkodTipiEnum.values.where((element) => _yetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any((element2) => element2 == element.barkodTipi) ?? adminMi).toList();
 
