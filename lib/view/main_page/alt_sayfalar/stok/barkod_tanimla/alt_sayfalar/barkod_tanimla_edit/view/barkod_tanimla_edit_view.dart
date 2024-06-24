@@ -125,6 +125,7 @@ final class _BarkodTanimlaEditViewState extends BaseState<BarkodTanimlaEditView>
                     ].nullCheckWithGeneric,
                   );
                   if (result is int) {
+                    olcuBirimiController.text = stok.olcuBirimiSelector(result) ?? "";
                     viewModel.setBirim(result);
                   }
                 },
