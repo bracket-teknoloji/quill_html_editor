@@ -302,9 +302,9 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {
                     viewModel.clearFilters();
-                    plasiyerController.text = "";
-                    cariController.text = "";
-                    kasaController.text = "";
+                    plasiyerController.clear();
+                    cariController.clear();
+                    kasaController.clear();
                     Get.back();
                     viewModel.resetPage();
                   },

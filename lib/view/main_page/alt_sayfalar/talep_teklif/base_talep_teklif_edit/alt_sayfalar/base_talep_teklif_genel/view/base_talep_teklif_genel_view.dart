@@ -220,7 +220,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                       viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
                       viewModel.model.efaturaTipi = result.efaturaTipi;
-                      _belgeNoController.text = "";
+                      _belgeNoController.clear();
                       await getBelgeNo();
                     }
                   },

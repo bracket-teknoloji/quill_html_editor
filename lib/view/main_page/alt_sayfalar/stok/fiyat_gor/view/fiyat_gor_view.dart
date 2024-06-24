@@ -194,8 +194,8 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                         Text.rich(
                                           TextSpan(
                                             children: [
-                                              const TextSpan(text: "Alış  KDV"),
-                                              TextSpan(text: "  %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
+                                              const TextSpan(text: "Alış KDV"),
+                                              TextSpan(text: " %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
                                             ],
                                           ),
                                         ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),

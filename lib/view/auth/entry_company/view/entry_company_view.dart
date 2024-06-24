@@ -126,8 +126,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       // viewModel.selected["İşletme"] = null;
       // viewModel.selected["Şube"] = null;
       await viewModel.getSube();
-      isletmeController.text = "";
-      subeController.text = "";
+      isletmeController.clear();
+      subeController.clear();
       await isletmeDialog(context);
       return;
     }
@@ -153,8 +153,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     if (result is CompanyModel) {
       first = false;
       sirketController.text = result.company ?? "";
-      isletmeController.text = "";
-      subeController.text = "";
+      isletmeController.clear();
+      subeController.clear();
       viewModel.selectedSirket(result);
       // viewModel.selected["Şirket"] = result;
       // viewModel.userData["Şirket"] = result;
@@ -192,7 +192,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           groupValue: viewModel.isletmeList?[index].isletmeKodu,
           // onTap: () {
           //   isletmeController.text = "${viewModel.isletmeList?[index].isletmeAdi} ${viewModel.isletmeList?[index].isletmeKodu ?? 0}";
-          //   subeController.text = "";
+          //   subeController.clear();
           //   viewModel.selected["İşletme"] = viewModel.isletmeList?[index].isletmeKodu ?? 0;
           //   viewModel.userData["İşletme"] = viewModel.isletmeList?[index].isletmeAdi;
           //   viewModel.selected["Şube"] = null;
@@ -205,7 +205,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     );
     if (result is IsletmeModel) {
       isletmeController.text = "${result.isletmeAdi} ${result.isletmeKodu}";
-      subeController.text = "";
+      subeController.clear();
       viewModel.selectedIsletme(result);
       await subeDialog(context);
       // viewModel.selected["İşletme"] = result.isletmeKodu ?? 0;

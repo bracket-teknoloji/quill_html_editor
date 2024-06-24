@@ -381,7 +381,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           onChanged: enabled
                               ? (bool value) {
                                   if (!value) {
-                                    dovizController.text = "";
+                                    dovizController.clear();
                                     viewModel.changeDovizTipi(null);
                                   }
                                   viewModel.changeIsDovizli(value);

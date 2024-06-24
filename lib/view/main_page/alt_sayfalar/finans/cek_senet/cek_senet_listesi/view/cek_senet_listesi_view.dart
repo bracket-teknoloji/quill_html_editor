@@ -156,12 +156,12 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                             filterOnChanged: (index) {
                               viewModel.setYeri(viewModel.yeriMap.values.toList()[index ?? 0]);
                               if (viewModel.cekSenetListesiRequestModel.yer == "C") {
-                                _bankaController.text = "";
+                                _bankaController.clear();
                               } else if (viewModel.cekSenetListesiRequestModel.yer == "T" || viewModel.cekSenetListesiRequestModel.yer == "E") {
-                                _verilenCariController.text = "";
+                                _verilenCariController.clear();
                               } else {
-                                _verilenCariController.text = "";
-                                _bankaController.text = "";
+                                _verilenCariController.clear();
+                                _bankaController.clear();
                                 viewModel.setVerilenCari(null);
                               }
                             },
@@ -423,7 +423,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                   builder: (_) => Text("Toplam Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                 ),
               ],
-            ), 
+            ),
           ],
         ),
       );

@@ -214,7 +214,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   filterOnChanged: (index) {
                     viewModel.setSonucTuruGroupValue(index ?? 0);
                     if (!viewModel.sartliKabulMu) {
-                      sartliKabulTuruController.text = "";
+                      sartliKabulTuruController.clear();
                     }
                   },
                 ),

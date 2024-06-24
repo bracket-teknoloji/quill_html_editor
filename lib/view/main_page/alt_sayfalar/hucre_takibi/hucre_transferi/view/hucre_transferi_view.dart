@@ -252,11 +252,11 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
     if (result) {
       viewModel.setStokKodu(null);
       viewModel.setMiktar(null);
-      stokController.text = "";
-      stokAdiController.text = "";
-      hucreMiktariController.text = "";
-      islemMiktariController.text = "";
-      paketController.text = "";
+      stokController.clear();
+      stokAdiController.clear();
+      hucreMiktariController.clear();
+      islemMiktariController.clear();
+      paketController.clear();
       dialogManager.showSuccessSnackBar(loc.generalStrings.success);
     }
   }

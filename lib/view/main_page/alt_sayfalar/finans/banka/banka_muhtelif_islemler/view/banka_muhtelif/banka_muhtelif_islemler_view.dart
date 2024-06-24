@@ -220,7 +220,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                         suffix: IconButton(
@@ -243,7 +243,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                       ),
@@ -302,8 +302,8 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       // ignore: use_build_context_synchronously
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
@@ -342,8 +342,8 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
         }
       }
     } else {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
     }
   }
 
@@ -359,8 +359,8 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
         await getDovizDialog();
       } else {
         viewModel.setDovizTutari(null);
-        _dovizTutariController.text = "";
-        _dovizKuruController.text = "";
+        _dovizTutariController.clear();
+        _dovizKuruController.clear();
       }
     }
   }

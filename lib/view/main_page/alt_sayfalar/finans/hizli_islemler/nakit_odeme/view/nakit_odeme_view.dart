@@ -241,7 +241,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                                 _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                               } else {
                                 viewModel.setDovizTutari(null);
-                                _dovizTutariController.text = "";
+                                _dovizTutariController.clear();
                               }
                             },
                             suffix: IconButton(
@@ -286,7 +286,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                                 _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                               } else {
                                 viewModel.setDovizTutari(null);
-                                _dovizTutariController.text = "";
+                                _dovizTutariController.clear();
                               }
                             },
                             // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
@@ -401,8 +401,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
         if (viewModel.model.dovizTipi != null || viewModel.model.dovizTipi != 0) {
           viewModel.setDovizTipi(0);
           _dovizTipiController.text = mainCurrency;
-          _dovizKuruController.text = "";
-          _dovizTutariController.text = "";
+          _dovizKuruController.clear();
+          _dovizTutariController.clear();
         }
       }
     }
@@ -440,8 +440,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",

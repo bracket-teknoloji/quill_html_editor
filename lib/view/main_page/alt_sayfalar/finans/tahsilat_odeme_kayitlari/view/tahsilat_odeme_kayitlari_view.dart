@@ -289,9 +289,9 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {
                     viewModel.clearFilters();
-                    plasiyerController.text = "";
-                    cariController.text = "";
-                    hareketTuruController.text = "";
+                    plasiyerController.clear();
+                    cariController.clear();
+                    hareketTuruController.clear();
                     Get.back();
                     viewModel.resetPage();
                   },

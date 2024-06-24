@@ -292,9 +292,9 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                     Get.back();
                     // resetFilters();
                     viewModel.resetFilter();
-                    baslangicTarihiController.text = "";
-                    bitisTarihiController.text = "";
-                    ozelKod2Controller.text = "";
+                    baslangicTarihiController.clear();
+                    bitisTarihiController.clear();
+                    ozelKod2Controller.clear();
                     viewModel.resetPage();
                   },
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),

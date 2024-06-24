@@ -252,7 +252,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                   hesapTipiController.text = viewModel.hesapTipiList.whereIndexed((index, element) => result.contains(index)).join(", ");
                   viewModel.setHesapTipi(result.map((e) => e as int).toList().cast<int>());
                 } else {
-                  hesapTipiController.text = "";
+                  hesapTipiController.clear();
                   viewModel.setHesapTipi(null);
                 }
               }

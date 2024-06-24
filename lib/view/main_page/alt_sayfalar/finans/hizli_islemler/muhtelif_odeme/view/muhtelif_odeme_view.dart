@@ -223,7 +223,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                         suffix: IconButton(
@@ -268,7 +268,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                       ),
@@ -395,9 +395,9 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         _dovizTipiController.text = result.dovizAdi ?? mainCurrency;
         viewModel.setDovizTipi(result.dovizTipi);
       } else {
-        _dovizTipiController.text = "";
-        _dovizKuruController.text = "";
-        _dovizTutariController.text = "";
+        _dovizTipiController.clear();
+        _dovizKuruController.clear();
+        _dovizTutariController.clear();
         viewModel.setDovizTipi(null);
         viewModel.setDovizTutari(null);
       }
@@ -407,8 +407,8 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",

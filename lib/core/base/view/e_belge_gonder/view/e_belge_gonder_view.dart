@@ -241,7 +241,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                             _cariEPostaController.text = await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
                             viewModel.setEPosta(_cariEPostaController.text);
                           } else {
-                            _cariEPostaController.text = "";
+                            _cariEPostaController.clear();
                             viewModel.setEPosta(null);
                           }
                         },

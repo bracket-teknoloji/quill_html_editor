@@ -68,7 +68,7 @@ final class _BaseHucreGenelViewState extends BaseState<BaseHucreGenelView> {
                       title: Text(item.getName),
                       groupValue: viewModel.selectedEditTipi?.rawValue,
                       onChanged: (value) {
-                        belgeController.text = "";
+                        belgeController.clear();
                         // viewModel.
                         viewModel.setSelectedEditTipi(viewModel.valueList.indexOf(viewModel.valueList.where((e) => e.rawValue == value).first));
                         if ([EditTipiEnum.belgesizIslem, EditTipiEnum.paket].map((e) => e.rawValue).contains(value) && depoController.text.isNotEmpty) {

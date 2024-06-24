@@ -571,7 +571,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     suffixMore: true,
                     readOnly: true,
                     onClear: () {
-                      plasiyerController.text = "";
+                      plasiyerController.clear();
                       viewModel.changeArrPlasiyerKoduTemp(null);
                     },
                     onTap: () async {
@@ -590,7 +590,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     readOnly: true,
                     suffixMore: true,
                     onClear: () {
-                      sehirController.text = "";
+                      sehirController.clear();
                       viewModel.changeArrSehirTemp(null);
                     },
                     onTap: () async {
@@ -637,7 +637,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     suffixMore: true,
                     readOnly: true,
                     onClear: () {
-                      tipiController.text = "";
+                      tipiController.clear();
                       viewModel.changeCariTipiTemp(null);
                     },
                     onTap: () async {
@@ -867,16 +867,16 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                     onPressed: () {
                       Get.back();
                       viewModel.resetFilter();
-                      plasiyerController.text = "";
-                      sehirController.text = "";
-                      ilceController.text = "";
-                      tipiController.text = "";
-                      kod0Controller.text = "";
-                      kod1Controller.text = "";
-                      kod2Controller.text = "";
-                      kod3Controller.text = "";
-                      kod4Controller.text = "";
-                      kod5Controller.text = "";
+                      plasiyerController.clear();
+                      sehirController.clear();
+                      ilceController.clear();
+                      tipiController.clear();
+                      kod0Controller.clear();
+                      kod1Controller.clear();
+                      kod2Controller.clear();
+                      kod3Controller.clear();
+                      kod4Controller.clear();
+                      kod5Controller.clear();
                       viewModel.resetPage();
                     },
                     child: const Text("Filtreyi Temizle"),

@@ -217,7 +217,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                               _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
                               viewModel.setDovizTutari(null);
-                              _dovizTutariController.text = "";
+                              _dovizTutariController.clear();
                             }
                           },
                           suffix: IconButton(
@@ -240,7 +240,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                               _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
                               viewModel.setDovizTutari(null);
-                              _dovizTutariController.text = "";
+                              _dovizTutariController.clear();
                             }
                           },
                         ),
@@ -311,8 +311,8 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       // ignore: use_build_context_synchronously
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
@@ -351,8 +351,8 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
         }
       }
     } else {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
     }
   }
 

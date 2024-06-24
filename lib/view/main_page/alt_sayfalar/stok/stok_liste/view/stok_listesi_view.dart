@@ -472,12 +472,12 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
                               Expanded(
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    grupKoduController.text = "";
-                                    kod1Controller.text = "";
-                                    kod2Controller.text = "";
-                                    kod3Controller.text = "";
-                                    kod4Controller.text = "";
-                                    kod5Controller.text = "";
+                                    grupKoduController.clear();
+                                    kod1Controller.clear();
+                                    kod2Controller.clear();
+                                    kod3Controller.clear();
+                                    kod4Controller.clear();
+                                    kod5Controller.clear();
                                     // viewModel.setBottomSheetModel(StokBottomSheetModel());
                                     viewModel.changeBakiyeDurumu("T");
                                     viewModel.changeBakiyeDurumuTemp(0);

@@ -181,9 +181,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                           } else {
                             viewModel.setDovizTutari(null);
                             viewModel.setDovizTipi(null);
-                            dovizTipiController.text = "";
-                            dovizKuruController.text = "";
-                            dovizTutariController.text = "";
+                            dovizTipiController.clear();
+                            dovizKuruController.clear();
+                            dovizTutariController.clear();
                           }
                         }
                       },
@@ -220,7 +220,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                             dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            dovizTutariController.text = "";
+                            dovizTutariController.clear();
                           }
                         },
                         suffix: IconButton(
@@ -264,7 +264,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                             dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            dovizTutariController.text = "";
+                            dovizTutariController.clear();
                           }
                         },
                       ),
@@ -324,8 +324,8 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      dovizKuruController.text = "";
-      dovizTutariController.text = "";
+      dovizKuruController.clear();
+      dovizTutariController.clear();
       // ignore: use_build_context_synchronously
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,

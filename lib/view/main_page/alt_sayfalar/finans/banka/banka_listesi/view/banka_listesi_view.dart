@@ -134,7 +134,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                             _hesapTipiController.text = viewModel.hesapTipiList.whereIndexed((index, element) => result.contains(index)).join(", ");
                             viewModel.setHesapTipi(result.map((e) => e as int).toList().cast<int>());
                           } else {
-                            _hesapTipiController.text = "";
+                            _hesapTipiController.clear();
                             viewModel.setHesapTipi(null);
                           }
                         }

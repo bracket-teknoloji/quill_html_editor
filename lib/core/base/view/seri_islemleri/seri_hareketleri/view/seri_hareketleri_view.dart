@@ -158,7 +158,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                     return;
                   }
                   viewModel.onActionTypeChanged(index);
-                  _stokKoduController.text = "";
+                  _stokKoduController.clear();
                   viewModel.setSeriNo(null);
                   viewModel.setStokKodu(null);
                 },
@@ -187,22 +187,24 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                   viewModel.setSeriNo(value);
                 }
               },
-              onTap: !viewModel.selectedActionType.first ? null :() async {
-                final result = await Get.toNamed(
-                  "/mainPage/stokListesiOzel",
-                  arguments: StokBottomSheetModel(
-                    seriTakibiVar: "E",
-                    resimGoster: "E",
-                    menuKodu: "STOK_SREH",
-                  ),
-                );
-                if (result is StokListesiModel) {
-                  _stokKoduController.text = result.stokKodu ?? "";
-                  viewModel.stokListesiModel = result;
-                  viewModel.setStokKodu(result.stokKodu ?? "");
-                  await viewModel.getData();
-                }
-              },
+              onTap: !viewModel.selectedActionType.first
+                  ? null
+                  : () async {
+                      final result = await Get.toNamed(
+                        "/mainPage/stokListesiOzel",
+                        arguments: StokBottomSheetModel(
+                          seriTakibiVar: "E",
+                          resimGoster: "E",
+                          menuKodu: "STOK_SREH",
+                        ),
+                      );
+                      if (result is StokListesiModel) {
+                        _stokKoduController.text = result.stokKodu ?? "";
+                        viewModel.stokListesiModel = result;
+                        viewModel.setStokKodu(result.stokKodu ?? "");
+                        await viewModel.getData();
+                      }
+                    },
               suffix: IconButton(
                 onPressed: () async {
                   final result = await Get.toNamed("/qr");

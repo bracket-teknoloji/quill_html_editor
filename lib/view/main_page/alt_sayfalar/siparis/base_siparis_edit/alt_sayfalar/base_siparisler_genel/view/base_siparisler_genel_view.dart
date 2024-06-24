@@ -180,7 +180,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   onClear: () {
                     model.teslimCari = null;
                     model.teslimCariAdi = null;
-                    teslimCariController.text = "";
+                    teslimCariController.clear();
                   },
                   onTap: !yetkiController.siparisFarkliTeslimCariAktif
                       ? null

@@ -123,13 +123,13 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             return;
                           }
                           if (!viewModel.selectedHesapTipi[index]) {
-                            _hesapController.text = "";
+                            _hesapController.clear();
                             viewModel.setHesapKodu(null);
                           }
                           viewModel.setHesapTipi(index);
                           if (!viewModel.model.stokMu) {
                             viewModel.setDepoKodu(null);
-                            _depoController.text = "";
+                            _depoController.clear();
                           }
                         },
                         children: List.generate(
@@ -222,7 +222,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                                 _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                               } else {
                                 viewModel.setDovizTutari(null);
-                                _dovizTutariController.text = "";
+                                _dovizTutariController.clear();
                               }
                             },
                             suffix: IconButton(
@@ -245,7 +245,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                                 _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                               } else {
                                 viewModel.setDovizTutari(null);
-                                _dovizTutariController.text = "";
+                                _dovizTutariController.clear();
                               }
                             },
                           ),
@@ -385,8 +385,8 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       // ignore: use_build_context_synchronously
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
@@ -425,8 +425,8 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         }
       }
     } else {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
     }
   }
 }

@@ -250,7 +250,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                         suffix: IconButton(
@@ -273,7 +273,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
                             _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
-                            _dovizTutariController.text = "";
+                            _dovizTutariController.clear();
                           }
                         },
                       ),
@@ -521,8 +521,8 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Kuru",
@@ -560,8 +560,8 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
         }
       }
     } else {
-      _dovizKuruController.text = "";
-      _dovizTutariController.text = "";
+      _dovizKuruController.clear();
+      _dovizTutariController.clear();
     }
   }
 

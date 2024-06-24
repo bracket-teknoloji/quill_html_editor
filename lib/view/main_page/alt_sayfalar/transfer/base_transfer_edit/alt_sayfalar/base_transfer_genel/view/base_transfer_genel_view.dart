@@ -290,7 +290,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         viewModel.setCariKodu(result.cariKodu);
                         viewModel.model.vadeGunu = result.vadeGunu;
                         viewModel.model.efaturaTipi = result.efaturaTipi;
-                        // _belgeNoController.text = "";
+                        // _belgeNoController.clear();
                         // await getBelgeNo();
                       }
                     },

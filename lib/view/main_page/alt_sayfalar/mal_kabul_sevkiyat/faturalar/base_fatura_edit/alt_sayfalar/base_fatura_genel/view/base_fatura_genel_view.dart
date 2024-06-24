@@ -254,7 +254,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.model.vadeGunu = result.vadeGunu;
                       viewModel.model.efaturaTipi = result.efaturaTipi;
                       _plasiyerController.text = result.plasiyerAciklama;
-                      _belgeNoController.text = "";
+                      _belgeNoController.clear();
                       await getBelgeNo();
                     }
                   },
