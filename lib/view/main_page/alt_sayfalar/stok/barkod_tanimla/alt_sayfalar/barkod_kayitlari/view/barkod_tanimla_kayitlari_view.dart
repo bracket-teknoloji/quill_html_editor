@@ -8,6 +8,7 @@ import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/view_model/barkod_tanimla_kayitlari_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -27,7 +28,11 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
   void initState() {
     viewModel.setStokKodu(widget.model?.stokKodu);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getData();
+      if (widget.model != null) {
+        await viewModel.getData();
+      } else {
+        viewModel.setBarkodTanimlaKayitlari([]);
+      }
     });
     super.initState();
   }
@@ -48,7 +53,12 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: yetkiController.stokBarkodEkle,
           onPressed: () async {
-            if (widget.model != null) Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
+            if (widget.model != null) {
+              final result = await Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
+              if (result == true) {
+                await viewModel.getData();
+              }
+            }
           },
         ),
         body: Observer(
@@ -80,11 +90,17 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
                   );
                 },
                 title: Text("Barkod: ${item.barkod}"),
-                subtitle: CustomLayoutBuilder(
-                  splitCount: 2,
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Birim: ${item.birimAdi}"),
-                    Text("Tipi:${item.barkodTipi}-${item.barkodTipiAdi}"),
+                    CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Birim: ${item.birimAdi}"),
+                        Text("Tipi: ${item.barkodTipi}-${item.barkodTipiAdi}"),
+                      ],
+                    ),
+                    Text("Açıklama: ${item.aciklama}").yetkiVarMi(item.aciklama != null),
                   ],
                 ),
               ),
