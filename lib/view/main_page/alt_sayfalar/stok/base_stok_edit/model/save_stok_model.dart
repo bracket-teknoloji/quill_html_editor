@@ -62,6 +62,7 @@ class SaveStokModel with NetworkManagerMixin {
   bool? seriMiktarKadar;
   int? subeKodu;
   String? ureticiKodu;
+  bool? barkodTanimlamaIslemi;
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
   @JsonKey(name: "StokBarkodModel")
@@ -74,6 +75,15 @@ class SaveStokModel with NetworkManagerMixin {
     ..islemKodu = 6
     ..requestVersion = 1
     ..kodu = model.stokKodu;
+
+  factory SaveStokModel.forBarkodTanimla(StokListesiModel model) => SaveStokModel()
+    ..barkod1 = model.barkod1
+    ..barkod2 = model.barkod2
+    ..barkod3 = model.barkod3
+    ..requestVersion = 1
+    ..kodu = model.stokKodu
+    ..islemKodu = 3
+    ..barkodTanimlamaIslemi = true;
 
   factory SaveStokModel.fromStokListesiModel(StokListesiModel model) => SaveStokModel()
     ..adi = model.stokAdi
