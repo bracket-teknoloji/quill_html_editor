@@ -1109,6 +1109,8 @@ class ProfilYetkiModel {
   bool? stokBarkodTanimlama;
   @JsonKey(name: "stok_BarkodTanimlama_GorunecekAlanlar")
   List<String>? stokBarkodTanimlamaGorunecekAlanlar;
+  @JsonKey(name: "stok_BarkodKayitlari_GecerliBarkodTipleri")
+  List<String>? stokBarkodKayitlariGecerliBarkodTipleri;
   @JsonKey(name: "stok_BarkodKayitlari")
   bool? stokBarkodKayitlari;
   @JsonKey(name: "stok_BarkodKayitlari_Ekle")

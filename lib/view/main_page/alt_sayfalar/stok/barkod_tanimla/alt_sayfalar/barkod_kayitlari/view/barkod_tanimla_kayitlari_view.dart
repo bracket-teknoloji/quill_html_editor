@@ -23,7 +23,7 @@ final class BarkodTanimlaKayitlariView extends StatefulWidget {
 final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayitlariView> {
   final BarkodTanimlaKayitlariViewModel viewModel = BarkodTanimlaKayitlariViewModel();
 
-    @override
+  @override
   void initState() {
     viewModel.setStokKodu(widget.model?.stokKodu);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -46,7 +46,7 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
   @override
   Widget build(BuildContext context) => Scaffold(
         floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: true,
+          isScrolledDown: yetkiController.stokBarkodEkle,
           onPressed: () async {
             if (widget.model != null) Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
           },

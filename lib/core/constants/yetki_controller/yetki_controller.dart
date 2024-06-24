@@ -1,5 +1,6 @@
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
@@ -132,7 +133,6 @@ final class YetkiController {
   bool get stokKartiYeniKayit => _isTrue(_yetkiModel?.stokStokKartiKaydet);
   bool get stokKartiDuzenleme => _isTrue(_yetkiModel?.stokStokKartiDuzelt);
   bool get stokKartiSilme => _isTrue(_yetkiModel?.stokStokKartiSil);
-  bool get stokAlisFiyatiGizle => _isTrue(_yetkiModel?.stokStokKartiAlisFiyatiGizle);
   bool get stokSatisFiyatiGizle => _isTrue(_yetkiModel?.stokStokKartiSatisFiyatiGizle);
 
   //* Stok Hareketleri
@@ -164,6 +164,9 @@ final class YetkiController {
   bool get stokPaketlemeCoklu => _isTrue(_yetkiModel?.stokPaketlemeCoklu);
   bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
   bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
+
+  List<BarkodTipiEnum> get stokBarkodGecerliBarkodTipleri =>
+      BarkodTipiEnum.values.where((element) => _yetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any((element2) => element2 == element.barkodTipi) ?? adminMi).toList();
 
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
