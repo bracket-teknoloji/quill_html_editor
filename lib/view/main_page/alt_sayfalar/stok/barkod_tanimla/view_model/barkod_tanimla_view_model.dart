@@ -1,6 +1,8 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/save_stok_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "barkod_tanimla_view_model.g.dart";
@@ -22,5 +24,17 @@ abstract class _BarkodTanimlaViewModelBase with Store, MobxNetworkMixin {
     if (result != null) {
       setStokModel(result);
     }
+  }
+
+  @action
+  Future<bool> savesStok() async {
+    if (stokModel == null) return false;
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveStok,
+      bodyModel: StokListesiModel(),
+      showLoading: true,
+      data: SaveStokModel.forBarkodTanimla(stokModel!).toJson(),
+    );
+    return result.isSuccess;
   }
 }

@@ -33,6 +33,14 @@ mixin _$BarkodTanimlaViewModel on _BarkodTanimlaViewModelBase, Store {
     return _$getStokAsyncAction.run(() => super.getStok(stokKodu));
   }
 
+  late final _$savesStokAsyncAction =
+      AsyncAction('_BarkodTanimlaViewModelBase.savesStok', context: context);
+
+  @override
+  Future<bool> savesStok() {
+    return _$savesStokAsyncAction.run(() => super.savesStok());
+  }
+
   late final _$_BarkodTanimlaViewModelBaseActionController =
       ActionController(name: '_BarkodTanimlaViewModelBase', context: context);
 

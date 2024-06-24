@@ -6,7 +6,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 final class BarkodTanimlaStokKartiView extends StatefulWidget {
   final StokListesiModel? model;
-  const BarkodTanimlaStokKartiView({super.key, this.model});
+  final Function(StokListesiModel?) onChanged;
+  const BarkodTanimlaStokKartiView({super.key, this.model, required this.onChanged});
 
   @override
   State<BarkodTanimlaStokKartiView> createState() => BarkodTanimlaStokKartiViewState();
@@ -23,7 +24,7 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
   void initState() {
     barkod1Controller = TextEditingController(text: model?.barkod1);
     barkod2Controller = TextEditingController(text: model?.barkod2);
-    barkod3Controller = TextEditingController(text: model?.barkod2);
+    barkod3Controller = TextEditingController(text: model?.barkod3);
     super.initState();
   }
 
@@ -53,16 +54,19 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
             labelText: "Barkod 1",
             maxLength: 35,
             controller: barkod1Controller,
+            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B1")),
           CustomTextField(
             labelText: "Barkod 2",
             maxLength: 35,
             controller: barkod2Controller,
+            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B2")),
           CustomTextField(
             labelText: "Barkod 3",
             maxLength: 35,
             controller: barkod3Controller,
+            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B3")),
         ],
       );

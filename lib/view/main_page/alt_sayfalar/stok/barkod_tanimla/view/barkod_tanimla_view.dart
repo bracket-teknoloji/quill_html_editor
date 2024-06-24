@@ -46,7 +46,10 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
             title: "Barkod Tanımla",
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)),
+            IconButton(
+              onPressed: saveStok,
+              icon: const Icon(Icons.save_outlined),
+            ),
           ],
           bottom: TabBar(
             controller: tabController,
@@ -112,7 +115,10 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
             physics: const NeverScrollableScrollPhysics(),
             children: [
               Observer(
-                builder: (_) => BarkodTanimlaStokKartiView(model: viewModel.stokModel),
+                builder: (_) => BarkodTanimlaStokKartiView(
+                  model: viewModel.stokModel,
+                  onChanged: viewModel.setStokModel,
+                ),
               ),
               Observer(
                 builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
@@ -122,11 +128,24 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
         ).paddingAll(UIHelper.lowSize),
       );
 
+  Future<void> saveStok() async {
+    if (viewModel.stokModel == null) {
+      dialogManager.showAlertDialog("Stok Seçilmedi. Lütfen Stok Seçiniz.");
+      return;
+    }
+
+    final result = await viewModel.savesStok();
+    if (result) {
+      viewModel.setStokModel(StokListesiModel(stokKodu: searchController.text, stokAdi: stokController.text));
+      dialogManager.showSuccesDialog("Stok Başarıyla Kaydedildi.");
+      tabController.animateTo(1);
+    }
+  }
+
   Future<void> updateStok(String stokKodu) async {
     searchController.text = stokKodu;
     await viewModel.getStok(stokKodu);
-    if (viewModel.stokModel != null) {
-      stokController.text = viewModel.stokModel!.stokAdi ?? viewModel.stokModel!.stokKodu ?? "";
-    }
+    if (viewModel.stokModel == null) return;
+    stokController.text = viewModel.stokModel!.stokAdi ?? viewModel.stokModel!.stokKodu ?? "";
   }
 }
