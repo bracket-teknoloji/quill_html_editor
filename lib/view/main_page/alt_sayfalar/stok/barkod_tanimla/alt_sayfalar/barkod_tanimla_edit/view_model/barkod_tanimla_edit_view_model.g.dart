@@ -60,7 +60,7 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
   }
 
   @override
-  void setBarkodTipi(String? value) {
+  void setBarkodTipi(BarkodTipiEnum? value) {
     final _$actionInfo = _$_BarkodTanimlaEditViewModelBaseActionController
         .startAction(name: '_BarkodTanimlaEditViewModelBase.setBarkodTipi');
     try {

@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_tanimla_edit/view_model/barkod_tanimla_edit_view_model.dart";
@@ -57,6 +60,29 @@ final class _BarkodTanimlaEditViewState extends BaseState<BarkodTanimlaEditView>
                 labelText: "Barkod Tipi",
                 controller: barkodTipiController,
                 isMust: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.barkodTipi ?? "")),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                    context,
+                    title: "Barkod Tipi",
+                    groupValue: viewModel.model.barkodTipi,
+                    children: yetkiController.stokBarkodGecerliBarkodTipleri
+                        .map(
+                          (e) => BottomSheetModel(
+                            title: e.barkodAdi,
+                            value: e,
+                            description: e.barkodTipi,
+                            groupValue: e.barkodTipi,
+                          ),
+                        )
+                        .toList(),
+                  );
+                  if (result is BarkodTipiEnum) {
+                    viewModel.setBarkodTipi(result);
+                    barkodTipiController.text = result.barkodAdi;
+                  }
+                },
                 readOnly: true,
               ),
               CustomTextField(
@@ -66,8 +92,17 @@ final class _BarkodTanimlaEditViewState extends BaseState<BarkodTanimlaEditView>
                 readOnly: true,
                 suffix: Row(
                   children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.contact_support_outlined)),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.contact_support_outlined)),
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+                    IconButton(
+                      onPressed: () async {
+                        final result = await Get.toNamed("qr");
+                        if (result != null) {
+                          barkodController.text = result;
+                          viewModel.setBarkod(result);
+                        }
+                      },
+                      icon: const Icon(Icons.qr_code_scanner_outlined),
+                    ),
                   ],
                 ),
               ),

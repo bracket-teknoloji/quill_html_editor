@@ -2,6 +2,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/save_stok_model.dart";
@@ -21,7 +22,7 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
   void setBarkod(String? value) => model = model.copyWith(barkod: value);
 
   @action
-  void setBarkodTipi(String? value) => model = model.copyWith(barkodTipi: value);
+  void setBarkodTipi(BarkodTipiEnum? value) => model = model.copyWith(barkodTipi: value?.barkodTipi, barkodTipiAdi: value?.barkodAdi);
 
   @action
   void setBirim(int? value) => model = model.copyWith(birim: value);
