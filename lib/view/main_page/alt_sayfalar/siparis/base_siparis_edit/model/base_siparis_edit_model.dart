@@ -853,15 +853,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   String get faturaTipi {
-    if (eFaturaSerisindenMi) {
-      return "EFT";
-    } else if (eArsivSerisindenMi) {
-      return "EAR";
-    } else if (eIrsaliyeSerisindenMi) {
-      return "EIR";
-    } else {
-      return "Sipariş";
-    }
+    if (getEditTipiEnum?.satisMi == true ? eFaturaSerisindenMi : eFaturaMi) return "EFT";
+    if (getEditTipiEnum?.satisMi == true ? eArsivSerisindenMi : eArsivMi) return "EAR";
+    if (getEditTipiEnum?.satisMi == true ? eIrsaliyeSerisindenMi : eIrsaliyeMi) return "EIR";
+    return "Sipariş";
   }
 
   bool get teklifSipariseDonerMi => !(kapaliMi || onaydaMi || teklifRevizeEdilmisMi);
