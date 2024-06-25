@@ -53,6 +53,7 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/tra
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view/uretim_sonu_kaydi_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/view/uretim_sonu_raporu_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -469,6 +470,7 @@ class PickerApp extends StatelessWidget {
 
               //* * Üretim Sonu Kaydı
               GetPage(name: "/uretimSonuKaydi", page: UretimSonuKaydiListesiView.new),
+              GetPage(name: "/uretimSonuRaporu", page: () => UretimSonuRaporuView(model: Get.arguments)),
 
               //* * İş Emirleri
 
