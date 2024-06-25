@@ -589,6 +589,11 @@ final class YetkiController {
 
   //! Üretim
 
+  //* Üretim Sonu Kaydı
+  bool get uretimSonuKaydiEkle => _isTrue(_yetkiModel?.uretimUskKaydet);
+  bool get uretimSonuKaydiDuzenle => _isTrue(_yetkiModel?.uretimUskDuzelt);
+  bool get uretimSonuKaydiSil => _isTrue(_yetkiModel?.uretimUskSil);
+
   //* İş Emirleri
   bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
   bool get uretimIsEmriDuzenle => _isTrue(_yetkiModel?.uretimIsEmriDuzelt);
