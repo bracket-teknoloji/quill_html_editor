@@ -452,6 +452,7 @@ class MenuItemConstants {
       icon: "factory_2",
       color: ColorPalette.outerSpace,
       altMenuler: <GridItemModel>[
+        GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi"),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
       ],
     ),
