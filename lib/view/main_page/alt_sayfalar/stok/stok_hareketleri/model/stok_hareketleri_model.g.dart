@@ -34,10 +34,12 @@ StokHareketleriModel _$StokHareketleriModelFromJson(
       ..dovizFiyati = (json['DOVIZ_FIYATI'] as num?)?.toDouble()
       ..seriAktif = json['SERI_AKTIF'] as String?
       ..ekalan1 = json['EKALAN1'] as String?
+      ..ekalan2 = json['EKALAN2'] as String?
       ..projeKodu = json['PROJE_KODU'] as String?
       ..plasiyerKodu = json['PLASIYER_KODU'] as String?
       ..plasiyerAciklama = json['PLASIYER_ACIKLAMA'] as String?
-      ..cariAdi = json['CARI_ADI'] as String?;
+      ..cariAdi = json['CARI_ADI'] as String?
+      ..seriDurumAdi = json['SERI_DURUM_ADI'] as String?;
 
 Map<String, dynamic> _$StokHareketleriModelToJson(
     StokHareketleriModel instance) {
@@ -72,9 +74,11 @@ Map<String, dynamic> _$StokHareketleriModelToJson(
   writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
   writeNotNull('SERI_AKTIF', instance.seriAktif);
   writeNotNull('EKALAN1', instance.ekalan1);
+  writeNotNull('EKALAN2', instance.ekalan2);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('SERI_DURUM_ADI', instance.seriDurumAdi);
   return val;
 }

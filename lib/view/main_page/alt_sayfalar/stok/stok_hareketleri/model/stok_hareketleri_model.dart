@@ -29,10 +29,12 @@ class StokHareketleriModel with NetworkManagerMixin {
   double? dovizFiyati;
   String? seriAktif;
   String? ekalan1;
+  String? ekalan2;
   String? projeKodu;
   String? plasiyerKodu;
   String? plasiyerAciklama;
   String? cariAdi;
+  String? seriDurumAdi;
   @override
   StokHareketleriModel fromJson(Map<String, dynamic> json) => _$StokHareketleriModelFromJson(json);
 
