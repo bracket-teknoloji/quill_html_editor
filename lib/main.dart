@@ -52,6 +52,7 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/v
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view/uretim_sonu_kaydi_listesi_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -465,6 +466,9 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
 
               //* Üretim
+
+              //* * Üretim Sonu Kaydı
+              GetPage(name: "/uretimSonuKaydi", page: UretimSonuKaydiListesiView.new),
 
               //* * İş Emirleri
 
