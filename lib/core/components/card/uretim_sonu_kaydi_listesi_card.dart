@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -20,6 +22,25 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
+          onTap: () async {
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: model.belgeNo ?? "",
+              children: [
+                BottomSheetModel(title: loc.generalStrings.view, iconWidget: Icons.preview_outlined),
+                BottomSheetModel(
+                  title: "Üretim Sonu Raporu",
+                  iconWidget: Icons.list_alt_outlined,
+                  onTap: () {
+                    Get.back();
+                    Get.toNamed("mainPage/uretimSonuRaporu", arguments: model);
+                  },
+                ),
+                BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
+                BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),
+              ],
+            );
+          },
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
