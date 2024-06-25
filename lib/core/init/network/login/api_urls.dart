@@ -132,6 +132,7 @@ class   ApiUrls {
 
   //* Üretim
   static const String getIsEmirleri = "Uretim/GetIsEmirleri";
+  static const String getUSKListesi = "Uretim/GetUSKListesi";
   static const String saveIsEmri = "Uretim/SaveIsEmri";
 
   //* Sayım
