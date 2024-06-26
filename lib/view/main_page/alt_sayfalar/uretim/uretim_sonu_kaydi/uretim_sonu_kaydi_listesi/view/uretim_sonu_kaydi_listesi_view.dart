@@ -1,12 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/card/uretim_sonu_kaydi_listesi_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view_model/uretim_sonu_kaydi_listesi_view_model.dart";
 
 final class UretimSonuKaydiListesiView extends StatefulWidget {
@@ -72,7 +76,12 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
       );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(isScrolledDown: viewModel.isScrollDown && yetkiController.uretimSonuKaydiEkle),
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.isScrollDown && yetkiController.uretimSonuKaydiEkle,
+          onPressed: () async {
+            Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<UretimSonuKaydiListesiModel>(baseEditEnum: BaseEditEnum.ekle));
+          },
+        ),
       );
 
   Observer body() => Observer(
@@ -81,7 +90,16 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
-          itemBuilder: (item) => UretimSonuKaydiListesiCard(model: item),
+          itemBuilder: (item) => UretimSonuKaydiListesiCard(
+            model: item,
+            onChanged: () async {
+              final result = await viewModel.deleteItem(item);
+              if (result.isSuccess) {
+                dialogManager.showSuccessSnackBar(result.message ?? "${item.belgeNo} numaralı belge başarıyla silindi.");
+                await viewModel.resetList();
+              }
+            },
+          ),
         ),
       );
 }

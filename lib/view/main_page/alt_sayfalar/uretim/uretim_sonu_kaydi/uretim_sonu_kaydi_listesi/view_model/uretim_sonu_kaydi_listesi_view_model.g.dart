@@ -87,6 +87,16 @@ mixin _$UretimSonuKaydiListesiViewModel
     return _$resetListAsyncAction.run(() => super.resetList());
   }
 
+  late final _$deleteItemAsyncAction = AsyncAction(
+      '_UretimSonuKaydiListesiViewModelBase.deleteItem',
+      context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(
+      UretimSonuKaydiListesiModel item) {
+    return _$deleteItemAsyncAction.run(() => super.deleteItem(item));
+  }
+
   late final _$getDataAsyncAction = AsyncAction(
       '_UretimSonuKaydiListesiViewModelBase.getData',
       context: context);
