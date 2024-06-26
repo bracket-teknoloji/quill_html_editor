@@ -1,22 +1,27 @@
 import "package:flutter/material.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
-class IsEmriDetayView extends StatefulWidget {
-  const IsEmriDetayView({super.key});
+class IsEmriEditView extends StatefulWidget {
+  final BaseEditModel<IsEmirleriModel> model;
+  const IsEmriEditView({super.key, required this.model});
 
   @override
-  State<IsEmriDetayView> createState() => _IsEmriDetayViewState();
+  State<IsEmriEditView> createState() => _IsEmriEditViewState();
 }
 
-class _IsEmriDetayViewState extends BaseState<IsEmriDetayView> {
+class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const AppBarTitle(
+          title: AppBarTitle(
             title: "İş Emri Detay",
+            subtitle: widget.model.baseEditEnum.getName,
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)),
