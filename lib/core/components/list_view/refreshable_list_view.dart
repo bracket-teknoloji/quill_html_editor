@@ -45,7 +45,7 @@ class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget
   /// Eğer ihtiyaç olunan veriler tek bir istek ile gelmiyorsa bunu kullanınız.
   /// Sayfalama özelliklerini kullanacağınız durumlarda işinize yarayacaktır.
   ///* [scrollController] ile sayfa hareketlerini takip edebilirsiniz.
-  ///* [dahaVarMi] ile ekranda [CircularProgressIndicator] görünmemesini sağlayabilirsiniz.
+  ///* [dahaVarMi] ile ekranda [CircularProgressIndicator] görünüp görünmemesini sağlayabilirsiniz.
   const RefreshableListView.pageable({
     super.key,
     required this.scrollController,
