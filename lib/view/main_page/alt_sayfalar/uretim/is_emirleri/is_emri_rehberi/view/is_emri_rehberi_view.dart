@@ -2,13 +2,14 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -68,7 +69,7 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   AppBar appBar() => AppBar(
         title: Observer(
           builder: (_) {
-            if (viewModel.searchBar) {
+            if (viewModel.isSearchBarOpen) {
               return CustomAppBarTextField(
                 controller: _appBarTextController,
                 onFieldSubmitted: (value) async {
@@ -79,20 +80,20 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
             }
             return AppBarTitle(
               title: "İş Emri Rehberi",
-              subtitle: (viewModel.isEmriList?.length ?? 0).toStringIfNotNull,
+              subtitle: (viewModel.observableList?.length ?? 0).toStringIfNotNull,
             );
           },
         ),
         actions: [
-          IconButton(onPressed: () => viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+          IconButton(onPressed: () => viewModel.changeSearchBarStatus(), icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined))),
           IconButton(
             onPressed: () async {
               final result = await Get.toNamed("/qr");
               if (result != null) {
                 viewModel.requestModel.searchText = result;
                 _appBarTextController.text = result;
-                if (!viewModel.searchBar) {
-                  viewModel.changeSearchBar();
+                if (!viewModel.isSearchBarOpen) {
+                  viewModel.changeSearchBarStatus();
                 }
                 await viewModel.resetPage();
               }
@@ -105,9 +106,9 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
       );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true && yetkiController.uretimIsEmriEkle,
+        isScrolledDown: yetkiController.uretimIsEmriEkle,
         onPressed: () async {
-          Get.toNamed("/mainPage/isEmriDetay");
+          Get.toNamed("/mainPage/isEmriEdit", arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.ekle));
         },
       );
 
@@ -116,52 +117,40 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
           await viewModel.resetPage();
         },
         child: Observer(
-          builder: (_) {
-            if (viewModel.isEmriList.ext.isNullOrEmpty) {
-              if (viewModel.isEmriList != null) {
-                return const Center(child: Text("İş Emri Kaydı Bulunamadı."));
-              } else {
-                return const ListViewShimmer();
-              }
-            }
-            return ListView.builder(
-              controller: _scrollController,
-              itemCount: viewModel.isEmriList?.length ?? 0,
-              itemBuilder: (context, index) {
-                final IsEmirleriModel item = viewModel.isEmriList![index];
-                return Card(
-                  child: ListTile(
-                    onTap: () {
-                      if (widget.isGetData ?? false) {
-                        Get.back(result: item);
-                      }
-                    },
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(item.isemriNo ?? ""),
-                        Text(item.tarih.toDateString),
-                      ],
-                    ),
-                    subtitle: CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-                        Text("YapKod: ${item.yapkod ?? ""}"),
-                        Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.stokOlcuBirimi ?? ""}"),
-                        Text("Üretilen: ${item.tamamlanan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text("Proje Kodu: ${item.projeKodu ?? ""}"),
-                        Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
-                        Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}").yetkiVarMi(item.girisDepo != null),
-                        Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}").yetkiVarMi(item.cikisDepo != null),
-                      ].whereType<Text>().toList(),
-                    ),
-                  ),
-                );
-              },
-            );
-          },
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.resetPage,
+            items: viewModel.observableList,
+            itemBuilder: (item) => Card(
+              child: ListTile(
+                onTap: () {
+                  if (widget.isGetData ?? false) {
+                    Get.back(result: item);
+                  }
+                },
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(item.isemriNo ?? ""),
+                    Text(item.tarih.toDateString),
+                  ],
+                ),
+                subtitle: CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [
+                    Text("Stok Kodu: ${item.stokKodu ?? ""}"),
+                    Text("YapKod: ${item.yapkod ?? ""}"),
+                    Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.stokOlcuBirimi ?? ""}"),
+                    Text("Üretilen: ${item.tamamlanan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    Text("Proje Kodu: ${item.projeKodu ?? ""}"),
+                    Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
+                    Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}").yetkiVarMi(item.girisDepo != null),
+                    Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}").yetkiVarMi(item.cikisDepo != null),
+                  ].whereType<Text>().toList(),
+                ),
+              ),
+            ),
+          ),
         ),
       );
 }

@@ -25,19 +25,35 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_IsEmriRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$searchTextAtom =
+      Atom(name: '_IsEmriRehberiViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -57,19 +73,19 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$isEmriListAtom =
-      Atom(name: '_IsEmriRehberiViewModelBase.isEmriList', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_IsEmriRehberiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<IsEmirleriModel>? get isEmriList {
-    _$isEmriListAtom.reportRead();
-    return super.isEmriList;
+  ObservableList<IsEmirleriModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set isEmriList(ObservableList<IsEmirleriModel>? value) {
-    _$isEmriListAtom.reportWrite(value, super.isEmriList, () {
-      super.isEmriList = value;
+  set observableList(ObservableList<IsEmirleriModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -89,13 +105,14 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
-  late final _$changeSearchBarAsyncAction = AsyncAction(
-      '_IsEmriRehberiViewModelBase.changeSearchBar',
+  late final _$changeSearchBarStatusAsyncAction = AsyncAction(
+      '_IsEmriRehberiViewModelBase.changeSearchBarStatus',
       context: context);
 
   @override
-  Future<void> changeSearchBar() {
-    return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
+  Future<void> changeSearchBarStatus() {
+    return _$changeSearchBarStatusAsyncAction
+        .run(() => super.changeSearchBarStatus());
   }
 
   late final _$resetPageAsyncAction =
@@ -151,11 +168,11 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   @override
-  void setIsEmirleriList(List<IsEmirleriModel>? list) {
+  void setObservableList(List<IsEmirleriModel>? list) {
     final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
-        .startAction(name: '_IsEmriRehberiViewModelBase.setIsEmirleriList');
+        .startAction(name: '_IsEmriRehberiViewModelBase.setObservableList');
     try {
-      return super.setIsEmirleriList(list);
+      return super.setObservableList(list);
     } finally {
       _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -198,9 +215,10 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   String toString() {
     return '''
 isScrollDown: ${isScrollDown},
-searchBar: ${searchBar},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
 dahaVarMi: ${dahaVarMi},
-isEmriList: ${isEmriList},
+observableList: ${observableList},
 requestModel: ${requestModel}
     ''';
   }

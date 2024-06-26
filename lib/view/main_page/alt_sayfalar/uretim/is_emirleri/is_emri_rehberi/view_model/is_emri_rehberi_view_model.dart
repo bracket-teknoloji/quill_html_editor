@@ -1,6 +1,9 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
@@ -9,18 +12,24 @@ part "is_emri_rehberi_view_model.g.dart";
 
 class IsEmriRehberiViewModel = _IsEmriRehberiViewModelBase with _$IsEmriRehberiViewModel;
 
-abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
+abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmirleriModel>, SearchableMixin, ScrollControllableMixin {
+  @override
   @observable
   bool isScrollDown = true;
 
+  @override
   @observable
-  bool searchBar = false;
+  bool isSearchBarOpen = false;
+  @override
+  @observable
+  String? searchText;
 
   @observable
   bool dahaVarMi = true;
 
+  @override
   @observable
-  ObservableList<IsEmirleriModel>? isEmriList;
+  ObservableList<IsEmirleriModel>? observableList;
 
   @observable
   SiparislerRequestModel requestModel = SiparislerRequestModel(
@@ -31,11 +40,12 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
     belgeNo: null,
   );
 
+  @override
   @action
-  Future<void> changeSearchBar() async {
-    searchBar = !searchBar;
+  Future<void> changeSearchBarStatus() async {
+    isSearchBarOpen = !isSearchBarOpen;
 
-    if (!searchBar) {
+    if (!isSearchBarOpen) {
       setSearchText(null);
       await resetPage();
     }
@@ -44,17 +54,19 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setDahaVarMi(bool value) => dahaVarMi = value;
 
+  @override
   @action
   void setSearchText(String? value) => requestModel.searchText = value;
 
   @action
   void setIsScrollDown(bool value) => isScrollDown = value;
 
+  @override
   @action
-  void setIsEmirleriList(List<IsEmirleriModel>? list) => isEmriList = list?.asObservable();
+  void setObservableList(List<IsEmirleriModel>? list) => observableList = list?.asObservable();
 
   @action
-  void addIsEmirleriList(List<IsEmirleriModel>? list) => isEmriList = isEmriList?..addAll(list ?? []);
+  void addIsEmirleriList(List<IsEmirleriModel>? list) => observableList = observableList?..addAll(list ?? []);
 
   @action
   void resetSayfa() => requestModel = requestModel.copyWith(sayfa: 1);
@@ -63,24 +75,25 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> resetPage() async {
-    setIsEmirleriList(null);
+    setObservableList(null);
     setDahaVarMi(true);
     resetSayfa();
     await getData();
   }
 
+  @override
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getIsEmirleri, bodyModel: IsEmirleriModel(), queryParameters: requestModel.toJson());
     if (result.data is List) {
-      setIsEmirleriList(result.data.map((e) => e as IsEmirleriModel).toList().cast<IsEmirleriModel>());
+      setObservableList(result.data.map((e) => e as IsEmirleriModel).toList().cast<IsEmirleriModel>());
     }
     if (result.data is List) {
       final List<IsEmirleriModel> list = result.data.cast<IsEmirleriModel>();
       if ((requestModel.sayfa ?? 0) < 2) {
         // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-        if (isEmriList.ext.isNullOrEmpty) {
-          setIsEmirleriList(list);
+        if (observableList.ext.isNullOrEmpty) {
+          setObservableList(list);
         } else {
           addIsEmirleriList(list);
         }
