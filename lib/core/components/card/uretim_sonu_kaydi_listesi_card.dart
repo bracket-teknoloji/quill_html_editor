@@ -11,7 +11,8 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uret
 
 final class UretimSonuKaydiListesiCard extends StatefulWidget {
   final UretimSonuKaydiListesiModel model;
-  const UretimSonuKaydiListesiCard({super.key, required this.model});
+  final Future<void> Function() onChanged;
+  const UretimSonuKaydiListesiCard({super.key, required this.model, required this.onChanged});
 
   @override
   State<UretimSonuKaydiListesiCard> createState() => _UretimSonuKaydiListesiCardState();
@@ -37,7 +38,14 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                   },
                 ),
                 BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
-                BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),
+                BottomSheetModel(
+                  title: loc.generalStrings.delete,
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    dialogManager.showAreYouSureDialog(widget.onChanged);
+                  },
+                ),
               ],
             );
           },
