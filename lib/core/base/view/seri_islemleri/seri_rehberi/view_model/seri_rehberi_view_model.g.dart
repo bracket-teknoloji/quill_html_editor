@@ -17,19 +17,19 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
               name: '_SeriRehberiViewModelBase.filteredList'))
       .value;
 
-  late final _$seriListAtom =
-      Atom(name: '_SeriRehberiViewModelBase.seriList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_SeriRehberiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<SeriList>? get seriList {
-    _$seriListAtom.reportRead();
-    return super.seriList;
+  ObservableList<SeriList>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set seriList(ObservableList<SeriList>? value) {
-    _$seriListAtom.reportWrite(value, super.seriList, () {
-      super.seriList = value;
+  set observableList(ObservableList<SeriList>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -53,31 +53,31 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
       Atom(name: '_SeriRehberiViewModelBase.searchText', context: context);
 
   @override
-  String get searchText {
+  String? get searchText {
     _$searchTextAtom.reportRead();
     return super.searchText;
   }
 
   @override
-  set searchText(String value) {
+  set searchText(String? value) {
     _$searchTextAtom.reportWrite(value, super.searchText, () {
       super.searchText = value;
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_SeriRehberiViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_SeriRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
@@ -93,18 +93,18 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
       ActionController(name: '_SeriRehberiViewModelBase', context: context);
 
   @override
-  void setSeriList(List<SeriList>? list) {
+  void setObservableList(List<SeriList>? list) {
     final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
-        .startAction(name: '_SeriRehberiViewModelBase.setSeriList');
+        .startAction(name: '_SeriRehberiViewModelBase.setObservableList');
     try {
-      return super.setSeriList(list);
+      return super.setObservableList(list);
     } finally {
       _$_SeriRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSearchText(String value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
         .startAction(name: '_SeriRehberiViewModelBase.setSearchText');
     try {
@@ -115,11 +115,11 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
   }
 
   @override
-  void changeSearchBar() {
+  void changeSearchBarStatus() {
     final _$actionInfo = _$_SeriRehberiViewModelBaseActionController
-        .startAction(name: '_SeriRehberiViewModelBase.changeSearchBar');
+        .startAction(name: '_SeriRehberiViewModelBase.changeSearchBarStatus');
     try {
-      return super.changeSearchBar();
+      return super.changeSearchBarStatus();
     } finally {
       _$_SeriRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -128,10 +128,10 @@ mixin _$SeriRehberiViewModel on _SeriRehberiViewModelBase, Store {
   @override
   String toString() {
     return '''
-seriList: ${seriList},
+observableList: ${observableList},
 requestModel: ${requestModel},
 searchText: ${searchText},
-searchBar: ${searchBar},
+isSearchBarOpen: ${isSearchBarOpen},
 filteredList: ${filteredList}
     ''';
   }
