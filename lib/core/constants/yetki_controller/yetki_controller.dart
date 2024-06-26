@@ -275,7 +275,7 @@ final class YetkiController {
       : _isTrue(_isTrue(_yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index) ?? false)) && (_paramModel?.satisEkAciklamalarAktif ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
-  bool siparisMSSatirAciklamaAlanlari(int? index) => index == null
+  bool siparisSatirAciklamaAlanlari(int? index) => index == null
       ? _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
       : _isTrue((_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false) && (_paramModel?.satisSatirdaAciklamalarAktif ?? false));
 

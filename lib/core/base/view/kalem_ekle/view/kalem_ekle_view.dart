@@ -809,27 +809,27 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 // TODO Açıklama parametrelerini düzenle
                 const Text("Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
-                    .yetkiVarMi(yetkiController.siparisMSSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
+                    .yetkiVarMi(yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(1) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(2), controllerText: widget.kalemModel?.aciklama2, onChanged: (value) => viewModel.kalemModel.aciklama2 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(2) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(2) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(3), controllerText: widget.kalemModel?.aciklama3, onChanged: (value) => viewModel.kalemModel.aciklama3 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(3) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(3) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(4), controllerText: widget.kalemModel?.aciklama4, onChanged: (value) => viewModel.kalemModel.aciklama4 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(4) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(4) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(5), controllerText: widget.kalemModel?.aciklama5, onChanged: (value) => viewModel.kalemModel.aciklama5 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(5) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(5) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(6), controllerText: widget.kalemModel?.aciklama6, onChanged: (value) => viewModel.kalemModel.aciklama6 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(6) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(6) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(7), controllerText: widget.kalemModel?.aciklama7, onChanged: (value) => viewModel.kalemModel.aciklama7 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(7) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(7) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(8), controllerText: widget.kalemModel?.aciklama8, onChanged: (value) => viewModel.kalemModel.aciklama8 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(8) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(8) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(9), controllerText: widget.kalemModel?.aciklama9, onChanged: (value) => viewModel.kalemModel.aciklama9 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(9) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(9) && !transferMi),
                 CustomTextField(labelText: getAciklamaLabel(10), controllerText: widget.kalemModel?.aciklama10, onChanged: (value) => viewModel.kalemModel.aciklama10 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisMSSatirAciklamaAlanlari(10) && !transferMi),
+                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(10) && !transferMi),
                 const SizedBox(height: 50),
               ],
             ),
