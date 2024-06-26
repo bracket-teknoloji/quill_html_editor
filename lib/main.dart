@@ -50,7 +50,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/view/paketleme_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_detay/view/is_emri_detay_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_edit/view/is_emri_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_hammade_takibi/view/is_emri_hammadde_takibi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view/is_emri_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view/uretim_sonu_kaydi_edit_view.dart";
@@ -479,7 +479,7 @@ class PickerApp extends StatelessWidget {
 
               GetPage(name: "/isEmriRehberiOzel", page: () => const IsEmriRehberiView(isGetData: true)),
               GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
-              GetPage(name: "/isEmriDetay", page: IsEmriDetayView.new),
+              GetPage(name: "/isEmriEdit", page: () => IsEmriEditView(model: Get.arguments)),
               GetPage(name: "/isEmriHammaddeTakibi", page: IsEmriHammaddeTakibiView.new),
 
               //* Kalite-Kontrol

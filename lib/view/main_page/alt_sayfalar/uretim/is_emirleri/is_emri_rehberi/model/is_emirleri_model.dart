@@ -1,11 +1,12 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_stok_mixin.dart";
 
 part "is_emirleri_model.freezed.dart";
 part "is_emirleri_model.g.dart";
 
 @unfreezed
-class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin {
+class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin {
 
   IsEmirleriModel._();
   factory IsEmirleriModel({
