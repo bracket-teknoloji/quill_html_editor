@@ -454,6 +454,7 @@ class MenuItemConstants {
       altMenuler: [
         GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi").isDebug(),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
+        GridItemModel.item(name: "uretim_IsEmri", title: "İş Emri Hammadde Takibi", route: "/mainPage/isEmriHammaddeTakibi").isDebug(),
       ].whereType<GridItemModel>().toList(),
     ),
     GridItemModel.anamenu(
