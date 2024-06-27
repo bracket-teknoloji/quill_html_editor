@@ -17,6 +17,8 @@ _$IsEmirleriModelImpl _$$IsEmirleriModelImplFromJson(
           : DateTime.parse(json['TESLIM_TARIHI'] as String),
       isemriNo: json['ISEMRI_NO'] as String?,
       isemriSira: (json['ISEMRI_SIRA'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
+      requestVersion: (json['REQUEST_VERSION'] as num?)?.toInt(),
       stokKodu: json['STOK_KODU'] as String?,
       yapkod: json['YAPKOD'] as String?,
       stokAdi: json['STOK_ADI'] as String?,
@@ -35,6 +37,7 @@ _$IsEmirleriModelImpl _$$IsEmirleriModelImplFromJson(
       siparisSira: (json['SIPARIS_SIRA'] as num?)?.toInt(),
       cariKodu: json['CARI_KODU'] as String?,
       cariAdi: json['CARI_ADI'] as String?,
+      aciklama: json['ACIKLAMA'] as String?,
       tamamlanan: (json['TAMAMLANAN'] as num?)?.toDouble(),
     );
 
@@ -52,6 +55,8 @@ Map<String, dynamic> _$$IsEmirleriModelImplToJson(
   writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
   writeNotNull('ISEMRI_NO', instance.isemriNo);
   writeNotNull('ISEMRI_SIRA', instance.isemriSira);
+  writeNotNull('ISLEM_KODU', instance.islemKodu);
+  writeNotNull('REQUEST_VERSION', instance.requestVersion);
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('STOK_ADI', instance.stokAdi);
@@ -70,6 +75,7 @@ Map<String, dynamic> _$$IsEmirleriModelImplToJson(
   writeNotNull('SIPARIS_SIRA', instance.siparisSira);
   writeNotNull('CARI_KODU', instance.cariKodu);
   writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('ACIKLAMA', instance.aciklama);
   writeNotNull('TAMAMLANAN', instance.tamamlanan);
   return val;
 }

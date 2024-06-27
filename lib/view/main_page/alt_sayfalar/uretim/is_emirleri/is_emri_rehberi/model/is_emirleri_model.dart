@@ -14,6 +14,8 @@ class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin
     DateTime? teslimTarihi,
     String? isemriNo,
     int? isemriSira,
+    int? islemKodu,
+    int? requestVersion,
     String? stokKodu,
     String? yapkod,
     String? stokAdi,
@@ -32,6 +34,7 @@ class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin
     int? siparisSira,
     String? cariKodu,
     String? cariAdi,
+    String? aciklama,
     double? tamamlanan,
   }) = _IsEmirleriModel;
 

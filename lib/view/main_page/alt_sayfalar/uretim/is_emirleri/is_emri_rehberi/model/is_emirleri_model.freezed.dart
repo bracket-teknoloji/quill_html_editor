@@ -28,6 +28,10 @@ mixin _$IsEmirleriModel {
   set isemriNo(String? value) => throw _privateConstructorUsedError;
   int? get isemriSira => throw _privateConstructorUsedError;
   set isemriSira(int? value) => throw _privateConstructorUsedError;
+  int? get islemKodu => throw _privateConstructorUsedError;
+  set islemKodu(int? value) => throw _privateConstructorUsedError;
+  int? get requestVersion => throw _privateConstructorUsedError;
+  set requestVersion(int? value) => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
   set stokKodu(String? value) => throw _privateConstructorUsedError;
   String? get yapkod => throw _privateConstructorUsedError;
@@ -64,6 +68,8 @@ mixin _$IsEmirleriModel {
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get cariAdi => throw _privateConstructorUsedError;
   set cariAdi(String? value) => throw _privateConstructorUsedError;
+  String? get aciklama => throw _privateConstructorUsedError;
+  set aciklama(String? value) => throw _privateConstructorUsedError;
   double? get tamamlanan => throw _privateConstructorUsedError;
   set tamamlanan(double? value) => throw _privateConstructorUsedError;
 
@@ -84,6 +90,8 @@ abstract class $IsEmirleriModelCopyWith<$Res> {
       DateTime? teslimTarihi,
       String? isemriNo,
       int? isemriSira,
+      int? islemKodu,
+      int? requestVersion,
       String? stokKodu,
       String? yapkod,
       String? stokAdi,
@@ -102,6 +110,7 @@ abstract class $IsEmirleriModelCopyWith<$Res> {
       int? siparisSira,
       String? cariKodu,
       String? cariAdi,
+      String? aciklama,
       double? tamamlanan});
 }
 
@@ -122,6 +131,8 @@ class _$IsEmirleriModelCopyWithImpl<$Res, $Val extends IsEmirleriModel>
     Object? teslimTarihi = freezed,
     Object? isemriNo = freezed,
     Object? isemriSira = freezed,
+    Object? islemKodu = freezed,
+    Object? requestVersion = freezed,
     Object? stokKodu = freezed,
     Object? yapkod = freezed,
     Object? stokAdi = freezed,
@@ -140,6 +151,7 @@ class _$IsEmirleriModelCopyWithImpl<$Res, $Val extends IsEmirleriModel>
     Object? siparisSira = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
+    Object? aciklama = freezed,
     Object? tamamlanan = freezed,
   }) {
     return _then(_value.copyWith(
@@ -158,6 +170,14 @@ class _$IsEmirleriModelCopyWithImpl<$Res, $Val extends IsEmirleriModel>
       isemriSira: freezed == isemriSira
           ? _value.isemriSira
           : isemriSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      requestVersion: freezed == requestVersion
+          ? _value.requestVersion
+          : requestVersion // ignore: cast_nullable_to_non_nullable
               as int?,
       stokKodu: freezed == stokKodu
           ? _value.stokKodu
@@ -230,6 +250,10 @@ class _$IsEmirleriModelCopyWithImpl<$Res, $Val extends IsEmirleriModel>
       cariAdi: freezed == cariAdi
           ? _value.cariAdi
           : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
       tamamlanan: freezed == tamamlanan
           ? _value.tamamlanan
@@ -252,6 +276,8 @@ abstract class _$$IsEmirleriModelImplCopyWith<$Res>
       DateTime? teslimTarihi,
       String? isemriNo,
       int? isemriSira,
+      int? islemKodu,
+      int? requestVersion,
       String? stokKodu,
       String? yapkod,
       String? stokAdi,
@@ -270,6 +296,7 @@ abstract class _$$IsEmirleriModelImplCopyWith<$Res>
       int? siparisSira,
       String? cariKodu,
       String? cariAdi,
+      String? aciklama,
       double? tamamlanan});
 }
 
@@ -288,6 +315,8 @@ class __$$IsEmirleriModelImplCopyWithImpl<$Res>
     Object? teslimTarihi = freezed,
     Object? isemriNo = freezed,
     Object? isemriSira = freezed,
+    Object? islemKodu = freezed,
+    Object? requestVersion = freezed,
     Object? stokKodu = freezed,
     Object? yapkod = freezed,
     Object? stokAdi = freezed,
@@ -306,6 +335,7 @@ class __$$IsEmirleriModelImplCopyWithImpl<$Res>
     Object? siparisSira = freezed,
     Object? cariKodu = freezed,
     Object? cariAdi = freezed,
+    Object? aciklama = freezed,
     Object? tamamlanan = freezed,
   }) {
     return _then(_$IsEmirleriModelImpl(
@@ -324,6 +354,14 @@ class __$$IsEmirleriModelImplCopyWithImpl<$Res>
       isemriSira: freezed == isemriSira
           ? _value.isemriSira
           : isemriSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      requestVersion: freezed == requestVersion
+          ? _value.requestVersion
+          : requestVersion // ignore: cast_nullable_to_non_nullable
               as int?,
       stokKodu: freezed == stokKodu
           ? _value.stokKodu
@@ -397,6 +435,10 @@ class __$$IsEmirleriModelImplCopyWithImpl<$Res>
           ? _value.cariAdi
           : cariAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
       tamamlanan: freezed == tamamlanan
           ? _value.tamamlanan
           : tamamlanan // ignore: cast_nullable_to_non_nullable
@@ -413,6 +455,8 @@ class _$IsEmirleriModelImpl extends _IsEmirleriModel {
       this.teslimTarihi,
       this.isemriNo,
       this.isemriSira,
+      this.islemKodu,
+      this.requestVersion,
       this.stokKodu,
       this.yapkod,
       this.stokAdi,
@@ -431,6 +475,7 @@ class _$IsEmirleriModelImpl extends _IsEmirleriModel {
       this.siparisSira,
       this.cariKodu,
       this.cariAdi,
+      this.aciklama,
       this.tamamlanan})
       : super._();
 
@@ -445,6 +490,10 @@ class _$IsEmirleriModelImpl extends _IsEmirleriModel {
   String? isemriNo;
   @override
   int? isemriSira;
+  @override
+  int? islemKodu;
+  @override
+  int? requestVersion;
   @override
   String? stokKodu;
   @override
@@ -482,6 +531,8 @@ class _$IsEmirleriModelImpl extends _IsEmirleriModel {
   @override
   String? cariAdi;
   @override
+  String? aciklama;
+  @override
   double? tamamlanan;
 
   @JsonKey(ignore: true)
@@ -505,6 +556,8 @@ abstract class _IsEmirleriModel extends IsEmirleriModel {
       DateTime? teslimTarihi,
       String? isemriNo,
       int? isemriSira,
+      int? islemKodu,
+      int? requestVersion,
       String? stokKodu,
       String? yapkod,
       String? stokAdi,
@@ -523,6 +576,7 @@ abstract class _IsEmirleriModel extends IsEmirleriModel {
       int? siparisSira,
       String? cariKodu,
       String? cariAdi,
+      String? aciklama,
       double? tamamlanan}) = _$IsEmirleriModelImpl;
   _IsEmirleriModel._() : super._();
 
@@ -541,6 +595,12 @@ abstract class _IsEmirleriModel extends IsEmirleriModel {
   @override
   int? get isemriSira;
   set isemriSira(int? value);
+  @override
+  int? get islemKodu;
+  set islemKodu(int? value);
+  @override
+  int? get requestVersion;
+  set requestVersion(int? value);
   @override
   String? get stokKodu;
   set stokKodu(String? value);
@@ -595,6 +655,9 @@ abstract class _IsEmirleriModel extends IsEmirleriModel {
   @override
   String? get cariAdi;
   set cariAdi(String? value);
+  @override
+  String? get aciklama;
+  set aciklama(String? value);
   @override
   double? get tamamlanan;
   set tamamlanan(double? value);
