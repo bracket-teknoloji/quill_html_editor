@@ -73,6 +73,8 @@ mixin _$StokBottomSheetModel {
   List<BaseGrupKoduModel>? get arrKod5 => throw _privateConstructorUsedError;
   set arrKod5(List<BaseGrupKoduModel>? value) =>
       throw _privateConstructorUsedError;
+  bool? get receteliStoklar => throw _privateConstructorUsedError;
+  set receteliStoklar(bool? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -109,7 +111,8 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
       List<BaseGrupKoduModel>? arrKod2,
       List<BaseGrupKoduModel>? arrKod3,
       List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5});
+      List<BaseGrupKoduModel>? arrKod5,
+      bool? receteliStoklar});
 }
 
 /// @nodoc
@@ -149,6 +152,7 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? arrKod3 = freezed,
     Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
+    Object? receteliStoklar = freezed,
   }) {
     return _then(_value.copyWith(
       sayfa: freezed == sayfa
@@ -243,6 +247,10 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
+      receteliStoklar: freezed == receteliStoklar
+          ? _value.receteliStoklar
+          : receteliStoklar // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -278,7 +286,8 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
       List<BaseGrupKoduModel>? arrKod2,
       List<BaseGrupKoduModel>? arrKod3,
       List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5});
+      List<BaseGrupKoduModel>? arrKod5,
+      bool? receteliStoklar});
 }
 
 /// @nodoc
@@ -315,6 +324,7 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? arrKod3 = freezed,
     Object? arrKod4 = freezed,
     Object? arrKod5 = freezed,
+    Object? receteliStoklar = freezed,
   }) {
     return _then(_$StokBottomSheetModelImpl(
       sayfa: freezed == sayfa
@@ -409,6 +419,10 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
           ? _value.arrKod5
           : arrKod5 // ignore: cast_nullable_to_non_nullable
               as List<BaseGrupKoduModel>?,
+      receteliStoklar: freezed == receteliStoklar
+          ? _value.receteliStoklar
+          : receteliStoklar // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -440,7 +454,8 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.arrKod2 = const [],
       this.arrKod3 = const [],
       this.arrKod4 = const [],
-      this.arrKod5 = const []})
+      this.arrKod5 = const [],
+      this.receteliStoklar})
       : super._();
 
   factory _$StokBottomSheetModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -500,6 +515,8 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @override
   @JsonKey()
   List<BaseGrupKoduModel>? arrKod5;
+  @override
+  bool? receteliStoklar;
 
   @JsonKey(ignore: true)
   @override
@@ -541,7 +558,8 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       List<BaseGrupKoduModel>? arrKod2,
       List<BaseGrupKoduModel>? arrKod3,
       List<BaseGrupKoduModel>? arrKod4,
-      List<BaseGrupKoduModel>? arrKod5}) = _$StokBottomSheetModelImpl;
+      List<BaseGrupKoduModel>? arrKod5,
+      bool? receteliStoklar}) = _$StokBottomSheetModelImpl;
   _StokBottomSheetModel._() : super._();
 
   factory _StokBottomSheetModel.fromJson(Map<String, dynamic> json) =
@@ -616,6 +634,9 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   @override
   List<BaseGrupKoduModel>? get arrKod5;
   set arrKod5(List<BaseGrupKoduModel>? value);
+  @override
+  bool? get receteliStoklar;
+  set receteliStoklar(bool? value);
   @override
   @JsonKey(ignore: true)
   _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>

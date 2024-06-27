@@ -126,6 +126,7 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     @Default([]) List<BaseGrupKoduModel>? arrKod3,
     @Default([]) List<BaseGrupKoduModel>? arrKod4,
     @Default([]) List<BaseGrupKoduModel>? arrKod5,
+    bool? receteliStoklar,
   }) = _StokBottomSheetModel;
 
   factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);

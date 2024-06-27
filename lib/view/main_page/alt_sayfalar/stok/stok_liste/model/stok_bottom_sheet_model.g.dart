@@ -56,6 +56,7 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      receteliStoklar: json['ReceteliStoklar'] as bool?,
     );
 
 Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
@@ -92,5 +93,6 @@ Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
   writeNotNull('ArrKod3', instance.arrKod3?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod4', instance.arrKod4?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod5', instance.arrKod5?.map((e) => e.toJson()).toList());
+  writeNotNull('ReceteliStoklar', instance.receteliStoklar);
   return val;
 }
