@@ -114,17 +114,18 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           title: "Sayımı Bitir",
           iconWidget: Icons.stop_outlined,
           onTap: () async {
+            Get.back();
             dialogManager.showAreYouSureDialog(() async {
               final result = await networkManager.dioPost(
                 path: ApiUrls.saveSayim,
                 bodyModel: SayimListesiModel(),
+                showLoading: true,
                 data: SayimFiltreModel(
                   islemKodu: 5,
                   belgeNo: widget.model.fisno,
                 ).toJson(),
               );
               if (result.isSuccess) {
-                Get.back();
                 widget.onChanged(true);
               }
             });
