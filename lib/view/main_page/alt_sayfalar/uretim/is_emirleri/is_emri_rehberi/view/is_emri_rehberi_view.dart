@@ -4,6 +4,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
@@ -17,7 +19,7 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/view_model/is_emri_rehberi_view_model.dart";
 
-class IsEmriRehberiView extends StatefulWidget {
+final class IsEmriRehberiView extends StatefulWidget {
   final bool? isGetData;
   const IsEmriRehberiView({super.key, this.isGetData});
 
@@ -25,7 +27,7 @@ class IsEmriRehberiView extends StatefulWidget {
   State<IsEmriRehberiView> createState() => _IsEmriRehberiViewState();
 }
 
-class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
+final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   IsEmriRehberiViewModel viewModel = IsEmriRehberiViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController _appBarTextController;
@@ -125,7 +127,42 @@ class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                 onTap: () {
                   if (widget.isGetData ?? false) {
                     Get.back(result: item);
+                    return;
                   }
+                  bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: item.isemriNo ?? "",
+                    children: [
+                      BottomSheetModel(
+                        title: loc.generalStrings.view,
+                        iconWidget: Icons.preview_outlined,
+                        onTap: () {
+                          Get.back();
+                          return Get.toNamed("/mainPage/isEmriEdit", arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: item));
+                        },
+                      ),
+                      BottomSheetModel(
+                        title: loc.generalStrings.edit,
+                        iconWidget: Icons.edit_outlined,
+                        onTap: () async {
+                          Get.back();
+                          Get.toNamed(
+                            "/mainPage/isEmriEdit",
+                            arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
+                          );
+                        },
+                      ),
+                      BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),
+                      BottomSheetModel(
+                        title: "Stok İşlemleri",
+                        iconWidget: Icons.list_alt_outlined,
+                        onTap: () async {
+                          Get.back();
+                          dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)));
+                        },
+                      ),
+                    ],
+                  );
                 },
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
