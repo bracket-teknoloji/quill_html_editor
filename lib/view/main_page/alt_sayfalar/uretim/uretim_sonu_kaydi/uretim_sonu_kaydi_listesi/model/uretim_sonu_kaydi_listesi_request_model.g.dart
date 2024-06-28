@@ -12,6 +12,7 @@ _$UretimSonuKaydiListesiRequestModelImpl
         _$UretimSonuKaydiListesiRequestModelImpl(
           sayfa: (json['Sayfa'] as num?)?.toInt(),
           ekranTipi: json['EkranTipi'] as String?,
+          belgeNo: json['BelgeNo'] as String?,
           searchText: json['SearchText'] as String?,
         );
 
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$UretimSonuKaydiListesiRequestModelImplToJson(
 
   writeNotNull('Sayfa', instance.sayfa);
   writeNotNull('EkranTipi', instance.ekranTipi);
+  writeNotNull('BelgeNo', instance.belgeNo);
   writeNotNull('SearchText', instance.searchText);
   return val;
 }

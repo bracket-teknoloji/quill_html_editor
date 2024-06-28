@@ -9,6 +9,7 @@ class UretimSonuKaydiListesiRequestModel with _$UretimSonuKaydiListesiRequestMod
   factory UretimSonuKaydiListesiRequestModel({
     int? sayfa,
     String? ekranTipi,
+    String? belgeNo,
     String? searchText,
   }) = _UretimSonuKaydiListesiRequestModel;
 

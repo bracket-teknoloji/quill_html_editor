@@ -21,6 +21,15 @@ class UretimSonuKaydiListesiModel with _$UretimSonuKaydiListesiModel, NetworkMan
     int? miktar2,
     String? yapkod,
     String? yapacik,
+    int? inckeyno,
+    int? girisdepoKodu,
+    int? cikisdepoKodu,
+    String? cikisDepoAdi,
+    String? girisDepoAdi,
+    String? stoklaraIslendi,
+    double? maliyetFiyati,
+    String? ekalan1,
+    String? ekalan2,
   }) = _UretimSonuKaydiListesiModel;
 
   factory UretimSonuKaydiListesiModel.fromJson(Map<String, dynamic> json) => _$UretimSonuKaydiListesiModelFromJson(json);

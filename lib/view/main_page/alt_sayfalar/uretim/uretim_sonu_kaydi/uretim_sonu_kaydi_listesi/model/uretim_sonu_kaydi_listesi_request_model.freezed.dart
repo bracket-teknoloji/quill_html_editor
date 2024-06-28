@@ -25,6 +25,8 @@ mixin _$UretimSonuKaydiListesiRequestModel {
   set sayfa(int? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
 
@@ -43,7 +45,8 @@ abstract class $UretimSonuKaydiListesiRequestModelCopyWith<$Res> {
       _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
           UretimSonuKaydiListesiRequestModel>;
   @useResult
-  $Res call({int? sayfa, String? ekranTipi, String? searchText});
+  $Res call(
+      {int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
 }
 
 /// @nodoc
@@ -62,6 +65,7 @@ class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? sayfa = freezed,
     Object? ekranTipi = freezed,
+    Object? belgeNo = freezed,
     Object? searchText = freezed,
   }) {
     return _then(_value.copyWith(
@@ -72,6 +76,10 @@ class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
       searchText: freezed == searchText
           ? _value.searchText
@@ -90,7 +98,8 @@ abstract class _$$UretimSonuKaydiListesiRequestModelImplCopyWith<$Res>
       __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? sayfa, String? ekranTipi, String? searchText});
+  $Res call(
+      {int? sayfa, String? ekranTipi, String? belgeNo, String? searchText});
 }
 
 /// @nodoc
@@ -108,6 +117,7 @@ class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? sayfa = freezed,
     Object? ekranTipi = freezed,
+    Object? belgeNo = freezed,
     Object? searchText = freezed,
   }) {
     return _then(_$UretimSonuKaydiListesiRequestModelImpl(
@@ -118,6 +128,10 @@ class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
       searchText: freezed == searchText
           ? _value.searchText
@@ -133,7 +147,7 @@ class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
 class _$UretimSonuKaydiListesiRequestModelImpl
     implements _UretimSonuKaydiListesiRequestModel {
   _$UretimSonuKaydiListesiRequestModelImpl(
-      {this.sayfa, this.ekranTipi, this.searchText});
+      {this.sayfa, this.ekranTipi, this.belgeNo, this.searchText});
 
   factory _$UretimSonuKaydiListesiRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -144,11 +158,13 @@ class _$UretimSonuKaydiListesiRequestModelImpl
   @override
   String? ekranTipi;
   @override
+  String? belgeNo;
+  @override
   String? searchText;
 
   @override
   String toString() {
-    return 'UretimSonuKaydiListesiRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, searchText: $searchText)';
+    return 'UretimSonuKaydiListesiRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, belgeNo: $belgeNo, searchText: $searchText)';
   }
 
   @JsonKey(ignore: true)
@@ -172,6 +188,7 @@ abstract class _UretimSonuKaydiListesiRequestModel
   factory _UretimSonuKaydiListesiRequestModel(
       {int? sayfa,
       String? ekranTipi,
+      String? belgeNo,
       String? searchText}) = _$UretimSonuKaydiListesiRequestModelImpl;
 
   factory _UretimSonuKaydiListesiRequestModel.fromJson(
@@ -184,6 +201,9 @@ abstract class _UretimSonuKaydiListesiRequestModel
   @override
   String? get ekranTipi;
   set ekranTipi(String? value);
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
   @override
   String? get searchText;
   set searchText(String? value);

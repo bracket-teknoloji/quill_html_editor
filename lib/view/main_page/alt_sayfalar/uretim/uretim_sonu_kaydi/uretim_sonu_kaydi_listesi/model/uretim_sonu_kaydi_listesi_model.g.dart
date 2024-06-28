@@ -23,6 +23,15 @@ _$UretimSonuKaydiListesiModelImpl _$$UretimSonuKaydiListesiModelImplFromJson(
       miktar2: (json['MIKTAR2'] as num?)?.toInt(),
       yapkod: json['YAPKOD'] as String?,
       yapacik: json['YAPACIK'] as String?,
+      inckeyno: (json['INCKEYNO'] as num?)?.toInt(),
+      girisdepoKodu: (json['GIRISDEPO_KODU'] as num?)?.toInt(),
+      cikisdepoKodu: (json['CIKISDEPO_KODU'] as num?)?.toInt(),
+      cikisDepoAdi: json['CIKIS_DEPO_ADI'] as String?,
+      girisDepoAdi: json['GIRIS_DEPO_ADI'] as String?,
+      stoklaraIslendi: json['STOKLARA_ISLENDI'] as String?,
+      maliyetFiyati: (json['MALIYET_FIYATI'] as num?)?.toDouble(),
+      ekalan1: json['EKALAN1'] as String?,
+      ekalan2: json['EKALAN2'] as String?,
     );
 
 Map<String, dynamic> _$$UretimSonuKaydiListesiModelImplToJson(
@@ -47,5 +56,14 @@ Map<String, dynamic> _$$UretimSonuKaydiListesiModelImplToJson(
   writeNotNull('MIKTAR2', instance.miktar2);
   writeNotNull('YAPKOD', instance.yapkod);
   writeNotNull('YAPACIK', instance.yapacik);
+  writeNotNull('INCKEYNO', instance.inckeyno);
+  writeNotNull('GIRISDEPO_KODU', instance.girisdepoKodu);
+  writeNotNull('CIKISDEPO_KODU', instance.cikisdepoKodu);
+  writeNotNull('CIKIS_DEPO_ADI', instance.cikisDepoAdi);
+  writeNotNull('GIRIS_DEPO_ADI', instance.girisDepoAdi);
+  writeNotNull('STOKLARA_ISLENDI', instance.stoklaraIslendi);
+  writeNotNull('MALIYET_FIYATI', instance.maliyetFiyati);
+  writeNotNull('EKALAN1', instance.ekalan1);
+  writeNotNull('EKALAN2', instance.ekalan2);
   return val;
 }

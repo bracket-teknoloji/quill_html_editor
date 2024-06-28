@@ -45,6 +45,24 @@ mixin _$UretimSonuKaydiListesiModel {
   set yapkod(String? value) => throw _privateConstructorUsedError;
   String? get yapacik => throw _privateConstructorUsedError;
   set yapacik(String? value) => throw _privateConstructorUsedError;
+  int? get inckeyno => throw _privateConstructorUsedError;
+  set inckeyno(int? value) => throw _privateConstructorUsedError;
+  int? get girisdepoKodu => throw _privateConstructorUsedError;
+  set girisdepoKodu(int? value) => throw _privateConstructorUsedError;
+  int? get cikisdepoKodu => throw _privateConstructorUsedError;
+  set cikisdepoKodu(int? value) => throw _privateConstructorUsedError;
+  String? get cikisDepoAdi => throw _privateConstructorUsedError;
+  set cikisDepoAdi(String? value) => throw _privateConstructorUsedError;
+  String? get girisDepoAdi => throw _privateConstructorUsedError;
+  set girisDepoAdi(String? value) => throw _privateConstructorUsedError;
+  String? get stoklaraIslendi => throw _privateConstructorUsedError;
+  set stoklaraIslendi(String? value) => throw _privateConstructorUsedError;
+  double? get maliyetFiyati => throw _privateConstructorUsedError;
+  set maliyetFiyati(double? value) => throw _privateConstructorUsedError;
+  String? get ekalan1 => throw _privateConstructorUsedError;
+  set ekalan1(String? value) => throw _privateConstructorUsedError;
+  String? get ekalan2 => throw _privateConstructorUsedError;
+  set ekalan2(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,7 +90,16 @@ abstract class $UretimSonuKaydiListesiModelCopyWith<$Res> {
       String? aciklama,
       int? miktar2,
       String? yapkod,
-      String? yapacik});
+      String? yapacik,
+      int? inckeyno,
+      int? girisdepoKodu,
+      int? cikisdepoKodu,
+      String? cikisDepoAdi,
+      String? girisDepoAdi,
+      String? stoklaraIslendi,
+      double? maliyetFiyati,
+      String? ekalan1,
+      String? ekalan2});
 }
 
 /// @nodoc
@@ -101,6 +128,15 @@ class _$UretimSonuKaydiListesiModelCopyWithImpl<$Res,
     Object? miktar2 = freezed,
     Object? yapkod = freezed,
     Object? yapacik = freezed,
+    Object? inckeyno = freezed,
+    Object? girisdepoKodu = freezed,
+    Object? cikisdepoKodu = freezed,
+    Object? cikisDepoAdi = freezed,
+    Object? girisDepoAdi = freezed,
+    Object? stoklaraIslendi = freezed,
+    Object? maliyetFiyati = freezed,
+    Object? ekalan1 = freezed,
+    Object? ekalan2 = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -151,6 +187,42 @@ class _$UretimSonuKaydiListesiModelCopyWithImpl<$Res,
           ? _value.yapacik
           : yapacik // ignore: cast_nullable_to_non_nullable
               as String?,
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      girisdepoKodu: freezed == girisdepoKodu
+          ? _value.girisdepoKodu
+          : girisdepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cikisdepoKodu: freezed == cikisdepoKodu
+          ? _value.cikisdepoKodu
+          : cikisdepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cikisDepoAdi: freezed == cikisDepoAdi
+          ? _value.cikisDepoAdi
+          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      girisDepoAdi: freezed == girisDepoAdi
+          ? _value.girisDepoAdi
+          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stoklaraIslendi: freezed == stoklaraIslendi
+          ? _value.stoklaraIslendi
+          : stoklaraIslendi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      maliyetFiyati: freezed == maliyetFiyati
+          ? _value.maliyetFiyati
+          : maliyetFiyati // ignore: cast_nullable_to_non_nullable
+              as double?,
+      ekalan1: freezed == ekalan1
+          ? _value.ekalan1
+          : ekalan1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekalan2: freezed == ekalan2
+          ? _value.ekalan2
+          : ekalan2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -176,7 +248,16 @@ abstract class _$$UretimSonuKaydiListesiModelImplCopyWith<$Res>
       String? aciklama,
       int? miktar2,
       String? yapkod,
-      String? yapacik});
+      String? yapacik,
+      int? inckeyno,
+      int? girisdepoKodu,
+      int? cikisdepoKodu,
+      String? cikisDepoAdi,
+      String? girisDepoAdi,
+      String? stoklaraIslendi,
+      double? maliyetFiyati,
+      String? ekalan1,
+      String? ekalan2});
 }
 
 /// @nodoc
@@ -204,6 +285,15 @@ class __$$UretimSonuKaydiListesiModelImplCopyWithImpl<$Res>
     Object? miktar2 = freezed,
     Object? yapkod = freezed,
     Object? yapacik = freezed,
+    Object? inckeyno = freezed,
+    Object? girisdepoKodu = freezed,
+    Object? cikisdepoKodu = freezed,
+    Object? cikisDepoAdi = freezed,
+    Object? girisDepoAdi = freezed,
+    Object? stoklaraIslendi = freezed,
+    Object? maliyetFiyati = freezed,
+    Object? ekalan1 = freezed,
+    Object? ekalan2 = freezed,
   }) {
     return _then(_$UretimSonuKaydiListesiModelImpl(
       belgeNo: freezed == belgeNo
@@ -254,6 +344,42 @@ class __$$UretimSonuKaydiListesiModelImplCopyWithImpl<$Res>
           ? _value.yapacik
           : yapacik // ignore: cast_nullable_to_non_nullable
               as String?,
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      girisdepoKodu: freezed == girisdepoKodu
+          ? _value.girisdepoKodu
+          : girisdepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cikisdepoKodu: freezed == cikisdepoKodu
+          ? _value.cikisdepoKodu
+          : cikisdepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cikisDepoAdi: freezed == cikisDepoAdi
+          ? _value.cikisDepoAdi
+          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      girisDepoAdi: freezed == girisDepoAdi
+          ? _value.girisDepoAdi
+          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stoklaraIslendi: freezed == stoklaraIslendi
+          ? _value.stoklaraIslendi
+          : stoklaraIslendi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      maliyetFiyati: freezed == maliyetFiyati
+          ? _value.maliyetFiyati
+          : maliyetFiyati // ignore: cast_nullable_to_non_nullable
+              as double?,
+      ekalan1: freezed == ekalan1
+          ? _value.ekalan1
+          : ekalan1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ekalan2: freezed == ekalan2
+          ? _value.ekalan2
+          : ekalan2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -273,7 +399,16 @@ class _$UretimSonuKaydiListesiModelImpl extends _UretimSonuKaydiListesiModel {
       this.aciklama,
       this.miktar2,
       this.yapkod,
-      this.yapacik})
+      this.yapacik,
+      this.inckeyno,
+      this.girisdepoKodu,
+      this.cikisdepoKodu,
+      this.cikisDepoAdi,
+      this.girisDepoAdi,
+      this.stoklaraIslendi,
+      this.maliyetFiyati,
+      this.ekalan1,
+      this.ekalan2})
       : super._();
 
   factory _$UretimSonuKaydiListesiModelImpl.fromJson(
@@ -304,6 +439,24 @@ class _$UretimSonuKaydiListesiModelImpl extends _UretimSonuKaydiListesiModel {
   String? yapkod;
   @override
   String? yapacik;
+  @override
+  int? inckeyno;
+  @override
+  int? girisdepoKodu;
+  @override
+  int? cikisdepoKodu;
+  @override
+  String? cikisDepoAdi;
+  @override
+  String? girisDepoAdi;
+  @override
+  String? stoklaraIslendi;
+  @override
+  double? maliyetFiyati;
+  @override
+  String? ekalan1;
+  @override
+  String? ekalan2;
 
   @JsonKey(ignore: true)
   @override
@@ -334,7 +487,16 @@ abstract class _UretimSonuKaydiListesiModel
       String? aciklama,
       int? miktar2,
       String? yapkod,
-      String? yapacik}) = _$UretimSonuKaydiListesiModelImpl;
+      String? yapacik,
+      int? inckeyno,
+      int? girisdepoKodu,
+      int? cikisdepoKodu,
+      String? cikisDepoAdi,
+      String? girisDepoAdi,
+      String? stoklaraIslendi,
+      double? maliyetFiyati,
+      String? ekalan1,
+      String? ekalan2}) = _$UretimSonuKaydiListesiModelImpl;
   _UretimSonuKaydiListesiModel._() : super._();
 
   factory _UretimSonuKaydiListesiModel.fromJson(Map<String, dynamic> json) =
@@ -376,6 +538,33 @@ abstract class _UretimSonuKaydiListesiModel
   @override
   String? get yapacik;
   set yapacik(String? value);
+  @override
+  int? get inckeyno;
+  set inckeyno(int? value);
+  @override
+  int? get girisdepoKodu;
+  set girisdepoKodu(int? value);
+  @override
+  int? get cikisdepoKodu;
+  set cikisdepoKodu(int? value);
+  @override
+  String? get cikisDepoAdi;
+  set cikisDepoAdi(String? value);
+  @override
+  String? get girisDepoAdi;
+  set girisDepoAdi(String? value);
+  @override
+  String? get stoklaraIslendi;
+  set stoklaraIslendi(String? value);
+  @override
+  double? get maliyetFiyati;
+  set maliyetFiyati(double? value);
+  @override
+  String? get ekalan1;
+  set ekalan1(String? value);
+  @override
+  String? get ekalan2;
+  set ekalan2(String? value);
   @override
   @JsonKey(ignore: true)
   _$$UretimSonuKaydiListesiModelImplCopyWith<_$UretimSonuKaydiListesiModelImpl>
