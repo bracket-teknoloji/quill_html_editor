@@ -88,7 +88,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   Widget get textFormField => TextFieldTapRegion(
         onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
-        onTapInside: (PointerDownEvent event) => SelectableText.rich(TextSpan(children: <InlineSpan>[TextSpan(text: controller.text)])),
+        onTapInside: (PointerDownEvent event) {
+          //select all
+        },
         child: MouseRegion(
           onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
           child: TextFormField(
@@ -96,7 +98,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
             textInputAction: TextInputAction.next,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
-            onTap: widget.onTap,
+            onTap: () async {
+              if (widget.onTap != null) {
+                widget.onTap!();
+              } else {
+                if (widget.readOnly != true) {
+                  controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.text.length);
+                }
+              }
+              // FocusScope.of(context).requestFocus(widget.focusNode);
+            },
             onChanged: widget.onChanged,
             onFieldSubmitted: widget.onSubmitted,
             inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
