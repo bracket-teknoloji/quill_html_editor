@@ -22,40 +22,20 @@ enum BadgeColorEnum {
   uyari,
   hata,
   muhtelif,
+  rework;
 }
 
 extension BadgeColorExtensions on BadgeColorEnum? {
-  Color get getColor {
-    switch (this) {
-      case BadgeColorEnum.eFatura:
-      case BadgeColorEnum.merkezeGonderildi:
-        return ColorPalette.mountbattenPink;
-      case BadgeColorEnum.dovizli:
-        return ColorPalette.skyBlue;
-      case BadgeColorEnum.kapali:
-        return ColorPalette.slateGray;
-      case BadgeColorEnum.fatura:
-      case BadgeColorEnum.irsaliye:
-      case BadgeColorEnum.basarili:
-        return ColorPalette.mantis;
-      case BadgeColorEnum.tamamlanmamis:
-      case BadgeColorEnum.kilitli:
-      case BadgeColorEnum.hata:
-        return ColorPalette.persianRed;
-      case BadgeColorEnum.seri:
-      case BadgeColorEnum.konum:
-      case BadgeColorEnum.cari:
-      case BadgeColorEnum.tipAciklama:
-      case BadgeColorEnum.taslak:
-      case BadgeColorEnum.uyari:
-        return ColorPalette.gamboge;
-      case BadgeColorEnum.esYap:
-      case BadgeColorEnum.muhtelif:
-        return ColorPalette.asparagus;
-      case BadgeColorEnum.karmaKoli:
-        return ColorPalette.mulberry;
-      default:
-        return Colors.orange;
-    }
-  }
+  Color get getColor => switch (this) {
+        BadgeColorEnum.eFatura || BadgeColorEnum.merkezeGonderildi => ColorPalette.mountbattenPink,
+        BadgeColorEnum.dovizli => ColorPalette.skyBlue,
+        BadgeColorEnum.kapali => ColorPalette.slateGray,
+        BadgeColorEnum.fatura || BadgeColorEnum.irsaliye || BadgeColorEnum.basarili => ColorPalette.mantis,
+        BadgeColorEnum.tamamlanmamis || BadgeColorEnum.kilitli || BadgeColorEnum.hata => ColorPalette.persianRed,
+        BadgeColorEnum.seri || BadgeColorEnum.konum || BadgeColorEnum.cari || BadgeColorEnum.tipAciklama || BadgeColorEnum.taslak || BadgeColorEnum.uyari => ColorPalette.gamboge,
+        BadgeColorEnum.esYap || BadgeColorEnum.muhtelif => ColorPalette.asparagus,
+        BadgeColorEnum.karmaKoli => ColorPalette.mulberry,
+        BadgeColorEnum.rework => ColorPalette.outerSpace,
+        _ => Colors.orange,
+      };
 }
