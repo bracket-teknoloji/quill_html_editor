@@ -4,7 +4,6 @@ import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
@@ -71,5 +70,5 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(path: ApiUrls.saveIsEmri,showLoading: true, bodyModel: IsEmirleriModel(), data: model?.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(path: ApiUrls.saveIsEmri, showLoading: true, bodyModel: IsEmirleriModel(), data: model?.toJson());
 }

@@ -207,6 +207,7 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                         labelText: "Miktar",
                         controller: miktarController,
                         enabled: isEnabled,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isMust: true,
                       ),
                     ),
