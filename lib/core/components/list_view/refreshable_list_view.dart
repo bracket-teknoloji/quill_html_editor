@@ -9,7 +9,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 ///* Sayfayı yukarı kaydırarak yenileme işlemi yapılmaktadır.
 ///* Yenileme işlemi yapıldığında sayfa yenilenir.
 ///* Bu widget'ın State'ini yönetmek için `Observer` widget'ı kullanınız.
-class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
+final class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
   /// Refresh işlemleri için gerekli fonksiyon
   final Future<void> Function() onRefresh;
 
