@@ -1,10 +1,15 @@
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view_model/uretim_sonu_kaydi_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
 
 final class UretimSonuKaydiEditView extends StatefulWidget {
@@ -16,6 +21,7 @@ final class UretimSonuKaydiEditView extends StatefulWidget {
 }
 
 final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditView> {
+  final UretimSonuKaydiEditViewModel viewModel = UretimSonuKaydiEditViewModel();
   late final TextEditingController belgeNoController;
   late final TextEditingController tarihController;
   late final TextEditingController isEmriController;
@@ -31,22 +37,33 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
 
+  UretimSonuKaydiListesiModel? get model => widget.model.model;
+
   @override
   void initState() {
-    belgeNoController = TextEditingController();
-    tarihController = TextEditingController();
-    isEmriController = TextEditingController();
-    depoOnceligiController = TextEditingController();
+    viewModel.setSelectedItem(model);
+    belgeNoController = TextEditingController(text: model?.belgeNo ?? "");
+    tarihController = TextEditingController(text: model?.tarih.toDateString ?? "");
+    isEmriController = TextEditingController(text: model?.belgeNo ?? "");
+    depoOnceligiController = TextEditingController(text: model?.belgeNo ?? "");
     cikisDepoController = TextEditingController();
     girisDepoController = TextEditingController();
     projeController = TextEditingController();
-    mamulKoduController = TextEditingController();
-    olcuBirimiController = TextEditingController();
-    miktarController = TextEditingController();
-    hurdaFireMiktariController = TextEditingController();
-    aciklamaController = TextEditingController();
-    ekAlan1Controller = TextEditingController();
-    ekAlan2Controller = TextEditingController();
+    mamulKoduController = TextEditingController(text: model?.belgeNo ?? "");
+    olcuBirimiController = TextEditingController(text: model?.belgeNo ?? "");
+    miktarController = TextEditingController(text: model?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
+    hurdaFireMiktariController = TextEditingController(text: model?.belgeNo ?? "");
+    aciklamaController = TextEditingController(text: model?.aciklama ?? "");
+    ekAlan1Controller = TextEditingController(text: model?.ekalan1 ?? "");
+    ekAlan2Controller = TextEditingController(text: model?.ekalan2 ?? "");
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getKalemler();
+      if (viewModel.model != null) {
+        // depoOnceligiController.text = viewModel.model!..toString();
+        cikisDepoController.text = viewModel.model!.cikisDepoAdi ?? "";
+        girisDepoController.text = viewModel.model!.girisDepoAdi ?? "";
+      }
+    });
     super.initState();
   }
 
@@ -111,6 +128,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                     controller: cikisDepoController,
                     isMust: true,
                     suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.cikisdepoKodu.toStringIfNotNull ?? "")),
                     onChanged: (value) {},
                   ),
                 ],
@@ -123,6 +141,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                     controller: girisDepoController,
                     isMust: true,
                     suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.girisdepoKodu.toStringIfNotNull ?? "")),
                     onChanged: (value) {},
                   ),
                   CustomTextField(
