@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -28,7 +30,14 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
               context,
               title: model.belgeNo ?? "",
               children: [
-                BottomSheetModel(title: loc.generalStrings.view, iconWidget: Icons.preview_outlined),
+                BottomSheetModel(
+                  title: loc.generalStrings.view,
+                  iconWidget: Icons.preview_outlined,
+                  onTap: () {
+                    Get.back();
+                    Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<UretimSonuKaydiListesiModel>(model: model, baseEditEnum: BaseEditEnum.goruntule));
+                  },
+                ),
                 BottomSheetModel(
                   title: "Üretim Sonu Raporu",
                   iconWidget: Icons.list_alt_outlined,
