@@ -37,3 +37,7 @@ class UretimSonuKaydiListesiModel with _$UretimSonuKaydiListesiModel, NetworkMan
   @override
   UretimSonuKaydiListesiModel fromJson(Map<String, dynamic> json) => _$UretimSonuKaydiListesiModelFromJson(json);
 }
+
+extension UretimSonuKaydiListesiModelExtensions on UretimSonuKaydiListesiModel? {
+  double get maliyetTutari => (this?.miktar ?? 0) * (this?.maliyetFiyati ?? 0);
+}
