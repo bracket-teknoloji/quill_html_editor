@@ -35,6 +35,23 @@ mixin _$UretimSonuKaydiEditViewModel
     });
   }
 
+  late final _$ekAlanlarListAtom = Atom(
+      name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
+      context: context);
+
+  @override
+  ObservableList<EkAlanlarModel>? get ekAlanlarList {
+    _$ekAlanlarListAtom.reportRead();
+    return super.ekAlanlarList;
+  }
+
+  @override
+  set ekAlanlarList(ObservableList<EkAlanlarModel>? value) {
+    _$ekAlanlarListAtom.reportWrite(value, super.ekAlanlarList, () {
+      super.ekAlanlarList = value;
+    });
+  }
+
   late final _$getKalemlerAsyncAction = AsyncAction(
       '_UretimSonuKaydiEditViewModelBase.getKalemler',
       context: context);
@@ -42,6 +59,24 @@ mixin _$UretimSonuKaydiEditViewModel
   @override
   Future<void> getKalemler() {
     return _$getKalemlerAsyncAction.run(() => super.getKalemler());
+  }
+
+  late final _$getEkAlanlarAsyncAction = AsyncAction(
+      '_UretimSonuKaydiEditViewModelBase.getEkAlanlar',
+      context: context);
+
+  @override
+  Future<void> getEkAlanlar() {
+    return _$getEkAlanlarAsyncAction.run(() => super.getEkAlanlar());
+  }
+
+  late final _$getSiradakiKodAsyncAction = AsyncAction(
+      '_UretimSonuKaydiEditViewModelBase.getSiradakiKod',
+      context: context);
+
+  @override
+  Future<String?> getSiradakiKod(String? kod) {
+    return _$getSiradakiKodAsyncAction.run(() => super.getSiradakiKod(kod));
   }
 
   late final _$_UretimSonuKaydiEditViewModelBaseActionController =
@@ -61,6 +96,78 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
+  void setBelgeNo(String? belgeNo) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setBelgeNo');
+    try {
+      return super.setBelgeNo(belgeNo);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTarih(DateTime? date) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setTarih');
+    try {
+      return super.setTarih(date);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCikisDepo(DepoList? depo) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setCikisDepo');
+    try {
+      return super.setCikisDepo(depo);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGirisDepo(DepoList? depo) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setGirisDepo');
+    try {
+      return super.setGirisDepo(depo);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setProje(BaseProjeModel? proje) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setProje');
+    try {
+      return super.setProje(proje);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMamulKodu(BaseStokMixin? stok) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setMamulKodu');
+    try {
+      return super.setMamulKodu(stok);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setModel(UretimSonuKaydiListesiModel? item) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setModel');
@@ -73,9 +180,23 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
+  void setEkAlanlarList(List<EkAlanlarModel>? list) {
+    final _$actionInfo =
+        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
+            name: '_UretimSonuKaydiEditViewModelBase.setEkAlanlarList');
+    try {
+      return super.setEkAlanlarList(list);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},
+ekAlanlarList: ${ekAlanlarList},
 requestModel: ${requestModel}
     ''';
   }

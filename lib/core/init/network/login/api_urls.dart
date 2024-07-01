@@ -25,6 +25,7 @@ class   ApiUrls {
   static const String token = "token";
   static const String veriTabanlari = "General/GetVeritabanlari";
   static const String getGenelRehber = "General/GetGenelRehber";
+  static const String getEkAlanlar = "General/GetEkAlanlar";
 
   //* Cariler
   static const String deleteCari = "Cari/DeleteCari";

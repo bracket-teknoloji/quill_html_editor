@@ -1,4 +1,4 @@
-enum BaseEditEnum { ekle, duzenle, goruntule, kopyala, revize, taslak, bitir }
+enum BaseEditEnum { ekle, duzenle, goruntule, kopyala, revize, taslak, bitir , siparistenKopyala}
 
 extension ToString on BaseEditEnum? {
   String? get getName => _getName(this);
@@ -7,6 +7,8 @@ extension ToString on BaseEditEnum? {
   bool get ekleMi => this == BaseEditEnum.ekle;
   bool get goruntuleMi => this == BaseEditEnum.goruntule || this == BaseEditEnum.bitir;
   bool get duzenleMi => this == BaseEditEnum.duzenle;
+  bool get kopyalaMi => this == BaseEditEnum.kopyala || this == BaseEditEnum.siparistenKopyala;
+  bool get siparistenKopyalaMi => this == BaseEditEnum.siparistenKopyala;
 
   String? _getName(BaseEditEnum? baseEditEnum) {
     switch (baseEditEnum) {
@@ -16,7 +18,7 @@ extension ToString on BaseEditEnum? {
         return "Düzenle";
       case BaseEditEnum.goruntule:
         return "Görüntüle";
-      case BaseEditEnum.kopyala:
+      case BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala:
         return "Kopyala";
       case BaseEditEnum.revize:
         return "Revize";
