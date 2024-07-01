@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/text_span_extensions.dart";
 
 import "../../constants/color_palette.dart";
@@ -30,6 +32,7 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String? value)? validator;
   final Function(String value)? onChanged;
   final Function(String value)? onSubmitted;
+  final Function(DateTime? value)? onDateChange;
   final Function()? onClear;
   final bool? suffixMore;
   final bool? isFormattedString;
@@ -60,13 +63,39 @@ class CustomTextField extends StatefulWidget {
     this.isDateTime,
     this.isTime,
     this.descriptionWidget,
-  });
+  }) : onDateChange = null;
 
+  const CustomTextField.dateTime({
+    super.key,
+    required this.controller,
+    this.labelText,
+    this.valueText,
+    this.descriptionWidget,
+    this.valueWidget,
+    this.isMust,
+    this.readOnly,
+    this.enabled,
+    this.suffix,
+    this.focusNode,
+    this.controllerText,
+    this.inputFormatter,
+    this.onTap,
+    this.validator,
+    this.onChanged,
+    this.onClear,
+    required this.onDateChange,
+  })  : isDateTime = true,
+        isFormattedString = false,
+        keyboardType = null,
+        maxLength = null,
+        suffixMore = false,
+        onSubmitted = null,
+        isTime = false;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomTextFieldState extends BaseState<CustomTextField> {
   CustomTextFieldViewModel viewModel = CustomTextFieldViewModel();
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
@@ -99,6 +128,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
             onTap: () async {
+              if (widget.onDateChange != null) {
+                widget.onDateChange!.call(await dialogManager.showDateTimePicker(initialDate: widget.controller?.text.toDateTimeDDMMYYYY()));
+              }
               if (widget.onTap != null) {
                 widget.onTap!();
               } else {
