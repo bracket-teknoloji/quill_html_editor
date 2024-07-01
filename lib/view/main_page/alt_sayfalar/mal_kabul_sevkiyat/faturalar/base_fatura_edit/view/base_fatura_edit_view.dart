@@ -106,7 +106,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       model.editTipiEnum = widget.model.editTipiEnum;
     }
 
-    if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+    if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum.kopyalaMi) {
       model.model?.kayitModu = "S";
     } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
       model.model?.kayitModu = "U";
@@ -154,7 +154,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             //   BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
-          } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+          } else if (widget.model.baseEditEnum.kopyalaMi) {
             // if (widget.model.baseEditEnum?.)
             BaseSiparisEditModel.instance.belgeNo = null;
             BaseSiparisEditModel.instance.resmiBelgeNo = null;
@@ -560,7 +560,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
   }
 
   Future<bool> postData() async {
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum == BaseEditEnum.kopyala || (BaseSiparisEditModel.instance.isNew ?? false)) {
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
     }
 
@@ -570,17 +570,33 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
       newInstance.mevcutCariKodu = widget.model.model?.cariKodu;
-    } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+    } else if (widget.model.baseEditEnum.kopyalaMi) {
+      newInstance = newInstance.copyWith(
+        // kalemler: BaseSiparisEditModel.instance.kalemList
+        //     .map(
+        //       (e) => e
+        //         ..siparisNo = e.belgeNo
+        //         ..belgeNo = null,
+        //     )
+        //     .toList(),
+        kayityapankul: null,
+        plasiyerAciklama: null,
+        efatOzelkod: null,
+        efaturaTipi: null,
+        // vadeTarihi: null,
+        // projeAciklama: null,
+        kalemList: null,
+      );
+    }
+    if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       newInstance = newInstance.copyWith(
         kalemler: BaseSiparisEditModel.instance.kalemList
             ?.map(
               (e) => e
-                // ..siparisNo = null
-                // ..siparisSira = null
-                ..belgeNo ??= null,
+                ..siparisNo = e.belgeNo
+                ..belgeNo = null,
             )
             .toList(),
-        kalemList: null,
       );
     }
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
@@ -793,6 +809,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     switch (widget.model.baseEditEnum) {
       case BaseEditEnum.ekle:
       case BaseEditEnum.kopyala:
+      case BaseEditEnum.siparistenKopyala:
       case BaseEditEnum.revize:
       case BaseEditEnum.taslak:
         return widget.model.editTipiEnum?.eklensinMi ?? false;

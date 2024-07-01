@@ -9,11 +9,11 @@ class BaseEditModel<T> {
   String? belgeNo;
 
   bool get enable =>
-      baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.revize || baseEditEnum == BaseEditEnum.taslak;
+      baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.siparistenKopyala || baseEditEnum == BaseEditEnum.revize || baseEditEnum == BaseEditEnum.taslak;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
   bool get isGoruntule => baseEditEnum == BaseEditEnum.goruntule;
   bool get isEkle => baseEditEnum == BaseEditEnum.ekle;
-  bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala;
+  bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.siparistenKopyala;
   bool get isTaslak => baseEditEnum == BaseEditEnum.taslak;
   bool get isRevize => baseEditEnum == BaseEditEnum.revize;
   String? get getSubTitle => (isKopyala || isEkle || isRevize || isTaslak) ? "Yeni Belge" : null;
