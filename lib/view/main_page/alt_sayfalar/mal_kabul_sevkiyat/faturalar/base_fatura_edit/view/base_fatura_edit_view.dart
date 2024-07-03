@@ -174,7 +174,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                     ..belgeNo = null,
                 )
                 .toList();
-            if (widget.model.model.kalemList != null) {
+            if ((widget.model.model.kalemList as List?).ext.isNotNullOrEmpty) {
               BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
             }
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
