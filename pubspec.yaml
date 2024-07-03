@@ -109,10 +109,10 @@ dependencies:
   url_launcher: ^6.2.5
   firebase_app_check: ^0.3.0+2
 
-dependency_overrides:
-  google_maps_flutter_ios: 2.3.0
-  rive: 0.12.4
-  rive_common: 0.2.8
+# dependency_overrides:
+  # google_maps_flutter_ios: 2.3.0
+  # rive: 0.12.4
+  # rive_common: 0.2.8
 
 dev_dependencies:
   flutter_test:

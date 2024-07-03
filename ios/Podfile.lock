@@ -131,15 +131,15 @@ PODS:
     - Flutter
   - google_maps_flutter_ios (0.0.1):
     - Flutter
-    - GoogleMaps (< 8.0)
+    - GoogleMaps (< 10.0, >= 8.4)
   - GoogleDataTransport (9.4.1):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30911.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMaps (7.4.0):
-    - GoogleMaps/Maps (= 7.4.0)
-  - GoogleMaps/Base (7.4.0)
-  - GoogleMaps/Maps (7.4.0):
+  - GoogleMaps (8.4.0):
+    - GoogleMaps/Maps (= 8.4.0)
+  - GoogleMaps/Base (8.4.0)
+  - GoogleMaps/Maps (8.4.0):
     - GoogleMaps/Base
   - GoogleUtilities/AppDelegateSwizzler (7.13.3):
     - GoogleUtilities/Environment
@@ -375,9 +375,9 @@ SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
   flutter_native_splash: edf599c81f74d093a4daf8e17bd7a018854bc778
-  google_maps_flutter_ios: abdac20d6ce8931f6ebc5f46616df241bfaa2cfd
+  google_maps_flutter_ios: 5bc2be60ad012e79b182ce0fb0ef5030a50fb03e
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
-  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
+  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
@@ -393,7 +393,7 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
-  rive_common: 3a4c254c6e4db7e4b9e05daeb3d1f47ae4f7bf76
+  rive_common: cbbac3192af00d7341f19dae2f26298e9e37d99e
   SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
@@ -403,6 +403,6 @@ SPEC CHECKSUMS:
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
   webview_flutter_wkwebview: be0f0d33777f1bfd0c9fdcb594786704dbf65f36
 
-PODFILE CHECKSUM: 154314596437ef194542bff3427dfa8b7f997174
+PODFILE CHECKSUM: b355ff92b66963500092180d69ed10f0a5b33334
 
 COCOAPODS: 1.15.2

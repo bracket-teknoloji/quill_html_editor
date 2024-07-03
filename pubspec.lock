@@ -365,10 +365,18 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "11e40df547d418cc0c4900a9318b26304e665da6fa4755399a9ff9efd09034b5"
+      sha256: "77befdddf51050e1635a04d2bcfff230089ce7294e642d00da58cd079c0de0c8"
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.3+1"
+    version: "5.5.0"
+  dio_web_adapter:
+    dependency: transitive
+    description:
+      name: dio_web_adapter
+      sha256: a6d4a42b6a94838c11468ebc908508b7b97161c34e042e948a339c4b8a15d224
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   easy_localization:
     dependency: "direct main"
     description:
@@ -814,13 +822,13 @@ packages:
     source: hosted
     version: "2.11.0"
   google_maps_flutter_ios:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: google_maps_flutter_ios
-      sha256: "954083b0b8ef60d059b41a37382afb22d7eea565002bf0bbf093fe748b5cef82"
+      sha256: "1043d0a4ad52612444b24edbd2d61f6de40e01e842fe2a9248be53fa70bc7047"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.8.1"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
@@ -1502,21 +1510,21 @@ packages:
     source: hosted
     version: "3.0.2"
   rive:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: rive
-      sha256: ae75a6e9cfbf146630bfb1feba97ee582d935508be6b362e4bd197b9c55a6dd3
+      sha256: "3c0047e636ebe8e4044087e239dffdd026cf839fe9aecf55d53431b255668bcf"
       url: "https://pub.dev"
     source: hosted
-    version: "0.12.4"
+    version: "0.13.9"
   rive_common:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: rive_common
-      sha256: f4e20d0a99c5040c85624a3eb2b0b6b19e614d93a693c3bb25cf6e7bb2d3d6d3
+      sha256: "3fe76ba4680787741688ee393e47b63417e8643816795e4eac01021683af1d84"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.8"
+    version: "0.4.9"
   sanitize_html:
     dependency: transitive
     description:
