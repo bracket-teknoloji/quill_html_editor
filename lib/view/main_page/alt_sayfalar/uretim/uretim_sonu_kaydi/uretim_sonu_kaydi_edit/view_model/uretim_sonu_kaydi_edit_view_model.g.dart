@@ -10,28 +10,53 @@ part of 'uretim_sonu_kaydi_edit_view_model.dart';
 
 mixin _$UretimSonuKaydiEditViewModel
     on _UretimSonuKaydiEditViewModelBase, Store {
-  Computed<UretimSonuKaydiListesiRequestModel>? _$requestModelComputed;
+  Computed<UretimSonuKaydiListesiRequestModel>? _$kalemlerRequestModelComputed;
 
   @override
-  UretimSonuKaydiListesiRequestModel get requestModel =>
-      (_$requestModelComputed ??= Computed<UretimSonuKaydiListesiRequestModel>(
-              () => super.requestModel,
-              name: '_UretimSonuKaydiEditViewModelBase.requestModel'))
+  UretimSonuKaydiListesiRequestModel get kalemlerRequestModel =>
+      (_$kalemlerRequestModelComputed ??=
+              Computed<UretimSonuKaydiListesiRequestModel>(
+                  () => super.kalemlerRequestModel,
+                  name:
+                      '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel'))
+          .value;
+  Computed<KalemModel?>? _$kalemComputed;
+
+  @override
+  KalemModel? get kalem =>
+      (_$kalemComputed ??= Computed<KalemModel?>(() => super.kalem,
+              name: '_UretimSonuKaydiEditViewModelBase.kalem'))
           .value;
 
   late final _$modelAtom =
       Atom(name: '_UretimSonuKaydiEditViewModelBase.model', context: context);
 
   @override
-  UretimSonuKaydiListesiModel? get model {
+  KalemModel? get model {
     _$modelAtom.reportRead();
     return super.model;
   }
 
   @override
-  set model(UretimSonuKaydiListesiModel? value) {
+  set model(KalemModel? value) {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
+    });
+  }
+
+  late final _$requestModelAtom = Atom(
+      name: '_UretimSonuKaydiEditViewModelBase.requestModel', context: context);
+
+  @override
+  UretimSonuKaydiEditModel get requestModel {
+    _$requestModelAtom.reportRead();
+    return super.requestModel;
+  }
+
+  @override
+  set requestModel(UretimSonuKaydiEditModel value) {
+    _$requestModelAtom.reportWrite(value, super.requestModel, () {
+      super.requestModel = value;
     });
   }
 
@@ -84,18 +109,6 @@ mixin _$UretimSonuKaydiEditViewModel
           name: '_UretimSonuKaydiEditViewModelBase', context: context);
 
   @override
-  void setSelectedItem(UretimSonuKaydiListesiModel? item) {
-    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
-        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setSelectedItem');
-    try {
-      return super.setSelectedItem(item);
-    } finally {
-      _$_UretimSonuKaydiEditViewModelBaseActionController
-          .endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setBelgeNo(String? belgeNo) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setBelgeNo');
@@ -144,11 +157,59 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
+  void setMiktar(double? miktar) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setMiktar');
+    try {
+      return super.setMiktar(miktar);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setHurdaMiktari(double? miktar) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setHurdaMiktari');
+    try {
+      return super.setHurdaMiktari(miktar);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama(String? aciklama) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setAciklama');
+    try {
+      return super.setAciklama(aciklama);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setProje(BaseProjeModel? proje) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setProje');
     try {
       return super.setProje(proje);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDepoOnceligi(({String name, String value})? depoOnceligi) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setDepoOnceligi');
+    try {
+      return super.setDepoOnceligi(depoOnceligi);
     } finally {
       _$_UretimSonuKaydiEditViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -168,7 +229,7 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
-  void setModel(UretimSonuKaydiListesiModel? item) {
+  void setModel(KalemModel? item) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setModel');
     try {
@@ -196,8 +257,10 @@ mixin _$UretimSonuKaydiEditViewModel
   String toString() {
     return '''
 model: ${model},
+requestModel: ${requestModel},
 ekAlanlarList: ${ekAlanlarList},
-requestModel: ${requestModel}
+kalemlerRequestModel: ${kalemlerRequestModel},
+kalem: ${kalem}
     ''';
   }
 }
