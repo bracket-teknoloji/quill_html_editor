@@ -43,10 +43,9 @@ extension WidgetExtension on Widget {
       view: view,
       child: RenderPositionedBox(alignment: Alignment.center, child: repaintBoundary),
       configuration: ViewConfiguration(
-        
-        // size: logicalSize,
+        physicalConstraints: BoxConstraints.tightFor(width: imageSize.width, height: imageSize.height),
         logicalConstraints: BoxConstraints.tightFor(width: logicalSize.width, height: logicalSize.height),
-        devicePixelRatio: 1.0,
+        devicePixelRatio: view.devicePixelRatio,
       ),
     );
 
@@ -72,7 +71,7 @@ extension WidgetExtension on Widget {
     pipelineOwner.flushCompositingBits();
     pipelineOwner.flushPaint();
 
-    final ui.Image image = await repaintBoundary.toImage(pixelRatio: (imageSize.width) / (logicalSize.width));
+    final ui.Image image = await repaintBoundary.toImage(pixelRatio: view.devicePixelRatio / 2);
     final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
 
     return byteData!.buffer.asUint8List();
@@ -80,7 +79,6 @@ extension WidgetExtension on Widget {
 }
 
 extension YetkiExtension2 on Object? {
-
   bool get isNull => this == null;
   Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode
       //  || CacheManager.getHesapBilgileri?.admin == "E"

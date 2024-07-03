@@ -175,7 +175,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
           ),
           Assets.splash.mapMarker.image(height: 30).paddingOnly(top: UIHelper.lowSize),
         ],
-      ).toBitmapDescriptor();
+      ).toBitmapDescriptor(logicalSize: Size(width * 1.9, height * 1.5));
 
   Future<void> setCameraPosition() async {
     final location = await _locationTracker.getLocation();
