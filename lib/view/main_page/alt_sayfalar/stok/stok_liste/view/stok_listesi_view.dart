@@ -593,6 +593,7 @@ class _StokListesiViewState extends BaseState<StokListesiView> {
             : ListView.builder(
                 primary: false,
                 padding: UIHelper.lowPadding,
+                cacheExtent: 100,
                 controller: scrollController,
                 itemCount: (viewModel.stokListesi?.length ?? 0) + 1,
                 itemBuilder: (context, index) {
