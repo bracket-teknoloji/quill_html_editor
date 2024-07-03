@@ -1359,6 +1359,36 @@ class KalemModel with NetworkManagerMixin {
   List<dynamic>? sayimKalemRequestModelHucreList;
   @HiveField(114)
   String? gc;
+  @HiveField(115)
+  String? aciklama;
+  @HiveField(116)
+  String? barkod;
+  @HiveField(117)
+  String? sipno;
+  @HiveField(118)
+  String? isemriNo;
+  @HiveField(119)
+  int? kalemSayisi;
+  @HiveField(120)
+  int? cikisDepo;
+  @HiveField(121)
+  int? girisDepo;
+  @HiveField(122)
+  String? yapacik;
+  @HiveField(123)
+  int? girisdepoKodu;
+  @HiveField(124)
+  int? cikisdepoKodu;
+  @HiveField(125)
+  String? cikisDepoAdi;
+  @HiveField(126)
+  String? girisDepoAdi;
+  @HiveField(127)
+  String? stoklaraIslendi;
+  @HiveField(128)
+  double? maliyetFiyati;
+  @HiveField(129)
+  String? depoOnceligi;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1476,6 +1506,22 @@ class KalemModel with NetworkManagerMixin {
     this.stokBirimAgirlik,
     this.bakiye,
     this.netMiktar,
+    this.aciklama,
+    this.barkod,
+    this.cikisDepo,
+    this.girisDepo,
+    this.cikisDepoAdi,
+    this.girisDepoAdi,
+    this.cikisdepoKodu,
+    this.girisdepoKodu,
+    this.yapacik,
+    this.stoklaraIslendi,
+    this.maliyetFiyati,
+    this.sipno,
+    this.isemriNo,
+    this.depoOnceligi,
+    this.kalemSayisi,
+    
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1499,6 +1545,8 @@ class KalemModel with NetworkManagerMixin {
       return 0;
     }
   }
+
+  double get maliyetTutari => (miktar ?? 0) * (maliyetFiyati ?? 0);
 
   double get kalemAgirlik => (miktar ?? 0) * (stokBirimAgirlik ?? 0);
 

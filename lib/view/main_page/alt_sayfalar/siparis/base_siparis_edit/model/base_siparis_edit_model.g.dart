@@ -2456,6 +2456,36 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel netMiktar(double? netMiktar);
 
+  KalemModel aciklama(String? aciklama);
+
+  KalemModel barkod(String? barkod);
+
+  KalemModel cikisDepo(int? cikisDepo);
+
+  KalemModel girisDepo(int? girisDepo);
+
+  KalemModel cikisDepoAdi(String? cikisDepoAdi);
+
+  KalemModel girisDepoAdi(String? girisDepoAdi);
+
+  KalemModel cikisdepoKodu(int? cikisdepoKodu);
+
+  KalemModel girisdepoKodu(int? girisdepoKodu);
+
+  KalemModel yapacik(String? yapacik);
+
+  KalemModel stoklaraIslendi(String? stoklaraIslendi);
+
+  KalemModel maliyetFiyati(double? maliyetFiyati);
+
+  KalemModel sipno(String? sipno);
+
+  KalemModel isemriNo(String? isemriNo);
+
+  KalemModel depoOnceligi(String? depoOnceligi);
+
+  KalemModel kalemSayisi(int? kalemSayisi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2578,6 +2608,21 @@ abstract class _$KalemModelCWProxy {
     double? stokBirimAgirlik,
     double? bakiye,
     double? netMiktar,
+    String? aciklama,
+    String? barkod,
+    int? cikisDepo,
+    int? girisDepo,
+    String? cikisDepoAdi,
+    String? girisDepoAdi,
+    int? cikisdepoKodu,
+    int? girisdepoKodu,
+    String? yapacik,
+    String? stoklaraIslendi,
+    double? maliyetFiyati,
+    String? sipno,
+    String? isemriNo,
+    String? depoOnceligi,
+    int? kalemSayisi,
   });
 }
 
@@ -2977,6 +3022,58 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel netMiktar(double? netMiktar) => this(netMiktar: netMiktar);
 
   @override
+  KalemModel aciklama(String? aciklama) => this(aciklama: aciklama);
+
+  @override
+  KalemModel barkod(String? barkod) => this(barkod: barkod);
+
+  @override
+  KalemModel cikisDepo(int? cikisDepo) => this(cikisDepo: cikisDepo);
+
+  @override
+  KalemModel girisDepo(int? girisDepo) => this(girisDepo: girisDepo);
+
+  @override
+  KalemModel cikisDepoAdi(String? cikisDepoAdi) =>
+      this(cikisDepoAdi: cikisDepoAdi);
+
+  @override
+  KalemModel girisDepoAdi(String? girisDepoAdi) =>
+      this(girisDepoAdi: girisDepoAdi);
+
+  @override
+  KalemModel cikisdepoKodu(int? cikisdepoKodu) =>
+      this(cikisdepoKodu: cikisdepoKodu);
+
+  @override
+  KalemModel girisdepoKodu(int? girisdepoKodu) =>
+      this(girisdepoKodu: girisdepoKodu);
+
+  @override
+  KalemModel yapacik(String? yapacik) => this(yapacik: yapacik);
+
+  @override
+  KalemModel stoklaraIslendi(String? stoklaraIslendi) =>
+      this(stoklaraIslendi: stoklaraIslendi);
+
+  @override
+  KalemModel maliyetFiyati(double? maliyetFiyati) =>
+      this(maliyetFiyati: maliyetFiyati);
+
+  @override
+  KalemModel sipno(String? sipno) => this(sipno: sipno);
+
+  @override
+  KalemModel isemriNo(String? isemriNo) => this(isemriNo: isemriNo);
+
+  @override
+  KalemModel depoOnceligi(String? depoOnceligi) =>
+      this(depoOnceligi: depoOnceligi);
+
+  @override
+  KalemModel kalemSayisi(int? kalemSayisi) => this(kalemSayisi: kalemSayisi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3100,6 +3197,21 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? stokBirimAgirlik = const $CopyWithPlaceholder(),
     Object? bakiye = const $CopyWithPlaceholder(),
     Object? netMiktar = const $CopyWithPlaceholder(),
+    Object? aciklama = const $CopyWithPlaceholder(),
+    Object? barkod = const $CopyWithPlaceholder(),
+    Object? cikisDepo = const $CopyWithPlaceholder(),
+    Object? girisDepo = const $CopyWithPlaceholder(),
+    Object? cikisDepoAdi = const $CopyWithPlaceholder(),
+    Object? girisDepoAdi = const $CopyWithPlaceholder(),
+    Object? cikisdepoKodu = const $CopyWithPlaceholder(),
+    Object? girisdepoKodu = const $CopyWithPlaceholder(),
+    Object? yapacik = const $CopyWithPlaceholder(),
+    Object? stoklaraIslendi = const $CopyWithPlaceholder(),
+    Object? maliyetFiyati = const $CopyWithPlaceholder(),
+    Object? sipno = const $CopyWithPlaceholder(),
+    Object? isemriNo = const $CopyWithPlaceholder(),
+    Object? depoOnceligi = const $CopyWithPlaceholder(),
+    Object? kalemSayisi = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3565,6 +3677,66 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.netMiktar
           // ignore: cast_nullable_to_non_nullable
           : netMiktar as double?,
+      aciklama: aciklama == const $CopyWithPlaceholder()
+          ? _value.aciklama
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama as String?,
+      barkod: barkod == const $CopyWithPlaceholder()
+          ? _value.barkod
+          // ignore: cast_nullable_to_non_nullable
+          : barkod as String?,
+      cikisDepo: cikisDepo == const $CopyWithPlaceholder()
+          ? _value.cikisDepo
+          // ignore: cast_nullable_to_non_nullable
+          : cikisDepo as int?,
+      girisDepo: girisDepo == const $CopyWithPlaceholder()
+          ? _value.girisDepo
+          // ignore: cast_nullable_to_non_nullable
+          : girisDepo as int?,
+      cikisDepoAdi: cikisDepoAdi == const $CopyWithPlaceholder()
+          ? _value.cikisDepoAdi
+          // ignore: cast_nullable_to_non_nullable
+          : cikisDepoAdi as String?,
+      girisDepoAdi: girisDepoAdi == const $CopyWithPlaceholder()
+          ? _value.girisDepoAdi
+          // ignore: cast_nullable_to_non_nullable
+          : girisDepoAdi as String?,
+      cikisdepoKodu: cikisdepoKodu == const $CopyWithPlaceholder()
+          ? _value.cikisdepoKodu
+          // ignore: cast_nullable_to_non_nullable
+          : cikisdepoKodu as int?,
+      girisdepoKodu: girisdepoKodu == const $CopyWithPlaceholder()
+          ? _value.girisdepoKodu
+          // ignore: cast_nullable_to_non_nullable
+          : girisdepoKodu as int?,
+      yapacik: yapacik == const $CopyWithPlaceholder()
+          ? _value.yapacik
+          // ignore: cast_nullable_to_non_nullable
+          : yapacik as String?,
+      stoklaraIslendi: stoklaraIslendi == const $CopyWithPlaceholder()
+          ? _value.stoklaraIslendi
+          // ignore: cast_nullable_to_non_nullable
+          : stoklaraIslendi as String?,
+      maliyetFiyati: maliyetFiyati == const $CopyWithPlaceholder()
+          ? _value.maliyetFiyati
+          // ignore: cast_nullable_to_non_nullable
+          : maliyetFiyati as double?,
+      sipno: sipno == const $CopyWithPlaceholder()
+          ? _value.sipno
+          // ignore: cast_nullable_to_non_nullable
+          : sipno as String?,
+      isemriNo: isemriNo == const $CopyWithPlaceholder()
+          ? _value.isemriNo
+          // ignore: cast_nullable_to_non_nullable
+          : isemriNo as String?,
+      depoOnceligi: depoOnceligi == const $CopyWithPlaceholder()
+          ? _value.depoOnceligi
+          // ignore: cast_nullable_to_non_nullable
+          : depoOnceligi as String?,
+      kalemSayisi: kalemSayisi == const $CopyWithPlaceholder()
+          ? _value.kalemSayisi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemSayisi as int?,
     );
   }
 }
@@ -4331,13 +4503,28 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       stokBirimAgirlik: fields[109] as double?,
       bakiye: fields[110] as double?,
       netMiktar: fields[111] as double?,
+      aciklama: fields[115] as String?,
+      barkod: fields[116] as String?,
+      cikisDepo: fields[120] as int?,
+      girisDepo: fields[121] as int?,
+      cikisDepoAdi: fields[125] as String?,
+      girisDepoAdi: fields[126] as String?,
+      cikisdepoKodu: fields[124] as int?,
+      girisdepoKodu: fields[123] as int?,
+      yapacik: fields[122] as String?,
+      stoklaraIslendi: fields[127] as String?,
+      maliyetFiyati: fields[128] as double?,
+      sipno: fields[117] as String?,
+      isemriNo: fields[118] as String?,
+      depoOnceligi: fields[129] as String?,
+      kalemSayisi: fields[119] as int?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(115)
+      ..writeByte(130)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4567,7 +4754,37 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(113)
       ..write(obj.sayimKalemRequestModelHucreList)
       ..writeByte(114)
-      ..write(obj.gc);
+      ..write(obj.gc)
+      ..writeByte(115)
+      ..write(obj.aciklama)
+      ..writeByte(116)
+      ..write(obj.barkod)
+      ..writeByte(117)
+      ..write(obj.sipno)
+      ..writeByte(118)
+      ..write(obj.isemriNo)
+      ..writeByte(119)
+      ..write(obj.kalemSayisi)
+      ..writeByte(120)
+      ..write(obj.cikisDepo)
+      ..writeByte(121)
+      ..write(obj.girisDepo)
+      ..writeByte(122)
+      ..write(obj.yapacik)
+      ..writeByte(123)
+      ..write(obj.girisdepoKodu)
+      ..writeByte(124)
+      ..write(obj.cikisdepoKodu)
+      ..writeByte(125)
+      ..write(obj.cikisDepoAdi)
+      ..writeByte(126)
+      ..write(obj.girisDepoAdi)
+      ..writeByte(127)
+      ..write(obj.stoklaraIslendi)
+      ..writeByte(128)
+      ..write(obj.maliyetFiyati)
+      ..writeByte(129)
+      ..write(obj.depoOnceligi);
   }
 
   @override
@@ -5141,6 +5358,21 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       stokBirimAgirlik: (json['STOK_BIRIM_AGIRLIK'] as num?)?.toDouble(),
       bakiye: (json['BAKIYE'] as num?)?.toDouble(),
       netMiktar: (json['NET_MIKTAR'] as num?)?.toDouble(),
+      aciklama: json['ACIKLAMA'] as String?,
+      barkod: json['BARKOD'] as String?,
+      cikisDepo: (json['CIKIS_DEPO'] as num?)?.toInt(),
+      girisDepo: (json['GIRIS_DEPO'] as num?)?.toInt(),
+      cikisDepoAdi: json['CIKIS_DEPO_ADI'] as String?,
+      girisDepoAdi: json['GIRIS_DEPO_ADI'] as String?,
+      cikisdepoKodu: (json['CIKISDEPO_KODU'] as num?)?.toInt(),
+      girisdepoKodu: (json['GIRISDEPO_KODU'] as num?)?.toInt(),
+      yapacik: json['YAPACIK'] as String?,
+      stoklaraIslendi: json['STOKLARA_ISLENDI'] as String?,
+      maliyetFiyati: (json['MALIYET_FIYATI'] as num?)?.toDouble(),
+      sipno: json['SIPNO'] as String?,
+      isemriNo: json['ISEMRI_NO'] as String?,
+      depoOnceligi: json['DEPO_ONCELIGI'] as String?,
+      kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -5270,5 +5502,20 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('SAYIM_KALEM_REQUEST_MODEL_HUCRE_LIST',
       instance.sayimKalemRequestModelHucreList);
   writeNotNull('GC', instance.gc);
+  writeNotNull('ACIKLAMA', instance.aciklama);
+  writeNotNull('BARKOD', instance.barkod);
+  writeNotNull('SIPNO', instance.sipno);
+  writeNotNull('ISEMRI_NO', instance.isemriNo);
+  writeNotNull('KALEM_SAYISI', instance.kalemSayisi);
+  writeNotNull('CIKIS_DEPO', instance.cikisDepo);
+  writeNotNull('GIRIS_DEPO', instance.girisDepo);
+  writeNotNull('YAPACIK', instance.yapacik);
+  writeNotNull('GIRISDEPO_KODU', instance.girisdepoKodu);
+  writeNotNull('CIKISDEPO_KODU', instance.cikisdepoKodu);
+  writeNotNull('CIKIS_DEPO_ADI', instance.cikisDepoAdi);
+  writeNotNull('GIRIS_DEPO_ADI', instance.girisDepoAdi);
+  writeNotNull('STOKLARA_ISLENDI', instance.stoklaraIslendi);
+  writeNotNull('MALIYET_FIYATI', instance.maliyetFiyati);
+  writeNotNull('DEPO_ONCELIGI', instance.depoOnceligi);
   return val;
 }

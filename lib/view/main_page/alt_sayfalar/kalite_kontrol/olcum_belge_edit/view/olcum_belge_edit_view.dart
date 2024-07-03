@@ -308,18 +308,20 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     Get.back(result: true);
   }
 
-  CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true && yetkiController.sigmaOlcumKaydet,
-        onPressed: () async {
-          if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) {
-            dialogManager.showAlertDialog("Proses bulunmamaktadır.");
-            return;
-          }
-          final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
-          if (result != null) {
-            await viewModel.getData();
-          }
-        },
+  Observer fab() => Observer(
+        builder: (_) => CustomFloatingActionButton(
+          isScrolledDown: viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet,
+          onPressed: () async {
+            if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) {
+              dialogManager.showAlertDialog("Proses bulunmamaktadır.");
+              return;
+            }
+            final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
+            if (result != null) {
+              await viewModel.getData();
+            }
+          },
+        ),
       );
 
   Observer body() => Observer(
@@ -488,23 +490,25 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                       ].nullCheckWithGeneric,
                                     );
                                   },
-                                  title: Text(title),
-                                  subtitle: Column(
+                                  title: Row(
                                     children: [
-                                      const Row(
+                                      Expanded(child: Text(title)),
+                                      Row(
                                         children: [
-                                          // ColorfulBadge().yetkiVarMi(item?.)
+                                          const ColorfulBadge(label: Text("Kabul"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) <= 0),
+                                          const ColorfulBadge(label: Text("Şartlı Kabul"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) > 0),
+                                          const ColorfulBadge(label: Text("Ret"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi((item?.retAdet ?? 0) > 0),
                                         ],
                                       ),
-                                      CustomLayoutBuilder(
-                                        splitCount: 2,
-                                        children: [
-                                          Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
-                                          Text("Seri No: ${item?.seriNo}").yetkiVarMi(item?.seriNo != null),
-                                          Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
-                                          Text("Operatör: ${item?.kayitOperator}").yetkiVarMi(item?.kayitOperator != null),
-                                        ],
-                                      ),
+                                    ],
+                                  ),
+                                  subtitle: CustomLayoutBuilder(
+                                    splitCount: 2,
+                                    children: [
+                                      Text("Kaydeden: ${item?.kayityapankul}").yetkiVarMi(item?.kayityapankul != null),
+                                      Text("Seri No: ${item?.seriNo}").yetkiVarMi(item?.seriNo != null),
+                                      Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}").yetkiVarMi(item?.kayittarihi != null),
+                                      Text("Operatör: ${item?.kayitOperator}").yetkiVarMi(item?.kayitOperator != null),
                                     ],
                                   ),
                                 ),
