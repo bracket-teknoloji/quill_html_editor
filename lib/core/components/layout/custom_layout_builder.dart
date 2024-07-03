@@ -7,7 +7,7 @@ class CustomLayoutBuilder extends StatefulWidget {
   final int splitCount;
   final bool? lastItemExpanded;
   const CustomLayoutBuilder({super.key, required this.splitCount, required this.children, this.lastItemExpanded});
-  const CustomLayoutBuilder.divideInHalf({super.key,required this.children, this.lastItemExpanded}) : splitCount = 2;
+  const CustomLayoutBuilder.divideInHalf({super.key, required this.children, this.lastItemExpanded}) : splitCount = 2;
 
   @override
   State<CustomLayoutBuilder> createState() => _CustomLayoutBuilderState();

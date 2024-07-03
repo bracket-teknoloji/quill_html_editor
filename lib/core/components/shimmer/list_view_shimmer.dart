@@ -4,7 +4,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:shimmer/shimmer.dart";
 
-import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class ListViewShimmer extends StatefulWidget {
@@ -14,7 +13,7 @@ class ListViewShimmer extends StatefulWidget {
   State<ListViewShimmer> createState() => _ListViewShimmerState();
 }
 
-class _ListViewShimmerState extends BaseState<ListViewShimmer> {
+class _ListViewShimmerState extends State<ListViewShimmer> {
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
@@ -91,7 +90,7 @@ class _ListViewShimmerState extends BaseState<ListViewShimmer> {
 
   double get containerWidth {
     while (true) {
-      final double widthOfContainer = Random().nextDouble() * (width * 0.5);
+      final double widthOfContainer = Random().nextDouble() * (MediaQuery.sizeOf(context).width * 0.5);
       if (widthOfContainer > 100) {
         return widthOfContainer;
       }
