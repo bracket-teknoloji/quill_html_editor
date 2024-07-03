@@ -14,7 +14,7 @@ class SlideControllerWidget extends StatefulWidget {
   final bool? scroll;
   final void Function(int? index) filterOnChanged;
   const SlideControllerWidget({super.key, required this.childrenTitleList, required this.filterOnChanged, required this.childrenValueList, required this.groupValue, this.title, this.scroll = true})
-      : assert(childrenTitleList.length == childrenValueList.length);
+      : assert(childrenTitleList.length == childrenValueList.length, "childrenTitleList and childrenValueList length must be equal");
 
   @override
   State<SlideControllerWidget> createState() => _SlideControllerWidgetState();
