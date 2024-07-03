@@ -10,7 +10,7 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view_model/uretim_sonu_kaydi_listesi_view_model.dart";
 
 final class UretimSonuKaydiListesiView extends StatefulWidget {
@@ -79,7 +79,7 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown && yetkiController.uretimSonuKaydiEkle,
           onPressed: () async {
-            Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<UretimSonuKaydiListesiModel>(baseEditEnum: BaseEditEnum.ekle));
+            Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(baseEditEnum: BaseEditEnum.ekle));
           },
         ),
       );

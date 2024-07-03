@@ -10,11 +10,11 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/view_model/uretim_sonu_raporu_view_model.dart";
 
 final class UretimSonuRaporuView extends StatefulWidget {
-  final UretimSonuKaydiListesiModel model;
+  final KalemModel model;
   const UretimSonuRaporuView({super.key, required this.model});
 
   @override

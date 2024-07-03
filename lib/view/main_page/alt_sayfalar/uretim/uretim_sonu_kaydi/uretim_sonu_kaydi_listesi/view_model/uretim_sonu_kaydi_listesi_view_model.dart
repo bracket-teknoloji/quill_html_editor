@@ -8,14 +8,14 @@ import "package:picker/core/base/view_model/pageable_mixin.dart";
 import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_request_model.dart";
 
 part "uretim_sonu_kaydi_listesi_view_model.g.dart";
 
 class UretimSonuKaydiListesiViewModel = _UretimSonuKaydiListesiViewModelBase with _$UretimSonuKaydiListesiViewModel;
 
-abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<UretimSonuKaydiListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   /// İsteği atarken data'ları güncel olarak alsın diye getter fonksiyon olarak ayarlandı.
   UretimSonuKaydiListesiRequestModel get requestModel => UretimSonuKaydiListesiRequestModel(ekranTipi: "L", sayfa: page, searchText: searchText);
 
@@ -32,7 +32,7 @@ abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin
   String? searchText;
   @override
   @observable
-  ObservableList<UretimSonuKaydiListesiModel>? observableList;
+  ObservableList<KalemModel>? observableList;
 
   @override
   @action
@@ -50,11 +50,11 @@ abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin
 
   @override
   @action
-  void setObservableList(List<UretimSonuKaydiListesiModel>? list) => observableList = list?.asObservable();
+  void setObservableList(List<KalemModel>? list) => observableList = list?.asObservable();
 
   @override
   @action
-  void addObservableList(List<UretimSonuKaydiListesiModel>? list) => setObservableList(observableList?..addAll(list!));
+  void addObservableList(List<KalemModel>? list) => setObservableList(observableList?..addAll(list!));
 
   @override
   Future<void> changeScrollStatus(ScrollPosition position) async {
@@ -73,13 +73,13 @@ abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(UretimSonuKaydiListesiModel item) async =>
-      await networkManager.dioPost(path: ApiUrls.deleteUSK, bodyModel: UretimSonuKaydiListesiModel(), showLoading: true, queryParameters: {"BelgeNo": item.belgeNo});
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(KalemModel item) async =>
+      await networkManager.dioPost(path: ApiUrls.deleteUSK, bodyModel: KalemModel(), showLoading: true, queryParameters: {"BelgeNo": item.belgeNo});
 
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getUSKListesi, bodyModel: UretimSonuKaydiListesiModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getUSKListesi, bodyModel: KalemModel(), queryParameters: requestModel.toJson());
     if (result.isSuccess) {
       if (page > 1) {
         addObservableList(result.dataList);

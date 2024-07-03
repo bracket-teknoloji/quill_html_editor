@@ -66,13 +66,13 @@ mixin _$UretimSonuKaydiListesiViewModel
       context: context);
 
   @override
-  ObservableList<UretimSonuKaydiListesiModel>? get observableList {
+  ObservableList<KalemModel>? get observableList {
     _$observableListAtom.reportRead();
     return super.observableList;
   }
 
   @override
-  set observableList(ObservableList<UretimSonuKaydiListesiModel>? value) {
+  set observableList(ObservableList<KalemModel>? value) {
     _$observableListAtom.reportWrite(value, super.observableList, () {
       super.observableList = value;
     });
@@ -93,7 +93,7 @@ mixin _$UretimSonuKaydiListesiViewModel
 
   @override
   Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(
-      UretimSonuKaydiListesiModel item) {
+      KalemModel item) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(item));
   }
 
@@ -137,7 +137,7 @@ mixin _$UretimSonuKaydiListesiViewModel
   }
 
   @override
-  void setObservableList(List<UretimSonuKaydiListesiModel>? list) {
+  void setObservableList(List<KalemModel>? list) {
     final _$actionInfo =
         _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
             name: '_UretimSonuKaydiListesiViewModelBase.setObservableList');
@@ -150,7 +150,7 @@ mixin _$UretimSonuKaydiListesiViewModel
   }
 
   @override
-  void addObservableList(List<UretimSonuKaydiListesiModel>? list) {
+  void addObservableList(List<KalemModel>? list) {
     final _$actionInfo =
         _$_UretimSonuKaydiListesiViewModelBaseActionController.startAction(
             name: '_UretimSonuKaydiListesiViewModelBase.addObservableList');

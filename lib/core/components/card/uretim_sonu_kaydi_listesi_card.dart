@@ -9,10 +9,10 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 final class UretimSonuKaydiListesiCard extends StatefulWidget {
-  final UretimSonuKaydiListesiModel model;
+  final KalemModel model;
   final Future<void> Function() onChanged;
   const UretimSonuKaydiListesiCard({super.key, required this.model, required this.onChanged});
 
@@ -21,7 +21,7 @@ final class UretimSonuKaydiListesiCard extends StatefulWidget {
 }
 
 final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiListesiCard> {
-  UretimSonuKaydiListesiModel get model => widget.model;
+  KalemModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
@@ -35,7 +35,7 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                   iconWidget: Icons.preview_outlined,
                   onTap: () {
                     Get.back();
-                    Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<UretimSonuKaydiListesiModel>(model: model, baseEditEnum: BaseEditEnum.goruntule));
+                    Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(model: model, baseEditEnum: BaseEditEnum.goruntule));
                   },
                 ),
                 BottomSheetModel(
