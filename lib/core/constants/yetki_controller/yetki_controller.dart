@@ -593,6 +593,7 @@ final class YetkiController {
   bool get uretimSonuKaydiEkle => _isTrue(_yetkiModel?.uretimUskKaydet);
   bool get uretimSonuKaydiDuzenle => _isTrue(_yetkiModel?.uretimUskDuzelt);
   bool get uretimSonuKaydiSil => _isTrue(_yetkiModel?.uretimUskSil);
+  String? get uretimSonuDepoOnceligi => _yetkiModel?.uretimUskDepoOnceligi;
 
   //* İş Emirleri
   bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
