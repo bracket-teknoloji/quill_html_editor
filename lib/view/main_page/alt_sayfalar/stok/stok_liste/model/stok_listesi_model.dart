@@ -9,6 +9,8 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "stok_listesi_model.g.dart";
 
+typedef OlcuBirimiRecord = ({String? adi, int? kodu});
+
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
@@ -197,7 +199,6 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 
-
   factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
     ..stokKodu = model.stokKodu
     ..stokAdi = model.stokAdi
@@ -223,6 +224,22 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
       return olcuBirimi3;
     }
     return null;
+  }
+
+  int? get olcuBirimiAdedi {
+    int sayac = 0;
+    if (olcuBirimi != null) sayac++;
+    if (olcuBirimi2 != null) sayac++;
+    if (olcuBirimi3 != null) sayac++;
+    return sayac;
+  }
+
+  List<OlcuBirimiRecord> get getOlcuBirimiRecords {
+    final List<OlcuBirimiRecord> records = [];
+    if (olcuBirimi != null) records.add((adi: olcuBirimi, kodu: 1));
+    if (olcuBirimi2 != null) records.add((adi: olcuBirimi2, kodu: 2));
+    if (olcuBirimi3 != null) records.add((adi: olcuBirimi3, kodu: 3));
+    return records;
   }
 
   bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri?.paramModel?.karmaKoliUyg == "E";
