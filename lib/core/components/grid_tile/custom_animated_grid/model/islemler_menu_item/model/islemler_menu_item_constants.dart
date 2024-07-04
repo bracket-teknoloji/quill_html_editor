@@ -1144,7 +1144,16 @@ class IslemlerMenuItemConstants<T> {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
             return await Get.toNamed(
               "mainPage/faturaEdit",
-              arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisFatura),
+              arguments: BaseEditModel(
+                model: siparisModel.copyWith(
+                  efaturaDurumAciklama: null,
+                  efaturaGibDurumKodu: null,
+                  efaturaMi: null,
+                  kasaKodu: null,
+                ),
+                baseEditEnum: BaseEditEnum.kopyala,
+                editTipiEnum: EditTipiEnum.satisFatura,
+              ),
             );
           }
         },
@@ -1262,7 +1271,7 @@ class IslemlerMenuItemConstants<T> {
                 //   element.miktar = element.kalan;
                 //   element.siparisSira = element.sira;
                 // }
-              
+
                 result.depoTanimi ??= siparisModel.depoTanimi;
                 result = result.copyWith(kalemList: kalemList);
                 BaseSiparisEditModel.resetInstance();
