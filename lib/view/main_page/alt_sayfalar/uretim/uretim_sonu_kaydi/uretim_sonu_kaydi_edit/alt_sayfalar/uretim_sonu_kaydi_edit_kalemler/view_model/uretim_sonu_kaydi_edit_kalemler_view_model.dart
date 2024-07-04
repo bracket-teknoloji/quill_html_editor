@@ -1,0 +1,37 @@
+import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+part "uretim_sonu_kaydi_edit_kalemler_view_model.g.dart";
+
+class UretimSonuKaydiEditKalemlerViewModel = _UretimSonuKaydiEditKalemlerViewModelBase with _$UretimSonuKaydiEditKalemlerViewModel;
+
+abstract class _UretimSonuKaydiEditKalemlerViewModelBase with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin {
+  @observable
+  @override
+  ObservableList<KalemModel>? observableList;
+
+  @action
+  @override
+  void changeSearchBarStatus() {}
+  @observable
+  @override
+  bool isSearchBarOpen = false;
+
+  @action
+  @override
+  void setObservableList(List<KalemModel>? list) => observableList = list?.asObservable();
+  @observable
+  @override
+  String? searchText;
+
+  @action
+  @override
+  void setSearchText(String? value) => searchText = value;
+
+  @action
+  @override
+  Future<void> getData() async {}
+}
