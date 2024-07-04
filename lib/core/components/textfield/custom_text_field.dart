@@ -125,6 +125,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
           child: TextFormField(
             autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
             textInputAction: TextInputAction.next,
+            autocorrect: true,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
             onTap: () async {
@@ -134,8 +135,16 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
               if (widget.onTap != null) {
                 widget.onTap!();
               } else {
+                //TODO Selection düzelt
                 if (widget.readOnly != true) {
-                  controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.text.length);
+                  // if (controller.selection.affinity == TextAffinity.upstream) {
+                  //   controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.text.length, affinity: TextAffinity.downstream);
+                  // } else {
+                  //   controller.selection = TextSelection.collapsed(
+                  //     offset: controller.text.length,
+                  //   );
+                  //   // controller.selection = controller.selection.copyWith(baseOffset: 0, extentOffset: controller.text.length);
+                  // }
                 }
               }
               // FocusScope.of(context).requestFocus(widget.focusNode);
