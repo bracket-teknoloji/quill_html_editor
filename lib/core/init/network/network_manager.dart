@@ -385,7 +385,7 @@ class NetworkManager {
       const uuid = Uuid();
       final timeZoneMinutes = DateTime.now().timeZoneOffset.inMinutes;
       final String baseEncoded = base64Encode(utf8.encode('{\n  "GUID": "${uuid.v4()}",\n  "TZ_MINUTES": $timeZoneMinutes,\n  "ZAMAN": "${DateTime.now().toDateTimeString()}"\n}'));
-      header.addAll({"CKey": baseEncoded});
+      header.addAll({"CKEY": baseEncoded});
     }
     return header;
   }
