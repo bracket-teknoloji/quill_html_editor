@@ -1,21 +1,21 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_edit_siradaki_kod_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/model/ek_alanlar_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-part "uretim_sonu_kaydi_edit_view_model.g.dart";
+part "uretim_sonu_kaydi_edit_view_genel_model.g.dart";
 
 typedef DepoOnceligiRecord = ({String name, String value});
 
-class UretimSonuKaydiEditViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditViewModel;
+class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditGenelViewModel;
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   final List<DepoOnceligiRecord> depoOnceligiList = [
@@ -29,7 +29,10 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   KalemModel? model;
 
   @observable
-  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(kalemList: [KalemModel()]);
+  StokListesiModel? stokModel;
+
+  @observable
+  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(kalemList: [KalemModel()], ekAlanlar: EkAlanlar());
 
   @observable
   ObservableList<EkAlanlarModel>? ekAlanlarList;
@@ -62,7 +65,25 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setHurdaMiktari(double? miktar) => setModel(kalem?.copyWith(miktar2: miktar));
 
   @action
+  void setMaliyetFiyati(double? maliyet) => setModel(kalem?.copyWith(maliyetFiyati: maliyet));
+
+  @action
   void setAciklama(String? aciklama) => setModel(kalem?.copyWith(aciklama: aciklama));
+
+  @action
+  void setEkAlan1(String? aciklama) => setModel(kalem?.copyWith(ekalan1: aciklama));
+
+  @action
+  void setEkAlan2(String? aciklama) => setModel(kalem?.copyWith(ekalan2: aciklama));
+
+  @action
+  void setEkAlanlar(int index, String? value) => requestModel.ekAlanlar![index] = value;
+
+  @action
+  void setStokModel(StokListesiModel? stok) => stokModel = stok;
+
+  @action
+  void setOlcuBirimi(OlcuBirimiRecord? olcuBirimi) => setModel(kalem?.copyWith(olcuBirimKodu: olcuBirimi?.kodu, olcuBirimAdi: olcuBirimi?.adi));
 
   @action
   void setProje(BaseProjeModel? proje) {
@@ -71,16 +92,31 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) => requestModel = requestModel.copyWith(depoOnceligi: depoOnceligi?.value);
+  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) => requestModel = requestModel.copyWith(depoOnceligi: depoOnceligi?.value ?? "H");
 
   @action
-  void setMamulKodu(BaseStokMixin? stok) => setModel(kalem?.copyWith(stokKodu: stok?.stokKodu, stokAdi: stok?.stokAdi));
+  void setMamulKodu(StokListesiModel? stok) {
+    setModel(
+      kalem?.copyWith(
+        stokKodu: stok?.stokKodu,
+        stokAdi: stok?.stokAdi,
+        seriCikislardaAcik: stok?.seriCikislardaAcik,
+        seriGirislerdeAcik: stok?.seriGirislerdeAcik,
+      ),
+    );
+    setStokModel(stok);
+  }
 
   @action
   void setModel(KalemModel? item) {
     model = item;
     if (item != null) {
       requestModel = requestModel.copyWith(kalemList: [item], depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
+      if (item.girisdepoKodu != null) {
+        requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
+        requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
+        setModel(item.copyWith(girisdepoKodu: null, cikisdepoKodu: null, girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
+      }
     }
   }
 
@@ -116,4 +152,9 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
     if (result.isSuccess) return result.paramData?["SIRADAKI_NO"];
     return null;
   }
+
+  // @action
+  // Future<GenericResponseModel<NetworkManagerMixin>> saveData() async {
+  //   final result = await networkManager.dioPost(path: ApiUrls.saveU, bodyModel: bodyModel)
+  // }
 }

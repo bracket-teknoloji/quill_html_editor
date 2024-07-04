@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'uretim_sonu_kaydi_edit_view_model.dart';
+part of 'uretim_sonu_kaydi_edit_view_genel_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,7 +8,7 @@ part of 'uretim_sonu_kaydi_edit_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$UretimSonuKaydiEditViewModel
+mixin _$UretimSonuKaydiEditGenelViewModel
     on _UretimSonuKaydiEditViewModelBase, Store {
   Computed<UretimSonuKaydiListesiRequestModel>? _$kalemlerRequestModelComputed;
 
@@ -41,6 +41,22 @@ mixin _$UretimSonuKaydiEditViewModel
   set model(KalemModel? value) {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
+    });
+  }
+
+  late final _$stokModelAtom = Atom(
+      name: '_UretimSonuKaydiEditViewModelBase.stokModel', context: context);
+
+  @override
+  StokListesiModel? get stokModel {
+    _$stokModelAtom.reportRead();
+    return super.stokModel;
+  }
+
+  @override
+  set stokModel(StokListesiModel? value) {
+    _$stokModelAtom.reportWrite(value, super.stokModel, () {
+      super.stokModel = value;
     });
   }
 
@@ -181,11 +197,84 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
+  void setMaliyetFiyati(double? maliyet) {
+    final _$actionInfo =
+        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
+            name: '_UretimSonuKaydiEditViewModelBase.setMaliyetFiyati');
+    try {
+      return super.setMaliyetFiyati(maliyet);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAciklama(String? aciklama) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setAciklama');
     try {
       return super.setAciklama(aciklama);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan1(String? aciklama) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setEkAlan1');
+    try {
+      return super.setEkAlan1(aciklama);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlan2(String? aciklama) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setEkAlan2');
+    try {
+      return super.setEkAlan2(aciklama);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setEkAlanlar(int index, String? value) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setEkAlanlar');
+    try {
+      return super.setEkAlanlar(index, value);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setStokModel(StokListesiModel? stok) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setStokModel');
+    try {
+      return super.setStokModel(stok);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOlcuBirimi(({String? adi, int? kodu})? olcuBirimi) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setOlcuBirimi');
+    try {
+      return super.setOlcuBirimi(olcuBirimi);
     } finally {
       _$_UretimSonuKaydiEditViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -217,7 +306,7 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
-  void setMamulKodu(BaseStokMixin? stok) {
+  void setMamulKodu(StokListesiModel? stok) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setMamulKodu');
     try {
@@ -257,6 +346,7 @@ mixin _$UretimSonuKaydiEditViewModel
   String toString() {
     return '''
 model: ${model},
+stokModel: ${stokModel},
 requestModel: ${requestModel},
 ekAlanlarList: ${ekAlanlarList},
 kalemlerRequestModel: ${kalemlerRequestModel},

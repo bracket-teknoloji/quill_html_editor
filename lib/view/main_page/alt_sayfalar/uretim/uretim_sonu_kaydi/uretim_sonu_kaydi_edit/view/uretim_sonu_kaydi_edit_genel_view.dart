@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -19,20 +18,21 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view_model/uretim_sonu_kaydi_edit_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view_model/uretim_sonu_kaydi_edit_view_genel_model.dart";
 
-final class UretimSonuKaydiEditView extends StatefulWidget {
+final class UretimSonuKaydiEditGenelView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
-  const UretimSonuKaydiEditView({super.key, required this.model});
+  const UretimSonuKaydiEditGenelView({super.key, required this.model});
 
   @override
-  State<UretimSonuKaydiEditView> createState() => _UretimSonuKaydiEditViewState();
+  State<UretimSonuKaydiEditGenelView> createState() => _UretimSonuKaydiEditGenelViewState();
 }
 
-final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditView> {
-  final UretimSonuKaydiEditViewModel viewModel = UretimSonuKaydiEditViewModel();
+final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydiEditGenelView> {
+  final UretimSonuKaydiEditGenelViewModel viewModel = UretimSonuKaydiEditGenelViewModel();
   late final TextEditingController belgeNoController;
   late final TextEditingController tarihController;
   late final TextEditingController isEmriController;
@@ -44,11 +44,13 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
   late final TextEditingController olcuBirimiController;
   late final TextEditingController miktarController;
   late final TextEditingController hurdaFireMiktariController;
+  late final TextEditingController serilerController;
   late final TextEditingController maliyetFiyatiController;
   late final TextEditingController maliyetTutariController;
   late final TextEditingController aciklamaController;
   late final TextEditingController ekAlan1Controller;
   late final TextEditingController ekAlan2Controller;
+  late final List<TextEditingController> ekAlanlarControllers;
 
   bool get ekleMi => widget.model.baseEditEnum.ekleMi;
 
@@ -63,6 +65,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
     } else {
       viewModel.setModel(widget.model.model);
     }
+    ekAlanlarControllers = [];
     belgeNoController = TextEditingController();
     tarihController = TextEditingController();
     isEmriController = TextEditingController();
@@ -74,6 +77,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
     olcuBirimiController = TextEditingController();
     miktarController = TextEditingController(text: model?.kalemList?.firstOrNull?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "");
     hurdaFireMiktariController = TextEditingController();
+    serilerController = TextEditingController();
     maliyetFiyatiController = TextEditingController();
     maliyetTutariController = TextEditingController();
     aciklamaController = TextEditingController();
@@ -81,6 +85,9 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
     ekAlan2Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getEkAlanlar();
+      if (viewModel.ekAlanlarList != null) {
+        ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController()));
+      }
       if (widget.model.baseEditEnum.ekleMi) {
         viewModel.setDepoOnceligi(viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == yetkiController.uretimSonuDepoOnceligi));
         final result = await viewModel.getSiradakiKod(null);
@@ -93,6 +100,8 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         belgeNoController.text = model?.belgeNo ?? "";
       }
       if (viewModel.model != null) {
+        olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? "";
+        projeController.text = viewModel.kalem?.projeKodu ?? "";
         tarihController.text = viewModel.kalem?.tarih.toDateString ?? "";
         depoOnceligiController.text = viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == model?.depoOnceligi)?.name ?? "";
         cikisDepoController.text = viewModel.model!.cikisDepoAdi ?? "";
@@ -110,6 +119,9 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
 
   @override
   void dispose() {
+    for (var element in ekAlanlarControllers) {
+      element.dispose();
+    }
     belgeNoController.dispose();
     tarihController.dispose();
     isEmriController.dispose();
@@ -121,6 +133,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
     olcuBirimiController.dispose();
     miktarController.dispose();
     hurdaFireMiktariController.dispose();
+    serilerController.dispose();
     maliyetFiyatiController.dispose();
     maliyetTutariController.dispose();
     aciklamaController.dispose();
@@ -170,7 +183,14 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                 miktarField(),
               ],
             ),
-            hurdaFireMiktariField(),
+            Observer(
+              builder: (_) => CustomLayoutBuilder.divideInHalf(
+                children: [
+                  hurdaFireMiktariField(),
+                  serilerField().yetkiVarMi(viewModel.model?.seriCikislardaAcik ?? false),
+                ],
+              ),
+            ),
             CustomLayoutBuilder(
               splitCount: 2,
               children: [
@@ -238,6 +258,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         readOnly: true,
         suffixMore: true,
         controller: depoOnceligiController,
+        valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.depoOnceligi ?? "")),
         onTap: () async {
           final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
             context,
@@ -333,7 +354,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         ),
         onTap: () async {
           final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
-          if (result is BaseStokMixin) {
+          if (result is StokListesiModel) {
             mamulKoduController.text = result.stokKodu ?? "";
             viewModel.setMamulKodu(result);
           }
@@ -346,7 +367,23 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         controller: olcuBirimiController,
         suffixMore: true,
         readOnly: true,
-        onChanged: (value) {},
+        onTap: () async {
+          if (viewModel.stokModel == null) {
+            return dialogManager.showAlertDialog("Önce stok seçiniz.");
+          }
+          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+            context,
+            title: "Ölçü Birimi",
+            groupValue: viewModel.kalem?.olcuBirimKodu,
+            children: List.generate(viewModel.stokModel?.olcuBirimiAdedi ?? 0, (index) {
+              final OlcuBirimiRecord? item = viewModel.stokModel?.getOlcuBirimiRecords[index];
+              return BottomSheetModel(title: item?.adi ?? "", groupValue: item?.kodu, value: item);
+            }),
+          );
+          if (result is! OlcuBirimiRecord) return;
+          olcuBirimiController.text = result.adi ?? "";
+          viewModel.setOlcuBirimi(result);
+        },
       );
 
   CustomTextField miktarField() => CustomTextField(
@@ -368,13 +405,23 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         onChanged: (value) => viewModel.setHurdaMiktari(value.toDoubleWithFormattedString),
       );
 
+  CustomTextField serilerField() => CustomTextField(
+        labelText: "Seriler",
+        controller: serilerController,
+        suffixMore: true,
+        isMust: true,
+        readOnly: true,
+        //TODO Seriler eklenecek
+        onTap: () {},
+      );
+
   CustomTextField maliyetFiyatiField() => CustomTextField(
         labelText: "Maliyet Fiyatı",
         enabled: isEnabled,
         controller: maliyetFiyatiController,
         isFormattedString: true,
         keyboardType: const TextInputType.numberWithOptions(decimal: true),
-        onChanged: (value) {},
+        onChanged: (value) => viewModel.setMaliyetFiyati(value.toDoubleWithFormattedString),
       );
 
   CustomTextField mailyetTutariField() => CustomTextField(
@@ -390,7 +437,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         labelText: "Açıklama",
         enabled: isEnabled,
         controller: aciklamaController,
-        onChanged: (value) {},
+        onChanged: viewModel.setAciklama,
       );
 
   CustomTextField ekAlan1Field() => CustomTextField(
@@ -418,10 +465,36 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                 final item = viewModel.ekAlanlarList?[index];
                 return CustomTextField(
                   labelText: "${item?.alanAciklama}",
+                  controller: ekAlanlarControllers[index],
                   enabled: isEnabled,
                   suffixMore: item?.secimListesi?.isNotEmpty,
                   isMust: item?.zorunlu == "E",
                   maxLength: item?.uzunluk,
+                  readOnly: item?.secimListesi?.isNotEmpty,
+                  onChanged: (value) {
+                    if (item?.secimListesi?.isNotEmpty ?? false) return;
+                    viewModel.setEkAlanlar(index, value);
+                  },
+                  onTap: () async {
+                    if (item?.secimListesi?.isEmpty ?? false) return;
+
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                      context,
+                      title: "Ek Alan $index",
+                      groupValue: viewModel.requestModel.ekAlanlar?[index],
+                      children: List.generate(
+                        item?.secimListesi?.length ?? 0,
+                        (int newIndex) => BottomSheetModel(
+                          title: item?.secimListesi?[newIndex] ?? "",
+                          value: item?.secimListesi?[newIndex] ?? "",
+                          groupValue: item?.secimListesi?[newIndex] ?? "",
+                        ),
+                      ),
+                    );
+                    if (result == null) return;
+                    ekAlanlarControllers[index].text = result;
+                    viewModel.setEkAlanlar(index, result);
+                  },
                 );
               },
             ),
