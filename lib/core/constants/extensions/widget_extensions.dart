@@ -86,4 +86,6 @@ extension YetkiExtension2 on Object? {
       ? this
       : null;
   Object? isKDebug() => kDebugMode ? this : null;
+
+  Object? yetkiVarMi(bool? yetki) => yetki == true ? this : null;
 }

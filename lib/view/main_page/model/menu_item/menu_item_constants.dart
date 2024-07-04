@@ -232,7 +232,7 @@ class MenuItemConstants {
         GridItemModel.item(name: "hucre_Arama", title: "Hücre Ara", route: "/mainPage/hucreAra"),
         GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
       ],
-    ),
+    ).yetkiVarMi(_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true && _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true),
 
     //* Mal Kabul
     //*
@@ -454,6 +454,7 @@ class MenuItemConstants {
       altMenuler: [
         GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi").isDebug(),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
+        GridItemModel.item(name: "uretim_MalToplama", title: "Üretime Mal Toplama"),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emri Hammadde Takibi", route: "/mainPage/isEmriHammaddeTakibi").isDebug(),
       ].whereType<GridItemModel>().toList(),
     ),
