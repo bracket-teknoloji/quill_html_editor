@@ -39,4 +39,36 @@ class EkAlanlar with _$EkAlanlar {
   }) = _EkAlanlar;
 
   factory EkAlanlar.fromJson(Map<String, dynamic> json) => _$EkAlanlarFromJson(json);
+
+  String? operator [](int index) {
+    if (index == 0) {
+      return ktAlan1;
+    }
+    if (index == 1) {
+      return ktAlan2;
+    }
+    if (index == 2) {
+      return ktAlan3;
+    }
+    if (index == 3) {
+      return ktAlan4;
+    }
+    throw Exception("Invalid Array Index");
+  }
+
+  void operator []=(int index, String? value) {
+    if (index == 0) {
+      ktAlan1 = value;
+    }
+    if (index == 1) {
+      ktAlan2 = value;
+    }
+    if (index == 2) {
+      ktAlan3 = value;
+    }
+    if (index == 3) {
+      ktAlan4 = value;
+    }
+    throw Exception("Invalid Array Index");
+  }
 }
