@@ -9,84 +9,88 @@ part of 'stok_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
-  late final _$dahaVarMiAtom =
-      Atom(name: '_StokRehberiViewModelBase.dahaVarMi', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_StokRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_StokRehberiViewModelBase.isScrolledDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_StokRehberiViewModelBase.isScrollDown', context: context);
 
   @override
-  bool get isScrolledDown {
-    _$isScrolledDownAtom.reportRead();
-    return super.isScrolledDown;
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
   }
 
   @override
-  set isScrolledDown(bool value) {
-    _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
-      super.isScrolledDown = value;
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
     });
   }
 
-  late final _$stokListesiAtom =
-      Atom(name: '_StokRehberiViewModelBase.stokListesi', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_StokRehberiViewModelBase.searchText', context: context);
 
   @override
-  List<StokListesiModel>? get stokListesi {
-    _$stokListesiAtom.reportRead();
-    return super.stokListesi;
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
   }
 
   @override
-  set stokListesi(List<StokListesiModel>? value) {
-    _$stokListesiAtom.reportWrite(value, super.stokListesi, () {
-      super.stokListesi = value;
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
-  late final _$stokBottomSheetModelAtom = Atom(
-      name: '_StokRehberiViewModelBase.stokBottomSheetModel', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_StokRehberiViewModelBase.observableList', context: context);
 
   @override
-  StokBottomSheetModel get stokBottomSheetModel {
-    _$stokBottomSheetModelAtom.reportRead();
-    return super.stokBottomSheetModel;
+  ObservableList<StokListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set stokBottomSheetModel(StokBottomSheetModel value) {
-    _$stokBottomSheetModelAtom.reportWrite(value, super.stokBottomSheetModel,
-        () {
-      super.stokBottomSheetModel = value;
+  set observableList(ObservableList<StokListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
+  }
+
+  late final _$resetListAsyncAction =
+      AsyncAction('_StokRehberiViewModelBase.resetList', context: context);
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$getDataAsyncAction =
+      AsyncAction('_StokRehberiViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
   }
 
   late final _$_StokRehberiViewModelBaseActionController =
       ActionController(name: '_StokRehberiViewModelBase', context: context);
-
-  @override
-  void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setDahaVarMi');
-    try {
-      return super.setDahaVarMi(value);
-    } finally {
-      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   void changeIsScrolledDown(bool value) {
@@ -155,33 +159,22 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void setStokListesi(List<dynamic>? value) {
+  void setObservableList(List<StokListesiModel>? list) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.setStokListesi');
+        .startAction(name: '_StokRehberiViewModelBase.setObservableList');
     try {
-      return super.setStokListesi(value);
+      return super.setObservableList(list);
     } finally {
       _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void increaseSayfa() {
+  void addObservableList(List<StokListesiModel>? list) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.increaseSayfa');
+        .startAction(name: '_StokRehberiViewModelBase.addObservableList');
     try {
-      return super.increaseSayfa();
-    } finally {
-      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resetSayfa() {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
+      return super.addObservableList(list);
     } finally {
       _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -199,7 +192,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void setSearchText(String value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.setSearchText');
     try {
@@ -232,23 +225,12 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void resetPage() {
-    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
-        .startAction(name: '_StokRehberiViewModelBase.resetPage');
-    try {
-      return super.resetPage();
-    } finally {
-      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
-dahaVarMi: ${dahaVarMi},
-isScrolledDown: ${isScrolledDown},
-stokListesi: ${stokListesi},
-stokBottomSheetModel: ${stokBottomSheetModel}
+isSearchBarOpen: ${isSearchBarOpen},
+isScrollDown: ${isScrollDown},
+searchText: ${searchText},
+observableList: ${observableList}
     ''';
   }
 }
