@@ -42,16 +42,6 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
       await viewModel.getData();
       _scrollController.addListener(() async {
         viewModel.changeScrollStatus(_scrollController.position);
-        // if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-        //   viewModel.setIsScrollDown(false);
-        // }
-        // if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
-        //   viewModel.setIsScrollDown(true);
-        // }
-        // if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-        //   await viewModel.getData();
-        //   viewModel.setIsScrollDown(true);
-        // }
       });
     });
     super.initState();
