@@ -170,6 +170,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
     final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioPost<CariListesiModel>(
       path: ApiUrls.saveCari,
       bodyModel: CariListesiModel(),
+      showLoading: true,
       data: CariSaveRequestModel.instance.toJson(),
     );
     if (response.isSuccess) {
