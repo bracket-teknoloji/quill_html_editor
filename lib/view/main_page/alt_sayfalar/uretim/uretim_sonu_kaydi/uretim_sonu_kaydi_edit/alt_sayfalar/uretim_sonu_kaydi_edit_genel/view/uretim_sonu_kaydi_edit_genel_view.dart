@@ -9,7 +9,6 @@ import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_mo
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -20,8 +19,8 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_genel/view_model/uretim_sonu_kaydi_edit_view_genel_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view_model/uretim_sonu_kaydi_edit_view_genel_model.dart";
 
 final class UretimSonuKaydiEditGenelView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
@@ -143,17 +142,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(),
-        body: body(),
-      );
-
-  AppBar appBar() => AppBar(
-        title: AppBarTitle(
-          title: "Üretim Sonu Kaydı",
-          subtitle: widget.model.baseEditEnum?.getName,
-        ),
-      );
+  Widget build(BuildContext context) => body();
 
   SingleChildScrollView body() => SingleChildScrollView(
         child: Column(
