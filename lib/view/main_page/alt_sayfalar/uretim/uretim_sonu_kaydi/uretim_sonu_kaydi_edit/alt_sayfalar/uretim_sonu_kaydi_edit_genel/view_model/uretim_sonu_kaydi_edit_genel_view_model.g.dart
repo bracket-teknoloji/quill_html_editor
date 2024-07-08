@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'uretim_sonu_kaydi_edit_view_genel_model.dart';
+part of 'uretim_sonu_kaydi_edit_genel_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -10,16 +10,6 @@ part of 'uretim_sonu_kaydi_edit_view_genel_model.dart';
 
 mixin _$UretimSonuKaydiEditGenelViewModel
     on _UretimSonuKaydiEditViewModelBase, Store {
-  Computed<UretimSonuKaydiListesiRequestModel>? _$kalemlerRequestModelComputed;
-
-  @override
-  UretimSonuKaydiListesiRequestModel get kalemlerRequestModel =>
-      (_$kalemlerRequestModelComputed ??=
-              Computed<UretimSonuKaydiListesiRequestModel>(
-                  () => super.kalemlerRequestModel,
-                  name:
-                      '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel'))
-          .value;
   Computed<KalemModel?>? _$kalemComputed;
 
   @override
@@ -27,22 +17,6 @@ mixin _$UretimSonuKaydiEditGenelViewModel
       (_$kalemComputed ??= Computed<KalemModel?>(() => super.kalem,
               name: '_UretimSonuKaydiEditViewModelBase.kalem'))
           .value;
-
-  late final _$modelAtom =
-      Atom(name: '_UretimSonuKaydiEditViewModelBase.model', context: context);
-
-  @override
-  KalemModel? get model {
-    _$modelAtom.reportRead();
-    return super.model;
-  }
-
-  @override
-  set model(KalemModel? value) {
-    _$modelAtom.reportWrite(value, super.model, () {
-      super.model = value;
-    });
-  }
 
   late final _$stokModelAtom = Atom(
       name: '_UretimSonuKaydiEditViewModelBase.stokModel', context: context);
@@ -166,6 +140,18 @@ mixin _$UretimSonuKaydiEditGenelViewModel
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setGirisDepo');
     try {
       return super.setGirisDepo(depo);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRequestModel(UretimSonuKaydiEditModel model) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setRequestModel');
+    try {
+      return super.setRequestModel(model);
     } finally {
       _$_UretimSonuKaydiEditViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -345,11 +331,9 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   @override
   String toString() {
     return '''
-model: ${model},
 stokModel: ${stokModel},
 requestModel: ${requestModel},
 ekAlanlarList: ${ekAlanlarList},
-kalemlerRequestModel: ${kalemlerRequestModel},
 kalem: ${kalem}
     ''';
   }

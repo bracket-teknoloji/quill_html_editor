@@ -11,7 +11,7 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uret
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_request_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-part "uretim_sonu_kaydi_edit_view_genel_model.g.dart";
+part "uretim_sonu_kaydi_edit_genel_view_model.g.dart";
 
 typedef DepoOnceligiRecord = ({String name, String value});
 
@@ -25,8 +25,8 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
     (name: "Üretim Depo Kullan", value: "U"),
   ];
 
-  @observable
-  KalemModel? model;
+  // @observable
+  // KalemModel? model;
 
   @observable
   StokListesiModel? stokModel;
@@ -36,9 +36,6 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   ObservableList<EkAlanlarModel>? ekAlanlarList;
-
-  @computed
-  UretimSonuKaydiListesiRequestModel get kalemlerRequestModel => UretimSonuKaydiListesiRequestModel(belgeNo: requestModel.belgeNo, ekranTipi: "D");
 
   @computed
   KalemModel? get kalem => requestModel.kalemList?.firstOrNull;
@@ -57,6 +54,9 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setGirisDepo(DepoList? depo) => requestModel = requestModel.copyWith(girisDepo: depo?.depoKodu);
+
+  @action
+  void setRequestModel(UretimSonuKaydiEditModel model) => requestModel = requestModel;
 
   @action
   void setMiktar(double? miktar) => setModel(kalem?.copyWith(miktar: miktar));
@@ -109,7 +109,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setModel(KalemModel? item) {
-    model = item;
+    // model = item;
     if (item != null) {
       requestModel = requestModel.copyWith(kalemList: [item], depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
       if (item.girisdepoKodu != null) {
