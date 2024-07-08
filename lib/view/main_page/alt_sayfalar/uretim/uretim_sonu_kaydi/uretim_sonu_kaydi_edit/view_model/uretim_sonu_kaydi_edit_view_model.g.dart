@@ -21,6 +21,39 @@ mixin _$UretimSonuKaydiEditViewModel
                       '_UretimSonuKaydiEditViewModelBase.kalemlerRequestModel'))
           .value;
 
+  late final _$showSaveButtonAtom = Atom(
+      name: '_UretimSonuKaydiEditViewModelBase.showSaveButton',
+      context: context);
+
+  @override
+  bool get showSaveButton {
+    _$showSaveButtonAtom.reportRead();
+    return super.showSaveButton;
+  }
+
+  @override
+  set showSaveButton(bool value) {
+    _$showSaveButtonAtom.reportWrite(value, super.showSaveButton, () {
+      super.showSaveButton = value;
+    });
+  }
+
+  late final _$modelAtom =
+      Atom(name: '_UretimSonuKaydiEditViewModelBase.model', context: context);
+
+  @override
+  KalemModel? get model {
+    _$modelAtom.reportRead();
+    return super.model;
+  }
+
+  @override
+  set model(KalemModel? value) {
+    _$modelAtom.reportWrite(value, super.model, () {
+      super.model = value;
+    });
+  }
+
   late final _$requestModelAtom = Atom(
       name: '_UretimSonuKaydiEditViewModelBase.requestModel', context: context);
 
@@ -50,6 +83,23 @@ mixin _$UretimSonuKaydiEditViewModel
   set kalemList(ObservableList<KalemModel>? value) {
     _$kalemListAtom.reportWrite(value, super.kalemList, () {
       super.kalemList = value;
+    });
+  }
+
+  late final _$ekAlanlarListAtom = Atom(
+      name: '_UretimSonuKaydiEditViewModelBase.ekAlanlarList',
+      context: context);
+
+  @override
+  ObservableList<EkAlanlarModel>? get ekAlanlarList {
+    _$ekAlanlarListAtom.reportRead();
+    return super.ekAlanlarList;
+  }
+
+  @override
+  set ekAlanlarList(ObservableList<EkAlanlarModel>? value) {
+    _$ekAlanlarListAtom.reportWrite(value, super.ekAlanlarList, () {
+      super.ekAlanlarList = value;
     });
   }
 
@@ -109,10 +159,50 @@ mixin _$UretimSonuKaydiEditViewModel
   }
 
   @override
+  void setShowSaveButton(bool value) {
+    final _$actionInfo =
+        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
+            name: '_UretimSonuKaydiEditViewModelBase.setShowSaveButton');
+    try {
+      return super.setShowSaveButton(value);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRequestModel(UretimSonuKaydiEditModel value) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setRequestModel');
+    try {
+      return super.setRequestModel(value);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setModel(KalemModel? item) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setModel');
+    try {
+      return super.setModel(item);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+showSaveButton: ${showSaveButton},
+model: ${model},
 requestModel: ${requestModel},
 kalemList: ${kalemList},
+ekAlanlarList: ${ekAlanlarList},
 kalemlerRequestModel: ${kalemlerRequestModel}
     ''';
   }

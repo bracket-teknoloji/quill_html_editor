@@ -10,6 +10,22 @@ part of 'uretim_sonu_kaydi_edit_kalemler_view_model.dart';
 
 mixin _$UretimSonuKaydiEditKalemlerViewModel
     on _UretimSonuKaydiEditKalemlerViewModelBase, Store {
+  Computed<double?>? _$toplamMiktarComputed;
+
+  @override
+  double? get toplamMiktar =>
+      (_$toplamMiktarComputed ??= Computed<double?>(() => super.toplamMiktar,
+              name: '_UretimSonuKaydiEditKalemlerViewModelBase.toplamMiktar'))
+          .value;
+  Computed<double?>? _$toplamMaliyetTutariComputed;
+
+  @override
+  double? get toplamMaliyetTutari => (_$toplamMaliyetTutariComputed ??= Computed<
+              double?>(() => super.toplamMaliyetTutari,
+          name:
+              '_UretimSonuKaydiEditKalemlerViewModelBase.toplamMaliyetTutari'))
+      .value;
+
   late final _$observableListAtom = Atom(
       name: '_UretimSonuKaydiEditKalemlerViewModelBase.observableList',
       context: context);
@@ -120,7 +136,9 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
     return '''
 observableList: ${observableList},
 isSearchBarOpen: ${isSearchBarOpen},
-searchText: ${searchText}
+searchText: ${searchText},
+toplamMiktar: ${toplamMiktar},
+toplamMaliyetTutari: ${toplamMaliyetTutari}
     ''';
   }
 }

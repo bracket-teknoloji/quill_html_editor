@@ -15,10 +15,18 @@ class UretimSonuKaydiEditViewModel = _UretimSonuKaydiEditViewModelBase with _$Ur
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   @observable
+  bool showSaveButton = false;
+  @observable
+  KalemModel? model;
+
+  @observable
   UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(kalemList: [KalemModel()], ekAlanlar: EkAlanlar(), yeniKayit: true, guid: const Uuid().v4());
 
   @observable
   ObservableList<KalemModel>? kalemList;
+
+  @observable
+  ObservableList<EkAlanlarModel>? ekAlanlarList;
 
   @computed
   UretimSonuKaydiListesiRequestModel get kalemlerRequestModel => UretimSonuKaydiListesiRequestModel(belgeNo: requestModel.belgeNo, ekranTipi: "D");
@@ -27,12 +35,26 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setBelgeNo(String? belgeNo) => requestModel = requestModel.copyWith(belgeNo: belgeNo);
 
   @action
-  void setKalemList(List<KalemModel>? list) => kalemList = list?.asObservable();
+  void setKalemList(List<KalemModel>? list) {
+    kalemList = list?.asObservable();
+    setRequestModel(requestModel.copyWith(kalemList: list));
+  }
+
+  @action
+  void setShowSaveButton(bool value) => showSaveButton = value;
+
+  @action
+  void setRequestModel(UretimSonuKaydiEditModel value) => requestModel = value;
 
   @action
   Future<void> getKalemler() async {
     final result = await networkManager.dioGet(path: ApiUrls.getUSKKalemleri, bodyModel: KalemModel(), showLoading: true, queryParameters: kalemlerRequestModel.toJson());
-    if (result.isSuccess) setKalemList(result.dataList);
+    if (result.isSuccess) {
+      setKalemList(result.dataList);
+
+      final KalemModel? item = result.dataList.firstOrNull;
+      setModel(model?.copyWith(cikisDepoAdi: item?.cikisDepoAdi, girisDepoAdi: item?.girisDepoAdi, girisdepoKodu: item?.girisDepo, cikisdepoKodu: item?.cikisDepo));
+    }
   }
 
   @action
@@ -41,9 +63,20 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
     if (result.isSuccess) setEkAlanlarList(result.dataList);
   }
 
-  void setModel(KalemModel? firstOrNull) {}
+  @action
+  void setModel(KalemModel? item) {
+    model = item;
+    if (item != null) {
+      requestModel = requestModel.copyWith(kalemList: [item], depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
+      if (item.girisdepoKodu != null) {
+        requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
+        requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
+        setModel(item.copyWith(girisdepoKodu: null, cikisdepoKodu: null, girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
+      }
+    }
+  }
 
-  void setEkAlanlarList(List<dynamic> dataList) {}
+  void setEkAlanlarList(List<EkAlanlarModel>? dataList) => ekAlanlarList = dataList?.asObservable();
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async => networkManager.dioPost(path: ApiUrls.saveUSK, bodyModel: requestModel, showLoading: true);

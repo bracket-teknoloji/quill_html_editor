@@ -1521,7 +1521,6 @@ class KalemModel with NetworkManagerMixin {
     this.isemriNo,
     this.depoOnceligi,
     this.kalemSayisi,
-    
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1537,6 +1536,8 @@ class KalemModel with NetworkManagerMixin {
         cariAdi: model?.cariAdi,
         cariKodu: model?.cariKodu,
       );
+
+  factory KalemModel.forUretimSonuKaydiEdit(KalemModel model) => model.copyWith(cikisdepoKodu: model.cikisDepo, girisdepoKodu: model.girisDepo);
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().fold(0, (a, b) => (a ?? 0) + (b ?? 0)) ?? 0;
     if (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) {

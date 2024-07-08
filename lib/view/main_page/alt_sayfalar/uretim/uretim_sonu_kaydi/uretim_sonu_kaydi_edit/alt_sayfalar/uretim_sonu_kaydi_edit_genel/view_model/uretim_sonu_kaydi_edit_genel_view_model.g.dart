@@ -67,15 +67,6 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     });
   }
 
-  late final _$getKalemlerAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.getKalemler',
-      context: context);
-
-  @override
-  Future<void> getKalemler() {
-    return _$getKalemlerAsyncAction.run(() => super.getKalemler());
-  }
-
   late final _$getEkAlanlarAsyncAction = AsyncAction(
       '_UretimSonuKaydiEditViewModelBase.getEkAlanlar',
       context: context);

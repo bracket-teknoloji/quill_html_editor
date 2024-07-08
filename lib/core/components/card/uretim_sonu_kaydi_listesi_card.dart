@@ -35,7 +35,7 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                   iconWidget: Icons.preview_outlined,
                   onTap: () {
                     Get.back();
-                    Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(model: model, baseEditEnum: BaseEditEnum.goruntule));
+                    Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(model: KalemModel.forUretimSonuKaydiEdit(model), baseEditEnum: BaseEditEnum.goruntule));
                   },
                 ),
                 BottomSheetModel(
@@ -65,23 +65,26 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
               Text(model.tarih.toDateString),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(model.stokAdi ?? ""),
-              Text(model.stokKodu ?? ""),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  Text("Çıkış Depo: ${model.cikisDepo}").yetkiVarMi(model.cikisDepo != null),
-                  Text("Giriş Depo: ${model.girisDepo}").yetkiVarMi(model.girisDepo != null),
-                  Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  Text("Hurda/Fir: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                ],
-              ),
-              Text(model.aciklama ?? ""),
-            ],
-          ),
+          subtitle: model.kalemSayisi == 1
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(model.stokAdi ?? ""),
+                    Text(model.stokKodu ?? ""),
+                    if (model.kalemSayisi == 1)
+                      CustomLayoutBuilder(
+                        splitCount: 2,
+                        children: [
+                          Text("Çıkış Depo: ${model.cikisDepo}").yetkiVarMi(model.cikisDepo != null),
+                          Text("Giriş Depo: ${model.girisDepo}").yetkiVarMi(model.girisDepo != null),
+                          Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                          Text("Hurda/Fir: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        ],
+                      ),
+                    Text(model.aciklama ?? ""),
+                  ],
+                )
+              : Text("Kalem Sayısı: ${model.kalemSayisi}"),
         ),
       );
 }

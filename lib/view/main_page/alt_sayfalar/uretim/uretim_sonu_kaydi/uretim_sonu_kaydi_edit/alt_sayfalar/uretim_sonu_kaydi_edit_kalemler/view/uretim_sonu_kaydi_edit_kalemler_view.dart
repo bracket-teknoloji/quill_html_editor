@@ -1,20 +1,29 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_kalemler/view_model/uretim_sonu_kaydi_edit_kalemler_view_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
 
 final class UretimSonuKaydiEditKalemlerView extends StatefulWidget {
+  final BaseEditModel<KalemModel> model;
+  final UretimSonuKaydiEditModel requestModel;
   final List<KalemModel>? kalemList;
-  const UretimSonuKaydiEditKalemlerView({super.key, this.kalemList});
+  const UretimSonuKaydiEditKalemlerView({super.key, required this.kalemList, required this.model, required this.requestModel});
 
   @override
   State<UretimSonuKaydiEditKalemlerView> createState() => _UretimSonuKaydiEditKalemlerViewState();
@@ -30,7 +39,18 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
   }
 
   @override
-  Widget build(BuildContext context) => body();
+  Widget build(BuildContext context) => Scaffold(
+        floatingActionButton: fab(),
+        body: body(),
+        bottomNavigationBar: bottomBar(),
+      );
+
+  Widget fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
+        onPressed: () async {
+          final result = await Get.toNamed("mainPage/uretimSonuKaydiKalemEdit", arguments: widget.requestModel);
+        },
+      ).yetkiVarMi(!widget.model.baseEditEnum.goruntuleMi);
 
   Column body() => Column(
         children: [
@@ -87,5 +107,31 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
             ],
           ),
         ),
+      );
+
+  BottomBarWidget bottomBar() => BottomBarWidget(
+        isScrolledDown: true,
+        children: [
+          FooterButton(
+            children: [
+              const Text("Toplam Miktar"),
+              Observer(
+                builder: (_) => Text(
+                  viewModel.toplamMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar),
+                ),
+              ),
+            ],
+          ),
+          FooterButton(
+            children: [
+              const Text("Maliyet Tutarı"),
+              Observer(
+                builder: (_) => Text(
+                  viewModel.toplamMaliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                ),
+              ),
+            ],
+          ),
+        ],
       );
 }

@@ -124,12 +124,6 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlanlarList(List<EkAlanlarModel>? list) => ekAlanlarList = list?.asObservable();
 
   @action
-  Future<void> getKalemler() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getUSKKalemleri, bodyModel: KalemModel(), showLoading: true, queryParameters: kalemlerRequestModel.toJson());
-    if (result.isSuccess) setModel(result.dataList.firstOrNull);
-  }
-
-  @action
   Future<void> getEkAlanlar() async {
     final result = await networkManager.dioGet(path: ApiUrls.getEkAlanlar, bodyModel: EkAlanlarModel(), showLoading: true, queryParameters: {"TabloAdi": "TBLSTOKURSEK"});
     if (result.isSuccess) setEkAlanlarList(result.dataList);

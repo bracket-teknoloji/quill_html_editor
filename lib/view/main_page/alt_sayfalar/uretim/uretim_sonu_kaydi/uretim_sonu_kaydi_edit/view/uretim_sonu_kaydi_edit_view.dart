@@ -26,10 +26,28 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
 
   @override
   void initState() {
+    if (widget.model.baseEditEnum.ekleMi) {
+      viewModel.setModel(KalemModel(tarih: DateTime.now()));
+    } else {
+      viewModel.setModel(widget.model.model);
+    }
     viewModel.setBelgeNo(widget.model.model?.belgeNo);
     tabController = TabController(length: tabSize, vsync: this);
+    if (tabSize == 1) {
+      viewModel.setShowSaveButton(true);
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getEkAlanlar();
       await viewModel.getKalemler();
+      tabController.addListener(() async {
+        if (tabSize != 1) {
+          if (tabController.index == (tabSize - 1)) {
+            viewModel.setShowSaveButton(true);
+          } else {
+            viewModel.setShowSaveButton(false);
+          }
+        }
+      });
     });
     super.initState();
   }
@@ -44,7 +62,9 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
             subtitle: widget.model.baseEditEnum?.getName,
           ),
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)).yetkiVarMi(tabController.index == tabSize),
+            Observer(
+              builder: (_) => IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)).yetkiVarMi(viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi),
+            ),
           ],
           bottom: yetkiController.uretimSonuKalemliYapi
               ? TabBar(
@@ -61,8 +81,23 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         body: TabBarView(
           controller: tabController,
           children: [
-            UretimSonuKaydiEditGenelView(model: widget.model),
-            UretimSonuKaydiEditKalemlerView(kalemList: viewModel.kalemList).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
+            Observer(
+              builder: (_) {
+                if (viewModel.kalemList == null) {
+                  return const Center(child: CircularProgressIndicator.adaptive());
+                }
+                return UretimSonuKaydiEditGenelView(
+                model: widget.model..model = viewModel.model,
+                requestModel: viewModel.requestModel,
+                ekAlanlarList: viewModel.ekAlanlarList,
+                onSave: viewModel.setRequestModel,
+              );
+              },
+            ),
+            Observer(
+              builder: (_) =>
+                  UretimSonuKaydiEditKalemlerView(model: widget.model, kalemList: viewModel.kalemList, requestModel: viewModel.requestModel).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
+            ),
           ].where((element) => element is! SizedBox).toList(),
         ).paddingAll(UIHelper.lowSize),
       );

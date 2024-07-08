@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
+import "package:picker/core/base/model/ek_alanlar_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -19,12 +20,15 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_genel/view_model/uretim_sonu_kaydi_edit_view_genel_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_genel/view_model/uretim_sonu_kaydi_edit_genel_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
 
 final class UretimSonuKaydiEditGenelView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
-  const UretimSonuKaydiEditGenelView({super.key, required this.model});
+  final List<EkAlanlarModel>? ekAlanlarList;
+  final UretimSonuKaydiEditModel requestModel;
+  final Function(UretimSonuKaydiEditModel model) onSave;
+  const UretimSonuKaydiEditGenelView({super.key, required this.model, required this.ekAlanlarList, required this.onSave, required this.requestModel});
 
   @override
   State<UretimSonuKaydiEditGenelView> createState() => _UretimSonuKaydiEditGenelViewState();
@@ -59,11 +63,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   @override
   void initState() {
-    if (widget.model.baseEditEnum.ekleMi) {
-      viewModel.setModel(KalemModel(tarih: DateTime.now()));
-    } else {
-      viewModel.setModel(widget.model.model);
-    }
     ekAlanlarControllers = [];
     belgeNoController = TextEditingController();
     tarihController = TextEditingController();
@@ -82,12 +81,14 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     aciklamaController = TextEditingController();
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getEkAlanlar();
+    // viewModel.setModel(widget.model.model);
+    viewModel.setRequestModel(widget.requestModel);
+    viewModel.setEkAlanlarList(widget.ekAlanlarList);
       if (viewModel.ekAlanlarList != null) {
         ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController()));
       }
-      if (widget.model.baseEditEnum.ekleMi) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model.baseEditEnum.ekleMi && model?.belgeNo == null) {
         viewModel.setDepoOnceligi(viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == yetkiController.uretimSonuDepoOnceligi));
         final result = await viewModel.getSiradakiKod(null);
         if (result != null) {
@@ -95,22 +96,23 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         }
       } else {
         viewModel.setBelgeNo(widget.model.model?.belgeNo);
-        await viewModel.getKalemler();
+        // await viewModel.getKalemler();
+        // viewModel.setModel(widget.model.model);
         belgeNoController.text = model?.belgeNo ?? "";
       }
-      if (viewModel.model != null) {
+      if (viewModel.kalem != null) {
         olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? "";
         projeController.text = viewModel.kalem?.projeKodu ?? "";
         tarihController.text = viewModel.kalem?.tarih.toDateString ?? "";
         depoOnceligiController.text = viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == model?.depoOnceligi)?.name ?? "";
-        cikisDepoController.text = viewModel.model!.cikisDepoAdi ?? "";
-        mamulKoduController.text = viewModel.model!.stokKodu ?? "";
-        maliyetFiyatiController.text = viewModel.model!.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-        maliyetTutariController.text = viewModel.model!.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-        ekAlan1Controller.text = viewModel.model!.ekalan1 ?? "";
-        ekAlan2Controller.text = viewModel.model!.ekalan2 ?? "";
-        aciklamaController.text = viewModel.model!.aciklama ?? "";
-        girisDepoController.text = viewModel.model!.girisDepoAdi ?? "";
+        cikisDepoController.text = viewModel.kalem!.cikisDepoAdi ?? "";
+        mamulKoduController.text = viewModel.kalem!.stokKodu ?? "";
+        maliyetFiyatiController.text = viewModel.kalem!.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        maliyetTutariController.text = viewModel.kalem!.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+        ekAlan1Controller.text = viewModel.kalem!.ekalan1 ?? "";
+        ekAlan2Controller.text = viewModel.kalem!.ekalan2 ?? "";
+        aciklamaController.text = viewModel.kalem!.aciklama ?? "";
+        girisDepoController.text = viewModel.kalem!.girisDepoAdi ?? "";
       }
     });
     super.initState();
@@ -138,6 +140,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     aciklamaController.dispose();
     ekAlan1Controller.dispose();
     ekAlan2Controller.dispose();
+    widget.onSave.call(viewModel.requestModel);
     super.dispose();
   }
 
@@ -176,7 +179,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
               builder: (_) => CustomLayoutBuilder.divideInHalf(
                 children: [
                   hurdaFireMiktariField(),
-                  serilerField().yetkiVarMi(viewModel.model?.seriCikislardaAcik ?? false),
+                  serilerField().yetkiVarMi(viewModel.kalem?.seriCikislardaAcik ?? false),
                 ],
               ),
             ),
@@ -310,7 +313,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         //TODO Projeyi ekle
         valueWidget: Observer(builder: (_) => Text(viewModel.kalem?.projeKodu ?? "")),
         onTap: () async {
-          final item = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model);
+          final item = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalem);
           if (item is BaseProjeModel) {
             viewModel.setProje(item);
             projeController.text = item.projeAciklama ?? "";
@@ -334,10 +337,10 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         ),
         suffix: IconButton(
           onPressed: () async {
-            if (viewModel.model?.stokKodu == null) {
+            if (viewModel.kalem?.stokKodu == null) {
               return dialogManager.showAlertDialog("Önce stok seçiniz.");
             }
-            dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
+            dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.kalem?.stokKodu)));
           },
           icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
         ),
