@@ -537,7 +537,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
           model: object,
         );
         final result = await Get.toNamed(pageName, arguments: editModel);
-        if (result != null) {
+        if (result == true) {
           await viewModel.resetPage();
         }
       } else {

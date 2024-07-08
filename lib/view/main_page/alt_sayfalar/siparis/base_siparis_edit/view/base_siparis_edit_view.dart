@@ -172,7 +172,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           if (didPop) {
             return;
           }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
           BaseSiparisEditModel.resetInstance();
         },
         child: Scaffold(

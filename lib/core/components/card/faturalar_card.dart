@@ -88,7 +88,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   onTap: () async {
                     Get.back();
                     final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
-                    if (result != null) {
+                    if (result == true) {
                       widget.onUpdated?.call(result);
                     }
                   },

@@ -303,7 +303,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           }
           await dialogManager.showAreYouSureDialog(() {
             BaseSiparisEditModel.resetInstance();
-            Get.back(result: true);
+            Get.back(result: false);
           });
         },
         child: DefaultTabController(
