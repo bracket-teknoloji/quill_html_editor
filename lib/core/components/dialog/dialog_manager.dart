@@ -37,13 +37,11 @@ import "../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "logout_model.dart";
 
 class DialogManager {
-  late final BuildContext context;
+  BuildContext get context => Get.context!;
 
   YetkiController get _yetkiController => YetkiController();
 
-  DialogManager() {
-    context = Get.context!;
-  }
+  DialogManager();
 
   ///
   /// [Dialog Controllers] dialogların kontrolü için kullanılır.
