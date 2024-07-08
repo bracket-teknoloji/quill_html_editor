@@ -1603,6 +1603,8 @@ class ProfilYetkiModel {
   String? uretimMalToplamaReceteFiltresiSQL;
   @JsonKey(name: "uretim_IsEmri")
   bool? uretimIsEmri;
+  @JsonKey(name: "uretim_Isemri_HammaddeTakip")
+  bool? uretimIsEmriHammaddeTakip;
   @JsonKey(name: "uretim_IsEmri_Ekle")
   bool? uretimIsEmriEkle;
   @JsonKey(name: "uretim_IsEmri_Duzelt")

@@ -1464,6 +1464,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..uretimMalToplamaReceteFiltresiSQL =
           json['uretim_MalToplama_ReceteFiltresiSQL'] as String?
       ..uretimIsEmri = json['uretim_IsEmri'] as bool?
+      ..uretimIsEmriHammaddeTakip = json['uretim_Isemri_HammaddeTakip'] as bool?
       ..uretimIsEmriEkle = json['uretim_IsEmri_Ekle'] as bool?
       ..uretimIsEmriDuzelt = json['uretim_IsEmri_Duzelt'] as bool?
       ..uretimIsEmriSil = json['uretim_IsEmri_Sil'] as bool?
@@ -2986,6 +2987,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('uretim_MalToplama_ReceteFiltresiSQL',
       instance.uretimMalToplamaReceteFiltresiSQL);
   writeNotNull('uretim_IsEmri', instance.uretimIsEmri);
+  writeNotNull(
+      'uretim_Isemri_HammaddeTakip', instance.uretimIsEmriHammaddeTakip);
   writeNotNull('uretim_IsEmri_Ekle', instance.uretimIsEmriEkle);
   writeNotNull('uretim_IsEmri_Duzelt', instance.uretimIsEmriDuzelt);
   writeNotNull('uretim_IsEmri_Sil', instance.uretimIsEmriSil);
