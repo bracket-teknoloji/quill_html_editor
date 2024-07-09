@@ -31,13 +31,13 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   StokListesiModel? stokModel;
 
   @observable
-  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(kalemList: [KalemModel()], ekAlanlar: EkAlanlar());
+  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(ekAlanlar: EkAlanlar());
 
   @observable
   ObservableList<EkAlanlarModel>? ekAlanlarList;
 
-  @computed
-  KalemModel? get kalem => requestModel.kalemList?.firstOrNull;
+  @observable
+  KalemModel? kalem;
 
   @action
   void setBelgeNo(String? belgeNo) => requestModel = requestModel.copyWith(belgeNo: belgeNo);
@@ -49,13 +49,16 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setCikisDepo(DepoList? depo) => requestModel = requestModel.copyWith(cikisDepo: depo?.depoKodu);
+  void setCikisDepo(DepoList? depo) => requestModel = requestModel.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi);
 
   @action
-  void setGirisDepo(DepoList? depo) => requestModel = requestModel.copyWith(girisDepo: depo?.depoKodu);
+  void setGirisDepo(DepoList? depo) => requestModel = requestModel.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi);
 
   @action
-  void setRequestModel(UretimSonuKaydiEditModel model) => requestModel = requestModel;
+  void setRequestModel(UretimSonuKaydiEditModel model) {
+    requestModel = model;
+    kalem = requestModel.kalemList?.lastOrNull;
+  }
 
   @action
   void setMiktar(double? miktar) => setModel(kalem?.copyWith(miktar: miktar));
@@ -86,7 +89,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setProje(BaseProjeModel? proje) {
-    requestModel = requestModel.copyWith(projeKodu: proje?.projeKodu);
+    requestModel = requestModel.copyWith(projeKodu: proje?.projeKodu, projeAdi: proje?.projeAciklama);
     setModel(kalem?.copyWith(projeKodu: proje?.projeKodu));
   }
 
@@ -110,7 +113,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setModel(KalemModel? item) {
     // model = item;
     if (item != null) {
-      requestModel = requestModel.copyWith(kalemList: [item], depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
+      requestModel = requestModel.copyWith(depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
       if (item.girisdepoKodu != null) {
         requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
         requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
@@ -121,12 +124,6 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setEkAlanlarList(List<EkAlanlarModel>? list) => ekAlanlarList = list?.asObservable();
-
-  @action
-  Future<void> getEkAlanlar() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getEkAlanlar, bodyModel: EkAlanlarModel(), showLoading: true, queryParameters: {"TabloAdi": "TBLSTOKURSEK"});
-    if (result.isSuccess) setEkAlanlarList(result.dataList);
-  }
 
   @action
   Future<String?> getSiradakiKod(String? kod) async {
@@ -142,7 +139,10 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
         "Modul": "USK",
       },
     );
-    if (result.isSuccess) return result.paramData?["SIRADAKI_NO"];
+    if (result.isSuccess) {
+      setRequestModel(requestModel.copyWith(belgeNo: result.paramData?["SIRADAKI_NO"]));
+      return result.paramData?["SIRADAKI_NO"];
+    }
     return null;
   }
 

@@ -10,14 +10,6 @@ part of 'uretim_sonu_kaydi_edit_genel_view_model.dart';
 
 mixin _$UretimSonuKaydiEditGenelViewModel
     on _UretimSonuKaydiEditViewModelBase, Store {
-  Computed<KalemModel?>? _$kalemComputed;
-
-  @override
-  KalemModel? get kalem =>
-      (_$kalemComputed ??= Computed<KalemModel?>(() => super.kalem,
-              name: '_UretimSonuKaydiEditViewModelBase.kalem'))
-          .value;
-
   late final _$stokModelAtom = Atom(
       name: '_UretimSonuKaydiEditViewModelBase.stokModel', context: context);
 
@@ -67,13 +59,20 @@ mixin _$UretimSonuKaydiEditGenelViewModel
     });
   }
 
-  late final _$getEkAlanlarAsyncAction = AsyncAction(
-      '_UretimSonuKaydiEditViewModelBase.getEkAlanlar',
-      context: context);
+  late final _$kalemAtom =
+      Atom(name: '_UretimSonuKaydiEditViewModelBase.kalem', context: context);
 
   @override
-  Future<void> getEkAlanlar() {
-    return _$getEkAlanlarAsyncAction.run(() => super.getEkAlanlar());
+  KalemModel? get kalem {
+    _$kalemAtom.reportRead();
+    return super.kalem;
+  }
+
+  @override
+  set kalem(KalemModel? value) {
+    _$kalemAtom.reportWrite(value, super.kalem, () {
+      super.kalem = value;
+    });
   }
 
   late final _$getSiradakiKodAsyncAction = AsyncAction(

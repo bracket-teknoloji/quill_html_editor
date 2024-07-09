@@ -15,6 +15,7 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
@@ -59,6 +60,8 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   bool get isEnabled => !widget.model.baseEditEnum.goruntuleMi;
 
+  bool get yapiKalemliMi => yetkiController.uretimSonuKalemliYapi;
+
   UretimSonuKaydiEditModel? get model => viewModel.requestModel;
 
   @override
@@ -84,9 +87,9 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     // viewModel.setModel(widget.model.model);
     viewModel.setRequestModel(widget.requestModel);
     viewModel.setEkAlanlarList(widget.ekAlanlarList);
-      if (viewModel.ekAlanlarList != null) {
-        ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController()));
-      }
+    if (viewModel.ekAlanlarList != null) {
+      ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController()));
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.baseEditEnum.ekleMi && model?.belgeNo == null) {
         viewModel.setDepoOnceligi(viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == yetkiController.uretimSonuDepoOnceligi));
@@ -95,31 +98,33 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           belgeNoController.text = result;
         }
       } else {
-        viewModel.setBelgeNo(widget.model.model?.belgeNo);
         // await viewModel.getKalemler();
         // viewModel.setModel(widget.model.model);
         belgeNoController.text = model?.belgeNo ?? "";
       }
-      if (viewModel.kalem != null) {
-        olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? "";
-        projeController.text = viewModel.kalem?.projeKodu ?? "";
-        tarihController.text = viewModel.kalem?.tarih.toDateString ?? "";
-        depoOnceligiController.text = viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == model?.depoOnceligi)?.name ?? "";
-        cikisDepoController.text = viewModel.kalem!.cikisDepoAdi ?? "";
-        mamulKoduController.text = viewModel.kalem!.stokKodu ?? "";
-        maliyetFiyatiController.text = viewModel.kalem!.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-        maliyetTutariController.text = viewModel.kalem!.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-        ekAlan1Controller.text = viewModel.kalem!.ekalan1 ?? "";
-        ekAlan2Controller.text = viewModel.kalem!.ekalan2 ?? "";
-        aciklamaController.text = viewModel.kalem!.aciklama ?? "";
-        girisDepoController.text = viewModel.kalem!.girisDepoAdi ?? "";
-      }
+      olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? "";
+      projeController.text = model?.projeAdi ?? "";
+      tarihController.text = model?.tarih ?? "";
+      depoOnceligiController.text = viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == model?.depoOnceligi)?.name ?? "";
+      girisDepoController.text = model?.girisDepoAdi ?? "";
+      cikisDepoController.text = model?.cikisDepoAdi ?? "";
+      mamulKoduController.text = viewModel.kalem?.stokKodu ?? "";
+      maliyetFiyatiController.text = viewModel.kalem?.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
+      maliyetTutariController.text = viewModel.kalem?.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
+      ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
+      miktarController.text = viewModel.kalem?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
+      hurdaFireMiktariController.text = viewModel.kalem?.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
+      ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
+      ekAlan2Controller.text = viewModel.kalem?.ekalan2 ?? "";
+      aciklamaController.text = viewModel.kalem?.aciklama ?? "";
     });
     super.initState();
   }
 
   @override
   void dispose() {
+    // StaticVariables.instance.uretimSonuGenelFormKey.currentState?.save();
+    widget.onSave.call(viewModel.requestModel);
     for (var element in ekAlanlarControllers) {
       element.dispose();
     }
@@ -140,7 +145,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     aciklamaController.dispose();
     ekAlan1Controller.dispose();
     ekAlan2Controller.dispose();
-    widget.onSave.call(viewModel.requestModel);
     super.dispose();
   }
 
@@ -148,54 +152,57 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
   Widget build(BuildContext context) => body();
 
   SingleChildScrollView body() => SingleChildScrollView(
-        child: Column(
-          children: [
-            belgeNoField(),
-            tarihField(),
-            isEmriField(),
-            CustomLayoutBuilder(
-              splitCount: 2,
-              children: [
-                depoOnceligiField(),
-                cikisDepoField(),
-              ],
-            ),
-            CustomLayoutBuilder(
-              splitCount: 2,
-              children: [
-                girisDepoField(),
-                projeField().yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-              ],
-            ),
-            mamulKoduField(),
-            CustomLayoutBuilder(
-              splitCount: 2,
-              children: [
-                olcuBirimiField(),
-                miktarField(),
-              ],
-            ),
-            Observer(
-              builder: (_) => CustomLayoutBuilder.divideInHalf(
+        child: Form(
+          key: StaticVariables.instance.uretimSonuGenelFormKey,
+          child: Column(
+            children: [
+              belgeNoField(),
+              tarihField(),
+              isEmriField().yetkiVarMi(!yapiKalemliMi),
+              CustomLayoutBuilder(
+                splitCount: 2,
                 children: [
-                  hurdaFireMiktariField(),
-                  serilerField().yetkiVarMi(viewModel.kalem?.seriCikislardaAcik ?? false),
+                  depoOnceligiField(),
+                  cikisDepoField(),
                 ],
               ),
-            ),
-            CustomLayoutBuilder(
-              splitCount: 2,
-              children: [
-                maliyetFiyatiField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi),
-                mailyetTutariField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi),
-              ],
-            ),
-            aciklamaField(),
-            ekAlan1Field(),
-            ekAlan2Field(),
-            ekAlanlarWidget(),
-          ],
-        ).paddingAll(UIHelper.lowSize),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  girisDepoField(),
+                  projeField().yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                ],
+              ),
+              mamulKoduField().yetkiVarMi(!yapiKalemliMi),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  olcuBirimiField().yetkiVarMi(!yapiKalemliMi),
+                  miktarField().yetkiVarMi(!yapiKalemliMi),
+                ],
+              ),
+              Observer(
+                builder: (_) => CustomLayoutBuilder.divideInHalf(
+                  children: [
+                    hurdaFireMiktariField().yetkiVarMi(!yapiKalemliMi),
+                    serilerField().yetkiVarMi(viewModel.kalem?.seriCikislardaAcik ?? false).yetkiVarMi(!yapiKalemliMi),
+                  ],
+                ),
+              ),
+              CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  maliyetFiyatiField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi).yetkiVarMi(!yapiKalemliMi),
+                  mailyetTutariField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi).yetkiVarMi(!yapiKalemliMi),
+                ],
+              ),
+              aciklamaField().yetkiVarMi(!yapiKalemliMi),
+              ekAlan1Field().yetkiVarMi(!yapiKalemliMi),
+              ekAlan2Field().yetkiVarMi(!yapiKalemliMi),
+              ekAlanlarWidget(),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ),
       );
 
   CustomTextField belgeNoField() => CustomTextField(
