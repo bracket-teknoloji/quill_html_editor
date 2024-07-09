@@ -119,6 +119,19 @@ mixin _$UretimSonuKaydiEditKalemlerViewModel
   }
 
   @override
+  void addItem(KalemModel item) {
+    final _$actionInfo =
+        _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(
+            name: '_UretimSonuKaydiEditKalemlerViewModelBase.addItem');
+    try {
+      return super.addItem(item);
+    } finally {
+      _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchText(String? value) {
     final _$actionInfo =
         _$_UretimSonuKaydiEditKalemlerViewModelBaseActionController.startAction(

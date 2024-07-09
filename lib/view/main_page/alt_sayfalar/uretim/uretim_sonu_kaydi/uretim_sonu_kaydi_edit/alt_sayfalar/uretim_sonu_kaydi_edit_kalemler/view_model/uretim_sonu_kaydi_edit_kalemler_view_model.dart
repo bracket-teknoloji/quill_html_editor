@@ -30,6 +30,9 @@ abstract class _UretimSonuKaydiEditKalemlerViewModelBase with Store, MobxNetwork
   @action
   @override
   void setObservableList(List<KalemModel>? list) => observableList = list?.asObservable();
+
+  @action
+  void addItem(KalemModel item) => setObservableList(observableList?.toList()?..add(item));
   @observable
   @override
   String? searchText;

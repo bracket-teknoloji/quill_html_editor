@@ -23,7 +23,8 @@ final class UretimSonuKaydiEditKalemlerView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
   final UretimSonuKaydiEditModel requestModel;
   final List<KalemModel>? kalemList;
-  const UretimSonuKaydiEditKalemlerView({super.key, required this.kalemList, required this.model, required this.requestModel});
+  final Function(List<KalemModel>?) onKalemListChange;
+  const UretimSonuKaydiEditKalemlerView({super.key, required this.kalemList, required this.model, required this.requestModel, required this.onKalemListChange});
 
   @override
   State<UretimSonuKaydiEditKalemlerView> createState() => _UretimSonuKaydiEditKalemlerViewState();
@@ -49,6 +50,10 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
         isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("mainPage/uretimSonuKaydiKalemEdit", arguments: widget.requestModel);
+          if (result is KalemModel) {
+            viewModel.addItem(result.copyWith(cikisdepoKodu: widget.requestModel.cikisDepo, girisdepoKodu: widget.requestModel.girisDepo));
+            widget.onKalemListChange.call(viewModel.observableList?.toList());
+          }
         },
       ).yetkiVarMi(!widget.model.baseEditEnum.goruntuleMi);
 
