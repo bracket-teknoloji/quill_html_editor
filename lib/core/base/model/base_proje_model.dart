@@ -12,7 +12,6 @@ class BaseProjeModel with NetworkManagerMixin {
 
   BaseProjeModel({this.projeKodu, this.projeAciklama, this.aktif});
 
-  String? get projeAdi => null;
   @override
   BaseProjeModel fromJson(Map<String, dynamic> json) => _$BaseProjeModelFromJson(json);
 

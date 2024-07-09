@@ -308,7 +308,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
-                            _projekoduController.text = result.projeAdi ?? result.projeAciklama ?? "";
+                            _projekoduController.text = result.projeAciklama ?? "";
                             // viewModel.setPlasiyerKodu(result);
                             viewModel.setProjeKodu(result);
                           }

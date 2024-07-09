@@ -406,7 +406,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                     onTap: () async {
                       final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
                       if (result != null) {
-                        _projeController.text = result.projeAdi ?? "";
+                        _projeController.text = result.projeAciklama ?? "";
                         viewModel.setProjeKodu(result.projeKodu ?? "");
                       }
                     },

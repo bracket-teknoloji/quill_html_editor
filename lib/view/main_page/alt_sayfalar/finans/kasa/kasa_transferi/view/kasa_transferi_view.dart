@@ -304,7 +304,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                         if (result != null) {
                           viewModel.setProjekodu(result.projeKodu);
-                          projeController.text = result.projeAdi ?? result.projeAciklama ?? "";
+                          projeController.text = result.projeAciklama ?? "";
                         }
                       },
                     ),
