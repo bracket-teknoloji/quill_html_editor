@@ -12,20 +12,25 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
     String? belgeNo,
     DateTime? belgeTarihi,
     int? cikisDepo,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
     String? depoOnceligi,
-    @JsonKey(name:"EkAlanlar") EkAlanlar? ekAlanlar,
+    @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
     int? girisDepo,
     String? guid,
     List<KalemModel>? kalemList,
     String? projeKodu,
     String? tarih,
-    @JsonKey(name:"_YeniKayit") bool? yeniKayit,
+    @JsonKey(name: "_YeniKayit") bool? yeniKayit,
   }) = _UretimSonuKaydiEditModel;
 
   factory UretimSonuKaydiEditModel.fromJson(Map<String, dynamic> json) => _$UretimSonuKaydiEditModelFromJson(json);
 
   @override
   UretimSonuKaydiEditModel fromJson(Map<String, dynamic> json) => _$UretimSonuKaydiEditModelFromJson(json);
+
+  bool get depolarSecildiMi => cikisDepo != null && girisDepo != null;
 }
 
 @unfreezed

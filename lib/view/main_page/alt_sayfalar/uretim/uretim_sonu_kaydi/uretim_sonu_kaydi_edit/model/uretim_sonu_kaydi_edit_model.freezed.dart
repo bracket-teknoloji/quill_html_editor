@@ -27,6 +27,18 @@ mixin _$UretimSonuKaydiEditModel {
   set belgeTarihi(DateTime? value) => throw _privateConstructorUsedError;
   int? get cikisDepo => throw _privateConstructorUsedError;
   set cikisDepo(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get cikisDepoAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set cikisDepoAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get girisDepoAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set girisDepoAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get projeAdi => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set projeAdi(String? value) => throw _privateConstructorUsedError;
   String? get depoOnceligi => throw _privateConstructorUsedError;
   set depoOnceligi(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "EkAlanlar")
@@ -64,6 +76,11 @@ abstract class $UretimSonuKaydiEditModelCopyWith<$Res> {
       {String? belgeNo,
       DateTime? belgeTarihi,
       int? cikisDepo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? cikisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? girisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
       int? girisDepo,
@@ -93,6 +110,9 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
     Object? belgeNo = freezed,
     Object? belgeTarihi = freezed,
     Object? cikisDepo = freezed,
+    Object? cikisDepoAdi = freezed,
+    Object? girisDepoAdi = freezed,
+    Object? projeAdi = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
     Object? girisDepo = freezed,
@@ -115,6 +135,18 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
           ? _value.cikisDepo
           : cikisDepo // ignore: cast_nullable_to_non_nullable
               as int?,
+      cikisDepoAdi: freezed == cikisDepoAdi
+          ? _value.cikisDepoAdi
+          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      girisDepoAdi: freezed == girisDepoAdi
+          ? _value.girisDepoAdi
+          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
       depoOnceligi: freezed == depoOnceligi
           ? _value.depoOnceligi
           : depoOnceligi // ignore: cast_nullable_to_non_nullable
@@ -176,6 +208,11 @@ abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res>
       {String? belgeNo,
       DateTime? belgeTarihi,
       int? cikisDepo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? cikisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? girisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
       int? girisDepo,
@@ -205,6 +242,9 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
     Object? belgeNo = freezed,
     Object? belgeTarihi = freezed,
     Object? cikisDepo = freezed,
+    Object? cikisDepoAdi = freezed,
+    Object? girisDepoAdi = freezed,
+    Object? projeAdi = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
     Object? girisDepo = freezed,
@@ -227,6 +267,18 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
           ? _value.cikisDepo
           : cikisDepo // ignore: cast_nullable_to_non_nullable
               as int?,
+      cikisDepoAdi: freezed == cikisDepoAdi
+          ? _value.cikisDepoAdi
+          : cikisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      girisDepoAdi: freezed == girisDepoAdi
+          ? _value.girisDepoAdi
+          : girisDepoAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAdi: freezed == projeAdi
+          ? _value.projeAdi
+          : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
       depoOnceligi: freezed == depoOnceligi
           ? _value.depoOnceligi
           : depoOnceligi // ignore: cast_nullable_to_non_nullable
@@ -270,6 +322,9 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
       {this.belgeNo,
       this.belgeTarihi,
       this.cikisDepo,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.cikisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.girisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
       this.depoOnceligi,
       @JsonKey(name: "EkAlanlar") this.ekAlanlar,
       this.girisDepo,
@@ -289,6 +344,15 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   DateTime? belgeTarihi;
   @override
   int? cikisDepo;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? cikisDepoAdi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? girisDepoAdi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? projeAdi;
   @override
   String? depoOnceligi;
   @override
@@ -325,18 +389,23 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
 
 abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   factory _UretimSonuKaydiEditModel(
-          {String? belgeNo,
-          DateTime? belgeTarihi,
-          int? cikisDepo,
-          String? depoOnceligi,
-          @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
-          int? girisDepo,
-          String? guid,
-          List<KalemModel>? kalemList,
-          String? projeKodu,
-          String? tarih,
-          @JsonKey(name: "_YeniKayit") bool? yeniKayit}) =
-      _$UretimSonuKaydiEditModelImpl;
+      {String? belgeNo,
+      DateTime? belgeTarihi,
+      int? cikisDepo,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? cikisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      String? girisDepoAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      String? depoOnceligi,
+      @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
+      int? girisDepo,
+      String? guid,
+      List<KalemModel>? kalemList,
+      String? projeKodu,
+      String? tarih,
+      @JsonKey(name: "_YeniKayit")
+      bool? yeniKayit}) = _$UretimSonuKaydiEditModelImpl;
   _UretimSonuKaydiEditModel._() : super._();
 
   factory _UretimSonuKaydiEditModel.fromJson(Map<String, dynamic> json) =
@@ -351,6 +420,21 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   @override
   int? get cikisDepo;
   set cikisDepo(int? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get cikisDepoAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set cikisDepoAdi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get girisDepoAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set girisDepoAdi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  String? get projeAdi;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set projeAdi(String? value);
   @override
   String? get depoOnceligi;
   set depoOnceligi(String? value);
