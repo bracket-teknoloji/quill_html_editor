@@ -47,5 +47,9 @@ class StaticVariables {
   bool get isSayimValid => sayimGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> sayimGenelFormKey = GlobalKey<FormState>();
 
+  //* Üretim Sonu Kaydı
+  bool get isUretimSonuValid => uretimSonuGenelFormKey.currentState?.validate() ?? false;
+  GlobalKey<FormState> uretimSonuGenelFormKey = GlobalKey<FormState>();
+
   Map<String, dynamic> serbestDicParams = {};
 }
