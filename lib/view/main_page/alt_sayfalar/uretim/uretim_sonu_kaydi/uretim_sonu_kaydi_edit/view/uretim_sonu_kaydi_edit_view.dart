@@ -5,7 +5,9 @@ import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_genel/view/uretim_sonu_kaydi_edit_genel_view.dart";
@@ -27,7 +29,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
   @override
   void initState() {
     if (widget.model.baseEditEnum.ekleMi) {
-      viewModel.setModel(KalemModel(tarih: DateTime.now()));
+      viewModel.setRequestModel(viewModel.requestModel..tarih = DateTime.now().toDateString);
     } else {
       viewModel.setModel(widget.model.model);
     }
@@ -40,12 +42,19 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
       await viewModel.getEkAlanlar();
       await viewModel.getKalemler();
       tabController.addListener(() async {
-        if (tabSize != 1) {
+        if (tabSize != 1 && !widget.model.baseEditEnum.goruntuleMi) {
           if (tabController.index == (tabSize - 1)) {
             viewModel.setShowSaveButton(true);
           } else {
             viewModel.setShowSaveButton(false);
           }
+        }
+        await Future.delayed(const Duration(milliseconds: 100));
+        if (!viewModel.requestModel.depolarSecildiMi && !tabController.indexIsChanging && tabController.index == 1) {
+          // get back first tab
+          dialogManager.showErrorSnackBar("Önce depoların seçilmesi gerekmektedir!");
+          tabController.animateTo(0);
+          return;
         }
       });
     });
@@ -63,7 +72,12 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
           ),
           actions: [
             Observer(
-              builder: (_) => IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)).yetkiVarMi(viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi),
+              builder: (_) => IconButton(
+                onPressed: () {
+                  StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate();
+                },
+                icon: const Icon(Icons.save_outlined),
+              ).yetkiVarMi(viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi),
             ),
           ],
           bottom: yetkiController.uretimSonuKalemliYapi
@@ -87,16 +101,20 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                   return const Center(child: CircularProgressIndicator.adaptive());
                 }
                 return UretimSonuKaydiEditGenelView(
-                model: widget.model..model = viewModel.model,
-                requestModel: viewModel.requestModel,
-                ekAlanlarList: viewModel.ekAlanlarList,
-                onSave: viewModel.setRequestModel,
-              );
+                  model: widget.model..model = viewModel.model,
+                  requestModel: viewModel.requestModel,
+                  ekAlanlarList: viewModel.ekAlanlarList,
+                  onSave: viewModel.setRequestModel,
+                );
               },
             ),
             Observer(
-              builder: (_) =>
-                  UretimSonuKaydiEditKalemlerView(model: widget.model, kalemList: viewModel.kalemList, requestModel: viewModel.requestModel).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
+              builder: (_) => UretimSonuKaydiEditKalemlerView(
+                model: widget.model,
+                kalemList: viewModel.kalemList,
+                requestModel: viewModel.requestModel,
+                onKalemListChange: viewModel.setKalemList,
+              ).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
             ),
           ].where((element) => element is! SizedBox).toList(),
         ).paddingAll(UIHelper.lowSize),
