@@ -37,7 +37,7 @@ final class _UretimSonuKaydiKalemEkleViewState extends BaseState<UretimSonuKaydi
     mamulController = TextEditingController();
     miktarController = TextEditingController();
     hurdaMiktarController = TextEditingController();
-    aciklamaController = TextEditingController();
+    aciklamaController = TextEditingController(text: widget.model.aciklama);
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
     super.initState();
@@ -81,7 +81,10 @@ final class _UretimSonuKaydiKalemEkleViewState extends BaseState<UretimSonuKaydi
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+                    if (viewModel.model.stokKodu == null) {
+                      return dialogManager.showAlertDialog("Önce stok seçiniz.");
+                    }
+                    final result = await Get.toNamed("/mainPage/isEmriRehberiOzel", arguments: viewModel.model.stokKodu);
                     if (result is IsEmirleriModel) {
                       // viewModel.changeIsEmri(result);
                       isEmriController.text = result.isemriNo ?? "";
