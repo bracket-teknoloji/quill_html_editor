@@ -596,6 +596,10 @@ final class YetkiController {
   bool get uretimSonuKalemliYapi => _isTrue(_yetkiModel?.uretimUskKalemliYapi, skipAdmin: true);
   String? get uretimSonuDepoOnceligi => _yetkiModel?.uretimUskDepoOnceligi;
 
+  bool uretimSonuGizlenecekAlanlar(String value) => _isTrue(_yetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
+  bool uretimSonuDegismeyecekAlanlar(String value) => _isTrue(_yetkiModel?.uretimUskDegismeyecekAlanlar?.contains(value), skipAdmin: true);
+  bool uretimSonuBosGecilmeyecekAlanlar(String value) => _isTrue(_yetkiModel?.uretimUskBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+
   //* İş Emirleri
   bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
   bool get uretimIsEmriDuzenle => _isTrue(_yetkiModel?.uretimIsEmriDuzelt);
