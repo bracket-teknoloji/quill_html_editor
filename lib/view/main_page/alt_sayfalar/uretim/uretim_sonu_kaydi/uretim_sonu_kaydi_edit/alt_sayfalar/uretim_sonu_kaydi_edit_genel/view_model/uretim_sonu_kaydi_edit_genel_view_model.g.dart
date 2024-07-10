@@ -89,6 +89,18 @@ mixin _$UretimSonuKaydiEditGenelViewModel
           name: '_UretimSonuKaydiEditViewModelBase', context: context);
 
   @override
+  void setOnSave(void Function(UretimSonuKaydiEditModel) onSave) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setOnSave');
+    try {
+      return super.setOnSave(onSave);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBelgeNo(String? belgeNo) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setBelgeNo');

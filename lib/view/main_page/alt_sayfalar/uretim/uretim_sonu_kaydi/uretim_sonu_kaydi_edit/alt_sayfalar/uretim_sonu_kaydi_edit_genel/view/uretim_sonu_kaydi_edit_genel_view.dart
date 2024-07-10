@@ -28,7 +28,7 @@ final class UretimSonuKaydiEditGenelView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
   final List<EkAlanlarModel>? ekAlanlarList;
   final UretimSonuKaydiEditModel requestModel;
-  final Function(UretimSonuKaydiEditModel model) onSave;
+  final void Function(UretimSonuKaydiEditModel model) onSave;
   const UretimSonuKaydiEditGenelView({super.key, required this.model, required this.ekAlanlarList, required this.onSave, required this.requestModel});
 
   @override
@@ -66,6 +66,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   @override
   void initState() {
+    viewModel.kalemliMi = yetkiController.uretimSonuKalemliYapi;
     ekAlanlarControllers = [];
     belgeNoController = TextEditingController();
     tarihController = TextEditingController();
@@ -86,9 +87,10 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     ekAlan2Controller = TextEditingController();
     // viewModel.setModel(widget.model.model);
     viewModel.setRequestModel(widget.requestModel);
+    viewModel.setOnSave(widget.onSave);
     viewModel.setEkAlanlarList(widget.ekAlanlarList);
     if (viewModel.ekAlanlarList != null) {
-      ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController()));
+      ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController(text: model?.ekAlanlar?[index] ?? "")));
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.baseEditEnum.ekleMi && model?.belgeNo == null) {
@@ -116,7 +118,8 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
       hurdaFireMiktariController.text = viewModel.kalem?.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
       ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
       ekAlan2Controller.text = viewModel.kalem?.ekalan2 ?? "";
-      aciklamaController.text = viewModel.kalem?.aciklama ?? "";
+      aciklamaController.text = model?.aciklama ?? "";
+      
     });
     super.initState();
   }
@@ -196,7 +199,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
                   mailyetTutariField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi).yetkiVarMi(!yapiKalemliMi),
                 ],
               ),
-              aciklamaField().yetkiVarMi(!yapiKalemliMi),
+              aciklamaField(),
               ekAlan1Field().yetkiVarMi(!yapiKalemliMi),
               ekAlan2Field().yetkiVarMi(!yapiKalemliMi),
               ekAlanlarWidget(),
@@ -243,7 +246,11 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         suffixMore: true,
         readOnly: true,
         onTap: () async {
-          final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+          
+          if (viewModel.stokModel == null) {
+            return dialogManager.showAlertDialog("Önce stok seçiniz.");
+          }
+          final result = await Get.toNamed("/mainPage/isEmriRehberiOzel", arguments: viewModel.kalem?.stokKodu);
           if (result is IsEmirleriModel) {
             // viewModel.changeIsEmri(result);
             isEmriController.text = result.isemriNo ?? "";
@@ -443,14 +450,14 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         labelText: "Ek Alan 1",
         enabled: isEnabled,
         controller: ekAlan1Controller,
-        onChanged: (value) {},
+        onChanged: viewModel.setEkAlan1,
       );
 
   CustomTextField ekAlan2Field() => CustomTextField(
         labelText: "Ek Alan 2",
         enabled: isEnabled,
         controller: ekAlan2Controller,
-        onChanged: (value) {},
+        onChanged: viewModel.setEkAlan2,
       );
 
   Observer ekAlanlarWidget() => Observer(

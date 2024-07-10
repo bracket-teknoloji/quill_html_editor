@@ -17,6 +17,7 @@ typedef DepoOnceligiRecord = ({String name, String value});
 class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditGenelViewModel;
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
+  bool kalemliMi = false;
   final List<DepoOnceligiRecord> depoOnceligiList = [
     (name: "Hiçbiri", value: "H"),
     (name: "Stok Depo Kullan", value: "S"),
@@ -30,6 +31,11 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   @observable
   StokListesiModel? stokModel;
 
+  void Function(UretimSonuKaydiEditModel model)? onSave;
+
+  @action
+  void setOnSave(void Function(UretimSonuKaydiEditModel model) onSave) => this.onSave = onSave;
+
   @observable
   UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(ekAlanlar: EkAlanlar());
 
@@ -37,27 +43,29 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   ObservableList<EkAlanlarModel>? ekAlanlarList;
 
   @observable
-  KalemModel? kalem;
+  KalemModel? kalem = KalemModel();
 
   @action
-  void setBelgeNo(String? belgeNo) => requestModel = requestModel.copyWith(belgeNo: belgeNo);
+  void setBelgeNo(String? belgeNo) => setRequestModel(requestModel.copyWith(belgeNo: belgeNo));
 
   @action
   void setTarih(DateTime? date) {
-    requestModel = requestModel.copyWith(tarih: date.toDateString);
+    setRequestModel(requestModel.copyWith(tarih: date.toDateString, belgeTarihi: date));
     setModel(kalem?.copyWith(tarih: date));
   }
 
   @action
-  void setCikisDepo(DepoList? depo) => requestModel = requestModel.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi);
+  void setCikisDepo(DepoList? depo) => setRequestModel(requestModel.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi));
 
   @action
-  void setGirisDepo(DepoList? depo) => requestModel = requestModel.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi);
+  void setGirisDepo(DepoList? depo) => setRequestModel(requestModel.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi));
 
   @action
   void setRequestModel(UretimSonuKaydiEditModel model) {
     requestModel = model;
-    kalem = requestModel.kalemList?.lastOrNull;
+    // kalem = requestModel.kalemList?.lastOrNull;
+    if (!kalemliMi) requestModel = requestModel.copyWith(kalemList: [kalem ?? KalemModel()]);
+    onSave?.call(requestModel);
   }
 
   @action
@@ -70,7 +78,10 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setMaliyetFiyati(double? maliyet) => setModel(kalem?.copyWith(maliyetFiyati: maliyet));
 
   @action
-  void setAciklama(String? aciklama) => setModel(kalem?.copyWith(aciklama: aciklama));
+  void setAciklama(String? aciklama) {
+    setModel(kalem?.copyWith(aciklama: aciklama));
+    setRequestModel(requestModel.copyWith(aciklama: aciklama));
+  }
 
   @action
   void setEkAlan1(String? aciklama) => setModel(kalem?.copyWith(ekalan1: aciklama));
@@ -79,7 +90,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlan2(String? aciklama) => setModel(kalem?.copyWith(ekalan2: aciklama));
 
   @action
-  void setEkAlanlar(int index, String? value) => requestModel.ekAlanlar![index] = value;
+  void setEkAlanlar(int index, String? value) => requestModel.ekAlanlar?[index] = value;
 
   @action
   void setStokModel(StokListesiModel? stok) => stokModel = stok;
@@ -89,12 +100,12 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setProje(BaseProjeModel? proje) {
-    requestModel = requestModel.copyWith(projeKodu: proje?.projeKodu, projeAdi: proje?.projeAciklama);
+    setRequestModel(requestModel.copyWith(projeKodu: proje?.projeKodu, projeAdi: proje?.projeAciklama));
     setModel(kalem?.copyWith(projeKodu: proje?.projeKodu));
   }
 
   @action
-  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) => requestModel = requestModel.copyWith(depoOnceligi: depoOnceligi?.value ?? "H");
+  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) => setRequestModel(requestModel.copyWith(depoOnceligi: depoOnceligi?.value ?? "H"));
 
   @action
   void setMamulKodu(StokListesiModel? stok) {
@@ -112,11 +123,13 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   @action
   void setModel(KalemModel? item) {
     // model = item;
+    kalem = item;
     if (item != null) {
-      requestModel = requestModel.copyWith(depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
+      if (kalemliMi) setRequestModel(requestModel.copyWith(kalemList: requestModel.kalemList?.toList()?..add(item)));
+      setRequestModel(requestModel.copyWith(depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu));
       if (item.girisdepoKodu != null) {
-        requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
-        requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
+        setRequestModel(requestModel.copyWith(girisDepo: item.girisdepoKodu));
+        setRequestModel(requestModel.copyWith(cikisDepo: item.cikisdepoKodu));
         setModel(item.copyWith(girisdepoKodu: null, cikisdepoKodu: null, girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
       }
     }
