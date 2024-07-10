@@ -23,19 +23,23 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_re
 
 final class IsEmriRehberiView extends StatefulWidget {
   final bool? isGetData;
-  const IsEmriRehberiView({super.key, this.isGetData});
+  final String? stokKodu;
+  const IsEmriRehberiView({super.key, this.isGetData, this.stokKodu});
 
   @override
   State<IsEmriRehberiView> createState() => _IsEmriRehberiViewState();
 }
 
 final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
-  IsEmriRehberiViewModel viewModel = IsEmriRehberiViewModel();
+  final IsEmriRehberiViewModel viewModel = IsEmriRehberiViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController _appBarTextController;
 
   @override
   void initState() {
+    if (widget.stokKodu != null) {
+      viewModel.setStokKodu(widget.stokKodu);
+    }
     _scrollController = ScrollController();
     _appBarTextController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -80,7 +84,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
           },
         ),
         actions: [
-          IconButton(onPressed: () => viewModel.changeSearchBarStatus(), icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined))),
+          IconButton(onPressed: viewModel.changeSearchBarStatus, icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined))),
           IconButton(
             onPressed: () async {
               final result = await Get.toNamed("/qr");

@@ -479,7 +479,7 @@ class PickerApp extends StatelessWidget {
 
               //* * İş Emirleri
 
-              GetPage(name: "/isEmriRehberiOzel", page: () => const IsEmriRehberiView(isGetData: true)),
+              GetPage(name: "/isEmriRehberiOzel", page: () => IsEmriRehberiView(isGetData: true, stokKodu: Get.arguments)),
               GetPage(name: "/isEmriRehberi", page: IsEmriRehberiView.new),
               GetPage(name: "/isEmriEdit", page: () => IsEmriEditView(model: Get.arguments)),
               GetPage(name: "/isEmriHammaddeTakibi", page: IsEmriHammaddeTakibiView.new),

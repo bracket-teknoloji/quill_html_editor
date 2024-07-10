@@ -18,6 +18,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     @JsonKey(name: "SIRALAMA") String? siralama,
     String? siparisKarsilanmaDurumu,
     String? ozelKod1,
+    String? stokKodu,
     bool? kapaliBelgelerListelenmesin,
     String? projeKodu,
     bool? faturalasmaGoster,

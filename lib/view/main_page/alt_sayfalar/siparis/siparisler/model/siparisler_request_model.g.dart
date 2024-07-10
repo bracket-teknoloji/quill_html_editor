@@ -18,6 +18,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       siralama: json['SIRALAMA'] as String?,
       siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
       ozelKod1: json['OzelKod1'] as String?,
+      stokKodu: json['StokKodu'] as String?,
       kapaliBelgelerListelenmesin: json['KapaliBelgelerListelenmesin'] as bool?,
       projeKodu: json['ProjeKodu'] as String?,
       faturalasmaGoster: json['FaturalasmaGoster'] as bool?,
@@ -67,6 +68,7 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('SIRALAMA', instance.siralama);
   writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
   writeNotNull('OzelKod1', instance.ozelKod1);
+  writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull(
       'KapaliBelgelerListelenmesin', instance.kapaliBelgelerListelenmesin);
   writeNotNull('ProjeKodu', instance.projeKodu);

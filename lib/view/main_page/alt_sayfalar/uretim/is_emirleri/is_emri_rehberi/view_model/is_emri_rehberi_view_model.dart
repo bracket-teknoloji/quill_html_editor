@@ -18,6 +18,7 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, Listabl
         menuKodu: "URET_ISEM",
         sayfa: page,
         searchText: searchText,
+        stokKodu: stokKodu,
         cariKodu: null,
         ekranTipi: null,
         belgeNo: null,
@@ -34,6 +35,9 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, Listabl
   @override
   @observable
   String? searchText;
+
+  @observable
+  String? stokKodu;
   @override
   @observable
   ObservableList<IsEmirleriModel>? observableList;
@@ -54,6 +58,9 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, Listabl
 
   @action
   void setIsScrollDown(bool value) => isScrollDown = value;
+
+  @action
+  void setStokKodu(String? value) => stokKodu = value;
 
   @override
   @action

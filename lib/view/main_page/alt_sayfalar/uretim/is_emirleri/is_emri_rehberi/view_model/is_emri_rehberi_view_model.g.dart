@@ -57,6 +57,22 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
     });
   }
 
+  late final _$stokKoduAtom =
+      Atom(name: '_IsEmriRehberiViewModelBase.stokKodu', context: context);
+
+  @override
+  String? get stokKodu {
+    _$stokKoduAtom.reportRead();
+    return super.stokKodu;
+  }
+
+  @override
+  set stokKodu(String? value) {
+    _$stokKoduAtom.reportWrite(value, super.stokKodu, () {
+      super.stokKodu = value;
+    });
+  }
+
   late final _$observableListAtom = Atom(
       name: '_IsEmriRehberiViewModelBase.observableList', context: context);
 
@@ -125,6 +141,17 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
   }
 
   @override
+  void setStokKodu(String? value) {
+    final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
+        .startAction(name: '_IsEmriRehberiViewModelBase.setStokKodu');
+    try {
+      return super.setStokKodu(value);
+    } finally {
+      _$_IsEmriRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setObservableList(List<IsEmirleriModel>? list) {
     final _$actionInfo = _$_IsEmriRehberiViewModelBaseActionController
         .startAction(name: '_IsEmriRehberiViewModelBase.setObservableList');
@@ -152,6 +179,7 @@ mixin _$IsEmriRehberiViewModel on _IsEmriRehberiViewModelBase, Store {
 isSearchBarOpen: ${isSearchBarOpen},
 isScrollDown: ${isScrollDown},
 searchText: ${searchText},
+stokKodu: ${stokKodu},
 observableList: ${observableList}
     ''';
   }

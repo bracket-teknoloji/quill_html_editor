@@ -42,6 +42,8 @@ mixin _$SiparislerRequestModel {
       throw _privateConstructorUsedError;
   String? get ozelKod1 => throw _privateConstructorUsedError;
   set ozelKod1(String? value) => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
   bool? get kapaliBelgelerListelenmesin => throw _privateConstructorUsedError;
   set kapaliBelgelerListelenmesin(bool? value) =>
       throw _privateConstructorUsedError;
@@ -123,6 +125,7 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
+      String? stokKodu,
       bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
@@ -176,6 +179,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? siralama = freezed,
     Object? siparisKarsilanmaDurumu = freezed,
     Object? ozelKod1 = freezed,
+    Object? stokKodu = freezed,
     Object? kapaliBelgelerListelenmesin = freezed,
     Object? projeKodu = freezed,
     Object? faturalasmaGoster = freezed,
@@ -241,6 +245,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
       ozelKod1: freezed == ozelKod1
           ? _value.ozelKod1
           : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       kapaliBelgelerListelenmesin: freezed == kapaliBelgelerListelenmesin
           ? _value.kapaliBelgelerListelenmesin
@@ -377,6 +385,7 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
+      String? stokKodu,
       bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
@@ -429,6 +438,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? siralama = freezed,
     Object? siparisKarsilanmaDurumu = freezed,
     Object? ozelKod1 = freezed,
+    Object? stokKodu = freezed,
     Object? kapaliBelgelerListelenmesin = freezed,
     Object? projeKodu = freezed,
     Object? faturalasmaGoster = freezed,
@@ -494,6 +504,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
       ozelKod1: freezed == ozelKod1
           ? _value.ozelKod1
           : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       kapaliBelgelerListelenmesin: freezed == kapaliBelgelerListelenmesin
           ? _value.kapaliBelgelerListelenmesin
@@ -625,6 +639,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       @JsonKey(name: "SIRALAMA") this.siralama,
       this.siparisKarsilanmaDurumu,
       this.ozelKod1,
+      this.stokKodu,
       this.kapaliBelgelerListelenmesin,
       this.projeKodu,
       this.faturalasmaGoster,
@@ -677,6 +692,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   String? siparisKarsilanmaDurumu;
   @override
   String? ozelKod1;
+  @override
+  String? stokKodu;
   @override
   bool? kapaliBelgelerListelenmesin;
   @override
@@ -738,7 +755,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
   }
 
   @JsonKey(ignore: true)
@@ -767,6 +784,7 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? siparisKarsilanmaDurumu,
       String? ozelKod1,
+      String? stokKodu,
       bool? kapaliBelgelerListelenmesin,
       String? projeKodu,
       bool? faturalasmaGoster,
@@ -828,6 +846,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get ozelKod1;
   set ozelKod1(String? value);
+  @override
+  String? get stokKodu;
+  set stokKodu(String? value);
   @override
   bool? get kapaliBelgelerListelenmesin;
   set kapaliBelgelerListelenmesin(bool? value);
