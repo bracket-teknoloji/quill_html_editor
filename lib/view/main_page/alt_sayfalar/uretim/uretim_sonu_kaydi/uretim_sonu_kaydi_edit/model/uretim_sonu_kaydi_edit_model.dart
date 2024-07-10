@@ -15,11 +15,12 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
     @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+    String? aciklama,
     String? depoOnceligi,
     @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
     int? girisDepo,
     String? guid,
-    List<KalemModel>? kalemList,
+    @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
     String? projeKodu,
     String? tarih,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
@@ -38,7 +39,6 @@ class EkAlanlar with _$EkAlanlar {
   EkAlanlar._();
   factory EkAlanlar({
     String? ktAlan1,
-    String? ktAlan2,
     String? ktAlan3,
     String? ktAlan4,
   }) = _EkAlanlar;
@@ -50,30 +50,24 @@ class EkAlanlar with _$EkAlanlar {
       return ktAlan1;
     }
     if (index == 1) {
-      return ktAlan2;
-    }
-    if (index == 2) {
       return ktAlan3;
     }
-    if (index == 3) {
+    if (index == 2) {
       return ktAlan4;
     }
-    throw Exception("Invalid Array Index");
+    throw Exception("Invalid Array Index: $index");
   }
 
   void operator []=(int index, String? value) {
-    if (index == 0) {
-      ktAlan1 = value;
+    switch (index) {
+      case 0:
+        ktAlan1 = value;
+      case 1:
+        ktAlan3 = value;
+      case 2:
+        ktAlan4 = value;
+      default:
+        throw Exception("Invalid Array Index: $index");
     }
-    if (index == 1) {
-      ktAlan2 = value;
-    }
-    if (index == 2) {
-      ktAlan3 = value;
-    }
-    if (index == 3) {
-      ktAlan4 = value;
-    }
-    throw Exception("Invalid Array Index");
   }
 }

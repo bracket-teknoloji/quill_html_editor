@@ -39,6 +39,8 @@ mixin _$UretimSonuKaydiEditModel {
   String? get projeAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value) => throw _privateConstructorUsedError;
+  String? get aciklama => throw _privateConstructorUsedError;
+  set aciklama(String? value) => throw _privateConstructorUsedError;
   String? get depoOnceligi => throw _privateConstructorUsedError;
   set depoOnceligi(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "EkAlanlar")
@@ -49,7 +51,9 @@ mixin _$UretimSonuKaydiEditModel {
   set girisDepo(int? value) => throw _privateConstructorUsedError;
   String? get guid => throw _privateConstructorUsedError;
   set guid(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "KalemList")
   List<KalemModel>? get kalemList => throw _privateConstructorUsedError;
+  @JsonKey(name: "KalemList")
   set kalemList(List<KalemModel>? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
   set projeKodu(String? value) => throw _privateConstructorUsedError;
@@ -81,11 +85,12 @@ abstract class $UretimSonuKaydiEditModelCopyWith<$Res> {
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
       int? girisDepo,
       String? guid,
-      List<KalemModel>? kalemList,
+      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
       String? projeKodu,
       String? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit});
@@ -113,6 +118,7 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
     Object? cikisDepoAdi = freezed,
     Object? girisDepoAdi = freezed,
     Object? projeAdi = freezed,
+    Object? aciklama = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
     Object? girisDepo = freezed,
@@ -146,6 +152,10 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
       projeAdi: freezed == projeAdi
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
       depoOnceligi: freezed == depoOnceligi
           ? _value.depoOnceligi
@@ -213,11 +223,12 @@ abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res>
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
       int? girisDepo,
       String? guid,
-      List<KalemModel>? kalemList,
+      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
       String? projeKodu,
       String? tarih,
       @JsonKey(name: "_YeniKayit") bool? yeniKayit});
@@ -245,6 +256,7 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
     Object? cikisDepoAdi = freezed,
     Object? girisDepoAdi = freezed,
     Object? projeAdi = freezed,
+    Object? aciklama = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
     Object? girisDepo = freezed,
@@ -278,6 +290,10 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
       projeAdi: freezed == projeAdi
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
               as String?,
       depoOnceligi: freezed == depoOnceligi
           ? _value.depoOnceligi
@@ -325,11 +341,12 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
       @JsonKey(includeFromJson: false, includeToJson: false) this.cikisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
+      this.aciklama,
       this.depoOnceligi,
       @JsonKey(name: "EkAlanlar") this.ekAlanlar,
       this.girisDepo,
       this.guid,
-      this.kalemList,
+      @JsonKey(name: "KalemList") this.kalemList,
       this.projeKodu,
       this.tarih,
       @JsonKey(name: "_YeniKayit") this.yeniKayit})
@@ -354,6 +371,8 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? projeAdi;
   @override
+  String? aciklama;
+  @override
   String? depoOnceligi;
   @override
   @JsonKey(name: "EkAlanlar")
@@ -363,6 +382,7 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   @override
   String? guid;
   @override
+  @JsonKey(name: "KalemList")
   List<KalemModel>? kalemList;
   @override
   String? projeKodu;
@@ -397,11 +417,12 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
       int? girisDepo,
       String? guid,
-      List<KalemModel>? kalemList,
+      @JsonKey(name: "KalemList") List<KalemModel>? kalemList,
       String? projeKodu,
       String? tarih,
       @JsonKey(name: "_YeniKayit")
@@ -436,6 +457,9 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value);
   @override
+  String? get aciklama;
+  set aciklama(String? value);
+  @override
   String? get depoOnceligi;
   set depoOnceligi(String? value);
   @override
@@ -450,7 +474,9 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   String? get guid;
   set guid(String? value);
   @override
+  @JsonKey(name: "KalemList")
   List<KalemModel>? get kalemList;
+  @JsonKey(name: "KalemList")
   set kalemList(List<KalemModel>? value);
   @override
   String? get projeKodu;
@@ -477,8 +503,6 @@ EkAlanlar _$EkAlanlarFromJson(Map<String, dynamic> json) {
 mixin _$EkAlanlar {
   String? get ktAlan1 => throw _privateConstructorUsedError;
   set ktAlan1(String? value) => throw _privateConstructorUsedError;
-  String? get ktAlan2 => throw _privateConstructorUsedError;
-  set ktAlan2(String? value) => throw _privateConstructorUsedError;
   String? get ktAlan3 => throw _privateConstructorUsedError;
   set ktAlan3(String? value) => throw _privateConstructorUsedError;
   String? get ktAlan4 => throw _privateConstructorUsedError;
@@ -495,8 +519,7 @@ abstract class $EkAlanlarCopyWith<$Res> {
   factory $EkAlanlarCopyWith(EkAlanlar value, $Res Function(EkAlanlar) then) =
       _$EkAlanlarCopyWithImpl<$Res, EkAlanlar>;
   @useResult
-  $Res call(
-      {String? ktAlan1, String? ktAlan2, String? ktAlan3, String? ktAlan4});
+  $Res call({String? ktAlan1, String? ktAlan3, String? ktAlan4});
 }
 
 /// @nodoc
@@ -513,7 +536,6 @@ class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar>
   @override
   $Res call({
     Object? ktAlan1 = freezed,
-    Object? ktAlan2 = freezed,
     Object? ktAlan3 = freezed,
     Object? ktAlan4 = freezed,
   }) {
@@ -521,10 +543,6 @@ class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar>
       ktAlan1: freezed == ktAlan1
           ? _value.ktAlan1
           : ktAlan1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan2: freezed == ktAlan2
-          ? _value.ktAlan2
-          : ktAlan2 // ignore: cast_nullable_to_non_nullable
               as String?,
       ktAlan3: freezed == ktAlan3
           ? _value.ktAlan3
@@ -546,8 +564,7 @@ abstract class _$$EkAlanlarImplCopyWith<$Res>
       __$$EkAlanlarImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? ktAlan1, String? ktAlan2, String? ktAlan3, String? ktAlan4});
+  $Res call({String? ktAlan1, String? ktAlan3, String? ktAlan4});
 }
 
 /// @nodoc
@@ -562,7 +579,6 @@ class __$$EkAlanlarImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ktAlan1 = freezed,
-    Object? ktAlan2 = freezed,
     Object? ktAlan3 = freezed,
     Object? ktAlan4 = freezed,
   }) {
@@ -570,10 +586,6 @@ class __$$EkAlanlarImplCopyWithImpl<$Res>
       ktAlan1: freezed == ktAlan1
           ? _value.ktAlan1
           : ktAlan1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ktAlan2: freezed == ktAlan2
-          ? _value.ktAlan2
-          : ktAlan2 // ignore: cast_nullable_to_non_nullable
               as String?,
       ktAlan3: freezed == ktAlan3
           ? _value.ktAlan3
@@ -590,8 +602,7 @@ class __$$EkAlanlarImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$EkAlanlarImpl extends _EkAlanlar {
-  _$EkAlanlarImpl({this.ktAlan1, this.ktAlan2, this.ktAlan3, this.ktAlan4})
-      : super._();
+  _$EkAlanlarImpl({this.ktAlan1, this.ktAlan3, this.ktAlan4}) : super._();
 
   factory _$EkAlanlarImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkAlanlarImplFromJson(json);
@@ -599,15 +610,13 @@ class _$EkAlanlarImpl extends _EkAlanlar {
   @override
   String? ktAlan1;
   @override
-  String? ktAlan2;
-  @override
   String? ktAlan3;
   @override
   String? ktAlan4;
 
   @override
   String toString() {
-    return 'EkAlanlar(ktAlan1: $ktAlan1, ktAlan2: $ktAlan2, ktAlan3: $ktAlan3, ktAlan4: $ktAlan4)';
+    return 'EkAlanlar(ktAlan1: $ktAlan1, ktAlan3: $ktAlan3, ktAlan4: $ktAlan4)';
   }
 
   @JsonKey(ignore: true)
@@ -625,11 +634,8 @@ class _$EkAlanlarImpl extends _EkAlanlar {
 }
 
 abstract class _EkAlanlar extends EkAlanlar {
-  factory _EkAlanlar(
-      {String? ktAlan1,
-      String? ktAlan2,
-      String? ktAlan3,
-      String? ktAlan4}) = _$EkAlanlarImpl;
+  factory _EkAlanlar({String? ktAlan1, String? ktAlan3, String? ktAlan4}) =
+      _$EkAlanlarImpl;
   _EkAlanlar._() : super._();
 
   factory _EkAlanlar.fromJson(Map<String, dynamic> json) =
@@ -638,9 +644,6 @@ abstract class _EkAlanlar extends EkAlanlar {
   @override
   String? get ktAlan1;
   set ktAlan1(String? value);
-  @override
-  String? get ktAlan2;
-  set ktAlan2(String? value);
   @override
   String? get ktAlan3;
   set ktAlan3(String? value);
