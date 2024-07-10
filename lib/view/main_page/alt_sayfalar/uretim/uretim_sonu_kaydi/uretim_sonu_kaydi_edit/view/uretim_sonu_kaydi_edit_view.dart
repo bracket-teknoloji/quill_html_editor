@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -29,9 +30,18 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
   @override
   void initState() {
     if (widget.model.baseEditEnum.ekleMi) {
-      viewModel.setRequestModel(viewModel.requestModel..tarih = DateTime.now().toDateString);
+      viewModel.setRequestModel(
+        viewModel.requestModel
+          ..tarih = DateTime.now().toDateString
+          ..belgeTarihi = DateTime.now(),
+      );
     } else {
       viewModel.setModel(widget.model.model);
+      viewModel.setRequestModel(
+        viewModel.requestModel
+          ..tarih = viewModel.model?.tarih.toDateString
+          ..belgeTarihi = viewModel.model?.tarih,
+      );
     }
     viewModel.setBelgeNo(widget.model.model?.belgeNo);
     tabController = TabController(length: tabSize, vsync: this);
@@ -42,7 +52,10 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
       await viewModel.getEkAlanlar();
       await viewModel.getKalemler();
       tabController.addListener(() async {
-        if (tabSize != 1 && !widget.model.baseEditEnum.goruntuleMi) {
+        if (widget.model.baseEditEnum.goruntuleMi) {
+          return;
+        }
+        if (tabSize != 1) {
           if (tabController.index == (tabSize - 1)) {
             viewModel.setShowSaveButton(true);
           } else {
@@ -50,11 +63,9 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
           }
         }
         await Future.delayed(const Duration(milliseconds: 100));
-        if (!viewModel.requestModel.depolarSecildiMi && !tabController.indexIsChanging && tabController.index == 1) {
+        if (StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() == false && tabController.index == 1) {
           // get back first tab
-          dialogManager.showErrorSnackBar("Önce depoların seçilmesi gerekmektedir!");
           tabController.animateTo(0);
-          return;
         }
       });
     });
@@ -73,8 +84,15 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
           actions: [
             Observer(
               builder: (_) => IconButton(
-                onPressed: () {
-                  StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate();
+                onPressed: () async {
+                  if (viewModel.requestModel.kalemList.ext.isNullOrEmpty) return dialogManager.showAlertDialog("Kalem seçiniz.");
+                  if (tabController.index != 1 && StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) return;
+                  dialogManager.showAreYouSureDialog(() async {
+                    final result = await viewModel.saveUSK();
+                    if (!result.isSuccess) return;
+                    Get.back(result: true);
+                    dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
+                  });
                 },
                 icon: const Icon(Icons.save_outlined),
               ).yetkiVarMi(viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi),
@@ -87,8 +105,8 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                     Tab(text: loc.generalStrings.general),
                     Observer(
                       builder: (_) => Tab(text: "Kalemler (${viewModel.kalemList?.length ?? 0})"),
-                    ),
-                  ],
+                    ).yetkiVarMi(tabSize == 2),
+                  ].where((element) => element is! SizedBox).toList(),
                 )
               : null,
         ),
@@ -114,8 +132,8 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                 kalemList: viewModel.kalemList,
                 requestModel: viewModel.requestModel,
                 onKalemListChange: viewModel.setKalemList,
-              ).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
-            ),
+              ),
+            ).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
           ].where((element) => element is! SizedBox).toList(),
         ).paddingAll(UIHelper.lowSize),
       );

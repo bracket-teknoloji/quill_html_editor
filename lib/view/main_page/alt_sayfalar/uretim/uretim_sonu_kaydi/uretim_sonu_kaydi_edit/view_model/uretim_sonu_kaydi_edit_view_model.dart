@@ -50,10 +50,10 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   Future<void> getKalemler() async {
     final result = await networkManager.dioGet(path: ApiUrls.getUSKKalemleri, bodyModel: KalemModel(), showLoading: true, queryParameters: kalemlerRequestModel.toJson());
     if (result.isSuccess) {
-      setKalemList(result.dataList);
-
-      final KalemModel? item = result.dataList.firstOrNull;
+      final KalemModel? item = result.dataList.lastOrNull;
+      setRequestModel(requestModel..cikisDepoAdi = item?.cikisDepoAdi..girisDepoAdi = item?.girisDepoAdi);
       setModel(model?.copyWith(cikisDepoAdi: item?.cikisDepoAdi, girisDepoAdi: item?.girisDepoAdi, girisdepoKodu: item?.girisDepo, cikisdepoKodu: item?.cikisDepo));
+      setKalemList(result.dataList);
     }
   }
 
@@ -79,5 +79,6 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlanlarList(List<EkAlanlarModel>? dataList) => ekAlanlarList = dataList?.asObservable();
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async => networkManager.dioPost(path: ApiUrls.saveUSK, bodyModel: requestModel, showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async =>
+      networkManager.dioPost(path: ApiUrls.saveUSK, bodyModel: UretimSonuKaydiEditModel(), data: requestModel.copyWith(guid: const Uuid().v4()).toJson(), showLoading: true);
 }
