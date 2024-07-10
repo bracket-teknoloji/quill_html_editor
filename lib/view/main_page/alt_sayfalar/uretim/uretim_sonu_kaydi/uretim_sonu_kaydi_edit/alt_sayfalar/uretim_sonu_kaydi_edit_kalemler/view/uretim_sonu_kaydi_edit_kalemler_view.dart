@@ -96,8 +96,8 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})"),
-              Text("İş Emri: ${item.isemriNo ?? ""}"),
+              Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})").yetkiVarMi(widget.model.baseEditEnum.goruntuleMi),
+              Text("İş Emri: ${item.isemriNo ?? ""}").yetkiVarMi(item.isemriNo != null),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   Text("Kodu: ${item.stokKodu}"),
@@ -108,7 +108,7 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
                   Text("BarkodSay: ${item.barkod ?? ""}"),
                 ],
               ),
-              Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize),
+              Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize).yetkiVarMi(item.aciklama != null),
             ],
           ),
         ),
