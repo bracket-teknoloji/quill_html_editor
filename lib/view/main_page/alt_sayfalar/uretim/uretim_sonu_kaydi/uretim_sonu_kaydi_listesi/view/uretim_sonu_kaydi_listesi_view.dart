@@ -79,7 +79,10 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown && yetkiController.uretimSonuKaydiEkle,
           onPressed: () async {
-            Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(baseEditEnum: BaseEditEnum.ekle));
+            final result = await Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(baseEditEnum: BaseEditEnum.ekle));
+            if (result == true) {
+              await viewModel.resetList();
+            }
           },
         ),
       );
