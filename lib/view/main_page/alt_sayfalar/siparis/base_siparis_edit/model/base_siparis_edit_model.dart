@@ -9,6 +9,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -1124,7 +1125,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel with NetworkManagerMixin {
+class   KalemModel with NetworkManagerMixin {
   @HiveField(0)
   @JsonKey(defaultValue: true, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
@@ -1535,6 +1536,14 @@ class KalemModel with NetworkManagerMixin {
         miktar: model?.miktar,
         cariAdi: model?.cariAdi,
         cariKodu: model?.cariKodu,
+      );
+  factory KalemModel.fromUSKReceteModel(UskReceteModel? model) => KalemModel(
+        stokAdi: model?.stokAdi,
+        stokKodu: model?.stokKodu,
+        miktar: model?.miktar,
+        seriList: model?.seriList,
+        seriMiktarKadarSor: model?.seriMiktarKadar == "E",
+
       );
 
   factory KalemModel.forUretimSonuKaydiEdit(KalemModel model) => model.copyWith(cikisdepoKodu: model.cikisDepo, girisdepoKodu: model.girisDepo);
