@@ -34,8 +34,8 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
     if (widget.seriDetayiModel.seriList != null) {
       viewModel.seriModel = widget.seriDetayiModel.seriList!;
     }
-    if ((viewModel.seriModel.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0) || widget.seriDetayiModel.miktarKadarSor == true) {
-      viewModel.seriModel.miktar = 1;
+    if (((viewModel.seriModel.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0)) && widget.seriDetayiModel.miktarKadarSor == true) {
+      viewModel.setMiktar(1);
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       formKey.currentState?.validate();
