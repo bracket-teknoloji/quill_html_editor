@@ -136,6 +136,7 @@ class   ApiUrls {
   static const String getUSKListesi = "Uretim/GetUSKListesi";
   static const String getUSKKalemleri = "Uretim/GetUSKKalemleri";
   static const String saveUSK = "Uretim/SaveUSK";
+  static const String getRecete = "Uretim/GetRecete";
   static const String deleteUSK = "Uretim/DeleteUSK";
   static const String getIsemriHammaddeTakipDetay = "Uretim/GetIsemriHammaddeTakipDetay";
   static const String getIsemriHammaddeTakipListe = "Uretim/GetIsemriHammaddeTakipListe";
