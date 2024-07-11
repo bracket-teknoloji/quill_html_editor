@@ -222,6 +222,18 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   @override
+  void setSeriList(List<SeriList> seri) {
+    final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
+        .startAction(name: '_UretimSonuKaydiEditViewModelBase.setSeriList');
+    try {
+      return super.setSeriList(seri);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setEkAlan2(String? aciklama) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setEkAlan2');

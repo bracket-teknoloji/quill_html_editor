@@ -6,6 +6,7 @@ import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -85,6 +86,9 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setEkAlan1(String? aciklama) => setModel(kalem?.copyWith(ekalan1: aciklama));
+
+  @action
+  void setSeriList(List<SeriList> seri) => setModel(kalem?.copyWith(seriList: seri));
 
   @action
   void setEkAlan2(String? aciklama) => setModel(kalem?.copyWith(ekalan2: aciklama));

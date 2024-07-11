@@ -18,11 +18,13 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_genel/view_model/uretim_sonu_kaydi_edit_genel_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
 
 final class UretimSonuKaydiEditGenelView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;
@@ -119,7 +121,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
       ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
       ekAlan2Controller.text = viewModel.kalem?.ekalan2 ?? "";
       aciklamaController.text = model?.aciklama ?? "";
-      
     });
     super.initState();
   }
@@ -246,7 +247,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         suffixMore: true,
         readOnly: true,
         onTap: () async {
-          
           if (viewModel.stokModel == null) {
             return dialogManager.showAlertDialog("Önce stok seçiniz.");
           }
@@ -363,9 +363,21 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           if (result is StokListesiModel) {
             mamulKoduController.text = result.stokKodu ?? "";
             viewModel.setMamulKodu(result);
+            getSeriler();
           }
         },
       );
+
+  Future<void> getSeriler() async {
+    if (viewModel.kalem?.miktar == null) return dialogManager.showErrorSnackBar("Miktar giriniz.");
+    if (viewModel.kalem?.seriCikislardaAcik == true) {
+      final result = await Get.toNamed("mainPage/uskSeriListesi", arguments: viewModel.kalem);
+      if (result is List<UskReceteModel>) {
+        viewModel.setSeriList(result.map((e) => e.seriList?.whereNotNull() ?? []).cast<List<SeriList>>().expand((e) => e).toList());
+        serilerController.text = "(${viewModel.kalem?.seriList?.length.toString() ?? ""})";
+      }
+    }
+  }
 
   CustomTextField olcuBirimiField() => CustomTextField(
         labelText: "Ölçü Birimi",
@@ -418,7 +430,9 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         isMust: true,
         readOnly: true,
         //TODO Seriler eklenecek
-        onTap: () {},
+        onTap: () {
+          getSeriler();
+        },
       );
 
   CustomTextField maliyetFiyatiField() => CustomTextField(
