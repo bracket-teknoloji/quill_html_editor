@@ -56,6 +56,7 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_re
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_kalem_ekle/view/uretim_sonu_kaydi_kalem_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view/uretim_sonu_kaydi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view/uretim_sonu_kaydi_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/view/uretim_sonu_kaydi_seri_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/view/uretim_sonu_raporu_view.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
@@ -476,6 +477,7 @@ class PickerApp extends StatelessWidget {
               GetPage(name: "/uretimSonuKaydiEdit", page: () => UretimSonuKaydiEditView(model: Get.arguments)),
               GetPage(name: "/uretimSonuKaydiKalemEdit", page: () => UretimSonuKaydiKalemEkleView(model: Get.arguments)),
               GetPage(name: "/uretimSonuRaporu", page: () => UretimSonuRaporuView(model: Get.arguments)),
+              GetPage(name: "/uskSeriListesi", page: () => UretimSonuKaydiSeriListesi(model: Get.arguments)),
 
               //* * İş Emirleri
 

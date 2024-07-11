@@ -11,6 +11,7 @@ _$UretimSonuRaporuRequestModelImpl _$$UretimSonuRaporuRequestModelImplFromJson(
     _$UretimSonuRaporuRequestModelImpl(
       belgeNo: json['BelgeNo'] as String?,
       filtreKodu: (json['FiltreKodu'] as num?)?.toInt(),
+      stokKodu: json['StokKodu'] as String?,
     );
 
 Map<String, dynamic> _$$UretimSonuRaporuRequestModelImplToJson(
@@ -25,5 +26,6 @@ Map<String, dynamic> _$$UretimSonuRaporuRequestModelImplToJson(
 
   writeNotNull('BelgeNo', instance.belgeNo);
   writeNotNull('FiltreKodu', instance.filtreKodu);
+  writeNotNull('StokKodu', instance.stokKodu);
   return val;
 }

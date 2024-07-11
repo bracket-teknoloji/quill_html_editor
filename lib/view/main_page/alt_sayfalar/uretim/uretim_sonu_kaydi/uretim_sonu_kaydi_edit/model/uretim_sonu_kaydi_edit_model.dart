@@ -1,6 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 part "uretim_sonu_kaydi_edit_model.freezed.dart";
 part "uretim_sonu_kaydi_edit_model.g.dart";
@@ -15,6 +16,7 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
     @JsonKey(includeFromJson: false, includeToJson: false) String? cikisDepoAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? girisDepoAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+    @JsonKey(includeFromJson: false, includeToJson: false) StokListesiModel? stokModel,
     String? aciklama,
     String? depoOnceligi,
     @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,

@@ -25,6 +25,8 @@ mixin _$UretimSonuRaporuRequestModel {
   set belgeNo(String? value) => throw _privateConstructorUsedError;
   int? get filtreKodu => throw _privateConstructorUsedError;
   set filtreKodu(int? value) => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +42,7 @@ abstract class $UretimSonuRaporuRequestModelCopyWith<$Res> {
       _$UretimSonuRaporuRequestModelCopyWithImpl<$Res,
           UretimSonuRaporuRequestModel>;
   @useResult
-  $Res call({String? belgeNo, int? filtreKodu});
+  $Res call({String? belgeNo, int? filtreKodu, String? stokKodu});
 }
 
 /// @nodoc
@@ -59,6 +61,7 @@ class _$UretimSonuRaporuRequestModelCopyWithImpl<$Res,
   $Res call({
     Object? belgeNo = freezed,
     Object? filtreKodu = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -69,6 +72,10 @@ class _$UretimSonuRaporuRequestModelCopyWithImpl<$Res,
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -82,7 +89,7 @@ abstract class _$$UretimSonuRaporuRequestModelImplCopyWith<$Res>
       __$$UretimSonuRaporuRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? belgeNo, int? filtreKodu});
+  $Res call({String? belgeNo, int? filtreKodu, String? stokKodu});
 }
 
 /// @nodoc
@@ -100,6 +107,7 @@ class __$$UretimSonuRaporuRequestModelImplCopyWithImpl<$Res>
   $Res call({
     Object? belgeNo = freezed,
     Object? filtreKodu = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_$UretimSonuRaporuRequestModelImpl(
       belgeNo: freezed == belgeNo
@@ -110,6 +118,10 @@ class __$$UretimSonuRaporuRequestModelImplCopyWithImpl<$Res>
           ? _value.filtreKodu
           : filtreKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -119,7 +131,8 @@ class __$$UretimSonuRaporuRequestModelImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$UretimSonuRaporuRequestModelImpl
     implements _UretimSonuRaporuRequestModel {
-  _$UretimSonuRaporuRequestModelImpl({this.belgeNo, this.filtreKodu});
+  _$UretimSonuRaporuRequestModelImpl(
+      {this.belgeNo, this.filtreKodu, this.stokKodu});
 
   factory _$UretimSonuRaporuRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -129,10 +142,12 @@ class _$UretimSonuRaporuRequestModelImpl
   String? belgeNo;
   @override
   int? filtreKodu;
+  @override
+  String? stokKodu;
 
   @override
   String toString() {
-    return 'UretimSonuRaporuRequestModel(belgeNo: $belgeNo, filtreKodu: $filtreKodu)';
+    return 'UretimSonuRaporuRequestModel(belgeNo: $belgeNo, filtreKodu: $filtreKodu, stokKodu: $stokKodu)';
   }
 
   @JsonKey(ignore: true)
@@ -153,8 +168,10 @@ class _$UretimSonuRaporuRequestModelImpl
 
 abstract class _UretimSonuRaporuRequestModel
     implements UretimSonuRaporuRequestModel {
-  factory _UretimSonuRaporuRequestModel({String? belgeNo, int? filtreKodu}) =
-      _$UretimSonuRaporuRequestModelImpl;
+  factory _UretimSonuRaporuRequestModel(
+      {String? belgeNo,
+      int? filtreKodu,
+      String? stokKodu}) = _$UretimSonuRaporuRequestModelImpl;
 
   factory _UretimSonuRaporuRequestModel.fromJson(Map<String, dynamic> json) =
       _$UretimSonuRaporuRequestModelImpl.fromJson;
@@ -165,6 +182,9 @@ abstract class _UretimSonuRaporuRequestModel
   @override
   int? get filtreKodu;
   set filtreKodu(int? value);
+  @override
+  String? get stokKodu;
+  set stokKodu(String? value);
   @override
   @JsonKey(ignore: true)
   _$$UretimSonuRaporuRequestModelImplCopyWith<

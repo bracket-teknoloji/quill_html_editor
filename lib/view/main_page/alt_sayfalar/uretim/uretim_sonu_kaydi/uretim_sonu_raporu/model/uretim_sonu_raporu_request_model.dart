@@ -9,6 +9,7 @@ class UretimSonuRaporuRequestModel with _$UretimSonuRaporuRequestModel {
   factory UretimSonuRaporuRequestModel({
     String? belgeNo,
     int? filtreKodu,
+    String? stokKodu,
   }) = _UretimSonuRaporuRequestModel;
 
   factory UretimSonuRaporuRequestModel.fromJson(Map<String, dynamic> json) => _$UretimSonuRaporuRequestModelFromJson(json);

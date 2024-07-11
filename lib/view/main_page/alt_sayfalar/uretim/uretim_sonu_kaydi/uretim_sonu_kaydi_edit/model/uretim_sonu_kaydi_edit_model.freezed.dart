@@ -39,6 +39,10 @@ mixin _$UretimSonuKaydiEditModel {
   String? get projeAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  StokListesiModel? get stokModel => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set stokModel(StokListesiModel? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
   String? get depoOnceligi => throw _privateConstructorUsedError;
@@ -85,6 +89,8 @@ abstract class $UretimSonuKaydiEditModelCopyWith<$Res> {
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      StokListesiModel? stokModel,
       String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
@@ -118,6 +124,7 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
     Object? cikisDepoAdi = freezed,
     Object? girisDepoAdi = freezed,
     Object? projeAdi = freezed,
+    Object? stokModel = freezed,
     Object? aciklama = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
@@ -153,6 +160,10 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokModel: freezed == stokModel
+          ? _value.stokModel
+          : stokModel // ignore: cast_nullable_to_non_nullable
+              as StokListesiModel?,
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
@@ -223,6 +234,8 @@ abstract class _$$UretimSonuKaydiEditModelImplCopyWith<$Res>
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      StokListesiModel? stokModel,
       String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
@@ -256,6 +269,7 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
     Object? cikisDepoAdi = freezed,
     Object? girisDepoAdi = freezed,
     Object? projeAdi = freezed,
+    Object? stokModel = freezed,
     Object? aciklama = freezed,
     Object? depoOnceligi = freezed,
     Object? ekAlanlar = freezed,
@@ -291,6 +305,10 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
           ? _value.projeAdi
           : projeAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokModel: freezed == stokModel
+          ? _value.stokModel
+          : stokModel // ignore: cast_nullable_to_non_nullable
+              as StokListesiModel?,
       aciklama: freezed == aciklama
           ? _value.aciklama
           : aciklama // ignore: cast_nullable_to_non_nullable
@@ -341,6 +359,7 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
       @JsonKey(includeFromJson: false, includeToJson: false) this.cikisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.projeAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false) this.stokModel,
       this.aciklama,
       this.depoOnceligi,
       @JsonKey(name: "EkAlanlar") this.ekAlanlar,
@@ -370,6 +389,9 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? projeAdi;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  StokListesiModel? stokModel;
   @override
   String? aciklama;
   @override
@@ -417,6 +439,8 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? girisDepoAdi,
       @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      StokListesiModel? stokModel,
       String? aciklama,
       String? depoOnceligi,
       @JsonKey(name: "EkAlanlar") EkAlanlar? ekAlanlar,
@@ -456,6 +480,11 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   String? get projeAdi;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  StokListesiModel? get stokModel;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set stokModel(StokListesiModel? value);
   @override
   String? get aciklama;
   set aciklama(String? value);
