@@ -1,0 +1,64 @@
+import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/model/uretim_sonu_raporu_request_model.dart";
+
+part "uretim_sonu_kaydi_seri_listesi_view_model.g.dart";
+
+class UretimSonuKaydiSeriListesiViewModel = _UretimSonuKaydiSeriListesiViewModelBase with _$UretimSonuKaydiSeriListesiViewModel;
+
+abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<UskReceteModel> {
+  @observable
+  @override
+  ObservableList<UskReceteModel>? observableList;
+
+  @observable
+  KalemModel? kalemModel;
+
+  @observable
+  UretimSonuRaporuRequestModel requestModel = UretimSonuRaporuRequestModel(filtreKodu: 1);
+
+  @computed
+  ObservableList<UskReceteModel>? get predefinedList {
+    if (observableList == null) return null;
+    if (kalemModel == null) return observableList;
+    final UskReceteModel receteModel = UskReceteModel.fromKalemModel(kalemModel!);
+    return [receteModel, ...?observableList].asObservable();
+  }
+
+  
+
+  @action
+  void setKalem(KalemModel? value) {
+    requestModel = requestModel.copyWith(stokKodu: value?.stokKodu);
+    kalemModel = value;
+  }
+
+  @action
+  @override
+  void setObservableList(List<UskReceteModel>? list) => observableList = list?.asObservable();
+
+  @override
+  @action
+  Future<void> resetList() async {
+    super.resetList();
+    await getData();
+  }
+
+  @action
+  void updateCard(UskReceteModel model) {
+    setObservableList(observableList?.map((e) => model.sira == e.sira ? model : e).toList());
+  }
+
+  @action
+  @override
+  Future<void> getData() async {
+    final result = await networkManager.dioGet(path: ApiUrls.getRecete, bodyModel: UskReceteModel(), queryParameters: requestModel.toJson());
+    if (result.isSuccess) {
+      setObservableList(result.dataList.map((e) => e.copyWith(miktar: (e.miktar ?? 0) * (kalemModel?.miktar ?? 0))).toList());
+    }
+  }
+}
