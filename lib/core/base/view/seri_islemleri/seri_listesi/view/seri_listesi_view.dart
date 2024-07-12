@@ -96,10 +96,14 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () async {
-                        final result = await Get.toNamed("/seriRehberi", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu);
-                        if (result is! SeriList) {
-                          return;
+                        // ignore: prefer_typing_uninitialized_variables
+                        dynamic result;
+                        if (viewModel.kalemModel.isUsk == true) {
+                          result = await Get.toNamed("/seriRehberiUSK", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu..belgeTarihi = widget.kalemModel.tarih);
+                        } else {
+                          result = await Get.toNamed("/seriRehberi", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu);
                         }
+                        if (result is! SeriList) return;
                         final result2 = await Get.toNamed(
                           "/seriDetayi",
                           arguments: SeriDetayiModel(
@@ -110,7 +114,7 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                           ),
                         );
                         if (result2 is SeriList) {
-                          viewModel.addSeriList(result);
+                          viewModel.addSeriList(result2);
                         }
                       },
                       label: const Text("Seri Rehberi"),
