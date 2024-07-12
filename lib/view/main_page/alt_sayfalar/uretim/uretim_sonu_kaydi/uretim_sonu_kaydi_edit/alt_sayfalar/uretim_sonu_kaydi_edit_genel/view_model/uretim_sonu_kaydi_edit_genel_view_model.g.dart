@@ -222,7 +222,7 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   @override
-  void setSeriList(List<SeriList> seri) {
+  void setSeriList(List<SeriList>? seri) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setSeriList');
     try {

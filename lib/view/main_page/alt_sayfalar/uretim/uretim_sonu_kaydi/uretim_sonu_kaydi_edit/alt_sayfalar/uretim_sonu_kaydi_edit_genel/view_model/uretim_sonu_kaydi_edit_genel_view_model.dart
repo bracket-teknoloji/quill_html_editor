@@ -88,7 +88,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlan1(String? aciklama) => setModel(kalem?.copyWith(ekalan1: aciklama));
 
   @action
-  void setSeriList(List<SeriList> seri) => setModel(kalem?.copyWith(seriList: seri));
+  void setSeriList(List<SeriList>? seri) => setModel(kalem?.copyWith(seriList: seri));
 
   @action
   void setEkAlan2(String? aciklama) => setModel(kalem?.copyWith(ekalan2: aciklama));

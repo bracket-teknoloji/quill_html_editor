@@ -18,7 +18,6 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
@@ -68,6 +67,13 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   @override
   void initState() {
+    viewModel.setRequestModel(widget.requestModel);
+    viewModel.setOnSave(widget.onSave);
+    viewModel.setEkAlanlarList(widget.ekAlanlarList);
+    if (!widget.model.baseEditEnum.ekleMi && widget.model.model != null) {
+      viewModel.setModel(widget.model.model);
+      viewModel.requestModel.kalemList = [widget.model.model!];
+    }
     viewModel.kalemliMi = yetkiController.uretimSonuKalemliYapi;
     ekAlanlarControllers = [];
     belgeNoController = TextEditingController();
@@ -88,9 +94,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     ekAlan1Controller = TextEditingController();
     ekAlan2Controller = TextEditingController();
     // viewModel.setModel(widget.model.model);
-    viewModel.setRequestModel(widget.requestModel);
-    viewModel.setOnSave(widget.onSave);
-    viewModel.setEkAlanlarList(widget.ekAlanlarList);
     if (viewModel.ekAlanlarList != null) {
       ekAlanlarControllers.addAll(List.generate(viewModel.ekAlanlarList!.length, (index) => TextEditingController(text: model?.ekAlanlar?[index] ?? "")));
     }
@@ -106,8 +109,8 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         // viewModel.setModel(widget.model.model);
         belgeNoController.text = model?.belgeNo ?? "";
       }
-      olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? "";
-      projeController.text = model?.projeAdi ?? "";
+      olcuBirimiController.text = viewModel.kalem?.olcuBirimAdi ?? viewModel.kalem?.olcuBirimKodu.toStringIfNotNull ?? "";
+      projeController.text = model?.projeAdi ?? model?.projeKodu ?? "";
       tarihController.text = model?.tarih ?? "";
       depoOnceligiController.text = viewModel.depoOnceligiList.firstWhereOrNull((element) => element.value == model?.depoOnceligi)?.name ?? "";
       girisDepoController.text = model?.girisDepoAdi ?? "";
@@ -362,7 +365,9 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
           if (result is StokListesiModel) {
             mamulKoduController.text = result.stokKodu ?? "";
+            serilerController.text = "";
             viewModel.setMamulKodu(result);
+            viewModel.setSeriList(null);
             getSeriler();
           }
         },
@@ -370,12 +375,10 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   Future<void> getSeriler() async {
     if (viewModel.kalem?.miktar == null) return dialogManager.showErrorSnackBar("Miktar giriniz.");
-    if (viewModel.kalem?.seriCikislardaAcik == true) {
-      final result = await Get.toNamed("mainPage/uskSeriListesi", arguments: viewModel.kalem);
-      if (result is List<UskReceteModel>) {
-        viewModel.setSeriList(result.map((e) => e.seriList?.whereNotNull() ?? []).cast<List<SeriList>>().expand((e) => e).toList());
-        serilerController.text = "(${viewModel.kalem?.seriList?.length.toString() ?? ""})";
-      }
+    final result = await Get.toNamed("mainPage/uskSeriListesi", arguments: viewModel.kalem?.copyWith(tarih: model?.tarih.toDateTimeDDMMYYYY(), cikisDepo: model?.cikisDepo));
+    if (result is List<UskReceteModel>) {
+      viewModel.setSeriList(result.map((e) => e.seriList).nonNulls.toList().expand((e) => e).toList());
+      serilerController.text = "Miktar (${viewModel.kalem?.seriList?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)})";
     }
   }
 
@@ -429,7 +432,9 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         suffixMore: true,
         isMust: true,
         readOnly: true,
-        //TODO Seriler eklenecek
+        valueWidget: Observer(
+          builder: (_) => Text(viewModel.kalem?.seriList != null ? "(${viewModel.kalem?.seriList?.length.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)})" : ""),
+        ),
         onTap: () {
           getSeriler();
         },
