@@ -247,6 +247,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
           GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
           GetPage(name: "/seriRehberi", page: () => SeriRehberiView(stokModel: Get.arguments)),
+          GetPage(name: "/seriRehberiUSK", page: () => SeriRehberiView.usk(stokModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
