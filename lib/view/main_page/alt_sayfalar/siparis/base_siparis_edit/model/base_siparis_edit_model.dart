@@ -1125,7 +1125,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class   KalemModel with NetworkManagerMixin {
+class KalemModel with NetworkManagerMixin {
   @HiveField(0)
   @JsonKey(defaultValue: true, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
@@ -1390,7 +1390,8 @@ class   KalemModel with NetworkManagerMixin {
   double? maliyetFiyati;
   @HiveField(129)
   String? depoOnceligi;
-
+  @HiveField(130)
+  bool? isUsk;
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,
@@ -1522,6 +1523,7 @@ class   KalemModel with NetworkManagerMixin {
     this.isemriNo,
     this.depoOnceligi,
     this.kalemSayisi,
+    this.isUsk,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1541,9 +1543,11 @@ class   KalemModel with NetworkManagerMixin {
         stokAdi: model?.stokAdi,
         stokKodu: model?.stokKodu,
         miktar: model?.miktar,
+        isUsk: true,
+        sira: 0,
+        gc: "G",
         seriList: model?.seriList,
         seriMiktarKadarSor: model?.seriMiktarKadar == "E",
-
       );
 
   factory KalemModel.forUretimSonuKaydiEdit(KalemModel model) => model.copyWith(cikisdepoKodu: model.cikisDepo, girisdepoKodu: model.girisDepo);
