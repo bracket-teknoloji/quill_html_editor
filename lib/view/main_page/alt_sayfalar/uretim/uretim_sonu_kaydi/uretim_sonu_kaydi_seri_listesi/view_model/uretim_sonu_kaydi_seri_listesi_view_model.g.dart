@@ -10,15 +10,6 @@ part of 'uretim_sonu_kaydi_seri_listesi_view_model.dart';
 
 mixin _$UretimSonuKaydiSeriListesiViewModel
     on _UretimSonuKaydiSeriListesiViewModelBase, Store {
-  Computed<ObservableList<UskReceteModel>?>? _$predefinedListComputed;
-
-  @override
-  ObservableList<UskReceteModel>? get predefinedList =>
-      (_$predefinedListComputed ??= Computed<ObservableList<UskReceteModel>?>(
-              () => super.predefinedList,
-              name: '_UretimSonuKaydiSeriListesiViewModelBase.predefinedList'))
-          .value;
-
   late final _$observableListAtom = Atom(
       name: '_UretimSonuKaydiSeriListesiViewModelBase.observableList',
       context: context);
@@ -136,8 +127,7 @@ mixin _$UretimSonuKaydiSeriListesiViewModel
     return '''
 observableList: ${observableList},
 kalemModel: ${kalemModel},
-requestModel: ${requestModel},
-predefinedList: ${predefinedList}
+requestModel: ${requestModel}
     ''';
   }
 }

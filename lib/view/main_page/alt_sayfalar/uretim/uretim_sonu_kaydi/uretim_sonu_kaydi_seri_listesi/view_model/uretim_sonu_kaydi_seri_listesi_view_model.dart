@@ -21,14 +21,6 @@ abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkM
   @observable
   UretimSonuRaporuRequestModel requestModel = UretimSonuRaporuRequestModel(filtreKodu: 1);
 
-  @computed
-  ObservableList<UskReceteModel>? get predefinedList {
-    if (observableList == null) return null;
-    if (kalemModel == null) return observableList;
-    final UskReceteModel receteModel = UskReceteModel.fromKalemModel(kalemModel!);
-    return [receteModel, ...?observableList].asObservable();
-  }
-
   
 
   @action
@@ -58,7 +50,8 @@ abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkM
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getRecete, bodyModel: UskReceteModel(), queryParameters: requestModel.toJson());
     if (result.isSuccess) {
-      setObservableList(result.dataList.map((e) => e.copyWith(miktar: (e.miktar ?? 0) * (kalemModel?.miktar ?? 0))).toList());
+
+      setObservableList(result.dataList.map((e) => e.copyWith(miktar: (e.miktar ?? 0) * (kalemModel?.miktar ?? 0))).toList()..insert(0, UskReceteModel.fromKalemModel(kalemModel!)));
     }
   }
 }

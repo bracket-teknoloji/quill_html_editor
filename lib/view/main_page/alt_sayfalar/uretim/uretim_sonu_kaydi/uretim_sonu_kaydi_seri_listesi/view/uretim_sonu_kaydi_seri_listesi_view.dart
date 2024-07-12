@@ -9,6 +9,7 @@ import "package:picker/core/components/button/elevated_buttons/footer_button.dar
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -52,15 +53,15 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
         actions: [
           IconButton(
             icon: const Icon(Icons.check_circle_outline_outlined),
-            onPressed: () => Get.back(result: viewModel.predefinedList),
+            onPressed: () => Get.back(result: viewModel.observableList?.toList()),
           ),
         ],
       );
 
   Observer body() => Observer(
         builder: (_) => RefreshableListView(
-          onRefresh: viewModel.resetList,
-          items: viewModel.predefinedList,
+          onRefresh: () async {},
+          items: viewModel.observableList,
           itemBuilder: seriCard,
         ),
       );
@@ -72,7 +73,7 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
             children: [
               const Text("Miktar"),
               Observer(
-                builder: (_) => Text(viewModel.predefinedList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0"),
+                builder: (_) => Text(viewModel.observableList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0"),
               ),
             ],
           ),
@@ -80,7 +81,7 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
             children: [
               const Text("Kalan Miktar"),
               Observer(
-                builder: (_) => Text(viewModel.predefinedList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0  "),
+                builder: (_) => Text(viewModel.observableList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0  "),
               ),
             ],
           ),
@@ -89,12 +90,31 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
 
   Observer seriCard(UskReceteModel item) => Observer(
         builder: (_) => Card(
-          color: item.miktar == item.seriList?.map((e) => e.miktar ?? 0).sum ? Colors.green : null,
+          color: item.miktar == item.seriList?.map((e) => e.miktar ?? 0).sum ? ColorPalette.mantis : null,
           child: ListTile(
             onTap: () async {
-              final result = await Get.toNamed("/seriListesi", arguments: KalemModel.fromUSKReceteModel(item));
+              final result = await Get.toNamed(
+                "/seriListesi",
+                arguments: KalemModel.fromUSKReceteModel(item)
+                  ..tarih = widget.model.tarih
+                  ..depoKodu = widget.model.cikisDepo,
+              );
               if (result is List<SeriList>) {
-                viewModel.updateCard(item.copyWith(seriList: result));
+                viewModel.updateCard(
+                  item.copyWith(
+                    seriList: result
+                        .map(
+                          (e) => e.copyWith(
+                            requestVersion: 2,
+                            barkod: widget.model.stokKodu,
+                            tempBarkod: widget.model.stokKodu,
+                            gckod: item.sira != "0" ? "C" : "G",
+                            inckeyno: -1,
+                          ),
+                        )
+                        .toList(),
+                  ),
+                );
               }
             },
             onLongPress: () async {
