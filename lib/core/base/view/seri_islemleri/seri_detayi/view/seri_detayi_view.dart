@@ -66,25 +66,22 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
             ),
           ],
         ),
-        bottomNavigationBar: Padding(
-          padding: MediaQuery.of(context).viewInsets,
-          child: BottomBarWidget(
-            isScrolledDown: true,
-            children: [
-              FooterButton(
-                children: [
-                  const Text("Hareket Miktarı"),
-                  Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull ?? ""),
-                ],
-              ),
-              FooterButton(
-                children: [
-                  const Text("Kalan Miktar"),
-                  Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull ?? ""),
-                ],
-              ),
-            ],
-          ),
+        bottomNavigationBar: BottomBarWidget(
+          isScrolledDown: true,
+          children: [
+            FooterButton(
+              children: [
+                const Text("Hareket Miktarı"),
+                Text(widget.seriDetayiModel.hareketMiktari.toStringIfNotNull ?? ""),
+              ],
+            ),
+            FooterButton(
+              children: [
+                const Text("Kalan Miktar"),
+                Text(widget.seriDetayiModel.kalanMiktar.toStringIfNotNull ?? ""),
+              ],
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Form(

@@ -32,15 +32,18 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
   @override
   Widget build(BuildContext context) => ScrollableWidget(
         isScrolledDown: widget.isScrolledDown,
-        child: Container(
-          color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
-          height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
-          child: widget.visible && widget.children.isNotEmpty
-              ? Row(
-                  // RunTimeType kontrolü yapılıyor. Eğer FooterButton değilse Expanded ile sarılıyor. Vertical Divider'lar yüzünden yapılıyor.
-                  children: list.map((e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
-                )
-              : null,
+        child: Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: Container(
+            color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
+            height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
+            child: widget.visible && widget.children.isNotEmpty
+                ? Row(
+                    // RunTimeType kontrolü yapılıyor. Eğer FooterButton değilse Expanded ile sarılıyor. Vertical Divider'lar yüzünden yapılıyor.
+                    children: list.map((e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
+                  )
+                : null,
+          ),
         ),
       );
 }
