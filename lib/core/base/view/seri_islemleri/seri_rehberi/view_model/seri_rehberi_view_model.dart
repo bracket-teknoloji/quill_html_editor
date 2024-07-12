@@ -17,7 +17,7 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   ObservableList<SeriList>? observableList;
 
   @observable
-  StokRehberiRequestModel requestModel = StokRehberiRequestModel(ekranTipi: "R", belgeTarihi: DateTime.now().toDateString);
+  StokRehberiRequestModel requestModel = StokRehberiRequestModel(ekranTipi: "R", belgeTarihi: DateTime.now().toDateString, );
 
   @override
   @observable
