@@ -51,7 +51,12 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet(path: ApiUrls.getUSKKalemleri, bodyModel: KalemModel(), showLoading: true, queryParameters: kalemlerRequestModel.toJson());
     if (result.isSuccess) {
       final KalemModel? item = result.dataList.lastOrNull;
-      setRequestModel(requestModel..cikisDepoAdi = item?.cikisDepoAdi..girisDepoAdi = item?.girisDepoAdi);
+      setRequestModel(
+        requestModel
+          ..cikisDepoAdi = item?.cikisDepoAdi
+          ..girisDepoAdi = item?.girisDepoAdi
+          ..projeKodu = item?.projeKodu,
+      );
       setModel(model?.copyWith(cikisDepoAdi: item?.cikisDepoAdi, girisDepoAdi: item?.girisDepoAdi, girisdepoKodu: item?.girisDepo, cikisdepoKodu: item?.cikisDepo));
       setKalemList(result.dataList);
     }
