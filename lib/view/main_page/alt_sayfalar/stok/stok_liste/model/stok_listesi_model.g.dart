@@ -1324,7 +1324,10 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..netMiktar = (json['NET_MIKTAR'] as num?)?.toDouble()
       ..depoBakiyeListe = (json['DEPO_BAKIYE_LISTE'] as List<dynamic>?)
           ?.map((e) => DepoBakiyeListe.fromJson(e as Map<String, dynamic>))
-          .toList();
+          .toList()
+      ..belgeTarihi = json['BELGE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['BELGE_TARIHI'] as String);
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1420,6 +1423,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('NET_MIKTAR', instance.netMiktar);
   writeNotNull('DEPO_BAKIYE_LISTE',
       instance.depoBakiyeListe?.map((e) => e.toJson()).toList());
+  writeNotNull('BELGE_TARIHI', instance.belgeTarihi?.toIso8601String());
   return val;
 }
 

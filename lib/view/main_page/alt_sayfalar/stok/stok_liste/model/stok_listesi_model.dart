@@ -105,6 +105,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   @override
   double? netMiktar;
   List<DepoBakiyeListe>? depoBakiyeListe;
+  DateTime? belgeTarihi;
 
   static StokListesiModel? _instance;
 
