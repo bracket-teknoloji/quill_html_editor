@@ -1,12 +1,10 @@
-enum GrupKoduEnum { cari, stok }
+enum GrupKoduEnum {
+  cari("CARI"),
+  stok("STOK");
 
-extension GrupKoduEnumExtension on GrupKoduEnum {
-  String get rawValue {
-    switch (this) {
-      case GrupKoduEnum.cari:
-        return "CARI";
-      case GrupKoduEnum.stok:
-        return "STOK";
-    }
-  }
+  final String module;
+
+  const GrupKoduEnum(this.module);
+
+  static GrupKoduEnum getByName(String name) => GrupKoduEnum.values.firstWhere((e) => e.module == name);
 }
