@@ -20,6 +20,7 @@ import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_manager.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/app_info/app_info.dart";
@@ -345,12 +346,12 @@ class NetworkManager {
     return response;
   }
 
-  Future<List<BaseGrupKoduModel>> getGrupKod({required String name, int? grupNo, bool? kullanimda}) async {
+  Future<List<BaseGrupKoduModel>> getGrupKod({required GrupKoduEnum name, int? grupNo, bool? kullanimda}) async {
     final responseKod = await dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       bodyModel: BaseGrupKoduModel(),
       addCKey: true,
-      headers: {"Modul": name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
+      headers: {"Modul": name.name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
       addQuery: true,
       addSirketBilgileri: true,
       showLoading: true,
@@ -502,7 +503,7 @@ class NetworkManager {
     }
     return null;
   }
-
+  
   Future<HucreListesiModel?> getHucreModel(HucreListesiRequestModel model) async {
     final result = await dioPost<HucreListesiModel>(
       path: ApiUrls.getStoklar,
