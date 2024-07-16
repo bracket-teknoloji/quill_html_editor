@@ -1,5 +1,12 @@
+import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -10,29 +17,63 @@ part "stok_listesi_view_model.g.dart";
 
 class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 
-abstract class _StokListesiViewModelBase with Store {
+abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   final List<String> selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"];
 
   @observable
   String? bakiyeGroupValue = "Tümü";
 
   @observable
-  bool searchBar = false;
+  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
 
+  @override
+  @observable
+  bool isSearchBarOpen = false;
+
+  bool isGetData = false;
+
+  void setIsGetData(bool value) => isGetData = value;
+
+  @override
   @action
-  void setSearchBar() {
-    searchBar = !searchBar;
+  void changeSearchBarStatus() {
+    isSearchBarOpen = !isSearchBarOpen;
   }
 
-  @observable
-  String searchValue = "";
-
+  @override
   @action
-  void setSearchValue(String value) => searchValue = value;
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
+    }
+  }
+
+  @override
+  @observable
+  String? searchText = "";
+
   @observable
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
+
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
+
+  @observable
+  ObservableList<BaseGrupKoduModel> grupKodlari = <BaseGrupKoduModel>[].asObservable();
+
+  @observable
+  @override
+  ObservableList<StokListesiModel>? observableList;
+
+  @override
+  @observable
+  bool isScrollDown = true;
+
+  @override
+  @action
+  void setSearchText(String? value) => searchText = value;
 
   @action
   void resetSelectedArr() {
@@ -58,58 +99,55 @@ abstract class _StokListesiViewModelBase with Store {
   List<BaseGrupKoduModel>? get grupKodu => bottomSheetModel.arrGrupKodu;
 
   @action
-  void changeArrGrupKodu(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
+  void changeArrGrupKodu(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrGrupKoduTemp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrGrupKodu: value);
+  void changeArrGrupKoduTemp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrGrupKodu: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
+  void changeArrKod1(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
 
   @action
-  void changeArrKod1Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
+  void changeArrKod1Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
+  void changeArrKod2(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
 
   @action
-  void changeArrKod2Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
+  void changeArrKod2Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
+  void changeArrKod3(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
 
   @action
-  void changeArrKod3Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
+  void changeArrKod3Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
+  void changeArrKod4(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
 
   @action
-  void changeArrKod4Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
+  void changeArrKod4Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel> value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
+  void changeArrKod5(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
 
   @action
-  void changeArrKod5Temp(List<BaseGrupKoduModel> value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);
-
-  @observable
-  String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
+  void changeArrKod5Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);
 
   @action
   void setResimleriGoster() {
@@ -126,43 +164,19 @@ abstract class _StokListesiViewModelBase with Store {
     }
   }
 
-  @observable
-  ObservableList<BaseGrupKoduModel> grupKodlari = <BaseGrupKoduModel>[].asObservable();
-
   @action
   void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
 
-  @observable
-  ObservableList<StokListesiModel>? stokListesi;
+  @override
+  @action
+  void setObservableList(List<StokListesiModel>? value) => observableList = value?.asObservable();
+
+  @override
+  @action
+  void addObservableList(List<StokListesiModel>? value) => setObservableList(observableList?..addAll(value!));
 
   @action
-  void setStokListesi(List<StokListesiModel>? value) => stokListesi = value?.asObservable();
-
-  @action
-  void addStokListesi(List<StokListesiModel> value) {
-    stokListesi?.addAll(value);
-  }
-
-  @observable
-  bool isScrolledDown = true;
-
-  @action
-  void changeIsScrolledDown(bool value) => isScrolledDown = value;
-
-  @observable
-  int sayfa = 1;
-
-  @action
-  void increaseSayfa() => sayfa++;
-
-  @action
-  void resetSayfa() => sayfa = 1;
-
-  @observable
-  bool dahaVarMi = true;
-
-  @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
+  void changeIsScrolledDown(bool value) => isScrollDown = value;
 
   @observable
   String siralama = "AZ";
@@ -190,6 +204,45 @@ abstract class _StokListesiViewModelBase with Store {
       bottomSheetModel.arrKod3.ext.isNotNullOrEmpty ||
       bottomSheetModel.arrKod4.ext.isNotNullOrEmpty ||
       bottomSheetModel.arrKod5.ext.isNotNullOrEmpty ||
-      (bottomSheetModel.bakiyeDurumu != null &&
-      bottomSheetModel.bakiyeDurumu != "T");
+      (bottomSheetModel.bakiyeDurumu != null && bottomSheetModel.bakiyeDurumu != "T");
+  @override
+  @action
+  Future<void> resetList() async {
+    resetPage();
+    await getData();
+  }
+
+  @override
+  @action
+  Future<void> getData() async {
+    final result = await networkManager.dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
+      data: (bottomSheetModel.copyWith(
+        resimGoster: resimleriGoster,
+        menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
+        searchText: searchText,
+        sayfa: page,
+        arrGrupKodu: bottomSheetModel.arrGrupKodu,
+        arrKod1: bottomSheetModel.arrKod1,
+        arrKod2: bottomSheetModel.arrKod2,
+        arrKod3: bottomSheetModel.arrKod3,
+        arrKod4: bottomSheetModel.arrKod4,
+        arrKod5: bottomSheetModel.arrKod5,
+      )).toJsonWithList(),
+    );
+    if (result.isSuccess) {
+      if (page > 1) {
+        addObservableList(result.dataList);
+      } else {
+        setObservableList(result.dataList);
+      }
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
+        setDahaVarMi(true);
+        increasePage();
+      } else {
+        setDahaVarMi(false);
+      }
+    }
+  }
 }
