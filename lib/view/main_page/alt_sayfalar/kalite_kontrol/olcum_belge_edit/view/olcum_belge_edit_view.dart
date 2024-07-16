@@ -312,10 +312,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet,
           onPressed: () async {
-            if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) {
-              dialogManager.showAlertDialog("Proses bulunmamaktadır.");
-              return;
-            }
+            if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) return dialogManager.showAlertDialog("Proses bulunmamaktadır.");
             final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
             if (result != null) {
               await viewModel.getData();
