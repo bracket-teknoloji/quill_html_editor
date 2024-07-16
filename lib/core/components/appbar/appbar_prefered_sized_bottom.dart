@@ -28,7 +28,7 @@ class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBotto
           children: widget.children.nullCheck
               .map(
                 (e) => e?.paddingSymmetric(
-                  horizontal: UIHelper.midSize,
+                  horizontal: UIHelper.lowSize,
                   vertical: UIHelper.lowSize,
                 ),
               )
