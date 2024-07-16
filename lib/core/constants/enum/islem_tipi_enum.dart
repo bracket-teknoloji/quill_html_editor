@@ -16,10 +16,9 @@ enum IslemTipiEnum {
   fatura,
   talepTeklif,
   eBelge,
-  depoTransferi,
-}
+  depoTransferi;
 
-extension IslemTipiEnumExtension on IslemTipiEnum {
+
   String get value {
     //return capitalized with method
     if (this != IslemTipiEnum.siparis && this != IslemTipiEnum.cariIslemleri) {
