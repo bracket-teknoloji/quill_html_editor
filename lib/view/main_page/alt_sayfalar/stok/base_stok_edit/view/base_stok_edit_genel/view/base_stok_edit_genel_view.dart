@@ -10,6 +10,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
@@ -465,7 +466,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(0) ?? false)) {
                                 dialogManager.showLoadingDialog("Grup Kodları Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: "STOK", grupNo: 0));
+                                viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -487,7 +488,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(1) ?? false)) {
                                 dialogManager.showLoadingDialog("Kod 1 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(1, await networkManager.getGrupKod(name: "STOK", grupNo: 1));
+                                viewModel.changeGrupKoduListesi(1, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -514,7 +515,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(2) ?? false)) {
                                 dialogManager.showLoadingDialog("Kod 2 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(2, await networkManager.getGrupKod(name: "STOK", grupNo: 2));
+                                viewModel.changeGrupKoduListesi(2, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -537,7 +538,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(3) ?? false)) {
                                 dialogManager.showLoadingDialog("Kod 3 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(3, await networkManager.getGrupKod(name: "STOK", grupNo: 3));
+                                viewModel.changeGrupKoduListesi(3, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -563,7 +564,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(4) ?? false)) {
                                 dialogManager.showLoadingDialog("Kod 4 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(4, await networkManager.getGrupKod(name: "STOK", grupNo: 4));
+                                viewModel.changeGrupKoduListesi(4, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -587,7 +588,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             onTap: () async {
                               if (!(viewModel.grupKodlariMap?.containsKey(5) ?? false)) {
                                 dialogManager.showLoadingDialog("Kod 5 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(5, await networkManager.getGrupKod(name: "STOK", grupNo: 5));
+                                viewModel.changeGrupKoduListesi(5, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5));
                                 dialogManager.hideAlertDialog;
                               }
                               final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -707,7 +708,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       queryParameters: {
         "SonKoduGetir": "H",
         "Kod": kod != null || kod != "" ? kod : null,
-        "Modul": "STOK",
+        "Modul": GrupKoduEnum.stok.module,
       },
     );
     if (result.isSuccess) {

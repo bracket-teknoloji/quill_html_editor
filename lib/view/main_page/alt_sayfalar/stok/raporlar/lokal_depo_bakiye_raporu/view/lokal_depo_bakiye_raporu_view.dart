@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -237,7 +238,7 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
     TextEditingController? controller,
   ) async {
     if (grupKodList.isEmptyOrNull) {
-      grupKodList = await networkManager.getGrupKod(name: "STOK", grupNo: -1);
+      grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
     final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)

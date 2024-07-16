@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -327,7 +328,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                     InkWell(
                       onTap: () async {
                         if (viewModel.grupKodList.ext.isNullOrEmpty) {
-                          viewModel.changeGrupKodList(await networkManager.getGrupKod(name: "CARI", grupNo: -1));
+                          viewModel.changeGrupKodList(await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1));
                         }
                         viewModel.changeGrupKodlariGoster();
                       },

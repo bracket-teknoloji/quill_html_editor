@@ -498,7 +498,7 @@ class BottomSheetDialogManager {
     required List<BaseGrupKoduModel>? groupValues,
   }) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
+      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showCheckBoxBottomSheetDialog(
@@ -523,7 +523,7 @@ class BottomSheetDialogManager {
 
   Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul.name, grupNo: -1, kullanimda: kullanimda));
+      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showRadioBottomSheetDialog(

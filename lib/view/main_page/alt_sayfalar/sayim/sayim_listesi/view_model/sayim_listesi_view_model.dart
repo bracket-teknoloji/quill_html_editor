@@ -3,6 +3,7 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 
@@ -39,7 +40,7 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
   }
 
   Future<void> getGrupKodlari() async {
-    final result = await networkManager.getGrupKod(name: "STOK", grupNo: -1, kullanimda: true);
+    final result = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1, kullanimda: true);
     if (result.ext.isNotNullOrEmpty) {
       grupKoduList = result.asObservable();
     }

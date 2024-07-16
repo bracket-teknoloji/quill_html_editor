@@ -20,7 +20,7 @@ class CariNetworkManager {
       showLoading: true,
       bodyModel: BaseGrupKoduModel(),
       // headers: <String, String>{"Modul": name?.name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
-      queryParameters: <String, dynamic>{"Modul": name?.rawValue ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
+      queryParameters: <String, dynamic>{"Modul": name ?? "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
     return responseKod;
   }

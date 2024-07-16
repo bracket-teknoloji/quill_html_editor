@@ -9,6 +9,7 @@ import "package:picker/core/base/model/base_grup_kodu_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
@@ -214,7 +215,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.grupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
-        name: model.rehberTipi?.split("_").first ?? "",
+        name:GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
         grupNo: 0,
       );
       final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -235,7 +236,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.numaraliGrupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
-        name: model.rehberTipi?.split("_").first ?? "",
+        name:GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
         grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0,
       );
       final result = await bottomSheetDialogManager.showBottomSheetDialog(

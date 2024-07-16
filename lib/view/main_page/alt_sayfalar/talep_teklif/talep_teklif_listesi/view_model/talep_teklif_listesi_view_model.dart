@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -275,7 +276,7 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getGrupKodlari() async {
-    final result = await networkManager.getGrupKod(name: "CARI", grupNo: -1, kullanimda: true);
+    final result = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1, kullanimda: true);
     grupKodlariList = result.asObservable();
   }
 }
