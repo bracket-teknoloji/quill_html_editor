@@ -172,7 +172,11 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
               ],
             ),
             Text(kalemModel?.stokKodu ?? ""),
-            Text("${kalemModel?.depoKodu ?? ""}(${kalemModel?.depoTanimi ?? ""}) => ${kalemModel?.hedefDepo ?? ""}(${kalemModel?.hedefDepoAdi ?? ""})").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
+            const Text("Kabul").yetkiVarMi(kalemModel?.kabulMu == true),
+            const Text("Ret").yetkiVarMi(kalemModel?.kabulMu == false),
+            Text("Hedef Depo: ${kalemModel?.hedefDepo ?? 0}").yetkiVarMi(kalemModel?.hedefDepo != null),
+            Text("${kalemModel?.depoKodu ?? ""}(${kalemModel?.depoTanimi ?? ""}) => ${kalemModel?.hedefDepo ?? ""}(${kalemModel?.hedefDepoAdi ?? ""})")
+                .yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             // Text(kalemModel?.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.seriList != null),
             Text("Sipariş ${kalemModel?.siparisNo ?? ""} (${kalemModel?.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
                 .yetkiVarMi(kalemModel?.siparisNo != null)
