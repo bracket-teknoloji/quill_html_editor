@@ -10,6 +10,7 @@ import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -80,8 +81,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.isGetData ?? false) {
         viewModel.changeSearchBarStatus();
-        // viewModel.setSearchText(widget.searchText);
+        viewModel.setSearchText(widget.searchText);
       }
+      await viewModel.getGrupKodlari();
       await viewModel.getData();
     });
     super.initState();
@@ -133,6 +135,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               ? CustomAppBarTextField(
                   controller: TextEditingController(text: viewModel.searchText),
                   onFieldSubmitted: (value) {
+                    viewModel.setSearchText(value);
                     viewModel.resetList();
                     viewModel.getData();
                   },
@@ -591,7 +594,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 controller: kod5Controller,
               ),
             ],
-          ),
+          ).yetkiVarMi(AccountModel.instance.isDebug),
           Expanded(
             child: Observer(
               builder: (_) => RefreshableListView.pageable(

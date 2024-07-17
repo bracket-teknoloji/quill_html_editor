@@ -9,6 +9,14 @@ part of 'stok_listesi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
+  Computed<StokBottomSheetModel>? _$getBottomSheetModelComputed;
+
+  @override
+  StokBottomSheetModel get getBottomSheetModel =>
+      (_$getBottomSheetModelComputed ??= Computed<StokBottomSheetModel>(
+              () => super.getBottomSheetModel,
+              name: '_StokListesiViewModelBase.getBottomSheetModel'))
+          .value;
   Computed<List<BaseGrupKoduModel>?>? _$grupKoduComputed;
 
   @override
@@ -243,6 +251,14 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   @override
   Future<void> resetList() {
     return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$getGrupKodlariAsyncAction =
+      AsyncAction('_StokListesiViewModelBase.getGrupKodlari', context: context);
+
+  @override
+  Future<void> getGrupKodlari() {
+    return _$getGrupKodlariAsyncAction.run(() => super.getGrupKodlari());
   }
 
   late final _$getDataAsyncAction =
@@ -533,6 +549,7 @@ grupKodlari: ${grupKodlari},
 observableList: ${observableList},
 isScrollDown: ${isScrollDown},
 siralama: ${siralama},
+getBottomSheetModel: ${getBottomSheetModel},
 grupKodu: ${grupKodu},
 kod1: ${kod1},
 kod2: ${kod2},

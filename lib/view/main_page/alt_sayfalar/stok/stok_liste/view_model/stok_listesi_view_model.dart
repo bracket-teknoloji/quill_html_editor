@@ -6,6 +6,7 @@ import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/base/view_model/pageable_mixin.dart";
 import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -56,6 +57,14 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @observable
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
+
+  @computed
+  StokBottomSheetModel get getBottomSheetModel => bottomSheetModel.copyWith(
+        resimGoster: resimleriGoster,
+        menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
+        searchText: searchText,
+        sayfa: page,
+      );
 
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
@@ -212,24 +221,16 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     await getData();
   }
 
+  @action
+  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1));
+
   @override
   @action
   Future<void> getData() async {
     final result = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
       bodyModel: StokListesiModel(),
-      data: (bottomSheetModel.copyWith(
-        resimGoster: resimleriGoster,
-        menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
-        searchText: searchText,
-        sayfa: page,
-        arrGrupKodu: bottomSheetModel.arrGrupKodu,
-        arrKod1: bottomSheetModel.arrKod1,
-        arrKod2: bottomSheetModel.arrKod2,
-        arrKod3: bottomSheetModel.arrKod3,
-        arrKod4: bottomSheetModel.arrKod4,
-        arrKod5: bottomSheetModel.arrKod5,
-      )).toJsonWithList(),
+      data: getBottomSheetModel.toJsonWithList(),
     );
     if (result.isSuccess) {
       if (page > 1) {
