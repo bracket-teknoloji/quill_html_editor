@@ -44,6 +44,12 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   void setGirisDepo(DepoList? value) => seriRequestModel = seriRequestModel.copyWith(girisDepo: value?.depoKodu);
 
   @action
+  void setKabulGirisDepo(DepoList? value) => seriRequestModel = seriRequestModel.copyWith(kabulGirisDepo: value?.depoKodu);
+
+  @action
+  void setRedGirisDepo(DepoList? value) => seriRequestModel = seriRequestModel.copyWith(redGirisDepo: value?.depoKodu);
+
+  @action
   void setCikisDepo(DepoList? value) => seriRequestModel = seriRequestModel.copyWith(cikisDepo: value?.depoKodu);
 
   void setSeriListe(List<String>? value) => seriRequestModel = seriRequestModel.copyWith(seriListe: value);

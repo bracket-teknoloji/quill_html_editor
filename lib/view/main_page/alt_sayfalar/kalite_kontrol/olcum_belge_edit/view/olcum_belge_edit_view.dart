@@ -19,7 +19,6 @@ import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -258,10 +257,119 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         ),
       );
       if (!viewModel.depolarValidation || depoValidation != true) return;
+    } else if (viewModel.model?.karisikMi == true) {
+      final retValidation = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Ret Depo Seçiniz",
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomTextField(
+                labelText: "Ret Depo Kodu",
+                controller: girisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                onTap: () async {
+                  await girisDepoOnTap(kabulMu: false);
+                },
+              ),
+              ElevatedButton(
+                onPressed: () async => await karisikDepoButtonOnTap(false),
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ),
+        ),
+      );
+      if (!viewModel.depolarValidation || retValidation != true) return;
+      final kabulValidation = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Kabul Depo Seçiniz",
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomTextField(
+                labelText: "Depo Kodu",
+                controller: girisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                onTap: () async {
+                  await girisDepoOnTap(kabulMu: true);
+                },
+              ),
+              ElevatedButton(
+                onPressed: () async => await karisikDepoButtonOnTap(true),
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ),
+        ),
+      );
+      if (!viewModel.depolarValidation || kabulValidation != true) return;
+      final cikisDepoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Çıkış Depo Seçiniz",
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomTextField(
+                labelText: "Çıkış Depo",
+                controller: cikisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                onTap: () async {
+                  await cikisDepoOnTap();
+                },
+              ),
+              ElevatedButton(
+                onPressed: seriDepoApplyButtonOnTap,
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ),
+        ),
+      );
+
+      if (!viewModel.depolarValidation || cikisDepoValidation != true) return;
     }
-    else if (viewModel.model?.karisikMi == true) {
-      
+    final List<KalemModel> kalemListesi = [];
+    if (viewModel.model?.karisikMi == false) {
+      kalemListesi.add(
+        KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+          ..seriList = viewModel.olcumDatResponseListesi?.toList()
+          ..sira = 1
+          ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
+      );
+    } else {
+      kalemListesi.add(
+        KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+          // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "G").toList()
+          ..hedefDepo = viewModel.seriRequestModel.redGirisDepo
+          ..sira = 1
+          ..kabulMu = true
+          ..miktar = viewModel.model?.olcumler?.map((element) => !element.kabulMu ? (element.retAdet ?? 0) : 0.toDouble()).sum ?? 0
+          ..seriCikislardaAcik = viewModel.seriRequestModel.kabulGirisDepo != null,
+      );
+      kalemListesi.add(
+        KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+          // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "C").toList()
+          ..hedefDepo = viewModel.seriRequestModel.kabulGirisDepo
+          ..sira = 2
+          ..miktar = viewModel.model?.olcumler?.map((element) => element.kabulMu ? (element.toplamKabul ?? 0) : 0.toDouble()).sum ?? 0
+          ..kabulMu = false
+          ..seriCikislardaAcik = viewModel.seriRequestModel.redGirisDepo != null,
+      );
     }
+
     await Get.toNamed(
       "/mainPage/transferEdit",
       arguments: BaseEditModel<BaseSiparisEditModel>(
@@ -272,27 +380,32 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           cikisDepoKodu: viewModel.seriRequestModel.cikisDepo,
           topluGirisDepoTanimi: girisDepoController.text,
           topluCikisDepoTanimi: cikisDepoController.text,
-          kalemList: [
-            KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
-              ..seriList = viewModel.olcumDatResponseListesi?.toList()
-              ..cikisdepoKodu = viewModel.seriRequestModel.cikisDepo
-              ..hedefDepo = (viewModel.model?.olcumler?.any((element) => element.retMi) == true) ? viewModel.seriRequestModel.redGirisDepo : viewModel.seriRequestModel.kabulGirisDepo
-              ..girisdepoKodu = viewModel.seriRequestModel.girisDepo
-              ..miktar = viewModel.olcumDatResponseListesi?.map((element) => element.miktar).sum
-              ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
-          ],
+          kalemList: kalemListesi,
           olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
         ),
       ),
     );
   }
 
-  Future<void> girisDepoOnTap() async {
-    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriRequestModel.girisDepo);
+  Future<void> girisDepoOnTap({bool? kabulMu}) async {
+    int? depoKodu;
+    if (kabulMu == true) {
+      depoKodu = viewModel.seriRequestModel.kabulGirisDepo;
+    } else if (kabulMu == false) {
+      depoKodu = viewModel.seriRequestModel.redGirisDepo;
+    } else {
+      depoKodu = viewModel.seriRequestModel.girisDepo;
+    }
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, depoKodu);
     if (result is DepoList) {
       if (result.depoKodu != null) {
         girisDepoController.text = result.depoTanimi ?? "";
         viewModel.setGirisDepo(result);
+        if (kabulMu == true) {
+          viewModel.setKabulGirisDepo(result);
+        } else if (kabulMu == false) {
+          viewModel.setRedGirisDepo(result);
+        }
       }
     }
   }
@@ -314,6 +427,12 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     // Get.back();
     await viewModel.getDatMiktar();
     Get.back(result: true);
+  }
+
+  Future<void> karisikDepoButtonOnTap(bool kabulMu) async {
+    if (_formKey.currentState?.validate() == false) return;
+    Get.back(result: true);
+    girisDepoController.text = "";
   }
 
   Observer fab() => Observer(

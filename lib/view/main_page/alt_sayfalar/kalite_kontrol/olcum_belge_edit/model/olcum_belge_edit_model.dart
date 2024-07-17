@@ -157,9 +157,14 @@ class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
 extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.lastOrNull;
 
-  bool get karisikMi => (olcumler?.every((e) => e.kabulMu) == false) || (olcumler?.every((e) => e.retMi) == false);
+  // bool get karisikMi => true;
+  bool get karisikMi => olcumler?.map((e) => e.kabulMu).toSet().length != 1;
 
   bool get kabulMu => olcumler?.every((e) => e.kabulMu) == true;
+
+  bool get kabulVarMi => olcumler?.any((e) => e.kabulMu) == true;
+
+  bool get retVarMi => olcumler?.any((e) => e.retMi) == true;
 
   bool get retMi => olcumler?.every((e) => e.retMi) == true;
 }
@@ -246,7 +251,9 @@ extension OlcumEkleProsesExtensions on OlcumProsesModel? {
 extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {
   bool get retMi => (this?.retAdet ?? 0) > 0;
 
-  bool get kabulMu => (this?.kabulAdet ?? 0) > 0;
+  bool get kabulMu => ((this?.kabulAdet ?? 0) + (this?.sartliAdet ?? 0)) > 0;
+
+  double? get toplamKabul => (this?.kabulAdet ?? 0) + (this?.sartliAdet ?? 0);
 
   bool get karisikMi => retMi && kabulMu;
 }

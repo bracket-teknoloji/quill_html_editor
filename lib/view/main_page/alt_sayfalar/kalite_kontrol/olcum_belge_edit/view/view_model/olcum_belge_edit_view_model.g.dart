@@ -173,6 +173,28 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
   }
 
   @override
+  void setKabulGirisDepo(DepoList? value) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setKabulGirisDepo');
+    try {
+      return super.setKabulGirisDepo(value);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setRedGirisDepo(DepoList? value) {
+    final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
+        .startAction(name: '_OlcumBelgeEditViewModelBase.setRedGirisDepo');
+    try {
+      return super.setRedGirisDepo(value);
+    } finally {
+      _$_OlcumBelgeEditViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCikisDepo(DepoList? value) {
     final _$actionInfo = _$_OlcumBelgeEditViewModelBaseActionController
         .startAction(name: '_OlcumBelgeEditViewModelBase.setCikisDepo');
