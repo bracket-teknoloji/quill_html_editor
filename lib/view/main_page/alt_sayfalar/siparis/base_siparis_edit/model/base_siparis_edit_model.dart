@@ -1392,6 +1392,8 @@ class KalemModel with NetworkManagerMixin {
   String? depoOnceligi;
   @HiveField(130)
   bool? isUsk;
+  @HiveField(131)
+  bool? kabulMu;
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,
@@ -1524,6 +1526,7 @@ class KalemModel with NetworkManagerMixin {
     this.depoOnceligi,
     this.kalemSayisi,
     this.isUsk,
+    this.kabulMu,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(

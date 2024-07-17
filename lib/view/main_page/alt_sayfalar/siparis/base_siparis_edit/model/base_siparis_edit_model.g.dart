@@ -2488,6 +2488,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel isUsk(bool? isUsk);
 
+  KalemModel kabulMu(bool? kabulMu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2626,6 +2628,7 @@ abstract class _$KalemModelCWProxy {
     String? depoOnceligi,
     int? kalemSayisi,
     bool? isUsk,
+    bool? kabulMu,
   });
 }
 
@@ -3080,6 +3083,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel isUsk(bool? isUsk) => this(isUsk: isUsk);
 
   @override
+  KalemModel kabulMu(bool? kabulMu) => this(kabulMu: kabulMu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3219,6 +3225,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? depoOnceligi = const $CopyWithPlaceholder(),
     Object? kalemSayisi = const $CopyWithPlaceholder(),
     Object? isUsk = const $CopyWithPlaceholder(),
+    Object? kabulMu = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3748,6 +3755,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.isUsk
           // ignore: cast_nullable_to_non_nullable
           : isUsk as bool?,
+      kabulMu: kabulMu == const $CopyWithPlaceholder()
+          ? _value.kabulMu
+          // ignore: cast_nullable_to_non_nullable
+          : kabulMu as bool?,
     );
   }
 }
@@ -4530,13 +4541,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       depoOnceligi: fields[129] as String?,
       kalemSayisi: fields[119] as int?,
       isUsk: fields[130] as bool?,
+      kabulMu: fields[131] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(131)
+      ..writeByte(132)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4798,7 +4810,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(129)
       ..write(obj.depoOnceligi)
       ..writeByte(130)
-      ..write(obj.isUsk);
+      ..write(obj.isUsk)
+      ..writeByte(131)
+      ..write(obj.kabulMu);
   }
 
   @override
@@ -5388,6 +5402,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       depoOnceligi: json['DEPO_ONCELIGI'] as String?,
       kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
       isUsk: json['IS_USK'] as bool?,
+      kabulMu: json['KABUL_MU'] as bool?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -5533,5 +5548,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('MALIYET_FIYATI', instance.maliyetFiyati);
   writeNotNull('DEPO_ONCELIGI', instance.depoOnceligi);
   writeNotNull('IS_USK', instance.isUsk);
+  writeNotNull('KABUL_MU', instance.kabulMu);
   return val;
 }
