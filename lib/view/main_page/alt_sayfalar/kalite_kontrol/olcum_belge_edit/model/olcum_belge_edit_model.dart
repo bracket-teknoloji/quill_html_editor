@@ -87,7 +87,6 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
     String? kayitOperator,
     String? kayitOperatorKodu,
     DateTime? kayittarihi,
-    int? sira,
     double? kabulAdet,
     double? sartliAdet,
     double? retAdet,
@@ -156,7 +155,13 @@ class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
 }
 
 extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
-  OlcumBelgeModel? get olcumModel => belge?.firstOrNull;
+  OlcumBelgeModel? get olcumModel => belge?.lastOrNull;
+
+  bool get karisikMi => (olcumler?.every((e) => e.kabulMu) == false) || (olcumler?.every((e) => e.retMi) == false);
+
+  bool get kabulMu => olcumler?.every((e) => e.kabulMu) == true;
+
+  bool get retMi => olcumler?.every((e) => e.retMi) == true;
 }
 
 extension OlcumBelgeModelExtensions on OlcumBelgeModel {
@@ -166,7 +171,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
         opkodu: opkodu,
         belgeNo: belgeNo,
         belgeTipi: belgeTipi,
-        sira: sira,
+        belgeSira: sira,
       );
 
   OlcumBelgeModel get forKalemSec => OlcumBelgeModel(
@@ -190,7 +195,7 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(
         belgeNo: belgeNo,
         belgeTipi: belgeTipi,
-        belgeSira: sira,
+        belgeSira: belgeSira,
       );
 
   OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(
@@ -236,4 +241,12 @@ extension OlcumEkleProsesExtensions on OlcumProsesModel? {
         return BadgeColorEnum.uyari;
     }
   }
+}
+
+extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {
+  bool get retMi => (this?.retAdet ?? 0) > 0;
+
+  bool get kabulMu => (this?.kabulAdet ?? 0) > 0;
+
+  bool get karisikMi => retMi && kabulMu;
 }
