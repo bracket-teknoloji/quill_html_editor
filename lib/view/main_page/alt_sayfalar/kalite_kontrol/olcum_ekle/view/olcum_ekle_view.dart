@@ -187,7 +187,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                     CustomLayoutBuilder(
                       splitCount: 2,
                       children: [
-                        Text("Sıra: ${widget.model.olcumModel?.sira}"),
+                        Text("Sıra: ${widget.model.olcumModel?.belgeSira}"),
                         Text("Belge Tipi: ${widget.model.olcumModel?.belgeTipi ?? ""}"),
                         Text("Tarih: ${widget.model.olcumModel?.tarih.toDateString}"),
                         Text("Stok Adı: ${widget.model.olcumModel?.stokAdi}"),

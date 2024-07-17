@@ -24,7 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/sto
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-class SayimGirisiView extends StatefulWidget {
+final class SayimGirisiView extends StatefulWidget {
   final Future<void> Function() onStokSelected;
   final void Function() resetFiltreModel;
   const SayimGirisiView({super.key, required this.onStokSelected, required this.resetFiltreModel});
@@ -33,7 +33,7 @@ class SayimGirisiView extends StatefulWidget {
   State<SayimGirisiView> createState() => _SayimGirisiViewState();
 }
 
-class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
+final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
   final SayimGirisiViewModel viewModel = SayimGirisiViewModel();
   late final TextEditingController stokController;
   late final TextEditingController stokAdiController;
@@ -192,7 +192,9 @@ class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     child: CustomTextField(
                       labelText: "Miktar",
                       isMust: true,
+                      isFormattedString: true,
                       // readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                      onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                       enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                       controller: miktarController,
                       suffix: Wrap(

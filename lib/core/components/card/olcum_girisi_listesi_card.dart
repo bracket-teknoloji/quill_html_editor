@@ -52,7 +52,7 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  Text("Sıra: ${model.sira.toStringIfNotNull ?? ""}").yetkiVarMi(model.sira != null),
+                  Text("Sıra: ${model.belgeSira.toStringIfNotNull ?? ""}").yetkiVarMi(model.belgeSira != null),
                   Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
                   Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kabulAdet != null),
                   Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kalemAdedi != null),

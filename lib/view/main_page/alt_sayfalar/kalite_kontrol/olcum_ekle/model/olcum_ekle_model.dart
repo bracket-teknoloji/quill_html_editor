@@ -35,7 +35,7 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
         belgeNo: model.belge?.firstOrNull?.belgeNo,
         belgeTipi: model.belge?.firstOrNull?.belgeTipi,
         stokKodu: model.belge?.firstOrNull?.stokKodu,
-        belgeSira: model.belge?.firstOrNull?.sira,
+        belgeSira: model.belge?.firstOrNull?.belgeSira,
         belgeId: model.olcumler?.firstOrNull?.id,
         yapkod: model.yapkod,
         opkodu: model.opkodu,

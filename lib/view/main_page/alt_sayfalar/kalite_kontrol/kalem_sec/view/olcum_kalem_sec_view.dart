@@ -127,7 +127,7 @@ class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
                         splitCount: 2,
                         children: [
                           Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-                          Text("Sıra: ${item.sira ?? ""}"),
+                          Text("Sıra: ${item.belgeSira ?? ""}"),
                           Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         ],
                       ),
