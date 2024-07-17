@@ -153,7 +153,6 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       kayittarihi: json['KAYITTARIHI'] == null
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
-      sira: (json['SIRA'] as num?)?.toInt(),
       kabulAdet: (json['KABUL_ADET'] as num?)?.toDouble(),
       sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
       retAdet: (json['RET_ADET'] as num?)?.toDouble(),
@@ -179,7 +178,6 @@ Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
   writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
   writeNotNull('KAYIT_OPERATOR_KODU', instance.kayitOperatorKodu);
   writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('SIRA', instance.sira);
   writeNotNull('KABUL_ADET', instance.kabulAdet);
   writeNotNull('SARTLI_ADET', instance.sartliAdet);
   writeNotNull('RET_ADET', instance.retAdet);

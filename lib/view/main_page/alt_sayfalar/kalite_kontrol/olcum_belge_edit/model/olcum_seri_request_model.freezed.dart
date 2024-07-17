@@ -24,6 +24,8 @@ mixin _$OlcumSeriRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   int? get girisDepo => throw _privateConstructorUsedError;
   int? get cikisDepo => throw _privateConstructorUsedError;
+  int? get redGirisDepo => throw _privateConstructorUsedError;
+  int? get kabulGirisDepo => throw _privateConstructorUsedError;
   List<String>? get seriListe => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,6 +44,8 @@ abstract class $OlcumSeriRequestModelCopyWith<$Res> {
       {String? stokKodu,
       int? girisDepo,
       int? cikisDepo,
+      int? redGirisDepo,
+      int? kabulGirisDepo,
       List<String>? seriListe});
 }
 
@@ -62,6 +66,8 @@ class _$OlcumSeriRequestModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? girisDepo = freezed,
     Object? cikisDepo = freezed,
+    Object? redGirisDepo = freezed,
+    Object? kabulGirisDepo = freezed,
     Object? seriListe = freezed,
   }) {
     return _then(_value.copyWith(
@@ -76,6 +82,14 @@ class _$OlcumSeriRequestModelCopyWithImpl<$Res,
       cikisDepo: freezed == cikisDepo
           ? _value.cikisDepo
           : cikisDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      redGirisDepo: freezed == redGirisDepo
+          ? _value.redGirisDepo
+          : redGirisDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kabulGirisDepo: freezed == kabulGirisDepo
+          ? _value.kabulGirisDepo
+          : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
               as int?,
       seriListe: freezed == seriListe
           ? _value.seriListe
@@ -98,6 +112,8 @@ abstract class _$$OlcumSeriRequestModelImplCopyWith<$Res>
       {String? stokKodu,
       int? girisDepo,
       int? cikisDepo,
+      int? redGirisDepo,
+      int? kabulGirisDepo,
       List<String>? seriListe});
 }
 
@@ -116,6 +132,8 @@ class __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? girisDepo = freezed,
     Object? cikisDepo = freezed,
+    Object? redGirisDepo = freezed,
+    Object? kabulGirisDepo = freezed,
     Object? seriListe = freezed,
   }) {
     return _then(_$OlcumSeriRequestModelImpl(
@@ -130,6 +148,14 @@ class __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>
       cikisDepo: freezed == cikisDepo
           ? _value.cikisDepo
           : cikisDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      redGirisDepo: freezed == redGirisDepo
+          ? _value.redGirisDepo
+          : redGirisDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
+      kabulGirisDepo: freezed == kabulGirisDepo
+          ? _value.kabulGirisDepo
+          : kabulGirisDepo // ignore: cast_nullable_to_non_nullable
               as int?,
       seriListe: freezed == seriListe
           ? _value._seriListe
@@ -146,6 +172,8 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
       {this.stokKodu,
       this.girisDepo,
       this.cikisDepo,
+      this.redGirisDepo,
+      this.kabulGirisDepo,
       final List<String>? seriListe})
       : _seriListe = seriListe;
 
@@ -158,6 +186,10 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
   final int? girisDepo;
   @override
   final int? cikisDepo;
+  @override
+  final int? redGirisDepo;
+  @override
+  final int? kabulGirisDepo;
   final List<String>? _seriListe;
   @override
   List<String>? get seriListe {
@@ -170,7 +202,7 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
 
   @override
   String toString() {
-    return 'OlcumSeriRequestModel(stokKodu: $stokKodu, girisDepo: $girisDepo, cikisDepo: $cikisDepo, seriListe: $seriListe)';
+    return 'OlcumSeriRequestModel(stokKodu: $stokKodu, girisDepo: $girisDepo, cikisDepo: $cikisDepo, redGirisDepo: $redGirisDepo, kabulGirisDepo: $kabulGirisDepo, seriListe: $seriListe)';
   }
 
   @override
@@ -184,13 +216,23 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
                 other.girisDepo == girisDepo) &&
             (identical(other.cikisDepo, cikisDepo) ||
                 other.cikisDepo == cikisDepo) &&
+            (identical(other.redGirisDepo, redGirisDepo) ||
+                other.redGirisDepo == redGirisDepo) &&
+            (identical(other.kabulGirisDepo, kabulGirisDepo) ||
+                other.kabulGirisDepo == kabulGirisDepo) &&
             const DeepCollectionEquality()
                 .equals(other._seriListe, _seriListe));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, stokKodu, girisDepo, cikisDepo,
+  int get hashCode => Object.hash(
+      runtimeType,
+      stokKodu,
+      girisDepo,
+      cikisDepo,
+      redGirisDepo,
+      kabulGirisDepo,
       const DeepCollectionEquality().hash(_seriListe));
 
   @JsonKey(ignore: true)
@@ -213,6 +255,8 @@ abstract class _OlcumSeriRequestModel implements OlcumSeriRequestModel {
       {final String? stokKodu,
       final int? girisDepo,
       final int? cikisDepo,
+      final int? redGirisDepo,
+      final int? kabulGirisDepo,
       final List<String>? seriListe}) = _$OlcumSeriRequestModelImpl;
 
   factory _OlcumSeriRequestModel.fromJson(Map<String, dynamic> json) =
@@ -224,6 +268,10 @@ abstract class _OlcumSeriRequestModel implements OlcumSeriRequestModel {
   int? get girisDepo;
   @override
   int? get cikisDepo;
+  @override
+  int? get redGirisDepo;
+  @override
+  int? get kabulGirisDepo;
   @override
   List<String>? get seriListe;
   @override

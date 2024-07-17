@@ -1189,8 +1189,6 @@ mixin _$OlcumOlcumlerModel {
   set kayitOperatorKodu(String? value) => throw _privateConstructorUsedError;
   DateTime? get kayittarihi => throw _privateConstructorUsedError;
   set kayittarihi(DateTime? value) => throw _privateConstructorUsedError;
-  int? get sira => throw _privateConstructorUsedError;
-  set sira(int? value) => throw _privateConstructorUsedError;
   double? get kabulAdet => throw _privateConstructorUsedError;
   set kabulAdet(double? value) => throw _privateConstructorUsedError;
   double? get sartliAdet => throw _privateConstructorUsedError;
@@ -1222,7 +1220,6 @@ abstract class $OlcumOlcumlerModelCopyWith<$Res> {
       String? kayitOperator,
       String? kayitOperatorKodu,
       DateTime? kayittarihi,
-      int? sira,
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
@@ -1251,7 +1248,6 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
     Object? kayitOperator = freezed,
     Object? kayitOperatorKodu = freezed,
     Object? kayittarihi = freezed,
-    Object? sira = freezed,
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
@@ -1294,10 +1290,6 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
           ? _value.kayittarihi
           : kayittarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
       kabulAdet: freezed == kabulAdet
           ? _value.kabulAdet
           : kabulAdet // ignore: cast_nullable_to_non_nullable
@@ -1336,7 +1328,6 @@ abstract class _$$OlcumOlcumlerModelImplCopyWith<$Res>
       String? kayitOperator,
       String? kayitOperatorKodu,
       DateTime? kayittarihi,
-      int? sira,
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
@@ -1363,7 +1354,6 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
     Object? kayitOperator = freezed,
     Object? kayitOperatorKodu = freezed,
     Object? kayittarihi = freezed,
-    Object? sira = freezed,
     Object? kabulAdet = freezed,
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
@@ -1406,10 +1396,6 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
           ? _value.kayittarihi
           : kayittarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      sira: freezed == sira
-          ? _value.sira
-          : sira // ignore: cast_nullable_to_non_nullable
-              as int?,
       kabulAdet: freezed == kabulAdet
           ? _value.kabulAdet
           : kabulAdet // ignore: cast_nullable_to_non_nullable
@@ -1443,7 +1429,6 @@ class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
       this.kayitOperator,
       this.kayitOperatorKodu,
       this.kayittarihi,
-      this.sira,
       this.kabulAdet,
       this.sartliAdet,
       this.retAdet,
@@ -1471,8 +1456,6 @@ class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
   String? kayitOperatorKodu;
   @override
   DateTime? kayittarihi;
-  @override
-  int? sira;
   @override
   double? kabulAdet;
   @override
@@ -1508,7 +1491,6 @@ abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
       String? kayitOperator,
       String? kayitOperatorKodu,
       DateTime? kayittarihi,
-      int? sira,
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
@@ -1545,9 +1527,6 @@ abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
   @override
   DateTime? get kayittarihi;
   set kayittarihi(DateTime? value);
-  @override
-  int? get sira;
-  set sira(int? value);
   @override
   double? get kabulAdet;
   set kabulAdet(double? value);

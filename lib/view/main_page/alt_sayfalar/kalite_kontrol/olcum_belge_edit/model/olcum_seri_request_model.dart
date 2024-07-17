@@ -9,6 +9,8 @@ class OlcumSeriRequestModel with _$OlcumSeriRequestModel {
     String? stokKodu,
     int? girisDepo,
     int? cikisDepo,
+    int? redGirisDepo,
+    int? kabulGirisDepo,
     List<String>? seriListe,
   }) = _OlcumSeriRequestModel;
 
