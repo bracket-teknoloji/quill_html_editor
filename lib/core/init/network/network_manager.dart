@@ -351,17 +351,14 @@ class NetworkManager {
       path: ApiUrls.getGrupKodlari,
       bodyModel: BaseGrupKoduModel(),
       addCKey: true,
-      headers: {"Modul": name.name, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
+      headers: {"Modul": name.module, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
       addQuery: true,
       addSirketBilgileri: true,
       showLoading: true,
-      queryParameters: {"Modul": name, "GrupNo": grupNo},
+      queryParameters: {"Modul": name.module, "GrupNo": grupNo},
     );
-    if (responseKod.success != true) {
-      return [];
-    } else {
-      return responseKod.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
-    }
+    if (responseKod.isSuccess) return responseKod.dataList;
+    return [];
   }
 
   Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {
@@ -503,7 +500,7 @@ class NetworkManager {
     }
     return null;
   }
-  
+
   Future<HucreListesiModel?> getHucreModel(HucreListesiRequestModel model) async {
     final result = await dioPost<HucreListesiModel>(
       path: ApiUrls.getStoklar,
