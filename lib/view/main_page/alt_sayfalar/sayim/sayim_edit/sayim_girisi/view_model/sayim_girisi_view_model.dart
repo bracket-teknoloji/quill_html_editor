@@ -126,6 +126,12 @@ abstract class _SayimGirisiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setMiktar(double? value){
+    filtreModel = filtreModel.copyWith(miktar: value);
+    SingletonModels.setFiltreModel = filtreModel;
+  }
+
+  @action
   void decreaseMiktar() {
     if (filtreModel.miktar case (0 || null)) {
       filtreModel = filtreModel.copyWith(miktar: 0);

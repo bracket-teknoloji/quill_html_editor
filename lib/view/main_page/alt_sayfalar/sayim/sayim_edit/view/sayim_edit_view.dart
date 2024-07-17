@@ -171,11 +171,15 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
         body: TabBarView(
           controller: controller,
           children: [
-            SayimGirisiView(
-              onStokSelected: saveSayim,
-              resetFiltreModel: resetFiltreModel,
+            Observer(
+              builder: (_) => SayimGirisiView(
+                onStokSelected: saveSayim,
+                resetFiltreModel: resetFiltreModel,
+              ),
             ),
-            SayimSayilanlarView(onEdit: onEdit),
+            Observer(
+              builder: (_) => SayimSayilanlarView(onEdit: onEdit),
+            ),
           ],
         ),
       );

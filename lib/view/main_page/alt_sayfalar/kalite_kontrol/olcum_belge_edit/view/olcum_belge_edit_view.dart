@@ -170,68 +170,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                     BottomSheetModel(
                       title: "Depo Transferi Ekle",
                       iconWidget: Icons.add_outlined,
-                      onTap: () async {
-                        Get.back();
-                        if (viewModel.model?.olcumler.ext.isNullOrEmpty == true) {
-                          dialogManager.showAlertDialog("Ölçüm giriniz.");
-                          return;
-                        }
-                        if (viewModel.belgeModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi) {
-                          final depoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: "Depo Giriniz",
-                            body: Form(
-                              key: _formKey,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  CustomTextField(
-                                    labelText: "Giriş Depo Kodu",
-                                    controller: girisDepoController,
-                                    readOnly: true,
-                                    isMust: true,
-                                    suffixMore: true,
-                                    onTap: girisDepoOnTap,
-                                  ),
-                                  CustomTextField(
-                                    labelText: "Çıkış Depo Kodu",
-                                    controller: cikisDepoController,
-                                    readOnly: true,
-                                    isMust: true,
-                                    suffixMore: true,
-                                    onTap: cikisDepoOnTap,
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: seriDepoApplyButtonOnTap,
-                                    child: Text(loc.generalStrings.apply),
-                                  ).paddingAll(UIHelper.lowSize),
-                                ],
-                              ).paddingAll(UIHelper.lowSize),
-                            ),
-                          );
-                          if (!viewModel.depolarValidation || depoValidation != true) return;
-                        }
-                        await Get.toNamed(
-                          "/mainPage/transferEdit",
-                          arguments: BaseEditModel<BaseSiparisEditModel>(
-                            baseEditEnum: BaseEditEnum.ekle,
-                            editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
-                            model: BaseSiparisEditModel(
-                              girisDepoKodu: viewModel.seriRequestModel.girisDepo,
-                              cikisDepoKodu: viewModel.seriRequestModel.cikisDepo,
-                              topluGirisDepoTanimi: girisDepoController.text,
-                              topluCikisDepoTanimi: cikisDepoController.text,
-                              kalemList: [
-                                KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
-                                  ..seriList = viewModel.olcumDatResponseListesi?.toList()
-                                  ..miktar = viewModel.olcumDatResponseListesi?.map((element) => element.miktar).sum
-                                  ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
-                              ],
-                              olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
-                            ),
-                          ),
-                        );
-                      },
+                      onTap: depoTransferiEkleOnTap,
                     ).yetkiKontrol(yetkiController.transferDatEkle),
                     BottomSheetModel(
                       title: "Depo Transferlerini Görüntüle",
@@ -279,6 +218,75 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         ],
       );
 
+  Future<void> depoTransferiEkleOnTap() async {
+    Get.back();
+    if (viewModel.model?.olcumler.ext.isNullOrEmpty == true) {
+      dialogManager.showAlertDialog("Ölçüm giriniz.");
+      return;
+    }
+    if (viewModel.belgeModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi && (viewModel.model?.karisikMi == false)) {
+      final depoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Depo Giriniz",
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomTextField(
+                labelText: "Giriş Depo Kodu",
+                controller: girisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                onTap: girisDepoOnTap,
+              ),
+              CustomTextField(
+                labelText: "Çıkış Depo Kodu",
+                controller: cikisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                onTap: cikisDepoOnTap,
+              ),
+              ElevatedButton(
+                onPressed: seriDepoApplyButtonOnTap,
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.lowSize),
+            ],
+          ).paddingAll(UIHelper.lowSize),
+        ),
+      );
+      if (!viewModel.depolarValidation || depoValidation != true) return;
+    }
+    else if (viewModel.model?.karisikMi == true) {
+      
+    }
+    await Get.toNamed(
+      "/mainPage/transferEdit",
+      arguments: BaseEditModel<BaseSiparisEditModel>(
+        baseEditEnum: BaseEditEnum.ekle,
+        editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+        model: BaseSiparisEditModel(
+          girisDepoKodu: viewModel.seriRequestModel.girisDepo,
+          cikisDepoKodu: viewModel.seriRequestModel.cikisDepo,
+          topluGirisDepoTanimi: girisDepoController.text,
+          topluCikisDepoTanimi: cikisDepoController.text,
+          kalemList: [
+            KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+              ..seriList = viewModel.olcumDatResponseListesi?.toList()
+              ..cikisdepoKodu = viewModel.seriRequestModel.cikisDepo
+              ..hedefDepo = (viewModel.model?.olcumler?.any((element) => element.retMi) == true) ? viewModel.seriRequestModel.redGirisDepo : viewModel.seriRequestModel.kabulGirisDepo
+              ..girisdepoKodu = viewModel.seriRequestModel.girisDepo
+              ..miktar = viewModel.olcumDatResponseListesi?.map((element) => element.miktar).sum
+              ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
+          ],
+          olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
+        ),
+      ),
+    );
+  }
+
   Future<void> girisDepoOnTap() async {
     final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriRequestModel.girisDepo);
     if (result is DepoList) {
@@ -313,7 +321,10 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           isScrolledDown: viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet,
           onPressed: () async {
             if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) return dialogManager.showAlertDialog("Proses bulunmamaktadır.");
-            final result = await Get.toNamed("/mainPage/olcumEkle", arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu));
+            final result = await Get.toNamed(
+              "/mainPage/olcumEkle",
+              arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, belge: [viewModel.model!.olcumModel!.copyWith(belgeSira: widget.model.sira)]),
+            );
             if (result != null) {
               await viewModel.getData();
             }

@@ -218,6 +218,17 @@ mixin _$SayimGirisiViewModel on _SayimGirisiViewModelBase, Store {
   }
 
   @override
+  void setMiktar(double? value) {
+    final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
+        .startAction(name: '_SayimGirisiViewModelBase.setMiktar');
+    try {
+      return super.setMiktar(value);
+    } finally {
+      _$_SayimGirisiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void decreaseMiktar() {
     final _$actionInfo = _$_SayimGirisiViewModelBaseActionController
         .startAction(name: '_SayimGirisiViewModelBase.decreaseMiktar');

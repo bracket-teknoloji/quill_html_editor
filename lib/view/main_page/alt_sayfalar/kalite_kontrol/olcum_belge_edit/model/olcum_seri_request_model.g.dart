@@ -12,6 +12,8 @@ _$OlcumSeriRequestModelImpl _$$OlcumSeriRequestModelImplFromJson(
       stokKodu: json['STOK_KODU'] as String?,
       girisDepo: (json['GIRIS_DEPO'] as num?)?.toInt(),
       cikisDepo: (json['CIKIS_DEPO'] as num?)?.toInt(),
+      redGirisDepo: (json['RED_GIRIS_DEPO'] as num?)?.toInt(),
+      kabulGirisDepo: (json['KABUL_GIRIS_DEPO'] as num?)?.toInt(),
       seriListe: (json['SERI_LISTE'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -30,6 +32,8 @@ Map<String, dynamic> _$$OlcumSeriRequestModelImplToJson(
   writeNotNull('STOK_KODU', instance.stokKodu);
   writeNotNull('GIRIS_DEPO', instance.girisDepo);
   writeNotNull('CIKIS_DEPO', instance.cikisDepo);
+  writeNotNull('RED_GIRIS_DEPO', instance.redGirisDepo);
+  writeNotNull('KABUL_GIRIS_DEPO', instance.kabulGirisDepo);
   writeNotNull('SERI_LISTE', instance.seriListe);
   return val;
 }
