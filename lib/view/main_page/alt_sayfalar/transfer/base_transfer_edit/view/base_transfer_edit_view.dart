@@ -129,6 +129,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         BaseSiparisEditModel.resetInstance();
+        BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
         if ((widget.model.model as BaseSiparisEditModel?)?.kalemList != null) {
           BaseSiparisEditModel.instance.olcumBelgeRefKey = (widget.model.model as BaseSiparisEditModel).olcumBelgeRefKey;
           BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
