@@ -1,4 +1,4 @@
-import "package:kartal/kartal.dart";
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";

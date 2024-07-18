@@ -1,7 +1,7 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";

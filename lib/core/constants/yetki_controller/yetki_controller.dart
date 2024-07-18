@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/constants/enum/barkod_tipi_enum.dart";

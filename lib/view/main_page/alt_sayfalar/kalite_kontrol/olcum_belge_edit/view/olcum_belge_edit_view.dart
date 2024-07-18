@@ -19,6 +19,7 @@ import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";

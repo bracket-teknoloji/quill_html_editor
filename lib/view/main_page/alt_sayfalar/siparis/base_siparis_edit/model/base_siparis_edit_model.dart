@@ -1,6 +1,7 @@
 import "dart:convert";
 import "dart:developer";
 
+import "package:collection/collection.dart";
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";

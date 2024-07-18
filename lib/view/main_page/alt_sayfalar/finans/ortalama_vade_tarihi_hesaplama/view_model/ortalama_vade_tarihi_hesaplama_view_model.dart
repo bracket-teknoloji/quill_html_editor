@@ -1,4 +1,4 @@
-import "package:kartal/kartal.dart";
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
