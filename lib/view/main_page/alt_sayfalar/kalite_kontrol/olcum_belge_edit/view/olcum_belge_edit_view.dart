@@ -282,9 +282,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 isMust: true,
                 suffixMore: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.kabulGirisDepo.toStringIfNotNull ?? "")),
-                onTap: () async {
-                  await girisDepoOnTap(kabulMu: true);
-                },
+                onTap: () async => await girisDepoOnTap(kabulMu: true),
               ),
               CustomTextField(
                 labelText: "Ret Depo Kodu",
@@ -293,9 +291,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 isMust: true,
                 suffixMore: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.redGirisDepo.toStringIfNotNull ?? "")),
-                onTap: () async {
-                  await girisDepoOnTap(kabulMu: false);
-                },
+                onTap: () async => await girisDepoOnTap(kabulMu: false),
               ),
               CustomTextField(
                 labelText: "Çıkış Depo",
@@ -304,9 +300,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 isMust: true,
                 suffixMore: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? "")),
-                onTap: () async {
-                  await cikisDepoOnTap();
-                },
+                onTap: cikisDepoOnTap,
               ),
               ElevatedButton(
                 onPressed: seriDepoApplyButtonOnTap,
@@ -380,6 +374,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
         if (kabulMu == true) {
           viewModel.setKabulGirisDepo(result);
           viewModel.setGirisDepo(result);
+          girisDepoController.text = result.depoTanimi ?? "";
           kabulGirisDepoController.text = result.depoTanimi ?? "";
         } else if (kabulMu == false) {
           viewModel.setRedGirisDepo(result);

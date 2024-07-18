@@ -25,6 +25,12 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   String? bakiyeGroupValue = "Tümü";
 
   @observable
+  bool kategoriMi = false;
+
+  @observable
+  int grupNo = -1;
+
+  @observable
   String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
 
   @override
@@ -202,6 +208,12 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void changeBakiyeDurumuTemp(int? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(bakiyeDurumu: selectedList[value ?? 0].substring(0, 1));
 
+  @action
+  void setKategoriMi() => kategoriMi = true;
+
+  @action
+  void setGrupNo(int value) => grupNo = value;
+
   @computed
   String? get bakiye => bakiyeGroupValue?.substring(0, 1);
 
@@ -222,7 +234,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   }
 
   @action
-  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1, kullanimda: true));
+  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: kategoriMi));
 
   @override
   @action

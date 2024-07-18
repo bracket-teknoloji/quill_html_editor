@@ -562,36 +562,42 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 readOnly: true,
                 suffixMore: true,
                 controller: grupKoduController,
+                onTap: () => getGrupKodlariBottomSheet(0),
               ),
               CustomTextField(
                 labelText: "Kod 1",
                 readOnly: true,
                 suffixMore: true,
                 controller: kod1Controller,
+                onTap: () => getGrupKodlariBottomSheet(1),
               ),
               CustomTextField(
                 labelText: "Kod 2",
                 readOnly: true,
                 suffixMore: true,
                 controller: kod2Controller,
+                onTap: () => getGrupKodlariBottomSheet(2),
               ),
               CustomTextField(
                 labelText: "Kod 3",
                 readOnly: true,
                 suffixMore: true,
                 controller: kod3Controller,
+                onTap: () => getGrupKodlariBottomSheet(3),
               ),
               CustomTextField(
                 labelText: "Kod 4",
                 readOnly: true,
                 suffixMore: true,
                 controller: kod4Controller,
+                onTap: () => getGrupKodlariBottomSheet(4),
               ),
               CustomTextField(
                 labelText: "Kod 5",
                 readOnly: true,
                 suffixMore: true,
                 controller: kod5Controller,
+                onTap: () => getGrupKodlariBottomSheet(6),
               ),
             ],
           ).yetkiVarMi(AccountModel.instance.isDebug),
@@ -748,5 +754,24 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         viewModel.resetList();
       }
     });
+  }
+
+  Future<void> getGrupKodlariBottomSheet(int value) async {
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      context,
+      title: "Kod Seçiniz",
+      groupValue: viewModel,
+      children: List.generate(viewModel.grupKodlari.where((element) => element.grupNo == value).length, (index) {
+        final item = viewModel.grupKodlari.where((element) => element.grupNo == value).toList()[index];
+        return BottomSheetModel(title: item.grupAdi ?? "", value: item);
+      }),
+    );
+    if (result != null) {
+      if (!viewModel.kategoriMi) {
+        viewModel.setKategoriMi();
+        viewModel.setGrupNo(value);
+        await viewModel.getGrupKodlari();
+      }
+    }
   }
 }
