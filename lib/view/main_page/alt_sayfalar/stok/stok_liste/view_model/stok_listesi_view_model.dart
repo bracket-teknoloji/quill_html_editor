@@ -222,7 +222,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   }
 
   @action
-  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1));
+  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1, kullanimda: true));
 
   @override
   @action
