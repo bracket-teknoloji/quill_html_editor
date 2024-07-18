@@ -346,7 +346,7 @@ class NetworkManager {
     return response;
   }
 
-  Future<List<BaseGrupKoduModel>> getGrupKod({required GrupKoduEnum name, int? grupNo, bool? kullanimda}) async {
+  Future<List<BaseGrupKoduModel>> getGrupKod({required GrupKoduEnum name, int? grupNo, bool? kullanimda, bool? kategoriModuMu}) async {
     final responseKod = await dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       bodyModel: BaseGrupKoduModel(),
@@ -355,7 +355,7 @@ class NetworkManager {
       addQuery: true,
       addSirketBilgileri: true,
       showLoading: true,
-      queryParameters: {"Modul": name.module, "GrupNo": grupNo},
+      queryParameters: {"Modul": name.module, "GrupNo": grupNo, "Kullanimda" : kullanimda, "KategoriModu" : kategoriModuMu == true ? "E" : null},
     );
     if (responseKod.isSuccess) return responseKod.dataList;
     return [];
@@ -662,4 +662,6 @@ class NetworkManager {
     // }
     // return result;
   }
+
+
 }
