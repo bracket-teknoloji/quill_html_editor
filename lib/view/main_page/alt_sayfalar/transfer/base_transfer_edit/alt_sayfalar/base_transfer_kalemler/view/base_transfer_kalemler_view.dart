@@ -168,12 +168,12 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
             Row(
               children: [
                 const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
+                const ColorfulBadge(label: Text("Kabul"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(kalemModel?.kabulMu == true),
+                const ColorfulBadge(label: Text("Ret"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(kalemModel?.kabulMu == false),
                 const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
               ],
             ),
             Text(kalemModel?.stokKodu ?? ""),
-            const Text("Kabul").yetkiVarMi(kalemModel?.kabulMu == true),
-            const Text("Ret").yetkiVarMi(kalemModel?.kabulMu == false),
             Text("Hedef Depo: ${kalemModel?.hedefDepo ?? 0}").yetkiVarMi(kalemModel?.hedefDepo != null),
             Text("${kalemModel?.depoKodu ?? ""}(${kalemModel?.depoTanimi ?? ""}) => ${kalemModel?.hedefDepo ?? ""}(${kalemModel?.hedefDepoAdi ?? ""})")
                 .yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
