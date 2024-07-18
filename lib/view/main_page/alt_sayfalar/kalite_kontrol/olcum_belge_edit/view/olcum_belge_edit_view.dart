@@ -379,6 +379,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
       if (result.depoKodu != null) {
         if (kabulMu == true) {
           viewModel.setKabulGirisDepo(result);
+          viewModel.setGirisDepo(result);
           kabulGirisDepoController.text = result.depoTanimi ?? "";
         } else if (kabulMu == false) {
           viewModel.setRedGirisDepo(result);
