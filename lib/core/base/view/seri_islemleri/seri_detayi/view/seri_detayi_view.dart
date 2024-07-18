@@ -34,6 +34,9 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
     if (widget.seriDetayiModel.seriList != null) {
       viewModel.seriModel = widget.seriDetayiModel.seriList!;
     }
+    if ((widget.seriDetayiModel.seriList?.miktar ?? 0) > (widget.seriDetayiModel.kalanMiktar ?? 0)) {
+      viewModel.setMiktar(widget.seriDetayiModel.kalanMiktar?.toDouble() ?? 0);
+    }
     if (widget.seriDetayiModel.miktarKadarSor == true) {
       viewModel.setMiktar(1);
     }
