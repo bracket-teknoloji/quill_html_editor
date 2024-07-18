@@ -90,6 +90,38 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
+  late final _$kategoriMiAtom =
+      Atom(name: '_StokListesiViewModelBase.kategoriMi', context: context);
+
+  @override
+  bool get kategoriMi {
+    _$kategoriMiAtom.reportRead();
+    return super.kategoriMi;
+  }
+
+  @override
+  set kategoriMi(bool value) {
+    _$kategoriMiAtom.reportWrite(value, super.kategoriMi, () {
+      super.kategoriMi = value;
+    });
+  }
+
+  late final _$grupNoAtom =
+      Atom(name: '_StokListesiViewModelBase.grupNo', context: context);
+
+  @override
+  int get grupNo {
+    _$grupNoAtom.reportRead();
+    return super.grupNo;
+  }
+
+  @override
+  set grupNo(int value) {
+    _$grupNoAtom.reportWrite(value, super.grupNo, () {
+      super.grupNo = value;
+    });
+  }
+
   late final _$resimleriGosterAtom =
       Atom(name: '_StokListesiViewModelBase.resimleriGoster', context: context);
 
@@ -537,9 +569,33 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
+  void setKategoriMi() {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.setKategoriMi');
+    try {
+      return super.setKategoriMi();
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGrupNo(int value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.setGrupNo');
+    try {
+      return super.setGrupNo(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 bakiyeGroupValue: ${bakiyeGroupValue},
+kategoriMi: ${kategoriMi},
+grupNo: ${grupNo},
 resimleriGoster: ${resimleriGoster},
 isSearchBarOpen: ${isSearchBarOpen},
 searchText: ${searchText},
