@@ -1327,7 +1327,13 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           .toList()
       ..belgeTarihi = json['BELGE_TARIHI'] == null
           ? null
-          : DateTime.parse(json['BELGE_TARIHI'] as String);
+          : DateTime.parse(json['BELGE_TARIHI'] as String)
+      ..otvUygula = json['OTV_UYGULA'] as String?
+      ..otvOranmi = json['OTV_ORANMI'] as String?
+      ..otvKodu = json['OTV_KODU'] as String?
+      ..otvAralik = (json['OTV_ARALIK'] as List<dynamic>?)
+          ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
+          .toList();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1424,6 +1430,11 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('DEPO_BAKIYE_LISTE',
       instance.depoBakiyeListe?.map((e) => e.toJson()).toList());
   writeNotNull('BELGE_TARIHI', instance.belgeTarihi?.toIso8601String());
+  writeNotNull('OTV_UYGULA', instance.otvUygula);
+  writeNotNull('OTV_ORANMI', instance.otvOranmi);
+  writeNotNull('OTV_KODU', instance.otvKodu);
+  writeNotNull(
+      'OTV_ARALIK', instance.otvAralik?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -1609,5 +1620,27 @@ Map<String, dynamic> _$DepoBakiyeListeToJson(DepoBakiyeListe instance) {
   writeNotNull('GIRIS', instance.giris);
   writeNotNull('CIKIS', instance.cikis);
   writeNotNull('BAKIYE', instance.bakiye);
+  return val;
+}
+
+OtvAralikModel _$OtvAralikModelFromJson(Map<String, dynamic> json) =>
+    OtvAralikModel(
+      alt: (json['ALT'] as num?)?.toDouble(),
+      ust: (json['UST'] as num?)?.toDouble(),
+      oran: (json['ORAN'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$OtvAralikModelToJson(OtvAralikModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('ALT', instance.alt);
+  writeNotNull('UST', instance.ust);
+  writeNotNull('ORAN', instance.oran);
   return val;
 }

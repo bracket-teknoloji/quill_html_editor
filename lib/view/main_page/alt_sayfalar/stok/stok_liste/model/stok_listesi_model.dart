@@ -106,6 +106,10 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? netMiktar;
   List<DepoBakiyeListe>? depoBakiyeListe;
   DateTime? belgeTarihi;
+  String? otvUygula;
+  String? otvOranmi;
+  String? otvKodu;
+  List<OtvAralikModel>? otvAralik;
 
   static StokListesiModel? _instance;
 
@@ -437,4 +441,21 @@ class DepoBakiyeListe {
   factory DepoBakiyeListe.fromJson(Map<String, dynamic> json) => _$DepoBakiyeListeFromJson(json);
 
   Map<String, dynamic> toJson() => _$DepoBakiyeListeToJson(this);
+}
+
+@JsonSerializable()
+class OtvAralikModel {
+  double? alt;
+  double? ust;
+  double? oran;
+
+  OtvAralikModel({
+    this.alt,
+    this.ust,
+    this.oran,
+  });
+
+  factory OtvAralikModel.fromJson(Map<String, dynamic> json) => _$OtvAralikModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OtvAralikModelToJson(this);
 }
