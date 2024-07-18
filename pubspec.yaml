@@ -28,8 +28,8 @@ dependencies:
     sdk: flutter
 
   #Info Dependencies
-  device_info_plus: ^9.1.0
-  package_info_plus: ^4.2.0
+  device_info_plus: ^10.1.0
+  package_info_plus: ^6.0.0
   connectivity_plus: ^6.0.1
   android_id: ^0.4.0
 
@@ -46,11 +46,11 @@ dependencies:
   flutter_svg: ^2.0.8
   google_fonts: ^6.1.0
   path: ^1.8.3
-  kartal: ^3.2.0
+  kartal: ^4.0.4
   path_provider: ^2.1.1
   open_file_plus: ^3.4.1
   permission_handler: ^11.0.1
-  share_plus: ^7.2.1
+  share_plus: ^8.0.3
 
   # Component  Dependencies
   awesome_dialog: ^3.1.0
