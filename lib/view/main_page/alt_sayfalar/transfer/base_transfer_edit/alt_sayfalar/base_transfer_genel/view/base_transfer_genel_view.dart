@@ -573,7 +573,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           return null;
                         },
                       ),
-                    ).yetkiVarMi(model.kalemList?.every((element) => element.kabulMu == null) == true),
+                    ),
                   ],
                 ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
                 Row(

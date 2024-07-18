@@ -43,6 +43,8 @@ class OlcumBelgeEditView extends StatefulWidget {
 final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   final OlcumBelgeEditViewModel viewModel = OlcumBelgeEditViewModel();
   late final TextEditingController girisDepoController;
+  late final TextEditingController kabulGirisDepoController;
+  late final TextEditingController retGirisDepoController;
   late final TextEditingController cikisDepoController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -51,6 +53,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     viewModel.setGirisDepo(yetkiController.transferLokalDatGirisDepo);
     viewModel.setCikisDepo(yetkiController.transferLokalDatCikisDepo);
     girisDepoController = TextEditingController(text: yetkiController.transferLokalDatGirisDepo?.depoTanimi);
+    kabulGirisDepoController = TextEditingController();
+    retGirisDepoController = TextEditingController();
     cikisDepoController = TextEditingController(text: yetkiController.transferLokalDatCikisDepo?.depoTanimi);
     viewModel.setRequestModel(widget.model);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -62,6 +66,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   @override
   void dispose() {
     girisDepoController.dispose();
+    kabulGirisDepoController.dispose();
+    retGirisDepoController.dispose();
     cikisDepoController.dispose();
     super.dispose();
   }
@@ -167,7 +173,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       },
                     ).yetkiKontrol(yetkiController.stokListesi),
                     BottomSheetModel(
-                      title: "Depo Transferi Ekle",
+                      title: "Depo Transferi Yap",
                       iconWidget: Icons.add_outlined,
                       onTap: depoTransferiEkleOnTap,
                     ).yetkiKontrol(yetkiController.transferDatEkle),
@@ -238,6 +244,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.girisDepo.toStringIfNotNull ?? "")),
                 onTap: girisDepoOnTap,
               ),
               CustomTextField(
@@ -246,6 +253,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? "")),
                 onTap: cikisDepoOnTap,
               ),
               ElevatedButton(
@@ -258,60 +266,6 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
       );
       if (!viewModel.depolarValidation || depoValidation != true) return;
     } else if (viewModel.model?.karisikMi == true) {
-      final retValidation = await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: "Ret Depo Seçiniz",
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                labelText: "Ret Depo Kodu",
-                controller: girisDepoController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                onTap: () async {
-                  await girisDepoOnTap(kabulMu: false);
-                },
-              ),
-              ElevatedButton(
-                onPressed: () async => await karisikDepoButtonOnTap(false),
-                child: Text(loc.generalStrings.apply),
-              ).paddingAll(UIHelper.lowSize),
-            ],
-          ),
-        ),
-      );
-      if (!viewModel.depolarValidation || retValidation != true) return;
-      final kabulValidation = await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: "Kabul Depo Seçiniz",
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                labelText: "Depo Kodu",
-                controller: girisDepoController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                onTap: () async {
-                  await girisDepoOnTap(kabulMu: true);
-                },
-              ),
-              ElevatedButton(
-                onPressed: () async => await karisikDepoButtonOnTap(true),
-                child: Text(loc.generalStrings.apply),
-              ).paddingAll(UIHelper.lowSize),
-            ],
-          ),
-        ),
-      );
-      if (!viewModel.depolarValidation || kabulValidation != true) return;
       final cikisDepoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Çıkış Depo Seçiniz",
@@ -321,11 +275,34 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               CustomTextField(
+                labelText: "Kabul Giriş Depo Kodu",
+                controller: kabulGirisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.kabulGirisDepo.toStringIfNotNull ?? "")),
+                onTap: () async {
+                  await girisDepoOnTap(kabulMu: true);
+                },
+              ),
+              CustomTextField(
+                labelText: "Ret Depo Kodu",
+                controller: retGirisDepoController,
+                readOnly: true,
+                isMust: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.redGirisDepo.toStringIfNotNull ?? "")),
+                onTap: () async {
+                  await girisDepoOnTap(kabulMu: false);
+                },
+              ),
+              CustomTextField(
                 labelText: "Çıkış Depo",
                 controller: cikisDepoController,
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? "")),
                 onTap: () async {
                   await cikisDepoOnTap();
                 },
@@ -399,12 +376,15 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, depoKodu);
     if (result is DepoList) {
       if (result.depoKodu != null) {
-        girisDepoController.text = result.depoTanimi ?? "";
-        viewModel.setGirisDepo(result);
         if (kabulMu == true) {
           viewModel.setKabulGirisDepo(result);
+          kabulGirisDepoController.text = result.depoTanimi ?? "";
         } else if (kabulMu == false) {
           viewModel.setRedGirisDepo(result);
+          retGirisDepoController.text = result.depoTanimi ?? "";
+        } else {
+          girisDepoController.text = result.depoTanimi ?? "";
+          viewModel.setGirisDepo(result);
         }
       }
     }
