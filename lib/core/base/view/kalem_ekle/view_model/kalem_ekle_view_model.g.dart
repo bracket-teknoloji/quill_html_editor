@@ -122,6 +122,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setOTVliMi() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setOTVliMi');
+    try {
+      return super.setOTVliMi();
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setMuhasebeKodu(String? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setMuhasebeKodu');
@@ -270,6 +281,17 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
         name: '_KalemEkleViewModelBase.setMiktar');
     try {
       return super.setMiktar(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateOtv() {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.updateOtv');
+    try {
+      return super.updateOtv();
     } finally {
       _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
     }

@@ -31,6 +31,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setModel(StokListesiModel? value) {
     model = value;
     setKoliMi();
+    setOTVliMi();
   }
 
   @computed
@@ -53,6 +54,17 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
     kalemModel = kalemModel.copyWith(
       koliMi: model?.koliMi ?? false || kalemModel.kalemList != null,
     );
+  }
+
+  @action
+  void setOTVliMi() {
+    kalemModel = kalemModel.copyWith(
+      otvVarmi: model?.otvUygula == (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A"),
+      otvDegeri: model?.otvDeger,
+    );
+    if (kalemModel.otvVarmi == true) {
+      updateOtv();
+    }
   }
 
   @computed
@@ -98,10 +110,23 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setIrsaliyeNo(String? value) => kalemModel = kalemModel.copyWith(irsaliyeNo: value);
 
   @action
-  void setMiktar(double? value) => kalemModel = kalemModel.copyWith(miktar: value);
+  void setMiktar(double? value) {
+    kalemModel = kalemModel.copyWith(miktar: value);
+    updateOtv();
+  }
 
   @action
-  void setBrutFiyat(double? value) => kalemModel = kalemModel.copyWith(brutFiyat: value);
+  void updateOtv() {
+    if (kalemModel.otvVarmi == true) {
+      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.araToplamTutari);
+    }
+  }
+
+  @action
+  void setBrutFiyat(double? value) {
+    kalemModel = kalemModel.copyWith(brutFiyat: value);
+    updateOtv();
+  }
 
   @action
   void setMFTutari(double? value) => kalemModel = kalemModel.copyWith(malFazlasiMiktar: value);
@@ -137,16 +162,14 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void changeIskonto1OranMi() => kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action
   void increaseMiktar(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(miktar: (kalemModel.miktar ?? 0) + 1);
+    setMiktar((kalemModel.miktar ?? 0) + 1);
     controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
   }
 
   @action
   void decreaseMiktar(TextEditingController controller) {
     if ((kalemModel.miktar ?? 0) > 1) {
-      kalemModel = kalemModel.copyWith(
-        miktar: (kalemModel.miktar ?? 0) - 1,
-      );
+      setMiktar((kalemModel.miktar ?? 0) - 1);
       controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
     }
   }
