@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../init/network/login/api_urls.dart";
@@ -9,20 +10,21 @@ part "surum_yenilikleri_view_model.g.dart";
 
 class SurumYenilikleriViewModel = _SurumYenilikleriViewModelBase with _$SurumYenilikleriViewModel;
 
-abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin {
+abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<SurumYenilikleriModel> {
   @observable
   bool searchBar = false;
 
   @observable
   String? searchText;
 
+  @override
   @observable
-  ObservableList<SurumYenilikleriModel>? surumYenilikleriModelList;
+  ObservableList<SurumYenilikleriModel>? observableList;
 
   @computed
   ObservableList<SurumYenilikleriModel>? get getSurumYenilikleriModelList => (searchText != null && searchText != "")
-      ? surumYenilikleriModelList?.where((element) => element.liste?.any((element) => element.aciklama?.toLowerCase().contains(searchText!.toLowerCase()) ?? false) ?? false).toList().asObservable()
-      : surumYenilikleriModelList;
+      ? observableList?.where((element) => element.liste?.any((element) => element.aciklama?.toLowerCase().contains(searchText!.toLowerCase()) ?? false) ?? false).toList().asObservable()
+      : observableList;
 
   @action
   void setSearchText(String? value) => searchText = value;
@@ -30,11 +32,14 @@ abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin {
   @action
   void changeSearchBar() => searchBar = !searchBar;
 
+  @override
   @action
-  void setSurumYenilikleriModelList(List<SurumYenilikleriModel>? value) => surumYenilikleriModelList = value?.asObservable();
+  void setObservableList(List<SurumYenilikleriModel>? value) => observableList = value?.asObservable();
 
+  @override
   @action
   Future<void> getData() async {
+    if (observableList != null) setObservableList(null);
     final result = await networkManager.dioPost<SurumYenilikleriModel>(
       path: ApiUrls.surumYenilikleri,
       bodyModel: SurumYenilikleriModel(),
@@ -45,9 +50,9 @@ abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin {
       addSirketBilgileri: false,
     );
     if (result.isSuccess && result.data is List) {
-      setSurumYenilikleriModelList(result.data.map((e) => e as SurumYenilikleriModel).toList().cast<SurumYenilikleriModel>());
+      setObservableList(result.data.map((e) => e as SurumYenilikleriModel).toList().cast<SurumYenilikleriModel>());
     } else {
-      surumYenilikleriModelList = null;
+      observableList = null;
     }
   }
 }

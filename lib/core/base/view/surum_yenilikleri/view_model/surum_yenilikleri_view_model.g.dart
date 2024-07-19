@@ -53,21 +53,19 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
     });
   }
 
-  late final _$surumYenilikleriModelListAtom = Atom(
-      name: '_SurumYenilikleriViewModelBase.surumYenilikleriModelList',
-      context: context);
+  late final _$observableListAtom = Atom(
+      name: '_SurumYenilikleriViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<SurumYenilikleriModel>? get surumYenilikleriModelList {
-    _$surumYenilikleriModelListAtom.reportRead();
-    return super.surumYenilikleriModelList;
+  ObservableList<SurumYenilikleriModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set surumYenilikleriModelList(ObservableList<SurumYenilikleriModel>? value) {
-    _$surumYenilikleriModelListAtom
-        .reportWrite(value, super.surumYenilikleriModelList, () {
-      super.surumYenilikleriModelList = value;
+  set observableList(ObservableList<SurumYenilikleriModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -106,13 +104,11 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
   }
 
   @override
-  void setSurumYenilikleriModelList(List<SurumYenilikleriModel>? value) {
-    final _$actionInfo =
-        _$_SurumYenilikleriViewModelBaseActionController.startAction(
-            name:
-                '_SurumYenilikleriViewModelBase.setSurumYenilikleriModelList');
+  void setObservableList(List<SurumYenilikleriModel>? value) {
+    final _$actionInfo = _$_SurumYenilikleriViewModelBaseActionController
+        .startAction(name: '_SurumYenilikleriViewModelBase.setObservableList');
     try {
-      return super.setSurumYenilikleriModelList(value);
+      return super.setObservableList(value);
     } finally {
       _$_SurumYenilikleriViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -123,7 +119,7 @@ mixin _$SurumYenilikleriViewModel on _SurumYenilikleriViewModelBase, Store {
     return '''
 searchBar: ${searchBar},
 searchText: ${searchText},
-surumYenilikleriModelList: ${surumYenilikleriModelList},
+observableList: ${observableList},
 getSurumYenilikleriModelList: ${getSurumYenilikleriModelList}
     ''';
   }
