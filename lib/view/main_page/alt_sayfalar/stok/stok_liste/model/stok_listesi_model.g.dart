@@ -1627,22 +1627,14 @@ Map<String, dynamic> _$DepoBakiyeListeToJson(DepoBakiyeListe instance) {
 
 OtvAralikModel _$OtvAralikModelFromJson(Map<String, dynamic> json) =>
     OtvAralikModel(
-      alt: (json['ALT'] as num?)?.toDouble(),
-      ust: (json['UST'] as num?)?.toDouble(),
-      oran: (json['ORAN'] as num?)?.toDouble(),
+      (json['ALT'] as num).toDouble(),
+      (json['UST'] as num).toDouble(),
+      (json['ORAN'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$OtvAralikModelToJson(OtvAralikModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ALT', instance.alt);
-  writeNotNull('UST', instance.ust);
-  writeNotNull('ORAN', instance.oran);
-  return val;
-}
+Map<String, dynamic> _$OtvAralikModelToJson(OtvAralikModel instance) =>
+    <String, dynamic>{
+      'ALT': instance.alt,
+      'UST': instance.ust,
+      'ORAN': instance.oran,
+    };
