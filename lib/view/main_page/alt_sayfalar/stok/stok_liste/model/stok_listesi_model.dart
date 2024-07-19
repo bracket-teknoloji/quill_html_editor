@@ -1,6 +1,7 @@
 import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_stok_mixin.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -110,6 +111,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? otvOranmi;
   String? otvKodu;
   List<OtvAralikModel>? otvAralik;
+  double? otvDeger;
 
   static StokListesiModel? _instance;
 
@@ -249,6 +251,16 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   bool get koliMi => paketMi == "K" && CacheManager.getAnaVeri?.paramModel?.karmaKoliUyg == "E";
   bool get hizmetMi => stokKodu?.startsWith("HIZ") ?? false;
+
+  double getOtvOrani(double fiyat) {
+    if (otvOranmi != "E") return 0;
+    if (otvKodu?.isEmpty == true) return otvDeger ?? 0;
+    if (otvAralik.ext.isNullOrEmpty) return 0;
+    for (var otv in otvAralik!) {
+      if (fiyat >= otv.alt && fiyat <= otv.ust) return otv.oran;
+    }
+    return 0;
+  }
 }
 
 @HiveType(typeId: 2)
@@ -445,15 +457,15 @@ class DepoBakiyeListe {
 
 @JsonSerializable()
 class OtvAralikModel {
-  double? alt;
-  double? ust;
-  double? oran;
+  double alt;
+  double ust;
+  double oran;
 
-  OtvAralikModel({
+  OtvAralikModel(
     this.alt,
     this.ust,
     this.oran,
-  });
+  );
 
   factory OtvAralikModel.fromJson(Map<String, dynamic> json) => _$OtvAralikModelFromJson(json);
 
