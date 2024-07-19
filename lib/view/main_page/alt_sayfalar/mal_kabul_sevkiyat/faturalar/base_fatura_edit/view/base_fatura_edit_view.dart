@@ -568,8 +568,17 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     }
 
     const Uuid uuid = Uuid();
-    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance
-        .copyWith(islemId: uuid.v4(), cariModel: null, belgeTuru: widget.model.editTipiEnum?.rawValue, kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList());
+    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(
+      islemId: uuid.v4(),
+      cariModel: null,
+      otvTutari: BaseSiparisEditModel.instance.getOTVToplam,
+      belgeTuru: widget.model.editTipiEnum?.rawValue,
+      kalemler: BaseSiparisEditModel.instance.kalemList
+          ?.map(
+            (e) => e..siparisSira = e.sira,
+          )
+          .toList(),
+    );
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
       newInstance.mevcutCariKodu = widget.model.model?.cariKodu;

@@ -1333,7 +1333,8 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..otvKodu = json['OTV_KODU'] as String?
       ..otvAralik = (json['OTV_ARALIK'] as List<dynamic>?)
           ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
-          .toList();
+          .toList()
+      ..otvDeger = (json['OTV_DEGER'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1435,6 +1436,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('OTV_KODU', instance.otvKodu);
   writeNotNull(
       'OTV_ARALIK', instance.otvAralik?.map((e) => e.toJson()).toList());
+  writeNotNull('OTV_DEGER', instance.otvDeger);
   return val;
 }
 

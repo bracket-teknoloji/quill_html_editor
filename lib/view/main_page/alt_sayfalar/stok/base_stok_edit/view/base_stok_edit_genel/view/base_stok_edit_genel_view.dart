@@ -12,6 +12,7 @@ import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -75,49 +76,47 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
   bool get enable => widget.model != BaseEditEnum.goruntule;
 
+  StokListesiModel get stokModel => viewModel.stokListesiModel;
+
   @override
   void initState() {
-    stokKoduController = TextEditingController(text: viewModel.stokListesiModel.stokKodu);
-    stokAdiController = TextEditingController(text: viewModel.stokListesiModel.stokAdi);
+    final firstStokList = model?.stokList?.firstOrNull;
+    stokKoduController = TextEditingController(text: stokModel.stokKodu);
+    stokAdiController = TextEditingController(text: stokModel.stokAdi);
     depoController = TextEditingController(
-      text: CacheManager.getAnaVeri?.paramModel?.depoList
-              ?.firstWhereOrNull((element) => element.depoKodu == (model?.stokList?.firstOrNull?.depoKodu ?? viewModel.stokListesiModel.depoKodu))
-              ?.depoTanimi ??
-          "",
+      text: CacheManager.getAnaVeri?.paramModel?.depoList?.firstWhereOrNull((element) => element.depoKodu == (firstStokList?.depoKodu ?? stokModel.depoKodu))?.depoTanimi ?? "",
     );
-    muhasebeDetayKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.muhdetayAdi ?? viewModel.stokListesiModel.muhdetayAdi);
-    olcuBirimi1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi ?? viewModel.stokListesiModel.olcuBirimi);
-    olcuBirimi2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2 ?? viewModel.stokListesiModel.olcuBirimi2);
-    olcuBirimi2PayController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2Pay.toStringIfNotNull ?? viewModel.stokListesiModel.olcuBirimi2Pay.toStringIfNotNull);
-    olcuBirimi2PaydaController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi2Payda.toStringIfNotNull ?? viewModel.stokListesiModel.olcuBirimi2Payda.toStringIfNotNull);
-    olcuBirimi3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3 ?? viewModel.stokListesiModel.olcuBirimi3);
-    olcuBirimi3PayController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3Pay.toStringIfNotNull ?? viewModel.stokListesiModel.olcuBirimi3Pay.toStringIfNotNull);
-    olcuBirimi3PaydaController = TextEditingController(text: model?.stokList?.firstOrNull?.olcuBirimi3Payda.toStringIfNotNull ?? viewModel.stokListesiModel.olcuBirimi3Payda.toStringIfNotNull);
-    barkod1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod1 ?? viewModel.stokListesiModel.barkod1);
-    barkod2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod2 ?? viewModel.stokListesiModel.barkod2);
-    barkod3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.barkod3 ?? viewModel.stokListesiModel.barkod3);
+    muhasebeDetayKoduController = TextEditingController(text: firstStokList?.muhdetayAdi ?? stokModel.muhdetayAdi);
+    olcuBirimi1Controller = TextEditingController(text: firstStokList?.olcuBirimi ?? stokModel.olcuBirimi);
+    olcuBirimi2Controller = TextEditingController(text: firstStokList?.olcuBirimi2 ?? stokModel.olcuBirimi2);
+    olcuBirimi2PayController = TextEditingController(text: (firstStokList?.olcuBirimi2Pay ?? stokModel.olcuBirimi2Pay).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    olcuBirimi2PaydaController = TextEditingController(text: (firstStokList?.olcuBirimi2Payda ?? stokModel.olcuBirimi2Payda).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    olcuBirimi3Controller = TextEditingController(text: firstStokList?.olcuBirimi3 ?? stokModel.olcuBirimi3);
+    olcuBirimi3PayController = TextEditingController(text: (firstStokList?.olcuBirimi3Pay ?? stokModel.olcuBirimi3Pay).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    olcuBirimi3PaydaController = TextEditingController(text: (firstStokList?.olcuBirimi3Payda ?? stokModel.olcuBirimi3Payda).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    barkod1Controller = TextEditingController(text: firstStokList?.barkod1 ?? stokModel.barkod1);
+    barkod2Controller = TextEditingController(text: firstStokList?.barkod2 ?? stokModel.barkod2);
+    barkod3Controller = TextEditingController(text: firstStokList?.barkod3 ?? stokModel.barkod3);
     subeController = TextEditingController(
-      text: subeList.ext.isNotNullOrEmpty
-          ? subeList.where((element) => element.subeKodu == model?.stokList?.firstOrNull?.subeKodu || element.subeKodu == viewModel.stokListesiModel.subeKodu).firstOrNull?.subeAdi
-          : null,
+      text: subeList.ext.isNotNullOrEmpty ? subeList.where((element) => element.subeKodu == firstStokList?.subeKodu || element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi : null,
     ); //text: model?.stokAdi
-    ureticiKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.ureticiKodu ?? viewModel.stokListesiModel.ureticiKodu); //text: model?.stokAdi
-    grupKoduController = TextEditingController(text: model?.stokList?.firstOrNull?.grupKodu ?? viewModel.stokListesiModel.grupKodu);
-    kod1Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod1 ?? viewModel.stokListesiModel.kod1);
-    kod2Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod2 ?? viewModel.stokListesiModel.kod2);
-    kod3Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod3 ?? viewModel.stokListesiModel.kod3);
-    kod4Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod4 ?? viewModel.stokListesiModel.kod4);
-    kod5Controller = TextEditingController(text: model?.stokList?.firstOrNull?.kod5 ?? viewModel.stokListesiModel.kod5);
+    ureticiKoduController = TextEditingController(text: firstStokList?.ureticiKodu ?? stokModel.ureticiKodu); //text: model?.stokAdi
+    grupKoduController = TextEditingController(text: firstStokList?.grupKodu ?? stokModel.grupKodu);
+    kod1Controller = TextEditingController(text: firstStokList?.kod1 ?? stokModel.kod1);
+    kod2Controller = TextEditingController(text: firstStokList?.kod2 ?? stokModel.kod2);
+    kod3Controller = TextEditingController(text: firstStokList?.kod3 ?? stokModel.kod3);
+    kod4Controller = TextEditingController(text: firstStokList?.kod4 ?? stokModel.kod4);
+    kod5Controller = TextEditingController(text: firstStokList?.kod5 ?? stokModel.kod5);
     if (subeController.text == "") {
       subeController.text = "Şubelerde Ortak";
-      viewModel.stokListesiModel.subeKodu = -1;
+      stokModel.subeKodu = -1;
     }
     subeChecker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
-        if (viewModel.stokListesiModel.stokKodu == null) {
+        if (stokModel.stokKodu == null) {
           stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
-          viewModel.stokListesiModel.stokKodu = stokKoduController.text;
+          stokModel.stokKodu = stokKoduController.text;
         }
       }
     });
@@ -165,12 +164,12 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       flex: 1,
                       child: Observer(
                         builder: (_) {
-                          if (viewModel.stokListesiModel.resimBase64 != null) {
+                          if (stokModel.resimBase64 != null) {
                             return InkWell(
                               child: SizedBox(
                                 height: kTextTabBarHeight,
                                 child: Image.memory(
-                                  base64Decode(viewModel.stokListesiModel.resimBase64!),
+                                  base64Decode(stokModel.resimBase64!),
                                   fit: BoxFit.
 
                                       /// Yukarıdaki kod Dart programlama dilinde bir yorumdur.
@@ -233,7 +232,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                             IconButton(
                               onPressed: () async {
                                 stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
-                                viewModel.stokListesiModel.stokKodu = stokKoduController.text;
+                                stokModel.stokKodu = stokKoduController.text;
                               },
                               icon: const Icon(Icons.add),
                             ),
@@ -244,13 +243,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                   ].whereType<Expanded>().toList(),
                 ),
               ),
-              CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => viewModel.stokListesiModel.stokAdi = p0),
+              CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => stokModel.stokAdi = p0),
               CustomTextField(
                 labelText: "Depo",
                 enabled: enable,
                 readOnly: true,
                 valueWidget: Observer(
-                  builder: (_) => Text(viewModel.stokListesiModel.depoKodu.toStringIfNotNull ?? ""),
+                  builder: (_) => Text(stokModel.depoKodu.toStringIfNotNull ?? ""),
                 ),
                 onClear: () => viewModel.setDepoKodu(null),
                 onTap: () async {
@@ -274,11 +273,11 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 labelText: "Muhasebe Detay Kodu",
                 controller: muhasebeDetayKoduController,
                 valueWidget: Observer(
-                  builder: (_) => Text(viewModel.stokListesiModel.muhdetayKodu.toStringIfNotNull ?? ""),
+                  builder: (_) => Text(stokModel.muhdetayKodu.toStringIfNotNull ?? ""),
                 ),
                 suffix: IconButton(
                   onPressed: () async {
-                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: viewModel.stokListesiModel.muhdetayKodu, stokMu: true);
+                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: stokModel.muhdetayKodu, stokMu: true);
                     if (result != null) {
                       muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
                       viewModel.setMuhasebeKodu(result);
@@ -292,7 +291,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 enabled: enable,
                 readOnly: true,
                 suffixMore: true,
-                onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi = p0,
+                onChanged: (p0) => stokModel.olcuBirimi = p0,
                 onTap: () => baseOlcuBirimleriController(controller: 1),
                 controller: olcuBirimi1Controller,
               ),
@@ -301,7 +300,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 enabled: enable,
                 readOnly: true,
                 suffixMore: true,
-                onClear: () => viewModel.stokListesiModel.olcuBirimi2 = null,
+                onClear: () => stokModel.olcuBirimi2 = null,
                 onTap: () {
                   baseOlcuBirimleriController(controller: 2);
                 },
@@ -314,8 +313,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       enabled: enable,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.2 Pay",
+                      isFormattedString: true,
                       controller: olcuBirimi2PayController,
-                      onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2Pay = double.tryParse(p0),
+                      onChanged: (p0) => stokModel.olcuBirimi2Pay = p0.toDoubleWithFormattedString,
                     ),
                   ),
                   Expanded(
@@ -323,8 +323,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       enabled: enable,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.2 Payda",
+                      isFormattedString: true,
                       controller: olcuBirimi2PaydaController,
-                      onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2Payda = double.tryParse(p0),
+                      onChanged: (p0) => stokModel.olcuBirimi2Payda = p0.toDoubleWithFormattedString,
                     ),
                   ),
                 ],
@@ -334,7 +335,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                 enabled: enable,
                 readOnly: true,
                 suffixMore: true,
-                onClear: () => viewModel.stokListesiModel.olcuBirimi3 = null,
+                onClear: () => stokModel.olcuBirimi3 = null,
                 onTap: () {
                   baseOlcuBirimleriController(controller: 3);
                 },
@@ -347,8 +348,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       enabled: enable,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.3 Pay",
+                      isFormattedString: true,
                       controller: olcuBirimi3PayController,
-                      onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3Pay = double.tryParse(p0),
+                      onChanged: (p0) => stokModel.olcuBirimi3Pay = p0.toDoubleWithFormattedString,
                     ),
                   ),
                   Expanded(
@@ -356,8 +358,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                       enabled: enable,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       labelText: "Ölçü Br.3 Payda",
+                      isFormattedString: true,
                       controller: olcuBirimi3PaydaController,
-                      onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3Payda = double.tryParse(p0),
+                      onChanged: (p0) => stokModel.olcuBirimi3Payda = p0.toDoubleWithFormattedString,
                     ),
                   ),
                 ],
@@ -423,14 +426,14 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
               CustomWidgetWithLabel(
                 text: loc.generalStrings.other,
                 child: CustomTextField(
-                  // valueText: viewModel.stokListesiModel?.subeKodu.toStringIfNotNull,
+                  // valueText: stokModel?.subeKodu.toStringIfNotNull,
                   readOnly: true,
                   enabled: (enable && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model == BaseEditEnum.ekle,
                   labelText: "Şube",
                   isMust: true,
                   controller: subeController,
                   valueWidget: Observer(
-                    builder: (_) => Text(viewModel.stokListesiModel.subeKodu.toStringIfNotNull ?? ""),
+                    builder: (_) => Text(stokModel.subeKodu.toStringIfNotNull ?? ""),
                   ),
                   onTap: () async {
                     final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -440,7 +443,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     );
                     if (result != null) {
                       subeController.text = "${result.subeAdi} ${result.subeKodu}";
-                      viewModel.stokListesiModel.subeKodu = result.subeKodu;
+                      stokModel.subeKodu = result.subeKodu;
                     }
                   },
                   suffixMore: true,
@@ -453,7 +456,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                     CustomTextField(
                       enabled: enable,
                       labelText: "Üretici Kodu",
-                      onChanged: (p0) => viewModel.stokListesiModel.ureticiKodu = p0,
+                      onChanged: (p0) => stokModel.ureticiKodu = p0,
                     ),
                     Row(
                       children: [
@@ -475,7 +478,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[0]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               grupKoduController.text = result?.grupAdi ?? "";
-                              viewModel.stokListesiModel.grupKodu = result?.grupKodu;
+                              stokModel.grupKodu = result?.grupKodu;
                             },
                             labelText: "Grup Kodu",
                           ),
@@ -497,7 +500,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[1]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               kod1Controller.text = result?.grupKodu ?? "";
-                              viewModel.stokListesiModel.kod1 = result?.grupAdi;
+                              stokModel.kod1 = result?.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod1",
@@ -524,7 +527,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[2]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               kod2Controller.text = result?.grupKodu ?? "";
-                              viewModel.stokListesiModel.kod2 = result?.grupAdi;
+                              stokModel.kod2 = result?.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod2",
@@ -547,7 +550,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[3]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               kod3Controller.text = result?.grupKodu ?? "";
-                              viewModel.stokListesiModel.kod3 = result?.grupAdi;
+                              stokModel.kod3 = result?.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod3",
@@ -573,7 +576,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[4]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               kod4Controller.text = result?.grupKodu ?? "";
-                              viewModel.stokListesiModel.kod4 = result?.grupAdi;
+                              stokModel.kod4 = result?.grupAdi;
                             },
                             suffixMore: true,
                             controller: kod4Controller,
@@ -597,7 +600,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
                                 children: viewModel.grupKodlariMap?[5]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
                               );
                               kod5Controller.text = result?.grupKodu ?? "";
-                              viewModel.stokListesiModel.kod5 = result?.grupAdi;
+                              stokModel.kod5 = result?.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod5",
@@ -633,7 +636,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       final base64 = base64Encode(compressedImage!.toList());
       viewModel.setImage(base64);
       return base64;
-      // viewModel.stokListesiModel?.resimBase64 = base64;
+      // stokModel?.resimBase64 = base64;
     }
     return null;
   }
@@ -652,13 +655,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     if (result != null) {
       if (controller == 1) {
         olcuBirimi1Controller.text = result;
-        viewModel.stokListesiModel.olcuBirimi = result;
+        stokModel.olcuBirimi = result;
       } else if (controller == 2) {
         olcuBirimi2Controller.text = result;
-        viewModel.stokListesiModel.olcuBirimi2 = result;
+        stokModel.olcuBirimi2 = result;
       } else if (controller == 3) {
         olcuBirimi3Controller.text = result;
-        viewModel.stokListesiModel.olcuBirimi3 = result;
+        stokModel.olcuBirimi3 = result;
       }
     }
   }
@@ -669,13 +672,13 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     dialogManager.hideAlertDialog;
     if (controller == 1) {
       barkod1Controller.text = result;
-      viewModel.stokListesiModel.barkod1 = result;
+      stokModel.barkod1 = result;
     } else if (controller == 2) {
       barkod2Controller.text = result;
-      viewModel.stokListesiModel.barkod2 = result;
+      stokModel.barkod2 = result;
     } else if (controller == 3) {
       barkod3Controller.text = result;
-      viewModel.stokListesiModel.barkod3 = result;
+      stokModel.barkod3 = result;
     }
   }
 
@@ -715,9 +718,9 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       siradakiKod = result.paramData!["SIRADAKI_NO"];
       if (isOnBuild == true) {
         // dialogManager.hideAlertDialog;
-        viewModel.stokListesiModel.stokKodu = siradakiKod;
+        stokModel.stokKodu = siradakiKod;
       } else {
-        viewModel.stokListesiModel.stokKodu ??= siradakiKod;
+        stokModel.stokKodu ??= siradakiKod;
         // model?.stokKodu = siradakiKod;
       }
       return result.paramData!["SIRADAKI_NO"];

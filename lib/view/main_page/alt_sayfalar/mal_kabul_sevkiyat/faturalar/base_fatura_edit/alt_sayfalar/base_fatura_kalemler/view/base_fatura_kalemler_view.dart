@@ -210,7 +210,16 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: "Tutar: ${kalemModel?.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
+                        TextSpan(text: "ÖTV Tutarı: ${kalemModel?.otvTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency"),
+                        TextSpan(text: "\n(${kalemModel?.dovizliOTVTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
+                            .yetkiVarMi(kalemModel?.dovizliMi),
+                      ],
+                    ).yetkiVarMi(kalemModel?.otvTutar != null),
+                  ),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "Tutar: ${kalemModel?.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency"),
                         TextSpan(text: "\n(${kalemModel?.dovizliBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],

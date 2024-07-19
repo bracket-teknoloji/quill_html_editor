@@ -467,6 +467,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   Map<String, double>? dovizListesi;
   @HiveField(186)
   String? hedefDepoAdi;
+  @HiveField(187)
+  double? otvTutari;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -656,6 +658,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.olcumBelgeRefKey,
     this.dovizListesi,
     this.hedefDepoAdi,
+    this.otvTutari,
   });
 
   BaseSiparisEditModel._init();
@@ -672,6 +675,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   YetkiController get _yetkiController => YetkiController();
+
+  bool get otvliKalemVarMi => kalemList?.any((element) => element.otvVarmi == true) ?? false;
 
   bool get eBelgeMi => eArsivMi || eFaturaMi || eIrsaliyeMi;
 
@@ -971,10 +976,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get genelToplamTutar {
     if (kdvDahilMi ?? false) {
-      genelToplam = toplamBrutTutar - getToplamIskonto;
+      genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam;
     } else {
       //? getToplamEkMaliyet ekleme sebebim GetToplamIskonto İçinde zaten bulunuyor olması
-      genelToplam = getAraToplam + kdvTutari + getToplamEkMaliyet;
+      genelToplam = getAraToplam + kdvTutari + getToplamEkMaliyet + getOTVToplam;
     }
     return genelToplam ?? 0;
   }
@@ -992,6 +997,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
     return araToplam ?? 0;
   }
+
+  //TODO ÖTV güncellemesi yaptığında bunu düzelt
+  double get getOTVToplam => iskontoChecker(kalemList?.map((e) => e.otvTutar).sum ?? 0);
+
+  double get getDovizliOTVToplam => iskontoChecker(kalemList?.map((e) => e.dovizliOTVTutar).sum ?? 0);
 
   double get getDovizliAraToplam => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
 
@@ -1395,6 +1405,17 @@ class KalemModel with NetworkManagerMixin {
   bool? isUsk;
   @HiveField(131)
   bool? kabulMu;
+  @HiveField(132)
+  double? otvFiyat;
+  @HiveField(133)
+  double? otvTutar;
+  @HiveField(134)
+  bool? otvVarmi;
+  @HiveField(135)
+  bool? otvOranmi;
+  @HiveField(136)
+  double? otvDegeri;
+
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,
@@ -1528,6 +1549,11 @@ class KalemModel with NetworkManagerMixin {
     this.kalemSayisi,
     this.isUsk,
     this.kabulMu,
+    this.otvFiyat,
+    this.otvTutar,
+    this.otvVarmi,
+    this.otvOranmi,
+    this.otvDegeri,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1581,7 +1607,7 @@ class KalemModel with NetworkManagerMixin {
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 
   String get faturaKalemAciklama {
-    if (seriliMi) {
+    if (seriliMi && BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == false) {
       return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     } else if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
       return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
@@ -1605,12 +1631,14 @@ class KalemModel with NetworkManagerMixin {
 
   double get brutTutar => (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
 
-  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0);
+  double get dovizliOTVTutar => dovizliMi ? (otvTutar ?? 0) / (dovizKuru ?? 0) : 0;
+
+  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
 
   double get koliTutar =>
       (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).toList().fold(0, (a, b) => (a ?? 0) + b) ?? 0;
 
-  double get toplamTutar => isKoli ? koliTutar : brutTutar;
+  double get toplamTutar => (isKoli ? koliTutar : brutTutar) + (otvTutar ?? 0);
 
   double get araToplamTutari => brutTutar - iskontoTutari - mfTutari;
 
@@ -1618,7 +1646,7 @@ class KalemModel with NetworkManagerMixin {
 
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
 
-  double get genelToplamTutari => araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? 0 : kdvTutari);
+  double get genelToplamTutari => araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? 0 : kdvTutari) + (otvTutar ?? 0);
 
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 

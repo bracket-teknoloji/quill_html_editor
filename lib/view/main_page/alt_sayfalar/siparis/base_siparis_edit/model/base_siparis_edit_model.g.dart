@@ -381,6 +381,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi);
 
+  BaseSiparisEditModel otvTutari(double? otvTutari);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -575,6 +577,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? olcumBelgeRefKey,
     Map<String, double>? dovizListesi,
     String? hedefDepoAdi,
+    double? otvTutari,
   });
 }
 
@@ -1263,6 +1266,10 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(hedefDepoAdi: hedefDepoAdi);
 
   @override
+  BaseSiparisEditModel otvTutari(double? otvTutari) =>
+      this(otvTutari: otvTutari);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1458,6 +1465,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? olcumBelgeRefKey = const $CopyWithPlaceholder(),
     Object? dovizListesi = const $CopyWithPlaceholder(),
     Object? hedefDepoAdi = const $CopyWithPlaceholder(),
+    Object? otvTutari = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2212,6 +2220,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.hedefDepoAdi
           // ignore: cast_nullable_to_non_nullable
           : hedefDepoAdi as String?,
+      otvTutari: otvTutari == const $CopyWithPlaceholder()
+          ? _value.otvTutari
+          // ignore: cast_nullable_to_non_nullable
+          : otvTutari as double?,
     );
   }
 }
@@ -2490,6 +2502,16 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kabulMu(bool? kabulMu);
 
+  KalemModel otvFiyat(double? otvFiyat);
+
+  KalemModel otvTutar(double? otvTutar);
+
+  KalemModel otvVarmi(bool? otvVarmi);
+
+  KalemModel otvOranmi(bool? otvOranmi);
+
+  KalemModel otvDegeri(double? otvDegeri);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2629,6 +2651,11 @@ abstract class _$KalemModelCWProxy {
     int? kalemSayisi,
     bool? isUsk,
     bool? kabulMu,
+    double? otvFiyat,
+    double? otvTutar,
+    bool? otvVarmi,
+    bool? otvOranmi,
+    double? otvDegeri,
   });
 }
 
@@ -3086,6 +3113,21 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel kabulMu(bool? kabulMu) => this(kabulMu: kabulMu);
 
   @override
+  KalemModel otvFiyat(double? otvFiyat) => this(otvFiyat: otvFiyat);
+
+  @override
+  KalemModel otvTutar(double? otvTutar) => this(otvTutar: otvTutar);
+
+  @override
+  KalemModel otvVarmi(bool? otvVarmi) => this(otvVarmi: otvVarmi);
+
+  @override
+  KalemModel otvOranmi(bool? otvOranmi) => this(otvOranmi: otvOranmi);
+
+  @override
+  KalemModel otvDegeri(double? otvDegeri) => this(otvDegeri: otvDegeri);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3226,6 +3268,11 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? kalemSayisi = const $CopyWithPlaceholder(),
     Object? isUsk = const $CopyWithPlaceholder(),
     Object? kabulMu = const $CopyWithPlaceholder(),
+    Object? otvFiyat = const $CopyWithPlaceholder(),
+    Object? otvTutar = const $CopyWithPlaceholder(),
+    Object? otvVarmi = const $CopyWithPlaceholder(),
+    Object? otvOranmi = const $CopyWithPlaceholder(),
+    Object? otvDegeri = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -3759,6 +3806,26 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kabulMu
           // ignore: cast_nullable_to_non_nullable
           : kabulMu as bool?,
+      otvFiyat: otvFiyat == const $CopyWithPlaceholder()
+          ? _value.otvFiyat
+          // ignore: cast_nullable_to_non_nullable
+          : otvFiyat as double?,
+      otvTutar: otvTutar == const $CopyWithPlaceholder()
+          ? _value.otvTutar
+          // ignore: cast_nullable_to_non_nullable
+          : otvTutar as double?,
+      otvVarmi: otvVarmi == const $CopyWithPlaceholder()
+          ? _value.otvVarmi
+          // ignore: cast_nullable_to_non_nullable
+          : otvVarmi as bool?,
+      otvOranmi: otvOranmi == const $CopyWithPlaceholder()
+          ? _value.otvOranmi
+          // ignore: cast_nullable_to_non_nullable
+          : otvOranmi as bool?,
+      otvDegeri: otvDegeri == const $CopyWithPlaceholder()
+          ? _value.otvDegeri
+          // ignore: cast_nullable_to_non_nullable
+          : otvDegeri as double?,
     );
   }
 }
@@ -4005,13 +4072,14 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       olcumBelgeRefKey: fields[184] as String?,
       dovizListesi: (fields[185] as Map?)?.cast<String, double>(),
       hedefDepoAdi: fields[186] as String?,
+      otvTutari: fields[187] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, BaseSiparisEditModel obj) {
     writer
-      ..writeByte(187)
+      ..writeByte(188)
       ..writeByte(0)
       ..write(obj.duzeltmetarihi)
       ..writeByte(1)
@@ -4385,7 +4453,9 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       ..writeByte(185)
       ..write(obj.dovizListesi)
       ..writeByte(186)
-      ..write(obj.hedefDepoAdi);
+      ..write(obj.hedefDepoAdi)
+      ..writeByte(187)
+      ..write(obj.otvTutari);
   }
 
   @override
@@ -4542,13 +4612,18 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       kalemSayisi: fields[119] as int?,
       isUsk: fields[130] as bool?,
       kabulMu: fields[131] as bool?,
+      otvFiyat: fields[132] as double?,
+      otvTutar: fields[133] as double?,
+      otvVarmi: fields[134] as bool?,
+      otvOranmi: fields[135] as bool?,
+      otvDegeri: fields[136] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(132)
+      ..writeByte(137)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -4812,7 +4887,17 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(130)
       ..write(obj.isUsk)
       ..writeByte(131)
-      ..write(obj.kabulMu);
+      ..write(obj.kabulMu)
+      ..writeByte(132)
+      ..write(obj.otvFiyat)
+      ..writeByte(133)
+      ..write(obj.otvTutar)
+      ..writeByte(134)
+      ..write(obj.otvVarmi)
+      ..writeByte(135)
+      ..write(obj.otvOranmi)
+      ..writeByte(136)
+      ..write(obj.otvDegeri);
   }
 
   @override
@@ -5056,6 +5141,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           ) ??
           {},
       hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
+      otvTutari: (json['OTV_TUTARI'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -5255,6 +5341,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('OLCUM_BELGE_REF_KEY', instance.olcumBelgeRefKey);
   writeNotNull('DOVIZ_LISTESI', instance.dovizListesi);
   writeNotNull('HEDEF_DEPO_ADI', instance.hedefDepoAdi);
+  writeNotNull('OTV_TUTARI', instance.otvTutari);
   return val;
 }
 
@@ -5403,6 +5490,11 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
       isUsk: json['IS_USK'] as bool?,
       kabulMu: json['KABUL_MU'] as bool?,
+      otvFiyat: (json['OTV_FIYAT'] as num?)?.toDouble(),
+      otvTutar: (json['OTV_TUTAR'] as num?)?.toDouble(),
+      otvVarmi: json['OTV_VARMI'] as bool?,
+      otvOranmi: json['OTV_ORANMI'] as bool?,
+      otvDegeri: (json['OTV_DEGERI'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -5549,5 +5641,10 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('DEPO_ONCELIGI', instance.depoOnceligi);
   writeNotNull('IS_USK', instance.isUsk);
   writeNotNull('KABUL_MU', instance.kabulMu);
+  writeNotNull('OTV_FIYAT', instance.otvFiyat);
+  writeNotNull('OTV_TUTAR', instance.otvTutar);
+  writeNotNull('OTV_VARMI', instance.otvVarmi);
+  writeNotNull('OTV_ORANMI', instance.otvOranmi);
+  writeNotNull('OTV_DEGERI', instance.otvDegeri);
   return val;
 }
