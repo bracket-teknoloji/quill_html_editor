@@ -86,7 +86,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
             final String? kod = await CariNetworkManager.getSiradakiKod(kod: "");
             CariSaveRequestModel.instance.kodu = kod;
           }
-          final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar();
+          final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null);
           CariSaveRequestModel.instance.kosulKoduAciklama = kosulList?.firstWhereOrNull((CariKosullarModel element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)?.kosulSabitAdi;
         } else {
           await dialogManager.showAlertDialog(result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu");

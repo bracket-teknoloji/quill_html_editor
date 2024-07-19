@@ -1,5 +1,7 @@
 import "dart:developer";
 
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+
 import "../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../core/base/model/base_network_mixin.dart";
@@ -38,8 +40,8 @@ class CariNetworkManager {
     return responseSehirler.data?.cast<CariSehirlerModel>();
   }
 
-  static Future<List<CariKosullarModel>?> getkosullar() async {
-    final Map<String, String> queryParams = <String, String>{"Tarih": "", "KisitYok": "H", "BelgeTuru": "CARI"};
+  static Future<List<CariKosullarModel>?> getkosullar(DateTime? date) async {
+    final Map<String, String> queryParams = <String, String>{"Tarih": date.toDateString, "KisitYok": "H", "BelgeTuru": "CARI"};
     final GenericResponseModel<NetworkManagerMixin> responseKosullar =
         await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
     return responseKosullar.data?.cast<CariKosullarModel>();

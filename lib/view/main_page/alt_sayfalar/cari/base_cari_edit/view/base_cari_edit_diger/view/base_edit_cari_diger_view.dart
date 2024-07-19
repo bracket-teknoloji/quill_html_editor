@@ -493,7 +493,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.kosulKodu ?? "")),
               onClear: () => viewModel.changeKosul(null),
               onTap: () async {
-                final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model?.kosulKodu);
+                final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model?.kosulKodu, null);
                 if (result is CariKosullarModel) {
                   kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
                   viewModel.model?.kosulKoduAciklama = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";

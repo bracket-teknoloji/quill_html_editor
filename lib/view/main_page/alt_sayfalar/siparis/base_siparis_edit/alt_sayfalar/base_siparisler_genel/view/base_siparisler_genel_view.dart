@@ -350,7 +350,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                         controller: kosulController,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model.kosulKodu);
+                          final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model.kosulKodu, null);
                           if (result != null) {
                             viewModel.setKosulKodu(result.kosulKodu);
                             kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";

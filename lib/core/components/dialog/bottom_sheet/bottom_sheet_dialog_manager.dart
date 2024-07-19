@@ -839,8 +839,8 @@ class BottomSheetDialogManager {
     return iskontoTipi;
   }
 
-  Future<CariKosullarModel?> showKosullarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<CariKosullarModel>? data = await CariNetworkManager.getkosullar();
+  Future<CariKosullarModel?> showKosullarBottomSheetDialog(BuildContext context, dynamic groupValue, DateTime? date) async {
+    final List<CariKosullarModel>? data = await CariNetworkManager.getkosullar(date);
     return await showRadioBottomSheetDialog(
       context,
       title: "Koşullar Seçiniz",
