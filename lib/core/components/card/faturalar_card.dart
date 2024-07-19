@@ -252,6 +252,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   Text("Kur: ${model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
                   Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                   Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                  Text("ÖTV Tutarı: ${model.otvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.otvTutari != null),
                   Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                 ],
               ),
