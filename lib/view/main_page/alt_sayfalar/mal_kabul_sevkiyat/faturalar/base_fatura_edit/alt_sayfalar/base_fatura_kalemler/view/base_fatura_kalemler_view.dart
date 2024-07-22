@@ -334,6 +334,9 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
+                seriCikislardaAcik: result.seriCikistaAktif,
+                seriGirislerdeAcik: result.seriGiristeAktif,
+                seriMiktarKadarSor: result.seriMiktarKadar,
                 //TODO efatura_stok değişmiyor
               );
 
