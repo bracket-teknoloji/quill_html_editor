@@ -1598,8 +1598,7 @@ class KalemModel with NetworkManagerMixin {
 
   bool get kalemStoktanMi => kalemStoktanKodu == stokKodu;
 
-  bool get seriliMi => BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true;
-
+  bool get seriliMi => (BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true) || seriList.ext.isNotNullOrEmpty;
   bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 
   bool get seriEksikMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) < (miktar ?? 0);
@@ -1607,15 +1606,17 @@ class KalemModel with NetworkManagerMixin {
   double get teslimMiktari => (miktar ?? 0) - (kalan ?? 0);
 
   String get faturaKalemAciklama {
+    String value = "";
     if (seriliMi && BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == false) {
-      return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
-    } else if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
-      return "Sipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
-    } else if (teklifNo != null) {
-      return "${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
-    } else {
-      return "";
+      value = "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     }
+    if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
+      value = "$value\nSipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
+    }
+    if (teklifNo != null) {
+      value = "$value\n${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
+    }
+    return value;
     // }
     // return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
   }
@@ -1710,7 +1711,11 @@ class KalemModel with NetworkManagerMixin {
   }
 
   double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
-  double get getDovizBrutTutar => !dovizliMi ? 0 : dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1));
+  double get getDovizBrutTutar {
+    if (!dovizliMi) return 0;
+    dovizliFiyat = brutTutar / (dovizKuru ?? 1);
+    return dovizliFiyat ?? 0;
+  }
 
   double get dovizAraToplamTutari => !dovizliMi ? 0 : araToplamTutari / (dovizKuru ?? 1);
   double get getKdvsizDovizAraToplamTutari => getDovizAraToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizKdvTutari : 0);
