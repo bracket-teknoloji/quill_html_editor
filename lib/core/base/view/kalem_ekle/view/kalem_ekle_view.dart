@@ -271,7 +271,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     ],
                                   ),
                                 ),
-                              ).yetkiVarMi(viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
+                              ).yetkiVarMi( viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
                               Text.rich(
                                 TextSpan(
                                   children: [
