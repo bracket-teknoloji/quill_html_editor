@@ -770,8 +770,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       if (!viewModel.kategoriMi) {
         viewModel.setKategoriMi();
         viewModel.setGrupNo(value);
-        await viewModel.getGrupKodlari();
+        await viewModel.getKategoriGrupKodlari();
       }
     }
   }
+
+  
 }

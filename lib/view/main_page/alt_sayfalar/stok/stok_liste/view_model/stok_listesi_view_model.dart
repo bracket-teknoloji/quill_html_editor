@@ -79,6 +79,9 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   ObservableList<BaseGrupKoduModel> grupKodlari = <BaseGrupKoduModel>[].asObservable();
 
   @observable
+  ObservableList<BaseGrupKoduModel>? kategoriGrupKodlari;
+
+  @observable
   @override
   ObservableList<StokListesiModel>? observableList;
 
@@ -182,6 +185,9 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
 
+  @action
+  void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) => kategoriGrupKodlari = value?.asObservable();
+
   @override
   @action
   void setObservableList(List<StokListesiModel>? value) => observableList = value?.asObservable();
@@ -235,6 +241,21 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @action
   Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: kategoriMi));
+
+  @action
+  Future<void> getKategoriGrupKodlari() async {
+    final result = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: true);
+    if (result.isNotEmpty) {
+      setKategoriGrupKodlari(result);
+    }
+  }
+
+  List<BaseGrupKoduModel>? grupKodlariWithGrupKodu(String? value) {
+    if (value == null) {
+      return null;
+    }
+    return grupKodlari.where((element) => element.grupKodu == value).toList();
+  }
 
   @override
   @action

@@ -219,6 +219,22 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
+  late final _$kategoriGrupKodlariAtom = Atom(
+      name: '_StokListesiViewModelBase.kategoriGrupKodlari', context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get kategoriGrupKodlari {
+    _$kategoriGrupKodlariAtom.reportRead();
+    return super.kategoriGrupKodlari;
+  }
+
+  @override
+  set kategoriGrupKodlari(ObservableList<BaseGrupKoduModel>? value) {
+    _$kategoriGrupKodlariAtom.reportWrite(value, super.kategoriGrupKodlari, () {
+      super.kategoriGrupKodlari = value;
+    });
+  }
+
   late final _$observableListAtom =
       Atom(name: '_StokListesiViewModelBase.observableList', context: context);
 
@@ -291,6 +307,16 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   @override
   Future<void> getGrupKodlari() {
     return _$getGrupKodlariAsyncAction.run(() => super.getGrupKodlari());
+  }
+
+  late final _$getKategoriGrupKodlariAsyncAction = AsyncAction(
+      '_StokListesiViewModelBase.getKategoriGrupKodlari',
+      context: context);
+
+  @override
+  Future<void> getKategoriGrupKodlari() {
+    return _$getKategoriGrupKodlariAsyncAction
+        .run(() => super.getKategoriGrupKodlari());
   }
 
   late final _$getDataAsyncAction =
@@ -492,6 +518,17 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
+  void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.setKategoriGrupKodlari');
+    try {
+      return super.setKategoriGrupKodlari(value);
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setObservableList(List<StokListesiModel>? value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setObservableList');
@@ -602,6 +639,7 @@ searchText: ${searchText},
 bottomSheetModel: ${bottomSheetModel},
 bottomSheetModelTemp: ${bottomSheetModelTemp},
 grupKodlari: ${grupKodlari},
+kategoriGrupKodlari: ${kategoriGrupKodlari},
 observableList: ${observableList},
 isScrollDown: ${isScrollDown},
 siralama: ${siralama},
