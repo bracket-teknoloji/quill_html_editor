@@ -22,7 +22,6 @@ import "package:picker/core/components/dialog/bottom_sheet/bottom_sheet_dialog_m
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/app_info/app_info.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
@@ -347,15 +346,14 @@ class NetworkManager {
   }
 
   Future<List<BaseGrupKoduModel>> getGrupKod({required GrupKoduEnum name, int? grupNo, bool? kullanimda, bool? kategoriModuMu}) async {
+    final queryParams = {"Modul": name.module, "GrupNo": grupNo, "Kullanimda": kullanimda, "KategoriModu": kategoriModuMu == true ? "E" : null};
+    log(queryParams.toString());
     final responseKod = await dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       bodyModel: BaseGrupKoduModel(),
-      addCKey: true,
-      headers: {"Modul": name.module, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
-      addQuery: true,
-      addSirketBilgileri: true,
+      // headers: {"Modul": name.module, "GrupNo": grupNo.toStringIfNotNull ?? "", "Kullanimda": (kullanimda ?? true) ? "E" : "H"},
       showLoading: true,
-      queryParameters: {"Modul": name.module, "GrupNo": grupNo, "Kullanimda" : kullanimda, "KategoriModu" : kategoriModuMu == true ? "E" : null},
+      queryParameters: queryParams,
     );
     if (responseKod.isSuccess) return responseKod.dataList;
     return [];
@@ -662,6 +660,4 @@ class NetworkManager {
     // }
     // return result;
   }
-
-
 }
