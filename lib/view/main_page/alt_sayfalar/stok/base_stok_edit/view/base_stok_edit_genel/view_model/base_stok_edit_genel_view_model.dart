@@ -70,8 +70,8 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
         "stokKodu": stokListesiModel.stokKodu ?? "",
       },
     );
-    if (result.data != null) {
-      stokDetayModel = result.data.first as StokDetayModel;
+    if (result.isSuccess) {
+      stokDetayModel = result.dataList.first;
     }
   }
 }

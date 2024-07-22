@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import "dart:convert";
-import "dart:developer";
 
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -31,12 +30,11 @@ import "../../../../../../../auth/model/isletme_model.dart";
 import "../../../../../../model/main_page_model.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
-import "../../../model/stok_detay_model.dart";
 import "../../../model/stok_muhasebe_kodu_model.dart";
 import "../../../model/stok_olcu_birimleri_model.dart";
 import "../view_model/base_stok_edit_genel_view_model.dart";
 
-class BaseStokEditGenelView extends StatefulWidget {
+final class BaseStokEditGenelView extends StatefulWidget {
   final BaseEditEnum? model;
   const BaseStokEditGenelView({super.key, this.model});
 
@@ -44,11 +42,11 @@ class BaseStokEditGenelView extends StatefulWidget {
   State<BaseStokEditGenelView> createState() => _BaseStokEditGenelViewState();
 }
 
-class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
+final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   // StokListesiModel? get widgetModel => StokListesiModel.instance
   Map veriTabani = CacheManager.getVeriTabani;
   List<IsletmeModel> subeList = [];
-  BaseStokEditGenelViewModel viewModel = BaseStokEditGenelViewModel();
+  final BaseStokEditGenelViewModel viewModel = BaseStokEditGenelViewModel();
   late final TextEditingController stokKoduController;
   late final TextEditingController stokAdiController;
   late final TextEditingController depoController;
@@ -71,7 +69,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
   late final TextEditingController kod3Controller;
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
-  StokDetayModel? model;
+  // StokDetayModel? model;
   String? siradakiKod;
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
   bool get enable => widget.model != BaseEditEnum.goruntule;
@@ -80,7 +78,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
 
   @override
   void initState() {
-    final firstStokList = model?.stokList?.firstOrNull;
+    final firstStokList = viewModel.stokDetayModel.stokList?.firstOrNull;
     stokKoduController = TextEditingController(text: stokModel.stokKodu);
     stokAdiController = TextEditingController(text: stokModel.stokAdi);
     depoController = TextEditingController(
@@ -682,23 +680,6 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
     }
   }
 
-  Future<StokDetayModel> getData() async {
-    final GenericResponseModel result = await networkManager.dioGet<StokDetayModel>(
-      path: ApiUrls.getStokDetay,
-      bodyModel: StokDetayModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
-      queryParameters: {
-        "stokKodu": StokListesiModel.instance.stokKodu ?? "",
-      },
-    );
-    // image = await networkManager.getImage(StokListesiModel.instance.resimUrlKucuk ?? "");
-    log((result.data.first as StokDetayModel).toJson().toString());
-    model = result.data.first as StokDetayModel;
-    StokDetayModel.setInstance(model!);
-    return result.data.first as StokDetayModel;
-  }
-
   Future<String?> getSiradakiKod({String? kod = "", bool? isOnBuild = false}) async {
     // if (isOnBuild == true) {
     //   dialogManager.showLoadingDialog("Sıradaki Kod Getiriliyor...");
@@ -765,7 +746,7 @@ class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView> {
       bodyModel: StokOlcuBirimleriModel(),
       addCKey: true,
       addSirketBilgileri: true,
-      data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": model?.stokKodu ?? stokKoduController.text, "Seri": seriValue},
+      data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": viewModel.stokDetayModel.stokKodu ?? stokKoduController.text, "Seri": seriValue},
     );
     return result.paramData!["URETILEN_BARKOD"];
   }
