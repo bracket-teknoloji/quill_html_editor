@@ -28,10 +28,8 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
     scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.scroll ?? false) {
-        await scrollController.animateTo(30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
-        if (!scrollController.hasClients) {
-          await scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
-        }
+        await scrollController.animateTo(scrollController.position.extentTotal < 30 ? scrollController.position.extentTotal : 30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+        await scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
       }
     });
     super.initState();
