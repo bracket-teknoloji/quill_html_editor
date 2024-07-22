@@ -51,7 +51,7 @@ class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
           child: ListView.builder(
             controller: scrollController,
             scrollDirection: Axis.horizontal,
-            itemExtent: widget.childrenTitleList.length < 3 ? width / widget.childrenTitleList.length : null,
+            // itemExtent: scrollController.hasClients && scrollController.position.extentTotal < width ? scrollController.position.extentTotal / widget.childrenTitleList.length : null,
             itemCount: widget.childrenTitleList.length,
             itemBuilder: (context, listTileIndex) => RadioMenuButton(
               style: ButtonStyle(

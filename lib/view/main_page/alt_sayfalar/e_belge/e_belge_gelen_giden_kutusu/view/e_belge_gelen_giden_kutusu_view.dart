@@ -227,7 +227,6 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 text: "E-Belge Türü",
                 child: Observer(
                   builder: (_) => SlideControllerWidget(
-                    scroll: false,
                     childrenTitleList: viewModel.eBelgeTuru.map((e) => e.name).toList(),
                     childrenValueList: viewModel.eBelgeTuru.map((e) => e.value).toList(),
                     filterOnChanged: (index) {
