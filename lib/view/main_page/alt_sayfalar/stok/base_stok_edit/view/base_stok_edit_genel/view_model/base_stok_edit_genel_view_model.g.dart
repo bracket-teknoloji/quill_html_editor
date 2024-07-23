@@ -126,6 +126,17 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   @override
+  void setSube(IsletmeModel? value) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setSube');
+    try {
+      return super.setSube(value);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setMuhasebeKodu(StokMuhasebeKoduModel? model) {
     final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
         .startAction(name: '_BaseStokEditGenelViewModelBase.setMuhasebeKodu');

@@ -268,21 +268,20 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
               ),
               CustomTextField(
                 enabled: enable,
+                readOnly: true,
                 labelText: "Muhasebe Detay Kodu",
                 controller: muhasebeDetayKoduController,
                 valueWidget: Observer(
                   builder: (_) => Text(stokModel.muhdetayKodu.toStringIfNotNull ?? ""),
                 ),
-                suffix: IconButton(
-                  onPressed: () async {
-                    final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: stokModel.muhdetayKodu, stokMu: true);
-                    if (result != null) {
-                      muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
-                      viewModel.setMuhasebeKodu(result);
-                    }
-                  },
-                  icon: const Icon(Icons.more_horiz_outlined),
-                ),
+                suffixMore: true,
+                onTap: () async {
+                  final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: stokModel.muhdetayKodu, stokMu: true);
+                  if (result != null) {
+                    muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
+                    viewModel.setMuhasebeKodu(result);
+                  }
+                },
               ),
               CustomTextField(
                 labelText: "Ölçü Birimi 1",
@@ -372,6 +371,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       labelText: "Barkod 1",
                       maxLength: 35,
                       controller: barkod1Controller,
+                      onChanged: (value) => stokModel.barkod1 = value,
                       suffix: Wrap(
                         children: [
                           IconButton(
@@ -389,6 +389,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       labelText: "Barkod 2",
                       controller: barkod2Controller,
                       maxLength: 35,
+                      onChanged: (value) => stokModel.barkod2 = value,
                       suffix: Wrap(
                         children: [
                           IconButton(
@@ -406,6 +407,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       labelText: "Barkod 3",
                       controller: barkod3Controller,
                       maxLength: 35,
+                      onChanged: (value) => stokModel.barkod3 = value,
                       suffix: Wrap(
                         children: [
                           IconButton(
@@ -434,14 +436,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                     builder: (_) => Text(stokModel.subeKodu.toStringIfNotNull ?? ""),
                   ),
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
+                      groupValue: stokModel.subeKodu,
                       title: "Şube",
-                      children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi} ${e.subeKodu}", onTap: () => Get.back(result: e))).toList(),
+                      children:
+                          subeList.map((e) => BottomSheetModel(title: "${e.subeAdi}", description: e.subeKodu.toStringIfNotNull, onTap: () => Get.back(result: e), groupValue: e.subeKodu)).toList(),
                     );
                     if (result != null) {
                       subeController.text = "${result.subeAdi} ${result.subeKodu}";
-                      stokModel.subeKodu = result.subeKodu;
+                      viewModel.setSube(result);
                     }
                   },
                   suffixMore: true,
@@ -470,13 +474,25 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Grup Kodu",
-                                children: viewModel.grupKodlariMap?[0]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.grupKodu,
+                                children: viewModel.grupKodlariMap?[0]
+                                        ?.map(
+                                          (e) => BottomSheetModel(
+                                            title: "${e.grupAdi}",
+                                            description: e.grupKodu,
+                                            groupValue: e.grupKodu,
+                                            onTap: () => Get.back(result: e),
+                                          ),
+                                        )
+                                        .toList() ??
+                                    [],
                               );
-                              grupKoduController.text = result?.grupAdi ?? "";
-                              stokModel.grupKodu = result?.grupKodu;
+                              if (result == null) return;
+                              grupKoduController.text = result.grupAdi ?? "";
+                              stokModel.grupKodu = result.grupKodu;
                             },
                             labelText: "Grup Kodu",
                           ),
@@ -492,13 +508,25 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(1, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Kod 1",
-                                children: viewModel.grupKodlariMap?[1]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.kod1,
+                                children: viewModel.grupKodlariMap?[1]
+                                        ?.map(
+                                          (e) => BottomSheetModel(
+                                            title: "${e.grupAdi}",
+                                            description: e.grupKodu,
+                                            groupValue: e.grupKodu,
+                                            onTap: () => Get.back(result: e),
+                                          ),
+                                        )
+                                        .toList() ??
+                                    [],
                               );
-                              kod1Controller.text = result?.grupKodu ?? "";
-                              stokModel.kod1 = result?.grupAdi;
+                              if (result == null) return;
+                              kod1Controller.text = result.grupKodu ?? "";
+                              stokModel.kod1 = result.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod1",
@@ -519,13 +547,26 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(2, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Kod 2",
-                                children: viewModel.grupKodlariMap?[2]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.kod2,
+                                children: viewModel.grupKodlariMap?[2]
+                                        ?.map(
+                                          (e) => BottomSheetModel(
+                                            title: "${e.grupAdi}",
+                                            description: e.grupKodu,
+                                            groupValue: e.grupKodu,
+                                            onTap: () => Get.back(result: e),
+                                          ),
+                                        )
+                                        .toList() ??
+                                    [],
                               );
-                              kod2Controller.text = result?.grupKodu ?? "";
-                              stokModel.kod2 = result?.grupAdi;
+
+                              if (result == null) return;
+                              kod2Controller.text = result.grupKodu ?? "";
+                              stokModel.kod2 = result.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod2",
@@ -542,13 +583,24 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(3, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Kod 3",
-                                children: viewModel.grupKodlariMap?[3]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.kod3,
+                                children: viewModel.grupKodlariMap?[3]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        onTap: () => Get.back(result: e),
+                                      ),
+                                    )
+                                    .toList(),
                               );
-                              kod3Controller.text = result?.grupKodu ?? "";
-                              stokModel.kod3 = result?.grupAdi;
+                              if (result == null) return;
+                              kod3Controller.text = result.grupKodu ?? "";
+                              stokModel.kod3 = result.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod3",
@@ -568,13 +620,24 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(4, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Kod 4",
-                                children: viewModel.grupKodlariMap?[4]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.kod4,
+                                children: viewModel.grupKodlariMap?[4]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        onTap: () => Get.back(result: e),
+                                      ),
+                                    )
+                                    .toList(),
                               );
-                              kod4Controller.text = result?.grupKodu ?? "";
-                              stokModel.kod4 = result?.grupAdi;
+                              if (result == null) return;
+                              kod4Controller.text = result.grupKodu ?? "";
+                              stokModel.kod4 = result.grupAdi;
                             },
                             suffixMore: true,
                             controller: kod4Controller,
@@ -592,13 +655,24 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                 viewModel.changeGrupKoduListesi(5, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5));
                                 dialogManager.hideAlertDialog;
                               }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                                 context,
                                 title: "Kod 5",
-                                children: viewModel.grupKodlariMap?[5]?.map((e) => BottomSheetModel(title: "${e.grupAdi} ${e.grupKodu}", onTap: () => Get.back(result: e))).toList() ?? [],
+                                groupValue: stokModel.kod5,
+                                children: viewModel.grupKodlariMap?[5]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        onTap: () => Get.back(result: e),
+                                      ),
+                                    )
+                                    .toList(),
                               );
-                              kod5Controller.text = result?.grupKodu ?? "";
-                              stokModel.kod5 = result?.grupAdi;
+                              if (result == null) return;
+                              kod5Controller.text = result.grupKodu ?? "";
+                              stokModel.kod5 = result.grupAdi;
                             },
                             suffixMore: true,
                             labelText: "Kod5",
@@ -645,10 +719,20 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     olcuBirimleriList ??= await getOlcuBirimleri();
     dialogManager.hideAlertDialog;
     filteredList = olcuBirimleriList?.where((element) => element.birimNo == controller).toList();
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      groupValue: stokModel.olcuBirimiSelector(controller),
       context,
       title: "Ölçü Birimi $controller",
-      children: filteredList?.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", description: e.birimNo.toStringIfNotNull, onTap: () => Get.back(result: e.olcuBirimi))).toList(),
+      children: filteredList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.olcuBirimi ?? "",
+              groupValue: e.olcuBirimi,
+              description: e.birimNo.toStringIfNotNull,
+              onTap: () => Get.back(result: e.olcuBirimi),
+            ),
+          )
+          .toList(),
     );
     if (result != null) {
       if (controller == 1) {
