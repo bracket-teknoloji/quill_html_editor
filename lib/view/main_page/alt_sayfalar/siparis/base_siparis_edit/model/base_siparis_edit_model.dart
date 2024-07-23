@@ -1596,7 +1596,7 @@ class KalemModel with NetworkManagerMixin {
 
   bool get dovizliMi => (dovizKodu != null && dovizKodu != 0) || (dovizTipi != null && dovizTipi != 0);
 
-  bool get kalemStoktanMi => kalemStoktanKodu == stokKodu;
+  bool get kalemEBelgedenMi => stokKodu == "EFATURA_STOK";
 
   bool get seriliMi => (BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true) || seriList.ext.isNotNullOrEmpty;
   bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;

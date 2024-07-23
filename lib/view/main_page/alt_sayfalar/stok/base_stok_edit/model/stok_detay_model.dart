@@ -12,7 +12,7 @@ part "stok_detay_model.g.dart";
 class StokDetayModel with NetworkManagerMixin {
   //singleton
   static StokDetayModel? _instance;
-  static StokDetayModel get instance => _instance ??= StokDetayModel();
+  static StokDetayModel get instance => _instance ??= StokDetayModel()..stokList = [StokList()];
 
   //setter for singleton
   static void setInstance(StokDetayModel value) => _instance = value;

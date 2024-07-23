@@ -210,17 +210,22 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     ..stokKodu = model.stokKodu
     ..stokAdi = model.stokAdi
     ..paketMi = model.paketMi
-    ..alisDovizAdi = model.dovizAdi
     ..alisKdv = model.kdvOrani
     ..satisKdv = model.kdvOrani
-    ..alisDovTip = model.dovizKodu
-    ..dovAlisFiat = model.dovizliFiyat
+    ..alisDovTip = model.dovizKodu ?? 0
+    ..satDovTip = model.dovizKodu ?? 0
+    ..alisDovizAdi = model.dovizAdi
     ..satisDovizAdi = model.dovizAdi
-    ..satDovTip = model.dovizKodu
+    ..alisFiat1 = model.brutFiyat
+    ..satisFiat1 = model.brutFiyat
+    ..seriCikislardaAcik = model.seriCikislardaAcik
+    ..seriGirislerdeAcik = model.seriGirislerdeAcik
+    ..seriMiktarKadarSor = model.seriMiktarKadarSor
+    ..dovAlisFiat = model.dovizliFiyat
     ..dovSatisFiat = model.dovizliFiyat
-    ..depoKodu = model.depoKodu
-    ..alisKdv = model.stokAlisKdv
-    ..satisKdv = model.stokSatisKdv;
+    ..satisDovizAdi = model.dovizAdi
+    ..alisDovizAdi = model.dovizAdi
+    ..depoKodu = model.depoKodu;
 
   static StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
