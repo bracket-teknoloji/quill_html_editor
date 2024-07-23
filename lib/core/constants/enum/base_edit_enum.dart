@@ -5,6 +5,7 @@ extension ToString on BaseEditEnum? {
 
   bool get revizeMi => this == BaseEditEnum.revize;
   bool get ekleMi => this == BaseEditEnum.ekle;
+  bool get taslakMi => this == BaseEditEnum.taslak;
   bool get goruntuleMi => this == BaseEditEnum.goruntule || this == BaseEditEnum.bitir;
   bool get duzenleMi => this == BaseEditEnum.duzenle;
   bool get kopyalaMi => this == BaseEditEnum.kopyala || this == BaseEditEnum.siparistenKopyala;
