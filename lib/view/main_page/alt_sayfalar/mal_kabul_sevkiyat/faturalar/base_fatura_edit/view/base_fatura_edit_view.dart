@@ -75,7 +75,8 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         }
       }
       if (!tabController.indexIsChanging &&
-          tabController.previousIndex == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1) &&
+          // tabController.previousIndex == (widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 2 : 1) &&
+          tabController.length - 1 == tabController.index &&
           yetkiController.seriUygulamasiAcikMi &&
           BaseSiparisEditModel.instance.kalemList?.any((element) => element.seriEksikMi) == true) {
         dialogManager.showErrorSnackBar("Kalemlerde seri eksik.");
@@ -598,8 +599,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         //     .toList(),
         kayityapankul: null,
         plasiyerAciklama: null,
-        efatOzelkod: null,
-        efaturaTipi: null,
+        //TODO kontrol et
+        // efatOzelkod: null,
+        // efaturaTipi: null,
+
         // vadeTarihi: null,
         // projeAciklama: null,
         kalemList: null,
