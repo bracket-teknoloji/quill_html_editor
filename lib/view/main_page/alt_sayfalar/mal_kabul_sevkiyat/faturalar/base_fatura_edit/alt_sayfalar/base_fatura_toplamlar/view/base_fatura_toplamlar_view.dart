@@ -503,7 +503,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
       text: viewModel.model.vadeGunu.toStringIfNotNull ?? viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toStringIfNotNull,
     );
     eFaturaSenaryoController = TextEditingController(text: model.eFaturaTipAdi);
-    istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull);
+    istisnaKoduController = TextEditingController(text: model.efatOzelkod.toStringIfNotNull ?? viewModel.model.efatOzelkod.toStringIfNotNull);
     if (widget.model.baseEditEnum != BaseEditEnum.ekle && viewModel.model.efatOzelkod == null && widget.model.editTipiEnum?.irsaliyeMi != true) {
       viewModel.setEfatOzelkod(model.kalemList?.firstOrNull?.efatOzelkod ?? 0);
       istisnaKoduController.text = model.kalemList?.firstOrNull?.efatOzelkodAdi ?? "";
