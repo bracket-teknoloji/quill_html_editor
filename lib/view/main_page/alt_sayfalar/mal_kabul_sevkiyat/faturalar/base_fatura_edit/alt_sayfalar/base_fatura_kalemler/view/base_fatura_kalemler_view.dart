@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -170,7 +171,16 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           children: <Widget>[
             const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel?.dovizliMi ?? false),
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel?.kalemList.ext.isNotNullOrEmpty ?? false),
-            Text(kalemModel?.stokKodu ?? "", style: TextStyle(color: kalemModel?.kalemStoktanMi ?? false ? UIHelper.primaryColor : null)),
+            Text(
+              kalemModel?.stokKodu ?? "",
+              style: TextStyle(
+                color: widget.model.baseEditEnum.taslakMi
+                    ? kalemModel?.kalemEBelgedenMi ?? false
+                        ? UIHelper.primaryColor
+                        : ColorPalette.mantis
+                    : null,
+              ),
+            ),
             Text("${kalemModel?.depoKodu ?? ""} - ${kalemModel?.depoTanimi ?? ""}").yetkiVarMi(kalemModel?.depoKodu != null && kalemModel?.depoTanimi != null),
             Text(kalemModel?.faturaKalemAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel?.faturaKalemAciklama != ""),
             LayoutBuilder(
@@ -334,6 +344,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
                 stokAdi: result.adi,
                 stokKodu: result.kodu,
+                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? result.satisKdvOrani : result.alisKdvOrani,
                 seriCikislardaAcik: result.seriCikistaAktif,
                 seriGirislerdeAcik: result.seriGiristeAktif,
                 seriMiktarKadarSor: result.seriMiktarKadar,
@@ -343,7 +354,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               viewModel.updateKalemList();
             }
           },
-        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && (model?.kalemStoktanMi ?? false)),
+        ).yetkiKontrol(widget.model.baseEditEnum == BaseEditEnum.taslak && (model?.kalemEBelgedenMi ?? false)),
         BottomSheetModel(
           title: "Stok Değiştir",
           iconWidget: Icons.change_circle_outlined,
@@ -357,6 +368,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                 stokAlisKdv: stokModel.alisKdv,
                 stokSatisKdv: stokModel.satisKdv,
                 paketMi: stokModel.paketMi,
+                kdvOrani: BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? stokModel.satisKdv : stokModel.alisKdv,
                 seriGirislerdeAcik: stokModel.seriGirislerdeAcik,
                 seriCikislardaAcik: stokModel.seriCikislardaAcik,
                 seriMiktarKadarSor: stokModel.seriMiktarKadarSor,
@@ -378,7 +390,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             }
             return dialogManager.showStokGridViewDialog(stokList);
           },
-        ).yetkiKontrol(!(model?.kalemStoktanMi ?? false)),
+        ).yetkiKontrol(!(model?.kalemEBelgedenMi ?? false)),
       ].nullCheckWithGeneric,
     );
   }
