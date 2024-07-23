@@ -38,6 +38,7 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
   @override
   void initState() {
     viewModel.setStokListesiModel(widget.model?.model);
+    viewModel.stokListesiModel?.subeKodu ??= -1;
 
     _tabController = TabController(length: tabLength, vsync: this);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
