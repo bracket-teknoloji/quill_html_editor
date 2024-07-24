@@ -606,11 +606,11 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void setKategoriMi() {
+  void setKategoriMi(bool value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setKategoriMi');
     try {
-      return super.setKategoriMi();
+      return super.setKategoriMi(value);
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }

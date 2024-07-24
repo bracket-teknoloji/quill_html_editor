@@ -215,7 +215,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   void changeBakiyeDurumuTemp(int? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(bakiyeDurumu: selectedList[value ?? 0].substring(0, 1));
 
   @action
-  void setKategoriMi() => kategoriMi = true;
+  void setKategoriMi(bool value) => kategoriMi = value;
 
   @action
   void setGrupNo(int value) => grupNo = value;
