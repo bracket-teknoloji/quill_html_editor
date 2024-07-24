@@ -5,6 +5,7 @@ import "dart:ui";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/components/image/image_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
@@ -554,53 +555,67 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Column body() => Column(
         children: [
-          CustomLayoutBuilder(
-            splitCount: 3,
-            children: [
-              CustomTextField(
-                labelText: "Grup Kodu",
-                readOnly: true,
-                suffixMore: true,
-                controller: grupKoduController,
-                onTap: () => getGrupKodlariBottomSheet(0),
-              ),
-              CustomTextField(
-                labelText: "Kod 1",
-                readOnly: true,
-                suffixMore: true,
-                controller: kod1Controller,
-                onTap: () => getGrupKodlariBottomSheet(1),
-              ),
-              CustomTextField(
-                labelText: "Kod 2",
-                readOnly: true,
-                suffixMore: true,
-                controller: kod2Controller,
-                onTap: () => getGrupKodlariBottomSheet(2),
-              ),
-              CustomTextField(
-                labelText: "Kod 3",
-                readOnly: true,
-                suffixMore: true,
-                controller: kod3Controller,
-                onTap: () => getGrupKodlariBottomSheet(3),
-              ),
-              CustomTextField(
-                labelText: "Kod 4",
-                readOnly: true,
-                suffixMore: true,
-                controller: kod4Controller,
-                onTap: () => getGrupKodlariBottomSheet(4),
-              ),
-              CustomTextField(
-                labelText: "Kod 5",
-                readOnly: true,
-                suffixMore: true,
-                controller: kod5Controller,
-                onTap: () => getGrupKodlariBottomSheet(6),
-              ),
-            ],
-          ).yetkiVarMi(AccountModel.instance.isDebug),
+          Observer(
+            builder: (_) => CustomLayoutBuilder(
+              splitCount: 3,
+              children: [
+                CustomTextField(
+                  labelText: "Grup Kodu",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: grupKoduController,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull, 0))),
+                  onClear: () async => await grupKoduOnClear(0),
+                  onTap: () => getGrupKodlariBottomSheet(0),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty)),
+                CustomTextField(
+                  labelText: "Kod 1",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod1Controller,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod1?.firstOrNull, 1))),
+                  onClear: () async => await grupKoduOnClear(1),
+                  onTap: () => getGrupKodlariBottomSheet(1),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty)),
+                CustomTextField(
+                  labelText: "Kod 2",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod2Controller,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod2?.firstOrNull, 2))),
+                  onClear: () async => await grupKoduOnClear(2),
+                  onTap: () => getGrupKodlariBottomSheet(2),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty)),
+                CustomTextField(
+                  labelText: "Kod 3",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod3Controller,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod3?.firstOrNull, 3))),
+                  onClear: () async => await grupKoduOnClear(3),
+                  onTap: () => getGrupKodlariBottomSheet(3),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty)),
+                CustomTextField(
+                  labelText: "Kod 4",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod4Controller,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod4?.firstOrNull, 4))),
+                  onClear: () async => await grupKoduOnClear(4),
+                  onTap: () => getGrupKodlariBottomSheet(4),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty)),
+                CustomTextField(
+                  labelText: "Kod 5",
+                  readOnly: true,
+                  suffixMore: true,
+                  controller: kod5Controller,
+                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod5?.firstOrNull, 5))),
+                  onClear: () async => await grupKoduOnClear(5),
+                  onTap: () => getGrupKodlariBottomSheet(5),
+                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
+              ].whereType<CustomTextField>().toList(),
+            ).yetkiVarMi(AccountModel.instance.isDebug),
+          ),
           Expanded(
             child: Observer(
               builder: (_) => RefreshableListView.pageable(
@@ -757,23 +772,171 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> getGrupKodlariBottomSheet(int value) async {
+    List<BaseGrupKoduModel>? selectedList = [];
+    switch (value) {
+      case 0:
+        selectedList = viewModel.bottomSheetModel.arrGrupKodu;
+      case 1:
+        selectedList = viewModel.bottomSheetModel.arrKod1;
+      case 2:
+        selectedList = viewModel.bottomSheetModel.arrKod2;
+      case 3:
+        selectedList = viewModel.bottomSheetModel.arrKod3;
+      case 4:
+        selectedList = viewModel.bottomSheetModel.arrKod4;
+      case 5:
+        selectedList = viewModel.bottomSheetModel.arrKod5;
+    }
+    final iterable =
+        (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty && viewModel.grupNo != value ? grupKoduWithIndex(value) : viewModel.grupKodlari.where((element) => element.grupNo == value))?.toList();
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kod Seçiniz",
-      groupValue: viewModel,
-      children: List.generate(viewModel.grupKodlari.where((element) => element.grupNo == value).length, (index) {
-        final item = viewModel.grupKodlari.where((element) => element.grupNo == value).toList()[index];
-        return BottomSheetModel(title: item.grupAdi ?? "", value: item);
+      groupValue: grupKoduWithItem(selectedList?.firstOrNull, value),
+      children: List.generate(iterable?.length ?? 0, (index) {
+        final item = iterable?[index];
+        return BottomSheetModel(title: grupAdiWithItem(item, value), value: item, groupValue: grupKoduWithItem(item, value));
       }),
     );
-    if (result != null) {
-      if (!viewModel.kategoriMi) {
-        viewModel.setKategoriMi();
-        viewModel.setGrupNo(value);
-        await viewModel.getKategoriGrupKodlari();
+    if (result is! BaseGrupKoduModel) return;
+    if (!viewModel.kategoriMi) {
+      viewModel.setKategoriMi(true);
+      viewModel.setGrupNo(value);
+      await viewModel.getKategoriGrupKodlari();
+    }
+    if (viewModel.kategoriMi) {
+      final List<BaseGrupKoduModel> grupKoduList = [BaseGrupKoduModel.forFirstSelected(result)];
+      switch (value) {
+        case 0:
+          viewModel.changeArrGrupKodu(grupKoduList);
+          grupKoduController.text = grupAdiWithItem(result, value);
+        case 1:
+          viewModel.changeArrKod1(grupKoduList);
+          kod1Controller.text = grupAdiWithItem(result, value);
+        case 2:
+          viewModel.changeArrKod2(grupKoduList);
+          kod2Controller.text = grupAdiWithItem(result, value);
+        case 3:
+          viewModel.changeArrKod3(grupKoduList);
+          kod3Controller.text = grupAdiWithItem(result, value);
+        case 4:
+          viewModel.changeArrKod4(grupKoduList);
+          kod4Controller.text = grupAdiWithItem(result, value);
+        case 5:
+          viewModel.changeArrKod5(grupKoduList);
+          kod5Controller.text = grupAdiWithItem(result, value);
       }
+      await viewModel.resetList();
     }
   }
 
-  
+  String grupAdiWithItem(BaseGrupKoduModel? item, int index) {
+    if (item == null) return "";
+    switch (index) {
+      case 0:
+        return item.grupAdi ?? "";
+      case 1:
+        return item.kod1Adi ?? item.grupAdi ?? "";
+      case 2:
+        return item.kod2Adi ?? item.grupAdi ?? "";
+      case 3:
+        return item.kod3Adi ?? item.grupAdi ?? "";
+      case 4:
+        return item.kod4Adi ?? item.grupAdi ?? "";
+      case 5:
+        return item.kod5Adi ?? item.grupAdi ?? "";
+      default:
+        return "";
+    }
+  }
+
+  String grupKoduWithItem(BaseGrupKoduModel? item, int index) {
+    if (item == null) return "";
+    switch (index) {
+      case 0:
+        return item.grupKodu ?? "";
+      case 1:
+        return item.kod1 ?? item.grupKodu ?? "";
+      case 2:
+        return item.kod2 ?? item.grupKodu ?? "";
+      case 3:
+        return item.kod3 ?? item.grupKodu ?? "";
+      case 4:
+        return item.kod4 ?? item.grupKodu ?? "";
+      case 5:
+        return item.kod5 ?? item.grupKodu ?? "";
+      default:
+        return "";
+    }
+  }
+
+  List<BaseGrupKoduModel>? grupKoduWithIndex(int index) {
+    final Iterable<BaseGrupKoduModel>? filteredList = viewModel.kategoriGrupKodlari?.where(
+      (e) =>
+          (viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu == null ? true : e.grupKodu == viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) &&
+          (viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1 == null ? true : e.kod1 == viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1) &&
+          (viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2 == null ? true : e.kod2 == viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2) &&
+          (viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3 == null ? true : e.kod3 == viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3) &&
+          (viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4 == null ? true : e.kod4 == viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4) &&
+          (viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5 == null ? true : e.kod5 == viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5),
+    );
+    // if (filteredList?.every((element) => element.grupKodu == viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) ?? false) viewModel.changeArrGrupKodu(null);
+    // if (filteredList?.every((element) => element.kod1 == viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1) ?? false) viewModel.changeArrKod1(null);
+    // if (filteredList?.every((element) => element.kod2 == viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2) ?? false) viewModel.changeArrKod2(null);
+    // if (filteredList?.every((element) => element.kod3 == viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3) ?? false) viewModel.changeArrKod3(null);
+    // if (filteredList?.every((element) => element.kod4 == viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4) ?? false) viewModel.changeArrKod4(null);
+    // if (filteredList?.every((element) => element.kod5 == viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5) ?? false) viewModel.changeArrKod5(null);
+
+    // if (filteredList?.every((element) => element.grupKodu == null) ?? false) viewModel.changeArrGrupKodu(null);
+    // if (filteredList?.every((element) => element.kod1 == null) ?? false) viewModel.changeArrKod1(null);
+    // if (filteredList?.every((element) => element.kod2 == null) ?? false) viewModel.changeArrKod2(null);
+    // if (filteredList?.every((element) => element.kod3 == null) ?? false) viewModel.changeArrKod3(null);
+    // if (filteredList?.every((element) => element.kod4 == null) ?? false) viewModel.changeArrKod4(null);
+    // if (filteredList?.every((element) => element.kod5 == null) ?? false) viewModel.changeArrKod5(null);
+    switch (index) {
+      case 0:
+        return filteredList?.where((e) => e.grupKodu != null).toList();
+      case 1:
+        return filteredList?.where((e) => e.kod1 != null).toList();
+      case 2:
+        return filteredList?.where((e) => e.kod2 != null).toList();
+      case 3:
+        return filteredList?.where((e) => e.kod3 != null).toList();
+      case 4:
+        return filteredList?.where((e) => e.kod4 != null).toList();
+      case 5:
+        return filteredList?.where((e) => e.kod5 != null).toList();
+      default:
+        return null;
+    }
+  }
+
+  Future<void> grupKoduOnClear(int value) async {
+    if (value == viewModel.grupNo) {
+      viewModel.setKategoriMi(false);
+      viewModel.setGrupNo(-1);
+      viewModel.setKategoriGrupKodlari(null);
+    }
+    switch (value) {
+      case 0:
+        viewModel.changeArrGrupKodu(null);
+        grupKoduController.text = "";
+      case 1:
+        viewModel.changeArrKod1(null);
+        kod1Controller.text = "";
+      case 2:
+        viewModel.changeArrKod2(null);
+        kod2Controller.text = "";
+      case 3:
+        viewModel.changeArrKod3(null);
+        kod3Controller.text = "";
+      case 4:
+        viewModel.changeArrKod4(null);
+        kod4Controller.text = "";
+      case 5:
+        viewModel.changeArrKod5(null);
+        kod5Controller.text = "";
+    }
+    await viewModel.resetList();
+  }
 }
