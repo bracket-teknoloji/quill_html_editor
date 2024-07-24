@@ -30,7 +30,9 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
       while (sayac < children.length - 1) {
         final List<Widget> rowChildren = [];
         for (int i = 0; i < widget.splitCount; i++) {
-          rowChildren.add(children[sayac]);
+          if ((children.length) > sayac) {
+            rowChildren.add(children[sayac]);
+          }
           sayac++;
         }
         list.add(
