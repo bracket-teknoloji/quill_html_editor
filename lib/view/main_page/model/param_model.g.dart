@@ -1333,7 +1333,9 @@ StokDetayliAramaAlanlar _$StokDetayliAramaAlanlarFromJson(
         Map<String, dynamic> json) =>
     StokDetayliAramaAlanlar()
       ..searchField = json['SearchField'] as String?
-      ..name = json['Name'] as String?;
+      ..name = json['Name'] as String?
+      ..searchCriter = json['SearchCriter'] as String?
+      ..searchText = json['SearchText'] as String?;
 
 Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
     StokDetayliAramaAlanlar instance) {
@@ -1347,6 +1349,8 @@ Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
 
   writeNotNull('SearchField', instance.searchField);
   writeNotNull('Name', instance.name);
+  writeNotNull('SearchCriter', instance.searchCriter);
+  writeNotNull('SearchText', instance.searchText);
   return val;
 }
 
