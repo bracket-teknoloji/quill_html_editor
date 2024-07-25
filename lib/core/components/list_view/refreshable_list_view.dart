@@ -32,6 +32,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   /// Sayfa hareketlerini takip etmek içn kullanılır.
   final ScrollController? scrollController;
 
+  final bool _isSliver;
+
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
   const RefreshableListView({
     super.key,
@@ -40,6 +42,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.itemBuilder,
   })  : _isPageable = false,
         dahaVarMi = false,
+        _isSliver = false,
         scrollController = null;
 
   /// Eğer ihtiyaç olunan veriler tek bir istek ile gelmiyorsa bunu kullanınız.
@@ -53,7 +56,27 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.dahaVarMi,
     required this.items,
     required this.itemBuilder,
-  }) : _isPageable = true;
+  })  : _isPageable = true,
+        _isSliver = false;
+
+  const RefreshableListView.withSliver({
+    super.key,
+    required this.onRefresh,
+    required this.items,
+    required this.itemBuilder,
+  })  : _isPageable = false,
+        dahaVarMi = false,
+        _isSliver = true,
+        scrollController = null;
+  const RefreshableListView.pageableWithSliver({
+    super.key,
+    required this.scrollController,
+    required this.onRefresh,
+    required this.dahaVarMi,
+    required this.items,
+    required this.itemBuilder,
+  })  : _isPageable = true,
+        _isSliver = true;
 
   ///Bu widget adaptive olarak çalışmaktadır.
   ///Padding'i önden tanımlanmıştır.
@@ -66,28 +89,46 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   Widget body() {
     if (items == null) return const ListViewShimmer();
     if (items!.isEmpty) return const Center(child: Text("Liste bulunamadı."));
-    if (!_isPageable) {
+    if (_isSliver) {
+      if (_isPageable) {
+        return SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => itemBuilder(items![index]),
+            childCount: items!.length,
+          ),
+        );
+      }
+      return SliverFixedExtentList(
+        itemExtent: (items?.length ?? 0).toDouble(),
+        delegate: SliverChildBuilderDelegate(
+          (context, index) => itemBuilder(items![index]),
+          childCount: items!.length,
+        ),
+      );
+    } else {
+      if (!_isPageable) {
+        return ListView.builder(
+          // items nullcheck yapıldığı için ünlem koyabiliriz.
+          itemCount: items!.length,
+          itemBuilder: (context, index) => itemBuilder(items![index]),
+        );
+      }
+
       return ListView.builder(
-        // items nullcheck yapıldığı için ünlem koyabiliriz.
-        itemCount: items!.length,
-        itemBuilder: (context, index) => itemBuilder(items![index]),
+        controller: scrollController,
+        // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
+        // Gösterebilmek için item sayısını 1 artırırız.
+        itemCount: dahaVarMi ? items!.length + 1 : items!.length,
+        itemBuilder: (context, index) {
+          if (index == items!.length) {
+            return Visibility(
+              visible: dahaVarMi,
+              child: const Center(child: CircularProgressIndicator.adaptive()),
+            );
+          }
+          return itemBuilder(items![index]);
+        },
       );
     }
-
-    return ListView.builder(
-      controller: scrollController,
-      // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
-      // Gösterebilmek için item sayısını 1 artırırız.
-      itemCount: dahaVarMi ? items!.length + 1 : items!.length,
-      itemBuilder: (context, index) {
-        if (index == items!.length) {
-          return Visibility(
-            visible: dahaVarMi,
-            child: const Center(child: CircularProgressIndicator.adaptive()),
-          );
-        }
-        return itemBuilder(items![index]);
-      },
-    );
   }
 }
