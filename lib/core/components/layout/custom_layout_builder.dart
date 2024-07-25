@@ -27,7 +27,7 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
     final List<Widget> list = <Widget>[];
     if (rowValue != 0) {
       int sayac = 0;
-      while (sayac < children.length - 1) {
+      while (sayac < children.length) {
         final List<Widget> rowChildren = [];
         for (int i = 0; i < widget.splitCount; i++) {
           if ((children.length) > sayac) {
@@ -35,6 +35,7 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
           }
           sayac++;
         }
+
         list.add(
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -43,19 +44,19 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
           ),
         );
       }
-      if (widget.lastItemExpanded == true) {
-        list.add(children.last);
-      } else {
-        list.add(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: children.last),
-            ],
-          ),
-        );
-      }
+      // if (widget.lastItemExpanded == true) {
+      //   list.add(children.last);
+      // } else {
+      //   list.add(
+      //     Row(
+      //       mainAxisAlignment: MainAxisAlignment.start,
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       children: [
+      //         Expanded(child: children.last),
+      //       ],
+      //     ),
+      //   );
+      // }
     } else {
       int sayac = 0;
       while (sayac < children.length) {
