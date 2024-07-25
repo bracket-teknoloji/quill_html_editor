@@ -8,6 +8,7 @@ import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -46,6 +47,9 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   void changeSearchBarStatus() {
     isSearchBarOpen = !isSearchBarOpen;
   }
+
+  @action
+  void setSearchList(List<StokDetayliAramaAlanlar>? value) => bottomSheetModel = bottomSheetModel.copyWith(searchList: value);
 
   @override
   @action

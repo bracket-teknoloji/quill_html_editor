@@ -177,7 +177,16 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                     icon: const Icon(Icons.more_vert_outlined),
                   ),
           ),
-        ],
+          IconButton(
+            onPressed: () async {
+              final result = await bottomSheetDialogManager.showStokDetayliAramaBottomSheetDialog(context);
+              if (result != null) {
+
+              }
+            },
+            icon: const Icon(Icons.add),
+          ).isDebug(),
+        ].whereType<Widget>().toList(),
         bottom: appBarBottom(),
       );
 
@@ -564,7 +573,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: grupKoduController,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull, 0))),
                   onClear: () async => await grupKoduOnClear(0),
                   onTap: () => getGrupKodlariBottomSheet(0),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty)),
@@ -573,7 +581,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: kod1Controller,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod1?.firstOrNull, 1))),
                   onClear: () async => await grupKoduOnClear(1),
                   onTap: () => getGrupKodlariBottomSheet(1),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty)),
@@ -582,7 +589,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: kod2Controller,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod2?.firstOrNull, 2))),
                   onClear: () async => await grupKoduOnClear(2),
                   onTap: () => getGrupKodlariBottomSheet(2),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty)),
@@ -591,7 +597,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: kod3Controller,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod3?.firstOrNull, 3))),
                   onClear: () async => await grupKoduOnClear(3),
                   onTap: () => getGrupKodlariBottomSheet(3),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty)),
@@ -600,7 +605,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: kod4Controller,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod4?.firstOrNull, 4))),
                   onClear: () async => await grupKoduOnClear(4),
                   onTap: () => getGrupKodlariBottomSheet(4),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty)),
@@ -609,7 +613,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: kod5Controller,
-                  valueWidget: Observer(builder: (_) => Text(grupKoduWithItem(viewModel.bottomSheetModel.arrKod5?.firstOrNull, 5))),
                   onClear: () async => await grupKoduOnClear(5),
                   onTap: () => getGrupKodlariBottomSheet(5),
                 ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
@@ -787,8 +790,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       case 5:
         selectedList = viewModel.bottomSheetModel.arrKod5;
     }
-    final iterable =
-        (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty && viewModel.grupNo != value ? grupKoduWithIndex(value) : viewModel.grupKodlari.where((element) => element.grupNo == value))?.toList();
+    final iterable = (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty ? grupKoduWithIndex(value) : viewModel.grupKodlari.where((element) => element.grupNo == value))?.toList();
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kod Seçiniz",
@@ -805,7 +807,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       await viewModel.getKategoriGrupKodlari();
     }
     if (viewModel.kategoriMi) {
-      final List<BaseGrupKoduModel> grupKoduList = [BaseGrupKoduModel.forFirstSelected(result)];
+      final List<BaseGrupKoduModel> grupKoduList = [BaseGrupKoduModel.forFirstSelected(result..grupNo = value)];
       switch (value) {
         case 0:
           viewModel.changeArrGrupKodu(grupKoduList);
@@ -912,7 +914,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> grupKoduOnClear(int value) async {
-    if (value == viewModel.grupNo) {
+    if (grupKoduController.text.isEmpty && kod1Controller.text.isEmpty && kod2Controller.text.isEmpty && kod3Controller.text.isEmpty && kod4Controller.text.isEmpty && kod5Controller.text.isEmpty) {
       viewModel.setKategoriMi(false);
       viewModel.setGrupNo(-1);
       viewModel.setKategoriGrupKodlari(null);
