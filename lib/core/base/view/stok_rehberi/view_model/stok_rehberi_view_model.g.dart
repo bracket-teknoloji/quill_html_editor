@@ -57,6 +57,70 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     });
   }
 
+  late final _$kategoriMiAtom =
+      Atom(name: '_StokRehberiViewModelBase.kategoriMi', context: context);
+
+  @override
+  bool get kategoriMi {
+    _$kategoriMiAtom.reportRead();
+    return super.kategoriMi;
+  }
+
+  @override
+  set kategoriMi(bool value) {
+    _$kategoriMiAtom.reportWrite(value, super.kategoriMi, () {
+      super.kategoriMi = value;
+    });
+  }
+
+  late final _$grupNoAtom =
+      Atom(name: '_StokRehberiViewModelBase.grupNo', context: context);
+
+  @override
+  int get grupNo {
+    _$grupNoAtom.reportRead();
+    return super.grupNo;
+  }
+
+  @override
+  set grupNo(int value) {
+    _$grupNoAtom.reportWrite(value, super.grupNo, () {
+      super.grupNo = value;
+    });
+  }
+
+  late final _$grupKodlariAtom =
+      Atom(name: '_StokRehberiViewModelBase.grupKodlari', context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get grupKodlari {
+    _$grupKodlariAtom.reportRead();
+    return super.grupKodlari;
+  }
+
+  @override
+  set grupKodlari(ObservableList<BaseGrupKoduModel>? value) {
+    _$grupKodlariAtom.reportWrite(value, super.grupKodlari, () {
+      super.grupKodlari = value;
+    });
+  }
+
+  late final _$kategoriGrupKodlariAtom = Atom(
+      name: '_StokRehberiViewModelBase.kategoriGrupKodlari', context: context);
+
+  @override
+  ObservableList<BaseGrupKoduModel>? get kategoriGrupKodlari {
+    _$kategoriGrupKodlariAtom.reportRead();
+    return super.kategoriGrupKodlari;
+  }
+
+  @override
+  set kategoriGrupKodlari(ObservableList<BaseGrupKoduModel>? value) {
+    _$kategoriGrupKodlariAtom.reportWrite(value, super.kategoriGrupKodlari, () {
+      super.kategoriGrupKodlari = value;
+    });
+  }
+
   late final _$observableListAtom =
       Atom(name: '_StokRehberiViewModelBase.observableList', context: context);
 
@@ -89,8 +153,37 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$getGrupKodlariAsyncAction =
+      AsyncAction('_StokRehberiViewModelBase.getGrupKodlari', context: context);
+
+  @override
+  Future<void> getGrupKodlari() {
+    return _$getGrupKodlariAsyncAction.run(() => super.getGrupKodlari());
+  }
+
+  late final _$getKategoriGrupKodlariAsyncAction = AsyncAction(
+      '_StokRehberiViewModelBase.getKategoriGrupKodlari',
+      context: context);
+
+  @override
+  Future<void> getKategoriGrupKodlari() {
+    return _$getKategoriGrupKodlariAsyncAction
+        .run(() => super.getKategoriGrupKodlari());
+  }
+
   late final _$_StokRehberiViewModelBaseActionController =
       ActionController(name: '_StokRehberiViewModelBase', context: context);
+
+  @override
+  void setGrupKodlari(List<BaseGrupKoduModel> value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setGrupKodlari');
+    try {
+      return super.setGrupKodlari(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void changeIsScrolledDown(bool value) {
@@ -104,7 +197,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod1(List<BaseGrupKoduModel> value) {
+  void changeArrKod1(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.changeArrKod1');
     try {
@@ -115,7 +208,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod2(List<BaseGrupKoduModel> value) {
+  void changeArrKod2(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.changeArrKod2');
     try {
@@ -126,7 +219,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod3(List<BaseGrupKoduModel> value) {
+  void changeArrKod3(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.changeArrKod3');
     try {
@@ -137,7 +230,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod4(List<BaseGrupKoduModel> value) {
+  void changeArrKod4(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.changeArrKod4');
     try {
@@ -148,7 +241,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod5(List<BaseGrupKoduModel> value) {
+  void changeArrKod5(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.changeArrKod5');
     try {
@@ -203,7 +296,7 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
-  void setGrupKodu(List<BaseGrupKoduModel> value) {
+  void setGrupKodu(List<BaseGrupKoduModel>? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.setGrupKodu');
     try {
@@ -225,11 +318,48 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
+  void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setKategoriGrupKodlari');
+    try {
+      return super.setKategoriGrupKodlari(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKategoriMi(bool value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setKategoriMi');
+    try {
+      return super.setKategoriMi(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGrupNo(int value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setGrupNo');
+    try {
+      return super.setGrupNo(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isSearchBarOpen: ${isSearchBarOpen},
 isScrollDown: ${isScrollDown},
 searchText: ${searchText},
+kategoriMi: ${kategoriMi},
+grupNo: ${grupNo},
+grupKodlari: ${grupKodlari},
+kategoriGrupKodlari: ${kategoriGrupKodlari},
 observableList: ${observableList}
     ''';
   }

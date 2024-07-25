@@ -6,6 +6,7 @@ import "package:picker/core/base/view_model/pageable_mixin.dart";
 import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -34,23 +35,44 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   @observable
   String? searchText;
 
+
+  @observable
+  bool kategoriMi = false;
+
+  @observable
+  int grupNo = -1;
+
+
+  @observable
+  ObservableList<BaseGrupKoduModel>? grupKodlari = <BaseGrupKoduModel>[].asObservable();
+
+
+  @observable
+  ObservableList<BaseGrupKoduModel>? kategoriGrupKodlari;
+
+
+  @action
+  void setGrupKodlari(List<BaseGrupKoduModel> value) => grupKodlari = value.asObservable();
+
+
+
   @action
   void changeIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod1: value);
+  void changeArrKod1(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod1: value);
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod2: value);
+  void changeArrKod2(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod2: value);
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod3: value);
+  void changeArrKod3(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod3: value);
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod4: value);
+  void changeArrKod4(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod4: value);
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod5: value);
+  void changeArrKod5(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod5: value);
 
   @override
   @observable
@@ -87,7 +109,7 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void setSearchText(String? value) => searchText = value;
   @action
-  void setGrupKodu(List<BaseGrupKoduModel> value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
+  void setGrupKodu(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
 
   @action
   void setSelectedStokModel(String? value) {
@@ -119,6 +141,19 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
     }
   }
 
+
+  @action
+  void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) => kategoriGrupKodlari = value?.asObservable();
+
+  @action
+  void setKategoriMi(bool value) => kategoriMi = value;
+
+
+  @action
+  void setGrupNo(int value) => grupNo = value;
+
+
+
   @override
   @action
   Future<void> getData() async {
@@ -137,4 +172,17 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
       }
     }
   }
+
+  @action
+  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: kategoriMi));
+
+
+  @action
+  Future<void> getKategoriGrupKodlari() async {
+    final result = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: true);
+    if (result.isNotEmpty) {
+      setKategoriGrupKodlari(result);
+    }
+  }
+
 }
