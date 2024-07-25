@@ -54,6 +54,10 @@ mixin _$StokBottomSheetModel {
   set okutuldu(bool? value) => throw _privateConstructorUsedError;
   String? get seriTakibiVar => throw _privateConstructorUsedError;
   set seriTakibiVar(String? value) => throw _privateConstructorUsedError;
+  List<StokDetayliAramaAlanlar>? get searchList =>
+      throw _privateConstructorUsedError;
+  set searchList(List<StokDetayliAramaAlanlar>? value) =>
+      throw _privateConstructorUsedError;
   List<BaseGrupKoduModel>? get arrGrupKodu =>
       throw _privateConstructorUsedError;
   set arrGrupKodu(List<BaseGrupKoduModel>? value) =>
@@ -106,6 +110,7 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
       List<BaseGrupKoduModel>? arrKod2,
@@ -146,6 +151,7 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? searchList = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -223,6 +229,10 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchList: freezed == searchList
+          ? _value.searchList
+          : searchList // ignore: cast_nullable_to_non_nullable
+              as List<StokDetayliAramaAlanlar>?,
       arrGrupKodu: freezed == arrGrupKodu
           ? _value.arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
@@ -281,6 +291,7 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
       List<BaseGrupKoduModel>? arrKod2,
@@ -318,6 +329,7 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? searchList = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
     Object? arrKod2 = freezed,
@@ -395,6 +407,10 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      searchList: freezed == searchList
+          ? _value.searchList
+          : searchList // ignore: cast_nullable_to_non_nullable
+              as List<StokDetayliAramaAlanlar>?,
       arrGrupKodu: freezed == arrGrupKodu
           ? _value.arrGrupKodu
           : arrGrupKodu // ignore: cast_nullable_to_non_nullable
@@ -449,6 +465,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.stokKodu,
       this.okutuldu,
       this.seriTakibiVar,
+      this.searchList,
       this.arrGrupKodu = const [],
       this.arrKod1 = const [],
       this.arrKod2 = const [],
@@ -497,6 +514,8 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   bool? okutuldu;
   @override
   String? seriTakibiVar;
+  @override
+  List<StokDetayliAramaAlanlar>? searchList;
   @override
   @JsonKey()
   List<BaseGrupKoduModel>? arrGrupKodu;
@@ -553,6 +572,7 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
       List<BaseGrupKoduModel>? arrKod2,
@@ -616,6 +636,9 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   @override
   String? get seriTakibiVar;
   set seriTakibiVar(String? value);
+  @override
+  List<StokDetayliAramaAlanlar>? get searchList;
+  set searchList(List<StokDetayliAramaAlanlar>? value);
   @override
   List<BaseGrupKoduModel>? get arrGrupKodu;
   set arrGrupKodu(List<BaseGrupKoduModel>? value);

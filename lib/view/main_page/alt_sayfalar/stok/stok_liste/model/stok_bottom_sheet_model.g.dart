@@ -26,6 +26,10 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
       stokKodu: json['StokKodu'] as String?,
       okutuldu: json['Okutuldu'] as bool?,
       seriTakibiVar: json['SeriTakibiVar'] as String?,
+      searchList: (json['SearchList'] as List<dynamic>?)
+          ?.map((e) =>
+              StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
+          .toList(),
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
               ?.map(
                   (e) => BaseGrupKoduModel.fromJson(e as Map<String, dynamic>))
@@ -86,6 +90,8 @@ Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
   writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull('Okutuldu', instance.okutuldu);
   writeNotNull('SeriTakibiVar', instance.seriTakibiVar);
+  writeNotNull(
+      'SearchList', instance.searchList?.map((e) => e.toJson()).toList());
   writeNotNull(
       'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
   writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());
