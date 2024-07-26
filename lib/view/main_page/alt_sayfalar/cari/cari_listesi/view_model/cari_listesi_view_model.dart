@@ -1,7 +1,11 @@
 import "dart:convert";
 import "dart:developer";
 
+import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -14,7 +18,7 @@ part "cari_listesi_view_model.g.dart";
 
 class CariListesiViewModel = _CariListesiViewModelBase with _$CariListesiViewModel;
 
-abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
+abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariListesiModel>, ScrollControllableMixin, PageableMixin {
   final Map<String, String> bakiyeMap = {"Tümü": "", "Tahsil Edilecek": "T", "Ödenecek": "Ö", "Sıfır Bakiye": "S", "Bakiyeli": "B"};
 
   final Map<String, String> siralaMap = {
@@ -38,11 +42,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
   String? errorText;
 
+  @override
   @observable
-  bool dahaVarMi = true;
-
-  @observable
-  bool isScrolledDown = false;
+  bool isScrollDown = false;
 
   @observable
   bool searchBar = false;
@@ -50,8 +52,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
   String arama = "";
 
+  @override
   @observable
-  List? cariListesi;
+  ObservableList<CariListesiModel>? observableList;
 
   @observable
   bool kodlariGoster = false;
@@ -136,21 +139,25 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeArama(String value) => arama = value;
 
   //* CARİ LİSTESİ
+  @override
   @action
-  void changeCariListesi(List? value) {
-    if (value == null) {
-      cariListesi = null;
-    } else {
-      cariListesi = value.asObservable();
-    }
-  }
+  void setObservableList(List<CariListesiModel>? value) => observableList = value?.asObservable();
 
+  @override
   @action
-  void addCariListesi(List value) => cariListesi?.addAll(value);
+  void addObservableList(List<CariListesiModel>? value) => setObservableList(observableList?..addAll(value!));
 
   //* SCROLL
+
   @action
-  void changeIsScrolledDown(bool value) => isScrolledDown = value;
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
+    }
+  }
 
   //* DAHA VAR MI
   @action
@@ -169,28 +176,28 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeArrPlasiyerKodu(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrPlasiyerKodu: value);
 
   @action
-  void changeArrGrupKodu(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
+  void changeArrGrupKodu(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrSehir(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrSehir: value);
+  void changeArrSehir(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrSehir: value);
 
   @action
-  void changeArrKod0(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
+  void changeArrKod0(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrKod1(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod1: value);
+  void changeArrKod1(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod1: value);
 
   @action
-  void changeArrKod2(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod2: value);
+  void changeArrKod2(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod2: value);
 
   @action
-  void changeArrKod3(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod3: value);
+  void changeArrKod3(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod3: value);
 
   @action
-  void changeArrKod4(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod4: value);
+  void changeArrKod4(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod4: value);
 
   @action
-  void changeArrKod5(List<String?>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod5: value);
+  void changeArrKod5(List<String>? value) => cariRequestModel = cariRequestModel.copyWith(arrKod5: value);
 
   @action
   void changeIlce(String? value) => cariRequestModel = cariRequestModel.copyWith(ilce: value);
@@ -211,28 +218,28 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
   void changeArrPlasiyerKoduTemp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrPlasiyerKodu: value);
 
   @action
-  void changeArrGrupKoduTemp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
+  void changeArrGrupKoduTemp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrSehirTemp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrSehir: value);
+  void changeArrSehirTemp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrSehir: value);
 
   @action
-  void changeArrKod0Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
+  void changeArrKod0Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrKod1Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod1: value);
+  void changeArrKod1Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod1: value);
 
   @action
-  void changeArrKod2Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod2: value);
+  void changeArrKod2Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod2: value);
 
   @action
-  void changeArrKod3Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod3: value);
+  void changeArrKod3Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod3: value);
 
   @action
-  void changeArrKod4Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod4: value);
+  void changeArrKod4Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod4: value);
 
   @action
-  void changeArrKod5Temp(List<String?>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod5: value);
+  void changeArrKod5Temp(List<String>? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(arrKod5: value);
 
   @action
   void changeIlceTemp(String? value) => cariRequestModelTemp = cariRequestModelTemp.copyWith(ilce: value);
@@ -270,11 +277,10 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
     );
   }
 
+  @override
   @action
-  Future<void> resetPage() async {
-    resetSayfa();
-    changeCariListesi(null);
-    changeDahaVarMi(true);
+  Future<void> resetList() async {
+    resetPage();
     await getData();
   }
 
@@ -306,6 +312,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
+  @override
   @action
   Future<void> getData() async {
     log(getCariRequestModel.toString());
@@ -314,29 +321,28 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin {
       body["Kod"] = "";
     }
     final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
-    if (result.success != true) {
-      errorText = result.message;
-      changeCariListesi([]);
-      return;
-    } else {
-      errorText = null;
-    }
 
-    if (result.data is List) {
+    if (result.isSuccess) {
       if (cariRequestModel.sayfa == 1) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
       }
-      final List<CariListesiModel> list = result.data.cast<CariListesiModel>();
-      if ((cariRequestModel.sayfa ?? 0) < 2) {
-        changeCariListesi(list);
+      if (page > 1) {
+        addObservableList(result.dataList);
       } else {
-        addCariListesi(list);
+        setObservableList(result.dataList);
       }
-      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
-        changeDahaVarMi(false);
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
+        setDahaVarMi(true);
+        increasePage();
       } else {
-        changeDahaVarMi(true);
-        increaseSayfa();
+        setDahaVarMi(false);
+      }
+    } else {
+      if (result.success != true) {
+        errorText = result.message;
+        setObservableList([]);
+      } else {
+        errorText = null;
       }
     }
   }

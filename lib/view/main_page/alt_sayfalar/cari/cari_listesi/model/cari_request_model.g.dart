@@ -19,25 +19,20 @@ _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
       eFaturaGoster: json['EFaturaGoster'] as bool?,
       filterBakiye: json['FILTER_BAKIYE'] as String?,
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
-          ?.map((e) => e as String?)
+          ?.map((e) => e as String)
           .toList(),
-      arrKod1: (json['ArrKod1'] as List<dynamic>?)
-          ?.map((e) => e as String?)
-          .toList(),
-      arrKod2: (json['ArrKod2'] as List<dynamic>?)
-          ?.map((e) => e as String?)
-          .toList(),
-      arrKod3: (json['ArrKod3'] as List<dynamic>?)
-          ?.map((e) => e as String?)
-          .toList(),
-      arrKod4: (json['ArrKod4'] as List<dynamic>?)
-          ?.map((e) => e as String?)
-          .toList(),
-      arrKod5: (json['ArrKod5'] as List<dynamic>?)
-          ?.map((e) => e as String?)
-          .toList(),
+      arrKod1:
+          (json['ArrKod1'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod2:
+          (json['ArrKod2'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod3:
+          (json['ArrKod3'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod4:
+          (json['ArrKod4'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      arrKod5:
+          (json['ArrKod5'] as List<dynamic>?)?.map((e) => e as String).toList(),
       arrSehir: (json['ArrSehir'] as List<dynamic>?)
-          ?.map((e) => e as String?)
+          ?.map((e) => e as String)
           .toList(),
       arrPlasiyerKodu: (json['ArrPlasiyerKodu'] as List<dynamic>?)
           ?.map((e) => e as String)

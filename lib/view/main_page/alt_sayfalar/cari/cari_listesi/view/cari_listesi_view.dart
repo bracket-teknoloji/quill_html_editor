@@ -1,7 +1,6 @@
 import "dart:ui";
 
 import "package:flutter/material.dart";
-import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -45,7 +44,7 @@ import "../model/cari_secenekler_model.dart";
 import "../model/cari_sehirler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";
 
-class CariListesiView extends StatefulWidget {
+final class CariListesiView extends StatefulWidget {
   final bool isGetData;
   final CariRequestModel? cariRequestModel;
   const CariListesiView({super.key, this.isGetData = false, this.cariRequestModel});
@@ -54,8 +53,8 @@ class CariListesiView extends StatefulWidget {
   State<CariListesiView> createState() => _CariListesiViewState();
 }
 
-class _CariListesiViewState extends BaseState<CariListesiView> {
-  CariListesiViewModel viewModel = CariListesiViewModel();
+final class _CariListesiViewState extends BaseState<CariListesiView> {
+  final CariListesiViewModel viewModel = CariListesiViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController plasiyerController;
   late final TextEditingController sehirController;
@@ -90,36 +89,17 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       viewModel.setRota(CacheManager.getProfilParametre.rotaDisiGorunsunMu);
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      _scrollController.addListener(() async {
+        viewModel.changeScrollStatus(_scrollController.position);
+      });
       if (widget.isGetData) {
         viewModel.changeSearchBar();
       }
+      BottomSheetResponseModel.instance.clear();
+      BottomSheetStateManager().deleteIsSelectedListMap();
       await viewModel.getData();
-      init();
     });
     super.initState();
-  }
-
-  void init() {
-    BottomSheetResponseModel.instance.clear();
-    BottomSheetStateManager().deleteIsSelectedListMap();
-    _scrollController.addListener(() async {
-      if (_scrollController.hasClients) {
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-          if (viewModel.dahaVarMi) {
-            await viewModel.getData();
-            viewModel.changeIsScrolledDown(true);
-          }
-        }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          viewModel.changeIsScrolledDown(false);
-        } else if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          viewModel.changeIsScrolledDown(true);
-        }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
-          viewModel.changeIsScrolledDown(false);
-        }
-      }
-    });
   }
 
   @override
@@ -157,12 +137,12 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               ? CustomAppBarTextField(
                   onFieldSubmitted: (value) async {
                     viewModel.changeFilterText(value);
-                    await viewModel.resetPage();
+                    viewModel.resetList();
                   },
                 )
               : AppBarTitle(
                   title: widget.isGetData ? "Cari Seçiniz" : "Cari Listesi",
-                  subtitle: "${viewModel.cariListesi?.length ?? ""}",
+                  subtitle: "${viewModel.observableList?.length ?? ""}",
                 )),
         ),
         leading: IconButton(
@@ -194,7 +174,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                 // var result = await bottomSheetDialogManager.showFilterBottomSheetDialog(context, request: filterData);
                 // if (result != null && result is BottomSheetResponseModel) {
                 //   bottomSheetResponseModel = result;
-                //   viewModel.resetPage();
+                //   viewModel.resetList();
                 // }
               },
               child: Text(loc.generalStrings.filter),
@@ -231,7 +211,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               viewModel.changeSearchBar();
               if (!viewModel.searchBar) {
                 viewModel.changeFilterText(null);
-                await viewModel.resetPage();
+                viewModel.resetList();
               }
             },
             icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
@@ -255,15 +235,15 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
     );
     if (result != viewModel.cariRequestModel.siralama && result != null) {
       viewModel.changeSiralama(result);
-      viewModel.resetPage();
+      viewModel.resetList();
     }
   }
 
   Widget fab() => Observer(
         builder: (_) => Visibility(
-          visible: viewModel.cariListesi != null,
+          visible: viewModel.observableList != null,
           child: CustomFloatingActionButton(
-            isScrolledDown: !viewModel.isScrolledDown,
+            isScrolledDown: !viewModel.isScrollDown,
             onPressed: () async {
               final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
               Get.toNamed(
@@ -281,20 +261,20 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async => await viewModel.resetPage(),
+        onRefresh: () async => viewModel.resetList(),
         child: Observer(
-          builder: (_) => (viewModel.cariListesi.ext.isNullOrEmpty
-              ? (viewModel.cariListesi?.isEmpty ?? false)
+          builder: (_) => (viewModel.observableList.ext.isNullOrEmpty
+              ? (viewModel.observableList?.isEmpty ?? false)
                   ? Center(child: Observer(builder: (_) => Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı")))
                   : const ListViewShimmer()
               : ListView.builder(
                   primary: false,
                   physics: const AlwaysScrollableScrollPhysics(),
                   controller: _scrollController,
-                  itemCount: (viewModel.cariListesi?.length ?? 0) + 1,
+                  itemCount: (viewModel.observableList?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
-                    if (index < (viewModel.cariListesi?.length ?? 0)) {
-                      final CariListesiModel object = viewModel.cariListesi?[index];
+                    if (index < (viewModel.observableList?.length ?? 0)) {
+                      final CariListesiModel object = viewModel.observableList![index];
                       return Card(
                         child: Listener(
                           onPointerDown: (event) {
@@ -394,7 +374,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
       object,
       onSelected: (p0) {
         if (p0) {
-          viewModel.resetPage();
+          viewModel.resetList();
         }
       },
     );
@@ -402,7 +382,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Widget? bottomButtonBar() => Observer(
         builder: (_) => BottomBarWidget(
-          isScrolledDown: !viewModel.isScrolledDown,
+          isScrolledDown: !viewModel.isScrollDown,
           children: [
             FooterButton(
               children: [
@@ -423,7 +403,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   viewModel.changeFilterBakiyeTemp("T");
                 }
                 viewModel.changeSiralama("BAKIYE_ZA");
-                await viewModel.resetPage();
+                viewModel.resetList();
               },
             ),
             FooterButton(
@@ -443,7 +423,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   viewModel.changeFilterBakiyeTemp("Ö");
                 }
                 viewModel.changeSiralama("BAKIYE_AZ");
-                await viewModel.resetPage();
+                viewModel.resetList();
               },
             ),
           ],
@@ -500,7 +480,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               dialogManager.hideAlertDialog;
               if (result.isSuccess) {
                 dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
-                await viewModel.resetPage();
+                viewModel.resetList();
               } else {
                 dialogManager.showErrorSnackBar(result.message ?? "");
               }
@@ -538,7 +518,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
         );
         final result = await Get.toNamed(pageName, arguments: editModel);
         if (result == true) {
-          await viewModel.resetPage();
+          viewModel.resetList();
         }
       } else {
         Get.toNamed(pageName, arguments: object);
@@ -613,7 +593,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       );
                       if (result is List) {
                         final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
-                        viewModel.changeArrSehirTemp(list.map((e) => e?.sehirAdi).toList());
+                        viewModel.changeArrSehirTemp(list.map((e) => e?.sehirAdi).toList().nullCheckWithGeneric);
                         sehirController.text = list.map((e) => e?.sehirAdi).join(", ");
                       }
                     },
@@ -627,7 +607,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                   child: CustomTextField(
                     labelText: "İlçe",
                     controller: ilceController,
-                    onChanged: (value) => viewModel.changeIlceTemp(value),
+                    onChanged: viewModel.changeIlceTemp,
                   ),
                 ),
                 Expanded(
@@ -664,7 +644,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
               ).yetkiVarMi(yetkiController.cariKartiRotasUygulamasiAcikMi),
             ),
             InkWell(
-              onTap: () => viewModel.changeKodlariGoster(),
+              onTap: viewModel.changeKodlariGoster,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
@@ -699,7 +679,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod0Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod0Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -727,7 +707,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod1Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod1Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -759,7 +739,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod2Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod2Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -787,7 +767,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod3Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod3Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -819,7 +799,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod4Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod4Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -847,7 +827,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                               );
                               if (result is List) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                viewModel.changeArrKod5Temp(list.map((e) => e?.grupKodu).toList());
+                                viewModel.changeArrKod5Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
                               }
                             },
@@ -877,7 +857,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       kod3Controller.clear();
                       kod4Controller.clear();
                       kod5Controller.clear();
-                      viewModel.resetPage();
+                      viewModel.resetList();
                     },
                     child: const Text("Filtreyi Temizle"),
                   ),
@@ -898,7 +878,7 @@ class _CariListesiViewState extends BaseState<CariListesiView> {
                       viewModel.changeCariTipi(viewModel.cariRequestModelTemp.cariTipi);
                       viewModel.changeFilterBakiye(viewModel.cariRequestModelTemp.filterBakiye);
                       viewModel.changeIlce(viewModel.cariRequestModelTemp.ilce);
-                      await viewModel.resetPage();
+                      viewModel.resetList();
                     },
                     child: Text(loc.generalStrings.apply),
                   ),

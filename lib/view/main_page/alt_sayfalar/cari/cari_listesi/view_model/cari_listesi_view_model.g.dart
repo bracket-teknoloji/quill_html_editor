@@ -111,35 +111,19 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_CariListesiViewModelBase.dahaVarMi', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_CariListesiViewModelBase.isScrollDown', context: context);
 
   @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
   }
 
   @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
-    });
-  }
-
-  late final _$isScrolledDownAtom =
-      Atom(name: '_CariListesiViewModelBase.isScrolledDown', context: context);
-
-  @override
-  bool get isScrolledDown {
-    _$isScrolledDownAtom.reportRead();
-    return super.isScrolledDown;
-  }
-
-  @override
-  set isScrolledDown(bool value) {
-    _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
-      super.isScrolledDown = value;
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
     });
   }
 
@@ -175,19 +159,19 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$cariListesiAtom =
-      Atom(name: '_CariListesiViewModelBase.cariListesi', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_CariListesiViewModelBase.observableList', context: context);
 
   @override
-  List<dynamic>? get cariListesi {
-    _$cariListesiAtom.reportRead();
-    return super.cariListesi;
+  ObservableList<CariListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set cariListesi(List<dynamic>? value) {
-    _$cariListesiAtom.reportWrite(value, super.cariListesi, () {
-      super.cariListesi = value;
+  set observableList(ObservableList<CariListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -272,12 +256,22 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_CariListesiViewModelBase.resetPage', context: context);
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+      '_CariListesiViewModelBase.changeScrollStatus',
+      context: context);
 
   @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
+  }
+
+  late final _$resetListAsyncAction =
+      AsyncAction('_CariListesiViewModelBase.resetList', context: context);
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
   }
 
   late final _$getKodAsyncAction =
@@ -374,33 +368,22 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeCariListesi(List<dynamic>? value) {
+  void setObservableList(List<CariListesiModel>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
-        .startAction(name: '_CariListesiViewModelBase.changeCariListesi');
+        .startAction(name: '_CariListesiViewModelBase.setObservableList');
     try {
-      return super.changeCariListesi(value);
+      return super.setObservableList(value);
     } finally {
       _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addCariListesi(List<dynamic> value) {
+  void addObservableList(List<CariListesiModel>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
-        .startAction(name: '_CariListesiViewModelBase.addCariListesi');
+        .startAction(name: '_CariListesiViewModelBase.addObservableList');
     try {
-      return super.addCariListesi(value);
-    } finally {
-      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeIsScrolledDown(bool value) {
-    final _$actionInfo = _$_CariListesiViewModelBaseActionController
-        .startAction(name: '_CariListesiViewModelBase.changeIsScrolledDown');
-    try {
-      return super.changeIsScrolledDown(value);
+      return super.addObservableList(value);
     } finally {
       _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -462,7 +445,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrGrupKodu(List<String?>? value) {
+  void changeArrGrupKodu(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrGrupKodu');
     try {
@@ -473,7 +456,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrSehir(List<String?>? value) {
+  void changeArrSehir(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrSehir');
     try {
@@ -484,7 +467,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod0(List<String?>? value) {
+  void changeArrKod0(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod0');
     try {
@@ -495,7 +478,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod1(List<String?>? value) {
+  void changeArrKod1(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod1');
     try {
@@ -506,7 +489,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod2(List<String?>? value) {
+  void changeArrKod2(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod2');
     try {
@@ -517,7 +500,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod3(List<String?>? value) {
+  void changeArrKod3(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod3');
     try {
@@ -528,7 +511,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod4(List<String?>? value) {
+  void changeArrKod4(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod4');
     try {
@@ -539,7 +522,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod5(List<String?>? value) {
+  void changeArrKod5(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod5');
     try {
@@ -617,7 +600,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrGrupKoduTemp(List<String?>? value) {
+  void changeArrGrupKoduTemp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrGrupKoduTemp');
     try {
@@ -628,7 +611,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrSehirTemp(List<String?>? value) {
+  void changeArrSehirTemp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrSehirTemp');
     try {
@@ -639,7 +622,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod0Temp(List<String?>? value) {
+  void changeArrKod0Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod0Temp');
     try {
@@ -650,7 +633,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod1Temp(List<String?>? value) {
+  void changeArrKod1Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod1Temp');
     try {
@@ -661,7 +644,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod2Temp(List<String?>? value) {
+  void changeArrKod2Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod2Temp');
     try {
@@ -672,7 +655,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod3Temp(List<String?>? value) {
+  void changeArrKod3Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod3Temp');
     try {
@@ -683,7 +666,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod4Temp(List<String?>? value) {
+  void changeArrKod4Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod4Temp');
     try {
@@ -694,7 +677,7 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
-  void changeArrKod5Temp(List<String?>? value) {
+  void changeArrKod5Temp(List<String>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.changeArrKod5Temp');
     try {
@@ -742,11 +725,10 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
     return '''
 paramData: ${paramData},
 errorText: ${errorText},
-dahaVarMi: ${dahaVarMi},
-isScrolledDown: ${isScrolledDown},
+isScrollDown: ${isScrollDown},
 searchBar: ${searchBar},
 arama: ${arama},
-cariListesi: ${cariListesi},
+observableList: ${observableList},
 kodlariGoster: ${kodlariGoster},
 grupKodlari: ${grupKodlari},
 sehirler: ${sehirler},
