@@ -6,8 +6,9 @@ class CustomLayoutBuilder extends StatefulWidget {
   final List<Widget> children;
   final int splitCount;
   final bool? lastItemExpanded;
-  const CustomLayoutBuilder({super.key, required this.splitCount, required this.children, this.lastItemExpanded});
-  const CustomLayoutBuilder.divideInHalf({super.key, required this.children, this.lastItemExpanded}) : splitCount = 2;
+  final bool doNotExpand;
+  const CustomLayoutBuilder({super.key, required this.splitCount, required this.children, this.lastItemExpanded, this.doNotExpand = false});
+  const CustomLayoutBuilder.divideInHalf({super.key, required this.children, this.lastItemExpanded, this.doNotExpand = false}) : splitCount = 2;
 
   @override
   State<CustomLayoutBuilder> createState() => _CustomLayoutBuilderState();
@@ -35,14 +36,30 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
           }
           sayac++;
         }
-
-        list.add(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: rowChildren.map((e) => Expanded(child: e)).toList(),
-          ),
-        );
+        if (widget.doNotExpand) {
+          list.add(
+            LayoutBuilder(
+              builder: (context, constraints) => Row(
+                children: rowChildren
+                    .map(
+                      (e) => SizedBox(
+                        width: constraints.maxWidth / widget.splitCount,
+                        child: e,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          );
+        } else {
+          list.add(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: rowChildren.map((e) => Expanded(child: e)).toList(),
+            ),
+          );
+        }
       }
       // if (widget.lastItemExpanded == true) {
       //   list.add(children.last);

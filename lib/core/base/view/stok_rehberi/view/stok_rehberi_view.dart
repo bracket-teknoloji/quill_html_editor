@@ -320,6 +320,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
             Observer(
               builder: (_) => CustomLayoutBuilder(
                 splitCount: 3,
+                doNotExpand: true,
                 children: [
                   CustomTextField(
                     labelText: "Grup Kodu",
@@ -623,33 +624,32 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       }),
     );
     if (result is! BaseGrupKoduModel) return;
+
+    final List<BaseGrupKoduModel> grupKoduList = [BaseGrupKoduModel.forFirstSelected(result..grupNo = value)];
+    switch (value) {
+      case 0:
+        viewModel.setGrupKodu(grupKoduList);
+        grupKoduController.text = grupAdiWithItem(result, value);
+      case 1:
+        viewModel.changeArrKod1(grupKoduList);
+        kod1Controller.text = grupAdiWithItem(result, value);
+      case 2:
+        viewModel.changeArrKod2(grupKoduList);
+        kod2Controller.text = grupAdiWithItem(result, value);
+      case 3:
+        viewModel.changeArrKod3(grupKoduList);
+        kod3Controller.text = grupAdiWithItem(result, value);
+      case 4:
+        viewModel.changeArrKod4(grupKoduList);
+        kod4Controller.text = grupAdiWithItem(result, value);
+      case 5:
+        viewModel.changeArrKod5(grupKoduList);
+        kod5Controller.text = grupAdiWithItem(result, value);
+    }
     if (!viewModel.kategoriMi) {
       viewModel.setKategoriMi(true);
       viewModel.setGrupNo(value);
       await viewModel.getKategoriGrupKodlari();
-    }
-    if (viewModel.kategoriMi) {
-      final List<BaseGrupKoduModel> grupKoduList = [BaseGrupKoduModel.forFirstSelected(result..grupNo = value)];
-      switch (value) {
-        case 0:
-          viewModel.setGrupKodu(grupKoduList);
-          grupKoduController.text = grupAdiWithItem(result, value);
-        case 1:
-          viewModel.changeArrKod1(grupKoduList);
-          kod1Controller.text = grupAdiWithItem(result, value);
-        case 2:
-          viewModel.changeArrKod2(grupKoduList);
-          kod2Controller.text = grupAdiWithItem(result, value);
-        case 3:
-          viewModel.changeArrKod3(grupKoduList);
-          kod3Controller.text = grupAdiWithItem(result, value);
-        case 4:
-          viewModel.changeArrKod4(grupKoduList);
-          kod4Controller.text = grupAdiWithItem(result, value);
-        case 5:
-          viewModel.changeArrKod5(grupKoduList);
-          kod5Controller.text = grupAdiWithItem(result, value);
-      }
       await viewModel.resetList();
     }
   }
@@ -660,15 +660,15 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       case 0:
         return item.grupAdi ?? "";
       case 1:
-        return item.kod1Adi ?? item.grupAdi ?? "";
+        return (viewModel.kategoriMi ? item.kod1Adi ?? item.kod1 : item.grupAdi) ?? "";
       case 2:
-        return item.kod2Adi ?? item.grupAdi ?? "";
+        return (viewModel.kategoriMi ? item.kod2Adi ?? item.kod2 : item.grupAdi) ?? "";
       case 3:
-        return item.kod3Adi ?? item.grupAdi ?? "";
+        return (viewModel.kategoriMi ? item.kod3Adi ?? item.kod3 : item.grupAdi) ?? "";
       case 4:
-        return item.kod4Adi ?? item.grupAdi ?? "";
+        return (viewModel.kategoriMi ? item.kod4Adi ?? item.kod4 : item.grupAdi) ?? "";
       case 5:
-        return item.kod5Adi ?? item.grupAdi ?? "";
+        return (viewModel.kategoriMi ? item.kod5Adi ?? item.kod5 : item.grupAdi) ?? "";
       default:
         return "";
     }
