@@ -25,39 +25,10 @@ class GridItemModel {
   late final String menuTipi;
   bool? isEnabled;
 
-  GridItemModel.anamenu({
-    required this.name,
-    required this.title,
-    required this.color,
-    required this.altMenuler,
-    this.icon,
-    this.iconData,
-    this.yetkiListesi,
-  }) {
-    menuTipi = "A";
-  }
+  GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
 
-  GridItemModel.altmenu({
-    required this.name,
-    required this.title,
-    this.icon,
-    required this.altMenuler,
-    this.iconData,
-  }) {
-    //😳 Sub menu yani alt menü o yüzden "S"
-    menuTipi = "S";
-  }
-  GridItemModel.item({
-    required this.name,
-    required this.title,
-    this.icon,
-    this.color,
-    this.onTap,
-    this.route,
-    this.arguments,
-    this.siparisTipi,
-  }) {
-    menuTipi = "I";
+  GridItemModel.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconData}) : menuTipi = "S";
+  GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi}) : menuTipi = "I" {
     if (onTap == null) {
       if (route == null) {
         onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");

@@ -2,7 +2,6 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/menu_list_enum.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../core/components/dialog/dialog_manager.dart";
@@ -70,7 +69,7 @@ class MenuItemConstants {
           name: "cari_Raporlar",
           title: "Raporlar",
           icon: "monitoring",
-          altMenuler: <GridItemModel>[
+          altMenuler: [
             GridItemModel.item(name: "cari_Rap_Ekstre", title: "Cari Ekstre", route: "/mainPage/cariEkstre"),
             GridItemModel.item(name: "cari_Rap_DovizliEkstre", title: "Cari Dövizli Ekstre", route: "/mainPage/cariDovizliEkstre"),
             GridItemModel.item(name: "cari_Rap_BorcAlacakDokumu", title: "Borç / Alacak Dökümü", route: "/mainPage/cariBorcAlacakDokumu"),
@@ -80,9 +79,9 @@ class MenuItemConstants {
             GridItemModel.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
             GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
             GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
-            GridItemModel.item(name: null, title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
+            GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi").yetkiVarMi(AccountModel.instance.adminMi),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
-          ].nullCheckWithGeneric,
+          ].whereType<GridItemModel>().toList(),
         ),
       ].whereType<GridItemModel>().toList(),
     ),
@@ -453,7 +452,7 @@ class MenuItemConstants {
       icon: "factory_2",
       color: ColorPalette.outerSpace,
       altMenuler: [
-        GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi").isDebug(),
+        GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi"),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
         GridItemModel.item(name: "uretim_MalToplama", title: "Üretime Mal Toplama"),
         GridItemModel.item(name: "uretim_Isemri_HammaddeTakip", title: "İş Emri Hammadde Takibi", route: "/mainPage/isEmriHammaddeTakibi").isDebug(),
