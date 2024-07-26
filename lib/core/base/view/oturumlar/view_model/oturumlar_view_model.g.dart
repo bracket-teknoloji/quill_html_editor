@@ -17,35 +17,35 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
               name: '_OturumlarViewModelBase.filteredList'))
       .value;
 
-  late final _$accountListAtom =
-      Atom(name: '_OturumlarViewModelBase.accountList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_OturumlarViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<AccountModel>? get accountList {
-    _$accountListAtom.reportRead();
-    return super.accountList;
+  ObservableList<AccountModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set accountList(ObservableList<AccountModel>? value) {
-    _$accountListAtom.reportWrite(value, super.accountList, () {
-      super.accountList = value;
+  set observableList(ObservableList<AccountModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
-  late final _$searchValueAtom =
-      Atom(name: '_OturumlarViewModelBase.searchValue', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_OturumlarViewModelBase.searchText', context: context);
 
   @override
-  String? get searchValue {
-    _$searchValueAtom.reportRead();
-    return super.searchValue;
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
   }
 
   @override
-  set searchValue(String? value) {
-    _$searchValueAtom.reportWrite(value, super.searchValue, () {
-      super.searchValue = value;
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -85,33 +85,33 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
       ActionController(name: '_OturumlarViewModelBase', context: context);
 
   @override
-  void setIsSearchBarOpen() {
+  void changeSearchBarStatus() {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.setIsSearchBarOpen');
+        name: '_OturumlarViewModelBase.changeSearchBarStatus');
     try {
-      return super.setIsSearchBarOpen();
+      return super.changeSearchBarStatus();
     } finally {
       _$_OturumlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSearchValue(String? value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.setSearchValue');
+        name: '_OturumlarViewModelBase.setSearchText');
     try {
-      return super.setSearchValue(value);
+      return super.setSearchText(value);
     } finally {
       _$_OturumlarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setAccountList(List<AccountModel>? value) {
+  void setObservableList(List<AccountModel>? value) {
     final _$actionInfo = _$_OturumlarViewModelBaseActionController.startAction(
-        name: '_OturumlarViewModelBase.setAccountList');
+        name: '_OturumlarViewModelBase.setObservableList');
     try {
-      return super.setAccountList(value);
+      return super.setObservableList(value);
     } finally {
       _$_OturumlarViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -120,8 +120,8 @@ mixin _$OturumlarViewModel on _OturumlarViewModelBase, Store {
   @override
   String toString() {
     return '''
-accountList: ${accountList},
-searchValue: ${searchValue},
+observableList: ${observableList},
+searchText: ${searchText},
 isSearchBarOpen: ${isSearchBarOpen},
 filteredList: ${filteredList}
     ''';

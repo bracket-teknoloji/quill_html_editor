@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../init/network/login/api_urls.dart";
@@ -8,49 +10,58 @@ part "oturumlar_view_model.g.dart";
 
 class OturumlarViewModel = _OturumlarViewModelBase with _$OturumlarViewModel;
 
-abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin {
+abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMixin<AccountModel>, SearchableMixin {
+  @override
   @observable
-  ObservableList<AccountModel>? accountList;
+  ObservableList<AccountModel>? observableList;
 
+  @override
   @observable
-  String? searchValue;
+  String? searchText;
 
+  @override
   @observable
   bool isSearchBarOpen = false;
 
   @computed
   ObservableList<AccountModel>? get filteredList {
-    if (searchValue == null || searchValue!.isEmpty) {
-      return accountList;
+    if (searchText == null || searchText!.isEmpty) {
+      return observableList;
     } else {
-      return accountList
+      return observableList
           ?.where(
-            (element) => (element.adi?.contains(searchValue ?? "") ?? false) || (element.soyadi?.contains(searchValue ?? "") ?? false) || (element.kullaniciAdi?.contains(searchValue ?? "") ?? false),
+            (element) => (element.adi?.contains(searchText ?? "") ?? false) || (element.soyadi?.contains(searchText ?? "") ?? false) || (element.kullaniciAdi?.contains(searchText ?? "") ?? false),
           )
           .toList()
           .asObservable();
     }
   }
 
+  @override
   @action
-  void setIsSearchBarOpen() => isSearchBarOpen = !isSearchBarOpen;
+  void changeSearchBarStatus() => isSearchBarOpen = !isSearchBarOpen;
 
+  @override
   @action
-  void setSearchValue(String? value) => searchValue = value;
+  void setSearchText(String? value) => searchText = value;
 
+  @override
   @action
-  void setAccountList(List<AccountModel>? value) => accountList = value?.asObservable();
+  void setObservableList(List<AccountModel>? value) => observableList = value?.asObservable();
+  
+  
 
+  @override
   @action
   Future<void> getData() async {
-    accountList = null;
+    observableList = null;
     final result = await networkManager.dioGet<AccountModel>(
       path: ApiUrls.getOturumlar,
       bodyModel: AccountModel(),
     );
     if (result.data != null) {
       final List<AccountModel> list = result.data.map((e) => e as AccountModel).toList().cast<AccountModel>();
-      accountList = list.asObservable();
+      observableList = list.asObservable();
     }
   }
 

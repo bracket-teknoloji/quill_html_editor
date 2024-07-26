@@ -1,11 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../components/layout/custom_layout_builder.dart";
-import "../../../../components/shimmer/list_view_shimmer.dart";
 import "../../../../components/textfield/custom_app_bar_text_field.dart";
 import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
@@ -13,15 +13,15 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/oturumlar_view_model.dart";
 
-class OturumlarView extends StatefulWidget {
+final class OturumlarView extends StatefulWidget {
   const OturumlarView({super.key});
 
   @override
   State<OturumlarView> createState() => _OturumlarViewState();
 }
 
-class _OturumlarViewState extends BaseState<OturumlarView> {
-  OturumlarViewModel viewModel = OturumlarViewModel();
+final class _OturumlarViewState extends BaseState<OturumlarView> {
+  final OturumlarViewModel viewModel = OturumlarViewModel();
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
           title: Observer(
             builder: (_) {
               if (viewModel.isSearchBarOpen) {
-                return CustomAppBarTextField(onChanged: viewModel.setSearchValue);
+                return CustomAppBarTextField(onChanged: viewModel.setSearchText);
               }
               return AppBarTitle(
                 title: "Oturumlar",
@@ -48,9 +48,9 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
           actions: [
             IconButton(
               onPressed: () {
-                viewModel.setIsSearchBarOpen();
+                viewModel.changeSearchBarStatus();
                 if (!viewModel.isSearchBarOpen) {
-                  viewModel.setSearchValue("");
+                  viewModel.setSearchText("");
                 }
               },
               icon: Observer(
@@ -62,63 +62,54 @@ class _OturumlarViewState extends BaseState<OturumlarView> {
             ),
           ],
         ),
-        body: RefreshIndicator.adaptive(
-          onRefresh: viewModel.getData,
-          child: Observer(
-            builder: (_) {
-              if (viewModel.filteredList == null) return const ListViewShimmer();
-              if (viewModel.filteredList!.isEmpty) return const Center(child: Text("Oturum bulunamadı."));
-              return ListView.builder(
-                itemCount: viewModel.filteredList?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final AccountModel model = viewModel.filteredList![index];
-                  return Card(
-                    child: ListTile(
-                      onTap: () async {
-                        await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: model.kullaniciAdi ?? "",
-                          children: [
-                            BottomSheetModel(
-                              title: "Oturumu Kapat",
-                              iconWidget: Icons.logout_outlined,
-                              onTap: () async {
-                                Get.back();
-                                dialogManager.showAreYouSureDialog(() async {
-                                  viewModel.logout(model);
-                                  await viewModel.getData();
-                                });
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                      title: Text(
-                        "${model.kullaniciAdi ?? ""} (${model.adi ?? ""} ${model.soyadi ?? ""})",
-                        style: TextStyle(color: model.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null),
+        body: Observer(
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.getData,
+            items: viewModel.filteredList,
+            itemBuilder: (item) => Card(
+              child: ListTile(
+                onTap: () async {
+                  await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: item.kullaniciAdi ?? "",
+                    children: [
+                      BottomSheetModel(
+                        title: "Oturumu Kapat",
+                        iconWidget: Icons.logout_outlined,
+                        onTap: () async {
+                          Get.back();
+                          dialogManager.showAreYouSureDialog(() async {
+                            viewModel.logout(item);
+                            await viewModel.getData();
+                          });
+                        },
                       ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Kayıt Tarihi: ${model.girisTarihi?.toDateString}"),
-                          Text("Son Giriş Tarihi: ${model.sonKullanimTarihi?.toDateString}"),
-                          CustomLayoutBuilder(
-                            splitCount: 2,
-                            children: [
-                              Text("Marka: ${model.cihazMarkasi ?? ""}"),
-                              Text("Model: ${model.cihazModeli ?? ""}"),
-                              Text("Şirket: ${model.aktifVeritabani ?? ""}"),
-                              Text("Şube: ${model.aktifSubeKodu ?? "0"}"),
-                              Text("Uyg.Rev No: ${model.uygulamaSurumKodu ?? ""}"),
-                            ],
-                          ),
-                        ],
-                      ).paddingOnly(top: UIHelper.lowSize),
-                    ),
+                    ],
                   );
                 },
-              ).paddingAll(UIHelper.lowSize);
-            },
+                title: Text(
+                  "${item.kullaniciAdi ?? ""} (${item.adi ?? ""} ${item.soyadi ?? ""})",
+                  style: TextStyle(color: item.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Kayıt Tarihi: ${item.girisTarihi?.toDateString}"),
+                    Text("Son Giriş Tarihi: ${item.sonKullanimTarihi?.toDateString}"),
+                    CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Marka: ${item.cihazMarkasi ?? ""}"),
+                        Text("Model: ${item.cihazModeli ?? ""}"),
+                        Text("Şirket: ${item.aktifVeritabani ?? ""}"),
+                        Text("Şube: ${item.aktifSubeKodu ?? "0"}"),
+                        Text("Uyg.Rev No: ${item.uygulamaSurumKodu ?? ""}"),
+                      ],
+                    ),
+                  ],
+                ).paddingOnly(top: UIHelper.lowSize),
+              ),
+            ),
           ),
         ),
       );
