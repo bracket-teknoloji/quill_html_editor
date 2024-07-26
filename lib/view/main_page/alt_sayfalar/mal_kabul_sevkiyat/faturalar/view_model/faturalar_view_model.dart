@@ -1,7 +1,11 @@
 import "dart:convert";
 
+import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -15,7 +19,7 @@ part "faturalar_view_model.g.dart";
 
 class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
-abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
+abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, ScrollControllableMixin, PageableMixin {
   _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
@@ -68,20 +72,19 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   @observable
   ObservableMap<String, dynamic>? paramData;
 
+  @override
   @observable
-  bool isScrolledDown = true;
+  bool isScrollDown = true;
 
   @observable
   bool searchBar = false;
 
   @observable
-  bool dahaVarMi = true;
-
-  @observable
   bool grupKodlariGoster = false;
 
+  @override
   @observable
-  ObservableList<BaseSiparisEditModel?>? faturaList;
+  ObservableList<BaseSiparisEditModel>? observableList;
 
   @action
   void changeEkstraAlanlarMap(String key, bool value) {
@@ -160,16 +163,20 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();
 
   @action
-  void setIsScrollDown(bool value) => isScrolledDown = value;
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
+    }
+  }
 
   @action
   void setParamData(Map<String, dynamic> value) => paramData = value.asObservable();
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
-
-  @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
 
   @action
   void increaseSayfa() => faturaRequestModel = faturaRequestModel.copyWith(sayfa: faturaRequestModel.sayfa! + 1);
@@ -180,11 +187,13 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSearchText(String? value) => faturaRequestModel = faturaRequestModel.copyWith(searchText: value);
 
+  @override
   @action
-  void setFaturaList(List<BaseSiparisEditModel?>? value) => faturaList = value?.asObservable();
+  void setObservableList(List<BaseSiparisEditModel>? value) => observableList = value?.asObservable();
 
+  @override
   @action
-  void addFaturaList(List<BaseSiparisEditModel?>? value) => faturaList = faturaList?..addAll(value!);
+  void addObservableList(List<BaseSiparisEditModel>? value) => setObservableList(observableList?..addAll(value!));
 
   @action
   void setSiralama(String value) => faturaRequestModel = faturaRequestModel.copyWith(siralama: value);
@@ -218,7 +227,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     searchBar = !searchBar;
     if (!searchBar) {
       setSearchText(null);
-      await resetPage();
+      resetPage();
     }
   }
 
@@ -240,12 +249,10 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
         baslamaTarihi: null,
         bitisTarihi: null,
       );
-
+  @override
   @action
-  Future<void> resetPage() async {
-    setFaturaList(null);
-    setDahaVarMi(true);
-    resetSayfa();
+  Future<void> resetList() async {
+    resetPage();
     await getData();
   }
 
@@ -262,27 +269,21 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
+  @override
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
-    if (result.data is List) {
-      final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
-      if ((faturaRequestModel.sayfa ?? 0) < 2) {
-        setFaturaList(CacheManager.getFaturaEditLists(editTipiEnum));
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-        if (faturaList.ext.isNullOrEmpty) {
-          setFaturaList(list);
-        } else {
-          addFaturaList(list);
-        }
+    if (result.isSuccess) {
+      if (page > 1) {
+        addObservableList(result.dataList);
       } else {
-        addFaturaList(list);
+        setObservableList(result.dataList);
       }
-      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
-        setDahaVarMi(false);
-      } else {
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);
-        increaseSayfa();
+        increasePage();
+      } else {
+        setDahaVarMi(false);
       }
     }
   }

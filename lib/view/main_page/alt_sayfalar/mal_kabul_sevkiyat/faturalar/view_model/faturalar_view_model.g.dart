@@ -142,19 +142,19 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_FaturalarViewModelBase.isScrolledDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_FaturalarViewModelBase.isScrollDown', context: context);
 
   @override
-  bool get isScrolledDown {
-    _$isScrolledDownAtom.reportRead();
-    return super.isScrolledDown;
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
   }
 
   @override
-  set isScrolledDown(bool value) {
-    _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
-      super.isScrolledDown = value;
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
     });
   }
 
@@ -174,22 +174,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_FaturalarViewModelBase.dahaVarMi', context: context);
-
-  @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
-  }
-
-  @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
-    });
-  }
-
   late final _$grupKodlariGosterAtom =
       Atom(name: '_FaturalarViewModelBase.grupKodlariGoster', context: context);
 
@@ -206,19 +190,19 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
-  late final _$faturaListAtom =
-      Atom(name: '_FaturalarViewModelBase.faturaList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_FaturalarViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<BaseSiparisEditModel?>? get faturaList {
-    _$faturaListAtom.reportRead();
-    return super.faturaList;
+  ObservableList<BaseSiparisEditModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set faturaList(ObservableList<BaseSiparisEditModel?>? value) {
-    _$faturaListAtom.reportWrite(value, super.faturaList, () {
-      super.faturaList = value;
+  set observableList(ObservableList<BaseSiparisEditModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -256,6 +240,16 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     });
   }
 
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+      '_FaturalarViewModelBase.changeScrollStatus',
+      context: context);
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
+  }
+
   late final _$changeSearchBarAsyncAction =
       AsyncAction('_FaturalarViewModelBase.changeSearchBar', context: context);
 
@@ -264,12 +258,12 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
     return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_FaturalarViewModelBase.resetPage', context: context);
+  late final _$resetListAsyncAction =
+      AsyncAction('_FaturalarViewModelBase.resetList', context: context);
 
   @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
   }
 
   late final _$getKodAsyncAction =
@@ -402,17 +396,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.setIsScrollDown');
-    try {
-      return super.setIsScrollDown(value);
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setParamData(Map<String, dynamic> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.setParamData');
@@ -429,17 +412,6 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
         name: '_FaturalarViewModelBase.changeGrupKodlariGoster');
     try {
       return super.changeGrupKodlariGoster();
-    } finally {
-      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.setDahaVarMi');
-    try {
-      return super.setDahaVarMi(value);
     } finally {
       _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -479,22 +451,22 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void setFaturaList(List<BaseSiparisEditModel?>? value) {
+  void setObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.setFaturaList');
+        name: '_FaturalarViewModelBase.setObservableList');
     try {
-      return super.setFaturaList(value);
+      return super.setObservableList(value);
     } finally {
       _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addFaturaList(List<BaseSiparisEditModel?>? value) {
+  void addObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
-        name: '_FaturalarViewModelBase.addFaturaList');
+        name: '_FaturalarViewModelBase.addObservableList');
     try {
-      return super.addFaturaList(value);
+      return super.addObservableList(value);
     } finally {
       _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -618,11 +590,10 @@ editTipiEnum: ${editTipiEnum},
 ekstraAlanlarMap: ${ekstraAlanlarMap},
 faturaRequestModel: ${faturaRequestModel},
 paramData: ${paramData},
-isScrolledDown: ${isScrolledDown},
+isScrollDown: ${isScrollDown},
 searchBar: ${searchBar},
-dahaVarMi: ${dahaVarMi},
 grupKodlariGoster: ${grupKodlariGoster},
-faturaList: ${faturaList},
+observableList: ${observableList},
 teslimatDurumuValueList: ${teslimatDurumuValueList},
 grupKodList: ${grupKodList},
 getGrupKod0: ${getGrupKod0},

@@ -1,10 +1,10 @@
 import "dart:convert";
 
 import "package:flutter/material.dart";
-import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -33,7 +33,7 @@ import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/faturalar_view_model.dart";
 
-class FaturalarView extends StatefulWidget {
+final class FaturalarView extends StatefulWidget {
   final EditTipiEnum editTipiEnum;
   final bool? isGetData;
   const FaturalarView({super.key, required this.editTipiEnum, this.isGetData});
@@ -42,7 +42,7 @@ class FaturalarView extends StatefulWidget {
   State<FaturalarView> createState() => _FaturalarViewState();
 }
 
-class _FaturalarViewState extends BaseState<FaturalarView> {
+final class _FaturalarViewState extends BaseState<FaturalarView> {
   late final FaturalarViewModel viewModel;
   late final ScrollController _scrollController;
   late final TextEditingController _searchController;
@@ -81,19 +81,10 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
     _kod4Controller = TextEditingController();
     _kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
-      await viewModel.getData();
       _scrollController.addListener(() async {
-        if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          viewModel.setIsScrollDown(false);
-        }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          viewModel.setIsScrollDown(true);
-        }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-          await viewModel.getData();
-          viewModel.setIsScrollDown(true);
-        }
+        viewModel.changeScrollStatus(_scrollController.position);
       });
+      await viewModel.getData();
     });
 
     super.initState();
@@ -127,7 +118,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
         extendBodyBehindAppBar: false,
         appBar: appBar(),
         floatingActionButton: fab(),
-        body: body(),
+        body: body2(),
         bottomNavigationBar: bottomBar(),
       );
 
@@ -138,11 +129,11 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
               return CustomAppBarTextField(
                 onFieldSubmitted: (String value) async {
                   viewModel.setSearchText(value);
-                  await viewModel.resetPage();
+                  await viewModel.resetList();
                 },
               );
             }
-            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.faturaList?.length.toStringIfNotNull ?? "");
+            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "");
           },
         ),
         actions: <Widget>[
@@ -174,7 +165,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                 );
                 if (result != null) {
                   viewModel.setSiralama(result);
-                  await viewModel.resetPage();
+                  await viewModel.resetList();
                 }
               },
             ),
@@ -234,33 +225,60 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
   Observer fab() => Observer(
         builder: (_) => Visibility(
           child: CustomFloatingActionButton(
-            isScrolledDown: viewModel.isScrolledDown,
+            isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
               await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
-              await viewModel.resetPage();
+              await viewModel.resetList();
             },
           ),
-        ).yetkiVarMi(viewModel.faturaList != null && widget.editTipiEnum.eklensinMi),
+        ).yetkiVarMi(viewModel.observableList != null && widget.editTipiEnum.eklensinMi),
+      );
+
+  Widget body2() => Observer(
+        builder: (_) => RefreshableListView<BaseSiparisEditModel>.pageable(
+          scrollController: _scrollController,
+          onRefresh: viewModel.resetList,
+          dahaVarMi: viewModel.dahaVarMi,
+          items: viewModel.observableList,
+          itemBuilder: (item) => Observer(
+            builder: (_) => FaturalarCard(
+              model: item,
+              showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
+              showMiktar: viewModel.ekstraAlanlarMap["MİK"],
+              showVade: viewModel.ekstraAlanlarMap["VADE"],
+              editTipiEnum: widget.editTipiEnum,
+              isGetData: widget.isGetData,
+              onDeleted: () async {
+                await viewModel.resetList();
+              },
+              onUpdated: (value) async {
+                if (value) {
+                  await viewModel.resetList();
+                }
+              },
+            ),
+          ),
+        ),
       );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async => viewModel.resetPage(),
+        onRefresh: () async => viewModel.resetList(),
         child: Observer(
-          builder: (_) => viewModel.faturaList == null
+          builder: (_) => viewModel.observableList == null
               ? const ListViewShimmer()
-              : viewModel.faturaList.ext.isNullOrEmpty
+              : viewModel.observableList.ext.isNullOrEmpty
                   ? const Center(child: Text("Fatura bulunamadı"))
                   : ListView.builder(
                       padding: UIHelper.lowPadding,
                       primary: false,
                       physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                       controller: _scrollController,
-                      itemCount: viewModel.faturaList != null ? ((viewModel.faturaList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
+                      itemCount: viewModel.observableList != null ? ((viewModel.observableList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
                       itemBuilder: (BuildContext context, int index) {
-                        if (index == viewModel.faturaList?.length) {
+                        if (index == viewModel.observableList?.length) {
                           return const Center(child: CircularProgressIndicator.adaptive());
                         } else {
-                          final BaseSiparisEditModel item = viewModel.faturaList?[index] ?? BaseSiparisEditModel();
+                          final BaseSiparisEditModel item = viewModel.observableList?[index] ?? BaseSiparisEditModel();
                           return Observer(
                             builder: (_) => FaturalarCard(
                               model: item,
@@ -270,11 +288,11 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                               editTipiEnum: widget.editTipiEnum,
                               isGetData: widget.isGetData,
                               onDeleted: () async {
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               },
                               onUpdated: (value) async {
                                 if (value) {
-                                  await viewModel.resetPage();
+                                  await viewModel.resetList();
                                 }
                               },
                             ),
@@ -287,7 +305,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
 
   Observer bottomBar() => Observer(
         builder: (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrolledDown,
+          isScrolledDown: viewModel.isScrollDown,
           children: <FooterButton>[
             FooterButton(
               children: <Widget>[
@@ -500,7 +518,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod0(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod0Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -529,7 +547,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod1(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod1Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -562,7 +580,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod2(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod2Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -591,7 +609,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod3(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod3Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -624,7 +642,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod4(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod4Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -653,7 +671,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod5(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod5Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
-                                await viewModel.resetPage();
+                                await viewModel.resetList();
                               }
                             },
                           ),
@@ -672,7 +690,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                       Get.back();
                       resetFilters();
                       viewModel.resetFilter();
-                      viewModel.resetPage();
+                      viewModel.resetList();
                     },
                     style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                     child: const Text("Temizle"),
@@ -683,9 +701,7 @@ class _FaturalarViewState extends BaseState<FaturalarView> {
                   child: ElevatedButton(
                     onPressed: () {
                       Get.back();
-                      viewModel.setFaturaList(null);
-                      viewModel.setDahaVarMi(true);
-                      viewModel.resetPage();
+                      viewModel.resetList();
                     },
                     child: const Text("Kaydet"),
                   ),
