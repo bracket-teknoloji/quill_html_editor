@@ -48,6 +48,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/view/
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/view/fiyat_ozeti_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/view/paket_icerigi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/view/paketleme_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_detayli_arama/view/stok_detayli_arama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/view/base_transfer_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view/transferler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_edit/view/is_emri_edit_view.dart";
@@ -390,6 +391,7 @@ class PickerApp extends StatelessWidget {
                   searchText: Get.arguments is KalemEkleModel ? Get.arguments.searchText : null,
                 ),
               ),
+              GetPage(name: "/stokDetayliArama", page: () => StokDetayliAramaView(aramaList: Get.arguments)),
               GetPage(name: "/stokListesiOzel", page: () => StokListesiView(isGetData: true, requestModel: Get.arguments)),
               GetPage(name: "/stokFiyatGor", page: () => FiyatGorView(model: Get.arguments)),
               GetPage(name: "/stokYazdir", page: () => StokYazdirView(model: Get.arguments)),

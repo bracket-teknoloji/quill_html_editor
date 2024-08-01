@@ -12,6 +12,7 @@ import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -179,11 +180,26 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           ),
           IconButton(
             onPressed: () async {
-              final result = await bottomSheetDialogManager.showStokDetayliAramaBottomSheetDialog(context);
-              if (result != null) {}
+              final List<StokDetayliAramaAlanlar> list = [];
+              for (StokDetayliAramaAlanlar item in parametreModel.stokDetayliAramaAlanlar ?? []) {
+                if (viewModel.bottomSheetModel.searchList?.any((element) => element.name == item.name) ?? false) {
+                  list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.name == item.name));
+                } else {
+                  list.add(item);
+                }
+              }
+              final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
+              if (result != null) {
+                if (result == true) {
+                  viewModel.setSearchList(null);
+                } else {
+                  viewModel.setSearchList(result);
+                }
+                await viewModel.resetList();
+              }
             },
             icon: const Icon(Icons.add),
-          ).isKDebug(),
+          ).isDebug(),
         ].whereType<Widget>().toList(),
         bottom: appBarBottom(),
       );

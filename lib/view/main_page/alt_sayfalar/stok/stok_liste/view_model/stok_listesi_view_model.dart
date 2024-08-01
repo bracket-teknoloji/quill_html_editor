@@ -68,7 +68,6 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @observable
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
 
-
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
 
@@ -274,6 +273,8 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
       } else {
         setDahaVarMi(false);
       }
+    } else {
+      setObservableList([]);
     }
   }
 }
