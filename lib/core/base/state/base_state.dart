@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/view/main_page/model/user_model/user_model.dart";
 
 import "../../../generated/locale_base.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -15,6 +16,7 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   NetworkManager get networkManager => NetworkManager();
   YetkiController get yetkiController => YetkiController();
   ParamModel get parametreModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
+  UserModel get userModel => CacheManager.getAnaVeri?.userModel ?? UserModel();
   ProfilYetkiModel get profilYetkiModel => CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
   String get mainCurrency => parametreModel.paraBirimi ?? "TL";
   double get width => MediaQuery.sizeOf(context).width;
