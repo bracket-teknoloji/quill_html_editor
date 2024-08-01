@@ -109,6 +109,8 @@ final class YetkiController {
   bool get cariAktiviteYeniKayit => _isTrue(_yetkiModel?.cariAktiviteEkle);
   bool get cariAktiviteDuzenleme => _isTrue(_yetkiModel?.cariAktiviteDuzelt);
   bool get cariAktiviteSilme => _isTrue(_yetkiModel?.cariAktiviteSil);
+  bool get cariBakiyeGosterimTumuMu => _isTrue(_yetkiModel?.cariBakiyeGosterim == "T");
+  bool get cariBakiyeGosterimKendiCarileriMi => _isTrue(_yetkiModel?.cariBakiyeGosterim == "K", skipAdmin: true);
   bool get cariAktiviteAtayabilir => _isTrue(_yetkiModel?.cariAktiviteAtayabilir);
   bool get cariAktiviteBitirmeyiGeriAl => _isTrue(_yetkiModel?.cariAktiviteBitirmeyiGeriAl);
 

@@ -274,43 +274,43 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   itemCount: (viewModel.observableList?.length ?? 0) + 1,
                   itemBuilder: (context, index) {
                     if (index < (viewModel.observableList?.length ?? 0)) {
-                      final CariListesiModel object = viewModel.observableList![index];
+                      final CariListesiModel item = viewModel.observableList![index];
                       return Card(
                         child: Listener(
                           onPointerDown: (event) {
                             if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                              showCariGrid(object);
+                              showCariGrid(item);
                             }
                           },
                           child: ListTile(
                             onLongPress: () {
-                              showCariGrid(object);
+                              showCariGrid(item);
                             },
                             onTap: () {
                               if (widget.isGetData) {
-                                Get.back(result: object);
+                                Get.back(result: item);
                               } else {
-                                cariBottomSheet(context, object);
+                                cariBottomSheet(context, item);
                               }
                             },
                             isThreeLine: true,
                             // contentPadding: UIHelper.midPadding,
                             leading: CircleAvatar(
-                              backgroundColor: UIHelper.getColorWithValue(object.bakiye ?? 0.0),
+                              backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
                               foregroundColor: Colors.white,
-                              child: Text(object.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+                              child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
                             ),
-                            title: Text(object.cariAdi ?? ""),
+                            title: Text(item.cariAdi ?? ""),
                             subtitle: Wrap(
                               direction: Axis.vertical,
                               alignment: WrapAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
-                                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(object.efaturaMi == true),
-                                    ColorfulBadge(label: Text("Dövizli ${object.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(object.dovizli == true),
-                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(object.boylam != null),
-                                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(object.kilit == "E"),
+                                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(item.efaturaMi == true),
+                                    ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.dovizli == true),
+                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(item.boylam != null),
+                                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilit == "E"),
                                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
                                   ]
@@ -320,9 +320,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       .toList()
                                       .nullCheckWithGeneric,
                                 ),
-                                Text("${object.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                                if (object.cariIl != null)
-                                  Text("${object.cariIl ?? ""}/${object.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
+                                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
+                                if (item.cariIl != null)
+                                  Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
                                 else
                                   const SizedBox(),
                               ],
@@ -333,17 +333,17 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: object.bakiye == null ? "0,00 $mainCurrency\n" : "${object.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
-                                        style: TextStyle(color: UIHelper.getColorWithValue(object.bakiye ?? 0.0)),
+                                        text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
+                                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
                                       ),
-                                      if (object.bakiye != null)
-                                        TextSpan(text: "${((object.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
+                                      if (item.bakiye != null)
+                                        TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
                                       else
                                         null,
-                                      if (object.dovizli == true && object.dovBakiye != null)
+                                      if (item.dovizli == true && item.dovBakiye != null)
                                         TextSpan(
-                                          text: "${object.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${object.dovizAdi ?? ""}",
-                                          style: TextStyle(color: UIHelper.getColorWithValue(object.dovBakiye ?? 0.0)),
+                                          text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
+                                          style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
                                         )
                                       else
                                         null,
@@ -352,16 +352,14 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   textAlign: TextAlign.right,
                                 ),
                               ],
-                            ),
+                            ).yetkiVarMi(bakiyeGorunsunMu(item)),
                           ),
                         ),
                       );
                     } else {
-                      return Observer(
-                        builder: (_) => Visibility(
-                          visible: viewModel.dahaVarMi,
-                          child: const Center(child: CircularProgressIndicator.adaptive()),
-                        ),
+                      return Visibility(
+                        visible: viewModel.dahaVarMi,
+                        child: const Center(child: CircularProgressIndicator.adaptive()),
                       );
                     }
                   },
@@ -373,9 +371,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
     await dialogManager.showCariGridViewDialog(
       object,
       onSelected: (p0) {
-        if (p0) {
-          viewModel.resetList();
-        }
+        if (p0) viewModel.resetList();
       },
     );
   }
@@ -888,4 +884,11 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
           ],
         ),
       );
+
+  bool bakiyeGorunsunMu(CariListesiModel model) {
+    if (userModel.plasiyerKodu == null) return true;
+    if (yetkiController.cariBakiyeGosterimTumuMu) return true;
+    if (yetkiController.cariBakiyeGosterimKendiCarileriMi && model.plasiyerKodu == userModel.plasiyerKodu) return true;
+    return false;
+  }
 }

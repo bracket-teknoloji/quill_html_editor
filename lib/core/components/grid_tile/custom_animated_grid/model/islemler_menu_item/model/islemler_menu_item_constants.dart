@@ -545,10 +545,10 @@ class IslemlerMenuItemConstants<T> {
       );
 
   GridItemModel? cariKoduDegistir(String? cariKodu) {
-    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    final CariListesiModel siparisModel = model as CariListesiModel;
     return GridItemModel.islemler(
       title: "Cari Kodu Değiştir",
-      isEnabled: (siparisTipi?.cariKoduDegisirMi == true) && !siparisModel.eBelgeMi,
+      isEnabled: (siparisTipi?.cariKoduDegisirMi == true) && siparisModel.efatAktif != true,
       iconData: Icons.people_alt_outlined,
       onTap: () async {
         final TextEditingController controller = TextEditingController();
