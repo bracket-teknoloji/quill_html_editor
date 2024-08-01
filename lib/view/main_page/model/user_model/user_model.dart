@@ -51,6 +51,10 @@ class UserModel {
   String? admin;
   @HiveField(18)
   bool? adminMi;
+  @HiveField(19)
+  String? plasiyerTanimi;
+  @HiveField(20)
+  String? plasiyerKodu;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
   Map<String, dynamic> toJson() => _$UserModelToJson(this);

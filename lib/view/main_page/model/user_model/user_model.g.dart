@@ -32,13 +32,15 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..konumBoylam = fields[14] as double?
       ..adSoyad = fields[16] as String?
       ..admin = fields[17] as String?
-      ..adminMi = fields[18] as bool?;
+      ..adminMi = fields[18] as bool?
+      ..plasiyerTanimi = fields[19] as String?
+      ..plasiyerKodu = fields[20] as String?;
   }
 
   @override
   void write(BinaryWriter writer, UserModel obj) {
     writer
-      ..writeByte(16)
+      ..writeByte(18)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -70,7 +72,11 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(17)
       ..write(obj.admin)
       ..writeByte(18)
-      ..write(obj.adminMi);
+      ..write(obj.adminMi)
+      ..writeByte(19)
+      ..write(obj.plasiyerTanimi)
+      ..writeByte(20)
+      ..write(obj.plasiyerKodu);
   }
 
   @override
@@ -110,7 +116,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..langModel = LangModel.fromJson(json['LangModel'] as Map<String, dynamic>)
   ..adSoyad = json['AD_SOYAD'] as String?
   ..admin = json['ADMIN'] as String?
-  ..adminMi = json['ADMIN_MI'] as bool?;
+  ..adminMi = json['ADMIN_MI'] as bool?
+  ..plasiyerTanimi = json['PLASIYER_TANIMI'] as String?
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?;
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   final val = <String, dynamic>{};
@@ -140,5 +148,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('AD_SOYAD', instance.adSoyad);
   writeNotNull('ADMIN', instance.admin);
   writeNotNull('ADMIN_MI', instance.adminMi);
+  writeNotNull('PLASIYER_TANIMI', instance.plasiyerTanimi);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   return val;
 }
