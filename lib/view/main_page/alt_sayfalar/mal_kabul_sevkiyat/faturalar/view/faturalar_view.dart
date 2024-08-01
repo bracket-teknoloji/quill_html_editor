@@ -18,7 +18,6 @@ import "../../../../../../core/components/card/faturalar_card.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
@@ -118,7 +117,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
         extendBodyBehindAppBar: false,
         appBar: appBar(),
         floatingActionButton: fab(),
-        body: body2(),
+        body: body(),
         bottomNavigationBar: bottomBar(),
       );
 
@@ -234,7 +233,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
         ).yetkiVarMi(viewModel.observableList != null && widget.editTipiEnum.eklensinMi),
       );
 
-  Widget body2() => Observer(
+  Widget body() => Observer(
         builder: (_) => RefreshableListView<BaseSiparisEditModel>.pageable(
           scrollController: _scrollController,
           onRefresh: viewModel.resetList,
@@ -258,48 +257,6 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               },
             ),
           ),
-        ),
-      );
-
-  RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async => viewModel.resetList(),
-        child: Observer(
-          builder: (_) => viewModel.observableList == null
-              ? const ListViewShimmer()
-              : viewModel.observableList.ext.isNullOrEmpty
-                  ? const Center(child: Text("Fatura bulunamadı"))
-                  : ListView.builder(
-                      padding: UIHelper.lowPadding,
-                      primary: false,
-                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                      controller: _scrollController,
-                      itemCount: viewModel.observableList != null ? ((viewModel.observableList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
-                      itemBuilder: (BuildContext context, int index) {
-                        if (index == viewModel.observableList?.length) {
-                          return const Center(child: CircularProgressIndicator.adaptive());
-                        } else {
-                          final BaseSiparisEditModel item = viewModel.observableList?[index] ?? BaseSiparisEditModel();
-                          return Observer(
-                            builder: (_) => FaturalarCard(
-                              model: item,
-                              showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
-                              showMiktar: viewModel.ekstraAlanlarMap["MİK"],
-                              showVade: viewModel.ekstraAlanlarMap["VADE"],
-                              editTipiEnum: widget.editTipiEnum,
-                              isGetData: widget.isGetData,
-                              onDeleted: () async {
-                                await viewModel.resetList();
-                              },
-                              onUpdated: (value) async {
-                                if (value) {
-                                  await viewModel.resetList();
-                                }
-                              },
-                            ),
-                          );
-                        }
-                      },
-                    ),
         ),
       );
 
