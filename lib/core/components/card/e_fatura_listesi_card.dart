@@ -473,8 +473,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             showLoading: true,
             queryParameters: {"filterText": "", "Kod": model.seciliCariKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTuru, "PlasiyerKisitiYok": true},
           );
-
-          dialogManager.showCariGridViewDialog((result.data as List).firstOrNull);
+          if (result.isSuccess) {
+            dialogManager.showCariGridViewDialog(result.dataList.first);
+          }
         },
       );
 

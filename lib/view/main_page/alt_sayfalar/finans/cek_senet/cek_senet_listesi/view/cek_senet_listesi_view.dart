@@ -442,7 +442,8 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
         "PlasiyerKisitiYok": true,
       },
     );
-
-    dialogManager.showCariGridViewDialog(result.data.first);
+    if (result.isSuccess) {
+      dialogManager.showCariGridViewDialog(result.dataList.firstOrNull);
+    }
   }
 }

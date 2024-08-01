@@ -159,8 +159,9 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
       showLoading: true,
       queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
     );
-
-    dialogManager.showCariGridViewDialog(result.data.first);
+    if (result.isSuccess) {
+      dialogManager.showCariGridViewDialog(result.dataList.firstOrNull);
+    }
   }
 
   Future<void> evraklarCekSenet() async {

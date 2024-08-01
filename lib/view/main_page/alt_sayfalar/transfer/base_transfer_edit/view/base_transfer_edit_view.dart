@@ -572,7 +572,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     dialogManager.showAlertDialog("Lütfen Cari seçiniz.");
                     return;
                   }
-                  dialogManager.showCariGridViewDialog(CariListesiModel());
+                  dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.model.cariKodu);
                 },
                 icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),

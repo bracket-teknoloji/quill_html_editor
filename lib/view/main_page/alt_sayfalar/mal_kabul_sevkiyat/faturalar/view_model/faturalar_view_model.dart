@@ -173,7 +173,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   }
 
   @action
-  void setParamData(Map<String, dynamic> value) => paramData = value.asObservable();
+  void setParamData(Map<String, dynamic> value) => paramData = value.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
@@ -278,6 +278,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
         addObservableList(result.dataList);
       } else {
         setObservableList(result.dataList);
+        setParamData(result.paramData ?? {});
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);

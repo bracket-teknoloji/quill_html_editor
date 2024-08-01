@@ -128,7 +128,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 onPressed: () {
                   if (viewModel.pdfModel.dicParams?.cariKodu != null) {
                     dialogManager.showCariGridViewDialog(
-                      CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu!,
+                      CariListesiModel()..cariKodu = viewModel.pdfModel.dicParams?.cariKodu,
                     );
                   } else {
                     dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
