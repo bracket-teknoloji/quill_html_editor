@@ -68,13 +68,6 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @observable
   StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
 
-  @computed
-  StokBottomSheetModel get getBottomSheetModel => bottomSheetModel.copyWith(
-        resimGoster: resimleriGoster,
-        menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
-        searchText: searchText,
-        sayfa: page,
-      );
 
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
@@ -267,7 +260,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     final result = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
       bodyModel: StokListesiModel(),
-      data: getBottomSheetModel.toJsonWithList(),
+      data: bottomSheetModel.copyWith(resimGoster: resimleriGoster, menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK", searchText: searchText, sayfa: page).toJsonWithList(),
     );
     if (result.isSuccess) {
       if (page > 1) {

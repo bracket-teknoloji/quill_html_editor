@@ -143,6 +143,9 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void setObservableList(List<CariListesiModel>? value) => observableList = value?.asObservable();
 
+  @action
+  void setParamData(Map<String, dynamic>? value) => paramData = value?.asObservable();
+
   @override
   @action
   void addObservableList(List<CariListesiModel>? value) => setObservableList(observableList?..addAll(value!));
@@ -320,16 +323,14 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     if (cariRequestModel.kod == null || cariRequestModel.kod!.isEmpty) {
       body["Kod"] = "";
     }
-    final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body, bodyModel: CariListesiModel());
+    final result = await networkManager.dioGet<CariListesiModel>(path: ApiUrls.getCariler, queryParameters: body..["Sayfa"] = page, bodyModel: CariListesiModel());
 
     if (result.isSuccess) {
-      if (cariRequestModel.sayfa == 1) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-      }
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
         setObservableList(result.dataList);
+        setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)));
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);

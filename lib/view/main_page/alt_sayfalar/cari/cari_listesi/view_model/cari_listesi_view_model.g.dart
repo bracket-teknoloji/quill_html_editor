@@ -379,6 +379,17 @@ mixin _$CariListesiViewModel on _CariListesiViewModelBase, Store {
   }
 
   @override
+  void setParamData(Map<String, dynamic>? value) {
+    final _$actionInfo = _$_CariListesiViewModelBaseActionController
+        .startAction(name: '_CariListesiViewModelBase.setParamData');
+    try {
+      return super.setParamData(value);
+    } finally {
+      _$_CariListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addObservableList(List<CariListesiModel>? value) {
     final _$actionInfo = _$_CariListesiViewModelBaseActionController
         .startAction(name: '_CariListesiViewModelBase.addObservableList');
