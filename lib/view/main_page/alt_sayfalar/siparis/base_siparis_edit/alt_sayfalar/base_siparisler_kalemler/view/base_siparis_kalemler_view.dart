@@ -177,14 +177,11 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     TextSpan(
                       children: [
                         TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
-                        if (kalemModel?.iskontoTutari != 0.0)
-                          TextSpan(
-                            text:
-                                "(${kalemModel?.iskonto1.toIntIfDouble ?? ""}${kalemModel?.iskonto2 != null ? "+" : ""}${kalemModel?.iskonto2.toIntIfDouble ?? ""}${kalemModel?.iskonto3 != null ? "+" : ""}${kalemModel?.iskonto3.toIntIfDouble ?? ""}${kalemModel?.iskonto4 != null ? "+" : ""}${kalemModel?.iskonto4.toIntIfDouble ?? ""}${kalemModel?.iskonto5 != null ? "+" : ""}${kalemModel?.iskonto5.toIntIfDouble ?? ""}${kalemModel?.iskonto6 != null ? "+" : ""}${kalemModel?.iskonto6.toIntIfDouble ?? ""}) ",
-                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
-                          )
-                        else
-                          null,
+                          if (kalemModel?.iskontoTutari != null)
+                            TextSpan(
+                              text: kalemModel?.iskontoDetayi,
+                              style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                            ),
                       ].whereType<TextSpan>().toList(),
                     ),
                   ).yetkiVarMi(kalemModel?.kdvOrani != null),
@@ -202,7 +199,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: "Tutar: ${kalemModel?.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
+                        TextSpan(text: "Tutar: ${((kalemModel?.brutTutar ?? 0) - (kalemModel?.iskontoTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                         TextSpan(text: "\n(${kalemModel?.dovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],

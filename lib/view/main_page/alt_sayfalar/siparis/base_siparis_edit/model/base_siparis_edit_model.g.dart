@@ -5346,7 +5346,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
 }
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
-      iskonto1OranMi: json['ISKONTO_1_ORAN_MI'] as bool? ?? true,
+      iskonto1OranMi: json['ISKONTO_1_ORAN_MI'] as bool? ?? false,
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),

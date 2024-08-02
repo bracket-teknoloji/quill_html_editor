@@ -9,6 +9,7 @@ import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
 import "package:uuid/uuid.dart";
@@ -1138,7 +1139,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @JsonSerializable(createFactory: true)
 class KalemModel with NetworkManagerMixin {
   @HiveField(0)
-  @JsonKey(defaultValue: true, name: "ISKONTO_1_ORAN_MI")
+  @JsonKey(defaultValue: false, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
   @HiveField(1)
   DateTime? tarih;
@@ -1621,6 +1622,22 @@ class KalemModel with NetworkManagerMixin {
     // return "Seriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).fold(0.0, (a, b) => a + (b ?? 0.0)) ?? 0).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
   }
 
+  String get iskontoDetayi {
+    String result = "";
+    if (iskonto1 != null) {
+      if (iskonto1OranMi == true) {
+        result = result + iskonto1.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+      } else {
+        result = result + ((iskonto1 ?? 0) / brutTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar);
+      }
+    }
+    if (iskonto2 != null) result = "$result + ${iskonto2.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
+    if (iskonto3 != null) result = "$result + ${iskonto3.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
+    if (iskonto4 != null) result = "$result + ${iskonto4.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
+    if (iskonto5 != null) result = "$result + ${iskonto5.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
+    return "($result)";
+  }
+
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
@@ -1657,7 +1674,7 @@ class KalemModel with NetworkManagerMixin {
       (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? getDovizAraToplamTutari - (getDovizAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : getDovizAraToplamTutari * ((kdvOrani ?? 0) / 100);
 
   double get iskontoTutari {
-    double result = brutTutar - mfTutari;
+    double result = ((getSelectedMiktar ?? 0) * (brutFiyat ?? 0)) - mfTutari;
     if (iskonto1OranMi ?? true) {
       if (iskonto1 != null && iskonto1 != 0) {
         result = result - result * ((iskonto1 ?? 0) / 100);
