@@ -25,6 +25,7 @@ mixin ScrollControllableMixin<T extends NetworkManagerMixin> on ListableMixin<T>
     if (position.userScrollDirection == ScrollDirection.forward) {
       isScrollDown = true;
     } else if (position.userScrollDirection == ScrollDirection.reverse) {
+      await Future.delayed(const Duration(milliseconds: 500));
       isScrollDown = false;
     }
   }

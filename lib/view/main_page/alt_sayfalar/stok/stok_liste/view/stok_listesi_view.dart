@@ -181,9 +181,14 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           IconButton(
             onPressed: () async {
               final List<StokDetayliAramaAlanlar> list = [];
-              for (StokDetayliAramaAlanlar item in parametreModel.stokDetayliAramaAlanlar ?? []) {
-                if (viewModel.bottomSheetModel.searchList?.any((element) => element.name == item.name) ?? false) {
-                  list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.name == item.name));
+              final List<StokDetayliAramaAlanlar> aramaList = [
+                StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
+                StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
+                ...parametreModel.stokDetayliAramaAlanlar ?? [],
+              ];
+              for (StokDetayliAramaAlanlar item in aramaList) {
+                if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
+                  list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
                 } else {
                   list.add(item);
                 }
@@ -578,62 +583,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Column body() => Column(
         children: [
-          Observer(
-            builder: (_) => CustomLayoutBuilder(
-              splitCount: 3,
-              doNotExpand: true,
-              children: [
-                CustomTextField(
-                  labelText: "Grup Kodu",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: grupKoduController,
-                  onClear: () async => await grupKoduOnClear(0),
-                  onTap: () => getGrupKodlariBottomSheet(0),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty)),
-                CustomTextField(
-                  labelText: "Kod 1",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: kod1Controller,
-                  onClear: () async => await grupKoduOnClear(1),
-                  onTap: () => getGrupKodlariBottomSheet(1),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty)),
-                CustomTextField(
-                  labelText: "Kod 2",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: kod2Controller,
-                  onClear: () async => await grupKoduOnClear(2),
-                  onTap: () => getGrupKodlariBottomSheet(2),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty)),
-                CustomTextField(
-                  labelText: "Kod 3",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: kod3Controller,
-                  onClear: () async => await grupKoduOnClear(3),
-                  onTap: () => getGrupKodlariBottomSheet(3),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty)),
-                CustomTextField(
-                  labelText: "Kod 4",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: kod4Controller,
-                  onClear: () async => await grupKoduOnClear(4),
-                  onTap: () => getGrupKodlariBottomSheet(4),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty)),
-                CustomTextField(
-                  labelText: "Kod 5",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: kod5Controller,
-                  onClear: () async => await grupKoduOnClear(5),
-                  onTap: () => getGrupKodlariBottomSheet(5),
-                ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
-              ].whereType<CustomTextField>().toList(),
-            ).yetkiVarMi(AccountModel.instance.isDebug),
-          ),
+          grupKoduFilter(),
           Expanded(
             child: Observer(
               builder: (_) => RefreshableListView.pageable(
@@ -773,6 +723,63 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
           ),
         ],
+      );
+
+  Observer grupKoduFilter() => Observer(
+        builder: (_) => CustomLayoutBuilder(
+          splitCount: 3,
+          doNotExpand: true,
+          children: [
+            CustomTextField(
+              labelText: "Grup Kodu",
+              readOnly: true,
+              suffixMore: true,
+              controller: grupKoduController,
+              onClear: () async => await grupKoduOnClear(0),
+              onTap: () => getGrupKodlariBottomSheet(0),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty)),
+            CustomTextField(
+              labelText: "Kod 1",
+              readOnly: true,
+              suffixMore: true,
+              controller: kod1Controller,
+              onClear: () async => await grupKoduOnClear(1),
+              onTap: () => getGrupKodlariBottomSheet(1),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty)),
+            CustomTextField(
+              labelText: "Kod 2",
+              readOnly: true,
+              suffixMore: true,
+              controller: kod2Controller,
+              onClear: () async => await grupKoduOnClear(2),
+              onTap: () => getGrupKodlariBottomSheet(2),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty)),
+            CustomTextField(
+              labelText: "Kod 3",
+              readOnly: true,
+              suffixMore: true,
+              controller: kod3Controller,
+              onClear: () async => await grupKoduOnClear(3),
+              onTap: () => getGrupKodlariBottomSheet(3),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty)),
+            CustomTextField(
+              labelText: "Kod 4",
+              readOnly: true,
+              suffixMore: true,
+              controller: kod4Controller,
+              onClear: () async => await grupKoduOnClear(4),
+              onTap: () => getGrupKodlariBottomSheet(4),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty)),
+            CustomTextField(
+              labelText: "Kod 5",
+              readOnly: true,
+              suffixMore: true,
+              controller: kod5Controller,
+              onClear: () async => await grupKoduOnClear(5),
+              onTap: () => getGrupKodlariBottomSheet(5),
+            ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
+          ].whereType<CustomTextField>().toList(),
+        ).yetkiVarMi(AccountModel.instance.isDebug),
       );
 
   Future<MemoryImage?> getImage(String path) async => await networkManager.getImage(path);

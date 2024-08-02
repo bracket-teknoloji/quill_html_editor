@@ -14,7 +14,7 @@ class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeW
   State<AppBarPreferedSizedBottom> createState() => _AppBarPreferedSizedBottomState();
 
   @override
-  Size get preferredSize => Size.fromHeight(Get.height * 0.07);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
