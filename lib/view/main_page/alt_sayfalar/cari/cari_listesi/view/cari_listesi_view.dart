@@ -243,7 +243,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         builder: (_) => Visibility(
           visible: viewModel.observableList != null,
           child: CustomFloatingActionButton(
-            isScrolledDown: !viewModel.isScrollDown,
+            isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
               final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
               Get.toNamed(
@@ -378,7 +378,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Widget? bottomButtonBar() => Observer(
         builder: (_) => BottomBarWidget(
-          isScrolledDown: !viewModel.isScrollDown,
+          isScrolledDown: viewModel.isScrollDown,
           children: [
             FooterButton(
               children: [
