@@ -252,6 +252,17 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
+  void setSearchList(List<StokDetayliAramaAlanlar>? value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setSearchList');
+    try {
+      return super.setSearchList(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setObservableList(List<StokListesiModel>? list) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.setObservableList');

@@ -209,351 +209,354 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         bottom: appBarBottom(),
       );
 
-  AppBarPreferedSizedBottom appBarBottom() => AppBarPreferedSizedBottom(
-        children: [
-          AppBarButton(
-            icon: Icons.qr_code_scanner,
-            child: const Text("Barkod"),
-            onPressed: () async {
-              final result = await Get.toNamed("/qr");
-              if (result != null) {
-                if (!viewModel.isSearchBarOpen) {
-                  viewModel.changeSearchBarStatus();
-                }
-                viewModel.resetList();
-                await viewModel.getData();
+  AppBarPreferedSizedBottom appBarBottom() => AppBarPreferedSizedBottom.forStokFilter(
+        filter: grupKoduFilter().yetkiVarMi(AccountModel.instance.isDebug),
+        children: appBarBottomChildren.nullCheckWithGeneric,
+      );
+
+  List<AppBarButton> get appBarBottomChildren => [
+        AppBarButton(
+          icon: Icons.qr_code_scanner,
+          child: const Text("Barkod"),
+          onPressed: () async {
+            final result = await Get.toNamed("/qr");
+            if (result != null) {
+              if (!viewModel.isSearchBarOpen) {
+                viewModel.changeSearchBarStatus();
               }
-            },
-          ),
-          AppBarButton(
-            iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
-            child: Text(loc.generalStrings.filter),
-            onPressed: () async {
-              if (viewModel.grupKodlari.isEmptyOrNull) {
-                final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
-                // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
-                if (grupKodlari.data != null) {
-                  viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
-                }
+              viewModel.resetList();
+              await viewModel.getData();
+            }
+          },
+        ),
+        AppBarButton(
+          iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
+          child: Text(loc.generalStrings.filter),
+          onPressed: () async {
+            if (viewModel.grupKodlari.isEmptyOrNull) {
+              final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
+              // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+              if (grupKodlari.data != null) {
+                viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
               }
-              await bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: loc.generalStrings.filter,
-                body: Column(
-                  children: [
-                    Wrap(
-                      children: [
-                        CustomWidgetWithLabel(
-                          text: "Bakiye Durumu",
-                          child: Observer(
-                            builder: (_) => SlideControllerWidget(
-                              childrenTitleList: viewModel.selectedList,
-                              filterOnChanged: (index) => viewModel.changeBakiyeDurumuTemp(index ?? 0),
-                              childrenValueList: viewModel.selectedList.map((e) => e.substring(0, 1)).toList(),
-                              groupValue: viewModel.bottomSheetModelTemp.bakiyeDurumu,
-                            ),
+            }
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.filter,
+              body: Column(
+                children: [
+                  Wrap(
+                    children: [
+                      CustomWidgetWithLabel(
+                        text: "Bakiye Durumu",
+                        child: Observer(
+                          builder: (_) => SlideControllerWidget(
+                            childrenTitleList: viewModel.selectedList,
+                            filterOnChanged: (index) => viewModel.changeBakiyeDurumuTemp(index ?? 0),
+                            childrenValueList: viewModel.selectedList.map((e) => e.substring(0, 1)).toList(),
+                            groupValue: viewModel.bottomSheetModelTemp.bakiyeDurumu,
                           ),
                         ),
-                        // Center(
-                        //   child: Observer(builder: (_) {
-                        //     return CustomWidgetWithLabel(
-                        //       text: "Bakiye",
-                        //       child: ToggleButtons(
-                        //         constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
-                        //         isSelected: viewModel.selected.toList(),
-                        //         children: viewModel.selectedList.map((e) => Text(e)).toList(),
-                        //         onPressed: (index) {
-                        //           viewModel.setSelectedWithIndex(index);
-                        //         },
-                        //       ),
-                        //     );
-                        //   }),
-                        // ),
-                        Observer(
-                          builder: (_) => Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Grup Kodu",
-                                  readOnly: true,
-                                  controller: grupKoduController,
-                                  onClear: () => viewModel.changeArrGrupKoduTemp(null),
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Grup Kodu",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrGrupKodu?.map((e) => e.grupKodu).toList(),
-                                      children: viewModel.grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrGrupKoduTemp(result.whereType<BaseGrupKoduModel>().toList());
-                                      grupKoduController.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                  suffixMore: true,
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 0)),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 1",
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  controller: kod1Controller,
-                                  onClear: () => viewModel.changeArrKod1Temp(null),
-                                  onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 1",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod1?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrKod1Temp(result.whereType<BaseGrupKoduModel>().toList());
-                                      kod1Controller.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 1)),
-                            ],
-                          ),
-                        ),
-                        Observer(
-                          builder: (_) => Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 2",
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  controller: kod2Controller,
-                                  onClear: () => viewModel.changeArrKod2Temp(null),
-                                  onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 2",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod2?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
-                                      kod2Controller.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 2)),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 3",
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  controller: kod3Controller,
-                                  onClear: () => viewModel.changeArrKod3Temp(null),
-                                  onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 3",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod3?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrKod3Temp(result.whereType<BaseGrupKoduModel>().toList());
-                                      kod3Controller.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 3)),
-                            ],
-                          ),
-                        ),
-                        Observer(
-                          builder: (_) => Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 4",
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  controller: kod4Controller,
-                                  onClear: () => viewModel.changeArrKod4Temp(null),
-                                  onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 4",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod4?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              onTap: () {
-                                                if (viewModel.bottomSheetModelTemp.arrKod4?.contains(e) ?? false) {
-                                                  viewModel.bottomSheetModelTemp.arrKod4?.remove(e);
-                                                } else {
-                                                  viewModel.bottomSheetModelTemp.arrKod4?.add(e);
-                                                }
-                                              },
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrKod4Temp(result.whereType<BaseGrupKoduModel>().toList());
-                                      kod4Controller.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 4)),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 5",
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  controller: kod5Controller,
-                                  onClear: () => viewModel.changeArrKod5Temp(null),
-                                  onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                                      context,
-                                      title: "Kod 5",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod5?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              groupValue: e.grupKodu,
-                                              onTap: () {
-                                                if (viewModel.bottomSheetModelTemp.arrKod5?.contains(e) ?? false) {
-                                                  viewModel.bottomSheetModelTemp.arrKod5?.remove(e);
-                                                } else {
-                                                  viewModel.bottomSheetModelTemp.arrKod5?.add(e);
-                                                }
-                                              },
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
-                                    if (result != null && result is List) {
-                                      viewModel.changeArrKod5Temp(result.whereType<BaseGrupKoduModel>().toList());
-                                      kod5Controller.text = result.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 5)),
-                            ],
-                          ),
-                        ),
-                        Row(
+                      ),
+                      // Center(
+                      //   child: Observer(builder: (_) {
+                      //     return CustomWidgetWithLabel(
+                      //       text: "Bakiye",
+                      //       child: ToggleButtons(
+                      //         constraints: BoxConstraints(minWidth: ((context.isPortrait ? width : 600) * 0.9) / 5, minHeight: height * 0.05),
+                      //         isSelected: viewModel.selected.toList(),
+                      //         children: viewModel.selectedList.map((e) => Text(e)).toList(),
+                      //         onPressed: (index) {
+                      //           viewModel.setSelectedWithIndex(index);
+                      //         },
+                      //       ),
+                      //     );
+                      //   }),
+                      // ),
+                      Observer(
+                        builder: (_) => Row(
                           children: [
                             Expanded(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  grupKoduController.clear();
-                                  kod1Controller.clear();
-                                  kod2Controller.clear();
-                                  kod3Controller.clear();
-                                  kod4Controller.clear();
-                                  kod5Controller.clear();
-                                  // viewModel.setBottomSheetModel(StokBottomSheetModel());
-                                  viewModel.changeBakiyeDurumu("T");
-                                  viewModel.changeBakiyeDurumuTemp(0);
-                                  viewModel.resetList();
-                                  viewModel.resetSelectedArr();
-                                  viewModel.getData();
-                                  Get.back();
+                              child: CustomTextField(
+                                labelText: "Grup Kodu",
+                                readOnly: true,
+                                controller: grupKoduController,
+                                onClear: () => viewModel.changeArrGrupKoduTemp(null),
+                                onTap: () async {
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Grup Kodu",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrGrupKodu?.map((e) => e.grupKodu).toList(),
+                                    children: viewModel.grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            value: e,
+                                            groupValue: e.grupKodu,
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrGrupKoduTemp(result.whereType<BaseGrupKoduModel>().toList());
+                                    grupKoduController.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
                                 },
-                                style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
-                                child: const Text("Temizle"),
+                                suffixMore: true,
                               ),
-                            ),
-                            SizedBox(width: width * 0.02),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 0)),
                             Expanded(
-                              child: ElevatedButton(
-                                onPressed: () async {
-                                  viewModel.changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu);
-                                  viewModel.changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[]);
-                                  viewModel.changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[]);
-                                  viewModel.changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[]);
-                                  viewModel.changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[]);
-                                  viewModel.changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[]);
-                                  viewModel.changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[]);
-                                  viewModel.resetList();
-                                  Get.back();
+                              child: CustomTextField(
+                                labelText: "Kod 1",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: kod1Controller,
+                                onClear: () => viewModel.changeArrKod1Temp(null),
+                                onTap: () async {
+                                  final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Kod 1",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrKod1?.map((e) => e.grupKodu).toList(),
+                                    children: grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            value: e,
+                                            groupValue: e.grupKodu,
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrKod1Temp(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod1Controller.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
                                 },
-                                child: Text(loc.generalStrings.apply),
                               ),
-                            ),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 1)),
                           ],
-                        ).paddingAll(UIHelper.lowSize),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          AppBarButton(
-            icon: Icons.sort_by_alpha_outlined,
-            child: Text(loc.generalStrings.sort),
-            // child: const Icon(Icons.sort_by_alpha_outlined),
-            onPressed: () async {
-              final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                context,
-                title: loc.generalStrings.sort,
-                groupValue: viewModel.siralama,
-                children: [
-                  BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
-                  BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", groupValue: "ZA"),
-                  BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", groupValue: "KOD_AZ"),
-                  BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOD_ZA", groupValue: "KOD_ZA"),
-                  BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", groupValue: "BAKIYE_AZ"),
-                  BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", groupValue: "BAKIYE_ZA"),
+                        ),
+                      ),
+                      Observer(
+                        builder: (_) => Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextField(
+                                labelText: "Kod 2",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: kod2Controller,
+                                onClear: () => viewModel.changeArrKod2Temp(null),
+                                onTap: () async {
+                                  final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Kod 2",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrKod2?.map((e) => e.grupKodu).toList(),
+                                    children: grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            value: e,
+                                            groupValue: e.grupKodu,
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod2Controller.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
+                                },
+                              ),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 2)),
+                            Expanded(
+                              child: CustomTextField(
+                                labelText: "Kod 3",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: kod3Controller,
+                                onClear: () => viewModel.changeArrKod3Temp(null),
+                                onTap: () async {
+                                  final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Kod 3",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrKod3?.map((e) => e.grupKodu).toList(),
+                                    children: grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            value: e,
+                                            groupValue: e.grupKodu,
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrKod3Temp(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod3Controller.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
+                                },
+                              ),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 3)),
+                          ],
+                        ),
+                      ),
+                      Observer(
+                        builder: (_) => Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextField(
+                                labelText: "Kod 4",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: kod4Controller,
+                                onClear: () => viewModel.changeArrKod4Temp(null),
+                                onTap: () async {
+                                  final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Kod 4",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrKod4?.map((e) => e.grupKodu).toList(),
+                                    children: grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            onTap: () {
+                                              if (viewModel.bottomSheetModelTemp.arrKod4?.contains(e) ?? false) {
+                                                viewModel.bottomSheetModelTemp.arrKod4?.remove(e);
+                                              } else {
+                                                viewModel.bottomSheetModelTemp.arrKod4?.add(e);
+                                              }
+                                            },
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrKod4Temp(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod4Controller.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
+                                },
+                              ),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 4)),
+                            Expanded(
+                              child: CustomTextField(
+                                labelText: "Kod 5",
+                                readOnly: true,
+                                suffixMore: true,
+                                controller: kod5Controller,
+                                onClear: () => viewModel.changeArrKod5Temp(null),
+                                onTap: () async {
+                                  final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                    context,
+                                    title: "Kod 5",
+                                    groupValues: viewModel.bottomSheetModelTemp.arrKod5?.map((e) => e.grupKodu).toList(),
+                                    children: grupKodlari
+                                        .map(
+                                          (e) => BottomSheetModel(
+                                            title: e.grupAdi ?? "",
+                                            groupValue: e.grupKodu,
+                                            onTap: () {
+                                              if (viewModel.bottomSheetModelTemp.arrKod5?.contains(e) ?? false) {
+                                                viewModel.bottomSheetModelTemp.arrKod5?.remove(e);
+                                              } else {
+                                                viewModel.bottomSheetModelTemp.arrKod5?.add(e);
+                                              }
+                                            },
+                                          ),
+                                        )
+                                        .toList(),
+                                  );
+                                  if (result != null && result is List) {
+                                    viewModel.changeArrKod5Temp(result.whereType<BaseGrupKoduModel>().toList());
+                                    kod5Controller.text = result.map((e) => e.grupAdi).join(", ");
+                                  }
+                                },
+                              ),
+                            ).yetkiVarMi(viewModel.grupKodlari.any((element) => element.grupNo == 5)),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                grupKoduController.clear();
+                                kod1Controller.clear();
+                                kod2Controller.clear();
+                                kod3Controller.clear();
+                                kod4Controller.clear();
+                                kod5Controller.clear();
+                                // viewModel.setBottomSheetModel(StokBottomSheetModel());
+                                viewModel.changeBakiyeDurumu("T");
+                                viewModel.changeBakiyeDurumuTemp(0);
+                                viewModel.resetList();
+                                viewModel.resetSelectedArr();
+                                viewModel.getData();
+                                Get.back();
+                              },
+                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                              child: const Text("Temizle"),
+                            ),
+                          ),
+                          SizedBox(width: width * 0.02),
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () async {
+                                viewModel.changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu);
+                                viewModel.changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[]);
+                                viewModel.changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[]);
+                                viewModel.changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[]);
+                                viewModel.changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[]);
+                                viewModel.changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[]);
+                                viewModel.changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[]);
+                                viewModel.resetList();
+                                Get.back();
+                              },
+                              child: Text(loc.generalStrings.apply),
+                            ),
+                          ),
+                        ],
+                      ).paddingAll(UIHelper.lowSize),
+                    ],
+                  ),
                 ],
-              );
-              if (result != null) {
-                viewModel.setSiralama(result);
-                viewModel.resetList();
-              }
-            },
-          ),
-          //! AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
-          //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
-        ].nullCheckWithGeneric,
-      );
+              ),
+            );
+          },
+        ),
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          child: Text(loc.generalStrings.sort),
+          // child: const Icon(Icons.sort_by_alpha_outlined),
+          onPressed: () async {
+            final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: loc.generalStrings.sort,
+              groupValue: viewModel.siralama,
+              children: [
+                BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
+                BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", groupValue: "ZA"),
+                BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", groupValue: "KOD_AZ"),
+                BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOD_ZA", groupValue: "KOD_ZA"),
+                BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", groupValue: "BAKIYE_AZ"),
+                BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", groupValue: "BAKIYE_ZA"),
+              ],
+            );
+            if (result != null) {
+              viewModel.setSiralama(result);
+              viewModel.resetList();
+            }
+          },
+        ),
+        //! AppBarButton(icon: Icons.format_align_left_sharp, onPressed: () {}),
+        //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
+      ];
 
   Widget hideSearchBar() => Observer(
         builder: (_) => IconButton(
@@ -583,7 +586,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Column body() => Column(
         children: [
-          grupKoduFilter(),
           Expanded(
             child: Observer(
               builder: (_) => RefreshableListView.pageable(
@@ -779,7 +781,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               onTap: () => getGrupKodlariBottomSheet(5),
             ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
           ].whereType<CustomTextField>().toList(),
-        ).yetkiVarMi(AccountModel.instance.isDebug),
+        ),
       );
 
   Future<MemoryImage?> getImage(String path) async => await networkManager.getImage(path);

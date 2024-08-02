@@ -5,6 +5,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -264,10 +265,48 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
             },
             icon: const Icon(Icons.sort_by_alpha_outlined),
           ),
-          //TODO Bu butonu ekle
-          // IconButton(onPressed: () async {}, icon: const Icon(Icons.more_vert_outlined)),
+          IconButton(
+            onPressed: () async {
+              bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: loc.generalStrings.options,
+                children: [
+                  BottomSheetModel(
+                    title: "Detaylı Arama",
+                    iconWidget: Icons.add,
+                    onTap: () async {
+                      Get.back();
+                      final List<StokDetayliAramaAlanlar> list = [];
+                      final List<StokDetayliAramaAlanlar> aramaList = [
+                        StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
+                        StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
+                        ...parametreModel.stokDetayliAramaAlanlar ?? [],
+                      ];
+                      for (StokDetayliAramaAlanlar item in aramaList) {
+                        if (viewModel.getRequestModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
+                          list.add(viewModel.getRequestModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
+                        } else {
+                          list.add(item);
+                        }
+                      }
+                      final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
+                      if (result != null) {
+                        if (result == true) {
+                          viewModel.setSearchList(null);
+                        } else {
+                          viewModel.setSearchList(result);
+                        }
+                        await viewModel.resetList();
+                      }
+                    },
+                  ),
+                ],
+              );
+            },
+            icon: const Icon(Icons.more_vert_outlined),
+          ).isDebug(),
           IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor)),
-        ],
+        ].whereType<Widget>().toList(),
       );
 
   Observer fab() => Observer(
@@ -650,8 +689,8 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       viewModel.setKategoriMi(true);
       viewModel.setGrupNo(value);
       await viewModel.getKategoriGrupKodlari();
-      await viewModel.resetList();
     }
+    await viewModel.resetList();
   }
 
   String grupAdiWithItem(BaseGrupKoduModel? item, int index) {

@@ -122,7 +122,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value);
+  void changeArrKod1(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value ?? []);
 
   @action
   void changeArrKod1Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
@@ -131,7 +131,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value);
+  void changeArrKod2(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value ?? []);
 
   @action
   void changeArrKod2Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
@@ -140,7 +140,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value);
+  void changeArrKod3(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value ?? []);
 
   @action
   void changeArrKod3Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
@@ -149,7 +149,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value);
+  void changeArrKod4(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value ?? []);
 
   @action
   void changeArrKod4Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
@@ -158,7 +158,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value);
+  void changeArrKod5(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value ?? []);
 
   @action
   void changeArrKod5Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);

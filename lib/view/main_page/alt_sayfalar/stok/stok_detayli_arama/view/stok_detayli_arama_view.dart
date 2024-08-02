@@ -60,7 +60,7 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
               onPressed: () {
                 Get.back(result: viewModel.observableList?.where((element) => element.searchText != null).toList());
               },
-              icon: const Icon(Icons.save_outlined),
+              icon: const Icon(Icons.check_circle_outline_outlined),
             ),
           ],
         ),
