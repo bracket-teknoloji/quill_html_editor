@@ -1331,11 +1331,12 @@ Map<String, dynamic> _$SatirAcikBaslikListToJson(SatirAcikBaslikList instance) {
 
 StokDetayliAramaAlanlar _$StokDetayliAramaAlanlarFromJson(
         Map<String, dynamic> json) =>
-    StokDetayliAramaAlanlar()
-      ..searchField = json['SearchField'] as String?
-      ..name = json['Name'] as String?
-      ..searchCriter = json['SearchCriter'] as String?
-      ..searchText = json['SearchText'] as String?;
+    StokDetayliAramaAlanlar(
+      searchField: json['SearchField'] as String?,
+      name: json['Name'] as String?,
+      searchCriter: json['SearchCriter'] as String?,
+      searchText: json['SearchText'] as String?,
+    );
 
 Map<String, dynamic> _$StokDetayliAramaAlanlarToJson(
     StokDetayliAramaAlanlar instance) {

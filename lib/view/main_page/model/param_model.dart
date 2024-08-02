@@ -960,12 +960,12 @@ class SatirAcikBaslikList {
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
 class StokDetayliAramaAlanlar {
-  StokDetayliAramaAlanlar();
-
   String? searchField;
   String? name;
   String? searchCriter;
   String? searchText;
+
+  StokDetayliAramaAlanlar({this.searchField, this.name, this.searchCriter, this.searchText});
 
   factory StokDetayliAramaAlanlar.fromJson(Map<String, dynamic> json) => _$StokDetayliAramaAlanlarFromJson(json);
   Map<String, dynamic> toJson() => _$StokDetayliAramaAlanlarToJson(this);
