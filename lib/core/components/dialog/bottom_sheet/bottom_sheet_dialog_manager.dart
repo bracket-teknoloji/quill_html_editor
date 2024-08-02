@@ -750,26 +750,6 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<List<StokDetayliAramaAlanlar>?> showStokDetayliAramaBottomSheetDialog(BuildContext context) async {
-    final stokDetayliAramaAlanlar = _paramModel?.stokDetayliAramaAlanlar;
-    final result = await showBottomSheetDialog(
-      context,
-      title: "Detaylı Arama",
-      body: Column(
-        children: List.generate(
-          stokDetayliAramaAlanlar?.length ?? 0,
-          (index) {
-            final item = stokDetayliAramaAlanlar?.elementAt(index);
-            return CustomTextField(
-              labelText: item?.name ?? "",
-            );
-          },
-        ),
-      ),
-    );
-    return null;
-  }
-
   Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue, {DizaynOzelKodEnum? ozelKod}) async {
     final List<NetFectDizaynList> netFectDizaynList = _paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
