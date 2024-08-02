@@ -22,10 +22,9 @@ mixin ScrollControllableMixin<T extends NetworkManagerMixin> on ListableMixin<T>
   /// [ScrollPosition] bilgisi ile [isScrollDown] değişkeni güncellenmektedir.
   /// Eğer bu metodu override edecekseniz, [super.changeScrollStatus] çağrısının yapılması gerekmektedir.
   Future<void> changeScrollStatus(ScrollPosition position) async {
-    if (position.userScrollDirection == ScrollDirection.forward) {
+    if (position.userScrollDirection == ScrollDirection.forward || position.pixels == 0) {
       isScrollDown = true;
     } else if (position.userScrollDirection == ScrollDirection.reverse) {
-      await Future.delayed(const Duration(milliseconds: 500));
       isScrollDown = false;
     }
   }
