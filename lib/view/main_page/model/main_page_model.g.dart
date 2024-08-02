@@ -65,7 +65,7 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
       ..sirketModel =
           SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
       ..langModel =
-          LangModel.fromJson(json['LangModel'] as Map<String, dynamic>)
+          LangModel.fromJson(json['LangModel'] as Map<String, dynamic>?)
       ..menuList =
           (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
       ..paramModel =

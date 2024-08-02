@@ -324,7 +324,7 @@ class LangModel {
   String? servisSunucuHatasi;
   String? servisYeniBelgeNoAlinamadi;
 
-  factory LangModel.fromJson(Map<String, dynamic> json) => _$LangModelFromJson(json);
+  factory LangModel.fromJson(Map<String, dynamic>? json) => json != null ?_$LangModelFromJson(json) : LangModel();
   Map<String, dynamic> toJson() => _$LangModelToJson(this);
 
   @override
