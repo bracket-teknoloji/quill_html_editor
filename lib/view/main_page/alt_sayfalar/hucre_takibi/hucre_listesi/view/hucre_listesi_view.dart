@@ -3,7 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
@@ -13,7 +13,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view_model/hucre_listesi_view_model.dart";
 
-class HucreListesiView extends StatefulWidget {
+final class HucreListesiView extends StatefulWidget {
   final int? depoKodu;
   const HucreListesiView({super.key, this.depoKodu});
 
@@ -21,7 +21,7 @@ class HucreListesiView extends StatefulWidget {
   State<HucreListesiView> createState() => _HucreListesiViewState();
 }
 
-class _HucreListesiViewState extends BaseState<HucreListesiView> {
+final class _HucreListesiViewState extends BaseState<HucreListesiView> {
   final HucreListesiViewModel viewModel = HucreListesiViewModel();
   late final TextEditingController searchController;
 
@@ -69,23 +69,28 @@ class _HucreListesiViewState extends BaseState<HucreListesiView> {
               ),
             ),
             Expanded(
-              child: RefreshIndicator.adaptive(
-                onRefresh: viewModel.getData,
-                child: Observer(
-                  builder: (_) {
-                    if (viewModel.filteredHucreListesi == null) return const ListViewShimmer();
-                    if (viewModel.filteredHucreListesi!.isEmpty) return const Center(child: Text("Hücre bulunamadı."));
-                    return ListView.builder(
-                      itemCount: viewModel.filteredHucreListesi?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        final HucreListesiModel item = viewModel.filteredHucreListesi![index];
-                        return hucreCard(item);
-                      },
-                    );
-                  },
-                ),
+              child: Observer(
+                builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredHucreListesi, itemBuilder: hucreCard),
               ),
             ),
+            // Expanded(
+            //   child: RefreshIndicator.adaptive(
+            //     onRefresh: viewModel.getData,
+            //     child: Observer(
+            //       builder: (_) {
+            //         if (viewModel.filteredHucreListesi == null) return const ListViewShimmer();
+            //         if (viewModel.filteredHucreListesi!.isEmpty) return const Center(child: Text("Hücre bulunamadı."));
+            //         return ListView.builder(
+            //           itemCount: viewModel.filteredHucreListesi?.length ?? 0,
+            //           itemBuilder: (context, index) {
+            //             final HucreListesiModel item = viewModel.filteredHucreListesi![index];
+            //             return hucreCard(item);
+            //           },
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ),
           ],
         ).paddingAll(UIHelper.lowSize),
       );
