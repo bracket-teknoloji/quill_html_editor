@@ -52,6 +52,8 @@ class ListSiparisEditModel {
 class BaseSiparisEditModel with NetworkManagerMixin {
   //singleton
   static BaseSiparisEditModel? _instance;
+
+  static final List<BaseSiparisEditModel> _instanceList = [];
   static BaseSiparisEditModel get instance {
     _instance ??= BaseSiparisEditModel._init();
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
@@ -62,7 +64,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       CacheManager.addSiparisEditListItem(_instance!);
       // }
     }
-    return _instance!;
+    if (_instanceList.isEmpty) {
+      _instanceList.add(_instance!);
+    }
+    return _instanceList.last;
   }
 
   @HiveField(0)
@@ -1069,10 +1074,16 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$BaseSiparisEditModelToJson(this);
 
   //reset singleton
-  static void resetInstance() => setInstance(BaseSiparisEditModel());
+  static void resetInstance() {
+    _instance = BaseSiparisEditModel();
+    _instanceList.removeAt(_instanceList.length - 1);
+  }
 
   //setter for singleton
-  static void setInstance(BaseSiparisEditModel instance) => _instance = instance;
+  static void setInstance(BaseSiparisEditModel instance) {
+    _instance = instance;
+    _instanceList.add(instance);
+  }
 
   factory BaseSiparisEditModel.fromEBelgeListesiModel(EBelgeListesiModel model) => BaseSiparisEditModel(
         belgeNo: model.belgeNo,
@@ -1635,6 +1646,9 @@ class KalemModel with NetworkManagerMixin {
     if (iskonto3 != null) result = "$result + ${iskonto3.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
     if (iskonto4 != null) result = "$result + ${iskonto4.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
     if (iskonto5 != null) result = "$result + ${iskonto5.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}";
+    if (result case ("0" || "")) {
+      return "";
+    }
     return "($result)";
   }
 
