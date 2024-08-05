@@ -94,6 +94,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                 // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
+              Text(model.faturaAciklama).yetkiVarMi(model.faturaIslendiMi),
               LayoutBuilder(
                 builder: (context, constraints) {
                   final efaturaList = [

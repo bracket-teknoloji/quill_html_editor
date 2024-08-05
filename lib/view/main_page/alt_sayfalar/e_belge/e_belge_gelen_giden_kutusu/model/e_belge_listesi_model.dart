@@ -196,6 +196,8 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get showBadge => gelen != "E" || taslak != "E";
 
+  String get faturaAciklama => "$islenenBelgeNo belge Netsis'e aktarıldı.";
+
   String? get seciliCariKodu => gelenMi ? kayitliCariKodu : cariKodu;
 
   bool get cariKayitliMi => gelenMi ? kayitliCariKodu != null : cariKodu != null;
