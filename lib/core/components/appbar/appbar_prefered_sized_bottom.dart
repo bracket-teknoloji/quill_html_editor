@@ -17,15 +17,15 @@ class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeW
   State<AppBarPreferedSizedBottom> createState() => _AppBarPreferedSizedBottomState();
 
   @override
-  Size get preferredSize => Size.fromHeight(toolbarHeight());
+  Size get preferredSize => Size.fromHeight(toolbarHeight);
 
-  double toolbarHeight() => kToolbarHeight * (filter is! SizedBox ? 3 : 1);
+  double get toolbarHeight => kToolbarHeight * (filter is! SizedBox && filter != null ? 3 : 1);
 }
 
 class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: widget.toolbarHeight(),
+        height: widget.toolbarHeight,
         child: Column(
           children: [
             Expanded(
