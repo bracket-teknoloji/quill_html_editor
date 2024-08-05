@@ -19,20 +19,19 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
               name: '_PaketlemeListesiViewModelBase.filteredPaketlemeListesi'))
           .value;
 
-  late final _$paketlemeListesiAtom = Atom(
-      name: '_PaketlemeListesiViewModelBase.paketlemeListesi',
-      context: context);
+  late final _$observableListAtom = Atom(
+      name: '_PaketlemeListesiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<PaketlemeListesiModel>? get paketlemeListesi {
-    _$paketlemeListesiAtom.reportRead();
-    return super.paketlemeListesi;
+  ObservableList<PaketlemeListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set paketlemeListesi(ObservableList<PaketlemeListesiModel>? value) {
-    _$paketlemeListesiAtom.reportWrite(value, super.paketlemeListesi, () {
-      super.paketlemeListesi = value;
+  set observableList(ObservableList<PaketlemeListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -52,19 +51,19 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_PaketlemeListesiViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_PaketlemeListesiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
@@ -106,19 +105,18 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
           name: '_PaketlemeListesiViewModelBase', context: context);
 
   @override
-  void setPaketlemeListesi(List<PaketlemeListesiModel>? value) {
-    final _$actionInfo =
-        _$_PaketlemeListesiViewModelBaseActionController.startAction(
-            name: '_PaketlemeListesiViewModelBase.setPaketlemeListesi');
+  void setObservableList(List<PaketlemeListesiModel>? value) {
+    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
+        .startAction(name: '_PaketlemeListesiViewModelBase.setObservableList');
     try {
-      return super.setPaketlemeListesi(value);
+      return super.setObservableList(value);
     } finally {
       _$_PaketlemeListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSearchText(String value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
         .startAction(name: '_PaketlemeListesiViewModelBase.setSearchText');
     try {
@@ -129,11 +127,12 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
   }
 
   @override
-  void setSearchBar() {
-    final _$actionInfo = _$_PaketlemeListesiViewModelBaseActionController
-        .startAction(name: '_PaketlemeListesiViewModelBase.setSearchBar');
+  void changeSearchBarStatus() {
+    final _$actionInfo =
+        _$_PaketlemeListesiViewModelBaseActionController.startAction(
+            name: '_PaketlemeListesiViewModelBase.changeSearchBarStatus');
     try {
-      return super.setSearchBar();
+      return super.changeSearchBarStatus();
     } finally {
       _$_PaketlemeListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -142,9 +141,9 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
   @override
   String toString() {
     return '''
-paketlemeListesi: ${paketlemeListesi},
+observableList: ${observableList},
 searchText: ${searchText},
-searchBar: ${searchBar},
+isSearchBarOpen: ${isSearchBarOpen},
 requestModel: ${requestModel},
 filteredPaketlemeListesi: ${filteredPaketlemeListesi}
     ''';

@@ -5,7 +5,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
@@ -47,7 +47,7 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Observer(
-            builder: (_) => viewModel.searchBar
+            builder: (_) => viewModel.isSearchBarOpen
                 ? CustomAppBarTextField(
                     controller: searchController,
                     onChanged: viewModel.setSearchText,
@@ -59,28 +59,15 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
           ),
           actions: [
             IconButton(
-              onPressed: viewModel.setSearchBar,
+              onPressed: viewModel.changeSearchBarStatus,
               icon: Observer(
-                builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
+                builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
               ),
             ),
           ],
         ),
-        body: RefreshIndicator.adaptive(
-          onRefresh: viewModel.getData,
-          child: Observer(
-            builder: (_) {
-              if (viewModel.filteredPaketlemeListesi == null) return const ListViewShimmer();
-              if (viewModel.filteredPaketlemeListesi!.isEmpty) return const Center(child: Text("Aradığınız kriterlere uygun sonuç bulunamadı."));
-              return ListView.builder(
-                itemCount: viewModel.filteredPaketlemeListesi?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final item = viewModel.filteredPaketlemeListesi![index];
-                  return card(item);
-                },
-              );
-            },
-          ),
+        body: Observer(
+          builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredPaketlemeListesi, itemBuilder: card),
         ),
       );
 
