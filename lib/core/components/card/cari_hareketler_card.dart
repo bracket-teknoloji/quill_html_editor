@@ -57,7 +57,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
           }
         },
         icon: Icons.route_outlined,
-        backgroundColor: UIHelper.primaryColor,
+        backgroundColor: theme.colorScheme.onPrimary,
         foregroundColor: theme.colorScheme.primary,
         label: "Belgeye Git",
       ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun),

@@ -310,7 +310,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   });
                                 },
                                 icon: Icons.delete_forever,
-                                backgroundColor: UIHelper.primaryColor,
+                                backgroundColor: theme.colorScheme.onPrimary,
                                 foregroundColor: theme.colorScheme.primary,
                                 label: loc.generalStrings.delete,
                               ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
@@ -328,7 +328,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: UIHelper.primaryColor,
+                                  backgroundColor: theme.colorScheme.onPrimary,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket\nDetayı",
                                 ),
@@ -349,7 +349,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     viewModel.setStokHareketleri(await getData()!);
                                   },
                                   icon: Icons.directions_walk_outlined,
-                                  backgroundColor: UIHelper.primaryColor,
+                                  backgroundColor: theme.colorScheme.onPrimary,
                                   foregroundColor: theme.colorScheme.primary,
                                   label: "Hareket Detayı",
                                 ),
