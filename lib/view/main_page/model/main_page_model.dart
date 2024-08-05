@@ -2,7 +2,6 @@ import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
-import "lang_model.dart";
 import "param_model.dart";
 import "sirket_model.dart";
 import "user_model/user_model.dart";
@@ -24,8 +23,8 @@ class MainPageModel with NetworkManagerMixin {
   @JsonKey(name: "SirketModel", fromJson: SirketModel.fromJson)
   @HiveField(3)
   SirketModel? sirketModel;
-  @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
-  LangModel? langModel;
+  // @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
+  // LangModel? langModel;
   @JsonKey(name: "MenuList")
   @HiveField(5)
   List<String>? menuList;

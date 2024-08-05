@@ -64,8 +64,6 @@ MainPageModel _$MainPageModelFromJson(Map<String, dynamic> json) =>
       ..langVersion = json['LangVersion'] as String?
       ..sirketModel =
           SirketModel.fromJson(json['SirketModel'] as Map<String, dynamic>)
-      ..langModel =
-          LangModel.fromJson(json['LangModel'] as Map<String, dynamic>?)
       ..menuList =
           (json['MenuList'] as List<dynamic>?)?.map((e) => e as String).toList()
       ..paramModel =
@@ -84,7 +82,6 @@ Map<String, dynamic> _$MainPageModelToJson(MainPageModel instance) {
   writeNotNull('ServiceVersion', instance.serviceVersion);
   writeNotNull('LangVersion', instance.langVersion);
   writeNotNull('SirketModel', instance.sirketModel?.toJson());
-  writeNotNull('LangModel', instance.langModel?.toJson());
   writeNotNull('MenuList', instance.menuList);
   writeNotNull('ParamModel', instance.paramModel?.toJson());
   return val;

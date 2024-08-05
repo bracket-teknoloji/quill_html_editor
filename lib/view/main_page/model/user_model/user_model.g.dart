@@ -113,7 +113,6 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
   ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
-  ..langModel = LangModel.fromJson(json['LangModel'] as Map<String, dynamic>?)
   ..adSoyad = json['AD_SOYAD'] as String?
   ..admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?
@@ -144,7 +143,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('YETKILI_SUBELER_JSON', instance.yetkiliSubelerJson);
   writeNotNull('KONUM_ENLEM', instance.konumEnlem);
   writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
-  writeNotNull('LangModel', instance.langModel?.toJson());
   writeNotNull('AD_SOYAD', instance.adSoyad);
   writeNotNull('ADMIN', instance.admin);
   writeNotNull('ADMIN_MI', instance.adminMi);

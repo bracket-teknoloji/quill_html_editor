@@ -1,7 +1,6 @@
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 
-import "../lang_model.dart";
 import "kullanici_yetki_model.dart";
 import "profil_yetki_model.dart";
 
@@ -43,8 +42,8 @@ class UserModel {
   @HiveField(14)
   double? konumBoylam;
   // @HiveField(15)
-  @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
-  LangModel? langModel;
+  // @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
+  // LangModel? langModel;
   @HiveField(16)
   String? adSoyad;
   @HiveField(17)
