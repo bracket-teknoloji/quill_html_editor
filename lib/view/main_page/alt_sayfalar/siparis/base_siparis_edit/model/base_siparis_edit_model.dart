@@ -70,6 +70,14 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return _instanceList.last;
   }
 
+  static set instance(BaseSiparisEditModel instance) {
+    _instance = instance;
+    if (_instanceList.isNotEmpty) {
+      _instanceList.removeAt(_instanceList.length - 1);
+      _instanceList.add(_instance!);
+    }
+  }
+
   @HiveField(0)
   DateTime? duzeltmetarihi;
   @HiveField(1)
@@ -1076,13 +1084,18 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   //reset singleton
   static void resetInstance() {
     _instance = BaseSiparisEditModel();
-    _instanceList.removeAt(_instanceList.length - 1);
+    if (_instanceList.isNotEmpty) {
+      _instanceList.removeAt(_instanceList.length - 1);
+    }
   }
 
   //setter for singleton
-  static void setInstance(BaseSiparisEditModel instance) {
-    _instance = instance;
-    _instanceList.add(instance);
+  static void setInstance(BaseSiparisEditModel newInstance) {
+    _instance = newInstance;
+    if (_instanceList.isNotEmpty) {
+      _instanceList.removeAt(_instanceList.length - 1);
+      _instanceList.add(newInstance);
+    }
   }
 
   factory BaseSiparisEditModel.fromEBelgeListesiModel(EBelgeListesiModel model) => BaseSiparisEditModel(
