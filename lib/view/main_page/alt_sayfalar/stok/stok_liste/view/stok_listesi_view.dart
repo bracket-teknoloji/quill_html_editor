@@ -157,54 +157,91 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                       await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: loc.generalStrings.options,
-                        body: Observer(
-                          builder: (_) => SwitchListTile.adaptive(
-                            title: const Text("Resimleri Göster"),
-                            value: viewModel.resimleriGoster == "E",
-                            onChanged: (value) async {
-                              viewModel.setResimleriGoster();
-                              if (viewModel.resimleriGoster == "E") {
-                                viewModel.resetList();
-                                await viewModel.getData();
-                              } else {
-                                viewModel.resetList();
-                                await viewModel.getData();
-                              }
-                            },
-                          ),
+                        body: Column(
+                          children: [
+                            Observer(
+                              builder: (_) => SwitchListTile.adaptive(
+                                title: const Text("Resimleri Göster"),
+                                secondary: const Icon(Icons.preview_outlined, color: UIHelper.primaryColor),
+                                value: viewModel.resimleriGoster == "E",
+                                onChanged: (value) async {
+                                  viewModel.setResimleriGoster();
+                                  if (viewModel.resimleriGoster == "E") {
+                                    viewModel.resetList();
+                                    await viewModel.getData();
+                                  } else {
+                                    viewModel.resetList();
+                                    await viewModel.getData();
+                                  }
+                                },
+                              ),
+                            ),
+                            const Divider(
+                              endIndent: 10,
+                              indent: 10,
+                            ).paddingSymmetric(vertical: UIHelper.lowSize),
+                            ListTile(
+                              title: const Text("Detaylı Arama"),
+                              leading: const Icon(Icons.search_outlined, color: UIHelper.primaryColor),
+                              onTap: () async {
+                                final List<StokDetayliAramaAlanlar> list = [];
+                                final List<StokDetayliAramaAlanlar> aramaList = [
+                                  StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
+                                  StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
+                                  ...parametreModel.stokDetayliAramaAlanlar ?? [],
+                                ];
+                                for (StokDetayliAramaAlanlar item in aramaList) {
+                                  if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
+                                    list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
+                                  } else {
+                                    list.add(item);
+                                  }
+                                }
+                                final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
+                                if (result != null) {
+                                  if (result == true) {
+                                    viewModel.setSearchList(null);
+                                  } else {
+                                    viewModel.setSearchList(result);
+                                  }
+                                  await viewModel.resetList();
+                                }
+                              },
+                            ).isDebug(),
+                          ].whereType<Widget>().toList(),
                         ),
                       );
                     },
                     icon: const Icon(Icons.more_vert_outlined),
                   ),
           ),
-          IconButton(
-            onPressed: () async {
-              final List<StokDetayliAramaAlanlar> list = [];
-              final List<StokDetayliAramaAlanlar> aramaList = [
-                StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
-                StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
-                ...parametreModel.stokDetayliAramaAlanlar ?? [],
-              ];
-              for (StokDetayliAramaAlanlar item in aramaList) {
-                if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
-                  list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
-                } else {
-                  list.add(item);
-                }
-              }
-              final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
-              if (result != null) {
-                if (result == true) {
-                  viewModel.setSearchList(null);
-                } else {
-                  viewModel.setSearchList(result);
-                }
-                await viewModel.resetList();
-              }
-            },
-            icon: const Icon(Icons.add),
-          ).isDebug(),
+          // IconButton(
+          //   onPressed: () async {
+          //     final List<StokDetayliAramaAlanlar> list = [];
+          //     final List<StokDetayliAramaAlanlar> aramaList = [
+          //       StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
+          //       StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
+          //       ...parametreModel.stokDetayliAramaAlanlar ?? [],
+          //     ];
+          //     for (StokDetayliAramaAlanlar item in aramaList) {
+          //       if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
+          //         list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
+          //       } else {
+          //         list.add(item);
+          //       }
+          //     }
+          //     final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
+          //     if (result != null) {
+          //       if (result == true) {
+          //         viewModel.setSearchList(null);
+          //       } else {
+          //         viewModel.setSearchList(result);
+          //       }
+          //       await viewModel.resetList();
+          //     }
+          //   },
+          //   icon: const Icon(Icons.add),
+          // ).isDebug(),
         ].whereType<Widget>().toList(),
         bottom: appBarBottom(),
       );

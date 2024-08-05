@@ -273,7 +273,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                 children: [
                   BottomSheetModel(
                     title: "Detaylı Arama",
-                    iconWidget: Icons.add,
+                    iconWidget: Icons.search_outlined,
                     onTap: () async {
                       Get.back();
                       final List<StokDetayliAramaAlanlar> list = [];
