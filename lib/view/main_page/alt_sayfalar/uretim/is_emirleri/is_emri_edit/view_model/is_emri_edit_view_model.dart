@@ -65,7 +65,7 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"Seri": model?.isemriNo ?? "", "BelgeTipi": "IE", "EIrsaliye": "H"},
     );
     if (result.data is List) {
-      setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo ?? "");
+      setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo ?? "");
     }
   }
 

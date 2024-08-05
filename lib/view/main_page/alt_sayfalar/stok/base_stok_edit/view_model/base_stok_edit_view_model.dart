@@ -38,7 +38,7 @@ abstract class _BaseStokEditingViewModelBase with Store, MobxNetworkMixin {
       },
     );
     if (result.data != null) {
-      StokDetayModel.setInstance(result.data.first as StokDetayModel);
+      StokDetayModel.setInstance(result.dataList.firstOrNull as StokDetayModel);
       isSuccess = true;
     }
   }

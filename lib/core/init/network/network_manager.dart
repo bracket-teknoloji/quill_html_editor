@@ -321,7 +321,7 @@ class NetworkManager {
     return null;
   }
 
-  Future<GenericResponseModel> getPDF(PdfModel model) async {
+  Future<GenericResponseModel<BasePdfModel>> getPDF(PdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.toJsonWithDicParamsMap());
     return response;
@@ -404,7 +404,7 @@ class NetworkManager {
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }
 
-  Future<GenericResponseModel> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
+  Future<GenericResponseModel<AccountResponseModel>> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
@@ -612,7 +612,7 @@ class NetworkManager {
     if ((result.isSuccess) && result.data is List) {
       final List<BaseSiparisEditModel> list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       if (result.data.length == 1) {
-        return result.data.first;
+        return result.dataList.firstOrNull;
       } else {
         // ignore: use_build_context_synchronously
         return await BottomSheetDialogManager().showBottomSheetDialog(
@@ -633,7 +633,7 @@ class NetworkManager {
       data: model.toJson(),
     );
     if (result.isSuccess) {
-      return result.data.first;
+      return result.dataList.firstOrNull;
     }
     return null;
   }
@@ -646,7 +646,7 @@ class NetworkManager {
       queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": tarih?.toDateString ?? DateTime.now().toDateString},
     );
     if (result.data is List) {
-      return result.data.first;
+      return result.dataList.firstOrNull;
     }
     return null;
   }

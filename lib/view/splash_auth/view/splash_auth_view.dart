@@ -197,7 +197,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
     );
     if (response.data != null) {
       CacheManager.setHesapBilgileri(AccountModel.instance);
-      CacheManager.setAnaVeri(response.data.first);
+      CacheManager.setAnaVeri(response.dataList.firstOrNull!);
       Get.offAllNamed("/mainPage");
       if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message.toString());
       final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());

@@ -168,7 +168,7 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
         "PlasiyerKisitiYok": true,
       },
     );
-    return result.data.first;
+    return result.dataList.firstOrNull;
   }
 
   Future<void> hareketDetayi() async {}

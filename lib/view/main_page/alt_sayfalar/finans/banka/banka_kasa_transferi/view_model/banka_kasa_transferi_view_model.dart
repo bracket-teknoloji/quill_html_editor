@@ -96,7 +96,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
     if (result.data is List) {
-      setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
+      setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
     }
   }
 

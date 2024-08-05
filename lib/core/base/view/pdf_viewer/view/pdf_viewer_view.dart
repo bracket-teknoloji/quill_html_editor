@@ -178,7 +178,7 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     viewModel.resetFuture();
     final result = await networkManager.getPDF((widget.serbestMi == true ? widget.pdfData?.copyWith(dicParamsMap: StaticVariables.instance.serbestDicParams) : widget.pdfData) ?? PdfModel());
     if (result.data != null) {
-      pdfFile = result.data.first;
+      pdfFile = result.dataList.firstOrNull!;
       if (result.isSuccess) {
         viewModel.setFuture(result.success);
         viewModel.changePdfFile(await getFile);

@@ -360,7 +360,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
         "PlasiyerKisitiYok": true,
       },
     );
-    return result.data.first;
+    return result.dataList.firstOrNull;
   }
 
   Future<void> getBelgeBaglantilari(KalemListModel? model) async {

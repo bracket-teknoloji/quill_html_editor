@@ -710,7 +710,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         "PlasiyerKisitiYok": true,
       },
     );
-    return result.data.first;
+    return result.dataList.firstOrNull;
   }
 
   bool get kaydetButonuYetki {

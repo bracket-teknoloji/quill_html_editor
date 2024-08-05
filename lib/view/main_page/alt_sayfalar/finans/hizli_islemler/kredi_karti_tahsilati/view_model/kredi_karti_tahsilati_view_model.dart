@@ -140,7 +140,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
     if (result.data is List) {
-      setBelgeNo((result.data.first as BaseSiparisEditModel).belgeNo);
+      setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
     }
   }
 
@@ -181,7 +181,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   Future<KasaList?> getKasalar(String? kasaKodu) async {
     final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
     if (result.data is List) {
-      return result.data.first as KasaList;
+      return result.dataList.firstOrNull as KasaList;
     }
     return null;
   }

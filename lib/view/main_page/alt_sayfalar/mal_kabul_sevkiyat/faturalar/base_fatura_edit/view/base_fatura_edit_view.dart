@@ -806,7 +806,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         "PlasiyerKisitiYok": true,
       },
     );
-    return result.data.first;
+    return result.dataList.firstOrNull;
   }
 
   Future<void> getKalemRehberi() async {
