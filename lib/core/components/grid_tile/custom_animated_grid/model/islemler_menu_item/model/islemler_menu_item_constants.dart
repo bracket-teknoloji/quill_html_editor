@@ -546,7 +546,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? cariKoduDegistir(String? cariKodu) => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
-        isEnabled: siparisTipi?.cariKoduDegisirMi == true,
+        isEnabled: _yetkiController.cariKartiDuzenleme,
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
