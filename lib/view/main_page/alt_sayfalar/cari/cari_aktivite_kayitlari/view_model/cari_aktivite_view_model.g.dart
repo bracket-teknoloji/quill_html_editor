@@ -25,19 +25,19 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
     });
   }
 
-  late final _$aktiviteListAtom =
-      Atom(name: '_CariAktiviteViewModelBase.aktiviteList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_CariAktiviteViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<CariAktiviteListesiModel>? get aktiviteList {
-    _$aktiviteListAtom.reportRead();
-    return super.aktiviteList;
+  ObservableList<CariAktiviteListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set aktiviteList(ObservableList<CariAktiviteListesiModel>? value) {
-    _$aktiviteListAtom.reportWrite(value, super.aktiviteList, () {
-      super.aktiviteList = value;
+  set observableList(ObservableList<CariAktiviteListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -83,11 +83,11 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
   }
 
   @override
-  void setAktiviteList(List<CariAktiviteListesiModel>? value) {
+  void setObservableList(List<CariAktiviteListesiModel>? value) {
     final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
-        .startAction(name: '_CariAktiviteViewModelBase.setAktiviteList');
+        .startAction(name: '_CariAktiviteViewModelBase.setObservableList');
     try {
-      return super.setAktiviteList(value);
+      return super.setObservableList(value);
     } finally {
       _$_CariAktiviteViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -130,7 +130,7 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
   String toString() {
     return '''
 requestModel: ${requestModel},
-aktiviteList: ${aktiviteList}
+observableList: ${observableList}
     ''';
   }
 }

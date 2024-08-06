@@ -6,7 +6,7 @@ import "package:picker/core/base/model/kullanicilar_model.dart";
 import "package:picker/core/components/card/cari_aktivite_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -20,16 +20,15 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 
 import "../../../../../../core/base/state/base_state.dart";
 
-class CariAktiviteView extends StatefulWidget {
+final class CariAktiviteView extends StatefulWidget {
   final CariListesiModel? cariModel;
   const CariAktiviteView({super.key, this.cariModel});
 
   @override
-
   State<CariAktiviteView> createState() => _CariAktiviteViewState();
 }
 
-class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
+final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
   final CariAktiviteViewModel viewModel = CariAktiviteViewModel();
   late final TextEditingController searchController;
   late final TextEditingController cariController;
@@ -67,7 +66,7 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
           title: Observer(
             builder: (_) => AppBarTitle(
               title: "Aktivite Kayıtları",
-              subtitle: (viewModel.aktiviteList?.length ?? 0).toString(),
+              subtitle: (viewModel.observableList?.length ?? 0).toString(),
             ),
           ),
           actions: [
@@ -116,37 +115,19 @@ class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
               bitisTarihiController: bitisTarihiController,
             ),
             Expanded(
-              child: RefreshIndicator.adaptive(
-                onRefresh: () async {
-                  await viewModel.getData();
-                },
-                child: Observer(
-                  builder: (_) {
-                    if (viewModel.aktiviteList == null) {
-                      return const ListViewShimmer();
-                    }
-                    if (viewModel.aktiviteList?.isEmpty == true) {
-                      return const Center(
-                        child: Text("Sonuç bulunamadı."),
-                      );
-                    }
-                    return ListView.builder(
-                      itemCount: viewModel.aktiviteList?.length ?? 0,
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final CariAktiviteListesiModel model = viewModel.aktiviteList![index];
-                        return CariAktiviteCard(
-                          model: model,
-                          onRefresh: (value) async {
-                            if (value) {
-                              await viewModel.getData();
-                            }
-                          },
-                          updatedModel: () async => await viewModel.getNewItem(model.id),
-                        );
-                      },
-                    );
-                  },
+              child: Observer(
+                builder: (_) => RefreshableListView(
+                  onRefresh: viewModel.getData,
+                  items: viewModel.observableList,
+                  itemBuilder: (item) => CariAktiviteCard(
+                    model: item,
+                    onRefresh: (value) async {
+                      if (value) {
+                        await viewModel.getData();
+                      }
+                    },
+                    updatedModel: () async => await viewModel.getNewItem(item.id),
+                  ),
                 ),
               ),
             ),

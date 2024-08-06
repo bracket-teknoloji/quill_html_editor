@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
@@ -8,7 +9,7 @@ part "cari_aktivite_view_model.g.dart";
 
 class CariAktiviteViewModel = _CariAktiviteViewModelBase with _$CariAktiviteViewModel;
 
-abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
+abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariAktiviteListesiModel> {
   @observable
   CariListesiRequestModel requestModel = CariListesiRequestModel(
     sayfa: null,
@@ -18,8 +19,9 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
     siralama: null,
   );
 
+  @override
   @observable
-  ObservableList<CariAktiviteListesiModel>? aktiviteList;
+  ObservableList<CariAktiviteListesiModel>? observableList;
 
   @action
   void setCariKodu(String? value) => requestModel = requestModel.copyWith(cariKodu: value);
@@ -27,8 +29,9 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   @action
   void setKullanici(String? value) => requestModel = requestModel.copyWith(kullanici: value);
 
+  @override
   @action
-  void setAktiviteList(List<CariAktiviteListesiModel>? value) => aktiviteList = value?.asObservable();
+  void setObservableList(List<CariAktiviteListesiModel>? value) => observableList = value?.asObservable();
 
   @action
   void setBaslangicTarihi(DateTime? value) => requestModel = requestModel.copyWith(baslamaTarihi: value);
@@ -45,13 +48,13 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   // @action
   // void setKullanici(String? value) => requestModel = requestModel.copyWith(kullanici: value);
 
+  @override
   @action
   Future<void> getData() async {
-    setAktiviteList(null);
+    setObservableList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel(), data: requestModel.toJson());
     if (result.isSuccess) {
-      final List<CariAktiviteListesiModel> list = (result.data as List).map((e) => e as CariAktiviteListesiModel).toList();
-      setAktiviteList(list);
+      setObservableList(result.dataList);
     }
   }
 
@@ -59,8 +62,7 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin {
   Future<CariAktiviteListesiModel?> getNewItem(int? value) async {
     final result = await networkManager.dioPost(path: ApiUrls.getAktiviteler, bodyModel: CariAktiviteListesiModel(), data: {"ID": value}, showLoading: true);
     if (result.isSuccess) {
-      final List<CariAktiviteListesiModel> list = (result.data as List).map((e) => e as CariAktiviteListesiModel).toList();
-      return list.firstOrNull;
+      return result.dataList.firstOrNull;
     }
     return null;
   }
