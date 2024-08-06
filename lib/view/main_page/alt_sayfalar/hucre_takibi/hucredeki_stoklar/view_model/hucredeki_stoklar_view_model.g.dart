@@ -20,19 +20,19 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
                       '_HucredekiStoklarViewModelBase.filteredStoklarListesi'))
           .value;
 
-  late final _$stoklarListesiAtom = Atom(
-      name: '_HucredekiStoklarViewModelBase.stoklarListesi', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_HucredekiStoklarViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<HucredekiStoklarModel>? get stoklarListesi {
-    _$stoklarListesiAtom.reportRead();
-    return super.stoklarListesi;
+  ObservableList<HucredekiStoklarModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set stoklarListesi(ObservableList<HucredekiStoklarModel>? value) {
-    _$stoklarListesiAtom.reportWrite(value, super.stoklarListesi, () {
-      super.stoklarListesi = value;
+  set observableList(ObservableList<HucredekiStoklarModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -103,11 +103,11 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
   }
 
   @override
-  void setStoklarListesi(List<HucredekiStoklarModel>? list) {
+  void setObservableList(List<HucredekiStoklarModel>? list) {
     final _$actionInfo = _$_HucredekiStoklarViewModelBaseActionController
-        .startAction(name: '_HucredekiStoklarViewModelBase.setStoklarListesi');
+        .startAction(name: '_HucredekiStoklarViewModelBase.setObservableList');
     try {
-      return super.setStoklarListesi(list);
+      return super.setObservableList(list);
     } finally {
       _$_HucredekiStoklarViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -116,7 +116,7 @@ mixin _$HucredekiStoklarViewModel on _HucredekiStoklarViewModelBase, Store {
   @override
   String toString() {
     return '''
-stoklarListesi: ${stoklarListesi},
+observableList: ${observableList},
 requestModel: ${requestModel},
 searchText: ${searchText},
 filteredStoklarListesi: ${filteredStoklarListesi}

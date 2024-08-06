@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
@@ -8,9 +9,10 @@ part "hucredeki_stoklar_view_model.g.dart";
 
 class HucredekiStoklarViewModel = _HucredekiStoklarViewModelBase with _$HucredekiStoklarViewModel;
 
-abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin {
+abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin, ListableMixin<HucredekiStoklarModel> {
+  @override
   @observable
-  ObservableList<HucredekiStoklarModel>? stoklarListesi;
+  ObservableList<HucredekiStoklarModel>? observableList;
 
   @observable
   HucreListesiRequestModel? requestModel;
@@ -20,7 +22,7 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   List<HucredekiStoklarModel>? get filteredStoklarListesi =>
-      stoklarListesi?.where((e) => <String?>[e.stokKodu, e.stokAdi].map((e) => e?.toLowerCase() ?? false).any((element) => (element as String?)?.contains(searchText.toLowerCase()) ?? false)).toList();
+      observableList?.where((e) => <String?>[e.stokKodu, e.stokAdi].map((e) => e?.toLowerCase() ?? false).any((element) => (element as String?)?.contains(searchText.toLowerCase()) ?? false)).toList();
 
   @action
   void setSearchText(String value) => searchText = value;
@@ -28,12 +30,14 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin {
   @action
   void setRequestModel(HucreListesiRequestModel model) => requestModel = model;
 
+  @override
   @action
-  void setStoklarListesi(List<HucredekiStoklarModel>? list) => stoklarListesi = list?.asObservable();
+  void setObservableList(List<HucredekiStoklarModel>? list) => observableList = list?.asObservable();
 
+  @override
   @action
   Future<void> getData() async {
-    setStoklarListesi(null);
+    setObservableList(null);
     final result = await networkManager.dioGet(
       path: ApiUrls.getHucredekiStoklar,
       bodyModel: HucredekiStoklarModel(),
@@ -41,7 +45,7 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin {
     );
     if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as HucredekiStoklarModel).toList();
-      setStoklarListesi(list);
+      setObservableList(list);
     }
   }
 }
