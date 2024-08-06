@@ -44,7 +44,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @override
   @observable
-  bool isScrollDown = false;
+  bool isScrollDown = true;
 
   @observable
   bool searchBar = false;
