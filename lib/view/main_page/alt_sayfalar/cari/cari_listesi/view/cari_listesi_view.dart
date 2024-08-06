@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
@@ -259,8 +260,17 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
           ),
         ),
       );
+  Widget body() => Observer(
+        builder: (_) => RefreshableListView.pageable(
+          scrollController: _scrollController,
+          onRefresh: viewModel.resetList,
+          dahaVarMi: viewModel.dahaVarMi,
+          items: viewModel.observableList,
+          itemBuilder: cariListesiCard,
+        ),
+      );
 
-  RefreshIndicator body() => RefreshIndicator.adaptive(
+  RefreshIndicator body2() => RefreshIndicator.adaptive(
         onRefresh: () async => viewModel.resetList(),
         child: Observer(
           builder: (_) => (viewModel.observableList.ext.isNullOrEmpty
@@ -275,87 +285,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   itemBuilder: (context, index) {
                     if (index < (viewModel.observableList?.length ?? 0)) {
                       final CariListesiModel item = viewModel.observableList![index];
-                      return Card(
-                        child: Listener(
-                          onPointerDown: (event) {
-                            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                              showCariGrid(item);
-                            }
-                          },
-                          child: ListTile(
-                            onLongPress: () {
-                              showCariGrid(item);
-                            },
-                            onTap: () {
-                              if (widget.isGetData) {
-                                Get.back(result: item);
-                              } else {
-                                cariBottomSheet(context, item);
-                              }
-                            },
-                            isThreeLine: true,
-                            // contentPadding: UIHelper.midPadding,
-                            leading: CircleAvatar(
-                              backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
-                              foregroundColor: Colors.white,
-                              child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
-                            ),
-                            title: Text(item.cariAdi ?? ""),
-                            subtitle: Wrap(
-                              direction: Axis.vertical,
-                              alignment: WrapAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(item.efaturaMi == true),
-                                    ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.dovizli == true),
-                                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(item.boylam != null),
-                                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilit == "E"),
-                                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
-                                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
-                                  ]
-                                      .map(
-                                        (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
-                                      )
-                                      .toList()
-                                      .nullCheckWithGeneric,
-                                ),
-                                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                                if (item.cariIl != null)
-                                  Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5)))
-                                else
-                                  const SizedBox(),
-                              ],
-                            ),
-                            trailing: Wrap(
-                              children: [
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
-                                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
-                                      ),
-                                      if (item.bakiye != null)
-                                        TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic))
-                                      else
-                                        null,
-                                      if (item.dovizli == true && item.dovBakiye != null)
-                                        TextSpan(
-                                          text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
-                                          style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
-                                        )
-                                      else
-                                        null,
-                                    ].nullCheckWithGeneric,
-                                  ),
-                                  textAlign: TextAlign.right,
-                                ),
-                              ],
-                            ).yetkiVarMi(bakiyeGorunsunMu(item)),
-                          ),
-                        ),
-                      );
+                      return cariListesiCard(item);
                     } else {
                       return Visibility(
                         visible: viewModel.dahaVarMi,
@@ -365,6 +295,82 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   },
                 )),
         ).paddingAll(UIHelper.lowSize),
+      );
+
+  Card cariListesiCard(CariListesiModel item) => Card(
+        child: Listener(
+          onPointerDown: (event) {
+            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
+              showCariGrid(item);
+            }
+          },
+          child: ListTile(
+            onLongPress: () {
+              showCariGrid(item);
+            },
+            onTap: () {
+              if (widget.isGetData) {
+                Get.back(result: item);
+              } else {
+                cariBottomSheet(context, item);
+              }
+            },
+            isThreeLine: true,
+            // contentPadding: UIHelper.midPadding,
+            leading: CircleAvatar(
+              backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
+              foregroundColor: Colors.white,
+              child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+            ),
+            title: Text(item.cariAdi ?? ""),
+            subtitle: Wrap(
+              direction: Axis.vertical,
+              alignment: WrapAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(item.efaturaMi == true),
+                    ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.dovizli == true),
+                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(item.boylam != null),
+                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilit == "E"),
+                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
+                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
+                  ]
+                      .map(
+                        (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
+                      )
+                      .toList()
+                      .nullCheckWithGeneric,
+                ),
+                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
+                if (item.cariIl != null) Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) else const SizedBox(),
+              ],
+            ),
+            trailing: Wrap(
+              children: [
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(
+                        text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
+                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
+                      ),
+                      if (item.bakiye != null) TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic)) else null,
+                      if (item.dovizli == true && item.dovBakiye != null)
+                        TextSpan(
+                          text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
+                          style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
+                        )
+                      else
+                        null,
+                    ].nullCheckWithGeneric,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+              ],
+            ).yetkiVarMi(bakiyeGorunsunMu(item)),
+          ),
+        ),
       );
 
   Future<void> showCariGrid(CariListesiModel object) async {
@@ -394,11 +400,12 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 if (viewModel.cariRequestModel.filterBakiye == "T") {
                   viewModel.changeFilterBakiye("");
                   viewModel.changeFilterBakiyeTemp("");
+                  viewModel.changeSiralama("AZ");
                 } else {
                   viewModel.changeFilterBakiye("T");
                   viewModel.changeFilterBakiyeTemp("T");
+                  viewModel.changeSiralama("BAKIYE_ZA");
                 }
-                viewModel.changeSiralama("BAKIYE_ZA");
                 viewModel.resetList();
               },
             ),
@@ -414,11 +421,12 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 if (viewModel.cariRequestModel.filterBakiye == "Ö") {
                   viewModel.changeFilterBakiye("");
                   viewModel.changeFilterBakiyeTemp("");
+                  viewModel.changeSiralama("AZ");
                 } else {
                   viewModel.changeFilterBakiye("Ö");
                   viewModel.changeFilterBakiyeTemp("Ö");
+                  viewModel.changeSiralama("BAKIYE_AZ");
                 }
-                viewModel.changeSiralama("BAKIYE_AZ");
                 viewModel.resetList();
               },
             ),

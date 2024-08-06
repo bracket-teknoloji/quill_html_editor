@@ -284,6 +284,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   Future<void> resetList() async {
     resetPage();
+    setParamData(null);
     await getData();
   }
 
