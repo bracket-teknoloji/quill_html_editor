@@ -23,7 +23,7 @@ final class BaseStokEditingView extends StatefulWidget {
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
-  final BaseEditModel? model;
+  final BaseEditModel<StokListesiModel>? model;
   const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
@@ -45,7 +45,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
         await viewModel.getData();
         if (widget.model?.baseEditEnum.kopyalaMi ?? false) {
-          (widget.model?.model as StokListesiModel?)?.stokKodu = null;
+          widget.model?.model?.stokKodu = null;
         }
       } else {
         viewModel.setIsSuccess(true);

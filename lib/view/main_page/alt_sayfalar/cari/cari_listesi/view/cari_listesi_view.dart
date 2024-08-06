@@ -507,7 +507,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       if (pageName is CariSeceneklerModel) {
         baseEditEnum = pageName.baseEditEnum;
         pageName = pageName.path;
-        final BaseEditModel editModel = BaseEditModel(
+        final BaseEditModel<CariListesiModel> editModel = BaseEditModel(
           baseEditEnum: baseEditEnum,
           editTipiEnum: EditTipiEnum.cari,
           model: object,
