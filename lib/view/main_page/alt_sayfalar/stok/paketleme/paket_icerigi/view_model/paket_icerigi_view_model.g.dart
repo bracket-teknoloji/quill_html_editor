@@ -17,19 +17,19 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
               name: '_PaketIcerigiViewModelBase.toplamPaketMiktari'))
       .value;
 
-  late final _$paketIcerigiListesiAtom = Atom(
-      name: '_PaketIcerigiViewModelBase.paketIcerigiListesi', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_PaketIcerigiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<PaketIcerigiModel>? get paketIcerigiListesi {
-    _$paketIcerigiListesiAtom.reportRead();
-    return super.paketIcerigiListesi;
+  ObservableList<PaketIcerigiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set paketIcerigiListesi(ObservableList<PaketIcerigiModel>? value) {
-    _$paketIcerigiListesiAtom.reportWrite(value, super.paketIcerigiListesi, () {
-      super.paketIcerigiListesi = value;
+  set observableList(ObservableList<PaketIcerigiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -82,11 +82,11 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
   }
 
   @override
-  void setPaketIcerigiListesi(List<PaketIcerigiModel>? list) {
+  void setObservableList(List<PaketIcerigiModel>? list) {
     final _$actionInfo = _$_PaketIcerigiViewModelBaseActionController
-        .startAction(name: '_PaketIcerigiViewModelBase.setPaketIcerigiListesi');
+        .startAction(name: '_PaketIcerigiViewModelBase.setObservableList');
     try {
-      return super.setPaketIcerigiListesi(list);
+      return super.setObservableList(list);
     } finally {
       _$_PaketIcerigiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -95,7 +95,7 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
   @override
   String toString() {
     return '''
-paketIcerigiListesi: ${paketIcerigiListesi},
+observableList: ${observableList},
 requestModel: ${requestModel},
 toplamPaketMiktari: ${toplamPaketMiktari}
     ''';

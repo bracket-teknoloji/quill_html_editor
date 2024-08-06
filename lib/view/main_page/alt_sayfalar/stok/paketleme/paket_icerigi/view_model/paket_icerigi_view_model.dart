@@ -1,6 +1,7 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/paket_islemler_enum.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -12,29 +13,32 @@ part "paket_icerigi_view_model.g.dart";
 
 class PaketIcerigiViewModel = _PaketIcerigiViewModelBase with _$PaketIcerigiViewModel;
 
-abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin {
+abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, ListableMixin<PaketIcerigiModel> {
+  @override
   @observable
-  ObservableList<PaketIcerigiModel>? paketIcerigiListesi;
+  ObservableList<PaketIcerigiModel>? observableList;
 
   @observable
   PaketlemeListesiRequestModel requestModel = PaketlemeListesiRequestModel(ekranTipi: "L", menuKodu: "STOK_PKET");
 
   @computed
-  double get toplamPaketMiktari => paketIcerigiListesi?.fold(0, (sum, item) => (sum ?? 0) + (item.miktar ?? 0)) ?? 0;
+  double get toplamPaketMiktari => observableList?.fold(0, (sum, item) => (sum ?? 0) + (item.miktar ?? 0)) ?? 0;
 
   @action
   void setPaketID(int id) => requestModel = requestModel.copyWith(paketId: id);
 
+  @override
   @action
-  void setPaketIcerigiListesi(List<PaketIcerigiModel>? list) => paketIcerigiListesi = list?.asObservable();
+  void setObservableList(List<PaketIcerigiModel>? list) => observableList = list?.asObservable();
 
+  @override
   @action
   Future<void> getData() async {
-    setPaketIcerigiListesi(null);
+    setObservableList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getPaketKalemleri, bodyModel: PaketIcerigiModel(), data: requestModel.toJson());
     if (result.isSuccess) {
       final list = (result.data as List).map((e) => e as PaketIcerigiModel).toList();
-      setPaketIcerigiListesi(list);
+      setObservableList(list);
     }
   }
 
