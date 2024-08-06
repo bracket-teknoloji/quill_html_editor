@@ -32,6 +32,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   /// Sayfa hareketlerini takip etmek içn kullanılır.
   final ScrollController? scrollController;
 
+  /// Gelecek olan listenin Sliver olup olmadığını kontrol etmek için kullanılır.
   final bool _isSliver;
 
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
@@ -59,6 +60,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   })  : _isPageable = true,
         _isSliver = false;
 
+  @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.withSliver({
     super.key,
     required this.onRefresh,
@@ -68,6 +70,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
         dahaVarMi = false,
         _isSliver = true,
         scrollController = null;
+
+  @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.pageableWithSliver({
     super.key,
     required this.scrollController,
@@ -108,14 +112,17 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     } else {
       if (!_isPageable) {
         return ListView.builder(
+          itemCount: items!.length, primary: false,
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           // items nullcheck yapıldığı için ünlem koyabiliriz.
-          itemCount: items!.length,
           itemBuilder: (context, index) => itemBuilder(items![index]),
         );
       }
 
       return ListView.builder(
-        controller: scrollController,
+        controller: scrollController, primary: false,
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+
         // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
         // Gösterebilmek için item sayısını 1 artırırız.
         itemCount: dahaVarMi ? items!.length + 1 : items!.length,
