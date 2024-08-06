@@ -147,11 +147,12 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
       ActionController(name: '_TransferlerViewModelBase', context: context);
 
   @override
-  void setObservableList(List<BaseSiparisEditModel>? list) {
+  void setObservableList(List<BaseSiparisEditModel>? list,
+      [bool isFirst = false]) {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
         .startAction(name: '_TransferlerViewModelBase.setObservableList');
     try {
-      return super.setObservableList(list);
+      return super.setObservableList(list, isFirst);
     } finally {
       _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
     }

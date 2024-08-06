@@ -72,8 +72,8 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @override
   @action
-  void setObservableList(List<BaseSiparisEditModel>? list) {
-    if (page == 1) {
+  void setObservableList(List<BaseSiparisEditModel>? list, [bool isFirst = false]) {
+    if (isFirst) {
       observableList ??= CacheManager.getFaturaEditLists(editTipiEnum)?.asObservable();
       observableList = ((observableList?..addAll(list ?? [])) ?? list)?.asObservable();
     } else {
@@ -106,9 +106,9 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @override
   Future<void> resetList() async {
-    resetPage();
-    setDahaVarMi(true);
     super.resetList();
+    setDahaVarMi(true);
+    resetPage();
     await getData();
   }
 
@@ -176,7 +176,7 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
-        setObservableList(result.dataList);
+        setObservableList(result.dataList, true);
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);

@@ -270,9 +270,9 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
               SizedBox(width: context.sized.dynamicWidth(0.02)),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     Get.back();
-                    viewModel.resetList();
+                    await viewModel.resetList();
                   },
                   child: Text(loc.generalStrings.apply),
                 ),
