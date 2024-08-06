@@ -56,7 +56,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                         child: GridView.builder(
                           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: MediaQuery.of(context).size.width ~/ 90 > 10 ? 10 : MediaQuery.of(context).size.width ~/ 90,
+                            crossAxisCount: MediaQuery.sizeOf(context).width ~/ 90 > 10 ? 10 : MediaQuery.sizeOf(context).width ~/ 90,
                             childAspectRatio: 0.9,
                           ),
                           itemCount: (viewModel.filteredList?.length ?? 0) + (viewModel.page != 1 ? 1 : 0),

@@ -119,7 +119,7 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                       addAutomaticKeepAlives: false,
 
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: MediaQuery.of(context).size.width ~/ 85 > 6 ? 6 : MediaQuery.of(context).size.width ~/ 85,
+                        crossAxisCount: MediaQuery.sizeOf(context).width ~/ 85 > 6 ? 6 : MediaQuery.sizeOf(context).width ~/ 85,
                         childAspectRatio: context.isLandscape ? 1.2 : 1,
                       ),
                       itemCount: viewModel.gridItemModelList?.length ?? 0,

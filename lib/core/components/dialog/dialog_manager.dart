@@ -546,16 +546,16 @@ class DialogManager {
       AwesomeDialog(
         keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
-        bodyHeaderDistance: dialogType != DialogType.noHeader ? 15 : UIHelper.lowSize,
+        bodyHeaderDistance: dialogType != DialogType.noHeader ? UIHelper.highSize : UIHelper.lowSize,
         enableEnterKey: true,
         context: context,
         isDense: true,
         width: kIsWeb
-            ? MediaQuery.of(context).size.width * 0.5
+            ? MediaQuery.sizeOf(context).width * 0.5
             : Platform.isLinux || Platform.isWindows || Platform.isMacOS
                 ? context.isLandscape
-                    ? MediaQuery.of(context).size.width * 0.5
-                    : MediaQuery.of(context).size.width * 0.8
+                    ? MediaQuery.sizeOf(context).width * 0.5
+                    : MediaQuery.sizeOf(context).width * 0.8
                 : null,
         customHeader: customHeader,
         alignment: Alignment.center,

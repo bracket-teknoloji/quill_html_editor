@@ -16,7 +16,7 @@ class AppBarTitle extends StatelessWidget {
           Text(title ?? ""),
           if (subtitle != null)
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.65,
+              width: MediaQuery.sizeOf(context).width * 0.65,
               child: Text(
                 subtitle ?? "",
                 overflow: TextOverflow.ellipsis,
