@@ -9,19 +9,19 @@ part of 'doviz_kurlari_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
-  late final _$dovizKurlariListAtom = Atom(
-      name: '_DovizKurlariViewModelBase.dovizKurlariList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_DovizKurlariViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<DovizKurlariModel>? get dovizKurlariList {
-    _$dovizKurlariListAtom.reportRead();
-    return super.dovizKurlariList;
+  ObservableList<DovizKurlariModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set dovizKurlariList(ObservableList<DovizKurlariModel>? value) {
-    _$dovizKurlariListAtom.reportWrite(value, super.dovizKurlariList, () {
-      super.dovizKurlariList = value;
+  set observableList(ObservableList<DovizKurlariModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -59,15 +59,23 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
     });
   }
 
+  late final _$getDataAsyncAction =
+      AsyncAction('_DovizKurlariViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
+  }
+
   late final _$_DovizKurlariViewModelBaseActionController =
       ActionController(name: '_DovizKurlariViewModelBase', context: context);
 
   @override
-  void changeDovizKurlariList(List<DovizKurlariModel>? value) {
+  void setObservableList(List<DovizKurlariModel>? value) {
     final _$actionInfo = _$_DovizKurlariViewModelBaseActionController
-        .startAction(name: '_DovizKurlariViewModelBase.changeDovizKurlariList');
+        .startAction(name: '_DovizKurlariViewModelBase.setObservableList');
     try {
-      return super.changeDovizKurlariList(value);
+      return super.setObservableList(value);
     } finally {
       _$_DovizKurlariViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -121,7 +129,7 @@ mixin _$DovizKurlariViewModel on _DovizKurlariViewModelBase, Store {
   @override
   String toString() {
     return '''
-dovizKurlariList: ${dovizKurlariList},
+observableList: ${observableList},
 tarih: ${tarih},
 kurlariSilTekrarGuncelle: ${kurlariSilTekrarGuncelle}
     ''';
