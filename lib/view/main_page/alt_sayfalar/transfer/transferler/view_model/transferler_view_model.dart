@@ -1,6 +1,10 @@
-import "package:kartal/kartal.dart";
+import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -11,7 +15,7 @@ part "transferler_view_model.g.dart";
 
 class TransferlerViewModel = _TransferlerViewModelBase with _$TransferlerViewModel;
 
-abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
+abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   _TransferlerViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
@@ -40,14 +44,13 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
 
   @observable
   late EditTipiEnum editTipiEnum;
+  @override
   @observable
-  bool isScrolledDown = true;
+  bool isScrollDown = true;
 
+  @override
   @observable
-  bool searchBar = false;
-
-  @observable
-  bool dahaVarMi = true;
+  bool isSearchBarOpen = false;
 
   @observable
   ObservableMap<String, bool> ekstraAlanlarMap = {
@@ -56,14 +59,27 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
     "VADE": CacheManager.getProfilParametre.siparisVade,
   }.asObservable();
 
+  @override
   @observable
-  ObservableList<BaseSiparisEditModel>? transferList;
+  ObservableList<BaseSiparisEditModel>? observableList;
+
+  @override
+  @observable
+  String? searchText;
 
   @observable
-  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(sayfa: 1, siralama: "TARIH_ZA", ekranTipi: "L", iadeMi: false, faturalasmaGoster: true);
+  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(siralama: "TARIH_ZA", ekranTipi: "L", iadeMi: false, faturalasmaGoster: true);
 
+  @override
   @action
-  void setTransferList(List<BaseSiparisEditModel>? list) => transferList = list?.asObservable();
+  void setObservableList(List<BaseSiparisEditModel>? list) {
+    if (page == 1) {
+      observableList ??= CacheManager.getFaturaEditLists(editTipiEnum)?.asObservable();
+      observableList = ((observableList?..addAll(list ?? [])) ?? list)?.asObservable();
+    } else {
+      observableList = list?.asObservable();
+    }
+  }
 
   @action
   void changeEkstraAlanlarMap(String key, bool value) {
@@ -88,28 +104,35 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
     ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
-  @action
-  Future<void> resetPage() async {
-    setFaturaList(null);
+  @override
+  Future<void> resetList() async {
+    resetPage();
     setDahaVarMi(true);
-    resetSayfa();
+    super.resetList();
     await getData();
   }
 
+  @override
   @action
-  Future<void> changeSearchBar() async {
-    searchBar = !searchBar;
-    if (!searchBar) {
+  Future<void> changeSearchBarStatus() async {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) {
       setSearchText(null);
-      await resetPage();
+      await resetList();
+    }
+  }
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
     }
   }
 
   @action
-  void setIsScrollDown(bool value) => isScrolledDown = value;
-
-  @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
+  void setIsScrollDown(bool value) => isScrollDown = value;
 
   @action
   void increaseSayfa() => faturaRequestModel = faturaRequestModel.copyWith(sayfa: faturaRequestModel.sayfa! + 1);
@@ -118,16 +141,13 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
   void setSiralama(String value) => faturaRequestModel = faturaRequestModel.copyWith(siralama: value);
 
   @action
-  void resetSayfa() => faturaRequestModel = faturaRequestModel.copyWith(sayfa: 1);
-
+  @override
   @action
-  void setSearchText(String? value) => faturaRequestModel = faturaRequestModel.copyWith(searchText: value);
+  void setSearchText(String? value) => searchText = value;
 
+  @override
   @action
-  void setFaturaList(List<BaseSiparisEditModel>? value) => transferList = value?.asObservable();
-
-  @action
-  void addFaturaList(List<BaseSiparisEditModel>? value) => transferList = transferList?..addAll(value ?? []);
+  void addObservableList(List<BaseSiparisEditModel>? value) => setObservableList(observableList?..addAll(value ?? []));
 
   @action
   void setLokalDAT(String? value) => faturaRequestModel = faturaRequestModel.copyWith(lokalDAT: value);
@@ -144,27 +164,29 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin {
   @action
   void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(baslamaTarihi: null, bitisTarihi: null, ozelKod2: null, lokalDAT: null);
 
+  @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
-    if (result.data is List) {
-      final List<BaseSiparisEditModel> list = result.data.cast<BaseSiparisEditModel>();
-      if ((faturaRequestModel.sayfa ?? 0) < 2) {
-        setTransferList(CacheManager.getFaturaEditLists(editTipiEnum));
-        // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-        if (transferList.ext.isNullOrEmpty) {
-          setTransferList(list);
-        } else {
-          addFaturaList(list);
-        }
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: faturaRequestModel.copyWith(searchText: searchText, sayfa: page).toJson(),
+    );
+    if (result.isSuccess) {
+      if (page > 1) {
+        addObservableList(result.dataList);
       } else {
-        addFaturaList(list);
+        setObservableList(result.dataList);
       }
-      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
-        setDahaVarMi(false);
-      } else {
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);
-        increaseSayfa();
+        increasePage();
+      } else {
+        setDahaVarMi(false);
+      }
+    } else {
+      if (result.success != true) {
+        setObservableList([]);
       }
     }
   }

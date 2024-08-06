@@ -483,6 +483,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? hedefDepoAdi;
   @HiveField(187)
   double? otvTutari;
+  int? index;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -673,6 +674,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.dovizListesi,
     this.hedefDepoAdi,
     this.otvTutari,
+    this.index,
   });
 
   BaseSiparisEditModel._init();

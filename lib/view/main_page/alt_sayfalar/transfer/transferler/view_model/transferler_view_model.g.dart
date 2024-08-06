@@ -29,51 +29,35 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom =
-      Atom(name: '_TransferlerViewModelBase.isScrolledDown', context: context);
+  late final _$isScrollDownAtom =
+      Atom(name: '_TransferlerViewModelBase.isScrollDown', context: context);
 
   @override
-  bool get isScrolledDown {
-    _$isScrolledDownAtom.reportRead();
-    return super.isScrolledDown;
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
   }
 
   @override
-  set isScrolledDown(bool value) {
-    _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
-      super.isScrolledDown = value;
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_TransferlerViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_TransferlerViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
-    });
-  }
-
-  late final _$dahaVarMiAtom =
-      Atom(name: '_TransferlerViewModelBase.dahaVarMi', context: context);
-
-  @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
-  }
-
-  @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
@@ -93,19 +77,35 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$transferListAtom =
-      Atom(name: '_TransferlerViewModelBase.transferList', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_TransferlerViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<BaseSiparisEditModel>? get transferList {
-    _$transferListAtom.reportRead();
-    return super.transferList;
+  ObservableList<BaseSiparisEditModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set transferList(ObservableList<BaseSiparisEditModel>? value) {
-    _$transferListAtom.reportWrite(value, super.transferList, () {
-      super.transferList = value;
+  set observableList(ObservableList<BaseSiparisEditModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
+    });
+  }
+
+  late final _$searchTextAtom =
+      Atom(name: '_TransferlerViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -125,21 +125,14 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_TransferlerViewModelBase.resetPage', context: context);
-
-  @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
-  }
-
-  late final _$changeSearchBarAsyncAction = AsyncAction(
-      '_TransferlerViewModelBase.changeSearchBar',
+  late final _$changeSearchBarStatusAsyncAction = AsyncAction(
+      '_TransferlerViewModelBase.changeSearchBarStatus',
       context: context);
 
   @override
-  Future<void> changeSearchBar() {
-    return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
+  Future<void> changeSearchBarStatus() {
+    return _$changeSearchBarStatusAsyncAction
+        .run(() => super.changeSearchBarStatus());
   }
 
   late final _$getDataAsyncAction =
@@ -154,11 +147,11 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
       ActionController(name: '_TransferlerViewModelBase', context: context);
 
   @override
-  void setTransferList(List<BaseSiparisEditModel>? list) {
+  void setObservableList(List<BaseSiparisEditModel>? list) {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.setTransferList');
+        .startAction(name: '_TransferlerViewModelBase.setObservableList');
     try {
-      return super.setTransferList(list);
+      return super.setObservableList(list);
     } finally {
       _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -198,17 +191,6 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   @override
-  void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.setDahaVarMi');
-    try {
-      return super.setDahaVarMi(value);
-    } finally {
-      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void increaseSayfa() {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
         .startAction(name: '_TransferlerViewModelBase.increaseSayfa');
@@ -231,17 +213,6 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   @override
-  void resetSayfa() {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
-    } finally {
-      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setSearchText(String? value) {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
         .startAction(name: '_TransferlerViewModelBase.setSearchText');
@@ -253,22 +224,11 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   }
 
   @override
-  void setFaturaList(List<BaseSiparisEditModel>? value) {
+  void addObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.setFaturaList');
+        .startAction(name: '_TransferlerViewModelBase.addObservableList');
     try {
-      return super.setFaturaList(value);
-    } finally {
-      _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addFaturaList(List<BaseSiparisEditModel>? value) {
-    final _$actionInfo = _$_TransferlerViewModelBaseActionController
-        .startAction(name: '_TransferlerViewModelBase.addFaturaList');
-    try {
-      return super.addFaturaList(value);
+      return super.addObservableList(value);
     } finally {
       _$_TransferlerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -333,11 +293,11 @@ mixin _$TransferlerViewModel on _TransferlerViewModelBase, Store {
   String toString() {
     return '''
 editTipiEnum: ${editTipiEnum},
-isScrolledDown: ${isScrolledDown},
-searchBar: ${searchBar},
-dahaVarMi: ${dahaVarMi},
+isScrollDown: ${isScrollDown},
+isSearchBarOpen: ${isSearchBarOpen},
 ekstraAlanlarMap: ${ekstraAlanlarMap},
-transferList: ${transferList},
+observableList: ${observableList},
+searchText: ${searchText},
 faturaRequestModel: ${faturaRequestModel}
     ''';
   }

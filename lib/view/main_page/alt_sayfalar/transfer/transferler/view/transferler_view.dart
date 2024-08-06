@@ -1,5 +1,5 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
-import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -11,7 +11,7 @@ import "package:picker/core/components/card/transferler_card.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -25,7 +25,7 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/transfer/transferler/view_model/transferler_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-class TransferlerView extends StatefulWidget {
+final class TransferlerView extends StatefulWidget {
   final EditTipiEnum editTipiEnum;
   const TransferlerView({super.key, required this.editTipiEnum});
 
@@ -33,7 +33,7 @@ class TransferlerView extends StatefulWidget {
   State<TransferlerView> createState() => _TransferlerViewState();
 }
 
-class _TransferlerViewState extends BaseState<TransferlerView> {
+final class _TransferlerViewState extends BaseState<TransferlerView> {
   late final TransferlerViewModel viewModel;
   late final ScrollController _scrollController;
   late final TextEditingController baslangicTarihiController;
@@ -52,16 +52,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await viewModel.getData();
       _scrollController.addListener(() async {
-        if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          viewModel.setIsScrollDown(false);
-        }
-        if (_scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          viewModel.setIsScrollDown(true);
-        }
-        if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent && viewModel.dahaVarMi) {
-          await viewModel.getData();
-          viewModel.setIsScrollDown(true);
-        }
+        viewModel.changeScrollStatus(_scrollController.position);
       });
     });
     super.initState();
@@ -87,19 +78,22 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
   AppBar appBar(BuildContext context) => AppBar(
         title: Observer(
           builder: (_) {
-            if (viewModel.searchBar) {
+            if (viewModel.isSearchBarOpen) {
               return CustomAppBarTextField(
                 onFieldSubmitted: (String value) async {
                   viewModel.setSearchText(value);
-                  await viewModel.resetPage();
+                  await viewModel.resetList();
                 },
               );
             }
-            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.transferList?.length.toStringIfNotNull ?? "");
+            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "");
           },
         ),
         actions: <Widget>[
-          IconButton(onPressed: () async => await viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+          IconButton(
+            onPressed: () async => await viewModel.changeSearchBarStatus(),
+            icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined)),
+          ),
         ],
         bottom: AppBarPreferedSizedBottom(
           children: <AppBarButton?>[
@@ -127,7 +121,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                 );
                 if (result != null) {
                   viewModel.setSiralama(result);
-                  await viewModel.resetPage();
+                  await viewModel.resetList();
                 }
               },
             ),
@@ -186,62 +180,34 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
 
   Widget fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown && widget.editTipiEnum.eklensinMi,
+          isScrolledDown: viewModel.isScrollDown && widget.editTipiEnum.eklensinMi,
           onPressed: () async {
             await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
-            await viewModel.resetPage();
+            await viewModel.resetList();
           },
         ),
       );
 
-  RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          await viewModel.resetPage();
-          await viewModel.getData();
-        },
-        child: Observer(
-          builder: (_) {
-            if (viewModel.transferList.ext.isNullOrEmpty) {
-              if (viewModel.transferList != null) {
-                return const Center(
-                  child: Text(
-                    "Transfer Kaydı Bulunamadı.",
-                  ),
-                );
-              } else {
-                return const ListViewShimmer();
+  Widget body() => Observer(
+        builder: (_) => RefreshableListView.pageable(
+          scrollController: _scrollController,
+          onRefresh: viewModel.resetList,
+          dahaVarMi: viewModel.dahaVarMi,
+          items: viewModel.observableList?.mapIndexed((index, item) => item.copyWith(index: index)).toList(),
+          itemBuilder: (item) => TransferlerCard(
+            index: item.index,
+            model: item,
+            editTipiEnum: widget.editTipiEnum,
+            showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
+            showMiktar: viewModel.ekstraAlanlarMap["MİK"],
+            showVade: viewModel.ekstraAlanlarMap["VADE"],
+            onDeleted: () async => await viewModel.resetList(),
+            onUpdated: (value) async {
+              if (value) {
+                await viewModel.resetList();
               }
-            }
-            return ListView.builder(
-              padding: UIHelper.lowPadding,
-              primary: false,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              controller: _scrollController,
-              itemCount: viewModel.transferList != null ? ((viewModel.transferList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
-              itemBuilder: (context, index) {
-                if (index == viewModel.transferList?.length) {
-                  return const Center(child: CircularProgressIndicator.adaptive());
-                }
-                final BaseSiparisEditModel item = viewModel.transferList![index];
-                return Observer(
-                  builder: (_) => TransferlerCard(
-                    index: index,
-                    model: item,
-                    editTipiEnum: widget.editTipiEnum,
-                    showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
-                    showMiktar: viewModel.ekstraAlanlarMap["MİK"],
-                    showVade: viewModel.ekstraAlanlarMap["VADE"],
-                    onDeleted: () async => await viewModel.resetPage(),
-                    onUpdated: (value) async {
-                      if (value) {
-                        await viewModel.resetPage();
-                      }
-                    },
-                  ),
-                );
-              },
-            );
-          },
+            },
+          ),
         ),
       );
 
@@ -295,7 +261,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                     baslangicTarihiController.clear();
                     bitisTarihiController.clear();
                     ozelKod2Controller.clear();
-                    viewModel.resetPage();
+                    viewModel.resetList();
                   },
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   child: const Text("Temizle"),
@@ -306,9 +272,7 @@ class _TransferlerViewState extends BaseState<TransferlerView> {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.back();
-                    viewModel.setFaturaList(null);
-                    viewModel.setDahaVarMi(true);
-                    viewModel.resetPage();
+                    viewModel.resetList();
                   },
                   child: Text(loc.generalStrings.apply),
                 ),

@@ -383,6 +383,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel otvTutari(double? otvTutari);
 
+  BaseSiparisEditModel index(int? index);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -578,6 +580,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     Map<String, double>? dovizListesi,
     String? hedefDepoAdi,
     double? otvTutari,
+    int? index,
   });
 }
 
@@ -1270,6 +1273,9 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(otvTutari: otvTutari);
 
   @override
+  BaseSiparisEditModel index(int? index) => this(index: index);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1466,6 +1472,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? dovizListesi = const $CopyWithPlaceholder(),
     Object? hedefDepoAdi = const $CopyWithPlaceholder(),
     Object? otvTutari = const $CopyWithPlaceholder(),
+    Object? index = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2224,6 +2231,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.otvTutari
           // ignore: cast_nullable_to_non_nullable
           : otvTutari as double?,
+      index: index == const $CopyWithPlaceholder()
+          ? _value.index
+          // ignore: cast_nullable_to_non_nullable
+          : index as int?,
     );
   }
 }
@@ -5142,6 +5153,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
           {},
       hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
       otvTutari: (json['OTV_TUTARI'] as num?)?.toDouble(),
+      index: (json['INDEX'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -5342,6 +5354,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DOVIZ_LISTESI', instance.dovizListesi);
   writeNotNull('HEDEF_DEPO_ADI', instance.hedefDepoAdi);
   writeNotNull('OTV_TUTARI', instance.otvTutari);
+  writeNotNull('INDEX', instance.index);
   return val;
 }
 
