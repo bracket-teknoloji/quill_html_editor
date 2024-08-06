@@ -21,6 +21,19 @@ mixin ScrollControllableMixin<T extends NetworkManagerMixin> on ListableMixin<T>
   /// Bu metod ile [ScrollController]'dan gelen [ScrollPosition] bilgisi alınır.
   /// [ScrollPosition] bilgisi ile [isScrollDown] değişkeni güncellenmektedir.
   /// Eğer bu metodu override edecekseniz, [super.changeScrollStatus] çağrısının yapılması gerekmektedir.
+  /// 
+  /// ### [Aşağıdaki kodu ViewModel içerisine ekleyebilirsiniz.]
+  ///
+  /// ```dart
+  /// @override
+  /// Future<void> changeScrollStatus(ScrollPosition position) async {
+  ///   super.changeScrollStatus(position);
+  ///   if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+  ///     await getData();
+  ///     isScrollDown = false;
+  ///   }
+  /// }
+  /// ```
   Future<void> changeScrollStatus(ScrollPosition position) async {
     if (position.userScrollDirection == ScrollDirection.forward || position.pixels == 0) {
       isScrollDown = true;
