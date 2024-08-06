@@ -158,24 +158,6 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: dovizKurlariCard),
             ),
           ),
-          // Expanded(
-          //   child: RefreshIndicator.adaptive(
-          //     onRefresh: () async => await viewModel.getData(),
-          //     child: Observer(
-          //       builder: (_) => viewModel.observableList.ext.isNullOrEmpty
-          //           ? viewModel.observableList == null
-          //               ? const ListViewShimmer()
-          //               : const Center(child: Text("Veri Yok"))
-          //           : ListView.builder(
-          //               itemCount: viewModel.observableList?.length ?? 0,
-          //               itemBuilder: (context, index) {
-          //                 final DovizKurlariModel model = viewModel.observableList?[index] ?? DovizKurlariModel();
-          //                 return dovizKurlariCard(model);
-          //               },
-          //             ),
-          //     ).paddingAll(UIHelper.lowSize),
-          //   ),
-          // ),
         ],
       );
 
