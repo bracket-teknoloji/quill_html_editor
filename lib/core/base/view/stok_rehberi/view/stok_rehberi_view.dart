@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -304,7 +303,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
               );
             },
             icon: const Icon(Icons.more_vert_outlined),
-          ).isDebug(),
+          ),
           IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor)),
         ].whereType<Widget>().toList(),
       );
@@ -410,7 +409,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                     onTap: () => getGrupKodlariBottomSheet(5),
                   ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
                 ].whereType<CustomTextField>().toList(),
-              ).yetkiVarMi(AccountModel.instance.isDebug),
+              ),
             ),
             Expanded(
               child: Observer(

@@ -18,7 +18,7 @@ import "base_stok_edit_fiyat_listesi/view/base_stok_edit_fiyat_listesi_view.dart
 import "base_stok_edit_genel/view/base_stok_edit_genel_view.dart";
 import "base_stok_edit_seriler/view/base_stok_edit_seriler_view.dart";
 
-class BaseStokEditingView extends StatefulWidget {
+final class BaseStokEditingView extends StatefulWidget {
   final String? appBarTitle;
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
@@ -30,8 +30,8 @@ class BaseStokEditingView extends StatefulWidget {
   State<BaseStokEditingView> createState() => _BaseStokEditingViewState();
 }
 
-class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
-  BaseStokEditingViewModel viewModel = BaseStokEditingViewModel();
+final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
+  final BaseStokEditingViewModel viewModel = BaseStokEditingViewModel();
   late final TabController _tabController;
   int get tabLength => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? 4 : 3;
 
@@ -44,6 +44,9 @@ class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with Tick
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
         await viewModel.getData();
+        if (widget.model?.baseEditEnum.kopyalaMi ?? false) {
+          (widget.model?.model as StokListesiModel?)?.stokKodu = null;
+        }
       } else {
         viewModel.setIsSuccess(true);
       }

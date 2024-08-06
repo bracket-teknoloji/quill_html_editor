@@ -206,7 +206,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   await viewModel.resetList();
                                 }
                               },
-                            ).isDebug(),
+                            ),
                           ].whereType<Widget>().toList(),
                         ),
                       );
