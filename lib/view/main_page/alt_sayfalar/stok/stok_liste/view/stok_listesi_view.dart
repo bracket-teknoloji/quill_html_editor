@@ -230,27 +230,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   },
                                 ),
                               ],
-                            ).isDebug(),
-                            Column(
-                              children: [
-                                const Divider(
-                                  endIndent: 10,
-                                  indent: 10,
-                                ).paddingSymmetric(vertical: UIHelper.lowSize),
-                                ListTile(
-                                  title: const Text("Deneme"),
-                                  leading: const Icon(Icons.list_alt_outlined, color: UIHelper.primaryColor),
-                                  onTap: () async {
-                                    bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Deneme221342134123",
-                                      groupValues: [],
-                                      children: List.generate(3, (index) => BottomSheetModel(title: index.toString())),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ).isKDebug(),
+                            ),
                           ].whereType<Widget>().toList(),
                         ),
                       );
