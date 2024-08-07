@@ -39,8 +39,12 @@ mixin _$HucreTakibiStoklarModel {
   List<SeriList>? get seriList => throw _privateConstructorUsedError;
   bool? get eksiyeDusebilir => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreTakibiStoklarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreTakibiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreTakibiStoklarModelCopyWith<HucreTakibiStoklarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +86,8 @@ class _$HucreTakibiStoklarModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreTakibiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -215,6 +221,8 @@ class __$$HucreTakibiStoklarModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreTakibiStoklarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreTakibiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -379,7 +387,9 @@ class _$HucreTakibiStoklarModelImpl extends _HucreTakibiStoklarModel {
   @override
   final bool? eksiyeDusebilir;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreTakibiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreTakibiStoklarModelImplCopyWith<_$HucreTakibiStoklarModelImpl>
@@ -452,8 +462,11 @@ abstract class _HucreTakibiStoklarModel extends HucreTakibiStoklarModel {
   List<SeriList>? get seriList;
   @override
   bool? get eksiyeDusebilir;
+
+  /// Create a copy of HucreTakibiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreTakibiStoklarModelImplCopyWith<_$HucreTakibiStoklarModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

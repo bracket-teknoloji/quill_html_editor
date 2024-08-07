@@ -24,8 +24,12 @@ mixin _$BarkodTanimlaKayitlariRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   String? get kayitTipi => throw _privateConstructorUsedError;
 
+  /// Serializes this BarkodTanimlaKayitlariRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BarkodTanimlaKayitlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BarkodTanimlaKayitlariRequestModelCopyWith<
           BarkodTanimlaKayitlariRequestModel>
       get copyWith => throw _privateConstructorUsedError;
@@ -53,6 +57,8 @@ class _$BarkodTanimlaKayitlariRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BarkodTanimlaKayitlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$BarkodTanimlaKayitlariRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$BarkodTanimlaKayitlariRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BarkodTanimlaKayitlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,11 +153,13 @@ class _$BarkodTanimlaKayitlariRequestModelImpl
                 other.kayitTipi == kayitTipi));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, stokKodu, kayitTipi);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BarkodTanimlaKayitlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<
@@ -179,8 +189,11 @@ abstract class _BarkodTanimlaKayitlariRequestModel
   String? get stokKodu;
   @override
   String? get kayitTipi;
+
+  /// Create a copy of BarkodTanimlaKayitlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BarkodTanimlaKayitlariRequestModelImplCopyWith<
           _$BarkodTanimlaKayitlariRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;

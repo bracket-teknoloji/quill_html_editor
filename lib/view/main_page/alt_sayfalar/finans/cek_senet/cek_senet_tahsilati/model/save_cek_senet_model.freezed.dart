@@ -73,8 +73,12 @@ mixin _$SaveCekSenetModel {
   double? get tutar => throw _privateConstructorUsedError;
   set tutar(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SaveCekSenetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SaveCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SaveCekSenetModelCopyWith<SaveCekSenetModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -120,6 +124,8 @@ class _$SaveCekSenetModelCopyWithImpl<$Res, $Val extends SaveCekSenetModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SaveCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -280,6 +286,8 @@ class __$$SaveCekSenetModelImplCopyWithImpl<$Res>
       $Res Function(_$SaveCekSenetModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SaveCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -478,7 +486,9 @@ class _$SaveCekSenetModelImpl extends _SaveCekSenetModel {
   @override
   double? tutar;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SaveCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith =>
@@ -594,8 +604,11 @@ abstract class _SaveCekSenetModel extends SaveCekSenetModel {
   @override
   double? get tutar;
   set tutar(double? value);
+
+  /// Create a copy of SaveCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveCekSenetModelImplCopyWith<_$SaveCekSenetModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -680,8 +693,12 @@ mixin _$CekSenetKalemlerModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set refKodSorulsunMu(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CekSenetKalemlerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CekSenetKalemlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CekSenetKalemlerModelCopyWith<CekSenetKalemlerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -741,6 +758,8 @@ class _$CekSenetKalemlerModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CekSenetKalemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -976,6 +995,8 @@ class __$$CekSenetKalemlerModelImplCopyWithImpl<$Res>
       $Res Function(_$CekSenetKalemlerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CekSenetKalemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1274,7 +1295,9 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
     return 'CekSenetKalemlerModel(cariRaporKodu: $cariRaporKodu, cekBanka: $cekBanka, seriNo: $seriNo, cekSube: $cekSube, ciroTipi: $ciroTipi, gorsel1: $gorsel1, gorsel2: $gorsel2, hesapNo: $hesapNo, ilce: $ilce, plasiyerAdi: $plasiyerAdi, plasiyerKodu: $plasiyerKodu, raporKodu: $raporKodu, sehir: $sehir, sira: $sira, dovizTipi: $dovizTipi, tag: $tag, tarih: $tarih, tutar: $tutar, vadeTarihi: $vadeTarihi, dovizKuru: $dovizKuru, dovizTutari: $dovizTutari, asilCari: $asilCari, refKod: $refKod, refTanimi: $refTanimi, aciklama1: $aciklama1, aciklama2: $aciklama2, aciklama3: $aciklama3, projeAdi: $projeAdi, projeKodu: $projeKodu, verenKodu: $verenKodu, ibanNo: $ibanNo, duzenlendigiYer: $duzenlendigiYer, dovizAdi: $dovizAdi, refKodSorulsunMu: $refKodSorulsunMu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CekSenetKalemlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl>
@@ -1436,8 +1459,11 @@ abstract class _CekSenetKalemlerModel implements CekSenetKalemlerModel {
   bool? get refKodSorulsunMu;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set refKodSorulsunMu(bool? value);
+
+  /// Create a copy of CekSenetKalemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CekSenetKalemlerModelImplCopyWith<_$CekSenetKalemlerModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

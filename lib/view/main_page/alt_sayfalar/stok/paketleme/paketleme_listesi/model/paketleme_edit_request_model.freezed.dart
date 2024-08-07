@@ -25,8 +25,12 @@ mixin _$PaketlemeEditRequestModel {
   int? get paketId => throw _privateConstructorUsedError;
   int? get kalemId => throw _privateConstructorUsedError;
 
+  /// Serializes this PaketlemeEditRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaketlemeEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaketlemeEditRequestModelCopyWith<PaketlemeEditRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$PaketlemeEditRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaketlemeEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$PaketlemeEditRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$PaketlemeEditRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaketlemeEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,11 +161,13 @@ class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
             (identical(other.kalemId, kalemId) || other.kalemId == kalemId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, islemKodu, paketId, kalemId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaketlemeEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaketlemeEditRequestModelImplCopyWith<_$PaketlemeEditRequestModelImpl>
@@ -187,8 +197,11 @@ abstract class _PaketlemeEditRequestModel implements PaketlemeEditRequestModel {
   int? get paketId;
   @override
   int? get kalemId;
+
+  /// Create a copy of PaketlemeEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaketlemeEditRequestModelImplCopyWith<_$PaketlemeEditRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

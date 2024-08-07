@@ -137,8 +137,12 @@ mixin _$SiparisEditRequestModel {
   String? get bakiyeDurumu => throw _privateConstructorUsedError;
   set bakiyeDurumu(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SiparisEditRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SiparisEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SiparisEditRequestModelCopyWith<SiparisEditRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -215,6 +219,8 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SiparisEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -558,6 +564,8 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$SiparisEditRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SiparisEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -999,7 +1007,9 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   @override
   String? bakiyeDurumu;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SiparisEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>
@@ -1237,8 +1247,11 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   String? get bakiyeDurumu;
   set bakiyeDurumu(String? value);
+
+  /// Create a copy of SiparisEditRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SiparisEditRequestModelImplCopyWith<_$SiparisEditRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -31,8 +31,12 @@ mixin _$DepoBakiyeDurumuModel {
   String? get stokAdi => throw _privateConstructorUsedError;
   String? get depoAdi => throw _privateConstructorUsedError;
 
+  /// Serializes this DepoBakiyeDurumuModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DepoBakiyeDurumuModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DepoBakiyeDurumuModelCopyWith<DepoBakiyeDurumuModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$DepoBakiyeDurumuModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DepoBakiyeDurumuModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,6 +156,8 @@ class __$$DepoBakiyeDurumuModelImplCopyWithImpl<$Res>
       $Res Function(_$DepoBakiyeDurumuModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DepoBakiyeDurumuModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -241,7 +249,9 @@ class _$DepoBakiyeDurumuModelImpl extends _DepoBakiyeDurumuModel {
   @override
   final String? depoAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DepoBakiyeDurumuModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl>
@@ -290,8 +300,11 @@ abstract class _DepoBakiyeDurumuModel extends DepoBakiyeDurumuModel {
   String? get stokAdi;
   @override
   String? get depoAdi;
+
+  /// Create a copy of DepoBakiyeDurumuModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DepoBakiyeDurumuModelImplCopyWith<_$DepoBakiyeDurumuModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

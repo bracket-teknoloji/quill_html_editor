@@ -52,8 +52,12 @@ mixin _$HucreListesiRequestModel {
   String? get paketKodu => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreListesiRequestModelCopyWith<HucreListesiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -101,6 +105,8 @@ class _$HucreListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -270,6 +276,8 @@ class __$$HucreListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -535,7 +543,7 @@ class _$HucreListesiRequestModelImpl implements _HucreListesiRequestModel {
                 other.cariKodu == cariKodu));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -564,7 +572,9 @@ class _$HucreListesiRequestModelImpl implements _HucreListesiRequestModel {
         cariKodu
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreListesiRequestModelImplCopyWith<_$HucreListesiRequestModelImpl>
@@ -645,14 +655,14 @@ abstract class _HucreListesiRequestModel implements HucreListesiRequestModel {
   @override
   int? get yedek4;
   @override
-  String? get yedek4Str;
-  @override //    'YEDEK8 Açıklamalar;
+  String? get yedek4Str; //    'YEDEK8 Açıklamalar;
 // 'N : Sevk emri mal toplama
 // 'T : Servo geçici seri kullanım kayıtları.
 // 'P : Paketleme(TBLNF_PCIPAKET,Üretime mal toplama vs)
 // 'S : Picker seri parçalama
 // 'B : Picker seri birleştirme
 // 'D : Picker Depo Talep
+  @override
   String? get yedek8;
   @override
   int? get seriSayisi;
@@ -660,8 +670,11 @@ abstract class _HucreListesiRequestModel implements HucreListesiRequestModel {
   String? get paketKodu;
   @override
   String? get cariKodu;
+
+  /// Create a copy of HucreListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreListesiRequestModelImplCopyWith<_$HucreListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

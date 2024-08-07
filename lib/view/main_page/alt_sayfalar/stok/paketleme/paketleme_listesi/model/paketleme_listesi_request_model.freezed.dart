@@ -34,8 +34,12 @@ mixin _$PaketlemeListesiRequestModel {
   @JsonKey(name: "PaketID")
   int? get paketId => throw _privateConstructorUsedError;
 
+  /// Serializes this PaketlemeListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaketlemeListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaketlemeListesiRequestModelCopyWith<PaketlemeListesiRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$PaketlemeListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaketlemeListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -163,6 +169,8 @@ class __$$PaketlemeListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$PaketlemeListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaketlemeListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -295,12 +303,14 @@ class _$PaketlemeListesiRequestModelImpl
             (identical(other.paketId, paketId) || other.paketId == paketId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, stokKodu, belgeNo, menuKodu,
       depoKodu, paketKodu, islemKodu, kisitYok, ekranTipi, paketId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaketlemeListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaketlemeListesiRequestModelImplCopyWith<
@@ -356,8 +366,11 @@ abstract class _PaketlemeListesiRequestModel
   @override
   @JsonKey(name: "PaketID")
   int? get paketId;
+
+  /// Create a copy of PaketlemeListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaketlemeListesiRequestModelImplCopyWith<
           _$PaketlemeListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;

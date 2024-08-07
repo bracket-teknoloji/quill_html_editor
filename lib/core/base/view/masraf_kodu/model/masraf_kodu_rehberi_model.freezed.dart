@@ -26,8 +26,12 @@ mixin _$MasrafKoduRehberiModel {
   String? get masrafAdi => throw _privateConstructorUsedError;
   set masrafAdi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this MasrafKoduRehberiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MasrafKoduRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MasrafKoduRehberiModelCopyWith<MasrafKoduRehberiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$MasrafKoduRehberiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MasrafKoduRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$MasrafKoduRehberiModelImplCopyWithImpl<$Res>
       $Res Function(_$MasrafKoduRehberiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MasrafKoduRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,7 +133,9 @@ class _$MasrafKoduRehberiModelImpl extends _MasrafKoduRehberiModel {
   @override
   String? masrafAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MasrafKoduRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl>
@@ -154,8 +164,11 @@ abstract class _MasrafKoduRehberiModel extends MasrafKoduRehberiModel {
   @override
   String? get masrafAdi;
   set masrafAdi(String? value);
+
+  /// Create a copy of MasrafKoduRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MasrafKoduRehberiModelImplCopyWith<_$MasrafKoduRehberiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

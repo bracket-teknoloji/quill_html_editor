@@ -46,8 +46,12 @@ mixin _$CekSenetListesiRequestModel {
   String? get bitisTarihi => throw _privateConstructorUsedError;
   set bitisTarihi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CekSenetListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CekSenetListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CekSenetListesiRequestModelCopyWith<CekSenetListesiRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -86,6 +90,8 @@ class _$CekSenetListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CekSenetListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,6 +195,8 @@ class __$$CekSenetListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$CekSenetListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CekSenetListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -311,7 +319,9 @@ class _$CekSenetListesiRequestModelImpl
     return 'CekSenetListesiRequestModel(verenKodu: $verenKodu, sirala: $sirala, ekranTipi: $ekranTipi, yer: $yer, donemTipi: $donemTipi, tarihTipi: $tarihTipi, tipi: $tipi, verilenKodu: $verilenKodu, durum: $durum, searchText: $searchText, baslangicTarihi: $baslangicTarihi, bitisTarihi: $bitisTarihi)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CekSenetListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
@@ -381,8 +391,11 @@ abstract class _CekSenetListesiRequestModel
   @override
   String? get bitisTarihi;
   set bitisTarihi(String? value);
+
+  /// Create a copy of CekSenetListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CekSenetListesiRequestModelImplCopyWith<_$CekSenetListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

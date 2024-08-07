@@ -52,8 +52,12 @@ mixin _$CariListesiRequestModel {
   String? get siparisKarsilanmaDurumu => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
 
+  /// Serializes this CariListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CariListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CariListesiRequestModelCopyWith<CariListesiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -106,6 +110,8 @@ class _$CariListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CariListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -305,6 +311,8 @@ class __$$CariListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$CariListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CariListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -636,7 +644,9 @@ class _$CariListesiRequestModelImpl extends _CariListesiRequestModel {
   @override
   final String? searchText;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CariListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
@@ -744,8 +754,11 @@ abstract class _CariListesiRequestModel extends CariListesiRequestModel {
   String? get siparisKarsilanmaDurumu;
   @override
   String? get searchText;
+
+  /// Create a copy of CariListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CariListesiRequestModelImplCopyWith<_$CariListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

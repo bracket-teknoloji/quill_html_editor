@@ -32,8 +32,12 @@ mixin _$HucredekiStoklarModel {
   double? get miktar => throw _privateConstructorUsedError;
   String? get olcuBirimi => throw _privateConstructorUsedError;
 
+  /// Serializes this HucredekiStoklarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucredekiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucredekiStoklarModelCopyWith<HucredekiStoklarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$HucredekiStoklarModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucredekiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,6 +164,8 @@ class __$$HucredekiStoklarModelImplCopyWithImpl<$Res>
       $Res Function(_$HucredekiStoklarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucredekiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,7 +265,9 @@ class _$HucredekiStoklarModelImpl extends _HucredekiStoklarModel {
   @override
   final String? olcuBirimi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucredekiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl>
@@ -309,8 +319,11 @@ abstract class _HucredekiStoklarModel extends HucredekiStoklarModel {
   double? get miktar;
   @override
   String? get olcuBirimi;
+
+  /// Create a copy of HucredekiStoklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucredekiStoklarModelImplCopyWith<_$HucredekiStoklarModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

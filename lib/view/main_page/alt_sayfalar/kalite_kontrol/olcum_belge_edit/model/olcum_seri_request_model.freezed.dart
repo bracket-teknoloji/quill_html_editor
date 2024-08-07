@@ -28,8 +28,12 @@ mixin _$OlcumSeriRequestModel {
   int? get kabulGirisDepo => throw _privateConstructorUsedError;
   List<String>? get seriListe => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumSeriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumSeriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumSeriRequestModelCopyWith<OlcumSeriRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$OlcumSeriRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumSeriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -126,6 +132,8 @@ class __$$OlcumSeriRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumSeriRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumSeriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -224,7 +232,7 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
                 .equals(other._seriListe, _seriListe));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -235,7 +243,9 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
       kabulGirisDepo,
       const DeepCollectionEquality().hash(_seriListe));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumSeriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl>
@@ -274,8 +284,11 @@ abstract class _OlcumSeriRequestModel implements OlcumSeriRequestModel {
   int? get kabulGirisDepo;
   @override
   List<String>? get seriListe;
+
+  /// Create a copy of OlcumSeriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumSeriRequestModelImplCopyWith<_$OlcumSeriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

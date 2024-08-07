@@ -26,8 +26,12 @@ mixin _$MuhasebeReferansModel {
   String? get tanimi => throw _privateConstructorUsedError;
   set tanimi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this MuhasebeReferansModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MuhasebeReferansModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MuhasebeReferansModelCopyWith<MuhasebeReferansModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$MuhasebeReferansModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MuhasebeReferansModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$MuhasebeReferansModelImplCopyWithImpl<$Res>
       $Res Function(_$MuhasebeReferansModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MuhasebeReferansModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,7 +132,9 @@ class _$MuhasebeReferansModelImpl extends _MuhasebeReferansModel {
   @override
   String? tanimi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MuhasebeReferansModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MuhasebeReferansModelImplCopyWith<_$MuhasebeReferansModelImpl>
@@ -153,8 +163,11 @@ abstract class _MuhasebeReferansModel extends MuhasebeReferansModel {
   @override
   String? get tanimi;
   set tanimi(String? value);
+
+  /// Create a copy of MuhasebeReferansModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MuhasebeReferansModelImplCopyWith<_$MuhasebeReferansModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

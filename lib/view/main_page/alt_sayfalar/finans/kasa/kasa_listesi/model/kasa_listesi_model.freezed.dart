@@ -38,8 +38,12 @@ mixin _$KasaListesiModel {
   double? get dovizDevirTutari => throw _privateConstructorUsedError;
   String? get dovizAdi => throw _privateConstructorUsedError;
 
+  /// Serializes this KasaListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KasaListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KasaListesiModelCopyWith<KasaListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KasaListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -210,6 +216,8 @@ class __$$KasaListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$KasaListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KasaListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -365,7 +373,9 @@ class _$KasaListesiModelImpl extends _KasaListesiModel {
   @override
   final String? dovizAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KasaListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
@@ -438,8 +448,11 @@ abstract class _KasaListesiModel extends KasaListesiModel {
   double? get dovizDevirTutari;
   @override
   String? get dovizAdi;
+
+  /// Create a copy of KasaListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

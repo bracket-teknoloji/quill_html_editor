@@ -63,8 +63,12 @@ mixin _$DekontIslemlerModel {
   String? get muhasebeHesapTipi => throw _privateConstructorUsedError;
   set muhasebeHesapTipi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DekontIslemlerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DekontIslemlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DekontIslemlerModelCopyWith<DekontIslemlerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -109,6 +113,8 @@ class _$DekontIslemlerModelCopyWithImpl<$Res, $Val extends DekontIslemlerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DekontIslemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -263,6 +269,8 @@ class __$$DekontIslemlerModelImplCopyWithImpl<$Res>
       $Res Function(_$DekontIslemlerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DekontIslemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -450,7 +458,9 @@ class _$DekontIslemlerModelImpl extends _DekontIslemlerModel {
   @override
   String? muhasebeHesapTipi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DekontIslemlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
@@ -556,8 +566,11 @@ abstract class _DekontIslemlerModel extends DekontIslemlerModel {
   @override
   String? get muhasebeHesapTipi;
   set muhasebeHesapTipi(String? value);
+
+  /// Create a copy of DekontIslemlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

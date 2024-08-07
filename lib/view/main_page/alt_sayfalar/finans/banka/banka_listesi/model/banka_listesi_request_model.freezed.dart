@@ -40,8 +40,12 @@ mixin _$BankaListesiRequestModel {
   String? get islemModulu => throw _privateConstructorUsedError;
   set islemModulu(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this BankaListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BankaListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BankaListesiRequestModelCopyWith<BankaListesiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -75,6 +79,8 @@ class _$BankaListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BankaListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,6 +166,8 @@ class __$$BankaListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$BankaListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BankaListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,7 +265,9 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
     return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, haricHesaplarArray: $haricHesaplarArray, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi, bankaKodu: $bankaKodu, islemModulu: $islemModulu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BankaListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
@@ -314,8 +324,11 @@ abstract class _BankaListesiRequestModel implements BankaListesiRequestModel {
   @override
   String? get islemModulu;
   set islemModulu(String? value);
+
+  /// Create a copy of BankaListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BankaListesiRequestModelImplCopyWith<_$BankaListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

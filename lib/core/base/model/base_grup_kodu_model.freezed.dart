@@ -51,8 +51,12 @@ mixin _$BaseGrupKoduModel {
   String? get kod5Adi => throw _privateConstructorUsedError;
   set kod5Adi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this BaseGrupKoduModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseGrupKoduModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BaseGrupKoduModelCopyWith<BaseGrupKoduModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -91,6 +95,8 @@ class _$BaseGrupKoduModelCopyWithImpl<$Res, $Val extends BaseGrupKoduModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BaseGrupKoduModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,6 +215,8 @@ class __$$BaseGrupKoduModelImplCopyWithImpl<$Res>
       $Res Function(_$BaseGrupKoduModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseGrupKoduModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -349,7 +357,9 @@ class _$BaseGrupKoduModelImpl extends _BaseGrupKoduModel {
   @override
   String? kod5Adi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseGrupKoduModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
@@ -431,8 +441,11 @@ abstract class _BaseGrupKoduModel extends BaseGrupKoduModel {
   @override
   String? get kod5Adi;
   set kod5Adi(String? value);
+
+  /// Create a copy of BaseGrupKoduModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseGrupKoduModelImplCopyWith<_$BaseGrupKoduModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

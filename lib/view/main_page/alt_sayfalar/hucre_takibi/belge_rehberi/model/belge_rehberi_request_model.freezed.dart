@@ -26,8 +26,12 @@ mixin _$BelgeRehberiRequestModel {
   String? get pickerBelgeTuru => throw _privateConstructorUsedError;
   String? get searchText => throw _privateConstructorUsedError;
 
+  /// Serializes this BelgeRehberiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BelgeRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BelgeRehberiRequestModelCopyWith<BelgeRehberiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$BelgeRehberiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BelgeRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,6 +117,8 @@ class __$$BelgeRehberiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$BelgeRehberiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BelgeRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,12 +187,14 @@ class _$BelgeRehberiRequestModelImpl implements _BelgeRehberiRequestModel {
                 other.searchText == searchText));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, depoKodu, islemTuru, pickerBelgeTuru, searchText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BelgeRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl>
@@ -217,8 +227,11 @@ abstract class _BelgeRehberiRequestModel implements BelgeRehberiRequestModel {
   String? get pickerBelgeTuru;
   @override
   String? get searchText;
+
+  /// Create a copy of BelgeRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BelgeRehberiRequestModelImplCopyWith<_$BelgeRehberiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

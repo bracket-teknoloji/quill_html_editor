@@ -26,8 +26,12 @@ mixin _$EBelgePdfRequestModel {
   int? get islemKodu => throw _privateConstructorUsedError;
   String? get resmiBelgeNo => throw _privateConstructorUsedError;
 
+  /// Serializes this EBelgePdfRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EBelgePdfRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EBelgePdfRequestModelCopyWith<EBelgePdfRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$EBelgePdfRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EBelgePdfRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,6 +116,8 @@ class __$$EBelgePdfRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$EBelgePdfRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EBelgePdfRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,12 +185,14 @@ class _$EBelgePdfRequestModelImpl implements _EBelgePdfRequestModel {
                 other.resmiBelgeNo == resmiBelgeNo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, belgeTuru, ebelgeTuru, islemKodu, resmiBelgeNo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EBelgePdfRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgePdfRequestModelImplCopyWith<_$EBelgePdfRequestModelImpl>
@@ -215,8 +225,11 @@ abstract class _EBelgePdfRequestModel implements EBelgePdfRequestModel {
   int? get islemKodu;
   @override
   String? get resmiBelgeNo;
+
+  /// Create a copy of EBelgePdfRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EBelgePdfRequestModelImplCopyWith<_$EBelgePdfRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

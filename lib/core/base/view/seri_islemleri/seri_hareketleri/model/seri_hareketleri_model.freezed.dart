@@ -67,8 +67,12 @@ mixin _$SeriHareketleriModel {
   String? get seri2 => throw _privateConstructorUsedError;
   set seri2(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SeriHareketleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SeriHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeriHareketleriModelCopyWith<SeriHareketleriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +120,8 @@ class _$SeriHareketleriModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SeriHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -282,6 +288,8 @@ class __$$SeriHareketleriModelImplCopyWithImpl<$Res>
       $Res Function(_$SeriHareketleriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SeriHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -485,7 +493,9 @@ class _$SeriHareketleriModelImpl extends _SeriHareketleriModel {
   @override
   String? seri2;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeriHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeriHareketleriModelImplCopyWith<_$SeriHareketleriModelImpl>
@@ -600,8 +610,11 @@ abstract class _SeriHareketleriModel extends SeriHareketleriModel {
   @override
   String? get seri2;
   set seri2(String? value);
+
+  /// Create a copy of SeriHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeriHareketleriModelImplCopyWith<_$SeriHareketleriModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

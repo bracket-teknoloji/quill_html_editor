@@ -28,8 +28,12 @@ mixin _$HucreTakibiStoklarRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreTakibiStoklarRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreTakibiStoklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreTakibiStoklarRequestModelCopyWith<HucreTakibiStoklarRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$HucreTakibiStoklarRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreTakibiStoklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$HucreTakibiStoklarRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreTakibiStoklarRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreTakibiStoklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,12 +229,14 @@ class _$HucreTakibiStoklarRequestModelImpl
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, depoKodu, islemTuru, cariKodu,
       pickerBelgeTuru, stokKodu, belgeNo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreTakibiStoklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreTakibiStoklarRequestModelImplCopyWith<
@@ -267,8 +277,11 @@ abstract class _HucreTakibiStoklarRequestModel
   String? get stokKodu;
   @override
   String? get belgeNo;
+
+  /// Create a copy of HucreTakibiStoklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreTakibiStoklarRequestModelImplCopyWith<
           _$HucreTakibiStoklarRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;

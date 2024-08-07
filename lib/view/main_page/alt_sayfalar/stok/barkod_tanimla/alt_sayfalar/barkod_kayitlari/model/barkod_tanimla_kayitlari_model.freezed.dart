@@ -33,8 +33,12 @@ mixin _$BarkodTanimlaKayitlariModel {
   double? get birimPayda => throw _privateConstructorUsedError;
   String? get stokBirim1Adi => throw _privateConstructorUsedError;
 
+  /// Serializes this BarkodTanimlaKayitlariModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BarkodTanimlaKayitlariModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BarkodTanimlaKayitlariModelCopyWith<BarkodTanimlaKayitlariModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$BarkodTanimlaKayitlariModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BarkodTanimlaKayitlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,6 +175,8 @@ class __$$BarkodTanimlaKayitlariModelImplCopyWithImpl<$Res>
       $Res Function(_$BarkodTanimlaKayitlariModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BarkodTanimlaKayitlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,7 +285,9 @@ class _$BarkodTanimlaKayitlariModelImpl extends _BarkodTanimlaKayitlariModel {
   @override
   final String? stokBirim1Adi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BarkodTanimlaKayitlariModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BarkodTanimlaKayitlariModelImplCopyWith<_$BarkodTanimlaKayitlariModelImpl>
@@ -333,8 +343,11 @@ abstract class _BarkodTanimlaKayitlariModel
   double? get birimPayda;
   @override
   String? get stokBirim1Adi;
+
+  /// Create a copy of BarkodTanimlaKayitlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BarkodTanimlaKayitlariModelImplCopyWith<_$BarkodTanimlaKayitlariModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

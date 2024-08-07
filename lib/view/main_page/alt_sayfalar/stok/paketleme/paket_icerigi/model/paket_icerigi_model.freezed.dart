@@ -34,8 +34,12 @@ mixin _$PaketIcerigiModel {
   String? get seriCikistaOtomatik => throw _privateConstructorUsedError;
   List<SeriList>? get seriList => throw _privateConstructorUsedError;
 
+  /// Serializes this PaketIcerigiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaketIcerigiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaketIcerigiModelCopyWith<PaketIcerigiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$PaketIcerigiModelCopyWithImpl<$Res, $Val extends PaketIcerigiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaketIcerigiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,6 +184,8 @@ class __$$PaketIcerigiModelImplCopyWithImpl<$Res>
       $Res Function(_$PaketIcerigiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaketIcerigiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -309,7 +317,9 @@ class _$PaketIcerigiModelImpl extends _PaketIcerigiModel {
     return EqualUnmodifiableListView(value);
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaketIcerigiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaketIcerigiModelImplCopyWith<_$PaketIcerigiModelImpl> get copyWith =>
@@ -370,8 +380,11 @@ abstract class _PaketIcerigiModel extends PaketIcerigiModel {
   String? get seriCikistaOtomatik;
   @override
   List<SeriList>? get seriList;
+
+  /// Create a copy of PaketIcerigiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaketIcerigiModelImplCopyWith<_$PaketIcerigiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

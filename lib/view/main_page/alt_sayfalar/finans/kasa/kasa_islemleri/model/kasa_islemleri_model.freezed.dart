@@ -83,8 +83,12 @@ mixin _$KasaIslemleriModel {
   String? get dovizAdi => throw _privateConstructorUsedError;
   set dovizAdi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this KasaIslemleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KasaIslemleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KasaIslemleriModelCopyWith<KasaIslemleriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -139,6 +143,8 @@ class _$KasaIslemleriModelCopyWithImpl<$Res, $Val extends KasaIslemleriModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KasaIslemleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -353,6 +359,8 @@ class __$$KasaIslemleriModelImplCopyWithImpl<$Res>
       $Res Function(_$KasaIslemleriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KasaIslemleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -620,7 +628,9 @@ class _$KasaIslemleriModelImpl extends _KasaIslemleriModel {
   @override
   String? dovizAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KasaIslemleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
@@ -766,8 +776,11 @@ abstract class _KasaIslemleriModel extends KasaIslemleriModel {
   @override
   String? get dovizAdi;
   set dovizAdi(String? value);
+
+  /// Create a copy of KasaIslemleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KasaIslemleriModelImplCopyWith<_$KasaIslemleriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

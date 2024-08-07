@@ -40,8 +40,12 @@ mixin _$FinansOzetRaporRequestModel {
   String? get iadeDurumu => throw _privateConstructorUsedError;
   set iadeDurumu(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this FinansOzetRaporRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FinansOzetRaporRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FinansOzetRaporRequestModelCopyWith<FinansOzetRaporRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -76,6 +80,8 @@ class _$FinansOzetRaporRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FinansOzetRaporRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,6 +161,8 @@ class __$$FinansOzetRaporRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$FinansOzetRaporRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FinansOzetRaporRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -246,7 +254,9 @@ class _$FinansOzetRaporRequestModelImpl
     return 'FinansOzetRaporRequestModel(plasiyerKodu: $plasiyerKodu, cariKodu: $cariKodu, tarihTipi: $tarihTipi, cariKoduIleBaslar: $cariKoduIleBaslar, kdvDahil: $kdvDahil, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, iadeDurumu: $iadeDurumu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FinansOzetRaporRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FinansOzetRaporRequestModelImplCopyWith<_$FinansOzetRaporRequestModelImpl>
@@ -302,8 +312,11 @@ abstract class _FinansOzetRaporRequestModel
   @override
   String? get iadeDurumu;
   set iadeDurumu(String? value);
+
+  /// Create a copy of FinansOzetRaporRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FinansOzetRaporRequestModelImplCopyWith<_$FinansOzetRaporRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

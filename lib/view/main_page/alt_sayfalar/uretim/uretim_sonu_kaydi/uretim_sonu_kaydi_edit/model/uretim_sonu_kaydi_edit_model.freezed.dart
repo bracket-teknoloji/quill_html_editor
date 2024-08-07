@@ -68,8 +68,12 @@ mixin _$UretimSonuKaydiEditModel {
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this UretimSonuKaydiEditModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UretimSonuKaydiEditModelCopyWith<UretimSonuKaydiEditModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -115,6 +119,8 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -203,6 +209,8 @@ class _$UretimSonuKaydiEditModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EkAlanlarCopyWith<$Res>? get ekAlanlar {
@@ -260,6 +268,8 @@ class __$$UretimSonuKaydiEditModelImplCopyWithImpl<$Res>
       $Res Function(_$UretimSonuKaydiEditModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -414,7 +424,9 @@ class _$UretimSonuKaydiEditModelImpl extends _UretimSonuKaydiEditModel {
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl>
@@ -518,8 +530,11 @@ abstract class _UretimSonuKaydiEditModel extends UretimSonuKaydiEditModel {
   bool? get yeniKayit;
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value);
+
+  /// Create a copy of UretimSonuKaydiEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UretimSonuKaydiEditModelImplCopyWith<_$UretimSonuKaydiEditModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -537,8 +552,12 @@ mixin _$EkAlanlar {
   String? get ktAlan4 => throw _privateConstructorUsedError;
   set ktAlan4(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EkAlanlar to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EkAlanlar
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EkAlanlarCopyWith<EkAlanlar> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -561,6 +580,8 @@ class _$EkAlanlarCopyWithImpl<$Res, $Val extends EkAlanlar>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EkAlanlar
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -604,6 +625,8 @@ class __$$EkAlanlarImplCopyWithImpl<$Res>
       _$EkAlanlarImpl _value, $Res Function(_$EkAlanlarImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EkAlanlar
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -648,7 +671,9 @@ class _$EkAlanlarImpl extends _EkAlanlar {
     return 'EkAlanlar(ktAlan1: $ktAlan1, ktAlan3: $ktAlan3, ktAlan4: $ktAlan4)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EkAlanlar
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EkAlanlarImplCopyWith<_$EkAlanlarImpl> get copyWith =>
@@ -679,8 +704,11 @@ abstract class _EkAlanlar extends EkAlanlar {
   @override
   String? get ktAlan4;
   set ktAlan4(String? value);
+
+  /// Create a copy of EkAlanlar
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EkAlanlarImplCopyWith<_$EkAlanlarImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

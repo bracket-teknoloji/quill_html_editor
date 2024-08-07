@@ -29,8 +29,12 @@ mixin _$EFaturaOzelKodModel {
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EFaturaOzelKodModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EFaturaOzelKodModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EFaturaOzelKodModelCopyWith<EFaturaOzelKodModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$EFaturaOzelKodModelCopyWithImpl<$Res, $Val extends EFaturaOzelKodModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EFaturaOzelKodModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -102,6 +108,8 @@ class __$$EFaturaOzelKodModelImplCopyWithImpl<$Res>
       $Res Function(_$EFaturaOzelKodModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EFaturaOzelKodModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,7 +157,9 @@ class _$EFaturaOzelKodModelImpl extends _EFaturaOzelKodModel {
   @override
   String? aciklama;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EFaturaOzelKodModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EFaturaOzelKodModelImplCopyWith<_$EFaturaOzelKodModelImpl> get copyWith =>
@@ -187,8 +197,11 @@ abstract class _EFaturaOzelKodModel extends EFaturaOzelKodModel {
   @override
   String? get aciklama;
   set aciklama(String? value);
+
+  /// Create a copy of EFaturaOzelKodModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EFaturaOzelKodModelImplCopyWith<_$EFaturaOzelKodModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

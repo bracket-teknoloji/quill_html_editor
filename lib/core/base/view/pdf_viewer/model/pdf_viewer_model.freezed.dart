@@ -36,8 +36,12 @@ mixin _$PdfModel {
   int? get etiketSayisi => throw _privateConstructorUsedError;
   set etiketSayisi(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this PdfModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PdfModelCopyWith<PdfModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +73,8 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +113,8 @@ class _$PdfModelCopyWithImpl<$Res, $Val extends PdfModel>
     ) as $Val);
   }
 
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DicParamsCopyWith<$Res>? get dicParams {
@@ -149,6 +157,8 @@ class __$$PdfModelImplCopyWithImpl<$Res>
       _$PdfModelImpl _value, $Res Function(_$PdfModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,7 +228,9 @@ class _$PdfModelImpl extends _PdfModel {
   @override
   int? etiketSayisi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
@@ -266,8 +278,11 @@ abstract class _PdfModel extends PdfModel {
   @override
   int? get etiketSayisi;
   set etiketSayisi(int? value);
+
+  /// Create a copy of PdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PdfModelImplCopyWith<_$PdfModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -372,8 +387,12 @@ mixin _$DicParams {
   String? get kalemId => throw _privateConstructorUsedError;
   set kalemId(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DicParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DicParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DicParamsCopyWith<DicParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -442,6 +461,8 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DicParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -746,6 +767,8 @@ class __$$DicParamsImplCopyWithImpl<$Res>
       _$DicParamsImpl _value, $Res Function(_$DicParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DicParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1137,7 +1160,9 @@ class _$DicParamsImpl implements _DicParams {
     return 'DicParams(cariKodu: $cariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil, fiyatTipi: $fiyatTipi, tblnfStokfiyatgecmisiId: $tblnfStokfiyatgecmisiId, gorunecekAlanlar: $gorunecekAlanlar, miktar: $miktar, yapkod: $yapkod, opkodu: $opkodu, kasaKodu: $kasaKodu, muhasebeKodu: $muhasebeKodu, filtre: $filtre, depoKodu: $depoKodu, hucreKodu: $hucreKodu, kalemId: $kalemId)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DicParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
@@ -1341,8 +1366,11 @@ abstract class _DicParams implements DicParams {
   @override
   String? get kalemId;
   set kalemId(String? value);
+
+  /// Create a copy of DicParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DicParamsImplCopyWith<_$DicParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

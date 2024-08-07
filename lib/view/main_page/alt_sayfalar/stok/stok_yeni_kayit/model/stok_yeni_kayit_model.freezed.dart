@@ -69,8 +69,12 @@ mixin _$StokYeniKayitModel {
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this StokYeniKayitModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StokYeniKayitModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StokYeniKayitModelCopyWith<StokYeniKayitModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -116,6 +120,8 @@ class _$StokYeniKayitModelCopyWithImpl<$Res, $Val extends StokYeniKayitModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StokYeniKayitModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -276,6 +282,8 @@ class __$$StokYeniKayitModelImplCopyWithImpl<$Res>
       $Res Function(_$StokYeniKayitModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StokYeniKayitModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -473,7 +481,9 @@ class _$StokYeniKayitModelImpl extends _StokYeniKayitModel {
   @JsonKey(name: "_YeniKayit")
   bool? yeniKayit;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StokYeniKayitModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
@@ -587,8 +597,11 @@ abstract class _StokYeniKayitModel extends StokYeniKayitModel {
   bool? get yeniKayit;
   @JsonKey(name: "_YeniKayit")
   set yeniKayit(bool? value);
+
+  /// Create a copy of StokYeniKayitModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StokYeniKayitModelImplCopyWith<_$StokYeniKayitModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

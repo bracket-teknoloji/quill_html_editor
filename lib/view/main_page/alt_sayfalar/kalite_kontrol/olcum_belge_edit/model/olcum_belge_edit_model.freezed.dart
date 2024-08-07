@@ -47,8 +47,12 @@ mixin _$OlcumBelgeEditModel {
   set prosesler(List<OlcumProsesModel>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumBelgeEditModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumBelgeEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumBelgeEditModelCopyWith<OlcumBelgeEditModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,6 +88,8 @@ class _$OlcumBelgeEditModelCopyWithImpl<$Res, $Val extends OlcumBelgeEditModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumBelgeEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,6 +190,8 @@ class __$$OlcumBelgeEditModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumBelgeEditModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumBelgeEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,7 +307,9 @@ class _$OlcumBelgeEditModelImpl extends _OlcumBelgeEditModel {
   @override
   List<OlcumProsesModel>? prosesler;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumBelgeEditModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumBelgeEditModelImplCopyWith<_$OlcumBelgeEditModelImpl> get copyWith =>
@@ -369,8 +379,11 @@ abstract class _OlcumBelgeEditModel extends OlcumBelgeEditModel {
   @override
   List<OlcumProsesModel>? get prosesler;
   set prosesler(List<OlcumProsesModel>? value);
+
+  /// Create a copy of OlcumBelgeEditModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumBelgeEditModelImplCopyWith<_$OlcumBelgeEditModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -451,8 +464,12 @@ mixin _$OlcumBelgeModel {
   @JsonKey(name: "Sayfa")
   set sayfa(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumBelgeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumBelgeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumBelgeModelCopyWith<OlcumBelgeModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -508,6 +525,8 @@ class _$OlcumBelgeModelCopyWithImpl<$Res, $Val extends OlcumBelgeModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumBelgeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -728,6 +747,8 @@ class __$$OlcumBelgeModelImplCopyWithImpl<$Res>
       _$OlcumBelgeModelImpl _value, $Res Function(_$OlcumBelgeModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumBelgeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1005,7 +1026,9 @@ class _$OlcumBelgeModelImpl extends _OlcumBelgeModel {
   @JsonKey(name: "Sayfa")
   int? sayfa;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumBelgeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumBelgeModelImplCopyWith<_$OlcumBelgeModelImpl> get copyWith =>
@@ -1159,8 +1182,11 @@ abstract class _OlcumBelgeModel extends OlcumBelgeModel {
   int? get sayfa;
   @JsonKey(name: "Sayfa")
   set sayfa(int? value);
+
+  /// Create a copy of OlcumBelgeModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumBelgeModelImplCopyWith<_$OlcumBelgeModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1198,8 +1224,12 @@ mixin _$OlcumOlcumlerModel {
   String? get seriNo => throw _privateConstructorUsedError;
   set seriNo(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumOlcumlerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumOlcumlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumOlcumlerModelCopyWith<OlcumOlcumlerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1236,6 +1266,8 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumOlcumlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1342,6 +1374,8 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumOlcumlerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumOlcumlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1465,7 +1499,9 @@ class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
   @override
   String? seriNo;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumOlcumlerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumOlcumlerModelImplCopyWith<_$OlcumOlcumlerModelImpl> get copyWith =>
@@ -1539,8 +1575,11 @@ abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
   @override
   String? get seriNo;
   set seriNo(String? value);
+
+  /// Create a copy of OlcumOlcumlerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumOlcumlerModelImplCopyWith<_$OlcumOlcumlerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1618,8 +1657,12 @@ mixin _$OlcumProsesModel {
   set olcumler(List<OlcumEkleDetayModel>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumProsesModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumProsesModelCopyWith<OlcumProsesModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1676,6 +1719,8 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1834,6 +1879,8 @@ class _$OlcumProsesModelCopyWithImpl<$Res, $Val extends OlcumProsesModel>
     ) as $Val);
   }
 
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OlcumProsesModelCopyWith<$Res>? get numuneler {
@@ -1900,6 +1947,8 @@ class __$$OlcumProsesModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumProsesModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2160,7 +2209,9 @@ class _$OlcumProsesModelImpl extends _OlcumProsesModel {
   @override
   List<OlcumEkleDetayModel>? olcumler;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumProsesModelImplCopyWith<_$OlcumProsesModelImpl> get copyWith =>
@@ -2305,8 +2356,11 @@ abstract class _OlcumProsesModel extends OlcumProsesModel {
   @override
   List<OlcumEkleDetayModel>? get olcumler;
   set olcumler(List<OlcumEkleDetayModel>? value);
+
+  /// Create a copy of OlcumProsesModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumProsesModelImplCopyWith<_$OlcumProsesModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2324,8 +2378,12 @@ mixin _$OlcumEkleDetayModel {
   DateTime? get zaman => throw _privateConstructorUsedError;
   set zaman(DateTime? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumEkleDetayModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumEkleDetayModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumEkleDetayModelCopyWith<OlcumEkleDetayModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2349,6 +2407,8 @@ class _$OlcumEkleDetayModelCopyWithImpl<$Res, $Val extends OlcumEkleDetayModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumEkleDetayModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2392,6 +2452,8 @@ class __$$OlcumEkleDetayModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumEkleDetayModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumEkleDetayModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2436,7 +2498,9 @@ class _$OlcumEkleDetayModelImpl implements _OlcumEkleDetayModel {
     return 'OlcumEkleDetayModel(deger: $deger, detayId: $detayId, zaman: $zaman)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumEkleDetayModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumEkleDetayModelImplCopyWith<_$OlcumEkleDetayModelImpl> get copyWith =>
@@ -2467,8 +2531,11 @@ abstract class _OlcumEkleDetayModel implements OlcumEkleDetayModel {
   @override
   DateTime? get zaman;
   set zaman(DateTime? value);
+
+  /// Create a copy of OlcumEkleDetayModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumEkleDetayModelImplCopyWith<_$OlcumEkleDetayModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

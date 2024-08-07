@@ -27,8 +27,12 @@ mixin _$OlcumDatResponseModel {
   String? get seriNo => throw _privateConstructorUsedError;
   double? get miktar => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumDatResponseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumDatResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumDatResponseModelCopyWith<OlcumDatResponseModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$OlcumDatResponseModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumDatResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$OlcumDatResponseModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumDatResponseModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumDatResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -173,7 +181,9 @@ class _$OlcumDatResponseModelImpl extends _OlcumDatResponseModel {
   @override
   final double? miktar;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumDatResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumDatResponseModelImplCopyWith<_$OlcumDatResponseModelImpl>
@@ -210,8 +220,11 @@ abstract class _OlcumDatResponseModel extends OlcumDatResponseModel {
   String? get seriNo;
   @override
   double? get miktar;
+
+  /// Create a copy of OlcumDatResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumDatResponseModelImplCopyWith<_$OlcumDatResponseModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

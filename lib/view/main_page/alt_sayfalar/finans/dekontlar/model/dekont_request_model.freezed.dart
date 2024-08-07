@@ -27,8 +27,12 @@ mixin _$DekontRequestModel {
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DekontRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DekontRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DekontRequestModelCopyWith<DekontRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$DekontRequestModelCopyWithImpl<$Res, $Val extends DekontRequestModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DekontRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +101,8 @@ class __$$DekontRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$DekontRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DekontRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,7 +149,9 @@ class _$DekontRequestModelImpl implements _DekontRequestModel {
     return 'DekontRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, searchText: $searchText)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DekontRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
@@ -174,8 +184,11 @@ abstract class _DekontRequestModel implements DekontRequestModel {
   @override
   String? get searchText;
   set searchText(String? value);
+
+  /// Create a copy of DekontRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DekontRequestModelImplCopyWith<_$DekontRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

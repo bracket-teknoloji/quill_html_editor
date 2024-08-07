@@ -113,8 +113,12 @@ mixin _$CekSenetListesiModel {
   String? get yeri => throw _privateConstructorUsedError;
   set yeri(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CekSenetListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CekSenetListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CekSenetListesiModelCopyWith<CekSenetListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -180,6 +184,8 @@ class _$CekSenetListesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CekSenetListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -454,6 +460,8 @@ class __$$CekSenetListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$CekSenetListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CekSenetListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -806,7 +814,9 @@ class _$CekSenetListesiModelImpl extends _CekSenetListesiModel {
   @override
   String? yeri;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CekSenetListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl>
@@ -1003,8 +1013,11 @@ abstract class _CekSenetListesiModel extends CekSenetListesiModel {
   @override
   String? get yeri;
   set yeri(String? value);
+
+  /// Create a copy of CekSenetListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CekSenetListesiModelImplCopyWith<_$CekSenetListesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

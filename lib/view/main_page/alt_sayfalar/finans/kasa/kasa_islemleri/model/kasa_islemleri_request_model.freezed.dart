@@ -44,8 +44,12 @@ mixin _$KasaIslemleriRequestModel {
   String? get refKey => throw _privateConstructorUsedError;
   set refKey(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this KasaIslemleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KasaIslemleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KasaIslemleriRequestModelCopyWith<KasaIslemleriRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,6 +85,8 @@ class _$KasaIslemleriRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KasaIslemleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,6 +184,8 @@ class __$$KasaIslemleriRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$KasaIslemleriRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KasaIslemleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -290,7 +298,9 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
     return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc, kisitYok: $kisitYok, refKey: $refKey)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KasaIslemleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
@@ -355,8 +365,11 @@ abstract class _KasaIslemleriRequestModel implements KasaIslemleriRequestModel {
   @override
   String? get refKey;
   set refKey(String? value);
+
+  /// Create a copy of KasaIslemleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KasaIslemleriRequestModelImplCopyWith<_$KasaIslemleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

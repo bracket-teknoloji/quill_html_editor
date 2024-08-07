@@ -24,8 +24,12 @@ mixin _$EvraklarRequestModel {
   String? get urlGetir => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
 
+  /// Serializes this EvraklarRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EvraklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EvraklarRequestModelCopyWith<EvraklarRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$EvraklarRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EvraklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$EvraklarRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$EvraklarRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EvraklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, belgeTipi, urlGetir, belgeNo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EvraklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl>
@@ -186,8 +196,11 @@ abstract class _EvraklarRequestModel implements EvraklarRequestModel {
   String? get urlGetir;
   @override
   String? get belgeNo;
+
+  /// Create a copy of EvraklarRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EvraklarRequestModelImplCopyWith<_$EvraklarRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

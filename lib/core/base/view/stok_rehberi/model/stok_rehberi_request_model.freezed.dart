@@ -46,8 +46,12 @@ mixin _$StokRehberiRequestModel {
   int? get depoKodu => throw _privateConstructorUsedError;
   set depoKodu(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this StokRehberiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StokRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StokRehberiRequestModelCopyWith<StokRehberiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,6 +88,8 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StokRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -187,6 +193,8 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$StokRehberiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StokRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,7 +316,9 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
     return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu, seriTakibiVar: $seriTakibiVar, depoKodu: $depoKodu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StokRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>
@@ -377,8 +387,11 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
   @override
   int? get depoKodu;
   set depoKodu(int? value);
+
+  /// Create a copy of StokRehberiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StokRehberiRequestModelImplCopyWith<_$StokRehberiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

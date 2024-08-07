@@ -165,8 +165,12 @@ mixin _$EBelgeListesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set dizaynAdi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EBelgeListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EBelgeListesiModelCopyWith<EBelgeListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -261,6 +265,8 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -710,6 +716,8 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$EBelgeListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1290,7 +1298,9 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? dizaynAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>
@@ -1595,8 +1605,11 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   String? get dizaynAdi;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set dizaynAdi(String? value);
+
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EBelgeListesiModelImplCopyWith<_$EBelgeListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

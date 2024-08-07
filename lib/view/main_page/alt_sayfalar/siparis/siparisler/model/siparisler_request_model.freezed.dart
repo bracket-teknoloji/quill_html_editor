@@ -103,8 +103,12 @@ mixin _$SiparislerRequestModel {
   String? get lokalDAT => throw _privateConstructorUsedError;
   set lokalDAT(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SiparislerRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SiparislerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SiparislerRequestModelCopyWith<SiparislerRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -167,6 +171,8 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SiparislerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -426,6 +432,8 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$SiparislerRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SiparislerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -758,7 +766,9 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
     return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SiparislerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SiparislerRequestModelImplCopyWith<_$SiparislerRequestModelImpl>
@@ -933,8 +943,11 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get lokalDAT;
   set lokalDAT(String? value);
+
+  /// Create a copy of SiparislerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SiparislerRequestModelImplCopyWith<_$SiparislerRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

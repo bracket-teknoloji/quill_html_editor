@@ -34,8 +34,12 @@ mixin _$CekSenetEvrakEkleModel {
   int? get islemKodu => throw _privateConstructorUsedError;
   set islemKodu(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CekSenetEvrakEkleModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CekSenetEvrakEkleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CekSenetEvrakEkleModelCopyWith<CekSenetEvrakEkleModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$CekSenetEvrakEkleModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CekSenetEvrakEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,6 +139,8 @@ class __$$CekSenetEvrakEkleModelImplCopyWithImpl<$Res>
       $Res Function(_$CekSenetEvrakEkleModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CekSenetEvrakEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,7 +212,9 @@ class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
     return 'CekSenetEvrakEkleModel(aciklama: $aciklama, base64Data: $base64Data, belgeNo: $belgeNo, belgeTipi: $belgeTipi, boyutByte: $boyutByte, islemKodu: $islemKodu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CekSenetEvrakEkleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
@@ -249,8 +259,11 @@ abstract class _CekSenetEvrakEkleModel implements CekSenetEvrakEkleModel {
   @override
   int? get islemKodu;
   set islemKodu(int? value);
+
+  /// Create a copy of CekSenetEvrakEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CekSenetEvrakEkleModelImplCopyWith<_$CekSenetEvrakEkleModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

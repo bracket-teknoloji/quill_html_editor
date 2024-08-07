@@ -59,8 +59,12 @@ mixin _$EBelgeIslemModel {
   String? get kabul => throw _privateConstructorUsedError;
   set kabul(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EBelgeIslemModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EBelgeIslemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EBelgeIslemModelCopyWith<EBelgeIslemModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -103,6 +107,8 @@ class _$EBelgeIslemModelCopyWithImpl<$Res, $Val extends EBelgeIslemModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EBelgeIslemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,6 +251,8 @@ class __$$EBelgeIslemModelImplCopyWithImpl<$Res>
       $Res Function(_$EBelgeIslemModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EBelgeIslemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -421,7 +429,9 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
     return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi, kopyaSayisi: $kopyaSayisi, yaziciAdi: $yaziciAdi, dizaynNo: $dizaynNo, dovizliOlustur: $dovizliOlustur, gonderimSekliEposta: $gonderimSekliEposta, internetFaturasi: $internetFaturasi, kabul: $kabul)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EBelgeIslemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>
@@ -519,8 +529,11 @@ abstract class _EBelgeIslemModel extends EBelgeIslemModel {
   @override
   String? get kabul;
   set kabul(String? value);
+
+  /// Create a copy of EBelgeIslemModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EBelgeIslemModelImplCopyWith<_$EBelgeIslemModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

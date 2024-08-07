@@ -83,8 +83,12 @@ mixin _$SayimListesiModel {
   StokListesiModel? get stokModel => throw _privateConstructorUsedError;
   set stokModel(StokListesiModel? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SayimListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SayimListesiModelCopyWith<SayimListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -141,6 +145,8 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -304,6 +310,8 @@ class _$SayimListesiModelCopyWithImpl<$Res, $Val extends SayimListesiModel>
     ) as $Val);
   }
 
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SayimFiltreModelCopyWith<$Res>? get filtre {
@@ -370,6 +378,8 @@ class __$$SayimListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$SayimListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -637,7 +647,9 @@ class _$SayimListesiModelImpl extends _SayimListesiModel {
   @override
   StokListesiModel? stokModel;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SayimListesiModelImplCopyWith<_$SayimListesiModelImpl> get copyWith =>
@@ -783,8 +795,11 @@ abstract class _SayimListesiModel extends SayimListesiModel {
   @override
   StokListesiModel? get stokModel;
   set stokModel(StokListesiModel? value);
+
+  /// Create a copy of SayimListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SayimListesiModelImplCopyWith<_$SayimListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -870,8 +885,12 @@ mixin _$SayimFiltreModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set duzenleMi(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SayimFiltreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SayimFiltreModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SayimFiltreModelCopyWith<SayimFiltreModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -924,6 +943,8 @@ class _$SayimFiltreModelCopyWithImpl<$Res, $Val extends SayimFiltreModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SayimFiltreModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1126,6 +1147,8 @@ class __$$SayimFiltreModelImplCopyWithImpl<$Res>
       $Res Function(_$SayimFiltreModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SayimFiltreModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1387,7 +1410,9 @@ class _$SayimFiltreModelImpl extends _SayimFiltreModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool? duzenleMi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SayimFiltreModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
@@ -1542,8 +1567,11 @@ abstract class _SayimFiltreModel extends SayimFiltreModel {
   bool? get duzenleMi;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set duzenleMi(bool? value);
+
+  /// Create a copy of SayimFiltreModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SayimFiltreModelImplCopyWith<_$SayimFiltreModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

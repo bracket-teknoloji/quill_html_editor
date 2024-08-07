@@ -27,8 +27,12 @@ mixin _$EBelgePdfModel {
   @JsonKey(name: "FileModel")
   set fileModel(FileModel? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EBelgePdfModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EBelgePdfModelCopyWith<EBelgePdfModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -72,6 +78,8 @@ class _$EBelgePdfModelCopyWithImpl<$Res, $Val extends EBelgePdfModel>
     ) as $Val);
   }
 
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FileModelCopyWith<$Res>? get fileModel {
@@ -107,6 +115,8 @@ class __$$EBelgePdfModelImplCopyWithImpl<$Res>
       _$EBelgePdfModelImpl _value, $Res Function(_$EBelgePdfModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +152,9 @@ class _$EBelgePdfModelImpl extends _EBelgePdfModel {
   @JsonKey(name: "FileModel")
   FileModel? fileModel;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
@@ -174,8 +186,11 @@ abstract class _EBelgePdfModel extends EBelgePdfModel {
   FileModel? get fileModel;
   @JsonKey(name: "FileModel")
   set fileModel(FileModel? value);
+
+  /// Create a copy of EBelgePdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EBelgePdfModelImplCopyWith<_$EBelgePdfModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -191,8 +206,12 @@ mixin _$FileModel {
   DateTime? get dosyaTarihi => throw _privateConstructorUsedError;
   String? get dosyaAdi => throw _privateConstructorUsedError;
 
+  /// Serializes this FileModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FileModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FileModelCopyWith<FileModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -219,6 +238,8 @@ class _$FileModelCopyWithImpl<$Res, $Val extends FileModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FileModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,6 +292,8 @@ class __$$FileModelImplCopyWithImpl<$Res>
       _$FileModelImpl _value, $Res Function(_$FileModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FileModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -337,12 +360,14 @@ class _$FileModelImpl implements _FileModel {
                 other.dosyaAdi == dosyaAdi));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, byteData, uzanti, dosyaTarihi, dosyaAdi);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FileModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith =>
@@ -374,8 +399,11 @@ abstract class _FileModel implements FileModel {
   DateTime? get dosyaTarihi;
   @override
   String? get dosyaAdi;
+
+  /// Create a copy of FileModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FileModelImplCopyWith<_$FileModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

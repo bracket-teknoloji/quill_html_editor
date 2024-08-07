@@ -29,8 +29,12 @@ mixin _$PrintModel {
   DicParams? get dicParams => throw _privateConstructorUsedError;
   bool? get standart => throw _privateConstructorUsedError;
 
+  /// Serializes this PrintModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrintModelCopyWith<PrintModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +118,8 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
     ) as $Val);
   }
 
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DicParamsCopyWith<$Res>? get dicParams {
@@ -155,6 +163,8 @@ class __$$PrintModelImplCopyWithImpl<$Res>
       _$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -239,7 +249,9 @@ class _$PrintModelImpl extends _PrintModel {
   @override
   final bool? standart;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
@@ -284,8 +296,11 @@ abstract class _PrintModel extends PrintModel {
   DicParams? get dicParams;
   @override
   bool? get standart;
+
+  /// Create a copy of PrintModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

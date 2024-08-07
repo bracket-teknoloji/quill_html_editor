@@ -26,8 +26,12 @@ mixin _$OlcumPdfModel {
   DateTime? get revtar => throw _privateConstructorUsedError;
   String? get tur => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumPdfModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumPdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumPdfModelCopyWith<OlcumPdfModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$OlcumPdfModelCopyWithImpl<$Res, $Val extends OlcumPdfModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumPdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$OlcumPdfModelImplCopyWithImpl<$Res>
       _$OlcumPdfModelImpl _value, $Res Function(_$OlcumPdfModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumPdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,7 +177,9 @@ class _$OlcumPdfModelImpl extends _OlcumPdfModel {
   @override
   final String? tur;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumPdfModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumPdfModelImplCopyWith<_$OlcumPdfModelImpl> get copyWith =>
@@ -205,8 +215,11 @@ abstract class _OlcumPdfModel extends OlcumPdfModel {
   DateTime? get revtar;
   @override
   String? get tur;
+
+  /// Create a copy of OlcumPdfModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumPdfModelImplCopyWith<_$OlcumPdfModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

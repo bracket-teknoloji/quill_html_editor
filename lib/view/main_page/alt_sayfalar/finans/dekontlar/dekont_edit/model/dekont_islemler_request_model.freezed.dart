@@ -57,8 +57,12 @@ mixin _$DekontIslemlerRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DekontIslemlerRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DekontIslemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DekontIslemlerRequestModelCopyWith<DekontIslemlerRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -98,6 +102,8 @@ class _$DekontIslemlerRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DekontIslemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -208,6 +214,8 @@ class __$$DekontIslemlerRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$DekontIslemlerRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DekontIslemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -337,7 +345,9 @@ class _$DekontIslemlerRequestModelImpl extends _DekontIslemlerRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? projeAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DekontIslemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
@@ -421,8 +431,11 @@ abstract class _DekontIslemlerRequestModel extends DekontIslemlerRequestModel {
   String? get projeAdi;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set projeAdi(String? value);
+
+  /// Create a copy of DekontIslemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DekontIslemlerRequestModelImplCopyWith<_$DekontIslemlerRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

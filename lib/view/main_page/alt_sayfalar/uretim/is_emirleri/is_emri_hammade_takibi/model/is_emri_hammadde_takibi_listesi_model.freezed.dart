@@ -40,8 +40,12 @@ mixin _$IsEmriHammaddeTakibiListesiModel {
   double? get miktar => throw _privateConstructorUsedError;
   set miktar(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this IsEmriHammaddeTakibiListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IsEmriHammaddeTakibiListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IsEmriHammaddeTakibiListesiModelCopyWith<IsEmriHammaddeTakibiListesiModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -77,6 +81,8 @@ class _$IsEmriHammaddeTakibiListesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IsEmriHammaddeTakibiListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +168,8 @@ class __$$IsEmriHammaddeTakibiListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$IsEmriHammaddeTakibiListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IsEmriHammaddeTakibiListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,7 +263,9 @@ class _$IsEmriHammaddeTakibiListesiModelImpl
   @override
   double? miktar;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IsEmriHammaddeTakibiListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IsEmriHammaddeTakibiListesiModelImplCopyWith<
@@ -316,8 +326,11 @@ abstract class _IsEmriHammaddeTakibiListesiModel
   @override
   double? get miktar;
   set miktar(double? value);
+
+  /// Create a copy of IsEmriHammaddeTakibiListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IsEmriHammaddeTakibiListesiModelImplCopyWith<
           _$IsEmriHammaddeTakibiListesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;

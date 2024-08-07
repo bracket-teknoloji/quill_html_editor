@@ -31,8 +31,12 @@ mixin _$TcmbBankalarModel {
   String? get sehiradi => throw _privateConstructorUsedError;
   set sehiradi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TcmbBankalarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TcmbBankalarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TcmbBankalarModelCopyWith<TcmbBankalarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$TcmbBankalarModelCopyWithImpl<$Res, $Val extends TcmbBankalarModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TcmbBankalarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,6 +125,8 @@ class __$$TcmbBankalarModelImplCopyWithImpl<$Res>
       $Res Function(_$TcmbBankalarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TcmbBankalarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,7 +186,9 @@ class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
   @override
   String? sehiradi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TcmbBankalarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
@@ -220,8 +230,11 @@ abstract class _TcmbBankalarModel extends TcmbBankalarModel {
   @override
   String? get sehiradi;
   set sehiradi(String? value);
+
+  /// Create a copy of TcmbBankalarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

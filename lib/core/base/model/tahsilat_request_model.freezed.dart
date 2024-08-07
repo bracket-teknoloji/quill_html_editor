@@ -118,8 +118,12 @@ mixin _$TahsilatRequestModel {
   double? get odemeBakiye => throw _privateConstructorUsedError;
   set odemeBakiye(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TahsilatRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TahsilatRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TahsilatRequestModelCopyWith<TahsilatRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -190,6 +194,8 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TahsilatRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,6 +500,8 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$TahsilatRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TahsilatRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -883,7 +891,9 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   @override
   double? odemeBakiye;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TahsilatRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
@@ -1094,8 +1104,11 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   double? get odemeBakiye;
   set odemeBakiye(double? value);
+
+  /// Create a copy of TahsilatRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TahsilatRequestModelImplCopyWith<_$TahsilatRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1199,8 +1212,12 @@ mixin _$DekontKalemler {
   bool? get yeniKayit => throw _privateConstructorUsedError;
   set yeniKayit(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DekontKalemler to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DekontKalemler
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DekontKalemlerCopyWith<DekontKalemler> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1266,6 +1283,8 @@ class _$DekontKalemlerCopyWithImpl<$Res, $Val extends DekontKalemler>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DekontKalemler
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1536,6 +1555,8 @@ class __$$DekontKalemlerImplCopyWithImpl<$Res>
       _$DekontKalemlerImpl _value, $Res Function(_$DekontKalemlerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DekontKalemler
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1881,7 +1902,9 @@ class _$DekontKalemlerImpl extends _DekontKalemler {
   @override
   bool? yeniKayit;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DekontKalemler
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DekontKalemlerImplCopyWith<_$DekontKalemlerImpl> get copyWith =>
@@ -2077,8 +2100,11 @@ abstract class _DekontKalemler extends DekontKalemler {
   @override
   bool? get yeniKayit;
   set yeniKayit(bool? value);
+
+  /// Create a copy of DekontKalemler
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DekontKalemlerImplCopyWith<_$DekontKalemlerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

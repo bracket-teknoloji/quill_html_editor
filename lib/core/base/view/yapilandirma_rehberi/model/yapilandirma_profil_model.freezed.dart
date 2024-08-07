@@ -32,8 +32,12 @@ mixin _$YapilandirmaProfilModel {
   set deger(List<YapilandirmaRehberiModel?>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this YapilandirmaProfilModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of YapilandirmaProfilModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of YapilandirmaProfilModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,6 +123,8 @@ class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
       $Res Function(_$YapilandirmaProfilModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of YapilandirmaProfilModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,7 +173,9 @@ class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
   @override
   List<YapilandirmaRehberiModel?>? deger;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of YapilandirmaProfilModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
@@ -203,8 +213,11 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   @override
   List<YapilandirmaRehberiModel?>? get deger;
   set deger(List<YapilandirmaRehberiModel?>? value);
+
+  /// Create a copy of YapilandirmaProfilModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

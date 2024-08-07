@@ -79,8 +79,12 @@ mixin _$CariRequestModel {
   String? get rotaDisi => throw _privateConstructorUsedError;
   set rotaDisi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CariRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CariRequestModelCopyWith<CariRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -129,6 +133,8 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -307,6 +313,8 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$CariRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -531,7 +539,9 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   @override
   String? rotaDisi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>
@@ -659,8 +669,11 @@ abstract class _CariRequestModel extends CariRequestModel {
   @override
   String? get rotaDisi;
   set rotaDisi(String? value);
+
+  /// Create a copy of CariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CariRequestModelImplCopyWith<_$CariRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

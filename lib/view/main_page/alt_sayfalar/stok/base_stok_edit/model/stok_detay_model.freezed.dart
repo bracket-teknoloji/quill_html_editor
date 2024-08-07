@@ -121,8 +121,12 @@ mixin _$SeriList {
   @HiveField(24)
   set aciklama1(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SeriList to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SeriList
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeriListCopyWith<SeriList> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -170,6 +174,8 @@ class _$SeriListCopyWithImpl<$Res, $Val extends SeriList>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SeriList
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -348,6 +354,8 @@ class __$$SeriListImplCopyWithImpl<$Res>
       _$SeriListImpl _value, $Res Function(_$SeriListImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SeriList
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -593,7 +601,9 @@ class _$SeriListImpl extends _SeriList {
   @HiveField(24)
   String? aciklama1;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeriList
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeriListImplCopyWith<_$SeriListImpl> get copyWith =>
@@ -764,8 +774,11 @@ abstract class _SeriList extends SeriList {
   String? get aciklama1;
   @HiveField(24)
   set aciklama1(String? value);
+
+  /// Create a copy of SeriList
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeriListImplCopyWith<_$SeriListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

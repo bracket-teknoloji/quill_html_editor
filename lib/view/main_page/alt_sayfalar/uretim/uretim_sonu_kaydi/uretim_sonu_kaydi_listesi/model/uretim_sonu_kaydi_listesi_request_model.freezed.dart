@@ -30,8 +30,12 @@ mixin _$UretimSonuKaydiListesiRequestModel {
   String? get searchText => throw _privateConstructorUsedError;
   set searchText(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this UretimSonuKaydiListesiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UretimSonuKaydiListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UretimSonuKaydiListesiRequestModelCopyWith<
           UretimSonuKaydiListesiRequestModel>
       get copyWith => throw _privateConstructorUsedError;
@@ -60,6 +64,8 @@ class _$UretimSonuKaydiListesiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UretimSonuKaydiListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +118,8 @@ class __$$UretimSonuKaydiListesiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$UretimSonuKaydiListesiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UretimSonuKaydiListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,7 +175,9 @@ class _$UretimSonuKaydiListesiRequestModelImpl
     return 'UretimSonuKaydiListesiRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, belgeNo: $belgeNo, searchText: $searchText)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UretimSonuKaydiListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UretimSonuKaydiListesiRequestModelImplCopyWith<
@@ -207,8 +217,11 @@ abstract class _UretimSonuKaydiListesiRequestModel
   @override
   String? get searchText;
   set searchText(String? value);
+
+  /// Create a copy of UretimSonuKaydiListesiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UretimSonuKaydiListesiRequestModelImplCopyWith<
           _$UretimSonuKaydiListesiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;

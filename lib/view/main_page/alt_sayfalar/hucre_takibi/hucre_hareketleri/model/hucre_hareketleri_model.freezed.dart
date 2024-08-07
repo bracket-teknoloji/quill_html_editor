@@ -42,8 +42,12 @@ mixin _$HucreHareketleriModel {
   int? get stharInc => throw _privateConstructorUsedError;
   String? get yapkod => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreHareketleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreHareketleriModelCopyWith<HucreHareketleriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -87,6 +91,8 @@ class _$HucreHareketleriModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,6 +237,8 @@ class __$$HucreHareketleriModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreHareketleriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -403,7 +411,9 @@ class _$HucreHareketleriModelImpl extends _HucreHareketleriModel {
   @override
   final String? yapkod;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl>
@@ -455,8 +465,8 @@ abstract class _HucreHareketleriModel extends HucreHareketleriModel {
   @override
   String? get hucreKodu;
   @override
-  DateTime? get tarih;
-  @override //TODO Double olacak
+  DateTime? get tarih; //TODO Double olacak
+  @override
   int? get netMiktar;
   @override
   String? get belgeTipi;
@@ -482,8 +492,11 @@ abstract class _HucreHareketleriModel extends HucreHareketleriModel {
   int? get stharInc;
   @override
   String? get yapkod;
+
+  /// Create a copy of HucreHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

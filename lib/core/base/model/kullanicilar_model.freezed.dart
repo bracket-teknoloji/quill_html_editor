@@ -25,8 +25,12 @@ mixin _$KullanicilarModel {
   String? get adi => throw _privateConstructorUsedError;
   set adi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this KullanicilarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KullanicilarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KullanicilarModelCopyWith<KullanicilarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$KullanicilarModelCopyWithImpl<$Res, $Val extends KullanicilarModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KullanicilarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,6 +94,8 @@ class __$$KullanicilarModelImplCopyWithImpl<$Res>
       $Res Function(_$KullanicilarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KullanicilarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,7 +128,9 @@ class _$KullanicilarModelImpl extends _KullanicilarModel {
   @override
   String? adi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KullanicilarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KullanicilarModelImplCopyWith<_$KullanicilarModelImpl> get copyWith =>
@@ -149,8 +159,11 @@ abstract class _KullanicilarModel extends KullanicilarModel {
   @override
   String? get adi;
   set adi(String? value);
+
+  /// Create a copy of KullanicilarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KullanicilarModelImplCopyWith<_$KullanicilarModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

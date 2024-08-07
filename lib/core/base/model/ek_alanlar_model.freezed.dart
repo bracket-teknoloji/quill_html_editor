@@ -45,8 +45,12 @@ mixin _$EkAlanlarModel {
   String? get ondeger => throw _privateConstructorUsedError;
   set ondeger(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EkAlanlarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EkAlanlarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EkAlanlarModelCopyWith<EkAlanlarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,6 +85,8 @@ class _$EkAlanlarModelCopyWithImpl<$Res, $Val extends EkAlanlarModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EkAlanlarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,6 +181,8 @@ class __$$EkAlanlarModelImplCopyWithImpl<$Res>
       _$EkAlanlarModelImpl _value, $Res Function(_$EkAlanlarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EkAlanlarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -283,7 +291,9 @@ class _$EkAlanlarModelImpl extends _EkAlanlarModel {
   @override
   String? ondeger;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EkAlanlarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EkAlanlarModelImplCopyWith<_$EkAlanlarModelImpl> get copyWith =>
@@ -351,8 +361,11 @@ abstract class _EkAlanlarModel extends EkAlanlarModel {
   @override
   String? get ondeger;
   set ondeger(String? value);
+
+  /// Create a copy of EkAlanlarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EkAlanlarModelImplCopyWith<_$EkAlanlarModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

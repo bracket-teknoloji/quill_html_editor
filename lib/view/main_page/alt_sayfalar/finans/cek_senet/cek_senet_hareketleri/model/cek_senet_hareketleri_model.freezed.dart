@@ -50,8 +50,12 @@ mixin _$CekSenetHareketleriModel {
   String? get kayittarihi => throw _privateConstructorUsedError;
   set kayittarihi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CekSenetHareketleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CekSenetHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CekSenetHareketleriModelCopyWith<CekSenetHareketleriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -90,6 +94,8 @@ class _$CekSenetHareketleriModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CekSenetHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -205,6 +211,8 @@ class __$$CekSenetHareketleriModelImplCopyWithImpl<$Res>
       $Res Function(_$CekSenetHareketleriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CekSenetHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -336,7 +344,9 @@ class _$CekSenetHareketleriModelImpl extends _CekSenetHareketleriModel {
   @override
   String? kayittarihi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CekSenetHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
@@ -414,8 +424,11 @@ abstract class _CekSenetHareketleriModel extends CekSenetHareketleriModel {
   @override
   String? get kayittarihi;
   set kayittarihi(String? value);
+
+  /// Create a copy of CekSenetHareketleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CekSenetHareketleriModelImplCopyWith<_$CekSenetHareketleriModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

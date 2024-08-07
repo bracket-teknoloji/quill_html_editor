@@ -51,8 +51,12 @@ mixin _$UskReceteModel {
   String? get giristeSeri => throw _privateConstructorUsedError;
   set giristeSeri(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this UskReceteModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UskReceteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UskReceteModelCopyWith<UskReceteModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -91,6 +95,8 @@ class _$UskReceteModelCopyWithImpl<$Res, $Val extends UskReceteModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UskReceteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,6 +215,8 @@ class __$$UskReceteModelImplCopyWithImpl<$Res>
       _$UskReceteModelImpl _value, $Res Function(_$UskReceteModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UskReceteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -348,7 +356,9 @@ class _$UskReceteModelImpl extends _UskReceteModel {
   @override
   String? giristeSeri;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UskReceteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UskReceteModelImplCopyWith<_$UskReceteModelImpl> get copyWith =>
@@ -430,8 +440,11 @@ abstract class _UskReceteModel extends UskReceteModel {
   @override
   String? get giristeSeri;
   set giristeSeri(String? value);
+
+  /// Create a copy of UskReceteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UskReceteModelImplCopyWith<_$UskReceteModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

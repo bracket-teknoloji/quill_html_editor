@@ -42,8 +42,12 @@ mixin _$OlcumGirisiRequestModel {
   @JsonKey(name: "Sayfa")
   set sayfa(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumGirisiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumGirisiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumGirisiRequestModelCopyWith<OlcumGirisiRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +80,8 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumGirisiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -155,6 +161,8 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumGirisiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumGirisiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -244,7 +252,9 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
     return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, qrstring: $qrstring, searchText: $searchText, sayfa: $sayfa)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumGirisiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>
@@ -301,8 +311,11 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   int? get sayfa;
   @JsonKey(name: "Sayfa")
   set sayfa(int? value);
+
+  /// Create a copy of OlcumGirisiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -53,8 +53,12 @@ mixin _$EBelgeRequestModel {
   String? get resmiBelgeNo => throw _privateConstructorUsedError;
   set resmiBelgeNo(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EBelgeRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EBelgeRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EBelgeRequestModelCopyWith<EBelgeRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -94,6 +98,8 @@ class _$EBelgeRequestModelCopyWithImpl<$Res, $Val extends EBelgeRequestModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EBelgeRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -218,6 +224,8 @@ class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$EBelgeRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EBelgeRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -371,7 +379,9 @@ class _$EBelgeRequestModelImpl extends _EBelgeRequestModel {
     return 'EBelgeRequestModel(basimDurumu: $basimDurumu, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, eBelgeTuru: $eBelgeTuru, islendi: $islendi, kayitTarihineGore: $kayitTarihineGore, kontrolEdildi: $kontrolEdildi, faturaYonu: $faturaYonu, onayDurumu: $onayDurumu, sayfa: $sayfa, senaryo: $senaryo, sirala: $sirala, sorgulanmasin: $sorgulanmasin, searchText: $searchText, taslak: $taslak, resmiBelgeNo: $resmiBelgeNo)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EBelgeRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith =>
@@ -457,8 +467,11 @@ abstract class _EBelgeRequestModel extends EBelgeRequestModel {
   @override
   String? get resmiBelgeNo;
   set resmiBelgeNo(String? value);
+
+  /// Create a copy of EBelgeRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

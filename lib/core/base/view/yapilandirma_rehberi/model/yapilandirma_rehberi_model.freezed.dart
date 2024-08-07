@@ -36,8 +36,12 @@ mixin _$YapilandirmaRehberiModel {
   int? get ozellikSira => throw _privateConstructorUsedError;
   set ozellikSira(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this YapilandirmaRehberiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of YapilandirmaRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $YapilandirmaRehberiModelCopyWith<YapilandirmaRehberiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +73,8 @@ class _$YapilandirmaRehberiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of YapilandirmaRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,6 +148,8 @@ class __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>
       $Res Function(_$YapilandirmaRehberiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of YapilandirmaRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,7 +225,9 @@ class _$YapilandirmaRehberiModelImpl extends _YapilandirmaRehberiModel {
   @override
   int? ozellikSira;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of YapilandirmaRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
@@ -267,8 +277,11 @@ abstract class _YapilandirmaRehberiModel extends YapilandirmaRehberiModel {
   @override
   int? get ozellikSira;
   set ozellikSira(int? value);
+
+  /// Create a copy of YapilandirmaRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

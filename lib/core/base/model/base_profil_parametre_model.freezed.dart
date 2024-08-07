@@ -50,9 +50,15 @@ mixin _$BaseProfilParametreModel {
   bool get sayimStokSecildigindeHemenKaydet =>
       throw _privateConstructorUsedError;
   bool get sayimOtomatikEtiketYazdir => throw _privateConstructorUsedError;
+  Map<String, bool> get stokGorunecekEkstraAlanlar =>
+      throw _privateConstructorUsedError;
 
+  /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseProfilParametreModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BaseProfilParametreModelCopyWith<BaseProfilParametreModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,7 +90,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       EditTipiEnum olcumGirisiBelgeTipi,
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
-      bool sayimOtomatikEtiketYazdir});
+      bool sayimOtomatikEtiketYazdir,
+      Map<String, bool> stokGorunecekEkstraAlanlar});
 }
 
 /// @nodoc
@@ -98,6 +105,8 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BaseProfilParametreModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +131,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? kapaliBelgelerListelenmesinMi = null,
     Object? sayimStokSecildigindeHemenKaydet = null,
     Object? sayimOtomatikEtiketYazdir = null,
+    Object? stokGorunecekEkstraAlanlar = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -208,6 +218,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.sayimOtomatikEtiketYazdir
           : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
+          ? _value.stokGorunecekEkstraAlanlar
+          : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ) as $Val);
   }
 }
@@ -242,7 +256,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       EditTipiEnum olcumGirisiBelgeTipi,
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
-      bool sayimOtomatikEtiketYazdir});
+      bool sayimOtomatikEtiketYazdir,
+      Map<String, bool> stokGorunecekEkstraAlanlar});
 }
 
 /// @nodoc
@@ -255,6 +270,8 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
       $Res Function(_$BaseProfilParametreModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseProfilParametreModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,6 +296,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? kapaliBelgelerListelenmesinMi = null,
     Object? sayimStokSecildigindeHemenKaydet = null,
     Object? sayimOtomatikEtiketYazdir = null,
+    Object? stokGorunecekEkstraAlanlar = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -365,6 +383,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.sayimOtomatikEtiketYazdir
           : sayimOtomatikEtiketYazdir // ignore: cast_nullable_to_non_nullable
               as bool,
+      stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
+          ? _value._stokGorunecekEkstraAlanlar
+          : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
+              as Map<String, bool>,
     ));
   }
 }
@@ -394,8 +416,10 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.olcumGirisiBelgeTipi = EditTipiEnum.isEmri,
       this.kapaliBelgelerListelenmesinMi = false,
       this.sayimStokSecildigindeHemenKaydet = false,
-      this.sayimOtomatikEtiketYazdir = false})
-      : super._();
+      this.sayimOtomatikEtiketYazdir = false,
+      final Map<String, bool> stokGorunecekEkstraAlanlar = const {}})
+      : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
+        super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseProfilParametreModelImplFromJson(json);
@@ -466,8 +490,19 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool sayimOtomatikEtiketYazdir;
+  final Map<String, bool> _stokGorunecekEkstraAlanlar;
+  @override
+  @JsonKey()
+  Map<String, bool> get stokGorunecekEkstraAlanlar {
+    if (_stokGorunecekEkstraAlanlar is EqualUnmodifiableMapView)
+      return _stokGorunecekEkstraAlanlar;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_stokGorunecekEkstraAlanlar);
+  }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseProfilParametreModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
@@ -504,7 +539,9 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final EditTipiEnum olcumGirisiBelgeTipi,
       final bool kapaliBelgelerListelenmesinMi,
       final bool sayimStokSecildigindeHemenKaydet,
-      final bool sayimOtomatikEtiketYazdir}) = _$BaseProfilParametreModelImpl;
+      final bool sayimOtomatikEtiketYazdir,
+      final Map<String, bool>
+          stokGorunecekEkstraAlanlar}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -537,11 +574,11 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   @Deprecated("Bunun yerine temaModu kullanılacak.")
   bool get acikTemaMi;
-  @override
 
   /// 1 ise sistem varsayılanı
   /// 2 ise açık
   /// 3 ise karanlık tema
+  @override
   ThemeMode get temaModu;
   @override
   bool get rotaDisiGorunsunMu;
@@ -558,7 +595,12 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   bool get sayimOtomatikEtiketYazdir;
   @override
-  @JsonKey(ignore: true)
+  Map<String, bool> get stokGorunecekEkstraAlanlar;
+
+  /// Create a copy of BaseProfilParametreModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseProfilParametreModelImplCopyWith<_$BaseProfilParametreModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

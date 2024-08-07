@@ -34,8 +34,12 @@ mixin _$SeriHareketleriRequestModel {
   @JsonKey(name: "Sirala")
   set sirala(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SeriHareketleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SeriHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeriHareketleriRequestModelCopyWith<SeriHareketleriRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SeriHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$SeriHareketleriRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SeriHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,7 +174,9 @@ class _$SeriHareketleriRequestModelImpl
     return 'SeriHareketleriRequestModel(stokKodu: $stokKodu, seriNo: $seriNo, sirala: $sirala)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeriHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl>
@@ -207,8 +217,11 @@ abstract class _SeriHareketleriRequestModel
   String? get sirala;
   @JsonKey(name: "Sirala")
   set sirala(String? value);
+
+  /// Create a copy of SeriHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeriHareketleriRequestModelImplCopyWith<_$SeriHareketleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -33,8 +33,12 @@ mixin _$BankaSozlesmesiModel {
   DateTime? get bitisTarihi => throw _privateConstructorUsedError;
   set bitisTarihi(DateTime? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this BankaSozlesmesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BankaSozlesmesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BankaSozlesmesiModelCopyWith<BankaSozlesmesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BankaSozlesmesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
       $Res Function(_$BankaSozlesmesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BankaSozlesmesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -196,7 +204,9 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
   @override
   DateTime? bitisTarihi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BankaSozlesmesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
@@ -243,8 +253,11 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
   @override
   DateTime? get bitisTarihi;
   set bitisTarihi(DateTime? value);
+
+  /// Create a copy of BankaSozlesmesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BankaSozlesmesiModelImplCopyWith<_$BankaSozlesmesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

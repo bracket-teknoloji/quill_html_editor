@@ -119,8 +119,12 @@ mixin _$KullaniciYetkiModel {
   set sirketDatYetkiliDepolar(List<int>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this KullaniciYetkiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KullaniciYetkiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KullaniciYetkiModelCopyWith<KullaniciYetkiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -172,6 +176,8 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KullaniciYetkiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -334,6 +340,8 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
       $Res Function(_$KullaniciYetkiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KullaniciYetkiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -555,7 +563,9 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
     return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KullaniciYetkiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KullaniciYetkiModelImplCopyWith<_$KullaniciYetkiModelImpl> get copyWith =>
@@ -709,8 +719,11 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   List<int>? get sirketDatYetkiliDepolar;
   @JsonKey(name: "sirket_DAT_YetkiliDepolar")
   set sirketDatYetkiliDepolar(List<int>? value);
+
+  /// Create a copy of KullaniciYetkiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KullaniciYetkiModelImplCopyWith<_$KullaniciYetkiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -49,6 +49,11 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           json['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] as bool? ?? false,
       sayimOtomatikEtiketYazdir:
           json['SAYIM_OTOMATIK_ETIKET_YAZDIR'] as bool? ?? false,
+      stokGorunecekEkstraAlanlar:
+          (json['STOK_GORUNECEK_EKSTRA_ALANLAR'] as Map<String, dynamic>?)?.map(
+                (k, e) => MapEntry(k, e as bool),
+              ) ??
+              const {},
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -87,6 +92,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   val['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] =
       instance.sayimStokSecildigindeHemenKaydet;
   val['SAYIM_OTOMATIK_ETIKET_YAZDIR'] = instance.sayimOtomatikEtiketYazdir;
+  val['STOK_GORUNECEK_EKSTRA_ALANLAR'] = instance.stokGorunecekEkstraAlanlar;
   return val;
 }
 

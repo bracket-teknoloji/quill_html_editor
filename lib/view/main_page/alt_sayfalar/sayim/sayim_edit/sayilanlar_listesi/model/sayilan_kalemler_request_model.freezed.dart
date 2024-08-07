@@ -50,8 +50,12 @@ mixin _$SayilanKalemlerRequestModel {
   @JsonKey(name: "ID")
   set id(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this SayilanKalemlerRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SayilanKalemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SayilanKalemlerRequestModelCopyWith<SayilanKalemlerRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -85,6 +89,8 @@ class _$SayilanKalemlerRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SayilanKalemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,6 +164,8 @@ class __$$SayilanKalemlerRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$SayilanKalemlerRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SayilanKalemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -246,7 +254,9 @@ class _$SayilanKalemlerRequestModelImpl
     return 'SayilanKalemlerRequestModel(filtreKodu: $filtreKodu, depoKodu: $depoKodu, kullaniciAdi: $kullaniciAdi, ekranTipi: $ekranTipi, belgeNo: $belgeNo, seriBazinda: $seriBazinda, id: $id)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SayilanKalemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl>
@@ -310,8 +320,11 @@ abstract class _SayilanKalemlerRequestModel
   int? get id;
   @JsonKey(name: "ID")
   set id(int? value);
+
+  /// Create a copy of SayilanKalemlerRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SayilanKalemlerRequestModelImplCopyWith<_$SayilanKalemlerRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

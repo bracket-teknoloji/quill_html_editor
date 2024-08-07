@@ -25,8 +25,12 @@ mixin _$HucreHareketleriRequestModel {
   int? get filtreKodu => throw _privateConstructorUsedError;
   String? get stokKodu => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreHareketleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreHareketleriRequestModelCopyWith<HucreHareketleriRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$HucreHareketleriRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$HucreHareketleriRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreHareketleriRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,11 +168,13 @@ class _$HucreHareketleriRequestModelImpl
                 other.stokKodu == stokKodu));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, ekranTipi, filtreKodu, stokKodu);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreHareketleriRequestModelImplCopyWith<
@@ -196,8 +206,11 @@ abstract class _HucreHareketleriRequestModel
   int? get filtreKodu;
   @override
   String? get stokKodu;
+
+  /// Create a copy of HucreHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreHareketleriRequestModelImplCopyWith<
           _$HucreHareketleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;

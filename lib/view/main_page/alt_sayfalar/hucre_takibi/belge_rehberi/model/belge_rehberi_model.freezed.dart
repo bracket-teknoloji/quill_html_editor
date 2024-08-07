@@ -29,8 +29,12 @@ mixin _$BelgeRehberiModel {
   String? get depoTanimi => throw _privateConstructorUsedError;
   double? get kalemSayisi => throw _privateConstructorUsedError;
 
+  /// Serializes this BelgeRehberiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BelgeRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BelgeRehberiModelCopyWith<BelgeRehberiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$BelgeRehberiModelCopyWithImpl<$Res, $Val extends BelgeRehberiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BelgeRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class __$$BelgeRehberiModelImplCopyWithImpl<$Res>
       $Res Function(_$BelgeRehberiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BelgeRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -221,7 +229,9 @@ class _$BelgeRehberiModelImpl extends _BelgeRehberiModel {
   @override
   final double? kalemSayisi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BelgeRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BelgeRehberiModelImplCopyWith<_$BelgeRehberiModelImpl> get copyWith =>
@@ -267,8 +277,11 @@ abstract class _BelgeRehberiModel extends BelgeRehberiModel {
   String? get depoTanimi;
   @override
   double? get kalemSayisi;
+
+  /// Create a copy of BelgeRehberiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BelgeRehberiModelImplCopyWith<_$BelgeRehberiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

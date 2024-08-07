@@ -64,8 +64,12 @@ mixin _$EditFaturaModel {
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EditFaturaModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditFaturaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EditFaturaModelCopyWith<EditFaturaModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -108,6 +112,8 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EditFaturaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -250,6 +256,8 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
       _$EditFaturaModelImpl _value, $Res Function(_$EditFaturaModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditFaturaModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -425,7 +433,9 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   @override
   DateTime? tarih;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditFaturaModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
@@ -527,8 +537,11 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   @override
   DateTime? get tarih;
   set tarih(DateTime? value);
+
+  /// Create a copy of EditFaturaModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditFaturaModelImplCopyWith<_$EditFaturaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

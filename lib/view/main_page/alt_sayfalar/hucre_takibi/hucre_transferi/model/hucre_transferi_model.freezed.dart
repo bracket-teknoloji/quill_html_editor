@@ -54,8 +54,12 @@ mixin _$HucreTransferiModel {
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreTransferiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreTransferiModelCopyWith<HucreTransferiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -96,6 +100,8 @@ class _$HucreTransferiModelCopyWithImpl<$Res, $Val extends HucreTransferiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -174,6 +180,8 @@ class _$HucreTransferiModelCopyWithImpl<$Res, $Val extends HucreTransferiModel>
     ) as $Val);
   }
 
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BelgeRehberiModelCopyWith<$Res>? get belgeModel {
@@ -224,6 +232,8 @@ class __$$HucreTransferiModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreTransferiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -361,7 +371,9 @@ class _$HucreTransferiModelImpl implements _HucreTransferiModel {
     return 'HucreTransferiModel(depoKodu: $depoKodu, depoTanimi: $depoTanimi, belgeModel: $belgeModel, hedefHucre: $hedefHucre, hucreKodu: $hucreKodu, islemTuru: $islemTuru, pickerBelgeTuru: $pickerBelgeTuru, miktar: $miktar, stokKodu: $stokKodu, stokAdi: $stokAdi, paketKodu: $paketKodu, belgeTuru: $belgeTuru, belgeNo: $belgeNo, cariKodu: $cariKodu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreTransferiModelImplCopyWith<_$HucreTransferiModelImpl> get copyWith =>
@@ -443,8 +455,11 @@ abstract class _HucreTransferiModel implements HucreTransferiModel {
   @override
   String? get cariKodu;
   set cariKodu(String? value);
+
+  /// Create a copy of HucreTransferiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreTransferiModelImplCopyWith<_$HucreTransferiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

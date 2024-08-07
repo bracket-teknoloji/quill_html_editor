@@ -31,8 +31,12 @@ mixin _$FinansOzetRaporModel {
   double? get tutar2 => throw _privateConstructorUsedError;
   set tutar2(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this FinansOzetRaporModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FinansOzetRaporModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FinansOzetRaporModelCopyWith<FinansOzetRaporModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$FinansOzetRaporModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FinansOzetRaporModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,6 +126,8 @@ class __$$FinansOzetRaporModelImplCopyWithImpl<$Res>
       $Res Function(_$FinansOzetRaporModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FinansOzetRaporModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,7 +183,9 @@ class _$FinansOzetRaporModelImpl extends _FinansOzetRaporModel {
   @override
   double? tutar2;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FinansOzetRaporModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl>
@@ -218,8 +228,11 @@ abstract class _FinansOzetRaporModel extends FinansOzetRaporModel {
   @override
   double? get tutar2;
   set tutar2(double? value);
+
+  /// Create a copy of FinansOzetRaporModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FinansOzetRaporModelImplCopyWith<_$FinansOzetRaporModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

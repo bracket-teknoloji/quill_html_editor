@@ -26,8 +26,12 @@ mixin _$OrtalamaVadeTarihiModel {
   double? get tutar => throw _privateConstructorUsedError;
   set tutar(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OrtalamaVadeTarihiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OrtalamaVadeTarihiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrtalamaVadeTarihiModelCopyWith<OrtalamaVadeTarihiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$OrtalamaVadeTarihiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OrtalamaVadeTarihiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$OrtalamaVadeTarihiModelImplCopyWithImpl<$Res>
       $Res Function(_$OrtalamaVadeTarihiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OrtalamaVadeTarihiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -130,7 +138,9 @@ class _$OrtalamaVadeTarihiModelImpl implements _OrtalamaVadeTarihiModel {
     return 'OrtalamaVadeTarihiModel(vadeTarihi: $vadeTarihi, tutar: $tutar)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OrtalamaVadeTarihiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrtalamaVadeTarihiModelImplCopyWith<_$OrtalamaVadeTarihiModelImpl>
@@ -158,8 +168,11 @@ abstract class _OrtalamaVadeTarihiModel implements OrtalamaVadeTarihiModel {
   @override
   double? get tutar;
   set tutar(double? value);
+
+  /// Create a copy of OrtalamaVadeTarihiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrtalamaVadeTarihiModelImplCopyWith<_$OrtalamaVadeTarihiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

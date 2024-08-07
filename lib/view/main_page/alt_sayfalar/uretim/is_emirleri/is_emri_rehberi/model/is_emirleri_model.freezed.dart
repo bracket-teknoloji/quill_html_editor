@@ -73,8 +73,12 @@ mixin _$IsEmirleriModel {
   double? get tamamlanan => throw _privateConstructorUsedError;
   set tamamlanan(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this IsEmirleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IsEmirleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IsEmirleriModelCopyWith<IsEmirleriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -124,6 +128,8 @@ class _$IsEmirleriModelCopyWithImpl<$Res, $Val extends IsEmirleriModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IsEmirleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -308,6 +314,8 @@ class __$$IsEmirleriModelImplCopyWithImpl<$Res>
       _$IsEmirleriModelImpl _value, $Res Function(_$IsEmirleriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IsEmirleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -535,7 +543,9 @@ class _$IsEmirleriModelImpl extends _IsEmirleriModel {
   @override
   double? tamamlanan;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IsEmirleriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IsEmirleriModelImplCopyWith<_$IsEmirleriModelImpl> get copyWith =>
@@ -661,8 +671,11 @@ abstract class _IsEmirleriModel extends IsEmirleriModel {
   @override
   double? get tamamlanan;
   set tamamlanan(double? value);
+
+  /// Create a copy of IsEmirleriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IsEmirleriModelImplCopyWith<_$IsEmirleriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

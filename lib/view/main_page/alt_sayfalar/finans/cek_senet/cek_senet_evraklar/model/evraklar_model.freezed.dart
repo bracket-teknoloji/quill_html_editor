@@ -37,8 +37,12 @@ mixin _$EvraklarModel {
   int? get islemKodu => throw _privateConstructorUsedError;
   set islemKodu(int? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this EvraklarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EvraklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EvraklarModelCopyWith<EvraklarModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$EvraklarModelCopyWithImpl<$Res, $Val extends EvraklarModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EvraklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$EvraklarModelImplCopyWithImpl<$Res>
       _$EvraklarModelImpl _value, $Res Function(_$EvraklarModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EvraklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,7 +237,9 @@ class _$EvraklarModelImpl extends _EvraklarModel {
   @override
   int? islemKodu;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EvraklarModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EvraklarModelImplCopyWith<_$EvraklarModelImpl> get copyWith =>
@@ -282,8 +292,11 @@ abstract class _EvraklarModel extends EvraklarModel {
   @override
   int? get islemKodu;
   set islemKodu(int? value);
+
+  /// Create a copy of EvraklarModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EvraklarModelImplCopyWith<_$EvraklarModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

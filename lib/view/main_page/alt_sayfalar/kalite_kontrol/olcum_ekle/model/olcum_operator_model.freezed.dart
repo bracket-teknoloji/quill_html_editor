@@ -45,8 +45,12 @@ mixin _$OlcumOperatorModel {
   String? get resim => throw _privateConstructorUsedError;
   set resim(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumOperatorModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumOperatorModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumOperatorModelCopyWith<OlcumOperatorModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -82,6 +86,8 @@ class _$OlcumOperatorModelCopyWithImpl<$Res, $Val extends OlcumOperatorModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumOperatorModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,6 +188,8 @@ class __$$OlcumOperatorModelImplCopyWithImpl<$Res>
       $Res Function(_$OlcumOperatorModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumOperatorModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -297,7 +305,9 @@ class _$OlcumOperatorModelImpl extends _OlcumOperatorModel {
   @override
   String? resim;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumOperatorModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumOperatorModelImplCopyWith<_$OlcumOperatorModelImpl> get copyWith =>
@@ -367,8 +377,11 @@ abstract class _OlcumOperatorModel extends OlcumOperatorModel {
   @override
   String? get resim;
   set resim(String? value);
+
+  /// Create a copy of OlcumOperatorModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumOperatorModelImplCopyWith<_$OlcumOperatorModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$DizaynRequestModel {
   @JsonKey(name: "ERPDizaynlari")
   bool? get erpDizaynlari => throw _privateConstructorUsedError;
 
+  /// Serializes this DizaynRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DizaynRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DizaynRequestModelCopyWith<DizaynRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$DizaynRequestModelCopyWithImpl<$Res, $Val extends DizaynRequestModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DizaynRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$DizaynRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$DizaynRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DizaynRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,11 +151,13 @@ class _$DizaynRequestModelImpl implements _DizaynRequestModel {
                 other.erpDizaynlari == erpDizaynlari));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, modulId, erpDizaynlari);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DizaynRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DizaynRequestModelImplCopyWith<_$DizaynRequestModelImpl> get copyWith =>
@@ -177,8 +187,11 @@ abstract class _DizaynRequestModel implements DizaynRequestModel {
   @override
   @JsonKey(name: "ERPDizaynlari")
   bool? get erpDizaynlari;
+
+  /// Create a copy of DizaynRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DizaynRequestModelImplCopyWith<_$DizaynRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

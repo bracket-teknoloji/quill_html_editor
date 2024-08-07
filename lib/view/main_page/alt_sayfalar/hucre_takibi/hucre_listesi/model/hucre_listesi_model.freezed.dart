@@ -30,8 +30,12 @@ mixin _$HucreListesiModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   String? get stokAdi => throw _privateConstructorUsedError;
 
+  /// Serializes this HucreListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HucreListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HucreListesiModelCopyWith<HucreListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$HucreListesiModelCopyWithImpl<$Res, $Val extends HucreListesiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HucreListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,6 +145,8 @@ class __$$HucreListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$HucreListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HucreListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,7 +240,9 @@ class _$HucreListesiModelImpl extends _HucreListesiModel {
   @override
   final String? stokAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HucreListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HucreListesiModelImplCopyWith<_$HucreListesiModelImpl> get copyWith =>
@@ -279,8 +289,11 @@ abstract class _HucreListesiModel extends HucreListesiModel {
   String? get stokKodu;
   @override
   String? get stokAdi;
+
+  /// Create a copy of HucreListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HucreListesiModelImplCopyWith<_$HucreListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

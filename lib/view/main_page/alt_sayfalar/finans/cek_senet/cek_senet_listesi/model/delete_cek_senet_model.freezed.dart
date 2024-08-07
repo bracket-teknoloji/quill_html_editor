@@ -27,8 +27,12 @@ mixin _$DeleteCekSenetModel {
   String? get pickerTahsilatTuru => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
 
+  /// Serializes this DeleteCekSenetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DeleteCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DeleteCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +121,8 @@ class __$$DeleteCekSenetModelImplCopyWithImpl<$Res>
       $Res Function(_$DeleteCekSenetModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DeleteCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,12 +202,14 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
             (identical(other.tag, tag) || other.tag == tag));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DeleteCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
@@ -236,8 +246,11 @@ abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
   String? get pickerTahsilatTuru;
   @override
   String? get tag;
+
+  /// Create a copy of DeleteCekSenetModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

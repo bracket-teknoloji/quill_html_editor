@@ -50,8 +50,12 @@ mixin _$OlcumEkleModel {
   set prosesler(List<OlcumProsesModel>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this OlcumEkleModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OlcumEkleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OlcumEkleModelCopyWith<OlcumEkleModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -89,6 +93,8 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OlcumEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -201,6 +207,8 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
       _$OlcumEkleModelImpl _value, $Res Function(_$OlcumEkleModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OlcumEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -332,7 +340,9 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
   @override
   List<OlcumProsesModel>? prosesler;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OlcumEkleModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OlcumEkleModelImplCopyWith<_$OlcumEkleModelImpl> get copyWith =>
@@ -410,8 +420,11 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
   @override
   List<OlcumProsesModel>? get prosesler;
   set prosesler(List<OlcumProsesModel>? value);
+
+  /// Create a copy of OlcumEkleModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OlcumEkleModelImplCopyWith<_$OlcumEkleModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

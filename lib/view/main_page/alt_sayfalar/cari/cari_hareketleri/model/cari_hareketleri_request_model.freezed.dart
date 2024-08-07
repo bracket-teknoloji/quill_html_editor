@@ -43,8 +43,12 @@ mixin _$CariHareketleriRequestModel {
   String? get ba => throw _privateConstructorUsedError;
   set ba(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this CariHareketleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CariHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CariHareketleriRequestModelCopyWith<CariHareketleriRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -80,6 +84,8 @@ class _$CariHareketleriRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CariHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,6 +171,8 @@ class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$CariHareketleriRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CariHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -264,7 +272,9 @@ class _$CariHareketleriRequestModelImpl
     return 'CariHareketleriRequestModel(siralama: $siralama, sadeceTahsilatlarOdemeler: $sadeceTahsilatlarOdemeler, cariKodu: $cariKodu, ekranTipi: $ekranTipi, arrPlasiyerKodu: $arrPlasiyerKodu, arrHareketTuru: $arrHareketTuru, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, ba: $ba)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CariHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
@@ -324,8 +334,11 @@ abstract class _CariHareketleriRequestModel
   @override
   String? get ba;
   set ba(String? value);
+
+  /// Create a copy of CariHareketleriRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CariHareketleriRequestModelImplCopyWith<_$CariHareketleriRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

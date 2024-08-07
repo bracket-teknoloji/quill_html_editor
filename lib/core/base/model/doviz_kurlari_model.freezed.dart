@@ -37,8 +37,12 @@ mixin _$DovizKurlariModel {
   double? get effSatis => throw _privateConstructorUsedError;
   set effSatis(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DovizKurlariModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DovizKurlariModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DovizKurlariModelCopyWith<DovizKurlariModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$DovizKurlariModelCopyWithImpl<$Res, $Val extends DovizKurlariModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DovizKurlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$DovizKurlariModelImplCopyWithImpl<$Res>
       $Res Function(_$DovizKurlariModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DovizKurlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -230,7 +238,9 @@ class _$DovizKurlariModelImpl extends _DovizKurlariModel {
   @override
   double? effSatis;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DovizKurlariModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
@@ -284,8 +294,11 @@ abstract class _DovizKurlariModel extends DovizKurlariModel {
   @override
   double? get effSatis;
   set effSatis(double? value);
+
+  /// Create a copy of DovizKurlariModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DovizKurlariModelImplCopyWith<_$DovizKurlariModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -314,8 +327,12 @@ mixin _$DovizKurlariRequestModel {
   double? get eFSatis => throw _privateConstructorUsedError;
   set eFSatis(double? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DovizKurlariRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DovizKurlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DovizKurlariRequestModelCopyWith<DovizKurlariRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -348,6 +365,8 @@ class _$DovizKurlariRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DovizKurlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -427,6 +446,8 @@ class __$$DovizKurlariRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$DovizKurlariRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DovizKurlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -515,7 +536,9 @@ class _$DovizKurlariRequestModelImpl extends _DovizKurlariRequestModel {
   @override
   double? eFSatis;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DovizKurlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
@@ -569,8 +592,11 @@ abstract class _DovizKurlariRequestModel extends DovizKurlariRequestModel {
   @override
   double? get eFSatis;
   set eFSatis(double? value);
+
+  /// Create a copy of DovizKurlariRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DovizKurlariRequestModelImplCopyWith<_$DovizKurlariRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

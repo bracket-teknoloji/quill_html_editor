@@ -72,8 +72,12 @@ mixin _$CariAktiviteListesiModel {
   set listDetay(List<CariAktiviteListesiModel>? value) =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CariAktiviteListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CariAktiviteListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CariAktiviteListesiModelCopyWith<CariAktiviteListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -121,6 +125,8 @@ class _$CariAktiviteListesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CariAktiviteListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -290,6 +296,8 @@ class __$$CariAktiviteListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$CariAktiviteListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CariAktiviteListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -494,7 +502,9 @@ class _$CariAktiviteListesiModelImpl extends _CariAktiviteListesiModel {
   @override
   List<CariAktiviteListesiModel>? listDetay;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CariAktiviteListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl>
@@ -611,8 +621,11 @@ abstract class _CariAktiviteListesiModel extends CariAktiviteListesiModel {
   @override
   List<CariAktiviteListesiModel>? get listDetay;
   set listDetay(List<CariAktiviteListesiModel>? value);
+
+  /// Create a copy of CariAktiviteListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CariAktiviteListesiModelImplCopyWith<_$CariAktiviteListesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

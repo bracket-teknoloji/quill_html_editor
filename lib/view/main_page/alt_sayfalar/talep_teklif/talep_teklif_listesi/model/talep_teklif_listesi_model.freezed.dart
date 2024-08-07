@@ -171,8 +171,12 @@ mixin _$TalepTeklifListesiModel {
   String? get tag => throw _privateConstructorUsedError;
   set tag(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this TalepTeklifListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TalepTeklifListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TalepTeklifListesiModelCopyWith<TalepTeklifListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -271,6 +275,8 @@ class _$TalepTeklifListesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TalepTeklifListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -746,6 +752,8 @@ class __$$TalepTeklifListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$TalepTeklifListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TalepTeklifListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1358,7 +1366,9 @@ class _$TalepTeklifListesiModelImpl extends _TalepTeklifListesiModel {
   @JsonKey()
   String? tag;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TalepTeklifListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl>
@@ -1676,8 +1686,11 @@ abstract class _TalepTeklifListesiModel extends TalepTeklifListesiModel {
   @override
   String? get tag;
   set tag(String? value);
+
+  /// Create a copy of TalepTeklifListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TalepTeklifListesiModelImplCopyWith<_$TalepTeklifListesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

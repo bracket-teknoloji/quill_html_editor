@@ -32,8 +32,12 @@ mixin _$PaketlemeListesiModel {
   String? get kilit => throw _privateConstructorUsedError;
   String? get ukey => throw _privateConstructorUsedError;
 
+  /// Serializes this PaketlemeListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaketlemeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaketlemeListesiModelCopyWith<PaketlemeListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$PaketlemeListesiModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaketlemeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,6 +164,8 @@ class __$$PaketlemeListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$PaketlemeListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaketlemeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,7 +265,9 @@ class _$PaketlemeListesiModelImpl extends _PaketlemeListesiModel {
   @override
   final String? ukey;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaketlemeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl>
@@ -309,8 +319,11 @@ abstract class _PaketlemeListesiModel extends PaketlemeListesiModel {
   String? get kilit;
   @override
   String? get ukey;
+
+  /// Create a copy of PaketlemeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -35,8 +35,12 @@ mixin _$DekontListesiModel {
   String? get seriAdi => throw _privateConstructorUsedError;
   set seriAdi(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this DekontListesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DekontListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DekontListesiModelCopyWith<DekontListesiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -67,6 +71,8 @@ class _$DekontListesiModelCopyWithImpl<$Res, $Val extends DekontListesiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DekontListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,6 +143,8 @@ class __$$DekontListesiModelImplCopyWithImpl<$Res>
       $Res Function(_$DekontListesiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DekontListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -212,7 +220,9 @@ class _$DekontListesiModelImpl extends _DekontListesiModel {
   @override
   String? seriAdi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DekontListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DekontListesiModelImplCopyWith<_$DekontListesiModelImpl> get copyWith =>
@@ -262,8 +272,11 @@ abstract class _DekontListesiModel extends DekontListesiModel {
   @override
   String? get seriAdi;
   set seriAdi(String? value);
+
+  /// Create a copy of DekontListesiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DekontListesiModelImplCopyWith<_$DekontListesiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -80,8 +80,12 @@ mixin _$StokBottomSheetModel {
   bool? get receteliStoklar => throw _privateConstructorUsedError;
   set receteliStoklar(bool? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this StokBottomSheetModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StokBottomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StokBottomSheetModelCopyWith<StokBottomSheetModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -131,6 +135,8 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StokBottomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -309,6 +315,8 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
       $Res Function(_$StokBottomSheetModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StokBottomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -537,7 +545,9 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   @override
   bool? receteliStoklar;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StokBottomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
@@ -660,8 +670,11 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   @override
   bool? get receteliStoklar;
   set receteliStoklar(bool? value);
+
+  /// Create a copy of StokBottomSheetModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StokBottomSheetModelImplCopyWith<_$StokBottomSheetModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

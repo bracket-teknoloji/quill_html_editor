@@ -28,8 +28,12 @@ mixin _$StokFiyatOzetiRequestModel {
   String? get stokKodu => throw _privateConstructorUsedError;
   set stokKodu(String? value) => throw _privateConstructorUsedError;
 
+  /// Serializes this StokFiyatOzetiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StokFiyatOzetiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StokFiyatOzetiRequestModelCopyWith<StokFiyatOzetiRequestModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -55,6 +59,8 @@ class _$StokFiyatOzetiRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StokFiyatOzetiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,6 +107,8 @@ class __$$StokFiyatOzetiRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$StokFiyatOzetiRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StokFiyatOzetiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,7 +155,9 @@ class _$StokFiyatOzetiRequestModelImpl implements _StokFiyatOzetiRequestModel {
     return 'StokFiyatOzetiRequestModel(yapKod: $yapKod, cariKodu: $cariKodu, stokKodu: $stokKodu)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StokFiyatOzetiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StokFiyatOzetiRequestModelImplCopyWith<_$StokFiyatOzetiRequestModelImpl>
@@ -181,8 +191,11 @@ abstract class _StokFiyatOzetiRequestModel
   @override
   String? get stokKodu;
   set stokKodu(String? value);
+
+  /// Create a copy of StokFiyatOzetiRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StokFiyatOzetiRequestModelImplCopyWith<_$StokFiyatOzetiRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

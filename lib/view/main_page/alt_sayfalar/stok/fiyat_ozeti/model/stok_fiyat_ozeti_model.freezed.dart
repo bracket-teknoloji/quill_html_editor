@@ -33,8 +33,12 @@ mixin _$StokFiyatOzetiModel {
   int? get brutFiyat => throw _privateConstructorUsedError;
   int? get brutDovizFiyati => throw _privateConstructorUsedError;
 
+  /// Serializes this StokFiyatOzetiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StokFiyatOzetiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StokFiyatOzetiModelCopyWith<StokFiyatOzetiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$StokFiyatOzetiModelCopyWithImpl<$Res, $Val extends StokFiyatOzetiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StokFiyatOzetiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +176,8 @@ class __$$StokFiyatOzetiModelImplCopyWithImpl<$Res>
       $Res Function(_$StokFiyatOzetiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StokFiyatOzetiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -285,7 +293,9 @@ class _$StokFiyatOzetiModelImpl extends _StokFiyatOzetiModel {
   @override
   final int? brutDovizFiyati;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StokFiyatOzetiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StokFiyatOzetiModelImplCopyWith<_$StokFiyatOzetiModelImpl> get copyWith =>
@@ -343,8 +353,11 @@ abstract class _StokFiyatOzetiModel extends StokFiyatOzetiModel {
   int? get brutFiyat;
   @override
   int? get brutDovizFiyati;
+
+  /// Create a copy of StokFiyatOzetiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StokFiyatOzetiModelImplCopyWith<_$StokFiyatOzetiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

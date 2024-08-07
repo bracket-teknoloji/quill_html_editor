@@ -25,8 +25,12 @@ mixin _$SayimKalemRequestModel {
   int? get depoKodu => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
 
+  /// Serializes this SayimKalemRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SayimKalemRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SayimKalemRequestModelCopyWith<SayimKalemRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$SayimKalemRequestModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SayimKalemRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$SayimKalemRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$SayimKalemRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SayimKalemRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,11 +160,13 @@ class _$SayimKalemRequestModelImpl implements _SayimKalemRequestModel {
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, depoKodu, belgeNo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SayimKalemRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SayimKalemRequestModelImplCopyWith<_$SayimKalemRequestModelImpl>
@@ -186,8 +196,11 @@ abstract class _SayimKalemRequestModel implements SayimKalemRequestModel {
   int? get depoKodu;
   @override
   String? get belgeNo;
+
+  /// Create a copy of SayimKalemRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SayimKalemRequestModelImplCopyWith<_$SayimKalemRequestModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

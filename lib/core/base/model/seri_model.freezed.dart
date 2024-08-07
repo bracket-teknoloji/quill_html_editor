@@ -28,8 +28,12 @@ mixin _$SeriModel {
   int? get miktar => throw _privateConstructorUsedError;
   String? get depoTanimi => throw _privateConstructorUsedError;
 
+  /// Serializes this SeriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SeriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SeriModelCopyWith<SeriModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$SeriModelCopyWithImpl<$Res, $Val extends SeriModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SeriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$SeriModelImplCopyWithImpl<$Res>
       _$SeriModelImpl _value, $Res Function(_$SeriModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SeriModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,7 +212,9 @@ class _$SeriModelImpl extends _SeriModel {
   @override
   final String? depoTanimi;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SeriModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
@@ -246,8 +256,11 @@ abstract class _SeriModel extends SeriModel {
   int? get miktar;
   @override
   String? get depoTanimi;
+
+  /// Create a copy of SeriModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SeriModelImplCopyWith<_$SeriModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
