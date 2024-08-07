@@ -9,13 +9,14 @@ part of 'bottom_sheet_state_manager.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
-  Computed<List<BottomSheetModel>?>? _$getFilteredListComputed;
+  Computed<List<BottomSheetModel<dynamic>>?>? _$getFilteredListComputed;
 
   @override
-  List<BottomSheetModel>? get getFilteredList => (_$getFilteredListComputed ??=
-          Computed<List<BottomSheetModel>?>(() => super.getFilteredList,
+  List<BottomSheetModel<dynamic>>? get getFilteredList =>
+      (_$getFilteredListComputed ??= Computed<List<BottomSheetModel<dynamic>>?>(
+              () => super.getFilteredList,
               name: '_BottomSheetStateManagerBase.getFilteredList'))
-      .value;
+          .value;
   Computed<ObservableList<String>?>? _$getKodControllerTextComputed;
 
   @override
@@ -79,13 +80,13 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
       name: '_BottomSheetStateManagerBase.unFilteredList', context: context);
 
   @override
-  ObservableList<BottomSheetModel>? get unFilteredList {
+  ObservableList<BottomSheetModel<dynamic>>? get unFilteredList {
     _$unFilteredListAtom.reportRead();
     return super.unFilteredList;
   }
 
   @override
-  set unFilteredList(ObservableList<BottomSheetModel>? value) {
+  set unFilteredList(ObservableList<BottomSheetModel<dynamic>>? value) {
     _$unFilteredListAtom.reportWrite(value, super.unFilteredList, () {
       super.unFilteredList = value;
     });
@@ -370,7 +371,7 @@ mixin _$BottomSheetStateManager on _BottomSheetStateManagerBase, Store {
   }
 
   @override
-  void setUnFilteredList(List<BottomSheetModel>? value) {
+  void setUnFilteredList(List<BottomSheetModel<dynamic>>? value) {
     final _$actionInfo = _$_BottomSheetStateManagerBaseActionController
         .startAction(name: '_BottomSheetStateManagerBase.setUnFilteredList');
     try {
