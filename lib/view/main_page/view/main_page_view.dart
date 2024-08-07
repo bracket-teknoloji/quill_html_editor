@@ -43,7 +43,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
     return PopScope(
       canPop: false,
-      onPopInvoked: (value) async {
+      onPopInvokedWithResult: (didPop, value) async {
         if (lastItems.isNotEmpty) {
           setState(() {
             items = lastItems.last;

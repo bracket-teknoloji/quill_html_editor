@@ -168,7 +168,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: widget.model.baseEditEnum == BaseEditEnum.goruntule,
-        onPopInvoked: (didPop) async {
+        onPopInvokedWithResult: (didPop, value) async {
           if (didPop) {
             return;
           }

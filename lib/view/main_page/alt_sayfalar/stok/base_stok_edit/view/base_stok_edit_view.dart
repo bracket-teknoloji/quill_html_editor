@@ -66,7 +66,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: false,
-        onPopInvoked: (didPop) async {
+        onPopInvokedWithResult: (didPop, value) async {
           if (didPop) {
             return;
           }

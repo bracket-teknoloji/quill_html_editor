@@ -94,8 +94,8 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: false,
-        onPopInvoked: (value) async {
-          if (value) {
+        onPopInvokedWithResult: (didPop, value) async {
+          if (didPop) {
             return;
           }
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));

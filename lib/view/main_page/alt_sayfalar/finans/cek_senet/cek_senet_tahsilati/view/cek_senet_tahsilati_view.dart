@@ -129,8 +129,8 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
 
   PopScope body() => PopScope(
         canPop: false,
-        onPopInvoked: (value) async {
-          if (value) {
+        onPopInvokedWithResult: (didPop, value) async {
+          if (didPop) {
             return;
           }
           await dialogManager.showAreYouSureDialog(

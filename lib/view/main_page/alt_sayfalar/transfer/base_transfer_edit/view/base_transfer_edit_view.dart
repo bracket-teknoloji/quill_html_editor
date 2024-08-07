@@ -198,7 +198,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: widget.model.baseEditEnum == BaseEditEnum.goruntule,
-        onPopInvoked: (didPop) async {
+        onPopInvokedWithResult: (didPop, value) async {
           if (didPop) {
             return;
           }
