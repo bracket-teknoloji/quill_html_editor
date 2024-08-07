@@ -178,7 +178,6 @@ class AppThemeDark extends AppTheme {
             borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
-        buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           systemOverlayStyle: SystemUiOverlayStyle(

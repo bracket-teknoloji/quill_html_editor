@@ -173,7 +173,6 @@ class AppThemeLight extends AppTheme {
             borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
-        buttonBarTheme: const ButtonBarThemeData(alignment: MainAxisAlignment.spaceBetween, mainAxisSize: MainAxisSize.max, buttonHeight: UIHelper.midSize),
         // scaffoldBackgroundColor: colorManager.surfaceVariant.withOpacity(0.3),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,

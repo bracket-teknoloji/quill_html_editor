@@ -193,19 +193,21 @@ class _MainPageViewState extends BaseState<MainPageView> {
       );
 
   SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
-        child: ButtonBar(
-          alignment: MainAxisAlignment.spaceBetween,
+        child: Row(
+          // alignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButton(
-              onPressed: () {
-                scaffoldKey.currentState!.openEndDrawer();
-              },
-              child: Row(
-                children: [
-                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
-                      .marginOnly(right: 5),
-                  Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
-                ],
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  scaffoldKey.currentState!.openEndDrawer();
+                },
+                child: Row(
+                  children: [
+                    (CacheManager.getAnaVeri!.userModel!.admin == "E" ? const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                        .marginOnly(right: 5),
+                    Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                  ],
+                ),
               ),
             ),
             TextButton(
@@ -220,7 +222,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
               ),
             ),
           ],
-        ),
+        ).paddingAll(UIHelper.midSize),
       );
 
   bool get anaSayfaMi => items.any((element) => element.menuTipi != "A");
