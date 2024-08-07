@@ -31,6 +31,8 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @observable
   int grupNo = -1;
 
+  Map<String, dynamic>? gorunecekAlanlar = CacheManager.getProfilParametre.stokGorunecekEkstraAlanlar;
+
   @observable
   String resimleriGoster = CacheManager.getProfilParametre.stokResimleriGoster ? "E" : "H";
 
@@ -107,6 +109,11 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
       arrKod4: null,
       arrKod5: null,
     );
+  }
+
+  void setGorunecekAlanlar(Map<String, dynamic>? value) {
+    gorunecekAlanlar = value;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokGorunecekEkstraAlanlar: value ?? {}));
   }
 
   @computed
@@ -273,7 +280,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
       } else {
         setDahaVarMi(false);
       }
-    } else {
+    } else if (page == 1) {
       setObservableList([]);
     }
   }

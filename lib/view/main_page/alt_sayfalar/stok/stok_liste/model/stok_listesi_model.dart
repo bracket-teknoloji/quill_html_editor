@@ -112,6 +112,22 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? otvKodu;
   List<OtvAralikModel>? otvAralik;
   double? otvDeger;
+  String? kull1s;
+  String? kull2s;
+  String? kull3s;
+  String? kull4s;
+  String? kull5s;
+  String? kull6s;
+  String? kull7s;
+  String? kull8s;
+  double? kull1n;
+  double? kull2n;
+  double? kull3n;
+  double? kull4n;
+  double? kull5n;
+  double? kull6n;
+  double? kull7n;
+  double? kull8n;
 
   static StokListesiModel? _instance;
 

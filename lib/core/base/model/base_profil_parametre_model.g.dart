@@ -50,9 +50,7 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       sayimOtomatikEtiketYazdir:
           json['SAYIM_OTOMATIK_ETIKET_YAZDIR'] as bool? ?? false,
       stokGorunecekEkstraAlanlar:
-          (json['STOK_GORUNECEK_EKSTRA_ALANLAR'] as Map<String, dynamic>?)?.map(
-                (k, e) => MapEntry(k, e as bool),
-              ) ??
+          json['STOK_GORUNECEK_EKSTRA_ALANLAR'] as Map<String, dynamic>? ??
               const {},
     );
 

@@ -1334,7 +1334,23 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..otvAralik = (json['OTV_ARALIK'] as List<dynamic>?)
           ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
           .toList()
-      ..otvDeger = (json['OTV_DEGER'] as num?)?.toDouble();
+      ..otvDeger = (json['OTV_DEGER'] as num?)?.toDouble()
+      ..kull1s = json['KULL1S'] as String?
+      ..kull2s = json['KULL2S'] as String?
+      ..kull3s = json['KULL3S'] as String?
+      ..kull4s = json['KULL4S'] as String?
+      ..kull5s = json['KULL5S'] as String?
+      ..kull6s = json['KULL6S'] as String?
+      ..kull7s = json['KULL7S'] as String?
+      ..kull8s = json['KULL8S'] as String?
+      ..kull1n = (json['KULL1N'] as num?)?.toDouble()
+      ..kull2n = (json['KULL2N'] as num?)?.toDouble()
+      ..kull3n = (json['KULL3N'] as num?)?.toDouble()
+      ..kull4n = (json['KULL4N'] as num?)?.toDouble()
+      ..kull5n = (json['KULL5N'] as num?)?.toDouble()
+      ..kull6n = (json['KULL6N'] as num?)?.toDouble()
+      ..kull7n = (json['KULL7N'] as num?)?.toDouble()
+      ..kull8n = (json['KULL8N'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   final val = <String, dynamic>{};
@@ -1437,6 +1453,22 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull(
       'OTV_ARALIK', instance.otvAralik?.map((e) => e.toJson()).toList());
   writeNotNull('OTV_DEGER', instance.otvDeger);
+  writeNotNull('KULL1S', instance.kull1s);
+  writeNotNull('KULL2S', instance.kull2s);
+  writeNotNull('KULL3S', instance.kull3s);
+  writeNotNull('KULL4S', instance.kull4s);
+  writeNotNull('KULL5S', instance.kull5s);
+  writeNotNull('KULL6S', instance.kull6s);
+  writeNotNull('KULL7S', instance.kull7s);
+  writeNotNull('KULL8S', instance.kull8s);
+  writeNotNull('KULL1N', instance.kull1n);
+  writeNotNull('KULL2N', instance.kull2n);
+  writeNotNull('KULL3N', instance.kull3n);
+  writeNotNull('KULL4N', instance.kull4n);
+  writeNotNull('KULL5N', instance.kull5n);
+  writeNotNull('KULL6N', instance.kull6n);
+  writeNotNull('KULL7N', instance.kull7n);
+  writeNotNull('KULL8N', instance.kull8n);
   return val;
 }
 

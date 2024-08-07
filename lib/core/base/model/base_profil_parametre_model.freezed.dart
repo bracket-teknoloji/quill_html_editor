@@ -50,7 +50,7 @@ mixin _$BaseProfilParametreModel {
   bool get sayimStokSecildigindeHemenKaydet =>
       throw _privateConstructorUsedError;
   bool get sayimOtomatikEtiketYazdir => throw _privateConstructorUsedError;
-  Map<String, bool> get stokGorunecekEkstraAlanlar =>
+  Map<String, dynamic> get stokGorunecekEkstraAlanlar =>
       throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
@@ -91,7 +91,7 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
       bool sayimOtomatikEtiketYazdir,
-      Map<String, bool> stokGorunecekEkstraAlanlar});
+      Map<String, dynamic> stokGorunecekEkstraAlanlar});
 }
 
 /// @nodoc
@@ -221,7 +221,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
       stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
           ? _value.stokGorunecekEkstraAlanlar
           : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
+              as Map<String, dynamic>,
     ) as $Val);
   }
 }
@@ -257,7 +257,7 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
       bool sayimOtomatikEtiketYazdir,
-      Map<String, bool> stokGorunecekEkstraAlanlar});
+      Map<String, dynamic> stokGorunecekEkstraAlanlar});
 }
 
 /// @nodoc
@@ -386,7 +386,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
       stokGorunecekEkstraAlanlar: null == stokGorunecekEkstraAlanlar
           ? _value._stokGorunecekEkstraAlanlar
           : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
-              as Map<String, bool>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -417,7 +417,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.kapaliBelgelerListelenmesinMi = false,
       this.sayimStokSecildigindeHemenKaydet = false,
       this.sayimOtomatikEtiketYazdir = false,
-      final Map<String, bool> stokGorunecekEkstraAlanlar = const {}})
+      final Map<String, dynamic> stokGorunecekEkstraAlanlar = const {}})
       : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
         super._();
 
@@ -490,10 +490,10 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool sayimOtomatikEtiketYazdir;
-  final Map<String, bool> _stokGorunecekEkstraAlanlar;
+  final Map<String, dynamic> _stokGorunecekEkstraAlanlar;
   @override
   @JsonKey()
-  Map<String, bool> get stokGorunecekEkstraAlanlar {
+  Map<String, dynamic> get stokGorunecekEkstraAlanlar {
     if (_stokGorunecekEkstraAlanlar is EqualUnmodifiableMapView)
       return _stokGorunecekEkstraAlanlar;
     // ignore: implicit_dynamic_type
@@ -540,7 +540,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool kapaliBelgelerListelenmesinMi,
       final bool sayimStokSecildigindeHemenKaydet,
       final bool sayimOtomatikEtiketYazdir,
-      final Map<String, bool>
+      final Map<String, dynamic>
           stokGorunecekEkstraAlanlar}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
@@ -595,7 +595,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   @override
   bool get sayimOtomatikEtiketYazdir;
   @override
-  Map<String, bool> get stokGorunecekEkstraAlanlar;
+  Map<String, dynamic> get stokGorunecekEkstraAlanlar;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.

@@ -281,7 +281,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<dynamic> showCheckBoxBottomSheetDialog(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false, required List? groupValues}) async {
+  Future<dynamic> showCheckBoxBottomSheetDialog<T>(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false, required List<T>? groupValues}) async {
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
@@ -1082,6 +1082,36 @@ class BottomSheetDialogManager {
             )
             .toList(),
       );
+    }
+    return null;
+  }
+
+  Future<Map<String, dynamic>?> showStokGorunecekAlanlarCheckBoxBottomSheetDialog(BuildContext context, List<String>? checkedValues) async {
+    final Map<String, dynamic>? stokGorunecekAlanlar = _paramModel?.mapStokKullSahalar?.toJson();
+    stokGorunecekAlanlar?.removeWhere((key, value) => value == null);
+
+    if (stokGorunecekAlanlar != null) {
+      final result = await showCheckBoxBottomSheetDialog(
+        context,
+        title: "Stok Görüncek Alanlar",
+        groupValues: checkedValues,
+        children: stokGorunecekAlanlar.entries
+            .map(
+              (e) => BottomSheetModel(
+                title: e.value,
+                value: e.key,
+                groupValue: e.key,
+              ),
+            )
+            .toList(),
+      );
+      if (result is List) {
+        final Map<String, dynamic> resultMap = {};
+        for (var element in result) {
+          resultMap[element] = stokGorunecekAlanlar[element];
+        }
+        return resultMap;
+      }
     }
     return null;
   }

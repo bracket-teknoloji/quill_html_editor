@@ -183,6 +183,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                               title: const Text("Detaylı Arama"),
                               leading: const Icon(Icons.search_outlined, color: UIHelper.primaryColor),
                               onTap: () async {
+                                Get.back();
                                 final List<StokDetayliAramaAlanlar> list = [];
                                 final List<StokDetayliAramaAlanlar> aramaList = [
                                   StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
@@ -207,6 +208,29 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 }
                               },
                             ),
+                            Column(
+                              children: [
+                                const Divider(
+                                  endIndent: 10,
+                                  indent: 10,
+                                ).paddingSymmetric(vertical: UIHelper.lowSize),
+                                ListTile(
+                                  title: const Text("Görünecek Ekstra Alanlar"),
+                                  leading: const Icon(Icons.list_alt_outlined, color: UIHelper.primaryColor),
+                                  onTap: () async {
+                                    final result = await bottomSheetDialogManager.showStokGorunecekAlanlarCheckBoxBottomSheetDialog(
+                                      context,
+                                      viewModel.gorunecekAlanlar?.entries.map((e) => e.key).whereType<String>().toList(),
+                                    );
+                                    if (result != null) {
+                                      Get.back();
+                                      viewModel.setGorunecekAlanlar(result);
+                                      await viewModel.resetList();
+                                    }
+                                  },
+                                ),
+                              ],
+                            ).isDebug(),
                           ].whereType<Widget>().toList(),
                         ),
                       );
@@ -630,138 +654,168 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 onRefresh: viewModel.resetList,
                 dahaVarMi: viewModel.dahaVarMi,
                 items: viewModel.observableList,
-                itemBuilder: (item) => Card(
-                  child: Listener(
-                    onPointerDown: (event) {
-                      if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-                        dialogManager.showStokGridViewDialog(item);
-                      }
-                    },
-                    child: ListTile(
-                      onLongPress: () {
-                        dialogManager.showStokGridViewDialog(item);
-                      },
-                      // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
-                      leading: CircleAvatar(
-                        backgroundColor: theme.scaffoldBackgroundColor,
-                        child: item.resimUrlKucuk != null && viewModel.resimleriGoster == "E"
-                            ? SizedBox(
-                                height: UIHelper.highSize * 3,
-                                width: UIHelper.highSize * 3,
-                                child: InkWell(
-                                  borderRadius: UIHelper.lowBorderRadius,
-                                  onTap: () {
-                                    if (item.resimUrl != null) {
-                                      Get.to(() => ImageView(path: item.resimUrl ?? "", title: item.stokKodu ?? ""));
-                                    }
-                                  },
-                                  child: ImageWidget(path: item.resimUrlKucuk),
-                                ),
-                              )
-                            : Text((item.stokAdi ?? "  ").substring(0, 1)),
-                      ),
-                      trailing: Text(
-                        "${(item.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}",
-                        style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(item.bakiye ?? 0)),
-                      ),
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text.rich(
-                            TextSpan(
-                              text: item.stokAdi,
-                              children: [
-                                TextSpan(text: "\n${item.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray)),
-                              ],
-                            ),
-                          ),
-                          Wrap(
-                            spacing: UIHelper.lowSize,
-                            children: [
-                              const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
-                              const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
-                              const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
-                            ].whereType<ColorfulBadge>().toList(),
-                          ),
-                        ],
-                      ),
-                      onTap: (widget.isGetData ?? false)
-                          ? () => Get.back(result: item)
-                          : () async {
-                              final children2 = [
-                                BottomSheetModel(
-                                  title: loc.generalStrings.view,
-                                  iconWidget: Icons.preview_outlined,
-                                  onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: item)),
-                                ).yetkiKontrol(yetkiController.stokKarti),
-                                BottomSheetModel(
-                                  title: loc.generalStrings.edit,
-                                  iconWidget: Icons.edit,
-                                  onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item)),
-                                ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
-                                BottomSheetModel(
-                                  title: "Hareketler",
-                                  iconWidget: Icons.sync_alt_outlined,
-                                  onTap: () {
-                                    Get.back();
-                                    return Get.toNamed("/mainPage/stokHareketleri", arguments: item);
-                                  },
-                                ).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
-                                BottomSheetModel(
-                                  title: "Raporlar",
-                                  iconWidget: Icons.area_chart_outlined,
-                                  onTap: () async {
-                                    Get.back();
-                                    dialogManager.showStokGridViewDialog(item, IslemTipiEnum.stokRapor);
-                                  },
-                                ),
-                                BottomSheetModel(
-                                  title: "Depo Bakiye Durumu",
-                                  iconWidget: Icons.list_alt,
-                                  onTap: () async {
-                                    Get.back();
-                                    await Get.toNamed("/mainPage/depoBakiyeDurumu", arguments: item);
-                                  },
-                                ).yetkiKontrol(yetkiController.stokDepoBakiyeDurumu),
-                                BottomSheetModel(
-                                  title: loc.generalStrings.print,
-                                  iconWidget: Icons.print,
-                                  onTap: () async {
-                                    Get.back();
-                                    final result = await Get.toNamed("mainPage/stokYazdir", arguments: item);
-                                    if (result == true) {
-                                      viewModel.resetList();
-                                    }
-                                  },
-                                ).yetkiKontrol(yetkiController.yazdirmaStokEtiketi),
-                                BottomSheetModel(
-                                  title: loc.generalStrings.actions,
-                                  iconWidget: Icons.list_alt,
-                                  onTap: () {
-                                    Get.back();
-                                    dialogManager.showStokGridViewDialog(item);
-                                  },
-                                ),
-                              ];
-                              children2.insert(
-                                2,
-                                BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme),
-                              );
-                              final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
-                              final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
-                              if (result != null) {
-                                await Get.toNamed("/mainPage/stokEdit", arguments: result);
-                                viewModel.resetList();
-                              }
-                            },
-                    ),
-                  ),
-                ),
+                itemBuilder: stokListesiCard,
               ),
             ),
           ),
         ],
+      );
+
+  Card stokListesiCard(StokListesiModel item) => Card(
+        child: Listener(
+          onPointerDown: (event) {
+            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
+              dialogManager.showStokGridViewDialog(item);
+            }
+          },
+          child: ListTile(
+            onLongPress: () {
+              dialogManager.showStokGridViewDialog(item);
+            },
+            // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
+            leading: CircleAvatar(
+              backgroundColor: theme.scaffoldBackgroundColor,
+              child: item.resimUrlKucuk != null && viewModel.resimleriGoster == "E"
+                  ? SizedBox(
+                      height: UIHelper.highSize * 3,
+                      width: UIHelper.highSize * 3,
+                      child: InkWell(
+                        borderRadius: UIHelper.lowBorderRadius,
+                        onTap: () {
+                          if (item.resimUrl != null) {
+                            Get.to(() => ImageView(path: item.resimUrl ?? "", title: item.stokKodu ?? ""));
+                          }
+                        },
+                        child: ImageWidget(path: item.resimUrlKucuk),
+                      ),
+                    )
+                  : Text((item.stokAdi ?? "  ").substring(0, 1)),
+            ),
+            trailing: Text(
+              "${(item.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}",
+              style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(item.bakiye ?? 0)),
+            ),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text.rich(
+                  TextSpan(
+                    text: item.stokAdi,
+                    children: [
+                      TextSpan(text: "\n${item.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray)),
+                    ],
+                  ),
+                ),
+                Wrap(
+                  spacing: UIHelper.lowSize,
+                  children: [
+                    const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
+                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
+                    const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
+                  ].whereType<ColorfulBadge>().toList(),
+                ),
+              ],
+            ),
+            subtitle: CustomLayoutBuilder.divideInHalf(
+              children: [
+                Text("${viewModel.gorunecekAlanlar?["1S"]}: ${item.kull1s}").yetkiVarMi(item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["2S"]}: ${item.kull2s}").yetkiVarMi(item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["3S"]}: ${item.kull3s}").yetkiVarMi(item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["4S"]}: ${item.kull4s}").yetkiVarMi(item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["5S"]}: ${item.kull5s}").yetkiVarMi(item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["6S"]}: ${item.kull6s}").yetkiVarMi(item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["7S"]}: ${item.kull7s}").yetkiVarMi(item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["8S"]}: ${item.kull8s}").yetkiVarMi(item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null),
+                Text("${viewModel.gorunecekAlanlar?["1N"]}: ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["2N"]}: ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["3N"]}: ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["4N"]}: ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["5N"]}: ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["6N"]}: ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["7N"]}: ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null),
+                Text("${viewModel.gorunecekAlanlar?["8N"]}: ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}")
+                    .yetkiVarMi(item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null),
+              ],
+            ),
+            onTap: (widget.isGetData ?? false)
+                ? () => Get.back(result: item)
+                : () async {
+                    final children2 = [
+                      BottomSheetModel(
+                        title: loc.generalStrings.view,
+                        iconWidget: Icons.preview_outlined,
+                        onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: item)),
+                      ).yetkiKontrol(yetkiController.stokKarti),
+                      BottomSheetModel(
+                        title: loc.generalStrings.edit,
+                        iconWidget: Icons.edit,
+                        onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item)),
+                      ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
+                      BottomSheetModel(
+                        title: "Hareketler",
+                        iconWidget: Icons.sync_alt_outlined,
+                        onTap: () {
+                          Get.back();
+                          return Get.toNamed("/mainPage/stokHareketleri", arguments: item);
+                        },
+                      ).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
+                      BottomSheetModel(
+                        title: "Raporlar",
+                        iconWidget: Icons.area_chart_outlined,
+                        onTap: () async {
+                          Get.back();
+                          dialogManager.showStokGridViewDialog(item, IslemTipiEnum.stokRapor);
+                        },
+                      ),
+                      BottomSheetModel(
+                        title: "Depo Bakiye Durumu",
+                        iconWidget: Icons.list_alt,
+                        onTap: () async {
+                          Get.back();
+                          await Get.toNamed("/mainPage/depoBakiyeDurumu", arguments: item);
+                        },
+                      ).yetkiKontrol(yetkiController.stokDepoBakiyeDurumu),
+                      BottomSheetModel(
+                        title: loc.generalStrings.print,
+                        iconWidget: Icons.print,
+                        onTap: () async {
+                          Get.back();
+                          final result = await Get.toNamed("mainPage/stokYazdir", arguments: item);
+                          if (result == true) {
+                            viewModel.resetList();
+                          }
+                        },
+                      ).yetkiKontrol(yetkiController.yazdirmaStokEtiketi),
+                      BottomSheetModel(
+                        title: loc.generalStrings.actions,
+                        iconWidget: Icons.list_alt,
+                        onTap: () {
+                          Get.back();
+                          dialogManager.showStokGridViewDialog(item);
+                        },
+                      ),
+                    ];
+                    children2.insert(
+                      2,
+                      BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme),
+                    );
+                    final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
+                    final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
+                    if (result != null) {
+                      await Get.toNamed("/mainPage/stokEdit", arguments: result);
+                      viewModel.resetList();
+                    }
+                  },
+          ),
+        ),
       );
 
   Observer grupKoduFilter() => Observer(
