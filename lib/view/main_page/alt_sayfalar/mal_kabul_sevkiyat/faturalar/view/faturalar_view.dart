@@ -458,7 +458,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
@@ -471,8 +471,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod0(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod0Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
@@ -487,7 +487,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
@@ -500,8 +500,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod1(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod1Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
@@ -520,7 +520,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
@@ -533,8 +533,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod2(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod2Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
@@ -549,7 +549,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
@@ -562,8 +562,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod3(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod3Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
@@ -582,7 +582,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
@@ -595,8 +595,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod4(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod4Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
@@ -611,7 +611,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
@@ -624,8 +624,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
-                                final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
+                              if (result != null) {
+                                final List<BaseGrupKoduModel?> list = result;
                                 viewModel.changeArrKod5(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
                                 _kod5Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();

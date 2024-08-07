@@ -231,6 +231,26 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 ),
                               ],
                             ).isDebug(),
+                            Column(
+                              children: [
+                                const Divider(
+                                  endIndent: 10,
+                                  indent: 10,
+                                ).paddingSymmetric(vertical: UIHelper.lowSize),
+                                ListTile(
+                                  title: const Text("Deneme"),
+                                  leading: const Icon(Icons.list_alt_outlined, color: UIHelper.primaryColor),
+                                  onTap: () async {
+                                    bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                      context,
+                                      title: "Deneme221342134123",
+                                      groupValues: [],
+                                      children: List.generate(3, (index) => BottomSheetModel(title: index.toString())),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ).isKDebug(),
                           ].whereType<Widget>().toList(),
                         ),
                       );
@@ -343,7 +363,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 controller: grupKoduController,
                                 onClear: () => viewModel.changeArrGrupKoduTemp(null),
                                 onTap: () async {
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Grup Kodu",
                                     groupValues: viewModel.bottomSheetModelTemp.arrGrupKodu?.map((e) => e.grupKodu).toList(),
@@ -357,7 +377,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrGrupKoduTemp(result.whereType<BaseGrupKoduModel>().toList());
                                     grupKoduController.text = result.map((e) => e.grupAdi).join(", ");
                                   }
@@ -374,7 +394,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 onClear: () => viewModel.changeArrKod1Temp(null),
                                 onTap: () async {
                                   final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Kod 1",
                                     groupValues: viewModel.bottomSheetModelTemp.arrKod1?.map((e) => e.grupKodu).toList(),
@@ -388,7 +408,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrKod1Temp(result.whereType<BaseGrupKoduModel>().toList());
                                     kod1Controller.text = result.map((e) => e.grupAdi).join(", ");
                                   }
@@ -410,7 +430,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 onClear: () => viewModel.changeArrKod2Temp(null),
                                 onTap: () async {
                                   final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Kod 2",
                                     groupValues: viewModel.bottomSheetModelTemp.arrKod2?.map((e) => e.grupKodu).toList(),
@@ -424,7 +444,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
                                     kod2Controller.text = result.map((e) => e.grupAdi).join(", ");
                                   }
@@ -440,7 +460,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 onClear: () => viewModel.changeArrKod3Temp(null),
                                 onTap: () async {
                                   final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Kod 3",
                                     groupValues: viewModel.bottomSheetModelTemp.arrKod3?.map((e) => e.grupKodu).toList(),
@@ -454,7 +474,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrKod3Temp(result.whereType<BaseGrupKoduModel>().toList());
                                     kod3Controller.text = result.map((e) => e.grupAdi).join(", ");
                                   }
@@ -476,7 +496,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 onClear: () => viewModel.changeArrKod4Temp(null),
                                 onTap: () async {
                                   final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Kod 4",
                                     groupValues: viewModel.bottomSheetModelTemp.arrKod4?.map((e) => e.grupKodu).toList(),
@@ -484,18 +504,13 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         .map(
                                           (e) => BottomSheetModel(
                                             title: e.grupAdi ?? "",
-                                            onTap: () {
-                                              if (viewModel.bottomSheetModelTemp.arrKod4?.contains(e) ?? false) {
-                                                viewModel.bottomSheetModelTemp.arrKod4?.remove(e);
-                                              } else {
-                                                viewModel.bottomSheetModelTemp.arrKod4?.add(e);
-                                              }
-                                            },
+                                            value: e,
+                                            groupValue: e.grupKodu,
                                           ),
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrKod4Temp(result.whereType<BaseGrupKoduModel>().toList());
                                     kod4Controller.text = result.map((e) => e.grupAdi).join(", ");
                                   }
@@ -511,7 +526,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 onClear: () => viewModel.changeArrKod5Temp(null),
                                 onTap: () async {
                                   final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                     context,
                                     title: "Kod 5",
                                     groupValues: viewModel.bottomSheetModelTemp.arrKod5?.map((e) => e.grupKodu).toList(),
@@ -519,19 +534,13 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                         .map(
                                           (e) => BottomSheetModel(
                                             title: e.grupAdi ?? "",
+                                            value: e,
                                             groupValue: e.grupKodu,
-                                            onTap: () {
-                                              if (viewModel.bottomSheetModelTemp.arrKod5?.contains(e) ?? false) {
-                                                viewModel.bottomSheetModelTemp.arrKod5?.remove(e);
-                                              } else {
-                                                viewModel.bottomSheetModelTemp.arrKod5?.add(e);
-                                              }
-                                            },
                                           ),
                                         )
                                         .toList(),
                                   );
-                                  if (result != null && result is List) {
+                                  if (result != null) {
                                     viewModel.changeArrKod5Temp(result.whereType<BaseGrupKoduModel>().toList());
                                     kod5Controller.text = result.map((e) => e.grupAdi).join(", ");
                                   }

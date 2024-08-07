@@ -522,7 +522,7 @@ class IslemlerMenuItemConstants<T> {
         iconData: Icons.share_outlined,
         onTap: () async {
           final CariListesiModel newModel = model as CariListesiModel;
-          final result = await _bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+          final result = await _bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
             context,
             title: "Paylaş",
             groupValues: List.generate(7, (index) => true),
@@ -537,7 +537,7 @@ class IslemlerMenuItemConstants<T> {
               BottomSheetModel(title: "Mail", value: newModel.email, groupValue: true).yetkiKontrol(newModel.email != null),
             ].nullCheckWithGeneric,
           );
-          if ((result as List?).ext.isNotNullOrEmpty) {
+          if (result.ext.isNotNullOrEmpty) {
             Clipboard.setData(ClipboardData(text: result!.join("\n")));
             Share.share(result.join("\n"));
           }

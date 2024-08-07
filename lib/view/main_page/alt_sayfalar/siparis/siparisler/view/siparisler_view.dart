@@ -678,15 +678,14 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
-    final List<BottomSheetModel> bottomSheetList = viewModel.grupKodList
+    final List<BottomSheetModel<String>> bottomSheetList = viewModel.grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
         .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", groupValue: e.grupKodu))
-        .toList()
-        .cast<BottomSheetModel>();
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e.grupKodu, groupValue: e.grupKodu))
+        .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
       context,
       title: "Grup Kodu $grupNo",
       groupValues: grupKodList(grupNo),
@@ -696,17 +695,17 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
       controller?.text = result.join(", ");
       switch (grupNo) {
         case 0:
-          viewModel.setArrGrupKodu(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrGrupKodu(result);
         case 1:
-          viewModel.setArrKod1(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrKod1(result);
         case 2:
-          viewModel.setArrKod2(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrKod2(result);
         case 3:
-          viewModel.setArrKod3(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrKod3(result);
         case 4:
-          viewModel.setArrKod4(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrKod4(result);
         case 5:
-          viewModel.setArrKod5(result.map((e) => e.toString()).toList().cast<String>() ?? "");
+          viewModel.setArrKod5(result);
       }
     }
     return null;

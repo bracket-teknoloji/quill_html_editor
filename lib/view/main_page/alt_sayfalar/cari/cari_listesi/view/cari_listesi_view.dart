@@ -582,7 +582,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                         await viewModel.getFilterData();
                       }
                       // ignore: use_build_context_synchronously
-                      final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                      final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<CariSehirlerModel>(
                         context,
                         title: "Şehirler",
                         groupValues: viewModel.cariRequestModelTemp.arrSehir,
@@ -595,7 +595,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                           ),
                         ),
                       );
-                      if (result is List) {
+                      if (result != null) {
                         final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
                         viewModel.changeArrSehirTemp(list.map((e) => e?.sehirAdi).toList().nullCheckWithGeneric);
                         sehirController.text = list.map((e) => e?.sehirAdi).join(", ");
@@ -668,7 +668,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrGrupKodu,
@@ -681,7 +681,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod0Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
@@ -696,7 +696,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrKod1,
@@ -709,7 +709,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod1Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
@@ -728,7 +728,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrKod2,
@@ -741,7 +741,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod2Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
@@ -756,7 +756,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrKod3,
@@ -769,7 +769,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod3Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
@@ -788,7 +788,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrKod4,
@@ -801,7 +801,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod4Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
@@ -816,7 +816,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                             readOnly: true,
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
                                 title: "Kod Seçiniz",
                                 groupValues: viewModel.cariRequestModelTemp.arrKod5,
@@ -829,7 +829,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                   ),
                                 ),
                               );
-                              if (result is List) {
+                              if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
                                 viewModel.changeArrKod5Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
                                 kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");

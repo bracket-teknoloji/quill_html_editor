@@ -46,6 +46,6 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-  List<BottomSheetModel>? bottomSheetChildren(int value) =>
-      grupKoduList?.where((element) => element.grupNo == value).map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu, value: e, groupValue: e.grupKodu)).toList();
+  List<BottomSheetModel<BaseGrupKoduModel>>? bottomSheetChildren<T>(int value) =>
+      grupKoduList?.where((element) => element.grupNo == value).map((e) => BottomSheetModel<BaseGrupKoduModel>(title: e.grupAdi ?? "", description: e.grupKodu, value: e, groupValue: e.grupKodu)).toList();
 }

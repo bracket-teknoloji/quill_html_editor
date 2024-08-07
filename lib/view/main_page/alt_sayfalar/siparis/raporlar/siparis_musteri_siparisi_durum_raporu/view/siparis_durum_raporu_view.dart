@@ -326,7 +326,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   suffixMore: true,
                   controller: gorunecekAlanlarController,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                       context,
                       title: "Görünecek Alanlar",
                       groupValues: viewModel.gorunecekAlanlarMap.values.toList(),
@@ -335,8 +335,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                         (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index]),
                       ),
                     );
-                    if (result != null && result is List) {
-                      gorunecekAlanlarController.text = result.map((e) => e.toString()).join(", ");
+                    if (result != null) {
+                      gorunecekAlanlarController.text = result.join(", ");
                       for (var item in result) {
                         if (viewModel.gorunecekAlanlarMap.containsKey(item)) {
                           //other values false

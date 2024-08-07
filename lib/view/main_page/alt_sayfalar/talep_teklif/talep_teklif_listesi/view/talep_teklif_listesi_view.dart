@@ -589,7 +589,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   }
 
   Future<void> grupKodlariBottomSheet(int index, dynamic groupValues, List<BaseGrupKoduModel>? list) async {
-    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu Seçiniz",
       groupValues: ((jsonDecode(groupValues ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
@@ -603,7 +603,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
       ),
     );
     if (result != null) {
-      result = result.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+      result = result.toList().cast<BaseGrupKoduModel>();
       switch (index) {
         case 0:
           viewModel.setArrKod0(result.map((e) => e.grupKodu ?? "").toList().cast<String>());

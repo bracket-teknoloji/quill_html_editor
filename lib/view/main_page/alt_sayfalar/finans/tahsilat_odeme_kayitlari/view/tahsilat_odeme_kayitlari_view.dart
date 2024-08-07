@@ -250,7 +250,7 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
             suffixMore: true,
             readOnly: true,
             onTap: () async {
-              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, String>>(
                 context,
                 title: "Hareket Türü",
                 groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrHareketTuru ?? "[]"),
@@ -263,9 +263,9 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
                   ),
                 ),
               );
-              if (result is List) {
-                hareketTuruController.text = result.map((e) => e!.key).toList().nullCheckWithGeneric.join(", ");
-                viewModel.setHareketTuru(result.map((e) => e!.value as String).toList().nullCheckWithGeneric);
+              if (result != null) {
+                hareketTuruController.text = result.map((e) => e.key).toList().nullCheckWithGeneric.join(", ");
+                viewModel.setHareketTuru(result.map((e) => e.value).toList().nullCheckWithGeneric);
               }
             },
           ),

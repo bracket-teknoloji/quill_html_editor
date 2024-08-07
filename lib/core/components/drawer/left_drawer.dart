@@ -105,7 +105,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                   onPressed: () {
                                     setState(() {
                                       list.removeAt(index);
-                                      CacheManager.setFavorilerList(list.map((e) => e).toList());
+                                      CacheManager.setFavorilerList(list);
                                     });
                                   },
                                   icon: const Icon(Icons.delete_outline).paddingOnly(left: UIHelper.lowSize),

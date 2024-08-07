@@ -351,7 +351,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           suffixMore: true,
                           controller: kod1Controller,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Kod 1 Seçiniz",
                               groupValues: viewModel.cariListesiRequestModel?.arrKod1,
@@ -364,8 +364,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               ),
                             );
-                            if (result is List && result.ext.isNotNullOrEmpty) {
-                              viewModel.changeKod1(result.whereType<String>().toList());
+                            if (result != null) {
+                              viewModel.changeKod1(result.toList());
                               kod1Controller.text = result.join(", ");
                             } else {
                               viewModel.changeKod1(null);
@@ -385,7 +385,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           suffixMore: true,
                           controller: kod2Controller,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Kod 2 Seçiniz",
                               groupValues: viewModel.cariListesiRequestModel?.arrKod2,
@@ -398,7 +398,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               ),
                             );
-                            if (result is List && result.ext.isNotNullOrEmpty) {
+                            if (result != null) {
                               viewModel.changeKod2(result.whereType<String>().toList());
                               kod2Controller.text = result.join(", ");
                             } else {
@@ -415,7 +415,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           suffixMore: true,
                           controller: kod3Controller,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Kod 3 Seçiniz",
                               groupValues: viewModel.cariListesiRequestModel?.arrKod3,
@@ -428,7 +428,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               ),
                             );
-                            if (result is List && result.ext.isNotNullOrEmpty) {
+                            if (result != null) {
                               viewModel.changeKod3(result.whereType<String>().toList());
                               kod3Controller.text = result.join(", ");
                             } else {
@@ -449,7 +449,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           suffixMore: true,
                           controller: kod4Controller,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Kod 4 Seçiniz",
                               groupValues: viewModel.cariListesiRequestModel?.arrKod4,
@@ -462,7 +462,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               ),
                             );
-                            if (result is List && result.ext.isNotNullOrEmpty) {
+                            if (result != null) {
                               viewModel.changeKod4(result.whereType<String>().toList());
                               kod4Controller.text = result.join(", ");
                             } else {
@@ -479,7 +479,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           suffixMore: true,
                           controller: kod5Controller,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Kod 5 Seçiniz",
                               groupValues: viewModel.cariListesiRequestModel?.arrKod5,
@@ -492,7 +492,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               ),
                             );
-                            if (result is List && result.ext.isNotNullOrEmpty) {
+                            if (result != null) {
                               viewModel.changeKod5(result.whereType<String>().toList());
                               kod5Controller.text = result.join(", ");
                             } else {

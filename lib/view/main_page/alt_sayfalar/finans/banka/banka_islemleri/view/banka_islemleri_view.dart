@@ -235,7 +235,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
             suffixMore: true,
             onClear: () => viewModel.setHesapTipi(null),
             onTap: () async {
-              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<int>(
                 context,
                 title: "Hesap Tipi Seçiniz",
                 groupValues: jsonDecode(viewModel.bankaIslemleriRequestModel.hesapTipi ?? "[]"),
@@ -248,10 +248,10 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
                   ),
                 ),
               );
-              if (result is List) {
-                if (result.isNotEmpty && result.every((element) => element is int)) {
+              if (result != null) {
+                if (result.isNotEmpty) {
                   hesapTipiController.text = viewModel.hesapTipiList.whereIndexed((index, element) => result.contains(index)).join(", ");
-                  viewModel.setHesapTipi(result.map((e) => e as int).toList().cast<int>());
+                  viewModel.setHesapTipi(result.toList().cast<int>());
                 } else {
                   hesapTipiController.clear();
                   viewModel.setHesapTipi(null);

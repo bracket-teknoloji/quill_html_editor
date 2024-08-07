@@ -48,7 +48,7 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
             readOnly: true,
             suffixMore: true,
             onTap: () async {
-              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, String>>(
                 context,
                 title: "Görünecek Alanlar",
                 groupValues: viewModel.pdfModel.dicParams?.gorunecekAlanlar?.split(";") ?? [],
@@ -62,8 +62,8 @@ class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
                 ),
               );
 
-              if (result is List) {
-                final List<MapEntry<String, String>> items = result.cast<MapEntry<String, String>>();
+              if (result != null) {
+                final List<MapEntry<String, String>> items = result;
                 viewModel.changeGorunecekAlanlar(items.map((e) => e.value).join(";"));
                 gorunecekAlanlarController.text = items.map((e) => e.key).join(", ");
               }

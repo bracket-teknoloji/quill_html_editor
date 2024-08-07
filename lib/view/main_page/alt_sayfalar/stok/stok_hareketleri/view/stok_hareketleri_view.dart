@@ -152,11 +152,11 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           controllerText: viewModel.arrHareketTuru?.join(", "),
                           onTap: () async {
                             bottomSheetDialogManager.clearSelectedData();
-                            final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                            final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
                               context,
                               title: "Hareket Türü",
                               groupValues: viewModel.arrHareketTuru,
-                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key, groupValue: e.key)).toList(),
+                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key, value: e.key, groupValue: e.key)).toList(),
                             );
                             if (result != null) {
                               _hareketTuruController.text = result.join(", ");
