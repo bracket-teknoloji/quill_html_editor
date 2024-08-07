@@ -172,6 +172,83 @@ class BottomSheetDialogManager {
     );
   }
 
+  Future<List<T>?> showCheckBoxBottomSheetDialog<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, bool onlyValue = false, required List? groupValues}) async {
+    List<T>? list;
+
+    if (viewModel.isSelectedListMap?[title] == null) {
+      viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
+    } else {
+      if (children!.length != viewModel.isSelectedListMap?[title]!.length) {
+        viewModel.changeIsSelectedListMap(title, List.generate(children.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
+      }
+    }
+    return showModalBottomSheet<List<T>?>(
+      useRootNavigator: true,
+      isScrollControlled: true,
+      barrierColor: Colors.black.withOpacity(0.6),
+      useSafeArea: true,
+      constraints: BoxConstraints.loose(
+        Size(
+          MediaQuery.sizeOf(context).width,
+          MediaQuery.sizeOf(context).height * 0.8,
+        ),
+      ),
+      context: context,
+      builder: (context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            contentPadding: UIHelper.lowPadding,
+            title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+            trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+            splashColor: Colors.transparent,
+          ),
+          const Divider(
+            thickness: 2,
+            endIndent: 0,
+            indent: 0,
+          ).paddingSymmetric(vertical: UIHelper.midSize),
+          Flexible(
+            child: ListView.separated(
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => const Padding(
+                padding: UIHelper.lowPaddingVertical,
+                child: Divider(),
+              ),
+              itemCount: children.length,
+              itemBuilder: (context, index) => Observer(
+                builder: (_) => CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: viewModel.isSelectedListMap?[title]?[index] ?? false,
+                  title: Text(children[index].title),
+                  onChanged: (bool? value) {
+                    viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                    // viewModel.isSelectedListMap![title]![index] = value!;
+                    list = selectedChecker(children, title, onlyValue);
+                    if (children[index].onTap != null) {
+                      children[index].onTap!();
+                    }
+                    if (!value) {
+                      list!.remove(children[index].title);
+                    }
+                  },
+                ),
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              list = selectedChecker(children, title, onlyValue);
+              Get.back(result: list);
+            },
+            child: const Text("Seç"),
+          ).paddingAll(UIHelper.lowSize),
+        ],
+      ).paddingAll(UIHelper.midSize),
+    );
+  }
+
   Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
     viewModel.setUnFilteredList(children);
@@ -281,7 +358,7 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<dynamic> showCheckBoxBottomSheetDialog<T>(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false, required List<T>? groupValues}) async {
+  Future<dynamic> showCheckBsdfsdfoxBottomSheetDialog<T>(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false, required List<T>? groupValues}) async {
     List<dynamic>? list;
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
@@ -375,8 +452,8 @@ class BottomSheetDialogManager {
     );
   }
 
-  List<dynamic> selectedChecker(List<BottomSheetModel>? children, String title, bool onlyValue) {
-    final List list = [];
+  List<T> selectedChecker<T>(List<BottomSheetModel>? children, String title, bool onlyValue) {
+    final List<T> list = [];
     for (int i = 0; i < viewModel.isSelectedListMap![title]!.length; i++) {
       if (viewModel.isSelectedListMap![title]![i]) {
         list.add(children![i].value ?? (onlyValue ? null : children[i].title));
@@ -472,7 +549,7 @@ class BottomSheetDialogManager {
   /// `GroupValues must be a list of String`
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
     final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
-    final result = await showCheckBoxBottomSheetDialog(
+    final result = await showCheckBoxBottomSheetDialog<PlasiyerList>(
       context,
       title: "Plasiyer Seçiniz",
       groupValues: groupValues,
@@ -486,8 +563,7 @@ class BottomSheetDialogManager {
           )
           .toList(),
     );
-    if (result != null) {}
-    return result?.cast<PlasiyerList>();
+    return result;
     // return null;
   }
 
@@ -502,7 +578,7 @@ class BottomSheetDialogManager {
       viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
     }
     viewModel.filteredGrupKoduListFilter(grupKodu);
-    final result = await showCheckBoxBottomSheetDialog(
+    final result = await showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu($grupKodu) Seçiniz",
       groupValues: groupValues,
@@ -516,10 +592,7 @@ class BottomSheetDialogManager {
           )
           .toList(),
     );
-    if (result != null) {
-      return result.cast<BaseGrupKoduModel>();
-    }
-    return null;
+    return result;
   }
 
   Future<BaseGrupKoduModel?> showGrupKoduBottomSheetDialog(BuildContext context, dynamic groupValue, {required GrupKoduEnum modul, required int grupKodu, bool? kullanimda}) async {
@@ -1091,7 +1164,7 @@ class BottomSheetDialogManager {
     stokGorunecekAlanlar?.removeWhere((key, value) => value == null);
 
     if (stokGorunecekAlanlar != null) {
-      final result = await showCheckBoxBottomSheetDialog(
+      final result = await showCheckBoxBottomSheetDialog<String>(
         context,
         title: "Stok Görüncek Alanlar",
         groupValues: checkedValues,
@@ -1105,7 +1178,7 @@ class BottomSheetDialogManager {
             )
             .toList(),
       );
-      if (result is List) {
+      if (result != null) {
         final Map<String, dynamic> resultMap = {};
         for (var element in result) {
           resultMap[element] = stokGorunecekAlanlar[element];
