@@ -199,7 +199,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                             ),
                           ),
                         );
-                        if (result is MapEntry) {
+                        if (result != null) {
                           cariTipiController.text = result.key;
                           viewModel.changeCariTipi(result.value);
                         }

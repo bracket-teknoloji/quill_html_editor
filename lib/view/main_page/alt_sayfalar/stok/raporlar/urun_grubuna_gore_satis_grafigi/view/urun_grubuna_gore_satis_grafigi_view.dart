@@ -140,8 +140,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                               .map(
                                 (e) => BottomSheetModel(
                                   title: e.plasiyerAciklama ?? "",
-                                  value: e.plasiyerKodu ?? "",
-                                  onTap: () => Get.back(result: e),
+                                  value: e,
                                 ),
                               )
                               .toList(),
@@ -186,8 +185,7 @@ class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaGoreSat
                               ?.map(
                                 (e) => BottomSheetModel(
                                   title: e.projeAciklama ?? "",
-                                  value: e.projeKodu ?? "",
-                                  onTap: () => Get.back(result: e),
+                                  value: e,
                                 ),
                               )
                               .toList(),

@@ -447,7 +447,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
                         ),
                       );
-                      if (result is MapEntry) {
+                      if (result != null) {
                         viewModel.setSenaryo(result.value);
                         eFaturaSenaryoController.text = result.key;
                       }

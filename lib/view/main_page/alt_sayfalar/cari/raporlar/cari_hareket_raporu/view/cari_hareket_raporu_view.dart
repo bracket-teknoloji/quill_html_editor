@@ -120,7 +120,7 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
                       final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Plasiyer",
-                        children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e.plasiyerKodu ?? "", onTap: () => Get.back(result: e))).toList(),
+                        children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
                       );
                       if (result != null) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -185,13 +185,10 @@ class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
-        .toList()
-        .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-        .toList()
-        .cast<BottomSheetModel>();
+        .map((e) => BottomSheetModel(title: e.grupKodu ?? "",  value: e))
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {

@@ -395,7 +395,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     );
     if (result != null) {
       viewModel.setAppBarSubTitle(result);
-      viewModel.setKktYontemi((result as String).substring(0, 1));
+      viewModel.setKktYontemi(result.substring(0, 1));
     }
   }
 

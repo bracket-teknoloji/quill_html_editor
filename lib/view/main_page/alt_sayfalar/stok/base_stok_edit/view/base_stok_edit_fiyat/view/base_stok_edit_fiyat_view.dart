@@ -139,7 +139,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                             ?.map(
                               (element) => BottomSheetModel(
                                 title: element.commaSeparatedWithDecimalDigits(OndalikEnum.oran),
-                                onTap: () => Get.back(result: element),
+                                value: element,
                               ),
                             )
                             .toList(),
@@ -269,7 +269,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                             ?.map(
                               (element) => BottomSheetModel(
                                 title: element.toStringIfNotNull ?? "",
-                                onTap: () => Get.back(result: element),
+                                value: element,
                               ),
                             )
                             .toList(),
@@ -398,22 +398,16 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
     }
   }
 
-  Future<MapEntry?> getDovizList() async {
-    final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(
-      context,
-      title: "Döviz Tipi",
-      children: viewModel.dovizList.entries
-          .map(
-            (e) => BottomSheetModel(
-              title: e.value,
-              value: e.value,
-              onTap: () {
-                Get.back(result: e);
-              },
-            ),
-          )
-          .toList(),
-    );
-    return result;
-  }
+  Future<MapEntry?> getDovizList() async => await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: "Döviz Tipi",
+        children: viewModel.dovizList.entries
+            .map(
+              (e) => BottomSheetModel(
+                title: e.value,
+                value: e,
+              ),
+            )
+            .toList(),
+      );
 }

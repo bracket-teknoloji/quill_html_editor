@@ -1,4 +1,3 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -17,22 +16,22 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
     "Bakiyeli",
   ];
   final List<String> bakiyeDurumuValueList = ["T", "E", "A", "S", "B"];
-  final List<BottomSheetModel> siralaBottomSheetList = [
+  final List<BottomSheetModel<String>> siralaBottomSheetList = [
     BottomSheetModel(
       title: "Cari Adı (A-Z)",
-      onTap: () => Get.back(result: "ADI"),
+      value: "ADI",
     ),
     BottomSheetModel(
       title: "Cari Adı (Z-A)",
-      onTap: () => Get.back(result: "ADI_DESC"),
+      value: "ADI_DESC",
     ),
     BottomSheetModel(
       title: "Cari Adı (A-Z)",
-      onTap: () => Get.back(result: "KODU"),
+      value: "KODU",
     ),
     BottomSheetModel(
       title: "Cari Adı (Z-A)",
-      onTap: () => Get.back(result: "KODU_DESC"),
+      value: "KODU_DESC",
     ),
   ];
   @observable

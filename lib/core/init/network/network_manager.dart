@@ -618,7 +618,7 @@ class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, onTap: () => Get.back(result: e))).toList(),
+          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo,value: e)).toList(),
         );
       }
     }

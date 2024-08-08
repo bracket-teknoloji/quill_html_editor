@@ -348,7 +348,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
           context,
           title: "Dizayn Seçiniz",
-          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList(),
+          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
         );
         pdfModel.dizaynId = dizaynList?.id;
         pdfModel.etiketSayisi = dizaynList?.kopyaSayisi;

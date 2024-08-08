@@ -138,7 +138,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Hareket Türü",
-                      children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, onTap: () => Get.back(result: e))).toList(),
+                      children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, value: e)).toList(),
                     );
                     if (result != null) {
                       hareketTuruController.text = result.key;
@@ -168,7 +168,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       context,
                       title: "Depo",
                       children: viewModel.anaVeri?.paramModel?.depoList
-                          ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e)))
+                          ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e))
                           .toList(),
                     );
                     if (result != null) {
@@ -263,7 +263,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                               (e) => BottomSheetModel(
                                 title: e.projeKodu ?? "",
                                 description: e.projeAciklama ?? "",
-                                onTap: () => Get.back(result: e),
+                                value: e,
                               ),
                             )
                             .toList(),

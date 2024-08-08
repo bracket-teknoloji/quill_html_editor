@@ -408,7 +408,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                           children: List.generate(viewModel.tipiList.length, (int index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
                         );
                         if (result != null) {
-                          _ozelKod1Controller.text = result ?? "";
+                          _ozelKod1Controller.text = result;
                           viewModel.setOzelKod1(result);
                         }
                       },

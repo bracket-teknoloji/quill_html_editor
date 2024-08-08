@@ -213,7 +213,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                         children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result != null) {
-                        grupKoduController.text = result.grupAdi;
+                        grupKoduController.text = result.grupAdi ?? "";
                         viewModel.changeGrupKodu(result.grupKodu);
                       }
                     },
@@ -462,8 +462,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   children:
                       List.generate(viewModel.kilitMap.length, (int index) => BottomSheetModel(title: viewModel.kilitMap.keys.toList()[index], value: viewModel.kilitMap.entries.toList()[index])),
                 );
-                if (result is MapEntry) {
-                  kilitController.text = result.key ?? "";
+                if (result != null) {
+                  kilitController.text = result.key;
                   viewModel.changeKilit(result.value);
                 }
               },
@@ -669,7 +669,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
                         ),
                       );
-                      if (result is MapEntry) {
+                      if (result != null) {
                         viewModel.setSenaryo(result.value);
                         eFaturaSenaryoController.text = result.key;
                       }

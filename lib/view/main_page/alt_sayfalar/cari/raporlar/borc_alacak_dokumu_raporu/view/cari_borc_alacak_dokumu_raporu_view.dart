@@ -72,7 +72,7 @@ class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlacakDokum
                 title: loc.generalStrings.sort,
                 children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
               );
-              if (result is MapEntry) {
+              if (result != null) {
                 _siralaController.text = result.key;
                 viewModel.setSirala(result.value);
               }

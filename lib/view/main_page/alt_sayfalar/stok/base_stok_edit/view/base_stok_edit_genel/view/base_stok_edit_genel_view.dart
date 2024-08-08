@@ -256,7 +256,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                   final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
                     title: "Depo",
-                    children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, onTap: () => Get.back(result: e))).toList(),
+                    children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e)).toList(),
                   );
                   if (result != null) {
                     depoController.text = result.depoTanimi ?? "";

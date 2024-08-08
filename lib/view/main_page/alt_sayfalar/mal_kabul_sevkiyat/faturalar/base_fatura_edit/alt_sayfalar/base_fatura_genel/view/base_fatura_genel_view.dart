@@ -43,7 +43,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala  || siparisModel.isRevize || siparisModel.isTaslak;
+  bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize || siparisModel.isTaslak;
   bool get enable => widget.model.enable;
 
   late final TextEditingController _belgeNoController;
@@ -317,8 +317,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ),
                             ),
                           );
-                          if (result is MapEntry) {
-                            _belgeTipiController.text = result.key ?? "";
+                          if (result != null) {
+                            _belgeTipiController.text = result.key;
                             viewModel.setBelgeTipi(result.value);
                           }
                         },

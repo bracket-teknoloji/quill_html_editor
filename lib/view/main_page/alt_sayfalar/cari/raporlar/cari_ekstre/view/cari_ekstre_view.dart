@@ -112,7 +112,7 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
                     .map(
                       (e) => BottomSheetModel(
                         title: e.isim ?? "",
-                        onTap: () => Get.back(result: e),
+                         value: e,
                       ),
                     )
                     .toList(),

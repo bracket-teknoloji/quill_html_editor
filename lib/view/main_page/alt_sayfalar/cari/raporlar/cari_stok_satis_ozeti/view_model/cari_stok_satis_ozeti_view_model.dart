@@ -1,4 +1,3 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -10,30 +9,30 @@ part "cari_stok_satis_ozeti_view_model.g.dart";
 class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase with _$CariStokSatisOzetiViewModel;
 
 abstract class _CariStokSatisOzetiViewModelBase with Store {
-  final List<BottomSheetModel> bottomSheetModelList = <BottomSheetModel>[
+  final List<BottomSheetModel<String>> bottomSheetModelList = <BottomSheetModel<String>>[
     BottomSheetModel(
       title: "Tarih (Artan)",
-      onTap: () => Get.back(result: "TARIH_AZ"),
+      value: "TARIH_AZ",
     ),
     BottomSheetModel(
       title: "Tarih (Azalan)",
-      onTap: () => Get.back(result: "TARIH_ZA"),
+      value: "TARIH_ZA",
     ),
     BottomSheetModel(
       title: "Stok Kodu (A-Z)",
-      onTap: () => Get.back(result: "STOK_KODU_AZ"),
+      value: "STOK_KODU_AZ",
     ),
     BottomSheetModel(
       title: "Stok Kodu (Z-A)",
-      onTap: () => Get.back(result: "STOK_KODU_ZA"),
+      value: "STOK_KODU_ZA",
     ),
     BottomSheetModel(
       title: "Stok Adı (A-Z)",
-      onTap: () => Get.back(result: "STOK_ADI_AZ"),
+      value: "STOK_ADI_AZ",
     ),
     BottomSheetModel(
       title: "Stok Adı (Z-A)",
-      onTap: () => Get.back(result: "STOK_ADI_ZA"),
+      value: "STOK_ADI_ZA",
     ),
   ];
 

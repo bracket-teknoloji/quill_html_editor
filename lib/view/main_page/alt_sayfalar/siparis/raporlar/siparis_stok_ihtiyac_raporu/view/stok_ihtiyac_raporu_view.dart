@@ -129,7 +129,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
                 title: loc.generalStrings.sort,
                 children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.entries.toList()[index])),
               );
-              if (result != null && result is MapEntry<String, String>) {
+              if (result != null) {
                 siralaController.text = result.key;
                 viewModel.pdfModel.dicParams?.sirala = result.value;
               }

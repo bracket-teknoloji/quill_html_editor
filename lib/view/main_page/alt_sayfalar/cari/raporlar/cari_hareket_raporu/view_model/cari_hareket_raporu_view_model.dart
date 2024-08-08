@@ -1,4 +1,3 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -9,22 +8,22 @@ part "cari_hareket_raporu_view_model.g.dart";
 class CariHareketRaporuViewModel = _CariHareketRaporuViewModelBase with _$CariHareketRaporuViewModel;
 
 abstract class _CariHareketRaporuViewModelBase with Store {
-  final List<BottomSheetModel> siralaBottomSheetList = [
+  final List<BottomSheetModel<String>> siralaBottomSheetList = [
     BottomSheetModel(
       title: "Kayıt No (Artan)",
-      onTap: () => Get.back(result: "INC"),
+      value: "INC",
     ),
     BottomSheetModel(
       title: "Kayıt No (Azalan)",
-      onTap: () => Get.back(result: "INC_DESC"),
+      value: "INC_DESC",
     ),
     BottomSheetModel(
       title: "Tarih (Artan)",
-      onTap: () => Get.back(result: "TARIH"),
+      value: "TARIH",
     ),
     BottomSheetModel(
       title: "Tarih (Azalan)",
-      onTap: () => Get.back(result: "TARIH_DESC"),
+      value: "TARIH_DESC",
     ),
   ];
   //* Model

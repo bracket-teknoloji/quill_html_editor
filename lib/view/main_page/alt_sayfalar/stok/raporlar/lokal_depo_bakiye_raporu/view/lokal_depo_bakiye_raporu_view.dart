@@ -240,20 +240,17 @@ class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuVie
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
-        .toList()
-        .cast<BaseGrupKoduModel>()
         .map(
           (e) => BottomSheetModel(
             title: e.grupKodu ?? "",
-            onTap: () => Get.back(result: e),
+            value: e,
           ),
         )
-        .toList()
-        .cast<BottomSheetModel>();
+        .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu",
       children: bottomSheetList,

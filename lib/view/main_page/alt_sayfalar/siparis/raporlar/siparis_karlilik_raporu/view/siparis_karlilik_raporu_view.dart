@@ -196,8 +196,8 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                         ),
                       );
                       if (result != null) {
-                        maliyetTipiController.text = result ?? "";
-                        viewModel.setMaliyetTipi(result ?? "");
+                        maliyetTipiController.text = result;
+                        viewModel.setMaliyetTipi(result);
                       }
                     },
                   ),

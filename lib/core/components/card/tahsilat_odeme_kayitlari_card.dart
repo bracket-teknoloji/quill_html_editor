@@ -204,7 +204,7 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
           context,
           title: "Dizayn Seçiniz",
-          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", onTap: () => Get.back(result: e))).toList(),
+          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
         );
         if (dizaynList == null) return;
         pdfModel.dizaynId = dizaynList.id;

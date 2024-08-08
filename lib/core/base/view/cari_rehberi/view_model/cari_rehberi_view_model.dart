@@ -13,7 +13,7 @@ part "cari_rehberi_view_model.g.dart";
 class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
 abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, dynamic> siralaMap = {
+  final Map<String, String> siralaMap = {
     "Cari Adı (A-Z)": "AZ",
     "Cari Adı (Z-A)": "ZA",
     "Cari Kodu (A-Z)": "CARI_KODU_AZ",
@@ -23,7 +23,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     "Konum (En Yakın)": "KONUM_AZ",
     "Konum (En Uzak)": "KONUM_ZA",
   };
-  final Map<String, dynamic> tipiMap = {
+  final Map<String, String> tipiMap = {
     "Alıcı": "A",
     "Satıcı": "S",
     "Toptancı": "T",

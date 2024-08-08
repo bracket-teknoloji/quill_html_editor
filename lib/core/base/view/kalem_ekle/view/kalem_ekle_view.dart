@@ -648,7 +648,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               ),
                             ),
                           );
-                          if (result != null && result is MapEntry<String, int>) {
+                          if (result != null) {
                             viewModel.setOlcuBirimi(result);
                             olcuBirimiController.text = result.key;
                           }

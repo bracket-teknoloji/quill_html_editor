@@ -737,16 +737,16 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             onTap: (widget.isGetData ?? false)
                 ? () => Get.back(result: item)
                 : () async {
-                    final children2 = [
+                    final List<BottomSheetModel> children2 = [
                       BottomSheetModel(
                         title: loc.generalStrings.view,
                         iconWidget: Icons.preview_outlined,
-                        onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: item)),
+                        value: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: item),
                       ).yetkiKontrol(yetkiController.stokKarti),
                       BottomSheetModel(
                         title: loc.generalStrings.edit,
                         iconWidget: Icons.edit,
-                        onTap: () => Get.back(result: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item)),
+                        value: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
                       ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
                       BottomSheetModel(
                         title: "Hareketler",
@@ -791,14 +791,17 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                           dialogManager.showStokGridViewDialog(item);
                         },
                       ),
-                    ];
-                    children2.insert(
-                      2,
-                      BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")).yetkiKontrol(yetkiController.stokKartiSilme),
-                    );
+                    ].nullCheckWithGeneric;
+                    if (yetkiController.stokKartiSilme) {
+                      children2.insert(
+                        0,
+                        BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")),
+                      );
+                    }
+                    
                     final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
-                    final BaseEditModel? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
-                    if (result != null) {
+                    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
+                    if (result != null && result is BaseEditModel) {
                       await Get.toNamed("/mainPage/stokEdit", arguments: result);
                       viewModel.resetList();
                     }
