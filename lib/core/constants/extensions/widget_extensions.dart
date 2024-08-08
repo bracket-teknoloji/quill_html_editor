@@ -21,19 +21,34 @@ extension WidgetExtension on Widget {
   Future<BitmapDescriptor> toBitmapDescriptor({
     Size? logicalSize,
     Size? imageSize,
-    Duration waitToRender = const Duration(milliseconds: 3),
+    Duration waitToRender = const Duration(milliseconds: 30),
     TextDirection textDirection = TextDirection.ltr,
   }) async {
     final widget = RepaintBoundary(
-      child: MediaQuery(data: const MediaQueryData(), child: Directionality(textDirection: TextDirection.ltr, child: this)),
+      child: MediaQuery(
+        data: const MediaQueryData(),
+        child: Directionality(textDirection: TextDirection.ltr, child: this),
+      ),
     );
-    final pngBytes = await createImageFromWidget(widget, waitToRender: waitToRender, logicalSize: logicalSize, imageSize: imageSize);
-    return BitmapDescriptor.bytes(pngBytes);
+
+    final view = ui.PlatformDispatcher.instance.views.first;
+
+    final pngBytes = await createImageFromWidget(
+      widget,
+      waitToRender: waitToRender,
+      view: view,
+      logicalSize: logicalSize,
+      imageSize: imageSize,
+    );
+
+    return BitmapDescriptor.bytes(
+      pngBytes,
+      imagePixelRatio: view.devicePixelRatio,
+    );
   }
 
-  Future<Uint8List> createImageFromWidget(Widget widget, {Size? logicalSize, required Duration waitToRender, Size? imageSize}) async {
+  Future<Uint8List> createImageFromWidget(Widget widget, {Size? logicalSize, required Duration waitToRender, required ui.FlutterView view, Size? imageSize}) async {
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
-    final view = ui.PlatformDispatcher.instance.views.first;
     logicalSize ??= view.physicalSize / view.devicePixelRatio;
     imageSize ??= view.physicalSize;
 
@@ -43,8 +58,8 @@ extension WidgetExtension on Widget {
       view: view,
       child: RenderPositionedBox(alignment: Alignment.center, child: repaintBoundary),
       configuration: ViewConfiguration(
-        physicalConstraints: BoxConstraints.tightFor(width: imageSize.width, height: imageSize.height),
-        logicalConstraints: BoxConstraints.tightFor(width: logicalSize.width, height: logicalSize.height),
+        physicalConstraints: BoxConstraints.tight(logicalSize) * view.devicePixelRatio,
+        logicalConstraints: BoxConstraints.tight(logicalSize),
         devicePixelRatio: view.devicePixelRatio,
       ),
     );
@@ -71,7 +86,7 @@ extension WidgetExtension on Widget {
     pipelineOwner.flushCompositingBits();
     pipelineOwner.flushPaint();
 
-    final ui.Image image = await repaintBoundary.toImage(pixelRatio: view.devicePixelRatio / 2);
+    final ui.Image image = await repaintBoundary.toImage(pixelRatio: imageSize.width / logicalSize.width);
     final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
 
     return byteData!.buffer.asUint8List();

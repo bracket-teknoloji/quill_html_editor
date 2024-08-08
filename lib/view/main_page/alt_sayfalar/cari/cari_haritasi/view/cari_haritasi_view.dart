@@ -15,7 +15,7 @@ import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view_model/cari_haritasi_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
-class CariHaritasiView extends StatefulWidget {
+final class CariHaritasiView extends StatefulWidget {
   final bool? isGetData;
   final CariListesiModel? model;
   final (double? enlem, double? boylam)? konum;
@@ -25,8 +25,8 @@ class CariHaritasiView extends StatefulWidget {
   State<CariHaritasiView> createState() => CariHaritasiViewState();
 }
 
-class CariHaritasiViewState extends BaseState<CariHaritasiView> {
-  CariHaritasiViewModel viewModel = CariHaritasiViewModel();
+final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
+  final CariHaritasiViewModel viewModel = CariHaritasiViewModel();
   GoogleMapController? _controller;
   double? latMe;
   double? longMe;
@@ -94,6 +94,11 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
               children: [
                 Observer(
                   builder: (_) => GoogleMap(
+                    clusterManagers: {
+                      const ClusterManager(
+                        clusterManagerId: ClusterManagerId("value"),
+                      ),
+                    },
                     mapType: MapType.normal,
                     initialCameraPosition: myLocation,
                     onMapCreated: (controller) async {
@@ -101,14 +106,14 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                       if (widget.konum != null) {
                         myLocation = CameraPosition(
                           target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
-                          zoom: 14.4746,
+                          zoom: 15.5,
                         );
                       }
                       if (widget.model != null) {
                         viewModel.setCariList([widget.model!]);
                         myLocation = CameraPosition(
                           target: LatLng(widget.model?.enlem ?? 0, widget.model?.boylam ?? 0),
-                          zoom: 14.4746,
+                          zoom: 15.5,
                         );
                       }
                       if (widget.isGetData != true) {
@@ -116,6 +121,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                           viewModel.addMarker(
                             Marker(
                               icon: await setMarker(model),
+                              clusterManagerId: const ClusterManagerId("value"),
                               markerId: MarkerId(model?.cariKodu ?? ""),
                               onTap: () => dialogManager.showCariIslemleriGridViewDialog(model),
                               position: LatLng(model?.enlem ?? 0, model?.boylam ?? 0),
@@ -161,19 +167,22 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: width * 0.5,
+            width: width * 0.9,
             child: ElevatedButton(
               onPressed: () => dialogManager.showCariIslemleriGridViewDialog(model),
-              style: const ButtonStyle(elevation: WidgetStatePropertyAll(10)),
+              style: theme.elevatedButtonTheme.style?.copyWith(elevation: const WidgetStatePropertyAll(10)),
               child: Text(
                 model?.cariAdi ?? "",
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 24,
+                ),
                 maxLines: 2,
               ).paddingAll(UIHelper.lowSize),
             ),
           ),
-          Assets.splash.mapMarker.image(height: 30).paddingOnly(top: UIHelper.lowSize),
+          Assets.splash.mapMarker.image(height: 50).paddingOnly(top: UIHelper.lowSize),
         ],
       ).toBitmapDescriptor(logicalSize: Size(width * 1.9, height * 1.5));
 
@@ -181,7 +190,7 @@ class CariHaritasiViewState extends BaseState<CariHaritasiView> {
     final location = await _locationTracker.getLocation();
     myLocation = CameraPosition(
       target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
-      zoom: 14.4746,
+      zoom: 15.5,
     );
     _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
   }
