@@ -420,7 +420,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.model?.subeKodu ?? "")),
               onClear: () => viewModel.changeSubeKodu(null),
               onTap: () async {
-                final List<BottomSheetModel> children2 = List.generate(
+                final List<BottomSheetModel<IsletmeModel>> children2 = List.generate(
                   subeList.length,
                   (int index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", value: subeList[index], groupValue: subeList[index].subeKodu),
                 );

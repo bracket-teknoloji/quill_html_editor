@@ -187,7 +187,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(model.senaryoTipi ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry<String, String>>(
                             context,
                             title: "Senaryo Seçiniz",
                             groupValue: model.senaryoTipi,
@@ -200,7 +200,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                               ),
                             ),
                           );
-                          if (result is MapEntry) {
+                          if (result != null) {
                             viewModel.setSenaryo(result.value);
                             _senaryoController.text = result.key;
                             final result2 = await viewModel.sendSenaryo();

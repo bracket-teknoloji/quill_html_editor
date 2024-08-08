@@ -7,7 +7,6 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/banka_sozlesmesi_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
-import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -482,7 +481,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
             .toList(),
       );
       if (result != null) {
-        _seriController.text = (result as SeriModel).aciklama ?? "";
+        _seriController.text = result.aciklama ?? "";
         viewModel.setSeri(result);
       }
     }

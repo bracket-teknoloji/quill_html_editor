@@ -77,7 +77,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     filterModelList("");
   }
 
-  final List<BottomSheetModel> siralaTitleList = [
+  final List<BottomSheetModel<String>> siralaTitleList = [
     BottomSheetModel(title: "Kayıt Tarihi (A-Z)", value: "TARIH_AZ"),
     BottomSheetModel(title: "Kayıt Tarihi (Z-A)", value: "TARIH_ZA"),
     BottomSheetModel(
@@ -131,7 +131,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.fiyatTipi = fiyatTipiMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> fiyatTipiMap = {
+  final Map<String, String> fiyatTipiMap = {
     "Satış Fiyatı": "S",
     "Satış Fiyatı 1": "S1",
     "Satış Fiyatı 2": "S2",

@@ -265,7 +265,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                   ),
                                 ),
                               );
-                              if (result != null && result is NetFectDizaynList) {
+                              if (result != null) {
                                 dizaynController.text = result.dizaynAdi ?? "";
                                 viewModel.setDizaynId(result.id);
                               } else {

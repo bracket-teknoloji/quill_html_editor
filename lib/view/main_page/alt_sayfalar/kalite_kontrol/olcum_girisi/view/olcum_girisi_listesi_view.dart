@@ -123,7 +123,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
                     ),
                   ),
                 );
-                if (result is MapEntry) {
+                if (result != null) {
                   viewModel.requestModel.siralama = result.value;
                   await viewModel.resetSayfa();
                 }

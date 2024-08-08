@@ -135,7 +135,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   ],
                 );
                 if (siralama != viewModel.siralama && siralama != null) {
-                  viewModel.setSiralama(siralama!);
+                  viewModel.setSiralama(siralama);
                   await viewModel.getData();
                 }
               },

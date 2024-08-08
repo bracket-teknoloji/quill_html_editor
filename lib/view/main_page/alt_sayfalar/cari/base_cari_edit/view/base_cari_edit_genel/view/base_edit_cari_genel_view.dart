@@ -441,7 +441,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           context,
                           title: "Ödeme Tipi",
                           groupValue: viewModel.model?.odemeTipi,
-                          children: <BottomSheetModel>[
+                          children: <BottomSheetModel<BaseBottomSheetResponseModel>>[
                             BottomSheetModel(title: "Nakit", value: BaseBottomSheetResponseModel(title: "Nakit", value: "0"), groupValue: "0"),
                             BottomSheetModel(title: "Havale", value: BaseBottomSheetResponseModel(title: "Havale", value: "1"), groupValue: "1"),
                             BottomSheetModel(title: "Çek", value: BaseBottomSheetResponseModel(title: "Çek", value: "2"), groupValue: "2"),

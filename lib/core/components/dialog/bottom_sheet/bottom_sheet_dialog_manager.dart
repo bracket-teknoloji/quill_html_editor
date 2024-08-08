@@ -112,22 +112,6 @@ class BottomSheetDialogManager {
     return result?.firstOrNull;
   }
 
-  Future<T?> showBottomsSheetDialog<T>(BuildContext context, {required String title, Widget? body, List<BottomSheetModel<T>>? children, bool aramaVarMi = false}) async => showModalBottomSheet(
-        context: context,
-        isDismissible: true,
-        // constraints: BoxConstraints(maxHeight: Get.height * 0.9),
-        barrierColor: Colors.black.withOpacity(0.6),
-        enableDrag: false,
-        useSafeArea: true,
-        isScrollControlled: true,
-        builder: (BuildContext context) => bottomSheetBody(
-          context,
-          title: title,
-          body: body,
-          children: children,
-        ),
-      );
-
   Widget bottomSheetBody<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, List<T>? list, bool? onlyValue = false, Widget? body}) {
     List<BottomSheetModel>? children2 = children;
     FocusNode? focusNode;
@@ -152,21 +136,6 @@ class BottomSheetDialogManager {
                   .toList();
             },
           ).paddingAll(UIHelper.midSize),
-        if (body == null && ((children?.length ?? 0) > 100 && (children?.length ?? 0) < 20))
-          CustomTextField(
-            focusNode: focusNode,
-            labelText: "Aramak istediğiniz metni yazınız.",
-            onSubmitted: (String value) {
-              if (value == "") {
-                children2 = children;
-              }
-              children2 = children2!
-                  .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
-                  .toList();
-            },
-          ).paddingAll(UIHelper.midSize)
-        else
-          const SizedBox(),
         if (body != null)
           Flexible(
             child: ListView(
@@ -179,30 +148,32 @@ class BottomSheetDialogManager {
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: children2?.length,
-              itemBuilder: (BuildContext context, int index) => Column(
-                children: <Widget>[
-                  ListTile(
-                    onTap: children2?[index].onTap ?? () => Get.back(result: children2![index].value),
-                    title: Text(children2![index].title),
-                    subtitle:
-                        children2![index].description != null ? Text(children2![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))) : null,
-                    leading: children2![index].icon != null || children2![index].iconWidget != null
-                        ? SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: children2![index].iconWidget != null ? Icon(children2![index].iconWidget, size: 25, color: UIHelper.primaryColor) : IconHelper.smallIcon(children2![index].icon!),
-                          )
-                        : null,
-                  ),
-                  if (index != children2!.length - 1)
-                    const Padding(
-                      padding: UIHelper.lowPaddingVertical,
-                      child: Divider(),
-                    )
-                  else
-                    Container(),
-                ],
-              ),
+              itemBuilder: (BuildContext context, int index) {
+                final item = children2![index];
+                return Column(
+                  children: <Widget>[
+                    ListTile(
+                      onTap: item.onTap ?? () => Get.back(result: item.value),
+                      title: Text(item.title),
+                      subtitle: Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))).yetkiVarMi(item.description != null).sizedBoxMi,
+                      leading: item.icon != null || item.iconWidget != null
+                          ? SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: item.iconWidget != null ? Icon(item.iconWidget, size: 25, color: UIHelper.primaryColor) : IconHelper.smallIcon(item.icon!),
+                            )
+                          : null,
+                    ),
+                    if (index != children2!.length - 1)
+                      const Padding(
+                        padding: UIHelper.lowPaddingVertical,
+                        child: Divider(),
+                      )
+                    else
+                      Container(),
+                  ],
+                );
+              },
             ).paddingOnly(bottom: UIHelper.midSize),
           ),
         // if (context.general.isKeyBoardOpen && body == null) const ResponsiveBox() else Container(),
@@ -228,29 +199,31 @@ class BottomSheetDialogManager {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder: (context, index) => const Padding(
-              padding: UIHelper.lowPaddingVertical,
-              child: Divider(),
-            ),
-            itemCount: children?.length ?? 0,
-            itemBuilder: (context, index) => Observer(
-              builder: (_) => CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                value: viewModel.isSelectedListMap?[title]?[index] ?? false,
-                title: Text(children?[index].title ?? ""),
-                onChanged: (bool? value) {
-                  viewModel.changeIndexIsSelectedListMap(title, index, value!);
-                  // viewModel.isSelectedListMap![title]![index] = value!;
-                  list = selectedChecker(children, title, onlyValue);
-                  if (children?[index].onTap != null) {
-                    children?[index].onTap!();
-                  }
-                  if (!value) {
-                    list!.remove(children?[index].title);
-                  }
-                },
+          Flexible(
+            child: ListView.separated(
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => const Padding(
+                padding: UIHelper.lowPaddingVertical,
+                child: Divider(),
+              ),
+              itemCount: children?.length ?? 0,
+              itemBuilder: (context, index) => Observer(
+                builder: (_) => CheckboxListTile(
+                  controlAffinity: ListTileControlAffinity.leading,
+                  value: viewModel.isSelectedListMap?[title]?[index] ?? false,
+                  title: Text(children?[index].title ?? ""),
+                  onChanged: (bool? value) {
+                    viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                    // viewModel.isSelectedListMap![title]![index] = value!;
+                    list = selectedChecker(children, title, onlyValue);
+                    if (children?[index].onTap != null) {
+                      children?[index].onTap!();
+                    }
+                    if (!value) {
+                      list!.remove(children?[index].title);
+                    }
+                  },
+                ),
               ),
             ),
           ),
@@ -264,12 +237,11 @@ class BottomSheetDialogManager {
         ],
       );
 
-  Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
-    children = children?.nullCheckWithGeneric;
+  Future<T?> showRadioBottomSheetDialog<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, required Object? groupValue}) async {
     viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
     //FocusScope.of(context).unfocus();
-    return showModalBottomSheet(
+    return showModalBottomSheet<T>(
       context: context,
       isDismissible: true,
       barrierColor: Colors.black.withOpacity(0.6),
@@ -293,7 +265,7 @@ class BottomSheetDialogManager {
                   endIndent: 0,
                   indent: 0,
                 ),
-                if ((children?.length ?? 0) > 15) SearchField(viewModel: viewModel).paddingAll(UIHelper.midSize),
+                if ((children.length) > 15) SearchField(viewModel: viewModel).paddingAll(UIHelper.midSize),
                 if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
                   SizedBox(
                     height: height < Get.height * 0.8 ? height : Get.height * 0.8,
@@ -452,18 +424,18 @@ class BottomSheetDialogManager {
             )
             .toList(),
       );
-  Future<BaseBottomSheetResponseModel?> showCariTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog(
+  Future<BaseBottomSheetResponseModel?> showCariTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async => await showRadioBottomSheetDialog<BaseBottomSheetResponseModel>(
         context,
         title: "Tipi seç",
         groupValue: groupValue,
-        children: <BottomSheetModel>[
-          BottomSheetModel(title: "Alıcı", value: "A", groupValue: "A", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Alıcı", value: "A"))),
-          BottomSheetModel(title: "Satıcı", value: "S", groupValue: "S", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Satıcı", value: "S"))),
-          BottomSheetModel(title: "Toptancı", value: "T", groupValue: "T", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Toptancı", value: "T"))),
-          BottomSheetModel(title: "Kefil", value: "K", groupValue: "K", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Kefil", value: "K"))),
-          BottomSheetModel(title: "Müstahsil", value: "M", groupValue: "M", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M"))),
-          BottomSheetModel(title: "Diğer", value: "D", groupValue: "D", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Diğer", value: "D"))),
-          BottomSheetModel(title: "Komisyoncu", value: "I", groupValue: "I", onTap: () => Get.back(result: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I"))),
+        children: <BottomSheetModel<BaseBottomSheetResponseModel>>[
+          BottomSheetModel(title: "Alıcı", groupValue: "A", value: BaseBottomSheetResponseModel(title: "Alıcı", value: "A")),
+          BottomSheetModel(title: "Satıcı", groupValue: "S", value: BaseBottomSheetResponseModel(title: "Satıcı", value: "S")),
+          BottomSheetModel(title: "Toptancı", groupValue: "T", value: BaseBottomSheetResponseModel(title: "Toptancı", value: "T")),
+          BottomSheetModel(title: "Kefil", groupValue: "K", value: BaseBottomSheetResponseModel(title: "Kefil", value: "K")),
+          BottomSheetModel(title: "Müstahsil", groupValue: "M", value: BaseBottomSheetResponseModel(title: "Müstahsil", value: "M")),
+          BottomSheetModel(title: "Diğer", groupValue: "D", value: BaseBottomSheetResponseModel(title: "Diğer", value: "D")),
+          BottomSheetModel(title: "Komisyoncu", groupValue: "I", value: BaseBottomSheetResponseModel(title: "Komisyoncu", value: "I")),
         ],
       );
 
@@ -808,12 +780,6 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future showOlcuBirimiBottomSheetDialog(BuildContext context) async {
-    // List olcuBirimleriList = CacheManager.getAnaVeri.paramModel.olc;
-    // var olcuBirimi =
-    //     await showRadioBottomSheetDialog(context, title: "Ölçü Birimi Seçiniz", children: olcuBirimleriList.map((e) => BottomSheetModel(title: e.olcuBirimi ?? "", value: e)).toList());
-    // return olcuBirimi;
-  }
   Future<ListIskTip?> showIskontoTipiBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<ListIskTip> iskontoTipiList = _paramModel?.listIskTip ?? <ListIskTip>[];
     final ListIskTip? iskontoTipi = await showRadioBottomSheetDialog(
@@ -848,7 +814,7 @@ class BottomSheetDialogManager {
   }
 
   Future<double?> showKdvOranlariBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List? list = await _networkManager.getKDVOrani();
+    final List<double>? list = await _networkManager.getKDVOrani();
     return await showRadioBottomSheetDialog(
       context,
       title: "KDV Oranı Seçiniz",

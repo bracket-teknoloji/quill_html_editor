@@ -440,8 +440,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       context,
                       groupValue: stokModel.subeKodu,
                       title: "Şube",
-                      children:
-                          subeList.map((e) => BottomSheetModel(title: "${e.subeAdi}", description: e.subeKodu.toStringIfNotNull, onTap: () => Get.back(result: e), groupValue: e.subeKodu)).toList(),
+                      children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi}", description: e.subeKodu.toStringIfNotNull, value: e, groupValue: e.subeKodu)).toList(),
                     );
                     if (result != null) {
                       subeController.text = "${result.subeAdi} ${result.subeKodu}";
@@ -484,7 +483,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                             title: "${e.grupAdi}",
                                             description: e.grupKodu,
                                             groupValue: e.grupKodu,
-                                            onTap: () => Get.back(result: e),
+                                            value: e,
                                           ),
                                         )
                                         .toList() ??
@@ -518,7 +517,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                             title: "${e.grupAdi}",
                                             description: e.grupKodu,
                                             groupValue: e.grupKodu,
-                                            onTap: () => Get.back(result: e),
+                                            value: e,
                                           ),
                                         )
                                         .toList() ??
@@ -557,7 +556,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                             title: "${e.grupAdi}",
                                             description: e.grupKodu,
                                             groupValue: e.grupKodu,
-                                            onTap: () => Get.back(result: e),
+                                            value: e,
                                           ),
                                         )
                                         .toList() ??
@@ -593,7 +592,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                         title: "${e.grupAdi}",
                                         description: e.grupKodu,
                                         groupValue: e.grupKodu,
-                                        onTap: () => Get.back(result: e),
+                                        value: e,
                                       ),
                                     )
                                     .toList(),
@@ -630,7 +629,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                         title: "${e.grupAdi}",
                                         description: e.grupKodu,
                                         groupValue: e.grupKodu,
-                                        onTap: () => Get.back(result: e),
+                                        value: e,
                                       ),
                                     )
                                     .toList(),
@@ -665,7 +664,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                                         title: "${e.grupAdi}",
                                         description: e.grupKodu,
                                         groupValue: e.grupKodu,
-                                        onTap: () => Get.back(result: e),
+                                        value: e,
                                       ),
                                     )
                                     .toList(),

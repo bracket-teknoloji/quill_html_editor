@@ -399,7 +399,7 @@ class NetworkManager {
     return null;
   }
 
-  Future<List?> getKDVOrani() async {
+  Future<List<double>?> getKDVOrani() async {
     final result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, showLoading: true, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
     return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
   }

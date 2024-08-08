@@ -430,7 +430,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                               return BottomSheetModel(title: item.key, value: item, groupValue: item.value, description: item.value);
                             }),
                           );
-                          if (result is MapEntry) {
+                          if (result != null) {
                             viewModel.setHareketTuru(result.value);
                             _hareketTuruController.text = result.key;
                           }
@@ -504,7 +504,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                               ),
                             ),
                           );
-                          if (result is MapEntry) {
+                          if (result != null) {
                             viewModel.changeCikisYeri(result.value);
                             viewModel.setMasrafKoduTipi(viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1);
 

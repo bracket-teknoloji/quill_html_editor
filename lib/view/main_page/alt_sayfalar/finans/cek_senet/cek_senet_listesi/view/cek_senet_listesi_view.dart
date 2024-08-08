@@ -297,7 +297,7 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               ),
                             ),
                           );
-                          if (result is MapEntry) {
+                          if (result != null) {
                             if (result.value == "Özel") {
                               if (await ozelTarihBottomSheet() == true) {
                                 _vadeTarihiController.text = result.key;

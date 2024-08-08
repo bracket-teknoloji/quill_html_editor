@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../../core/base/model/seri_model.dart";
 import "../../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -400,7 +399,7 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
             .toList(),
       );
       if (result != null) {
-        _seriController.text = (result as SeriModel).aciklama ?? "";
+        _seriController.text = result.aciklama ?? "";
         viewModel.setSeriNo(result.seriNo);
       }
     }

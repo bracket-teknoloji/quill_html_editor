@@ -10,7 +10,7 @@ part "kasa_listesi_view_model.g.dart";
 class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
 
 abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, dynamic> siralaMap = {
+  final Map<String, String> siralaMap = {
     "Kasa Kodu (A-Z)": "KOD_AZ",
     "Kasa Kodu (Z-A)": "KOD_ZA",
     "Kasa Adı (A-Z)": "ADI_AZ",
