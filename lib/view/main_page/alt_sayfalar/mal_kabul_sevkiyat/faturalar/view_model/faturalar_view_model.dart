@@ -51,6 +51,14 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
     "Komisyoncu": "I",
   };
 
+    final Map<String, int> belgeTipiMap = <String, int>{
+    "Kapalı": 1,
+    "Açık": 2,
+    "İade": 4,
+    "Zayi İade": 5,
+    "İhracat": 6,
+  };
+
   final List<String> tipiList = ["T", "H", "N", "D"];
 
   @observable
@@ -158,6 +166,9 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
       getKod();
     }
   }
+
+  @action
+  void setBelgeTipi(List<int>? value) => faturaRequestModel = faturaRequestModel.copyWith(arrBelgeTipi: jsonEncode(value));
 
   @action
   void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();

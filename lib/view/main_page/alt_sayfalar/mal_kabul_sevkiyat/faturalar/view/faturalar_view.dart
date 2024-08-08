@@ -53,6 +53,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
   late final TextEditingController _projeController;
   late final TextEditingController _ozelKod1Controller;
   late final TextEditingController _ozelKod2Controller;
+  late final TextEditingController _belgeTipiController;
   late final TextEditingController _kod0Controller;
   late final TextEditingController _kod1Controller;
   late final TextEditingController _kod2Controller;
@@ -73,6 +74,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _projeController = TextEditingController();
     _ozelKod1Controller = TextEditingController();
     _ozelKod2Controller = TextEditingController();
+    _belgeTipiController = TextEditingController();
     _kod0Controller = TextEditingController();
     _kod1Controller = TextEditingController();
     _kod2Controller = TextEditingController();
@@ -101,6 +103,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _projeController.dispose();
     _ozelKod1Controller.dispose();
     _ozelKod2Controller.dispose();
+    _belgeTipiController.dispose();
     _kod0Controller.dispose();
     _kod1Controller.dispose();
     _kod2Controller.dispose();
@@ -432,10 +435,31 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 ),
               ],
             ),
-            const CustomTextField(
+            CustomTextField(
               labelText: "Belge Tipi",
               suffixMore: true,
+              controller: _belgeTipiController,
               readOnly: true,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, int>>(
+                  context,
+                  title: "Belge Tipi",
+                  groupValues: jsonDecode(viewModel.faturaRequestModel.arrBelgeTipi ?? "[]"),
+                  children: List.generate(
+                    viewModel.belgeTipiMap.length,
+                    (int index) => BottomSheetModel(
+                      title: viewModel.belgeTipiMap.keys.toList()[index],
+                      description: viewModel.belgeTipiMap.values.toList()[index].toStringIfNotNull,
+                      value: viewModel.belgeTipiMap.entries.toList()[index],
+                      groupValue: viewModel.belgeTipiMap.values.toList()[index],
+                    ),
+                  ),
+                );
+                if (result != null) {
+                  _belgeTipiController.text = result.map((e) => e.key).join(", ");
+                  viewModel.setBelgeTipi(result.map((e) => e.value).toList());
+                }
+              },
             ),
             InkWell(
               onTap: () => viewModel.setKodlariGoster(),
