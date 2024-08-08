@@ -29,6 +29,7 @@ import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ui_helper/icon_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
@@ -47,10 +48,8 @@ import "../../../base/model/base_grup_kodu_model.dart";
 import "../../../base/model/belge_tipi_model.dart";
 import "../../../base/model/print_model.dart";
 import "../../../constants/extensions/list_extensions.dart";
-import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../init/cache/cache_manager.dart";
-import "../../helper_widgets/responsive_height_box.dart";
 import "../dialog_manager.dart";
 import "model/bottom_sheet_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
@@ -59,121 +58,161 @@ class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
   final NetworkManager _networkManager = NetworkManager();
   ParamModel? get _paramModel => CacheManager.getAnaVeri?.paramModel;
-  Future<dynamic> showBottomSheetDialog(BuildContext context, {required String title, Widget? body, List<BottomSheetModel>? children, bool aramaVarMi = false}) async {
+
+  Future<List<T>?> _generalBottomSheet<T>(
+    BuildContext context, {
+    required String title,
+    required Widget Function(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, List<T>? list, bool? onlyValue, Widget? body}) body,
+    List<BottomSheetModel<T>>? children,
+    Widget? bodyWidget,
+    List<T>? groupValues,
+    bool? onlyValue,
+  }) =>
+      showModalBottomSheet<List<T>?>(
+        useRootNavigator: true,
+        isScrollControlled: true,
+        barrierColor: Colors.black.withOpacity(0.6),
+        useSafeArea: true,
+        constraints: BoxConstraints.loose(
+          Size(
+            MediaQuery.sizeOf(context).width,
+            MediaQuery.sizeOf(context).height * 0.9,
+          ),
+        ),
+        context: context,
+        builder: (context) => SafeArea(
+          child: Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  contentPadding: UIHelper.lowPadding,
+                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                  splashColor: Colors.transparent,
+                ),
+                const Divider(
+                  thickness: 2,
+                  endIndent: 0,
+                  indent: 0,
+                ).paddingAll(UIHelper.midSize),
+                Flexible(
+                  child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+  Future<T?> showBottomSheetDialog<T>(BuildContext context, {required String title, Widget? body, List<BottomSheetModel<T>>? children, bool aramaVarMi = false}) async {
+    final result = await _generalBottomSheet<T>(context, title: title, body: bottomSheetBody, children: children, bodyWidget: body);
+    return result?.firstOrNull;
+  }
+
+  Future<T?> showBottomsSheetDialog<T>(BuildContext context, {required String title, Widget? body, List<BottomSheetModel<T>>? children, bool aramaVarMi = false}) async => showModalBottomSheet(
+        context: context,
+        isDismissible: true,
+        // constraints: BoxConstraints(maxHeight: Get.height * 0.9),
+        barrierColor: Colors.black.withOpacity(0.6),
+        enableDrag: false,
+        useSafeArea: true,
+        isScrollControlled: true,
+        builder: (BuildContext context) => bottomSheetBody(
+          context,
+          title: title,
+          body: body,
+          children: children,
+        ),
+      );
+
+  Widget bottomSheetBody<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, List<T>? list, bool? onlyValue = false, Widget? body}) {
     List<BottomSheetModel>? children2 = children;
     FocusNode? focusNode;
     if ((children?.length ?? 0) > 20) {
       focusNode = FocusNode();
       focusNode.requestFocus();
     }
-    //if keyboard is open, close it
-    //FocusScope.of(context).unfocus();
-    return showModalBottomSheet(
-      context: context,
-      isDismissible: true,
-      // constraints: BoxConstraints(maxHeight: Get.height * 0.9),
-      barrierColor: Colors.black.withOpacity(0.6),
-      enableDrag: false,
-      useSafeArea: true,
-      isScrollControlled: true,
-      builder: (BuildContext context) => SafeArea(
-        child: Padding(
-          padding: MediaQuery.of(context).viewInsets,
-          child: Wrap(
-            children: <Widget>[
-              ListTile(
-                contentPadding: UIHelper.lowPaddingHorizontal,
-                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.midSize),
-                trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-                splashColor: Colors.transparent,
-              ).paddingSymmetric(vertical: UIHelper.midSize),
-              const Divider(
-                endIndent: 10,
-                indent: 10,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        if (body == null && ((children?.length ?? 0) > 20 && (children?.length ?? 0) < 100))
+          CustomTextField(
+            focusNode: focusNode,
+            labelText: "Aramak istediğiniz metni yazınız.",
+            onChanged: (String value) {
+              if (value == "") {
+                children2 = children;
+              }
+              children2 = children2!
+                  .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
+                  .toList();
+            },
+          ).paddingAll(UIHelper.midSize),
+        if (body == null && ((children?.length ?? 0) > 100 && (children?.length ?? 0) < 20))
+          CustomTextField(
+            focusNode: focusNode,
+            labelText: "Aramak istediğiniz metni yazınız.",
+            onSubmitted: (String value) {
+              if (value == "") {
+                children2 = children;
+              }
+              children2 = children2!
+                  .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
+                  .toList();
+            },
+          ).paddingAll(UIHelper.midSize)
+        else
+          const SizedBox(),
+        if (body != null)
+          Flexible(
+            child: ListView(
+              shrinkWrap: true,
+              children: [body.paddingAll(UIHelper.lowSize)],
+            ),
+          )
+        else
+          Flexible(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: children2?.length,
+              itemBuilder: (BuildContext context, int index) => Column(
+                children: <Widget>[
+                  ListTile(
+                    onTap: children2?[index].onTap ?? () => Get.back(result: children2![index].value),
+                    title: Text(children2![index].title),
+                    subtitle:
+                        children2![index].description != null ? Text(children2![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))) : null,
+                    leading: children2![index].icon != null || children2![index].iconWidget != null
+                        ? SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: children2![index].iconWidget != null ? Icon(children2![index].iconWidget, size: 25, color: UIHelper.primaryColor) : IconHelper.smallIcon(children2![index].icon!),
+                          )
+                        : null,
+                  ),
+                  if (index != children2!.length - 1)
+                    const Padding(
+                      padding: UIHelper.lowPaddingVertical,
+                      child: Divider(),
+                    )
+                  else
+                    Container(),
+                ],
               ),
-              if (body == null && ((children?.length ?? 0) > 20 && (children?.length ?? 0) < 100))
-                CustomTextField(
-                  focusNode: focusNode,
-                  labelText: "Aramak istediğiniz metni yazınız.",
-                  onChanged: (String value) {
-                    if (value == "") {
-                      children2 = children;
-                    }
-                    children2 = children2!
-                        .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
-                        .toList();
-                  },
-                ).paddingAll(UIHelper.midSize),
-              if (body == null && ((children?.length ?? 0) > 100 && (children?.length ?? 0) < 20))
-                CustomTextField(
-                  focusNode: focusNode,
-                  labelText: "Aramak istediğiniz metni yazınız.",
-                  onSubmitted: (String value) {
-                    if (value == "") {
-                      children2 = children;
-                    }
-                    children2 = children2!
-                        .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
-                        .toList();
-                  },
-                ).paddingAll(UIHelper.midSize)
-              else
-                const SizedBox(),
-              if (body == null)
-                children.ext.isNotNullOrEmpty
-                    ? SizedBox(
-                        // if children are not fit to screen, it will be scrollable
-                        height: children2!.length * ((children2?.any((BottomSheetModel element) => element.description.ext.isNotNullOrNoEmpty) ?? false) ? 60 : 50) < Get.height * 0.9
-                            ? children2!.length * ((children2?.any((BottomSheetModel element) => element.description.ext.isNotNullOrNoEmpty) ?? false) ? 60 : 50)
-                            : Get.height * 0.9,
-                        child: children2.ext.isNullOrEmpty
-                            ? Center(child: Text("Veri bulunamadı.", style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
-                            : ListView.builder(
-                                itemCount: children2?.length,
-                                itemBuilder: (BuildContext context, int index) => Column(
-                                  children: <Widget>[
-                                    ListTile(
-                                      onTap: children2?[index].onTap ?? () => Get.back(result: children2![index].value),
-                                      title: Text(children2![index].title),
-                                      subtitle: children2![index].description != null
-                                          ? Text(children2![index].description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6)))
-                                          : null,
-                                      leading: children2![index].icon != null || children2![index].iconWidget != null
-                                          ? SizedBox(
-                                              width: 20,
-                                              height: 20,
-                                              child: children2![index].iconWidget != null
-                                                  ? Icon(children2![index].iconWidget, size: 25, color: UIHelper.primaryColor)
-                                                  : IconHelper.smallIcon(children2![index].icon!),
-                                            )
-                                          : null,
-                                    ),
-                                    if (index != children2!.length - 1)
-                                      const Padding(
-                                        padding: UIHelper.lowPaddingVertical,
-                                        child: Divider(),
-                                      )
-                                    else
-                                      Container(),
-                                  ],
-                                ),
-                              ).paddingOnly(bottom: UIHelper.midSize),
-                      )
-                    : Center(child: Text("Veri bulunamadı.", style: context.theme.textTheme.titleMedium)).paddingAll(UIHelper.highSize)
-              else
-                SafeArea(
-                  child: Container(constraints: BoxConstraints(maxHeight: Get.height * 0.9), child: SingleChildScrollView(child: body.paddingAll(UIHelper.lowSize))),
-                ),
-              if (context.general.isKeyBoardOpen && body == null) const ResponsiveBox() else Container(),
-            ],
+            ).paddingOnly(bottom: UIHelper.midSize),
           ),
-        ),
-      ),
+        // if (context.general.isKeyBoardOpen && body == null) const ResponsiveBox() else Container(),
+      ],
     );
   }
 
+  //* CheckBox
   Future<List<T>?> showCheckBoxBottomSheetDialog<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, bool onlyValue = false, required List? groupValues}) async {
-    List<T>? list;
+    // List<T>? list;
 
     if (viewModel.isSelectedListMap?[title] == null) {
       viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
@@ -182,58 +221,36 @@ class BottomSheetDialogManager {
         viewModel.changeIsSelectedListMap(title, List.generate(children.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
       }
     }
-    return showModalBottomSheet<List<T>?>(
-      useRootNavigator: true,
-      isScrollControlled: true,
-      barrierColor: Colors.black.withOpacity(0.6),
-      useSafeArea: true,
-      constraints: BoxConstraints.loose(
-        Size(
-          MediaQuery.sizeOf(context).width,
-          MediaQuery.sizeOf(context).height * 0.8,
-        ),
-      ),
-      context: context,
-      builder: (context) => Column(
+    return _generalBottomSheet<T>(context, title: title, body: checkboxBody, onlyValue: onlyValue, children: children);
+  }
+
+  Column checkboxBody<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, List<T>? list, bool? onlyValue = false, Widget? body}) => Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          ListTile(
-            contentPadding: UIHelper.lowPadding,
-            title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-            trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-            splashColor: Colors.transparent,
-          ),
-          const Divider(
-            thickness: 2,
-            endIndent: 0,
-            indent: 0,
-          ).paddingSymmetric(vertical: UIHelper.midSize),
-          Flexible(
-            child: ListView.separated(
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => const Padding(
-                padding: UIHelper.lowPaddingVertical,
-                child: Divider(),
-              ),
-              itemCount: children.length,
-              itemBuilder: (context, index) => Observer(
-                builder: (_) => CheckboxListTile(
-                  controlAffinity: ListTileControlAffinity.leading,
-                  value: viewModel.isSelectedListMap?[title]?[index] ?? false,
-                  title: Text(children[index].title),
-                  onChanged: (bool? value) {
-                    viewModel.changeIndexIsSelectedListMap(title, index, value!);
-                    // viewModel.isSelectedListMap![title]![index] = value!;
-                    list = selectedChecker(children, title, onlyValue);
-                    if (children[index].onTap != null) {
-                      children[index].onTap!();
-                    }
-                    if (!value) {
-                      list!.remove(children[index].title);
-                    }
-                  },
-                ),
+          ListView.separated(
+            shrinkWrap: true,
+            separatorBuilder: (context, index) => const Padding(
+              padding: UIHelper.lowPaddingVertical,
+              child: Divider(),
+            ),
+            itemCount: children?.length ?? 0,
+            itemBuilder: (context, index) => Observer(
+              builder: (_) => CheckboxListTile(
+                controlAffinity: ListTileControlAffinity.leading,
+                value: viewModel.isSelectedListMap?[title]?[index] ?? false,
+                title: Text(children?[index].title ?? ""),
+                onChanged: (bool? value) {
+                  viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                  // viewModel.isSelectedListMap![title]![index] = value!;
+                  list = selectedChecker(children, title, onlyValue);
+                  if (children?[index].onTap != null) {
+                    children?[index].onTap!();
+                  }
+                  if (!value) {
+                    list!.remove(children?[index].title);
+                  }
+                },
               ),
             ),
           ),
@@ -245,9 +262,7 @@ class BottomSheetDialogManager {
             child: const Text("Seç"),
           ).paddingAll(UIHelper.lowSize),
         ],
-      ).paddingAll(UIHelper.midSize),
-    );
-  }
+      );
 
   Future<dynamic> showRadioBottomSheetDialog(BuildContext context, {required String title, List<BottomSheetModel>? children, required Object? groupValue}) async {
     children = children?.nullCheckWithGeneric;
@@ -358,105 +373,11 @@ class BottomSheetDialogManager {
     );
   }
 
-  Future<dynamic> showCheckBsdfsdfoxBottomSheetDialog<T>(BuildContext context, {List<BottomSheetModel>? children, required String title, bool onlyValue = false, required List<T>? groupValues}) async {
-    List<dynamic>? list;
-    if (viewModel.isSelectedListMap?[title] == null) {
-      viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
-    } else {
-      if (children!.length != viewModel.isSelectedListMap?[title]!.length) {
-        viewModel.changeIsSelectedListMap(title, List.generate(children.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
-      }
-    }
-    //FocusScope.of(context).unfocus();
-    return showModalBottomSheet(
-      context: context,
-      isDismissible: true,
-      barrierColor: Colors.black.withOpacity(0.6),
-      enableDrag: false,
-      useSafeArea: true,
-      isScrollControlled: true,
-      builder: (BuildContext context) => SafeArea(
-        child: Wrap(
-          children: <Widget>[
-            ListTile(
-              contentPadding: UIHelper.lowPadding,
-              title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-              trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-              splashColor: Colors.transparent,
-            ).paddingSymmetric(vertical: UIHelper.midSize),
-            const Divider(
-              thickness: 2,
-              endIndent: 0,
-              indent: 0,
-            ),
-            if (children.ext.isNotNullOrEmpty)
-              SizedBox(
-                // if children are not fit to screen, it will be scrollable
-                height: (children.length + 1) * 50 < Get.height * 0.8 ? (children.length + 1) * 50 : Get.height * 0.8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Expanded(
-                      child: SingleChildScrollView(
-                        child: Wrap(
-                          children: List.generate(
-                            children.length,
-                            (int index) => Wrap(
-                              children: <Widget>[
-                                Observer(
-                                  builder: (_) => CheckboxListTile(
-                                    controlAffinity: ListTileControlAffinity.leading,
-                                    value: viewModel.isSelectedListMap?[title]?[index] ?? false,
-                                    title: Text(children[index].title),
-                                    onChanged: (bool? value) {
-                                      viewModel.changeIndexIsSelectedListMap(title, index, value!);
-                                      // viewModel.isSelectedListMap![title]![index] = value!;
-                                      list = selectedChecker(children, title, onlyValue);
-                                      if (children[index].onTap != null) {
-                                        children[index].onTap!();
-                                      }
-                                      if (!value) {
-                                        list!.remove(children[index].title);
-                                      }
-                                    },
-                                  ),
-                                ),
-                                if (index != children.length - 1)
-                                  const Padding(
-                                    padding: UIHelper.lowPaddingVertical,
-                                    child: Divider(),
-                                  )
-                                else
-                                  Container(),
-                              ],
-                            ).paddingOnly(bottom: UIHelper.midSize),
-                          ),
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        list = selectedChecker(children, title, onlyValue);
-                        Get.back(result: list);
-                      },
-                      child: const Text("Seç"),
-                    ).paddingAll(UIHelper.lowSize),
-                  ],
-                ),
-              )
-            else
-              Wrap(children: <Widget>[Center(child: const Text("Veri Yok").paddingAll(UIHelper.highSize))]),
-          ],
-        ).paddingAll(UIHelper.midSize),
-      ),
-    );
-  }
-
-  List<T> selectedChecker<T>(List<BottomSheetModel>? children, String title, bool onlyValue) {
+  List<T> selectedChecker<T>(List<BottomSheetModel>? children, String title, [bool? onlyValue = false]) {
     final List<T> list = [];
     for (int i = 0; i < viewModel.isSelectedListMap![title]!.length; i++) {
       if (viewModel.isSelectedListMap![title]![i]) {
-        list.add(children![i].value ?? (onlyValue ? null : children[i].title));
+        list.add(children![i].value ?? (onlyValue == true ? null : children[i].title));
       }
     }
     return list;
@@ -1295,7 +1216,7 @@ class BottomSheetDialogManager {
       } else if (yaziciListe.length > 1) {
         final result = await showBottomSheetDialog(context, title: "Yazıcı Seçiniz", children: yaziciListe.map((YaziciList? e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList());
         if (result != null) {
-          printModel = printModel.copyWith(yaziciAdi: result?.yaziciAdi, yaziciTipi: result?.yaziciTipi);
+          printModel = printModel.copyWith(yaziciAdi: result.yaziciAdi, yaziciTipi: result.yaziciTipi);
         } else {
           return null;
         }
@@ -1317,7 +1238,7 @@ class BottomSheetDialogManager {
         final result =
             await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((NetFectDizaynList? e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
         if (result != null) {
-          printModel = printModel.copyWith(dizaynId: result?.id);
+          printModel = printModel.copyWith(dizaynId: result.id);
         } else {
           return null;
         }
