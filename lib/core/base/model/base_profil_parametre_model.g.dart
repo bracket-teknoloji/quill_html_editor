@@ -52,6 +52,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       stokGorunecekEkstraAlanlar:
           json['STOK_GORUNECEK_EKSTRA_ALANLAR'] as Map<String, dynamic>? ??
               const {},
+      stokListesiGridSayisi:
+          (json['STOK_LISTESI_GRID_SAYISI'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -91,6 +93,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       instance.sayimStokSecildigindeHemenKaydet;
   val['SAYIM_OTOMATIK_ETIKET_YAZDIR'] = instance.sayimOtomatikEtiketYazdir;
   val['STOK_GORUNECEK_EKSTRA_ALANLAR'] = instance.stokGorunecekEkstraAlanlar;
+  val['STOK_LISTESI_GRID_SAYISI'] = instance.stokListesiGridSayisi;
   return val;
 }
 

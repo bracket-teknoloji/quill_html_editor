@@ -52,6 +52,7 @@ mixin _$BaseProfilParametreModel {
   bool get sayimOtomatikEtiketYazdir => throw _privateConstructorUsedError;
   Map<String, dynamic> get stokGorunecekEkstraAlanlar =>
       throw _privateConstructorUsedError;
+  int get stokListesiGridSayisi => throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -91,7 +92,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
       bool sayimOtomatikEtiketYazdir,
-      Map<String, dynamic> stokGorunecekEkstraAlanlar});
+      Map<String, dynamic> stokGorunecekEkstraAlanlar,
+      int stokListesiGridSayisi});
 }
 
 /// @nodoc
@@ -132,6 +134,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? sayimStokSecildigindeHemenKaydet = null,
     Object? sayimOtomatikEtiketYazdir = null,
     Object? stokGorunecekEkstraAlanlar = null,
+    Object? stokListesiGridSayisi = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -222,6 +225,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.stokGorunecekEkstraAlanlar
           : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      stokListesiGridSayisi: null == stokListesiGridSayisi
+          ? _value.stokListesiGridSayisi
+          : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -257,7 +264,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool kapaliBelgelerListelenmesinMi,
       bool sayimStokSecildigindeHemenKaydet,
       bool sayimOtomatikEtiketYazdir,
-      Map<String, dynamic> stokGorunecekEkstraAlanlar});
+      Map<String, dynamic> stokGorunecekEkstraAlanlar,
+      int stokListesiGridSayisi});
 }
 
 /// @nodoc
@@ -297,6 +305,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? sayimStokSecildigindeHemenKaydet = null,
     Object? sayimOtomatikEtiketYazdir = null,
     Object? stokGorunecekEkstraAlanlar = null,
+    Object? stokListesiGridSayisi = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -387,6 +396,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value._stokGorunecekEkstraAlanlar
           : stokGorunecekEkstraAlanlar // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      stokListesiGridSayisi: null == stokListesiGridSayisi
+          ? _value.stokListesiGridSayisi
+          : stokListesiGridSayisi // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -417,7 +430,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.kapaliBelgelerListelenmesinMi = false,
       this.sayimStokSecildigindeHemenKaydet = false,
       this.sayimOtomatikEtiketYazdir = false,
-      final Map<String, dynamic> stokGorunecekEkstraAlanlar = const {}})
+      final Map<String, dynamic> stokGorunecekEkstraAlanlar = const {},
+      this.stokListesiGridSayisi = 0})
       : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
         super._();
 
@@ -500,6 +514,10 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
     return EqualUnmodifiableMapView(_stokGorunecekEkstraAlanlar);
   }
 
+  @override
+  @JsonKey()
+  final int stokListesiGridSayisi;
+
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -540,8 +558,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool kapaliBelgelerListelenmesinMi,
       final bool sayimStokSecildigindeHemenKaydet,
       final bool sayimOtomatikEtiketYazdir,
-      final Map<String, dynamic>
-          stokGorunecekEkstraAlanlar}) = _$BaseProfilParametreModelImpl;
+      final Map<String, dynamic> stokGorunecekEkstraAlanlar,
+      final int stokListesiGridSayisi}) = _$BaseProfilParametreModelImpl;
   _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -596,6 +614,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get sayimOtomatikEtiketYazdir;
   @override
   Map<String, dynamic> get stokGorunecekEkstraAlanlar;
+  @override
+  int get stokListesiGridSayisi;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
