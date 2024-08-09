@@ -98,6 +98,22 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
+  late final _$gridSayisiAtom =
+      Atom(name: '_StokListesiViewModelBase.gridSayisi', context: context);
+
+  @override
+  int get gridSayisi {
+    _$gridSayisiAtom.reportRead();
+    return super.gridSayisi;
+  }
+
+  @override
+  set gridSayisi(int value) {
+    _$gridSayisiAtom.reportWrite(value, super.gridSayisi, () {
+      super.gridSayisi = value;
+    });
+  }
+
   late final _$grupNoAtom =
       Atom(name: '_StokListesiViewModelBase.grupNo', context: context);
 
@@ -328,6 +344,17 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
         .startAction(name: '_StokListesiViewModelBase.changeSearchBarStatus');
     try {
       return super.changeSearchBarStatus();
+    } finally {
+      _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGridSayisi(int value) {
+    final _$actionInfo = _$_StokListesiViewModelBaseActionController
+        .startAction(name: '_StokListesiViewModelBase.setGridSayisi');
+    try {
+      return super.setGridSayisi(value);
     } finally {
       _$_StokListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -635,6 +662,7 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     return '''
 bakiyeGroupValue: ${bakiyeGroupValue},
 kategoriMi: ${kategoriMi},
+gridSayisi: ${gridSayisi},
 grupNo: ${grupNo},
 resimleriGoster: ${resimleriGoster},
 isSearchBarOpen: ${isSearchBarOpen},

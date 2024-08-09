@@ -385,6 +385,17 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
+  void setBelgeTipi(List<int>? value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setBelgeTipi');
+    try {
+      return super.setBelgeTipi(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void changeGrupKodList(List<BaseGrupKoduModel> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeGrupKodList');

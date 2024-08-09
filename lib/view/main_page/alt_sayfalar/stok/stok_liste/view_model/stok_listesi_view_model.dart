@@ -29,6 +29,9 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   bool kategoriMi = false;
 
   @observable
+  int gridSayisi = CacheManager.getProfilParametre.stokListesiGridSayisi;
+
+  @observable
   int grupNo = -1;
 
   Map<String, dynamic>? gorunecekAlanlar = CacheManager.getProfilParametre.stokGorunecekEkstraAlanlar;
@@ -48,6 +51,17 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void changeSearchBarStatus() {
     isSearchBarOpen = !isSearchBarOpen;
+  }
+
+  @action
+  void setGridSayisi(int value) {
+    gridSayisi = value;
+    if (gridSayisi != 0) {
+      if (resimleriGoster != "E") {
+        setResimleriGoster();
+      }
+    }
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokListesiGridSayisi: value));
   }
 
   @action
