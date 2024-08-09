@@ -58,6 +58,12 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _controller?.dispose();
+    super.dispose();
+  }
+
   Future<bool> isLocationEnabled() async {
     final PermissionStatus permissionStatus = await Permission.location.request();
     if (permissionStatus == PermissionStatus.denied) {
@@ -95,8 +101,18 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                 Observer(
                   builder: (_) => GoogleMap(
                     clusterManagers: {
-                      const ClusterManager(
-                        clusterManagerId: ClusterManagerId("value"),
+                      ClusterManager(
+                        clusterManagerId: const ClusterManagerId("value"),
+                        onClusterTap: (argument) {
+                          _controller?.animateCamera(
+                            CameraUpdate.newCameraPosition(
+                              CameraPosition(
+                                target: LatLng(argument.position.latitude, argument.position.longitude),
+                                zoom: 15.5,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     },
                     mapType: MapType.normal,
@@ -166,8 +182,8 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            width: width * 0.9,
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: width * 0.9),
             child: ElevatedButton(
               onPressed: () => dialogManager.showCariIslemleriGridViewDialog(model),
               style: theme.elevatedButtonTheme.style?.copyWith(elevation: const WidgetStatePropertyAll(10)),
