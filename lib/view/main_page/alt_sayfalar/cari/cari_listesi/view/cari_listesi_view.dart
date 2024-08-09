@@ -195,6 +195,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                       title: "Cari Haritası",
                       iconWidget: Icons.map_outlined,
                       onTap: () {
+                        Get.back();
                         Get.toNamed("mainPage/cariHaritasi");
                       },
                     ),
@@ -452,28 +453,24 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Future<void> cariBottomSheet(BuildContext context, CariListesiModel object) async {
-    var pageName = await bottomSheetDialogManager.showBottomSheetDialog(
+    final pageName = await bottomSheetDialogManager.showBottomSheetDialog<Object?>(
       context,
       title: "${object.cariKodu}\n${object.cariAdi}",
       children: [
         BottomSheetModel(
           title: loc.generalStrings.view,
           iconWidget: Icons.preview_outlined,
-          onTap: () => Get.back(
-            result: CariSeceneklerModel(
-              path: "/mainPage/cariEdit",
-              baseEditEnum: BaseEditEnum.goruntule,
-            ),
+          value: CariSeceneklerModel(
+            path: "/mainPage/cariEdit",
+            baseEditEnum: BaseEditEnum.goruntule,
           ),
         ).yetkiKontrol(yetkiController.cariKarti),
         BottomSheetModel(
           title: loc.generalStrings.edit,
           iconWidget: Icons.edit_outlined,
-          onTap: () => Get.back(
-            result: CariSeceneklerModel(
-              path: "/mainPage/cariEdit",
-              baseEditEnum: BaseEditEnum.duzenle,
-            ),
+          value: CariSeceneklerModel(
+            path: "/mainPage/cariEdit",
+            baseEditEnum: BaseEditEnum.duzenle,
           ),
         ).yetkiKontrol(yetkiController.cariKartiDuzenleme),
         BottomSheetModel(
@@ -521,17 +518,16 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       BaseEditEnum? baseEditEnum;
       if (pageName is CariSeceneklerModel) {
         baseEditEnum = pageName.baseEditEnum;
-        pageName = pageName.path;
         final BaseEditModel<CariListesiModel> editModel = BaseEditModel(
           baseEditEnum: baseEditEnum,
           editTipiEnum: EditTipiEnum.cari,
           model: object,
         );
-        final result = await Get.toNamed(pageName, arguments: editModel);
+        final result = await Get.toNamed(pageName.path ?? "", arguments: editModel);
         if (result == true) {
           viewModel.resetList();
         }
-      } else {
+      } else if (pageName is String) {
         Get.toNamed(pageName, arguments: object);
       }
     }
