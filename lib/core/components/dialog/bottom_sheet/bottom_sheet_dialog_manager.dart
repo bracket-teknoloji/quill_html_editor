@@ -67,45 +67,49 @@ class BottomSheetDialogManager {
     Widget? bodyWidget,
     List<T>? groupValues,
     bool? onlyValue,
-  }) =>
-      showModalBottomSheet<List<T>?>(
-        useRootNavigator: true,
-        isScrollControlled: true,
-        barrierColor: Colors.black.withOpacity(0.6),
-        useSafeArea: true,
-        constraints: BoxConstraints.loose(
-          Size(
-            MediaQuery.sizeOf(context).width,
-            MediaQuery.sizeOf(context).height * 0.9,
+  }) async {
+    final result = await showModalBottomSheet(
+      useRootNavigator: true,
+      isScrollControlled: true,
+      barrierColor: Colors.black.withOpacity(0.6),
+      useSafeArea: true,
+      constraints: BoxConstraints.loose(
+        Size(
+          MediaQuery.sizeOf(context).width,
+          MediaQuery.sizeOf(context).height * 0.9,
+        ),
+      ),
+      context: context,
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: MediaQuery.of(context).viewInsets,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                contentPadding: UIHelper.lowPadding,
+                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                splashColor: Colors.transparent,
+              ),
+              const Divider(
+                thickness: 2,
+                endIndent: 0,
+                indent: 0,
+              ).paddingAll(UIHelper.midSize),
+              Flexible(
+                child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
+              ),
+            ],
           ),
         ),
-        context: context,
-        builder: (context) => SafeArea(
-          child: Padding(
-            padding: MediaQuery.of(context).viewInsets,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  contentPadding: UIHelper.lowPadding,
-                  title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-                  trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-                  splashColor: Colors.transparent,
-                ),
-                const Divider(
-                  thickness: 2,
-                  endIndent: 0,
-                  indent: 0,
-                ).paddingAll(UIHelper.midSize),
-                Flexible(
-                  child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
+      ),
+    );
+    if (result is List) return result.cast<T>();
+    if (result is T) return [result];
+    return null;
+  }
 
   Future<T?> showBottomSheetDialog<T>(BuildContext context, {required String title, Widget? body, List<BottomSheetModel<T>>? children, bool aramaVarMi = false}) async {
     final result = await _generalBottomSheet<T>(context, title: title, body: bottomSheetBody, children: children, bodyWidget: body);
@@ -153,7 +157,7 @@ class BottomSheetDialogManager {
                 return Column(
                   children: <Widget>[
                     ListTile(
-                      onTap: item.onTap ?? () => Get.back(result: item.value),
+                      onTap: item.onTap ?? () => Get.back(result: [item.value]),
                       title: Text(item.title),
                       subtitle: Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))).yetkiVarMi(item.description != null).sizedBoxMi,
                       leading: item.icon != null || item.iconWidget != null
