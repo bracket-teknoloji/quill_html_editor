@@ -36,6 +36,6 @@ extension BadgeColorExtensions on BadgeColorEnum? {
         BadgeColorEnum.esYap || BadgeColorEnum.muhtelif => ColorPalette.asparagus,
         BadgeColorEnum.karmaKoli => ColorPalette.mulberry,
         BadgeColorEnum.rework => ColorPalette.outerSpace,
-        _ => Colors.orange,
+        _ => ColorPalette.gamboge,
       };
 }
