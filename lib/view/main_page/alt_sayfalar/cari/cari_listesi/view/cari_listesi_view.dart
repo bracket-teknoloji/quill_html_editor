@@ -192,6 +192,13 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   title: loc.generalStrings.options,
                   children: [
                     BottomSheetModel(
+                      title: "Cari Haritası",
+                      iconWidget: Icons.map_outlined,
+                      onTap: () {
+                        Get.toNamed("mainPage/cariHaritasi");
+                      },
+                    ),
+                    BottomSheetModel(
                       title: "Raporlar",
                       iconWidget: Icons.area_chart_outlined,
                       onTap: () {
