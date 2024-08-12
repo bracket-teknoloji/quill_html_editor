@@ -4,12 +4,12 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/doviz_kurlari_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
@@ -510,20 +510,30 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
 
   Future<void> dovizGuncelle() async {
     final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi, tarih: BaseSiparisEditModel.instance.tarih);
-    if (result is DovizKurlariModel) {
+    String dovizInfo = "";
+    if (result != null) {
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
+        if (!e.dovizliMi) return e;
+        final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
-          e.dovizKuru = result.dovSatis;
-          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovSatis ?? 0);
+          e.dovizKuru = dovizModel?.dovSatis;
+          e.brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
         } else {
-          e.dovizKuru = result.dovAlis;
-          e.brutFiyat = (e.dovizliBrutTutar) * (result.dovAlis ?? 0);
+          e.dovizKuru = dovizModel?.dovAlis;
+          e.brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
         }
         return e;
       }).toList();
       viewModel.changeUpdateKalemler();
+      for (DovizKurlariModel element in result) {
+        final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where((e) => e.dovizTipi == element.dovizTipi);
+        if (selectedDovizList?.isNotEmpty ?? false) {
+          dovizInfo = selectedDovizList?.map((e) => e.stokKodu ?? "").join(", ") ?? "";
+          dovizInfo += " için ${element.dovizAdi} döviz kuru ${(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) ? element.dovSatis : element.dovAlis} olarak güncellendi.\n";
+        }
+      }
       dialogManager.showSuccesDialog(
-        "${BaseSiparisEditModel.instance.dovizAdi} döviz kuru ${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false ? result.dovSatis : result.dovAlis} olarak güncellendi.",
+        dovizInfo,
       );
     }
   }
