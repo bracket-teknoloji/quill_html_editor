@@ -67,37 +67,19 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_KasaHareketleriViewModelBase.dahaVarMi', context: context);
+  late final _$observableListAtom = Atom(
+      name: '_KasaHareketleriViewModelBase.observableList', context: context);
 
   @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
+  ObservableList<KasaIslemleriModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
-    });
-  }
-
-  late final _$kasaIslemleriListesiAtom = Atom(
-      name: '_KasaHareketleriViewModelBase.kasaIslemleriListesi',
-      context: context);
-
-  @override
-  ObservableList<KasaIslemleriModel>? get kasaIslemleriListesi {
-    _$kasaIslemleriListesiAtom.reportRead();
-    return super.kasaIslemleriListesi;
-  }
-
-  @override
-  set kasaIslemleriListesi(ObservableList<KasaIslemleriModel>? value) {
-    _$kasaIslemleriListesiAtom.reportWrite(value, super.kasaIslemleriListesi,
-        () {
-      super.kasaIslemleriListesi = value;
+  set observableList(ObservableList<KasaIslemleriModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -117,12 +99,22 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
     });
   }
 
-  late final _$resetPageAsyncAction =
-      AsyncAction('_KasaHareketleriViewModelBase.resetPage', context: context);
+  late final _$resetListAsyncAction =
+      AsyncAction('_KasaHareketleriViewModelBase.resetList', context: context);
 
   @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+      '_KasaHareketleriViewModelBase.changeScrollStatus',
+      context: context);
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
   }
 
   late final _$deleteDataAsyncAction =
@@ -156,17 +148,6 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   @override
-  void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
-        .startAction(name: '_KasaHareketleriViewModelBase.setDahaVarMi');
-    try {
-      return super.setDahaVarMi(value);
-    } finally {
-      _$_KasaHareketleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setIsScrollDown(bool value) {
     final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
         .startAction(name: '_KasaHareketleriViewModelBase.setIsScrollDown');
@@ -189,17 +170,6 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   @override
-  void resetSayfa() {
-    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
-        .startAction(name: '_KasaHareketleriViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
-    } finally {
-      _$_KasaHareketleriViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setKasaKodu(String? value) {
     final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
         .startAction(name: '_KasaHareketleriViewModelBase.setKasaKodu');
@@ -211,24 +181,22 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
   }
 
   @override
-  void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo =
-        _$_KasaHareketleriViewModelBaseActionController.startAction(
-            name: '_KasaHareketleriViewModelBase.setKasaIslemleriListesi');
+  void setObservableList(List<KasaIslemleriModel>? value) {
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.setObservableList');
     try {
-      return super.setKasaIslemleriListesi(value);
+      return super.setObservableList(value);
     } finally {
       _$_KasaHareketleriViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo =
-        _$_KasaHareketleriViewModelBaseActionController.startAction(
-            name: '_KasaHareketleriViewModelBase.addKasaIslemleriListesi');
+  void addObservableList(List<KasaIslemleriModel>? list) {
+    final _$actionInfo = _$_KasaHareketleriViewModelBaseActionController
+        .startAction(name: '_KasaHareketleriViewModelBase.addObservableList');
     try {
-      return super.addKasaIslemleriListesi(value);
+      return super.addObservableList(list);
     } finally {
       _$_KasaHareketleriViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -240,8 +208,7 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
 kasaIslemleriRequestModel: ${kasaIslemleriRequestModel},
 paramData: ${paramData},
 isScrollDown: ${isScrollDown},
-dahaVarMi: ${dahaVarMi},
-kasaIslemleriListesi: ${kasaIslemleriListesi},
+observableList: ${observableList},
 dovizAdi: ${dovizAdi},
 bakiye: ${bakiye}
     ''';
