@@ -148,11 +148,15 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //   Get.back(result: viewModel.kalemModel);
                 // }
                 viewModel.kalemModel.sira = widget.kalemModel?.sira ?? (model.kalemList?.length ?? 0) + 1;
+
+                log(viewModel.kalemModel.dovizliFiyat.toString());
                 if (widget.kalemModel != null) {
                   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
+                  dialogManager.showSuccessSnackBar("Kalem düzenlendi.");
                 } else {
                   model.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
                   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
+                  dialogManager.showSuccessSnackBar("Kalem eklendi.");
                 }
                 // if (model.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
                 //   // model.kalemList?[model.kalemList?.indexWhere((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? 0] =
@@ -161,9 +165,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //   model.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
                 //   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
                 // }
-                dialogManager.showSuccessSnackBar("Kalem Eklendi");
               } else {
-                dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz");
+                dialogManager.showErrorSnackBar("Lütfen gerekli alanları doldurunuz.");
               }
             },
             icon: const Icon(Icons.save_outlined),
@@ -271,7 +274,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     ],
                                   ),
                                 ),
-                              ).yetkiVarMi( viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
+                              ).yetkiVarMi(viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
                               Text.rich(
                                 TextSpan(
                                   children: [
@@ -713,6 +716,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
                       viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
                       log(viewModel.kalemModel.brutFiyat.toString());
+                      log(viewModel.kalemModel.dovizliFiyat.toString());
                       fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
                     },
                   ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),

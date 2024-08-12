@@ -82,9 +82,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _kod4Controller = TextEditingController();
     _kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
-      _scrollController.addListener(() async {
-        viewModel.changeScrollStatus(_scrollController.position);
-      });
+      _scrollController.addListener(() async => viewModel.changeScrollStatus(_scrollController.position));
       await viewModel.getData();
     });
 

@@ -618,7 +618,7 @@ class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo,value: e)).toList(),
+          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
         );
       }
     }
@@ -638,15 +638,15 @@ class NetworkManager {
     return null;
   }
 
-  Future<DovizKurlariModel?> getDovizKurlari(int? dovizKodu, {DateTime? tarih}) async {
+  Future<List<DovizKurlariModel>?> getDovizKurlari(int? dovizKodu, {DateTime? tarih}) async {
     final result = await dioGet<DovizKurlariModel>(
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": tarih?.toDateString ?? DateTime.now().toDateString},
     );
-    if (result.data is List) {
-      return result.dataList.firstOrNull;
+    if (result.isSuccess) {
+      return result.dataList;
     }
     return null;
   }
