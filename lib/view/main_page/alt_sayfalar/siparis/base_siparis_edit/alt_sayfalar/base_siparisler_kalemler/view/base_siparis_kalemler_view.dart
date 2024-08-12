@@ -177,11 +177,11 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     TextSpan(
                       children: [
                         TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
-                          if (kalemModel?.iskontoTutari != null)
-                            TextSpan(
-                              text: kalemModel?.iskontoDetayi,
-                              style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
-                            ),
+                        if (kalemModel?.iskontoTutari != null)
+                          TextSpan(
+                            text: kalemModel?.iskontoDetayi,
+                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                          ),
                       ].whereType<TextSpan>().toList(),
                     ),
                   ).yetkiVarMi(kalemModel?.kdvOrani != null),
@@ -189,7 +189,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                     TextSpan(
                       children: [
                         TextSpan(text: "Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
-                        TextSpan(text: "\n(${kalemModel?.getDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
+                        TextSpan(text: "\n(${kalemModel?.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
                     ).yetkiVarMi(kalemModel?.brutFiyat != null),
