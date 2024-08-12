@@ -101,6 +101,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
+          BaseSiparisEditModel.instance.kdvDahilMi = BaseSiparisEditModel.instance.kdvDahil == "E";
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
