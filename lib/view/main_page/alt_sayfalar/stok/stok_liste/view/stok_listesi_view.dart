@@ -217,7 +217,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 ).paddingSymmetric(vertical: UIHelper.lowSize),
                                 ListTile(
                                   title: const Text("Görünecek Ekstra Alanlar"),
-                                  leading: const Icon(Icons.list_alt_outlined, color: UIHelper.primaryColor),
+                                  leading: const Icon(Icons.add_circle_outline_outlined, color: UIHelper.primaryColor),
                                   onTap: () async {
                                     final result = await bottomSheetDialogManager.showStokGorunecekAlanlarCheckBoxBottomSheetDialog(
                                       context,
@@ -613,8 +613,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               context,
               title: "Listeleme türünü seçin",
               children: [
-                BottomSheetModel(title: "Liste", iconWidget: Icons.list_alt_outlined, value: false, groupValue: false),
-                BottomSheetModel(title: "Kartlar", iconWidget: Icons.grid_view_outlined, value: true, groupValue: true),
+                BottomSheetModel(title: "Liste Görünümü", iconWidget: Icons.list_alt_outlined, value: false, groupValue: false),
+                BottomSheetModel(title: "Kart Görünümü", iconWidget: Icons.grid_view_outlined, value: true, groupValue: true),
               ],
             );
             if (result != null) {
@@ -700,53 +700,62 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Card stokListesiGridTile(StokListesiModel item, int? crossAxisCount) => Card(
         child: InkWell(
-          onLongPress: () {
-            dialogManager.showStokGridViewDialog(item);
-          },
+          onLongPress: () => dialogManager.showStokGridViewDialog(item),
           onTap: () => stokOnTap(item),
           child: GridTile(
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(
-                  child: Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      ImageWidget(
-                        path: item.resimUrlKucuk,
-                        onTap: () {
-                          if (item.resimUrl != null) {
-                            Get.to(() => ImageView(path: item.resimUrl ?? "", title: item.stokKodu ?? ""));
-                          }
-                        },
-                      ),
-                      ColorfulBadge(label: Text("${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}")),
-                    ],
+                  flex: 2,
+                  child: ImageWidget(
+                    path: item.resimUrl,
+                    onTap: () {
+                      if (item.resimUrl != null) {
+                        Get.to(() => ImageView(path: item.resimUrl ?? item.resimUrlKucuk ?? "", title: item.stokKodu ?? ""));
+                      }
+                    },
                   ),
                 ),
-                Wrap(
-                  alignment: WrapAlignment.spaceBetween,
-                  spacing: UIHelper.lowSize,
-                  children: [
-                    const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
-                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
-                    const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
-                  ].whereType<ColorfulBadge>().toList(),
-                ),
-                Text(item.stokAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                 Flexible(
                   child: SingleChildScrollView(
-                    child: CustomLayoutBuilder(
-                      splitCount: crossAxisCount == 1
-                          ? 3
-                          : crossAxisCount == 2
-                              ? 2
-                              : 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Stok Kodu:  ${item.stokKodu}"),
-                        Text("Yap.Açık:  ${item.yapacik ?? ""}").yetkiVarMi(item.yapacik != null),
-                        Text("YapKod:  ${item.yapkod ?? ""}").yetkiVarMi(item.yapkod != null),
-                        Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null),
+                        Text(
+                          item.stokAdi ?? "",
+                          style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                          maxLines: 2,
+                        ).yetkiVarMi(item.stokAdi != null),
+                        Wrap(
+                          children: [
+                            const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
+                            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
+                            const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
+                          ]
+                              .map(
+                                (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
+                              )
+                              .toList()
+                              .nullCheckWithGeneric,
+                        ),
+                        CustomLayoutBuilder(
+                          splitCount: crossAxisCount == 1
+                              ? 3
+                              : crossAxisCount == 2
+                                  ? 2
+                                  : 1,
+                          children: [
+                            Text("Stok Kodu:  ${item.stokKodu}"),
+                            Text("Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}"),
+                            Text("Yap.Açık:  ${item.yapacik ?? ""}").yetkiVarMi(item.yapacik != null),
+                            Text("YapKod:  ${item.yapkod ?? ""}").yetkiVarMi(item.yapkod != null),
+                            Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null),
+                          ],
+                        ),
                       ],
                     ),
                   ),

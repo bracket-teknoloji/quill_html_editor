@@ -69,23 +69,34 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
     if (items == null) return GridViewShimmer(gridDelegate: gridDelegate());
     if (items!.isEmpty) return const Center(child: Text("Liste bulunamadı."));
     if (_isPageable) {
-      return GridView.builder(
-        controller: scrollController, primary: false,
-        gridDelegate: gridDelegate(),
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      return Column(
+        children: [
+          Expanded(
+            child: GridView.builder(
+              controller: scrollController, primary: false,
+              gridDelegate: gridDelegate(),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
 
-        // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
-        // Gösterebilmek için item sayısını 1 artırırız.
-        itemCount: dahaVarMi ? items!.length + 1 : items!.length,
-        itemBuilder: (context, index) {
-          if (index == items!.length) {
-            return Visibility(
-              visible: dahaVarMi,
-              child: const Center(child: CircularProgressIndicator.adaptive()),
-            );
-          }
-          return itemBuilder(items![index]);
-        },
+              // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
+              // Gösterebilmek için item sayısını 1 artırırız.
+              itemCount: dahaVarMi ? items!.length + 1 : items!.length,
+              itemBuilder: (context, index) {
+                if (index == items!.length) {
+                  return Visibility(
+                    visible: dahaVarMi,
+                    child: const Center(child: CircularProgressIndicator.adaptive()),
+                  );
+                }
+                return itemBuilder(items![index]);
+              },
+            ),
+          ),
+          Visibility(
+            visible: dahaVarMi,
+            child: const Center(child: CircularProgressIndicator.adaptive()),
+          ),
+        ],
       );
     }
     return GridView.builder(
@@ -97,5 +108,12 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
     );
   }
 
-  SliverGridDelegateWithFixedCrossAxisCount gridDelegate() => SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: crossAxisCount, childAspectRatio: 1.1 / crossAxisCount * 2);
+  SliverGridDelegateWithFixedCrossAxisCount gridDelegate() => SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        childAspectRatio: crossAxisCount == 1
+            ? 1.3
+            : crossAxisCount == 2
+                ? 0.6
+                : 0.5,
+      );
 }
