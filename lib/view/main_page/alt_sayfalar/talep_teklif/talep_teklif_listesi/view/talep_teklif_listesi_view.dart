@@ -5,6 +5,7 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -34,7 +35,7 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/talep_teklif_listesi_view_model.dart";
 
-class TalepTeklifListesiView extends StatefulWidget {
+final class TalepTeklifListesiView extends StatefulWidget {
   final TalepTeklifEnum talepTeklifEnum;
   const TalepTeklifListesiView({super.key, required this.talepTeklifEnum});
 
@@ -42,7 +43,7 @@ class TalepTeklifListesiView extends StatefulWidget {
   State<TalepTeklifListesiView> createState() => _TalepTeklifListesiViewState();
 }
 
-class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
+final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   final TalepTeklifListesiViewModel viewModel = TalepTeklifListesiViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController _searchController;
@@ -124,28 +125,28 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
   AppBar appBar() => AppBar(
         title: Observer(
           builder: (_) {
-            if (viewModel.searchBar) {
+            if (viewModel.isSearchBarOpen) {
               return CustomAppBarTextField(
                 controller: _searchController,
                 onChanged: viewModel.setSearchText,
                 onFieldSubmitted: (value) async {
                   viewModel.setSearchText(value);
-                  await viewModel.resetPage();
+                  viewModel.resetList();
                 },
               );
             }
-            return AppBarTitle(title: widget.talepTeklifEnum.getName, subtitle: viewModel.talepTeklifListesiModelList?.length.toStringIfNotNull);
+            return AppBarTitle(title: widget.talepTeklifEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull);
           },
         ),
         actions: [
           Observer(
-            builder: (_) => viewModel.searchBar
+            builder: (_) => viewModel.isSearchBarOpen
                 ? IconButton(
-                    onPressed: viewModel.changeSearchBar,
+                    onPressed: viewModel.changeSearchBarStatus,
                     icon: const Icon(Icons.search_off_outlined),
                   )
                 : IconButton(
-                    onPressed: viewModel.changeSearchBar,
+                    onPressed: viewModel.changeSearchBarStatus,
                     icon: const Icon(Icons.search_outlined),
                   ),
           ),
@@ -184,7 +185,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
 
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrolledDown,
+          isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             final result = await Get.toNamed(
               "mainPage/talTekEdit",
@@ -195,43 +196,68 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
               ),
             );
             if (result == true) {
-              await viewModel.resetPage();
+              viewModel.resetList();
             }
           },
         ),
       );
 
-  RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.resetPage,
+  Widget body() => Observer(
+        builder: (_) => RefreshableListView.pageable(
+          scrollController: _scrollController,
+          onRefresh: viewModel.resetList,
+          dahaVarMi: viewModel.dahaVarMi,
+          items: viewModel.observableList,
+          itemBuilder: (item) => Observer(
+            builder: (_) => TalepTeklifCard(
+              model: item,
+              talepTeklifEnum: widget.talepTeklifEnum,
+              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+              showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
+              showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+              showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+              onDeleted: () async => viewModel.resetList(),
+              onUpdated: (value) async {
+                if (value) {
+                  viewModel.resetList();
+                }
+              },
+            ),
+          ),
+        ),
+      );
+
+  RefreshIndicator body2() => RefreshIndicator.adaptive(
+        onRefresh: viewModel.resetList,
         child: Observer(
           builder: (_) {
-            if (viewModel.talepTeklifListesiModelList == null) {
+            if (viewModel.observableList == null) {
               return const ListViewShimmer();
-            } else if (viewModel.talepTeklifListesiModelList!.isEmpty) {
+            } else if (viewModel.observableList!.isEmpty) {
               return const Center(child: Text("Kayıt Bulunamadı."));
             } else {
               return ListView.builder(
                 controller: _scrollController,
                 primary: false,
                 padding: UIHelper.lowPadding,
-                itemCount: viewModel.talepTeklifListesiModelList!.length + (viewModel.dahaVarMi ? 1 : 0),
+                itemCount: viewModel.observableList!.length + (viewModel.dahaVarMi ? 1 : 0),
                 itemBuilder: (_, index) {
-                  if (index == viewModel.talepTeklifListesiModelList!.length) {
+                  if (index == viewModel.observableList!.length) {
                     return const Center(child: CircularProgressIndicator.adaptive());
                   }
-                  final BaseSiparisEditModel model = viewModel.talepTeklifListesiModelList![index];
+                  final BaseSiparisEditModel item = viewModel.observableList![index];
                   return Observer(
                     builder: (_) => TalepTeklifCard(
-                      model: model,
+                      model: item,
                       talepTeklifEnum: widget.talepTeklifEnum,
                       editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                       showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                      onDeleted: () async => await viewModel.resetPage(),
+                      onDeleted: () async => viewModel.resetList(),
                       onUpdated: (value) async {
                         if (value) {
-                          await viewModel.resetPage();
+                          viewModel.resetList();
                         }
                       },
                     ),
@@ -245,7 +271,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
 
   Observer bottomBar() => Observer(
         builder: (_) => BottomBarWidget(
-          isScrolledDown: viewModel.isScrolledDown,
+          isScrolledDown: viewModel.isScrollDown,
           visible: viewModel.paramData?.isNotEmpty == true,
           children: [
             FooterButton(
@@ -498,7 +524,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                     _kod4Controller.clear();
                     _kod5Controller.clear();
                     await viewModel.resetFilter();
-                    await viewModel.resetPage();
+                    viewModel.resetList();
                   },
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   child: const Text("Temizle"),
@@ -509,7 +535,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
                 child: ElevatedButton(
                   onPressed: () async {
                     Get.back();
-                    await viewModel.resetPage();
+                    viewModel.resetList();
                   },
                   child: Text(loc.generalStrings.apply),
                 ),
@@ -537,7 +563,7 @@ class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiView> {
     );
     if (result != null) {
       viewModel.setSiralama(result);
-      viewModel.resetPage();
+      viewModel.resetList();
     }
   }
 

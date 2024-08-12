@@ -1,6 +1,10 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -14,7 +18,7 @@ part "talep_teklif_listesi_view_model.g.dart";
 
 class TalepTeklifListesiViewModel = _TalepTeklifListesiViewModelBase with _$TalepTeklifListesiViewModel;
 
-abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
+abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   final Map<String, String> siralaMap = {
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
@@ -41,23 +45,27 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
   bool grupKodlariGoster = false;
 
+  @override
   @observable
-  bool searchBar = false;
+  bool isSearchBarOpen = false;
+
+  @override
+  @observable
+  String? searchText;
 
   @observable
   SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(sayfa: 1, faturalasmaGoster: true, miktarGetir: "E", ekranTipi: "L", iadeMi: false, cariKodu: "", siralama: "TARIH_ZA");
 
+  @override
   @observable
-  ObservableList<BaseSiparisEditModel>? talepTeklifListesiModelList;
+  ObservableList<BaseSiparisEditModel>? observableList;
 
   @observable
   ObservableList<BaseGrupKoduModel>? grupKodlariList;
 
+  @override
   @observable
-  bool isScrolledDown = true;
-
-  @observable
-  bool dahaVarMi = true;
+  bool isScrollDown = true;
 
   @observable
   ObservableMap<String, dynamic>? paramData;
@@ -135,20 +143,22 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
     }.asObservable();
   }
 
+  @override
   @action
-  Future<void> changeSearchBar() async {
-    searchBar = !searchBar;
-    if (!searchBar) {
-      siparislerRequestModel = siparislerRequestModel.copyWith(searchText: null);
-      await resetPage();
+  Future<void> changeSearchBarStatus() async {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) {
+      searchText = null;
+      resetList();
     }
   }
 
+  @override
   @action
-  void setSearchText(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(searchText: value);
+  void setSearchText(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(searchText: value);
 
   @action
-  void setIsScrolledDown(bool value) => isScrolledDown = value;
+  void setIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
   void setPickerBelgeTuru(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(pickerBelgeTuru: value);
@@ -156,11 +166,13 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSiralama(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
 
+  @override
   @action
-  void setTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) => talepTeklifListesiModelList = list.asObservable();
+  void setObservableList(List<BaseSiparisEditModel>? list) => observableList = list?.asObservable();
 
+  @override
   @action
-  void addTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) => talepTeklifListesiModelList!.addAll(list);
+  void addObservableList(List<BaseSiparisEditModel>? list) => setObservableList(observableList?..addAll(list!));
 
   @action
   void setArrPlasiyerKodu(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
@@ -238,11 +250,12 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
     grupKodlariGoster = !grupKodlariGoster;
   }
 
+  @override
   @action
-  Future<void> resetPage() async {
-    siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: 1);
-    talepTeklifListesiModelList = null;
-    dahaVarMi = true;
+  Future<void> resetList() async {
+    super.resetList();
+    setDahaVarMi(true);
+    resetPage();
     await getData();
   }
 
@@ -251,9 +264,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
     this.paramData = paramData.asObservable();
   }
 
+  @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: siparislerRequestModel.toJson());
+    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: siparislerRequestModel.copyWith(sayfa: page).toJson());
     if (result.data != null) {
       final List<BaseSiparisEditModel> list = result.data.map<BaseSiparisEditModel>((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
@@ -262,10 +276,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin {
         dahaVarMi = true;
         siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: (siparislerRequestModel.sayfa ?? 0) + 1);
       }
-      if (talepTeklifListesiModelList == null) {
-        setTalepTeklifiListesiModelList(list);
+      if (observableList == null) {
+        setObservableList(list);
       } else {
-        addTalepTeklifiListesiModelList(list);
+        addObservableList(list);
       }
       if (!(result.paramData?.values.contains("0") ?? true)) {
         final Map<String, dynamic> paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")))).cast<String, dynamic>() ?? {};

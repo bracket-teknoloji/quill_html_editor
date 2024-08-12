@@ -132,19 +132,36 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     });
   }
 
-  late final _$searchBarAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_TalepTeklifListesiViewModelBase.isSearchBarOpen',
+      context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$searchTextAtom = Atom(
+      name: '_TalepTeklifListesiViewModelBase.searchText', context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -166,21 +183,20 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     });
   }
 
-  late final _$talepTeklifListesiModelListAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.talepTeklifListesiModelList',
+  late final _$observableListAtom = Atom(
+      name: '_TalepTeklifListesiViewModelBase.observableList',
       context: context);
 
   @override
-  ObservableList<BaseSiparisEditModel>? get talepTeklifListesiModelList {
-    _$talepTeklifListesiModelListAtom.reportRead();
-    return super.talepTeklifListesiModelList;
+  ObservableList<BaseSiparisEditModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set talepTeklifListesiModelList(ObservableList<BaseSiparisEditModel>? value) {
-    _$talepTeklifListesiModelListAtom
-        .reportWrite(value, super.talepTeklifListesiModelList, () {
-      super.talepTeklifListesiModelList = value;
+  set observableList(ObservableList<BaseSiparisEditModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -201,36 +217,19 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     });
   }
 
-  late final _$isScrolledDownAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.isScrolledDown',
-      context: context);
+  late final _$isScrollDownAtom = Atom(
+      name: '_TalepTeklifListesiViewModelBase.isScrollDown', context: context);
 
   @override
-  bool get isScrolledDown {
-    _$isScrolledDownAtom.reportRead();
-    return super.isScrolledDown;
+  bool get isScrollDown {
+    _$isScrollDownAtom.reportRead();
+    return super.isScrollDown;
   }
 
   @override
-  set isScrolledDown(bool value) {
-    _$isScrolledDownAtom.reportWrite(value, super.isScrolledDown, () {
-      super.isScrolledDown = value;
-    });
-  }
-
-  late final _$dahaVarMiAtom = Atom(
-      name: '_TalepTeklifListesiViewModelBase.dahaVarMi', context: context);
-
-  @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
-  }
-
-  @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
+  set isScrollDown(bool value) {
+    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
+      super.isScrollDown = value;
     });
   }
 
@@ -250,13 +249,14 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
     });
   }
 
-  late final _$changeSearchBarAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.changeSearchBar',
+  late final _$changeSearchBarStatusAsyncAction = AsyncAction(
+      '_TalepTeklifListesiViewModelBase.changeSearchBarStatus',
       context: context);
 
   @override
-  Future<void> changeSearchBar() {
-    return _$changeSearchBarAsyncAction.run(() => super.changeSearchBar());
+  Future<void> changeSearchBarStatus() {
+    return _$changeSearchBarStatusAsyncAction
+        .run(() => super.changeSearchBarStatus());
   }
 
   late final _$resetFilterAsyncAction = AsyncAction(
@@ -278,13 +278,13 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
         .run(() => super.changeGrupKodlariGoster());
   }
 
-  late final _$resetPageAsyncAction = AsyncAction(
-      '_TalepTeklifListesiViewModelBase.resetPage',
+  late final _$resetListAsyncAction = AsyncAction(
+      '_TalepTeklifListesiViewModelBase.resetList',
       context: context);
 
   @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
   }
 
   late final _$getDataAsyncAction =
@@ -335,7 +335,7 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   @override
-  void setSearchText(String value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_TalepTeklifListesiViewModelBaseActionController
         .startAction(name: '_TalepTeklifListesiViewModelBase.setSearchText');
     try {
@@ -385,13 +385,12 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   @override
-  void setTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) {
+  void setObservableList(List<BaseSiparisEditModel>? list) {
     final _$actionInfo =
         _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name:
-                '_TalepTeklifListesiViewModelBase.setTalepTeklifiListesiModelList');
+            name: '_TalepTeklifListesiViewModelBase.setObservableList');
     try {
-      return super.setTalepTeklifiListesiModelList(list);
+      return super.setObservableList(list);
     } finally {
       _$_TalepTeklifListesiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -399,13 +398,12 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
   }
 
   @override
-  void addTalepTeklifiListesiModelList(List<BaseSiparisEditModel> list) {
+  void addObservableList(List<BaseSiparisEditModel>? list) {
     final _$actionInfo =
         _$_TalepTeklifListesiViewModelBaseActionController.startAction(
-            name:
-                '_TalepTeklifListesiViewModelBase.addTalepTeklifiListesiModelList');
+            name: '_TalepTeklifListesiViewModelBase.addObservableList');
     try {
-      return super.addTalepTeklifiListesiModelList(list);
+      return super.addObservableList(list);
     } finally {
       _$_TalepTeklifListesiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -591,12 +589,12 @@ mixin _$TalepTeklifListesiViewModel on _TalepTeklifListesiViewModelBase, Store {
 teslimatDurumuValueList: ${teslimatDurumuValueList},
 ekstraAlanlarMap: ${ekstraAlanlarMap},
 grupKodlariGoster: ${grupKodlariGoster},
-searchBar: ${searchBar},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
 siparislerRequestModel: ${siparislerRequestModel},
-talepTeklifListesiModelList: ${talepTeklifListesiModelList},
+observableList: ${observableList},
 grupKodlariList: ${grupKodlariList},
-isScrolledDown: ${isScrolledDown},
-dahaVarMi: ${dahaVarMi},
+isScrollDown: ${isScrollDown},
 paramData: ${paramData},
 getKdvHaric: ${getKdvHaric},
 getKdv: ${getKdv},
