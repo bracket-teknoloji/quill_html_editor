@@ -21,8 +21,11 @@ EvraklarRequestModel _$EvraklarRequestModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EvraklarRequestModel {
   String? get belgeTipi => throw _privateConstructorUsedError;
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
   String? get urlGetir => throw _privateConstructorUsedError;
+  set urlGetir(String? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this EvraklarRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -128,40 +131,19 @@ class __$$EvraklarRequestModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
-  const _$EvraklarRequestModelImpl(
-      {this.belgeTipi, this.urlGetir, this.belgeNo});
+class _$EvraklarRequestModelImpl extends _EvraklarRequestModel {
+  _$EvraklarRequestModelImpl({this.belgeTipi, this.urlGetir, this.belgeNo})
+      : super._();
 
   factory _$EvraklarRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EvraklarRequestModelImplFromJson(json);
 
   @override
-  final String? belgeTipi;
+  String? belgeTipi;
   @override
-  final String? urlGetir;
+  String? urlGetir;
   @override
-  final String? belgeNo;
-
-  @override
-  String toString() {
-    return 'EvraklarRequestModel(belgeTipi: $belgeTipi, urlGetir: $urlGetir, belgeNo: $belgeNo)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EvraklarRequestModelImpl &&
-            (identical(other.belgeTipi, belgeTipi) ||
-                other.belgeTipi == belgeTipi) &&
-            (identical(other.urlGetir, urlGetir) ||
-                other.urlGetir == urlGetir) &&
-            (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, belgeTipi, urlGetir, belgeNo);
+  String? belgeNo;
 
   /// Create a copy of EvraklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -181,21 +163,25 @@ class _$EvraklarRequestModelImpl implements _EvraklarRequestModel {
   }
 }
 
-abstract class _EvraklarRequestModel implements EvraklarRequestModel {
-  const factory _EvraklarRequestModel(
-      {final String? belgeTipi,
-      final String? urlGetir,
-      final String? belgeNo}) = _$EvraklarRequestModelImpl;
+abstract class _EvraklarRequestModel extends EvraklarRequestModel {
+  factory _EvraklarRequestModel(
+      {String? belgeTipi,
+      String? urlGetir,
+      String? belgeNo}) = _$EvraklarRequestModelImpl;
+  _EvraklarRequestModel._() : super._();
 
   factory _EvraklarRequestModel.fromJson(Map<String, dynamic> json) =
       _$EvraklarRequestModelImpl.fromJson;
 
   @override
   String? get belgeTipi;
+  set belgeTipi(String? value);
   @override
   String? get urlGetir;
+  set urlGetir(String? value);
   @override
   String? get belgeNo;
+  set belgeNo(String? value);
 
   /// Create a copy of EvraklarRequestModel
   /// with the given fields replaced by the non-null parameter values.
