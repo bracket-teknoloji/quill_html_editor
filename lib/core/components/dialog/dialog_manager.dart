@@ -287,9 +287,9 @@ class DialogManager {
   void showCariSerbestRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) {
+  Future<dynamic> showStokGridViewDialog(StokListesiModel? model, [IslemTipiEnum? tip]) async {
     if (_yetkiController.stokListesi) {
-      _baseDialog(
+      return await _baseDialog(
         body: CustomAnimatedGridView<StokListesiModel>(model: model, title: model?.stokAdi, islemTipi: tip ?? IslemTipiEnum.stok),
         onOk: () {},
         btnOkText: "İptal",
