@@ -18,6 +18,8 @@ import "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_b
 import "package:picker/core/base/view/seri_islemleri/seri_detayi/view/seri_detayi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_listesi/view/seri_listesi_view.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehberi_view.dart";
+import "package:picker/core/components/image/evraklar/view/evraklar_view.dart";
+import "package:picker/core/components/image/image_picker/view/image_picker_view.dart";
 import "package:picker/core/constants/enum/hucre_takibi_islem_turu_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view/cari_aktivite_detayi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/view/cari_aktivite_edit_view.dart";
@@ -219,6 +221,7 @@ class PickerApp extends StatelessWidget {
         opaqueRoute: false,
         theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
+        
         themeMode: CacheManager.getProfilParametre.temaModu,
         home: const SplashAuthView(),
         getPages: <GetPage>[
@@ -249,6 +252,8 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriBakiyeleri", page: () => SeriBakiyeleriView(stokModel: Get.arguments)),
           GetPage(name: "/seriRehberi", page: () => SeriRehberiView(stokModel: Get.arguments)),
           GetPage(name: "/seriRehberiUSK", page: () => SeriRehberiView.usk(stokModel: Get.arguments)),
+          GetPage(name: "/evraklar", page: () => EvraklarView(model: Get.arguments)),
+          GetPage(name: "/imagePicker", page: () => ImagePickerView(requestModel: Get.arguments)),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
