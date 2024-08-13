@@ -161,59 +161,38 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                     Expanded(
                       flex: 1,
                       child: Observer(
-                        builder: (_) {
-                          if (stokModel.resimBase64 != null) {
-                            return InkWell(
-                              child: SizedBox(
-                                height: kTextTabBarHeight,
-                                child: Image.memory(
-                                  base64Decode(stokModel.resimBase64!),
-                                  fit: BoxFit.
+                        builder: (_) => InkWell(
+                          child: SizedBox(
+                            height: kTextTabBarHeight,
+                            child: Image.memory(
+                              base64Decode(stokModel.resimBase64!),
+                              fit: BoxFit.
 
-                                      /// Yukarıdaki kod Dart programlama dilinde bir yorumdur.
-                                      /// Hiçbir şey yapmıyor ancak diğer geliştiricilere kod
-                                      /// hakkında bilgi veya açıklama sağlamak için kullanılıyor.
-                                      fitHeight,
-                                ).paddingAll(UIHelper.lowSize),
-                              ),
-                              onTap: () async {
-                                final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                                  context,
-                                  title: "Kaynak tipi",
-                                  children: [
-                                    BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                                    BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                                    BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
-                                  ],
-                                );
-                                if (sourceType is ImageSource) {
-                                  viewModel.setImage(await imageCompresser(sourceType));
-                                } else {
-                                  dialogManager.showAreYouSureDialog(() {
-                                    viewModel.setImage(null);
-                                  });
-                                }
-                              },
+                                  /// Yukarıdaki kod Dart programlama dilinde bir yorumdur.
+                                  /// Hiçbir şey yapmıyor ancak diğer geliştiricilere kod
+                                  /// hakkında bilgi veya açıklama sağlamak için kullanılıyor.
+                                  fitHeight,
+                            ).paddingAll(UIHelper.lowSize),
+                          ),
+                          onTap: () async {
+                            final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                              context,
+                              title: "Kaynak tipi",
+                              children: [
+                                BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+                                BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+                                if (stokModel.resimBase64 != null) BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
+                              ],
                             );
-                          }
-                          return IconButton(
-                            onPressed: () async {
-                              final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                                context,
-                                title: "Kaynak tipi",
-                                children: [
-                                  BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                                  BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                                ],
-                              );
-                              //image picker
-                              if (sourceType != null) {
-                                viewModel.setImage(await imageCompresser(sourceType));
-                              }
-                            },
-                            icon: const Icon(Icons.add),
-                          );
-                        },
+                            if (sourceType is ImageSource) {
+                              viewModel.setImage(await imageCompresser(sourceType));
+                            } else {
+                              dialogManager.showAreYouSureDialog(() {
+                                viewModel.setImage(null);
+                              });
+                            }
+                          },
+                        ),
                       ),
                     ).yetkiVarMi(widget.model.ekleMi),
                     Expanded(
