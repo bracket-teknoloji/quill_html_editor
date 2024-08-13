@@ -11,6 +11,7 @@ import "package:picker/core/utils/map_utils.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_save_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "package:picker/view/main_page/model/user_model/profil_yetki_model.dart";
 import "package:share_plus/share_plus.dart";
@@ -75,6 +76,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(hucreHareketleri);
       islemlerList.add(depoBakiyeDurumu);
       islemlerList.add(fiyatGor);
+      islemlerList.add(stokResimleri);
       islemlerList.add(stokFiyatOzeti);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
@@ -507,6 +509,13 @@ class IslemlerMenuItemConstants<T> {
         isEnabled: _yetkiController.stokFiyatGorEkrani,
         iconData: Icons.monetization_on_outlined,
         onTap: () async => Get.toNamed("/mainPage/stokFiyatGor", arguments: model),
+      );
+
+  GridItemModel? get stokResimleri => GridItemModel.islemler(
+        title: "Stok Resimleri",
+        isEnabled: _yetkiController.stokResimGoster,
+        iconData: Icons.photo_album_outlined,
+        onTap: () async => Get.toNamed("/evraklar", arguments: EvraklarRequestModel.fromStokModel(model as StokListesiModel)),
       );
 
   GridItemModel? get stokFiyatOzeti => GridItemModel.islemler(
