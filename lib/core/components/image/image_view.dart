@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../base/state/base_state.dart";
-import "../../constants/extensions/list_extensions.dart";
 import "../wrap/appbar_title.dart";
 import "image_widget.dart";
 
@@ -24,14 +23,15 @@ class _ImageViewState extends BaseState<ImageView> {
             title: loc.generalStrings.view,
             subtitle: widget.title,
           ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                await Share.shareXFiles([xfile].nullCheckWithGeneric, subject: "Resim Paylaşımı");
-              },
-              icon: const Icon(Icons.share_outlined),
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     onPressed: () async {
+          //       xfile = await
+          //       await Share.shareXFiles([xfile].nullCheckWithGeneric, subject: "Resim Paylaşımı");
+          //     },
+          //     icon: const Icon(Icons.share_outlined),
+          //   ),
+          // ],
         ),
         body: Column(
           children: [
