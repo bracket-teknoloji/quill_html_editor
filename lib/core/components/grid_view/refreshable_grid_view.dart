@@ -27,6 +27,7 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
   /// Sayfa hareketlerini takip etmek içn kullanılır.
   final ScrollController? scrollController;
 
+  /// Yatay eksendeki eleman sayısıdır.
   final int crossAxisCount;
 
   /// Gelecek olan listenin Sliver olup olmadığını kontrol etmek için kullanılır.
@@ -91,10 +92,6 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
                 return itemBuilder(items![index]);
               },
             ),
-          ),
-          Visibility(
-            visible: dahaVarMi,
-            child: const Center(child: CircularProgressIndicator.adaptive()),
           ),
         ],
       );
