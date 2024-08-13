@@ -672,27 +672,24 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           grupKoduFilter(),
           Expanded(
             child: Observer(
-              builder: (_) => Scrollbar(
-                controller: scrollController,
-                child: viewModel.gridSayisi != 0
-                    ? Observer(
-                        builder: (_) => RefreshableGridView.pageable(
-                          crossAxisCount: viewModel.gridSayisi,
-                          scrollController: scrollController,
-                          onRefresh: viewModel.resetList,
-                          dahaVarMi: viewModel.dahaVarMi,
-                          items: viewModel.observableList,
-                          itemBuilder: (item, {int? crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
-                        ),
-                      )
-                    : RefreshableListView.pageable(
+              builder: (_) => viewModel.gridSayisi != 0
+                  ? Observer(
+                      builder: (_) => RefreshableGridView.pageable(
+                        crossAxisCount: viewModel.gridSayisi,
                         scrollController: scrollController,
                         onRefresh: viewModel.resetList,
                         dahaVarMi: viewModel.dahaVarMi,
                         items: viewModel.observableList,
-                        itemBuilder: stokListesiCard,
+                        itemBuilder: (item, {int? crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
                       ),
-              ),
+                    )
+                  : RefreshableListView.pageable(
+                      scrollController: scrollController,
+                      onRefresh: viewModel.resetList,
+                      dahaVarMi: viewModel.dahaVarMi,
+                      items: viewModel.observableList,
+                      itemBuilder: stokListesiCard,
+                    ),
             ),
           ),
         ],
