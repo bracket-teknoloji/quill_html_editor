@@ -157,12 +157,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             // }
             if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.otvVarmi == true) ?? false) {
               for (var item in BaseSiparisEditModel.instance.kalemList!) {
-                if (item.otvVarmi != true) continue;
-                if (item.otvOranmi == true) {
-                  item.otvTutar = ((item.otvDegeri ?? 0) / 100) * item.araToplamTutari;
-                } else {
-                  item.otvTutar = (item.otvDegeri ?? 0) * (item.miktar ?? 0);
-                }
+                item.otvHesapla();
               }
             }
           } else if (widget.model.baseEditEnum.kopyalaMi) {
