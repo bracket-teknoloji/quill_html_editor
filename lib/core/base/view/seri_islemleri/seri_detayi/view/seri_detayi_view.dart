@@ -25,10 +25,15 @@ class SeriDetayiView extends StatefulWidget {
 class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   final SeriDetayiViewModel viewModel = SeriDetayiViewModel();
   late final GlobalKey<FormState> formKey;
+  late final TextEditingController seri1Controller;
+  late final TextEditingController seri2Controller;
+  late final TextEditingController seri3Controller;
+  late final TextEditingController seri4Controller;
   late final FocusNode _focusNode;
 
   @override
   void initState() {
+    seri1Controller = TextEditingController(text: widget.seriDetayiModel.seriList?.seri1 ?? widget.seriDetayiModel.seriList?.seriNo);
     _focusNode = FocusNode();
     formKey = GlobalKey<FormState>();
     if (widget.seriDetayiModel.seriList != null) {
@@ -49,6 +54,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
 
   @override
   void dispose() {
+    seri1Controller.dispose();
     _focusNode.dispose();
     super.dispose();
   }
@@ -100,14 +106,20 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
                 CustomTextField(
                   labelText: "Seri 1",
                   focusNode: _focusNode,
-                  controllerText: viewModel.seriModel.seri1 ?? viewModel.seriModel.seriNo,
+                  controller: seri1Controller,
+                  // controllerText: viewModel.seriModel.seri1 ?? viewModel.seriModel.seriNo,
                   isMust: true,
-                  onChanged: viewModel.setSeri1,
+                  onChanged: (value) {
+                    formKey.currentState?.validate();
+                    viewModel.setSeri1(value);
+                  },
                   suffix: IconButton(
                     onPressed: () async {
                       final result = await Get.toNamed("qr");
                       if (result is String) {
+                        formKey.currentState?.validate();
                         viewModel.setSeri1(result);
+                        seri1Controller.text = result;
                       }
                     },
                     icon: const Icon(Icons.qr_code_scanner),
