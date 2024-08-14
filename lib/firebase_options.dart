@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          "DefaultFirebaseOptions have not been configured for windows - "
-          "you can reconfigure this by running the FlutterFire CLI again.",
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           "DefaultFirebaseOptions have not been configured for linux - "
@@ -61,13 +58,13 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: "AIzaSyBBAOAiQ4w6lCThs7zRddCOnMJSqE868DM",
-    appId: "1:9609536428:ios:efa926df0468deb0579009",
+    apiKey: "AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI",
+    appId: "1:9609536428:ios:533cdc2b1a920cd3579009",
     messagingSenderId: "9609536428",
     projectId: "flutter-picker",
     storageBucket: "flutter-picker.appspot.com",
-    iosClientId: "9609536428-an7urgava9q45909eh0e1f5jihtiak25.apps.googleusercontent.com",
-    iosBundleId: "com.bracket23.picker.ImageNotification",
+    iosClientId: "9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com",
+    iosBundleId: "com.bracket23.picker",
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -78,5 +75,15 @@ class DefaultFirebaseOptions {
     storageBucket: "flutter-picker.appspot.com",
     iosClientId: "9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com",
     iosBundleId: "com.bracket23.picker",
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: "AIzaSyAMOnb94n7b7wbUnHkBDFzxjV13hZ4nJIk",
+    appId: "1:9609536428:web:f6a8b61dc8962d73579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    authDomain: "flutter-picker.firebaseapp.com",
+    storageBucket: "flutter-picker.appspot.com",
+    measurementId: "G-63F158PCGQ",
   );
 }
