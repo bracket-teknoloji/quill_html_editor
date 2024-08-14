@@ -65,6 +65,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       // }
     }
     if (_instanceList.isEmpty) {
+      // print(_instance?.toJson());
       _instanceList.add(_instance!);
     }
     return _instanceList.last;
@@ -73,7 +74,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static set instance(BaseSiparisEditModel instance) {
     _instance = instance;
     if (_instanceList.isNotEmpty) {
-      _instanceList.removeAt(_instanceList.length - 1);
+      if (_instanceList.lastOrNull?.belgeNo == _instance?.belgeNo) {
+        log("silinen instance${_instanceList.lastOrNull?.belgeNo}");
+        _instanceList.removeAt(_instanceList.length - 1);
+      }
+      log("yeni instance${_instanceList.lastOrNull?.belgeNo}");
       _instanceList.add(_instance!);
     }
   }
@@ -1087,7 +1092,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static void resetInstance() {
     _instance = BaseSiparisEditModel();
     if (_instanceList.isNotEmpty) {
+      log("silinen instance ${_instanceList.lastOrNull?.belgeNo}");
       _instanceList.removeAt(_instanceList.length - 1);
+      log("yeni instance ${_instanceList.lastOrNull?.belgeNo}");
     }
   }
 
@@ -1095,7 +1102,9 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   static void setInstance(BaseSiparisEditModel newInstance) {
     _instance = newInstance;
     if (_instanceList.isNotEmpty) {
-      _instanceList.removeAt(_instanceList.length - 1);
+      if (_instanceList.lastOrNull?.belgeNo == newInstance.belgeNo) {
+        _instanceList.removeAt(_instanceList.length - 1);
+      }
       _instanceList.add(newInstance);
     }
   }
