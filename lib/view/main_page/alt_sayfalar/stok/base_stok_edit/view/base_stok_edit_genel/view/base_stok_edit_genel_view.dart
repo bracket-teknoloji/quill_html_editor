@@ -158,43 +158,41 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Expanded(
-                      flex: 1,
-                      child: Observer(
-                        builder: (_) => InkWell(
-                          child: SizedBox(
-                            height: kTextTabBarHeight,
-                            child: Image.memory(
-                              base64Decode(stokModel.resimBase64!),
-                              fit: BoxFit.
-
-                                  /// Yukarıdaki kod Dart programlama dilinde bir yorumdur.
-                                  /// Hiçbir şey yapmıyor ancak diğer geliştiricilere kod
-                                  /// hakkında bilgi veya açıklama sağlamak için kullanılıyor.
-                                  fitHeight,
-                            ).paddingAll(UIHelper.lowSize),
+                    if (stokModel.resimBase64 != null || widget.model.ekleMi)
+                      Expanded(
+                        flex: 1,
+                        child: Observer(
+                          builder: (_) => InkWell(
+                            child: stokModel.resimBase64 != null
+                                ? SizedBox(
+                                    height: kTextTabBarHeight,
+                                    child: Image.memory(
+                                      base64Decode(stokModel.resimBase64 ?? ""),
+                                      fit: BoxFit.fitHeight,
+                                    ).paddingAll(UIHelper.lowSize),
+                                  )
+                                : const Center(child: Icon(Icons.add)),
+                            onTap: () async {
+                              final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+                                context,
+                                title: "Kaynak tipi",
+                                children: [
+                                  BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+                                  BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+                                  if (stokModel.resimBase64 != null) BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
+                                ],
+                              );
+                              if (sourceType is ImageSource) {
+                                viewModel.setImage(await imageCompresser(sourceType));
+                              } else if (sourceType == "") {
+                                dialogManager.showAreYouSureDialog(() {
+                                  viewModel.setImage(null);
+                                });
+                              }
+                            },
                           ),
-                          onTap: () async {
-                            final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                              context,
-                              title: "Kaynak tipi",
-                              children: [
-                                BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                                BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                                if (stokModel.resimBase64 != null) BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
-                              ],
-                            );
-                            if (sourceType is ImageSource) {
-                              viewModel.setImage(await imageCompresser(sourceType));
-                            } else {
-                              dialogManager.showAreYouSureDialog(() {
-                                viewModel.setImage(null);
-                              });
-                            }
-                          },
                         ),
-                      ),
-                    ).yetkiVarMi(widget.model.ekleMi),
+                      ).yetkiVarMi(widget.model.ekleMi),
                     Expanded(
                       flex: 4,
                       child: CustomTextField(
