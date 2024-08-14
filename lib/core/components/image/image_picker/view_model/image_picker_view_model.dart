@@ -16,6 +16,9 @@ abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
   EvrakEditModel? requestModel;
 
   @observable
+  bool isProcessing = false;
+
+  @observable
   Uint8List? image;
 
   @action
@@ -26,6 +29,9 @@ abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setImage(Uint8List? value) => image = value;
+
+@action
+  void setIsProcessing(bool value) => isProcessing = value;
 
   @action
   void setByteData(String? value) => requestModel = requestModel?.copyWith(base64Data: value);

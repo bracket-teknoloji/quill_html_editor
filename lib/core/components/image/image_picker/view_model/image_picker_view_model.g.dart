@@ -25,6 +25,22 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
     });
   }
 
+  late final _$isProcessingAtom =
+      Atom(name: '_ImagePickerViewModelBase.isProcessing', context: context);
+
+  @override
+  bool get isProcessing {
+    _$isProcessingAtom.reportRead();
+    return super.isProcessing;
+  }
+
+  @override
+  set isProcessing(bool value) {
+    _$isProcessingAtom.reportWrite(value, super.isProcessing, () {
+      super.isProcessing = value;
+    });
+  }
+
   late final _$imageAtom =
       Atom(name: '_ImagePickerViewModelBase.image', context: context);
 
@@ -75,6 +91,17 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
   }
 
   @override
+  void setIsProcessing(bool value) {
+    final _$actionInfo = _$_ImagePickerViewModelBaseActionController
+        .startAction(name: '_ImagePickerViewModelBase.setIsProcessing');
+    try {
+      return super.setIsProcessing(value);
+    } finally {
+      _$_ImagePickerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setByteData(String? value) {
     final _$actionInfo = _$_ImagePickerViewModelBaseActionController
         .startAction(name: '_ImagePickerViewModelBase.setByteData');
@@ -111,6 +138,7 @@ mixin _$ImagePickerViewModel on _ImagePickerViewModelBase, Store {
   String toString() {
     return '''
 requestModel: ${requestModel},
+isProcessing: ${isProcessing},
 image: ${image}
     ''';
   }

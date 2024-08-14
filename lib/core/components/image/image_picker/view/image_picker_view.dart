@@ -73,7 +73,9 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
                   },
                   child: Card(
                     child: viewModel.image != null
-                        ? Image.memory(viewModel.image!)
+                        ? viewModel.isProcessing
+                            ? const Center(child: CircularProgressIndicator.adaptive())
+                            : Image.memory(viewModel.image!)
                         : Icon(
                             Icons.preview_outlined,
                             size: width * 0.3,
@@ -97,6 +99,7 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
     final ImagePicker picker = ImagePicker();
     final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
     if (result != null) {
+      viewModel.setIsProcessing(true);
       viewModel.setImage(await result.readAsBytes());
       Uint8List? compressedImage;
       try {
@@ -114,7 +117,10 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
       final list = compressedImage!.toList();
       final base64 = base64Encode(list);
       viewModel.setBoyutByte(list.length);
+      // wait for a second
+      await Future.delayed(const Duration(seconds: 1));
       viewModel.setByteData(base64);
+      viewModel.setIsProcessing(false);
     }
   }
 }
