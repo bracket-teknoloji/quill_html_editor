@@ -47,7 +47,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.faturaIslendiMi ? ColorPalette.mantis.withOpacity(0.5) : null,
+        color: model.belgeIslendiMi ? ColorPalette.mantis.withOpacity(0.5) : null,
         child: ListTile(
           onTap: () async {
             await bottomSheetDialogManager.showBottomSheetDialog(
@@ -56,13 +56,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               children: [
                 //TODO yetkileri ekle
                 eBelgeGoruntule,
-                faturaGoruntule.yetkiKontrol((model.faturaIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
+                faturaGoruntule.yetkiKontrol((model.belgeIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
                 cariOlustur.yetkiKontrol(!model.cariKayitliMi && yetkiController.cariKartiYeniKayit),
-                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
+                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
                 yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
-                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.faturaIslendiMi),
-                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.faturaIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
-                eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.faturaIslendiMi && model.eFaturaMi),
+                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
+                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.belgeIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
+                eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.belgeIslendiMi && model.eFaturaMi),
                 kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
                 faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
                 zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
@@ -94,7 +94,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                 // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
-              Text(model.faturaAciklama).yetkiVarMi(model.faturaIslendiMi),
+              Text(model.faturaAciklama).yetkiVarMi(model.belgeIslendiMi),
               LayoutBuilder(
                 builder: (context, constraints) {
                   final efaturaList = [

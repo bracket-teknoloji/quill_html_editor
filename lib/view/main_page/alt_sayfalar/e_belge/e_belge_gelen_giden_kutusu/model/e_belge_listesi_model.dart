@@ -218,7 +218,11 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get eIrsaliyeMi => ebelgeTuru == "EIR";
 
+  bool get belgeIslendiMi => faturaIslendiMi || dekontIslendiMi;
+
   bool get faturaIslendiMi => faturaIslendi == "E";
+
+  bool get dekontIslendiMi => dekontIslendi == "E";
 
   bool get iptalEdildiMi => iptalEdildi == "E";
 
