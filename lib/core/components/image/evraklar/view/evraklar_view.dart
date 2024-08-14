@@ -42,7 +42,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
           if (didPop) {
             return;
           }
-          Get.back(result: viewModel.refresh);
+          Get.back(result: viewModel.refresh ?? false);
         },
         child: Scaffold(
           appBar: appBar(),

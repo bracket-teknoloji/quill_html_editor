@@ -515,7 +515,7 @@ class IslemlerMenuItemConstants<T> {
         title: "Stok Resimleri",
         isEnabled: _yetkiController.stokResimGoster,
         iconData: Icons.photo_album_outlined,
-        onTap: () async => Get.toNamed("/evraklar", arguments: EvraklarRequestModel.fromStokModel(model as StokListesiModel)),
+        onTap: () async => await Get.toNamed("/evraklar", arguments: EvraklarRequestModel.fromStokModel(model as StokListesiModel)),
       );
 
   GridItemModel? get stokFiyatOzeti => GridItemModel.islemler(

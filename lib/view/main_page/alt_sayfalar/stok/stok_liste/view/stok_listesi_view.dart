@@ -697,7 +697,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Card stokListesiGridTile(StokListesiModel item, int? crossAxisCount) => Card(
         child: InkWell(
-          onLongPress: () => dialogManager.showStokGridViewDialog(item),
+          onLongPress: () => showStokIslemlerDialog(item),
           onTap: () => stokOnTap(item),
           child: GridTile(
             child: Column(
@@ -763,16 +763,28 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         ),
       );
 
+  Future<dynamic> showStokIslemlerDialog(StokListesiModel item, [IslemTipiEnum? islemTipi]) async {
+    await dialogManager.showStokGridViewDialog(
+      item,
+      tip: islemTipi,
+      onSelected: (result) async {
+        if (result) {
+          await viewModel.resetList();
+        }
+      },
+    );
+  }
+
   Card stokListesiCard(StokListesiModel item) => Card(
         child: Listener(
           onPointerDown: (event) {
             if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-              dialogManager.showStokGridViewDialog(item);
+              showStokIslemlerDialog(item);
             }
           },
           child: ListTile(
             onLongPress: () {
-              dialogManager.showStokGridViewDialog(item);
+              showStokIslemlerDialog(item);
             },
             // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
             leading: CircleAvatar(
@@ -882,7 +894,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             iconWidget: Icons.area_chart_outlined,
             onTap: () async {
               Get.back();
-              dialogManager.showStokGridViewDialog(item, IslemTipiEnum.stokRapor);
+              showStokIslemlerDialog(item, IslemTipiEnum.stokRapor);
             },
           ),
           BottomSheetModel(
@@ -909,7 +921,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             iconWidget: Icons.list_alt,
             onTap: () {
               Get.back();
-              dialogManager.showStokGridViewDialog(item);
+              showStokIslemlerDialog(item);
             },
           ),
         ].nullCheckWithGeneric;
