@@ -181,9 +181,16 @@ class AppThemeDark extends AppTheme {
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: colorManager.surface,
+            // statusBarColor: colorManager.onPrimary,
+            statusBarIconBrightness:  isIOS? Brightness.dark :Brightness.light,
             systemNavigationBarColor: colorManager.surface,
+            systemNavigationBarDividerColor: colorManager.surface,
+            systemNavigationBarIconBrightness:  isIOS? Brightness.dark : Brightness.light,
+            statusBarBrightness:  isIOS? Brightness.dark  :Brightness.light,
             systemStatusBarContrastEnforced: true,
+            systemNavigationBarContrastEnforced: true,
+            statusBarColor: colorManager.surface,
+            // systemStatusBarContrastEnforced: true,
           ),
           backgroundColor: colorManager.surfaceDim,
           centerTitle: false,

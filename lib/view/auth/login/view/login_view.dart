@@ -71,26 +71,33 @@ class _LoginViewState extends BaseState<LoginView> {
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: false,
-        child: Stack(
-          children: [
-            WaveWidget(
-              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceContainerHighest, theme.colorScheme.surface.withOpacity(0.5)]),
-              size: const Size(double.infinity, double.infinity),
-              waveAmplitude: 2,
-              wavePhase: 0,
-              duration: 200,
-              backgroundColor: theme.scaffoldBackgroundColor,
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
+              systemNavigationBarColor: theme.colorScheme.surfaceContainer,
+              systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
             ),
-            Scaffold(
-              // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-              floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
-              floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
-              primary: true,
-              backgroundColor: Colors.transparent,
-              extendBodyBehindAppBar: true,
-              body: body(context),
-            ),
-          ],
+          ),
+          // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
+          floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
+          floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+          primary: true,
+          // backgroundColor: Colors.transparent,
+          extendBodyBehindAppBar: true,
+          body: Stack(
+            children: [
+              WaveWidget(
+                config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceContainerHighest, theme.colorScheme.surfaceContainer]),
+                size: const Size(double.infinity, double.infinity),
+                waveAmplitude: 2,
+                wavePhase: 0,
+                duration: 200,
+                backgroundColor: theme.scaffoldBackgroundColor,
+              ),
+              body(context),
+            ],
+          ),
         ),
       );
 
