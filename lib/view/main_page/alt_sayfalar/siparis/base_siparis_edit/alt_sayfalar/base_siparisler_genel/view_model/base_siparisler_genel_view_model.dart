@@ -20,6 +20,8 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
     kdvDahil = value;
     BaseSiparisEditModel.instance.kdvDahil = value ? "E" : "H";
     BaseSiparisEditModel.instance.kdvDahilMi = value;
+    BaseSiparisEditModel.instance.kalemlerOTVHesapla();
+    BaseSiparisEditModel.setInstance(model);
   }
 
   @action

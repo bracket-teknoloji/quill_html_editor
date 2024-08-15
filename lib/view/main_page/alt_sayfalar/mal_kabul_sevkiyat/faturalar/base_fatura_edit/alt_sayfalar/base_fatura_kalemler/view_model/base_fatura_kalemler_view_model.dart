@@ -20,6 +20,7 @@ abstract class BaseFaturaKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
+    BaseSiparisEditModel.instance.kalemlerOTVHesapla();
     kalemList = List.generate(
       BaseSiparisEditModel.instance.kalemList?.length ?? 0,
       (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,

@@ -67,8 +67,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instanceList.isEmpty) {
       // print(_instance?.toJson());
       _instanceList.add(_instance!);
-    }
     _instanceList.last.kalemlerOTVHesapla();
+    }
     return _instanceList.last;
   }
 
@@ -685,8 +685,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   BaseSiparisEditModel._init();
 
-  Future<void> kalemlerOTVHesapla() async {
-    for (var element in kalemList ?? []) {
+  void kalemlerOTVHesapla() {
+    for (var element in kalemList ?? <KalemModel>[]) {
       element.otvHesapla();
     }
   }
@@ -1081,7 +1081,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0) + getToplamEkMaliyet;
 
-  double get getDovizliToplamIskonto => getDovizliToplamTutar - getDovizliAraToplam;
+  double get getDovizliToplamIskonto => getToplamIskonto / dovizKuru;
 
   double get genelIskontoToplami => (genIsk1t ?? 0) + (genIsk2t ?? 0) + (genIsk3t ?? 0);
 
@@ -1635,7 +1635,7 @@ class KalemModel with NetworkManagerMixin {
 
   void otvHesapla() {
     if (otvOranmi == true) {
-      otvTutar = ((otvDegeri ?? 0) / 100) * araToplamTutari;
+      otvTutar = ((otvDegeri ?? 0) / 100) * getAraToplamTutari;
     } else {
       otvTutar = (otvDegeri ?? 0) * (miktar ?? 0);
     }

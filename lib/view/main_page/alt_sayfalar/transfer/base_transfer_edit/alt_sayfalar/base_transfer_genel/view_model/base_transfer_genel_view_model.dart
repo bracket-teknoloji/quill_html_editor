@@ -69,6 +69,8 @@ abstract class _BaseTransferGenelViewModelBase with Store {
     kdvDahil = value;
     BaseSiparisEditModel.instance.kdvDahil = value ? "E" : "H";
     BaseSiparisEditModel.instance.kdvDahilMi = value;
+    BaseSiparisEditModel.instance.kalemlerOTVHesapla();
+    BaseSiparisEditModel.setInstance(model);
   }
 
   @action
@@ -76,13 +78,14 @@ abstract class _BaseTransferGenelViewModelBase with Store {
     BaseSiparisEditModel.instance.isemriAciklama = value?.stokKodu;
     BaseSiparisEditModel.instance.isemriNo = value?.isemriNo;
   }
-  
+
   @action
   void changeMasrafKodu(MasrafKoduRehberiModel? value) {
     model = model.copyWith(masrafKodu: value?.masrafKodu, masrafKoduAdi: value?.masrafAdi);
     BaseSiparisEditModel.instance.masrafKodu = value?.masrafKodu;
     BaseSiparisEditModel.instance.masrafKoduAdi = value?.masrafAdi;
   }
+
   @action
   void changeCikisYeri(String? value) {
     model = model.copyWith(cikisYeri: value);

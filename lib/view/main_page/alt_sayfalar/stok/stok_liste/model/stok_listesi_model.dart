@@ -283,7 +283,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   double getOtvOrani(double fiyat) {
     if (otvOranmi != "E") return 0;
-    if (otvKodu?.isEmpty == true) return otvDeger ?? 0;
+    if (otvKodu?.isNotEmpty == true) return otvDeger ?? 0;
     if (otvAralik.ext.isNullOrEmpty) return 0;
     for (var otv in otvAralik!) {
       if (fiyat >= otv.alt && fiyat <= otv.ust) return otv.oran;
