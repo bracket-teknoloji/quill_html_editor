@@ -27,6 +27,7 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
   @override
   void initState() {
     viewModel.setRequestModel(widget.requestModel);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) => selectPhoto());
     super.initState();
   }
 
@@ -58,19 +59,7 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
               flex: 3,
               child: Observer(
                 builder: (_) => InkWell(
-                  onTap: () async {
-                    final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Kaynak tipi",
-                      children: [
-                        BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                        BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                      ],
-                    );
-                    if (sourceType != null) {
-                      await imageCompresser(sourceType);
-                    }
-                  },
+                  onTap: selectPhoto,
                   child: Card(
                     child: viewModel.image != null
                         ? viewModel.isProcessing
@@ -94,6 +83,20 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
           ],
         ).paddingAll(UIHelper.lowSize),
       );
+
+  Future<void> selectPhoto() async {
+    final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Kaynak tipi",
+      children: [
+        BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
+        BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
+      ],
+    );
+    if (sourceType != null) {
+      await imageCompresser(sourceType);
+    }
+  }
 
   Future<void> imageCompresser(ImageSource sourceType) async {
     final ImagePicker picker = ImagePicker();
