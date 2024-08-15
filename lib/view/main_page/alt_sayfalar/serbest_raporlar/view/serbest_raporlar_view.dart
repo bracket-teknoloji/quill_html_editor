@@ -53,6 +53,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   @override
   void dispose() {
+    StaticVariables.instance.serbestDicParams.clear();
     viewModel.textEditingControllerList?.forEach((e) {
       e.dispose();
     });
@@ -70,7 +71,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       );
 
   Future<bool> filterBottomSheet() async {
-    await getData();
+    if (viewModel.dicParams.isEmpty) {
+      await getData();
+    }
     viewModel.resetFuture();
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
@@ -119,7 +122,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
           ?.map((e) {
             if (e.tipi == "Date") {
               return CustomTextField(
-                labelText: e.adi ?? "",
+                labelText: e.aciklama ?? e.adi ?? "",
                 controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
                 isMust: e.bosGecilebilir != true,
                 readOnly: true,
@@ -140,8 +143,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
               }
               return CustomTextField(
-                labelText: e.adi ?? "",
+                labelText: e.aciklama ?? e.adi ?? "",
                 controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+                valueWidget: e.cokluMu ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
                 isMust: e.bosGecilebilir != true,
                 readOnly: true,
                 suffixMore: true,
@@ -149,25 +153,29 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
               );
             } else {
               return CustomTextField(
-                labelText: e.adi ?? "",
+                labelText: e.aciklama ?? e.adi ?? "",
                 readOnly: e.paramMap != null ? true : null,
                 controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+                valueWidget: e.paramMap == null ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
                 isMust: e.bosGecilebilir != true,
-                suffix: e.paramMap != null ? const Icon(Icons.more_horiz_outlined) : null,
+                suffixMore: e.paramMap != null,
                 onTap: e.paramMap == null
                     ? null
                     : () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        final List<BottomSheetModel<MapEntry>> bottomSheetModels = [];
+                        e.paramMap?.forEach((key, value) => bottomSheetModels.add(BottomSheetModel(title: value, value: MapEntry(key, value), description: key)));
+                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry>(
                           context,
                           title: "Seçiniz",
-                          children: e.paramMap?.values.map((value) => BottomSheetModel(title: value, onTap: () => Get.back(result: e))).toList(),
+                          groupValue: viewModel.dicParams[e.adi ?? ""],
+                          children: bottomSheetModels,
                         );
                         if (result != null) {
-                          viewModel.changeDicParams(e.adi ?? "", result.adi);
+                          viewModel.changeDicParams(e.adi ?? "", result.key, controllerValue: result.value);
                         }
                       },
                 onChanged: (value) {
-                  viewModel.changeDicParams(e.adi ?? "", value, false);
+                  viewModel.changeDicParams(e.adi ?? "", value, changeController: true);
                 },
               );
             }
@@ -178,14 +186,13 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
 
   Future<void> getRehber(SerbestRaporResponseModel model) async {
     if (model.stokKoduMu || model.cariKoduMu) {
-      final result = await Get.toNamed(
-        "/mainPage/${model.rehberTipi?.toLowerCase()}Listesi",
-        arguments: true,
-      );
+      final String route = "/mainPage/${model.rehberTipi?.toLowerCase()}ListesiOzel";
+      final result = await Get.toNamed(route);
       if (result != null) {
         viewModel.changeDicParams(
           model.adi ?? "",
           model.stokKoduMu ? result.stokKodu : result.cariKodu,
+          controllerValue: model.stokKoduMu ? result.stokAdi : result.cariAdi,
         );
       }
     } else if (model.plasiyerKoduMu) {
@@ -194,10 +201,10 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "");
+        viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "", controllerValue: result.plasiyerAciklama);
       }
     } else if (model.secmeliPlasiyerMi) {
-      viewModel.changeDicParams(model.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+      if (viewModel.dicParams[model.adi] == null) viewModel.changeDicParams(model.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
       final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: (viewModel.dicParams[model.adi] as String?)?.split("; "));
       // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
@@ -206,47 +213,53 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
         viewModel.changeDicParams(model.adi ?? "", result.map((e) => e?.plasiyerKodu).join("; "));
       }
     } else if (model.projeKoduMu) {
-      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, null);
+      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.dicParams[model.adi ?? ""]);
       // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
       // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
       //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", result.projeKodu ?? "");
+        viewModel.changeDicParams(model.adi ?? "", result.projeKodu ?? "", controllerValue: result.projeAciklama);
       }
     } else if (model.grupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
-        name:GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
+        name: GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
         grupNo: 0,
       );
-      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(
         context,
         title: "Grup Kodu Seçiniz",
+        groupValue: viewModel.dicParams["KOD${model.adi?.split("").last}"] ?? "",
         children: grupKodList
             .map(
               (e) => BottomSheetModel(
                 title: e.grupAdi ?? "",
-                onTap: () => Get.back(result: e),
+                description: e.grupKodu,
+                value: e,
+                groupValue: e.grupKodu,
               ),
             )
             .toList(),
       );
-      if (result != null && result is BaseGrupKoduModel) {
+      if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
         viewModel.changeControllerText(model.adi ?? "", result.grupAdi ?? "");
       }
     } else if (model.numaraliGrupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(
-        name:GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
+        name: GrupKoduEnum.getByName(model.rehberTipi?.split("_").first ?? ""),
         grupNo: int.tryParse(model.rehberTipi!.split("").last) ?? 0,
       );
-      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(
         context,
         title: "Grup Kodu Seçiniz",
+        groupValue: viewModel.dicParams["KOD${model.adi?.split("").last}"] ?? "",
         children: grupKodList
             .map(
               (e) => BottomSheetModel(
-                title: e.grupKodu ?? "",
-                onTap: () => Get.back(result: e),
+                title: e.grupAdi ?? "",
+                description: e.grupKodu,
+                value: e,
+                groupValue: e.grupKodu,
               ),
             )
             .toList(),
@@ -260,25 +273,27 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
       final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.pdfModel.dicParams?.dovizTipi);
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString());
+        viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString(), controllerValue: result.isim);
       }
     } else if (model.muhasebeKoduMu) {
       final muhasebeList = await networkManager.dioGet<StokMuhasebeKoduModel>(
         path: ApiUrls.getStokMuhasebeKodlari,
         bodyModel: StokMuhasebeKoduModel(),
       );
-      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<StokMuhasebeKoduModel>(
         context,
         title: "Muhasebe Kodu Seçiniz",
-        children: muhasebeList.data
+        groupValue: viewModel.dicParams[model.adi] ?? "",
+        children: muhasebeList.dataList
             .map(
               (e) => BottomSheetModel(
                 title: e.muhKodu.toString(),
-                onTap: () => Get.back(result: e),
+                groupValue: viewModel.dicParams[e.adi ?? ""],
+                value: e,
               ),
             )
             .toList()
-            .cast<BottomSheetModel>(),
+            .cast<BottomSheetModel<StokMuhasebeKoduModel>>(),
       );
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.muhKodu.toString());

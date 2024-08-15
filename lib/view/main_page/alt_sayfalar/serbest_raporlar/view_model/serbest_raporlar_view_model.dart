@@ -16,10 +16,10 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   @action
   void changeSerbestRaporResponseModelList(List<SerbestRaporResponseModel> value) {
     if (StaticVariables.instance.serbestDicParams.isNotEmpty) {
-      dicParams = StaticVariables.instance.serbestDicParams;
+      dicParams = StaticVariables.instance.serbestDicParams.asObservable();
     }
     serbestRaporResponseModelList = value;
-    textEditingControllerList = List.generate(
+    textEditingControllerList ??= List.generate(
       serbestRaporResponseModelList?.length ?? 0,
       (index) => TextEditingController(
         text: StaticVariables.instance.serbestDicParams.keys.contains(serbestRaporResponseModelList?[index].adi ?? "")
@@ -28,7 +28,7 @@ abstract class _SerbestRaporlarViewModelBase with Store {
       ),
     );
     value.where((element) => element.deger != null).forEach((element) {
-      changeDicParams(element.adi!, element.deger!, false);
+      changeDicParams(element.adi!, element.deger!, changeController: false);
     });
   }
 
@@ -49,22 +49,23 @@ abstract class _SerbestRaporlarViewModelBase with Store {
   PdfModel pdfModel = PdfModel(raporOzelKod: "Serbest", dicParamsMap: {});
 
   @observable
-  Map<String, dynamic> dicParams = {};
+  ObservableMap<String, dynamic> dicParams = <String, dynamic>{}.asObservable();
 
   @computed
   DicParams get dicParamsComputed => DicParams.fromJson(dicParams);
 
   @action
-  void changeDicParams(String key, String value, [bool changeController = true]) {
+  void changeDicParams(String key, String value, {bool changeController = true, String? controllerValue}) {
     if (int.tryParse(key.split("").last) != null) {
-      dicParams["KOD${key.split("").last}"] = value;
+      dicParams = dicParams..["KOD${key.split("").last}"] = value;
     } else {
-      dicParams[key] = value;
+      dicParams = dicParams..[key] = value;
     }
     if (changeController) {
-      changeControllerText(key, value);
+      changeControllerText(key, controllerValue ?? value);
     }
     pdfModel = pdfModel.copyWith(dicParamsMap: dicParams);
+    StaticVariables.instance.serbestDicParams = dicParams;
   }
 
   //* Future

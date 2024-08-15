@@ -11,6 +11,7 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   String? tipi;
   String? deger;
   String? rehberTipi;
+  String? aciklama;
   Map<String, dynamic>? paramMap;
 
   bool get plasiyerKoduMu => [
@@ -58,4 +59,9 @@ class SerbestRaporResponseModel with NetworkManagerMixin {
   SerbestRaporResponseModel fromJson(Map<String, dynamic> json) => _$SerbestRaporResponseModelFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$SerbestRaporResponseModelToJson(this);
+
+  bool get cokluMu => switch (rehberTipi) {
+        "PLASIYERLER" => true,
+        _ => false,
+      };
 }

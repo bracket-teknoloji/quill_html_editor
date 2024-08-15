@@ -73,13 +73,13 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
       Atom(name: '_SerbestRaporlarViewModelBase.dicParams', context: context);
 
   @override
-  Map<String, dynamic> get dicParams {
+  ObservableMap<String, dynamic> get dicParams {
     _$dicParamsAtom.reportRead();
     return super.dicParams;
   }
 
   @override
-  set dicParams(Map<String, dynamic> value) {
+  set dicParams(ObservableMap<String, dynamic> value) {
     _$dicParamsAtom.reportWrite(value, super.dicParams, () {
       super.dicParams = value;
     });
@@ -143,11 +143,12 @@ mixin _$SerbestRaporlarViewModel on _SerbestRaporlarViewModelBase, Store {
 
   @override
   void changeDicParams(String key, String value,
-      [bool changeController = true]) {
+      {bool changeController = true, String? controllerValue}) {
     final _$actionInfo = _$_SerbestRaporlarViewModelBaseActionController
         .startAction(name: '_SerbestRaporlarViewModelBase.changeDicParams');
     try {
-      return super.changeDicParams(key, value, changeController);
+      return super.changeDicParams(key, value,
+          changeController: changeController, controllerValue: controllerValue);
     } finally {
       _$_SerbestRaporlarViewModelBaseActionController.endAction(_$actionInfo);
     }
