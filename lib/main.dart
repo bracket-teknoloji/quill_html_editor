@@ -221,7 +221,6 @@ class PickerApp extends StatelessWidget {
         opaqueRoute: false,
         theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
-        
         themeMode: CacheManager.getProfilParametre.temaModu,
         home: const SplashAuthView(),
         getPages: <GetPage>[
@@ -544,6 +543,7 @@ Future<void> firebaseInitialized() async {
   AccountModel.instance.fcmToken = await messaging.getToken(vapidKey: !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE");
   log("fcmToken: ${AccountModel.instance.fcmToken}");
   if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
+    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
