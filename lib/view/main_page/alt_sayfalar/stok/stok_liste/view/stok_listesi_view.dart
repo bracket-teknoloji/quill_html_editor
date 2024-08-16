@@ -7,7 +7,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/grid_view/refreshable_grid_view.dart";
-import "package:picker/core/components/image/image_view.dart";
+import "package:picker/core/components/image/image_carousel/view/image_carousel_view.dart";
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
@@ -711,7 +711,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                     path: item.resimUrl,
                     onTap: () {
                       if (item.resimUrl != null) {
-                        Get.to(() => ImageView(path: item.resimUrl ?? item.resimUrlKucuk ?? "", title: item.stokKodu ?? ""));
+                        Get.to(() => ImageCarouselView(model: item));
                       }
                     },
                   ),
@@ -797,7 +797,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                         borderRadius: UIHelper.lowBorderRadius,
                         onTap: () {
                           if (item.resimUrl != null) {
-                            Get.to(() => ImageView(path: item.resimUrl ?? "", title: item.stokKodu ?? ""));
+                            Get.to(() => ImageCarouselView(model: item));
                           }
                         },
                         child: ImageWidget(path: item.resimUrlKucuk),

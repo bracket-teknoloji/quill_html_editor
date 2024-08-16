@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/image/image_carousel/view/image_carousel_view.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/view/main_page/model/param_model.dart";
@@ -11,7 +12,6 @@ import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 import "../../../../components/badge/colorful_badge.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../components/floating_action_button/custom_floating_action_button.dart";
-import "../../../../components/image/image_view.dart";
 import "../../../../components/image/image_widget.dart";
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/enum/badge_color_enum.dart";
@@ -449,7 +449,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         height: UIHelper.highSize * 3,
                         width: UIHelper.highSize * 3,
                         child: InkWell(
-                          onTap: item.resimUrlKucuk == null ? null : () => Get.to(ImageView(path: item.resimUrl ?? "", title: item.stokKodu ?? "")),
+                          onTap: item.resimUrlKucuk == null ? null : () => Get.to(() => ImageCarouselView(model: item)),
                           child: SizedBox(
                             height: UIHelper.highSize * 3,
                             width: UIHelper.highSize * 3,
