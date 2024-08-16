@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -323,14 +321,14 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   await CacheManager.setAnaVeri(model);
                                   Get.offAllNamed("/mainPage");
-                                  final result = await networkManager.dioPost<AccountModel>(
-                                    path: ApiUrls.saveUyeBilgileri,
-                                    bodyModel: AccountModel(),
-                                    data: CacheManager.getHesapBilgileri?.toJson(),
-                                  );
-                                  if (result.isSuccess) {
-                                    log("Session Başarılı");
-                                  }
+                                  // final result = await networkManager.dioPost<AccountModel>(
+                                  //   path: ApiUrls.saveUyeBilgileri,
+                                  //   bodyModel: AccountModel(),
+                                  //   data: CacheManager.getHesapBilgileri?.toJson(),
+                                  // );
+                                  // if (result.isSuccess) {
+                                  //   log("Session Başarılı");
+                                  // }
                                   // Get.toNamed("/mainPage");
                                   if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
                                 }

@@ -1,5 +1,4 @@
 import "dart:convert";
-import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -199,12 +198,12 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       CacheManager.setAnaVeri(response.dataList.firstOrNull!);
       Get.offAllNamed("/mainPage");
       if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message.toString());
-      final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
-      if (result.isSuccess) {
-        log("Başarılı");
-      } else {
-        log("Başarısız");
-      }
+      // final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
+      // if (result.isSuccess) {
+      //   log("Başarılı");
+      // } else {
+      //   log("Başarısız");
+      // }
     } else {
       Get.offAllNamed("/entryCompany", arguments: true);
     }

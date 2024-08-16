@@ -408,11 +408,13 @@ class NetworkManager {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
-    final data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)?.toJson() : AccountModel.instance.toJson();
+    final data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi) : AccountModel.instance;
+    data2?.cihazTarihi = DateTime.now().toDateTimeString();
+    data2?.konumTarihi = DateTime.now().toDateTimeString();
     final result = await dioPost<AccountResponseModel>(
       bodyModel: AccountResponseModel(),
       showError: false,
-      data: data2,
+      data: data2?.toJson(),
       addTokenKey: false,
       addCKey: false,
       showLoading: !getFromCache,
