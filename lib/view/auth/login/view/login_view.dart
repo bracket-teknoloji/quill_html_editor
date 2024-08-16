@@ -9,11 +9,10 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/login_dialog_model.dart";
+import "package:picker/core/components/wave/login_wave_widget.dart";
 import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/view/add_company/model/account_response_model.dart";
 import "package:picker/view/auth/login/model/login_model.dart";
-import "package:wave/config.dart";
-import "package:wave/wave.dart";
 
 import "../../../../core/base/state/base_state.dart";
 import "../../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -87,14 +86,7 @@ class _LoginViewState extends BaseState<LoginView> {
           extendBodyBehindAppBar: true,
           body: Stack(
             children: [
-              WaveWidget(
-                config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceContainerHighest, theme.colorScheme.surfaceContainer]),
-                size: const Size(double.infinity, double.infinity),
-                waveAmplitude: 2,
-                wavePhase: 0,
-                duration: 200,
-                backgroundColor: theme.scaffoldBackgroundColor,
-              ),
+              const LoginWaveWidget(),
               body(context),
             ],
           ),

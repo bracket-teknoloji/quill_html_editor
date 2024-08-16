@@ -5,8 +5,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:wave/config.dart";
-import "package:wave/wave.dart";
+import "package:picker/core/components/wave/login_wave_widget.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
@@ -51,17 +50,17 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
             ],
           ),
         ),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
+            systemNavigationBarColor: theme.colorScheme.surfaceContainer,
+            systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
+          ),
+        ),
         floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
         body: Stack(
           children: [
-            WaveWidget(
-              config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceContainerHighest, theme.colorScheme.surface.withOpacity(0.5)]),
-              size: const Size(double.infinity, double.infinity),
-              waveAmplitude: 2,
-              wavePhase: 0,
-              duration: 200,
-              backgroundColor: theme.scaffoldBackgroundColor,
-            ),
+            const LoginWaveWidget(),
             Align(
               alignment: Alignment.bottomCenter,
               child: Wrap(
