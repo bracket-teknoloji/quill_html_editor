@@ -448,6 +448,8 @@ class ParamModel {
   bool? alisOzelKod2Tablodan;
   @JsonKey(name: "AlisMiktar1Gelsin")
   bool? alisMiktar1Gelsin;
+  @JsonKey(name: "SatisMiktar1Gelsin")
+  bool? satisMiktar1Gelsin;
   @JsonKey(name: "SatisOzelKod2Tablodan")
   bool? satisOzelKod2Tablodan;
   @JsonKey(name: "SeriCikislardaOtomatik")

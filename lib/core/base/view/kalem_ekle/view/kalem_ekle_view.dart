@@ -968,6 +968,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.stokAlisDovizAdi ??= viewModel.model?.alisDovizAdi;
       viewModel.kalemModel.stokSatDovTip ??= widget.stokListesiModel?.satDovTip ?? viewModel.model?.satDovTip;
       viewModel.setYapKod(widget.stokListesiModel?.yapkod);
+      if (editTipi?.satisMi == true ? yetkiController.satisMiktar1Gelsin : yetkiController.alisMiktar1Gelsin) {
+        viewModel.setMiktar(1);
+      }
       viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizTipi ??= editTipi?.satisMi == true ? widget.stokListesiModel?.satDovTip : viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
@@ -1023,8 +1026,8 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
       viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
-      viewModel.setMiktar(double.tryParse(miktarController.text) ?? 0);
       viewModel.setMiktar2(double.tryParse(miktar2Controller.text) ?? 0);
+      viewModel.setMiktar(double.tryParse(miktarController.text) ?? 0);
       viewModel.setMFMiktar(double.tryParse(malFazMiktarController.text) ?? 0);
       viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
       viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
