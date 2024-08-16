@@ -92,7 +92,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                       widget.onUpdated?.call(result);
                     }
                   },
-                ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true)),
+                ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && !widget.model.eBelgeMi),
                 BottomSheetModel(
                   title: loc.generalStrings.delete,
                   iconWidget: Icons.delete_outline_outlined,
