@@ -13,14 +13,25 @@ abstract class _ImageCarouselViewModelBase with Store, MobxNetworkMixin {
   ObservableList<EvraklarModel>? observableList;
 
   @observable
+  String? selectedImage;
+
+  @observable
   EvraklarRequestModel? requestModel;
+
+  @computed
+  bool get onlyOneItem => observableList?.length == 1;
 
   void setRequestModel(EvraklarRequestModel? model) => requestModel = model;
   @action
   void setObservableList(List<EvraklarModel>? list) => observableList = list?.asObservable();
+  @action
+  void setSelectedImage(String? image) => selectedImage = image;
 
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: requestModel?.toJson());
-    if (result.isSuccess) setObservableList(result.dataList);
+    if (result.isSuccess){
+    setObservableList(result.dataList);
+    setSelectedImage(result.dataList.first.resimUrl);
+    }
   }
 }

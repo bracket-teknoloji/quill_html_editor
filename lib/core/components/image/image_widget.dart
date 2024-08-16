@@ -6,7 +6,8 @@ import "../../constants/ui_helper/ui_helper.dart";
 class ImageWidget extends StatefulWidget {
   final String? path;
   final void Function()? onTap;
-  const ImageWidget({super.key, required this.path, this.onTap});
+  final bool fit;
+  const ImageWidget({super.key, required this.path, this.onTap, this.fit = true});
 
   @override
   State<ImageWidget> createState() => _ImageWidgetState();
@@ -28,10 +29,13 @@ class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveCl
             onTap: widget.onTap,
             child: ClipRRect(
               borderRadius: UIHelper.lowBorderRadius,
-              child: Image.memory(
-                snapshot.data!.bytes,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => const SizedBox(),
+              child: Container(
+                color: theme.colorScheme.onSecondary,
+                child: Image.memory(
+                  snapshot.data!.bytes,
+                  fit: widget.fit ? BoxFit.cover : null,
+                  errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                ),
               ),
             ),
           );
