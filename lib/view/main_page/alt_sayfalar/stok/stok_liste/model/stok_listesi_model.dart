@@ -101,7 +101,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? satisKuru;
   DateTime? satisKurTarihi;
   double? bulunanDovizFiyati;
-  int? bulunanDovizTipi;
+  int bulunanDovizTipi = 0;
   String? yapacik;
   @override
   double? netMiktar;
@@ -211,7 +211,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     this.satisKuru,
     this.satisKurTarihi,
     this.bulunanDovizFiyati,
-    this.bulunanDovizTipi,
+    this.bulunanDovizTipi = 0,
   });
 
   @override

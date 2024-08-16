@@ -165,7 +165,7 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel bulunanDovizFiyati(double? bulunanDovizFiyati);
 
-  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi);
+  StokListesiModel bulunanDovizTipi(int bulunanDovizTipi);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -550,7 +550,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(bulunanDovizFiyati: bulunanDovizFiyati);
 
   @override
-  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi) =>
+  StokListesiModel bulunanDovizTipi(int bulunanDovizTipi) =>
       this(bulunanDovizTipi: bulunanDovizTipi);
 
   @override
@@ -962,10 +962,11 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.bulunanDovizFiyati
           // ignore: cast_nullable_to_non_nullable
           : bulunanDovizFiyati as double?,
-      bulunanDovizTipi: bulunanDovizTipi == const $CopyWithPlaceholder()
+      bulunanDovizTipi: bulunanDovizTipi == const $CopyWithPlaceholder() ||
+              bulunanDovizTipi == null
           ? _value.bulunanDovizTipi
           // ignore: cast_nullable_to_non_nullable
-          : bulunanDovizTipi as int?,
+          : bulunanDovizTipi as int,
     );
   }
 }
@@ -1317,7 +1318,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
       bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
-      bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt(),
+      bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt() ?? 0,
     )
       ..miktar = (json['MIKTAR'] as num?)?.toDouble()
       ..yapacik = json['YAPACIK'] as String?
@@ -1441,7 +1442,7 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) {
   writeNotNull('SATIS_KURU', instance.satisKuru);
   writeNotNull('SATIS_KUR_TARIHI', instance.satisKurTarihi?.toIso8601String());
   writeNotNull('BULUNAN_DOVIZ_FIYATI', instance.bulunanDovizFiyati);
-  writeNotNull('BULUNAN_DOVIZ_TIPI', instance.bulunanDovizTipi);
+  val['BULUNAN_DOVIZ_TIPI'] = instance.bulunanDovizTipi;
   writeNotNull('YAPACIK', instance.yapacik);
   writeNotNull('NET_MIKTAR', instance.netMiktar);
   writeNotNull('DEPO_BAKIYE_LISTE',
