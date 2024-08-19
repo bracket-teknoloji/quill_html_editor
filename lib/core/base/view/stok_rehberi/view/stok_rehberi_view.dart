@@ -5,6 +5,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/image/image_carousel/view/image_carousel_view.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -466,9 +467,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             children: [
                               const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
                               ColorfulBadge(
-                                label: Text("Dövizli ${item.satisDovizAdi}"),
+                                label: Text("Dövizli ${(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}"),
                                 badgeColorEnum: BadgeColorEnum.dovizli,
-                              ).yetkiVarMi(item.satDovTip != null || item.alisDovTip != null),
+                              ).yetkiVarMi((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true) ? item.satDovTip != null : item.alisDovTip != null),
                               const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
                               const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilitGenel == "E"),
                             ].whereType<ColorfulBadge>().toList(),
@@ -802,3 +803,4 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     await viewModel.resetList();
   }
 }
+
