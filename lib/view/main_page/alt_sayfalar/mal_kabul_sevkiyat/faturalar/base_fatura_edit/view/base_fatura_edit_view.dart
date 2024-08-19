@@ -586,6 +586,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(
       islemId: uuid.v4(),
       cariModel: null,
+      kalemList: null,
       otvTutari: BaseSiparisEditModel.instance.getOTVToplam,
       belgeTuru: widget.model.editTipiEnum?.rawValue,
       kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),

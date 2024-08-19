@@ -89,7 +89,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setYapKod(String? value) => kalemModel = kalemModel.copyWith(yapkod: value);
 
   @action
-  void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value);
+  void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value, dovizFiyati: value);
 
   @action
   void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);
@@ -126,7 +126,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setBrutFiyat(double? value) {
-    kalemModel = kalemModel.copyWith(brutFiyat: value);
+    kalemModel = kalemModel.copyWith(brutFiyat: value, satisFiyati: value);
     updateOtv();
   }
 
@@ -230,7 +230,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData(StokRehberiRequestModel model) async {
     final result = await networkManager.dioPost(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), showLoading: true, data: model.toJson());
     if (result.isSuccess) {
-      setModel((result.data as List).firstOrNull);
+      setModel(result.dataList.first);
     }
   }
 }

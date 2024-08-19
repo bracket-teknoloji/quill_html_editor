@@ -377,7 +377,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel olcumBelgeRefKey(String? olcumBelgeRefKey);
 
-  BaseSiparisEditModel dovizListesi(Map<String, double>? dovizListesi);
+  BaseSiparisEditModel dovizListesi(Map<int, double>? dovizListesi);
 
   BaseSiparisEditModel hedefDepoAdi(String? hedefDepoAdi);
 
@@ -577,7 +577,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     int? eirsaliyeGibDurumKodu,
     String? datOnayda,
     String? olcumBelgeRefKey,
-    Map<String, double>? dovizListesi,
+    Map<int, double>? dovizListesi,
     String? hedefDepoAdi,
     double? otvTutari,
     int? index,
@@ -1261,7 +1261,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(olcumBelgeRefKey: olcumBelgeRefKey);
 
   @override
-  BaseSiparisEditModel dovizListesi(Map<String, double>? dovizListesi) =>
+  BaseSiparisEditModel dovizListesi(Map<int, double>? dovizListesi) =>
       this(dovizListesi: dovizListesi);
 
   @override
@@ -2222,7 +2222,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       dovizListesi: dovizListesi == const $CopyWithPlaceholder()
           ? _value.dovizListesi
           // ignore: cast_nullable_to_non_nullable
-          : dovizListesi as Map<String, double>?,
+          : dovizListesi as Map<int, double>?,
       hedefDepoAdi: hedefDepoAdi == const $CopyWithPlaceholder()
           ? _value.hedefDepoAdi
           // ignore: cast_nullable_to_non_nullable
@@ -4081,7 +4081,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       eirsaliyeGibDurumKodu: fields[181] as int?,
       datOnayda: fields[183] as String?,
       olcumBelgeRefKey: fields[184] as String?,
-      dovizListesi: (fields[185] as Map?)?.cast<String, double>(),
+      dovizListesi: (fields[185] as Map?)?.cast<int, double>(),
       hedefDepoAdi: fields[186] as String?,
       otvTutari: fields[187] as double?,
     );
@@ -5148,7 +5148,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       datOnayda: json['DAT_ONAYDA'] as String?,
       olcumBelgeRefKey: json['OLCUM_BELGE_REF_KEY'] as String?,
       dovizListesi: (json['DOVIZ_LISTESI'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, (e as num).toDouble()),
+            (k, e) => MapEntry(int.parse(k), (e as num).toDouble()),
           ) ??
           {},
       hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
@@ -5351,7 +5351,8 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('CARI_DOVIZKODU', instance.cariDovizkodu);
   writeNotNull('DAT_ONAYDA', instance.datOnayda);
   writeNotNull('OLCUM_BELGE_REF_KEY', instance.olcumBelgeRefKey);
-  writeNotNull('DOVIZ_LISTESI', instance.dovizListesi);
+  writeNotNull('DOVIZ_LISTESI',
+      instance.dovizListesi?.map((k, e) => MapEntry(k.toString(), e)));
   writeNotNull('HEDEF_DEPO_ADI', instance.hedefDepoAdi);
   writeNotNull('OTV_TUTARI', instance.otvTutari);
   writeNotNull('INDEX', instance.index);

@@ -484,7 +484,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String? olcumBelgeRefKey;
   @HiveField(185)
   @JsonKey(defaultValue: {})
-  Map<String, double>? dovizListesi;
+  Map<int, double>? dovizListesi;
   @HiveField(186)
   String? hedefDepoAdi;
   @HiveField(187)
@@ -1037,7 +1037,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
-  double get dovizKuru => (genelToplam ?? 0) / (dovizTutari ?? 0);
+  double get dovizKuru => ((genelToplam ?? 0) / (dovizTutari ?? 0)).toNotNaN;
 
   double iskontoChecker(double result) {
     if (genIsk1o != null && genIsk1o != 0.0) {
@@ -1081,7 +1081,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0) + getToplamEkMaliyet;
 
-  double get getDovizliToplamIskonto => getToplamIskonto / dovizKuru;
+  double get getDovizliToplamIskonto => (getToplamIskonto / dovizKuru).toNotNaN;
 
   double get genelIskontoToplami => (genIsk1t ?? 0) + (genIsk2t ?? 0) + (genIsk3t ?? 0);
 
