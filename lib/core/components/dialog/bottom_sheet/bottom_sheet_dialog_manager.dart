@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import "dart:typed_data";
-
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -75,7 +74,7 @@ class BottomSheetDialogManager {
       useSafeArea: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width,
+          MediaQuery.sizeOf(context).width * (kIsWeb ? 0.6 : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),

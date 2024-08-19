@@ -64,7 +64,7 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
         body: Observer(
           builder: (_) => RefreshableListView(
             onRefresh: viewModel.getData,
-            items: viewModel.observableList,
+            items: viewModel.getSurumYenilikleriModelList,
             itemBuilder: (item) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

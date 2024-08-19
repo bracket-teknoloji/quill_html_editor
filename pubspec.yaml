@@ -108,6 +108,7 @@ dependencies:
   label_marker: ^1.0.1
   url_launcher: ^6.2.5
   firebase_app_check: ^0.3.0+2
+  url_strategy: ^0.3.0
 
 # dependency_overrides:
   # google_maps_flutter_ios: 2.3.0
