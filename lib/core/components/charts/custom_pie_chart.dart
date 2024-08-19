@@ -65,7 +65,17 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                       swapAnimationDuration: DurationHelper.durationLow,
                     ),
                   )
-                : const Center(child: Card(child: Text("Veri bulunamadı.")))
+                : const Card(
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.find_in_page_outlined, size: 50, color: Colors.grey),
+                          Text("Veri bulunamadı."),
+                        ],
+                      ),
+                    ),
+                  )
             : const Center(child: CircularProgressIndicator.adaptive()),
       );
 }

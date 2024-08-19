@@ -10,6 +10,21 @@ part of 'urun_grubuna_gore_satis_grafigi_view_model.dart';
 
 mixin _$UrunGrubunaGoreSatisGrafigiViewModel
     on _UrunGrubunaGoreSatisGrafigiViewModelBase, Store {
+  Computed<String>? _$toplamMiktarComputed;
+
+  @override
+  String get toplamMiktar =>
+      (_$toplamMiktarComputed ??= Computed<String>(() => super.toplamMiktar,
+              name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamMiktar'))
+          .value;
+  Computed<String>? _$toplamNetTutarComputed;
+
+  @override
+  String get toplamNetTutar =>
+      (_$toplamNetTutarComputed ??= Computed<String>(() => super.toplamNetTutar,
+              name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.toplamNetTutar'))
+          .value;
+
   late final _$modelAtom = Atom(
       name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.model',
       context: context);
@@ -113,6 +128,32 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   @override
+  void setRaporTipi(String value) {
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setRaporTipi');
+    try {
+      return super.setRaporTipi(value);
+    } finally {
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setProje(BaseProjeModel? proje) {
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+            name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.setProje');
+    try {
+      return super.setProje(proje);
+    } finally {
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setIrsDahilValue(bool value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
@@ -145,7 +186,9 @@ model: ${model},
 projeList: ${projeList},
 irsDahilValue: ${irsDahilValue},
 donemTipiIndex: ${donemTipiIndex},
-modelList: ${modelList}
+modelList: ${modelList},
+toplamMiktar: ${toplamMiktar},
+toplamNetTutar: ${toplamNetTutar}
     ''';
   }
 }

@@ -13,7 +13,11 @@ UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
       ..grupAdi = json['GRUP_ADI'] as String?
       ..netTutar = (json['NET_TUTAR'] as num?)?.toDouble()
       ..toplamTutar = (json['TOPLAM_TUTAR'] as num?)?.toDouble()
-      ..oran = (json['ORAN'] as num?)?.toDouble();
+      ..oran = (json['ORAN'] as num?)?.toDouble()
+      ..sira = (json['SIRA'] as num?)?.toInt()
+      ..miktar = (json['MIKTAR'] as num?)?.toDouble()
+      ..oranMiktar = (json['ORAN_MIKTAR'] as num?)?.toDouble()
+      ..oranTutar = (json['ORAN_TUTAR'] as num?)?.toDouble();
 
 Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
     UrunGrubunaGoreSatisGrafigiModel instance) {
@@ -30,5 +34,9 @@ Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
   writeNotNull('NET_TUTAR', instance.netTutar);
   writeNotNull('TOPLAM_TUTAR', instance.toplamTutar);
   writeNotNull('ORAN', instance.oran);
+  writeNotNull('SIRA', instance.sira);
+  writeNotNull('MIKTAR', instance.miktar);
+  writeNotNull('ORAN_MIKTAR', instance.oranMiktar);
+  writeNotNull('ORAN_TUTAR', instance.oranTutar);
   return val;
 }

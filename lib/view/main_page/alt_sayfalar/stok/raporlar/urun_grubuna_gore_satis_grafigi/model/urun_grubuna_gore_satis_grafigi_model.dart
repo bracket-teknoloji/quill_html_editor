@@ -11,6 +11,10 @@ class UrunGrubunaGoreSatisGrafigiModel with NetworkManagerMixin {
   double? netTutar;
   double? toplamTutar;
   double? oran;
+  int? sira;
+  double? miktar;
+  double? oranMiktar;
+  double? oranTutar;
   @override
   UrunGrubunaGoreSatisGrafigiModel fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiModelFromJson(json);
 
