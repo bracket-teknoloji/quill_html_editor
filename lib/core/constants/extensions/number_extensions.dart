@@ -25,6 +25,8 @@ extension NumExtensionWithFixedDigits on num? {
 
   String? get toStringIfNotNull => this == null ? null : toString();
 
+  double get toNotNaN => this?.isNaN ?? false ? 0 : this?.toDouble() ?? 0;
+
   String get dotSeparatedWithFixedDigits {
     if (this != null) {
       return this!.toStringAsFixed(2).replaceAllMapped(
