@@ -4,7 +4,10 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -240,8 +243,17 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                             itemBuilder: (context, index) => Card(
                               child: ListTile(
                                 title: Text(viewModel.modelList?[index].stokAdi ?? ""),
-                                subtitle: Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
-                                trailing: Text(viewModel.modelList?[index].miktar.toStringIfNotNull ?? ""),
+                                subtitle: CustomLayoutBuilder.divideInHalf(
+                                  children: [
+                                    Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
+                                    Text("Döviz Kuru: ${viewModel.modelList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}")
+                                        .yetkiVarMi(viewModel.modelList?[index].dovizKuru != null && viewModel.modelList?[index].dovizKuru != 0),
+                                    Text("Döviz Tipi: ${viewModel.modelList?[index].dovizAdi ?? ""}").yetkiVarMi(viewModel.modelList?[index].dovizAdi != null),
+                                    Text("Döviz Net Tutarı: ${viewModel.modelList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}")
+                                        .yetkiVarMi(viewModel.modelList?[index].dovNetTutar != null && viewModel.modelList?[index].dovNetTutar != 0),
+                                  ],
+                                ),
+                                trailing: Text("${viewModel.modelList?[index].miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? ""} ${viewModel.modelList?[index].olcuBirimAdi ?? ""}"),
                                 onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
                                   context,
                                   title: loc.generalStrings.options,

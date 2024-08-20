@@ -12,6 +12,13 @@ class CariStokSatisOzetiModel with NetworkManagerMixin {
   String? stokAdi;
   String? olcuBirimAdi;
   double? netTutar;
+  String? belgeTipi;
+  int? dovizTipi;
+  double? dovNetTutar;
+  double? dovBrutTutar;
+  double? dovizKuru;
+  String? dovizAdi;
+  String? dovizSimge;
 
   @override
   CariStokSatisOzetiModel fromJson(Map<String, dynamic> json) => _$CariStokSatisOzetiModelFromJson(json);
