@@ -255,7 +255,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriRehberiUSK", page: () => SeriRehberiView.usk(stokModel: Get.arguments)),
           GetPage(name: "/evraklar", page: () => EvraklarView(model: Get.arguments)),
           GetPage(name: "/imagePicker", page: () => ImagePickerView(requestModel: Get.arguments)),
-              GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
+          GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
@@ -546,6 +546,7 @@ Future<void> firebaseInitialized() async {
   log("fcmToken: ${AccountModel.instance.fcmToken}");
   if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
     FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    // messaging.
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
