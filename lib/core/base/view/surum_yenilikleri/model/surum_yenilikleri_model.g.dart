@@ -16,7 +16,9 @@ _$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(
       liste: (json['LISTE'] as List<dynamic>?)
           ?.map((e) => ValueList.fromJson(e as Map<String, dynamic>))
           .toList(),
-      listAciklama: json['LIST_ACIKLAMA'] as List<dynamic>?,
+      listAciklama: (json['LIST_ACIKLAMA'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       tarih: json['TARIH'] == null
           ? null
           : DateTime.parse(json['TARIH'] as String),

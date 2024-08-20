@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
@@ -19,7 +20,8 @@ import "../model/main_page_model.dart";
 import "../model/menu_item/menu_item_constants.dart";
 
 class MainPageView extends StatefulWidget {
-  const MainPageView({super.key});
+  final bool fromSplash;
+  const MainPageView({super.key, this.fromSplash = false});
 
   @override
   State<MainPageView> createState() => _MainPageViewState();
@@ -35,6 +37,11 @@ class _MainPageViewState extends BaseState<MainPageView> {
   @override
   void initState() {
     items = MenuItemConstants(context).getList();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");
+      });
+    });
     super.initState();
   }
 

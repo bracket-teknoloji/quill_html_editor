@@ -1,5 +1,6 @@
 import "dart:convert";
 
+import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -194,9 +195,10 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       },
     );
     if (response.data != null) {
+   
       CacheManager.setHesapBilgileri(AccountModel.instance);
       CacheManager.setAnaVeri(response.dataList.firstOrNull!);
-      Get.offAllNamed("/mainPage");
+      Get.offAllNamed("/mainPage", arguments: true);
       if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message.toString());
       // final result = await networkManager.dioPost<AccountModel>(path: ApiUrls.saveUyeBilgileri, showError: false, bodyModel: AccountModel(), data: CacheManager.getHesapBilgileri?.toJson());
       // if (result.isSuccess) {

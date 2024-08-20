@@ -258,6 +258,7 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
           GetPage(
             name: "/mainPage",
+            arguments: Get.arguments,
             page: () => const MainPageView(),
             popGesture: false,
             children: <GetPage>[

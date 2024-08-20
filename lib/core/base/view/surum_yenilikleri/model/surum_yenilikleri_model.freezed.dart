@@ -31,8 +31,8 @@ mixin _$SurumYenilikleriModel {
   set yer(dynamic value) => throw _privateConstructorUsedError;
   List<ValueList>? get liste => throw _privateConstructorUsedError;
   set liste(List<ValueList>? value) => throw _privateConstructorUsedError;
-  List<dynamic>? get listAciklama => throw _privateConstructorUsedError;
-  set listAciklama(List<dynamic>? value) => throw _privateConstructorUsedError;
+  List<String>? get listAciklama => throw _privateConstructorUsedError;
+  set listAciklama(List<String>? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
   set tarih(DateTime? value) => throw _privateConstructorUsedError;
 
@@ -58,7 +58,7 @@ abstract class $SurumYenilikleriModelCopyWith<$Res> {
       dynamic surumAdi,
       dynamic yer,
       List<ValueList>? liste,
-      List<dynamic>? listAciklama,
+      List<String>? listAciklama,
       DateTime? tarih});
 }
 
@@ -110,7 +110,7 @@ class _$SurumYenilikleriModelCopyWithImpl<$Res,
       listAciklama: freezed == listAciklama
           ? _value.listAciklama
           : listAciklama // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ abstract class _$$SurumYenilikleriModelImplCopyWith<$Res>
       dynamic surumAdi,
       dynamic yer,
       List<ValueList>? liste,
-      List<dynamic>? listAciklama,
+      List<String>? listAciklama,
       DateTime? tarih});
 }
 
@@ -184,7 +184,7 @@ class __$$SurumYenilikleriModelImplCopyWithImpl<$Res>
       listAciklama: freezed == listAciklama
           ? _value.listAciklama
           : listAciklama // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       tarih: freezed == tarih
           ? _value.tarih
           : tarih // ignore: cast_nullable_to_non_nullable
@@ -220,7 +220,7 @@ class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
   @override
   List<ValueList>? liste;
   @override
-  List<dynamic>? listAciklama;
+  List<String>? listAciklama;
   @override
   DateTime? tarih;
 
@@ -248,7 +248,7 @@ abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
       dynamic surumAdi,
       dynamic yer,
       List<ValueList>? liste,
-      List<dynamic>? listAciklama,
+      List<String>? listAciklama,
       DateTime? tarih}) = _$SurumYenilikleriModelImpl;
   _SurumYenilikleriModel._() : super._();
 
@@ -271,8 +271,8 @@ abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
   List<ValueList>? get liste;
   set liste(List<ValueList>? value);
   @override
-  List<dynamic>? get listAciklama;
-  set listAciklama(List<dynamic>? value);
+  List<String>? get listAciklama;
+  set listAciklama(List<String>? value);
   @override
   DateTime? get tarih;
   set tarih(DateTime? value);

@@ -101,17 +101,19 @@ class NetworkManager {
     // } else {
     //   dio.httpClientAdapter = BrowserHttpClientAdapter();
     // }
-    dio.interceptors.add(
-      TalkerDioLogger(
-        settings: TalkerDioLoggerSettings(
-          printResponseMessage: true,
-          printResponseData: false,
-          printErrorData: true,
-          requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
-          responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
+    if (kDebugMode){
+      dio.interceptors.add(
+        TalkerDioLogger(
+          settings: TalkerDioLoggerSettings(
+            printResponseMessage: true,
+            printResponseData: false,
+            printErrorData: true,
+            requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
+            responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   Dio dio = Dio(

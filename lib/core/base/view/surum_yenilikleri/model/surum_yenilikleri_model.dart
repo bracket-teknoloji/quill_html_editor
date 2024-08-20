@@ -14,7 +14,7 @@ class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
     dynamic surumAdi,
     dynamic yer,
     List<ValueList>? liste,
-    List<dynamic>? listAciklama,
+    List<String>? listAciklama,
     DateTime? tarih,
   }) = _SurumYenilikleriModel;
 

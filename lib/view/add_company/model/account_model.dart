@@ -169,8 +169,11 @@ class AccountModel with NetworkManagerMixin {
     uygulamaSurumKodu = 229;
     uygulamaSurumu = AppInfoModel.instance.version;
     requestVersion = 1;
-    await PackageInfo.fromPlatform().then((value) => paketAdi = value.packageName);
-
+    if (kIsWeb) {
+      paketAdi = "com.bracket23.picker";
+    } else {
+      paketAdi = (await PackageInfo.fromPlatform()).packageName;
+    }
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)
     offline = "H";
