@@ -40,14 +40,10 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRTVIem1mTQdiEaax2tTzbXevmTwMCYlQ"></script>
-  <script src="flutter_bootstrap.js" async></script>
-  <script src="main.dart.js" type="application/javascript"></script>
-  
 </head>
 
 <body>
-  {{flutter_js}}
-  {{flutter_build_config}}
+  <script src="main.dart.js" type="application/javascript"></script>
   <!-- Firebase Configuration -->
   <script>
     window.addEventListener("load", function (ev) {
@@ -58,17 +54,16 @@
       // Otherwise, the browser will load the script multiple times,
       // potentially different versions.
       var serviceWorkerUrl =
-        "flutter_service_worker.js?v=" + serviceWorkerVersion;
+        "flutter_service_worker.js?v=" + flutter_service_worker_version;
       _flutter.loader.load({
         entrypointUrl: "/main.dart.js",
         serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-          serviceWorkerUrl: "/flutter_service_worker.js?v=",
+          serviceWorkerVersion: flutter_service_worker_version,
+          serviceWorkerUrl: serviceWorkerUrl,
         },
-        onEntrypointLoaded: function (engineInitializer) {
-          engineInitializer.initializeEngine().then(function (appRunner) {
-            appRunner.runApp();
-          });
+        onEntrypointLoaded: async function (engineInitializer) {
+          engineInitializer.initializeEngine({multiViewEnabled: true});
+          let app = await engine.runApp();
         },
       });
     });

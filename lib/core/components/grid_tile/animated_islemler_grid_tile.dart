@@ -37,7 +37,7 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
           enableFeedback: widget.onTap != null,
           onTap: widget.onTap,
           child: GridTile(
-            footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox(),
+            footer: (widget.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : null,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,

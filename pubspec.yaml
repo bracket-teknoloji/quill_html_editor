@@ -109,6 +109,7 @@ dependencies:
   url_launcher: ^6.2.5
   firebase_app_check: ^0.3.0+2
   url_strategy: ^0.3.0
+  json: ^0.20.2
 
 # dependency_overrides:
   # google_maps_flutter_ios: 2.3.0
