@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -19,7 +20,7 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../view_model/cari_havale_eft_view_model.dart";
 
-class CariHavaleEftView extends StatefulWidget {
+final class CariHavaleEftView extends StatefulWidget {
   final CariListesiModel? cariListesiModel;
   const CariHavaleEftView({super.key, this.cariListesiModel});
 
@@ -27,7 +28,7 @@ class CariHavaleEftView extends StatefulWidget {
   State<CariHavaleEftView> createState() => _CariHavaleEftViewState();
 }
 
-class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
+final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   final CariHavaleEftViewModel viewModel = CariHavaleEftViewModel();
   late final TextEditingController _tarihController;
   late final TextEditingController _dekontNoController;
@@ -64,7 +65,7 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _dovizTipiController = TextEditingController();
     _dovizTutariController = TextEditingController();
     _dovizKuruController = TextEditingController();
-    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _masrafTutariController = TextEditingController();
     _bsmvController = TextEditingController();
     _masrafMuhKoduController = TextEditingController();
@@ -72,9 +73,21 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      viewModel.setTutar(widget.cariListesiModel?.bakiye);
+      viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs());
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
+      setGirisCikis(
+        await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: "Giriş/Çıkış seçiniz",
+              groupValue: viewModel.model.cariyiBorclandir != true,
+              children: [
+                BottomSheetModel(title: "Bankaya Para Girişi", value: true, groupValue: !(viewModel.model.cariyiBorclandir ?? true)),
+                BottomSheetModel(title: "Bankadan Para Çıkışı", value: false, groupValue: viewModel.model.cariyiBorclandir),
+              ],
+            ) ??
+            true,
+      );
       if (widget.cariListesiModel != null) {
         viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
         viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);
@@ -142,35 +155,52 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
             key: _formKey,
             child: Observer(
               builder: (_) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      contentPadding: EdgeInsets.zero,
-                      title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
-                      value: viewModel.model.cariyiBorclandir == false,
-                      // ignore: unnecessary_lambdas
-                      onChanged: (value) async {
-                        viewModel.setGc(!value);
-                        if (value) {
-                          viewModel.setTCMBBankaKodu(null);
-                          viewModel.setTCMBSubeKodu(null);
-                          viewModel.setBankaHesapNo(null);
-                          viewModel.setIBAN(null);
-                        } else {
-                          if (_tcmbBankaKoduController.text.isEmpty) {
-                            _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
-                          }
-                          viewModel.setTCMBBankaKodu(_tcmbBankaKoduController.text);
-                          if (_tcmbSubeKoduController.text.isEmpty) {
-                            _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
-                          }
-                          viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
-                          viewModel.setBankaHesapNo(_bankaHesapNoController.text);
-                          viewModel.setIBAN(_ibanController.text);
-                        }
-                      },
+                  LayoutBuilder(
+                    builder: (context, constraints) => Observer(
+                      builder: (_) => ToggleButtons(
+                        constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
+                        isSelected: [!(viewModel.model.cariyiBorclandir ?? true), viewModel.model.cariyiBorclandir ?? true],
+                        onPressed: (index) {
+                          final value = index == 0;
+                          setGirisCikis(value);
+                        },
+                        children: const [
+                          Text("Bankaya Para Girişi"),
+                          Text("Bankadan Para Çıkışı"),
+                        ],
+                      ),
                     ),
                   ).paddingAll(UIHelper.lowSize),
+                  // Observer(
+                  //   builder: (_) => SwitchListTile.adaptive(
+                  //     contentPadding: EdgeInsets.zero,
+                  //     title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
+                  //     value: viewModel.model.cariyiBorclandir == false,
+                  //     // ignore: unnecessary_lambdas
+                  //     onChanged: (value) async {
+                  //       viewModel.setGc(!value);
+                  //       if (value) {
+                  //         viewModel.setTCMBBankaKodu(null);
+                  //         viewModel.setTCMBSubeKodu(null);
+                  //         viewModel.setBankaHesapNo(null);
+                  //         viewModel.setIBAN(null);
+                  //       } else {
+                  //         if (_tcmbBankaKoduController.text.isEmpty) {
+                  //           _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
+                  //         }
+                  //         viewModel.setTCMBBankaKodu(_tcmbBankaKoduController.text);
+                  //         if (_tcmbSubeKoduController.text.isEmpty) {
+                  //           _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
+                  //         }
+                  //         viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
+                  //         viewModel.setBankaHesapNo(_bankaHesapNoController.text);
+                  //         viewModel.setIBAN(_ibanController.text);
+                  //       }
+                  //     },
+                  //   ),
+                  // ).paddingAll(UIHelper.lowSize),
                   Row(
                     children: [
                       Expanded(
@@ -213,8 +243,27 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     isMust: true,
                     readOnly: true,
                     suffixMore: true,
+                    suffix: IconButton(
+                      onPressed: () {
+                        if (viewModel.cariModel != null) {
+                          dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.cariModel?.cariKodu));
+                        } else {
+                          dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
+                        }
+                      },
+                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                    ),
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
                     onTap: () async => getCari(),
+                  ),
+                  Observer(
+                    builder: (_) => Text(
+                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
+                      style: TextStyle(
+                        color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.cariModel != null),
                   ),
                   Row(
                     children: [
@@ -446,6 +495,27 @@ class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
           ),
         ),
       );
+
+  void setGirisCikis(bool value) {
+    viewModel.setGc(!value);
+    if (value) {
+      viewModel.setTCMBBankaKodu(null);
+      viewModel.setTCMBSubeKodu(null);
+      viewModel.setBankaHesapNo(null);
+      viewModel.setIBAN(null);
+    } else {
+      if (_tcmbBankaKoduController.text.isEmpty) {
+        _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
+      }
+      viewModel.setTCMBBankaKodu(_tcmbBankaKoduController.text);
+      if (_tcmbSubeKoduController.text.isEmpty) {
+        _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
+      }
+      viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
+      viewModel.setBankaHesapNo(_bankaHesapNoController.text);
+      viewModel.setIBAN(_ibanController.text);
+    }
+  }
 
   Future<void> getCari() async {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
