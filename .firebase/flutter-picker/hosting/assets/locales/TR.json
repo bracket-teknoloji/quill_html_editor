@@ -1,0 +1,52 @@
+{
+  "rightDrawer": {
+    "save": "Kaydet",
+    "profile": "Profil",
+    "executiveUser": "Yetkili Kullanıcı",
+    "exit": "Çıkış",
+    "changeCompany": "Şirket Değiştir",
+    "remote": "Uzak",
+    "local": "Yerel",
+    "releaseNotes": "Sürüm Yenilikleri",
+    "themeChange": "Temayı Değiştir",
+    "darkMode": "Karanlık Tema"
+  },
+  "serviceOperations": {
+    "isWebServicesWorking": "Web Servisleri Çalışıyor Mu?",
+    "isWebServicesWorkingSubtitle": "Web servislerinin çalışıp çalışmadığını kontrol eder.",
+    "updateService": "Servisi Güncelle",
+    "updateServiceSubtitle": "Servisi güncellemek için kullanılır.",
+    "dbUpdate": "Veri Tabanını Güncelle",
+    "dbUpdateSubtitle": "SQL veritabanını güncellemek için kullanılır.",
+    "serviceOperationsTitle": "Servis İşlemleri",
+    "netOpenXKernelStatus": "NetOpenX Kernel Durumu",
+    "netOpenXKernelStatusSubTitle": "NetOpenX Kernel Durumunu öğrenmenizi sağlar.",
+    "eFaturaDLLKayitla": "E-Fatura DLL Kayıtla",
+    "eFaturaDLLKayitlaSubTitle": "E-faturaların DLL kayıtlarını oluşturur.",
+    "netOpenXCreateKernel": "NetOpenX Kernel Oluştur",
+    "netOpenXCreateKernelSubTitle": "NetOpenX Kernel'i Oluşturmak için kullanabilirsiniz.",
+    "netfectWinServiceRestart": "NetFect Windows Sunucularını Yeniden Başlat",
+    "netfectWinServiceRestartSubTitle": "NetFect Windows Sunucularını Yeniden Başlatmak için bunu kullanabilirsiniz."
+  },
+  "generalStrings": {
+    "save": "Kaydet",
+    "success": "Başarılı",
+    "error": "Hata",
+    "filter": "Filtrele",
+    "sort": "Sırala",
+    "options": "Seçenekler",
+    "edit": "Düzenle",
+    "print": "Yazdır",
+    "delete": "Sil",
+    "view": "Görüntüle",
+    "actions": "İşlemler",
+    "other": "Diğer",
+    "general": "Genel",
+    "warning": "Uyarı",
+    "refresh": "Yenile",
+    "apply": "Uygula",
+    "themeChange": "Tema Değiştir",
+    "cancel": "İptal",
+    "ok": "Tamam"
+  }
+}
