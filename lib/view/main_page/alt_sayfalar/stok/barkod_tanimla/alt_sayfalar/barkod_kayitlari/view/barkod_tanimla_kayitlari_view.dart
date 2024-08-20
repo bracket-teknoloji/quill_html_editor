@@ -58,6 +58,8 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
               if (result == true) {
                 await viewModel.getData();
               }
+            } else {
+              await dialogManager.showAlertDialog("Stok kartı seçilmedi.");
             }
           },
         ),
