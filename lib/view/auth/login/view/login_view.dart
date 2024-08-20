@@ -98,7 +98,7 @@ class _LoginViewState extends BaseState<LoginView> {
         children: [
           Text("V ${AppInfoModel.instance.version}"),
           InkWell(
-            onTap: () => Get.toNamed("/mainPage/surumYenilikleri"),
+            onTap: () => Get.toNamed("/surumYenilikleri"),
             child: Text("Sürüm Yenilikleri", style: TextStyle(color: theme.colorScheme.primary)),
           ),
         ],

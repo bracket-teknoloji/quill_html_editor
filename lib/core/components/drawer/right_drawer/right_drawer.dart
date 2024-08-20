@@ -235,7 +235,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
             if (mounted) {
               widget.scaffoldKey.currentState!.closeEndDrawer();
             }
-            return Get.toNamed("/mainPage/surumYenilikleri");
+            return Get.toNamed("/surumYenilikleri");
           },
         ),
       ].nullCheckWithGeneric.cast<DrawerModel>();

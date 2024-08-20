@@ -255,12 +255,12 @@ class PickerApp extends StatelessWidget {
           GetPage(name: "/seriRehberiUSK", page: () => SeriRehberiView.usk(stokModel: Get.arguments)),
           GetPage(name: "/evraklar", page: () => EvraklarView(model: Get.arguments)),
           GetPage(name: "/imagePicker", page: () => ImagePickerView(requestModel: Get.arguments)),
+              GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
           GetPage(
             name: "/mainPage",
             page: () => const MainPageView(),
             popGesture: false,
             children: <GetPage>[
-              GetPage(name: "/surumYenilikleri", page: SurumYenilikleriView.new),
               GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
               GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
               GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),
