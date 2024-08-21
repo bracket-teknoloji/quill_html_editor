@@ -12,15 +12,15 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/qr_view_model.dart";
 
-class QRScannerView extends StatefulWidget {
+final class QRScannerView extends StatefulWidget {
   const QRScannerView({super.key});
 
   @override
   State<QRScannerView> createState() => _QRScannerState();
 }
 
-class _QRScannerState extends BaseState<QRScannerView> {
-  QRViewModel viewModel = QRViewModel();
+final class _QRScannerState extends BaseState<QRScannerView> {
+  final QRViewModel viewModel = QRViewModel();
   final qrKey = GlobalKey(debugLabel: "QR");
   late final QRViewController qrViewController;
   Barcode? barcode;
@@ -78,7 +78,7 @@ class _QRScannerState extends BaseState<QRScannerView> {
           borderRadius: UIHelper.midSize,
           borderWidth: UIHelper.midSize * 2,
           cutOutSize: width * 0.7,
-          overlayColor: Colors.black.withOpacity(0.7),
+          overlayColor: theme.colorScheme.shadow.withOpacity(0.7),
         ),
         key: qrKey,
         onQRViewCreated: _onQRViewCreated,

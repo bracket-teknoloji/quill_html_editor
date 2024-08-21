@@ -7,6 +7,7 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -69,7 +70,7 @@ final class _UretimSonuRaporuViewState extends BaseState<UretimSonuRaporuView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(child: Text(item.stokAdi ?? "")),
-                    Icon(item.cikisIslemi == true ? Icons.arrow_forward : Icons.arrow_back, color: item.cikisIslemi == true ? Colors.red : Colors.green),
+                    Icon(item.cikisIslemi == true ? Icons.arrow_forward : Icons.arrow_back, color: item.cikisIslemi == true ? ColorPalette.persianRed : ColorPalette.mantis),
                   ],
                 ),
                 subtitle: Column(

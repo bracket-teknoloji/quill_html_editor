@@ -2,6 +2,7 @@ import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:shimmer/shimmer.dart";
 
@@ -21,8 +22,8 @@ final class _GridViewShimmerState extends State<GridViewShimmer> {
         children: List.generate(
           10 * widget.gridDelegate.crossAxisCount,
           (index) => Shimmer.fromColors(
-            baseColor: Colors.grey.withOpacity(0.1),
-            highlightColor: Colors.grey.withOpacity(0.2),
+            baseColor: ColorPalette.slateGray.withOpacity(0.1),
+            highlightColor: ColorPalette.slateGray.withOpacity(0.2),
             child: card(),
           ),
         ),

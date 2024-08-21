@@ -1,5 +1,6 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
+import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 
 import "../../base/state/base_state.dart";
@@ -8,7 +9,7 @@ import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class CustomPieChart extends StatefulWidget {
+final class CustomPieChart extends StatefulWidget {
   final List<String>? pieChartTitle;
   final List<double>? pieChartSelectedValue;
   final List<double>? pieChartValue;
@@ -18,7 +19,7 @@ class CustomPieChart extends StatefulWidget {
   State<CustomPieChart> createState() => _CustomPieChartState();
 }
 
-class _CustomPieChartState extends BaseState<CustomPieChart> {
+final class _CustomPieChartState extends BaseState<CustomPieChart> {
   int touchedIndex = -1;
   @override
   Widget build(BuildContext context) => AspectRatio(
@@ -70,7 +71,7 @@ class _CustomPieChartState extends BaseState<CustomPieChart> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.find_in_page_outlined, size: 50, color: Colors.grey),
+                          Icon(Icons.find_in_page_outlined, size: 50, color: ColorPalette.slateGray),
                           Text("Veri bulunamadı."),
                         ],
                       ),
