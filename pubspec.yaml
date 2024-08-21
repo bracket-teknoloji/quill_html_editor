@@ -78,7 +78,8 @@ dependencies:
   json_serializable: ^6.7.1
 
   #QR
-  qr_code_scanner: ^1.0.1
+  # qr_code_scanner: ^1.0.1
+  mobile_scanner: ^5.2.1
 
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
