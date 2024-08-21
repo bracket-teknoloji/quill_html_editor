@@ -17,6 +17,17 @@ update_fastlane
 default_platform(:android)
 
 platform :android do
+  desc "Firebase deploy"
+  lane :firebase do
+    sh("fb_apk")
+    firebase_app_distribution(
+      app: "com.bracket23.picker",
+      groups: "com.bracket23.picker",
+      release_notes: "New features and bug fixes",
+      debug: false)
+  end
+end
+platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
