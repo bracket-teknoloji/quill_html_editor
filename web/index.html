@@ -30,7 +30,22 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <title>picker</title>
+  <title>Picker</title>
+  <meta name="keywords" content="picker, Picker, NetFect, Netsis, Erp, ERP">
+
+  <meta property="og:title" content="Picker">
+  <meta property="og:description" content="Yeni Nesil İş Yönetim Uygulaması">
+  <meta property="og:image" content="https://picker.bracket.com.tr/Content/img/payment-logo/logo-main.png">
+  <meta property="og:url" content="https://flutter-picker.web.app/">
+  <meta property="og:type" content="website">
+  <meta property="og: site_name" content="flutter-picker.web.app">
+
+  <meta property="twitter:title" content="Yeni Nesil İş Yönetim Uygulaması">
+  <meta property="twitter:url" content="https://flutter-picker.web.app/">
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:description" content="Yeni Nesil İş Yönetim Uygulaması">
+  <meta property="twitter:image" content="https://picker.bracket.com.tr/Content/img/payment-logo/logo-main.png">
+
   <link rel="manifest" href="manifest.json" />
 
   <script>
@@ -40,17 +55,23 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRTVIem1mTQdiEaax2tTzbXevmTwMCYlQ"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@googlemaps/markerclusterer@2.5.3/dist/index.umd.min.js"></script>
 </head>
 
 <body>
   <script src="main.dart.js" type="application/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  <script type="text/javascript">
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js";
+  </script>
   <!-- Firebase Configuration -->
   <script>
+
     window.addEventListener("load", function (ev) {
       // Download main.dart.js
       navigator.serviceWorker.register('firebase-messaging-sw.js', {
-          scope: '/firebase-cloud-messaging-push-scope',
-        });
+        scope: '/firebase-cloud-messaging-push-scope',
+      });
       // Wait for registration to finish before dropping the <script> tag.
       // Otherwise, the browser will load the script multiple times,
       // potentially different versions.
@@ -69,6 +90,7 @@
       });
     });
   </script>
+
 </body>
 
 </html>
