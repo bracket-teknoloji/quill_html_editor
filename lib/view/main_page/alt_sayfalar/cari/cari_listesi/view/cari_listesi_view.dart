@@ -421,8 +421,10 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 const Text("Ödenecek"),
                 Observer(
-                  builder: (_) =>
-                      Text("${(viewModel.paramData?["ODENECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.persianRed)),
+                  builder: (_) => Text(
+                    "${(viewModel.paramData?["ODENECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.persianRed),
+                  ),
                 ),
               ],
               onPressed: () async {

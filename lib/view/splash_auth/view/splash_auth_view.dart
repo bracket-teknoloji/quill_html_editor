@@ -1,6 +1,5 @@
 import "dart:convert";
 
-import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -195,7 +194,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       },
     );
     if (response.data != null) {
-   
       CacheManager.setHesapBilgileri(AccountModel.instance);
       CacheManager.setAnaVeri(response.dataList.firstOrNull!);
       Get.offAllNamed("/mainPage", arguments: true);
