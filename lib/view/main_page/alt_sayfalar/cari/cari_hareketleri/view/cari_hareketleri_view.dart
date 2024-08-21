@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -314,11 +315,13 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             ),
             FooterButton(
               children: [
-                Text((viewModel.toplamBakiye) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
+                Observer(
+                  builder: (_) => Text((viewModel.toplamBakiye) < 0 ? "Ödenecek" : "Tahsil Edilecek"),
+                ),
                 Observer(
                   builder: (_) => Text(
-                    "${viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
-                    style: TextStyle(color: (viewModel.borclarToplami - viewModel.alacaklarToplami) < 0 ? ColorPalette.persianRed : ColorPalette.mantis),
+                    "${viewModel.toplamBakiye.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cari?.dovizAdi ?? mainCurrency}",
+                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
                   ),
                 ),
               ],
