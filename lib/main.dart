@@ -11,7 +11,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
-import "package:flutter_web_plugins/flutter_web_plugins.dart";
+// import "package:flutter_web_plugins/flutter_web_plugins.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/masraf_kodu/view/masraf_kodu_rehberi_view.dart";
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
@@ -193,7 +193,7 @@ void main() async {
   });
 
   // setPathUrlStrategy();
-  setUrlStrategy(XDPathUrlStrategy());
+  // if (kIsWeb) setUrlStrategy(XDPathUrlStrategy());
 
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
@@ -564,28 +564,28 @@ Future<void> firebaseInitialized() async {
   }
 }
 
-class XDPathUrlStrategy extends HashUrlStrategy {
-  /// Creates an instance of [PathUrlStrategy].
-  ///
-  /// The [PlatformLocation] parameter is useful for testing to mock out browser
-  /// interactions.
-  XDPathUrlStrategy([
-    super.platformLocation,
-  ]) : _basePath = stripTrailingSlash(
-          extractPathname(
-            checkBaseHref(
-              platformLocation.getBaseHref(),
-            ),
-          ),
-        );
+// class XDPathUrlStrategy extends HashUrlStrategy {
+//   /// Creates an instance of [PathUrlStrategy].
+//   ///
+//   /// The [PlatformLocation] parameter is useful for testing to mock out browser
+//   /// interactions.
+//   XDPathUrlStrategy([
+//     super.platformLocation,
+//   ]) : _basePath = stripTrailingSlash(
+//           extractPathname(
+//             checkBaseHref(
+//               platformLocation.getBaseHref(),
+//             ),
+//           ),
+//         );
 
-  final String _basePath;
+//   final String _basePath;
 
-  @override
-  String prepareExternalUrl(String internalUrl) {
-    if (internalUrl.isNotEmpty && !internalUrl.startsWith("/")) {
-      internalUrl = "/$internalUrl";
-    }
-    return "$_basePath/";
-  }
-}
+//   @override
+//   String prepareExternalUrl(String internalUrl) {
+//     if (internalUrl.isNotEmpty && !internalUrl.startsWith("/")) {
+//       internalUrl = "/$internalUrl";
+//     }
+//     return "$_basePath/";
+//   }
+// }
