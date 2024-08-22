@@ -11,6 +11,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
+import "package:flutter_web_plugins/flutter_web_plugins.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/masraf_kodu/view/masraf_kodu_rehberi_view.dart";
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
@@ -61,7 +62,6 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uret
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view/uretim_sonu_kaydi_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/view/uretim_sonu_kaydi_seri_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/view/uretim_sonu_raporu_view.dart";
-import "package:url_strategy/url_strategy.dart";
 
 import "core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 import "core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
@@ -192,7 +192,9 @@ void main() async {
     await EasyLocalization.ensureInitialized();
   });
 
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
+  setUrlStrategy(XDPathUrlStrategy());
+
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
     runApp(const PickerApp());
@@ -224,8 +226,11 @@ class PickerApp extends StatelessWidget {
         theme: AppThemeLight.instance?.theme,
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: CacheManager.getProfilParametre.temaModu,
-        home: const SplashAuthView(),
+        initialRoute: "/",
+        onUnknownRoute: (settings) => GetPageRoute(settings: null, page: () => const Scaffold(body: Center(child: Text("data")))),
+        onGenerateRoute: (settings) => GetPageRoute(settings: null, page: () => const Scaffold(body: Center(child: Text("data")))),
         getPages: <GetPage>[
+          GetPage(name: "/", page: SplashAuthView.new),
           GetPage(name: "/login", page: () => const LoginView()),
           GetPage(name: "/entryCompany", page: () => EntryCompanyView(isSplash: Get.arguments)),
           GetPage(name: "/addCompany", page: () => const AccountsView()),
@@ -556,5 +561,31 @@ Future<void> firebaseInitialized() async {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
     };
+  }
+}
+
+class XDPathUrlStrategy extends HashUrlStrategy {
+  /// Creates an instance of [PathUrlStrategy].
+  ///
+  /// The [PlatformLocation] parameter is useful for testing to mock out browser
+  /// interactions.
+  XDPathUrlStrategy([
+    super.platformLocation,
+  ]) : _basePath = stripTrailingSlash(
+          extractPathname(
+            checkBaseHref(
+              platformLocation.getBaseHref(),
+            ),
+          ),
+        );
+
+  final String _basePath;
+
+  @override
+  String prepareExternalUrl(String internalUrl) {
+    if (internalUrl.isNotEmpty && !internalUrl.startsWith("/")) {
+      internalUrl = "/$internalUrl";
+    }
+    return "$_basePath/";
   }
 }
