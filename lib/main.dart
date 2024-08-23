@@ -11,7 +11,6 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
-// import "package:flutter_web_plugins/flutter_web_plugins.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/masraf_kodu/view/masraf_kodu_rehberi_view.dart";
 import "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
@@ -22,6 +21,8 @@ import "package:picker/core/base/view/seri_islemleri/seri_rehberi/view/seri_rehb
 import "package:picker/core/components/image/evraklar/view/evraklar_view.dart";
 import "package:picker/core/components/image/image_picker/view/image_picker_view.dart";
 import "package:picker/core/constants/enum/hucre_takibi_islem_turu_enum.dart";
+import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/url_creator.dart";
+// import "package:picker/core/init/web/url_creator.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view/cari_aktivite_detayi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/view/cari_aktivite_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
@@ -192,8 +193,9 @@ void main() async {
     await EasyLocalization.ensureInitialized();
   });
 
-  // setPathUrlStrategy();
-  // if (kIsWeb) setUrlStrategy(XDPathUrlStrategy());
+  if (kIsWeb) {
+    setUrl();
+  }
 
   //* Screen Orientation
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
@@ -563,29 +565,3 @@ Future<void> firebaseInitialized() async {
     };
   }
 }
-
-// class XDPathUrlStrategy extends HashUrlStrategy {
-//   /// Creates an instance of [PathUrlStrategy].
-//   ///
-//   /// The [PlatformLocation] parameter is useful for testing to mock out browser
-//   /// interactions.
-//   XDPathUrlStrategy([
-//     super.platformLocation,
-//   ]) : _basePath = stripTrailingSlash(
-//           extractPathname(
-//             checkBaseHref(
-//               platformLocation.getBaseHref(),
-//             ),
-//           ),
-//         );
-
-//   final String _basePath;
-
-//   @override
-//   String prepareExternalUrl(String internalUrl) {
-//     if (internalUrl.isNotEmpty && !internalUrl.startsWith("/")) {
-//       internalUrl = "/$internalUrl";
-//     }
-//     return "$_basePath/";
-//   }
-// }
