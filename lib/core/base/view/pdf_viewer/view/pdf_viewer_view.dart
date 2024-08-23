@@ -5,9 +5,11 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:open_file_plus/open_file_plus.dart";
+import "package:open_filex/open_filex.dart";
 import "package:path_provider/path_provider.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
@@ -15,13 +17,12 @@ import "../../../../components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../components/button/elevated_buttons/bottom_appbar_button.dart";
 import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
-import "../../../model/base_pdf_model.dart";
 import "../../../model/print_model.dart";
 import "../../../state/base_state.dart";
 import "../model/pdf_viewer_model.dart";
 import "../view_model/pdf_viewer_view_model.dart";
 
-class PDFViewerView extends StatefulWidget {
+final class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
   final bool? serbestMi;
@@ -32,9 +33,9 @@ class PDFViewerView extends StatefulWidget {
   State<PDFViewerView> createState() => _PDFViewerViewState();
 }
 
-class _PDFViewerViewState extends BaseState<PDFViewerView> {
-  PdfViewerViewModel viewModel = PdfViewerViewModel();
-  BasePdfModel? pdfFile;
+final class _PDFViewerViewState extends BaseState<PDFViewerView> {
+  final PdfViewerViewModel viewModel = PdfViewerViewModel();
+  // BasePdfModel? pdfFile;
   late PdfViewerController pdfViewerController;
   OverlayEntry? overlayEntry;
 
@@ -112,8 +113,9 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
               icon: Icons.picture_as_pdf_outlined,
               child: const Text("PDF Görüntüle"),
               onPressed: () async {
+                if (kIsWeb) return;
                 if (await getFile != null) {
-                  await OpenFile.open((await getFile)!.path);
+                  await OpenFilex.open((await getFile)!.path);
                 }
               },
             ),
@@ -130,11 +132,24 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   Observer body() => Observer(
         builder: (_) {
-          if (viewModel.futureController.value == true && viewModel.pdfFile != null) {
+          if (viewModel.futureController.value == true && viewModel.pdfModel != null) {
             return Observer(
-              builder: (_) => SfPdfViewer.file(
-                viewModel.pdfFile!,
+              builder: (_) => SfPdfViewer.memory(
+                base64Decode(viewModel.pdfModel?.byteData ?? ""),
                 controller: pdfViewerController,
+                onHyperlinkClicked: (details) async {
+                  final String uri = details.uri;
+                  if (uri.toLowerCase().contains("cariKodu")) {
+                    final String cariKodu = uriSplitter(uri, "cari");
+                    dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
+                    return;
+                  }
+                  if (uri.toLowerCase().contains("stokKodu")) {
+                    final String stokKodu = uriSplitter(uri, "stok");
+                    dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
+                    return;
+                  }
+                },
                 interactionMode: PdfInteractionMode.selection,
                 onTextSelectionChanged: (details) {
                   if (kIsWeb) {
@@ -161,6 +176,8 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
         },
       );
 
+  String uriSplitter(String details, String tipi) => details.split("$tipi=")[1].split("&")[0];
+
   BottomAppBar bottomAppBar() => BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,10 +195,10 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
     viewModel.resetFuture();
     final result = await networkManager.getPDF((widget.serbestMi == true ? widget.pdfData?.copyWith(dicParamsMap: StaticVariables.instance.serbestDicParams) : widget.pdfData) ?? PdfModel());
     if (result.data != null) {
-      pdfFile = result.dataList.firstOrNull!;
+      // pdfFile = result.dataList.firstOrNull!;
       if (result.isSuccess) {
         viewModel.setFuture(result.success);
-        viewModel.changePdfFile(await getFile);
+          viewModel.setPdfModel(result.dataList.firstOrNull);
         // final File? pdf = await getFile;
         // if (pdf != null) {
         // }
@@ -199,17 +216,14 @@ class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   Future<File?> get getFile async {
-    if (kIsWeb) {
-      return null;
-    }
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
     final file = File(
-      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.${pdfFile?.uzanti ?? "pdf"}',
+      '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.${viewModel.pdfModel?.uzanti ?? "pdf"}',
     );
     final fileWriter = file.openSync(mode: FileMode.write);
-    fileWriter.writeFromSync(base64Decode(pdfFile?.byteData ?? ""));
+    fileWriter.writeFromSync(base64Decode(viewModel.pdfModel?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {
       viewModel.changePdfFile(file);

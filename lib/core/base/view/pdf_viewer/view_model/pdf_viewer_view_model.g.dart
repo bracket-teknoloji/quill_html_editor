@@ -65,6 +65,22 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
+  late final _$pdfModelAtom =
+      Atom(name: '_PdfViewerViewModelBase.pdfModel', context: context);
+
+  @override
+  BasePdfModel? get pdfModel {
+    _$pdfModelAtom.reportRead();
+    return super.pdfModel;
+  }
+
+  @override
+  set pdfModel(BasePdfModel? value) {
+    _$pdfModelAtom.reportWrite(value, super.pdfModel, () {
+      super.pdfModel = value;
+    });
+  }
+
   late final _$futureControllerAtom =
       Atom(name: '_PdfViewerViewModelBase.futureController', context: context);
 
@@ -101,6 +117,17 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
         name: '_PdfViewerViewModelBase.changeCurrentPage');
     try {
       return super.changeCurrentPage(value);
+    } finally {
+      _$_PdfViewerViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPdfModel(BasePdfModel? value) {
+    final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
+        name: '_PdfViewerViewModelBase.setPdfModel');
+    try {
+      return super.setPdfModel(value);
     } finally {
       _$_PdfViewerViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -145,6 +172,7 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
 currentPage: ${currentPage},
 pageCounter: ${pageCounter},
 pdfFile: ${pdfFile},
+pdfModel: ${pdfModel},
 futureController: ${futureController},
 getPageCounter: ${getPageCounter}
     ''';
