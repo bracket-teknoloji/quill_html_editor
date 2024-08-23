@@ -74,7 +74,7 @@ class BottomSheetDialogManager {
       useSafeArea: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width * (kIsWeb ? 0.6 : 1),
+          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.6 : 0.8),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
