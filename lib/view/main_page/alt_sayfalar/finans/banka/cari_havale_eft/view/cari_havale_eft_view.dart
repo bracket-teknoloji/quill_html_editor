@@ -65,7 +65,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _dovizTipiController = TextEditingController();
     _dovizTutariController = TextEditingController();
     _dovizKuruController = TextEditingController();
-    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    _tutarController = TextEditingController();
     _masrafTutariController = TextEditingController();
     _bsmvController = TextEditingController();
     _masrafMuhKoduController = TextEditingController();
@@ -73,9 +73,21 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs());
+      // viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs());
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
+      if (widget.cariListesiModel != null) {
+        viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
+        viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);
+        viewModel.setDovizTipi(widget.cariListesiModel?.dovizKodu);
+        _aciklamaController.text = "EFT/HAVALE - ${widget.cariListesiModel?.cariAdi ?? ""}";
+        viewModel.setAciklama(_aciklamaController.text);
+        _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
+        _plasiyerController.text = widget.cariListesiModel?.plasiyerAciklama ?? "";
+      } else {
+        await getCari();
+      }
+      await getHesapListesi();
       setGirisCikis(
         await bottomSheetDialogManager.showRadioBottomSheetDialog(
               context,
@@ -88,17 +100,6 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
             ) ??
             true,
       );
-      if (widget.cariListesiModel != null) {
-        viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
-        viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);
-        _aciklamaController.text = "EFT/HAVALE - ${widget.cariListesiModel?.cariAdi ?? ""}";
-        viewModel.setAciklama(_aciklamaController.text);
-        _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
-        _plasiyerController.text = widget.cariListesiModel?.plasiyerAciklama ?? "";
-      } else {
-        await getCari();
-      }
-      await getHesapListesi();
     });
     super.initState();
   }
@@ -258,7 +259,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                   ),
                   Observer(
                     builder: (_) => Text(
-                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
+                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${widget.cariListesiModel?.dovizAdi ?? mainCurrency} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
                       style: TextStyle(
                         color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
                         fontWeight: FontWeight.bold,
@@ -528,7 +529,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       viewModel.setPlasiyerKodu(result.plasiyerKodu);
       viewModel.setCariKodu(result.cariKodu);
       viewModel.setDovizTipi(result.dovizKodu);
-      _dovizTipiController.text = result.dovizAdi ?? "";
+      _dovizTipiController.text = result.dovizAdi ?? result.dovizKodu.toStringIfNotNull ?? "";
       if (result.dovizli == true) {
         await getDovizDialog();
       }
