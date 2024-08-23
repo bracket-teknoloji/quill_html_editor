@@ -903,7 +903,7 @@ class IslemlerMenuItemConstants<T> {
   GridItemModel get konumaGit => GridItemModel.islemler(
         title: "Konuma Git",
         iconData: Icons.location_on_outlined,
-        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E",
+        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E" && !kIsWeb,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;

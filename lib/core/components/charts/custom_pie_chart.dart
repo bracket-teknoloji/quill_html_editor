@@ -41,7 +41,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                             touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
                             if (touchedIndex >= 0) {
                               dialogManager.showInfoSnackBar(
-                                "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].toString() ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               );
                             }
                           },
@@ -56,7 +56,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                             showTitle: true,
                             value: widget.pieChartValue?[index] ?? 0,
                             title:
-                                "${widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].toString() ?? ""}\n%${(((widget.pieChartValue?[index] ?? 0) / widget.pieChartValue.sum) * 100).round().commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+                                "${widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}\n%${(((widget.pieChartValue?[index] ?? 0) / widget.pieChartValue.sum) * 100).round().commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
                             titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
                             radius: radius,
                           );

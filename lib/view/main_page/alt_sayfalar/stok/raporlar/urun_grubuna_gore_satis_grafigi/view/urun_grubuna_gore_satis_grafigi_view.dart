@@ -3,6 +3,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/charts/custom_pie_chart.dart";
@@ -251,10 +253,10 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
             ),
             Observer(
               builder: (_) => CustomPieChart(
-                pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList().cast<double>() ?? [],
+                pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList() ?? [],
                 pieChartTitle: viewModel.modelList
                         ?.map(
-                          (element) => "${element.grupAdi ?? element.grupKodu} %${element.oran}",
+                          (element) => "${element.grupAdi ?? element.grupKodu} %${element.oran.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
                         )
                         .toList()
                         .cast<String>() ??
