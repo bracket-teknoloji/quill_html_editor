@@ -9,6 +9,7 @@ import "package:open_filex/open_filex.dart";
 import "package:path_provider/path_provider.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
@@ -113,7 +114,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
               icon: Icons.picture_as_pdf_outlined,
               child: const Text("PDF Görüntüle"),
               onPressed: () async {
-                if (kIsWeb) return;
+                if (kIsWeb) return fileDownload(base64Decode(viewModel.pdfModel?.byteData ?? ""), viewModel.pdfModel?.dosyaAdi ?? "pdf");
                 if (await getFile != null) {
                   await OpenFilex.open((await getFile)!.path);
                 }
@@ -198,7 +199,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
       // pdfFile = result.dataList.firstOrNull!;
       if (result.isSuccess) {
         viewModel.setFuture(result.success);
-          viewModel.setPdfModel(result.dataList.firstOrNull);
+        viewModel.setPdfModel(result.dataList.firstOrNull);
         // final File? pdf = await getFile;
         // if (pdf != null) {
         // }
@@ -208,8 +209,11 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   Future<void> fileChecker() async {
-    if (await getFile != null) {
-      await Share.shareXFiles([XFile((await getFile)!.path)], subject: "Pdf Paylaşımı");
+    if (viewModel.pdfModel != null) {
+      XFile? file;
+      if (kIsWeb) file = XFile.fromData(base64Decode(viewModel.pdfModel?.byteData ?? ""), mimeType: "application/pdf", name: viewModel.pdfModel?.dosyaAdi ?? "file");
+      if (!kIsWeb) file = XFile((await getFile)!.path);
+      Share.shareXFiles([file!], subject: "Pdf Paylaşımı");
     } else {
       dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
     }
