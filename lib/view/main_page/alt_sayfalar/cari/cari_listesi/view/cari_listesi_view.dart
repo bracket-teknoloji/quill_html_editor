@@ -399,7 +399,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 const Text("Tahsil Edilecek"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
                     style: const TextStyle(color: ColorPalette.mantis),
                   ),
                 ),
@@ -422,7 +422,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 const Text("Ödenecek"),
                 Observer(
                   builder: (_) => Text(
-                    "${(viewModel.paramData?["ODENECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    "${(viewModel.paramData?["ODENECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
                     style: const TextStyle(color: ColorPalette.persianRed),
                   ),
                 ),

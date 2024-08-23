@@ -40,6 +40,7 @@ linter:
     prefer_contains: true
     prefer_double_quotes: true
     prefer_final_locals: true
+    avoid_web_libraries_in_flutter: false
     # prefer_final_parameters: true
     # prefer_final_in_for_each: true
     # prefer_null_aware_method_calls: true

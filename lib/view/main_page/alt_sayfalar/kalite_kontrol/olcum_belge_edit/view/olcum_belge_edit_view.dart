@@ -122,8 +122,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           }
                           if (selectedItem != null) {
                             final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
-                            if (pdfData.data != null) {
-                              Get.to(() => GenelPdfView(model: pdfData.data));
+                            if (pdfData.isSuccess) {
+                              Get.to(() => GenelPdfView(model: pdfData.dataItem));
                             }
                           }
                         }
