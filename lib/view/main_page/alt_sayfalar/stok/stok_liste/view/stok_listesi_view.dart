@@ -282,6 +282,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           onPressed: () async {
             final result = await Get.toNamed("/qr");
             if (result != null) {
+              viewModel.setSearchText(result);
+
               if (!viewModel.isSearchBarOpen) {
                 viewModel.changeSearchBarStatus();
               }
@@ -545,9 +547,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 // viewModel.setBottomSheetModel(StokBottomSheetModel());
                                 viewModel.changeBakiyeDurumu("T");
                                 viewModel.changeBakiyeDurumuTemp(0);
-                                viewModel.resetList();
                                 viewModel.resetSelectedArr();
-                                viewModel.getData();
+                                viewModel.resetList();
                                 Get.back();
                               },
                               style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
