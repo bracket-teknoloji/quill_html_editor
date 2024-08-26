@@ -143,6 +143,7 @@ class BottomSheetDialogManager {
           Flexible(
             child: ListView(
               shrinkWrap: true,
+              primary: false,
               children: [body.paddingAll(UIHelper.lowSize)],
             ),
           )
@@ -151,6 +152,7 @@ class BottomSheetDialogManager {
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: children2?.length,
+              primary: false,
               itemBuilder: (BuildContext context, int index) {
                 final item = children2![index];
                 return Column(
@@ -205,6 +207,7 @@ class BottomSheetDialogManager {
           Flexible(
             child: ListView.separated(
               shrinkWrap: true,
+              primary: false,
               separatorBuilder: (context, index) => const Padding(
                 padding: UIHelper.lowPaddingVertical,
                 child: Divider(),
@@ -246,10 +249,8 @@ class BottomSheetDialogManager {
     //FocusScope.of(context).unfocus();
     return showModalBottomSheet<T>(
       context: context,
-      isDismissible: true,
       barrierColor: Colors.black.withOpacity(0.6),
-      enableDrag: false,
-      useSafeArea: true,
+      // useSafeArea: true,
       isScrollControlled: true,
       builder: (BuildContext context) => SafeArea(
         child: Padding(
