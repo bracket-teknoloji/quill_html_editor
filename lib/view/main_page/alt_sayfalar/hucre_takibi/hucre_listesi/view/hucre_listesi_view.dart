@@ -73,24 +73,7 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
                 builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredHucreListesi, itemBuilder: hucreCard),
               ),
             ),
-            // Expanded(
-            //   child: RefreshIndicator.adaptive(
-            //     onRefresh: viewModel.getData,
-            //     child: Observer(
-            //       builder: (_) {
-            //         if (viewModel.filteredHucreListesi == null) return const ListViewShimmer();
-            //         if (viewModel.filteredHucreListesi!.isEmpty) return const Center(child: Text("Hücre bulunamadı."));
-            //         return ListView.builder(
-            //           itemCount: viewModel.filteredHucreListesi?.length ?? 0,
-            //           itemBuilder: (context, index) {
-            //             final HucreListesiModel item = viewModel.filteredHucreListesi![index];
-            //             return hucreCard(item);
-            //           },
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
+            
           ],
         ).paddingAll(UIHelper.lowSize),
       );

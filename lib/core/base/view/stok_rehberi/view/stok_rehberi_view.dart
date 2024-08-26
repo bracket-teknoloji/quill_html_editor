@@ -483,122 +483,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                 ),
               ),
             ),
-            // Expanded(
-            //   child: RefreshIndicator.adaptive(
-            //     onRefresh: () async {
-            //       viewModel.resetList();
-            //     },
-            //     child: Observer(
-            //       builder: (_) => viewModel.observableList.ext.isNullOrEmpty
-            //           ? (viewModel.observableList?.isEmpty ?? false)
-            //               ? const Center(child: Text("Stok Bulunamadı"))
-            //               : const ListViewShimmer()
-            //           : Observer(
-            //               builder: (_) => ListView.builder(
-            //                 primary: false,
-            //                 physics: const AlwaysScrollableScrollPhysics(),
-            //                 padding: UIHelper.zeroPadding,
-            //                 controller: _scrollController,
-            //                 itemCount: viewModel.observableList?.length != null ? viewModel.observableList!.length + 1 : 0,
-            //                 itemBuilder: (context, index) {
-            //                   if (index == viewModel.observableList?.length) {
-            //                     return Visibility(
-            //                       visible: viewModel.dahaVarMi,
-            //                       child: const SafeArea(child: Center(child: CircularProgressIndicator.adaptive())),
-            //                     );
-            //                   } else {
-            //                     final StokListesiModel? stok = viewModel.observableList?[index];
-            //                     return Card(
-            //                       child: ListTile(
-            //                         onLongPress: () async {
-            //                           dialogManager.showStokGridViewDialog(await getSelectedData(stok));
-            //                         },
-            //                         onTap: () async {
-            //                           StokListesiModel? stokModel;
-            //                           if (BaseSiparisEditModel.instance.kalemEkliMi(stok)) {
-            //                             final result = await dialogManager.showStokKayitliDialog(viewModel.observableList![index]);
-            //                             if (result != true) {
-            //                               return;
-            //                             }
-            //                           }
-
-            //                           stokModel = await getSelectedData(stok);
-            //                           if (stok?.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
-            //                             final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: stok);
-            //                             if (result is YapilandirmaRehberiModel) {
-            //                               stokModel?.yapkod = result.yapkod;
-            //                             } else {
-            //                               return;
-            //                             }
-            //                             stokModel?.yapkodAciklama = result.yapacik;
-            //                           }
-            //                           await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel ?? stok);
-            //                           viewModel.setSelectedStokModel(null);
-            //                         },
-            //                         leading: SizedBox(
-            //                           height: UIHelper.highSize * 3,
-            //                           width: UIHelper.highSize * 3,
-            //                           child: InkWell(
-            //                             onTap: stok?.resimUrlKucuk == null ? null : () => Get.to(ImageView(path: stok?.resimUrl ?? "", title: stok?.stokKodu ?? "")),
-            //                             child: SizedBox(
-            //                               height: UIHelper.highSize * 3,
-            //                               width: UIHelper.highSize * 3,
-            //                               child: ImageWidget(path: stok?.resimUrlKucuk),
-            //                             ),
-            //                           ),
-            //                         ),
-            //                         title: Text(stok?.stokKodu ?? "", textAlign: TextAlign.start, style: const TextStyle(fontWeight: FontWeight.bold)),
-            //                         subtitle: Column(
-            //                           crossAxisAlignment: CrossAxisAlignment.start,
-            //                           children: [
-            //                             Wrap(
-            //                               spacing: UIHelper.lowSize,
-            //                               children: [
-            //                                 const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(stok?.seriCikislardaAcik == true),
-            //                                 ColorfulBadge(
-            //                                   label: Text("Dövizli ${stok?.satisDovizAdi}"),
-            //                                   badgeColorEnum: BadgeColorEnum.dovizli,
-            //                                 ).yetkiVarMi(stok?.satDovTip != null || stok?.alisDovTip != null),
-            //                                 const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(stok?.yapilandirmaAktif == true),
-            //                                 const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(stok?.kilitGenel == "E"),
-            //                               ].whereType<ColorfulBadge>().toList(),
-            //                             ),
-            //                             Text(stok?.stokAdi ?? ""),
-            //                           ],
-            //                         ),
-            //                         trailing: Text("${stok?.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${stok?.olcuBirimi ?? ""}"),
-            //                       ),
-            //                     );
-            //                   }
-            //                 },
-            //               ),
-            //             ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       );
-
-  // void resetData() {
-  //   viewModel.resetSayfa();
-  //   viewModel.setDahaVarMi(true);
-  //   viewModel.setObservableList(null);
-  //   getData();
-  // }
-
-  // Future<void> getData() async {
-  //   viewModel.setDahaVarMi(false);
-  //   final GenericResponseModel response =
-  //       await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel());
-  //   if (response.isSuccess && response.data is List) {
-  //     if (response.data?.length == parametreModel.sabitSayfalamaOgeSayisi) {
-  //       viewModel.setDahaVarMi(true);
-  //       viewModel.increaseSayfa();
-  //     }
-  //     viewModel.setObservableList(response.data as List);
-  //   }
-  // }
 
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
@@ -803,4 +690,3 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     await viewModel.resetList();
   }
 }
-
