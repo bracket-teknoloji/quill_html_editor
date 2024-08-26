@@ -1,26 +1,27 @@
 import "dart:io";
 
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/view/main_page/view_model/main_page_view_model.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/drawer/left_drawer.dart";
 import "../../../core/components/drawer/right_drawer/right_drawer.dart";
 import "../../../core/components/grid_tile/grid_tile.dart";
-import "../../../core/components/wrap/appbar_title.dart";
 import "../../../core/constants/ui_helper/icon_helper.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
-import "../model/grid_item_model.dart";
 import "../model/main_page_model.dart";
 import "../model/menu_item/menu_item_constants.dart";
 
-class MainPageView extends StatefulWidget {
+final class MainPageView extends StatefulWidget {
   final bool fromSplash;
   const MainPageView({super.key, this.fromSplash = false});
 
@@ -28,16 +29,16 @@ class MainPageView extends StatefulWidget {
   State<MainPageView> createState() => _MainPageViewState();
 }
 
-class _MainPageViewState extends BaseState<MainPageView> {
-  late List<GridItemModel> items;
-  List<List<GridItemModel>> lastItems = [];
-  bool? yetkiVarMi;
+final class _MainPageViewState extends BaseState<MainPageView> {
+  final MainPageViewModel viewModel = MainPageViewModel();
+  // late List<GridItemModel> items;
+  // List<List<GridItemModel>> lastItems = [];
   MainPageModel? model = CacheManager.getAnaVeri;
-  List<String> title2 = ["Picker"];
+  // List<String> title2 = ["Picker"];
 
   @override
   void initState() {
-    items = MenuItemConstants(context).getList();
+    viewModel.setItems(MenuItemConstants(context).getList());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");
@@ -52,13 +53,10 @@ class _MainPageViewState extends BaseState<MainPageView> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, value) async {
-        if (lastItems.isNotEmpty) {
-          setState(() {
-            items = lastItems.last;
-
-            title2.removeLast();
-            lastItems.removeLast();
-          });
+        if (viewModel.lastItems.isNotEmpty) {
+          viewModel.setItems(viewModel.lastItems.last);
+          // viewModel.removeLastTitle();
+          viewModel.removeLastItem();
         } else {
           if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
             scaffoldKey.currentState!.closeDrawer();
@@ -72,7 +70,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
       child: Scaffold(
         appBar: appBar(scaffoldKey, context),
         key: scaffoldKey,
-        drawerEnableOpenDragGesture: lastItems.isEmpty,
+        drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
         drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
         endDrawer: SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
         body: body(context),
@@ -82,29 +80,42 @@ class _MainPageViewState extends BaseState<MainPageView> {
   }
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
-        title: AppBarTitle(title: title2.last),
-        centerTitle: true,
-        leading: anaSayfaMi
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  setState(() {
-                    items = lastItems.last;
-                    title2.removeLast();
-                    lastItems.removeLast();
-                  });
-                },
-              )
-            : IconButton(
-                icon: const Icon(Icons.star_border_outlined),
-                onPressed: () async {
-                  if (scaffoldKey.currentState!.isDrawerOpen) {
-                    Navigator.pop(context);
-                  } else {
-                    scaffoldKey.currentState!.openDrawer();
-                  }
-                },
+        title: Observer(
+          builder: (_) => AnimatedTextKit(
+            key: Key(viewModel.titleList.last),
+            animatedTexts: [
+              TypewriterAnimatedText(
+                viewModel.titleList.last,
+                speed: const Duration(milliseconds: 100),
               ),
+            ],
+            totalRepeatCount: 1,
+            pause: const Duration(milliseconds: 100),
+            displayFullTextOnTap: true,
+            stopPauseOnTap: true,
+          ),
+        ),
+        centerTitle: true,
+        leading: Observer(
+          builder: (_) => anaSayfaMi
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    viewModel.setItems(viewModel.lastItems.last);
+                    viewModel.removeLastItem();
+                  },
+                )
+              : IconButton(
+                  icon: const Icon(Icons.star_border_outlined),
+                  onPressed: () async {
+                    if (scaffoldKey.currentState!.isDrawerOpen) {
+                      Navigator.pop(context);
+                    } else {
+                      scaffoldKey.currentState!.openDrawer();
+                    }
+                  },
+                ),
+        ),
         actions: [
           if (kDebugMode)
             IconButton(
@@ -140,54 +151,11 @@ class _MainPageViewState extends BaseState<MainPageView> {
   SafeArea body(BuildContext context) => SafeArea(
         child: Stack(
           children: [
-            GridView.builder(
-              padding: UIHelper.lowPadding,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.sizeOf(context).width ~/ 90 > 10 ? 10 : MediaQuery.sizeOf(context).width ~/ 90,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                //* indexteki itemi burada alıyoruz
-                final item = items[index];
-                return AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  delay: const Duration(milliseconds: 50),
-                  child: FadeInAnimation(
-                    child: CustomGridTile(
-                      // color: item.color,
-                      model: item,
-                      // title: item.title.toString(),
-                      onTap: () {
-                        if (item.altMenuVarMi) {
-                          if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
-                            item.altMenuler?.firstOrNull?.onTap?.call();
-                            return;
-                          }
-                          setState(() {
-                            lastItems.add(items);
-                            title2.add(item.title);
-                            items = item.altMenuler!.where((element) {
-                              element.color ??= item.color;
-                              if (element.icon.ext.isNullOrEmpty) {
-                                element.icon = item.icon;
-                              }
-                              return element.yetkiKontrol;
-                            }).toList();
-                          });
-                        } else {
-                          items[index].onTap?.call();
-                        }
-                      },
-                    ),
-                  ),
-                );
-              },
+            Observer(
+              builder: (_) => bodyWidget(),
             ),
             Visibility(
-              visible: !kIsWeb && Platform.isIOS && lastItems.isNotEmpty,
+              visible: !kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty,
               child: SizedBox(
                 width: UIHelper.highSize * 3,
                 child: GestureDetector(
@@ -196,11 +164,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       return;
                     }
                     if (details.localPosition.dx < 50) {
-                      setState(() {
-                        items = lastItems.last;
-                        title2.removeLast();
-                        lastItems.removeLast();
-                      });
+                      viewModel.setItems(viewModel.lastItems.last);
+                      viewModel.removeLastItem();
                     }
                   },
                   onHorizontalDragEnd: (details) {
@@ -208,11 +173,8 @@ class _MainPageViewState extends BaseState<MainPageView> {
                       return;
                     }
                     if (details.primaryVelocity! > 0) {
-                      setState(() {
-                        items = lastItems.last;
-                        title2.removeLast();
-                        lastItems.removeLast();
-                      });
+                      viewModel.setItems(viewModel.lastItems.last);
+                      viewModel.removeLastItem();
                     }
                   },
                 ),
@@ -220,6 +182,54 @@ class _MainPageViewState extends BaseState<MainPageView> {
             ),
           ],
         ),
+      );
+
+  GridView bodyWidget() => GridView.builder(
+        padding: UIHelper.lowPadding,
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: MediaQuery.sizeOf(context).width ~/ 90 > 10 ? 10 : MediaQuery.sizeOf(context).width ~/ 90,
+          childAspectRatio: 0.9,
+        ),
+        itemCount: viewModel.items.length,
+        itemBuilder: (context, index) {
+          //* indexteki itemi burada alıyoruz
+          final item = viewModel.items[index];
+          return AnimationConfiguration.staggeredList(
+            key: Key(item.name.toString()),
+            position: index,
+            duration: const Duration(milliseconds: 500),
+            delay: const Duration(milliseconds: 50),
+            child: FadeInAnimation(
+              child: CustomGridTile(
+                // color: item.color,
+                model: item,
+                // title: item.title.toString(),
+                onTap: () {
+                  if (item.altMenuVarMi) {
+                    if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
+                      item.altMenuler?.firstOrNull?.onTap?.call();
+                      return;
+                    }
+                    viewModel.addLastItem(viewModel.items);
+                    viewModel.titleList.add(item.title);
+                    viewModel.setItems(
+                      item.altMenuler!.where((element) {
+                        element.color ??= item.color;
+                        if (element.icon.ext.isNullOrEmpty) {
+                          element.icon = item.icon;
+                        }
+                        return element.yetkiKontrol;
+                      }).toList(),
+                    );
+                  } else {
+                    item.onTap?.call();
+                  }
+                },
+              ),
+            ),
+          );
+        },
       );
 
   SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
@@ -255,7 +265,7 @@ class _MainPageViewState extends BaseState<MainPageView> {
         ).paddingAll(UIHelper.midSize),
       );
 
-  bool get anaSayfaMi => items.any((element) => element.menuTipi != "A");
+  bool get anaSayfaMi => viewModel.items.any((element) => element.menuTipi != "A");
   // Icon yetkiKontrolIcon(String name) {
   //   if (CacheManager.getFavoriler().values.any((element) => element.title == name)) {
   //     return const Icon(Icons.star, size: 20);
