@@ -8,13 +8,13 @@ class CustomAnimatedGridViewModel = _CustomAnimatedGridViewModelBase with _$Cust
 
 abstract class _CustomAnimatedGridViewModelBase with Store {
   @observable
-  ObservableList<GridItemModel>? gridItemModelList;
+  ObservableList<GridItemModel> gridItemModelList = <GridItemModel>[].asObservable();
 
   @observable
   ObservableList<ObservableList<GridItemModel>> returnGridItemModel = <ObservableList<GridItemModel>>[].asObservable();
 
   @action
-  void setGridItemModel(List<GridItemModel>? value) => gridItemModelList = value?.asObservable();
+  void setGridItemModel(List<GridItemModel> value) => gridItemModelList = value.asObservable();
 
   @action
   void addReturnGridItemModel(List<GridItemModel>? value) => returnGridItemModel.add(value?.asObservable() ?? ObservableList.of([]));

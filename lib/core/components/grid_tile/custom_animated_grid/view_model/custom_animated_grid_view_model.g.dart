@@ -14,13 +14,13 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
       context: context);
 
   @override
-  ObservableList<GridItemModel>? get gridItemModelList {
+  ObservableList<GridItemModel> get gridItemModelList {
     _$gridItemModelListAtom.reportRead();
     return super.gridItemModelList;
   }
 
   @override
-  set gridItemModelList(ObservableList<GridItemModel>? value) {
+  set gridItemModelList(ObservableList<GridItemModel> value) {
     _$gridItemModelListAtom.reportWrite(value, super.gridItemModelList, () {
       super.gridItemModelList = value;
     });
@@ -48,7 +48,7 @@ mixin _$CustomAnimatedGridViewModel on _CustomAnimatedGridViewModelBase, Store {
           name: '_CustomAnimatedGridViewModelBase', context: context);
 
   @override
-  void setGridItemModel(List<GridItemModel>? value) {
+  void setGridItemModel(List<GridItemModel> value) {
     final _$actionInfo = _$_CustomAnimatedGridViewModelBaseActionController
         .startAction(name: '_CustomAnimatedGridViewModelBase.setGridItemModel');
     try {

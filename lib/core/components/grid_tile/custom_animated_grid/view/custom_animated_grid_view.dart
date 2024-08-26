@@ -16,7 +16,7 @@ import "../../animated_islemler_grid_tile.dart";
 import "../model/islemler_menu_item/model/islemler_menu_item_constants.dart";
 import "../view_model/custom_animated_grid_view_model.dart";
 
-class CustomAnimatedGridView<T> extends StatefulWidget {
+final class CustomAnimatedGridView<T> extends StatefulWidget {
   final CariListesiModel? cariListesiModel;
   final IslemTipiEnum islemTipi;
   final EditTipiEnum? siparisTipi;
@@ -28,8 +28,8 @@ class CustomAnimatedGridView<T> extends StatefulWidget {
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }
 
-class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
-  CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
+final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
+  final CustomAnimatedGridViewModel viewModel = CustomAnimatedGridViewModel();
   // bool get islemMi => widget.islemTipi == IslemTipiEnum.cari || widget.islemTipi == IslemTipiEnum.stok || widget.islemTipi == IslemTipiEnum.siparis;
   bool get cariMi => widget.islemTipi == IslemTipiEnum.cari;
   bool get stokMu => widget.islemTipi == IslemTipiEnum.stok;
@@ -37,20 +37,18 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
   bool get kasaMi => widget.islemTipi == IslemTipiEnum.kasa;
   bool get raporMu =>
       widget.islemTipi == IslemTipiEnum.cariRapor || widget.islemTipi == IslemTipiEnum.stokRapor || widget.islemTipi == IslemTipiEnum.cariSerbest || widget.islemTipi == IslemTipiEnum.stokSerbest;
-  late List<GridItemModel> result;
+  // late List<GridItemModel> result;
   @override
   void initState() {
-    result = MenuItemConstants(context).getList();
+    viewModel.setGridItemModel(MenuItemConstants(context).getList());
     // viewModel.setGridItemModel(result.getList().firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList());
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.cari)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? []);
       } else if (widget.islemTipi == IslemTipiEnum.stokRapor) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList());
-      } else if (widget.islemTipi == IslemTipiEnum.cariSerbest) {
-        viewModel.setGridItemModel(getSerbestRaporList(widget.islemTipi));
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.stok)?.firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? []);
       } else if (widget.islemTipi == IslemTipiEnum.siparis) {
-        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.firstOrNull?.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList());
+        viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.firstOrNull?.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList() ?? []);
       }
     } else {
       final IslemlerMenuItemConstants islemlerResult =
@@ -109,65 +107,56 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
                   maxHeight: context.sized.dynamicHeight(0.6),
                 ),
                 child: Observer(
-                  builder: (_) => AnimationLimiter(
-                    child: GridView.builder(
-                      padding: UIHelper.zeroPadding,
-                      shrinkWrap: true,
-                      primary: false,
-                      // physics: const NeverScrollableScrollPhysics(),
-                      addRepaintBoundaries: false,
-                      addAutomaticKeepAlives: false,
+                  builder: (_) => GridView.builder(
+                    padding: UIHelper.zeroPadding,
+                    shrinkWrap: true,
+                    primary: false,
+                    // physics: const NeverScrollableScrollPhysics(),
+                    addRepaintBoundaries: false,
+                    addAutomaticKeepAlives: false,
 
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: MediaQuery.sizeOf(context).width ~/ 85 > 6 ? 6 : MediaQuery.sizeOf(context).width ~/ 85,
-                        childAspectRatio: context.isLandscape ? 1.2 : 1,
-                      ),
-                      itemCount: viewModel.gridItemModelList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        final item = viewModel.gridItemModelList?[index];
-                        return AnimationConfiguration.staggeredList(
-                          position: index,
-                          duration: const Duration(milliseconds: 900),
-                          delay: const Duration(milliseconds: 50),
-                          child: SlideAnimation(
-                            delay: const Duration(milliseconds: 30),
-                            child: FadeInAnimation(
-                              child: AnimatedIslemlerGridTile(
-                                icon: item?.icon ?? "monitoring",
-                                iconWidget: item?.iconData,
-                                altMenuler: item?.altMenuler,
-                                menuTipi: item?.menuTipi,
-                                altMenuVarMi: item?.altMenuVarMi,
-                                color: item?.color,
-                                name: item?.name.toString(),
-                                title: item?.title,
-                                onTap: item?.isEnabled == false && item?.menuTipi == "IS"
-                                    ? null
-                                    : () async {
-                                        if (item?.altMenuVarMi == true) {
-                                          viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
-                                          viewModel.setGridItemModel(null);
-                                          // await Future.delayed(const Duration(milliseconds: 1));
-                                          viewModel.setGridItemModel(item?.altMenuler?.where((element) => element.yetkiKontrol).toList());
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: MediaQuery.sizeOf(context).width ~/ 85 > 6 ? 6 : MediaQuery.sizeOf(context).width ~/ 85,
+                      childAspectRatio: context.isLandscape ? 1.2 : 1,
+                    ),
+                    itemCount: viewModel.gridItemModelList.length,
+                    itemBuilder: (context, index) {
+                      final item = viewModel.gridItemModelList[index];
+                      return AnimationConfiguration.staggeredList(
+                        key: Key(item.title),
+                        position: index,
+                        duration: const Duration(milliseconds: 900),
+                        delay: const Duration(milliseconds: 50),
+                        child: SlideAnimation(
+                          delay: const Duration(milliseconds: 30),
+                          child: FadeInAnimation(
+                            child: AnimatedIslemlerGridTile(
+                              item: item..icon = item.icon ?? "monitoring",
+                              onTap: item.isEnabled == false && item.menuTipi == "IS"
+                                  ? null
+                                  : () async {
+                                      if (item.altMenuVarMi) {
+                                        viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
+                                        // await Future.delayed(const Duration(milliseconds: 1));
+                                        viewModel.setGridItemModel(item.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? []);
+                                      } else {
+                                        if (item.route != null && item.menuTipi != "SR") {
+                                          Get.back();
+                                          Get.toNamed(item.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                         } else {
-                                          if (item?.route != null && item?.menuTipi != "SR") {
-                                            Get.back();
-                                            Get.toNamed(item?.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
-                                          } else {
-                                            Get.back();
-                                            final result = await item?.onTap?.call();
-                                            if (result is bool) {
-                                              widget.onSelected?.call(result);
-                                            }
+                                          Get.back();
+                                          final result = await item.onTap?.call();
+                                          if (result is bool) {
+                                            widget.onSelected?.call(result);
                                           }
                                         }
-                                      },
-                              ),
+                                      }
+                                    },
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               );
@@ -178,15 +167,16 @@ class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridView> {
 
   List<GridItemModel>? getRaporList(IslemTipiEnum menu) {
     //if result is not contains any menu.value return null
-    if (!result.any((element) => element.title == menu.value)) {
+    if (!viewModel.gridItemModelList.any((element) => element.title == menu.value)) {
       return null;
     }
-    return result.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList();
+    return (viewModel.gridItemModelList.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList() ?? []) +
+        (getSerbestRaporList(menu) ?? []);
   }
 
   List<GridItemModel>? getSerbestRaporList(IslemTipiEnum menu) {
-    if (menu == IslemTipiEnum.cariSerbest) return MenuItemConstants.getCariSerbestRapor;
-    if (menu == IslemTipiEnum.stokSerbest) return MenuItemConstants.getStokSerbestRapor;
+    if (menu case (IslemTipiEnum.cariRapor || IslemTipiEnum.cariSerbest)) return MenuItemConstants.getCariSerbestRapor;
+    if (menu case (IslemTipiEnum.stok || IslemTipiEnum.stokRapor || IslemTipiEnum.stokSerbest)) return MenuItemConstants.getStokSerbestRapor;
     return null;
   }
 }
