@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/drawer/left_drawer.dart";
@@ -105,6 +106,28 @@ class _MainPageViewState extends BaseState<MainPageView> {
                 },
               ),
         actions: [
+          if (kDebugMode)
+            IconButton(
+              onPressed: () async {
+                //print all intial routes
+                final List<String> routes = [];
+                for (final route in Get.routeTree.routes) {
+                  if (route.arguments == null) {
+                    routes.add(route.name);
+                  }
+                }
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Routes",
+                  groupValue: "/",
+                  children: List.generate(routes.length, (index) => BottomSheetModel(title: routes[index], value: routes[index])),
+                );
+                if (result != null) {
+                  Get.toNamed(result, arguments: 1);
+                }
+              },
+              icon: const Icon(Icons.bug_report_outlined),
+            ),
           IconButton(
             onPressed: () {
               scaffoldKey.currentState!.openEndDrawer();
