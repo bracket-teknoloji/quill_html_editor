@@ -272,6 +272,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         child: CustomTextField(
                           labelText: "TCMB Banka Kodu",
                           controller: _tcmbBankaKoduController,
+                          onClear: () => viewModel.setTCMBBankaKodu(null),
                           onChanged: viewModel.setTCMBBankaKodu,
                           // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
                           suffix: IconButton(
@@ -290,6 +291,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         child: CustomTextField(
                           labelText: "TCMB Şube Kodu",
                           controller: _tcmbSubeKoduController,
+                          onClear: () => viewModel.setTCMBSubeKodu(null),
                           onChanged: viewModel.setTCMBSubeKodu,
                           // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbSubeKodu ?? "")),
                           suffix: IconButton(
