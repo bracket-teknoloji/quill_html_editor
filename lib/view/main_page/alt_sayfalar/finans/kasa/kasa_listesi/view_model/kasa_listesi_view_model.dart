@@ -1,5 +1,7 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -9,7 +11,7 @@ part "kasa_listesi_view_model.g.dart";
 
 class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
 
-abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
+abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KasaListesiModel>, SearchableMixin {
   final Map<String, String> siralaMap = {
     "Kasa Kodu (A-Z)": "KOD_AZ",
     "Kasa Kodu (Z-A)": "KOD_ZA",
@@ -25,11 +27,9 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   };
   //* Observables
 
+  @override
   @observable
-  bool searchBar = false;
-
-  @observable
-  bool isScrollDown = true;
+  bool isSearchBarOpen = false;
 
   @observable
   String filtreGroupValue = "T";
@@ -37,18 +37,20 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   @observable
   String sirala = "KOD_AZ";
 
+  @override
   @observable
   String? searchText;
 
+  @override
   @observable
-  ObservableList<KasaListesiModel>? kasaListesi;
+  ObservableList<KasaListesiModel>? observableList;
 
   //* Computed
   @computed
   double get getGelir {
     // Bütün kasaların toplam giriş tutarını hesaplar
     double toplamGiris = 0;
-    kasaListesi?.forEach((element) {
+    observableList?.forEach((element) {
       toplamGiris += element.toplamGiris ?? 0;
     });
     return toplamGiris;
@@ -58,10 +60,17 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   double get getGider {
     // Bütün kasaların toplam çıkış tutarını hesaplar
     double toplamCikis = 0;
-    kasaListesi?.forEach((element) {
+    observableList?.forEach((element) {
       toplamCikis += element.toplamCikis ?? 0;
     });
     return toplamCikis;
+  }
+
+  @action
+  @override
+  Future<void> resetList() async {
+    super.resetList();
+    await getData();
   }
 
   @computed
@@ -71,9 +80,9 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<KasaListesiModel>? get getKasaListesi {
     // Arama çubuğuna yazılan değere göre filtreleme yapar
     if (searchText.ext.isNotNullOrNoEmpty) {
-      return kasaListesi?.where((element) => element.kasaTanimi?.toLowerCase().contains(searchText!.toLowerCase()) ?? false).toList().asObservable();
+      return observableList?.where((element) => element.kasaTanimi?.toLowerCase().contains(searchText!.toLowerCase()) ?? false).toList().asObservable();
     }
-    return kasaListesi;
+    return observableList;
   }
 
   int? get index => null;
@@ -85,29 +94,30 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSirala(String value) => sirala = value;
 
+  @override
   @action
   void setSearchText(String? value) => searchText = value;
 
+  @override
   @action
-  void setSearchBar() {
-    searchBar = !searchBar;
-    if (!searchBar) {
+  void changeSearchBarStatus() {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) {
       setSearchText(null);
     }
   }
 
+  @override
   @action
-  void setIsScrollDown(bool value) => isScrollDown = value;
+  void setObservableList(List<KasaListesiModel>? value) => observableList = value?.asObservable();
 
-  @action
-  void setKasaListesi(List<KasaListesiModel>? value) => kasaListesi = value?.asObservable();
-
+  @override
   @action
   Future<void> getData() async {
     final result = await networkManager
         .dioGet<KasaListesiModel>(path: ApiUrls.getKasalar, bodyModel: KasaListesiModel(), queryParameters: {"MenuKodu": "YONE_KASA", "Sirala": sirala, "Bakiye": filtreGroupValue});
     if (result.data is List) {
-      setKasaListesi(result.data.cast<KasaListesiModel>());
+      setObservableList(result.data.cast<KasaListesiModel>());
     }
   }
 }

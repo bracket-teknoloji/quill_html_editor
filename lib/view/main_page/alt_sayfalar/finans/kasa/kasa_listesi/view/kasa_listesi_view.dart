@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -21,15 +22,15 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/kasa_listesi_model.dart";
 import "../view_model/kasa_listesi_view_model.dart";
 
-class KasaListesiView extends StatefulWidget {
+final class KasaListesiView extends StatefulWidget {
   const KasaListesiView({super.key});
 
   @override
   State<KasaListesiView> createState() => _KasaListesiViewState();
 }
 
-class _KasaListesiViewState extends BaseState<KasaListesiView> {
-  KasaListesiViewModel viewModel = KasaListesiViewModel();
+final class _KasaListesiViewState extends BaseState<KasaListesiView> {
+  final KasaListesiViewModel viewModel = KasaListesiViewModel();
   late final TextEditingController _searchController;
 
   @override
@@ -53,16 +54,16 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         extendBody: false,
         extendBodyBehindAppBar: false,
         appBar: appBar(),
-        body: body(),
+        body: body2(),
         bottomNavigationBar: bottomAppBar(),
       );
 
   AppBar appBar() => AppBar(
         title: Observer(
           builder: (_) {
-            if (viewModel.searchBar) {
+            if (viewModel.isSearchBarOpen) {
               return CustomAppBarTextField(
-                onChanged: (value) => viewModel.setSearchText(value),
+                onChanged: viewModel.setSearchText,
               );
             }
             return Observer(builder: (_) => AppBarTitle(title: "Kasa Listesi", subtitle: viewModel.getKasaListesi?.length.toStringIfNotNull ?? ""));
@@ -70,8 +71,8 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         ),
         actions: [
           IconButton(
-            onPressed: () => viewModel.setSearchBar(),
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+            onPressed: viewModel.changeSearchBarStatus,
+            icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined)),
           ),
         ],
         bottom: AppBarPreferedSizedBottom(
@@ -92,7 +93,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
             AppBarButton(
               icon: Icons.refresh_outlined,
               onPressed: () async {
-                viewModel.setKasaListesi(null);
+                viewModel.setObservableList(null);
                 await viewModel.getData();
               },
               child: Text(loc.generalStrings.refresh),
@@ -101,9 +102,25 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
         ),
       );
 
+  Widget body2() => Observer(
+        builder: (_) => RefreshableListView(
+          onRefresh: viewModel.resetList,
+          items: viewModel.getKasaListesi,
+          itemBuilder: (item) => KasaListesiCard(
+            item: item,
+            onSelected: (p0) async {
+              if (p0) {
+                viewModel.setObservableList(null);
+                await viewModel.getData();
+              }
+            },
+          ),
+        ),
+      );
+
   Widget body() => RefreshIndicator.adaptive(
         onRefresh: () async {
-          viewModel.setKasaListesi(null);
+          viewModel.setObservableList(null);
           await viewModel.getData();
         },
         child: Observer(
@@ -123,7 +140,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                             item: item,
                             onSelected: (p0) async {
                               if (p0) {
-                                viewModel.setKasaListesi(null);
+                                viewModel.setObservableList(null);
                                 await viewModel.getData();
                               }
                             },
@@ -135,7 +152,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
       );
 
   BottomBarWidget bottomAppBar() => BottomBarWidget(
-        isScrolledDown: viewModel.isScrollDown,
+        isScrolledDown: true,
         children: [
           FooterButton(
             children: [
@@ -153,7 +170,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               } else {
                 viewModel.setFiltreGroupValue(0);
               }
-              viewModel.setKasaListesi(null);
+              viewModel.setObservableList(null);
               viewModel.getData();
             },
           ),
@@ -168,7 +185,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
               } else {
                 viewModel.setFiltreGroupValue(0);
               }
-              viewModel.setKasaListesi(null);
+              viewModel.setObservableList(null);
               viewModel.getData();
             },
           ),
@@ -197,7 +214,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
     );
     if (result != null) {
       viewModel.setSirala(result);
-      viewModel.setKasaListesi(null);
+      viewModel.setObservableList(null);
       viewModel.getData();
     }
   }
@@ -234,7 +251,7 @@ class _KasaListesiViewState extends BaseState<KasaListesiView> {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.back();
-                    viewModel.setKasaListesi(null);
+                    viewModel.setObservableList(null);
                     viewModel.getData();
                   },
                   child: Text(loc.generalStrings.apply),

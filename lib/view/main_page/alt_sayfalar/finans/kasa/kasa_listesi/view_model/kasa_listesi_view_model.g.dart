@@ -39,35 +39,19 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
               name: '_KasaListesiViewModelBase.getKasaListesi'))
           .value;
 
-  late final _$searchBarAtom =
-      Atom(name: '_KasaListesiViewModelBase.searchBar', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_KasaListesiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
-    });
-  }
-
-  late final _$isScrollDownAtom =
-      Atom(name: '_KasaListesiViewModelBase.isScrollDown', context: context);
-
-  @override
-  bool get isScrollDown {
-    _$isScrollDownAtom.reportRead();
-    return super.isScrollDown;
-  }
-
-  @override
-  set isScrollDown(bool value) {
-    _$isScrollDownAtom.reportWrite(value, super.isScrollDown, () {
-      super.isScrollDown = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
@@ -119,20 +103,28 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
     });
   }
 
-  late final _$kasaListesiAtom =
-      Atom(name: '_KasaListesiViewModelBase.kasaListesi', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_KasaListesiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<KasaListesiModel>? get kasaListesi {
-    _$kasaListesiAtom.reportRead();
-    return super.kasaListesi;
+  ObservableList<KasaListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set kasaListesi(ObservableList<KasaListesiModel>? value) {
-    _$kasaListesiAtom.reportWrite(value, super.kasaListesi, () {
-      super.kasaListesi = value;
+  set observableList(ObservableList<KasaListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
+  }
+
+  late final _$resetListAsyncAction =
+      AsyncAction('_KasaListesiViewModelBase.resetList', context: context);
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
   }
 
   late final _$getDataAsyncAction =
@@ -180,33 +172,22 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
   }
 
   @override
-  void setSearchBar() {
+  void changeSearchBarStatus() {
     final _$actionInfo = _$_KasaListesiViewModelBaseActionController
-        .startAction(name: '_KasaListesiViewModelBase.setSearchBar');
+        .startAction(name: '_KasaListesiViewModelBase.changeSearchBarStatus');
     try {
-      return super.setSearchBar();
+      return super.changeSearchBarStatus();
     } finally {
       _$_KasaListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setIsScrollDown(bool value) {
+  void setObservableList(List<KasaListesiModel>? value) {
     final _$actionInfo = _$_KasaListesiViewModelBaseActionController
-        .startAction(name: '_KasaListesiViewModelBase.setIsScrollDown');
+        .startAction(name: '_KasaListesiViewModelBase.setObservableList');
     try {
-      return super.setIsScrollDown(value);
-    } finally {
-      _$_KasaListesiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setKasaListesi(List<KasaListesiModel>? value) {
-    final _$actionInfo = _$_KasaListesiViewModelBaseActionController
-        .startAction(name: '_KasaListesiViewModelBase.setKasaListesi');
-    try {
-      return super.setKasaListesi(value);
+      return super.setObservableList(value);
     } finally {
       _$_KasaListesiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -215,12 +196,11 @@ mixin _$KasaListesiViewModel on _KasaListesiViewModelBase, Store {
   @override
   String toString() {
     return '''
-searchBar: ${searchBar},
-isScrollDown: ${isScrollDown},
+isSearchBarOpen: ${isSearchBarOpen},
 filtreGroupValue: ${filtreGroupValue},
 sirala: ${sirala},
 searchText: ${searchText},
-kasaListesi: ${kasaListesi},
+observableList: ${observableList},
 getGelir: ${getGelir},
 getGider: ${getGider},
 bakiye: ${bakiye},
