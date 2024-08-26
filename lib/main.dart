@@ -229,7 +229,7 @@ class PickerApp extends StatelessWidget {
         darkTheme: AppThemeDark.instance?.theme,
         themeMode: CacheManager.getProfilParametre.temaModu,
         initialRoute: "/",
-        onUnknownRoute: (settings) => GetPageRoute(settings: null, page: () => const Scaffold(body: Center(child: Text("data")))),
+        onUnknownRoute: (settings) => GetPageRoute(settings: const RouteSettings(name: "/"), page: SplashAuthView.new),
         onGenerateRoute: (settings) => GetPageRoute(settings: null, page: () => const Scaffold(body: Center(child: Text("data")))),
         getPages: <GetPage>[
           GetPage(name: "/", page: SplashAuthView.new),
