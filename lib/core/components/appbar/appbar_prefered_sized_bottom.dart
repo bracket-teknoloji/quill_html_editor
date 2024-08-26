@@ -29,19 +29,21 @@ class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBotto
         child: Column(
           children: [
             Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                itemExtent: width * (1 / widget.children.nullCheck.length < 0.2 ? 0.2 : 1 / widget.children.nullCheck.length),
-                scrollDirection: Axis.horizontal,
-                children: widget.children.nullCheck
-                    .map(
-                      (e) => e?.paddingSymmetric(
-                        horizontal: UIHelper.lowSize,
-                        vertical: UIHelper.lowSize,
-                      ),
-                    )
-                    .toList()
-                    .nullCheckWithGeneric,
+              child: LayoutBuilder(
+                builder: (context, constraints) => ListView(
+                  shrinkWrap: true,
+                  itemExtent: constraints.maxWidth / widget.children.length,
+                  scrollDirection: Axis.horizontal,
+                  children: widget.children.nullCheck
+                      .map(
+                        (e) => e?.paddingSymmetric(
+                          horizontal: UIHelper.lowSize,
+                          vertical: UIHelper.lowSize,
+                        ),
+                      )
+                      .toList()
+                      .nullCheckWithGeneric,
+                ),
               ),
             ),
             widget.filter,
