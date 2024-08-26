@@ -252,6 +252,12 @@ class BottomSheetDialogManager {
       barrierColor: Colors.black.withOpacity(0.6),
       // useSafeArea: true,
       isScrollControlled: true,
+      constraints: BoxConstraints.loose(
+        Size(
+          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.7 : 1),
+          MediaQuery.sizeOf(context).height * 0.9,
+        ),
+      ),
       builder: (BuildContext context) => SafeArea(
         child: Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
