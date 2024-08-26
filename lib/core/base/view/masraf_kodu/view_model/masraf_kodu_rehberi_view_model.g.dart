@@ -9,21 +9,19 @@ part of 'masraf_kodu_rehberi_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
-  late final _$masrafKoduRehberiListAtom = Atom(
-      name: '_MasrafKoduRehberiViewModelBase.masrafKoduRehberiList',
-      context: context);
+  late final _$observableListAtom = Atom(
+      name: '_MasrafKoduRehberiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<MasrafKoduRehberiModel>? get masrafKoduRehberiList {
-    _$masrafKoduRehberiListAtom.reportRead();
-    return super.masrafKoduRehberiList;
+  ObservableList<MasrafKoduRehberiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set masrafKoduRehberiList(ObservableList<MasrafKoduRehberiModel>? value) {
-    _$masrafKoduRehberiListAtom.reportWrite(value, super.masrafKoduRehberiList,
-        () {
-      super.masrafKoduRehberiList = value;
+  set observableList(ObservableList<MasrafKoduRehberiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -43,45 +41,50 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
     });
   }
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_MasrafKoduRehberiViewModelBase.dahaVarMi', context: context);
-
-  @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
-  }
-
-  @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
-    });
-  }
-
-  late final _$searchBarAtom =
-      Atom(name: '_MasrafKoduRehberiViewModelBase.searchBar', context: context);
-
-  @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
-  }
-
-  @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
-    });
-  }
-
-  late final _$resetPageAsyncAction = AsyncAction(
-      '_MasrafKoduRehberiViewModelBase.resetPage',
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_MasrafKoduRehberiViewModelBase.isSearchBarOpen',
       context: context);
 
   @override
-  Future<void> resetPage() {
-    return _$resetPageAsyncAction.run(() => super.resetPage());
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
+  }
+
+  @override
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+      '_MasrafKoduRehberiViewModelBase.changeScrollStatus',
+      context: context);
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
+  }
+
+  late final _$changeSearchBarStatusAsyncAction = AsyncAction(
+      '_MasrafKoduRehberiViewModelBase.changeSearchBarStatus',
+      context: context);
+
+  @override
+  Future<void> changeSearchBarStatus() {
+    return _$changeSearchBarStatusAsyncAction
+        .run(() => super.changeSearchBarStatus());
+  }
+
+  late final _$resetListAsyncAction = AsyncAction(
+      '_MasrafKoduRehberiViewModelBase.resetList',
+      context: context);
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
   }
 
   late final _$getDataAsyncAction =
@@ -119,57 +122,22 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   }
 
   @override
-  void setDahaVarMi(bool value) {
+  void setObservableList(List<MasrafKoduRehberiModel>? value) {
     final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.setDahaVarMi');
+        .startAction(name: '_MasrafKoduRehberiViewModelBase.setObservableList');
     try {
-      return super.setDahaVarMi(value);
+      return super.setObservableList(value);
     } finally {
       _$_MasrafKoduRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setMasrafKoduRehberiList(List<MasrafKoduRehberiModel>? value) {
-    final _$actionInfo =
-        _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
-            name: '_MasrafKoduRehberiViewModelBase.setMasrafKoduRehberiList');
-    try {
-      return super.setMasrafKoduRehberiList(value);
-    } finally {
-      _$_MasrafKoduRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void addMasrafKoduRehberiList(List<MasrafKoduRehberiModel> value) {
-    final _$actionInfo =
-        _$_MasrafKoduRehberiViewModelBaseActionController.startAction(
-            name: '_MasrafKoduRehberiViewModelBase.addMasrafKoduRehberiList');
-    try {
-      return super.addMasrafKoduRehberiList(value);
-    } finally {
-      _$_MasrafKoduRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void increaseSayfa() {
+  void addObservableList(List<MasrafKoduRehberiModel>? value) {
     final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.increaseSayfa');
+        .startAction(name: '_MasrafKoduRehberiViewModelBase.addObservableList');
     try {
-      return super.increaseSayfa();
-    } finally {
-      _$_MasrafKoduRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resetSayfa() {
-    final _$actionInfo = _$_MasrafKoduRehberiViewModelBaseActionController
-        .startAction(name: '_MasrafKoduRehberiViewModelBase.resetSayfa');
-    try {
-      return super.resetSayfa();
+      return super.addObservableList(value);
     } finally {
       _$_MasrafKoduRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -178,10 +146,9 @@ mixin _$MasrafKoduRehberiViewModel on _MasrafKoduRehberiViewModelBase, Store {
   @override
   String toString() {
     return '''
-masrafKoduRehberiList: ${masrafKoduRehberiList},
+observableList: ${observableList},
 requestModel: ${requestModel},
-dahaVarMi: ${dahaVarMi},
-searchBar: ${searchBar}
+isSearchBarOpen: ${isSearchBarOpen}
     ''';
   }
 }

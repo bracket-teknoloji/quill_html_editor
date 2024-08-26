@@ -1,7 +1,11 @@
-import "package:kartal/kartal.dart";
+import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
@@ -9,75 +13,93 @@ part "masraf_kodu_rehberi_view_model.g.dart";
 
 class MasrafKoduRehberiViewModel = _MasrafKoduRehberiViewModelBase with _$MasrafKoduRehberiViewModel;
 
-abstract class _MasrafKoduRehberiViewModelBase with Store, MobxNetworkMixin {
+abstract class _MasrafKoduRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<MasrafKoduRehberiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+  @override
   @observable
-  ObservableList<MasrafKoduRehberiModel>? masrafKoduRehberiList;
+  ObservableList<MasrafKoduRehberiModel>? observableList;
 
   @observable
   SiparisEditRequestModel requestModel = SiparisEditRequestModel(sayfa: 1);
 
+  @override
   @observable
-  bool dahaVarMi = true;
+  bool isSearchBarOpen = true;
 
-  @observable
-  bool searchBar = true;
+  @override
+  bool isScrollDown = false;
+
+  @override
+  String? searchText;
+
+  @action
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
+    }
+  }
+
+  @override
+  @action
+  Future<void> changeSearchBarStatus() async {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) {
+      searchText = null;
+      resetList();
+    }
+  }
 
   @action
   void changeSearchBar() {
-    searchBar = !searchBar;
-    if (!searchBar) {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) {
       setSearchText(null);
     }
     resetPage();
   }
 
+  @override
   @action
-  void setSearchText(String? value) => requestModel = requestModel.copyWith(searchText: value);
+  void setSearchText(String? value) => searchText = value;
 
+  @override
   @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
+  void setObservableList(List<MasrafKoduRehberiModel>? value) => observableList = value?.asObservable();
 
+  @override
   @action
-  void setMasrafKoduRehberiList(List<MasrafKoduRehberiModel>? value) => masrafKoduRehberiList = value?.asObservable();
+  void addObservableList(List<MasrafKoduRehberiModel>? value) => setObservableList(observableList?..addAll(value!));
 
+  @override
   @action
-  void addMasrafKoduRehberiList(List<MasrafKoduRehberiModel> value) => masrafKoduRehberiList!.addAll(value);
-
-  @action
-  void increaseSayfa() => requestModel = requestModel.copyWith(sayfa: (requestModel.sayfa ?? 0) + 1);
-
-  @action
-  void resetSayfa() => requestModel = requestModel.copyWith(sayfa: 1);
-
-  @action
-  Future<void> resetPage() async {
-    setMasrafKoduRehberiList(null);
+  Future<void> resetList() async {
+    setObservableList(null);
     setDahaVarMi(true);
-    resetSayfa();
+    resetPage();
     await getData();
   }
 
+  @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getMasrafKodlari, bodyModel: MasrafKoduRehberiModel(), queryParameters: requestModel.toJson());
-    if (result.data is List) {
-      final List<MasrafKoduRehberiModel> list = result.data.cast<MasrafKoduRehberiModel>();
-      if ((requestModel.sayfa ?? 0) < 2) {
-        // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
-        if (masrafKoduRehberiList.ext.isNullOrEmpty) {
-          setMasrafKoduRehberiList(list);
-        } else {
-          addMasrafKoduRehberiList(list);
-        }
+    final result =
+        await networkManager.dioGet(path: ApiUrls.getMasrafKodlari, bodyModel: MasrafKoduRehberiModel(), queryParameters: requestModel.copyWith(sayfa: page, searchText: searchText).toJson());
+    if (result.isSuccess) {
+      if (page > 1) {
+        addObservableList(result.dataList);
       } else {
-        addMasrafKoduRehberiList(list);
+        setObservableList(result.dataList);
       }
-      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
-        setDahaVarMi(false);
-      } else {
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);
-        increaseSayfa();
+        increasePage();
+      } else {
+        setDahaVarMi(false);
       }
+    } else if (page == 1) {
+      setObservableList([]);
     }
   }
 }
