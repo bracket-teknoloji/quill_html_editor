@@ -87,12 +87,25 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   @override
   Widget build(BuildContext context) => RefreshIndicator.adaptive(
         onRefresh: onRefresh,
-        child: body(),
+        child: body(context),
       ).paddingAll(UIHelper.lowSize);
 
-  Widget body() {
+  Widget body(BuildContext context) {
     if (items == null) return const ListViewShimmer();
-    if (items!.isEmpty) return const Center(child: Text("Liste bulunamadı."));
+    if (items!.isEmpty) {
+      return SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Center(
+          child: const Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.travel_explore_outlined),
+              Text("Liste bulunamadı."),
+            ],
+          ).paddingSymmetric(vertical: MediaQuery.sizeOf(context).height * 0.34),
+        ),
+      );
+    }
     if (_isSliver) {
       if (_isPageable) {
         return SliverList(
