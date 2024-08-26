@@ -259,7 +259,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                   ),
                   Observer(
                     builder: (_) => Text(
-                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${widget.cariListesiModel?.dovizAdi ?? mainCurrency} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
+                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
                       style: TextStyle(
                         color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
                         fontWeight: FontWeight.bold,
@@ -411,6 +411,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           controller: _masrafTutariController,
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged: (value) => viewModel.setMasrafTutari(value.toDoubleWithFormattedString),
                         ),
                       ),
                       Expanded(
