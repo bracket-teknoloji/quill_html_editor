@@ -1,7 +1,9 @@
 import "dart:developer";
+import "dart:io";
 
 import "package:app_settings/app_settings.dart";
 import "package:awesome_dialog/awesome_dialog.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
@@ -548,7 +550,15 @@ class DialogManager {
         enableEnterKey: true,
         context: context,
         isDense: true,
-        width: context.isLandscape ? MediaQuery.sizeOf(context).width * 0.5 : MediaQuery.sizeOf(context).width * 0.8,
+        width: kIsWeb
+            ? context.isLandscape
+                ? MediaQuery.sizeOf(context).width * 0.5
+                : MediaQuery.sizeOf(context).width * 0.8
+            : Platform.isLinux || Platform.isWindows || Platform.isMacOS
+                ? context.isLandscape
+                    ? MediaQuery.sizeOf(context).width * 0.5
+                    : MediaQuery.sizeOf(context).width * 0.8
+                : null,
         customHeader: customHeader,
         alignment: Alignment.center,
         onDismissCallback: (type) {},
