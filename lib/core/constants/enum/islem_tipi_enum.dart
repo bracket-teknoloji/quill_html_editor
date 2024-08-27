@@ -1,6 +1,7 @@
 enum IslemTipiEnum {
   stok,
   cari,
+  cariListesi,
   cariIslemleri,
   stokRapor,
   cariRapor,

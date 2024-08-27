@@ -81,7 +81,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
       islemlerList.addAll(raporlar ?? []);
-    } else if (islemTipi == IslemTipiEnum.cari) {
+    } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
         islemlerList.add(cariSatisTeklifi);
@@ -109,7 +109,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(stokHareketleri);
         islemlerList.add(cariAktivite);
         islemlerList.add(cariAktiviteKaydiGir);
-        islemlerList.add(cariKoduDegistir(newModel.cariKodu));
+        islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi ,cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar ?? []);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
@@ -555,7 +555,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? cariKoduDegistir(String? cariKodu) => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
-        isEnabled: _yetkiController.cariKartiDuzenleme,
+        isEnabled: _yetkiController.cariKartiDuzenleme ,
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
