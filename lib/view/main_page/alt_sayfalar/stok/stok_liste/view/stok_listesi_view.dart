@@ -2,6 +2,7 @@
 
 import "dart:ui";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -627,7 +628,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   title: "Sayı Seçiniz",
                   groupValue: viewModel.gridSayisi,
                   children: List.generate(
-                    4,
+                    kIsWeb ? 8 : 4,
                     (index) => BottomSheetModel(title: (index + 1).toString(), value: index + 1, groupValue: index + 1),
                   ),
                 );
