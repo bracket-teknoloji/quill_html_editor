@@ -259,7 +259,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                   ),
                   Observer(
                     builder: (_) => Text(
-                      "${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} (${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "Tahsil Edilecek" : "Ödenecek"})",
+                      "Bakiye: ${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} ${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "(Tahsil Edilecek)" : (viewModel.cariModel?.bakiye ?? 0) < 0 ? "(Ödenecek)" : ""}",
                       style: TextStyle(
                         color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
                         fontWeight: FontWeight.bold,
