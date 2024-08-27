@@ -133,7 +133,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
   void dispose() {
     // StaticVariables.instance.uretimSonuGenelFormKey.currentState?.save();
     widget.onSave.call(viewModel.requestModel);
-    for (var element in ekAlanlarControllers) {
+    for (final element in ekAlanlarControllers) {
       element.dispose();
     }
     belgeNoController.dispose();

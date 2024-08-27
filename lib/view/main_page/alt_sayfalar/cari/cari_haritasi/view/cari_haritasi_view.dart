@@ -133,7 +133,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                         );
                       }
                       if (widget.isGetData != true) {
-                        for (CariListesiModel? model in viewModel.cariList ?? []) {
+                        for (final CariListesiModel? model in viewModel.cariList ?? []) {
                           viewModel.addMarker(
                             Marker(
                               icon: await setMarker(model),

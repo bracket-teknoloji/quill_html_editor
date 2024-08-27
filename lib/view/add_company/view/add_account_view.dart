@@ -96,7 +96,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
       final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword, getFromCache: false);
       dialogManager.hideAlertDialog;
       if (response.isSuccess) {
-        for (AccountResponseModel item in response.data) {
+        for (final AccountResponseModel item in response.data) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             CacheManager.setHesapBilgileri(AccountModel.instance);
             CacheManager.setAccounts(item..parola = encodedPassword);
@@ -130,7 +130,7 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
         AccountModel.instance.uyeEmail = response.dataList.firstOrNull?.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;
-        for (AccountResponseModel item in response.data!) {
+        for (final AccountResponseModel item in response.data!) {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             Get.back(result: true);
             // Get.back(result: true);

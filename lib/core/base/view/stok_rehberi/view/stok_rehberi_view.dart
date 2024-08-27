@@ -57,7 +57,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     controllerInitializer();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.searchText != null) {
-        viewModel.setSearchText(widget.searchText!);
+        viewModel.setSearchText(widget.searchText);
         _searchTextController.text = widget.searchText!;
       }
       FocusScope.of(context).requestFocus(focusNode);
@@ -282,7 +282,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
                         ...parametreModel.stokDetayliAramaAlanlar ?? [],
                       ];
-                      for (StokDetayliAramaAlanlar item in aramaList) {
+                      for (final StokDetayliAramaAlanlar item in aramaList) {
                         if (viewModel.getRequestModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
                           list.add(viewModel.getRequestModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
                         } else {

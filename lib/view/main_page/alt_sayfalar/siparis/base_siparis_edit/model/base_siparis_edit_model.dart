@@ -686,7 +686,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   BaseSiparisEditModel._init();
 
   void kalemlerOTVHesapla() {
-    for (var element in kalemList ?? <KalemModel>[]) {
+    for (final element in kalemList ?? <KalemModel>[]) {
       element.otvHesapla();
     }
   }

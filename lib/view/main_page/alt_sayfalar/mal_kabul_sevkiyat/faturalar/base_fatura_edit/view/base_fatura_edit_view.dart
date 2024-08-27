@@ -156,7 +156,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
             // }
             if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.otvVarmi == true) ?? false) {
-              for (var item in BaseSiparisEditModel.instance.kalemList!) {
+              for (final item in BaseSiparisEditModel.instance.kalemList!) {
                 item.otvHesapla();
               }
             }
@@ -343,7 +343,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                             Get.back();
                             final List<KalemModel> newList = [];
                             if (BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-                              for (KalemModel item in BaseSiparisEditModel.instance.kalemList ?? []) {
+                              for (final KalemModel item in BaseSiparisEditModel.instance.kalemList ?? []) {
                                 if (newList.any((element) => element.kdvOrani == item.kdvOrani)) {
                                   final int index = newList.indexWhere((element) => element.kdvOrani == item.kdvOrani);
                                   newList[index] = newList[index]
@@ -520,7 +520,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         return e;
       }).toList();
       viewModel.changeUpdateKalemler();
-      for (DovizKurlariModel element in result) {
+      for (final DovizKurlariModel element in result) {
         final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where((e) => e.dovizTipi == element.dovizTipi);
         if (selectedDovizList?.isNotEmpty ?? false) {
           dovizInfo = selectedDovizList?.map((e) => e.stokKodu ?? "").join(", ") ?? "";

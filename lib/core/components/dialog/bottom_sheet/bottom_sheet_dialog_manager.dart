@@ -1077,7 +1077,7 @@ class BottomSheetDialogManager {
       );
       if (result != null) {
         final Map<String, dynamic> resultMap = {};
-        for (var element in result) {
+        for (final element in result) {
           resultMap[element] = stokGorunecekAlanlar[element];
         }
         return resultMap;

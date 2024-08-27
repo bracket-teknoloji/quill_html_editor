@@ -105,7 +105,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
-                      child: Container(
+                      child: DecoratedBox(
                         decoration: BoxDecoration(
                           border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
                         ),
@@ -137,7 +137,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
+                      child: DecoratedBox(
                         decoration: BoxDecoration(
                           border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
                         ),
@@ -257,7 +257,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
     // get 3rd element of urlSplit and split it with ".". Then observe first 3 elements of it.
     final List<String> ipSplit = urlSplit[2].split(".");
     // if any element contains ":" then split it with ":" and get first element of it.
-    for (var ip in ipSplit) {
+    for (final ip in ipSplit) {
       if (ip.contains(":")) {
         ipSplit[ipSplit.indexOf(ip)] = ip.split(":")[0];
       }

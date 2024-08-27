@@ -235,7 +235,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                     ),
                                   ),
                                 ),
-                              ].map((e) => Container(decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius), child: e)).toList(),
+                              ].map((e) => DecoratedBox(decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius), child: e)).toList(),
                             )
                       : const SizedBox(),
                 ),

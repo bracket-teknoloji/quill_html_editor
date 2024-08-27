@@ -60,7 +60,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
     sartliKabulTuruController.dispose();
     operatorController.dispose();
     aciklamaController.dispose();
-    for (var element in numuneControllers) {
+    for (final element in numuneControllers) {
       element.dispose();
     }
     super.dispose();

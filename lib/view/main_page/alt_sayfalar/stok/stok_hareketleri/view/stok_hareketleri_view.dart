@@ -57,7 +57,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     _cariController = TextEditingController();
     super.initState();
     if (widget.cariModel != null) {
-      viewModel.setCariListesiModel(widget.cariModel!);
+      viewModel.setCariListesiModel(widget.cariModel);
     }
     viewModel.setFuture(getData());
   }

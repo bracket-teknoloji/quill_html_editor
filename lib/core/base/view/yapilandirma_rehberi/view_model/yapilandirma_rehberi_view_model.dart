@@ -66,7 +66,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   Future<void> altKodlariGetir() async {
     final list = denemeList[page - 1];
     final List<YapilandirmaRehberiModel> list2 = [];
-    for (YapilandirmaRehberiModel item in list) {
+    for (final YapilandirmaRehberiModel item in list) {
       if (item.kod != yapilandirmaProfilModel?.ozellikKodu) {
         continue;
       }

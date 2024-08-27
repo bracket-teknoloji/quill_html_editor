@@ -22,7 +22,7 @@ abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   double get ortalamaVadeTarihi {
     double toplamTutar = 0;
     double toplamVadeTarihi = 0;
-    for (var item in ortalamaVadeTarihiListesi) {
+    for (final item in ortalamaVadeTarihiListesi) {
       toplamTutar += item.tutar ?? 0;
       toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
     }

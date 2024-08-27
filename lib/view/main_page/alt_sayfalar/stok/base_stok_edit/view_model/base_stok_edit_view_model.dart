@@ -16,7 +16,7 @@ abstract class _BaseStokEditingViewModelBase with Store, MobxNetworkMixin {
   @action
   void setStokListesiModel(StokListesiModel? value) {
     stokListesiModel = value;
-    StokListesiModel.setInstance(stokListesiModel!);
+    StokListesiModel.setInstance(stokListesiModel);
   }
 
   @observable

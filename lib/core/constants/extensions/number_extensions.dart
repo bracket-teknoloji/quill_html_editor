@@ -12,7 +12,7 @@ extension NumExtensionWithFixedDigits on num? {
         locale: "TR",
         decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,
       );
-      final String finalValue = f.format(this!);
+      final String finalValue = f.format(this);
       if (finalValue == "-0,00") {
         return "0";
       } else {

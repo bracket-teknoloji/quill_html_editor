@@ -545,7 +545,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                             viewModel.kalemModel.depoTanimi = result.depoTanimi;
                             if (result.depoKodu != null) {
-                              viewModel.setDepoKodu(result.depoKodu!);
+                              viewModel.setDepoKodu(result.depoKodu);
                             }
                           }
                         },
@@ -898,9 +898,9 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   Future<void> getData() async {
     if (widget.stokListesiModel != null) {
-      viewModel.setModel(widget.stokListesiModel!);
+      viewModel.setModel(widget.stokListesiModel);
     } else if (widget.kalemModel != null) {
-      viewModel.setKalemModel(widget.kalemModel!);
+      viewModel.setKalemModel(widget.kalemModel);
       await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
     } else {
       final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
@@ -960,7 +960,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   Future<void> controllerFiller() async {
     if (widget.kalemModel != null) {
-      viewModel.setKalemModel(widget.kalemModel!);
+      viewModel.setKalemModel(widget.kalemModel);
       await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
       if (editTipi?.ambarFisiMi == true) {
         viewModel.setKdvOrani(0);

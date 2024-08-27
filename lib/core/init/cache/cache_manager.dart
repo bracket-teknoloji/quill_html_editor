@@ -187,7 +187,7 @@ class CacheManager {
   static void setFavorilerSira(int index, FavoritesModel value) => favorilerBox.putAt(index, value);
   static Future<void> setFavorilerList(List<FavoritesModel> value) async {
     await favorilerBox.clear();
-    favorilerBox.putAll({for (var e in value) e.title: e});
+    favorilerBox.putAll({for (final e in value) e.title: e});
   }
 
   static void setCariSehirler(CariSehirlerModel value) => cariSehirBox.put("value", value);

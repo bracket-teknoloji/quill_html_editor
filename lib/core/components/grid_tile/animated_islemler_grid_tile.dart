@@ -18,7 +18,7 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
 
 class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> {
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: UIHelper.lowBorderRadius,
           border: Border.all(color: theme.colorScheme.onSurface.withOpacity(0.1)),

@@ -27,7 +27,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   double get ortalamaVadeGunu {
     double toplamTutari = 0;
     double toplamVadeTarihi = 0;
-    for (var item in model.kalemler ?? []) {
+    for (final item in model.kalemler ?? []) {
       toplamTutari += item.tutar ?? 0;
       toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
     }
@@ -41,7 +41,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   void setCariKodu(CariListesiModel? value) {
     cariListesiModel = value;
     final List<CekSenetKalemlerModel> list = [];
-    for (CekSenetKalemlerModel item in model.kalemler ?? []) {
+    for (final CekSenetKalemlerModel item in model.kalemler ?? []) {
       list.add(item.copyWith(plasiyerAdi: value?.plasiyerAciklama, plasiyerKodu: value?.plasiyerKodu));
     }
     model = model.copyWith(cariKodu: value?.cariKodu, cariAdi: value?.cariAdi, kalemler: list);
@@ -53,7 +53,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @action
   void setProjeKodu(BaseProjeModel? value) {
     final List<CekSenetKalemlerModel> list = [];
-    for (CekSenetKalemlerModel item in model.kalemler ?? []) {
+    for (final CekSenetKalemlerModel item in model.kalemler ?? []) {
       list.add(item.copyWith(projeAdi: value?.projeAciklama, projeKodu: value?.projeKodu));
     }
     model = model.copyWith(projeKodu: value?.projeKodu, kalemler: list);

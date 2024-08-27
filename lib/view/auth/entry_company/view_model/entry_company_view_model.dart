@@ -85,7 +85,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       final List<IsletmeModel> isletmeModelList = response.data.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
       // set isletmeList with unique isletmeAdi values
       final List<IsletmeModel> data = [];
-      for (var element in isletmeModelList) {
+      for (final element in isletmeModelList) {
         if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
           continue;
         } else {

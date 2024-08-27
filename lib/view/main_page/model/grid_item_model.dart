@@ -72,7 +72,7 @@ class GridItemModel {
         return altMenuVarMi;
       }
       if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
-        for (var element in altMenuler!) {
+        for (final element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;
           }

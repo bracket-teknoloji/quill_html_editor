@@ -51,7 +51,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
       viewModel.model.belgeTipi = widget.cekSenetListesiEnum.belgeTipi;
       viewModel.setGirisTarihi(DateTime.now());
       if (widget.cariListesiModel != null) {
-        viewModel.setCariKodu(widget.cariListesiModel!);
+        viewModel.setCariKodu(widget.cariListesiModel);
         _cariController.text = widget.cariListesiModel!.cariAdi ?? "";
         viewModel.setPlasiyerKodu(widget.cariListesiModel!.plasiyerKodu);
         _plasiyerController.text = widget.cariListesiModel!.plasiyerAciklama ?? "";

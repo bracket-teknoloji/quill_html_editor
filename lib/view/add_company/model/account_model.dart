@@ -187,7 +187,7 @@ class AccountModel with NetworkManagerMixin {
         type: InternetAddressType.IPv4,
         includeLinkLocal: true,
       );
-      for (var interface in list) {
+      for (final interface in list) {
         for (var i = 0; i < interface.addresses.length; i++) {
           if (interface.addresses[i].address != "") {
             localIp = interface.addresses[i].address;

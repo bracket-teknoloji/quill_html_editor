@@ -15,17 +15,15 @@ class UIHelper {
   static const EdgeInsets highPadding = EdgeInsets.all(highSize);
   static const EdgeInsets midPadding = EdgeInsets.all(midSize);
   static const EdgeInsets lowPadding = EdgeInsets.all(lowSize);
-  static const EdgeInsets zeroPadding = EdgeInsets.all(0);
+  static const EdgeInsets zeroPadding = EdgeInsets.zero;
 
   static const EdgeInsets highPaddingVertical = EdgeInsets.symmetric(vertical: highSize);
   static const EdgeInsets midPaddingVertical = EdgeInsets.symmetric(vertical: midSize);
   static const EdgeInsets lowPaddingVertical = EdgeInsets.symmetric(vertical: lowSize);
-  static const EdgeInsets zeroPaddingVertical = EdgeInsets.symmetric(vertical: 0);
 
   static const EdgeInsets highPaddingHorizontal = EdgeInsets.symmetric(horizontal: highSize);
   static const EdgeInsets midPaddingHorizontal = EdgeInsets.symmetric(horizontal: midSize);
   static const EdgeInsets lowPaddingHorizontal = EdgeInsets.symmetric(horizontal: lowSize);
-  static const EdgeInsets zeroPaddingHorizontal = EdgeInsets.symmetric(horizontal: 0);
 
   static const EdgeInsets midPaddingOnlyTop = EdgeInsets.only(top: midSize);
   static const EdgeInsets highPaddingOnlyTop = EdgeInsets.only(top: highSize);

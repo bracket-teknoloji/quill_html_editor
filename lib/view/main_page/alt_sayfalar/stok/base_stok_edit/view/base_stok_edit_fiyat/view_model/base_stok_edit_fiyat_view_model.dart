@@ -13,7 +13,7 @@ abstract class _BaseStokEditFiyatViewModelBase with Store {
   @computed
   Map<int, String> get dovizList {
     final Map<int, String> map = {};
-    for (DovizList element in mainPageModel?.paramModel?.dovizList ?? []) {
+    for (final DovizList element in mainPageModel?.paramModel?.dovizList ?? []) {
       map[element.dovizTipi ?? 0] = element.isim ?? "";
     }
     return map;

@@ -303,7 +303,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   List<BottomSheetModel> get setDovizBottomSheetList {
     final List<DovizList>? dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList;
     final List<BottomSheetModel> bottomSheetList = [];
-    for (DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
+    for (final DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
       if (viewModel.observableList?.any((element) => element.dovizTipi != item.dovizTipi) ?? false) {
         bottomSheetList.add(
           BottomSheetModel(

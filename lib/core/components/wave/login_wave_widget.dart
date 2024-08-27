@@ -14,7 +14,7 @@ class _LoginWaveWidgetState extends BaseState<LoginWaveWidget> {
   @override
   Widget build(BuildContext context) => WaveWidget(
         config: CustomConfig(durations: [8000, 10000], heightPercentages: [0.78, 0.8], colors: [theme.colorScheme.surfaceContainerHighest, theme.colorScheme.surfaceContainer]),
-        size: const Size(double.infinity, double.infinity),
+        size: Size.infinite,
         waveAmplitude: 2,
         wavePhase: 0,
         duration: 200,

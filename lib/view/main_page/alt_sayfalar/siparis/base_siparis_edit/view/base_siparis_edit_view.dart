@@ -261,7 +261,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               return e;
                             }).toList();
                             viewModel.changeUpdateKalemler();
-                            for (DovizKurlariModel element in result) {
+                            for (final DovizKurlariModel element in result) {
                               final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where((e) => e.dovizTipi == element.dovizTipi);
                               if (selectedDovizList?.isNotEmpty ?? false) {
                                 dovizInfo = selectedDovizList?.map((e) => e.stokKodu ?? "").join(", ") ?? "";

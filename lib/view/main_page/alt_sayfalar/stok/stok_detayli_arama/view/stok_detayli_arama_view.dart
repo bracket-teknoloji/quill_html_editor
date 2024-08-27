@@ -37,7 +37,7 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
 
   @override
   void dispose() {
-    for (TextEditingController e in controllerList) {
+    for (final TextEditingController e in controllerList) {
       e.dispose();
     }
     super.dispose();

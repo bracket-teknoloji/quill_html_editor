@@ -375,7 +375,7 @@ class DialogManager {
     final Box box = Hive.box("accounts");
     final Box preferences = Hive.box("preferences");
     return AlertDialog(
-      contentPadding: const EdgeInsets.all(0),
+      contentPadding: EdgeInsets.zero,
       actionsOverflowButtonSpacing: 0,
       elevation: 0,
       icon: const Icon(

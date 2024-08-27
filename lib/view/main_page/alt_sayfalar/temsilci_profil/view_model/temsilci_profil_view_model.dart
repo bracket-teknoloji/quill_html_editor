@@ -407,7 +407,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   List<double> get getPlasiyerToplam {
     //her plasiyerin toplam satışı
     final Set<String> uniquePlasiyer = <String>{};
-    for (TemsilciProfilModel element in temsilciProfilList ?? []) {
+    for (final TemsilciProfilModel element in temsilciProfilList ?? []) {
       if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
         uniquePlasiyer.add(element.plasiyerAciklama!);
       }
@@ -430,7 +430,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   List<String> get getPlasiyerTitle {
     if (temsilciProfilList.ext.isNotNullOrEmpty) {
       final Set<String> uniquePlasiyer = <String>{};
-      for (TemsilciProfilModel element in temsilciProfilList ?? []) {
+      for (final TemsilciProfilModel element in temsilciProfilList ?? []) {
         if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
           uniquePlasiyer.add(element.plasiyerAciklama ?? "");
         }

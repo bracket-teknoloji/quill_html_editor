@@ -191,7 +191,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
                                   ...parametreModel.stokDetayliAramaAlanlar ?? [],
                                 ];
-                                for (StokDetayliAramaAlanlar item in aramaList) {
+                                for (final StokDetayliAramaAlanlar item in aramaList) {
                                   if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
                                     list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
                                   } else {

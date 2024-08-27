@@ -299,7 +299,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   suffix: IconButton(
                     onPressed: () {
                       if (viewModel.siparislerRequestModel.cariKodu != null) {
-                        dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.siparislerRequestModel.cariKodu!);
+                        dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.siparislerRequestModel.cariKodu);
                       } else {
                         dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                       }
@@ -337,10 +337,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                     );
                     if (result != null) {
                       gorunecekAlanlarController.text = result.join(", ");
-                      for (var item in result) {
+                      for (final item in result) {
                         if (viewModel.gorunecekAlanlarMap.containsKey(item)) {
                           //other values false
-                          for (var key in viewModel.gorunecekAlanlarMap.keys) {
+                          for (final key in viewModel.gorunecekAlanlarMap.keys) {
                             if (!result.contains(key)) {
                               viewModel.gorunecekAlanlarMap[key] = false;
                             }
