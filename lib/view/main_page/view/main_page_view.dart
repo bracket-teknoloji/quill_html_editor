@@ -154,9 +154,8 @@ final class _MainPageViewState extends BaseState<MainPageView> {
             Observer(
               builder: (_) => bodyWidget(),
             ),
-            Visibility(
-              visible: !kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty,
-              child: SizedBox(
+            if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
+              SizedBox(
                 width: UIHelper.highSize * 3,
                 child: GestureDetector(
                   onHorizontalDragStart: (details) {
@@ -179,7 +178,6 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   },
                 ),
               ),
-            ),
           ],
         ),
       );

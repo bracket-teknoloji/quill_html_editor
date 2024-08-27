@@ -3,7 +3,6 @@ import "dart:ui";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -22,7 +21,6 @@ import "../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
-import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -278,33 +276,6 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         ),
       );
 
-  RefreshIndicator body2() => RefreshIndicator.adaptive(
-        onRefresh: () async => viewModel.resetList(),
-        child: Observer(
-          builder: (_) => (viewModel.observableList.ext.isNullOrEmpty
-              ? (viewModel.observableList?.isEmpty ?? false)
-                  ? Center(child: Observer(builder: (_) => Text(viewModel.errorText != null ? (viewModel.errorText ?? "") : "Cari Bulunamadı")))
-                  : const ListViewShimmer()
-              : ListView.builder(
-                  primary: false,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  controller: _scrollController,
-                  itemCount: (viewModel.observableList?.length ?? 0) + 1,
-                  itemBuilder: (context, index) {
-                    if (index < (viewModel.observableList?.length ?? 0)) {
-                      final CariListesiModel item = viewModel.observableList![index];
-                      return cariListesiCard(item);
-                    } else {
-                      return Visibility(
-                        visible: viewModel.dahaVarMi,
-                        child: const Center(child: CircularProgressIndicator.adaptive()),
-                      );
-                    }
-                  },
-                )),
-        ).paddingAll(UIHelper.lowSize),
-      );
-
   Card cariListesiCard(CariListesiModel item) => Card(
         child: Listener(
           onPointerDown: (event) {
@@ -384,6 +355,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   Future<void> showCariGrid(CariListesiModel object) async {
     await dialogManager.showCariGridViewDialog(
       object,
+      islemTipi: IslemTipiEnum.cariListesi,
       onSelected: (p0) {
         if (p0) viewModel.resetList();
       },

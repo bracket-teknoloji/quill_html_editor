@@ -91,17 +91,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             ElevatedButton(
               onPressed: () {
                 //😳 Düzelt kanki
-                if (!(_formKey.currentState?.validate() ?? false)) {
-                  dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                  return;
-                }
-                // if (viewModel.serbestRaporResponseModelList?.where((element) => element.bosGecilebilir == false).any((element) => viewModel.dicParams[element.adi ?? ""] == null) ?? false) {
-                //   dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
-                // }
-                else {
-                  // viewModel.pdfModel.dizaynId = widget.dizaynList?.id;
-                  // viewModel.pdfModel.etiketSayisi = widget.dizaynList?.kopyaSayisi;
-                  // viewModel.pdfModel.dicParamsMap = viewModel.dicParams;
+                if (_formKey.currentState?.validate() ?? false) {
                   log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
                   StaticVariables.instance.serbestDicParams = viewModel.dicParams;
                   Get.back();
@@ -129,7 +119,8 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                 isDateTime: true,
                 // suffix: const Icon(Icons.calendar_today),
                 onTap: () async {
-                  final DateTime? result = await dialogManager.showDateTimePicker();
+                  final DateTime? result =
+                      await dialogManager.showDateTimePicker(initialDate: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0].text.toDateTimeDDMMYYYY());
                   if (result != null) {
                     viewModel.changeDicParams(
                       e.adi ?? "",
