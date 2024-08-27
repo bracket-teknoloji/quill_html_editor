@@ -27,8 +27,9 @@ final class PDFViewerView extends StatefulWidget {
   final String title;
   final PdfModel? pdfData;
   final bool? serbestMi;
+  final bool filtreVarMi;
   final Future Function()? filterBottomSheet;
-  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title, this.serbestMi});
+  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title, this.serbestMi, this.filtreVarMi = true});
 
   @override
   State<PDFViewerView> createState() => _PDFViewerViewState();
@@ -39,6 +40,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
   // BasePdfModel? pdfFile;
   late PdfViewerController pdfViewerController;
   OverlayEntry? overlayEntry;
+  final String urlEncode = "%7C";
 
   @override
   void initState() {
@@ -88,20 +90,25 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         ],
         bottom: AppBarPreferedSizedBottom(
           children: [
-            if (widget.filterBottomSheet != null)
+            if (widget.filterBottomSheet != null && widget.filtreVarMi)
               AppBarButton(
                 icon: Icons.filter_alt_outlined,
                 onPressed: () async {
                   final bool result = widget.filterBottomSheet != null ? await widget.filterBottomSheet!() : true;
-
                   if (result) {
                     await getData();
                   }
                 },
                 child: Text(loc.generalStrings.filter),
-              )
-            else
-              null,
+              ),
+            if (!widget.filtreVarMi)
+              AppBarButton(
+                icon: Icons.refresh_outlined,
+                child: Text(loc.generalStrings.refresh),
+                onPressed: () async {
+                  await getData();
+                },
+              ),
             AppBarButton(
               icon: Icons.print_outlined,
               child: Text(loc.generalStrings.print),
@@ -140,15 +147,17 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 controller: pdfViewerController,
                 onHyperlinkClicked: (details) async {
                   final String uri = details.uri;
-                  if (uri.toLowerCase().contains("cariKodu")) {
-                    final String cariKodu = uriSplitter(uri, "cari");
-                    dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
-                    return;
-                  }
-                  if (uri.toLowerCase().contains("stokKodu")) {
-                    final String stokKodu = uriSplitter(uri, "stok");
-                    dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
-                    return;
+                  if (uri.startsWith("https://picker.link/")) {
+                    if (uri.contains("CARI$urlEncode")) {
+                      final String cariKodu = uriSplitter(uri, "CARI");
+                      dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
+                      return;
+                    }
+                    if (uri.contains("STOK$urlEncode")) {
+                      final String stokKodu = uriSplitter(uri, "STOK");
+                      dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
+                      return;
+                    }
                   }
                 },
                 interactionMode: PdfInteractionMode.selection,
@@ -177,7 +186,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         },
       );
 
-  String uriSplitter(String details, String tipi) => details.split("$tipi=")[1].split("&")[0];
+  String uriSplitter(String details, String tipi) => details.split("$tipi$urlEncode")[1];
 
   BottomAppBar bottomAppBar() => BottomAppBar(
         child: Row(

@@ -64,6 +64,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   Widget build(BuildContext context) => Observer(
         builder: (_) => PDFViewerView(
           filterBottomSheet: filterBottomSheet,
+          filtreVarMi: !viewModel.serbestRaporResponseModelList.isEmptyOrNull,
           title: widget.dizaynList?.dizaynAdi ?? "Serbest Raporlar",
           serbestMi: true,
           pdfData: viewModel.pdfModel,
@@ -75,35 +76,39 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       await getData();
     }
     viewModel.resetFuture();
-    await bottomSheetDialogManager.showBottomSheetDialog(
-      context,
-      title: loc.generalStrings.filter,
-      body: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CustomLayoutBuilder(
-              splitCount: 2,
-              lastItemExpanded: true,
-              children: getCustomTextFields,
-            ).paddingAll(UIHelper.lowSize),
-            ElevatedButton(
-              onPressed: () {
-                //😳 Düzelt kanki
-                if (_formKey.currentState?.validate() ?? false) {
-                  log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
-                  StaticVariables.instance.serbestDicParams = viewModel.dicParams;
-                  Get.back();
-                  viewModel.setFuture();
-                }
-              },
-              child: Text(loc.generalStrings.apply),
-            ).paddingAll(UIHelper.midSize),
-          ],
+    if (viewModel.serbestRaporResponseModelList.isEmptyOrNull) {
+      viewModel.setFuture();
+    } else {
+      await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.filter,
+        body: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              CustomLayoutBuilder(
+                splitCount: 2,
+                lastItemExpanded: true,
+                children: getCustomTextFields,
+              ).paddingAll(UIHelper.lowSize),
+              ElevatedButton(
+                onPressed: () {
+                  //😳 Düzelt kanki
+                  if (_formKey.currentState?.validate() ?? false) {
+                    log(viewModel.pdfModel.toJsonWithDicParamsMap().toString());
+                    StaticVariables.instance.serbestDicParams = viewModel.dicParams;
+                    Get.back();
+                    viewModel.setFuture();
+                  }
+                },
+                child: Text(loc.generalStrings.apply),
+              ).paddingAll(UIHelper.midSize),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
     return Future.value(viewModel.futureController.value);
   }
 
