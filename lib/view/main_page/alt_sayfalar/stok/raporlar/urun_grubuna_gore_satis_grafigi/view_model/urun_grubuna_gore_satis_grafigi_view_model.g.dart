@@ -76,6 +76,23 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
     });
   }
 
+  late final _$gruplansinValueAtom = Atom(
+      name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.gruplansinValue',
+      context: context);
+
+  @override
+  bool get gruplansinValue {
+    _$gruplansinValueAtom.reportRead();
+    return super.gruplansinValue;
+  }
+
+  @override
+  set gruplansinValue(bool value) {
+    _$gruplansinValueAtom.reportWrite(value, super.gruplansinValue, () {
+      super.gruplansinValue = value;
+    });
+  }
+
   late final _$donemTipiIndexAtom = Atom(
       name: '_UrunGrubunaGoreSatisGrafigiViewModelBase.donemTipiIndex',
       context: context);
@@ -167,6 +184,20 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
   }
 
   @override
+  void setGruplansinValue(bool value) {
+    final _$actionInfo =
+        _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
+            name:
+                '_UrunGrubunaGoreSatisGrafigiViewModelBase.setGruplansinValue');
+    try {
+      return super.setGruplansinValue(value);
+    } finally {
+      _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setModelList(List<UrunGrubunaGoreSatisGrafigiModel>? value) {
     final _$actionInfo =
         _$_UrunGrubunaGoreSatisGrafigiViewModelBaseActionController.startAction(
@@ -185,6 +216,7 @@ mixin _$UrunGrubunaGoreSatisGrafigiViewModel
 model: ${model},
 projeList: ${projeList},
 irsDahilValue: ${irsDahilValue},
+gruplansinValue: ${gruplansinValue},
 donemTipiIndex: ${donemTipiIndex},
 modelList: ${modelList},
 toplamMiktar: ${toplamMiktar},

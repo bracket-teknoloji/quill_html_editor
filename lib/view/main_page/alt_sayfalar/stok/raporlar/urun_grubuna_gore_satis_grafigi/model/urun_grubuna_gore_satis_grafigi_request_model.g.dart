@@ -19,6 +19,7 @@ _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
           donemTipi: json['DONEM_TIPI'] as String?,
           grupNo: (json['GRUP_NO'] as num?)?.toInt(),
           irsDahil: json['IRS_DAHIL'] as String?,
+          grupla: json['GRUPLA'] as String?,
           projeKodu: json['PROJE_KODU'] as String?,
           tipi: json['TIPI'] as String?,
         );
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$UrunGrubunaGoreSatisGrafigiRequestModelImplToJson(
   writeNotNull('DONEM_TIPI', instance.donemTipi);
   writeNotNull('GRUP_NO', instance.grupNo);
   writeNotNull('IRS_DAHIL', instance.irsDahil);
+  writeNotNull('GRUPLA', instance.grupla);
   writeNotNull('PROJE_KODU', instance.projeKodu);
   writeNotNull('TIPI', instance.tipi);
   return val;

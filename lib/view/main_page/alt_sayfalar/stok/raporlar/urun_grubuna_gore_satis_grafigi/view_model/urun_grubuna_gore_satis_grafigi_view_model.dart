@@ -77,10 +77,19 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
   @observable
   bool irsDahilValue = false;
 
+  @observable
+  bool gruplansinValue = false;
+
   @action
   void setIrsDahilValue(bool value) {
     irsDahilValue = value;
     value ? model.irsDahil = "E" : model.irsDahil = "H";
+  }
+
+  @action
+  void setGruplansinValue(bool value) {
+    gruplansinValue = value;
+    value ? model.grupla = "E" : model.grupla = "H";
   }
 
   @observable

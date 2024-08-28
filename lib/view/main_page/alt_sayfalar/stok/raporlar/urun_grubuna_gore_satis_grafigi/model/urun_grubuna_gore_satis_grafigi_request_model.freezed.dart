@@ -37,6 +37,8 @@ mixin _$UrunGrubunaGoreSatisGrafigiRequestModel {
   set grupNo(int? value) => throw _privateConstructorUsedError;
   String? get irsDahil => throw _privateConstructorUsedError;
   set irsDahil(String? value) => throw _privateConstructorUsedError;
+  String? get grupla => throw _privateConstructorUsedError;
+  set grupla(String? value) => throw _privateConstructorUsedError;
   String? get projeKodu => throw _privateConstructorUsedError;
   set projeKodu(String? value) => throw _privateConstructorUsedError;
   String? get tipi => throw _privateConstructorUsedError;
@@ -69,6 +71,7 @@ abstract class $UrunGrubunaGoreSatisGrafigiRequestModelCopyWith<$Res> {
       String? donemTipi,
       int? grupNo,
       String? irsDahil,
+      String? grupla,
       String? projeKodu,
       String? tipi});
 }
@@ -97,6 +100,7 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
     Object? donemTipi = freezed,
     Object? grupNo = freezed,
     Object? irsDahil = freezed,
+    Object? grupla = freezed,
     Object? projeKodu = freezed,
     Object? tipi = freezed,
   }) {
@@ -129,6 +133,10 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelCopyWithImpl<$Res,
           ? _value.irsDahil
           : irsDahil // ignore: cast_nullable_to_non_nullable
               as String?,
+      grupla: freezed == grupla
+          ? _value.grupla
+          : grupla // ignore: cast_nullable_to_non_nullable
+              as String?,
       projeKodu: freezed == projeKodu
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
@@ -158,6 +166,7 @@ abstract class _$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWith<$Res>
       String? donemTipi,
       int? grupNo,
       String? irsDahil,
+      String? grupla,
       String? projeKodu,
       String? tipi});
 }
@@ -184,6 +193,7 @@ class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
     Object? donemTipi = freezed,
     Object? grupNo = freezed,
     Object? irsDahil = freezed,
+    Object? grupla = freezed,
     Object? projeKodu = freezed,
     Object? tipi = freezed,
   }) {
@@ -216,6 +226,10 @@ class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
           ? _value.irsDahil
           : irsDahil // ignore: cast_nullable_to_non_nullable
               as String?,
+      grupla: freezed == grupla
+          ? _value.grupla
+          : grupla // ignore: cast_nullable_to_non_nullable
+              as String?,
       projeKodu: freezed == projeKodu
           ? _value.projeKodu
           : projeKodu // ignore: cast_nullable_to_non_nullable
@@ -240,6 +254,7 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
       this.donemTipi,
       this.grupNo,
       this.irsDahil,
+      this.grupla,
       this.projeKodu,
       this.tipi})
       : super._();
@@ -262,6 +277,8 @@ class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
   int? grupNo;
   @override
   String? irsDahil;
+  @override
+  String? grupla;
   @override
   String? projeKodu;
   @override
@@ -296,6 +313,7 @@ abstract class _UrunGrubunaGoreSatisGrafigiRequestModel
       String? donemTipi,
       int? grupNo,
       String? irsDahil,
+      String? grupla,
       String? projeKodu,
       String? tipi}) = _$UrunGrubunaGoreSatisGrafigiRequestModelImpl;
   _UrunGrubunaGoreSatisGrafigiRequestModel._() : super._();
@@ -325,6 +343,9 @@ abstract class _UrunGrubunaGoreSatisGrafigiRequestModel
   @override
   String? get irsDahil;
   set irsDahil(String? value);
+  @override
+  String? get grupla;
+  set grupla(String? value);
   @override
   String? get projeKodu;
   set projeKodu(String? value);

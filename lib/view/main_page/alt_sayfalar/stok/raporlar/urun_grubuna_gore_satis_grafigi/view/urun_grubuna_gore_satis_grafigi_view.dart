@@ -259,9 +259,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                   child: Observer(
                     builder: (_) => SwitchListTile.adaptive(
                       contentPadding: UIHelper.midPadding,
-                      value: viewModel.irsDahilValue,
+                      value: viewModel.gruplansinValue,
                       onChanged: (value) {
-                        viewModel.setIrsDahilValue(value);
+                        viewModel.setGruplansinValue(value);
                         viewModel.getData();
                       },
                       title: const Text("Küçük Değerler Gruplansın"),

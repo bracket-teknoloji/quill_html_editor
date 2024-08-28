@@ -15,6 +15,7 @@ class UrunGrubunaGoreSatisGrafigiRequestModel with _$UrunGrubunaGoreSatisGrafigi
   String? donemTipi,
   int? grupNo,
   String? irsDahil,
+  String? grupla,
   String? projeKodu,
   String? tipi,
   }) = _UrunGrubunaGoreSatisGrafigiRequestModel;
