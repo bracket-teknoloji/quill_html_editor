@@ -59,8 +59,8 @@ final class _ImageCarouselViewState extends BaseState<ImageCarouselView> {
                           borderRadius: BorderRadius.only(
                             topLeft: radius,
                             topRight: radius,
-                            bottomLeft: viewModel.onlyOneItem ? radius : Radius.zero,
-                            bottomRight: viewModel.onlyOneItem ? radius : Radius.zero,
+                            bottomLeft: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
+                            bottomRight: viewModel.onlyOneItem ? radius : UIHelper.lowBorderRadius.topRight,
                           ),
                           child: InteractiveViewer(
                             child: Observer(
@@ -74,7 +74,7 @@ final class _ImageCarouselViewState extends BaseState<ImageCarouselView> {
                           flex: 3,
                           child: Observer(
                             builder: (_) => CarouselView(
-                              itemExtent: width / 1.3,
+                              itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
                               // shrinkExtent: width / 4,
                               elevation: 0.9,
                               padding: const EdgeInsets.only(top: UIHelper.lowSize, bottom: UIHelper.lowSize, right: UIHelper.lowSize),
