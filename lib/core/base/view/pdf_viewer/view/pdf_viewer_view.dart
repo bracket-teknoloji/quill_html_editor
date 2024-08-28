@@ -5,14 +5,19 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:open_filex/open_filex.dart";
 import "package:path_provider/path_provider.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/model/param_model.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
+import "package:url_launcher/url_launcher.dart";
 
 import "../../../../components/appbar/appbar_prefered_sized_bottom.dart";
 import "../../../../components/button/elevated_buttons/bottom_appbar_button.dart";
@@ -150,16 +155,50 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   if (uri.startsWith("https://picker.link/")) {
                     if (uri.contains("CARI$urlEncode")) {
                       final String cariKodu = uriSplitter(uri, "CARI");
-                      dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
-                      return;
+                      return dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
                     }
                     if (uri.contains("STOK$urlEncode")) {
                       final String stokKodu = uriSplitter(uri, "STOK");
-                      dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
+                      return dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
+                    }
+                    if (uri.contains("CARI_RAPORLAR")) {
+                      return dialogManager.showCariRaporlarGridViewDialog();
+                    }
+                    if (uri.contains("STOK_RAPORLAR")) {
+                      return dialogManager.showStokRaporlarGridViewDialog();
+                    }
+                    if (uri.contains("SERBEST_RAPOR")) {
+                      final int? serbestRaporKodu = int.tryParse(uriSplitter(uri, "SERBEST_RAPOR"));
+                      dialogManager.showAreYouSureDialog(
+                        () async {
+                          final NetFectDizaynList? netFectDizaynList = (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
+                                  ? parametreModel.netFectDizaynList
+                                          ?.where(
+                                            (NetFectDizaynList element) =>
+                                                element.ozelKod == "Serbest" &&
+                                                ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) ||
+                                                    AccountModel.instance.adminMi),
+                                          )
+                                          .toList() ??
+                                      []
+                                  : [])
+                              .firstWhereOrNull((element) => element.id == serbestRaporKodu);
+                          if (netFectDizaynList == null) return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
+                          if (netFectDizaynList.)
+                          Get.back();
+                          Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList);
+                        },
+                        title: "$serbestRaporKodu\n Bu raporu görüntülemek istediğinize emin misiniz?",
+                      );
                       return;
+                    }
+                  } else {
+                    if (!await launchUrl(Uri(path: uri))) {
+                      throw Exception("Could not launch $uri");
                     }
                   }
                 },
+                canShowHyperlinkDialog: false,
                 interactionMode: PdfInteractionMode.selection,
                 onTextSelectionChanged: (details) {
                   if (kIsWeb) {
