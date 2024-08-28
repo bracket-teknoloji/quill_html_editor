@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 
@@ -94,7 +95,7 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
     );
   }
 
-  AppBar appBar() => AppBar(title: const Text("Ürün Grubuna Göre Satış Grafiği"));
+  AppBar appBar() => AppBar(title: const AppBarTitle(title: "Ürün Grubuna Göre Satış Grafiği"));
 
   SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
         child: Column(

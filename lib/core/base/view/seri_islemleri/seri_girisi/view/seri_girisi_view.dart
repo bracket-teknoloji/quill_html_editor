@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../../components/textfield/custom_text_field.dart";
@@ -70,7 +71,7 @@ class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
       );
 
   AppBar appBar() => AppBar(
-        title: const Text("Seri Girişi"),
+        title: const AppBarTitle(title: "Seri Girişi"),
         actions: [
           IconButton(
             icon: const Icon(Icons.save_outlined),

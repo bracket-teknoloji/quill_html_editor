@@ -12,6 +12,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/model/tcmb_bankalar_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/cek_senet_listesi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -129,7 +130,7 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
       );
 
   AppBar appBar() => AppBar(
-        title: const Text("Tahsilat Ekle"),
+        title: const AppBarTitle(title: "Tahsilat Ekle"),
         actions: [
           IconButton(
             onPressed: () async {

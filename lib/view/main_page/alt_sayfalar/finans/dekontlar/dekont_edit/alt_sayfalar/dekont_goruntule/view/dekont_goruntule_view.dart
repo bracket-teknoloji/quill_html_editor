@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -40,7 +41,7 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Dekont Detayı"),
+          title: const AppBarTitle(title: "Dekont Detayı"),
         ),
         body: Column(
           mainAxisSize: MainAxisSize.min,

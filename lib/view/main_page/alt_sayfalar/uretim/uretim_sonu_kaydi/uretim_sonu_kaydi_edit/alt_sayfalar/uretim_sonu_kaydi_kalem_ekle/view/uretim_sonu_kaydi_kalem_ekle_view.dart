@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
@@ -58,7 +59,7 @@ final class _UretimSonuKaydiKalemEkleViewState extends BaseState<UretimSonuKaydi
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Üretim Sonu Kaydı"),
+          title: const AppBarTitle(title: "Üretim Sonu Kaydı"),
           actions: [
             IconButton(
               onPressed: () async {

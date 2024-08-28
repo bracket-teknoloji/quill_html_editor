@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -96,7 +97,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         // },
         child: Scaffold(
           appBar: AppBar(
-            title: const Text("Dekont Kalem Detayı"),
+            title: const AppBarTitle(title: "Dekont Kalem Detayı"),
             actions: [
               IconButton(
                 onPressed: () async {

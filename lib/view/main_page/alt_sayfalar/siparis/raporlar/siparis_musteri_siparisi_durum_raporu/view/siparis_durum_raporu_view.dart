@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -94,7 +95,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
             if (viewModel.searchBar) {
               return CustomTextField(labelText: "Ara", controller: searchBarController, onChanged: (p0) => viewModel.setSearchKey(p0), focusNode: focusNode);
             }
-            return Text("${widget.editTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
+            return AppBarTitle(title: "${widget.editTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
           },
         ),
         actions: [

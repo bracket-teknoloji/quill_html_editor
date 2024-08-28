@@ -1,6 +1,7 @@
 import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -47,7 +48,7 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Özet Rapor"),
+          title: const AppBarTitle(title: "Özet Rapor"),
           centerTitle: false,
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt_outlined)),

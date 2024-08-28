@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../components/textfield/custom_text_field.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
@@ -55,7 +56,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Döviz Kuru Girişi"),
+          title: const AppBarTitle(title: "Döviz Kuru Girişi"),
           actions: [
             IconButton(
               onPressed: () {

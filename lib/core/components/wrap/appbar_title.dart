@@ -1,3 +1,4 @@
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:flutter/material.dart";
 
 class AppBarTitle extends StatelessWidget {
@@ -13,7 +14,18 @@ class AppBarTitle extends StatelessWidget {
         alignment: isCentered != null && (isCentered ?? false) ? WrapAlignment.center : WrapAlignment.start,
         runAlignment: WrapAlignment.center,
         children: [
-          Text(title ?? ""),
+          AnimatedTextKit(
+            key: Key(title ?? ""),
+            animatedTexts: [
+              TypewriterAnimatedText(
+                title ?? "",
+                speed: const Duration(milliseconds: 60),
+                curve: Curves.linear,
+              ),
+            ],
+            totalRepeatCount: 1,
+            displayFullTextOnTap: true,
+          ),
           if (subtitle != null)
             SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.65,

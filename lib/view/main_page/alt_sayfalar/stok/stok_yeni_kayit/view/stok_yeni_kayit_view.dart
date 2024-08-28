@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
@@ -43,7 +44,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Yeni Stok hareket Kaydı"),
+          title: const AppBarTitle(title: "Yeni Stok hareket Kaydı"),
           actions: [
             IconButton(
               onPressed: () async {
@@ -167,9 +168,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Depo",
-                      children: viewModel.anaVeri?.paramModel?.depoList
-                          ?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e))
-                          .toList(),
+                      children: viewModel.anaVeri?.paramModel?.depoList?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e)).toList(),
                     );
                     if (result != null) {
                       depoController.text = result.depoTanimi ?? "";

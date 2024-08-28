@@ -7,6 +7,7 @@ import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bi
 import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/view_model/e_irsaliye_ek_bilgiler_view_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -119,7 +120,7 @@ class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
       );
 
   AppBar appBar() => AppBar(
-        title: const Text("E-İrsaliye Ek Bilgi Girişi"),
+        title: const AppBarTitle(title: "E-İrsaliye Ek Bilgi Girişi"),
         actions: [
           IconButton(
             onPressed: () async {

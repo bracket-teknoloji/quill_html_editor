@@ -7,6 +7,7 @@ import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_det
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -62,7 +63,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Seri Detayı"),
+          title: const AppBarTitle(title: "Seri Detayı"),
           actions: [
             IconButton(
               onPressed: () {

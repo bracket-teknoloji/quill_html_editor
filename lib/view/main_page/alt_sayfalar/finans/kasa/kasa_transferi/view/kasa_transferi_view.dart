@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -81,7 +82,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   Widget build(BuildContext context) => Scaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-        title: const Text("Kasa Transferi"),
+        title: const AppBarTitle(title: "Kasa Transferi"),
         actions: [
           IconButton(
             onPressed: () async {

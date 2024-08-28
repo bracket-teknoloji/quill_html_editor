@@ -12,6 +12,7 @@ import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
@@ -225,7 +226,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
             },
             icon: const Icon(Icons.arrow_back_outlined),
           ),
-          title: const Text("Şirkete Giriş"),
+          title: const AppBarTitle(title: "Şirkete Giriş"),
           actions: [
             IconButton(
               onPressed: () async {

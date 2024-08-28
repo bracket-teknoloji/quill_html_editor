@@ -1,10 +1,10 @@
-import 'package:mobx/mobx.dart';
-part 'add_account_view_model.g.dart';
+import "package:mobx/mobx.dart";
+
+part "add_account_view_model.g.dart";
 
 class AddAccountViewModel = _AddAccountViewModelBase with _$AddAccountViewModel;
 
 abstract class _AddAccountViewModelBase with Store {
-  
   @observable
   bool obscurePassword = false;
 

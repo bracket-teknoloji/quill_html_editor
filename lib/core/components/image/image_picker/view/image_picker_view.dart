@@ -10,6 +10,7 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/image/image_picker/view_model/image_picker_view_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
 
@@ -34,7 +35,7 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Görsel Seçiniz"),
+          title: const AppBarTitle(title: "Görsel Seçiniz"),
           actions: [
             IconButton(
               onPressed: () async {

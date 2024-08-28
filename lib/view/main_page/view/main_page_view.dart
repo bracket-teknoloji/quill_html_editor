@@ -1,6 +1,5 @@
 import "dart:io";
 
-import "package:animated_text_kit/animated_text_kit.dart";
 import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -9,6 +8,7 @@ import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/view/main_page/view_model/main_page_view_model.dart";
 
 import "../../../core/base/state/base_state.dart";
@@ -81,19 +81,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
         title: Observer(
-          builder: (_) => AnimatedTextKit(
-            key: Key(viewModel.titleList.last),
-            animatedTexts: [
-              TypewriterAnimatedText(
-                viewModel.titleList.last,
-                speed: const Duration(milliseconds: 100),
-                curve: Curves.linearToEaseOut,
-              ),
-            ],
-            totalRepeatCount: 1,
-            pause: const Duration(milliseconds: 100),
-            displayFullTextOnTap: true,
-          ).paddingOnly(left: UIHelper.highSize),
+          builder: (_) => AppBarTitle(title: viewModel.titleList.last).paddingOnly(left: UIHelper.highSize),
         ),
         centerTitle: true,
         leading: Observer(

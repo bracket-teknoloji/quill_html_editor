@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -54,7 +55,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Fiyat Gör"),
+          title: const AppBarTitle(title: "Fiyat Gör"),
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -9,6 +9,7 @@ import "package:picker/core/base/model/muhasebe_referans_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -104,7 +105,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) => Text("Nakit ${viewModel.formTipi}")),
+          title: Observer(builder: (_) => AppBarTitle(title: "Nakit ${viewModel.formTipi}")),
           actions: [
             IconButton(
               onPressed: () async {

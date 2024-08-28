@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -80,7 +81,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) => viewModel.searchBar ? const CustomAppBarTextField() : const Text("Cari Stok Satış Özeti")),
+          title: Observer(builder: (_) => viewModel.searchBar ? const CustomAppBarTextField() : const AppBarTitle(title: "Cari Stok Satış Özeti")),
           actions: [
             IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
             IconButton(

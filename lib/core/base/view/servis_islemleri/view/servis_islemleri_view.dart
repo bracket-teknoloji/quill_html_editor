@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
@@ -19,7 +20,7 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(loc.serviceOperations.serviceOperationsTitle),
+          title: AppBarTitle(title: loc.serviceOperations.serviceOperationsTitle),
         ),
         body: ListView.builder(
           itemCount: itemList.length,

@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 
@@ -87,7 +88,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(loc.generalStrings.print),
+          title: AppBarTitle( title: loc.generalStrings.print),
           actions: [
             IconButton(
               icon: const Icon(Icons.picture_as_pdf_outlined),

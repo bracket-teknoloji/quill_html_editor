@@ -4,6 +4,7 @@ import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/view/add_company/view_model/add_account_view_model.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
@@ -44,7 +45,7 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Firmalar"),
+          title: const AppBarTitle(title: "Firmalar"),
           centerTitle: false,
           actions: [
             IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_scanner)),

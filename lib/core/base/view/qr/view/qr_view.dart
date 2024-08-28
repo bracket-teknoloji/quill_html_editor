@@ -7,6 +7,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobile_scanner/mobile_scanner.dart";
 import "package:permission_handler/permission_handler.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 // import "package:qr_code_scanner/qr_code_scanner.dart";
@@ -67,7 +68,7 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("QR Kod Okuyucu"),
+          title: const AppBarTitle(title: "QR Kod Okuyucu"),
           actions: [
             if (!kIsWeb)
               Observer(

@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -94,7 +95,7 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text("Hesaplar Arası ${widget.hesaplarArasiEnum.name}"),
+          title: AppBarTitle(title: "Hesaplar Arası ${widget.hesaplarArasiEnum.name}"),
           actions: [
             IconButton(
               onPressed: () async {

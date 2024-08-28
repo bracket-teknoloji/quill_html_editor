@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
@@ -18,7 +19,7 @@ class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text("Muhtelif Cari"),
+          title: const AppBarTitle(title: "Muhtelif Cari"),
           actions: [
             IconButton(
               onPressed: () {

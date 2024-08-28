@@ -5,6 +5,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/components/image/image_carousel/view/image_carousel_view.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -95,7 +96,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   AppBar appBar(BuildContext context) => AppBar(
         leading: BackButton(onPressed: () => Get.back(result: true)),
-        title: const Text("Stok Rehberi"),
+        title: const AppBarTitle(title: "Stok Rehberi"),
         actions: [
           IconButton(
             onPressed: () async {
