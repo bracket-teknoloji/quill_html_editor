@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../../../view/main_page/model/param_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -50,11 +51,11 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   Widget build(BuildContext context) => Scaffold(
         appBar: appBar(),
         floatingActionButton: fab(context),
-        body: body(),
+        body: body().paddingAll(UIHelper.lowSize),
       );
 
   AppBar appBar() => AppBar(
-        title: const Text("Döviz Kurları"),
+        title: const AppBarTitle(title: "Döviz Kurları"),
       );
 
   FloatingActionButton fab(BuildContext context) => FloatingActionButton(
@@ -110,48 +111,51 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
 
   Column body() => Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  viewModel.changeTarihYesterday();
-                  _controller.text = viewModel.tarih.toDateString;
-                  viewModel.getData();
-                },
-                icon: const Icon(Icons.arrow_back),
-              ),
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Tarih",
-                  readOnly: true,
-                  isMust: true,
-                  controller: _controller,
-                  isDateTime: true,
-                  onTap: () async {
-                    final result = await dialogManager.showDateTimePicker();
-                    if (result != null) {
-                      viewModel.changeTarih(result);
-                      _controller.text = viewModel.tarih.toDateString;
-                      await viewModel.getData();
-                    }
+          Card(
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    viewModel.changeTarihYesterday();
+                    _controller.text = viewModel.tarih.toDateString;
+                    viewModel.getData();
                   },
+                  icon: const Icon(Icons.chevron_left_outlined),
                 ),
-              ),
-              IconButton(
-                onPressed: () {
-                  viewModel.changeTarihTomorow();
-                  _controller.text = viewModel.tarih.toDateString;
-                  viewModel.getData();
-                },
-                icon: const Icon(Icons.arrow_forward),
-              ),
-            ],
-          ),
-          const Text(
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tarih",
+                    readOnly: true,
+                    isMust: true,
+                    controller: _controller,
+                    isDateTime: true,
+                    onTap: () async {
+                      final result = await dialogManager.showDateTimePicker();
+                      if (result != null) {
+                        viewModel.changeTarih(result);
+                        _controller.text = viewModel.tarih.toDateString;
+                        await viewModel.getData();
+                      }
+                    },
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    viewModel.changeTarihTomorow();
+                    _controller.text = viewModel.tarih.toDateString;
+                    viewModel.getData();
+                  },
+                  icon: const Icon(Icons.chevron_right_outlined),
+                ),
+              ],
+            ),
+          ).paddingAll(UIHelper.lowSize),
+          Text(
             "Kurlar",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ).paddingOnly(top: UIHelper.midSize),
+            style: theme.textTheme.headlineMedium,
+          ).paddingOnly(top: UIHelper.midSize, left: UIHelper.midSize),
           const Divider().paddingSymmetric(vertical: UIHelper.lowSize),
           Expanded(
             child: Observer(
