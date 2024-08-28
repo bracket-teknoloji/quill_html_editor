@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/wave/login_wave_widget.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../base/state/base_state.dart";
@@ -30,108 +31,130 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
             bottomRight: Radius.circular(UIHelper.highSize),
           ),
         ),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ListTile(
-                style: ListTileStyle.drawer,
-                title: Text("Favoriler", style: theme.textTheme.titleMedium),
-                trailing: IconButton(
-                  onPressed: () {
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Flexible(
+              child: Stack(
+                children: [
+                  LoginWaveWidget(foreoregroundColor: theme.colorScheme.surfaceContainerLow),
+                  ListTile(
+                    style: ListTileStyle.drawer,
+                    title: const Text(
+                      "Favoriler",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isEditing = !isEditing;
+                        });
+                      },
+                      icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
+                    ),
+                    contentPadding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
+                  ),
+                ],
+              ),
+            ),
+
+            // Card(
+            //   child: ListTile(
+            //     style: ListTileStyle.drawer,
+            //     title: Text("Favoriler", style: theme.textTheme.titleLarge),
+            //     trailing: IconButton(
+            //       onPressed: () {
+            //         setState(() {
+            //           isEditing = !isEditing;
+            //         });
+            //       },
+            //       icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
+            //     ),
+            //     contentPadding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
+            //   ),
+            // ),
+            if (list.ext.isNullOrEmpty)
+              Expanded(
+                flex: 4,
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.star_border_outlined,
+                      size: UIHelper.highSize * 5,
+                      color: theme.colorScheme.onSurface.withOpacity(0.5),
+                    ).marginSymmetric(vertical: 20),
+                    // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
+                    Text("Favori menü yok.", style: theme.textTheme.bodyMedium),
+                    Padding(
+                      padding: UIHelper.midPadding,
+                      child: Text("Eklemek için menü öğelerinde favori simgesine dokunun.", textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
+                    ),
+                  ],
+                ),
+              )
+            else
+              Expanded(
+                flex: 4,
+                child: ReorderableListView.builder(
+                  primary: false,
+                  onReorder: (oldIndex, newIndex) {
                     setState(() {
-                      isEditing = !isEditing;
+                      if (newIndex > oldIndex) {
+                        newIndex -= 1;
+                      }
+                      final item = list.elementAt(oldIndex);
+                      final item2 = list.elementAt(newIndex);
+                      list.removeAt(oldIndex);
+                      list.insert(newIndex, item);
+                      CacheManager.setFavorilerSira(oldIndex, item2);
+                      CacheManager.setFavorilerSira(newIndex, item);
                     });
                   },
-                  icon: Icon(isEditing ? Icons.edit_off_outlined : Icons.edit_outlined),
-                ),
-                contentPadding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.midSize, bottom: UIHelper.midSize),
-              ),
-              const Divider(
-                indent: UIHelper.midSize,
-                endIndent: UIHelper.midSize,
-              ),
-              if (list.ext.isNullOrEmpty)
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    children: [
-                      Icon(
-                        Icons.star_border_outlined,
-                        size: UIHelper.highSize * 5,
-                        color: theme.colorScheme.onSurface.withOpacity(0.5),
-                      ).marginSymmetric(vertical: 20),
-                      // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
-                      Text("Favori menü yok.", style: theme.textTheme.bodyMedium),
-                      Padding(
-                        padding: UIHelper.midPadding,
-                        child: Text("Eklemek için menü öğelerinde favori simgesine dokunun.", textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
-                      ),
-                    ],
-                  ),
-                )
-              else
-                Expanded(
-                  child: ReorderableListView.builder(
-                    onReorder: (oldIndex, newIndex) {
-                      setState(() {
-                        if (newIndex > oldIndex) {
-                          newIndex -= 1;
-                        }
-                        final item = list.elementAt(oldIndex);
-                        final item2 = list.elementAt(newIndex);
-                        list.removeAt(oldIndex);
-                        list.insert(newIndex, item);
-                        CacheManager.setFavorilerSira(oldIndex, item2);
-                        CacheManager.setFavorilerSira(newIndex, item);
-                      });
-                    },
-                    key: const Key("Favoriler"),
-                    itemBuilder: (context, index) {
-                      final value = list[index];
-                      return Card(
-                        key: ValueKey(index),
-                        child: ListTile(
-                          contentPadding: UIHelper.midPaddingHorizontal,
-                          enabled: liste.contains(value),
-                          title: Text(
-                            value.title.toString(),
-                          ),
-                          leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                          trailing: isEditing
-                              ? IconButton(
-                                  style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
-                                  onPressed: () {
-                                    setState(() {
-                                      list.removeAt(index);
-                                      CacheManager.setFavorilerList(list);
-                                    });
-                                  },
-                                  icon: const Icon(Icons.delete_outline).paddingOnly(left: UIHelper.lowSize),
-                                )
-                              : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
-                          onTap: () {
-                            if (mounted) {
-                              widget.scaffoldKey.currentState!.closeDrawer();
-                            }
-                            // Navigator.of(context).pop();
-                            if (value.arguments != null) {
-                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
-                              // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
-                            } else {
-                              Get.toNamed(value.onTap.toString());
-                              // Navigator.pushNamed(context, value.onTap.toString());
-                            }
-                          },
+                  key: const Key("Favoriler"),
+                  itemBuilder: (context, index) {
+                    final value = list[index];
+                    return Card(
+                      key: ValueKey(index),
+                      child: ListTile(
+                        contentPadding: UIHelper.midPaddingHorizontal,
+                        enabled: liste.contains(value),
+                        title: Text(
+                          value.title.toString(),
                         ),
-                      );
-                    },
-                    itemCount: list.length,
-                  ).paddingAll(UIHelper.lowSize),
-                ),
-            ],
-          ),
+                        leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                        trailing: isEditing
+                            ? IconButton(
+                                style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
+                                onPressed: () {
+                                  setState(() {
+                                    list.removeAt(index);
+                                    CacheManager.setFavorilerList(list);
+                                  });
+                                },
+                                icon: const Icon(Icons.delete_outline).paddingOnly(left: UIHelper.lowSize),
+                              )
+                            : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
+                        onTap: () {
+                          if (mounted) {
+                            widget.scaffoldKey.currentState!.closeDrawer();
+                          }
+                          // Navigator.of(context).pop();
+                          if (value.arguments != null) {
+                            Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                            // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
+                          } else {
+                            Get.toNamed(value.onTap.toString());
+                            // Navigator.pushNamed(context, value.onTap.toString());
+                          }
+                        },
+                      ),
+                    );
+                  },
+                  itemCount: list.length,
+                ).paddingAll(UIHelper.lowSize),
+              ),
+          ],
         ),
       );
 }

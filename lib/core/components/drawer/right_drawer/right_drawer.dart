@@ -54,10 +54,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (CacheManager.getAnaVeri!.userModel!.admin == "E")
-                        const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize)
-                      else
-                        const SizedBox(),
+                      if (CacheManager.getAnaVeri!.userModel!.admin == "E") const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
                       Text(
                         CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
                         style: CacheManager.getAnaVeri!.userModel?.admin == "E"
@@ -68,27 +65,31 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   ).marginOnly(bottom: UIHelper.midSize),
                 ],
               ),
-              const Divider(
-                indent: UIHelper.midSize,
-                endIndent: UIHelper.midSize,
-              ),
+              // const Divider(
+              //   indent: UIHelper.midSize,
+              //   endIndent: UIHelper.midSize,
+              // ),
               Expanded(
-                child: ListView.separated(
-                  padding: UIHelper.zeroPadding,
+                child: ListView.builder(
+                  primary: false,
+                  padding: UIHelper.lowPadding,
                   itemBuilder: (context, index) {
                     final DrawerModel item = items[index];
-                    return ListTile(
-                      dense: true,
-                      onTap: item.onTap,
-                      title: Text(
-                        items[index].title,
-                        style: theme.textTheme.bodyMedium,
+                    return Card(
+                      child: ListTile(
+                        dense: true,
+                        onTap: item.onTap,
+                        title: Text(
+                          items[index].title,
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        // horizontalTitleGap: 0,
+                        leading: Icon(item.iconWidget, size: 20, color: theme.colorScheme.primary),
+                        trailing: item.trailingIcon != null ? Icon(item.trailingIcon, size: 20, color: theme.colorScheme.primary) : null,
                       ),
-                      horizontalTitleGap: 0,
-                      leading: Icon(item.iconWidget, size: 20, color: theme.colorScheme.primary),
                     );
                   },
-                  separatorBuilder: (context, index) => const Divider(),
+                  // separatorBuilder: (context, index) => const Divider(),
                   itemCount: items.length,
                 ),
               ),
