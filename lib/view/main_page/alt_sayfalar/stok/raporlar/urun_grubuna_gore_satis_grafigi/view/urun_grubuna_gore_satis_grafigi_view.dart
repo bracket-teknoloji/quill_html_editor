@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
@@ -239,18 +240,35 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                 }
               },
             ),
-            CustomWidgetWithLabel(
-              child: Observer(
-                builder: (_) => SwitchListTile.adaptive(
-                  contentPadding: UIHelper.midPadding,
-                  value: viewModel.irsDahilValue,
-                  onChanged: (value) {
-                    viewModel.setIrsDahilValue(value);
-                    viewModel.getData();
-                  },
-                  title: const Text("İrsaliye Dahil"),
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                CustomWidgetWithLabel(
+                  child: Observer(
+                    builder: (_) => SwitchListTile.adaptive(
+                      contentPadding: UIHelper.midPadding,
+                      value: viewModel.irsDahilValue,
+                      onChanged: (value) {
+                        viewModel.setIrsDahilValue(value);
+                        viewModel.getData();
+                      },
+                      title: const Text("İrsaliye Dahil"),
+                    ),
+                  ),
                 ),
-              ),
+                CustomWidgetWithLabel(
+                  child: Observer(
+                    builder: (_) => SwitchListTile.adaptive(
+                      contentPadding: UIHelper.midPadding,
+                      value: viewModel.irsDahilValue,
+                      onChanged: (value) {
+                        viewModel.setIrsDahilValue(value);
+                        viewModel.getData();
+                      },
+                      title: const Text("Küçük Değerler Gruplansın"),
+                    ),
+                  ),
+                ),
+              ],
             ),
             Observer(
               builder: (_) => CustomPieChart(

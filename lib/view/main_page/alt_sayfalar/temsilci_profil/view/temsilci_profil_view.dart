@@ -257,7 +257,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                                   }
                                   return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
                                 },
-                              ),
+                              ).paddingOnly(top: UIHelper.lowSize),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),

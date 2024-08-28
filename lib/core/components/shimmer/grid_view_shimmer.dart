@@ -2,6 +2,7 @@ import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:shimmer/shimmer.dart";
@@ -14,7 +15,7 @@ final class GridViewShimmer extends StatefulWidget {
   State<GridViewShimmer> createState() => _GridViewShimmerState();
 }
 
-final class _GridViewShimmerState extends State<GridViewShimmer> {
+final class _GridViewShimmerState extends BaseState<GridViewShimmer> {
   @override
   Widget build(BuildContext context) => GridView(
         gridDelegate: widget.gridDelegate,
@@ -30,6 +31,8 @@ final class _GridViewShimmerState extends State<GridViewShimmer> {
       );
 
   Card card() => Card(
+        elevation: 0,
+        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
         child: GridTile(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

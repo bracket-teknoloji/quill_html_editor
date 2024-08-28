@@ -6,9 +6,9 @@ import "../color_palette.dart";
 class UIHelper {
   static ThemeData get _theme => Get.theme;
   //* Radius
-  static BorderRadius get highBorderRadius => BorderRadius.circular(highSize);
-  static BorderRadius get midBorderRadius => BorderRadius.circular(midSize);
-  static BorderRadius get lowBorderRadius => BorderRadius.circular(lowSize);
+  static BorderRadius get highBorderRadius => BorderRadius.circular(12);
+  static BorderRadius get midBorderRadius => BorderRadius.circular(8);
+  static BorderRadius get lowBorderRadius => BorderRadius.circular(4);
   static BorderRadius get zeroBorderRadius => BorderRadius.circular(0);
 
   //* Padding

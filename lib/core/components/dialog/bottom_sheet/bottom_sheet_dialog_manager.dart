@@ -173,9 +173,7 @@ class BottomSheetDialogManager {
                       const Padding(
                         padding: UIHelper.lowPaddingVertical,
                         child: Divider(),
-                      )
-                    else
-                      Container(),
+                      ),
                   ],
                 );
               },
@@ -325,9 +323,7 @@ class BottomSheetDialogManager {
                                                       const Padding(
                                                         padding: UIHelper.lowPaddingVertical,
                                                         child: Divider(),
-                                                      )
-                                                    else
-                                                      Container(),
+                                                      ),
                                                   ],
                                                 ),
                                               );

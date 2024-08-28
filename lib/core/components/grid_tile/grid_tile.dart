@@ -35,7 +35,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
     Icon icon = yetkiKontrol();
 
     return InkWell(
-      borderRadius: UIHelper.lowBorderRadius,
+      borderRadius: UIHelper.midBorderRadius,
       splashFactory: InkRipple.splashFactory,
       splashColor: theme.primaryColor,
       onTap: widget.onTap,
@@ -66,7 +66,7 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
         }
       },
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+        shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
         color: widget.model?.color,
         semanticContainer: true,
         child: GridTile(

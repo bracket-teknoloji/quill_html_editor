@@ -41,6 +41,7 @@ class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveCl
           );
         } else {
           return const Card(
+            elevation: 0,
             child: Icon(Icons.camera_alt_outlined),
           );
         }

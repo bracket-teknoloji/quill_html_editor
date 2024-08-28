@@ -69,7 +69,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                               child: FadeInAnimation(
                                 child: viewModel.page != 1 && index == 0
                                     ? Card(
-                                        shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+                                        shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
                                         child: InkWell(
                                           onTap: () async {
                                             viewModel.resetFilteredList();

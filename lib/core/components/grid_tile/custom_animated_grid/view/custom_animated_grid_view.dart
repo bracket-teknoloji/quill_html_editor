@@ -85,10 +85,10 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
               ),
             ],
           ),
-          const Divider(
-            indent: 0,
-            endIndent: 0,
-          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          // const Divider(
+          //   indent: 0,
+          //   endIndent: 0,
+          // ).paddingSymmetric(vertical: UIHelper.lowSize),
           Observer(
             builder: (_) {
               if (viewModel.gridItemModelList.ext.isNullOrEmpty) {

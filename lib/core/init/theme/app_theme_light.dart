@@ -53,7 +53,7 @@ class AppThemeLight extends AppTheme {
           decorationColor: colorManager.onSecondaryContainer,
         ),
         bottomAppBarTheme: BottomAppBarTheme(
-          elevation: 0,
+          // elevation: 0,
           surfaceTintColor: colorManager.shadow,
         ),
         tooltipTheme: TooltipThemeData(
@@ -68,16 +68,16 @@ class AppThemeLight extends AppTheme {
               fontSize: 12,
             ),
             errorBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
+              borderRadius: UIHelper.midBorderRadius,
             ),
             border: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
+              borderRadius: UIHelper.midBorderRadius,
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
+              borderRadius: UIHelper.midBorderRadius,
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: UIHelper.lowBorderRadius,
+              borderRadius: UIHelper.midBorderRadius,
             ),
           ),
         ),
@@ -96,7 +96,7 @@ class AppThemeLight extends AppTheme {
             backgroundColor: UIHelper.primaryColor,
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: UIHelper.lowBorderRadius,
+              borderRadius: UIHelper.midBorderRadius,
             ),
           ),
         ),
@@ -112,17 +112,17 @@ class AppThemeLight extends AppTheme {
           ),
         ),
         cardTheme: CardTheme(
-          elevation: 0,
-          color: colorManager.surfaceContainerHighest.withOpacity(0.3),
+          elevation: 0.4,
+          color: colorManager.surfaceContainer,
           shape: RoundedRectangleBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            borderRadius: UIHelper.midBorderRadius,
           ),
         ),
         listTileTheme: ListTileThemeData(
           style: ListTileStyle.list,
           visualDensity: const VisualDensity(vertical: -2),
           shape: RoundedRectangleBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            borderRadius: UIHelper.midBorderRadius,
           ),
           dense: true,
         ),
@@ -130,7 +130,7 @@ class AppThemeLight extends AppTheme {
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
-          elevation: 0,
+          // elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
@@ -154,7 +154,7 @@ class AppThemeLight extends AppTheme {
           contentTextStyle: TextStyle(color: colorManager.onSurface),
           insetPadding: UIHelper.lowPadding,
           shape: RoundedRectangleBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            borderRadius: UIHelper.midBorderRadius,
           ),
           behavior: SnackBarBehavior.floating,
         ),
@@ -162,11 +162,11 @@ class AppThemeLight extends AppTheme {
           contentPadding: const EdgeInsets.symmetric(horizontal: UIHelper.midSize, vertical: UIHelper.midSize),
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            borderRadius: UIHelper.midBorderRadius,
             borderSide: BorderSide(color: colorManager.primary.withOpacity(0.2)),
           ),
           border: OutlineInputBorder(
-            borderRadius: UIHelper.lowBorderRadius,
+            borderRadius: UIHelper.midBorderRadius,
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
@@ -194,8 +194,8 @@ class AppThemeLight extends AppTheme {
           // backgroundColor: colorManager.surfaceContainerLow,
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
-          scrolledUnderElevation: 0,
-          elevation: 0,
+          // scrolledUnderElevation: 0,
+          // elevation: 0,
         ),
       );
 }

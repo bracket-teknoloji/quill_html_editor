@@ -48,9 +48,7 @@ class _KasaListesiCardState extends BaseState<KasaListesiCard> {
                       "${(widget.item?.dovizli == "E" ? (widget.item?.devirliDovizBakiye ?? widget.item?.dovizDevirTutari) : widget.item?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.item?.dovizli == "E" ? (widget.item?.dovizAdi ?? "") : mainCurrency}\n",
                 ),
                 if (widget.item?.dovizli == "E")
-                  TextSpan(text: "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")
-                else
-                  null,
+                  TextSpan(text: "${(widget.item?.dovizli == "E" ? widget.item?.devirliBakiye : widget.item?.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
               ].nullCheckWithGeneric,
             ),
             textAlign: TextAlign.end,

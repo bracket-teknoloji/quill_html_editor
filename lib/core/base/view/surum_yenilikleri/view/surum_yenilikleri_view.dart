@@ -83,7 +83,7 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
                   itemBuilder: (context, index) {
                     final ValueList? newItem = item.liste?[index];
                     return Card(
-                      elevation: 0,
+                      // elevation: 0,
                       child: ListTile(
                         title: Text("• ${newItem?.aciklama ?? ""}"),
                       ),

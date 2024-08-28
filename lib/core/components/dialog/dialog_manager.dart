@@ -285,7 +285,7 @@ class DialogManager {
   void showCariRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-      void showStokRaporlarGridViewDialog() =>
+  void showStokRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.stokRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
   void showCariSerbestRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
@@ -567,11 +567,11 @@ class DialogManager {
         onDismissCallback: (type) {},
         reverseBtnOrder: false,
         barrierColor: Colors.black.withOpacity(0.6),
-        dialogBorderRadius: UIHelper.lowBorderRadius,
+        dialogBorderRadius: UIHelper.highBorderRadius,
         useRootNavigator: false,
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,
-        buttonsBorderRadius: UIHelper.lowBorderRadius,
+        buttonsBorderRadius: UIHelper.midBorderRadius,
         animType: AnimType.bottomSlide,
         btnOkIcon: btnOkIcon,
         btnCancelIcon: btnCancelIcon,

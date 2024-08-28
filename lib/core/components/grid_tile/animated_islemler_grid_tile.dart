@@ -20,11 +20,11 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
   @override
   Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: UIHelper.lowBorderRadius,
+          borderRadius: UIHelper.midBorderRadius,
           border: Border.all(color: theme.colorScheme.onSurface.withOpacity(0.1)),
         ),
         child: InkWell(
-          borderRadius: UIHelper.lowBorderRadius,
+          borderRadius: UIHelper.midBorderRadius,
           splashFactory: InkRipple.splashFactory,
           splashColor: theme.primaryColor,
           enableFeedback: widget.onTap != null,

@@ -21,7 +21,7 @@ class AppBarButton extends StatelessWidget {
           backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
           foregroundColor: context.isDarkMode ? null : UIHelper.primaryColor,
           shadowColor: Colors.transparent,
-          elevation: 0,
+          // elevation: 0,
         ),
         onPressed: onPressed,
         child: Wrap(
@@ -36,9 +36,7 @@ class AppBarButton extends StatelessWidget {
                 size: UIHelper.midSize * 2,
                 fill: 1,
                 color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
-              )
-            else
-              null,
+              ),
             iconWidget ?? const SizedBox(),
             child,
           ].nullCheckWithGeneric,

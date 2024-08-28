@@ -2,6 +2,7 @@ import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:shimmer/shimmer.dart";
 
@@ -14,7 +15,7 @@ final class ListViewShimmer extends StatefulWidget {
   State<ListViewShimmer> createState() => _ListViewShimmerState();
 }
 
-final class _ListViewShimmerState extends State<ListViewShimmer> {
+final class _ListViewShimmerState extends BaseState<ListViewShimmer> {
   @override
   Widget build(BuildContext context) => ListView(
         physics: const NeverScrollableScrollPhysics(),
@@ -24,6 +25,8 @@ final class _ListViewShimmerState extends State<ListViewShimmer> {
             baseColor: ColorPalette.slateGray.withOpacity(0.1),
             highlightColor: ColorPalette.slateGray.withOpacity(0.2),
             child: Card(
+              elevation: 0,
+              color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
               child: ListTile(
                 leading: const CircleAvatar(),
                 title: Container(

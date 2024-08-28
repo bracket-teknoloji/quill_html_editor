@@ -52,8 +52,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                           flSpot.y.commaSeparatedWithDecimalDigits(
                             OndalikEnum.tutar,
                           ),
-                          TextStyle(
-                            color: flSpot.bar.color,
+                          const TextStyle(
                             fontWeight: FontWeight.w900,
                           ),
                           children: [

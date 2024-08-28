@@ -167,9 +167,13 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                   color: UIHelper.primaryColor.withOpacity(0.7),
                   width: 2,
                 ),
-                borderRadius: BorderRadius.circular(UIHelper.midSize),
+                borderRadius: UIHelper.midBorderRadius,
                 gapPadding: 0,
               ),
+              border: OutlineInputBorder(
+                borderRadius: UIHelper.midBorderRadius,
+              ),
+              // border: ,
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
                   ? Row(
                       mainAxisSize: MainAxisSize.min,

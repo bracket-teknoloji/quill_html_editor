@@ -19,8 +19,9 @@ class AppBarTitle extends StatelessWidget {
             animatedTexts: [
               TypewriterAnimatedText(
                 title ?? "",
-                speed: const Duration(milliseconds: 60),
+                speed: const Duration(milliseconds: 30),
                 curve: Curves.linear,
+                cursor: "|",
               ),
             ],
             totalRepeatCount: 1,
@@ -34,9 +35,7 @@ class AppBarTitle extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: (isSubTitleSmall != null && (isSubTitleSmall ?? false)) ? Theme.of(context).textTheme.labelSmall : Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 14),
               ),
-            )
-          else
-            const SizedBox(),
+            ),
         ],
       );
 }

@@ -57,7 +57,7 @@ class AppThemeDark extends AppTheme {
         // .copyWith(bodySmall: TextStyle(color: colorManager.onPrimaryContainer)),
         splashFactory: InkRipple.splashFactory,
         bottomAppBarTheme: BottomAppBarTheme(
-          elevation: 0,
+          // elevation: 0,
           surfaceTintColor: colorManager.shadow,
         ),
         tooltipTheme: TooltipThemeData(
@@ -115,10 +115,11 @@ class AppThemeDark extends AppTheme {
           contentTextStyle: const TextStyle(
             fontSize: 16,
           ),
-          elevation: 0,
+          // elevation: 0,
         ),
         cardTheme: CardTheme(
-          color: colorManager.surfaceContainerHighest.withOpacity(0.3),
+          elevation: 0.4,
+          color: colorManager.surfaceContainer,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.lowBorderRadius,
           ),
@@ -135,7 +136,7 @@ class AppThemeDark extends AppTheme {
           endShape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
-          elevation: 0,
+          // elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: UIHelper.zeroBorderRadius,
           ),
@@ -196,8 +197,8 @@ class AppThemeDark extends AppTheme {
           centerTitle: false,
           iconTheme: IconThemeData(color: colorManager.primary),
           titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
-          scrolledUnderElevation: 0,
-          elevation: 0,
+          // scrolledUnderElevation: 0,
+          // elevation: 0,
         ),
       );
 }
