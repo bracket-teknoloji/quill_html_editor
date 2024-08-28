@@ -184,7 +184,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                                   : [])
                               .firstWhereOrNull((element) => element.id == serbestRaporKodu);
                           if (netFectDizaynList == null) return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
-                          if (netFectDizaynList.)
+                          // if (netFectDizaynList.)
                           Get.back();
                           Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList);
                         },
