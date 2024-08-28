@@ -2,7 +2,9 @@ import "dart:convert";
 
 import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
+import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/add_company/view_model/add_account_view_model.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
@@ -13,14 +15,15 @@ import "../../../core/init/cache/cache_manager.dart";
 import "../model/account_model.dart";
 import "../model/account_response_model.dart";
 
-class AddAccountView extends StatefulWidget {
+final class AddAccountView extends StatefulWidget {
   const AddAccountView({super.key});
 
   @override
   State<AddAccountView> createState() => _AddAccountViewState();
 }
 
-class _AddAccountViewState extends BaseState<AddAccountView> {
+final class _AddAccountViewState extends BaseState<AddAccountView> {
+  final AddAccountViewModel viewModel = AddAccountViewModel();
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -65,7 +68,20 @@ class _AddAccountViewState extends BaseState<AddAccountView> {
                       padding: UIHelper.lowPaddingVertical,
                       child: CustomWidgetWithLabel(
                         text: "Şifre",
-                        child: CustomTextField(keyboardType: TextInputType.visiblePassword, controller: passwordController, isMust: true, onSubmitted: (value) => loginMethod()),
+                        child: Observer(
+                          builder: (_) => CustomTextField(
+                            keyboardType: viewModel.obscurePassword ? TextInputType.text : TextInputType.visiblePassword,
+                            controller: passwordController,
+                            isMust: true,
+                            onSubmitted: (value) => loginMethod(),
+                            suffix: IconButton(
+                              onPressed: viewModel.togglePassword,
+                              icon: Observer(
+                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Row(
