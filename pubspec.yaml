@@ -109,7 +109,7 @@ dependencies:
   cryptography: ^2.7.0
   cryptography_flutter: ^2.3.2
   label_marker: ^1.0.1
-  url_launcher: ^6.2.5
+  url_launcher: ^6.3.0
   firebase_app_check: ^0.3.0+2
   # url_strategy: ^0.3.0
   json: ^0.20.2

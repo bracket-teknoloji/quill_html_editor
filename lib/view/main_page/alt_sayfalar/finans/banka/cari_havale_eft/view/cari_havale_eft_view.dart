@@ -53,7 +53,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   @override
   void initState() {
     viewModel.setCariModel(widget.cariListesiModel);
-    viewModel.setGc(false);
+    // viewModel.setGc(false);
     _tarihController = TextEditingController();
     _dekontNoController = TextEditingController();
     _hesapController = TextEditingController();
@@ -89,16 +89,16 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       }
       await getHesapListesi();
       setGirisCikis(
-        await bottomSheetDialogManager.showRadioBottomSheetDialog(
+        await bottomSheetDialogManager.showRadioBottomSheetDialog<int>(
               context,
               title: "Giriş/Çıkış seçiniz",
               groupValue: viewModel.model.cariyiBorclandir != true,
               children: [
-                BottomSheetModel(title: "Bankaya Para Girişi", value: true, groupValue: !(viewModel.model.cariyiBorclandir ?? true)),
-                BottomSheetModel(title: "Bankadan Para Çıkışı", value: false, groupValue: viewModel.model.cariyiBorclandir),
+                BottomSheetModel(title: "Bankaya Para Girişi", value: 0, groupValue: 0),
+                BottomSheetModel(title: "Bankadan Para Çıkışı", value: 1, groupValue: 1),
               ],
             ) ??
-            true,
+            0,
       );
     });
     super.initState();
@@ -142,7 +142,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     final result = await viewModel.postData();
                     if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
-                      Get.back(result: result);
+                      Get.back(result: result.success);
                     }
                   });
                 }
@@ -162,11 +162,8 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     builder: (context, constraints) => Observer(
                       builder: (_) => ToggleButtons(
                         constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
-                        isSelected: [!(viewModel.model.cariyiBorclandir ?? true), viewModel.model.cariyiBorclandir ?? true],
-                        onPressed: (index) {
-                          final value = index == 0;
-                          setGirisCikis(value);
-                        },
+                        isSelected: [(viewModel.model.cariyiBorclandir == null), viewModel.model.cariyiBorclandir ?? false],
+                        onPressed: setGirisCikis,
                         children: const [
                           Text("Bankaya Para Girişi"),
                           Text("Bankadan Para Çıkışı"),
@@ -247,7 +244,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     suffix: IconButton(
                       onPressed: () {
                         if (viewModel.cariModel != null) {
-                          dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.cariModel?.cariKodu));
+                          dialogManager.showCariIslemleriGridViewDialog(viewModel.cariModel);
                         } else {
                           dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                         }
@@ -500,9 +497,9 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         ),
       );
 
-  void setGirisCikis(bool value) {
-    viewModel.setGc(!value);
-    if (value) {
+  void setGirisCikis(int value) {
+    viewModel.setGc(value == 0 ? null : true);
+    if (value == 0) {
       viewModel.setTCMBBankaKodu(null);
       viewModel.setTCMBSubeKodu(null);
       viewModel.setBankaHesapNo(null);

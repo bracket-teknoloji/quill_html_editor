@@ -64,7 +64,7 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   void setCariKodu(String? cariKodu) => model = model.copyWith(cariKodu: cariKodu != "" ? cariKodu : null);
 
   @action
-  void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi);
+  void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi != 0 ? dovizTipi : null);
 
   @action
   void setTutar(double? tutar) => model = model.copyWith(tutar: tutar);
