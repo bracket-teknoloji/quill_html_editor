@@ -87,13 +87,13 @@ final class _MainPageViewState extends BaseState<MainPageView> {
               TypewriterAnimatedText(
                 viewModel.titleList.last,
                 speed: const Duration(milliseconds: 100),
+                curve: Curves.linearToEaseOut,
               ),
             ],
             totalRepeatCount: 1,
             pause: const Duration(milliseconds: 100),
             displayFullTextOnTap: true,
-            stopPauseOnTap: true,
-          ),
+          ).paddingOnly(left: UIHelper.highSize),
         ),
         centerTitle: true,
         leading: Observer(
