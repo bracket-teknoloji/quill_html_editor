@@ -169,31 +169,27 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                     }
                     if (uri.contains("SERBEST_RAPOR")) {
                       final int? serbestRaporKodu = int.tryParse(uriSplitter(uri, "SERBEST_RAPOR"));
-                      dialogManager.showAreYouSureDialog(
-                        () async {
-                          final NetFectDizaynList? netFectDizaynList = (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
-                                  ? parametreModel.netFectDizaynList
-                                          ?.where(
-                                            (NetFectDizaynList element) =>
-                                                element.ozelKod == "Serbest" &&
-                                                ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) ||
-                                                    AccountModel.instance.adminMi),
-                                          )
-                                          .toList() ??
-                                      []
-                                  : [])
-                              .firstWhereOrNull((element) => element.id == serbestRaporKodu);
-                          if (netFectDizaynList == null) return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
-                          // if (netFectDizaynList.)
-                          Get.back();
-                          Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList);
-                        },
-                        title: "$serbestRaporKodu\n Bu raporu görüntülemek istediğinize emin misiniz?",
-                      );
+
+                      final NetFectDizaynList? netFectDizaynList = (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
+                              ? parametreModel.netFectDizaynList
+                                      ?.where(
+                                        (NetFectDizaynList element) =>
+                                            element.ozelKod == "Serbest" &&
+                                            ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) ||
+                                                AccountModel.instance.adminMi),
+                                      )
+                                      .toList() ??
+                                  []
+                              : [])
+                          .firstWhereOrNull((element) => element.id == serbestRaporKodu);
+                      if (netFectDizaynList == null) return dialogManager.showAlertDialog("$serbestRaporKodu numaralı rapor bulunamadı.");
+                      Get.toNamed("/mainPage/serbestRaporlar", arguments: netFectDizaynList, preventDuplicates: false);
+                      // if (netFectDizaynList.)
+
                       return;
                     }
                   } else {
-                    if (!await launchUrl(Uri(path: uri))) {
+                    if (!await launchUrl(Uri.parse(uri), mode: LaunchMode.inAppWebView)) {
                       throw Exception("Could not launch $uri");
                     }
                   }
