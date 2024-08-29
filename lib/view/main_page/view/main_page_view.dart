@@ -182,7 +182,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           //* indexteki itemi burada alıyoruz
           final item = viewModel.items[index];
           return AnimationConfiguration.staggeredList(
-            key: Key(item.name.toString()),
+            key: Key(item.title),
             position: index,
             duration: const Duration(milliseconds: 500),
             delay: const Duration(milliseconds: 50),
@@ -222,20 +222,19 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         child: Row(
           // alignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: TextButton(
-                onPressed: () {
-                  scaffoldKey.currentState!.openEndDrawer();
-                },
-                child: Row(
-                  children: [
-                    (CacheManager.getAnaVeri!.userModel!.admin == "E" ? const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
-                        .marginOnly(right: 5),
-                    Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
-                  ],
-                ),
+            TextButton(
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
+              child: Row(
+                children: [
+                  (CacheManager.getAnaVeri!.userModel!.admin == "E" ? const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20) : IconHelper.smallIcon("User-Account"))
+                      .marginOnly(right: 5),
+                  Text(CacheManager.getAnaVeri!.userModel!.kuladi.toString(), style: theme.textTheme.bodyMedium),
+                ],
               ),
             ),
+            const Spacer(),
             TextButton(
               onPressed: () {
                 Get.toNamed("/entryCompany", arguments: false);
