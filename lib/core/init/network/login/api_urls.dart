@@ -103,6 +103,7 @@ class   ApiUrls {
   static const String getGunSonuRaporu = "Finans/GetGunSonuRaporu";
   static const String getAylikTutarlar = "Finans/GetAylikTutarlar";
   static const String getMasrafKodlari = "Finans/GetMasrafKodlari";
+  static const String getHizliTahsilatlar = "Finans/GetHizliTahsilatlar";
 
   //* Fatura
   static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";

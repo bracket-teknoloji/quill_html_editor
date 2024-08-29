@@ -59,6 +59,28 @@ mixin _$BankaHareketleriModel {
   set belgeno(String? value) => throw _privateConstructorUsedError;
   String? get dovizAdi => throw _privateConstructorUsedError;
   set dovizAdi(String? value) => throw _privateConstructorUsedError;
+  String? get cariKodu => throw _privateConstructorUsedError;
+  set cariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get cariAdi => throw _privateConstructorUsedError;
+  set cariAdi(String? value) => throw _privateConstructorUsedError;
+  String? get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
+  String? get kasaKodu => throw _privateConstructorUsedError;
+  set kasaKodu(String? value) => throw _privateConstructorUsedError;
+  String? get kasaAdi => throw _privateConstructorUsedError;
+  set kasaAdi(String? value) => throw _privateConstructorUsedError;
+  String? get entegreKasaKodu => throw _privateConstructorUsedError;
+  set entegreKasaKodu(String? value) => throw _privateConstructorUsedError;
+  String? get sozlesmeKodu => throw _privateConstructorUsedError;
+  set sozlesmeKodu(String? value) => throw _privateConstructorUsedError;
+  String? get projeKodu => throw _privateConstructorUsedError;
+  set projeKodu(String? value) => throw _privateConstructorUsedError;
+  String? get projeAciklama => throw _privateConstructorUsedError;
+  set projeAciklama(String? value) => throw _privateConstructorUsedError;
+  String? get plasiyerKodu => throw _privateConstructorUsedError;
+  set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
+  String? get plasiyerAdi => throw _privateConstructorUsedError;
+  set plasiyerAdi(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this BankaHareketleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -95,7 +117,18 @@ abstract class $BankaHareketleriModelCopyWith<$Res> {
       String? bankasubeKodu,
       String? subeAdi,
       String? belgeno,
-      String? dovizAdi});
+      String? dovizAdi,
+      String? cariKodu,
+      String? cariAdi,
+      String? belgeNo,
+      String? kasaKodu,
+      String? kasaAdi,
+      String? entegreKasaKodu,
+      String? sozlesmeKodu,
+      String? projeKodu,
+      String? projeAciklama,
+      String? plasiyerKodu,
+      String? plasiyerAdi});
 }
 
 /// @nodoc
@@ -133,6 +166,17 @@ class _$BankaHareketleriModelCopyWithImpl<$Res,
     Object? subeAdi = freezed,
     Object? belgeno = freezed,
     Object? dovizAdi = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? belgeNo = freezed,
+    Object? kasaKodu = freezed,
+    Object? kasaAdi = freezed,
+    Object? entegreKasaKodu = freezed,
+    Object? sozlesmeKodu = freezed,
+    Object? projeKodu = freezed,
+    Object? projeAciklama = freezed,
+    Object? plasiyerKodu = freezed,
+    Object? plasiyerAdi = freezed,
   }) {
     return _then(_value.copyWith(
       inckeyno: freezed == inckeyno
@@ -211,6 +255,50 @@ class _$BankaHareketleriModelCopyWithImpl<$Res,
           ? _value.dovizAdi
           : dovizAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kasaKodu: freezed == kasaKodu
+          ? _value.kasaKodu
+          : kasaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kasaAdi: freezed == kasaAdi
+          ? _value.kasaAdi
+          : kasaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      entegreKasaKodu: freezed == entegreKasaKodu
+          ? _value.entegreKasaKodu
+          : entegreKasaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sozlesmeKodu: freezed == sozlesmeKodu
+          ? _value.sozlesmeKodu
+          : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAciklama: freezed == projeAciklama
+          ? _value.projeAciklama
+          : projeAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerKodu: freezed == plasiyerKodu
+          ? _value.plasiyerKodu
+          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerAdi: freezed == plasiyerAdi
+          ? _value.plasiyerAdi
+          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -243,7 +331,18 @@ abstract class _$$BankaHareketleriModelImplCopyWith<$Res>
       String? bankasubeKodu,
       String? subeAdi,
       String? belgeno,
-      String? dovizAdi});
+      String? dovizAdi,
+      String? cariKodu,
+      String? cariAdi,
+      String? belgeNo,
+      String? kasaKodu,
+      String? kasaAdi,
+      String? entegreKasaKodu,
+      String? sozlesmeKodu,
+      String? projeKodu,
+      String? projeAciklama,
+      String? plasiyerKodu,
+      String? plasiyerAdi});
 }
 
 /// @nodoc
@@ -279,6 +378,17 @@ class __$$BankaHareketleriModelImplCopyWithImpl<$Res>
     Object? subeAdi = freezed,
     Object? belgeno = freezed,
     Object? dovizAdi = freezed,
+    Object? cariKodu = freezed,
+    Object? cariAdi = freezed,
+    Object? belgeNo = freezed,
+    Object? kasaKodu = freezed,
+    Object? kasaAdi = freezed,
+    Object? entegreKasaKodu = freezed,
+    Object? sozlesmeKodu = freezed,
+    Object? projeKodu = freezed,
+    Object? projeAciklama = freezed,
+    Object? plasiyerKodu = freezed,
+    Object? plasiyerAdi = freezed,
   }) {
     return _then(_$BankaHareketleriModelImpl(
       inckeyno: freezed == inckeyno
@@ -357,6 +467,50 @@ class __$$BankaHareketleriModelImplCopyWithImpl<$Res>
           ? _value.dovizAdi
           : dovizAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariAdi: freezed == cariAdi
+          ? _value.cariAdi
+          : cariAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kasaKodu: freezed == kasaKodu
+          ? _value.kasaKodu
+          : kasaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kasaAdi: freezed == kasaAdi
+          ? _value.kasaAdi
+          : kasaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      entegreKasaKodu: freezed == entegreKasaKodu
+          ? _value.entegreKasaKodu
+          : entegreKasaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sozlesmeKodu: freezed == sozlesmeKodu
+          ? _value.sozlesmeKodu
+          : sozlesmeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeKodu: freezed == projeKodu
+          ? _value.projeKodu
+          : projeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projeAciklama: freezed == projeAciklama
+          ? _value.projeAciklama
+          : projeAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerKodu: freezed == plasiyerKodu
+          ? _value.plasiyerKodu
+          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      plasiyerAdi: freezed == plasiyerAdi
+          ? _value.plasiyerAdi
+          : plasiyerAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -383,7 +537,18 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
       this.bankasubeKodu,
       this.subeAdi,
       this.belgeno,
-      this.dovizAdi})
+      this.dovizAdi,
+      this.cariKodu,
+      this.cariAdi,
+      this.belgeNo,
+      this.kasaKodu,
+      this.kasaAdi,
+      this.entegreKasaKodu,
+      this.sozlesmeKodu,
+      this.projeKodu,
+      this.projeAciklama,
+      this.plasiyerKodu,
+      this.plasiyerAdi})
       : super._();
 
   factory _$BankaHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -427,6 +592,28 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
   String? belgeno;
   @override
   String? dovizAdi;
+  @override
+  String? cariKodu;
+  @override
+  String? cariAdi;
+  @override
+  String? belgeNo;
+  @override
+  String? kasaKodu;
+  @override
+  String? kasaAdi;
+  @override
+  String? entegreKasaKodu;
+  @override
+  String? sozlesmeKodu;
+  @override
+  String? projeKodu;
+  @override
+  String? projeAciklama;
+  @override
+  String? plasiyerKodu;
+  @override
+  String? plasiyerAdi;
 
   /// Create a copy of BankaHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
@@ -465,7 +652,18 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
       String? bankasubeKodu,
       String? subeAdi,
       String? belgeno,
-      String? dovizAdi}) = _$BankaHareketleriModelImpl;
+      String? dovizAdi,
+      String? cariKodu,
+      String? cariAdi,
+      String? belgeNo,
+      String? kasaKodu,
+      String? kasaAdi,
+      String? entegreKasaKodu,
+      String? sozlesmeKodu,
+      String? projeKodu,
+      String? projeAciklama,
+      String? plasiyerKodu,
+      String? plasiyerAdi}) = _$BankaHareketleriModelImpl;
   _BankaHareketleriModel._() : super._();
 
   factory _BankaHareketleriModel.fromJson(Map<String, dynamic> json) =
@@ -528,6 +726,39 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
   @override
   String? get dovizAdi;
   set dovizAdi(String? value);
+  @override
+  String? get cariKodu;
+  set cariKodu(String? value);
+  @override
+  String? get cariAdi;
+  set cariAdi(String? value);
+  @override
+  String? get belgeNo;
+  set belgeNo(String? value);
+  @override
+  String? get kasaKodu;
+  set kasaKodu(String? value);
+  @override
+  String? get kasaAdi;
+  set kasaAdi(String? value);
+  @override
+  String? get entegreKasaKodu;
+  set entegreKasaKodu(String? value);
+  @override
+  String? get sozlesmeKodu;
+  set sozlesmeKodu(String? value);
+  @override
+  String? get projeKodu;
+  set projeKodu(String? value);
+  @override
+  String? get projeAciklama;
+  set projeAciklama(String? value);
+  @override
+  String? get plasiyerKodu;
+  set plasiyerKodu(String? value);
+  @override
+  String? get plasiyerAdi;
+  set plasiyerAdi(String? value);
 
   /// Create a copy of BankaHareketleriModel
   /// with the given fields replaced by the non-null parameter values.

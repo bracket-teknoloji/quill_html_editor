@@ -28,6 +28,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/view/cari_aktivite_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view/cari_haritasi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/cari_virman/view/cari_virman_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/hizli_tahsilat_kayitlari/view/hizli_tahsilat_kayitlari_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/view/belge_rehberi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_ara/view/hucre_ara_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/view/hucre_takibi_stoklar_view.dart";
@@ -368,6 +369,9 @@ class PickerApp extends StatelessWidget {
 
               //* * Tahsilat Ödeme Kayıtları
               GetPage(name: "/tahsilatOdemeKayitlari", page: TahsilatOdemeKayitlariView.new),
+
+              //* * Hızlı Tahsilat Kayıtları
+              GetPage(name: "/hizliTahsilatKayitlari", page: HizliTahsilatKayitlariView.new),
 
               //* * Hızlı İşlemler
               GetPage(name: "/krediKartiTahsilati", page: () => KrediKartiTahsilatiView(cariListesiModel: Get.arguments)),

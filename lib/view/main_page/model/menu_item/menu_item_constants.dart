@@ -172,7 +172,7 @@ class MenuItemConstants {
           ],
         ),
         GridItemModel.item(name: "finans_TahsilatKayitlari", title: "Tahsilat & Ödeme Kayıtları", route: "/mainPage/tahsilatOdemeKayitlari"),
-        GridItemModel.item(name: "finans_HizliTahsilatKayitlari", title: "Hızlı Tahsilat Kayıtları"),
+        GridItemModel.item(name: "finans_HizliTahsilatKayitlari", title: "Hızlı Tahsilat Kayıtları", route: "/mainPage/hizliTahsilatKayitlari"),
         GridItemModel.altmenu(
           name: null,
           title: "Hızlı İşlemler",

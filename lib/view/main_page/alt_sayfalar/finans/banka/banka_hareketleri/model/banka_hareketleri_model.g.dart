@@ -30,6 +30,17 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
       subeAdi: json['SUBE_ADI'] as String?,
       belgeno: json['BELGENO'] as String?,
       dovizAdi: json['DOVIZ_ADI'] as String?,
+      cariKodu: json['CARI_KODU'] as String?,
+      cariAdi: json['CARI_ADI'] as String?,
+      belgeNo: json['BELGE_NO'] as String?,
+      kasaKodu: json['KASA_KODU'] as String?,
+      kasaAdi: json['KASA_ADI'] as String?,
+      entegreKasaKodu: json['ENTEGRE_KASA_KODU'] as String?,
+      sozlesmeKodu: json['SOZLESME_KODU'] as String?,
+      projeKodu: json['PROJE_KODU'] as String?,
+      projeAciklama: json['PROJE_ACIKLAMA'] as String?,
+      plasiyerKodu: json['PLASIYER_KODU'] as String?,
+      plasiyerAdi: json['PLASIYER_ADI'] as String?,
     );
 
 Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
@@ -61,5 +72,16 @@ Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
   writeNotNull('SUBE_ADI', instance.subeAdi);
   writeNotNull('BELGENO', instance.belgeno);
   writeNotNull('DOVIZ_ADI', instance.dovizAdi);
+  writeNotNull('CARI_KODU', instance.cariKodu);
+  writeNotNull('CARI_ADI', instance.cariAdi);
+  writeNotNull('BELGE_NO', instance.belgeNo);
+  writeNotNull('KASA_KODU', instance.kasaKodu);
+  writeNotNull('KASA_ADI', instance.kasaAdi);
+  writeNotNull('ENTEGRE_KASA_KODU', instance.entegreKasaKodu);
+  writeNotNull('SOZLESME_KODU', instance.sozlesmeKodu);
+  writeNotNull('PROJE_KODU', instance.projeKodu);
+  writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
+  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull('PLASIYER_ADI', instance.plasiyerAdi);
   return val;
 }
