@@ -39,6 +39,8 @@ class BankaHareketleriModel with _$BankaHareketleriModel, NetworkManagerMixin {
     String? projeAciklama,
     String? plasiyerKodu,
     String? plasiyerAdi,
+        String? nakitmi,
+        int? taksitSayisi,
   }) = _BankaHareketleriModel;
 
   factory BankaHareketleriModel.fromJson(Map<String, dynamic> json) => _$BankaHareketleriModelFromJson(json);

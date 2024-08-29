@@ -41,6 +41,8 @@ _$BankaHareketleriModelImpl _$$BankaHareketleriModelImplFromJson(
       projeAciklama: json['PROJE_ACIKLAMA'] as String?,
       plasiyerKodu: json['PLASIYER_KODU'] as String?,
       plasiyerAdi: json['PLASIYER_ADI'] as String?,
+      nakitmi: json['NAKITMI'] as String?,
+      taksitSayisi: (json['TAKSIT_SAYISI'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
@@ -83,5 +85,7 @@ Map<String, dynamic> _$$BankaHareketleriModelImplToJson(
   writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
   writeNotNull('PLASIYER_ADI', instance.plasiyerAdi);
+  writeNotNull('NAKITMI', instance.nakitmi);
+  writeNotNull('TAKSIT_SAYISI', instance.taksitSayisi);
   return val;
 }

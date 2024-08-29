@@ -1,8 +1,20 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
+import "package:picker/core/base/state/base_state.dart";
+import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_tahsilat_kayitlari/view_model/hizli_tahsilat_kayitlari_view_model.dart";
 
 final class HizliTahsilatKayitlariView extends StatefulWidget {
@@ -12,16 +24,22 @@ final class HizliTahsilatKayitlariView extends StatefulWidget {
   State<HizliTahsilatKayitlariView> createState() => _HizliTahsilatKayitlariViewState();
 }
 
-final class _HizliTahsilatKayitlariViewState extends State<HizliTahsilatKayitlariView> {
+final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayitlariView> {
+  final HizliTahsilatKayitlariViewModel viewModel = HizliTahsilatKayitlariViewModel();
+  late final ScrollController scrollController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;
-  final HizliTahsilatKayitlariViewModel viewModel = HizliTahsilatKayitlariViewModel();
+  late final TextEditingController searchController;
 
   @override
   void initState() {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async => await viewModel.getData());
+    searchController = TextEditingController();
+    scrollController = ScrollController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getData();
+    });
     super.initState();
   }
 
@@ -29,23 +47,117 @@ final class _HizliTahsilatKayitlariViewState extends State<HizliTahsilatKayitlar
   void dispose() {
     baslangicTarihiController.dispose();
     bitisTarihiController.dispose();
+    searchController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Hızlı Tahsilat Kayıtları"),
+        appBar: appBar(),
+        body: body().paddingAll(UIHelper.lowSize),
+      );
+
+  AppBar appBar() => AppBar(
+        title: Observer(
+          builder: (_) => viewModel.isSearchBarOpen
+              ? CustomAppBarTextField(
+                  controller: searchController,
+                  onChanged: viewModel.setSearchText,
+                )
+              : AppBarTitle(title: "Hızlı Tahsilat Kayıtları", subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0"),
         ),
-        body: Column(
-          children: [
-            RaporFiltreDateTimeBottomSheetView(filterOnChanged: (index) {}, baslangicTarihiController: baslangicTarihiController, bitisTarihiController: bitisTarihiController),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: (item) => Text(item.bankaAdi ?? "")),
+        actions: [
+          IconButton(
+            onPressed: viewModel.changeSearchBarStatus,
+            icon: Observer(
+              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
+            ),
+          ),
+        ],
+      );
+
+  Column body() => Column(
+        children: [
+          RaporFiltreDateTimeBottomSheetView(
+            filterOnChanged: (index) async {
+              viewModel.setBaslangicTarihi(baslangicTarihiController.text);
+              viewModel.setBitisTarihi(bitisTarihiController.text);
+              await viewModel.resetList();
+            },
+            baslangicTarihiController: baslangicTarihiController,
+            bitisTarihiController: bitisTarihiController,
+          ),
+          Expanded(
+            child: Observer(
+              builder: (_) => RefreshableListView(
+                onRefresh: viewModel.resetList,
+                items: viewModel.filteredObservableList,
+                itemBuilder: hizliTahsilatKayitlariCard,
               ),
             ),
-          ],
+          ),
+        ],
+      );
+
+  Widget hizliTahsilatKayitlariCard(BankaHareketleriModel item) => Card(
+        child: ListTile(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(item.tarih?.toDateString ?? ""),
+              //TODO döviz tipinin attribute'unu sor.
+              Text(item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)),
+            ],
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(item.cariAdi ?? ""),
+              Text("Belge no: ${item.belgeNo}").yetkiVarMi(item.belgeNo != null),
+              CustomLayoutBuilder.divideInHalf(
+                children: [
+                  Text("Cari kodu: ${item.cariKodu}"),
+                  Text("Kasa kodu: ${item.kasaKodu}"),
+                  Text("Nakit/KK: ${item.nakitmi == "E" ? "Nakit" : "KK"}"),
+                  // Text("Cari kodu: ${item.na}"),
+                  Text("Proje kodu: ${item.projeKodu}").yetkiVarMi(yetkiController.projeUygulamasiAcikMi && item.projeKodu != null),
+                  // Text("Döviz tipi: ${item.dovizTipi}"),
+                ],
+              ),
+              Text(item.aciklama ?? ""),
+            ],
+          ),
+          onTap: () async {
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: item.cariAdi ?? item.cariKodu ?? "",
+              children: [
+                BottomSheetModel(
+                  title: loc.generalStrings.delete,
+                  iconWidget: Icons.delete_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    dialogManager.showAreYouSureDialog(() async {
+                      final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
+                      if (result.isSuccess) {
+                        await viewModel.resetList();
+                        dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                      }
+                    });
+                  },
+                ),
+                BottomSheetModel(
+                  title: "Cari İşlemleri",
+                  iconWidget: Icons.person_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    return dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [item.cariKodu ?? ""])));
+                  },
+                ),
+              ],
+            );
+          },
         ),
       );
 }

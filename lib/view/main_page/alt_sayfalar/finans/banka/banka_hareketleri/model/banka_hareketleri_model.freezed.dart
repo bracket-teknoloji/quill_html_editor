@@ -81,6 +81,10 @@ mixin _$BankaHareketleriModel {
   set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
   String? get plasiyerAdi => throw _privateConstructorUsedError;
   set plasiyerAdi(String? value) => throw _privateConstructorUsedError;
+  String? get nakitmi => throw _privateConstructorUsedError;
+  set nakitmi(String? value) => throw _privateConstructorUsedError;
+  int? get taksitSayisi => throw _privateConstructorUsedError;
+  set taksitSayisi(int? value) => throw _privateConstructorUsedError;
 
   /// Serializes this BankaHareketleriModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -128,7 +132,9 @@ abstract class $BankaHareketleriModelCopyWith<$Res> {
       String? projeKodu,
       String? projeAciklama,
       String? plasiyerKodu,
-      String? plasiyerAdi});
+      String? plasiyerAdi,
+      String? nakitmi,
+      int? taksitSayisi});
 }
 
 /// @nodoc
@@ -177,6 +183,8 @@ class _$BankaHareketleriModelCopyWithImpl<$Res,
     Object? projeAciklama = freezed,
     Object? plasiyerKodu = freezed,
     Object? plasiyerAdi = freezed,
+    Object? nakitmi = freezed,
+    Object? taksitSayisi = freezed,
   }) {
     return _then(_value.copyWith(
       inckeyno: freezed == inckeyno
@@ -299,6 +307,14 @@ class _$BankaHareketleriModelCopyWithImpl<$Res,
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      nakitmi: freezed == nakitmi
+          ? _value.nakitmi
+          : nakitmi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taksitSayisi: freezed == taksitSayisi
+          ? _value.taksitSayisi
+          : taksitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -342,7 +358,9 @@ abstract class _$$BankaHareketleriModelImplCopyWith<$Res>
       String? projeKodu,
       String? projeAciklama,
       String? plasiyerKodu,
-      String? plasiyerAdi});
+      String? plasiyerAdi,
+      String? nakitmi,
+      int? taksitSayisi});
 }
 
 /// @nodoc
@@ -389,6 +407,8 @@ class __$$BankaHareketleriModelImplCopyWithImpl<$Res>
     Object? projeAciklama = freezed,
     Object? plasiyerKodu = freezed,
     Object? plasiyerAdi = freezed,
+    Object? nakitmi = freezed,
+    Object? taksitSayisi = freezed,
   }) {
     return _then(_$BankaHareketleriModelImpl(
       inckeyno: freezed == inckeyno
@@ -511,6 +531,14 @@ class __$$BankaHareketleriModelImplCopyWithImpl<$Res>
           ? _value.plasiyerAdi
           : plasiyerAdi // ignore: cast_nullable_to_non_nullable
               as String?,
+      nakitmi: freezed == nakitmi
+          ? _value.nakitmi
+          : nakitmi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taksitSayisi: freezed == taksitSayisi
+          ? _value.taksitSayisi
+          : taksitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -548,7 +576,9 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
       this.projeKodu,
       this.projeAciklama,
       this.plasiyerKodu,
-      this.plasiyerAdi})
+      this.plasiyerAdi,
+      this.nakitmi,
+      this.taksitSayisi})
       : super._();
 
   factory _$BankaHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -614,6 +644,10 @@ class _$BankaHareketleriModelImpl extends _BankaHareketleriModel {
   String? plasiyerKodu;
   @override
   String? plasiyerAdi;
+  @override
+  String? nakitmi;
+  @override
+  int? taksitSayisi;
 
   /// Create a copy of BankaHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
@@ -663,7 +697,9 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
       String? projeKodu,
       String? projeAciklama,
       String? plasiyerKodu,
-      String? plasiyerAdi}) = _$BankaHareketleriModelImpl;
+      String? plasiyerAdi,
+      String? nakitmi,
+      int? taksitSayisi}) = _$BankaHareketleriModelImpl;
   _BankaHareketleriModel._() : super._();
 
   factory _BankaHareketleriModel.fromJson(Map<String, dynamic> json) =
@@ -759,6 +795,12 @@ abstract class _BankaHareketleriModel extends BankaHareketleriModel {
   @override
   String? get plasiyerAdi;
   set plasiyerAdi(String? value);
+  @override
+  String? get nakitmi;
+  set nakitmi(String? value);
+  @override
+  int? get taksitSayisi;
+  set taksitSayisi(int? value);
 
   /// Create a copy of BankaHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
