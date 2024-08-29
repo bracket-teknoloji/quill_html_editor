@@ -190,6 +190,7 @@ class AppThemeDark extends AppTheme {
         ),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
+          scrolledUnderElevation: 0,
           systemOverlayStyle: SystemUiOverlayStyle(
             // statusBarColor: colorManager.onPrimary,
             statusBarIconBrightness: isIOS ? Brightness.dark : Brightness.light,

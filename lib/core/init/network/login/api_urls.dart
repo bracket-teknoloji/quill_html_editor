@@ -1,4 +1,4 @@
-class   ApiUrls {
+class ApiUrls {
   static const String createSession = "General/CreateSessionV3";
   static const String deleteDovizKuru = "General/DeleteDovizKuru";
   static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
@@ -104,6 +104,7 @@ class   ApiUrls {
   static const String getAylikTutarlar = "Finans/GetAylikTutarlar";
   static const String getMasrafKodlari = "Finans/GetMasrafKodlari";
   static const String getHizliTahsilatlar = "Finans/GetHizliTahsilatlar";
+  static const String deleteHizliTahsilat = "Finans/DeleteHizliTahsilat";
 
   //* Fatura
   static const String belgeDurumunuDegistir = "Fatura/BelgeDurumunuDegistir";
