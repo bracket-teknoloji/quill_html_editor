@@ -51,7 +51,7 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
       )
       .toList();
   @observable
-  UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel(tipi: CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi);
+  UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel(tipi: CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi, grupla: CacheManager.getProfilParametre.urunGrubunaGoreGruplansin ? "E" : "H");
 
   @observable
   List<BaseProjeModel>? projeList;
@@ -89,6 +89,7 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
   @action
   void setGruplansinValue(bool value) {
     gruplansinValue = value;
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(urunGrubunaGoreGruplansin: value));
     value ? model.grupla = "E" : model.grupla = "H";
   }
 

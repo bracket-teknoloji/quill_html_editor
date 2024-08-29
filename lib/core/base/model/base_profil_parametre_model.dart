@@ -39,6 +39,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
     @Default({}) Map<String, dynamic> stokGorunecekEkstraAlanlar,
     @Default(0) int stokListesiGridSayisi,
     @Default("T") String urunGrubunaGoreSatisRaporTipi,
+    @Default(false) bool urunGrubunaGoreGruplansin,
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor

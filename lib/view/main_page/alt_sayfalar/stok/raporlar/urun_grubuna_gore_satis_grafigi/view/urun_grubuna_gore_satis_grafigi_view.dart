@@ -112,101 +112,89 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
               baslangicTarihiController: baslangicTarihiController,
               bitisTarihiController: bitisTarihiController,
             ),
-            Row(
+            CustomLayoutBuilder.divideInHalf(
               children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Grup No",
-                    controller: grupNoController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                CustomTextField(
+                  labelText: "Grup No",
+                  controller: grupNoController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      context,
+                      title: "Grup No",
+                      children: viewModel.grupNoBottomSheetList,
+                    );
+                    if (result != null) {
+                      grupNoController.text = result;
+                      viewModel.model.grupNo = int.tryParse(result.split("").last);
+                      viewModel.getData();
+                    }
+                  },
+                ),
+                CustomTextField(
+                  labelText: "Cari",
+                  controller: cariController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await Get.toNamed(
+                      "/mainPage/cariListesi",
+                      arguments: true,
+                    );
+                    if (result != null) {
+                      cariController.text = (result as CariListesiModel).cariKodu ?? "";
+                      viewModel.model.cariKodu = result.cariKodu ?? "";
+                      viewModel.getData();
+                    }
+                  },
+                ),
+                CustomTextField(
+                  labelText: "Plasiyer",
+                  controller: plasiyerController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async {
+                    final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
+                    if (plasiyerList != null) {
+                      final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
-                        title: "Grup No",
-                        children: viewModel.grupNoBottomSheetList,
+                        title: "Plasiyer",
+                        children: plasiyerList
+                            .map(
+                              (e) => BottomSheetModel(
+                                title: e.plasiyerAciklama ?? "",
+                                value: e,
+                              ),
+                            )
+                            .toList(),
                       );
                       if (result != null) {
-                        grupNoController.text = result;
-                        viewModel.model.grupNo = int.tryParse(result.split("").last);
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.model.arrPlasiyerKodu = [
+                          result.plasiyerKodu ?? "",
+                        ];
                         viewModel.getData();
                       }
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Cari",
-                    controller: cariController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = await Get.toNamed(
-                        "/mainPage/cariListesi",
-                        arguments: true,
-                      );
-                      if (result != null) {
-                        cariController.text = (result as CariListesiModel).cariKodu ?? "";
-                        viewModel.model.cariKodu = result.cariKodu ?? "";
-                        viewModel.getData();
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: plasiyerController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onTap: () async {
-                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
-                      if (plasiyerList != null) {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Plasiyer",
-                          children: plasiyerList
-                              .map(
-                                (e) => BottomSheetModel(
-                                  title: e.plasiyerAciklama ?? "",
-                                  value: e,
-                                ),
-                              )
-                              .toList(),
-                        );
-                        if (result != null) {
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
-                          viewModel.model.arrPlasiyerKodu = [
-                            result.plasiyerKodu ?? "",
-                          ];
-                          viewModel.getData();
-                        }
-                      }
-                    },
-                  ),
+                    }
+                  },
                 ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Proje",
-                    controller: projeController,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                    onClear: () => viewModel.setProje(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                      if (result != null) {
-                        projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                        viewModel.model.projeKodu = result.projeKodu ?? "";
-                        viewModel.setProje(result);
-                        viewModel.getData();
-                      }
-                    },
-                  ),
+                CustomTextField(
+                  labelText: "Proje",
+                  controller: projeController,
+                  readOnly: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  onClear: () => viewModel.setProje(null),
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                    if (result != null) {
+                      projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                      viewModel.model.projeKodu = result.projeKodu ?? "";
+                      viewModel.setProje(result);
+                      viewModel.getData();
+                    }
+                  },
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
               ],
             ),
@@ -240,31 +228,35 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                 }
               },
             ),
-            CustomLayoutBuilder.divideInHalf(
+            Column(
               children: [
-                CustomWidgetWithLabel(
-                  child: Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      contentPadding: UIHelper.midPadding,
-                      value: viewModel.irsDahilValue,
-                      onChanged: (value) {
-                        viewModel.setIrsDahilValue(value);
-                        viewModel.getData();
-                      },
-                      title: const Text("İrsaliye Dahil"),
+                Card(
+                  child: CustomWidgetWithLabel(
+                    child: Observer(
+                      builder: (_) => SwitchListTile.adaptive(
+                        contentPadding: UIHelper.midPadding,
+                        value: viewModel.irsDahilValue,
+                        onChanged: (value) {
+                          viewModel.setIrsDahilValue(value);
+                          viewModel.getData();
+                        },
+                        title: const Text("İrsaliye Dahil"),
+                      ),
                     ),
                   ),
                 ),
-                CustomWidgetWithLabel(
-                  child: Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      contentPadding: UIHelper.midPadding,
-                      value: viewModel.gruplansinValue,
-                      onChanged: (value) {
-                        viewModel.setGruplansinValue(value);
-                        viewModel.getData();
-                      },
-                      title: const Text("Küçük Değerler Gruplansın"),
+                Card(
+                  child: CustomWidgetWithLabel(
+                    child: Observer(
+                      builder: (_) => SwitchListTile.adaptive(
+                        contentPadding: UIHelper.midPadding,
+                        value: viewModel.gruplansinValue,
+                        onChanged: (value) {
+                          viewModel.setGruplansinValue(value);
+                          viewModel.getData();
+                        },
+                        title: const Text("Küçük Değerler Gruplansın"),
+                      ),
                     ),
                   ),
                 ),

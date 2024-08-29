@@ -56,6 +56,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           (json['STOK_LISTESI_GRID_SAYISI'] as num?)?.toInt() ?? 0,
       urunGrubunaGoreSatisRaporTipi:
           json['URUN_GRUBUNA_GORE_SATIS_RAPOR_TIPI'] as String? ?? "T",
+      urunGrubunaGoreGruplansin:
+          json['URUN_GRUBUNA_GORE_GRUPLANSIN'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -98,6 +100,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   val['STOK_LISTESI_GRID_SAYISI'] = instance.stokListesiGridSayisi;
   val['URUN_GRUBUNA_GORE_SATIS_RAPOR_TIPI'] =
       instance.urunGrubunaGoreSatisRaporTipi;
+  val['URUN_GRUBUNA_GORE_GRUPLANSIN'] = instance.urunGrubunaGoreGruplansin;
   return val;
 }
 
