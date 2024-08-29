@@ -170,8 +170,11 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
     if (!viewModel.gridItemModelList.any((element) => element.title == menu.value)) {
       return null;
     }
-    return (viewModel.gridItemModelList.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList() ?? []) +
-        (getSerbestRaporList(menu) ?? []);
+    if (menu == IslemTipiEnum.cariRapor || menu == IslemTipiEnum.stokRapor) {
+      return (viewModel.gridItemModelList.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList() ?? []) +
+          (getSerbestRaporList(menu) ?? []);
+    }
+    return viewModel.gridItemModelList.where((element) => element.title == menu.value).firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").toList() ?? [];
   }
 
   List<GridItemModel>? getSerbestRaporList(IslemTipiEnum menu) {
