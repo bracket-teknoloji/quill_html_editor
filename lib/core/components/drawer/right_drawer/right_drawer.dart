@@ -77,8 +77,10 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     final DrawerModel item = items[index];
                     return Card(
                       child: ListTile(
-                        dense: true,
+                        // dense: true,
                         onTap: item.onTap,
+
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                         title: Text(
                           items[index].title,
                           style: theme.textTheme.bodyMedium,

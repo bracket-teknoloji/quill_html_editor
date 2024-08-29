@@ -76,7 +76,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
             // ),
             if (list.ext.isNullOrEmpty)
               Expanded(
-                flex: 4,
+                flex: 6,
                 child: Column(
                   children: [
                     Icon(
@@ -95,64 +95,70 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
               )
             else
               Expanded(
-                flex: 4,
-                child: ReorderableListView.builder(
-                  primary: false,
-                  onReorder: (oldIndex, newIndex) {
-                    setState(() {
-                      if (newIndex > oldIndex) {
-                        newIndex -= 1;
-                      }
-                      final item = list.elementAt(oldIndex);
-                      final item2 = list.elementAt(newIndex);
-                      list.removeAt(oldIndex);
-                      list.insert(newIndex, item);
-                      CacheManager.setFavorilerSira(oldIndex, item2);
-                      CacheManager.setFavorilerSira(newIndex, item);
-                    });
-                  },
-                  key: const Key("Favoriler"),
-                  itemBuilder: (context, index) {
-                    final value = list[index];
-                    return Card(
-                      key: ValueKey(index),
-                      child: ListTile(
-                        contentPadding: UIHelper.midPaddingHorizontal,
-                        enabled: liste.contains(value),
-                        title: Text(
-                          value.title.toString(),
+                flex: 7,
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    canvasColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                  ),
+                  child: ReorderableListView.builder(
+                    primary: false,
+                    onReorder: (oldIndex, newIndex) {
+                      setState(() {
+                        if (newIndex > oldIndex) {
+                          newIndex -= 1;
+                        }
+                        final item = list.elementAt(oldIndex);
+                        final item2 = list.elementAt(newIndex);
+                        list.removeAt(oldIndex);
+                        list.insert(newIndex, item);
+                        CacheManager.setFavorilerSira(oldIndex, item2);
+                        CacheManager.setFavorilerSira(newIndex, item);
+                      });
+                    },
+                    key: const Key("Favoriler"),
+                    itemBuilder: (context, index) {
+                      final value = list[index];
+                      return Card(
+                        key: ValueKey(index),
+                        child: ListTile(
+                          contentPadding: UIHelper.midPaddingHorizontal,
+                          enabled: liste.contains(value),
+                          title: Text(
+                            value.title.toString(),
+                          ),
+                          leading: IconHelper.middleMenuIcon(value.icon.toString(), color: Color(value.color!)),
+                          trailing: isEditing
+                              ? IconButton(
+                                  style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
+                                  onPressed: () {
+                                    setState(() {
+                                      list.removeAt(index);
+                                      CacheManager.setFavorilerList(list);
+                                    });
+                                  },
+                                  icon: const Icon(Icons.delete_outline),
+                                )
+                              : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
+                          onTap: () {
+                            if (mounted) {
+                              widget.scaffoldKey.currentState!.closeDrawer();
+                            }
+                            // Navigator.of(context).pop();
+                            if (value.arguments != null) {
+                              Get.toNamed(value.onTap.toString(), arguments: value.arguments);
+                              // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
+                            } else {
+                              Get.toNamed(value.onTap.toString());
+                              // Navigator.pushNamed(context, value.onTap.toString());
+                            }
+                          },
                         ),
-                        leading: IconHelper.smallMenuIcon(value.icon.toString(), color: Color(value.color!)),
-                        trailing: isEditing
-                            ? IconButton(
-                                style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
-                                onPressed: () {
-                                  setState(() {
-                                    list.removeAt(index);
-                                    CacheManager.setFavorilerList(list);
-                                  });
-                                },
-                                icon: const Icon(Icons.delete_outline).paddingOnly(left: UIHelper.lowSize),
-                              )
-                            : const Icon(Icons.drag_handle).paddingOnly(right: UIHelper.lowSize),
-                        onTap: () {
-                          if (mounted) {
-                            widget.scaffoldKey.currentState!.closeDrawer();
-                          }
-                          // Navigator.of(context).pop();
-                          if (value.arguments != null) {
-                            Get.toNamed(value.onTap.toString(), arguments: value.arguments);
-                            // Navigator.pushNamed(context, value.onTap.toString(), arguments: value.arguments);
-                          } else {
-                            Get.toNamed(value.onTap.toString());
-                            // Navigator.pushNamed(context, value.onTap.toString());
-                          }
-                        },
-                      ),
-                    );
-                  },
-                  itemCount: list.length,
-                ).paddingAll(UIHelper.lowSize),
+                      );
+                    },
+                    itemCount: list.length,
+                  ).paddingAll(UIHelper.lowSize),
+                ),
               ),
           ],
         ),
