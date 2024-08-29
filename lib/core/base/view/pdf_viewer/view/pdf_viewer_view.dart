@@ -154,21 +154,32 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   final String uri = details.uri;
                   if (uri.startsWith("https://picker.link/")) {
                     if (uri.contains("CARI$urlEncode")) {
-                      final String cariKodu = uriSplitter(uri, "CARI");
+                      final String cariKodu = uriSplitter(uri);
                       return dialogManager.showCariGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
                     }
+                    if (uri.contains("CARI_HAR$urlEncode") || uri.contains("CARIHAR$urlEncode")) {
+                      final String cariKodu = uriSplitter(uri);
+                      return Get.toNamed("mainPage/cariHareketleri", arguments: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
+                    }
                     if (uri.contains("STOK$urlEncode")) {
-                      final String stokKodu = uriSplitter(uri, "STOK");
+                      final String stokKodu = uriSplitter(uri);
                       return dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
                     }
+                    if (uri.contains("STOK_HAR$urlEncode") || uri.contains("STOKHAR$urlEncode")) {
+                      final String stokKodu = uriSplitter(uri);
+                      return Get.toNamed("mainPage/stokHareketleri", arguments: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
+                    }
                     if (uri.contains("CARI_RAPORLAR")) {
-                      return dialogManager.showCariRaporlarGridViewDialog();
+                      final String cariKodu = uriSplitter(uri);
+                      return dialogManager.showCariRaporlarGridViewDialog(model: await networkManager.getCariModel(CariRequestModel(kod: [cariKodu])));
                     }
                     if (uri.contains("STOK_RAPORLAR")) {
-                      return dialogManager.showStokRaporlarGridViewDialog();
+                      final String stokKodu = uriSplitter(uri);
+
+                      return dialogManager.showStokRaporlarGridViewDialog(model: await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: stokKodu)));
                     }
                     if (uri.contains("SERBEST_RAPOR")) {
-                      final int? serbestRaporKodu = int.tryParse(uriSplitter(uri, "SERBEST_RAPOR"));
+                      final int? serbestRaporKodu = int.tryParse(uriSplitter(uri));
 
                       final NetFectDizaynList? netFectDizaynList = (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
                               ? parametreModel.netFectDizaynList
@@ -221,7 +232,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         },
       );
 
-  String uriSplitter(String details, String tipi) => details.split("$tipi$urlEncode")[1];
+  String uriSplitter(String details) => details.split(urlEncode)[1];
 
   BottomAppBar bottomAppBar() => BottomAppBar(
         child: Row(

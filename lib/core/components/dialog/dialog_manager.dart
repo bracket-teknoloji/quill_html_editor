@@ -282,11 +282,11 @@ class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  void showCariRaporlarGridViewDialog() =>
-      _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showCariRaporlarGridViewDialog({CariListesiModel? model}) =>
+      _baseDialog(body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  void showStokRaporlarGridViewDialog() =>
-      _baseDialog(body: const CustomAnimatedGridView(title: "Raporlar", islemTipi: IslemTipiEnum.stokRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showStokRaporlarGridViewDialog({StokListesiModel? model}) =>
+      _baseDialog(body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.stokRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
   void showCariSerbestRaporlarGridViewDialog() =>
       _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
