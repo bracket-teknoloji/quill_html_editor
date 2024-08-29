@@ -80,28 +80,25 @@ class BottomSheetDialogManager {
       ),
       context: context,
       builder: (context) => SafeArea(
-        child: Padding(
-          padding: MediaQuery.of(context).viewInsets,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ListTile(
-                contentPadding: UIHelper.lowPadding,
-                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-                trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-                splashColor: Colors.transparent,
-              ),
-              const Divider(
-                thickness: 2,
-                endIndent: 0,
-                indent: 0,
-              ).paddingAll(UIHelper.midSize),
-              Flexible(
-                child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              contentPadding: UIHelper.lowPadding,
+              title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+              trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+              splashColor: Colors.transparent,
+            ).paddingSymmetric(vertical: UIHelper.lowSize),
+            const Divider(
+              thickness: 2,
+              endIndent: 0,
+              indent: 0,
+            ),
+            Flexible(
+              child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
+            ),
+          ],
         ),
       ),
     );
@@ -267,7 +264,7 @@ class BottomSheetDialogManager {
                   title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
                   trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
                   splashColor: Colors.transparent,
-                ).paddingSymmetric(vertical: UIHelper.midSize),
+                ).paddingSymmetric(vertical: UIHelper.lowSize),
                 const Divider(
                   thickness: 2,
                   endIndent: 0,

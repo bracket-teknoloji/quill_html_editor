@@ -21,7 +21,7 @@ class AppBarTitle extends StatelessWidget {
                 title ?? "",
                 speed: const Duration(milliseconds: 30),
                 curve: Curves.linear,
-                cursor: "|",
+                cursor: "",
               ),
             ],
             totalRepeatCount: 1,

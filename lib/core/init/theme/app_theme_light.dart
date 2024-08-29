@@ -60,6 +60,15 @@ class AppThemeLight extends AppTheme {
           decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(50))),
           textStyle: TextStyle(color: colorManager.onSurface, fontSize: 12),
         ),
+        switchTheme: SwitchThemeData(
+          thumbIcon: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+            if (states.contains(WidgetState.selected)) {
+              return const Icon(Icons.check);
+            }
+            return const Icon(Icons.close_outlined);
+          }),
+          // trackOutlineColor: WidgetStatePropertyAll(colorManager.onPrimaryFixedVariant),
+        ),
         dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
