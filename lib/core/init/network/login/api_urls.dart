@@ -143,6 +143,7 @@ class ApiUrls {
   static const String deleteUSK = "Uretim/DeleteUSK";
   static const String getIsemriHammaddeTakipDetay = "Uretim/GetIsemriHammaddeTakipDetay";
   static const String getIsemriHammaddeTakipListe = "Uretim/GetIsemriHammaddeTakipListe";
+  static const String isemriHammaddeTakipIslem = "Uretim/IsemriHammaddeTakipIslem";
   static const String saveIsEmri = "Uretim/SaveIsEmri";
 
   //* Sayım
