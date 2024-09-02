@@ -107,7 +107,7 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
             children: [
               Text(item.tarih?.toDateString ?? ""),
               //TODO döviz tipinin attribute'unu sor.
-              Text(item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)),
+              Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
             ],
           ),
           subtitle: Column(
