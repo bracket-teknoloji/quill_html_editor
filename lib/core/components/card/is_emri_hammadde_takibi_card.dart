@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -19,6 +20,9 @@ final class _IsEmriHammaddeTakibiCardState extends BaseState<IsEmriHammaddeTakib
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(
+          onTap: () async {
+            await Get.toNamed("mainPage/isEmriHammaddeTakibiDetay", arguments: model);
+          },
           leading: CircleAvatar(
             child: Text(model.makineKodu ?? ""),
           ),

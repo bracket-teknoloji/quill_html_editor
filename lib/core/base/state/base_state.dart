@@ -11,10 +11,10 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
 
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
-  DialogManager get dialogManager => DialogManager();
-  BottomSheetDialogManager get bottomSheetDialogManager => BottomSheetDialogManager();
-  NetworkManager get networkManager => NetworkManager();
-  YetkiController get yetkiController => YetkiController();
+  final DialogManager dialogManager = DialogManager();
+  final BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();
+  final NetworkManager networkManager = NetworkManager();
+  final YetkiController yetkiController = YetkiController();
   ParamModel get parametreModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
   UserModel get userModel => CacheManager.getAnaVeri?.userModel ?? UserModel();
   ProfilYetkiModel get profilYetkiModel => CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();

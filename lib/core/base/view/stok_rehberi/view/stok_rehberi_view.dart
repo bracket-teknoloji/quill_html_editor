@@ -644,22 +644,15 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     // if (filteredList?.every((element) => element.kod3 == null) ?? false) viewModel.changeArrKod3(null);
     // if (filteredList?.every((element) => element.kod4 == null) ?? false) viewModel.changeArrKod4(null);
     // if (filteredList?.every((element) => element.kod5 == null) ?? false) viewModel.changeArrKod5(null);
-    switch (index) {
-      case 0:
-        return filteredList?.where((e) => e.grupKodu != null).toList();
-      case 1:
-        return filteredList?.where((e) => e.kod1 != null).toList();
-      case 2:
-        return filteredList?.where((e) => e.kod2 != null).toList();
-      case 3:
-        return filteredList?.where((e) => e.kod3 != null).toList();
-      case 4:
-        return filteredList?.where((e) => e.kod4 != null).toList();
-      case 5:
-        return filteredList?.where((e) => e.kod5 != null).toList();
-      default:
-        return null;
-    }
+    return switch (index) {
+      0 => filteredList?.where((e) => e.grupKodu != null).toList(),
+      1 => filteredList?.where((e) => e.kod1 != null).toList(),
+      2 => filteredList?.where((e) => e.kod2 != null).toList(),
+      3 => filteredList?.where((e) => e.kod3 != null).toList(),
+      4 => filteredList?.where((e) => e.kod4 != null).toList(),
+      5 => filteredList?.where((e) => e.kod5 != null).toList(),
+      _ => null,
+    };
   }
 
   Future<void> grupKoduOnClear(int value) async {

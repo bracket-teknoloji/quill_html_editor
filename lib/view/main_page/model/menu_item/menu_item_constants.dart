@@ -64,7 +64,6 @@ class MenuItemConstants {
         GridItemModel.item(name: "cari_CariListesi", title: "Cari Listesi", route: "/mainPage/cariListesi", arguments: false),
         GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları", route: "/mainPage/cariAktivite"),
         GridItemModel.item(name: "cari_Harita", title: "Cari Haritası", route: "/mainPage/cariHaritasi"),
-        //😳 GridItemModel.item(name: "cari_Aktivite", title: "Cari Aktivite Kayıtları"),
         GridItemModel.altmenu(
           name: "cari_Raporlar",
           title: "Raporlar",
@@ -79,7 +78,8 @@ class MenuItemConstants {
             GridItemModel.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
             GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
             GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
-            GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi").yetkiVarMi(AccountModel.instance.adminMi),
+            GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi")
+                .yetkiVarMi(AccountModel.instance.adminMi),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
           ].whereType<GridItemModel>().toList(),
         ),

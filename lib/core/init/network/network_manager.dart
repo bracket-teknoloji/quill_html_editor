@@ -169,7 +169,7 @@ class NetworkManager {
     bool showError = true,
   }) async {
     GenericResponseModel<T> responseModel = GenericResponseModel<T>();
-    dynamic response;
+    Response<Map<String, dynamic>> response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Yükleniyor...");
     }
@@ -190,7 +190,7 @@ class NetworkManager {
         ),
         data: data,
       );
-      responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+      responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       if (showLoading) {
         DialogManager().hideAlertDialog;
@@ -230,7 +230,7 @@ class NetworkManager {
     bool showError = true,
   }) async {
     GenericResponseModel<T> responseModel = GenericResponseModel<T>();
-    dynamic response;
+    Response<Map<String, dynamic>> response;
     if (showLoading) {
       DialogManager().showLoadingDialog("Lütfen Bekleyiniz...");
     }
@@ -252,7 +252,7 @@ class NetworkManager {
         ),
         data: data,
       );
-      responseModel = GenericResponseModel<T>.fromJson(response.data, bodyModel);
+      responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
       if (showLoading) {
         DialogManager().hideAlertDialog;
