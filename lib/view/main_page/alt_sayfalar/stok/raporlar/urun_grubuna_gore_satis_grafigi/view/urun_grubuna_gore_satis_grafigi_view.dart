@@ -196,71 +196,82 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                     }
                   },
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                CustomTextField(
+                  labelText: "Rapor Tipi",
+                  controller: raporTipiController,
+                  isMust: true,
+                  readOnly: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi ?? "")),
+                  suffixMore: true,
+                  onTap: () async {
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry<String, String>>(
+                      context,
+                      title: "Rapor Tipi",
+                      groupValue: viewModel.model.tipi,
+                      children: viewModel.raporTipi.entries
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: e.key,
+                              value: e,
+                              description: e.value,
+                              groupValue: e.value,
+                            ),
+                          )
+                          .toList(),
+                    );
+                    if (result != null) {
+                      raporTipiController.text = result.key;
+                      viewModel.setRaporTipi(result.value);
+                      viewModel.getData();
+                    }
+                  },
+                ),
               ],
             ),
-            CustomTextField(
-              labelText: "Rapor Tipi",
-              controller: raporTipiController,
-              isMust: true,
-              readOnly: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi ?? "")),
-              suffixMore: true,
-              onTap: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry<String, String>>(
-                  context,
-                  title: "Rapor Tipi",
-                  groupValue: viewModel.model.tipi,
-                  children: viewModel.raporTipi.entries
-                      .map(
-                        (e) => BottomSheetModel(
-                          title: e.key,
-                          value: e,
-                          description: e.value,
-                          groupValue: e.value,
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: Card(
+                      child: Center(
+                        child: CustomWidgetWithLabel(
+                          child: Observer(
+                            builder: (_) => SwitchListTile.adaptive(
+                              contentPadding: UIHelper.midPadding,
+                              value: viewModel.irsDahilValue,
+                              onChanged: (value) {
+                                viewModel.setIrsDahilValue(value);
+                                viewModel.getData();
+                              },
+                              title: const Text("İrsaliye Dahil"),
+                            ),
+                          ),
                         ),
-                      )
-                      .toList(),
-                );
-                if (result != null) {
-                  raporTipiController.text = result.key;
-                  viewModel.setRaporTipi(result.value);
-                  viewModel.getData();
-                }
-              },
-            ),
-            Column(
-              children: [
-                Card(
-                  child: CustomWidgetWithLabel(
-                    child: Observer(
-                      builder: (_) => SwitchListTile.adaptive(
-                        contentPadding: UIHelper.midPadding,
-                        value: viewModel.irsDahilValue,
-                        onChanged: (value) {
-                          viewModel.setIrsDahilValue(value);
-                          viewModel.getData();
-                        },
-                        title: const Text("İrsaliye Dahil"),
                       ),
                     ),
                   ),
-                ),
-                Card(
-                  child: CustomWidgetWithLabel(
-                    child: Observer(
-                      builder: (_) => SwitchListTile.adaptive(
-                        contentPadding: UIHelper.midPadding,
-                        value: viewModel.gruplansinValue,
-                        onChanged: (value) {
-                          viewModel.setGruplansinValue(value);
-                          viewModel.getData();
-                        },
-                        title: const Text("Küçük Değerler Gruplansın"),
+                  Expanded(
+                    child: Card(
+                      child: Center(
+                        child: CustomWidgetWithLabel(
+                          child: Observer(
+                            builder: (_) => SwitchListTile.adaptive(
+                              contentPadding: UIHelper.midPadding,
+                              value: viewModel.gruplansinValue,
+                              onChanged: (value) {
+                                viewModel.setGruplansinValue(value);
+                                viewModel.getData();
+                              },
+                              title: const Text("Küçük Değerler Gruplansın"),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Observer(
               builder: (_) => CustomPieChart(
