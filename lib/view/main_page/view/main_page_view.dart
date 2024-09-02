@@ -81,7 +81,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
         title: Observer(
-          builder: (_) => AppBarTitle(title: viewModel.titleList.last).paddingOnly(left: UIHelper.highSize),
+          builder: (_) => AppBarTitle(title: viewModel.titleList.last),
         ),
         centerTitle: true,
         leading: Observer(
@@ -115,7 +115,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                     routes.add(route.name);
                   }
                 }
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<String>(
                   context,
                   title: "Routes",
                   groupValue: "/",
