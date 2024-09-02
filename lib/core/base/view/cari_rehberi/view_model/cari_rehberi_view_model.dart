@@ -1,4 +1,8 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/listable_mixin.dart";
+import "package:picker/core/base/view_model/pageable_mixin.dart";
+import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "package:picker/core/base/view_model/searchable_mixin.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_sehirler_model.dart";
@@ -12,7 +16,7 @@ part "cari_rehberi_view_model.g.dart";
 
 class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
-abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
+abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   final Map<String, String> siralaMap = {
     "Cari Adı (A-Z)": "AZ",
     "Cari Adı (Z-A)": "ZA",
@@ -32,17 +36,22 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     "Diğer": "D",
     "Komisyoncu": "I",
   };
-  @observable
-  bool dahaVarMi = true;
 
+  @override
   @observable
-  bool searchBar = true;
+  bool isSearchBarOpen = false;
 
+  @override
   @observable
   bool isScrollDown = true;
 
+  @override
   @observable
-  ObservableList<CariListesiModel>? cariListesi;
+  String? searchText;
+
+  @override
+  @observable
+  ObservableList<CariListesiModel>? observableList;
 
   @observable
   ObservableList<CariSehirlerModel>? sehirler;
@@ -53,7 +62,6 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   @observable
   CariListesiRequestModel? cariListesiRequestModel = CariListesiRequestModel(
     eFaturaGoster: true,
-    sayfa: 1,
     siralama: "AZ",
   );
 
@@ -72,11 +80,9 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   @computed
   List<BaseGrupKoduModel>? get grupKodlari5 => grupKodlari?.where((element) => element.grupNo == 5).toList();
 
+  @override
   @action
-  void setDahaVarMi(bool value) => dahaVarMi = value;
-
-  @action
-  void changeSearchBar() => searchBar = !searchBar;
+  void changeSearchBarStatus() => isSearchBarOpen = !isSearchBarOpen;
 
   @action
   void setMenuKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(menuKodu: value);
@@ -90,11 +96,13 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   void changeIsScrollDown(bool value) => isScrollDown = value;
 
+  @override
   @action
-  void changeCariListesi(List<CariListesiModel>? value) => cariListesi = value?.asObservable();
+  void setObservableList(List<CariListesiModel>? value) => observableList = value?.asObservable();
 
+  @override
   @action
-  void addCariListesi(List<CariListesiModel> value) => cariListesi?.addAll(value);
+  void addObservableList(List<CariListesiModel>? value) => setObservableList(observableList?..addAll(value!));
 
   @action
   void changeBagliCariKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value != "" ? value : null);
@@ -129,42 +137,43 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin {
     resetAll();
   }
 
+  @override
   @action
-  void changeFilterText(String? value) {
-    cariListesiRequestModel = cariListesiRequestModel?.copyWith(filterText: value);
+  void setSearchText(String? value) {
+    searchText = value;
     resetAll();
   }
 
   @action
   void resetAll() {
-    changeCariListesi(null);
+    setObservableList(null);
     setDahaVarMi(true);
     cariListesiRequestModel = cariListesiRequestModel?.copyWith(sayfa: 1);
-    getCariListesi();
+    getData();
   }
 
+  @override
   @action
-  Future<void> getCariListesi() async {
-    final response = await networkManager.dioGet<CariListesiModel>(
+  Future<void> getData() async {
+    final result = await networkManager.dioGet<CariListesiModel>(
       path: ApiUrls.getCariler,
-      queryParameters: cariListesiRequestModel?.toJsonWithList(),
+      queryParameters: cariListesiRequestModel?.copyWith(sayfa: page, filterText: searchText).toJsonWithList(),
       bodyModel: CariListesiModel(),
     );
-    if (response.data != null && response.data is List) {
-      final List<CariListesiModel> list = response.data.whereType<CariListesiModel>().toList();
-      if (cariListesi == null) {
-        changeCariListesi(list);
+    if (result.isSuccess) {
+      if (page > 1) {
+        addObservableList(result.dataList);
       } else {
-        addCariListesi(list);
+        setObservableList(result.dataList);
       }
-      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
-        setDahaVarMi(false);
-      } else {
+      if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);
-        cariListesiRequestModel = cariListesiRequestModel?.copyWith(
-          sayfa: cariListesiRequestModel!.sayfa! + 1,
-        );
+        increasePage();
+      } else {
+        setDahaVarMi(false);
       }
+    } else if (page == 1) {
+      setObservableList([]);
     }
   }
 

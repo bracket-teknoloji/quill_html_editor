@@ -236,6 +236,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(
                         menuKodu: "CARI_CREH",
+                        eFaturaGoster: true,
                         belgeTuru: model.getEditTipiEnum?.rawValue,
                       ),
                     );

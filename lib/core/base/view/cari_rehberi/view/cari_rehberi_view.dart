@@ -25,7 +25,7 @@ import "../../../model/base_edit_model.dart";
 import "../../../state/base_state.dart";
 import "../view_model/cari_rehberi_view_model.dart";
 
-class CariRehberiView extends StatefulWidget {
+final class CariRehberiView extends StatefulWidget {
   final CariListesiRequestModel cariRequestModel;
 
   const CariRehberiView({super.key, required this.cariRequestModel});
@@ -34,7 +34,7 @@ class CariRehberiView extends StatefulWidget {
   State<CariRehberiView> createState() => _CariRehberiViewState();
 }
 
-class _CariRehberiViewState extends BaseState<CariRehberiView> {
+final class _CariRehberiViewState extends BaseState<CariRehberiView> {
   late final CariRehberiViewModel viewModel;
   late final TextEditingController searchController;
   late final TextEditingController sehirController;
@@ -72,7 +72,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
       viewModel.setSiparisKarsilanmaDurumu(widget.cariRequestModel.siparisKarsilanmaDurumu);
-      await viewModel.getCariListesi();
+      await viewModel.getData();
       scrollController.addListener(() {
         if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
           viewModel.changeIsScrollDown(false);
@@ -80,7 +80,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           viewModel.changeIsScrollDown(true);
         }
         if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-          viewModel.getCariListesi();
+          viewModel.getData();
         }
       });
     });
@@ -111,13 +111,13 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   AppBar appBar() => AppBar(
         title: Observer(
-          builder: (_) => viewModel.searchBar
+          builder: (_) => viewModel.isSearchBarOpen
               ? CustomTextField(
                   labelText: "Ara",
                   focusNode: searchFocusNode,
                   controller: searchController,
-                  onSubmitted: (value) => viewModel.changeFilterText(value),
-                  onClear: () => viewModel.changeFilterText(""),
+                  onSubmitted: (value) => viewModel.setSearchText(value),
+                  onClear: () => viewModel.setSearchText(""),
                 )
               : AppBarTitle(
                   title: "Cari Rehberi",
@@ -127,16 +127,16 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         actions: [
           IconButton(
             onPressed: () {
-              viewModel.changeSearchBar();
-              if (viewModel.searchBar) {
+              viewModel.changeSearchBarStatus();
+              if (viewModel.isSearchBarOpen) {
                 searchFocusNode.requestFocus();
               } else {
-                viewModel.changeFilterText("");
+                viewModel.setSearchText("");
               }
             },
             icon: Observer(
               builder: (_) => Icon(
-                viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined,
+                viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined,
               ),
             ),
           ),
@@ -175,8 +175,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         },
         child: Observer(
           builder: (_) {
-            if (viewModel.cariListesi.ext.isNullOrEmpty) {
-              if (viewModel.cariListesi != null) {
+            if (viewModel.observableList.ext.isNullOrEmpty) {
+              if (viewModel.observableList != null) {
                 //* Eğer cariListesi boş ise
                 return const Center(child: Text("Cari Bulunamadı"));
               } else {
@@ -187,9 +187,9 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
               //* Eğer cariListesi boş veya null değilse
               return ListView.builder(
                 controller: scrollController,
-                itemCount: viewModel.cariListesi != null ? (viewModel.cariListesi!.length + 1) : 0,
+                itemCount: viewModel.observableList != null ? (viewModel.observableList!.length + 1) : 0,
                 itemBuilder: (context, index) {
-                  if (index == viewModel.cariListesi!.length) {
+                  if (index == viewModel.observableList!.length) {
                     return Visibility(
                       visible: viewModel.dahaVarMi,
                       child: const Center(
@@ -197,7 +197,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       ),
                     );
                   }
-                  final CariListesiModel item = viewModel.cariListesi![index];
+                  final CariListesiModel item = viewModel.observableList![index];
                   return CariRehberiCard(model: item);
                 },
               );
