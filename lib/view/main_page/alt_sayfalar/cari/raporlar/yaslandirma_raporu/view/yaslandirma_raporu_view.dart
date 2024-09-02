@@ -93,7 +93,6 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
               groupValue: viewModel.sureAraligiGroupValue,
             ),
           ),
-          const Divider(),
           Observer(
             builder: (_) => SlideControllerWidget(
               childrenTitleList: viewModel.odemeTipiList,
@@ -183,16 +182,6 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
                   },
                 ),
               ),
-              // Expanded(
-              //     child: CustomTextField(
-              //   labelText: "Vade Bitiş",
-              //   readOnly: true,
-              //   onTap: () async {
-              //     DateTime? result = await dialogManager.showDateTimePicker();
-              //     if (result != null) {}
-              //   },
-              //   //! TODO #3 BURAYA YETKİ EKLE
-              // )).yetkiVarMi(false),
             ],
           ),
           Row(
@@ -234,10 +223,7 @@ class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "",  value: e))
-        .toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList.where((e) => e.grupNo == grupNo).map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e)).toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {

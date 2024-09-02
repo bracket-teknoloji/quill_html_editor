@@ -203,7 +203,6 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemTipi == IslemTipiEnum.fatura) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true && AccountModel.instance.isDebug, irsaliyeFaturalastir);
-      //TODO satis irsaliyersi duzeltilecek
       islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.alisIrsaliyesiMi == true && kDebugMode, satisIrsaliyeOlustur);
 
       islemlerList.add(siparisPDFGoruntule);

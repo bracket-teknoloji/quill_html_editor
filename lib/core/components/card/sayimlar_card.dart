@@ -161,7 +161,6 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
             Get.back();
             await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
           },
-          //TODO Buraları ekle
         ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
         BottomSheetModel(
           title: "Sayım Raporu (PDF)",
