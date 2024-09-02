@@ -145,7 +145,7 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
               itemBuilder: (context, index) {
                 final SayimListesiModel item = viewModel.filteredSayimListesi![index];
                 return Card(
-                  color: (item.miktar ?? 0) <= 0 ? ColorPalette.persianRed.withOpacity(0.5) : null,
+                  color: (item.miktar ?? 0) <= 0 ? ColorPalette.persianRedWithOpacity : null,
                   child: ListTile(
                     title: Text(item.stokAdi ?? ""),
                     subtitle: CustomLayoutBuilder(

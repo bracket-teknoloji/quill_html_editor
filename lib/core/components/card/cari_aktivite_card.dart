@@ -29,7 +29,7 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
   CariAktiviteListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        color: (model.bittar != null) ? ColorPalette.mantis.withOpacity(0.5) : null,
+        color: (model.bittar != null) ? ColorPalette.mantisWithOpacity : null,
         child: ListTile(
           subtitle: Column(
             mainAxisAlignment: MainAxisAlignment.start,

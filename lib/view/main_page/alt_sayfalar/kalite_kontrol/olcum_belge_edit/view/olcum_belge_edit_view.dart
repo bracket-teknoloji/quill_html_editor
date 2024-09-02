@@ -524,7 +524,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                               final item = viewModel.model?.olcumler?[index];
                               final String title = "Ölçüm ${index + 1}";
                               return Card(
-                                color: (widget.model.seriNo == item?.seriNo) && widget.model.seriNo != null ? ColorPalette.mantis.withOpacity(0.5) : null,
+                                color: (widget.model.seriNo == item?.seriNo) && widget.model.seriNo != null ? ColorPalette.mantisWithOpacity : null,
                                 child: ListTile(
                                   onTap: () async {
                                     bottomSheetDialogManager.showBottomSheetDialog(

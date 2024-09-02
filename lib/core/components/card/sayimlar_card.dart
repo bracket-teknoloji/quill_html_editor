@@ -35,7 +35,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.miktarSifirdanBuyukMu && model.serbestMi ? ColorPalette.persianRed.withOpacity(0.5) : null,
+        color: model.miktarSifirdanBuyukMu && model.serbestMi ? ColorPalette.persianRedWithOpacity : null,
         child: ListTile(
           onTap: bottomSheet,
           title: Column(

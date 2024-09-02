@@ -28,7 +28,7 @@ class StokFiyatGecmisiCard extends StatefulWidget {
 class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   @override
   Widget build(BuildContext context) => Card(
-        color: widget.model?.yazdirildi == "E" ? ColorPalette.mantis.withOpacity(0.4) : null,
+        color: widget.model?.yazdirildi == "E" ? ColorPalette.mantisWithOpacity : null,
         child: ListTile(
           onTap: () {
             widget.onTap?.call();

@@ -47,7 +47,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.belgeIslendiMi ? ColorPalette.mantis.withOpacity(0.5) : null,
+        color: model.belgeIslendiMi ? ColorPalette.mantisWithOpacity : null,
         child: ListTile(
           onTap: () async {
             await bottomSheetDialogManager.showBottomSheetDialog(
