@@ -72,8 +72,13 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         key: scaffoldKey,
         drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
         drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-        endDrawer: SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-        body: body(context),
+        endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+        body: Row(
+          children: [
+            Expanded(child: body(context)),
+            if (kIsWeb && context.isLandscape) SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+          ],
+        ),
         bottomNavigationBar: bottomBar(scaffoldKey),
       ),
     );
@@ -127,12 +132,13 @@ final class _MainPageViewState extends BaseState<MainPageView> {
               },
               icon: const Icon(Icons.bug_report_outlined),
             ),
-          IconButton(
-            onPressed: () {
-              scaffoldKey.currentState!.openEndDrawer();
-            },
-            icon: const Icon(Icons.person_outline_outlined),
-          ),
+          if (!(kIsWeb && context.isLandscape))
+            IconButton(
+              onPressed: () {
+                scaffoldKey.currentState!.openEndDrawer();
+              },
+              icon: const Icon(Icons.person_outline_outlined),
+            ),
         ],
       );
 
@@ -174,7 +180,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         padding: UIHelper.lowPadding,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: MediaQuery.sizeOf(context).width ~/ 90 > 10 ? 10 : MediaQuery.sizeOf(context).width ~/ 90,
+          crossAxisCount: MediaQuery.sizeOf(context).width ~/ 120 > 8 ? 8 : MediaQuery.sizeOf(context).width ~/ 120,
           childAspectRatio: 0.9,
         ),
         itemCount: viewModel.items.length,
