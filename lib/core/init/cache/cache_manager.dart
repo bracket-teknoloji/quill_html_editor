@@ -1,7 +1,10 @@
+import "dart:convert";
 import "dart:developer";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:uuid/uuid.dart";
 
 import "../../../view/add_company/model/account_model.dart";
 import "../../../view/add_company/model/account_response_model.dart";
@@ -45,6 +48,7 @@ class CacheManager {
   static late Box<BaseSiparisEditModel> transferEditBox;
   static late Box<ListSiparisEditModel> transferEditListBox;
   static late Box<int> finansOzelRaporOrderBox;
+  static late Box<String> webCihazKimligiBox;
 
   static late Box<Map> profilParametreBox;
 
@@ -98,6 +102,7 @@ class CacheManager {
     talepTeklifEditBox = await Hive.openBox<BaseSiparisEditModel>("transferEdit");
     transferEditListBox = await Hive.openBox<ListSiparisEditModel>("transferEditList");
     finansOzelRaporOrderBox = await Hive.openBox("finansOzelRaporOrder");
+    webCihazKimligiBox = await Hive.openBox<String>("webCihazKimligi");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
     // await hesapBilgileriBox.clear();
@@ -107,6 +112,9 @@ class CacheManager {
         "value",
         BaseProfilParametreModel().toJson(),
       );
+    }
+    if (kIsWeb && webCihazKimligiBox.isEmpty) {
+    await webCihazKimligiBox.put("value", base64UrlEncode(utf8.encode(const Uuid().v4().substring(0, 10))));
     }
     await finansOzelRaporOrderBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {
@@ -167,6 +175,8 @@ class CacheManager {
             ),
       );
   // static String get getSirketAdi => _sirketAdiBox.get("value") ?? "";
+
+  String get getWebCihazKimligi => webCihazKimligiBox.get("value") ?? "";
 
   //* Setters
   static void setFinansOzetOrder(String key, int value) => finansOzelRaporOrderBox.put(key, value);

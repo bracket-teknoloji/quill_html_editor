@@ -218,7 +218,7 @@ class AccountModel with NetworkManagerMixin {
     //!WEB
     if (kIsWeb) {
       platform = "web";
-      // final webInfo = await deviceInfo.webBrowserInfo;
+      cihazKimligi = CacheManager.instance.getWebCihazKimligi;
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
