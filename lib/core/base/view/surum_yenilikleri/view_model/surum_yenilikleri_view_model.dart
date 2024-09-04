@@ -49,8 +49,8 @@ abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin, List
       addQuery: false,
       addSirketBilgileri: false,
     );
-    if (result.isSuccess && result.data is List) {
-      setObservableList(result.data.map((e) => e as SurumYenilikleriModel).toList().cast<SurumYenilikleriModel>());
+    if (result.isSuccess) {
+      setObservableList(result.dataList);
     } else {
       observableList = null;
     }

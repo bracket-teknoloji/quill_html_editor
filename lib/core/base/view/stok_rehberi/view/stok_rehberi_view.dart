@@ -490,10 +490,10 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<StokListesiModel?> getSelectedData(StokListesiModel? model) async {
     viewModel.setSelectedStokModel(model?.stokKodu ?? "");
-    final GenericResponseModel response =
+    final GenericResponseModel<StokListesiModel> response =
         await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: viewModel.stokBottomSheetModel.toJsonWithList(), bodyModel: StokListesiModel(), showLoading: true);
     if (response.isSuccess) {
-      final List<StokListesiModel> list = (response.data as List).map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
+      final List<StokListesiModel> list = response.dataList;
       if (list.isEmptyOrNull) {
         return null;
       }

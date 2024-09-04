@@ -107,8 +107,8 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi ?? "", "tarih": model.tarih.toDateString},
     );
-    if (result.data is List) {
-      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    if (result.isSuccess) {
+      setDovizKurlariListesi(result.dataList);
     }
   }
 

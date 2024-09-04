@@ -193,7 +193,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
         "content-type": "application/json",
       },
     );
-    if (response.data != null) {
+    if (response.isSuccess) {
       CacheManager.setHesapBilgileri(AccountModel.instance);
       CacheManager.setAnaVeri(response.dataList.firstOrNull!);
       Get.offAllNamed("/mainPage", arguments: true);

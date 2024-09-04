@@ -313,8 +313,8 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
       };
       map.removeWhere((key, value) => value == null || value == "[]");
       final result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
-      if (result.data != null) {
-        viewModel.setModelList(result.data.map((e) => e as CariStokSatisOzetiModel).toList().cast<CariStokSatisOzetiModel>());
+      if (result.isSuccess) {
+        viewModel.setModelList(result.dataList);
       }
     }
   }

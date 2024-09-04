@@ -293,7 +293,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
     dialogManager.hideAlertDialog;
     if (result.isSuccess) {
-      return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
+      return result.dataList;
     }
     return null;
   }

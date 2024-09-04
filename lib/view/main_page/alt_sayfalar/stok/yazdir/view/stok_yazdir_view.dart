@@ -88,7 +88,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: AppBarTitle( title: loc.generalStrings.print),
+          title: AppBarTitle(title: loc.generalStrings.print),
           actions: [
             IconButton(
               icon: const Icon(Icons.picture_as_pdf_outlined),
@@ -351,7 +351,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
       if (result.isSuccess) {
         dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
         if (widget.model != null) {
-          Get.back(result: result.success);
+          Get.back(result: result.isSuccess);
         }
       }
     }
@@ -364,9 +364,8 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
       data: {"StokKodu": stokKodu, "EkranTipi": "D", "Okutuldu": true, "MenuKodu": "STOK_ETIK"},
       showLoading: true,
     );
-    if (result.data != null) {
-      final List<StokListesiModel> list = result.data.map((e) => e as StokListesiModel).toList().cast<StokListesiModel>();
-      return list.firstWhereOrNull((element) => element.stokKodu == stokKodu);
+    if (result.isSuccess) {
+      return result.dataList.firstWhereOrNull((element) => element.stokKodu == stokKodu);
     }
     return null;
   }

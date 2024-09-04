@@ -475,8 +475,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
       showLoading: true,
     );
     if (result.isSuccess) {
-      final List<BaseSiparisEditModel> list = (result.data as List).map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-      BaseSiparisEditModel.instance.belgeNo = list.firstOrNull?.belgeNo;
+      BaseSiparisEditModel.instance.belgeNo = result.dataList.firstOrNull?.belgeNo;
       _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }

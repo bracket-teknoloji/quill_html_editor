@@ -65,8 +65,8 @@ abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
     //   setOlcumBelgeModel(newList);
     // }
 
-    if (result.data is List) {
-      final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
+    if (result.isSuccess) {
+      final List<OlcumBelgeModel> list = result.dataList;
       if ((requestModel?.sayfa ?? 0) < 2) {
         // paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
         if (olcumGirisiListesi.ext.isNullOrEmpty) {

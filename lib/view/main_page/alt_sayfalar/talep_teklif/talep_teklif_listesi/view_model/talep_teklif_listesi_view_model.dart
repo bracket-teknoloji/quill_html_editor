@@ -268,8 +268,8 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: siparislerRequestModel.copyWith(sayfa: page).toJson());
-    if (result.data != null) {
-      final List<BaseSiparisEditModel> list = result.data.map<BaseSiparisEditModel>((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+    if (result.isSuccess) {
+      final List<BaseSiparisEditModel> list = result.dataList;
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         dahaVarMi = false;
       } else {

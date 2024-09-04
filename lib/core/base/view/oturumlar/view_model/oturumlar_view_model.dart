@@ -48,8 +48,6 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMix
   @override
   @action
   void setObservableList(List<AccountModel>? value) => observableList = value?.asObservable();
-  
-  
 
   @override
   @action
@@ -59,8 +57,8 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMix
       path: ApiUrls.getOturumlar,
       bodyModel: AccountModel(),
     );
-    if (result.data != null) {
-      final List<AccountModel> list = result.data.map((e) => e as AccountModel).toList().cast<AccountModel>();
+    if (result.isSuccess) {
+      final List<AccountModel> list = result.dataList;
       observableList = list.asObservable();
     }
   }

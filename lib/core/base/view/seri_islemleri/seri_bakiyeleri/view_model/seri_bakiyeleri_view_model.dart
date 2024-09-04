@@ -35,9 +35,8 @@ abstract class _SeriBakiyeleriViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setSeriList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getSeriler, bodyModel: SeriList(), data: requestModel.toJson());
-    if (result.data is List) {
-      final List<SeriList> seriList = (result.data as List).map((e) => e as SeriList).toList();
-      setSeriList(seriList);
+    if (result.isSuccess) {
+      setSeriList(result.dataList);
     }
   }
 }

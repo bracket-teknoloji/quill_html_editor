@@ -311,9 +311,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       queryParameters: {"ID": widget.dizaynList?.id},
     );
     if (result.isSuccess) {
-      viewModel.changeSerbestRaporResponseModelList(
-        result.data.map((e) => e as SerbestRaporResponseModel).toList().cast<SerbestRaporResponseModel>(),
-      );
+      viewModel.changeSerbestRaporResponseModelList(result.dataList);
     }
     // dialogManager.hideAlertDialog;
   }

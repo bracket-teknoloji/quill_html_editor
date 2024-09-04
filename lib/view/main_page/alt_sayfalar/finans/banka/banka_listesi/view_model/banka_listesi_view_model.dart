@@ -110,8 +110,8 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
       bodyModel: BankaListesiModel(),
       queryParameters: model.toJson(),
     );
-    if (result.data is List) {
-      setBankaListesi(result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>());
+    if (result.isSuccess) {
+      setBankaListesi(result.dataList);
     } else {
       setErrorText(result.message);
       setBankaListesi([]);

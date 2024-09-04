@@ -121,7 +121,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
-    if (result.data is List) {
+    if (result.isSuccess) {
       setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
     }
   }
@@ -129,7 +129,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
     final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
-    if (result.data is List) {
+    if (result.isSuccess) {
       return result.dataList.firstOrNull as KasaList;
     }
     return null;
@@ -138,8 +138,8 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getMuhaRefList() async {
     final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
-    if (result.data is List) {
-      setMuhaRefList(result.data.cast<MuhasebeReferansModel>());
+    if (result.isSuccess) {
+      setMuhaRefList(result.dataList);
     }
   }
 
@@ -151,8 +151,8 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},
     );
-    if (result.data is List) {
-      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    if (result.isSuccess) {
+      setDovizKurlariListesi(result.dataList);
     }
   }
 

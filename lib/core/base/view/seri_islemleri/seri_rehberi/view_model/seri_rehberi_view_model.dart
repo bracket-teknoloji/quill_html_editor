@@ -17,7 +17,10 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   ObservableList<SeriList>? observableList;
 
   @observable
-  StokRehberiRequestModel requestModel = StokRehberiRequestModel(ekranTipi: "R", belgeTarihi: DateTime.now().toDateString, );
+  StokRehberiRequestModel requestModel = StokRehberiRequestModel(
+    ekranTipi: "R",
+    belgeTarihi: DateTime.now().toDateString,
+  );
 
   @override
   @observable
@@ -54,9 +57,8 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
       setObservableList(null);
     }
     final result = await networkManager.dioPost(path: ApiUrls.getSeriler, bodyModel: SeriList(), data: requestModel.toJson());
-    if (result.data is List) {
-      final List<SeriList> seriList = (result.data as List).map((e) => e as SeriList).toList();
-      setObservableList(seriList);
+    if (result.isSuccess) {
+      setObservableList(result.dataList);
     }
   }
 }

@@ -30,8 +30,7 @@ abstract class _FiyatOzetiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getStokFiyatOzeti, bodyModel: const StokFiyatOzetiModel(), queryParameters: requestModel.toJson());
-    if (result.success case (false || null)) return;
-    final List<StokFiyatOzetiModel> list = (result.data as List).map((e) => e as StokFiyatOzetiModel).toList();
-    setStokFiyatOzetiListesi(list);
+    if (!result.isSuccess) return;
+    setStokFiyatOzetiListesi(result.dataList);
   }
 }

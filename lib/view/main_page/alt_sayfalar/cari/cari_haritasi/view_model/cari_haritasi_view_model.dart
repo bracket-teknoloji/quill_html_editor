@@ -65,9 +65,8 @@ abstract class _CariHaritasiViewModelBase with Store, MobxNetworkMixin {
       bodyModel: CariListesiModel(),
       data: requestModel.toJson(),
     );
-    if (result.data is List) {
-      final List<CariListesiModel> newList = (result.data as List).map((e) => e as CariListesiModel).toList();
-      setCariList(newList);
+    if (result.isSuccess) {
+      setCariList(result.dataList);
     }
   }
 }

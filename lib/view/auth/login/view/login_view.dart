@@ -270,7 +270,7 @@ class _LoginViewState extends BaseState<LoginView> {
       }
     }
     final result = await networkManager.getUyeBilgileri(selectedUser.account?.email ?? "", password: selectedUser.account?.parola, getFromCache: false);
-    if (result.success != true) {
+    if (!result.isSuccess) {
       log(result.ex.toString());
       if (!CacheManager.getIsLicenseVerified(selectedUser.account?.email ?? "")) {
         // dialogManager.hideAlertDialog;

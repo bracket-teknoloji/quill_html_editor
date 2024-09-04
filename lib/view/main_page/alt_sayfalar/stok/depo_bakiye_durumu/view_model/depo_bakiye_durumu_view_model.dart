@@ -46,8 +46,7 @@ abstract class _DepoBakiyeDurumuViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
     );
     if (result.isSuccess) {
-      final List<DepoBakiyeDurumuModel> list = (result.data as List).map((e) => e as DepoBakiyeDurumuModel).toList();
-      setDepoBakiyeDurumuList(list);
+      setDepoBakiyeDurumuList(result.dataList);
     }
   }
 }

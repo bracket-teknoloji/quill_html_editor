@@ -51,8 +51,7 @@ abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin, Listable
     setObservableList(null);
     final result = await networkManager.dioGet(path: ApiUrls.getHucreListesi, queryParameters: requestModel.toJson(), bodyModel: HucreListesiModel());
     if (result.isSuccess) {
-      final List<HucreListesiModel> list = (result.data as List).map((e) => e as HucreListesiModel).toList();
-      setObservableList(list);
+      setObservableList(result.dataList);
     }
   }
 }

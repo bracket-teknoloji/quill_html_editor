@@ -76,8 +76,8 @@ abstract class _BankaMuhtelifIslemlerViewModelBase with Store, MobxNetworkMixin 
   @action
   Future<void> getSeri() async {
     final result = await networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel());
-    if (result.data is List) {
-      setSeriList(result.data.cast<SeriModel>());
+    if (result.isSuccess) {
+      setSeriList(result.dataList);
     }
   }
 
@@ -93,8 +93,8 @@ abstract class _BankaMuhtelifIslemlerViewModelBase with Store, MobxNetworkMixin 
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},
     );
-    if (result.data is List) {
-      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    if (result.isSuccess) {
+      setDovizKurlariListesi(result.dataList);
     }
   }
 

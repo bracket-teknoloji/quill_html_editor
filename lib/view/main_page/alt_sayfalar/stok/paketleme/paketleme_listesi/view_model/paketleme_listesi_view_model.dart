@@ -55,8 +55,7 @@ abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin, List
     setObservableList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getPaketler, bodyModel: PaketlemeListesiModel(), data: requestModel.toJson());
     if (result.isSuccess) {
-      final List<PaketlemeListesiModel> paketlemeListesi = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
-      setObservableList(paketlemeListesi);
+      setObservableList(result.dataList);
     }
   }
 

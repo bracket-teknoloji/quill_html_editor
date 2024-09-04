@@ -139,7 +139,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
-    if (result.data is List) {
+    if (result.isSuccess) {
       setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
     }
   }
@@ -148,39 +148,39 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getBankaSozlesmesi() async {
     final result = await networkManager
         .dioGet<BankaSozlesmesiModel>(path: ApiUrls.getBankaSozlesmeleri, bodyModel: BankaSozlesmesiModel(), showLoading: true, queryParameters: {"Tarih": model.tarih.toDateString, "EkranTipi": "R"});
-    if (result.data is List) {
-      setBankaSozlesmesiList(result.data.cast<BankaSozlesmesiModel>());
+    if (result.isSuccess) {
+      setBankaSozlesmesiList(result.dataList);
     }
   }
 
   @action
   Future<void> getMuhaRefList() async {
     final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
-    if (result.data is List) {
-      setMuhaRefList(result.data.cast<MuhasebeReferansModel>());
+    if (result.isSuccess) {
+      setMuhaRefList(result.dataList);
     }
   }
 
   @action
   Future<void> getSeri() async {
     final result = await networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel());
-    if (result.data is List) {
-      setSeriList(result.data.cast<SeriModel>());
+    if (result.isSuccess) {
+      setSeriList(result.dataList);
     }
   }
 
   @action
   Future<void> getBankaHesaplari() async {
     final result = await networkManager.dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel());
-    if (result.data is List) {
-      setBankaHesaplariList(result.data.cast<BankaListesiModel>());
+    if (result.isSuccess) {
+      setBankaHesaplariList(result.dataList);
     }
   }
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
     final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
-    if (result.data is List) {
+    if (result.isSuccess) {
       return result.dataList.firstOrNull as KasaList;
     }
     return null;

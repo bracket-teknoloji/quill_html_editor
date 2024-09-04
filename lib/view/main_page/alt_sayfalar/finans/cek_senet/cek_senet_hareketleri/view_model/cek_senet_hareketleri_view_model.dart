@@ -27,7 +27,7 @@ abstract class _CekSenetHareketleriViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager
         .dioGet(path: ApiUrls.getCekSenetLoglari, bodyModel: CekSenetHareketleriModel(), queryParameters: {"BelgeTipi": cekSenetListesiModel?.belgeTipi, "BelgeNo": cekSenetListesiModel?.belgeNo});
     if (result.isSuccess) {
-      setCekSenetHareketleriListesi(result.data.map((e) => e as CekSenetHareketleriModel).toList().cast<CekSenetHareketleriModel>());
+      setCekSenetHareketleriListesi(result.dataList);
     }
   }
 }

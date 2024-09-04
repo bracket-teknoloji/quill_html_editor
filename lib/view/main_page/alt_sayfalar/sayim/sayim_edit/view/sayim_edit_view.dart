@@ -92,8 +92,8 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
                         if (dizayn == null) return;
                         pdfModel.dizaynId = dizayn.id;
                         final result = await networkManager.getPDF(pdfModel);
-                        if (result.success case (null || false)) return;
-                        Get.to(() => GenelPdfView(model: (result.data as List).firstOrNull));
+                        if (!result.isSuccess) return;
+                        Get.to(() => GenelPdfView(model: result.dataList.firstOrNull));
                         // final result = await bottomSheetDialogManager.showBottomSh
                       },
                     ).yetkiKontrol(yetkiController.sayimSayimRaporu),

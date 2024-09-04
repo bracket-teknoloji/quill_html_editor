@@ -15,8 +15,8 @@ import "cari_listesi/model/cari_sehirler_model.dart";
 
 class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
-  static Future<GenericResponseModel<NetworkManagerMixin>> getKod({GrupKoduEnum? name}) async {
-    final GenericResponseModel<NetworkManagerMixin> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
+  static Future<GenericResponseModel<BaseGrupKoduModel>> getKod({GrupKoduEnum? name}) async {
+    final GenericResponseModel<BaseGrupKoduModel> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
       showError: false,
       showLoading: true,
@@ -28,8 +28,7 @@ class CariNetworkManager {
   }
 
   static Future<List<CariSehirlerModel>?> getFilterData() async {
-    GenericResponseModel<NetworkManagerMixin> responseSehirler;
-    responseSehirler = await networkManager.dioGet<CariSehirlerModel>(
+    final response = await networkManager.dioGet<CariSehirlerModel>(
       path: ApiUrls.getCariKayitliSehirler,
       bodyModel: CariSehirlerModel(),
       addTokenKey: true,
@@ -37,14 +36,13 @@ class CariNetworkManager {
       headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
 
-    return responseSehirler.data?.cast<CariSehirlerModel>();
+    return response.dataList;
   }
 
   static Future<List<CariKosullarModel>?> getkosullar(DateTime? date) async {
     final Map<String, String> queryParams = <String, String>{"Tarih": date.toDateString, "KisitYok": "H", "BelgeTuru": "CARI"};
-    final GenericResponseModel<NetworkManagerMixin> responseKosullar =
-        await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
-    return responseKosullar.data?.cast<CariKosullarModel>();
+    final result = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
+    return result.dataList;
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {

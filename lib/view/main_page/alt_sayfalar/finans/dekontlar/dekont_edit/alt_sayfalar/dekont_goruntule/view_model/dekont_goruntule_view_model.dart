@@ -42,7 +42,7 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
     );
     if (result.isSuccess) {
-      final List<DekontDuzenleRequestModel> list = (result.data as List).map((e) => e as DekontDuzenleRequestModel).toList().cast<DekontDuzenleRequestModel>();
+      final List<DekontDuzenleRequestModel> list = result.dataList;
       setDekontListesi(list);
       setDekontMap({
         "Tarih": list.firstOrNull?.tarih.toDateString,

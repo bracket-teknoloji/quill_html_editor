@@ -62,8 +62,8 @@ abstract class _SiparisRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: requestModel.toJson());
-    if (result.data != null) {
-      final List<BaseSiparisEditModel> list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+    if (result.isSuccess) {
+      final List<BaseSiparisEditModel> list = result.dataList;
       if (siparisList == null) {
         setSiparisList(list);
       }

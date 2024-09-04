@@ -72,7 +72,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   Future<void> getDatMiktar() async {
     final result = await networkManager.dioGet(path: ApiUrls.getDatMiktar, bodyModel: SeriList(), data: seriRequestModel.toJson(), showLoading: true);
     if (result.isSuccess) {
-      final List<SeriList> data = result.data.map((e) => e as SeriList).toList().cast<SeriList>();
+      final List<SeriList> data = result.dataList;
       setOlcumDatResponseListesi(data.map((e) => e..seri1 = e.seriNo).toList());
     }
   }
@@ -81,8 +81,8 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     model = null;
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeDetaylar, bodyModel: OlcumBelgeEditModel(), data: requestModel?.forDetayRequest.toJson());
-    if (result.data is List) {
-      final List<OlcumBelgeEditModel> data = result.data.map((e) => e as OlcumBelgeEditModel).toList().cast<OlcumBelgeEditModel>();
+    if (result.isSuccess) {
+      final List<OlcumBelgeEditModel> data = result.dataList;
       model = data.firstOrNull;
       log(model?.toJson().toString() ?? "");
 
@@ -95,11 +95,11 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   Future<List<OlcumOlcumlerModel>?> getOlcumler() async {
     setOlcumlerList(null);
     final result = await networkManager.dioGet(path: ApiUrls.getOlcumler, bodyModel: OlcumOlcumlerModel(), data: model?.belge?.first.forOlcumlerList.toJson());
-    if (result.data is List) {
-      final List<OlcumOlcumlerModel>? data = result.data.map((e) => e as OlcumOlcumlerModel).toList().cast<OlcumOlcumlerModel>();
+    if (result.isSuccess) {
+      final List<OlcumOlcumlerModel> data = result.dataList;
       setOlcumlerList(data);
-      setSeriListe(data?.map((e) => e.seriNo).toList().nullCheckWithGeneric);
-      setStokKodu(data?.firstOrNull?.stokKodu);
+      setSeriListe(data.map((e) => e.seriNo).toList().nullCheckWithGeneric);
+      setStokKodu(data.firstOrNull?.stokKodu);
     }
     return null;
   }
@@ -107,9 +107,8 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<List<OlcumProsesModel>?> getProsesler(int? id) async {
     final result = await networkManager.dioGet(path: ApiUrls.getOlcum, bodyModel: OlcumProsesModel(), showLoading: true, queryParameters: {"id": id});
-    if (result.data is List) {
-      final List<OlcumProsesModel>? data = result.data.map((e) => e as OlcumProsesModel).toList().cast<OlcumProsesModel>();
-      return data;
+    if (result.isSuccess) {
+      return result.dataList;
     }
     return null;
   }
@@ -117,8 +116,8 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<bool> getOlcumDatListesi() async {
     final result = await networkManager.dioGet(path: ApiUrls.getDatListesi, bodyModel: OlcumBelgeModel(), showLoading: true, data: requestModel?.forDatListesi.toJson());
-    if (result.data is List) {
-      final List<OlcumBelgeModel> data = result.data.map((e) => e as OlcumBelgeModel).toList().cast<OlcumBelgeModel>();
+    if (result.isSuccess) {
+      final List<OlcumBelgeModel> data = result.dataList;
       setOlcumDatListesi(data);
     }
     return result.isSuccess;

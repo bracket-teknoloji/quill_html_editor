@@ -54,7 +54,7 @@ abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
     );
     if (result.isSuccess) {
-      final List<BaseSiparisEditModel> list = (result.data as List).map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+      final List<BaseSiparisEditModel> list = result.dataList;
       setFaturaNo(list.firstOrNull?.belgeNo);
       return list.firstOrNull?.belgeNo ?? "";
     }

@@ -657,13 +657,13 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
     final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
-    if (result.data != null) {
+    if (result.isSuccess) {
       if (viewModel.sayfa == 1) {
         viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList().cast<BaseSiparisEditModel?>());
         viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
       }
-      final List<BaseSiparisEditModel?>? list = result.data.map((e) => e as BaseSiparisEditModel?).toList().cast<BaseSiparisEditModel?>();
-      if ((list?.length ?? 0) < parametreModel.sabitSayfalamaOgeSayisi) {
+      final List<BaseSiparisEditModel?> list = result.dataList;
+      if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
         viewModel.setDahaVarMi(true);

@@ -141,8 +141,8 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
 
     //   }
     // }
-    if (result.data is List) {
-      final List<OlcumBelgeModel> list = (result.data as List).map((e) => e as OlcumBelgeModel).toList();
+    if (result.isSuccess) {
+      final List<OlcumBelgeModel> list = result.dataList;
       if (requestModel.qrstring != null) {
         setQrOlcumList(list);
         //?QR kod varsa işlem bittikten sonra sıfırlayacak.

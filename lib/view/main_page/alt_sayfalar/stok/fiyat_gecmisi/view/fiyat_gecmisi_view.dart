@@ -372,7 +372,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
     );
     if (result.isSuccess) {
       viewModel.setModelList(
-        result.data.map((e) => e as FiyatGecmisiResponseModel).toList().cast<FiyatGecmisiResponseModel>(),
+        result.dataList,
       );
     }
   }

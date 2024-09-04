@@ -142,7 +142,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     final result = await viewModel.postData();
                     if (result.isSuccess) {
                       dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
-                      Get.back(result: result.success);
+                      Get.back(result: result.isSuccess);
                     }
                   });
                 }

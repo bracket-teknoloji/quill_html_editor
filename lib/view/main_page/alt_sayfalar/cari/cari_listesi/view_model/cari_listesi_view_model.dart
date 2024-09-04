@@ -297,8 +297,8 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
       headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
       queryParameters: {"Modul": "CARI", "GrupNo": "-1"},
     );
-    if (responseKod.data is List) {
-      grupKodlari = responseKod.data.cast<BaseGrupKoduModel>();
+    if (responseKod.isSuccess) {
+      grupKodlari = responseKod.dataList;
     }
   }
 
@@ -311,8 +311,8 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
       addSirketBilgileri: true,
       headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
-    if (result.data is List) {
-      sehirler = result.data.cast<CariSehirlerModel>();
+    if (result.isSuccess) {
+      sehirler = result.dataList;
     }
   }
 
@@ -340,7 +340,7 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
         setDahaVarMi(false);
       }
     } else {
-      if (result.success != true) {
+      if (!result.isSuccess) {
         errorText = result.message;
         setObservableList([]);
       } else {

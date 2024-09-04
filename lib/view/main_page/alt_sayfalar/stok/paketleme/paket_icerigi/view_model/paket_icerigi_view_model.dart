@@ -37,8 +37,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
     setObservableList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getPaketKalemleri, bodyModel: PaketIcerigiModel(), data: requestModel.toJson());
     if (result.isSuccess) {
-      final list = (result.data as List).map((e) => e as PaketIcerigiModel).toList();
-      setObservableList(list);
+      setObservableList(result.dataList);
     }
   }
 

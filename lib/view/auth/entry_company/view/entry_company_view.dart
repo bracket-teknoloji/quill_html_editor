@@ -5,8 +5,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -301,8 +299,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ..aktifSubeKodu = viewModel.selected["Şube"]
                                   ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
                                 // dialogManager.showLoadingDialog("${viewModel.selected["Şirket"]} şirketine giriş yapılıyor.");
-                                GenericResponseModel<NetworkManagerMixin> response;
-                                response = await networkManager.dioPost<MainPageModel>(
+                                final response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,
                                   bodyModel: MainPageModel(),
                                   showError: true,
@@ -315,8 +312,8 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     "content-type": "application/json",
                                   },
                                 );
-                                if (response.data != null) {
-                                  final MainPageModel model = response.data[0];
+                                if (response.isSuccess) {
+                                  final MainPageModel model = response.dataList[0];
                                   CacheManager.setVeriTabani(viewModel.selected);
                                   CacheManager.setIsletmeSube(viewModel.userData);
                                   CacheManager.setLogout(true);

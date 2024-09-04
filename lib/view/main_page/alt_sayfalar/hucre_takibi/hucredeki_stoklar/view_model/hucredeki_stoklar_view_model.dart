@@ -44,8 +44,7 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin, List
       queryParameters: requestModel?.toJson(),
     );
     if (result.isSuccess) {
-      final list = (result.data as List).map((e) => e as HucredekiStoklarModel).toList();
-      setObservableList(list);
+      setObservableList(result.dataList);
     }
   }
 }

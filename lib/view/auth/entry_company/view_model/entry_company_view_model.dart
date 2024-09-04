@@ -67,7 +67,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
   Future<bool> getData({String? name}) async {
     final response = await networkManager.dioGet<CompanyModel>(path: ApiUrls.veriTabanlari, bodyModel: CompanyModel(), showError: true);
     if (response.isSuccess) {
-      setSirket(response.data.map((e) => e as CompanyModel).toList().cast<CompanyModel>());
+      setSirket(response.dataList);
       return true;
     }
     return false;
@@ -82,7 +82,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       showError: true,
     );
     if (response.isSuccess) {
-      final List<IsletmeModel> isletmeModelList = response.data.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
+      final List<IsletmeModel> isletmeModelList = response.dataList;
       // set isletmeList with unique isletmeAdi values
       final List<IsletmeModel> data = [];
       for (final element in isletmeModelList) {
@@ -97,7 +97,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       // for (IsletmeModel element in res) {
       //   element.subeKodu == null ? list.add(element..subeKodu = 0) : list.add(element);
       // }
-      CacheManager.setSubeListesi(response.data);
+      CacheManager.setSubeListesi(response.dataList);
     }
   }
 }

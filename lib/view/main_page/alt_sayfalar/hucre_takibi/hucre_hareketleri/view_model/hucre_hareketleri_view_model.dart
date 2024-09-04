@@ -36,8 +36,7 @@ abstract class _HucreHareketleriViewModelBase with Store, MobxNetworkMixin {
     setHucreHareketleriListesi(null);
     final result = await networkManager.dioGet(path: ApiUrls.getHucreHareketleri, bodyModel: HucreHareketleriModel(), queryParameters: requestModel.toJson());
     if (result.isSuccess) {
-      final List<HucreHareketleriModel> hucreHareketleriListesi = (result.data as List).map((e) => e as HucreHareketleriModel).toList();
-      setHucreHareketleriListesi(hucreHareketleriListesi);
+      setHucreHareketleriListesi(result.dataList);
     }
   }
 }

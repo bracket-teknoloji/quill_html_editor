@@ -286,8 +286,8 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
 
     dialogManager.hideAlertDialog;
     if (result.isSuccess) {
-      viewModel.setProjeListesi(result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>());
-      return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
+      viewModel.setProjeListesi(result.dataList);
+      return result.dataList;
     }
     return null;
   }

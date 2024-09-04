@@ -73,9 +73,8 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     setSerihareketleriList(null);
     final result = await networkManager.dioPost(path: ApiUrls.getSeriHareketleri, bodyModel: SeriHareketleriModel(), data: requestModel.toJson());
-    if (result.data is List) {
-      final List<SeriHareketleriModel> list = result.data.map((e) => e as SeriHareketleriModel).toList().cast<SeriHareketleriModel>();
-      setSerihareketleriList(list);
+    if (result.isSuccess) {
+      setSerihareketleriList(result.dataList);
     }
   }
 

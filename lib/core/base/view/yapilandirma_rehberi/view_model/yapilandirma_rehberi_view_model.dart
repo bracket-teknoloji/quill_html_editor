@@ -131,16 +131,16 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   Future<void> getData() async {
     final yapilandirmaListesi =
         await networkManager.dioGet<YapilandirmaProfilModel>(path: ApiUrls.getYapilandirmaProfili, bodyModel: YapilandirmaProfilModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
-    if (yapilandirmaListesi.data != null && yapilandirmaListesi.data is List) {
+    if (yapilandirmaListesi.isSuccess) {
       final ObservableList<YapilandirmaProfilModel> list = <YapilandirmaProfilModel>[].asObservable();
-      list.addAll(yapilandirmaListesi.data.whereType<YapilandirmaProfilModel>().toList());
+      list.addAll(yapilandirmaListesi.dataList);
       yapilandirmaProfilList = list;
     }
     final result =
         await networkManager.dioGet<YapilandirmaRehberiModel>(path: ApiUrls.getYapilandirmaListesi, bodyModel: YapilandirmaRehberiModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
-    if (result.data != null && result.data is List) {
+    if (result.isSuccess) {
       final ObservableList<YapilandirmaRehberiModel> list = <YapilandirmaRehberiModel>[].asObservable();
-      list.addAll(result.data.whereType<YapilandirmaRehberiModel>().toList());
+      list.addAll(result.dataList);
       yapilandirmaList = list;
 
       for (var i = 0; i < (yapilandirmaProfilList?.length ?? 0); i++) {

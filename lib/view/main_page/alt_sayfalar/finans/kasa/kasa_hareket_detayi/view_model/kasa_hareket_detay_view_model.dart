@@ -35,8 +35,8 @@ abstract class _KasaHareketDetayViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())},
     );
-    if (result.data is List) {
-      setKasaIslemleriModel((result.data as List).firstOrNull);
+    if (result.isSuccess) {
+      setKasaIslemleriModel(result.dataList.firstOrNull);
     } else {
       message = result.message ?? "";
     }

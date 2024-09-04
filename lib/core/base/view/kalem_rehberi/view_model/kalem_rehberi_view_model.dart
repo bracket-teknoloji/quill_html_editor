@@ -66,8 +66,8 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: model?.toJson());
-    if (result.data != null) {
-      setKalemList(result.data?.map((e) => e as KalemModel).toList().cast<KalemModel>());
+    if (result.isSuccess) {
+      setKalemList(result.dataList);
     }
   }
 }

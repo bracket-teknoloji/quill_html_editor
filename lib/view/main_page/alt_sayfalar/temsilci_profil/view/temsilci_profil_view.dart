@@ -4,8 +4,6 @@ import "package:get/get.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
-import "../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../core/base/state/base_state.dart";
 import "../../../../../core/components/charts/custom_line_chart.dart";
 import "../../../../../core/components/charts/custom_pie_chart.dart";
@@ -352,11 +350,11 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
       );
 
   Future<void> getData() async {
-    final GenericResponseModel<NetworkManagerMixin> result =
+    final result =
         await networkManager.dioGet<TemsilciProfilModel>(path: ApiUrls.getPlasiyerOzetRaporu, bodyModel: TemsilciProfilModel(), queryParameters: viewModel.temsilciProfilRequestModel.toJson());
-    if (result.data != null) {
+    if (result.isSuccess) {
       viewModel.setAciklama(result.paramData?["ACIKLAMA"]);
-      viewModel.setTemsilciProfilList(result.data.map((e) => e as TemsilciProfilModel).toList().cast<TemsilciProfilModel>());
+      viewModel.setTemsilciProfilList(result.dataList);
     }
   }
 }

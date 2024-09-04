@@ -235,20 +235,20 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     error = null;
     final result =
         await networkManager.dioGet<EBelgeListesiModel>(path: ApiUrls.getEFaturalar, bodyModel: EBelgeListesiModel(), queryParameters: {"FilterModel": jsonEncode(eBelgeRequestModel.toJson())});
-    // if (result.data is List) {
+    // if (result.isSuccess) {
     //   final List<EBelgeListesiModel> eBelgeListesi = result.data as List<EBelgeListesiModel>;
     // }
-    if (result.success != true) {
+    if (!result.isSuccess) {
       error = result.message;
       setEBelgeListesi([]);
       return;
     }
 
-    if (result.data is List) {
+    if (result.isSuccess) {
       if (eBelgeRequestModel.sayfa == 1) {
         paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
       }
-      final List<EBelgeListesiModel> list = result.data.cast<EBelgeListesiModel>();
+      final List<EBelgeListesiModel> list = result.dataList;
       if ((eBelgeRequestModel.sayfa ?? 0) < 2) {
         setEBelgeListesi(list);
       } else {

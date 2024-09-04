@@ -127,8 +127,8 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet<CariHareketleriModel>(path: ApiUrls.getCariHareketleri, bodyModel: CariHareketleriModel(), queryParameters: cariHareketleriRequestModel.toJson());
-    if (result.data is List) {
-      final List<CariHareketleriModel> list = result.data.cast<CariHareketleriModel>();
+    if (result.isSuccess) {
+      final List<CariHareketleriModel> list = result.dataList;
       setcariHareketleriListesi(list);
       log(list.map((e) => e.hareketAciklama).toSet().toString(), name: "Benzersiz Hareket Türleri");
     }

@@ -14,7 +14,6 @@ import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/sto
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -699,8 +698,8 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
 
   Future<void> dataChecker() async {
     if (list.ext.isNullOrEmpty && StaticVariables.grupKodlari.ext.isNullOrEmpty) {
-      final GenericResponseModel data = await CariNetworkManager.getKod();
-      list = data.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
+      final data = await CariNetworkManager.getKod();
+      list = data.dataList;
       if (list != null) {
         StaticVariables.grupKodlari = list!;
       }

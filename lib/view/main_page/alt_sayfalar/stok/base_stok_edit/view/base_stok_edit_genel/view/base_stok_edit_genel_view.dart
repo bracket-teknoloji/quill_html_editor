@@ -770,18 +770,18 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
-    final GenericResponseModel result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
-    return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
+    final result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+    return result.dataList;
   }
 
   Future<List<StokOlcuBirimleriModel>> getOlcuBirimleri() async {
-    final GenericResponseModel result = await networkManager.dioGet<StokOlcuBirimleriModel>(
+    final result = await networkManager.dioGet<StokOlcuBirimleriModel>(
       path: ApiUrls.getOlcuBirimleri,
       bodyModel: StokOlcuBirimleriModel(),
       addCKey: true,
       addSirketBilgileri: true,
     );
-    return result.data.map((e) => e as StokOlcuBirimleriModel).toList().cast<StokOlcuBirimleriModel>();
+    return result.dataList;
   }
 
   void subeChecker() {

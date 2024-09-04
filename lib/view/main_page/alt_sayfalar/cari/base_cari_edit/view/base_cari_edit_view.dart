@@ -71,16 +71,16 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           viewModel.changeIsDownloadCompletedSuccesfully(true);
           return;
         }
-        final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariDetayModel>(
+        final GenericResponseModel<CariDetayModel> result = await networkManager.dioGet<CariDetayModel>(
           path: ApiUrls.getCariDetay,
           bodyModel: CariDetayModel(),
           showError: false,
           showLoading: true,
           queryParameters: <String, dynamic>{"CariKodu": widget.model?.model.cariKodu},
         );
-        if (result.data != null && result.data!.isNotEmpty && result.isSuccess) {
-          CariDetayModel.setInstance(result.data[0]);
-          CariListesiModel.setInstance((result.data[0] as CariDetayModel).cariList?.firstOrNull);
+        if (result.isSuccess && result.dataList.isNotEmpty) {
+          CariDetayModel.setInstance(result.dataList.first);
+          CariListesiModel.setInstance(result.dataList.first.cariList?.firstOrNull);
           CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first));
           if (widget.model?.baseEditEnum == BaseEditEnum.kopyala) {
             final String? kod = await CariNetworkManager.getSiradakiKod(kod: "");
@@ -92,7 +92,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           await dialogManager.showAlertDialog(result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu");
           Get.back(result: true);
         }
-        viewModel.changeIsDownloadCompletedSuccesfully(result.success);
+        viewModel.changeIsDownloadCompletedSuccesfully(result.isSuccess);
       } else {
         viewModel.changeIsDownloadCompletedSuccesfully(true);
         CariDetayModel.setInstance(CariDetayModel());

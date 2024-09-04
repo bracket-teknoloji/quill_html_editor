@@ -114,7 +114,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     setCekSenetListesiListesi(null);
     final result = await networkManager.dioGet<CekSenetListesiModel>(path: ApiUrls.getCekSenetler, bodyModel: CekSenetListesiModel(), queryParameters: cekSenetListesiRequestModel.toJson());
     if (result.isSuccess) {
-      setCekSenetListesiListesi(result.data.map((e) => e as CekSenetListesiModel).toList().cast<CekSenetListesiModel>());
+      setCekSenetListesiListesi(result.dataList);
     }
     setIsScrolledDown(false);
   }

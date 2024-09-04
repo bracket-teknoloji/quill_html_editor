@@ -101,7 +101,7 @@ class NetworkManager {
     // } else {
     //   dio.httpClientAdapter = BrowserHttpClientAdapter();
     // }
-    if (kDebugMode){
+    if (kDebugMode) {
       dio.interceptors.add(
         TalkerDioLogger(
           settings: TalkerDioLoggerSettings(
@@ -205,7 +205,7 @@ class NetworkManager {
       DialogManager().hideAlertDialog;
     }
 
-    if (responseModel.success != true) {
+    if (!responseModel.isSuccess) {
       if (showError) {
         await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
@@ -267,7 +267,7 @@ class NetworkManager {
       DialogManager().hideAlertDialog;
     }
 
-    if (responseModel.success != true) {
+    if (!responseModel.isSuccess) {
       if (showError) {
         await DialogManager().showAlertDialog(responseModel.message ?? "Bilinmeyen bir hata oluştu.");
       }
@@ -307,7 +307,7 @@ class NetworkManager {
     final response = await dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: {"BelgeNo": belgeNo, "BelgeTipi": "STOK", "UrlGetir": "E"});
 
     if (response.isSuccess) {
-      return response.data.map((e) => e as EvraklarModel).toList().cast<EvraklarModel>();
+      return response.dataList;
     }
     return null;
   }
@@ -335,7 +335,7 @@ class NetworkManager {
     return response;
   }
 
-  Future<GenericResponseModel> getKontrolPlaniPdf(OlcumPdfModel model) async {
+  Future<GenericResponseModel<BasePdfModel>> getKontrolPlaniPdf(OlcumPdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
     final response = await dioGet<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "K").toJson());
     return response;
@@ -396,7 +396,7 @@ class NetworkManager {
   Future<List<BaseProjeModel>?> getProjeData() async {
     final result = await dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
     if (result.isSuccess) {
-      return result.data.map((e) => e as BaseProjeModel).toList().cast<BaseProjeModel>();
+      return result.dataList;
     }
     return null;
   }
@@ -424,21 +424,19 @@ class NetworkManager {
       path: ApiUrls.getUyeBilgileri,
     );
     if (result.isSuccess) {
-      final List<AccountResponseModel>? list = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+      final List<AccountResponseModel> list = result.dataList;
       if (list.ext.isNotNullOrEmpty) {
-        CacheManager.setIsLicenseVerified(email ?? list?.firstOrNull?.email ?? "", true);
+        CacheManager.setIsLicenseVerified(email ?? list.firstOrNull?.email ?? "", true);
       }
       if (getFromCache) {
-        final List<AccountResponseModel> list = result.data.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
+        final List<AccountResponseModel> list = result.dataList;
         if (list.firstOrNull != null) {
           CacheManager.setAccounts(list.firstOrNull!..parola = password ?? CacheManager.getVerifiedUser.account?.parola ?? "");
         }
       }
     } else {
-      final List<AccountResponseModel>? list = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
-      // final List<AccountResponseModel> accountList = result.data?.map((e) => e as AccountResponseModel).toList().cast<AccountResponseModel>();
       if (result.errorCode == 5) {
-        CacheManager.setIsLicenseVerified(email ?? list?.firstOrNull?.email ?? "", false);
+        CacheManager.setIsLicenseVerified(email ?? result.dataList.firstOrNull?.email ?? "", false);
       }
     }
     return result;
@@ -450,20 +448,19 @@ class NetworkManager {
       await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {
-    final GenericResponseModel result = await dioGet<StokMuhasebeKoduModel>(
+    final GenericResponseModel<StokMuhasebeKoduModel> result = await dioGet<StokMuhasebeKoduModel>(
       path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari,
       bodyModel: StokMuhasebeKoduModel(),
       showLoading: true,
       queryParameters: queryParams,
     );
-    return result.data.map((e) => e as StokMuhasebeKoduModel).toList().cast<StokMuhasebeKoduModel>();
+    return result.dataList;
   }
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {
     final result = await dioGet<SiradakiBelgeNoModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: SiradakiBelgeNoModel(), data: (model..belgeNo = null).toJson());
     if (result.isSuccess) {
-      final List<SiradakiBelgeNoModel> list = result.data.map((e) => e as SiradakiBelgeNoModel).toList().cast<SiradakiBelgeNoModel>();
-      return list.firstOrNull?.belgeNo;
+      return result.dataList.firstOrNull?.belgeNo;
     }
     return null;
   }
@@ -475,10 +472,9 @@ class NetworkManager {
       showLoading: true,
       queryParameters: model.toJson(),
     );
-    if ((result.isSuccess) && (result.data is List)) {
-      final List<CariListesiModel> list = result.data.map((e) => e as CariListesiModel).toList().cast<CariListesiModel>();
-      if (list.length == 1) {
-        return list.first;
+    if (result.isSuccess) {
+      if (result.dataList.length == 1) {
+        return result.dataList.firstOrNull;
       } else {
         // ignore: use_build_context_synchronously
         final cariModel = await Get.toNamed("/mainPage/cariListesiOzel", arguments: model..kod = null);
@@ -498,7 +494,7 @@ class NetworkManager {
       data: model.toJson(),
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as StokListesiModel).toList().firstOrNull;
+      return result.dataList.firstOrNull;
     }
     return null;
   }
@@ -511,7 +507,7 @@ class NetworkManager {
       queryParameters: model.toJson(),
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as HucreListesiModel).toList().firstOrNull;
+      return result.dataList.firstOrNull;
     }
     return null;
   }
@@ -524,7 +520,7 @@ class NetworkManager {
       data: {"RehberKodu": 3},
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -536,7 +532,7 @@ class NetworkManager {
       showLoading: true,
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as OlcumOperatorModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -548,7 +544,7 @@ class NetworkManager {
       showLoading: true,
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as MuhasebeReferansModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -561,7 +557,7 @@ class NetworkManager {
       data: {"RehberKodu": 4},
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -574,7 +570,7 @@ class NetworkManager {
       data: {"RehberKodu": 5},
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -587,7 +583,7 @@ class NetworkManager {
       data: {"RehberKodu": 6},
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -600,7 +596,7 @@ class NetworkManager {
       data: {"RehberKodu": 7},
     );
     if (result.isSuccess) {
-      return (result.data as List).map((e) => e as KullanicilarModel).toList();
+      return result.dataList;
     }
     return null;
   }
@@ -613,9 +609,9 @@ class NetworkManager {
       // headers: {"platform": AccountModel.instance.platform ?? ""},
       queryParameters: model.toJson(),
     );
-    if ((result.isSuccess) && result.data is List) {
-      final List<BaseSiparisEditModel> list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-      if (result.data.length == 1) {
+    if ((result.isSuccess) && result.isSuccess) {
+      final List<BaseSiparisEditModel> list = result.dataList;
+      if (result.dataList.length == 1) {
         return result.dataList.firstOrNull;
       } else {
         // ignore: use_build_context_synchronously

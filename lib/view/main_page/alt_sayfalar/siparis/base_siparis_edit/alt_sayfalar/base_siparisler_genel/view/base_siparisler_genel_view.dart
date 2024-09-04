@@ -512,8 +512,7 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
       showLoading: true,
     );
     if (result.isSuccess) {
-      final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-      BaseSiparisEditModel.instance.belgeNo = list?.firstOrNull?.belgeNo;
+      BaseSiparisEditModel.instance.belgeNo = result.dataList.firstOrNull?.belgeNo;
       belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
     }
   }

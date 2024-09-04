@@ -3,8 +3,8 @@ import "base_network_mixin.dart";
 class GenericResponseModel<T extends NetworkManagerMixin> {
   String? message;
   String? messageDetail;
-  bool? success;
-  dynamic data;
+  bool? _success;
+  dynamic _data;
   T? model;
   String? exceptionName;
   String? errorDetails;
@@ -16,7 +16,7 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
   GenericResponseModel({
     this.message,
     this.messageDetail,
-    this.success,
+    bool? success,
     this.exceptionName,
     this.errorDetails,
     this.exceptionStackTrace,
@@ -24,12 +24,12 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
     this.serviceVersion,
     this.errorCode,
     this.ex,
-  });
+  }) : _success = success;
 
   GenericResponseModel.fromJson(Map<String, dynamic> json, this.model) {
     message = json["Message"];
     messageDetail = json["MessageDetail"];
-    success = json["Success"];
+    _success = json["Success"];
     exceptionName = json["ExceptionName"];
     errorDetails = json["ErrorDetails"];
     exceptionStackTrace = json["ExceptionStackTrace"];
@@ -39,21 +39,21 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
     ex = json["Ex"];
 
     if (json["Data"] is List) {
-      data = json["Data"].map((e) => model?.fromJson(e)).toList();
+      _data = json["Data"].map((e) => model?.fromJson(e)).toList();
     } else if (json["Data"] is Map<String, dynamic>) {
-      data = model?.fromJson(json["Data"]);
+      _data = model?.fromJson(json["Data"]);
     } else {
-      data = json["Data"];
+      _data = json["Data"];
     }
   }
 
-  bool get isSuccess => success == true;
+  bool get isSuccess => _success == true;
 
-  List<T> get dataList => (data as List).map((e) => e as T).toList();
+  List<T> get dataList => (_data as List).map((e) => e as T).toList();
 
-  T get dataItem => data as T;
+  T get dataItem => _data as T;
 }
 
 extension GenericResponseModelExtensions on GenericResponseModel? {
-  bool get isSuccessAndNotNull => this?.success == true;
+  bool get isSuccessAndNotNull => this?._success == true;
 }

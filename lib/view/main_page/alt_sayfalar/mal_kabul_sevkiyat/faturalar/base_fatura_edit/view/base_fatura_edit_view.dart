@@ -136,10 +136,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
       } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        final GenericResponseModel<NetworkManagerMixin> result =
+        final result =
             await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.isSuccess) {
-          BaseSiparisEditModel.setInstance(result.data!.first);
+          BaseSiparisEditModel.setInstance(result.dataList.first);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           // BaseSiparisEditModel.instance.teslimTarihi = null;
           // BaseSiparisEditModel.instance.istenilenTeslimTarihi = null;
@@ -567,11 +567,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       );
 
   Future<void> getData() async {
-    final GenericResponseModel<NetworkManagerMixin> result =
+    final result =
         await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: widget.model.model?.toJson(), showLoading: true);
     if (result.isSuccess) {
       // viewModel.changeFuture();
-      BaseSiparisEditModel.setInstance(result.data!.first);
+      BaseSiparisEditModel.setInstance(result.dataList.first);
     }
   }
 

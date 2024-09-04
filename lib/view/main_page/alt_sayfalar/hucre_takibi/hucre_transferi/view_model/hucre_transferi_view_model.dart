@@ -53,7 +53,7 @@ abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
     );
     if (result.isSuccess) {
-      final list = (result.data as List).map((e) => e as PaketlemeListesiModel).toList();
+      final list = result.dataList;
       setPaketKodu(list.firstOrNull?.kodu);
       return list.firstOrNull?.kodu;
     }

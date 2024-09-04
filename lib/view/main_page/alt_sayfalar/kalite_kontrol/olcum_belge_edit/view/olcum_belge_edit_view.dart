@@ -106,7 +106,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                         );
                         if (result.isSuccess) {
                           OlcumPdfModel? selectedItem;
-                          final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
+                          final List<OlcumPdfModel> list = result.dataList;
                           if (list.length == 1) {
                             selectedItem = list.first;
                           } else {
@@ -142,7 +142,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                         );
                         if (result.isSuccess) {
                           OlcumPdfModel? selectedItem;
-                          final List<OlcumPdfModel> list = (result.data as List).map((e) => e as OlcumPdfModel).toList();
+                          final List<OlcumPdfModel> list = result.dataList;
                           if (list.length == 1) {
                             selectedItem = list.first;
                           } else {
@@ -158,8 +158,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                           }
                           if (selectedItem != null) {
                             final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
-                            if (pdfData.data != null) {
-                              Get.to(() => GenelPdfView(model: pdfData.data));
+                            if (pdfData.isSuccess) {
+                              Get.to(() => GenelPdfView(model: pdfData.dataItem));
                             }
                           }
                         }

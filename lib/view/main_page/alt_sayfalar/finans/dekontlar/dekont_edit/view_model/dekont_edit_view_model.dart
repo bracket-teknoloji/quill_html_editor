@@ -45,7 +45,7 @@ abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
     final result =
         await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model.queryParam, showLoading: true);
     if (result.isSuccess) {
-      final List<DekontDuzenleRequestModel> list = (result.data as List).map((e) => e as DekontDuzenleRequestModel).toList().cast<DekontDuzenleRequestModel>();
+      final List<DekontDuzenleRequestModel> list = result.dataList;
       SingletonDekontIslemlerRequestModel.setInstance(DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(list));
       setKalemSayisi(list.length);
       setIslemTamamlandi(true);

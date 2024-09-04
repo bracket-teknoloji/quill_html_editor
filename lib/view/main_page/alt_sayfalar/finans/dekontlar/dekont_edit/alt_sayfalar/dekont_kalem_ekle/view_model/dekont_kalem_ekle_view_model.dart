@@ -126,8 +126,8 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": DateTime.now().toDateString},
     );
-    if (result.data is List) {
-      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    if (result.isSuccess) {
+      setDovizKurlariListesi(result.dataList);
     }
   }
 }

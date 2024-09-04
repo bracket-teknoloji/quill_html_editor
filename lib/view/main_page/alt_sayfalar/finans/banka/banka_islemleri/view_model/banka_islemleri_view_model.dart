@@ -109,9 +109,8 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     final result = await networkManager.dioGet<BankaHareketleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaHareketleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
-    if (result.data is List) {
-      final List<BankaHareketleriModel> list = result.data.cast<BankaHareketleriModel>();
-      setBankaIslemleriListesi(list);
+    if (result.isSuccess) {
+      setBankaIslemleriListesi(result.dataList);
     }
   }
 }

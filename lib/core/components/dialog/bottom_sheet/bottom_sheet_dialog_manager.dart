@@ -633,12 +633,11 @@ class BottomSheetDialogManager {
       bodyModel: EIrsaliyeBilgiModel(),
       showLoading: true,
     );
-    if (result.data is List) {
-      final List<EIrsaliyeBilgiModel> list = result.data.map((e) => e as EIrsaliyeBilgiModel).toList().cast<EIrsaliyeBilgiModel>();
+    if (result.isSuccess) {
       return await showBottomSheetDialog(
         context,
         title: "Şablon Seçiniz",
-        children: list
+        children: result.dataList
             .map(
               (e) => BottomSheetModel(
                 title: e.tasiyiciUnvan ?? "",
@@ -742,8 +741,8 @@ class BottomSheetDialogManager {
   Future<BankaListesiModel?> showBankaHesaplariBottomSheetDialog(BuildContext context, BankaListesiRequestModel model, dynamic groupValue) async {
     List<BankaListesiModel> bankaHesaplariList = <BankaListesiModel>[];
     final result = await _networkManager.dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel(), queryParameters: model.toJson(), showLoading: true);
-    if (result.data is List) {
-      bankaHesaplariList = result.data.map((e) => e as BankaListesiModel).toList().cast<BankaListesiModel>();
+    if (result.isSuccess) {
+      bankaHesaplariList = result.dataList;
     }
     if (bankaHesaplariList.ext.isNotNullOrEmpty) {
       return await showRadioBottomSheetDialog(
@@ -959,8 +958,8 @@ class BottomSheetDialogManager {
       showLoading: true,
       queryParameters: {"CariKodu": cariKodu, "BelgeTuru": belgeTipi, "BelgeNo": belgeNo},
     );
-    if (result.data is List) {
-      final List<KalemListModel> list = result.data.map((e) => e as KalemListModel).toList().cast<KalemListModel>();
+    if (result.isSuccess) {
+      final List<KalemListModel> list = result.dataList;
       return await showBottomSheetDialog(
         context,
         title: "Belge Bağlantıları",
@@ -982,8 +981,8 @@ class BottomSheetDialogManager {
   Future<EFaturaOzelKodModel?> showEFaturaOzelKodBottomSheetDialog(BuildContext context, int? groupValue, {required String? cariKodu, required String? belgeTipi, required String? belgeNo}) async {
     final result = await _networkManager
         .dioGet(path: ApiUrls.getEFaturaOzelKodlar, bodyModel: EFaturaOzelKodModel(), showLoading: true, queryParameters: {"CariKodu": cariKodu, "BelgeTipi": belgeTipi, "BelgeNo": belgeNo});
-    if (result.data != null) {
-      final List<EFaturaOzelKodModel> list = result.data.map((e) => e as EFaturaOzelKodModel).toList().cast<EFaturaOzelKodModel>();
+    if (result.isSuccess) {
+      final List<EFaturaOzelKodModel> list = result.dataList;
       return await showRadioBottomSheetDialog(
         context,
         title: "Özel Kod Seçiniz",
@@ -1005,8 +1004,8 @@ class BottomSheetDialogManager {
 
   Future<TcmbBankalarModel?> showTcmbBankalarBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final result = await _networkManager.dioGet(path: ApiUrls.getTcmbBankalar, showLoading: true, bodyModel: TcmbBankalarModel());
-    if (result.data is List) {
-      final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
+    if (result.isSuccess) {
+      final List<TcmbBankalarModel> list = result.dataList;
       return await showRadioBottomSheetDialog(
         context,
         title: "Banka Seçiniz",
@@ -1028,8 +1027,8 @@ class BottomSheetDialogManager {
 
   Future<TcmbBankalarModel?> showTcmbSubelerBottomSheetDialog(BuildContext context, String? bankaKodu, dynamic groupValue) async {
     final result = await _networkManager.dioGet(path: ApiUrls.getTcmbSubeler, bodyModel: TcmbBankalarModel(), showLoading: true, queryParameters: {"BankaKodu": bankaKodu});
-    if (result.data is List) {
-      final List<TcmbBankalarModel> list = result.data.map((e) => e as TcmbBankalarModel).toList().cast<TcmbBankalarModel>();
+    if (result.isSuccess) {
+      final List<TcmbBankalarModel> list = result.dataList;
       return await showRadioBottomSheetDialog(
         context,
         title: "Şube Seçiniz",
@@ -1081,8 +1080,8 @@ class BottomSheetDialogManager {
 
   Future<MuhasebeReferansModel?> showReferansKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final result = await _networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
-    if (result.data is List) {
-      final List<MuhasebeReferansModel> list = result.data.map((e) => e as MuhasebeReferansModel).toList().cast<MuhasebeReferansModel>();
+    if (result.isSuccess) {
+      final List<MuhasebeReferansModel> list = result.dataList;
       return await showRadioBottomSheetDialog(
         context,
         title: "Referans Kod Seçiniz",
@@ -1104,8 +1103,8 @@ class BottomSheetDialogManager {
 
   Future<SeriModel?> showSeriKodBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final result = await _networkManager.dioGet<SeriModel>(path: ApiUrls.getDekontSeriler, bodyModel: SeriModel(), showLoading: true);
-    if (result.data is List) {
-      final List<SeriModel> list = result.data.map((e) => e as SeriModel).toList().cast<SeriModel>();
+    if (result.isSuccess) {
+      final List<SeriModel> list = result.dataList;
       return await showRadioBottomSheetDialog(
         context,
         title: "Seri Kod Seçiniz",

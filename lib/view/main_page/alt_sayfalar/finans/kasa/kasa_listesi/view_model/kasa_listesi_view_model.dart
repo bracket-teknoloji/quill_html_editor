@@ -116,8 +116,8 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   Future<void> getData() async {
     final result = await networkManager
         .dioGet<KasaListesiModel>(path: ApiUrls.getKasalar, bodyModel: KasaListesiModel(), queryParameters: {"MenuKodu": "YONE_KASA", "Sirala": sirala, "Bakiye": filtreGroupValue});
-    if (result.data is List) {
-      setObservableList(result.data.cast<KasaListesiModel>());
+    if (result.isSuccess) {
+      setObservableList(result.dataList);
     }
   }
 }

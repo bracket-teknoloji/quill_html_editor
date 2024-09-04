@@ -109,7 +109,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(stokHareketleri);
         islemlerList.add(cariAktivite);
         islemlerList.add(cariAktiviteKaydiGir);
-        islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi ,cariKoduDegistir(newModel.cariKodu));
+        islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
         islemlerList.addAll(raporlar ?? []);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
@@ -327,7 +327,7 @@ class IslemlerMenuItemConstants<T> {
     );
     if (result.isSuccess) {
       _dialogManager.showSuccessSnackBar("Başarılı");
-      return result.success!;
+      return result.isSuccess;
     } else {
       return false;
     }
@@ -377,8 +377,8 @@ class IslemlerMenuItemConstants<T> {
                           },
                         );
                         if (result.isSuccess) {
-                          final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-                          controller.text = list?.firstOrNull?.belgeNo ?? "";
+                          final List<BaseSiparisEditModel> list = result.dataList;
+                          controller.text = list.firstOrNull?.belgeNo ?? "";
                         }
                       },
                       icon: const Icon(Icons.abc),
@@ -554,7 +554,7 @@ class IslemlerMenuItemConstants<T> {
 
   GridItemModel? cariKoduDegistir(String? cariKodu) => GridItemModel.islemler(
         title: "Cari Kodu Değiştir",
-        isEnabled: _yetkiController.cariKartiDuzenleme ,
+        isEnabled: _yetkiController.cariKartiDuzenleme,
         iconData: Icons.people_alt_outlined,
         onTap: () async {
           final TextEditingController controller = TextEditingController();
@@ -941,7 +941,7 @@ class IslemlerMenuItemConstants<T> {
                 showLoading: true,
                 data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
               );
-              return saveCari.success;
+              return saveCari.isSuccess;
             }
           }
         },
@@ -1129,8 +1129,8 @@ class IslemlerMenuItemConstants<T> {
       },
     );
     if (result.isSuccess) {
-      final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-      controller.text = list?.firstOrNull?.belgeNo ?? "";
+      final List<BaseSiparisEditModel> list = result.dataList;
+      controller.text = list.firstOrNull?.belgeNo ?? "";
     }
   }
 
@@ -1432,8 +1432,7 @@ class IslemlerMenuItemConstants<T> {
           queryParameters: {"FilterModel": jsonEncode(EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel).durumSorgula.toJson())},
         );
         if (result.isSuccess) {
-          final EBelgeListesiModel eBelgeListesiModel = result.data!.first;
-          _dialogManager.showInfoSnackBar(eBelgeListesiModel.onayDurumuString);
+          _dialogManager.showInfoSnackBar(result.dataList.first.onayDurumuString);
           return true;
         }
       },
@@ -1586,8 +1585,8 @@ class IslemlerMenuItemConstants<T> {
                         },
                       );
                       if (result.isSuccess) {
-                        final List<BaseSiparisEditModel>? list = result.data.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
-                        controller.text = list?.firstOrNull?.belgeNo ?? "";
+                        final List<BaseSiparisEditModel> list = result.dataList;
+                        controller.text = list.firstOrNull?.belgeNo ?? "";
                         resmiController.text = belgeNoToResmiBelgeNo(controller.text, siparisModel.tarih);
                       }
                     },

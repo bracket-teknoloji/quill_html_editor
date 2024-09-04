@@ -300,8 +300,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             if (viewModel.grupKodlari.isEmptyOrNull) {
               final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
               // StaticVariables.grupKodlari = grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>();
-              if (grupKodlari.data != null) {
-                viewModel.setGrupKodlari(grupKodlari.data.map((e) => e as BaseGrupKoduModel).toList().cast<BaseGrupKoduModel>());
+              if (grupKodlari.isSuccess) {
+                viewModel.setGrupKodlari(grupKodlari.dataList);
               }
             }
             await bottomSheetDialogManager.showBottomSheetDialog(

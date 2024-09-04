@@ -1,7 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
@@ -181,22 +179,21 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getFilterData() async {
-    final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioGet<CariSehirlerModel>(
+    final result = await networkManager.dioGet<CariSehirlerModel>(
       path: ApiUrls.getCariKayitliSehirler,
       bodyModel: CariSehirlerModel(),
       addTokenKey: true,
       addSirketBilgileri: true,
       headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
-    if (result.data is List) {
-      sehirler = result.data.cast<CariSehirlerModel>();
+    if (result.isSuccess) {
+      sehirler = result.dataList;
     }
   }
 
   @action
   Future<void> getUlkeData() async {
-    final GenericResponseModel<NetworkManagerMixin> response =
-        await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
-    ulkeler = response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
+    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    ulkeler = response.dataList;
   }
 }

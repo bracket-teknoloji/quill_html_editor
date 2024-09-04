@@ -7,8 +7,6 @@ import "package:get/get.dart";
 
 import "../../../../../../../../core/base/model/base_bottom_sheet_response_model.dart";
 import "../../../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
@@ -462,8 +460,8 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       );
 
   Future<List<UlkeModel>?> getUlkeData() async {
-    final GenericResponseModel<NetworkManagerMixin> response =
-        await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
-    return response.data?.map((e) => e as UlkeModel).toList().cast<UlkeModel>();
+    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    if (response.isSuccess) return response.dataList;
+    return null;
   }
 }

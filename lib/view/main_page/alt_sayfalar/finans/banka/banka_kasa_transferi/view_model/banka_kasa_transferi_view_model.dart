@@ -95,7 +95,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"Seri": model.belgeNo ?? "", "BelgeTipi": "TH", "EIrsaliye": "H"},
     );
-    if (result.data is List) {
+    if (result.isSuccess) {
       setBelgeNo((result.dataList.firstOrNull as BaseSiparisEditModel).belgeNo);
     }
   }
@@ -112,8 +112,8 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"EkranTipi": "D", "DovizKodu": model.dovizTipi, "tarih": model.tarih.toDateString},
     );
-    if (result.data is List) {
-      setDovizKurlariListesi(result.data.cast<DovizKurlariModel>());
+    if (result.isSuccess) {
+      setDovizKurlariListesi(result.dataList);
     }
   }
 

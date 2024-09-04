@@ -508,11 +508,10 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       addSirketBilgileri: true,
       queryParameters: queryParameters,
     );
-    viewModel.setFuture(Future.value(result.data));
-    final List<StokHareketleriModel> list = result.data.map((e) => e as StokHareketleriModel).toList().cast<StokHareketleriModel>();
-    viewModel.setStokHareketleri(list);
+    viewModel.setFuture(Future.value(result.dataList));
+    viewModel.setStokHareketleri(result.dataList);
     setState(() {});
 
-    return list;
+    return result.dataList;
   }
 }

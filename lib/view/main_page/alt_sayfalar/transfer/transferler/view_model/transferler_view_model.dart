@@ -185,7 +185,7 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
         setDahaVarMi(false);
       }
     } else {
-      if (result.success != true) {
+      if (!result.isSuccess) {
         setObservableList([]);
       }
     }

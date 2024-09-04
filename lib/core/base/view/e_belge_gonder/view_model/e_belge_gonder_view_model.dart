@@ -83,7 +83,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       // },
     );
     if (result.isSuccess) {
-      return result.data.map((e) => e as DizaynModel).toList().cast<DizaynModel>();
+      return result.dataList;
     } else {
       return [];
     }

@@ -46,7 +46,7 @@ abstract class _BankaHareketleriViewModelBase with Store, MobxNetworkMixin {
     setBankaHareketleriListesi(null);
     final result = await networkManager.dioGet<BankaHareketleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaHareketleriModel(), queryParameters: requestModel.toJson());
     if (result.isSuccess) {
-      setBankaHareketleriListesi(result.data.map((e) => e as BankaHareketleriModel).toList().cast<BankaHareketleriModel>());
+      setBankaHareketleriListesi(result.dataList);
     } else {
       Get.back();
     }

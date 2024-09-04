@@ -51,7 +51,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
     "Komisyoncu": "I",
   };
 
-    final Map<String, int> belgeTipiMap = <String, int>{
+  final Map<String, int> belgeTipiMap = <String, int>{
     "Kapalı": 1,
     "Açık": 2,
     "İade": 4,
@@ -275,8 +275,8 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
       headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
       queryParameters: {"Modul": "CARI", "GrupNo": "-1"},
     );
-    if (responseKod.data is List) {
-      changeGrupKodList(responseKod.data.cast<BaseGrupKoduModel>());
+    if (responseKod.isSuccess) {
+      changeGrupKodList(responseKod.dataList);
     }
   }
 
