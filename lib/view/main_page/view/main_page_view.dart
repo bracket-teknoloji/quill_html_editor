@@ -31,6 +31,8 @@ final class MainPageView extends StatefulWidget {
 
 final class _MainPageViewState extends BaseState<MainPageView> {
   final MainPageViewModel viewModel = MainPageViewModel();
+
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   // late List<GridItemModel> items;
   // List<List<GridItemModel>> lastItems = [];
   MainPageModel? model = CacheManager.getAnaVeri;
@@ -48,41 +50,38 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult: (didPop, value) async {
-        if (viewModel.lastItems.isNotEmpty) {
-          viewModel.setItems(viewModel.lastItems.last);
-          // viewModel.removeLastTitle();
-          viewModel.removeLastItem();
-        } else {
-          if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
-            scaffoldKey.currentState!.closeDrawer();
-            scaffoldKey.currentState!.closeEndDrawer();
-            return dialogManager.showExitDialog();
+  Widget build(BuildContext context) => PopScope(
+        canPop: false,
+        onPopInvokedWithResult: (didPop, value) async {
+          if (viewModel.lastItems.isNotEmpty) {
+            viewModel.setItems(viewModel.lastItems.last);
+            // viewModel.removeLastTitle();
+            viewModel.removeLastItem();
           } else {
-            // dialogManager.showExitDialog();
+            if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
+              scaffoldKey.currentState!.closeDrawer();
+              scaffoldKey.currentState!.closeEndDrawer();
+              return dialogManager.showExitDialog();
+            } else {
+              // dialogManager.showExitDialog();
+            }
           }
-        }
-      },
-      child: Scaffold(
-        appBar: appBar(scaffoldKey, context),
-        key: scaffoldKey,
-        drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
-        drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-        endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-        body: Row(
-          children: [
-            Expanded(child: body(context)),
-            if (kIsWeb && context.isLandscape) SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-          ],
+        },
+        child: Scaffold(
+          appBar: appBar(scaffoldKey, context),
+          key: scaffoldKey,
+          drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
+          drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+          endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+          body: Row(
+            children: [
+              Expanded(child: body(context)),
+              if (kIsWeb && context.isLandscape) SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+            ],
+          ),
+          // bottomNavigationBar: bottomBar(scaffoldKey),
         ),
-        bottomNavigationBar: bottomBar(scaffoldKey),
-      ),
-    );
-  }
+      );
 
   AppBar appBar(GlobalKey<ScaffoldState> scaffoldKey, BuildContext context) => AppBar(
         title: Observer(
@@ -148,6 +147,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
             Observer(
               builder: (_) => bodyWidget(),
             ),
+            Align(alignment: Alignment.bottomCenter, child: bottomBar(scaffoldKey)),
             if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
               SizedBox(
                 width: UIHelper.highSize * 3,
@@ -176,58 +176,64 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         ),
       );
 
-  GridView bodyWidget() => GridView.builder(
-        padding: UIHelper.lowPadding,
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: kIsWeb
-              ? MediaQuery.sizeOf(context).width ~/ 120 > 8
-                  ? 8
-                  : MediaQuery.sizeOf(context).width ~/ 120
-              : MediaQuery.sizeOf(context).width ~/ 90 > 10
-                  ? 10
-                  : MediaQuery.sizeOf(context).width ~/ 90,
-          childAspectRatio: 0.9,
-        ),
-        itemCount: viewModel.items.length,
-        itemBuilder: (context, index) {
-          //* indexteki itemi burada alıyoruz
-          final item = viewModel.items[index];
-          return AnimationConfiguration.staggeredList(
-            key: Key(item.title),
-            position: index,
-            duration: const Duration(milliseconds: 500),
-            delay: const Duration(milliseconds: 50),
-            child: FadeInAnimation(
-              child: CustomGridTile(
-                // color: item.color,
-                model: item,
-                // title: item.title.toString(),
-                onTap: () {
-                  if (item.altMenuVarMi) {
-                    if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
-                      item.altMenuler?.firstOrNull?.onTap?.call();
-                      return;
-                    }
-                    viewModel.addLastItem(viewModel.items);
-                    viewModel.titleList.add(item.title);
-                    viewModel.setItems(
-                      item.altMenuler!.where((element) {
-                        element.color ??= item.color;
-                        if (element.icon.ext.isNullOrEmpty) {
-                          element.icon = item.icon;
-                        }
-                        return element.yetkiKontrol;
-                      }).toList(),
-                    );
-                  } else {
-                    item.onTap?.call();
-                  }
-                },
+  Column bodyWidget() => Column(
+        children: [
+          Expanded(
+            child: GridView.builder(
+              padding: UIHelper.lowPadding,
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: kIsWeb
+                    ? MediaQuery.sizeOf(context).width ~/ 120 > 6
+                        ? 6
+                        : MediaQuery.sizeOf(context).width ~/ 120
+                    : MediaQuery.sizeOf(context).width ~/ 90 > 10
+                        ? 10
+                        : MediaQuery.sizeOf(context).width ~/ 90,
+                childAspectRatio: 0.9,
               ),
+              itemCount: viewModel.items.length,
+              itemBuilder: (context, index) {
+                //* indexteki itemi burada alıyoruz
+                final item = viewModel.items[index];
+                return AnimationConfiguration.staggeredList(
+                  key: Key(item.title),
+                  position: index,
+                  duration: const Duration(milliseconds: 500),
+                  delay: const Duration(milliseconds: 50),
+                  child: FadeInAnimation(
+                    child: CustomGridTile(
+                      // color: item.color,
+                      model: item,
+                      // title: item.title.toString(),
+                      onTap: () {
+                        if (item.altMenuVarMi) {
+                          if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
+                            item.altMenuler?.firstOrNull?.onTap?.call();
+                            return;
+                          }
+                          viewModel.addLastItem(viewModel.items);
+                          viewModel.titleList.add(item.title);
+                          viewModel.setItems(
+                            item.altMenuler!.where((element) {
+                              element.color ??= item.color;
+                              if (element.icon.ext.isNullOrEmpty) {
+                                element.icon = item.icon;
+                              }
+                              return element.yetkiKontrol;
+                            }).toList(),
+                          );
+                        } else {
+                          item.onTap?.call();
+                        }
+                      },
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       );
 
   SafeArea bottomBar(GlobalKey<ScaffoldState> scaffoldKey) => SafeArea(
