@@ -122,10 +122,10 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
             return;
           }
           if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
-            Get.back(result: true);
+            Get.back(result: false);
             return;
           }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+          await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
         },
         child: Scaffold(
           // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),

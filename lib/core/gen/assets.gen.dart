@@ -58,6 +58,19 @@ class $AssetsAppIconGen {
       [pickerLogoBeyaz, appIcon, beyaz1024, beyaz200, beyaz400, splash];
 }
 
+class $AssetsBackgroundGen {
+  const $AssetsBackgroundGen();
+
+  /// File path: assets/background/bg1.png
+  AssetGenImage get bg1 => const AssetGenImage('assets/background/bg1.png');
+
+  /// File path: assets/background/bg2.png
+  AssetGenImage get bg2 => const AssetGenImage('assets/background/bg2.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [bg1, bg2];
+}
+
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
@@ -357,6 +370,7 @@ class Assets {
   Assets._();
 
   static const $AssetsAppIconGen appIcon = $AssetsAppIconGen();
+  static const $AssetsBackgroundGen background = $AssetsBackgroundGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
   static const $AssetsSplashGen splash = $AssetsSplashGen();

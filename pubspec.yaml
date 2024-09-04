@@ -180,6 +180,7 @@ flutter:
     - assets/icons/PickerSvgIcon/AnaMenu/
     - assets/lotties/
     - assets/icons/
+    - assets/background/
     - assets/app_icon/
     - locales/EN_US.json
     - locales/TR.json
@@ -187,7 +188,7 @@ flutter:
     # - shorebird.yaml
 
 flutter_gen:
-  output: lib/core/gen/ # Optional (defaults to lib/flutter_gen)
+  output: lib/core/gen/
 
   # Optional
   integrations:
