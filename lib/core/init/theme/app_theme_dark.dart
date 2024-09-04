@@ -114,6 +114,13 @@ class AppThemeDark extends AppTheme {
             ),
           ),
         ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            elevation: 0.4,
+            splashFactory: InkRipple.splashFactory,
+            side: BorderSide(color: colorManager.secondary),
+          ),
+        ),
         iconTheme: IconThemeData(color: colorManager.primary, size: 30),
         dialogTheme: DialogTheme(
           shape: RoundedRectangleBorder(
