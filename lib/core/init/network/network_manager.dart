@@ -654,10 +654,5 @@ class NetworkManager {
   static String get getBaseUrl {
     final AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
     return "${CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? (account?.wsWan ?? account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/") : account?.wsLan}/";
-    // if (account?.wsWan != null) {
-    // } else {
-    //   result = account?.wsLan ?? "http://ofis.bracket.com.tr:7575/Picker/";
-    // }
-    // return result;
   }
 }
