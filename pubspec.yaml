@@ -33,6 +33,7 @@ dependencies:
   device_info_plus: ^10.1.0
   package_info_plus: ^6.0.0
   connectivity_plus: ^6.0.1
+  platform_device_id: ^1.0.1
   android_id: ^0.4.0
 
   #Network Dependencies
