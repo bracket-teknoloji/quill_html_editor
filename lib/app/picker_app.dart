@@ -186,7 +186,7 @@ final class PickerApp extends StatelessWidget {
         ),
         alignment: Alignment.center,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: kIsWeb && context.isLandscape ? MediaQuery.sizeOf(context).width * 0.9 : double.infinity),
+          constraints: BoxConstraints(maxWidth: kIsWeb && context.isLandscape ? MediaQuery.sizeOf(context).width * 0.75 : double.infinity),
           child: const PickerMaterialApp(),
         ),
       );

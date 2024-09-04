@@ -180,7 +180,13 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         padding: UIHelper.lowPadding,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: MediaQuery.sizeOf(context).width ~/ 120 > 8 ? 8 : MediaQuery.sizeOf(context).width ~/ 120,
+          crossAxisCount: kIsWeb
+              ? MediaQuery.sizeOf(context).width ~/ 120 > 8
+                  ? 8
+                  : MediaQuery.sizeOf(context).width ~/ 120
+              : MediaQuery.sizeOf(context).width ~/ 90 > 10
+                  ? 10
+                  : MediaQuery.sizeOf(context).width ~/ 90,
           childAspectRatio: 0.9,
         ),
         itemCount: viewModel.items.length,
