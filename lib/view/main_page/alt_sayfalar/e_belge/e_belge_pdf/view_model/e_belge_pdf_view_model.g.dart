@@ -49,22 +49,6 @@ mixin _$EBelgePdfViewModel on _EBelgePdfViewModelBase, Store {
     });
   }
 
-  late final _$pdfFileAtom =
-      Atom(name: '_EBelgePdfViewModelBase.pdfFile', context: context);
-
-  @override
-  File? get pdfFile {
-    _$pdfFileAtom.reportRead();
-    return super.pdfFile;
-  }
-
-  @override
-  set pdfFile(File? value) {
-    _$pdfFileAtom.reportWrite(value, super.pdfFile, () {
-      super.pdfFile = value;
-    });
-  }
-
   late final _$futureControllerAtom =
       Atom(name: '_EBelgePdfViewModelBase.futureController', context: context);
 
@@ -121,7 +105,7 @@ mixin _$EBelgePdfViewModel on _EBelgePdfViewModelBase, Store {
       AsyncAction('_EBelgePdfViewModelBase.getFile', context: context);
 
   @override
-  Future<void> getFile() {
+  Future<File?> getFile() {
     return _$getFileAsyncAction.run(() => super.getFile());
   }
 
@@ -135,17 +119,6 @@ mixin _$EBelgePdfViewModel on _EBelgePdfViewModelBase, Store {
 
   late final _$_EBelgePdfViewModelBaseActionController =
       ActionController(name: '_EBelgePdfViewModelBase', context: context);
-
-  @override
-  void changePdfFile(File? value) {
-    final _$actionInfo = _$_EBelgePdfViewModelBaseActionController.startAction(
-        name: '_EBelgePdfViewModelBase.changePdfFile');
-    try {
-      return super.changePdfFile(value);
-    } finally {
-      _$_EBelgePdfViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
 
   @override
   void changeCurrentPage(int value) {
@@ -185,7 +158,6 @@ mixin _$EBelgePdfViewModel on _EBelgePdfViewModelBase, Store {
     return '''
 currentPage: ${currentPage},
 pageCounter: ${pageCounter},
-pdfFile: ${pdfFile},
 futureController: ${futureController},
 model: ${model},
 eBelgePdfModel: ${eBelgePdfModel},

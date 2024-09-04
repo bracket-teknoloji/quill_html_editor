@@ -23,12 +23,6 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
   int pageCounter = 0;
 
   @observable
-  File? pdfFile;
-
-  @action
-  void changePdfFile(File? value) => pdfFile = value;
-
-  @observable
   ObservableFuture<bool?> futureController = ObservableFuture(Future.value(false));
 
   @computed
@@ -50,7 +44,7 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
   void changeEBelgePdfModel(EBelgePdfModel? value) => eBelgePdfModel = value;
 
   @action
-  Future<void> getFile() async {
+  Future<File?  > getFile() async {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/e_pdf").create(recursive: true);
@@ -59,8 +53,9 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
     fileWriter.writeFromSync(base64Decode(eBelgePdfModel?.fileModel?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {
-      changePdfFile(file);
+      return file;
     }
+    return null;
     // changePdfFile(file.lengthSync() > 0 ? file : null);
   }
 
@@ -69,7 +64,6 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioPost<EBelgePdfModel>(path: ApiUrls.eBelgeIslemi, bodyModel: EBelgePdfModel(), data: model.toJson());
     if (result.isSuccess) {
       changeEBelgePdfModel(result.dataList.first);
-      await getFile();
     } else {
       eBelgePdfModel = null;
     }

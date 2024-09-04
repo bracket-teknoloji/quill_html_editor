@@ -1,3 +1,4 @@
+import "dart:convert";
 import "dart:io";
 
 import "package:flutter/foundation.dart";
@@ -5,8 +6,8 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:open_file_plus/open_file_plus.dart";
-import "package:share_plus/share_plus.dart";
+import "package:open_filex/open_filex.dart";
+import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
@@ -71,10 +72,10 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
       );
 
   Observer body(BuildContext context) => Observer(
-        builder: (_) => viewModel.pdfFile != null
+        builder: (_) => viewModel.eBelgePdfModel != null
             ? Observer(
-                builder: (_) => SfPdfViewer.file(
-                  viewModel.pdfFile!,
+                builder: (_) => SfPdfViewer.memory(
+                  base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
                   controller: pdfViewerController,
                   onTextSelectionChanged: (details) {
                     if (kIsWeb) {
@@ -142,11 +143,11 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   }
 
   void fileChecker() {
-    if (viewModel.pdfFile != null) {
-      Share.shareXFiles([XFile(viewModel.pdfFile!.path, lastModified: viewModel.eBelgePdfModel?.fileModel?.dosyaTarihi)], subject: "Pdf Paylaşımı");
-    } else {
-      dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
-    }
+    // if (viewModel.pdfFile != null) {
+    //   Share.shareXFiles([XFile(viewModel.pdfFile!.path, lastModified: viewModel.eBelgePdfModel?.fileModel?.dosyaTarihi)], subject: "Pdf Paylaşımı");
+    // } else {
+    //   dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+    // }
   }
 
   Future<void> secenekler() async {
@@ -158,9 +159,10 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
           title: "PDF Görüntüle",
           iconWidget: Icons.picture_as_pdf_outlined,
           onTap: () async {
-            if (viewModel.pdfFile != null) {
-              Get.back();
-              OpenFile.open(viewModel.pdfFile!.path);
+            if (kIsWeb) return fileDownload(base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""), viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "pdf");
+            final file = await viewModel.getFile();
+            if (file != null) {
+              await OpenFilex.open(file.path);
             }
           },
         ),
