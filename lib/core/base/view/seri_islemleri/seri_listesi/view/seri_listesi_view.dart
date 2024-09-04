@@ -99,7 +99,12 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                         // ignore: prefer_typing_uninitialized_variables
                         dynamic result;
                         if (viewModel.kalemModel.isUsk == true) {
-                          result = await Get.toNamed("/seriRehberiUSK", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu..belgeTarihi = widget.kalemModel.tarih);
+                          result = await Get.toNamed(
+                            "/seriRehberiUSK",
+                            arguments: viewModel.stokModel
+                              ?..depoKodu = widget.kalemModel.depoKodu
+                              ..belgeTarihi = widget.kalemModel.tarih,
+                          );
                         } else {
                           result = await Get.toNamed("/seriRehberi", arguments: viewModel.stokModel?..depoKodu = widget.kalemModel.depoKodu);
                         }

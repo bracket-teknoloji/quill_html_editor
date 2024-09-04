@@ -1,4 +1,4 @@
-enum EBelgeIslemKoduEnum { eBelgeBirlestir, eBelgeEslestirmeIptali, eBelgeSil, eBelgeZarfSil, eBelgeYazdir, eBelgeHariciYollaFaturaIptali, eBelgeYanit}
+enum EBelgeIslemKoduEnum { eBelgeBirlestir, eBelgeEslestirmeIptali, eBelgeSil, eBelgeZarfSil, eBelgeYazdir, eBelgeHariciYollaFaturaIptali, eBelgeYanit }
 
 extension EBelgeIslemKoduExtensions on EBelgeIslemKoduEnum {
   int get value {
@@ -7,7 +7,7 @@ extension EBelgeIslemKoduExtensions on EBelgeIslemKoduEnum {
         return 11;
       case EBelgeIslemKoduEnum.eBelgeHariciYollaFaturaIptali:
         return 12;
-        case EBelgeIslemKoduEnum.eBelgeYanit:
+      case EBelgeIslemKoduEnum.eBelgeYanit:
         return 18;
       case EBelgeIslemKoduEnum.eBelgeBirlestir:
         return 20;

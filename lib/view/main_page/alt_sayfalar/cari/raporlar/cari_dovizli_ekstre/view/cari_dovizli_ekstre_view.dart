@@ -97,7 +97,7 @@ class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView> {
                     final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Döviz Tipi",
-                      children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "",  value: e)).toList(),
+                      children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", value: e)).toList(),
                     );
                     if (result != null) {
                       dovizController.text = result.isim ?? "";

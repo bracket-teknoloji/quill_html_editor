@@ -52,7 +52,7 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
     stokListesiModel = stokListesiModel.copyWith(depoKodu: value);
     StokListesiModel.setInstance(stokListesiModel);
   }
-  
+
   @action
   void setSube(IsletmeModel? value) {
     stokListesiModel = stokListesiModel.copyWith(subeKodu: value?.subeKodu);

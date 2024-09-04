@@ -11,8 +11,7 @@ class FinansOzetRaporRequestModel with _$FinansOzetRaporRequestModel {
     String? cariKodu,
     String? tarihTipi,
     String? cariKoduIleBaslar,
-    @JsonKey(name: "KDVDahil")
-    bool? kdvDahil,
+    @JsonKey(name: "KDVDahil") bool? kdvDahil,
     String? baslamaTarihi,
     String? bitisTarihi,
     String? iadeDurumu,

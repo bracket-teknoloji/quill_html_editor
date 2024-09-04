@@ -38,7 +38,7 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setRequestModel(SiparislerRequestModel value) => model = value;
-  
+
   @action
   void setKalemList(List<KalemModel>? value) => kalemList = value?.asObservable();
 

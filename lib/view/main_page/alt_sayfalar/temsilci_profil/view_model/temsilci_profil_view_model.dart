@@ -104,8 +104,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -124,8 +123,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -144,8 +142,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -164,8 +161,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -260,8 +256,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -280,8 +275,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -300,8 +294,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -320,8 +313,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
   @computed
@@ -339,8 +331,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -359,8 +350,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -379,8 +369,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
 
@@ -399,8 +388,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
               )
               .map((e) => e.tutar)
               .toList()
-              .reduce((value, element) => value! + element!)
-               ??
+              .reduce((value, element) => value! + element!) ??
           0
       : 0;
   @computed
@@ -510,12 +498,9 @@ abstract class _TemsilciProfilViewModelBase with Store {
           .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().month - 1 : i - 1] = list[i > 12 ? DateTime.now().month - 1 : i - 1] +
-            (value
-                    ?.toList()
-                    .reduce(
+            (value?.toList().reduce(
                       (value, element) => (value ?? 0) + (element ?? 0),
-                    )
-                     ??
+                    ) ??
                 0);
       }
     }
@@ -542,12 +527,9 @@ abstract class _TemsilciProfilViewModelBase with Store {
           .toList();
       if (value.ext.isNotNullOrEmpty) {
         list[i > 12 ? DateTime.now().month - 1 : i - 1] = list[i > 12 ? DateTime.now().month - 1 : i - 1] +
-            (value
-                    ?.toList()
-                    .reduce(
+            (value?.toList().reduce(
                       (value, element) => (value ?? 0) + (element ?? 0),
-                    )
-                     ??
+                    ) ??
                 0);
       }
     }

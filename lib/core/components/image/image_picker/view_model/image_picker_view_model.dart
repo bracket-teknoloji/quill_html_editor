@@ -30,7 +30,7 @@ abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
   @action
   void setImage(Uint8List? value) => image = value;
 
-@action
+  @action
   void setIsProcessing(bool value) => isProcessing = value;
 
   @action

@@ -7,7 +7,6 @@ part "uretim_sonu_kaydi_kalem_ekle_view_model.g.dart";
 class UretimSonuKaydiKalemEkleViewModel = _UretimSonuKaydiKalemEkleViewModelBase with _$UretimSonuKaydiKalemEkleViewModel;
 
 abstract class _UretimSonuKaydiKalemEkleViewModelBase with Store {
-
   @observable
   KalemModel model = KalemModel();
 

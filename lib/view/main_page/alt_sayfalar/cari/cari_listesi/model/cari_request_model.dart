@@ -74,7 +74,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
         // belgeTuru: model,
       );
 
-      factory CariRequestModel.fromSaveCekSenetModel(SaveCekSenetModel model) => CariRequestModel(
+  factory CariRequestModel.fromSaveCekSenetModel(SaveCekSenetModel model) => CariRequestModel(
         filterText: "",
         kod: [model.cariKodu ?? ""],
         // sayfa: 1,
@@ -82,5 +82,4 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
         plasiyerKisitiYok: true,
         // belgeTuru: model,
       );
-
 }

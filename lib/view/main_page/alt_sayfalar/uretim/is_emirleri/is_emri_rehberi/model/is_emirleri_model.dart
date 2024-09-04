@@ -7,7 +7,6 @@ part "is_emirleri_model.g.dart";
 
 @unfreezed
 class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin {
-
   IsEmirleriModel._();
   factory IsEmirleriModel({
     DateTime? tarih,

@@ -14,7 +14,7 @@ extension ListExtension<T> on List<T> {
           child: e as Widget,
         ),
       ).toList();
-      
+
   List<T> get nullCheck => where((element) => element != null).toList().cast<T>();
 }
 

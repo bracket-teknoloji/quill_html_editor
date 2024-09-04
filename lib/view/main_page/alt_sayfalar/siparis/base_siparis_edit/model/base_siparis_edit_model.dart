@@ -67,7 +67,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instanceList.isEmpty) {
       // print(_instance?.toJson());
       _instanceList.add(_instance!);
-    _instanceList.last.kalemlerOTVHesapla();
+      _instanceList.last.kalemlerOTVHesapla();
     }
     return _instanceList.last;
   }

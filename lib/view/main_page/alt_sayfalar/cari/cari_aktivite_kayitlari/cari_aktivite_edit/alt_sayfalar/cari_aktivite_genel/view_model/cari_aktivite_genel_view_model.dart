@@ -97,7 +97,7 @@ abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setSure(double? value) {
-    model = model.copyWith(sure: value, bittar: model.bastar?.add(Duration(seconds: (value??0).toInt() * 360)));
+    model = model.copyWith(sure: value, bittar: model.bastar?.add(Duration(seconds: (value ?? 0).toInt() * 360)));
     SingletonModels.setCariAktiviteListesi = model;
   }
 

@@ -20,5 +20,5 @@ class BelgeRehberiRequestModel with _$BelgeRehberiRequestModel {
         depoKodu: model.depoKodu,
         islemTuru: model.islemTuru,
         pickerBelgeTuru: model.pickerBelgeTuru,
-  );
+      );
 }

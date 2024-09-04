@@ -77,7 +77,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void setGenIsk1(double? value) {
     if (value == 0 || value == null) {
       model = model.copyWith(genIsk1o: 0);
-    BaseSiparisEditModel.setInstance(model);
+      BaseSiparisEditModel.setInstance(model);
       return;
     } else if (isGenIsk1T) {
       model = model.copyWith(genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100);
@@ -91,7 +91,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void setGenIsk2(double? value) {
     if (value == 0 || value == null) {
       model = model.copyWith(genIsk2o: 0);
-    BaseSiparisEditModel.setInstance(model);
+      BaseSiparisEditModel.setInstance(model);
       return;
     }
     if (isGenIsk2T) {
@@ -106,7 +106,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   void setGenIsk3(double? value) {
     if (value == 0 || value == null) {
       model = model.copyWith(genIsk3o: 0);
-    BaseSiparisEditModel.setInstance(model);
+      BaseSiparisEditModel.setInstance(model);
       return;
     }
     if (isGenIsk3T) {

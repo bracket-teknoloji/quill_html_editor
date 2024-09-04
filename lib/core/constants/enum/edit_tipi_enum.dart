@@ -182,7 +182,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.cari:
         return "";
 
-        //? Bu ikisinin değeri elle girildi. Gerçek bir değer değil.
+      //? Bu ikisinin değeri elle girildi. Gerçek bir değer değil.
       case EditTipiEnum.paket:
         return "PAK";
       case EditTipiEnum.belgesizIslem:

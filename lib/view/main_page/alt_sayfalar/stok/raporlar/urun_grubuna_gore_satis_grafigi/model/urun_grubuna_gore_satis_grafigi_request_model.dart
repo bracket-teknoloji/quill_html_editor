@@ -8,16 +8,16 @@ part "urun_grubuna_gore_satis_grafigi_request_model.g.dart";
 class UrunGrubunaGoreSatisGrafigiRequestModel with _$UrunGrubunaGoreSatisGrafigiRequestModel, NetworkManagerMixin {
   UrunGrubunaGoreSatisGrafigiRequestModel._();
   factory UrunGrubunaGoreSatisGrafigiRequestModel({
-   List<String>? arrPlasiyerKodu,
-  String? baslamaTarihi,
-  String? bitisTarihi,
-  String? cariKodu,
-  String? donemTipi,
-  int? grupNo,
-  String? irsDahil,
-  String? grupla,
-  String? projeKodu,
-  String? tipi,
+    List<String>? arrPlasiyerKodu,
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? cariKodu,
+    String? donemTipi,
+    int? grupNo,
+    String? irsDahil,
+    String? grupla,
+    String? projeKodu,
+    String? tipi,
   }) = _UrunGrubunaGoreSatisGrafigiRequestModel;
 
   factory UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);

@@ -2,14 +2,12 @@ import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 
-
 /// Bu mixin ile birlikte gelen [NetworkManagerMixin] sınıfından türetilen
 /// sınıflarda [observableList] değişkenini kullanarak listeleme yapıyoruz.
-/// 
+///
 /// * Eğer sayfalama yapılacaksa `PageableMixin` mixin'i ile birlikte kullanmalıyız.
 /// * Eğer arama yapılacaksa `SearchableMixin` mixin'i ile birlikte kullanmalıyız.
 mixin ListableMixin<T extends NetworkManagerMixin> on MobxNetworkMixin {
-
   /// Ekranda göstereceğimiz verilerin listesi
   ObservableList<T>? get observableList;
 

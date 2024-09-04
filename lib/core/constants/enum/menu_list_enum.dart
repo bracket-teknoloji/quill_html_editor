@@ -16,7 +16,7 @@ enum MenuItemsEnum {
   talepTeklif("TEKL"),
   temsilciProfil("TEMS"),
   transfer("TRNS"),
-  uretim("URET"), 
+  uretim("URET"),
   uetds("EUTD"),
   kalkon("KALKON");
 

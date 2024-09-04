@@ -23,5 +23,5 @@ enum BarkodTipiEnum {
   final String barkodTipi;
   final String barkodAdi;
 
-  const BarkodTipiEnum(this.barkodTipi, this.barkodAdi  );
+  const BarkodTipiEnum(this.barkodTipi, this.barkodAdi);
 }

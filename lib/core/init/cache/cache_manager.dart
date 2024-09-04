@@ -108,7 +108,7 @@ class CacheManager {
         BaseProfilParametreModel().toJson(),
       );
     }
-    await  finansOzelRaporOrderBox.clear();
+    await finansOzelRaporOrderBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {
       await isLicenseVerifiedBox.put("value", false);
     }
@@ -272,6 +272,7 @@ class CacheManager {
       );
     }
   }
+
   static void addTransferEditListItem(BaseSiparisEditModel value) {
     if (transferEditListBox.get(StaticVariables.getSiparisString) == null) {
       transferEditListBox.put(
@@ -382,6 +383,7 @@ class CacheManager {
     );
     return true;
   }
+
   static void removeTransferEdit(String key) => transferEditBox.delete(key);
   static void removeTransferEditList(int index) {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;

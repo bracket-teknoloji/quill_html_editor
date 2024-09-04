@@ -6,7 +6,6 @@ part "stok_fiyat_ozeti_request_model.g.dart";
 
 @unfreezed
 class StokFiyatOzetiRequestModel with _$StokFiyatOzetiRequestModel {
-
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory StokFiyatOzetiRequestModel({
     String? yapKod,

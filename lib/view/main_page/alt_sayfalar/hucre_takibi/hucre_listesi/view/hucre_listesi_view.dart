@@ -73,7 +73,6 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
                 builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredHucreListesi, itemBuilder: hucreCard),
               ),
             ),
-            
           ],
         ).paddingAll(UIHelper.lowSize),
       );

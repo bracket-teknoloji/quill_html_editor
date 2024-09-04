@@ -9,7 +9,12 @@ class BaseEditModel<T> {
   String? belgeNo;
 
   bool get enable =>
-      baseEditEnum == BaseEditEnum.ekle || baseEditEnum == BaseEditEnum.duzenle || baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.siparistenKopyala || baseEditEnum == BaseEditEnum.revize || baseEditEnum == BaseEditEnum.taslak;
+      baseEditEnum == BaseEditEnum.ekle ||
+      baseEditEnum == BaseEditEnum.duzenle ||
+      baseEditEnum == BaseEditEnum.kopyala ||
+      baseEditEnum == BaseEditEnum.siparistenKopyala ||
+      baseEditEnum == BaseEditEnum.revize ||
+      baseEditEnum == BaseEditEnum.taslak;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
   bool get isGoruntule => baseEditEnum == BaseEditEnum.goruntule;
   bool get isEkle => baseEditEnum == BaseEditEnum.ekle;

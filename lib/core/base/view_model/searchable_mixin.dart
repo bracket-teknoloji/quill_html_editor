@@ -1,11 +1,9 @@
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 
-
 /// Eğer Listeleme yapılacak ekranımızda arama işlemi yapılacaksa bu mixini kullanınınız.
 /// Bu mixin ile birlikte SearchBar işlemlerini yapabilirsiniz.
 mixin SearchableMixin<T extends NetworkManagerMixin> on ListableMixin<T> {
-
   /// Default olarak false başlanılması önerilir.
   /// [changeSearchBarStatus] metodu kullanıldıkça durumu güncellenmektedir.
   /// Eğer view üzerinde kullanacaksanız viewModel içerisinde override edip observable olarak kullanabilirsiniz.

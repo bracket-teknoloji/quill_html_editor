@@ -38,7 +38,7 @@ class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
         miktar: model.miktar,
         sira: model.sira.toStringIfNotNull ?? "0",
         seriMiktarKadar: model.seriMiktarKadarSor == true ? "E" : "H",
-  );
+      );
 
   @override
   UskReceteModel fromJson(Map<String, dynamic> json) => _$UskReceteModelFromJson(json);

@@ -6,8 +6,7 @@ part "finans_ozet_rapor_model.freezed.dart";
 part "finans_ozet_rapor_model.g.dart";
 
 @unfreezed
-class FinansOzetRaporModel with _$FinansOzetRaporModel, NetworkManagerMixin{
-  
+class FinansOzetRaporModel with _$FinansOzetRaporModel, NetworkManagerMixin {
   FinansOzetRaporModel._();
   factory FinansOzetRaporModel({
     String? tabloTipi,

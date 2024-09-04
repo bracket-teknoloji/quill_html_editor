@@ -10,7 +10,11 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
   final GridItemModel? item;
   final Function()? onTap;
 
-  const AnimatedIslemlerGridTile({super.key,this.item, this.onTap,});
+  const AnimatedIslemlerGridTile({
+    super.key,
+    this.item,
+    this.onTap,
+  });
 
   @override
   AnimatedIslemlerGridTileState createState() => AnimatedIslemlerGridTileState();

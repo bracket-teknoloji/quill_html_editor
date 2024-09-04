@@ -226,7 +226,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: "Tutar: ${(kalemModel?.genelToplamTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                        TextSpan(text: "Tutar: ${kalemModel?.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                         TextSpan(text: "\n(${kalemModel?.dovizliBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
