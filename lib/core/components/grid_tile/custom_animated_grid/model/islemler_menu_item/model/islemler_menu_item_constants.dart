@@ -53,6 +53,7 @@ import "../../kod_degistir_model.dart";
 import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
+  BuildContext context;
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   IslemTipiEnum islemTipi;
   ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
@@ -67,7 +68,7 @@ class IslemlerMenuItemConstants<T> {
   ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
   BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
-  IslemlerMenuItemConstants({required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
+  IslemlerMenuItemConstants(this.context, {required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemTipi == IslemTipiEnum.stok) {
       islemlerList.add(stokKarti);
       islemlerList.add(kopyala);
@@ -431,7 +432,7 @@ class IslemlerMenuItemConstants<T> {
         },
       );
 
-  BuildContext get context => Get.context!;
+  // BuildContext get context => Get.context!;
   GridItemModel? get siparisPDFGoruntule => GridItemModel.islemler(
         title: "PDF Görüntüle",
         isEnabled: (model as BaseSiparisEditModel).getEditTipiEnum?.yazdirilsinMi,

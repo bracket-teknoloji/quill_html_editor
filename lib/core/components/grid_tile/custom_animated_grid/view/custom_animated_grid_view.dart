@@ -52,7 +52,7 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
       }
     } else {
       final IslemlerMenuItemConstants islemlerResult =
-          IslemlerMenuItemConstants(islemTipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
+          IslemlerMenuItemConstants(context, islemTipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
       viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
     super.initState();
