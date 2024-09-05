@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
+import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -85,10 +85,15 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   ///Bu widget adaptive olarak çalışmaktadır.
   ///Padding'i önden tanımlanmıştır.
   @override
-  Widget build(BuildContext context) => RefreshIndicator.adaptive(
-        onRefresh: onRefresh,
-        child: body(context),
-      ).paddingAll(UIHelper.lowSize);
+  Widget build(BuildContext context) => Center(
+        child: SizedBox(
+          width: (kIsWeb && context.isLandscape) ? MediaQuery.sizeOf(context).width * 0.6 : null,
+          child: RefreshIndicator.adaptive(
+            onRefresh: onRefresh,
+            child: body(context),
+          ),
+        ).paddingAll(UIHelper.lowSize),
+      );
 
   Widget body(BuildContext context) {
     if (items == null) return const ListViewShimmer();

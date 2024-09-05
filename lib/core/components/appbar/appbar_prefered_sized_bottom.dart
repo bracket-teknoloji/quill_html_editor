@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
+import "package:picker/app/picker_app_imports.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/list_extensions.dart";
@@ -26,6 +26,7 @@ class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBotto
   @override
   Widget build(BuildContext context) => SizedBox(
         height: widget.toolbarHeight,
+        width: (kIsWeb && context.isLandscape) ? width * 0.6 : null,
         child: Column(
           children: [
             Expanded(
