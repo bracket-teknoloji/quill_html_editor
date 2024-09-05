@@ -33,29 +33,16 @@ class $AssetsAppIconGen {
   SvgGenImage get pickerLogoBeyaz =>
       const SvgGenImage('assets/app_icon/PickerLogoBeyaz.svg');
 
-  /// File path: assets/app_icon/app_icon.png
-  AssetGenImage get appIcon =>
-      const AssetGenImage('assets/app_icon/app_icon.png');
-
   /// File path: assets/app_icon/beyaz_1024.png
   AssetGenImage get beyaz1024 =>
       const AssetGenImage('assets/app_icon/beyaz_1024.png');
-
-  /// File path: assets/app_icon/beyaz_200.png
-  AssetGenImage get beyaz200 =>
-      const AssetGenImage('assets/app_icon/beyaz_200.png');
 
   /// File path: assets/app_icon/beyaz_400.png
   AssetGenImage get beyaz400 =>
       const AssetGenImage('assets/app_icon/beyaz_400.png');
 
-  /// File path: assets/app_icon/splash.json
-  LottieGenImage get splash =>
-      const LottieGenImage('assets/app_icon/splash.json');
-
   /// List of all assets
-  List<dynamic> get values =>
-      [pickerLogoBeyaz, appIcon, beyaz1024, beyaz200, beyaz400, splash];
+  List<dynamic> get values => [pickerLogoBeyaz, beyaz1024, beyaz400];
 }
 
 class $AssetsBackgroundGen {
@@ -82,10 +69,6 @@ class $AssetsIconsGen {
 class $AssetsLottiesGen {
   const $AssetsLottiesGen();
 
-  /// File path: assets/lotties/chart_lottie.json
-  LottieGenImage get chartLottie =>
-      const LottieGenImage('assets/lotties/chart_lottie.json');
-
   /// File path: assets/lotties/image_processing_lottie.json
   LottieGenImage get imageProcessingLottie =>
       const LottieGenImage('assets/lotties/image_processing_lottie.json');
@@ -94,21 +77,17 @@ class $AssetsLottiesGen {
   LottieGenImage get locationLottie =>
       const LottieGenImage('assets/lotties/location_lottie.json');
 
-  /// File path: assets/lotties/person.lottie
-  String get person => 'assets/lotties/person.lottie';
-
   /// File path: assets/lotties/person_lottie.json
   LottieGenImage get personLottie =>
       const LottieGenImage('assets/lotties/person_lottie.json');
 
+  /// File path: assets/lotties/woman_lottie.json
+  LottieGenImage get womanLottie =>
+      const LottieGenImage('assets/lotties/woman_lottie.json');
+
   /// List of all assets
-  List<dynamic> get values => [
-        chartLottie,
-        imageProcessingLottie,
-        locationLottie,
-        person,
-        personLottie
-      ];
+  List<LottieGenImage> get values =>
+      [imageProcessingLottie, locationLottie, personLottie, womanLottie];
 }
 
 class $AssetsSplashGen {
@@ -159,118 +138,16 @@ class $AssetsIconsPickerSvgIconGen {
   $AssetsIconsPickerSvgIconAnaMenuGen get anaMenu =>
       const $AssetsIconsPickerSvgIconAnaMenuGen();
 
-  /// File path: assets/icons/PickerSvgIcon/AnaSayfa.svg
-  SvgGenImage get anaSayfa =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/AnaSayfa.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/BaglantiSekli.svg
-  SvgGenImage get baglantiSekli =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/BaglantiSekli.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Can-Uyari.svg
-  SvgGenImage get canUyari =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Can-Uyari.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Carpi-Kapat.svg
-  SvgGenImage get carpiKapat =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Carpi-Kapat.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Cikis.svg
-  SvgGenImage get cikis =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Cikis.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Duzenle.svg
-  SvgGenImage get duzenle =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Duzenle.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Goz.svg
-  SvgGenImage get goz =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Goz.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Guvenlik.svg
-  SvgGenImage get guvenlik =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Guvenlik.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Information.svg
-  SvgGenImage get information =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Information.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/KilitAcik.svg
-  SvgGenImage get kilitAcik =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/KilitAcik.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Kilitli.svg
-  SvgGenImage get kilitli =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Kilitli.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Konum.svg
-  SvgGenImage get konum =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Konum.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Mercek.svg
-  SvgGenImage get mercek =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Mercek.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Saat.svg
-  SvgGenImage get saat =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Saat.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Tamam-Okey.svg
-  SvgGenImage get tamamOkey =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Tamam-Okey.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Thumbs.db
-  String get thumbs => 'assets/icons/PickerSvgIcon/Thumbs.db';
-
-  /// File path: assets/icons/PickerSvgIcon/Unlem.svg
-  SvgGenImage get unlem =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Unlem.svg');
-
   /// File path: assets/icons/PickerSvgIcon/User-Account.svg
   SvgGenImage get userAccount =>
       const SvgGenImage('assets/icons/PickerSvgIcon/User-Account.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Wifi.svg
-  SvgGenImage get wifi =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Wifi.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Yenile.svg
-  SvgGenImage get yenile =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Yenile.svg');
-
-  /// File path: assets/icons/PickerSvgIcon/Yildiz.svg
-  SvgGenImage get yildiz =>
-      const SvgGenImage('assets/icons/PickerSvgIcon/Yildiz.svg');
 
   /// File path: assets/icons/PickerSvgIcon/sirket_degistir.svg
   SvgGenImage get sirketDegistir =>
       const SvgGenImage('assets/icons/PickerSvgIcon/sirket_degistir.svg');
 
   /// List of all assets
-  List<dynamic> get values => [
-        anaSayfa,
-        baglantiSekli,
-        canUyari,
-        carpiKapat,
-        cikis,
-        duzenle,
-        goz,
-        guvenlik,
-        information,
-        kilitAcik,
-        kilitli,
-        konum,
-        mercek,
-        saat,
-        tamamOkey,
-        thumbs,
-        unlem,
-        userAccount,
-        wifi,
-        yenile,
-        yildiz,
-        sirketDegistir
-      ];
+  List<SvgGenImage> get values => [userAccount, sirketDegistir];
 }
 
 class $AssetsIconsPickerSvgIconAnaMenuGen {

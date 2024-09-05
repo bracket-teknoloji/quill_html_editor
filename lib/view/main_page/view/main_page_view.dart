@@ -67,19 +67,26 @@ final class _MainPageViewState extends BaseState<MainPageView> {
             }
           }
         },
-        child: Scaffold(
-          appBar: appBar(scaffoldKey, context),
-          key: scaffoldKey,
-          drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
-          drawer: SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-          endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-          body: Row(
-            children: [
-              Expanded(child: body(context)),
-              if (kIsWeb && context.isLandscape) SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-            ],
-          ),
-          // bottomNavigationBar: bottomBar(scaffoldKey),
+        child: Row(
+          children: [
+            if (kIsWeb && context.isLandscape) LeftDrawer(scaffoldKey: scaffoldKey),
+            Expanded(
+              child: Scaffold(
+                appBar: appBar(scaffoldKey, context),
+                key: scaffoldKey,
+                drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
+                drawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+                endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+                body: Row(
+                  children: [
+                    Expanded(child: body(context)),
+                  ],
+                ),
+                // bottomNavigationBar: bottomBar(scaffoldKey),
+              ),
+            ),
+            if (kIsWeb && context.isLandscape) EndDrawer(scaffoldKey: scaffoldKey),
+          ],
         ),
       );
 
@@ -97,16 +104,18 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                     viewModel.removeLastItem();
                   },
                 )
-              : IconButton(
-                  icon: const Icon(Icons.star_border_outlined),
-                  onPressed: () async {
-                    if (scaffoldKey.currentState!.isDrawerOpen) {
-                      Navigator.pop(context);
-                    } else {
-                      scaffoldKey.currentState!.openDrawer();
-                    }
-                  },
-                ),
+              : (kIsWeb && context.isLandscape)
+                  ? const SizedBox()
+                  : IconButton(
+                      icon: const Icon(Icons.star_border_outlined),
+                      onPressed: () async {
+                        if (scaffoldKey.currentState!.isDrawerOpen) {
+                          Navigator.pop(context);
+                        } else {
+                          scaffoldKey.currentState!.openDrawer();
+                        }
+                      },
+                    ),
         ),
         actions: [
           if (kDebugMode)
@@ -179,55 +188,62 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   Column bodyWidget() => Column(
         children: [
           Expanded(
-            child: GridView.builder(
-              padding: UIHelper.lowPadding,
-              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: kIsWeb
-                    ? MediaQuery.sizeOf(context).width ~/ 120 > 6
-                        ? 6
-                        : MediaQuery.sizeOf(context).width ~/ 120
-                    : MediaQuery.sizeOf(context).width ~/ 90 > 10
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final crossAxisCount = kIsWeb
+                    ? constraints.maxWidth ~/ 100 > 7
+                        ? 7
+                        : constraints.maxWidth ~/ 100
+                    : constraints.maxWidth ~/ 90 > 10
                         ? 10
-                        : MediaQuery.sizeOf(context).width ~/ 90,
-                childAspectRatio: 0.9,
-              ),
-              itemCount: viewModel.items.length,
-              itemBuilder: (context, index) {
-                //* indexteki itemi burada alıyoruz
-                final item = viewModel.items[index];
-                return AnimationConfiguration.staggeredList(
-                  key: Key(item.title),
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  delay: const Duration(milliseconds: 50),
-                  child: FadeInAnimation(
-                    child: CustomGridTile(
-                      // color: item.color,
-                      model: item,
-                      // title: item.title.toString(),
-                      onTap: () {
-                        if (item.altMenuVarMi) {
-                          if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
-                            item.altMenuler?.firstOrNull?.onTap?.call();
-                            return;
-                          }
-                          viewModel.addLastItem(viewModel.items);
-                          viewModel.titleList.add(item.title);
-                          viewModel.setItems(
-                            item.altMenuler!.where((element) {
-                              element.color ??= item.color;
-                              if (element.icon.ext.isNullOrEmpty) {
-                                element.icon = item.icon;
-                              }
-                              return element.yetkiKontrol;
-                            }).toList(),
-                          );
-                        } else {
-                          item.onTap?.call();
-                        }
-                      },
+                        : constraints.maxWidth ~/ 90;
+                return Observer(
+                  builder: (_) => GridView.builder(
+                    padding: UIHelper.lowPadding,
+                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount > 0 ? crossAxisCount : 1,
+                      childAspectRatio: 0.9,
                     ),
+                    itemCount: viewModel.items.length,
+                    itemBuilder: (context, index) {
+                      //* indexteki itemi burada alıyoruz
+                      final item = viewModel.items[index];
+                      return AnimationConfiguration.staggeredList(
+                        key: Key(item.title),
+                        position: index,
+                        duration: const Duration(milliseconds: 500),
+                        delay: const Duration(milliseconds: 50),
+                        child: FadeInAnimation(
+                          child: CustomGridTile(
+                            // color: item.color,
+                            model: item,
+                            // title: item.title.toString(),
+                            onTap: () {
+                              if (item.altMenuVarMi) {
+                                if (item.altMenuler?.length == 1 && (item.altMenuler?.first.yetkiKontrol == true)) {
+                                  item.altMenuler?.firstOrNull?.onTap?.call();
+                                  return;
+                                }
+                                viewModel.addLastItem(viewModel.items);
+                                viewModel.titleList.add(item.title);
+                                viewModel.setItems(
+                                  item.altMenuler!.where((element) {
+                                    element.color ??= item.color;
+                                    if (element.icon.ext.isNullOrEmpty) {
+                                      element.icon = item.icon;
+                                    }
+                                    return element.yetkiKontrol;
+                                  }).toList(),
+                                );
+                              } else {
+                                item.onTap?.call();
+                              }
+                            },
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -25,12 +26,14 @@ class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(UIHelper.highSize),
-            bottomLeft: Radius.circular(UIHelper.highSize),
-          ),
-        ),
+        shape: kIsWeb
+            ? null
+            : const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(UIHelper.highSize),
+                  bottomLeft: Radius.circular(UIHelper.highSize),
+                ),
+              ),
         child: SafeArea(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +44,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
-                  Assets.lotties.personLottie.lottie(height: height * 0.2),
+                  Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
                   Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(
                     CacheManager.getVerifiedUser.account?.firma ?? "",
@@ -108,52 +111,66 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
-                      child: OutlinedButton.icon(
-                        label: Text(
-                          loc.rightDrawer.changeCompany,
-                          style: theme.textTheme.bodySmall,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1)),
                         ),
-                        icon: IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-
-                        onPressed: () {
-                          widget.scaffoldKey.currentState!.closeEndDrawer();
-                          Get.toNamed("/entryCompany", arguments: false);
-                        },
-                        // child: Row(
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     // Icon(Icons.rule_s)
-                        //     ,
-
-                        //   ],
-                        // ),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                            ),
+                          ),
+                          onPressed: () {
+                            widget.scaffoldKey.currentState!.closeEndDrawer();
+                            Get.toNamed("/entryCompany", arguments: false);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // Icon(Icons.rule_s)
+                              IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                              Text(
+                                loc.rightDrawer.changeCompany,
+                                style: theme.textTheme.bodySmall,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ).paddingOnly(bottom: !kIsWeb ? 0 : UIHelper.midSize),
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 5),
                     Expanded(
-                      child: OutlinedButton.icon(
-                        label: Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall),
-                        icon: const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                        onPressed: () {
-                          // Navigator.pop(context);
-                          widget.scaffoldKey.currentState!.closeEndDrawer();
-                          dialogManager.showExitDialog();
-                        },
-                        // child: Row(
-                        //   crossAxisAlignment: CrossAxisAlignment.center,
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     ,
-
-                        //   ],
-                        // ),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
+                        ),
+                        child: TextButton(
+                          style: ButtonStyle(
+                            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                            ),
+                          ),
+                          onPressed: () {
+                            // Navigator.pop(context);
+                            widget.scaffoldKey.currentState!.closeEndDrawer();
+                            dialogManager.showExitDialog();
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                              Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall),
+                            ],
+                          ).paddingOnly(bottom: !kIsWeb ? 0 : UIHelper.midSize),
+                        ),
                       ),
                     ),
                   ],
-                ).paddingAll(UIHelper.lowSize),
+                ),
               ),
             ],
           ),
