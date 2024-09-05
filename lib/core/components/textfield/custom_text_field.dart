@@ -38,6 +38,7 @@ class CustomTextField extends StatefulWidget {
   final bool? isFormattedString;
   final bool? isDateTime;
   final bool? isTime;
+  final bool obscureText;
   const CustomTextField({
     super.key,
     this.controller,
@@ -63,6 +64,7 @@ class CustomTextField extends StatefulWidget {
     this.isDateTime,
     this.isTime,
     this.descriptionWidget,
+    this.obscureText = false,
   }) : onDateChange = null;
 
   const CustomTextField.dateTime({
@@ -84,6 +86,7 @@ class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.onClear,
     required this.onDateChange,
+    this.obscureText = false,
   })  : isDateTime = true,
         isFormattedString = false,
         keyboardType = null,
@@ -171,7 +174,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                 gapPadding: 0,
               ),
               border: OutlineInputBorder(
-                borderRadius: UIHelper.midBorderRadius,
+                borderRadius: UIHelper.highBorderRadius,
               ),
               // border: ,
               suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true

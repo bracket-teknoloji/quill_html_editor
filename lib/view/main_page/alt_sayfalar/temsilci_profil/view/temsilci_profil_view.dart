@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -184,169 +185,202 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
             ? const Center(child: CircularProgressIndicator.adaptive())
             : viewModel.temsilciProfilList!.isEmpty
                 ? const Center(child: Text("Kayıt Bulunamadı"))
-                : SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        Card(
-                          child: Column(
+                : Column(
+                    children: [
+                      Card(
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                const Icon(Icons.info_outline),
+                                Observer(builder: (_) => Text(" ${viewModel.aciklama ?? ""}")),
+                              ],
+                            ),
+                          ],
+                        ).paddingAll(UIHelper.lowSize),
+                      ),
+                      if (kIsWeb && context.isLandscape)
+                        Container(
+                          constraints: BoxConstraints(maxHeight: height * 0.8),
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            itemExtent: context.isPortrait ? width / 1.3 : height / 1.3,
+                            // shrinkExtent: width / 4,
+                            // elevation: 0.9,
+                            padding: const EdgeInsets.only(top: UIHelper.lowSize, bottom: UIHelper.lowSize, right: UIHelper.lowSize),
+                            // itemSnapping: true,
+                            // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius)),
+                            children: [
+                              satislarChart(),
+                              alislarChart(),
+                              siparislerChart(),
+                              tahsilatlarChart(),
+                            ],
+                          ),
+                        )
+                      else
+                        Expanded(
+                          child: ListView(
                             children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  const Icon(Icons.info_outline),
-                                  Observer(builder: (_) => Text(" ${viewModel.aciklama ?? ""}")),
-                                ],
-                              ),
+                              satislarChart(),
+                              alislarChart(),
+                              siparislerChart(),
+                              tahsilatlarChart(),
                             ],
                           ).paddingAll(UIHelper.lowSize),
                         ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              const Text("Satışlar (Fatura)", style: TextStyleHelper.title),
-                              // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
-                              // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
-                              // Observer(builder: (_) => Row(children: [const Text("Geçen Ay"), Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
-                              // Observer(builder: (_) => Row(children: [const Text("Bu Yıl"), Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) =>
-                                    ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  const Text("Satış Performansı", style: TextStyleHelper.title),
-                                  OutlinedButton.icon(
-                                    onPressed: () async {
-                                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                                        context,
-                                        title: "Dönem",
-                                        children: viewModel.aylar.map((String e) => BottomSheetModel(title: e, value: e)).toList(),
-                                      );
-                                      if (result != null) {
-                                        viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
-                                      }
-                                    },
-                                    icon: const Icon(Icons.more_horiz_outlined),
-                                    label: Observer(builder: (_) => Text(viewModel.donem)),
-                                  ),
-                                ],
-                              ),
-                              Observer(
-                                builder: (_) {
-                                  if (viewModel.getPlasiyerToplam.isEmpty) {
-                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                                  }
-                                  return SizedBox(height: height * 0.3, child: CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam));
-                                },
-                              ),
-                              Observer(
-                                builder: (_) {
-                                  if (viewModel.getAylikSatislar.isEmpty) {
-                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                                  }
-                                  return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
-                                },
-                              ).paddingOnly(top: UIHelper.lowSize),
-                            ],
-                          ).paddingAll(UIHelper.lowSize),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              const Text("Alışlar (Fatura)", style: TextStyleHelper.title),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) {
-                                  if (viewModel.getAylikAlislar.isEmpty) {
-                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                                  }
-                                  return CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle);
-                                },
-                              ),
-                            ],
-                          ).paddingAll(UIHelper.lowSize),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              const Text("Müşteri Siparişleri", style: TextStyleHelper.title),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) {
-                                  if (viewModel.getAylikSiparisler.isEmpty) {
-                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                                  }
-                                  return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
-                                },
-                              ),
-                            ],
-                          ).paddingAll(UIHelper.lowSize),
-                        ),
-                        Card(
-                          child: Column(
-                            children: <Widget>[
-                              const Text("Tahsilatlar", style: TextStyleHelper.title),
-                              Observer(
-                                builder: (_) =>
-                                    ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) =>
-                                    ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) =>
-                                    ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) =>
-                                    ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-                              ),
-                              Observer(
-                                builder: (_) {
-                                  if (viewModel.getAylikTahsilatlar.isEmpty) {
-                                    return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                                  }
-                                  return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle);
-                                },
-                              ),
-                            ],
-                          ).paddingAll(UIHelper.lowSize),
-                        ),
-                      ],
-                    ).paddingAll(UIHelper.lowSize),
+                    ],
                   ),
+      );
+
+  Card tahsilatlarChart() => Card(
+        child: Column(
+          children: <Widget>[
+            const Text("Tahsilatlar", style: TextStyleHelper.title),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) {
+                if (viewModel.getAylikTahsilatlar.isEmpty) {
+                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                }
+                return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle);
+              },
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
+
+  Card siparislerChart() => Card(
+        child: Column(
+          children: <Widget>[
+            const Text("Müşteri Siparişleri", style: TextStyleHelper.title),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) {
+                if (viewModel.getAylikSiparisler.isEmpty) {
+                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                }
+                return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
+              },
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
+
+  Card alislarChart() => Card(
+        child: Column(
+          children: <Widget>[
+            const Text("Alışlar (Fatura)", style: TextStyleHelper.title),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAyAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilAlis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) {
+                if (viewModel.getAylikAlislar.isEmpty) {
+                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                }
+                return CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle);
+              },
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
+
+  Card satislarChart() => Card(
+        child: Column(
+          children: <Widget>[
+            const Text("Satışlar (Fatura)", style: TextStyleHelper.title),
+            // Observer(builder: (_) => Row(children: [const Text("Bugün"), Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+            // Observer(builder: (_) => Row(children: [const Text("Bu Ay"), Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+            // Observer(builder: (_) => Row(children: [const Text("Geçen Ay"), Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+            // Observer(builder: (_) => Row(children: [const Text("Bu Yıl"), Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")])),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bugün"), trailing: Text("${viewModel.getBugunSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Ay"), trailing: Text("${viewModel.getBuAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Geçen Ay"), trailing: Text("${viewModel.getGecenAySatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Observer(
+              builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSatis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Text("Satış Performansı", style: TextStyleHelper.title),
+                OutlinedButton.icon(
+                  onPressed: () async {
+                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                      context,
+                      title: "Dönem",
+                      children: viewModel.aylar.map((String e) => BottomSheetModel(title: e, value: e)).toList(),
+                    );
+                    if (result != null) {
+                      viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                    }
+                  },
+                  icon: const Icon(Icons.more_horiz_outlined),
+                  label: Observer(builder: (_) => Text(viewModel.donem)),
+                ),
+              ],
+            ),
+            Wrap(
+              direction: kIsWeb ? Axis.horizontal : Axis.vertical,
+              alignment: WrapAlignment.spaceEvenly,
+              children: [
+                Observer(
+                  builder: (_) {
+                    if (viewModel.getPlasiyerToplam.isEmpty) {
+                      return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                    }
+                    return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
+                  },
+                ),
+                Observer(
+                  builder: (_) {
+                    if (viewModel.getAylikSatislar.isEmpty) {
+                      return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                    }
+                    return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
+                  },
+                ).paddingOnly(top: UIHelper.lowSize),
+              ],
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
       );
 
   Future<void> getData() async {

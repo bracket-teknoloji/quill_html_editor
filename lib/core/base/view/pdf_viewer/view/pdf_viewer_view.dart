@@ -150,6 +150,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
               builder: (_) => SfPdfViewer.memory(
                 base64Decode(viewModel.pdfModel?.byteData ?? ""),
                 controller: pdfViewerController,
+                
                 onHyperlinkClicked: (details) async {
                   final String uri = details.uri;
                   if (uri.startsWith("https://picker.link/")) {
