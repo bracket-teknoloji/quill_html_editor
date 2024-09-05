@@ -27,5 +27,5 @@ class PickerScaffold extends Scaffold {
     super.onDrawerChanged,
     super.onEndDrawerChanged,
     super.persistentFooterAlignment,
-  }) : super(body: Container(color: Colors.red, width:  50, height: 50,));
+  }) : super(body: Center(child: SizedBox(width: 600, child: body)));
 }
