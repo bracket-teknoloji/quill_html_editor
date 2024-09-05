@@ -102,7 +102,6 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Assets.appIcon.pickerLogoBeyaz.svg(height: height * 0.1),
-                      // SvgPicture.asset("assets/splash/PickerLogoTuruncu.svg", height: height * 0.1),
                       const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
                       Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
                     ],

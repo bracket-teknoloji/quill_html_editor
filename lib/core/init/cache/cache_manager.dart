@@ -33,7 +33,7 @@ class CacheManager {
   static late Box verifiedUsersBox;
   static late Box veriTabaniBox;
   static late Box isletmeSubeBox;
-  static late Box favorilerBox;
+  static late Box<FavoritesModel> favorilerBox;
   static late Box hesapBilgileriBox;
   static late Box cariSehirBox;
   static late Box subeListesiBox;
@@ -86,7 +86,7 @@ class CacheManager {
     verifiedUsersBox = await Hive.openBox("logged");
     veriTabaniBox = await Hive.openBox("veriTabani");
     isletmeSubeBox = await Hive.openBox("isletmeSube");
-    favorilerBox = await Hive.openBox("favoriler");
+    favorilerBox = await Hive.openBox<FavoritesModel>("favoriler");
     hesapBilgileriBox = await Hive.openBox("hesapBilgileri");
     cariSehirBox = await Hive.openBox("cariSehir");
     subeListesiBox = await Hive.openBox<List>("cariListesi");
