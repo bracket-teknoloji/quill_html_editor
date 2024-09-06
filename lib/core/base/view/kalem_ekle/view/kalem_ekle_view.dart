@@ -8,6 +8,7 @@ import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_mode
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
+import "package:text_scroll/text_scroll.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -30,7 +31,7 @@ import "../../stok_rehberi/model/stok_rehberi_request_model.dart";
 import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/kalem_ekle_view_model.dart";
 
-class KalemEkleView extends StatefulWidget {
+final class KalemEkleView extends StatefulWidget {
   final StokListesiModel? stokListesiModel;
   final KalemModel? kalemModel;
   const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel});
@@ -39,8 +40,8 @@ class KalemEkleView extends StatefulWidget {
   State<KalemEkleView> createState() => _KalemEkleViewState();
 }
 
-class _KalemEkleViewState extends BaseState<KalemEkleView> {
-  KalemEkleViewModel viewModel = KalemEkleViewModel();
+final class _KalemEkleViewState extends BaseState<KalemEkleView> {
+  final KalemEkleViewModel viewModel = KalemEkleViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   EditTipiEnum? get editTipi => model.getEditTipiEnum;
   bool get satisMi => editTipi?.satisMi ?? false;
@@ -99,7 +100,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
 
   AppBar appBar() => AppBar(
         title: Observer(builder: (_) => AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? "")),
@@ -636,24 +637,31 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         readOnly: true,
                         suffixMore: true,
                         controller: olcuBirimiController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? "")),
+                        valueWidget: Observer(
+                          builder: (_) => TextScroll(
+                            "${viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? ""} ${viewModel.kalemModel.olcuBirimKodu == 1 ? "" : "- ${viewModel.kalemModel.miktar ?? 0} ${viewModel.kalemModel.olcuBirimAdi} = ${(viewModel.kalemModel.miktar ?? 0) * (viewModel.olcuBirimiMap.firstWhere((element) => element.adi == viewModel.kalemModel.olcuBirimAdi).payda ?? 0)} ${viewModel.olcuBirimiMap.firstOrNull?.adi}"}",
+                          ),
+                        ),
+                        // valueWidget: Observer(builder: (_) => TextScroll("12345678910    " * 10)),
                         onClear: () => viewModel.setOlcuBirimi(null),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                             context,
                             title: "Ölçü Birimi Seçiniz",
+                            groupValue: viewModel.kalemModel.olcuBirimKodu,
                             children: List.generate(
                               viewModel.olcuBirimiMap.length,
                               (index) => BottomSheetModel(
-                                title: viewModel.olcuBirimiMap[index],
+                                title: viewModel.olcuBirimiMap[index].adi ?? "",
                                 description: (index + 1).toStringIfNotNull,
-                                value: MapEntry<String, int>(viewModel.olcuBirimiMap[index], index + 1),
+                                groupValue: index + 1,
+                                value: MapEntry<Olculer, int>(viewModel.olcuBirimiMap[index], index + 1),
                               ),
                             ),
                           );
                           if (result != null) {
                             viewModel.setOlcuBirimi(result);
-                            olcuBirimiController.text = result.key;
+                            olcuBirimiController.text = result.key.adi ?? "";
                           }
                         },
                       ),
@@ -794,7 +802,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
                               ? Observer(
                                   builder: (_) => IconButton(
-                                    onPressed: () => viewModel.changeIskonto1OranMi(),
+                                    onPressed: viewModel.changeIskonto1OranMi,
                                     icon: Icon((viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined),
                                   ),
                                 )
@@ -1028,7 +1036,7 @@ class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi == true) && yetkiController.siparisSatirdaTeslimTarihiSor ? model.teslimTarihi : null;
     // viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
-    viewModel.setOlcuBirimi(MapEntry<String, int>(widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", 1));
+    viewModel.setOlcuBirimi(MapEntry<Olculer, int>((adi: widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", pay: 0.0, payda: 0.0), 1));
     if (widget.kalemModel == null) {
       viewModel.setKosul(model.kosulKodu ?? "");
       if (yetkiController.projeUygulamasiAcikMi) {
