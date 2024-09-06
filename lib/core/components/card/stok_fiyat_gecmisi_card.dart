@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -38,7 +38,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: width * 0.6, child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
+              Expanded(child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
               IconButton(
                 icon: const Icon(Icons.print_outlined, color: UIHelper.primaryColor),
                 onPressed: () async {
@@ -57,8 +57,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model?.dovizAdi != null),
-              Wrap(
-                direction: Axis.horizontal,
+              CustomLayoutBuilder.divideInHalf(
                 children: [
                   Wrap(
                     direction: Axis.vertical,
@@ -81,7 +80,7 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
                       Text(widget.model?.tarih?.toDateString ?? ""),
                     ],
                   ),
-                ].map((e) => SizedBox(width: width * 0.4, child: e).paddingOnly(bottom: UIHelper.lowSize)).toList(),
+                ],
               ),
             ],
           ),
