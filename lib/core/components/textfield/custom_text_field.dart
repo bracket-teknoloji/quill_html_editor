@@ -241,10 +241,8 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                       ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
-              label: Wrap(
-                direction: Axis.horizontal,
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
+              label: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text.rich(
                     TextSpan(
@@ -262,7 +260,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                     // style: const TextStyle(fontSize: 15),
                   ),
                   // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
-                  if (widget.valueWidget != null) widget.valueWidget!,
+                  if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
                 ],
               ).yetkiVarMi(widget.labelText != null),
             ),
