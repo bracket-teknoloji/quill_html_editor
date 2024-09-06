@@ -20,6 +20,7 @@ class _ScrollableWidgetState extends State<ScrollableWidget> {
   Widget build(BuildContext context) => AnimatedSlide(
         duration: DurationHelper.durationLow,
         offset: widget.isScrolledDown ? Offset.zero : const Offset(0, 2),
+        
         child: AnimatedOpacity(
           duration: DurationHelper.durationLow,
           opacity: widget.isScrolledDown ? 1 : 0,

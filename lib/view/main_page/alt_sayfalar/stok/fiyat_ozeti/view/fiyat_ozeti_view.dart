@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -33,7 +34,7 @@ final class _FiyatOzetiViewState extends State<FiyatOzetiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

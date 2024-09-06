@@ -54,7 +54,7 @@ class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Döviz Kuru Girişi"),
           actions: [

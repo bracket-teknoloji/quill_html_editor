@@ -49,7 +49,7 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: yetkiController.stokBarkodEkle,
           onPressed: () async {

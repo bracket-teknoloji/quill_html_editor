@@ -17,7 +17,7 @@ class MuhtelifCariEkleView extends StatefulWidget {
 class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
   CariListesiModel cariModel = CariListesiModel(kodu: "0" * 15, requestVersion: 6, islemKodu: 4, cariKodu: "0" * 15);
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Muhtelif Cari"),
           actions: [

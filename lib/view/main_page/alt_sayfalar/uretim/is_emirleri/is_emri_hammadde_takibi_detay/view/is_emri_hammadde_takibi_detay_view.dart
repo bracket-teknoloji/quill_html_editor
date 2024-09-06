@@ -43,7 +43,7 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: widget.model.makineKodu,

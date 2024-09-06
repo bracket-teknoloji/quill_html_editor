@@ -42,7 +42,7 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late final TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
   final GlobalKey key = GlobalKey<FormState>();
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Yeni Stok hareket Kaydı"),
           actions: [

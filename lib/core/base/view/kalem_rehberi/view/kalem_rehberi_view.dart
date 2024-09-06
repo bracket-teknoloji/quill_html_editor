@@ -37,7 +37,7 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

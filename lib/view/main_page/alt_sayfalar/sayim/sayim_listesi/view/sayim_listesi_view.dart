@@ -58,11 +58,11 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    body: body(),
+  );
 
   AppBar appBar() => AppBar(
         title: Observer(

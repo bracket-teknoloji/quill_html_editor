@@ -88,7 +88,7 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Banka Kasa Transferi"),
           actions: [

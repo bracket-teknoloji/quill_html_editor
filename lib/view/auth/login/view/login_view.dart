@@ -81,7 +81,7 @@ class _LoginViewState extends BaseState<LoginView> {
           // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
           floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
           floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
-          primary: true,
+          // primary: true,
           // backgroundColor: Colors.transparent,
           extendBodyBehindAppBar: true,
           body: Stack(

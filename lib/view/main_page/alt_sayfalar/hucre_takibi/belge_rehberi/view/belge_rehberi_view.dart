@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/card/belge_rehberi_card.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -41,7 +42,7 @@ final class _BelgeRehberiViewState extends State<BelgeRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

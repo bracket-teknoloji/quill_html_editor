@@ -100,7 +100,7 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
           }
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
         },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: AppBar(
             title: AppBarTitle(
               title: "${widget.model.getTitle(widget.model.belgeNo)} Gönder",

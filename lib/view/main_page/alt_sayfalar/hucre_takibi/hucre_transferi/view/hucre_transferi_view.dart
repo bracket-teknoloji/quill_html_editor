@@ -65,7 +65,7 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(
             title: "Hücre Transferi",

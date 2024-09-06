@@ -46,7 +46,7 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Özet Rapor"),
           centerTitle: false,

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/card/is_emri_hammadde_takibi_card.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
@@ -34,7 +35,7 @@ final class _IsEmriHammaddeTakibiViewState extends State<IsEmriHammaddeTakibiVie
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

@@ -121,7 +121,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with TickerProvider
           }
           await dialogManager.showAreYouSureDialog(Get.back);
         },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: AppBar(
             title: AppBarTitle(
               title: "Genel Dekont",

@@ -106,7 +106,7 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(context),
       );

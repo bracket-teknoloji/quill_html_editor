@@ -59,7 +59,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body(),

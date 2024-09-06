@@ -69,7 +69,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body(),

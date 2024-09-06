@@ -66,7 +66,7 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "QR Kod Okuyucu"),
           actions: [

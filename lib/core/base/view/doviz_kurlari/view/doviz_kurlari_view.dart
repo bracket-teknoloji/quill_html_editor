@@ -48,7 +48,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(context),
         body: body().paddingAll(UIHelper.lowSize),

@@ -4,14 +4,13 @@ import "package:flutter/material.dart";
 class AppBarTitle extends StatelessWidget {
   final String? title;
   final String? subtitle;
-  final bool? isCentered;
   final bool? isSubTitleSmall;
-  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall, this.isCentered});
+  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall});
 
   @override
   Widget build(BuildContext context) => Wrap(
         direction: Axis.vertical,
-        alignment: isCentered != null && (isCentered ?? false) ? WrapAlignment.center : WrapAlignment.start,
+        alignment: WrapAlignment.start,
         runAlignment: WrapAlignment.center,
         children: [
           AnimatedTextKit(

@@ -49,7 +49,7 @@ class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) {

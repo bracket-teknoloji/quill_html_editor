@@ -97,7 +97,7 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "İş Emri Detay",

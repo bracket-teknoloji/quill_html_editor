@@ -175,7 +175,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
           BaseSiparisEditModel.resetInstance();
         },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: AppBar(
             title: AppBarTitle(
               title: widget.appBarTitle ?? widget.model.editTipiEnum?.getName ?? "Sipariş",

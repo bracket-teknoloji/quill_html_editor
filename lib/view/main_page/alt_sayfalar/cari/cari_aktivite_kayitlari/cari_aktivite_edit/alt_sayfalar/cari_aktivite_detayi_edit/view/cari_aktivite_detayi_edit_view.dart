@@ -56,7 +56,7 @@ class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditVi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Aktivite Detayı"),
           actions: [

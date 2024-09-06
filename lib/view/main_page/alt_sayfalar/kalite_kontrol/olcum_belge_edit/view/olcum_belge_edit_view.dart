@@ -74,7 +74,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body(),

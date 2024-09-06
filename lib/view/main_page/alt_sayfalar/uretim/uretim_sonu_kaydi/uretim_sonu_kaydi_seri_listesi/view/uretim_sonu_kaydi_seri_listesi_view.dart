@@ -39,7 +39,7 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
         bottomNavigationBar: bottomBar(),

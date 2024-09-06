@@ -44,7 +44,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
           }
           Get.back(result: viewModel.refresh ?? false);
         },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: appBar(),
           floatingActionButton: fab(),
           body: body(),

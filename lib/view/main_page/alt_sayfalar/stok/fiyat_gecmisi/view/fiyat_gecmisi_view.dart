@@ -62,7 +62,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         body: body(context),
       );

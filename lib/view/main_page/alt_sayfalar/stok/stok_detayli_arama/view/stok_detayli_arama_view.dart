@@ -44,7 +44,7 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Detaylı Arama"),
           actions: [

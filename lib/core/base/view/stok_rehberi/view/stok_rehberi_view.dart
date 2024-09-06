@@ -88,7 +88,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body(),

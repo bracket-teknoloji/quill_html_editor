@@ -76,7 +76,7 @@ class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: widget.model.cekSenetListesiEnum.dekontTitle,

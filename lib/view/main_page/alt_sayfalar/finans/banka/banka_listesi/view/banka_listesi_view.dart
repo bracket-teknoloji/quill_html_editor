@@ -62,7 +62,7 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

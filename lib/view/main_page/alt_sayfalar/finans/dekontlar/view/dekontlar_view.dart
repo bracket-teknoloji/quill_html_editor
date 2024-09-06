@@ -56,7 +56,7 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body(),

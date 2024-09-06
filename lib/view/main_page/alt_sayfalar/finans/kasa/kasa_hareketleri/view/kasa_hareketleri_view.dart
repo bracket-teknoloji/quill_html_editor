@@ -53,10 +53,10 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
-        extendBody: true,
-        extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
+        // resizeToAvoidBottomInset: true,
+        // extendBody: true,
+        // extendBodyBehindAppBar: false,
         appBar: appBar(),
         bottomNavigationBar: bottomBar(),
         body: body(),

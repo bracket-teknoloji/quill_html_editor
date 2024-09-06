@@ -39,7 +39,7 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
   @override
   Widget build(BuildContext context) => Scaffold(
         primary: true,
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         floatingActionButton: Text.rich(
           TextSpan(

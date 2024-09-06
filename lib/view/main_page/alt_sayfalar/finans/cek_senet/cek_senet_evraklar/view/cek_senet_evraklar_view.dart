@@ -35,7 +35,7 @@ class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {

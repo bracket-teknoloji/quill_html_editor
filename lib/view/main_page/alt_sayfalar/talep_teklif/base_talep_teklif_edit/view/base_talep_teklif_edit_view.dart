@@ -211,7 +211,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
           BaseSiparisEditModel.resetInstance();
         },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: AppBar(
             title: AppBarTitle(
               title: "${model.editTipiEnum?.getName ?? "Talep Teklif"}${widget.model.baseEditEnum.revizeMi ? " (Revize)" : ""}",

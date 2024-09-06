@@ -48,7 +48,7 @@ class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

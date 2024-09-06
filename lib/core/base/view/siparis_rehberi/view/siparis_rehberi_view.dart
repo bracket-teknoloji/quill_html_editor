@@ -48,7 +48,7 @@ class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(
             title: "Sipariş Rehberi",

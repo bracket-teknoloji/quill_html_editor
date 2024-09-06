@@ -81,7 +81,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "Cari Virman",

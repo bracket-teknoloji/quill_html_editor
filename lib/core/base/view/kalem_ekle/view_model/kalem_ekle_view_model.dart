@@ -13,6 +13,8 @@ import "../../stok_rehberi/model/stok_rehberi_request_model.dart";
 
 part "kalem_ekle_view_model.g.dart";
 
+typedef Olculer = ({String? adi, double? pay, double? payda});
+
 class KalemEkleViewModel = _KalemEkleViewModelBase with _$KalemEkleViewModel;
 
 abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
@@ -41,10 +43,10 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   String get dovizAdi => BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
-  List<String> get olcuBirimiMap => [
-        model?.olcuBirimi,
-        model?.olcuBirimi2,
-        model?.olcuBirimi3,
+  List<Olculer> get olcuBirimiMap => [
+        if (model?.olcuBirimi != null) (adi: model?.olcuBirimi, pay: 0.0, payda: 1.0),
+        if (model?.olcuBirimi2 != null) (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
+        if (model?.olcuBirimi3 != null) (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
       ].nullCheckWithGeneric;
 
   @observable
@@ -92,7 +94,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value, dovizFiyati: value);
 
   @action
-  void setOlcuBirimi(MapEntry<String, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key);
+  void setOlcuBirimi(MapEntry<Olculer, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key.adi);
 
   @action
   void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);

@@ -40,7 +40,7 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: fab(),
         body: body(),
         bottomNavigationBar: bottomBar(),

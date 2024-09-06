@@ -35,7 +35,7 @@ final class _PaketIcerigiViewState extends BaseState<PaketIcerigiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         bottomNavigationBar: bottomBar(),
         body: body(),

@@ -50,7 +50,7 @@ class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body().paddingAll(UIHelper.lowSize),
         bottomNavigationBar: bottomBar(),

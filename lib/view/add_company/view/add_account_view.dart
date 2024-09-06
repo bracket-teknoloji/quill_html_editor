@@ -43,7 +43,7 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Firmalar"),
           centerTitle: false,
@@ -78,7 +78,7 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
                             suffix: IconButton(
                               onPressed: viewModel.togglePassword,
                               icon: Observer(
-                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined),
+                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility_off : Icons.visibility),
                               ),
                             ),
                           ),

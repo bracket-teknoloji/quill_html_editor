@@ -122,10 +122,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
-        extendBody: true,
-        extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
+        // resizeToAvoidBottomInset: true,
+        // extendBody: true,
+        // extendBodyBehindAppBar: false,
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body(),

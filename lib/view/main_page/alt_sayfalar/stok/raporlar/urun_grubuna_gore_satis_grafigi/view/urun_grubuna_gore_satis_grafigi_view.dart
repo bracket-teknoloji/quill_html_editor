@@ -69,7 +69,7 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
   @override
   Widget build(BuildContext context) {
     Future.delayed(Duration.zero, viewModel.getData);
-    return Scaffold(
+    return BaseScaffold(
       appBar: appBar(),
       body: body(context),
       bottomNavigationBar: BottomBarWidget(

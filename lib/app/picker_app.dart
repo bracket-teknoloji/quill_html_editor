@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 
 import "picker_app_imports.dart";
 
@@ -19,7 +20,7 @@ final class PickerApp extends StatelessWidget {
         ),
         alignment: Alignment.center,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: kIsWeb && context.isLandscape ? MediaQuery.sizeOf(context).width * 0.85 : double.infinity),
+          constraints: BoxConstraints(maxWidth: kIsWeb && context.isLandscape ? MediaQuery.sizeOf(context).width * 0.8 : double.infinity),
           child: const PickerMaterialApp(),
         ),
       );
@@ -51,7 +52,7 @@ class PickerMaterialApp extends StatelessWidget {
         themeMode: CacheManager.getProfilParametre.temaModu,
         initialRoute: "/",
         onUnknownRoute: (settings) => GetPageRoute(settings: const RouteSettings(name: "/"), page: SplashAuthView.new),
-        onGenerateRoute: (settings) => GetPageRoute(settings: null, page: () => const Scaffold(body: Center(child: Text("data")))),
+        onGenerateRoute: (settings) => GetPageRoute(settings: null, page: () => BaseScaffold(body: const Center(child: Text("data")))),
         getPages: <GetPage>[
           GetPage(name: "/", page: SplashAuthView.new),
           GetPage(name: "/login", page: () => const LoginView()),

@@ -103,7 +103,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(builder: (_) => AppBarTitle(title: "Nakit ${viewModel.formTipi}")),
           actions: [

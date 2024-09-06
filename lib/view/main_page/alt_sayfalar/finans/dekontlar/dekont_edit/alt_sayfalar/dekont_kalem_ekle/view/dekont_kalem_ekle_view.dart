@@ -95,7 +95,7 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         //   );
         //   return result ?? false;
         // },
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: AppBar(
             title: const AppBarTitle(title: "Dekont Kalem Detayı"),
             actions: [

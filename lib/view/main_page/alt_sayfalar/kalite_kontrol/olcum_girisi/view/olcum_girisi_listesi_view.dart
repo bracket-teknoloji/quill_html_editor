@@ -64,7 +64,7 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

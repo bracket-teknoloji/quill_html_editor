@@ -40,7 +40,7 @@ final class _HucreAraViewState extends BaseState<HucreAraView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

@@ -33,7 +33,7 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Görsel Seçiniz"),
           actions: [

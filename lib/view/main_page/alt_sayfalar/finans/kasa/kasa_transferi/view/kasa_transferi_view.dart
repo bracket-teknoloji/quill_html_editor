@@ -79,7 +79,7 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(appBar: appBar(), body: body(context));
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
         title: const AppBarTitle(title: "Kasa Transferi"),

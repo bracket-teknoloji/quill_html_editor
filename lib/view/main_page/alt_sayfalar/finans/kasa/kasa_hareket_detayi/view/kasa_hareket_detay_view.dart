@@ -68,7 +68,7 @@ class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "Kasa Hareket Detayı",

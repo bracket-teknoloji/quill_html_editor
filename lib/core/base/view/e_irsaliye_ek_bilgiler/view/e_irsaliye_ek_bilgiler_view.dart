@@ -114,7 +114,7 @@ class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

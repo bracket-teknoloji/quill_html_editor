@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -30,7 +31,7 @@ class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(title: "Çek Senet Hareketleri (${viewModel.cekSenetHareketleriListesi?.length ?? 0})"),

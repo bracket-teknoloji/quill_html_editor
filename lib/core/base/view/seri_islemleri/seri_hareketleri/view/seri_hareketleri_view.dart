@@ -53,7 +53,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body().paddingAll(UIHelper.lowSize),

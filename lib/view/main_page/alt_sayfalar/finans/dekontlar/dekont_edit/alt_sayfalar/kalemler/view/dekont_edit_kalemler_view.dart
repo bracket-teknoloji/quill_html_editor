@@ -30,7 +30,7 @@ class DekontEditKalemlerView extends StatefulWidget {
 class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
   DekontEditKalemlerViewModel viewModel = DekontEditKalemlerViewModel();
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             final result = await Get.toNamed("/mainPage/dekontKalemEkle");

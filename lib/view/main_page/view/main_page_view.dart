@@ -78,11 +78,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                 drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
                 drawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
                 endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-                body: Row(
-                  children: [
-                    Expanded(child: body(context)),
-                  ],
-                ),
+                body: Expanded(child: body(context)),
                 // bottomNavigationBar: bottomBar(scaffoldKey),
               ),
             ),

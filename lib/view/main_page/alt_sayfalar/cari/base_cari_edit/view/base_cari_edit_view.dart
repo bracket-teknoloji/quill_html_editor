@@ -127,7 +127,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
           }
           await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
         },
-        child: Scaffold(
+        child: BaseScaffold(
           // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),
           appBar: AppBar(
             title: AppBarTitle(

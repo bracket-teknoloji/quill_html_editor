@@ -112,10 +112,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
-        extendBody: true,
-        extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
+        // resizeToAvoidBottomInset: true,
+        // extendBody: true,
+        // extendBodyBehindAppBar: false,
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body(),

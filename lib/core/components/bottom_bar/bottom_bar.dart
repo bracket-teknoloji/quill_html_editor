@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -37,6 +38,7 @@ class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
           child: Container(
             color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
             height: context.isPortrait ? (height * 0.07) : (height * 0.1 < 60 ? 60 : height * 0.1),
+            width: kIsWeb && context.isLandscape ? (width * 0.5) : null,
             child: widget.visible && widget.children.isNotEmpty
                 ? Row(
                     // RunTimeType kontrolü yapılıyor. Eğer FooterButton değilse Expanded ile sarılıyor. Vertical Divider'lar yüzünden yapılıyor.

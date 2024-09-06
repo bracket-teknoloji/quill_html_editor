@@ -84,7 +84,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body(),
       );

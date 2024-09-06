@@ -78,7 +78,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         },
         child: DefaultTabController(
           length: tabLength,
-          child: Scaffold(
+          child: BaseScaffold(
             appBar: AppBar(
               title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
               actions: [

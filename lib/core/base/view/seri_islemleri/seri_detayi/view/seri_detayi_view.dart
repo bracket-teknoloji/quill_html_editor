@@ -61,7 +61,7 @@ class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Seri Detayı"),
           actions: [

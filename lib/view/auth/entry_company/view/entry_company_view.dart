@@ -212,7 +212,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {

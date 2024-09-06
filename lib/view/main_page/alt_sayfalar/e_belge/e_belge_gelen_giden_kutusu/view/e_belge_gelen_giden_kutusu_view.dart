@@ -86,7 +86,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
   @override
   Widget build(BuildContext context) => PopScope(
         canPop: true,
-        child: Scaffold(
+        child: BaseScaffold(
           appBar: appBar,
           body: body,
           bottomNavigationBar: BottomBarWidget(

@@ -60,7 +60,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "Ölçüm ${widget.baseEditEnum.getName}",

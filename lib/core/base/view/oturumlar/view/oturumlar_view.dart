@@ -32,7 +32,7 @@ final class _OturumlarViewState extends BaseState<OturumlarView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) {

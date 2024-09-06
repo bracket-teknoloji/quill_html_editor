@@ -46,7 +46,7 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body(),

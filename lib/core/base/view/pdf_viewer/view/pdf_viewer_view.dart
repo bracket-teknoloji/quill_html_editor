@@ -67,7 +67,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
         body: body(),
@@ -150,7 +150,6 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
               builder: (_) => SfPdfViewer.memory(
                 base64Decode(viewModel.pdfModel?.byteData ?? ""),
                 controller: pdfViewerController,
-                
                 onHyperlinkClicked: (details) async {
                   final String uri = details.uri;
                   if (uri.startsWith("https://picker.link/")) {

@@ -58,7 +58,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         body: body(context),
       );

@@ -53,7 +53,7 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         body: body().paddingAll(UIHelper.lowSize),
       );

@@ -75,7 +75,7 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
   int get tabSize => yetkiController.uretimSonuKalemliYapi ? 2 : 1;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "Üretim Sonu Kaydı",

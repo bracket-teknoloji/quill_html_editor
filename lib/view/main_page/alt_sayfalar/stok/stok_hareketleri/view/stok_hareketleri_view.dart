@@ -70,7 +70,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
         appBar: appBar(),
         body: body(),

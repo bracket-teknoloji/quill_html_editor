@@ -111,7 +111,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       FocusScope.of(context).unfocus();
     }
     kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
-    return Scaffold(
+    return BaseScaffold(
       floatingActionButton: fab(),
       appBar: appBar(),
       body: body(),

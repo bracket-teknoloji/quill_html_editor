@@ -50,7 +50,7 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(
             title: "Barkod Tanımla",

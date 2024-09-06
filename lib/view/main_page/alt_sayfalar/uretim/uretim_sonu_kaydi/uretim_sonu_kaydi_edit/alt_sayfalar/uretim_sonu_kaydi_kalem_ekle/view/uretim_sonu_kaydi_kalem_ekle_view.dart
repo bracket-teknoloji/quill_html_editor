@@ -57,7 +57,7 @@ final class _UretimSonuKaydiKalemEkleViewState extends BaseState<UretimSonuKaydi
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: const AppBarTitle(title: "Üretim Sonu Kaydı"),
           actions: [

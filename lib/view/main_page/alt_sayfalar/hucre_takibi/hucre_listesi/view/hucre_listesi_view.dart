@@ -42,7 +42,7 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

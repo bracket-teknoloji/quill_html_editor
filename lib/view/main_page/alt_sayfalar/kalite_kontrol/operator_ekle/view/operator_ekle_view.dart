@@ -16,7 +16,7 @@ class _OperatorEkleViewState extends BaseState<OperatorEkleView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final OperatorEkleViewModel viewModel = OperatorEkleViewModel();
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(),
         body: SingleChildScrollView(
           child: Form(

@@ -72,7 +72,7 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
         body: body().paddingAll(UIHelper.lowSize),

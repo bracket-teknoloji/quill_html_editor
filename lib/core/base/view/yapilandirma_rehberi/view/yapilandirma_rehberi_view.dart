@@ -31,7 +31,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(title: "Yapılandırma Rehberi", subtitle: "${widget.model.stokAdi} - ${widget.model.stokKodu}"),
         ),

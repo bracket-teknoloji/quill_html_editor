@@ -21,7 +21,7 @@ class _AccountsViewState extends BaseState<AccountsView> {
   int get getListLength => CacheManager.accountsBox.length;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: fab(),
         appBar: appBar(),
         body: body(),

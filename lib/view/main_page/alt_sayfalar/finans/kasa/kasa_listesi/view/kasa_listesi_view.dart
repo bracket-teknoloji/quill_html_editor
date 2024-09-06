@@ -49,10 +49,10 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
-        extendBody: false,
-        extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
+        // resizeToAvoidBottomInset: true,
+        // extendBody: false,
+        // extendBodyBehindAppBar: false,
         appBar: appBar(),
         body: body2(),
         bottomNavigationBar: bottomAppBar(),

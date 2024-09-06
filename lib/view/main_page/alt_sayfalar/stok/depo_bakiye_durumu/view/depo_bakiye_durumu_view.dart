@@ -37,7 +37,7 @@ class _DepoBakiyeDurumuViewState extends BaseState<DepoBakiyeDurumuView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         bottomNavigationBar: bottomAppBar(),
         body: body(),

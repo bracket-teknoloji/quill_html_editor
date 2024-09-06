@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
@@ -32,7 +33,7 @@ final class _HucreHareketleriViewState extends State<HucreHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: Observer(
             builder: (_) => AppBarTitle(

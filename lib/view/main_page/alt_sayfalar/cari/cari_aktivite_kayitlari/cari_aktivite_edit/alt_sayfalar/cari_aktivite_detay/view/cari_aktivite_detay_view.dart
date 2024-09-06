@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
+import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/card/cari_aktivite_detay_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
@@ -23,7 +24,7 @@ class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
   final CariAktiviteDetayViewModel viewModel = CariAktiviteDetayViewModel();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: CustomFloatingActionButton(
           isScrolledDown: !widget.baseEditEnum.goruntuleMi,
           onPressed: () async {

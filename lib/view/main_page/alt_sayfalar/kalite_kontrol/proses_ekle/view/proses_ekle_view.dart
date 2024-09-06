@@ -67,7 +67,7 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
           title: AppBarTitle(
             title: "Proses ${widget.model.baseEditEnum?.getName}",

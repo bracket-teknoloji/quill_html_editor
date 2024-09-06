@@ -10,6 +10,8 @@ import "../../constants/yetki_controller/yetki_controller.dart";
 import "../../init/cache/cache_manager.dart";
 import "../../init/network/network_manager.dart";
 
+export "../../base/view/base_scaffold.dart";
+
 abstract class BaseState<T extends StatefulWidget> extends State<T> {
   final DialogManager dialogManager = DialogManager();
   final BottomSheetDialogManager bottomSheetDialogManager = BottomSheetDialogManager();

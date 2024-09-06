@@ -313,7 +313,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         },
         child: DefaultTabController(
           length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
-          child: Scaffold(
+          child: BaseScaffold(
             appBar: AppBar(
               title: AppBarTitle(
                 title: widget.model.editTipiEnum?.getName ?? "Fatura",

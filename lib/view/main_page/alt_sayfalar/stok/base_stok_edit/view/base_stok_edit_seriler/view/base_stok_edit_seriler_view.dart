@@ -25,7 +25,7 @@ class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
   BaseStokEditSerilerViewModel viewModel = BaseStokEditSerilerViewModel();
   StokDetayModel get stokModel => StokDetayModel.instance;
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
         body: body(),
         bottomNavigationBar: bottomBar(),
       );

@@ -26,7 +26,6 @@ class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBotto
   @override
   Widget build(BuildContext context) => SizedBox(
         height: widget.toolbarHeight,
-        width: (kIsWeb && context.isLandscape) ? width * 0.6 : null,
         child: Column(
           children: [
             Expanded(

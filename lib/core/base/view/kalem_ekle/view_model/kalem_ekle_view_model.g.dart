@@ -23,13 +23,16 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
       (_$dovizAdiComputed ??= Computed<String>(() => super.dovizAdi,
               name: '_KalemEkleViewModelBase.dovizAdi'))
           .value;
-  Computed<List<String>>? _$olcuBirimiMapComputed;
+  Computed<List<({String? adi, double? pay, double? payda})>>?
+      _$olcuBirimiMapComputed;
 
   @override
-  List<String> get olcuBirimiMap => (_$olcuBirimiMapComputed ??=
-          Computed<List<String>>(() => super.olcuBirimiMap,
-              name: '_KalemEkleViewModelBase.olcuBirimiMap'))
-      .value;
+  List<({String? adi, double? pay, double? payda})> get olcuBirimiMap =>
+      (_$olcuBirimiMapComputed ??=
+              Computed<List<({String? adi, double? pay, double? payda})>>(
+                  () => super.olcuBirimiMap,
+                  name: '_KalemEkleViewModelBase.olcuBirimiMap'))
+          .value;
   Computed<bool>? _$koliMiComputed;
 
   @override
@@ -210,7 +213,8 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
-  void setOlcuBirimi(MapEntry<String, int>? value) {
+  void setOlcuBirimi(
+      MapEntry<({String? adi, double? pay, double? payda}), int>? value) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setOlcuBirimi');
     try {

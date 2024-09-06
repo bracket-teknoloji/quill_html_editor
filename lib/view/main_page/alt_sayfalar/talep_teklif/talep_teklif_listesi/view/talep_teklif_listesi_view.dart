@@ -112,10 +112,10 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
-        extendBody: true,
-        extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
+        // resizeToAvoidBottomInset: true,
+        // extendBody: true,
+        // extendBodyBehindAppBar: false,
         appBar: appBar(),
         floatingActionButton: fab(),
         bottomNavigationBar: bottomBar(),
