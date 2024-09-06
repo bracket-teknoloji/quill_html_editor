@@ -69,8 +69,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         },
         child: Row(
           children: [
-            if (kIsWeb && context.isLandscape) LeftDrawer(scaffoldKey: scaffoldKey),
+            if (kIsWeb && context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
             Expanded(
+              flex: 2,
               child: Scaffold(
                 appBar: appBar(scaffoldKey, context),
                 key: scaffoldKey,
@@ -85,7 +86,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                 // bottomNavigationBar: bottomBar(scaffoldKey),
               ),
             ),
-            if (kIsWeb && context.isLandscape) EndDrawer(scaffoldKey: scaffoldKey),
+            if (kIsWeb && context.isLandscape) Expanded(child: EndDrawer(scaffoldKey: scaffoldKey)),
           ],
         ),
       );
