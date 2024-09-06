@@ -117,7 +117,7 @@ dependencies:
   syncfusion_localizations: ^26.2.10
   open_filex: ^4.5.0
   animated_text_kit: ^4.2.2
-
+  text_scroll: ^0.2.0
 # dependency_overrides:
   # google_maps_flutter_ios: 2.3.0
   # rive: 0.12.4
