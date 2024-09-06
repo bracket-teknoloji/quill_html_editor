@@ -195,8 +195,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //Açıklama
-                  SizedBox(
-                    width: Get.width * 0.4,
+                  Expanded(
                     child: Text(
                       widget.cariHareketleriModel.aciklama ?? "",
                       overflow: TextOverflow.ellipsis,
@@ -207,11 +206,11 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                   ),
                   //YuruyenBakiye
                   Text(
-                    "Bakiye : ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
+                    "Bakiye: ${dovizCheck.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.dovizTipi ?? mainCurrency}",
                     style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(dovizCheck)),
                   ),
-                ].map((e) => e.paddingSymmetric(vertical: UIHelper.midSize)).toList(),
-              ).paddingOnly(bottom: UIHelper.midSize),
+                ],
+              ).paddingAll(UIHelper.midSize).paddingOnly(bottom: UIHelper.midSize),
             ],
           ).paddingOnly(bottom: UIHelper.highSize),
         ).paddingOnly(bottom: UIHelper.highSize),
