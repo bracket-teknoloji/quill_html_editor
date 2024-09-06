@@ -50,7 +50,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(floatingActionButton: fab(), body: body());
+  Widget build(BuildContext context) => BaseScaffold(floatingActionButton: fab(), body: body());
 
   Visibility fab() => Visibility(
         visible: !widget.model.isGoruntule,
@@ -155,7 +155,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         contentPadding: UIHelper.lowPadding.copyWith(left: UIHelper.highSize, bottom: UIHelper.lowSize),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [SizedBox(width: width * 0.7, child: Text(kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
+          children: [Expanded(child: Text(kalemModel?.kalemAdi ?? kalemModel?.stokAdi ?? kalemModel?.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
         ),
         subtitle: Column(
           mainAxisAlignment: MainAxisAlignment.start,
