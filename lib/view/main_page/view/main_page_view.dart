@@ -71,14 +71,14 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           children: [
             if (kIsWeb && context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
             Expanded(
-              flex: 2,
+              flex: (kIsWeb && context.isLandscape) ? 2 : 1,
               child: Scaffold(
                 appBar: appBar(scaffoldKey, context),
                 key: scaffoldKey,
                 drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
                 drawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
                 endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-                body: Expanded(child: body(context)),
+                body: body(context),
                 // bottomNavigationBar: bottomBar(scaffoldKey),
               ),
             ),
@@ -150,9 +150,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   SafeArea body(BuildContext context) => SafeArea(
         child: Stack(
           children: [
-            Observer(
-              builder: (_) => bodyWidget(),
-            ),
+            bodyWidget(),
             Align(alignment: Alignment.bottomCenter, child: bottomBar(scaffoldKey)),
             if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
               SizedBox(
