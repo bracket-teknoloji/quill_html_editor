@@ -56,7 +56,9 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar,
-        bottomNavigationBar: bottomAppBar,
+        bottomNavigationBar: Observer(
+          builder: (_) => bottomAppBar.yetkiVarMi(viewModel.pageCounter > 1),
+        ),
         body: body(context),
       );
 
