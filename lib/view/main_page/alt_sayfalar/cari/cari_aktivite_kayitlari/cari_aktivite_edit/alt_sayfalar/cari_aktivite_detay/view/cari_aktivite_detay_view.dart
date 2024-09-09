@@ -8,6 +8,7 @@ import "package:picker/core/base/view/base_scaffold.dart";
 import "package:picker/core/components/card/cari_aktivite_detay_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detay/view_model/cari_aktivite_detay_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
@@ -26,14 +27,14 @@ class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: !widget.baseEditEnum.goruntuleMi,
+          isScrolledDown: true,
           onPressed: () async {
             final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum));
             if (result is CariAktiviteListesiModel) {
               viewModel.addAktivite(result);
             }
           },
-        ),
+        ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
         body: Observer(
           builder: (_) {
             if (viewModel.aktiviteList.isEmpty) {

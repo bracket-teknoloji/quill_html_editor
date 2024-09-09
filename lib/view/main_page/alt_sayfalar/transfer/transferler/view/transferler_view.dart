@@ -71,7 +71,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
-        floatingActionButton: fab(),
+        floatingActionButton: fab().yetkiVarMi(widget.editTipiEnum.eklensinMi),
         body: body(),
       );
 
@@ -180,7 +180,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
 
   Widget fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown && widget.editTipiEnum.eklensinMi,
+          isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
             await viewModel.resetList();

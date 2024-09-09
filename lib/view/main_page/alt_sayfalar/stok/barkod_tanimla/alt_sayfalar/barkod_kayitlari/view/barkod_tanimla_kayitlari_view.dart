@@ -51,7 +51,7 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
   @override
   Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: yetkiController.stokBarkodEkle,
+          isScrolledDown: true,
           onPressed: () async {
             if (widget.model != null) {
               final result = await Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
@@ -62,7 +62,7 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
               await dialogManager.showAlertDialog("Stok kartı seçilmedi.");
             }
           },
-        ),
+        ).yetkiVarMi(yetkiController.stokBarkodEkle),
         body: Observer(
           builder: (_) => RefreshableListView<BarkodTanimlaKayitlariModel>(
             onRefresh: viewModel.getData,

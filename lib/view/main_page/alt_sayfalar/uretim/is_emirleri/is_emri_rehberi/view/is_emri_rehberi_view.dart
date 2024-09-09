@@ -61,7 +61,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab(),
+        floatingActionButton: fab().yetkiVarMi(yetkiController.uretimIsEmriEkle),
         body: body(),
       );
 
@@ -106,7 +106,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
 
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: yetkiController.uretimIsEmriEkle && viewModel.isScrollDown,
+          isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             Get.toNamed("/mainPage/isEmriEdit", arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.ekle));
           },

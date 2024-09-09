@@ -12,6 +12,7 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
@@ -46,7 +47,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
         },
         child: BaseScaffold(
           appBar: appBar(),
-          floatingActionButton: fab(),
+          floatingActionButton: fab().yetkiVarMi(yetkiController.stokResimEkle),
           body: body(),
         ),
       );
@@ -59,7 +60,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
       );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: yetkiController.stokResimEkle,
+        isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("/imagePicker", arguments: viewModel.requestModel);
           if (result == true) {

@@ -76,7 +76,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab(),
+        floatingActionButton: fab().yetkiVarMi(viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet),
         body: body(),
       );
 
@@ -414,7 +414,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
 
   Observer fab() => Observer(
         builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet,
+          isScrolledDown: true,
           onPressed: () async {
             if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) return dialogManager.showAlertDialog("Proses bulunmamaktadır.");
             final result = await Get.toNamed(
