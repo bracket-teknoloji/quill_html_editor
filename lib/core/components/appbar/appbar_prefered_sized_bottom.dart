@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/app/picker_app_imports.dart";
+import "package:get/get.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/extensions/list_extensions.dart";
