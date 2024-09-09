@@ -120,10 +120,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
+  Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body(),

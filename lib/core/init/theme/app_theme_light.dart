@@ -189,9 +189,12 @@ class AppThemeLight extends AppTheme {
             borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
+
         // scaffoldBackgroundColor: colorManager.surfaceVariant.withOpacity(0.3),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
           // backgroundColor: colorManager.primary,
           // foregroundColor: colorManager.oı,
           systemOverlayStyle: SystemUiOverlayStyle(

@@ -16,7 +16,7 @@ publish_to: "none"
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.8.1+255
+version: 1.8.2+256
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -33,7 +33,7 @@ dependencies:
   device_info_plus: ^10.1.0
   package_info_plus: ^6.0.0
   connectivity_plus: ^6.0.1
-  platform_device_id: ^1.0.1
+  # platform_device_id: ^1.0.1
   android_id: ^0.4.0
 
   #Network Dependencies
@@ -82,8 +82,7 @@ dependencies:
 
   #QR
   # qr_code_scanner: ^1.0.1
-  mobile_scanner: ^5.2.1
-
+  mobile_scanner: ^5.2.3
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
   syncfusion_flutter_pdfviewer: ^26.1.40
@@ -92,9 +91,9 @@ dependencies:
   app_settings: ^5.1.1
 
   #Firebase
-  firebase_core: ^3.1.1
-  firebase_crashlytics: ^4.0.2
-  firebase_messaging: ^15.0.2
+  firebase_core: ^3.4.0
+  firebase_crashlytics: ^4.1.0
+  firebase_messaging: ^15.1.0
 
   quill_html_editor: ^2.2.8
   freezed_annotation: ^2.4.1

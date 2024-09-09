@@ -47,7 +47,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
         },
         child: BaseScaffold(
           appBar: appBar(),
-          floatingActionButton: fab().yetkiVarMi(yetkiController.stokResimEkle),
+          floatingActionButton: fab(),
           body: body(),
         ),
       );
@@ -59,7 +59,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
         ),
       );
 
-  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+  Widget fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("/imagePicker", arguments: viewModel.requestModel);
@@ -68,7 +68,7 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
             await viewModel.getData();
           }
         },
-      );
+      ).yetkiVarMi(yetkiController.stokResimEkle);
 
   Observer body() => Observer(builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard));
 

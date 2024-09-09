@@ -6,34 +6,45 @@ class BaseScaffold extends Scaffold {
   BaseScaffold({
     final Widget? body,
     final AppBar? appBar,
-    super.key,
+    final Color? backgroundColor,
+    // final FloatingActionButtonLocation? floatingActionButtonLocation,
+    // final Widget? floatingActionButton,
     super.floatingActionButton,
     super.floatingActionButtonLocation,
+    super.bottomNavigationBar,
+    super.key,
     super.floatingActionButtonAnimator,
     super.persistentFooterButtons,
     super.drawer,
     super.endDrawer,
     super.bottomSheet,
-    super.backgroundColor,
     // super.resizeToAvoidBottomInset,
     // super.primary,
-    super.bottomNavigationBar,
     super.drawerDragStartBehavior,
     super.drawerEdgeDragWidth,
     super.drawerEnableOpenDragGesture,
     super.drawerScrimColor,
     super.endDrawerEnableOpenDragGesture,
     // super.extendBody,
-    super.extendBodyBehindAppBar,
+    // super.extendBodyBehindAppBar,
     super.restorationId,
     super.onDrawerChanged,
     super.onEndDrawerChanged,
     super.persistentFooterAlignment,
   }) : super(
           extendBody: true,
+          extendBodyBehindAppBar: false,
           // primary: bottomNavigationBar != null,
+          backgroundColor: (kIsWeb && (Get.context?.isLandscape ?? false) ? Colors.transparent : null),
+          // floatingActionButton: floatingActionButton?.paddingOnly(right: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.17 : 0),
+          // floatingActionButtonLocation: (kIsWeb && (Get.context?.isLandscape ?? false) ? FloatingActionButtonLocation.miniCenterDocked : null),
           resizeToAvoidBottomInset: bottomNavigationBar == null,
-          body: body == null ? null : Container(alignment: Alignment.topCenter,child: Container(color: Get.theme.scaffoldBackgroundColor, width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: body)),
+          body: body == null
+              ? null
+              : Container(
+                  alignment: Alignment.topCenter,
+                  child: Container(color: Get.theme.scaffoldBackgroundColor, height: double.infinity, width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: body),
+                ),
           appBar: appBar == null
               ? null
               : PreferredSize(
@@ -43,5 +54,13 @@ class BaseScaffold extends Scaffold {
                     child: SizedBox(width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: appBar),
                   ),
                 ),
+          // bottomNavigationBar: Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: Container(
+          // //   alignment: Alignment.bottomCenter,
+          // //     constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? BoxConstraints(maxWidth: Get.width * 0.5, maxHeight: double.maxFinite) : null,
+          //     child: bottomNavigationBar,
+          //   ),
+          // ),
         );
 }

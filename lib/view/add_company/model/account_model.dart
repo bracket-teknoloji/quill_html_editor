@@ -218,7 +218,11 @@ class AccountModel with NetworkManagerMixin {
     //!WEB
     if (kIsWeb) {
       platform = "web";
-      cihazKimligi = CacheManager.instance.getWebCihazKimligi;
+      if (kDebugMode) {
+        cihazKimligi = "bty_debug";
+      } else {
+        cihazKimligi = CacheManager.instance.getWebCihazKimligi;
+      }
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;

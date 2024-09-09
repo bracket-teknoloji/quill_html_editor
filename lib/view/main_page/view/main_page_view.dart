@@ -69,9 +69,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         },
         child: Row(
           children: [
-            if (kIsWeb && context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+            if (context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
             Expanded(
-              flex: (kIsWeb && context.isLandscape) ? 2 : 1,
+              flex: (context.isLandscape) ? 3 : 1,
               child: Scaffold(
                 appBar: appBar(scaffoldKey, context),
                 key: scaffoldKey,
@@ -101,7 +101,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                     viewModel.removeLastItem();
                   },
                 )
-              : (kIsWeb && context.isLandscape)
+              : (context.isLandscape)
                   ? const SizedBox()
                   : IconButton(
                       icon: const Icon(Icons.star_border_outlined),
@@ -148,9 +148,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
       );
 
   SafeArea body(BuildContext context) => SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            bodyWidget(),
+            Expanded(child: bodyWidget()),
             Align(alignment: Alignment.bottomCenter, child: bottomBar(scaffoldKey)),
             if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
               SizedBox(

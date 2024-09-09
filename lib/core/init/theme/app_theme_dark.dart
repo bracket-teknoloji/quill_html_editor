@@ -195,9 +195,11 @@ class AppThemeDark extends AppTheme {
             borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
+        
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           scrolledUnderElevation: 0,
+          surfaceTintColor: Colors.transparent,
           systemOverlayStyle: SystemUiOverlayStyle(
             // statusBarColor: colorManager.onPrimary,
             statusBarIconBrightness: isIOS ? Brightness.dark : Brightness.light,
