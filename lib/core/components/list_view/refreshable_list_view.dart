@@ -102,7 +102,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
               Icon(Icons.travel_explore_outlined),
               Text("Liste bulunamadı."),
             ],
-          ).paddingSymmetric(vertical: MediaQuery.sizeOf(context).height * 0.34),
+          ).paddingSymmetric(vertical: MediaQuery.sizeOf(context).height * 0.4),
         ),
       );
     }

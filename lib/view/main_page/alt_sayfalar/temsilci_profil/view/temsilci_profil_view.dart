@@ -2,6 +2,7 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
@@ -357,9 +358,10 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                 ),
               ],
             ),
-            Wrap(
-              direction: kIsWeb ? Axis.horizontal : Axis.vertical,
-              alignment: WrapAlignment.spaceEvenly,
+            CustomLayoutBuilder(
+              // direction: kIsWeb ? Axis.horizontal : Axis.vertical,
+              splitCount: (kIsWeb && context.isLandscape) ? 2 : 1,
+              // alignment: WrapAlignment.spaceEvenly,
               children: [
                 Observer(
                   builder: (_) {

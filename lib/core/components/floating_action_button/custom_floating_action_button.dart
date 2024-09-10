@@ -23,7 +23,7 @@ class CustomFloatingActionButton extends StatelessWidget {
           child: FloatingActionButton(
             onPressed: onPressed,
             child: const Icon(Icons.add),
-          ).paddingOnly(right: (kIsWeb && context.isLandscape)? Get.width * 0.17 : 0),
+          ).paddingOnly(right: (kIsWeb && context.isLandscape) ? Get.width * 0.17 : 0),
         ),
       );
 }
