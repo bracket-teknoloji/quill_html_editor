@@ -263,21 +263,22 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
               CustomTextField(
                 labelText: "Ölçü Birimi 1",
                 enabled: enable,
-                readOnly: true,
-                suffixMore: true,
+                // suffixMore: true,
                 onChanged: (p0) => stokModel.olcuBirimi = p0,
-                onTap: () => baseOlcuBirimleriController(controller: 1),
+                // onTap: () => baseOlcuBirimleriController(controller: 1),
+
+                onClear: () => stokModel.olcuBirimi = null,
                 controller: olcuBirimi1Controller,
+                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 1), icon: const Icon(Icons.more_horiz_outlined)),
               ),
               CustomTextField(
                 labelText: "Ölçü Birimi 2",
                 enabled: enable,
-                readOnly: true,
-                suffixMore: true,
+                // suffixMore: true,
                 onClear: () => stokModel.olcuBirimi2 = null,
-                onTap: () {
-                  baseOlcuBirimleriController(controller: 2);
-                },
+                onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2 = p0,
+                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 2), icon: const Icon(Icons.more_horiz_outlined)),
+
                 controller: olcuBirimi2Controller,
               ),
               Row(
@@ -307,12 +308,14 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
               CustomTextField(
                 labelText: "Ölçü Birimi 3",
                 enabled: enable,
-                readOnly: true,
-                suffixMore: true,
+                // suffixMore: true,
                 onClear: () => stokModel.olcuBirimi3 = null,
-                onTap: () {
-                  baseOlcuBirimleriController(controller: 3);
-                },
+                onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3 = p0,
+                // onTap: () {
+                //   baseOlcuBirimleriController(controller: 3);
+                // },
+                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 3), icon: const Icon(Icons.more_horiz_outlined)),
+
                 controller: olcuBirimi3Controller,
               ),
               Row(
