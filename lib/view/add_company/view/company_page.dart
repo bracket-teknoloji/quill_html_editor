@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 
 import "../../../core/base/state/base_state.dart";
@@ -35,14 +36,15 @@ class _AccountsViewState extends BaseState<AccountsView> {
         title: const AppBarTitle(title: "Hesaplar"),
       );
 
-  FloatingActionButton fab() => FloatingActionButton(
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("/addAccount");
           if (result != null) {
             setState(() {});
           }
         },
-        child: const Icon(Icons.add),
+        // child: const Icon(Icons.add),
       );
 
   Widget body() => getListLength == 0

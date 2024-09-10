@@ -37,13 +37,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   bool first = true;
   List<IsletmeModel>? isletme;
   late final TextEditingController isletmeController;
-  // Map selected = {"Şirket": "", "İşletme": null, "Şube": null};
-  // Map userData = {"Şirket": "", "İşletme": null, "Şube": null};
-  // Map<String, dynamic> selected = {"Şirket": "", "İşletme": null, "Şube": null};
   List<CompanyModel>? sirket;
 
   late final TextEditingController sirketController;
-  List<IsletmeModel>? sube;
   late final TextEditingController subeController;
   final EntryCompanyViewModel viewModel = EntryCompanyViewModel();
 
@@ -70,9 +66,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         await sirketDialog(context);
       }
     });
-    // controller1?.text = getVeriTabani?["Şirket"] ?? "";
-    // controller2?.text = CacheManager.getIsletmeSube()?["İşletme"] ?? "";
-    // controller3?.text = "${CacheManager.getIsletmeSube()?["Şube"] ?? ""} ${getVeriTabani?["Şube"] ?? ""}";
   }
 
   Future subeDialog(BuildContext context) async {
@@ -80,8 +73,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       subeController.text = viewModel.subeList?[0].subeAdi ?? "";
 
       viewModel.selectedSube(viewModel.subeList?[0]);
-      // viewModel.selected["Şube"] = viewModel.subeList?[0].subeKodu ?? 0;
-      // viewModel.userData["Şube"] = viewModel.subeList?[0].subeAdi;
       return;
     }
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
@@ -95,22 +86,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           value: viewModel.subeList?[index],
           description: viewModel.subeList?[index].subeKodu.toStringIfNotNull,
           groupValue: viewModel.subeList?[index].subeKodu,
-          // onTap: () {
-          //   setState(() {
-          //     subeController.text = "${viewModel.subeList?[index].subeAdi} ${viewModel.subeList?[index].subeKodu ?? 0}";
-          //     selected["Şube"] = viewModel.subeList?[index].subeKodu ?? 0;
-          //     userData["Şube"] = viewModel.subeList?[index].subeAdi;
-          //   });
-          //   Get.back();
-          // },
         ),
       ),
     );
     if (result is IsletmeModel) {
       subeController.text = result.subeAdi ?? "";
       viewModel.selectedSube(result);
-      // viewModel.selected["Şube"] = result.subeKodu ?? 0;
-      // viewModel.userData["Şube"] = result.subeAdi;
     }
   }
 
@@ -118,10 +99,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     if (viewModel.sirketList?.length == 1) {
       sirketController.text = viewModel.sirketList?[0].company ?? "";
       viewModel.selectedSirket(viewModel.sirketList?[0]);
-      // viewModel.selected["Şirket"] = viewModel.sirketList?[0].company ?? "";
-      // viewModel.userData["Şirket"] = viewModel.sirketList?[0].company ?? "";
-      // viewModel.selected["İşletme"] = null;
-      // viewModel.selected["Şube"] = null;
       await viewModel.getSube();
       isletmeController.clear();
       subeController.clear();
@@ -153,10 +130,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       isletmeController.clear();
       subeController.clear();
       viewModel.selectedSirket(result);
-      // viewModel.selected["Şirket"] = result;
-      // viewModel.userData["Şirket"] = result;
-      // viewModel.selected["İşletme"] = null;
-      // viewModel.selected["Şube"] = null;
       await viewModel.getSube();
       await isletmeDialog(context);
     } else {
@@ -171,8 +144,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
       isletmeController.text = viewModel.isletmeList?[0].isletmeAdi ?? "";
       viewModel.selectedIsletme(viewModel.isletmeList?[0]);
-      // viewModel.selected["İşletme"] = viewModel.isletmeList?[0].isletmeKodu ?? 0;
-      // viewModel.userData["İşletme"] = viewModel.isletmeList?[0].isletmeAdi;
       await subeDialog(context);
       return;
     }
@@ -187,16 +158,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           title: viewModel.isletmeList?[index].isletmeAdi ?? "",
           value: viewModel.isletmeList?[index],
           groupValue: viewModel.isletmeList?[index].isletmeKodu,
-          // onTap: () {
-          //   isletmeController.text = "${viewModel.isletmeList?[index].isletmeAdi} ${viewModel.isletmeList?[index].isletmeKodu ?? 0}";
-          //   subeController.clear();
-          //   viewModel.selected["İşletme"] = viewModel.isletmeList?[index].isletmeKodu ?? 0;
-          //   viewModel.userData["İşletme"] = viewModel.isletmeList?[index].isletmeAdi;
-          //   viewModel.selected["Şube"] = null;
-          //   // setState(() {
-          //   // });
-          //   Get.back();
-          // },
         ),
       ),
     );
@@ -205,9 +166,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       subeController.clear();
       viewModel.selectedIsletme(result);
       await subeDialog(context);
-      // viewModel.selected["İşletme"] = result.isletmeKodu ?? 0;
-      // viewModel.userData["İşletme"] = result.isletmeAdi;
-      // viewModel.selected["Şube"] = null;
     }
   }
 
@@ -298,7 +256,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ..aktifIsletmeKodu = viewModel.selected["İşletme"]
                                   ..aktifSubeKodu = viewModel.selected["Şube"]
                                   ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
-                                // dialogManager.showLoadingDialog("${viewModel.selected["Şirket"]} şirketine giriş yapılıyor.");
                                 final response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,
                                   bodyModel: MainPageModel(),
@@ -319,15 +276,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   await CacheManager.setAnaVeri(model);
                                   Get.offAllNamed("/mainPage");
-                                  // final result = await networkManager.dioPost<AccountModel>(
-                                  //   path: ApiUrls.saveUyeBilgileri,
-                                  //   bodyModel: AccountModel(),
-                                  //   data: CacheManager.getHesapBilgileri?.toJson(),
-                                  // );
-                                  // if (result.isSuccess) {
-                                  //   log("Session Başarılı");
-                                  // }
-                                  // Get.toNamed("/mainPage");
                                   if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
                                 }
                               } else {
