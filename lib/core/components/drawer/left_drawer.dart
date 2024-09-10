@@ -24,7 +24,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
   List<FavoritesModel> list =
       CacheManager.getFavoriler.values.toList().where((element) => (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) || AccountModel.instance.adminMi).toList();
-  List get liste => list.where((element) => element.yetkiKontrol).toList();
+  List<FavoritesModel> get liste => list.where((element) => element.yetkiKontrol).toList();
 
   @override
   Widget build(BuildContext context) => Drawer(
@@ -96,8 +96,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                     return ReorderableListView.builder(
                       primary: false,
                       onReorder: (oldIndex, newIndex) {
-                        // snapshot.data.
-                        setState(() {
                           if (newIndex > oldIndex) {
                             newIndex -= 1;
                           }
@@ -107,7 +105,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           list.insert(newIndex, item);
                           CacheManager.setFavorilerSira(oldIndex, item2);
                           CacheManager.setFavorilerSira(newIndex, item);
-                        });
                       },
                       key: const Key("Favoriler"),
                       itemBuilder: (context, index) {
@@ -116,7 +113,7 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           key: ValueKey(index),
                           child: ListTile(
                             contentPadding: UIHelper.midPaddingHorizontal,
-                            enabled: liste.contains(value),
+                            enabled: liste.any((element) => element.title == value.title),
                             title: Text(
                               value.title.toString(),
                             ),
@@ -125,10 +122,8 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 ? IconButton(
                                     style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
                                     onPressed: () {
-                                      setState(() {
                                         list.removeAt(index);
                                         CacheManager.setFavorilerList(list);
-                                      });
                                     },
                                     icon: const Icon(Icons.delete_outline),
                                   )
