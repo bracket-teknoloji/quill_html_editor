@@ -33,10 +33,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   final MainPageViewModel viewModel = MainPageViewModel();
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
-  // late List<GridItemModel> items;
-  // List<List<GridItemModel>> lastItems = [];
-  MainPageModel? model = CacheManager.getAnaVeri;
-  // List<String> title2 = ["Picker"];
+  MainPageModel? get model => CacheManager.getAnaVeri;
 
   @override
   void initState() {
@@ -72,14 +69,16 @@ final class _MainPageViewState extends BaseState<MainPageView> {
             if (kIsWeb && context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
             Expanded(
               flex: (context.isLandscape) ? 3 : 1,
-              child: Scaffold(
-                appBar: appBar(scaffoldKey, context),
-                key: scaffoldKey,
-                drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
-                drawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
-                endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
-                body: body(context),
-                // bottomNavigationBar: bottomBar(scaffoldKey),
+              child: Observer(
+                builder: (_) => Scaffold(
+                  appBar: appBar(scaffoldKey, context),
+                  key: scaffoldKey,
+                  drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
+                  drawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+                  endDrawer: (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
+                  body: body(context),
+                  // bottomNavigationBar: bottomBar(scaffoldKey),
+                ),
               ),
             ),
             if (kIsWeb && context.isLandscape) Expanded(child: EndDrawer(scaffoldKey: scaffoldKey)),
@@ -150,32 +149,38 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   SafeArea body(BuildContext context) => SafeArea(
         child: Column(
           children: [
-            Expanded(child: bodyWidget()),
-            Align(alignment: Alignment.bottomCenter, child: bottomBar(scaffoldKey)),
-            if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
-              SizedBox(
-                width: UIHelper.highSize * 3,
-                child: GestureDetector(
-                  onHorizontalDragStart: (details) {
-                    if (Directionality.of(context) == TextDirection.ltr) {
-                      return;
-                    }
-                    if (details.localPosition.dx < 50) {
-                      viewModel.setItems(viewModel.lastItems.last);
-                      viewModel.removeLastItem();
-                    }
-                  },
-                  onHorizontalDragEnd: (details) {
-                    if (Directionality.of(context) == TextDirection.rtl) {
-                      return;
-                    }
-                    if (details.primaryVelocity! > 0) {
-                      viewModel.setItems(viewModel.lastItems.last);
-                      viewModel.removeLastItem();
-                    }
-                  },
-                ),
+            Expanded(
+              child: Stack(
+                children: [
+                  bodyWidget(),
+                  if (!kIsWeb && Platform.isIOS && viewModel.lastItems.isNotEmpty)
+                    SizedBox(
+                      width: UIHelper.highSize * 3,
+                      child: GestureDetector(
+                        onHorizontalDragStart: (details) {
+                          if (Directionality.of(context) == TextDirection.ltr) {
+                            return;
+                          }
+                          if (details.localPosition.dx < 50) {
+                            viewModel.setItems(viewModel.lastItems.last);
+                            viewModel.removeLastItem();
+                          }
+                        },
+                        onHorizontalDragEnd: (details) {
+                          if (Directionality.of(context) == TextDirection.rtl) {
+                            return;
+                          }
+                          if (details.primaryVelocity! > 0) {
+                            viewModel.setItems(viewModel.lastItems.last);
+                            viewModel.removeLastItem();
+                          }
+                        },
+                      ),
+                    ),
+                ],
               ),
+            ),
+            Align(alignment: Alignment.bottomCenter, child: bottomBar(scaffoldKey)),
           ],
         ),
       );
