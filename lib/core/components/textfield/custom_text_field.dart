@@ -124,7 +124,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
           //select all
         },
         child: MouseRegion(
-          onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
+          // onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
           child: TextFormField(
             autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
             textInputAction: TextInputAction.next,
