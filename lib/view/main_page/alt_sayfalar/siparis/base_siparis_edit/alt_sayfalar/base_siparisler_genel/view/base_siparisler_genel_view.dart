@@ -155,28 +155,31 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: teslimCariController,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      if (cariController.text.isEmpty) {
-                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                        return;
-                      }
-                      final result = await Get.toNamed(
-                        "mainPage/cariRehberi",
-                        arguments: CariListesiRequestModel(
-                          bagliCariKodu: model.cariKodu,
-                          menuKodu: "CARI_CREH",
-                          belgeTuru: widget.model.editTipiEnum?.rawValue,
+                  suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
+                      ? null
+                      : IconButton(
+                          onPressed: () async {
+                            if (cariController.text.isEmpty) {
+                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                              return;
+                            }
+                            final result = await Get.toNamed(
+                              "mainPage/cariRehberi",
+                              arguments: CariListesiRequestModel(
+                                bagliCariKodu: model.cariKodu,
+                                menuKodu: "CARI_CREH",
+                                teslimCari: "E",
+                                belgeTuru: widget.model.editTipiEnum?.rawValue,
+                              ),
+                            );
+                            if (result != null && result is CariListesiModel) {
+                              model.teslimCari = result.cariKodu;
+                              model.teslimCariAdi = result.cariAdi;
+                              teslimCariController.text = result.cariAdi ?? "";
+                            }
+                          },
+                          icon: const Icon(Icons.hub_outlined),
                         ),
-                      );
-                      if (result != null && result is CariListesiModel) {
-                        model.teslimCari = result.cariKodu;
-                        model.teslimCariAdi = result.cariAdi;
-                        teslimCariController.text = result.cariAdi ?? "";
-                      }
-                    },
-                    icon: const Icon(Icons.hub_outlined),
-                  ),
                   onClear: () {
                     model.teslimCari = null;
                     model.teslimCariAdi = null;
@@ -185,17 +188,38 @@ class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelView> {
                   onTap: !yetkiController.siparisFarkliTeslimCariAktif
                       ? null
                       : () async {
-                          final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                          if (result != null && result is CariListesiModel) {
-                            model.teslimCari = result.cariKodu;
-                            model.teslimCariAdi = result.cariAdi;
-                            model.plasiyerAciklama = result.plasiyerAciklama;
-                            model.plasiyerKodu = result.plasiyerKodu;
-                            teslimCariController.text = result.cariAdi ?? "";
-                            plasiyerController.text = result.plasiyerAciklama ?? "";
+                          if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
+                            final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                            if (result != null && result is CariListesiModel) {
+                              model.teslimCari = result.cariKodu;
+                              model.teslimCariAdi = result.cariAdi;
+                              model.plasiyerAciklama = result.plasiyerAciklama;
+                              model.plasiyerKodu = result.plasiyerKodu;
+                              teslimCariController.text = result.cariAdi ?? "";
+                              plasiyerController.text = result.plasiyerAciklama ?? "";
+                            }
+                          } else {
+                            if (cariController.text.isEmpty) {
+                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                              return;
+                            }
+                            final result = await Get.toNamed(
+                              "mainPage/cariRehberi",
+                              arguments: CariListesiRequestModel(
+                                bagliCariKodu: model.cariKodu,
+                                menuKodu: "CARI_CREH",
+                                teslimCari: "E",
+                                belgeTuru: widget.model.editTipiEnum?.rawValue,
+                              ),
+                            );
+                            if (result != null && result is CariListesiModel) {
+                              model.teslimCari = result.cariKodu;
+                              model.teslimCariAdi = result.cariAdi;
+                              teslimCariController.text = result.cariAdi ?? "";
+                            }
                           }
                         },
-                ),
+                ).yetkiVarMi(yetkiController.siparisFarkliTeslimCariAktif && parametreModel.bagliCariVar == true),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

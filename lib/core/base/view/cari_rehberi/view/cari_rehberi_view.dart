@@ -67,8 +67,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
       viewModel.cariListesiRequestModel = viewModel.cariListesiRequestModel?.copyWith(
         eFaturaGoster: widget.cariRequestModel.eFaturaGoster,
         belgeTuru: widget.cariRequestModel.belgeTuru,
+        bagliCariKodu: widget.cariRequestModel.bagliCariKodu,
+        teslimCari: widget.cariRequestModel.teslimCari,
       );
-      viewModel.changeBagliCariKodu(widget.cariRequestModel.bagliCariKodu);
+      // viewModel.changeBagliCariKodu(widget.cariRequestModel.bagliCariKodu);
       viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
       viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
       viewModel.setSiparisKarsilanmaDurumu(widget.cariRequestModel.siparisKarsilanmaDurumu);

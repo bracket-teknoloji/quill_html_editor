@@ -175,6 +175,19 @@ final class YetkiController {
   bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
   bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
 
+  bool get teslimCarideBaglanmisCarilerSecilsinMi {
+    if (cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
+      return true;
+    }
+    if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+      return _paramModel?.satisTeslimCarideBaglanmisCarilerSecilsin ?? false;
+    } else {
+      return _paramModel?.alisTeslimCarideBaglanmisCarilerSecilsin ?? false;
+    }
+  }
+
+  bool get cariTeslimCariSatisBaglanmisCarilerSecilsinMi => _yetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin == "E";
+
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
   bool get siparisKdvDahilMi {
