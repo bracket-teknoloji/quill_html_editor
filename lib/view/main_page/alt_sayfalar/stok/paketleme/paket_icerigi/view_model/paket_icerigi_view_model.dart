@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
@@ -22,7 +23,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
   PaketlemeListesiRequestModel requestModel = PaketlemeListesiRequestModel(ekranTipi: "L", menuKodu: "STOK_PKET");
 
   @computed
-  double get toplamPaketMiktari => observableList?.fold(0, (sum, item) => (sum ?? 0) + (item.miktar ?? 0)) ?? 0;
+  double get toplamPaketMiktari => observableList?.map((element) => element.miktar ?? 0).sum ?? 0;
 
   @action
   void setPaketID(int id) => requestModel = requestModel.copyWith(paketId: id);

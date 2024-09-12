@@ -25,7 +25,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
   Widget build(BuildContext context) => AspectRatio(
         aspectRatio: 1.8,
         child: widget.pieChartValue != null
-            ? (widget.pieChartValue?.fold(0.0, (double previousValue, double element) => element + previousValue) ?? 0) > 0
+            ? (widget.pieChartValue?.sum ?? 0) > 0
                 ? Padding(
                     padding: UIHelper.lowPadding,
                     child: PieChart(

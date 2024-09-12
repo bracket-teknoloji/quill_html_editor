@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/model/tahsilat_request_model.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
@@ -18,10 +19,10 @@ abstract class _DekontEditKalemlerViewModelBase with Store {
   List<DekontKalemler>? get kalemler => dekontIslemlerRequestModel.kalemler;
 
   @computed
-  double get toplamBorc => kalemler?.where((element) => element.ba == "B").fold(0, (previousValue, element) => (previousValue ?? 0) + (element.tutar ?? 0)) ?? 0;
+  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((element) => element.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").fold(0, (previousValue, element) => (previousValue ?? 0) + (element.tutar ?? 0)) ?? 0;
+  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((element) => element.tutar ?? 0).sum ?? 0;
 
   @action
   void addKalemler(DekontKalemler? model) {

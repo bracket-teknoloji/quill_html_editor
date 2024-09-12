@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
@@ -93,8 +94,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                           onTap: () async {
                                             final sonuc = viewModel.yapilandirmaList
                                                 ?.where((element) => element.yapkod == item?.yapkod)
-                                                .map((element) => element.ozellikSira)
-                                                .fold(0, (previousValue, element) => ((element ?? 0) > previousValue) ? element ?? 0 : previousValue);
+                                                .map((element) => element.ozellikSira ?? 0).sum;
                                             viewModel.setMaxPage(sonuc);
                                             if (!viewModel.isLastPage) {
                                               viewModel.setYapilandirmaRehberiModel(item);

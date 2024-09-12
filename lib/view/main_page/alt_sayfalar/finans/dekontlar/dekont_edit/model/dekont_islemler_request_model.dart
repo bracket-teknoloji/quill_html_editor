@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -44,9 +45,9 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
 }
 
 extension DekontIslemleriExtensions on DekontIslemlerRequestModel {
-  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + (element ?? 0)) ?? 0;
+  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
 
-  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((e) => e.tutar).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + (element ?? 0)) ?? 0;
+  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   bool get ilkSayfaTamamMi => dekontSeri != null && tarih != null && plasiyerKodu != null;
 }

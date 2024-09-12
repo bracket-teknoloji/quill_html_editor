@@ -1,5 +1,6 @@
 import "dart:convert";
 
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -55,10 +56,10 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
-  double get gelenTutar => bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gelenTutar => bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
   ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")

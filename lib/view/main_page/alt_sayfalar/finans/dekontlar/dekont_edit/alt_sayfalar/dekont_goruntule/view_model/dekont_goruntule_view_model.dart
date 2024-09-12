@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/model/dekont_listesi_model.dart";
 
 import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -48,18 +49,8 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
         "Tarih": list.firstOrNull?.tarih.toDateString,
         "Seri": list.firstOrNull?.seriNo,
         "Dekont No": list.firstOrNull?.dekontNo,
-        "Borç Toplamı": list
-            .where((element) => element.ba == "B")
-            .map((e) => e.tutar)
-            .toList()
-            .fold(0.0, (previousValue, element) => previousValue + (element ?? 0.0))
-            .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-        "Alacak Toplamı": list
-            .where((element) => element.ba == "A")
-            .map((e) => e.tutar)
-            .toList()
-            .fold(0.0, (previousValue, element) => previousValue + (element ?? 0.0))
-            .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+        "Borç Toplamı": list.where((element) => element.ba == "B").map((e) => e.tutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+        "Alacak Toplamı": list.where((element) => element.ba == "A").map((e) => e.tutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
       });
     }
   }

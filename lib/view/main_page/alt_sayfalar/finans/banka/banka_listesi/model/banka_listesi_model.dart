@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -43,9 +44,9 @@ extension BankaListesiModelExtension on BankaListesiModel {
 }
 
 extension BankaListesiModelListExtension on List<BankaListesiModel> {
-  double get bakiye => fold(0, (previousValue, element) => previousValue + element.bakiye);
-  double get dovizBakiye => fold(0, (previousValue, element) => previousValue + element.dovizBakiye);
-  double get bakiyeDovizli => fold(0, (previousValue, element) => previousValue + element.bakiyeDovizli);
+  double get bakiye => map((element) => element.bakiye).sum;
+  double get dovizBakiye => map((element) => element.dovizBakiye).sum;
+  double get bakiyeDovizli => map((element) => element.bakiyeDovizli).sum;
 
   Map<String, double> bakiyeMap(String mainCurrency) {
     final Map<String, double> map = {};

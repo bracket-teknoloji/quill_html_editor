@@ -16,7 +16,7 @@ abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   int get toplamKayitSayisi => ortalamaVadeTarihiListesi.length;
 
   @computed
-  double get toplamTutar => ortalamaVadeTarihiListesi.map((e) => e.tutar ?? 0).whereNotNull().fold(0, (previousValue, element) => previousValue + element);
+  double get toplamTutar => ortalamaVadeTarihiListesi.map((e) => e.tutar ?? 0).sum;
 
   @computed
   double get ortalamaVadeTarihi {

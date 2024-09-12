@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -60,7 +61,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "BELGE_NO_ZA", durum: "B", yer: "P");
 
   @computed
-  double get toplamTutar => cekSenetListesiListesi?.fold(0, (previousValue, element) => (previousValue ?? 0) + (element.tutar ?? 0)) ?? 0;
+  double get toplamTutar => cekSenetListesiListesi?.map((element) => element.tutar ?? 0).sum ?? 0;
 
   @action
   void setSearchBar() => searchBar = !searchBar;

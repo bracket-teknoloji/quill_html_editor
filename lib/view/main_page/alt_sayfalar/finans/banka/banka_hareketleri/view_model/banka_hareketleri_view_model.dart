@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
@@ -18,16 +19,16 @@ abstract class _BankaHareketleriViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BankaHareketleriModel>? bankaHareketleriListesi;
 
   @computed
-  double get gelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get dovizGelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.dovizTutari ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get dovizGelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.dovizTutari ?? 0).sum ?? 0;
 
   @computed
-  double get gidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get gidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get dovizGidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.dovizTutari ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get dovizGidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.dovizTutari ?? 0).sum ?? 0;
 
   @computed
   double get bakiye => gelenTutar - gidenTutar;

@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -21,7 +22,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   CariListesiModel? cariListesiModel;
 
   @computed
-  double get toplamTutar => model.kalemler?.map((e) => e.tutar ?? 0).fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get toplamTutar => model.kalemler?.map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
   double get ortalamaVadeGunu {

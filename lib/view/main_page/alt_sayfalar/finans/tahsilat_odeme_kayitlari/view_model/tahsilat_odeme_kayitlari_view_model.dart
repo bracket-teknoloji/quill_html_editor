@@ -1,6 +1,7 @@
 import "dart:convert";
 import "dart:developer";
 
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -50,10 +51,10 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
   String? searchText;
 
   @computed
-  double get toplamTahsilat => cariHareketleriListesi?.map((e) => e.alacak ?? 0).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get toplamTahsilat => cariHareketleriListesi?.map((e) => e.alacak ?? 0).sum ?? 0;
 
   @computed
-  double get toplamOdeme => cariHareketleriListesi?.map((e) => e.borc ?? 0).toList().fold(0, (previousValue, element) => (previousValue ?? 0) + element) ?? 0;
+  double get toplamOdeme => cariHareketleriListesi?.map((e) => e.borc ?? 0).sum ?? 0;
 
   //* Computed
   @computed
