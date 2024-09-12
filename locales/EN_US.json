@@ -26,8 +26,8 @@
     "eFaturaDLLKayitlaSubTitle": "Creates DLL records of E-invoices.",
     "netOpenXCreateKernel": "Create a New NetOpenX Kernel",
     "netOpenXCreateKernelSubTitle": "You can use it to Build NetOpenX Kernel.",
-    "netfectWinServiceRestart": "Restart NetFect Windows Servers",
-    "netfectWinServiceRestartSubTitle": "You can use this to restart NetFect Windows Servers."
+    "netfectWinServiceRestart": "Restart NetFect Windows Services",
+    "netfectWinServiceRestartSubTitle": "You can use this to restart NetFect Windows Services."
   },
   "generalStrings": {
     "save": "Save",

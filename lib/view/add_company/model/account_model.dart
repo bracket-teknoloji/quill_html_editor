@@ -152,6 +152,8 @@ class AccountModel with NetworkManagerMixin {
 
   bool get adminMi => admin == "E";
 
+  bool get demoMu => uyeEmail == "demo@netfect.com";
+
   Future<void> init() async {
     if (isDebug) {
       debugMu = isDebug;

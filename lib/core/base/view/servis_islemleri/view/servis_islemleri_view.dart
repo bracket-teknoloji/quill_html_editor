@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
@@ -79,11 +80,12 @@ class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
           iconWidget: Icons.podcasts_outlined,
           onTap: viewModel.eFaturaDLLKayitla,
         ),
-        BottomSheetModel(
-          title: loc.serviceOperations.netfectWinServiceRestart,
-          description: loc.serviceOperations.netfectWinServiceRestartSubTitle,
-          iconWidget: Icons.restart_alt_outlined,
-          onTap: viewModel.netFectWinServiceRestart,
-        ),
+        if (!AccountModel.instance.demoMu)
+          BottomSheetModel(
+            title: loc.serviceOperations.netfectWinServiceRestart,
+            description: loc.serviceOperations.netfectWinServiceRestartSubTitle,
+            iconWidget: Icons.restart_alt_outlined,
+            onTap: viewModel.netFectWinServiceRestart,
+          ),
       ];
 }
