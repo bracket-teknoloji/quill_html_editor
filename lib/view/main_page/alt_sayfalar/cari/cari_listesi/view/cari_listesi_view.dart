@@ -866,9 +866,11 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       );
 
   bool bakiyeGorunsunMu(CariListesiModel model) {
-    if (userModel.plasiyerKodu == null) return true;
+    if (!yetkiController.adminMi && !yetkiController.cariListesi) return false;
+    if (widget.cariRequestModel?.teslimCari == "E" && yetkiController.cariTeslimCariRehberSadeceSecsin) return false;
+    if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
     if (yetkiController.cariBakiyeGosterimTumuMu) return true;
-    if (yetkiController.cariBakiyeGosterimKendiCarileriMi && model.plasiyerKodu == userModel.plasiyerKodu) return true;
+    if (yetkiController.cariBakiyeGosterimKendiCarileriMi) return true;
     return false;
   }
 }

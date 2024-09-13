@@ -13,8 +13,9 @@ import "../badge/colorful_badge.dart";
 
 class CariRehberiCard extends StatefulWidget {
   final CariListesiModel model;
+  final bool teslimCariMi;
   final Function(CariListesiModel model)? onPressed;
-  const CariRehberiCard({super.key, required this.model, this.onPressed});
+  const CariRehberiCard({super.key, required this.model, this.onPressed, required this.teslimCariMi});
 
   @override
   State<CariRehberiCard> createState() => _CariRehberiCardState();
@@ -66,7 +67,16 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                 style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
               ),
             ],
-          ),
+          ).yetkiVarMi(bakiyeGorunsunMu(model)),
         ),
       );
+
+  bool bakiyeGorunsunMu(CariListesiModel model) {
+    if (!yetkiController.adminMi && !yetkiController.cariListesi) return false;
+    if (widget.teslimCariMi && yetkiController.cariTeslimCariRehberSadeceSecsin) return false;
+    if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
+    if (yetkiController.cariBakiyeGosterimTumuMu) return true;
+    if (yetkiController.cariBakiyeGosterimKendiCarileriMi && model.plasiyerKodu == userModel.plasiyerKodu) return true;
+    return false;
+  }
 }

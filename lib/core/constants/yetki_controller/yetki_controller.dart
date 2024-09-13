@@ -188,6 +188,8 @@ final class YetkiController {
 
   bool get cariTeslimCariSatisBaglanmisCarilerSecilsinMi => _yetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin == "E";
 
+  bool get cariTeslimCariRehberSadeceSecsin => _yetkiModel?.cariTeslimCariRehberSadeceSecsin == "E";
+
   //! Sipariş
   bool get _musteriSiparisiMi => BaseSiparisEditModel.instance.getEditTipiEnum?.musteriMi == true;
   bool get siparisKdvDahilMi {

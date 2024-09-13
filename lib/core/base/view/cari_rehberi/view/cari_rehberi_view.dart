@@ -200,7 +200,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                     );
                   }
                   final CariListesiModel item = viewModel.cariListesi![index];
-                  return CariRehberiCard(model: item);
+                  return CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E");
                 },
               );
             }
