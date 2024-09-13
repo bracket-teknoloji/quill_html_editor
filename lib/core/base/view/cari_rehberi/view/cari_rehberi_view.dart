@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import "package:flutter/material.dart";
-import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
@@ -10,6 +9,7 @@ import "package:picker/core/components/appbar/appbar_prefered_sized_bottom.dart"
 import "package:picker/core/components/button/elevated_buttons/bottom_appbar_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -69,22 +69,11 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         belgeTuru: widget.cariRequestModel.belgeTuru,
         bagliCariKodu: widget.cariRequestModel.bagliCariKodu,
         teslimCari: widget.cariRequestModel.teslimCari,
+        siparisKarsilanmaDurumu: widget.cariRequestModel.siparisKarsilanmaDurumu,
+        menuKodu: widget.cariRequestModel.menuKodu,
       );
-      // viewModel.changeBagliCariKodu(widget.cariRequestModel.bagliCariKodu);
-      viewModel.setMenuKodu(widget.cariRequestModel.menuKodu);
-      viewModel.setBelgeTuru(widget.cariRequestModel.belgeTuru);
-      viewModel.setSiparisKarsilanmaDurumu(widget.cariRequestModel.siparisKarsilanmaDurumu);
-      await viewModel.getCariListesi();
-      scrollController.addListener(() {
-        if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
-          viewModel.changeIsScrollDown(false);
-        } else if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
-          viewModel.changeIsScrollDown(true);
-        }
-        if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-          viewModel.getCariListesi();
-        }
-      });
+      await viewModel.getData();
+      scrollController.addListener(() => viewModel.changeScrollStatus(scrollController.position));
     });
     super.initState();
   }
@@ -108,18 +97,18 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
-        body: body(),
+        body: body2(),
       );
 
   AppBar appBar() => AppBar(
         title: Observer(
-          builder: (_) => viewModel.searchBar
+          builder: (_) => viewModel.isSearchBarOpen
               ? CustomTextField(
                   labelText: "Ara",
                   focusNode: searchFocusNode,
                   controller: searchController,
-                  onSubmitted: (value) => viewModel.changeFilterText(value),
-                  onClear: () => viewModel.changeFilterText(""),
+                  onSubmitted: (value) => viewModel.setSearchText(value),
+                  onClear: () => viewModel.setSearchText(""),
                 )
               : AppBarTitle(
                   title: "Cari Rehberi",
@@ -129,16 +118,16 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
         actions: [
           IconButton(
             onPressed: () {
-              viewModel.changeSearchBar();
-              if (viewModel.searchBar) {
+              viewModel.changeSearchBarStatus();
+              if (viewModel.isSearchBarOpen) {
                 searchFocusNode.requestFocus();
               } else {
-                viewModel.changeFilterText("");
+                viewModel.setSearchText("");
               }
             },
             icon: Observer(
               builder: (_) => Icon(
-                viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined,
+                viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined,
               ),
             ),
           ),
@@ -170,15 +159,22 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           },
         ),
       );
+  Widget body2() => Observer(
+        builder: (_) => RefreshableListView.pageable(
+          scrollController: scrollController,
+          onRefresh: viewModel.resetList,
+          dahaVarMi: viewModel.dahaVarMi,
+          items: viewModel.observableList,
+          itemBuilder: (item) => CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E"),
+        ),
+      );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          viewModel.resetAll();
-        },
+        onRefresh: viewModel.resetList,
         child: Observer(
           builder: (_) {
-            if (viewModel.cariListesi.ext.isNullOrEmpty) {
-              if (viewModel.cariListesi != null) {
+            if (viewModel.observableList.ext.isNullOrEmpty) {
+              if (viewModel.observableList != null) {
                 //* Eğer cariListesi boş ise
                 return const Center(child: Text("Cari Bulunamadı"));
               } else {
@@ -189,9 +185,9 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
               //* Eğer cariListesi boş veya null değilse
               return ListView.builder(
                 controller: scrollController,
-                itemCount: viewModel.cariListesi != null ? (viewModel.cariListesi!.length + 1) : 0,
+                itemCount: viewModel.observableList != null ? (viewModel.observableList!.length + 1) : 0,
                 itemBuilder: (context, index) {
-                  if (index == viewModel.cariListesi!.length) {
+                  if (index == viewModel.observableList!.length) {
                     return Visibility(
                       visible: viewModel.dahaVarMi,
                       child: const Center(
@@ -199,7 +195,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                       ),
                     );
                   }
-                  final CariListesiModel item = viewModel.cariListesi![index];
+                  final CariListesiModel item = viewModel.observableList![index];
                   return CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E");
                 },
               );
@@ -225,6 +221,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           );
           if (result != null) {
             viewModel.changeSiralama(result);
+            viewModel.resetList();
           }
         },
       );
@@ -508,7 +505,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      viewModel.resetAll();
+                      viewModel.resetList();
                       Get.back();
                     },
                     child: Text(loc.generalStrings.filter),

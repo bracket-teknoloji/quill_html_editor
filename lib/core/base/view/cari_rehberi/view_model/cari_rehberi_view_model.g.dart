@@ -45,35 +45,35 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
               name: '_CariRehberiViewModelBase.grupKodlari5'))
       .value;
 
-  late final _$dahaVarMiAtom =
-      Atom(name: '_CariRehberiViewModelBase.dahaVarMi', context: context);
+  late final _$isSearchBarOpenAtom =
+      Atom(name: '_CariRehberiViewModelBase.isSearchBarOpen', context: context);
 
   @override
-  bool get dahaVarMi {
-    _$dahaVarMiAtom.reportRead();
-    return super.dahaVarMi;
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
   }
 
   @override
-  set dahaVarMi(bool value) {
-    _$dahaVarMiAtom.reportWrite(value, super.dahaVarMi, () {
-      super.dahaVarMi = value;
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
     });
   }
 
-  late final _$searchBarAtom =
-      Atom(name: '_CariRehberiViewModelBase.searchBar', context: context);
+  late final _$searchTextAtom =
+      Atom(name: '_CariRehberiViewModelBase.searchText', context: context);
 
   @override
-  bool get searchBar {
-    _$searchBarAtom.reportRead();
-    return super.searchBar;
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
   }
 
   @override
-  set searchBar(bool value) {
-    _$searchBarAtom.reportWrite(value, super.searchBar, () {
-      super.searchBar = value;
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -93,19 +93,19 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$cariListesiAtom =
-      Atom(name: '_CariRehberiViewModelBase.cariListesi', context: context);
+  late final _$observableListAtom =
+      Atom(name: '_CariRehberiViewModelBase.observableList', context: context);
 
   @override
-  ObservableList<CariListesiModel>? get cariListesi {
-    _$cariListesiAtom.reportRead();
-    return super.cariListesi;
+  ObservableList<CariListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
   }
 
   @override
-  set cariListesi(ObservableList<CariListesiModel>? value) {
-    _$cariListesiAtom.reportWrite(value, super.cariListesi, () {
-      super.cariListesi = value;
+  set observableList(ObservableList<CariListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
     });
   }
 
@@ -159,12 +159,20 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
-  late final _$getCariListesiAsyncAction =
-      AsyncAction('_CariRehberiViewModelBase.getCariListesi', context: context);
+  late final _$resetListAsyncAction =
+      AsyncAction('_CariRehberiViewModelBase.resetList', context: context);
 
   @override
-  Future<void> getCariListesi() {
-    return _$getCariListesiAsyncAction.run(() => super.getCariListesi());
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$getDataAsyncAction =
+      AsyncAction('_CariRehberiViewModelBase.getData', context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
   }
 
   late final _$getSehirBilgileriAsyncAction = AsyncAction(
@@ -188,22 +196,11 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
       ActionController(name: '_CariRehberiViewModelBase', context: context);
 
   @override
-  void setDahaVarMi(bool value) {
+  void changeSearchBarStatus() {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.setDahaVarMi');
+        .startAction(name: '_CariRehberiViewModelBase.changeSearchBarStatus');
     try {
-      return super.setDahaVarMi(value);
-    } finally {
-      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void changeSearchBar() {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.changeSearchBar');
-    try {
-      return super.changeSearchBar();
+      return super.changeSearchBarStatus();
     } finally {
       _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -255,22 +252,22 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   @override
-  void changeCariListesi(List<CariListesiModel>? value) {
+  void setObservableList(List<CariListesiModel>? value) {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.changeCariListesi');
+        .startAction(name: '_CariRehberiViewModelBase.setObservableList');
     try {
-      return super.changeCariListesi(value);
+      return super.setObservableList(value);
     } finally {
       _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void addCariListesi(List<CariListesiModel> value) {
+  void addObservableList(List<CariListesiModel>? value) {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.addCariListesi');
+        .startAction(name: '_CariRehberiViewModelBase.addObservableList');
     try {
-      return super.addCariListesi(value);
+      return super.addObservableList(value);
     } finally {
       _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -387,22 +384,11 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   }
 
   @override
-  void changeFilterText(String? value) {
+  void setSearchText(String? value) {
     final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.changeFilterText');
+        .startAction(name: '_CariRehberiViewModelBase.setSearchText');
     try {
-      return super.changeFilterText(value);
-    } finally {
-      _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void resetAll() {
-    final _$actionInfo = _$_CariRehberiViewModelBaseActionController
-        .startAction(name: '_CariRehberiViewModelBase.resetAll');
-    try {
-      return super.resetAll();
+      return super.setSearchText(value);
     } finally {
       _$_CariRehberiViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -411,10 +397,10 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
   @override
   String toString() {
     return '''
-dahaVarMi: ${dahaVarMi},
-searchBar: ${searchBar},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
 isScrollDown: ${isScrollDown},
-cariListesi: ${cariListesi},
+observableList: ${observableList},
 sehirler: ${sehirler},
 grupKodlari: ${grupKodlari},
 cariListesiRequestModel: ${cariListesiRequestModel},

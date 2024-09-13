@@ -21,6 +21,13 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "attach",
+            "request": "attach", // Attach instead of launching
+            "type": "dart",
+            "cwd": "src", // Folder of the app
+            "vmServiceUri": "${command:dart.promptForVmService}" // Prompt for the VM Service URI
         }
     ]
 }
