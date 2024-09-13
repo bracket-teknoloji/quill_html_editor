@@ -164,6 +164,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
             enableSuggestions: true,
             decoration: InputDecoration(
               enabled: widget.enabled ?? true,
+              floatingLabelBehavior: FloatingLabelBehavior.always,
               errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
