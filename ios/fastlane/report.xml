@@ -5,44 +5,67 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="4.29348">
+      <testcase classname="fastlane.lanes" name="00: update_fastlane" time="4.829095">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="9.3e-05">
+      <testcase classname="fastlane.lanes" name="01: default_platform" time="0.000109">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="2.814017">
+      <testcase classname="fastlane.lanes" name="02: latest_testflight_build_number" time="3.085808">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.230335">
+      <testcase classname="fastlane.lanes" name="03: increment_build_number" time="0.242288">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: get_version_number" time="0.027557">
+      <testcase classname="fastlane.lanes" name="04: get_version_number" time="0.0306">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: get_build_number" time="0.094459">
+      <testcase classname="fastlane.lanes" name="05: get_build_number" time="0.081652">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: cd .. &amp;&amp; cd .. &amp; perl -i -pe &apos;s/^(version: +d+.d+.d++)(d+)$/$1.($2+1)/e&apos; pubspec.yaml" time="0.062809">
+      <testcase classname="fastlane.lanes" name="06: perl -i -pe &apos;s/^(version: +d+.d+.d++)(d+)$/$1.($2+1)/e&apos; pubspec.yaml" time="0.063173">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="7: ios/fastlane" time="0.04761">
+      <testcase classname="fastlane.lanes" name="07: git_add" time="0.050902">
         
-          <failure message="/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/fast_file.rb:224:in `sh&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/fast_file.rb:216:in `sh&apos;&#10;Fastfile:58:in `block (2 levels) in parsing_binding&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/lane.rb:41:in `call&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/runner.rb:45:in `chdir&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/runner.rb:45:in `execute&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/lane_manager.rb:46:in `cruise_lane&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/command_line_handler.rb:34:in `handle&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/commands_generator.rb:110:in `block (2 levels) in run&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/commander-4.6.0/lib/commander/command.rb:187:in `call&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/commander-4.6.0/lib/commander/command.rb:157:in `run&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in `run!&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/commands_generator.rb:363:in `run&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/commands_generator.rb:43:in `start&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in `take_off&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/gems/fastlane-2.222.0/bin/fastlane:23:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/bin/fastlane:25:in `load&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/bin/fastlane:25:in `&lt;main&gt;&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/bin/ruby_executable_hooks:22:in `eval&apos;&#10;/Users/bracketteknoloji/.rvm/gems/ruby-3.2.2/bin/ruby_executable_hooks:22:in `&lt;main&gt;&apos;&#10;&#10;No such file or directory - ios/fastlane" />
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: git_commit" time="0.068214">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: git_tag_exists" time="0.048753">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: add_git_tag" time="0.05792">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: push_to_git_remote" time="1.361835">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: push_git_tags" time="0.773709">
         
       </testcase>
     
