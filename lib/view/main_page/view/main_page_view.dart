@@ -53,7 +53,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           if (viewModel.lastItems.isNotEmpty) {
             viewModel.setItems(viewModel.lastItems.last);
             // viewModel.removeLastTitle();
-            viewModel.removeLastItem();
+            viewModel.removeLastItem(context);
           } else {
             if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
               scaffoldKey.currentState!.closeDrawer();
@@ -97,7 +97,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
                     viewModel.setItems(viewModel.lastItems.last);
-                    viewModel.removeLastItem();
+                    viewModel.removeLastItem(context);
                   },
                 )
               : (kIsWeb && context.isLandscape)
@@ -163,7 +163,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                           }
                           if (details.localPosition.dx < 50) {
                             viewModel.setItems(viewModel.lastItems.last);
-                            viewModel.removeLastItem();
+                            viewModel.removeLastItem(context);
                           }
                         },
                         onHorizontalDragEnd: (details) {
@@ -172,7 +172,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                           }
                           if (details.primaryVelocity! > 0) {
                             viewModel.setItems(viewModel.lastItems.last);
-                            viewModel.removeLastItem();
+                            viewModel.removeLastItem(context);
                           }
                         },
                       ),

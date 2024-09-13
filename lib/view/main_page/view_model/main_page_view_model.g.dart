@@ -105,11 +105,11 @@ mixin _$MainPageViewModel on _MainPageViewModelBase, Store {
   }
 
   @override
-  void removeLastItem() {
+  void removeLastItem(BuildContext context) {
     final _$actionInfo = _$_MainPageViewModelBaseActionController.startAction(
         name: '_MainPageViewModelBase.removeLastItem');
     try {
-      return super.removeLastItem();
+      return super.removeLastItem(context);
     } finally {
       _$_MainPageViewModelBaseActionController.endAction(_$actionInfo);
     }
