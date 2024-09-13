@@ -31,7 +31,7 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           json['FINANS_OZEL_RAPOR_GRAFIK_GOSTER'] as bool? ?? false,
       acikTemaMi: json['ACIK_TEMA_MI'] as bool? ?? false,
       temaModu: $enumDecodeNullable(_$ThemeModeEnumMap, json['TEMA_MODU']) ??
-          ThemeMode.system,
+          ThemeMode.dark,
       rotaDisiGorunsunMu: json['ROTA_DISI_GORUNSUN_MU'] as bool? ?? false,
       netFectDizaynList: json['NET_FECT_DIZAYN_LIST'] == null
           ? null

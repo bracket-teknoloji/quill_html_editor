@@ -449,7 +449,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.finansOzelRaporGrafikGoster = false,
       @Deprecated("Bunun yerine temaModu kullanılacak.")
       this.acikTemaMi = false,
-      this.temaModu = ThemeMode.system,
+      this.temaModu = ThemeMode.dark,
       this.rotaDisiGorunsunMu = false,
       this.netFectDizaynList,
       this.yaziciList,
