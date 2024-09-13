@@ -541,12 +541,19 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
         selectedList = viewModel.stokBottomSheetModel.arrKod5;
     }
     final iterable = (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty ? grupKoduWithIndex(value) : viewModel.grupKodlari?.where((element) => element.grupNo == value))?.toList();
+    final uniqueList = <BaseGrupKoduModel>[];
+    for (final item in iterable ?? <BaseGrupKoduModel>[]) {
+      if (!uniqueList.any((element) => grupKoduWithItem(element, value) == grupKoduWithItem(item, value))) {
+        uniqueList.add(item);
+      }
+    }
+
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kod Seçiniz",
       groupValue: grupKoduWithItem(selectedList?.firstOrNull, value),
-      children: List.generate(iterable?.length ?? 0, (index) {
-        final item = iterable?[index];
+      children: List.generate(uniqueList.length, (index) {
+        final item = uniqueList[index];
         return BottomSheetModel(title: grupAdiWithItem(item, value), value: item, groupValue: grupKoduWithItem(item, value));
       }),
     );
