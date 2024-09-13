@@ -291,12 +291,17 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 cariBottomSheet(context, item);
               }
             },
-            isThreeLine: true,
+            // isThreeLine: true,
             // contentPadding: UIHelper.midPadding,
-            leading: CircleAvatar(
-              backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
-              foregroundColor: Colors.white,
-              child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+            leading: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
+                  foregroundColor: Colors.white,
+                  child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
+                ),
+              ],
             ),
             title: Text(item.cariAdi ?? ""),
             subtitle: Wrap(
@@ -866,10 +871,10 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       );
 
   bool bakiyeGorunsunMu(CariListesiModel model) {
-    if (!yetkiController.adminMi && !yetkiController.cariListesi) return false;
+    if (widget.isGetData && !yetkiController.adminMi && !yetkiController.cariListesi) return false;
     if (widget.cariRequestModel?.teslimCari == "E" && yetkiController.cariTeslimCariRehberSadeceSecsin) return false;
-    if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
     if (yetkiController.cariBakiyeGosterimTumuMu) return true;
+    if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
     if (yetkiController.cariBakiyeGosterimKendiCarileriMi) return true;
     return false;
   }

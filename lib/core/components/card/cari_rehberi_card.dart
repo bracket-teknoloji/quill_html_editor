@@ -76,7 +76,7 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
     if (widget.teslimCariMi && yetkiController.cariTeslimCariRehberSadeceSecsin) return false;
     if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
     if (yetkiController.cariBakiyeGosterimTumuMu) return true;
-    if (yetkiController.cariBakiyeGosterimKendiCarileriMi && model.plasiyerKodu == userModel.plasiyerKodu) return true;
+    if (yetkiController.cariBakiyeGosterimKendiCarileriMi) return true;
     return false;
   }
 }

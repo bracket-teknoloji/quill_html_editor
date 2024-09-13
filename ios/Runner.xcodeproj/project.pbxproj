@@ -284,10 +284,10 @@
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				9933EEFEF0E857476DEAD533 /* [firebase_crashlytics] Crashlytics Upload Symbols */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				AC78FC8A177EFA452AE9155D /* [CP] Embed Pods Frameworks */,
 				17DCE732DFDF4E03B05AA5C1 /* [CP] Copy Pods Resources */,
+				9933EEFEF0E857476DEAD533 /* [firebase_crashlytics] Crashlytics Upload Symbols */,
 			);
 			buildRules = (
 			);
