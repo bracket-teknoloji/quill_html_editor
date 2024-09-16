@@ -115,18 +115,36 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
               key: _formKey,
               child: Column(
                 children: [
-                  Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      contentPadding: EdgeInsets.zero,
-                      title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
-                      value: viewModel.model.gc == "C",
-                      onChanged: (value) {
-                        viewModel.setGc(!value ? "G" : "C");
-                        _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
-                        viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
-                      },
+                  LayoutBuilder(
+                    builder: (context, constraints) => Observer(
+                      builder: (_) => ToggleButtons(
+                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+                        isSelected: [viewModel.model.gc == "C", viewModel.model.gc == "G"],
+                        onPressed: (index) {
+                          final bool value = index == 0;
+                          viewModel.setGc(!value ? "G" : "C");
+                          _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
+                          viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
+                        },
+                        children: const [
+                          Text("Bankaya Para Girişi"),
+                          Text("Bankadan Para Çıkışı"),
+                        ],
+                      ),
                     ),
-                  ).paddingAll(UIHelper.lowSize),
+                  ).paddingSymmetric(vertical: UIHelper.lowSize),
+                  // Observer(
+                  //   builder: (_) => SwitchListTile.adaptive(
+                  //     contentPadding: EdgeInsets.zero,
+                  //     title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
+                  //     value: viewModel.model.gc == "C",
+                  //     onChanged: (value) {
+                  //       viewModel.setGc(!value ? "G" : "C");
+                  //       _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
+                  //       viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
+                  //     },
+                  //   ),
+                  // ).paddingAll(UIHelper.lowSize),
                   CustomTextField(
                     labelText: "Belge No",
                     controller: _belgeNoController,
