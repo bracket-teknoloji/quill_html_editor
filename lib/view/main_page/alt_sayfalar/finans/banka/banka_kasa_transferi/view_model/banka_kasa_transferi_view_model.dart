@@ -19,7 +19,8 @@ class BankaKasaTransferiViewModel = _BankaKasaTransferiViewModelBase with _$Bank
 
 abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "BKT", hesapTipi: "B", tarih: DateTime.now().dateTimeWithoutTime, gc: "C");
+  TahsilatRequestModel model =
+      TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "BKT", hesapTipi: "B", tarih: DateTime.now().dateTimeWithoutTime, gc: "C");
 
   @observable
   bool bankaDovizliMi = false;
@@ -31,7 +32,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @computed
-  String get bankaHarAciklama => "NAKİT ${model.gc == "G" ? "YATIRILAN" : "ÇEKİLEN"} (${model.kasaKodu ?? ""})";
+  String get bankaHarAciklama => "NAKİT ${model.gc == "C" ? "YATIRILAN" : "ÇEKİLEN"}(${model.kasaKodu ?? ""})";
 
   @action
   void setBankaDovizliMi(bool value) => bankaDovizliMi = value;
