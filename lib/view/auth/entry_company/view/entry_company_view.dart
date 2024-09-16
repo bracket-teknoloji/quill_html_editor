@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import "dart:convert";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -256,6 +258,25 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   ..aktifIsletmeKodu = viewModel.selected["İşletme"]
                                   ..aktifSubeKodu = viewModel.selected["Şube"]
                                   ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
+                                final token = await networkManager.getToken(
+                                  queryParameters: {
+                                    "deviceInfos": jsonEncode(
+                                      (CacheManager.getHesapBilgileri
+                                            ?..cihazKimligi = AccountModel.instance.cihazKimligi
+                                            ..uyeEmail = CacheManager.getVerifiedUser.account?.email ?? "")
+                                          ?.toJson(),
+                                    ),
+                                  },
+                                  data: {
+                                    "grant_type": "password",
+                                    "username": CacheManager.getVerifiedUser.username,
+                                    "password": CacheManager.getVerifiedUser.password,
+                                  },
+                                );
+                                if (token != null) {
+                                  CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
+                                  CacheManager.setToken(token.accessToken!);
+                                }
                                 final response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,
                                   bodyModel: MainPageModel(),
