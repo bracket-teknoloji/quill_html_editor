@@ -20,14 +20,14 @@ import "../../../../../model/param_model.dart";
 import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../view_model/banka_kasa_transferi_view_model.dart";
 
-class BankaKasaTransferiView extends StatefulWidget {
+final class BankaKasaTransferiView extends StatefulWidget {
   const BankaKasaTransferiView({super.key});
 
   @override
   State<BankaKasaTransferiView> createState() => _BankaKasaTransferiViewState();
 }
 
-class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
+final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
   BankaKasaTransferiViewModel viewModel = BankaKasaTransferiViewModel();
   late final TextEditingController _belgeNoController;
   late final TextEditingController _tarihController;
@@ -119,9 +119,9 @@ class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiView> {
                     builder: (_) => SwitchListTile.adaptive(
                       contentPadding: EdgeInsets.zero,
                       title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
-                      value: viewModel.model.gc == "G",
+                      value: viewModel.model.gc == "C",
                       onChanged: (value) {
-                        viewModel.setGc(value ? "G" : "C");
+                        viewModel.setGc(!value ? "G" : "C");
                         _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
                         viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
                       },
