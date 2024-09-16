@@ -263,6 +263,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                     "deviceInfos": jsonEncode(
                                       (CacheManager.getHesapBilgileri
                                             ?..cihazKimligi = AccountModel.instance.cihazKimligi
+                                            ..konumDate = DateTime.now()
+                                            ..konumTarihi = AccountModel.instance.getKonumTarihi
+                                            ..cihazTarihi = AccountModel.instance.getKonumTarihi
                                             ..uyeEmail = CacheManager.getVerifiedUser.account?.email ?? "")
                                           ?.toJson(),
                                     ),
