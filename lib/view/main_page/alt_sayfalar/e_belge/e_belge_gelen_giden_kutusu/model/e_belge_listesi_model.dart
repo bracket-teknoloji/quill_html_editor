@@ -100,7 +100,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
 
   factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        ebelgeTuru: model.getEBelgeTuruEnum?.value,
         belgeNo: model.belgeNo,
         resmiBelgeNo: model.resmiBelgeNo,
         cariKodu: model.cariKodu,
@@ -110,7 +110,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
 
   factory EBelgeListesiModel.taslakKaydet(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        ebelgeTuru: model.getEBelgeTuruEnum?.value,
         belgeNo: model.belgeNo,
         resmiBelgeNo: model.resmiBelgeNo,
         cariKodu: model.cariKodu,
@@ -120,7 +120,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
       );
   factory EBelgeListesiModel.faturaGonder(BaseSiparisEditModel model) => EBelgeListesiModel(
         belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.belgeNo?.substring(0, 3),
+        ebelgeTuru: model.getEBelgeTuruEnum?.value,
         belgeNo: model.belgeNo,
         resmiBelgeNo: model.resmiBelgeNo,
         cariKodu: model.cariKodu,
