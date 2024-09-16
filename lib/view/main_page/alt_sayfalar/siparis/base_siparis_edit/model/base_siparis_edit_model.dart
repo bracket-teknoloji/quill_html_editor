@@ -888,7 +888,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   String get faturaTipi {
     if (getEditTipiEnum?.satisMi == true ? eFaturaSerisindenMi : eFaturaMi) return "EFT";
-    if (getEditTipiEnum?.satisMi == true ? eArsivSerisindenMi : eArsivMi) return "EAR";
+    if (getEditTipiEnum?.satisMi == true ? eArsivSerisindenMi : eArsivMi) return "AFT";
     if (getEditTipiEnum?.satisMi == true ? eIrsaliyeSerisindenMi : eIrsaliyeMi) return "EIR";
     return "Sipariş";
   }
