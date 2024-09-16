@@ -19,7 +19,7 @@ class BankaKasaTransferiViewModel = _BankaKasaTransferiViewModelBase with _$Bank
 
 abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "BKT", hesapTipi: "B", tarih: DateTime.now(), gc: "C");
+  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "BKT", hesapTipi: "B", tarih: DateTime.now().dateTimeWithoutTime, gc: "C");
 
   @observable
   bool bankaDovizliMi = false;
