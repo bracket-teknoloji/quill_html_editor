@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../hucre_transferi/model/hucre_transferi_model.dart";
 
 part "hucre_takibi_stoklar_request_model.freezed.dart";

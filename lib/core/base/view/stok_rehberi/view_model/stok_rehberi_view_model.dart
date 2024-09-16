@@ -130,14 +130,14 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
     "Bakiye (Azalan)": "BAKIYE_ZA",
   };
 
-    @override
-    Future<void> changeScrollStatus(ScrollPosition position) async {
-      super.changeScrollStatus(position);
-      if (position.pixels == position.maxScrollExtent && dahaVarMi) {
-        await getData();
-        isScrollDown = false;
-      }
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) async {
+    super.changeScrollStatus(position);
+    if (position.pixels == position.maxScrollExtent && dahaVarMi) {
+      await getData();
+      isScrollDown = false;
     }
+  }
 
   @action
   void setKategoriGrupKodlari(List<BaseGrupKoduModel>? value) => kategoriGrupKodlari = value?.asObservable();

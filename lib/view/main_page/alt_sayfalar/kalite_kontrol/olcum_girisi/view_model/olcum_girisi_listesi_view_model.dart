@@ -1,5 +1,6 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
+
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";

@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/base_stok_mixin.dart";
 import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";

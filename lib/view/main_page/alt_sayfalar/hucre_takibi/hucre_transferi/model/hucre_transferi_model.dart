@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
+
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../belge_rehberi/model/belge_rehberi_model.dart";
 

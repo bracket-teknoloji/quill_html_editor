@@ -114,7 +114,7 @@ class CacheManager {
       );
     }
     if (kIsWeb && webCihazKimligiBox.isEmpty) {
-    await webCihazKimligiBox.put("value", base64UrlEncode(utf8.encode(const Uuid().v4().substring(0, 10))));
+      await webCihazKimligiBox.put("value", base64UrlEncode(utf8.encode(const Uuid().v4().substring(0, 10))));
     }
     await finansOzelRaporOrderBox.clear();
     if (isLicenseVerifiedBox.isEmpty) {

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/static_variables/singleton_models.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";

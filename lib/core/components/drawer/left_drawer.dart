@@ -63,7 +63,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                 ],
               ),
             ),
-
             Expanded(
               flex: 7,
               child: Theme(
@@ -96,15 +95,15 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                     return ReorderableListView.builder(
                       primary: false,
                       onReorder: (oldIndex, newIndex) {
-                          if (newIndex > oldIndex) {
-                            newIndex -= 1;
-                          }
-                          final item = list.elementAt(oldIndex);
-                          final item2 = list.elementAt(newIndex);
-                          list.removeAt(oldIndex);
-                          list.insert(newIndex, item);
-                          CacheManager.setFavorilerSira(oldIndex, item2);
-                          CacheManager.setFavorilerSira(newIndex, item);
+                        if (newIndex > oldIndex) {
+                          newIndex -= 1;
+                        }
+                        final item = list.elementAt(oldIndex);
+                        final item2 = list.elementAt(newIndex);
+                        list.removeAt(oldIndex);
+                        list.insert(newIndex, item);
+                        CacheManager.setFavorilerSira(oldIndex, item2);
+                        CacheManager.setFavorilerSira(newIndex, item);
                       },
                       key: const Key("Favoriler"),
                       itemBuilder: (context, index) {
@@ -122,8 +121,8 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                                 ? IconButton(
                                     style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
                                     onPressed: () {
-                                        list.removeAt(index);
-                                        CacheManager.setFavorilerList(list);
+                                      list.removeAt(index);
+                                      CacheManager.setFavorilerList(list);
                                     },
                                     icon: const Icon(Icons.delete_outline),
                                   )

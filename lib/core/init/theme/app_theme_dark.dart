@@ -195,7 +195,7 @@ class AppThemeDark extends AppTheme {
             borderSide: const BorderSide(color: UIHelper.primaryColor),
           ),
         ),
-        
+
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           scrolledUnderElevation: 0,

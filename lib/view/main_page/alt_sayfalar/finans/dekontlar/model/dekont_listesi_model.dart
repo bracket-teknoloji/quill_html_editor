@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";

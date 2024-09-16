@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";

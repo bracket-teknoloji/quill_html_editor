@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../model/base_network_mixin.dart";
 import "mobx_network_mixin.dart";
 

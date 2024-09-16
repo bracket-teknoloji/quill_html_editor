@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "../core/base/view/base_scaffold.dart";
 
+import "../core/base/view/base_scaffold.dart";
 import "picker_app_imports.dart";
 
 bool isDarkMode(BuildContext context) =>

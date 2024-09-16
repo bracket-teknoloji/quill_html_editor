@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../model/base_network_mixin.dart";
 
 part "seri_uret_model.freezed.dart";

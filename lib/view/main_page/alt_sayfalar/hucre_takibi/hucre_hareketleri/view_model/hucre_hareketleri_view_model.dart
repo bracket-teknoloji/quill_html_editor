@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
+
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../model/hucre_hareketleri_model.dart";

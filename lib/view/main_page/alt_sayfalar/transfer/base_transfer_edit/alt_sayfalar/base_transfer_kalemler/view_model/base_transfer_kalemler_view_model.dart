@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "../../../../../../../../core/constants/extensions/list_extensions.dart";
 
+import "../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_transfer_kalemler_view_model.g.dart";

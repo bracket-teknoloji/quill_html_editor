@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
+
 import "../model/base_network_mixin.dart";
 import "listable_mixin.dart";
 

@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
+
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";

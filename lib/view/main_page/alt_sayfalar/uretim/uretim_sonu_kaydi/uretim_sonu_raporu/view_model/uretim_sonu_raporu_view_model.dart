@@ -1,6 +1,7 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";

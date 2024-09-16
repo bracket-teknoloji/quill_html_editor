@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 

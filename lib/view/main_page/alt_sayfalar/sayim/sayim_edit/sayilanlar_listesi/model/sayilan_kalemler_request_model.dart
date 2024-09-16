@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "sayilan_kalemler_request_model.freezed.dart";

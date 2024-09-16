@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../model/dekont_islemler_request_model.dart";

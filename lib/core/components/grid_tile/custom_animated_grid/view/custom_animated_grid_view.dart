@@ -51,8 +51,13 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
         viewModel.setGridItemModel(getRaporList(IslemTipiEnum.siparis)?.firstOrNull?.altMenuler?.where((element) => element.siparisTipi == widget.siparisTipi).toList() ?? []);
       }
     } else {
-      final IslemlerMenuItemConstants islemlerResult =
-          IslemlerMenuItemConstants(Get.context ?? context, islemTipi: widget.islemTipi, raporlar: getRaporList(widget.islemTipi), siparisTipi: widget.siparisTipi, model: widget.cariListesiModel ?? widget.model);
+      final IslemlerMenuItemConstants islemlerResult = IslemlerMenuItemConstants(
+        Get.context ?? context,
+        islemTipi: widget.islemTipi,
+        raporlar: getRaporList(widget.islemTipi),
+        siparisTipi: widget.siparisTipi,
+        model: widget.cariListesiModel ?? widget.model,
+      );
       viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
     super.initState();

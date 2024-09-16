@@ -1,4 +1,5 @@
 import "package:flutter/foundation.dart";
+
 import "../model/base_network_mixin.dart";
 import "scroll_controllable_mixin.dart";
 

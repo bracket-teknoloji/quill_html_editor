@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "../../../../../../../../../core/base/model/base_proje_model.dart";
 
+import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/base/model/seri_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../model/param_model.dart";

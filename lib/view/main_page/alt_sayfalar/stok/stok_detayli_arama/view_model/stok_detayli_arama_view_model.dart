@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../model/param_model.dart";
 
 part "stok_detayli_arama_view_model.g.dart";

@@ -1704,8 +1704,7 @@ class KalemModel with NetworkManagerMixin {
 
   double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
 
-  double get koliTutar =>
-      (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
+  double get koliTutar => (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
 
   double get toplamTutar => (isKoli ? koliTutar : brutTutar) + (otvTutar ?? 0);
 

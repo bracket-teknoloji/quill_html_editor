@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../core/constants/static_variables/singleton_models.dart";
 import "sayim_listesi_model.dart";
 

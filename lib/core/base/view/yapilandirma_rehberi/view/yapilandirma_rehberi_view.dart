@@ -92,9 +92,7 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
                                         shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
                                         child: InkWell(
                                           onTap: () async {
-                                            final sonuc = viewModel.yapilandirmaList
-                                                ?.where((element) => element.yapkod == item?.yapkod)
-                                                .map((element) => element.ozellikSira ?? 0).sum;
+                                            final sonuc = viewModel.yapilandirmaList?.where((element) => element.yapkod == item?.yapkod).map((element) => element.ozellikSira ?? 0).sum;
                                             viewModel.setMaxPage(sonuc);
                                             if (!viewModel.isLastPage) {
                                               viewModel.setYapilandirmaRehberiModel(item);

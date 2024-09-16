@@ -87,9 +87,9 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   ///Padding'i önden tanımlanmıştır.
   @override
   Widget build(BuildContext context) => RefreshIndicator.adaptive(
-    onRefresh: onRefresh,
-    child: body(context),
-  ).paddingAll(UIHelper.lowSize);
+        onRefresh: onRefresh,
+        child: body(context),
+      ).paddingAll(UIHelper.lowSize);
 
   Widget body(BuildContext context) {
     if (items == null) return const ListViewShimmer();

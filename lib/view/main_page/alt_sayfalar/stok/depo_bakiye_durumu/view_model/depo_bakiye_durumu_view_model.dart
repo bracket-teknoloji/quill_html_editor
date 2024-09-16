@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/constants/extensions/iterable_extensions.dart";

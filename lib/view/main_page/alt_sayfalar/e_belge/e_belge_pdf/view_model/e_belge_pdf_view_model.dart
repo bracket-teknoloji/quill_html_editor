@@ -44,7 +44,7 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
   void changeEBelgePdfModel(EBelgePdfModel? value) => eBelgePdfModel = value;
 
   @action
-  Future<File?  > getFile() async {
+  Future<File?> getFile() async {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/e_pdf").create(recursive: true);

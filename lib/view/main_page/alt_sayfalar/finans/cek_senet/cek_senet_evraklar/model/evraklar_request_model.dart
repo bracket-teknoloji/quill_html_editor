@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_stok_mixin.dart";
-
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 part "evraklar_request_model.freezed.dart";

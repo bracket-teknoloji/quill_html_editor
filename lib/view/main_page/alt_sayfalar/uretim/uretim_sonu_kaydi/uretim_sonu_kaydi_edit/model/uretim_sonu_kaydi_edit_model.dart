@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../stok/stok_liste/model/stok_listesi_model.dart";

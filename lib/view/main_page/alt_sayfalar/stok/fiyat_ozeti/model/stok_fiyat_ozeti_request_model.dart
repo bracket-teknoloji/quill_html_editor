@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+
 import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "stok_fiyat_ozeti_request_model.freezed.dart";

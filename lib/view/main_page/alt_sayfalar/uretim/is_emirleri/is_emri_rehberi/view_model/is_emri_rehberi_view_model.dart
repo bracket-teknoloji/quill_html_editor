@@ -1,5 +1,6 @@
 import "package:flutter/widgets.dart";
 import "package:mobx/mobx.dart";
+
 import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/base/view_model/pageable_mixin.dart";
