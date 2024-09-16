@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/view_model/barkod_tanimla_kayitlari_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../../core/constants/extensions/model_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
+import "../model/barkod_tanimla_kayitlari_model.dart";
+import "../view_model/barkod_tanimla_kayitlari_view_model.dart";
 
 final class BarkodTanimlaKayitlariView extends StatefulWidget {
   final StokListesiModel? model;

@@ -1,12 +1,12 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/edit_fatura_model.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/edit_fatura_model.dart";
+import "../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "irsaliye_faturalastir_view_model.g.dart";
 

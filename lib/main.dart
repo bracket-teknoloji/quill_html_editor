@@ -9,12 +9,12 @@ import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:picker/app/picker_app.dart";
-import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/url_creator.dart";
 
+import "app/picker_app.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
+import "core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/url_creator.dart";
 import "firebase_options.dart";
 // import "generated/codegen_loader.g.dart";
 import "view/add_company/model/account_model.dart";

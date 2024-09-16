@@ -2,10 +2,10 @@ import "dart:math";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/constants/color_palette.dart";
 import "package:shimmer/shimmer.dart";
 
+import "../../base/state/base_state.dart";
+import "../../constants/color_palette.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 final class ListViewShimmer extends StatefulWidget {

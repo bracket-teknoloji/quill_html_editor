@@ -1,13 +1,14 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../model/param_model.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
+import "../../is_emri_rehberi/model/is_emirleri_model.dart";
 
 part "is_emri_edit_view_model.g.dart";
 

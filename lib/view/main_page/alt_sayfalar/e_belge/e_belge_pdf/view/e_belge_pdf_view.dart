@@ -7,7 +7,6 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:open_filex/open_filex.dart";
-import "package:picker/core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
@@ -17,6 +16,7 @@ import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";

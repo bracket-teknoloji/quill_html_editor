@@ -1,11 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 
 part "base_transfer_genel_view_model.g.dart";
 

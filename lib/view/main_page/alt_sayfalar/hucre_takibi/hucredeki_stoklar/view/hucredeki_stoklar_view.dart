@@ -1,17 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucredeki_stoklar/model/hucredeki_stoklar_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucredeki_stoklar/view_model/hucredeki_stoklar_view_model.dart";
+import "../../../../../../core/base/view/base_scaffold.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../hucre_listesi/model/hucre_listesi_request_model.dart";
+import "../model/hucredeki_stoklar_model.dart";
+import "../view_model/hucredeki_stoklar_view_model.dart";
 
 final class HucredekiStoklarView extends StatefulWidget {
   final HucreListesiRequestModel model;

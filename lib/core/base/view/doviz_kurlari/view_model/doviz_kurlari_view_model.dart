@@ -1,11 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
 
+import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../init/cache/cache_manager.dart";
+import "../../../../init/network/login/api_urls.dart";
 import "../../../model/doviz_kurlari_model.dart";
+import "../../../view_model/listable_mixin.dart";
+import "../../../view_model/mobx_network_mixin.dart";
 
 part "doviz_kurlari_view_model.g.dart";
 

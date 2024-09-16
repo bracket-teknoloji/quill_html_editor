@@ -1,16 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/card/paket_icerigi_card.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/model/paket_icerigi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/view_model/paket_icerigi_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.dart";
+
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../core/components/card/paket_icerigi_card.dart";
+import "../../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
+import "../../paketleme_listesi/model/paketleme_listesi_model.dart";
+import "../model/paket_icerigi_model.dart";
+import "../view_model/paket_icerigi_view_model.dart";
 
 final class PaketIcerigiView extends StatefulWidget {
   final PaketlemeListesiModel model;

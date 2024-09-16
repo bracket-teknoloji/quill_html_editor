@@ -1,17 +1,17 @@
 import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/enum/menu_list_enum.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../core/components/dialog/dialog_manager.dart";
 import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../core/constants/enum/menu_list_enum.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
 import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../../../../core/init/network/login/api_urls.dart";
 import "../../../../core/init/network/network_manager.dart";
+import "../../../add_company/model/account_model.dart";
 import "../../alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_islem_model.dart";
 import "../../alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../grid_item_model.dart";

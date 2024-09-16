@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_request_model.dart";
+import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../core/constants/static_variables/singleton_models.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../model/hucre_takibi_stoklar_model.dart";
+import "../model/hucre_takibi_stoklar_request_model.dart";
 
 part "hucre_takibi_stoklar_view_model.g.dart";
 

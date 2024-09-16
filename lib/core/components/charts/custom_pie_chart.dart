@@ -1,9 +1,9 @@
 import "package:fl_chart/fl_chart.dart";
 import "package:flutter/material.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/extensions/iterable_extensions.dart";
 
 import "../../base/state/base_state.dart";
+import "../../constants/color_palette.dart";
+import "../../constants/extensions/iterable_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/duration_helper.dart";

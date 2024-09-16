@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/base_stok_mixin.dart";
 
 part "is_emri_hammadde_takibi_listesi_model.freezed.dart";
 part "is_emri_hammadde_takibi_listesi_model.g.dart";

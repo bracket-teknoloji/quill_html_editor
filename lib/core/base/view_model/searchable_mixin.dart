@@ -1,5 +1,5 @@
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
+import "../model/base_network_mixin.dart";
+import "listable_mixin.dart";
 
 /// Eğer Listeleme yapılacak ekranımızda arama işlemi yapılacaksa bu mixini kullanınınız.
 /// Bu mixin ile birlikte SearchBar işlemlerini yapabilirsiniz.

@@ -1,9 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
@@ -12,6 +9,10 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/model/stok_fiyat_ozeti_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/fiyat_ozeti/view_model/fiyat_ozeti_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../core/base/view/base_scaffold.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 
 final class FiyatOzetiView extends StatefulWidget {
   final StokListesiModel model;

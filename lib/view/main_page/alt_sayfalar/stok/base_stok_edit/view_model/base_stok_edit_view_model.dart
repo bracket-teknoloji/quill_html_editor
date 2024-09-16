@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
+import "../model/stok_detay_model.dart";
 
 part "base_stok_edit_view_model.g.dart";
 

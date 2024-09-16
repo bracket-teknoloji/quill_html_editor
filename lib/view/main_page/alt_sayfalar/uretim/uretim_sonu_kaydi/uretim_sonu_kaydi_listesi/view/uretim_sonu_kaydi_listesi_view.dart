@@ -1,8 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/card/uretim_sonu_kaydi_listesi_card.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
@@ -13,6 +11,9 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view_model/uretim_sonu_kaydi_listesi_view_model.dart";
+
+import "../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../core/base/state/base_state.dart";
 
 final class UretimSonuKaydiListesiView extends StatefulWidget {
   const UretimSonuKaydiListesiView({super.key});

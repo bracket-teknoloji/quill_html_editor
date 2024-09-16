@@ -1,15 +1,15 @@
 import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
-import "package:picker/core/init/network/network_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/main_page_model.dart";
 import "../../../view/main_page/model/param_model.dart";
 import "../../../view/main_page/model/user_model/profil_yetki_model.dart";
 import "../../../view/main_page/model/user_model/user_model.dart";
+import "../../base/model/base_proje_model.dart";
 import "../../init/cache/cache_manager.dart";
+import "../../init/network/network_manager.dart";
+import "../enum/barkod_tipi_enum.dart";
 import "../enum/edit_tipi_enum.dart";
 import "yetki_model.dart";
 

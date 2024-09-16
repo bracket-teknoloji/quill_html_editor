@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/card/dekontlar_card.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/dekont_listesi_model.dart";

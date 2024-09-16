@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -10,6 +9,7 @@ import "../../../view/main_page/model/param_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/model_extensions.dart";

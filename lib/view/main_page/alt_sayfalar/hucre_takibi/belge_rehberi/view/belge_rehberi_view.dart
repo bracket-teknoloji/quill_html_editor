@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
-import "package:picker/core/components/card/belge_rehberi_card.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/view_model/belge_rehberi_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
+
+import "../../../../../../core/base/view/base_scaffold.dart";
+import "../../../../../../core/components/card/belge_rehberi_card.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../hucre_transferi/model/hucre_transferi_model.dart";
+import "../model/belge_rehberi_model.dart";
+import "../model/belge_rehberi_request_model.dart";
+import "../view_model/belge_rehberi_view_model.dart";
 
 final class BelgeRehberiView extends StatefulWidget {
   final HucreTransferiModel model;

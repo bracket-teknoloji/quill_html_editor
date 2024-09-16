@@ -1,21 +1,21 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_hareketleri/model/banka_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/hizli_tahsilat_kayitlari/view_model/hizli_tahsilat_kayitlari_view_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../cari/cari_listesi/model/cari_request_model.dart";
+import "../../banka/banka_hareketleri/model/banka_hareketleri_model.dart";
+import "../view_model/hizli_tahsilat_kayitlari_view_model.dart";
 
 final class HizliTahsilatKayitlariView extends StatefulWidget {
   const HizliTahsilatKayitlariView({super.key});

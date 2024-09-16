@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -11,6 +10,7 @@ import "../../../../../../../../../core/base/view/stok_rehberi/model/stok_rehber
 import "../../../../../../../../../core/components/badge/colorful_badge.dart";
 import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";

@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+import "../../../../../../core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/cari_aktivite_listesi_model.dart";
 
 part "cari_aktivite_view_model.g.dart";
 

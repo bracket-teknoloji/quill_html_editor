@@ -1,16 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/components/card/hucre_ara_card.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_ara/view_model/hucre_ara_view_model.dart";
+import "../../../../../../core/base/model/base_stok_mixin.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "../../../../../../core/components/card/hucre_ara_card.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../view_model/hucre_ara_view_model.dart";
 
 final class HucreAraView extends StatefulWidget {
   const HucreAraView({super.key});

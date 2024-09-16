@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/ondalik_utils.dart";
+import "../../constants/ui_helper/ui_helper.dart";
 
 class BakiyeText extends StatelessWidget {
   final double? value;

@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/base_stok_mixin.dart";
 
 part "hucredeki_stoklar_model.freezed.dart";
 part "hucredeki_stoklar_model.g.dart";

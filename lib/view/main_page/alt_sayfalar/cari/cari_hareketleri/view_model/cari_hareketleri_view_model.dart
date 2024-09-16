@@ -1,14 +1,14 @@
 import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/base/view_model/searchable_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_request_model.dart";
 
+import "../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/base/view_model/searchable_mixin.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../cari_listesi/model/cari_listesi_model.dart";
 import "../model/cari_hareketleri_model.dart";
+import "../model/cari_hareketleri_request_model.dart";
 
 part "cari_hareketleri_view_model.g.dart";
 

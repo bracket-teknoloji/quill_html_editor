@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";

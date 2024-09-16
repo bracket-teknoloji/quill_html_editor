@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -9,6 +8,7 @@ import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/constants/enum/grup_kodu_enums.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/widget_extensions.dart";

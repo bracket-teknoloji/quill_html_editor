@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "../../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "sayilan_kalemler_request_model.freezed.dart";
 part "sayilan_kalemler_request_model.g.dart";

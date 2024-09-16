@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -18,6 +17,7 @@ import "../../../../../../../../../core/constants/extensions/text_span_extension
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";

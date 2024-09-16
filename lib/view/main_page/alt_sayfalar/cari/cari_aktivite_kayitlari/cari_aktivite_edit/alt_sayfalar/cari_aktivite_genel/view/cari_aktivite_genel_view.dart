@@ -1,22 +1,23 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/kullanicilar_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_genel/view_model/cari_aktivite_genel_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
+
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/model/kullanicilar_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../../../core/constants/static_variables/singleton_models.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../cari_listesi/model/cari_listesi_model.dart";
+import "../../../../../cari_listesi/model/cari_request_model.dart";
+import "../../../../model/cari_aktivite_listesi_model.dart";
+import "../view_model/cari_aktivite_genel_view_model.dart";
 
 class CariAktiviteGenelView extends StatefulWidget {
   final BaseEditModel<CariAktiviteListesiModel> model;

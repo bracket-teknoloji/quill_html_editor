@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "../../../../../../core/constants/static_variables/singleton_models.dart";
+import "sayim_listesi_model.dart";
 
 part "sayim_kalem_request_model.freezed.dart";
 part "sayim_kalem_request_model.g.dart";

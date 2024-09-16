@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 

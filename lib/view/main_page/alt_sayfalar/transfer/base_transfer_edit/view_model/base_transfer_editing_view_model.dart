@@ -1,10 +1,10 @@
 import "dart:convert";
 
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_transfer_editing_view_model.g.dart";

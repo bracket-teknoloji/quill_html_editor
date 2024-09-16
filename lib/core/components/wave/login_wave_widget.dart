@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
 import "package:wave/config.dart";
 import "package:wave/wave.dart";
+
+import "../../base/state/base_state.dart";
 
 class LoginWaveWidget extends StatefulWidget {
   final Color? foreoregroundColor;

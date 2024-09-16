@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
@@ -12,6 +11,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_kalem_ekle/view_model/uretim_sonu_kaydi_kalem_ekle_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
+
+import "../../../../../../../../../core/base/state/base_state.dart";
 
 final class UretimSonuKaydiKalemEkleView extends StatefulWidget {
   final UretimSonuKaydiEditModel model;

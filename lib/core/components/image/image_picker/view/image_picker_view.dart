@@ -6,13 +6,14 @@ import "package:flutter_image_compress/flutter_image_compress.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/image/image_picker/view_model/image_picker_view_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+import "../../../../base/state/base_state.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../textfield/custom_text_field.dart";
+import "../../../wrap/appbar_title.dart";
+import "../view_model/image_picker_view_model.dart";
 
 final class ImagePickerView extends StatefulWidget {
   final EvraklarRequestModel requestModel;

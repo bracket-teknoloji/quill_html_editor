@@ -7,23 +7,23 @@ import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
-import "package:picker/core/constants/extensions/iterable_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
+import "../../../../../../core/constants/enum/e_belge_turu_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/constants/extensions/iterable_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/yetki_controller/yetki_controller.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
+import "../../../kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "../../../stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
 
 part "base_siparis_edit_model.g.dart";
 

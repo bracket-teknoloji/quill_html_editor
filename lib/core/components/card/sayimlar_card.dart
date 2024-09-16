@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -20,6 +19,8 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+
+import "../../base/model/print_model.dart";
 
 class SayimlarCard extends StatefulWidget {
   final SayimListesiModel model;

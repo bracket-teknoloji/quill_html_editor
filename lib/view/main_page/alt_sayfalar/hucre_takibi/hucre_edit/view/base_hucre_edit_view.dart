@@ -1,12 +1,13 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/hucre_takibi_islem_turu_enum.dart";
 import "package:picker/core/constants/static_variables/singleton_models.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/base_hucre_genel/view/base_hucre_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/base_hucre_kalemler/view/base_hucre_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/view_model/hucre_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
 
 class BaseHucreEditView extends StatefulWidget {
   final HucreTakibiIslemTuruEnum islemTuru;

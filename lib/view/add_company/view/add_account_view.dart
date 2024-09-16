@@ -4,17 +4,17 @@ import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/view/add_company/view_model/add_account_view_model.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../core/components/textfield/custom_text_field.dart";
+import "../../../core/components/wrap/appbar_title.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../model/account_model.dart";
 import "../model/account_response_model.dart";
+import "../view_model/add_account_view_model.dart";
 
 final class AddAccountView extends StatefulWidget {
   const AddAccountView({super.key});

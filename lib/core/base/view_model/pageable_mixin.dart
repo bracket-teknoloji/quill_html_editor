@@ -1,6 +1,6 @@
 import "package:flutter/foundation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
+import "../model/base_network_mixin.dart";
+import "scroll_controllable_mixin.dart";
 
 /// Eğer ViewModel'imizde sayfalama yapısı var ise bu Mixin ile birlikte kullanmalıyız.
 mixin PageableMixin<T extends NetworkManagerMixin> on ScrollControllableMixin<T> {

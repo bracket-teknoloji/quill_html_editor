@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/print_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
@@ -16,6 +15,8 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/view_model/sayim_sayilanlar_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+
+import "../../../../../../../core/base/model/print_model.dart";
 
 class SayimSayilanlarView extends StatefulWidget {
   final Future<void> Function(SayimFiltreModel model) onEdit;

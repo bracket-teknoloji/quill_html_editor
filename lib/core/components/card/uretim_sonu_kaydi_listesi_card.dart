@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../base/model/base_edit_model.dart";
+import "../../base/state/base_state.dart";
+import "../../constants/enum/base_edit_enum.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../../constants/extensions/number_extensions.dart";
+import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ondalik_utils.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../layout/custom_layout_builder.dart";
 
 final class UretimSonuKaydiListesiCard extends StatefulWidget {
   final KalemModel model;

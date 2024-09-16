@@ -2,9 +2,9 @@ import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/base_stok_mixin.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 

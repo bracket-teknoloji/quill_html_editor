@@ -1,17 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/view_model/hucre_listesi_view_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/color_palette.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../model/hucre_listesi_model.dart";
+import "../view_model/hucre_listesi_view_model.dart";
 
 final class HucreListesiView extends StatefulWidget {
   final int? depoKodu;

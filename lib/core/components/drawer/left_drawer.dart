@@ -3,14 +3,14 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/wave/login_wave_widget.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
+import "../../../view/add_company/model/account_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
+import "../wave/login_wave_widget.dart";
 
 class LeftDrawer extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;

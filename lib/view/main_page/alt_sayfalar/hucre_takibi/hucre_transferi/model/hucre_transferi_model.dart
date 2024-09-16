@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../belge_rehberi/model/belge_rehberi_model.dart";
 
 part "hucre_transferi_model.freezed.dart";
 part "hucre_transferi_model.g.dart";

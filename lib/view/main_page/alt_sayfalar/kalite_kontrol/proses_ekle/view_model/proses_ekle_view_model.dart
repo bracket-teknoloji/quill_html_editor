@@ -1,6 +1,6 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "proses_ekle_view_model.g.dart";
 

@@ -1,11 +1,12 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_request_model.dart";
+
+import "../../../../../../../../core/base/model/base_stok_mixin.dart";
+import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../core/constants/static_variables/singleton_models.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.dart";
+import "../../../../../stok/paketleme/paketleme_listesi/model/paketleme_listesi_request_model.dart";
+import "../../../../hucre_transferi/model/hucre_transferi_model.dart";
 
 part "base_hucre_kalemler_view_model.g.dart";
 

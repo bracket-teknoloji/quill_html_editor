@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/constants/enum/badge_color_enum.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 part "olcum_belge_edit_model.freezed.dart";
 part "olcum_belge_edit_model.g.dart";

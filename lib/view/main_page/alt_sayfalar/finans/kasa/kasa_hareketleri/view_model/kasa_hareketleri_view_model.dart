@@ -2,15 +2,15 @@ import "dart:convert";
 
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/base/view_model/pageable_mixin.dart";
-import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/kasa/kasa_islemleri/model/kasa_islemleri_request_model.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/base/view_model/pageable_mixin.dart";
+import "../../../../../../../core/base/view_model/scroll_controllable_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../kasa_islemleri/model/kasa_islemleri_model.dart";
+import "../../kasa_islemleri/model/kasa_islemleri_request_model.dart";
 
 part "kasa_hareketleri_view_model.g.dart";
 

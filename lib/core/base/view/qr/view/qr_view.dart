@@ -7,12 +7,12 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobile_scanner/mobile_scanner.dart";
 import "package:permission_handler/permission_handler.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
+import "../../../../components/wrap/appbar_title.dart";
 // import "package:qr_code_scanner/qr_code_scanner.dart";
 
 import "../../../../constants/color_palette.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/qr_view_model.dart";
 

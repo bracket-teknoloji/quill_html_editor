@@ -1,24 +1,25 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/depo_fark_raporu/view_model/depo_fark_raporu_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/color_palette.dart";
+import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
+import "../../sayim_listesi/model/sayim_listesi_model.dart";
+import "../view_model/depo_fark_raporu_view_model.dart";
 
 final class DepoFarkRaporuView extends StatefulWidget {
   final SayimListesiModel model;

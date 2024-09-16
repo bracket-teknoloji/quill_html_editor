@@ -1,8 +1,8 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/model/grid_item_model.dart";
-import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
+import "../model/grid_item_model.dart";
+import "../model/menu_item/menu_item_constants.dart";
 
 part "main_page_view_model.g.dart";
 

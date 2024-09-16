@@ -1,8 +1,8 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/dekontlar/dekont_edit/model/dekont_islemler_request_model.dart";
+import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_kalemler_view_model.g.dart";
 

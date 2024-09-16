@@ -1,9 +1,9 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/searchable_mixin.dart";
 
+import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/base/view_model/searchable_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
 import "../model/kasa_listesi_model.dart";
 

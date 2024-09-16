@@ -1,10 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/uretim_sonu_kaydi_recete_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/model/uretim_sonu_raporu_request_model.dart";
+
+import "../../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../uretim_sonu_raporu/model/uretim_sonu_raporu_request_model.dart";
+import "../model/uretim_sonu_kaydi_recete_model.dart";
 
 part "uretim_sonu_kaydi_seri_listesi_view_model.g.dart";
 

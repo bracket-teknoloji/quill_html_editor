@@ -1,6 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "olcum_ekle_model.freezed.dart";
 part "olcum_ekle_model.g.dart";

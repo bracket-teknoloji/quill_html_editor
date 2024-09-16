@@ -12,9 +12,9 @@ import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
 import "package:package_info_plus/package_info_plus.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
+import "../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../core/init/app_info/app_info.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "account_response_model.dart";

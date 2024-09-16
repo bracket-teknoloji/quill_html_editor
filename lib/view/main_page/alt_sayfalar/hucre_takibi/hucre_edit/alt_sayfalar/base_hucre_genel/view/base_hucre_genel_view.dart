@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/base_hucre_genel/view_model/base_hucre_genel_view_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../model/param_model.dart";
+import "../../../../belge_rehberi/model/belge_rehberi_model.dart";
+import "../view_model/base_hucre_genel_view_model.dart";
 
 final class BaseHucreGenelView extends StatefulWidget {
   final TabController tabController;

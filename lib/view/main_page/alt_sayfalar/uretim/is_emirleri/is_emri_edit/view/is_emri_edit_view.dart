@@ -1,25 +1,26 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_edit/view_model/is_emri_edit_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../model/param_model.dart";
+import "../../../../stok/stok_liste/model/stok_bottom_sheet_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
+import "../../is_emri_rehberi/model/is_emirleri_model.dart";
+import "../view_model/is_emri_edit_view_model.dart";
 
 final class IsEmriEditView extends StatefulWidget {
   final BaseEditModel<IsEmirleriModel> model;

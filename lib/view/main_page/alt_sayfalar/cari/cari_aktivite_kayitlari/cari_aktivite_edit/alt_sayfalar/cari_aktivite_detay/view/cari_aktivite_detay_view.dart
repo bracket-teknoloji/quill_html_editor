@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
-import "package:picker/core/components/card/cari_aktivite_detay_card.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detay/view_model/cari_aktivite_detay_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../../../core/base/view/base_scaffold.dart";
+import "../../../../../../../../../core/components/card/cari_aktivite_detay_card.dart";
+import "../../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../model/cari_aktivite_listesi_model.dart";
+import "../view_model/cari_aktivite_detay_view_model.dart";
 
 class CariAktiviteDetayView extends StatefulWidget {
   final BaseEditEnum baseEditEnum;

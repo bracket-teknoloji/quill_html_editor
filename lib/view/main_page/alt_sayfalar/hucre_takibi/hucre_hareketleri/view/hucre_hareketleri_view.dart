@@ -1,16 +1,17 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:picker/core/base/view/base_scaffold.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/view_model/hucre_hareketleri_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../core/base/view/base_scaffold.dart";
+import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../stok/stok_liste/model/stok_listesi_model.dart";
+import "../view_model/hucre_hareketleri_view_model.dart";
 
 final class HucreHareketleriView extends StatefulWidget {
   final StokListesiModel model;

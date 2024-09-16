@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/enum/e_belge_turu_enum.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/constants/enum/e_belge_turu_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "e_belge_request_model.dart";

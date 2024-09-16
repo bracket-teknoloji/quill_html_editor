@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "../../../../../../../../core/base/model/base_network_mixin.dart";
 
 part "barkod_tanimla_kayitlari_model.freezed.dart";
 part "barkod_tanimla_kayitlari_model.g.dart";

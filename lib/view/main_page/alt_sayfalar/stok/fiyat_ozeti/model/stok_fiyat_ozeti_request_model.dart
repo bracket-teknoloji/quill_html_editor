@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "stok_fiyat_ozeti_request_model.freezed.dart";
 part "stok_fiyat_ozeti_request_model.g.dart";

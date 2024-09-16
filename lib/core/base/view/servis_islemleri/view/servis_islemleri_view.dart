@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/view/add_company/model/account_model.dart";
 
+import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/servis_islemleri_view_model.dart";

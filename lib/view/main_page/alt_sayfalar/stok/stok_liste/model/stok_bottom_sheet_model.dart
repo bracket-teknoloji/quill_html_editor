@@ -1,9 +1,9 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../model/param_model.dart";
+import "../../../sayim/sayim_listesi/model/sayim_listesi_model.dart";
 
 part "stok_bottom_sheet_model.freezed.dart";
 part "stok_bottom_sheet_model.g.dart";

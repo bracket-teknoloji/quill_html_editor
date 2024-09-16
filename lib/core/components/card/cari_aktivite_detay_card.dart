@@ -1,11 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+
+import "../../../view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+import "../../base/model/base_edit_model.dart";
+import "../../base/state/base_state.dart";
+import "../../constants/enum/base_edit_enum.dart";
+import "../../constants/extensions/date_time_extensions.dart";
+import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class CariAktiviteDetayCard extends StatefulWidget {
   final CariAktiviteListesiModel model;

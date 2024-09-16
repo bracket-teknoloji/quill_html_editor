@@ -1,11 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../core/init/network/login/api_urls.dart";
 
 part "odeme_dekontu_olustur_view_model.g.dart";
 

@@ -1,9 +1,9 @@
-import "package:picker/core/base/model/print_model.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+import "../../../view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
+import "../../../view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "../../base/model/print_model.dart";
+import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../enum/dizayn_ozel_kod_enum.dart";
 
 class SingletonModels {
   static SayimListesiModel? _sayimListesi;

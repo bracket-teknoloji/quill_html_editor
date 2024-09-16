@@ -1,7 +1,5 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/enum/paket_islemler_enum.dart";
@@ -9,6 +7,9 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/model/paket_icerigi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_request_model.dart";
+
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
 
 part "paket_icerigi_view_model.g.dart";
 

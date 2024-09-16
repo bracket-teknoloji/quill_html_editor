@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "../../../../components/layout/custom_layout_builder.dart";
 import "../../../../components/shimmer/list_view_shimmer.dart";
 import "../../../../components/wrap/appbar_title.dart";

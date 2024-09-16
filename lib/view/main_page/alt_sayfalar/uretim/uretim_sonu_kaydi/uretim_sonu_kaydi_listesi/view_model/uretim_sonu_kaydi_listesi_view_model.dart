@@ -1,15 +1,15 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/base/view_model/pageable_mixin.dart";
-import "package:picker/core/base/view_model/scroll_controllable_mixin.dart";
-import "package:picker/core/base/view_model/searchable_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/model/uretim_sonu_kaydi_listesi_request_model.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/base/view_model/pageable_mixin.dart";
+import "../../../../../../../core/base/view_model/scroll_controllable_mixin.dart";
+import "../../../../../../../core/base/view_model/searchable_mixin.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../model/uretim_sonu_kaydi_listesi_request_model.dart";
 
 part "uretim_sonu_kaydi_listesi_view_model.g.dart";
 

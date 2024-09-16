@@ -1,15 +1,16 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_kayitlari/view/barkod_tanimla_kayitlari_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/stok_karti/view/barkod_tanimla_stok_karti_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/view_model/barkod_tanimla_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../stok_liste/model/stok_listesi_model.dart";
+import "../alt_sayfalar/barkod_kayitlari/view/barkod_tanimla_kayitlari_view.dart";
+import "../alt_sayfalar/stok_karti/view/barkod_tanimla_stok_karti_view.dart";
+import "../view_model/barkod_tanimla_view_model.dart";
 
 final class BarkodTanimlaView extends StatefulWidget {
   const BarkodTanimlaView({super.key});

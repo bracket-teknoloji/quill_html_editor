@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "../model/base_network_mixin.dart";
+import "mobx_network_mixin.dart";
 
 /// Bu mixin ile birlikte gelen [NetworkManagerMixin] sınıfından türetilen
 /// sınıflarda [observableList] değişkenini kullanarak listeleme yapıyoruz.

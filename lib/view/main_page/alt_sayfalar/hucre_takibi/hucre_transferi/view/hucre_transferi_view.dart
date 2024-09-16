@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -14,6 +13,8 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/view_model/hucre_transferi_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../core/base/model/base_stok_mixin.dart";
 
 final class HucreTransferiView extends StatefulWidget {
   const HucreTransferiView({super.key});

@@ -1,19 +1,20 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/components/badge/colorful_badge.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/kalem_sec/view_model/olcum_kalem_sec_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "../../../../../../core/components/badge/colorful_badge.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
+import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/enum/badge_color_enum.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../view_model/olcum_kalem_sec_view_model.dart";
 
 class OlcumKalemSecView extends StatefulWidget {
   final OlcumBelgeModel model;

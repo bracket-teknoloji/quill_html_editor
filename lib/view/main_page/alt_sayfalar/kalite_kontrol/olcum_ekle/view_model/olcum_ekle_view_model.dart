@@ -1,11 +1,11 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_ekle_model.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../model/olcum_ekle_model.dart";
 
 part "olcum_ekle_view_model.g.dart";
 

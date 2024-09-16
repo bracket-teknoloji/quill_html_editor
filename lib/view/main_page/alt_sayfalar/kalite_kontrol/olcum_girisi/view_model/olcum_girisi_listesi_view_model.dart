@@ -1,11 +1,11 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/model/olcum_girisi_request_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
+import "../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../model/olcum_girisi_request_model.dart";
 
 part "olcum_girisi_listesi_view_model.g.dart";
 

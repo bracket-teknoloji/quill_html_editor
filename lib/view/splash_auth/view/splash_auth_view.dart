@@ -4,10 +4,10 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/wave/login_wave_widget.dart";
 
 import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
+import "../../../core/components/wave/login_wave_widget.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/gen/assets.gen.dart";
 import "../../../core/init/app_info/app_info.dart";

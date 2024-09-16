@@ -1,7 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 
 part "uretim_sonu_kaydi_edit_model.freezed.dart";
 part "uretim_sonu_kaydi_edit_model.g.dart";

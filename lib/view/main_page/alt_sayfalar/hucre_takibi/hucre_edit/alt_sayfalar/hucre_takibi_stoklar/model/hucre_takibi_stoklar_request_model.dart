@@ -1,5 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/model/hucre_transferi_model.dart";
+import "../../../../hucre_transferi/model/hucre_transferi_model.dart";
 
 part "hucre_takibi_stoklar_request_model.freezed.dart";
 part "hucre_takibi_stoklar_request_model.g.dart";

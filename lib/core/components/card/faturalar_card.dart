@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -25,6 +24,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../layout/custom_layout_builder.dart";
 
 class FaturalarCard extends StatefulWidget {
   final BaseSiparisEditModel model;

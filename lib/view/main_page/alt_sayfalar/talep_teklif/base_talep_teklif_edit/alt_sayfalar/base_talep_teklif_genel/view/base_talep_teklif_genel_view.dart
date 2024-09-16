@@ -2,9 +2,6 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -16,11 +13,14 @@ import "../../../../../../../../../core/constants/extensions/number_extensions.d
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/base/model/belge_tipi_model.dart";
+import "../../../../../../../../core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
+import "../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 // import "../../../../../../../model/param_model.dart";

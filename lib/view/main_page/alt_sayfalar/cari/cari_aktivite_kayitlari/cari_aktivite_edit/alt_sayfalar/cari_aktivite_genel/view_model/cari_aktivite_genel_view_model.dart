@@ -1,14 +1,15 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/model/kullanicilar_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../../../core/base/model/kullanicilar_model.dart";
+import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/static_variables/singleton_models.dart";
+import "../../../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../../../../model/param_model.dart";
+import "../../../../../cari_listesi/model/cari_listesi_model.dart";
+import "../../../../model/cari_aktivite_listesi_model.dart";
 
 part "cari_aktivite_genel_view_model.g.dart";
 

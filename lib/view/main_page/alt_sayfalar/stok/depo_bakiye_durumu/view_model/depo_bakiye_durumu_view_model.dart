@@ -1,9 +1,9 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/extensions/iterable_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/depo_bakiye_durumu/model/depo_bakiye_durumu_model.dart";
+import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/extensions/iterable_extensions.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/depo_bakiye_durumu_model.dart";
 
 part "depo_bakiye_durumu_view_model.g.dart";
 

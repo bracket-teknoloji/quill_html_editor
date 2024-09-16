@@ -6,13 +6,13 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:path_provider/path_provider.dart";
-import "package:picker/core/base/view/genel_pdf/view_model/genel_pdf_view_model.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
 import "../../../../components/wrap/appbar_title.dart";
 import "../../../model/base_pdf_model.dart";
 import "../../../state/base_state.dart";
+import "../view_model/genel_pdf_view_model.dart";
 
 class GenelPdfView extends StatefulWidget {
   final BasePdfModel? model;

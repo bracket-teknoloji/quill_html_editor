@@ -1,14 +1,15 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/image/image_carousel/view_model/image_carousel_view_model.dart";
-import "package:picker/core/components/image/image_widget.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/gen/assets.gen.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+import "../../../../base/model/base_stok_mixin.dart";
+import "../../../../base/state/base_state.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../gen/assets.gen.dart";
+import "../../../wrap/appbar_title.dart";
+import "../../image_widget.dart";
+import "../view_model/image_carousel_view_model.dart";
 
 final class ImageCarouselView extends StatefulWidget {
   final BaseStokMixin model;

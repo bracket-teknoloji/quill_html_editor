@@ -2,8 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -15,6 +13,8 @@ import "../../../../../../../../../core/constants/extensions/number_extensions.d
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../../../core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
+import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../core/constants/extensions/text_span_extensions.dart";
 import "../../../../../../model/param_model.dart";

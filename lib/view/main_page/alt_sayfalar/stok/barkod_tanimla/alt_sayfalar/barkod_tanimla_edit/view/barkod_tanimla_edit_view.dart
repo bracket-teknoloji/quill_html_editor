@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/barkod_tipi_enum.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/barkod_tanimla/alt_sayfalar/barkod_tanimla_edit/view_model/barkod_tanimla_edit_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../../core/constants/enum/barkod_tipi_enum.dart";
+import "../../../../../../../../core/constants/extensions/list_extensions.dart";
+import "../../../../../../../../core/constants/extensions/model_extensions.dart";
+import "../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
+import "../view_model/barkod_tanimla_edit_view_model.dart";
 
 final class BarkodTanimlaEditView extends StatefulWidget {
   final StokListesiModel model;

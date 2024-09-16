@@ -1,8 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_request_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/belge_rehberi_model.dart";
+import "../model/belge_rehberi_request_model.dart";
 
 part "belge_rehberi_view_model.g.dart";
 

@@ -1,7 +1,6 @@
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/e_belge_gonder/model/model/dizayn_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -12,6 +11,7 @@ import "../../../model/base_network_mixin.dart";
 import "../../../model/generic_response_model.dart";
 import "../../../view_model/mobx_network_mixin.dart";
 import "../model/model/dizayn_model.dart";
+import "../model/model/dizayn_request_model.dart";
 
 part "e_belge_gonder_view_model.g.dart";
 

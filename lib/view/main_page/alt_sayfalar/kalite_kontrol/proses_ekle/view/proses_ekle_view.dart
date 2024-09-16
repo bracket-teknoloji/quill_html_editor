@@ -1,20 +1,20 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/color_palette.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/proses_ekle/view_model/proses_ekle_view_model.dart";
+import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/color_palette.dart";
+import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
+import "../view_model/proses_ekle_view_model.dart";
 
 class ProsesEkleView extends StatefulWidget {
   final BaseEditModel<OlcumProsesModel> model;

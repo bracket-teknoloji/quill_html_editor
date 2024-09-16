@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_model.dart";
+
+import "../../../view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_model.dart";
+import "../../base/state/base_state.dart";
+import "../../base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "../../constants/extensions/widget_extensions.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../layout/custom_layout_builder.dart";
 
 class HucreAraCard extends StatefulWidget {
   final HucreTakibiStoklarModel model;

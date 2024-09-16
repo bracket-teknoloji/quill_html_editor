@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../../core/base/model/base_proje_model.dart";
@@ -11,6 +10,7 @@ import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/cirola_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../banka/banka_listesi/model/banka_listesi_model.dart";

@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../view/main_page/alt_sayfalar/stok/fiyat_gecmisi/model/fiyat_gecmisi_response_model.dart";
 import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -13,6 +12,7 @@ import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/text_style_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
+import "../layout/custom_layout_builder.dart";
 
 class StokFiyatGecmisiCard extends StatefulWidget {
   final FiyatGecmisiResponseModel? model;

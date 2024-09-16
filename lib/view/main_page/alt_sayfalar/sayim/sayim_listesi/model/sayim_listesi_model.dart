@@ -1,9 +1,9 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
-import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/base_stok_mixin.dart";
+import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "../../../stok/base_stok_edit/model/stok_detay_model.dart";
+import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 
 part "sayim_listesi_model.freezed.dart";
 part "sayim_listesi_model.g.dart";

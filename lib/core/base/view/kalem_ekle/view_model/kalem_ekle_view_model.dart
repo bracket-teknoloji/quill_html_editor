@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../constants/enum/edit_tipi_enum.dart";
 import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../init/network/login/api_urls.dart";

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../../init/theme/app_theme_dark.dart";
+import "ui_helper.dart";
 
 class TextStyleHelper {
   static ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();

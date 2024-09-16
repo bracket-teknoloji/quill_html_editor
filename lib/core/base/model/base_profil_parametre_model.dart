@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../view/main_page/model/param_model.dart";
+import "../../constants/enum/edit_tipi_enum.dart";
 import "base_network_mixin.dart";
 
 part "base_profil_parametre_model.freezed.dart";

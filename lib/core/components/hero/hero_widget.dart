@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
+import "../../base/state/base_state.dart";
 
 class HeroWidget extends StatefulWidget {
   final Widget child;

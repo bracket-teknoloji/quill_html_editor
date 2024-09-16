@@ -1,9 +1,9 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/model/hucre_hareketleri_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_hareketleri/model/hucre_hareketleri_request_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../model/hucre_hareketleri_model.dart";
+import "../model/hucre_hareketleri_request_model.dart";
 
 part "hucre_hareketleri_view_model.g.dart";
 

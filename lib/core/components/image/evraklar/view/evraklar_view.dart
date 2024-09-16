@@ -1,21 +1,22 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/image/evraklar/view_model/evraklar_view_model.dart";
-import "package:picker/core/components/image/image_view.dart";
-import "package:picker/core/components/image/image_widget.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+
+import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
+import "../../../../base/state/base_state.dart";
+import "../../../../constants/extensions/list_extensions.dart";
+import "../../../../constants/extensions/model_extensions.dart";
+import "../../../../constants/extensions/number_extensions.dart";
+import "../../../../constants/extensions/widget_extensions.dart";
+import "../../../../constants/ui_helper/ui_helper.dart";
+import "../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../floating_action_button/custom_floating_action_button.dart";
+import "../../../list_view/refreshable_list_view.dart";
+import "../../../wrap/appbar_title.dart";
+import "../../image_view.dart";
+import "../../image_widget.dart";
+import "../view_model/evraklar_view_model.dart";
 
 final class EvraklarView extends StatefulWidget {
   final EvraklarRequestModel model;

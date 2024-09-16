@@ -1,5 +1,5 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "../../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 part "seri_detayi_view_model.g.dart";
 

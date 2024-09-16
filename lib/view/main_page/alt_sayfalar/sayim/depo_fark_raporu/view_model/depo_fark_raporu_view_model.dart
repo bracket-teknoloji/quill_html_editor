@@ -1,10 +1,10 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
+import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
+import "../../../../../../core/init/network/login/api_urls.dart";
+import "../../sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
+import "../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "depo_fark_raporu_view_model.g.dart";
 

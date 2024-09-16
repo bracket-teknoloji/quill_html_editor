@@ -5,8 +5,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/model/doviz_kurlari_model.dart";
-import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
@@ -18,7 +16,9 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/v
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";

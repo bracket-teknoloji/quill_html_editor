@@ -3,8 +3,6 @@ import "dart:ui";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -21,6 +19,7 @@ import "../../../../../../core/components/dialog/bottom_sheet/view_model/bottom_
 import "../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../core/components/grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
+import "../../../../../../core/components/list_view/refreshable_list_view.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -28,6 +27,7 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";

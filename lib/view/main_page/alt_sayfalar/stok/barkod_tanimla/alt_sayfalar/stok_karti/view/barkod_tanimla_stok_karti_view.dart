@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../stok_liste/model/stok_listesi_model.dart";
 
 final class BarkodTanimlaStokKartiView extends StatefulWidget {
   final StokListesiModel? model;

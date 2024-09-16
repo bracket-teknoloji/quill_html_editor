@@ -1,18 +1,19 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_detayi/view_model/seri_detayi_view_model.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_detayi_model.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+
+import "../../../../../components/bottom_bar/bottom_bar.dart";
+import "../../../../../components/button/elevated_buttons/footer_button.dart";
+import "../../../../../components/textfield/custom_text_field.dart";
+import "../../../../../components/wrap/appbar_title.dart";
+import "../../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../../constants/extensions/number_extensions.dart";
+import "../../../../../constants/extensions/widget_extensions.dart";
+import "../../../../../constants/ondalik_utils.dart";
+import "../../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../state/base_state.dart";
+import "../../seri_listesi/model/seri_detayi_model.dart";
+import "../view_model/seri_detayi_view_model.dart";
 
 class SeriDetayiView extends StatefulWidget {
   /// İlki Hareket Miktarı, İkincisi Kalan Miktar

@@ -1,7 +1,7 @@
 import "package:mobx/mobx.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../view_model/mobx_network_mixin.dart";
 

@@ -2,21 +2,22 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_detayi_model.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_listesi/view_model/seri_listesi_view_model.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/edit_tipi_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+
+import "../../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "../../../../../components/bottom_bar/bottom_bar.dart";
+import "../../../../../components/button/elevated_buttons/footer_button.dart";
+import "../../../../../components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../components/layout/custom_layout_builder.dart";
+import "../../../../../components/wrap/appbar_title.dart";
+import "../../../../../constants/enum/edit_tipi_enum.dart";
+import "../../../../../constants/extensions/date_time_extensions.dart";
+import "../../../../../constants/extensions/number_extensions.dart";
+import "../../../../../constants/extensions/widget_extensions.dart";
+import "../../../../../constants/ui_helper/ui_helper.dart";
+import "../../../../state/base_state.dart";
+import "../model/seri_detayi_model.dart";
+import "../view_model/seri_listesi_view_model.dart";
 
 class SeriListesiView extends StatefulWidget {
   final KalemModel kalemModel;

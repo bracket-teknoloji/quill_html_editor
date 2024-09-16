@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+
+import "../../base/model/base_network_mixin.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../shimmer/list_view_shimmer.dart";
 
 /// Bu widget ile Sayfalama işlemleri yapılır.
 ///

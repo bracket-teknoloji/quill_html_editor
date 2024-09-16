@@ -1,9 +1,9 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/base_stok_mixin.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
+import "../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../core/base/model/base_stok_mixin.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../../stok/base_stok_edit/model/stok_detay_model.dart";
 
 part "uretim_sonu_kaydi_recete_model.freezed.dart";
 part "uretim_sonu_kaydi_recete_model.g.dart";

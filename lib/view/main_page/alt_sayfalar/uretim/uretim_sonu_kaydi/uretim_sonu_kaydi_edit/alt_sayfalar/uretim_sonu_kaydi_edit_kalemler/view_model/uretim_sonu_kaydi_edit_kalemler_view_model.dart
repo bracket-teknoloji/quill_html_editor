@@ -1,9 +1,10 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+
+import "../../../../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
 part "uretim_sonu_kaydi_edit_kalemler_view_model.g.dart";
 

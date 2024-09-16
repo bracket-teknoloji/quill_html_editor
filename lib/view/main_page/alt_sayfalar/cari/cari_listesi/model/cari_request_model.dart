@@ -1,9 +1,9 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/core/base/model/tahsilat_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../core/base/model/tahsilat_request_model.dart";
+import "../../../finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
+import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "cari_listesi_model.dart";
 
 part "cari_request_model.freezed.dart";

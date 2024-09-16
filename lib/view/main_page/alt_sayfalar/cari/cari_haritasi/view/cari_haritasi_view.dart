@@ -6,14 +6,15 @@ import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:location/location.dart" hide PermissionStatus;
 import "package:permission_handler/permission_handler.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/core/gen/assets.gen.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_haritasi/view_model/cari_haritasi_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../core/gen/assets.gen.dart";
+import "../../cari_listesi/model/cari_listesi_model.dart";
+import "../view_model/cari_haritasi_view_model.dart";
 
 final class CariHaritasiView extends StatefulWidget {
   final bool? isGetData;

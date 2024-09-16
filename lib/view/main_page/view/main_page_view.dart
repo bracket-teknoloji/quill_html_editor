@@ -7,19 +7,19 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/view/main_page/view_model/main_page_view_model.dart";
 
 import "../../../core/base/state/base_state.dart";
+import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../core/components/drawer/left_drawer.dart";
 import "../../../core/components/drawer/right_drawer/right_drawer.dart";
 import "../../../core/components/grid_tile/grid_tile.dart";
+import "../../../core/components/wrap/appbar_title.dart";
 import "../../../core/constants/ui_helper/icon_helper.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../model/main_page_model.dart";
 import "../model/menu_item/menu_item_constants.dart";
+import "../view_model/main_page_view_model.dart";
 
 final class MainPageView extends StatefulWidget {
   final bool fromSplash;

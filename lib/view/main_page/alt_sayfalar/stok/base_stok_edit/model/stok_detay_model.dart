@@ -1,8 +1,8 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:hive_flutter/hive_flutter.dart";
-import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_dat_response_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../kalite_kontrol/olcum_belge_edit/model/olcum_dat_response_model.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "stok_detay_model.freezed.dart";

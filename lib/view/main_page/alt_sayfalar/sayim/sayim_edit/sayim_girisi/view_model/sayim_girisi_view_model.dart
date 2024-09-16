@@ -1,14 +1,15 @@
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_proje_model.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/static_variables/singleton_models.dart";
-import "package:picker/core/init/cache/cache_manager.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_kalem_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/constants/static_variables/singleton_models.dart";
+import "../../../../../../../core/init/cache/cache_manager.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../../../stok/base_stok_edit/model/stok_detay_model.dart";
+import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
+import "../../../sayim_listesi/model/sayim_kalem_request_model.dart";
+import "../../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "sayim_girisi_view_model.g.dart";
 

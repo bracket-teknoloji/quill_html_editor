@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "package:picker/core/components/bottom_bar/bottom_bar.dart";
-import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
-import "package:picker/core/components/layout/custom_layout_builder.dart";
-import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_sonu_kaydi_edit_kalemler/view_model/uretim_sonu_kaydi_edit_kalemler_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/model/uretim_sonu_kaydi_edit_model.dart";
+
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "../../../../../../../../../core/components/bottom_bar/bottom_bar.dart";
+import "../../../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
+import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
+import "../../../../../../../../../core/components/layout/custom_layout_builder.dart";
+import "../../../../../../../../../core/components/list_view/refreshable_list_view.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
+import "../../../../../../../../../core/constants/ondalik_utils.dart";
+import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
+import "../../../model/uretim_sonu_kaydi_edit_model.dart";
+import "../view_model/uretim_sonu_kaydi_edit_kalemler_view_model.dart";
 
 final class UretimSonuKaydiEditKalemlerView extends StatefulWidget {
   final BaseEditModel<KalemModel> model;

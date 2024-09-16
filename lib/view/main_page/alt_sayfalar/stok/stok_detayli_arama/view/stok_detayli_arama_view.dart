@@ -1,13 +1,14 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/stok/stok_detayli_arama/view_model/stok_detayli_arama_view_model.dart";
-import "package:picker/view/main_page/model/param_model.dart";
+
+import "../../../../../../core/base/state/base_state.dart";
+import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
+import "../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../core/constants/ui_helper/ui_helper.dart";
+import "../../../../model/param_model.dart";
+import "../view_model/stok_detayli_arama_view_model.dart";
 
 final class StokDetayliAramaView extends StatefulWidget {
   final List<StokDetayliAramaAlanlar> aramaList;

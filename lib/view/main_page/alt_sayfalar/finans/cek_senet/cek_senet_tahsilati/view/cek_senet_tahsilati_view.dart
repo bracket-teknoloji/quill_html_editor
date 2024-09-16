@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
@@ -20,6 +19,7 @@ import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
+import "../../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../model/save_cek_senet_model.dart";
 import "../view_model/cek_senet_tahsilati_view_model.dart";
 

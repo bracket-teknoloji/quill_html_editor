@@ -1,5 +1,4 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/view/seri_islemleri/seri_listesi/model/seri_uret_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
@@ -7,6 +6,8 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
+
+import "../model/seri_uret_model.dart";
 
 part "seri_listesi_view_model.g.dart";
 

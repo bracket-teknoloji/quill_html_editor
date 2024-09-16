@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/components/shimmer/grid_view_shimmer.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
+
+import "../../base/model/base_network_mixin.dart";
+import "../../constants/ui_helper/ui_helper.dart";
+import "../shimmer/grid_view_shimmer.dart";
 
 class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget {
   /// Refresh işlemleri için gerekli fonksiyon

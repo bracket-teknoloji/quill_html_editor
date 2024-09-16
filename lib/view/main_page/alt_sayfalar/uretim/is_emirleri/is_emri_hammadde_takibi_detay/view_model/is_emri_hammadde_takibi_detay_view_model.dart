@@ -1,12 +1,13 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/view_model/listable_mixin.dart";
-import "package:picker/core/base/view_model/mobx_network_mixin.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_hammadde_takibi_detay/model/is_emri_hammadde_takibi_detay_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_hammadde_takibi_detay/model/is_emri_hammadde_takibi_detay_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_hammade_takibi/model/is_emri_hammadde_takibi_listesi_model.dart";
+
+import "../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../core/base/view_model/listable_mixin.dart";
+import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
+import "../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../../../../core/init/network/login/api_urls.dart";
+import "../../is_emri_hammade_takibi/model/is_emri_hammadde_takibi_listesi_model.dart";
+import "../model/is_emri_hammadde_takibi_detay_model.dart";
+import "../model/is_emri_hammadde_takibi_detay_request_model.dart";
 
 part "is_emri_hammadde_takibi_detay_view_model.g.dart";
 

@@ -1,17 +1,18 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/base/model/base_edit_model.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
-import "package:picker/core/base/model/generic_response_model.dart";
-import "package:picker/core/base/state/base_state.dart";
-import "package:picker/core/components/textfield/custom_text_field.dart";
-import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
-import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/cari_aktivite_edit/alt_sayfalar/cari_aktivite_detayi_edit/view_model/cari_aktivite_detayi_view_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
+
+import "../../../../../../../../../core/base/model/base_edit_model.dart";
+import "../../../../../../../../../core/base/model/base_network_mixin.dart";
+import "../../../../../../../../../core/base/model/generic_response_model.dart";
+import "../../../../../../../../../core/base/state/base_state.dart";
+import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
+import "../../../../../../../../../core/components/wrap/appbar_title.dart";
+import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
+import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
+import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
+import "../../../../model/cari_aktivite_listesi_model.dart";
+import "../view_model/cari_aktivite_detayi_view_model.dart";
 
 class CariAktiviteDetayiEditView extends StatefulWidget {
   final BaseEditModel<CariAktiviteListesiModel>? model;
