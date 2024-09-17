@@ -79,26 +79,31 @@ class BottomSheetDialogManager {
         ),
       ),
       context: context,
-      builder: (context) => SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              contentPadding: UIHelper.lowPadding,
-              title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
-              trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
-              splashColor: Colors.transparent,
-            ).paddingSymmetric(vertical: UIHelper.lowSize),
-            const Divider(
-              thickness: 2,
-              endIndent: 0,
-              indent: 0,
-            ),
-            Flexible(
-              child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
-            ),
-          ],
+      builder: (context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                contentPadding: UIHelper.lowPadding,
+                title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
+                splashColor: Colors.transparent,
+              ).paddingSymmetric(vertical: UIHelper.lowSize),
+              const Divider(
+                thickness: 2,
+                endIndent: 0,
+                indent: 0,
+              ),
+              Flexible(
+                child: body(context, title: title, children: children, list: groupValues, onlyValue: onlyValue, body: bodyWidget),
+              ),
+            ],
+          ),
         ),
       ),
     );
