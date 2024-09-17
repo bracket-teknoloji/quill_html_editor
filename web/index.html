@@ -23,7 +23,7 @@
 
   <!-- iOS meta tags & icons -->
   <meta name="keywords" content="picker, Picker, NetFect, Netsis, Erp, ERP">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="picker" />
 
@@ -157,7 +157,7 @@
       var serviceWorkerUrl =
         "flutter_service_worker.js?v=" + flutter_service_worker_version;
       _flutter.loader.load({
-        entrypointUrl: "/main.dart.js",
+        entrypointUrl: serviceWorkerUrl,
         serviceWorker: {
           serviceWorkerVersion: flutter_service_worker_version,
           serviceWorkerUrl: serviceWorkerUrl,
