@@ -720,6 +720,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 ),
                 Flexible(
                   child: SingleChildScrollView(
+                    primary: false,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
