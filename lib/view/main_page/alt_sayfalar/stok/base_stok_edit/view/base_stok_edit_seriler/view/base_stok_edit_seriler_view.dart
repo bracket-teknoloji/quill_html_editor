@@ -37,9 +37,9 @@ class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 2.3,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: context.isLandscape ? 3 : 2,
+                childAspectRatio: 2.5,
               ),
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
