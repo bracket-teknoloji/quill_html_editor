@@ -1,4 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
 
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -25,7 +24,7 @@ import "../../../model/base_edit_model.dart";
 import "../../../state/base_state.dart";
 import "../view_model/cari_rehberi_view_model.dart";
 
-class CariRehberiView extends StatefulWidget {
+final class CariRehberiView extends StatefulWidget {
   final CariListesiRequestModel cariRequestModel;
 
   const CariRehberiView({super.key, required this.cariRequestModel});
@@ -34,7 +33,7 @@ class CariRehberiView extends StatefulWidget {
   State<CariRehberiView> createState() => _CariRehberiViewState();
 }
 
-class _CariRehberiViewState extends BaseState<CariRehberiView> {
+final class _CariRehberiViewState extends BaseState<CariRehberiView> {
   late final CariRehberiViewModel viewModel;
   late final TextEditingController searchController;
   late final TextEditingController sehirController;
@@ -97,7 +96,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
         floatingActionButton: fab(),
-        body: body2(),
+        body: body(),
       );
 
   AppBar appBar() => AppBar(
@@ -107,7 +106,10 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   labelText: "Ara",
                   focusNode: searchFocusNode,
                   controller: searchController,
-                  onSubmitted: (value) => viewModel.setSearchText(value),
+                  onSubmitted: (value) {
+                    viewModel.setSearchText(value);
+                    viewModel.resetList();
+                  },
                   onClear: () => viewModel.setSearchText(""),
                 )
               : AppBarTitle(
@@ -159,7 +161,7 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           },
         ),
       );
-  Widget body2() => Observer(
+  Widget body() => Observer(
         builder: (_) => RefreshableListView.pageable(
           scrollController: scrollController,
           onRefresh: viewModel.resetList,
@@ -168,8 +170,8 @@ class _CariRehberiViewState extends BaseState<CariRehberiView> {
           itemBuilder: (item) => CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E"),
         ),
       );
-
-  RefreshIndicator body() => RefreshIndicator.adaptive(
+  @Deprecated("")
+  RefreshIndicator body2() => RefreshIndicator.adaptive(
         onRefresh: viewModel.resetList,
         child: Observer(
           builder: (_) {

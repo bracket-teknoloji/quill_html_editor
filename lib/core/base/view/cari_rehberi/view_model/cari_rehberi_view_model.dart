@@ -66,8 +66,8 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
     sayfa: 1,
     siralama: "AZ",
   );
-
   @override
+  @action
   Future<void> changeScrollStatus(ScrollPosition position) async {
     super.changeScrollStatus(position);
     if (position.pixels == position.maxScrollExtent && dahaVarMi) {

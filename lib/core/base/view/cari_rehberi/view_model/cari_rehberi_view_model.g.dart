@@ -159,6 +159,16 @@ mixin _$CariRehberiViewModel on _CariRehberiViewModelBase, Store {
     });
   }
 
+  late final _$changeScrollStatusAsyncAction = AsyncAction(
+      '_CariRehberiViewModelBase.changeScrollStatus',
+      context: context);
+
+  @override
+  Future<void> changeScrollStatus(ScrollPosition position) {
+    return _$changeScrollStatusAsyncAction
+        .run(() => super.changeScrollStatus(position));
+  }
+
   late final _$resetListAsyncAction =
       AsyncAction('_CariRehberiViewModelBase.resetList', context: context);
 
