@@ -163,7 +163,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   Future<void> getData() async {
     final result = await networkManager.dioGet<CariListesiModel>(
       path: ApiUrls.getCariler,
-      queryParameters: cariListesiRequestModel?.copyWith(sayfa: page, searchText: searchText).toJsonWithList(),
+      queryParameters: cariListesiRequestModel?.copyWith(sayfa: page, filterText: searchText ?? "", eFaturaGoster: parametreModel.eFaturaAktif).toJsonWithList(),
       bodyModel: CariListesiModel(),
     );
     if (result.isSuccess) {

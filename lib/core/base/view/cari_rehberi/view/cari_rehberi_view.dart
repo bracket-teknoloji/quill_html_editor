@@ -1,4 +1,3 @@
-
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -125,6 +124,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                 searchFocusNode.requestFocus();
               } else {
                 viewModel.setSearchText("");
+                viewModel.resetList();
               }
             },
             icon: Observer(
