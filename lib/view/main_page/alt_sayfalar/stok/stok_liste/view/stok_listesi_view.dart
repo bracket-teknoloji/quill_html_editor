@@ -884,6 +884,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             iconWidget: Icons.edit,
             value: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
           ).yetkiKontrol(yetkiController.stokKartiDuzenleme),
+          if (yetkiController.stokKartiSilme) BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")),
           BottomSheetModel(
             title: "Hareketler",
             iconWidget: Icons.sync_alt_outlined,
@@ -928,12 +929,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             },
           ),
         ].nullCheckWithGeneric;
-        if (yetkiController.stokKartiSilme) {
-          children2.insert(
-            0,
-            BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")),
-          );
-        }
 
         final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
         final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
