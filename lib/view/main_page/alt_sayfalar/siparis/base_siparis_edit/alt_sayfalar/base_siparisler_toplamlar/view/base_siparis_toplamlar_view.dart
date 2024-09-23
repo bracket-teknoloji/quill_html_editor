@@ -483,12 +483,15 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                     ),
                     suffix: IconButton(
                       onPressed: () async {
-                        final date = await showDatePicker(
-                          context: context,
+                        final date = await dialogManager.showDateTimePicker(
                           initialDate: model.vadeTarihi ?? DateTime.now(),
-                          firstDate: model.tarih ?? DateTime.now(),
-                          lastDate: DateTime.now().add(const Duration(days: 365)),
                         );
+                        // final date = await showDatePicker(
+                        //   context: context,
+                        //   initialDate: model.vadeTarihi ?? DateTime.now(),
+                        //   firstDate: model.tarih ?? DateTime.now(),
+                        //   lastDate: DateTime.now().add(const Duration(days: 365)),
+                        // );
                         if (date != null) {
                           // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
                           viewModel.setVadeTarihi(date);
