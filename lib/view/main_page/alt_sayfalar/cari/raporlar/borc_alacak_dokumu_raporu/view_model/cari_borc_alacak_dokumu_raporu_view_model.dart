@@ -18,7 +18,7 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariBorcAlacakDokumu",
     standart: true,
-    dicParams: DicParams()..sirala = "CARI_KODU",
+    dicParams: DicParams()..sirala = "BAKIYE",
   );
 
   @observable
@@ -32,6 +32,9 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
 
   @action
   void setSirala(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(sirala: value));
+
+  @action
+  void setPlasiyer(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(plasiyerKodu: value));
 
   @action
   void setBastar(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(bastar: value));
