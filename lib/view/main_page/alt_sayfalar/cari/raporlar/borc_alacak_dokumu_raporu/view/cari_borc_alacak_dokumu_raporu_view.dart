@@ -78,7 +78,7 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
                       if (result != null) {
-                        _siralaController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
+                        _plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
                         viewModel.setPlasiyer(result.plasiyerKodu);
                       }
                     },
