@@ -96,6 +96,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       }
       BottomSheetResponseModel.instance.clear();
       BottomSheetStateManager().deleteIsSelectedListMap();
+      viewModel.changeSiralama(CacheManager.getProfilParametre.cariListesiSirala);
       await viewModel.getData();
     });
     super.initState();

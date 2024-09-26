@@ -88,6 +88,19 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   }
 
   @override
+  void setPlasiyer(String? value) {
+    final _$actionInfo =
+        _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
+            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setPlasiyer');
+    try {
+      return super.setPlasiyer(value);
+    } finally {
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBastar(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(

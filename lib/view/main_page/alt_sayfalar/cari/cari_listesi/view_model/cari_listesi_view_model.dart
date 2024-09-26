@@ -3,6 +3,7 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/listable_mixin.dart";
@@ -167,7 +168,10 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   void changeDahaVarMi(bool value) => dahaVarMi = value;
 
   @action
-  void changeSiralama(String? value) => cariRequestModel = cariRequestModel.copyWith(siralama: value);
+  void changeSiralama(String? value) {
+    cariRequestModel = cariRequestModel.copyWith(siralama: value);
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(cariListesiSirala: value ?? "AZ"));
+  }
 
   @action
   void changeFilterText(String? value) => cariRequestModel = cariRequestModel.copyWith(filterText: value ?? "");
