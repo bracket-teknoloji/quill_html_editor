@@ -101,7 +101,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       iconWidget: Icons.picture_as_pdf_outlined,
                       onTap: () async {
                         Get.back();
-                        final result = await networkManager.dioGet(
+                        final result = await networkManager.dioPost(
                           path: ApiUrls.getBelgeler,
                           bodyModel: OlcumPdfModel(),
                           showLoading: true,
@@ -137,7 +137,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       iconWidget: Icons.picture_as_pdf_outlined,
                       onTap: () async {
                         Get.back();
-                        final result = await networkManager.dioGet(
+                        final result = await networkManager.dioPost(
                           path: ApiUrls.getBelgeler,
                           bodyModel: OlcumPdfModel(),
                           showLoading: true,

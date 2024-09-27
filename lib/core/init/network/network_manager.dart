@@ -331,13 +331,13 @@ class NetworkManager {
 
   Future<GenericResponseModel<BasePdfModel>> getTeknikResimPdf(OlcumPdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioGet<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "T").toJson());
+    final response = await dioPost<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "T").toJson());
     return response;
   }
 
   Future<GenericResponseModel<BasePdfModel>> getKontrolPlaniPdf(OlcumPdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioGet<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "K").toJson());
+    final response = await dioPost<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "K").toJson());
     return response;
   }
 

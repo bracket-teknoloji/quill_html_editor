@@ -79,7 +79,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                       iconWidget: Icons.picture_as_pdf_outlined,
                       onTap: () async {
                         Get.back();
-                        final result = await networkManager.dioGet(
+                        final result = await networkManager.dioPost(
                           path: ApiUrls.getBelgeler,
                           bodyModel: OlcumPdfModel(),
                           showLoading: true,
@@ -115,7 +115,7 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                       iconWidget: Icons.picture_as_pdf_outlined,
                       onTap: () async {
                         Get.back();
-                        final result = await networkManager.dioGet(
+                        final result = await networkManager.dioPost(
                           path: ApiUrls.getBelgeler,
                           bodyModel: OlcumPdfModel(),
                           showLoading: true,

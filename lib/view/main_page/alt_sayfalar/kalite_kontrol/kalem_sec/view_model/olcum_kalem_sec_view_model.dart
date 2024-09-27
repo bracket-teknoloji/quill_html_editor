@@ -60,7 +60,7 @@ abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getOlcumBelgeStok, bodyModel: OlcumBelgeModel(), data: requestModel?.forKalemSec);
+    final result = await networkManager.dioPost(path: ApiUrls.getOlcumBelgeStok, bodyModel: OlcumBelgeModel(), data: requestModel?.forKalemSec);
     // if (result.isSuccess) {
     //   final List<OlcumBelgeModel>? newList = (result.data as List?)?.map((e) => e as OlcumBelgeModel).toList().cast<OlcumBelgeModel>();
     //   setOlcumBelgeModel(newList);
