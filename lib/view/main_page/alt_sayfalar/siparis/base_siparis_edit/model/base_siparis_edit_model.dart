@@ -1700,6 +1700,8 @@ class KalemModel with NetworkManagerMixin {
 
   double get brutTutar => (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
 
+  double get getBrutTutar => brutTutar + (otvTutar ?? 0);
+
   double get dovizliOTVTutar => dovizliMi ? (otvTutar ?? 0) / (dovizKuru ?? 1) : 0;
 
   double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
@@ -1713,6 +1715,8 @@ class KalemModel with NetworkManagerMixin {
   double get getAraToplamTutari => araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
 
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
+
+  double get kalemToplamTutari => araToplamTutari + (otvTutar ?? 0);
 
   double get genelToplamTutari => araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? 0 : kdvTutari) + (otvTutar ?? 0);
 
