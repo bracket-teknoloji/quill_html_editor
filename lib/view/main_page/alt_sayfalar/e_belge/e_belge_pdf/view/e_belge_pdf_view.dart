@@ -7,6 +7,7 @@ import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:open_filex/open_filex.dart";
+import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
@@ -145,11 +146,13 @@ class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   }
 
   void fileChecker() {
-    // if (viewModel.pdfFile != null) {
-    //   Share.shareXFiles([XFile(viewModel.pdfFile!.path, lastModified: viewModel.eBelgePdfModel?.fileModel?.dosyaTarihi)], subject: "Pdf Paylaşımı");
-    // } else {
-    //   dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
-    // }
+    if (viewModel.eBelgePdfModel?.fileModel?.byteData != null) {
+      XFile? file;
+      if (!kIsWeb) file = XFile.fromData(base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""), mimeType: "application/pdf", name: viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "file");
+      Share.shareXFiles([file!], subject: "Pdf Paylaşımı");
+    } else {
+      dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
+    }
   }
 
   Future<void> secenekler() async {
