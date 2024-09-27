@@ -28,6 +28,7 @@ abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
     "Tümü",
     "Ölçüm Yapılanlar",
     "Ölçüm Yapılmayanlar",
+    "Ölçümü Devam Edilenler",
   ];
 
   final Map<String, String> siralaMap = {
