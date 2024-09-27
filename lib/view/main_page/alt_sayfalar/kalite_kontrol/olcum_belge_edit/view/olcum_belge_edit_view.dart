@@ -77,7 +77,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab().yetkiVarMi(viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet),
+        floatingActionButton: Observer(
+          builder: (_) => fab().yetkiVarMi(viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet),
+        ),
         body: body(),
       );
 
