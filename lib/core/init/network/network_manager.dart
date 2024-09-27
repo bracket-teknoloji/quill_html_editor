@@ -403,7 +403,7 @@ class NetworkManager {
 
   Future<List<double>?> getKDVOrani() async {
     final result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, showLoading: true, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
-    return jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]);
+    return (jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]) as List).map((e) => e as double).toList();
   }
 
   Future<GenericResponseModel<AccountResponseModel>> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
