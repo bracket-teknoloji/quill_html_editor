@@ -30,6 +30,14 @@ class KullaniciYetkiModel with _$KullaniciYetkiModel {
     @JsonKey(name: "profilKodu") String? profilKodu,
     @JsonKey(name: "sirket_aktifDepolar") List<int>? sirketAktifDepolar,
     @JsonKey(name: "sirket_DAT_YetkiliDepolar") List<int>? sirketDatYetkiliDepolar,
+    @JsonKey(name: "ADMIN_MI") bool? adminMi,
+    @JsonKey(name: "varsayilan_PlasiyerTanimi") String? varsayilanPlasiyerTanimi,
+    @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin") bool? siparisMusSipBakiyesizStokSecilmesin,
+    @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin") bool? sevkiyatSatisIrsBakiyesizStokSecilmesin,
+    @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin") bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
+    @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
+    @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
+    @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi,
   }) = _KullaniciYetkiModel;
 
   factory KullaniciYetkiModel.fromJson(String? json) => _$KullaniciYetkiModelFromJson(jsonDecode(json ?? "{}"));

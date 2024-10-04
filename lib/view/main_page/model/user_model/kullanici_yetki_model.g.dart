@@ -43,6 +43,17 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
           (json['sirket_DAT_YetkiliDepolar'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
               .toList(),
+      adminMi: json['ADMIN_MI'] as bool?,
+      varsayilanPlasiyerTanimi: json['varsayilan_PlasiyerTanimi'] as String?,
+      siparisMusSipBakiyesizStokSecilmesin:
+          json['siparis_MusSip_BakiyesizStokSecilmesin'] as bool?,
+      sevkiyatSatisIrsBakiyesizStokSecilmesin:
+          json['sevkiyat_SatisIrs_BakiyesizStokSecilmesin'] as bool?,
+      sevkiyatSatisFatBakiyesizStokSecilmesin:
+          json['sevkiyat_SatisFat_BakiyesizStokSecilmesin'] as bool?,
+      plasiyerKodu: json['plasiyerKodu'] as String?,
+      varsayilanPlasiyerKodu: json['varsayilan_PlasiyerKodu'] as String?,
+      kkartiTahsilatYontemi: json['kkartiTahsilatYontemi'] as String?,
     );
 
 Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
@@ -82,5 +93,16 @@ Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
   writeNotNull('profilKodu', instance.profilKodu);
   writeNotNull('sirket_aktifDepolar', instance.sirketAktifDepolar);
   writeNotNull('sirket_DAT_YetkiliDepolar', instance.sirketDatYetkiliDepolar);
+  writeNotNull('ADMIN_MI', instance.adminMi);
+  writeNotNull('varsayilan_PlasiyerTanimi', instance.varsayilanPlasiyerTanimi);
+  writeNotNull('siparis_MusSip_BakiyesizStokSecilmesin',
+      instance.siparisMusSipBakiyesizStokSecilmesin);
+  writeNotNull('sevkiyat_SatisIrs_BakiyesizStokSecilmesin',
+      instance.sevkiyatSatisIrsBakiyesizStokSecilmesin);
+  writeNotNull('sevkiyat_SatisFat_BakiyesizStokSecilmesin',
+      instance.sevkiyatSatisFatBakiyesizStokSecilmesin);
+  writeNotNull('plasiyerKodu', instance.plasiyerKodu);
+  writeNotNull('varsayilan_PlasiyerKodu', instance.varsayilanPlasiyerKodu);
+  writeNotNull('kkartiTahsilatYontemi', instance.kkartiTahsilatYontemi);
   return val;
 }

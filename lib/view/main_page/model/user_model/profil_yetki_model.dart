@@ -1931,6 +1931,36 @@ class ProfilYetkiModel {
   bool? sigmaTeknikResim;
   @JsonKey(name: "sigma_KontrolPlani")
   bool? sigmaKontrolPlani;
+  @JsonKey(name: "transfer_DAT_EIrsaliyeIsaretDurum")
+  String? transferDatEIrsaliyeIsaretDurum;
+  @JsonKey(name: "transfer_AC_EIrsaliyeIsaretDurum")
+  String? transferAcEIrsaliyeIsaretDurum;
+  @JsonKey(name: "sevkiyat_SatisIrsaliyesi_EIrsaliyeIsaretDurum")
+  String? sevkiyatSatisIrsaliyesiEIrsaliyeIsaretDurum;
+  @JsonKey(name: "sayim_AyniBarkodEngelle")
+  bool? sayimAyniBarkodEngelle;
+  @JsonKey(name: "siparis_MusSip_Bildirim")
+  bool? siparisMusSipBildirim;
+  @JsonKey(name: "siparis_SatSip_Bildirim")
+  bool? siparisSatSipBildirim;
+  @JsonKey(name: "stok_StokKarti_FiyatlariGizle")
+  bool? stokStokKartiFiyatlariGizle;
+  @JsonKey(name: "stok_BarkodTanimlama_ZorunluBarkodTipi")
+  String? stokBarkodTanimlamaZorunluBarkodTipi;
+  @JsonKey(name: "stok_CariStokFiltresiUygulansin")
+  bool? stokCariStokFiltresiUygulansin;
+  @JsonKey(name: "cari_KodDegistir")
+  bool? cariKodDegistir;
+  @JsonKey(name: "cari_Rap_DovizliBorcAlacakDokumu")
+  bool? cariRapDovizliBorcAlacakDokumu;
+  @JsonKey(name: "cari_Rap_UrunGrubunaGoreSatis")
+  bool? cariRapUrunGrubunaGoreSatis;
+  @JsonKey(name: "finans_Kasa_NakitTahsilat_KasaBakGizle")
+  bool? finansKasaNakitTahsilatKasaBakGizle;
+  @JsonKey(name: "finans_Kasa_NakitOdeme_KasaBakGizle")
+  bool? finansKasaNakitOdemeKasaBakGizle;
+  @JsonKey(name: "finans_Kasa_KacGunlukKayitlarListelensin")
+  int? finansKasaKacGunlukKayitlarListelensin;
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

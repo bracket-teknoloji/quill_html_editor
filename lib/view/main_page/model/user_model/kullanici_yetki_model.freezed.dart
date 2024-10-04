@@ -118,6 +118,47 @@ mixin _$KullaniciYetkiModel {
   @JsonKey(name: "sirket_DAT_YetkiliDepolar")
   set sirketDatYetkiliDepolar(List<int>? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: "ADMIN_MI")
+  bool? get adminMi => throw _privateConstructorUsedError;
+  @JsonKey(name: "ADMIN_MI")
+  set adminMi(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_PlasiyerTanimi")
+  String? get varsayilanPlasiyerTanimi => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_PlasiyerTanimi")
+  set varsayilanPlasiyerTanimi(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+  bool? get siparisMusSipBakiyesizStokSecilmesin =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+  set siparisMusSipBakiyesizStokSecilmesin(bool? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+  bool? get sevkiyatSatisIrsBakiyesizStokSecilmesin =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+  set sevkiyatSatisIrsBakiyesizStokSecilmesin(bool? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+  bool? get sevkiyatSatisFatBakiyesizStokSecilmesin =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+  set sevkiyatSatisFatBakiyesizStokSecilmesin(bool? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "plasiyerKodu")
+  String? get plasiyerKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "plasiyerKodu")
+  set plasiyerKodu(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_PlasiyerKodu")
+  String? get varsayilanPlasiyerKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_PlasiyerKodu")
+  set varsayilanPlasiyerKodu(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "kkartiTahsilatYontemi")
+  String? get kkartiTahsilatYontemi => throw _privateConstructorUsedError;
+  @JsonKey(name: "kkartiTahsilatYontemi")
+  set kkartiTahsilatYontemi(String? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this KullaniciYetkiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -163,7 +204,19 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       @JsonKey(name: "profilKodu") String? profilKodu,
       @JsonKey(name: "sirket_aktifDepolar") List<int>? sirketAktifDepolar,
       @JsonKey(name: "sirket_DAT_YetkiliDepolar")
-      List<int>? sirketDatYetkiliDepolar});
+      List<int>? sirketDatYetkiliDepolar,
+      @JsonKey(name: "ADMIN_MI") bool? adminMi,
+      @JsonKey(name: "varsayilan_PlasiyerTanimi")
+      String? varsayilanPlasiyerTanimi,
+      @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+      bool? siparisMusSipBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisIrsBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
+      @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
+      @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
+      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi});
 }
 
 /// @nodoc
@@ -202,6 +255,14 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
     Object? profilKodu = freezed,
     Object? sirketAktifDepolar = freezed,
     Object? sirketDatYetkiliDepolar = freezed,
+    Object? adminMi = freezed,
+    Object? varsayilanPlasiyerTanimi = freezed,
+    Object? siparisMusSipBakiyesizStokSecilmesin = freezed,
+    Object? sevkiyatSatisIrsBakiyesizStokSecilmesin = freezed,
+    Object? sevkiyatSatisFatBakiyesizStokSecilmesin = freezed,
+    Object? plasiyerKodu = freezed,
+    Object? varsayilanPlasiyerKodu = freezed,
+    Object? kkartiTahsilatYontemi = freezed,
   }) {
     return _then(_value.copyWith(
       bagliPlasiyerler: freezed == bagliPlasiyerler
@@ -289,6 +350,41 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
           ? _value.sirketDatYetkiliDepolar
           : sirketDatYetkiliDepolar // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      adminMi: freezed == adminMi
+          ? _value.adminMi
+          : adminMi // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      varsayilanPlasiyerTanimi: freezed == varsayilanPlasiyerTanimi
+          ? _value.varsayilanPlasiyerTanimi
+          : varsayilanPlasiyerTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siparisMusSipBakiyesizStokSecilmesin: freezed ==
+              siparisMusSipBakiyesizStokSecilmesin
+          ? _value.siparisMusSipBakiyesizStokSecilmesin
+          : siparisMusSipBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sevkiyatSatisIrsBakiyesizStokSecilmesin: freezed ==
+              sevkiyatSatisIrsBakiyesizStokSecilmesin
+          ? _value.sevkiyatSatisIrsBakiyesizStokSecilmesin
+          : sevkiyatSatisIrsBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sevkiyatSatisFatBakiyesizStokSecilmesin: freezed ==
+              sevkiyatSatisFatBakiyesizStokSecilmesin
+          ? _value.sevkiyatSatisFatBakiyesizStokSecilmesin
+          : sevkiyatSatisFatBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      plasiyerKodu: freezed == plasiyerKodu
+          ? _value.plasiyerKodu
+          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanPlasiyerKodu: freezed == varsayilanPlasiyerKodu
+          ? _value.varsayilanPlasiyerKodu
+          : varsayilanPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kkartiTahsilatYontemi: freezed == kkartiTahsilatYontemi
+          ? _value.kkartiTahsilatYontemi
+          : kkartiTahsilatYontemi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -329,7 +425,19 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
       @JsonKey(name: "profilKodu") String? profilKodu,
       @JsonKey(name: "sirket_aktifDepolar") List<int>? sirketAktifDepolar,
       @JsonKey(name: "sirket_DAT_YetkiliDepolar")
-      List<int>? sirketDatYetkiliDepolar});
+      List<int>? sirketDatYetkiliDepolar,
+      @JsonKey(name: "ADMIN_MI") bool? adminMi,
+      @JsonKey(name: "varsayilan_PlasiyerTanimi")
+      String? varsayilanPlasiyerTanimi,
+      @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+      bool? siparisMusSipBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisIrsBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
+      @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
+      @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
+      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi});
 }
 
 /// @nodoc
@@ -366,6 +474,14 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
     Object? profilKodu = freezed,
     Object? sirketAktifDepolar = freezed,
     Object? sirketDatYetkiliDepolar = freezed,
+    Object? adminMi = freezed,
+    Object? varsayilanPlasiyerTanimi = freezed,
+    Object? siparisMusSipBakiyesizStokSecilmesin = freezed,
+    Object? sevkiyatSatisIrsBakiyesizStokSecilmesin = freezed,
+    Object? sevkiyatSatisFatBakiyesizStokSecilmesin = freezed,
+    Object? plasiyerKodu = freezed,
+    Object? varsayilanPlasiyerKodu = freezed,
+    Object? kkartiTahsilatYontemi = freezed,
   }) {
     return _then(_$KullaniciYetkiModelImpl(
       bagliPlasiyerler: freezed == bagliPlasiyerler
@@ -453,6 +569,41 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
           ? _value.sirketDatYetkiliDepolar
           : sirketDatYetkiliDepolar // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      adminMi: freezed == adminMi
+          ? _value.adminMi
+          : adminMi // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      varsayilanPlasiyerTanimi: freezed == varsayilanPlasiyerTanimi
+          ? _value.varsayilanPlasiyerTanimi
+          : varsayilanPlasiyerTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siparisMusSipBakiyesizStokSecilmesin: freezed ==
+              siparisMusSipBakiyesizStokSecilmesin
+          ? _value.siparisMusSipBakiyesizStokSecilmesin
+          : siparisMusSipBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sevkiyatSatisIrsBakiyesizStokSecilmesin: freezed ==
+              sevkiyatSatisIrsBakiyesizStokSecilmesin
+          ? _value.sevkiyatSatisIrsBakiyesizStokSecilmesin
+          : sevkiyatSatisIrsBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      sevkiyatSatisFatBakiyesizStokSecilmesin: freezed ==
+              sevkiyatSatisFatBakiyesizStokSecilmesin
+          ? _value.sevkiyatSatisFatBakiyesizStokSecilmesin
+          : sevkiyatSatisFatBakiyesizStokSecilmesin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      plasiyerKodu: freezed == plasiyerKodu
+          ? _value.plasiyerKodu
+          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanPlasiyerKodu: freezed == varsayilanPlasiyerKodu
+          ? _value.varsayilanPlasiyerKodu
+          : varsayilanPlasiyerKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kkartiTahsilatYontemi: freezed == kkartiTahsilatYontemi
+          ? _value.kkartiTahsilatYontemi
+          : kkartiTahsilatYontemi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -488,8 +639,18 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
       this.cariRehPlaEslesmesinBelgeTipleri,
       @JsonKey(name: "profilKodu") this.profilKodu,
       @JsonKey(name: "sirket_aktifDepolar") this.sirketAktifDepolar,
-      @JsonKey(name: "sirket_DAT_YetkiliDepolar")
-      this.sirketDatYetkiliDepolar});
+      @JsonKey(name: "sirket_DAT_YetkiliDepolar") this.sirketDatYetkiliDepolar,
+      @JsonKey(name: "ADMIN_MI") this.adminMi,
+      @JsonKey(name: "varsayilan_PlasiyerTanimi") this.varsayilanPlasiyerTanimi,
+      @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+      this.siparisMusSipBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+      this.sevkiyatSatisIrsBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+      this.sevkiyatSatisFatBakiyesizStokSecilmesin,
+      @JsonKey(name: "plasiyerKodu") this.plasiyerKodu,
+      @JsonKey(name: "varsayilan_PlasiyerKodu") this.varsayilanPlasiyerKodu,
+      @JsonKey(name: "kkartiTahsilatYontemi") this.kkartiTahsilatYontemi});
 
   factory _$KullaniciYetkiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KullaniciYetkiModelImplFromJson(json);
@@ -557,10 +718,34 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   @override
   @JsonKey(name: "sirket_DAT_YetkiliDepolar")
   List<int>? sirketDatYetkiliDepolar;
+  @override
+  @JsonKey(name: "ADMIN_MI")
+  bool? adminMi;
+  @override
+  @JsonKey(name: "varsayilan_PlasiyerTanimi")
+  String? varsayilanPlasiyerTanimi;
+  @override
+  @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+  bool? siparisMusSipBakiyesizStokSecilmesin;
+  @override
+  @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+  bool? sevkiyatSatisIrsBakiyesizStokSecilmesin;
+  @override
+  @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+  bool? sevkiyatSatisFatBakiyesizStokSecilmesin;
+  @override
+  @JsonKey(name: "plasiyerKodu")
+  String? plasiyerKodu;
+  @override
+  @JsonKey(name: "varsayilan_PlasiyerKodu")
+  String? varsayilanPlasiyerKodu;
+  @override
+  @JsonKey(name: "kkartiTahsilatYontemi")
+  String? kkartiTahsilatYontemi;
 
   @override
   String toString() {
-    return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar)';
+    return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar, adminMi: $adminMi, varsayilanPlasiyerTanimi: $varsayilanPlasiyerTanimi, siparisMusSipBakiyesizStokSecilmesin: $siparisMusSipBakiyesizStokSecilmesin, sevkiyatSatisIrsBakiyesizStokSecilmesin: $sevkiyatSatisIrsBakiyesizStokSecilmesin, sevkiyatSatisFatBakiyesizStokSecilmesin: $sevkiyatSatisFatBakiyesizStokSecilmesin, plasiyerKodu: $plasiyerKodu, varsayilanPlasiyerKodu: $varsayilanPlasiyerKodu, kkartiTahsilatYontemi: $kkartiTahsilatYontemi)';
   }
 
   /// Create a copy of KullaniciYetkiModel
@@ -609,7 +794,20 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       @JsonKey(name: "profilKodu") String? profilKodu,
       @JsonKey(name: "sirket_aktifDepolar") List<int>? sirketAktifDepolar,
       @JsonKey(name: "sirket_DAT_YetkiliDepolar")
-      List<int>? sirketDatYetkiliDepolar}) = _$KullaniciYetkiModelImpl;
+      List<int>? sirketDatYetkiliDepolar,
+      @JsonKey(name: "ADMIN_MI") bool? adminMi,
+      @JsonKey(name: "varsayilan_PlasiyerTanimi")
+      String? varsayilanPlasiyerTanimi,
+      @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+      bool? siparisMusSipBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisIrsBakiyesizStokSecilmesin,
+      @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+      bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
+      @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
+      @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
+      @JsonKey(name: "kkartiTahsilatYontemi")
+      String? kkartiTahsilatYontemi}) = _$KullaniciYetkiModelImpl;
 
   factory _KullaniciYetkiModel.fromJson(Map<String, dynamic> json) =
       _$KullaniciYetkiModelImpl.fromJson;
@@ -719,6 +917,46 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   List<int>? get sirketDatYetkiliDepolar;
   @JsonKey(name: "sirket_DAT_YetkiliDepolar")
   set sirketDatYetkiliDepolar(List<int>? value);
+  @override
+  @JsonKey(name: "ADMIN_MI")
+  bool? get adminMi;
+  @JsonKey(name: "ADMIN_MI")
+  set adminMi(bool? value);
+  @override
+  @JsonKey(name: "varsayilan_PlasiyerTanimi")
+  String? get varsayilanPlasiyerTanimi;
+  @JsonKey(name: "varsayilan_PlasiyerTanimi")
+  set varsayilanPlasiyerTanimi(String? value);
+  @override
+  @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+  bool? get siparisMusSipBakiyesizStokSecilmesin;
+  @JsonKey(name: "siparis_MusSip_BakiyesizStokSecilmesin")
+  set siparisMusSipBakiyesizStokSecilmesin(bool? value);
+  @override
+  @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+  bool? get sevkiyatSatisIrsBakiyesizStokSecilmesin;
+  @JsonKey(name: "sevkiyat_SatisIrs_BakiyesizStokSecilmesin")
+  set sevkiyatSatisIrsBakiyesizStokSecilmesin(bool? value);
+  @override
+  @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+  bool? get sevkiyatSatisFatBakiyesizStokSecilmesin;
+  @JsonKey(name: "sevkiyat_SatisFat_BakiyesizStokSecilmesin")
+  set sevkiyatSatisFatBakiyesizStokSecilmesin(bool? value);
+  @override
+  @JsonKey(name: "plasiyerKodu")
+  String? get plasiyerKodu;
+  @JsonKey(name: "plasiyerKodu")
+  set plasiyerKodu(String? value);
+  @override
+  @JsonKey(name: "varsayilan_PlasiyerKodu")
+  String? get varsayilanPlasiyerKodu;
+  @JsonKey(name: "varsayilan_PlasiyerKodu")
+  set varsayilanPlasiyerKodu(String? value);
+  @override
+  @JsonKey(name: "kkartiTahsilatYontemi")
+  String? get kkartiTahsilatYontemi;
+  @JsonKey(name: "kkartiTahsilatYontemi")
+  set kkartiTahsilatYontemi(String? value);
 
   /// Create a copy of KullaniciYetkiModel
   /// with the given fields replaced by the non-null parameter values.

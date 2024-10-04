@@ -1753,7 +1753,33 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sigmaOlcumGirDuzelt = json['sigma_OlcumGir_Duzelt'] as bool?
       ..sigmaOlcumGirSil = json['sigma_OlcumGir_Sil'] as bool?
       ..sigmaTeknikResim = json['sigma_TeknikResim'] as bool?
-      ..sigmaKontrolPlani = json['sigma_KontrolPlani'] as bool?;
+      ..sigmaKontrolPlani = json['sigma_KontrolPlani'] as bool?
+      ..transferDatEIrsaliyeIsaretDurum =
+          json['transfer_DAT_EIrsaliyeIsaretDurum'] as String?
+      ..transferAcEIrsaliyeIsaretDurum =
+          json['transfer_AC_EIrsaliyeIsaretDurum'] as String?
+      ..sevkiyatSatisIrsaliyesiEIrsaliyeIsaretDurum =
+          json['sevkiyat_SatisIrsaliyesi_EIrsaliyeIsaretDurum'] as String?
+      ..sayimAyniBarkodEngelle = json['sayim_AyniBarkodEngelle'] as bool?
+      ..siparisMusSipBildirim = json['siparis_MusSip_Bildirim'] as bool?
+      ..siparisSatSipBildirim = json['siparis_SatSip_Bildirim'] as bool?
+      ..stokStokKartiFiyatlariGizle =
+          json['stok_StokKarti_FiyatlariGizle'] as bool?
+      ..stokBarkodTanimlamaZorunluBarkodTipi =
+          json['stok_BarkodTanimlama_ZorunluBarkodTipi'] as String?
+      ..stokCariStokFiltresiUygulansin =
+          json['stok_CariStokFiltresiUygulansin'] as bool?
+      ..cariKodDegistir = json['cari_KodDegistir'] as bool?
+      ..cariRapDovizliBorcAlacakDokumu =
+          json['cari_Rap_DovizliBorcAlacakDokumu'] as bool?
+      ..cariRapUrunGrubunaGoreSatis =
+          json['cari_Rap_UrunGrubunaGoreSatis'] as bool?
+      ..finansKasaNakitTahsilatKasaBakGizle =
+          json['finans_Kasa_NakitTahsilat_KasaBakGizle'] as bool?
+      ..finansKasaNakitOdemeKasaBakGizle =
+          json['finans_Kasa_NakitOdeme_KasaBakGizle'] as bool?
+      ..finansKasaKacGunlukKayitlarListelensin =
+          (json['finans_Kasa_KacGunlukKayitlarListelensin'] as num?)?.toInt();
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   final val = <String, dynamic>{};
@@ -3262,6 +3288,32 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
   writeNotNull('sigma_OlcumGir_Sil', instance.sigmaOlcumGirSil);
   writeNotNull('sigma_TeknikResim', instance.sigmaTeknikResim);
   writeNotNull('sigma_KontrolPlani', instance.sigmaKontrolPlani);
+  writeNotNull('transfer_DAT_EIrsaliyeIsaretDurum',
+      instance.transferDatEIrsaliyeIsaretDurum);
+  writeNotNull('transfer_AC_EIrsaliyeIsaretDurum',
+      instance.transferAcEIrsaliyeIsaretDurum);
+  writeNotNull('sevkiyat_SatisIrsaliyesi_EIrsaliyeIsaretDurum',
+      instance.sevkiyatSatisIrsaliyesiEIrsaliyeIsaretDurum);
+  writeNotNull('sayim_AyniBarkodEngelle', instance.sayimAyniBarkodEngelle);
+  writeNotNull('siparis_MusSip_Bildirim', instance.siparisMusSipBildirim);
+  writeNotNull('siparis_SatSip_Bildirim', instance.siparisSatSipBildirim);
+  writeNotNull(
+      'stok_StokKarti_FiyatlariGizle', instance.stokStokKartiFiyatlariGizle);
+  writeNotNull('stok_BarkodTanimlama_ZorunluBarkodTipi',
+      instance.stokBarkodTanimlamaZorunluBarkodTipi);
+  writeNotNull('stok_CariStokFiltresiUygulansin',
+      instance.stokCariStokFiltresiUygulansin);
+  writeNotNull('cari_KodDegistir', instance.cariKodDegistir);
+  writeNotNull('cari_Rap_DovizliBorcAlacakDokumu',
+      instance.cariRapDovizliBorcAlacakDokumu);
+  writeNotNull(
+      'cari_Rap_UrunGrubunaGoreSatis', instance.cariRapUrunGrubunaGoreSatis);
+  writeNotNull('finans_Kasa_NakitTahsilat_KasaBakGizle',
+      instance.finansKasaNakitTahsilatKasaBakGizle);
+  writeNotNull('finans_Kasa_NakitOdeme_KasaBakGizle',
+      instance.finansKasaNakitOdemeKasaBakGizle);
+  writeNotNull('finans_Kasa_KacGunlukKayitlarListelensin',
+      instance.finansKasaKacGunlukKayitlarListelensin);
   return val;
 }
 
