@@ -90,7 +90,6 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       }
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
-        viewModel.setAppBarSubTitle("Dekont");
         if (viewModel.model.dekontSeri == null) return;
         // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
@@ -104,10 +103,7 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       }
       if (viewModel.model.kktYontemi == "H") {
         await getBankaSozlesmesi();
-        viewModel.setAppBarSubTitle("Hızlı Tahsilat Modülü");
         if (viewModel.model.sozlesmeKodu == null) return;
-      } else {
-        viewModel.setAppBarSubTitle("Kasa");
       }
     });
     super.initState();
