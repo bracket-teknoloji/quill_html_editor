@@ -171,10 +171,10 @@ class IslemlerMenuItemConstants<T> {
       if (cekModel.cekSenetListesiEnum.borcMu) {
         islemlerList.add(odemeDekontOlustur);
       } else {
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P", cariHesabaCirola);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P", tahsilHesabaCirola);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P", kasaTahsilEt);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "T", tahsilatDekontOlustur);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.cariHesabinaCirola, cariHesabaCirola);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.tahsilatCirola, tahsilHesabaCirola);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && _yetkiController.finansKasaIslemleri, kasaTahsilEt);
+        islemlerList.addIfConditionTrue(cekModel.yeri == "T" && cekModel.cekSenetListesiEnum.tahsilDekontu, tahsilatDekontOlustur);
       }
     } else if (islemTipi == IslemTipiEnum.tahsilatOdeme) {
       islemlerList.add(nakitOdeme(model));

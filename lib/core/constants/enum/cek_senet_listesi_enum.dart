@@ -106,6 +106,24 @@ extension CekSenetExtensions on CekSenetListesiEnum {
     }
   }
 
+  bool get tahsilatCirola => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekTahsilHesabinaCirola,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetTahsilHesabinaCirola,
+        _ => false
+      };
+
+  bool get cariHesabinaCirola => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekTahsilHesabinaCirola,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetTahsilHesabinaCirola,
+        _ => false
+      };
+
+  bool get tahsilDekontu => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekTahsilHesabinaCirola,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetTahsilHesabinaCirola,
+        _ => false
+      };
+
   String get tahsilatRoute {
     switch (this) {
       case CekSenetListesiEnum.cekMusteri:
