@@ -149,6 +149,8 @@ class ProfilYetkiModel {
   List<int>? malKabulAlisIrsBelgeTipleri;
   @JsonKey(name: "malKabul_AlisIrs_GizlenecekAlanlar")
   List<String>? malKabulAlisIrsGizlenecekAlanlar;
+  @JsonKey(name: "malKabul_AlisFat_GizlenecekAlanlar")
+  List<String>? malKabulAlisFatGizlenecekAlanlar;
   @JsonKey(name: "malKabul_AlisIrs_AciklamaAlanlari")
   List<int>? malKabulAlisIrsAciklamaAlanlari;
   @JsonKey(name: "malKabul_SatinAlma")
@@ -703,6 +705,12 @@ class ProfilYetkiModel {
   List<int>? sevkiyatSatisFatAciklamaAlanlari;
   @JsonKey(name: "sevkiyat_SatisFat_BosGecilmeyecekAlanlar")
   List<String>? sevkiyatSatisFatBosGecilmeyecekAlanlar;
+  @JsonKey(name: "sevkiyat_SatisIrs_BosGecilmeyecekAlanlar")
+  List<String>? sevkiyatSatisIrsBosGecilmeyecekAlanlar;
+  @JsonKey(name: "malKabul_AlisFat_BosGecilmeyecekAlanlar")
+  List<String>? malKabulAlisFatBosGecilmeyecekAlanlar;
+  @JsonKey(name: "malKabul_AlisIrs_BosGecilmeyecekAlanlar")
+  List<String>? malKabulAlisIrsBosGecilmeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_GizlenecekAlanlar")
   List<String>? sevkiyatSatisFatGizlenecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisFat_DegismeyecekAlanlar")
@@ -1779,6 +1787,8 @@ class ProfilYetkiModel {
   List<String>? malKabulAlisIrsDegismeyecekAlanlar;
   @JsonKey(name: "malKabul_AlisIrs_AciklamaDuzenle")
   bool? malKabulAlisIrsAciklamaDuzenle;
+  @JsonKey(name: "malKabul_AlisFat_DegismeyecekAlanlar")
+  List<String>? malKabulAlisFatDegismeyecekAlanlar;
   @JsonKey(name: "malKabul_AlisFat_AciklamaDuzenle")
   bool? malKabulAlisFatAciklamaDuzenle;
   @JsonKey(name: "malKabul_AlisFat_TekrarEdenBarkod")

@@ -167,6 +167,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['malKabul_AlisIrs_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
+      ..malKabulAlisFatGizlenecekAlanlar =
+          (json['malKabul_AlisFat_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
       ..malKabulAlisIrsAciklamaAlanlari =
           (json['malKabul_AlisIrs_AciklamaAlanlari'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
@@ -683,6 +687,18 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..sevkiyatSatisFatBosGecilmeyecekAlanlar =
           (json['sevkiyat_SatisFat_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..sevkiyatSatisIrsBosGecilmeyecekAlanlar =
+          (json['sevkiyat_SatisIrs_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..malKabulAlisFatBosGecilmeyecekAlanlar =
+          (json['malKabul_AlisFat_BosGecilmeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
+      ..malKabulAlisIrsBosGecilmeyecekAlanlar =
+          (json['malKabul_AlisIrs_BosGecilmeyecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList()
       ..sevkiyatSatisFatGizlenecekAlanlar =
@@ -1601,6 +1617,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
               .toList()
       ..malKabulAlisIrsAciklamaDuzenle =
           json['malKabul_AlisIrs_AciklamaDuzenle'] as bool?
+      ..malKabulAlisFatDegismeyecekAlanlar =
+          (json['malKabul_AlisFat_DegismeyecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList()
       ..malKabulAlisFatAciklamaDuzenle =
           json['malKabul_AlisFat_AciklamaDuzenle'] as bool?
       ..malKabulAlisFatTekrarEdenBarkod =
@@ -1848,6 +1868,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       'malKabul_AlisIrs_BelgeTipleri', instance.malKabulAlisIrsBelgeTipleri);
   writeNotNull('malKabul_AlisIrs_GizlenecekAlanlar',
       instance.malKabulAlisIrsGizlenecekAlanlar);
+  writeNotNull('malKabul_AlisFat_GizlenecekAlanlar',
+      instance.malKabulAlisFatGizlenecekAlanlar);
   writeNotNull('malKabul_AlisIrs_AciklamaAlanlari',
       instance.malKabulAlisIrsAciklamaAlanlari);
   writeNotNull('malKabul_SatinAlma', instance.malKabulSatinAlma);
@@ -2327,6 +2349,12 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.sevkiyatSatisFatAciklamaAlanlari);
   writeNotNull('sevkiyat_SatisFat_BosGecilmeyecekAlanlar',
       instance.sevkiyatSatisFatBosGecilmeyecekAlanlar);
+  writeNotNull('sevkiyat_SatisIrs_BosGecilmeyecekAlanlar',
+      instance.sevkiyatSatisIrsBosGecilmeyecekAlanlar);
+  writeNotNull('malKabul_AlisFat_BosGecilmeyecekAlanlar',
+      instance.malKabulAlisFatBosGecilmeyecekAlanlar);
+  writeNotNull('malKabul_AlisIrs_BosGecilmeyecekAlanlar',
+      instance.malKabulAlisIrsBosGecilmeyecekAlanlar);
   writeNotNull('sevkiyat_SatisFat_GizlenecekAlanlar',
       instance.sevkiyatSatisFatGizlenecekAlanlar);
   writeNotNull('sevkiyat_SatisFat_DegismeyecekAlanlar',
@@ -3112,6 +3140,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       instance.malKabulAlisIrsDegismeyecekAlanlar);
   writeNotNull('malKabul_AlisIrs_AciklamaDuzenle',
       instance.malKabulAlisIrsAciklamaDuzenle);
+  writeNotNull('malKabul_AlisFat_DegismeyecekAlanlar',
+      instance.malKabulAlisFatDegismeyecekAlanlar);
   writeNotNull('malKabul_AlisFat_AciklamaDuzenle',
       instance.malKabulAlisFatAciklamaDuzenle);
   writeNotNull('malKabul_AlisFat_TekrarEdenBarkod',

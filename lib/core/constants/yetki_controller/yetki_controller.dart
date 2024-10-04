@@ -346,6 +346,7 @@ final class YetkiController {
 
   //* Kasa
   bool get kasaListesi => _isTrue(_yetkiModel?.finansKasaListesi);
+  bool get finansKasaIslemleri => _isTrue(_yetkiModel?.finansKasaIslemleri);
   bool get finansKasaIslemleriSil => _isTrue(_yetkiModel?.finansKasaIslemleriSil);
   bool get tahsilatReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGelir, skipAdmin: true);
   bool get odemeReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGider, skipAdmin: true);
@@ -357,6 +358,15 @@ final class YetkiController {
   bool get musteriSenetSil => _isTrue(_yetkiModel?.finansMsenSil);
   bool get borcCekSil => _isTrue(_yetkiModel?.finansBcekSil);
   bool get borcSenetSil => _isTrue(_yetkiModel?.finansBsenSil);
+
+  bool get musteriCekCariHesabaCirola => _isTrue(_yetkiModel?.finansMcekCariyeCiro);
+  bool get musteriSenetCariHesabaCirola => _isTrue(_yetkiModel?.finansMsenCariyeCiro);
+
+  bool get musteriCekTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMcekTahsileCiro);
+  bool get musteriSenetTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMsenTahsileCiro);
+
+  bool get musteriCekTahsilDekontu =>  _isTrue(_yetkiModel?.finansMcekTahsilDekontu);
+  bool get musteriSenetTahsilDekontu => _isTrue(_yetkiModel?.finansMsenTahsilDekontu);
 
   bool get musteriCekEkle => _isTrue(_yetkiModel?.finansMcekEkle);
   bool get musteriSenetEkle => _isTrue(_yetkiModel?.finansMsenEkle);
@@ -382,6 +392,21 @@ final class YetkiController {
   bool get satisIrsEkle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiKayit);
   bool get satisIrsDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDuzeltme);
   bool get satisIrsSil => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSilme);
+
+  bool satisIrsDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar?.contains(index)));
+  bool satisFatDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index)));
+  bool alisIrsDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsDegismeyecekAlanlar?.contains(index)));
+  bool alisFatDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index)));
+
+  bool satisIrsBosGecilmeyecekAlanlar(String? value) => _isTrue(_yetkiModel?.sevkiyatSatisIrsBosGecilmeyecekAlanlar?.contains(value));
+  bool satisFatBosGecilmeyecekAlanlar(String? value) => _isTrue(_yetkiModel?.sevkiyatSatisFatBosGecilmeyecekAlanlar?.contains(value));
+  bool alisIrsBosGecilmeyecekAlanlar(String? value) => _isTrue(_yetkiModel?.malKabulAlisIrsBosGecilmeyecekAlanlar?.contains(value));
+  bool alisFatBosGecilmeyecekAlanlar(String? value) => _isTrue(_yetkiModel?.malKabulAlisFatBosGecilmeyecekAlanlar?.contains(value));
+
+  bool satisIrsGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index)));
+  bool satisFatGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index)));
+  bool alisIrsGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index)));
+  bool alisFatGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatGizlenecekAlanlar?.contains(index)));
 
   bool get satisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
   bool get satisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);

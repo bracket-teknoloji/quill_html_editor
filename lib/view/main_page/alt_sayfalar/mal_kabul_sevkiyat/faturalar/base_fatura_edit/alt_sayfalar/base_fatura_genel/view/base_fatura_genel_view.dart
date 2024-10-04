@@ -108,7 +108,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _aciklama16Controller = TextEditingController(text: model.acik16);
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (BaseSiparisEditModel.instance.belgeNo == null) {
+      if (model.belgeNo == null) {
         await getBelgeNo();
       }
     });
@@ -160,7 +160,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   child: ListTile(
                     onTap: () async => Get.toNamed(
                       "/mainPage/eBelgePdf",
-                      arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: BaseSiparisEditModel.instance.resmiBelgeNo ?? ""),
+                      arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? ""),
                     ),
                     contentPadding: UIHelper.lowPaddingHorizontal,
                     leading: const Icon(Icons.info_outline),
@@ -329,7 +329,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                             }
                           }
                         },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.baseEditEnum != BaseEditEnum.taslak),
+                ).yetkiVarMi((model.getEditTipiEnum?.gizlenecekAlanlar("teslim_cari") ?? false) && widget.model.baseEditEnum != BaseEditEnum.taslak),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -340,7 +340,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _belgeTipiController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
+                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -361,7 +361,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("belge_tipi")),
+                    ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Tarih",
@@ -369,7 +369,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         isDateTime: true,
                         controller: _tarihController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
+                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
                         onTap: () async {
                           final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                           if (result != null) {
@@ -390,7 +390,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _projeController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
+                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
                           final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
@@ -400,7 +400,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje")),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && (model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Plasiyer",
@@ -408,7 +408,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _plasiyerController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
+                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
                           final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
@@ -418,7 +418,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer")),
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && (model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false)),
                   ],
                 ),
                 Row(
@@ -467,7 +467,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: _topluDepoController,
-                  enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
+                  enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                   onClear: () => viewModel.setTopluDepoKodu(null),
                   onTap: () async {
@@ -477,7 +477,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.setTopluDepoKodu(result.depoKodu);
                     }
                   },
-                ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo")),
+                ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false),
                 CustomLayoutBuilder(
                   splitCount: 2,
                   children: [
@@ -487,10 +487,10 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       child: Observer(
                         builder: (_) => Switch.adaptive(
                           value: viewModel.kdvDahil,
-                          onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null,
+                          onChanged: (enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (bool value) => viewModel.changeKdvDahil(value) : null,
                         ),
                       ),
-                    ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),
+                    ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false),
                     CustomWidgetWithLabel(
                       text: "E-İrsaliye",
                       isVertical: true,
@@ -500,7 +500,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           onChanged: enable ? (bool value) => viewModel.changeEbelgeCheckBox(value) : null,
                         ),
                       ),
-                    ).yetkiVarMi(BaseSiparisEditModel.instance.getEditTipiEnum.irsaliyeMi),
+                    ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),
                   ],
                 ),
                 CustomWidgetWithLabel(
@@ -648,7 +648,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     );
     if (result.isSuccess) {
       viewModel.setBelgeNo(result.dataList.firstOrNull?.belgeNo);
-      _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
+      _belgeNoController.text = model.belgeNo ?? "";
     }
   }
 }

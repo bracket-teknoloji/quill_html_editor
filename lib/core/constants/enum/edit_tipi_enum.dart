@@ -325,6 +325,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferLokalAgDegistirilmeyecekAlanlar(value);
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.satisFatura:
+        return yetkiController.satisFatDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.alisFatura:
+        return yetkiController.alisFatDegistirilmeyecekAlanlar(value);
       default:
         return false;
     }
@@ -339,6 +347,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value);
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcBosGecilmeyecekAlanlar(value);
+        case EditTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsBosGecilmeyecekAlanlar(value);
+      case EditTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsBosGecilmeyecekAlanlar(value);
+      case EditTipiEnum.satisFatura:
+        return yetkiController.satisFatBosGecilmeyecekAlanlar(value);
+      case EditTipiEnum.alisFatura:
+        return yetkiController.alisFatBosGecilmeyecekAlanlar(value);
       default:
         return false;
     }
@@ -353,6 +369,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferLokalAgGizlenecekAlanlar(value);
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcGizlenecekAlanlar(value);
+        case EditTipiEnum.satisIrsaliye:
+        return yetkiController.satisIrsDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.alisIrsaliye:
+        return yetkiController.alisIrsGizlenecekAlanlar(value);
+      case EditTipiEnum.satisFatura:
+        return yetkiController.satisFatDegistirilmeyecekAlanlar(value);
+      case EditTipiEnum.alisFatura:
+        return yetkiController.alisFatDegistirilmeyecekAlanlar(value);
       default:
         return false;
     }
