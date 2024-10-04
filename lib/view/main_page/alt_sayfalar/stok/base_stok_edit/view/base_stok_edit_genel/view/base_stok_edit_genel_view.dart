@@ -203,7 +203,36 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                         onChanged: (value) => siradakiKod = value,
                         suffix: Wrap(
                           children: [
-                            IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_outlined)),
+                            IconButton(
+                              onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                                  context,
+                                  title: loc.generalStrings.options,
+                                  children: [
+                                    BottomSheetModel(
+                                      title: "Kodu Rehberden Seç",
+                                      iconWidget: Icons.list_alt_outlined,
+                                      onTap: () async {
+                                        Get.back();
+                                        final result = await Get.toNamed("/mainPage/stokListesiOzel");
+                                        if (result != null) {
+                                          stokKoduController.text = result.stokKodu;
+                                          stokModel.stokKodu = stokKoduController.text;
+                                        }
+                                      },
+                                    ),
+                                    BottomSheetModel(
+                                      title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
+                                      iconWidget: Icons.add,
+                                      onTap: () async {
+                                        Get.back();
+                                        stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true, sonKoduGetir: true) ?? "";
+                                        stokModel.stokKodu = stokKoduController.text;
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              icon: const Icon(Icons.more_horiz_outlined),
+                            ),
                             IconButton(
                               onPressed: () async {
                                 stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
@@ -743,7 +772,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     }
   }
 
-  Future<String?> getSiradakiKod({String? kod = "", bool? isOnBuild = false}) async {
+  Future<String?> getSiradakiKod({String? kod = "", bool? isOnBuild = false, bool sonKoduGetir = false}) async {
     // if (isOnBuild == true) {
     //   dialogManager.showLoadingDialog("Sıradaki Kod Getiriliyor...");
     // }
@@ -751,9 +780,10 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
       addCKey: true,
+      showLoading: true,
       addSirketBilgileri: true,
       queryParameters: {
-        "SonKoduGetir": "H",
+        "SonKoduGetir": sonKoduGetir ? "E" : "H",
         "Kod": kod != null || kod != "" ? kod : null,
         "Modul": GrupKoduEnum.stok.module,
       },
