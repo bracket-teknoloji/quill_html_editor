@@ -224,6 +224,8 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                             if (result != null) {
                               stokDetayModel.stokList?.firstOrNull?.alisDovTip = result.key;
                               stokDetayModel.stokList?.firstOrNull?.alisDovizAdi = result.value;
+                              stokListesiModel.alisDovTip = result.key;
+                              stokListesiModel.alisDovizAdi = result.value;
                               alisDovizTipiController.text = result.value;
                             }
                           },
@@ -355,6 +357,8 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                             if (result != null) {
                               satisDovizTipiController.text = result.value;
                               stokDetayModel.stokList?.firstOrNull?.satDovTip = result.key;
+                              stokListesiModel.satisDovizAdi = result.value;
+                              stokDetayModel.stokList?.firstOrNull?.satisDovizAdi = result.value;
                               stokListesiModel.satDovTip = result.key;
                             }
                           },
@@ -398,7 +402,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
     }
   }
 
-  Future<MapEntry?> getDovizList() async => await bottomSheetDialogManager.showBottomSheetDialog(
+  Future<MapEntry<int, String>?> getDovizList() async => await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Döviz Tipi",
         children: viewModel.dovizList.entries
