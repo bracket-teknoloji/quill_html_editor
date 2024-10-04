@@ -749,6 +749,7 @@ class IslemlerMenuItemConstants<T> {
   //* Banka
   GridItemModel? bankaCariEFTHavale({CariListesiModel? model}) => GridItemModel.islemler(
         title: "Cari EFT/Havale",
+        isEnabled: _yetkiController.bankaCariEftHavale,
         iconData: Icons.local_atm_outlined,
         onTap: () async => await Get.toNamed("/mainPage/cariEFTHavale", arguments: model),
       );

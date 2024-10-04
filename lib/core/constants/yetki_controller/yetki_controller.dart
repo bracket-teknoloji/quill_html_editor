@@ -359,6 +359,8 @@ final class YetkiController {
   bool get borcCekSil => _isTrue(_yetkiModel?.finansBcekSil);
   bool get borcSenetSil => _isTrue(_yetkiModel?.finansBsenSil);
 
+  bool get bankaCariEftHavale => _isTrue(_yetkiModel?.yoneticiBankaIslemCariEft);
+
   bool get musteriCekCariHesabaCirola => _isTrue(_yetkiModel?.finansMcekCariyeCiro);
   bool get musteriSenetCariHesabaCirola => _isTrue(_yetkiModel?.finansMsenCariyeCiro);
 
