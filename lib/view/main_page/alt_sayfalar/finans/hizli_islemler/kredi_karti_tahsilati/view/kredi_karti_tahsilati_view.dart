@@ -17,6 +17,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
@@ -64,10 +65,17 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await tahsilatYontemiDialog();
-      if (viewModel.model.kktYontemi == null) {
+      if (userModel.kullaniciYetki?.kkartiTahsilatYontemi == null && !AccountModel.instance.adminMi) {
+        dialogManager.showAlertDialog("Tahsilat yöntemi belirsiz. \nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.");
         Get.back();
-        return;
+      }
+      viewModel.setKktYontemi(userModel.kullaniciYetki?.kkartiTahsilatYontemi);
+      if (AccountModel.instance.adminMi) {
+        await tahsilatYontemiDialog();
+        if (viewModel.model.kktYontemi == null) {
+          Get.back();
+          return;
+        }
       }
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
@@ -79,10 +87,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
         viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
-        if (viewModel.model.cariKodu == null) return;
       }
       if (viewModel.model.kktYontemi == "D") {
         await getSeri();
+        viewModel.setAppBarSubTitle("Dekont");
         if (viewModel.model.dekontSeri == null) return;
         // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
@@ -90,13 +98,16 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       }
       if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H") {
         viewModel.setHesapTipi("C");
-        await viewModel.getSiradakiKod();
         await getKasa();
+        await viewModel.getSiradakiKod();
         if (viewModel.model.kasaKodu == null) return;
       }
       if (viewModel.model.kktYontemi == "H") {
         await getBankaSozlesmesi();
+        viewModel.setAppBarSubTitle("Hızlı Tahsilat Modülü");
         if (viewModel.model.sozlesmeKodu == null) return;
+      } else {
+        viewModel.setAppBarSubTitle("Kasa");
       }
     });
     super.initState();

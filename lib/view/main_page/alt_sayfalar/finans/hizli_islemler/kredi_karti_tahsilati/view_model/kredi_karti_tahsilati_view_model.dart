@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:mobx/mobx.dart";
 import "package:uuid/uuid.dart";
 
@@ -150,6 +151,11 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
         .dioGet<BankaSozlesmesiModel>(path: ApiUrls.getBankaSozlesmeleri, bodyModel: BankaSozlesmesiModel(), showLoading: true, queryParameters: {"Tarih": model.tarih.toDateString, "EkranTipi": "R"});
     if (result.isSuccess) {
       setBankaSozlesmesiList(result.dataList);
+      if (kDebugMode) {
+        setBankaSozlesmesiList([
+          BankaSozlesmesiModel(sozlesmeAdi: "sdf", bankaTanimi: "sdf", krediKartiTanimi: "sdfsd", sozlesmeKodu: "sdfggasdf"),
+        ]);
+      }
     }
   }
 
