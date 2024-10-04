@@ -214,7 +214,7 @@ class MenuItemConstants {
         GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
-        GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
+        if (AccountModel.instance.adminMi) GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
       ].whereType<GridItemModel>().toList(),
     ),
 
