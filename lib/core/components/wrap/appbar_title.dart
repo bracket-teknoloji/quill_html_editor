@@ -1,5 +1,6 @@
 import "package:animated_text_kit/animated_text_kit.dart";
 import "package:flutter/material.dart";
+import "package:kartal/kartal.dart";
 
 class AppBarTitle extends StatelessWidget {
   final String? title;
@@ -28,7 +29,7 @@ class AppBarTitle extends StatelessWidget {
           ),
           if (subtitle != null)
             SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.65,
+              width: context.device.isLargeScreen ? MediaQuery.sizeOf(context).width * 0.35 : MediaQuery.sizeOf(context).width * 0.65,
               child: Text(
                 subtitle ?? "",
                 overflow: TextOverflow.ellipsis,
