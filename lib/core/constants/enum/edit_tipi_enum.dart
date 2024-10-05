@@ -370,13 +370,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcGizlenecekAlanlar(value);
         case EditTipiEnum.satisIrsaliye:
-        return yetkiController.satisIrsDegistirilmeyecekAlanlar(value);
+        return yetkiController.satisIrsGizlenecekAlanlar(value);
       case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsGizlenecekAlanlar(value);
       case EditTipiEnum.satisFatura:
-        return yetkiController.satisFatDegistirilmeyecekAlanlar(value);
+        return yetkiController.satisFatGizlenecekAlanlar(value);
       case EditTipiEnum.alisFatura:
-        return yetkiController.alisFatDegistirilmeyecekAlanlar(value);
+        return yetkiController.alisFatGizlenecekAlanlar(value);
       default:
         return false;
     }
