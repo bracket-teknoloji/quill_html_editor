@@ -523,7 +523,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(model.editTipiEnum) ? true : null;
+        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
       }
     }
     const uuid = Uuid();

@@ -60,7 +60,8 @@ final class YetkiController {
   //! Şirket
 
   bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
-  bool kontrolluAktarBelgeTipleri(EditTipiEnum? editTipi) => _isTrue(_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(editTipi?.rawValue), skipAdmin: true);
+  bool kontrolluAktarBelgeTipleri(BaseSiparisEditModel? model) =>
+      _isTrue(_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(model?.pickerBelgeTuru?.isNotEmpty == true ? model?.pickerBelgeTuru?.substring(0, 1) : model?.belgeTuru), skipAdmin: true);
 
   bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
   bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);

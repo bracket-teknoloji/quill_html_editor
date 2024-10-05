@@ -577,7 +577,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(model.editTipiEnum) ? true : null;
+        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
       }
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
