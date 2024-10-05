@@ -476,6 +476,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   Future<bool> postData() async {
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
+      if (yetkiController.kontrolluBelgeAktarimAktif) {
+        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(model.editTipiEnum) ? true : null;
+      }
     }
     const uuid = Uuid();
     final result = await networkManager.dioPost<BaseSiparisEditModel>(

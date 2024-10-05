@@ -66,8 +66,9 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (userModel.kullaniciYetki?.kkartiTahsilatYontemi == null && !AccountModel.instance.adminMi) {
-        dialogManager.showAlertDialog("Tahsilat yöntemi belirsiz. \nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.");
+        await dialogManager.showAlertDialog("Tahsilat yöntemi belirsiz. \nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.");
         Get.back();
+        return;
       }
       viewModel.setKktYontemi(userModel.kullaniciYetki?.kkartiTahsilatYontemi);
       if (AccountModel.instance.adminMi) {

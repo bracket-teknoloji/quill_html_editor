@@ -57,6 +57,11 @@ final class YetkiController {
     }
   }
 
+  //! Şirket
+
+  bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
+  bool kontrolluAktarBelgeTipleri(EditTipiEnum? editTipi) => _isTrue(_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(editTipi?.rawValue), skipAdmin: true);
+
   bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
   bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);
   bool get taltekMuhRefSorulsun => _isTrue(_paramModel?.talTekParam?.firstOrNull?.muhrefkodSorulsun == "E", skipAdmin: true);
@@ -367,7 +372,7 @@ final class YetkiController {
   bool get musteriCekTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMcekTahsileCiro);
   bool get musteriSenetTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMsenTahsileCiro);
 
-  bool get musteriCekTahsilDekontu =>  _isTrue(_yetkiModel?.finansMcekTahsilDekontu);
+  bool get musteriCekTahsilDekontu => _isTrue(_yetkiModel?.finansMcekTahsilDekontu);
   bool get musteriSenetTahsilDekontu => _isTrue(_yetkiModel?.finansMsenTahsilDekontu);
 
   bool get musteriCekEkle => _isTrue(_yetkiModel?.finansMcekEkle);

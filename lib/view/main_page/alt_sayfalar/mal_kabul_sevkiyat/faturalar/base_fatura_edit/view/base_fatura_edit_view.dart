@@ -576,6 +576,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
   Future<bool> postData() async {
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (BaseSiparisEditModel.instance.isNew ?? false)) {
       BaseSiparisEditModel.instance.yeniKayit = true;
+      if (yetkiController.kontrolluBelgeAktarimAktif) {
+        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(model.editTipiEnum) ? true : null;
+      }
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e.copyWith(teklifKalemSira: null, teklifNo: null)).toList();
