@@ -85,7 +85,7 @@ dependencies:
   mobile_scanner: ^5.2.3
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
-  syncfusion_flutter_pdfviewer: ^26.1.40
+  syncfusion_flutter_pdfviewer: ^27.1.52
   collection: ^1.17.2
   app_tracking_transparency: ^2.0.4
   app_settings: ^5.1.1
@@ -113,7 +113,7 @@ dependencies:
   firebase_app_check: ^0.3.0+2
   # url_strategy: ^0.3.0
   json: ^0.20.2
-  syncfusion_localizations: ^26.2.10
+  syncfusion_localizations: ^27.1.52
   open_filex: ^4.5.0
   animated_text_kit: ^4.2.2
   text_scroll: ^0.2.0
@@ -127,8 +127,8 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.4.9
   copy_with_extension_gen: ^5.0.3
-  flutter_launcher_icons: ^0.13.0
-  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1
+  flutter_lints: ^5.0.0
   flutter_native_splash: ^2.3.3
   hive_generator: ^2.0.0
   mobx_codegen: ^2.6.1

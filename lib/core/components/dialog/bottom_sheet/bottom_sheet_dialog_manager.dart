@@ -247,7 +247,7 @@ class BottomSheetDialogManager {
     viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
     //FocusScope.of(context).unfocus();
-    return showModalBottomSheet<T>(
+    final result = await showModalBottomSheet<T>(
       context: context,
       barrierColor: Colors.black.withOpacity(0.6),
       // useSafeArea: true,
@@ -351,6 +351,8 @@ class BottomSheetDialogManager {
         ),
       ),
     );
+    viewModel.searchValue = null;
+    return result;
   }
 
   List<T> selectedChecker<T>(List<BottomSheetModel>? children, String title, [bool? onlyValue = false]) {
