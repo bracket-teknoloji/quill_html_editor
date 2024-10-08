@@ -639,7 +639,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         controller: olcuBirimiController,
                         valueWidget: Observer(
                           builder: (_) => TextScroll(
-                            "${viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? ""} ${viewModel.kalemModel.olcuBirimKodu == 1 ? "" : "- ${viewModel.kalemModel.miktar ?? 0} ${viewModel.kalemModel.olcuBirimAdi} = ${(viewModel.kalemModel.miktar ?? 0) * (viewModel.olcuBirimiMap.firstWhere((element) => element.adi == viewModel.kalemModel.olcuBirimAdi).payda ?? 0)} ${viewModel.olcuBirimiMap.firstOrNull?.adi}"}",
+                            viewModel.kalemModel.olcuBirimKodu == null
+                                ? ""
+                                : "${viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? ""} ${viewModel.kalemModel.olcuBirimKodu == 1 ? "" : "- ${viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${viewModel.kalemModel.olcuBirimAdi} = ${((viewModel.kalemModel.miktar ?? 0) * (viewModel.olcuBirimiMap.firstWhereOrNull((element) => element.adi == viewModel.kalemModel.olcuBirimAdi)?.payda ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran)} ${viewModel.olcuBirimiMap.firstOrNull?.adi}"}",
                           ),
                         ),
                         // valueWidget: Observer(builder: (_) => TextScroll("12345678910    " * 10)),
