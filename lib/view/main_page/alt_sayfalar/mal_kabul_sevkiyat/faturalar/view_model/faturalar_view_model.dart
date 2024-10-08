@@ -1,5 +1,6 @@
 import "dart:convert";
 
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
@@ -288,7 +289,10 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
-        setObservableList(result.dataList);
+        setObservableList(
+          ((CacheManager.getFaturaEditLists(editTipiEnum)?.toList().cast<BaseSiparisEditModel>() ?? <BaseSiparisEditModel>[])..mapIndexed((index, element) => element..index = index).toList()) +
+              result.dataList,
+        );
         setParamData(result.paramData ?? {});
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {

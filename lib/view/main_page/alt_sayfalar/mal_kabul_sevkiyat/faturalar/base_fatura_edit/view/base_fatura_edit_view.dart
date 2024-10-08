@@ -455,7 +455,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                       onPressed: () async {
                         await dialogManager.showAreYouSureDialog(() async {
                           if (await postData()) {
-                            await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                            await CacheManager.removeFaturaEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                             Get.back(result: true);
                             if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                               BaseSiparisEditModel.resetInstance();

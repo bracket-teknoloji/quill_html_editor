@@ -94,6 +94,8 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get faturaMi => satisFaturasiMi || alisFaturasiMi;
 
+  bool get transferMi => depoTransferiMi || ambarGirisiMi || ambarCikisiMi;
+
   bool get kalemSecilecekMi {
     if (this == null) return false;
     switch (this!) {

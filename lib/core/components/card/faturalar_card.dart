@@ -101,7 +101,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     return dialogManager.showAreYouSureDialog(() async {
                       if (widget.model.isNew == true) {
                         try {
-                          CacheManager.removeSiparisEditList(widget.index!);
+                          CacheManager.removeFaturaEditList(model.index!);
                           dialogManager.showSuccessSnackBar("Silindi");
                           widget.onDeleted?.call();
                         } catch (e) {

@@ -169,6 +169,11 @@ class CacheManager {
   static List<BaseSiparisEditModel>? getFaturaEditLists(EditTipiEnum siparisTipi) =>
       faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
+  static BaseSiparisEditModel? getTransferEdit(String key) => transferEditBox.get(key);
+  static List<BaseSiparisEditModel?> getTransferEditList(EditTipiEnum siparisTipi) => transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) =>
+      transferEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+
   static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
         (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map(
               (key, value) => value is Map ? MapEntry(key, value.cast<String, dynamic>()) : MapEntry(key, value),

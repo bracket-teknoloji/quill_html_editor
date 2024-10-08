@@ -92,7 +92,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   return dialogManager.showAreYouSureDialog(() async {
                     if (widget.model.isNew == true) {
                       try {
-                        CacheManager.removeSiparisEditList(widget.index!);
+                        CacheManager.removeTransferEditList(widget.index!);
                         dialogManager.showSuccessSnackBar("Silindi");
                         widget.onDeleted?.call();
                       } catch (e) {

@@ -61,7 +61,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       // if (_instance != otherInstance) {
       const uuid = Uuid();
       _instance?.uuid = uuid.v4();
-      CacheManager.addSiparisEditListItem(_instance!);
+      final EditTipiEnum? editTipi = _instance?.getEditTipiEnum;
+      if (editTipi.siparisMi) CacheManager.addSiparisEditListItem(_instance!);
+      if (editTipi.faturaMi) CacheManager.addFaturaEditListItem(_instance!);
+      if (editTipi.transferMi) CacheManager.addTransferEditListItem(_instance!);
+      // if (editTipi.talepTeklifMi) CacheManager.addTalEditListItem(_instance!);
       // }
     }
     if (_instanceList.isEmpty) {

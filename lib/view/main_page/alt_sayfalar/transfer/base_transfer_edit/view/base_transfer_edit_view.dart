@@ -236,7 +236,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                             },
                             title: "PDF görüntülemek ister misiniz?",
                           );
-                          await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                          await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           BaseSiparisEditModel.resetInstance();
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.instance.isNew = true;
