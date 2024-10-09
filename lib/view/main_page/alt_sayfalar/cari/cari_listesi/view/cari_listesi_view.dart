@@ -3,7 +3,9 @@ import "dart:ui";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -479,14 +481,27 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             showCariGrid(object);
           },
         ),
-        BottomSheetModel(
-          title: "Raporlar",
-          iconWidget: Icons.area_chart_outlined,
-          onTap: () {
-            Get.back();
-            dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor, title: object.cariAdi ?? object.cariKodu));
-          },
-        ),
+        if (MenuItemConstants(context)
+                .gridItemModel
+                .firstWhereOrNull((element) => element.title == "Cari")
+                ?.altMenuler
+                ?.firstWhereOrNull((element) => element.title == "Raporlar")
+                ?.altMenuler
+                ?.where(
+                  (element) => element.yetkiKontrol,
+                )
+                .toList()
+                .ext
+                .isNotNullOrEmpty ??
+            false)
+          BottomSheetModel(
+            title: "Raporlar",
+            iconWidget: Icons.area_chart_outlined,
+            onTap: () {
+              Get.back();
+              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor, title: object.cariAdi ?? object.cariKodu));
+            },
+          ),
       ].nullCheckWithGeneric,
     );
     if (pageName != null) {

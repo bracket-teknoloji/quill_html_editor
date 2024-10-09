@@ -706,6 +706,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return null;
   }
 
+
+
   YetkiController get _yetkiController => YetkiController();
 
   bool get otvliKalemVarMi => kalemList?.any((element) => element.otvVarmi == true) ?? false;

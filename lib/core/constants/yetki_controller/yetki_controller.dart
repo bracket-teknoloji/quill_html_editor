@@ -60,8 +60,7 @@ final class YetkiController {
   //! Şirket
 
   bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
-  bool kontrolluAktarBelgeTipleri(BaseSiparisEditModel? model) =>
-      _isTrue(_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(model?.belgeTuru), skipAdmin: true);
+  bool kontrolluAktarBelgeTipleri(BaseSiparisEditModel? model) => _isTrue(_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(model?.belgeTuru), skipAdmin: true);
 
   bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
   bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);
@@ -444,38 +443,42 @@ final class YetkiController {
   bool ebelgeOzelKod1AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod1Aktif, skipAdmin: true);
   bool ebelgeOzelKod2AktifMi(bool satisMi) => _isTrue(satisMi ? _paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
   bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
-  bool get ebelgeEFaturaGelenKutusu => _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
-  bool get ebelgeEFaturaGidenKutusu => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
-  bool get ebelgeEFaturaGonder => _isTrue(_yetkiModel?.ebelgeEFatGonder);
-  bool get ebelgeEFaturaSorgula => _isTrue(_yetkiModel?.ebelgeEFatSorgula);
-  bool get ebelgeEFaturaGoruntule => _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
-  bool get ebelgeEFaturaTaslakSil => _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
+  bool get ebelgeEFaturaGelenKutusu => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
+  bool get ebelgeEFaturaGidenKutusu => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatSorgula);
+  bool get ebelgeEFaturaGonder => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGonder);
+  bool get ebelgeEFaturaSorgula => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatSorgula);
+  bool get ebelgeEFaturaGoruntule => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
+  bool get ebelgeEFaturaTaslakSil => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
   bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif, skipAdmin: true);
-  bool get eFaturaSenaryoDegistir => _isTrue(_paramModel?.eFaturaSenaryoDegistir);
+  bool get eFaturaSenaryoDegistir => ebelgeEFatura && _isTrue(_paramModel?.eFaturaSenaryoDegistir);
   bool eFaturaSerisindenMi(String belgeNo) =>
       _isTrue(belgeNo.contains(_paramModel?.seriEFatura ?? "") || (_paramModel?.arrEFatSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEIrsaliye => _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
-  bool get ebelgeEIrsaliyeGelenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
-  bool get ebelgeEIrsaliyeGidenKutusu => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGidenKutusu);
-  bool get ebelgeEIrsaliyeGonder => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGonder);
-  // bool get ebelgeEIrsaliyeSorgula => _isTrue(_yetkiModel?.ebelgeEIrsaliyeSorgula);
-  bool get ebelgeEIrsaliyeGoruntule => _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
-  bool get ebelgeEIrsaliyeTaslakSil => _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
-  bool get eIrsaliyeAktif => _isTrue(_paramModel?.eIrsaliyeAktif);
+  bool get ebelgeEIrsaliyeGelenKutusu => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
+  bool get ebelgeEIrsaliyeGidenKutusu => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGidenKutusu);
+  bool get ebelgeEIrsaliyeGonder => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGonder);
+  bool get ebelgeEIrsaliyeSorgula => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliye);
+  bool get ebelgeEIrsaliyeGoruntule => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
+  bool get ebelgeEIrsaliyeTaslakSil => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
+  bool get eIrsaliyeAktif => ebelgeEIrsaliye && _isTrue(_paramModel?.eIrsaliyeAktif);
   bool eIrsaliyeSerisindenMi(String belgeNo) =>
-      _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
+      ebelgeEIrsaliye && _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
   bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
-  bool get ebelgeEArsivGidenKutusu => _isTrue((_paramModel?.eIrsaliyeAktif ?? false) && (_yetkiModel?.ebelgeEArsivSorgula ?? false));
-  bool get ebelgeEArsivGonder => _isTrue(_yetkiModel?.ebelgeEArsivGonder);
-  bool get ebelgeEArsivSorgula => _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
-  bool get ebelgeEArsivGoruntule => _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
-  bool get ebelgeEArsivTaslakSil => _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
-  bool get eArsivAktif => _isTrue(_paramModel?.eArsivAktif);
+  bool get ebelgeEArsivGidenKutusu => ebelgeEArsiv && _isTrue((_paramModel?.eIrsaliyeAktif ?? false) && (_yetkiModel?.ebelgeEArsivSorgula ?? false));
+  bool get ebelgeEArsivGonder => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivGonder);
+  bool get ebelgeEArsivSorgula => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
+  bool get ebelgeEArsivGoruntule => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
+  bool get ebelgeEArsivTaslakSil => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
+  bool get eArsivAktif => ebelgeEArsiv && _isTrue(_paramModel?.eArsivAktif);
   bool eArsivSerisindenMi(String belgeNo) =>
-      _isTrue(belgeNo.contains(_paramModel?.seriEArsiv ?? "") || (_paramModel?.arrEArSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
+      ebelgeEArsiv &&
+      _isTrue(
+        belgeNo.contains(_paramModel?.seriEArsiv ?? "") || (_paramModel?.arrEArSeri?.any((element) => belgeNo.contains(element)) ?? false),
+        skipAdmin: true,
+      );
 
   //! SAYIM
   bool get sayimEkle => _isTrue(_yetkiModel?.sayimSerbest);

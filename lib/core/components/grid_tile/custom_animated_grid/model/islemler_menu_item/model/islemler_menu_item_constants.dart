@@ -81,7 +81,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(stokFiyatOzeti);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
-      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
+
+      if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
     } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
@@ -111,7 +112,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(cariAktivite);
         islemlerList.add(cariAktiviteKaydiGir);
         islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
-        if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
+        if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
       if (model is BaseSiparisEditModel) {
@@ -126,12 +127,14 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
-        if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
+
+        if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       }
     } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
       islemlerList.addIfConditionTrue(_yetkiController.cariKarti, cariKarti);
       islemlerList.addIfConditionTrue(_yetkiController.cariHareketleri, cariHareketleri);
-      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
+
+      if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       islemlerList.add(konumaGit);
       islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
       islemlerList.add(paylas);
@@ -146,7 +149,8 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kasaTransferi);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
-      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
+
+      if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(nakitTahsilat(model));
@@ -1424,6 +1428,13 @@ class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "E-Belge Görüntüle",
+      isEnabled: () {
+        if (!siparisModel.eBelgeMi) return false;
+        if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivGoruntule;
+        if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGelenKutusu) return _yetkiController.ebelgeEFaturaGoruntule;
+        if (siparisModel.eIrsaliyeMi || _yetkiController.ebelgeEIrsaliyeGelenKutusu) return _yetkiController.ebelgeEIrsaliyeGoruntule;
+        return false;
+      }.call(),
       iconData: Icons.picture_as_pdf_outlined,
       onTap: () async => await Get.toNamed("/mainPage/eBelgePdf", arguments: EBelgeListesiModel.fromBaseSiparisEditModel(siparisModel)),
     );
@@ -1433,6 +1444,13 @@ class IslemlerMenuItemConstants<T> {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
     return GridItemModel.islemler(
       title: "Durum Sorgula",
+      isEnabled: () {
+        if (!siparisModel.eBelgeMi) return false;
+        if (siparisModel.eArsivMi || _yetkiController.ebelgeEArsivGidenKutusu) return _yetkiController.ebelgeEArsivSorgula;
+        if (siparisModel.eFaturaMi || _yetkiController.ebelgeEFaturaGidenKutusu) return _yetkiController.ebelgeEFaturaSorgula;
+        if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeGidenKutusu;
+        return false;
+      }.call(),
       iconData: Icons.refresh_outlined,
       onTap: () async {
         final result = await _networkManager.dioGet<EBelgeListesiModel>(

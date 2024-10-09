@@ -13,6 +13,7 @@ import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -893,14 +894,22 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               return Get.toNamed("/mainPage/stokHareketleri", arguments: item);
             },
           ).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
-          BottomSheetModel(
-            title: "Raporlar",
-            iconWidget: Icons.area_chart_outlined,
-            onTap: () async {
-              Get.back();
-              showStokIslemlerDialog(item, IslemTipiEnum.stokRapor);
-            },
-          ),
+          if (MenuItemConstants(context).gridItemModel
+                  .firstWhereOrNull((element) => element.title == "Stok")
+                  ?.altMenuler
+                  ?.firstWhereOrNull((element) => element.title == "Raporlar")
+                  ?.altMenuler
+                  ?.ext
+                  .isNotNullOrEmpty ??
+              false)
+            BottomSheetModel(
+              title: "Raporlar",
+              iconWidget: Icons.area_chart_outlined,
+              onTap: () async {
+                Get.back();
+                showStokIslemlerDialog(item, IslemTipiEnum.stokRapor);
+              },
+            ),
           BottomSheetModel(
             title: "Depo Bakiye Durumu",
             iconWidget: Icons.list_alt,
