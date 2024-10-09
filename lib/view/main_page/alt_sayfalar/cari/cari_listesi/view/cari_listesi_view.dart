@@ -246,7 +246,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Widget fab() => Observer(
         builder: (_) => Visibility(
-          visible: viewModel.observableList != null,
+          visible: viewModel.observableList != null && yetkiController.cariKartiYeniKayit,
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {

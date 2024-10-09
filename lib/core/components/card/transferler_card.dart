@@ -80,6 +80,9 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   Get.back();
                   final result = await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                   if (result != null) {
+                    if (widget.model.isNew == true) {
+                      CacheManager.removeTransferEditList(model.index!);
+                    }
                     widget.onUpdated?.call(result);
                   }
                 },
@@ -92,7 +95,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   return dialogManager.showAreYouSureDialog(() async {
                     if (widget.model.isNew == true) {
                       try {
-                        CacheManager.removeTransferEditList(widget.index!);
+                        CacheManager.removeTransferEditList(model.index!);
                         dialogManager.showSuccessSnackBar("Silindi");
                         widget.onDeleted?.call();
                       } catch (e) {

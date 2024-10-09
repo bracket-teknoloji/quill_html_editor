@@ -349,7 +349,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value);
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcBosGecilmeyecekAlanlar(value);
-        case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsBosGecilmeyecekAlanlar(value);
       case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsBosGecilmeyecekAlanlar(value);
@@ -371,7 +371,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         return yetkiController.transferLokalAgGizlenecekAlanlar(value);
       case EditTipiEnum.ambarCikisi:
         return yetkiController.transferLokalAcGizlenecekAlanlar(value);
-        case EditTipiEnum.satisIrsaliye:
+      case EditTipiEnum.satisIrsaliye:
         return yetkiController.satisIrsGizlenecekAlanlar(value);
       case EditTipiEnum.alisIrsaliye:
         return yetkiController.alisIrsGizlenecekAlanlar(value);
@@ -836,7 +836,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       case EditTipiEnum.satisTeklifi:
       case EditTipiEnum.alisTalebi:
       case EditTipiEnum.satisTalebi:
-        CacheManager.addTalepTeklifEditListItem(BaseSiparisEditModel.instance);
+        CacheManager.addTaltekEditListItem(BaseSiparisEditModel.instance);
       case EditTipiEnum.depoTransferi:
       case EditTipiEnum.olcumdenDepoTransferi:
       case EditTipiEnum.ambarGirisi:

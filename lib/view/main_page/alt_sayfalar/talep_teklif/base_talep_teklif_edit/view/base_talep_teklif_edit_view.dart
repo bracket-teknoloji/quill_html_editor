@@ -242,7 +242,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                             },
                             title: "PDF görüntülemek ister misiniz?",
                           );
-                          await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                          await CacheManager.removeTaltekEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           BaseSiparisEditModel.resetInstance();
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.instance.isNew = true;

@@ -89,6 +89,9 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     Get.back();
                     final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                     if (result == true) {
+                      if (widget.model.isNew == true) {
+                        CacheManager.removeFaturaEditList(model.index!);
+                      }
                       widget.onUpdated?.call(result);
                     }
                   },

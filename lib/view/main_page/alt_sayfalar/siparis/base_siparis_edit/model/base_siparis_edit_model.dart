@@ -65,7 +65,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       if (editTipi.siparisMi) CacheManager.addSiparisEditListItem(_instance!);
       if (editTipi.faturaMi) CacheManager.addFaturaEditListItem(_instance!);
       if (editTipi.transferMi) CacheManager.addTransferEditListItem(_instance!);
-      // if (editTipi.talepTeklifMi) CacheManager.addTalEditListItem(_instance!);
+      if (editTipi.talepTeklifMi) CacheManager.addTaltekEditListItem(_instance!);
       // }
     }
     if (_instanceList.isEmpty) {

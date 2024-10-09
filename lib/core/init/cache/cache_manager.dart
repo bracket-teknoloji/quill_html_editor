@@ -170,9 +170,16 @@ class CacheManager {
       faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
   static BaseSiparisEditModel? getTransferEdit(String key) => transferEditBox.get(key);
-  static List<BaseSiparisEditModel?> getTransferEditList(EditTipiEnum siparisTipi) => transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel?> getTransferEditList(EditTipiEnum siparisTipi) =>
+      transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
   static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) =>
       transferEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+
+  static BaseSiparisEditModel? getTaltekEdit(String key) => talepTeklifEditBox.get(key);
+  static List<BaseSiparisEditModel?> getTaltekEditList(EditTipiEnum siparisTipi) =>
+      talepTeklifEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
+  static List<BaseSiparisEditModel>? getTaltekEditLists(EditTipiEnum siparisTipi) =>
+      talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
 
   static BaseProfilParametreModel get getProfilParametre => BaseProfilParametreModel.fromJson(
         (profilParametreBox.get("value") ?? {}).cast<String, dynamic>().map(
@@ -263,7 +270,7 @@ class CacheManager {
     }
   }
 
-  static void addTalepTeklifEditListItem(BaseSiparisEditModel value) {
+  static void addTaltekEditListItem(BaseSiparisEditModel value) {
     if (talepTeklifEditListBox.get(StaticVariables.getSiparisString) == null) {
       talepTeklifEditListBox.put(
         StaticVariables.getSiparisString,
@@ -374,31 +381,6 @@ class CacheManager {
     );
     return true;
   }
-
-  static void removeTalepTeklifEdit(String key) => talepTeklifEditBox.delete(key);
-  static void removeTalepTeklifEditList(int index) {
-    final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeAt(index);
-    }
-    talepTeklifEditListBox.put(
-      StaticVariables.getSiparisString,
-      ListSiparisEditModel(list: list),
-    );
-  }
-
-  static Future<bool> removeTalepTeklifEditListWithUuid(String? uuid) async {
-    final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.uuid == uuid);
-    }
-    await talepTeklifEditListBox.put(
-      StaticVariables.getSiparisString,
-      ListSiparisEditModel(list: list),
-    );
-    return true;
-  }
-
   static void removeTransferEdit(String key) => transferEditBox.delete(key);
   static void removeTransferEditList(int index) {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
@@ -417,6 +399,30 @@ class CacheManager {
       list.removeWhere((element) => element.uuid == uuid);
     }
     await transferEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+    return true;
+  }
+
+  static void removeTaltekEdit(String key) => talepTeklifEditBox.delete(key);
+  static void removeTaltekEditList(int index) {
+    final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeAt(index);
+    }
+    talepTeklifEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+  }
+
+  static Future<bool> removeTaltekEditListWithUuid(String? uuid) async {
+    final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeWhere((element) => element.uuid == uuid);
+    }
+    await talepTeklifEditListBox.put(
       StaticVariables.getSiparisString,
       ListSiparisEditModel(list: list),
     );

@@ -1,6 +1,8 @@
 import "dart:convert";
 
+import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/view_model/listable_mixin.dart";
@@ -277,7 +279,11 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
         siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: (siparislerRequestModel.sayfa ?? 0) + 1);
       }
       if (observableList == null) {
-        setObservableList(list);
+        setObservableList(
+          ((CacheManager.getTaltekEditLists(list.firstOrNull?.getEditTipiEnum ?? EditTipiEnum.satisTeklifi)?.toList().cast<BaseSiparisEditModel>() ?? <BaseSiparisEditModel>[])
+                ..mapIndexed((index, element) => element..index = index).toList()) +
+              result.dataList,
+        );
       } else {
         addObservableList(list);
       }

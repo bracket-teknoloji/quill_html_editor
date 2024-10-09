@@ -115,6 +115,9 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             ),
                           );
                           if (result == true) {
+                            if (widget.model.isNew == true) {
+                              CacheManager.removeSiparisEditList(widget.model.index ?? 0);
+                            }
                             widget.onUpdated?.call(true);
                           }
                         },

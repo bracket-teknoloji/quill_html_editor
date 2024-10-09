@@ -81,7 +81,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(stokFiyatOzeti);
       islemlerList.add(seriHareketleri);
       islemlerList.add(seriBakiyeleri);
-      islemlerList.addAll(raporlar ?? []);
+      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
     } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
@@ -111,7 +111,7 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.add(cariAktivite);
         islemlerList.add(cariAktiviteKaydiGir);
         islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
-        islemlerList.addAll(raporlar ?? []);
+        if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
       if (model is BaseSiparisEditModel) {
@@ -126,12 +126,12 @@ class IslemlerMenuItemConstants<T> {
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
         islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
         islemlerList.add(kopyala);
-        islemlerList.addAll(raporlar ?? []);
+        if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
       }
     } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
       islemlerList.addIfConditionTrue(_yetkiController.cariKarti, cariKarti);
       islemlerList.addIfConditionTrue(_yetkiController.cariHareketleri, cariHareketleri);
-      islemlerList.addAll(raporlar ?? []);
+      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
       islemlerList.add(konumaGit);
       islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
       islemlerList.add(paylas);
@@ -146,7 +146,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(kasaTransferi);
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
-      islemlerList.addAll(raporlar ?? []);
+      if (raporlar.ext.isNotNullOrEmpty) islemlerList.addAll(raporlar!);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(nakitTahsilat(model));
@@ -239,12 +239,20 @@ class IslemlerMenuItemConstants<T> {
     }
   }
 
-  GridItemModel? get cariHareketleri =>
-      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Cari Hareketleri", onTap: () async => Get.toNamed("mainPage/cariHareketleri", arguments: model));
+  GridItemModel? get cariHareketleri => GridItemModel.islemler(
+        isEnabled: _yetkiController.cariHareketleri,
+        iconData: Icons.sync_alt_outlined,
+        title: "Cari Hareketleri",
+        onTap: () async => Get.toNamed("mainPage/cariHareketleri", arguments: model),
+      );
 
   //* Genel
-  GridItemModel? get stokHareketleri =>
-      GridItemModel.islemler(iconData: Icons.sync_alt_outlined, title: "Stok Hareketleri", onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model));
+  GridItemModel? get stokHareketleri => GridItemModel.islemler(
+        isEnabled: _yetkiController.stokHareketleriStokHareketleri,
+        iconData: Icons.sync_alt_outlined,
+        title: "Stok Hareketleri",
+        onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model),
+      );
   GridItemModel? get cariAktivite => GridItemModel.islemler(
         iconData: Icons.sync_alt_outlined,
         isEnabled: _yetkiController.cariAktivite,

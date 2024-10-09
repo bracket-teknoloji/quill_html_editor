@@ -113,25 +113,30 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                               editTipiEnum: editTipiEnum,
                             ),
                           );
-                          widget.onUpdated?.call(result ?? false);
+                          if (result != null) {
+                            if (widget.model.isNew == true) {
+                              CacheManager.removeTaltekEditList(model.index!);
+                            }
+                            widget.onUpdated?.call(result ?? false);
+                          }
                         },
-                      ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
+                      ).yetkiKontrol((yetkiController.siparisDuzelt && widget.model.tipi != 1) || widget.model.isNew == true),
                       BottomSheetModel(
                         title: loc.generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();
                           return dialogManager.showAreYouSureDialog(() async {
-                            // if (model.isNew == true) {
-                            //   try {
-                            //     CacheManager.removeSiparisEditList(widget.index!);
-                            //     dialogManager.showSuccessSnackBar("Silindi");
-                            //     widget.onDeleted?.call();
-                            //   } catch (e) {
-                            //     await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
-                            //   }
-                            //   return;
-                            // }
+                            if (model.isNew == true) {
+                              try {
+                                CacheManager.removeTaltekEditList(model.index!);
+                                dialogManager.showSuccessSnackBar("Silindi");
+                                widget.onDeleted?.call();
+                              } catch (e) {
+                                await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                              }
+                              return;
+                            }
                             final result = await networkManager.deleteFatura(EditFaturaModel.fromSiparislerModel(model));
                             if (result.isSuccess) {
                               dialogManager.showSuccessSnackBar("Silindi");
@@ -139,7 +144,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             }
                           });
                         },
-                      ).yetkiKontrol(widget.talepTeklifEnum.silinebilirMi && widget.model.tipi != 1),
+                      ).yetkiKontrol((widget.talepTeklifEnum.silinebilirMi && widget.model.tipi != 1) || widget.model.isNew == true),
                       BottomSheetModel(
                         title: "Açıklama Düzenle",
                         iconWidget: Icons.edit_note_outlined,
@@ -208,6 +213,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
             children: [
               Row(
                 children: [
+                  const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
                   const ColorfulBadge(label: Text("Muhtelif"), badgeColorEnum: BadgeColorEnum.muhtelif).yetkiVarMi(model.muhtelifMi),
                   // ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
                   ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
