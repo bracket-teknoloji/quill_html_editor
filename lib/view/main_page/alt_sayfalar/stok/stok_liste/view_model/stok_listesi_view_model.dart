@@ -82,7 +82,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   String? searchText = "";
 
   @observable
-  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
+  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T", siralama: "AZ");
 
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");
@@ -216,11 +216,9 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void changeIsScrolledDown(bool value) => isScrollDown = value;
 
-  @observable
-  String siralama = "AZ";
 
   @action
-  void setSiralama(String value) => siralama = value;
+  void setSiralama(String value) => bottomSheetModel = bottomSheetModel.copyWith(siralama: value);
 
   @action
   void setSelectedWithIndex(int index) => bakiyeGroupValue = selectedList[index];

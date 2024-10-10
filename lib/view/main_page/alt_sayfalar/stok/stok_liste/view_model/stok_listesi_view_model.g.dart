@@ -275,22 +275,6 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
     });
   }
 
-  late final _$siralamaAtom =
-      Atom(name: '_StokListesiViewModelBase.siralama', context: context);
-
-  @override
-  String get siralama {
-    _$siralamaAtom.reportRead();
-    return super.siralama;
-  }
-
-  @override
-  set siralama(String value) {
-    _$siralamaAtom.reportWrite(value, super.siralama, () {
-      super.siralama = value;
-    });
-  }
-
   late final _$changeScrollStatusAsyncAction = AsyncAction(
       '_StokListesiViewModelBase.changeScrollStatus',
       context: context);
@@ -673,7 +657,6 @@ grupKodlari: ${grupKodlari},
 kategoriGrupKodlari: ${kategoriGrupKodlari},
 observableList: ${observableList},
 isScrollDown: ${isScrollDown},
-siralama: ${siralama},
 grupKodu: ${grupKodu},
 kod1: ${kod1},
 kod2: ${kod2},

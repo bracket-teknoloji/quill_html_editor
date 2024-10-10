@@ -591,7 +591,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
               context,
               title: loc.generalStrings.sort,
-              groupValue: viewModel.siralama,
+              groupValue: viewModel.bottomSheetModel.siralama,
               children: [
                 BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
                 BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", groupValue: "ZA"),
