@@ -79,6 +79,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         belgeNo: model.belgeNo,
         cariKodu: model.cariKodu,
         belgeTuru: model.belgeTipi,
+        belgeTipi: model.belgeTipi,
       );
 
   factory SiparisEditRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => SiparisEditRequestModel(
@@ -86,6 +87,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         belgeNo: model.belgeNo,
         kisitYok: true,
         belgeTuru: model.belgeTipi,
+        belgeTipi: model.belgeTipi,
         pickerBelgeTuru: model.belgeTipi,
       );
 
@@ -104,6 +106,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         belgeNo: model.belgeNo,
         cariKodu: model.cariKodu,
         belgeTuru: model.belgeTuru,
+        belgeTipi: model.belgeTuru,
       );
 
   factory SiparisEditRequestModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => SiparisEditRequestModel(
@@ -119,7 +122,8 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
 
   factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
         belgeNo: model?.fisno,
-        cariKodu: model?.cariKodu,
+        cariKodu: model?.cariKodu, 
+        belgeTipi: model?.belgeTipi,
         belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
       );
   @override
