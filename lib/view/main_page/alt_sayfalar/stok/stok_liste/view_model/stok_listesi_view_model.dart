@@ -216,9 +216,11 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void changeIsScrolledDown(bool value) => isScrollDown = value;
 
-
   @action
-  void setSiralama(String value) => bottomSheetModel = bottomSheetModel.copyWith(siralama: value);
+  void setSiralama(String? value) {
+    bottomSheetModel = bottomSheetModel.copyWith(siralama: value);
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokListesiSirala: value ?? "AZ"));
+  }
 
   @action
   void setSelectedWithIndex(int index) => bakiyeGroupValue = selectedList[index];

@@ -576,7 +576,7 @@ mixin _$StokListesiViewModel on _StokListesiViewModelBase, Store {
   }
 
   @override
-  void setSiralama(String value) {
+  void setSiralama(String? value) {
     final _$actionInfo = _$_StokListesiViewModelBaseActionController
         .startAction(name: '_StokListesiViewModelBase.setSiralama');
     try {

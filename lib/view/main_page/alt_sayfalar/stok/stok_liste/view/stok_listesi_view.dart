@@ -13,6 +13,7 @@ import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
@@ -79,6 +80,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       viewModel.setIsGetData(true);
       viewModel.bottomSheetModel = widget.requestModel!;
     }
+    viewModel.setSiralama(CacheManager.getProfilParametre.stokListesiSirala);
     scrollController.addListener(() async {
       viewModel.changeScrollStatus(scrollController.position);
     });
@@ -894,7 +896,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               return Get.toNamed("/mainPage/stokHareketleri", arguments: item);
             },
           ).yetkiKontrol(yetkiController.stokHareketleriStokHareketleri),
-          if (MenuItemConstants(context).gridItemModel
+          if (MenuItemConstants(context)
+                  .gridItemModel
                   .firstWhereOrNull((element) => element.title == "Stok")
                   ?.altMenuler
                   ?.firstWhereOrNull((element) => element.title == "Raporlar")
