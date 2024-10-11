@@ -200,7 +200,18 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
           iconWidget: Icons.print_outlined,
           onTap: () async {
             Get.back();
-            await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi), true, true);
+            await bottomSheetDialogManager.showPrintBottomSheetDialog(
+              context,
+              PrintModel(
+                raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+                dicParams: DicParams(
+                  belgeNo: widget.model.fisno,
+                  belgeTipi: "SAYI",
+                ),
+              ),
+              true,
+              true,
+            );
           },
         ).yetkiKontrol(yetkiController.yazdirmaSayim),
       ].whereType<BottomSheetModel>().toList(),

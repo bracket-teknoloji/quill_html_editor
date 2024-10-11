@@ -133,7 +133,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   final PrintModel printModel = PrintModel(
                     raporOzelKod: widget.editTipiEnum.getPrintValue,
                     etiketSayisi: 1,
-                    dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.siparisTipi?.rawValue, cariKodu: widget.model.cariKodu),
+                    dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
                   );
                   await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                 },
