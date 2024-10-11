@@ -129,7 +129,9 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                           children: <InlineSpan>[
                             const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: ColorPalette.slateGray)),
                             TextSpan(
-                                text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                              text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
                             TextSpan(text: "\n${model.getDovizliToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                           ],
                         ),
