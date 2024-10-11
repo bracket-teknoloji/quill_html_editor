@@ -70,7 +70,12 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   String searchText = "";
 
   @computed
-  ObservableList<CariStokSatisOzetiModel>? get filteredList => modelList?.where((element) => element.stokAdi?.contains(searchText) == true || element.stokKodu?.contains(searchText) == true).toList().asObservable();
+  ObservableList<CariStokSatisOzetiModel>? get filteredList => modelList
+      ?.where(
+        (element) => element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true || element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
+      )
+      .toList()
+      .asObservable();
 
   @action
   void setIrsDahil(bool value) => irsDahil = value;
@@ -108,7 +113,6 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   @observable
   ObservableList<String> arrStokKod5 = <String>[].asObservable();
 
-
   @action
   void setArrStokKod5(String value) => arrStokKod5 = <String>[value].asObservable();
 
@@ -120,7 +124,7 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
 
   @action
   void setSirala(String? value) => sirala = value ?? "TARIH_AZ";
-  
+
   @observable
   bool searchBar = false;
 
@@ -132,7 +136,7 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
 
   @action
   void setCariKodu(String? value) => model = model?.copyWith(cariKodu: value);
-  
+
   @action
   void setSearchText(String? value) => searchText = value ?? "";
 
