@@ -9,6 +9,16 @@ part of 'cari_stok_satis_ozeti_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
+  Computed<ObservableList<CariStokSatisOzetiModel>?>? _$filteredListComputed;
+
+  @override
+  ObservableList<CariStokSatisOzetiModel>? get filteredList =>
+      (_$filteredListComputed ??=
+              Computed<ObservableList<CariStokSatisOzetiModel>?>(
+                  () => super.filteredList,
+                  name: '_CariStokSatisOzetiViewModelBase.filteredList'))
+          .value;
+
   late final _$donemTipiIndexAtom = Atom(
       name: '_CariStokSatisOzetiViewModelBase.donemTipiIndex',
       context: context);
@@ -39,6 +49,22 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
   set irsDahil(bool value) {
     _$irsDahilAtom.reportWrite(value, super.irsDahil, () {
       super.irsDahil = value;
+    });
+  }
+
+  late final _$searchTextAtom = Atom(
+      name: '_CariStokSatisOzetiViewModelBase.searchText', context: context);
+
+  @override
+  String get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
     });
   }
 
@@ -191,13 +217,13 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
       name: '_CariStokSatisOzetiViewModelBase.modelList', context: context);
 
   @override
-  List<CariStokSatisOzetiModel>? get modelList {
+  ObservableList<CariStokSatisOzetiModel>? get modelList {
     _$modelListAtom.reportRead();
     return super.modelList;
   }
 
   @override
-  set modelList(List<CariStokSatisOzetiModel>? value) {
+  set modelList(ObservableList<CariStokSatisOzetiModel>? value) {
     _$modelListAtom.reportWrite(value, super.modelList, () {
       super.modelList = value;
     });
@@ -354,6 +380,18 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
   }
 
   @override
+  void setSearchText(String? value) {
+    final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
+        .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchText');
+    try {
+      return super.setSearchText(value);
+    } finally {
+      _$_CariStokSatisOzetiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchBar() {
     final _$actionInfo = _$_CariStokSatisOzetiViewModelBaseActionController
         .startAction(name: '_CariStokSatisOzetiViewModelBase.setSearchBar');
@@ -382,6 +420,7 @@ mixin _$CariStokSatisOzetiViewModel on _CariStokSatisOzetiViewModelBase, Store {
     return '''
 donemTipiIndex: ${donemTipiIndex},
 irsDahil: ${irsDahil},
+searchText: ${searchText},
 arrStokGrupKodu: ${arrStokGrupKodu},
 arrStokKod1: ${arrStokKod1},
 arrStokKod2: ${arrStokKod2},
@@ -391,7 +430,8 @@ arrStokKod5: ${arrStokKod5},
 sirala: ${sirala},
 searchBar: ${searchBar},
 model: ${model},
-modelList: ${modelList}
+modelList: ${modelList},
+filteredList: ${filteredList}
     ''';
   }
 }

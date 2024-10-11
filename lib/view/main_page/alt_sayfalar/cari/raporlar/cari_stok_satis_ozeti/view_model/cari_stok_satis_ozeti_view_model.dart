@@ -66,41 +66,61 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   @observable
   bool irsDahil = false;
 
+  @observable
+  String searchText = "";
+
+  @computed
+  ObservableList<CariStokSatisOzetiModel>? get filteredList => modelList?.where((element) => element.stokAdi?.contains(searchText) == true || element.stokKodu?.contains(searchText) == true).toList().asObservable();
+
   @action
   void setIrsDahil(bool value) => irsDahil = value;
 
   @observable
   ObservableList<String> arrStokGrupKodu = <String>[].asObservable();
+
   @action
   void setArrStokGrupKodu(String value) => arrStokGrupKodu = <String>[value].asObservable();
+
   @observable
   ObservableList<String> arrStokKod1 = <String>[].asObservable();
+
   @action
   void setArrStokKod1(String value) => arrStokKod1 = <String>[value].asObservable();
+
   @observable
   ObservableList<String> arrStokKod2 = <String>[].asObservable();
+
   @action
   void setArrStokKod2(String value) => arrStokKod2 = <String>[value].asObservable();
+
   @observable
   ObservableList<String> arrStokKod3 = <String>[].asObservable();
+
   @action
   void setArrStokKod3(String value) => arrStokKod3 = <String>[value].asObservable();
+
   @observable
   ObservableList<String> arrStokKod4 = <String>[].asObservable();
+
   @action
   void setArrStokKod4(String value) => arrStokKod4 = <String>[value].asObservable();
+
   @observable
   ObservableList<String> arrStokKod5 = <String>[].asObservable();
+
+
   @action
   void setArrStokKod5(String value) => arrStokKod5 = <String>[value].asObservable();
 
   @action
   void setDonemTipiIndex(int value) => donemTipiIndex = value;
+
   @observable
   String sirala = "TARIH_AZ";
 
   @action
   void setSirala(String? value) => sirala = value ?? "TARIH_AZ";
+  
   @observable
   bool searchBar = false;
 
@@ -112,13 +132,16 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
 
   @action
   void setCariKodu(String? value) => model = model?.copyWith(cariKodu: value);
+  
+  @action
+  void setSearchText(String? value) => searchText = value ?? "";
 
   @action
   void setSearchBar() => searchBar = !searchBar;
 
   @observable
-  List<CariStokSatisOzetiModel>? modelList;
+  ObservableList<CariStokSatisOzetiModel>? modelList;
 
   @action
-  void setModelList(List<CariStokSatisOzetiModel>? value) => modelList = value;
+  void setModelList(List<CariStokSatisOzetiModel>? value) => modelList = value?.asObservable();
 }

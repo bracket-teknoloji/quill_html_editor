@@ -81,7 +81,13 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: AppBar(
-          title: Observer(builder: (_) => viewModel.searchBar ? const CustomAppBarTextField() : const AppBarTitle(title: "Cari Stok Satış Özeti")),
+          title: Observer(
+            builder: (_) => viewModel.searchBar
+                ? CustomAppBarTextField(
+                    onChanged: viewModel.setSearchText,
+                  )
+                : const AppBarTitle(title: "Cari Stok Satış Özeti"),
+          ),
           actions: [
             IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
             IconButton(
@@ -234,41 +240,44 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
                     getData();
                   },
                 ),
-                if (viewModel.modelList != null)
-                  viewModel.modelList!.isNotEmpty
+                if (viewModel.filteredList != null)
+                  viewModel.filteredList!.isNotEmpty
                       ? SizedBox(
                           height: context.sized.dynamicHeight(0.8),
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: viewModel.modelList?.length,
-                            itemBuilder: (context, index) => Card(
-                              child: ListTile(
-                                title: Text(viewModel.modelList?[index].stokAdi ?? ""),
-                                subtitle: CustomLayoutBuilder.divideInHalf(
-                                  children: [
-                                    Text("Stok Kodu: ${viewModel.modelList?[index].stokKodu ?? ""}"),
-                                    Text("Döviz Kuru: ${viewModel.modelList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}")
-                                        .yetkiVarMi(viewModel.modelList?[index].dovizKuru != null && viewModel.modelList?[index].dovizKuru != 0),
-                                    Text("Döviz Tipi: ${viewModel.modelList?[index].dovizAdi ?? ""}").yetkiVarMi(viewModel.modelList?[index].dovizAdi != null),
-                                    Text("Döviz Net Tutarı: ${viewModel.modelList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}")
-                                        .yetkiVarMi(viewModel.modelList?[index].dovNetTutar != null && viewModel.modelList?[index].dovNetTutar != 0),
-                                  ],
-                                ),
-                                trailing: Text("${viewModel.modelList?[index].miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? ""} ${viewModel.modelList?[index].olcuBirimAdi ?? ""}"),
-                                onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                                  context,
-                                  title: loc.generalStrings.options,
-                                  children: [
-                                    BottomSheetModel(
-                                      title: "Cari Stok Satış Hareketleri",
-                                      iconWidget: Icons.sync_alt_outlined,
-                                      onTap: () {
-                                        Get.back();
-                                        return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.modelList?[index].stokKodu);
-                                      },
-                                    ),
-                                    BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
-                                  ],
+                          child: Observer(
+                            builder: (_) => ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: viewModel.filteredList?.length,
+                              itemBuilder: (context, index) => Card(
+                                child: ListTile(
+                                  title: Text(viewModel.filteredList?[index].stokAdi ?? ""),
+                                  subtitle: CustomLayoutBuilder.divideInHalf(
+                                    children: [
+                                      Text("Stok Kodu: ${viewModel.filteredList?[index].stokKodu ?? ""}"),
+                                      Text("Döviz Kuru: ${viewModel.filteredList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}")
+                                          .yetkiVarMi(viewModel.filteredList?[index].dovizKuru != null && viewModel.filteredList?[index].dovizKuru != 0),
+                                      Text("Döviz Tipi: ${viewModel.filteredList?[index].dovizAdi ?? ""}").yetkiVarMi(viewModel.filteredList?[index].dovizAdi != null),
+                                      Text("Döviz Net Tutarı: ${viewModel.filteredList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}")
+                                          .yetkiVarMi(viewModel.filteredList?[index].dovNetTutar != null && viewModel.filteredList?[index].dovNetTutar != 0),
+                                    ],
+                                  ),
+                                  trailing:
+                                      Text("${viewModel.filteredList?[index].miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? ""} ${viewModel.filteredList?[index].olcuBirimAdi ?? ""}"),
+                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                                    context,
+                                    title: loc.generalStrings.options,
+                                    children: [
+                                      BottomSheetModel(
+                                        title: "Cari Stok Satış Hareketleri",
+                                        iconWidget: Icons.sync_alt_outlined,
+                                        onTap: () {
+                                          Get.back();
+                                          return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.filteredList?[index].stokKodu);
+                                        },
+                                      ),
+                                      BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
