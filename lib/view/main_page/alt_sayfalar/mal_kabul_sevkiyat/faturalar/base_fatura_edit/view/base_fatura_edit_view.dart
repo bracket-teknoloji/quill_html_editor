@@ -511,10 +511,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
           e.dovizKuru = dovizModel?.dovSatis;
-          e.brutFiyat = (e.dovizBrutTutar) * (dovizModel?.dovSatis ?? 0);
+          e.brutFiyat = (e.dovizBrutTutar / (e.miktar ?? 0)) * (dovizModel?.dovSatis ?? 0);
         } else {
           e.dovizKuru = dovizModel?.dovAlis;
-          e.brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
+          e.brutFiyat = (e.dovizliBrutTutar / (e.miktar ?? 0)) * (dovizModel?.dovAlis ?? 0);
         }
         return e;
       }).toList();
