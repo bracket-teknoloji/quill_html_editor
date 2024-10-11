@@ -92,79 +92,87 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       ],
                     ),
                   ),
-                  Text.rich(
-                    TextSpan(
-                      children: <InlineSpan>[
-                        const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: ColorPalette.slateGray)),
-                        TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}").yetkiVarMi(model.dovizliMi),
-                      ],
-                    ),
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      children: <InlineSpan>[
-                        const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
-                        TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
-                      ],
-                    ),
-                  ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
-                  Text.rich(
-                    TextSpan(
-                      children: <InlineSpan>[
-                        const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
-                        TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
-                      ],
-                    ),
-                  ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
-                  Observer(
-                    builder: (_) => Text.rich(
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Text.rich(
                       TextSpan(
                         children: <InlineSpan>[
-                          const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: ColorPalette.slateGray)),
-                          TextSpan(text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: "\n${model.getDovizliToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                          const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: ColorPalette.slateGray)),
+                          TextSpan(text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}").yetkiVarMi(model.dovizliMi),
                         ],
                       ),
                     ),
-                  ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
-                  Observer(
-                    builder: (_) => Text.rich(
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Text.rich(
                       TextSpan(
                         children: <InlineSpan>[
-                          const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
-                          TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(
-                            text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                          ).yetkiVarMi(model.dovizliMi),
+                          const TextSpan(text: "Mal. Faz. İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
+                          TextSpan(text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                         ],
                       ),
-                    ),
-                  ),
-                  Observer(
-                    builder: (_) => Text.rich(
+                    ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Text.rich(
                       TextSpan(
                         children: <InlineSpan>[
-                          const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: ColorPalette.slateGray)),
-                          TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                          const TextSpan(text: "Satır İsk.\n", style: TextStyle(color: ColorPalette.slateGray)),
+                          TextSpan(text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
                         ],
                       ),
-                    ),
-                  ),
-                  Observer(
-                    builder: (_) => Text.rich(
-                      TextSpan(
-                        children: <InlineSpan>[
-                          const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
-                          TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
-                        ],
+                    ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Observer(
+                      builder: (_) => Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(text: "Toplam İskonto\n", style: TextStyle(color: ColorPalette.slateGray)),
+                            TextSpan(
+                                text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "\n${model.getDovizliToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                          ],
+                        ),
+                      ),
+                    ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Observer(
+                      builder: (_) => Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
+                            TextSpan(text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(
+                              text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                            ).yetkiVarMi(model.dovizliMi),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Observer(
+                      builder: (_) => Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: ColorPalette.slateGray)),
+                            TextSpan(text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                          ],
+                        ),
+                      ),
+                    ),
+                  if (model.getEditTipiEnum?.fiyatGor == true)
+                    Observer(
+                      builder: (_) => Text.rich(
+                        TextSpan(
+                          children: <InlineSpan>[
+                            const TextSpan(text: "Genel Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
+                            TextSpan(text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                            TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                          ],
+                        ),
+                      ),
+                    ),
                 ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
               ),
             ),

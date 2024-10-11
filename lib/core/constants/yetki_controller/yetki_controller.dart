@@ -250,9 +250,12 @@ final class YetkiController {
   bool get siparisSatirdaEkAlan2AktifMi => _musteriSiparisiMi ? siparisMSSatirdaEkAlan2AktifMi : siparisSSSatirdaEkAlan2AktifMi;
   bool get siparisEkAlan1AktifMi => _musteriSiparisiMi ? siparisMSEkAlan1AktifMi : false;
   bool get siparisSatirdaTeslimTarihiSor => _musteriSiparisiMi ? siparisMSsatirdaTeslimTarihiSor : siparisSSSatirdaTeslimTarihiSor;
+  bool get siparisFiyatDegistirilmesin => _musteriSiparisiMi ? siparisMSFiyatDegistirilmesin : siparisSSFiyatDegistirilmesin;
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
+
+  bool get siparisMSFiyatDegistirilmesin => _isTrue(_yetkiModel?.siparisMusteriSiparisiFiyatDegistirilmesin);
   bool get satisOzelKod1AktifMi => _isTrue(_paramModel?.satisOzelKod1Aktif ?? false, skipAdmin: true);
   bool get satisOzelKod2AktifMi => _isTrue(_paramModel?.satisOzelKod2Aktif, skipAdmin: true);
   bool get siparisMSGenIsk1AktifMi => _isTrue(_paramModel?.satisGenIsk1Aktif, skipAdmin: true);
@@ -307,6 +310,7 @@ final class YetkiController {
 
   //* Satıcı Siparişi
 
+  bool get siparisSSFiyatDegistirilmesin => _isTrue(_yetkiModel?.siparisSaticiSiparisiFiyatDegistirilmesin);
   bool get siparisSSKdvDahilMi => _isTrue(_paramModel?.alisGenellikleKdvHaric, skipAdmin: true);
   // bool get alisOzelKod1AktifMi => _isTrue(_paramModel?.alisO);
   // bool get alisOzelKod2AktifMi => _isTrue(_paramModel?.alisOzelKod2Aktif);
@@ -392,6 +396,9 @@ final class YetkiController {
   bool sevkiyatSatisFatGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index)));
   bool sevkiyatIrsDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index)));
 
+  bool get sevkiyatSatisFatFiyatDegistirilmesin => _isTrue(_yetkiModel?.sevkiyatSatisFatFiyatDegistirilmesin);
+  bool get satisIrsFiyatGor => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiFiyatGor);
+
   bool get satisFatEkle => _isTrue(_yetkiModel?.sevkiyatSatisFatKaydet);
   bool get satisFatDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatDuzelt);
   bool get satisFatSil => _isTrue(_yetkiModel?.sevkiyatSatisFatSil);
@@ -426,6 +433,9 @@ final class YetkiController {
   // bool malKabulAlisFatDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index) ?? false));
   bool malKabulAlisIrsGizlenecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index)));
   // bool malKabulAlisIrsDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.degismey?.contains(index) ?? false));
+
+  bool get malKabulFiyatDegistirilmesin => _isTrue(_yetkiModel?.malKabulFiyatDegistirilmesin);
+  bool get alisIrsFiyatGor => _isTrue(_yetkiModel?.malKabulAlisIrsaliyesiFiyatGor);
 
   bool get alisFatEkle => _isTrue(_yetkiModel?.malKabulAlisFaturasiKaydet);
   bool get alisFatDuzenle => _isTrue(_yetkiModel?.malKabulAlisFaturasiDuzelt);
@@ -495,6 +505,9 @@ final class YetkiController {
   String? talepTeklifEkAciklamaAdi(bool satisMi) => satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
   int talTekSatirKademeliIskontoSayisi(String? belgeTuru) => int.tryParse(_paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == belgeTuru)?.satirIskontoSayisi ?? "") ?? 0;
 
+  bool get satisTeklifiFiyatDegistirilmesin => _isTrue(_yetkiModel?.taltekStekFiyatDegistirilmesin);
+  bool get satisTalebiFiyatDegistirilmesin => _isTrue(_yetkiModel?.taltekStalFiyatDegistirilmesin);
+
   bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
   bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
   bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStalSil);
@@ -546,6 +559,9 @@ final class YetkiController {
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 
   //! FATURA
+
+  bool get sevkiyatFiyatDegistirilmesin => _isTrue(_yetkiModel?.sevkiyatFiyatDegistirilmesin);
+
   bool faturaAciklamaAlanlari(EditTipiEnum? editTipi, int index) {
     if (editTipi.satisFaturasiMi) {
       return satisFaturaAciklamaAlanlari(index);
@@ -570,6 +586,7 @@ final class YetkiController {
   bool get transferAGGoruntule => _isTrue(_yetkiModel?.transferAg);
   bool get transferACGoruntule => _isTrue(_yetkiModel?.transferAc);
 
+
   //* Ekle
   bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
   bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);
@@ -584,6 +601,12 @@ final class YetkiController {
   bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
   bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
   bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
+
+  //* Fiyat Gör
+  bool get transferDatFiyatGor => _isTrue(_yetkiModel?.transferDatFiyatGor);
+  bool get transferAGFiyatGor => _isTrue(_yetkiModel?.transferAgFiyatGor);
+  bool get transferACFiyatGor => _isTrue(_yetkiModel?.transferAcFiyatGor);
+
 
   bool get transferEkMaliyet1GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get transferEkMaliyet2GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);

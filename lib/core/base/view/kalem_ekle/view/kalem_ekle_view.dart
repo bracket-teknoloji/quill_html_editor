@@ -670,7 +670,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
                   ],
                 ),
-                Observer(
+                if (editTipi?.fiyatGor == true) Observer(
                   builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -679,6 +679,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "Döviz Tipi",
                           controller: dovizTipiController,
                           isMust: true,
+                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                           readOnly: true,
                           suffixMore: true,
                           valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? "")),
@@ -700,6 +701,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "Döviz Kuru",
                           isMust: true,
                           controller: dovizKuruController,
+                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           onChanged: (value) {
@@ -712,11 +714,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ],
                   ),
                 ),
-                Observer(
+                if (editTipi?.fiyatGor == true) Observer(
                   builder: (_) => CustomTextField(
                     labelText: "Döviz Fiyatı",
                     isMust: true,
                     controller: dovizFiyatiController,
+                    enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
                     isFormattedString: true,
                     onChanged: (p0) {
@@ -754,10 +757,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ),
                       ),
                     ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
-                    Expanded(
+                    if (editTipi?.fiyatGor == true) Expanded(
                       child: CustomTextField(
                         labelText: "Fiyat",
                         controller: fiyatController,
+                        enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (p0) {

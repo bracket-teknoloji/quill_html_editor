@@ -544,6 +544,25 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get fiyatDegistirilmesin => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatFiyatDegistirilmesin,
+        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatFiyatDegistirilmesin,
+        EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => yetkiController.malKabulFiyatDegistirilmesin,
+        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisFiyatDegistirilmesin,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiFiyatDegistirilmesin,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiFiyatDegistirilmesin,
+        _ => false,
+      };
+
+  bool get fiyatGor => switch (this) {
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsFiyatGor,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsFiyatGor,
+        EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
+        EditTipiEnum.ambarGirisi => yetkiController.transferACFiyatGor,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACFiyatGor,
+        _ => true,
+      };
+
   bool get digerSekmesiGoster {
     switch (this) {
       case EditTipiEnum.musteri:
