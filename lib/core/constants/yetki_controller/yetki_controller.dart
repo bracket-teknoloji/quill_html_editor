@@ -475,7 +475,7 @@ final class YetkiController {
   bool eIrsaliyeSerisindenMi(String belgeNo) =>
       ebelgeEIrsaliye && _isTrue(belgeNo.contains(_paramModel?.seriEIrsaliye ?? "") || (_paramModel?.arrEIrsSeri?.any((element) => belgeNo.contains(element)) ?? false), skipAdmin: true);
 
-  bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
+  bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eArsivAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
   bool get ebelgeEArsivGidenKutusu => ebelgeEArsiv && _isTrue((_paramModel?.eIrsaliyeAktif ?? false) && (_yetkiModel?.ebelgeEArsivSorgula ?? false));
   bool get ebelgeEArsivGonder => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivGonder);
