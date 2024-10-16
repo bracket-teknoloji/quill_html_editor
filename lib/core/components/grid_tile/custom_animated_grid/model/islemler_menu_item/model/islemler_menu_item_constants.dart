@@ -150,7 +150,7 @@ class IslemlerMenuItemConstants<T> {
       islemlerList.add(muhtelifTahsilat);
       islemlerList.add(muhtelifOdeme);
 
-      if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
+      if (raporlar?.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar!);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
       islemlerList.add(nakitOdeme(model));
       islemlerList.add(nakitTahsilat(model));
