@@ -254,8 +254,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
               // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
               Text("KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-
-              Text("Tutar: ${kalemList?.araToplamTutari.toIntIfDouble ?? 0}"),
+              Text("Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
             ]
                 .map(
                   (e) => SizedBox(
