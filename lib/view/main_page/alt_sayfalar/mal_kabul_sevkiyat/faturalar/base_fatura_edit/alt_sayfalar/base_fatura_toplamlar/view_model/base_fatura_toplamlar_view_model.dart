@@ -73,6 +73,7 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
     BaseSiparisEditModel.setInstance(model);
   }
 
+
   @action
   void setGenIsk1(double? value) {
     if (value == 0 || value == null) {
@@ -80,9 +81,9 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       BaseSiparisEditModel.setInstance(model);
       return;
     } else if (isGenIsk1T) {
-      model = model.copyWith(genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100);
+      model = model.copyWith(genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100, genIsk1t: value);
     } else {
-      model = model.copyWith(genIsk1o: value);
+      model = model.copyWith(genIsk1o: value, genIsk1t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) / 100);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -95,9 +96,9 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100);
+      model = model.copyWith(genIsk2o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100, genIsk2t: value);
     } else {
-      model = model.copyWith(genIsk2o: value);
+      model = model.copyWith(genIsk2o: value, genIsk2t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) / 100);
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -110,9 +111,15 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk3T) {
-      model = model.copyWith(genIsk3o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100);
+      model = model.copyWith(
+        genIsk3o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100,
+        genIsk3t: value,
+      );
     } else {
-      model = model.copyWith(genIsk3o: value);
+      model = model.copyWith(
+        genIsk3o: value,
+        genIsk3t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) / 100,
+      );
     }
     BaseSiparisEditModel.setInstance(model);
   }
