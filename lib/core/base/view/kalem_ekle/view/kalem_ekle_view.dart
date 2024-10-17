@@ -670,67 +670,69 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
                   ],
                 ),
-                if (editTipi?.fiyatGor == true) Observer(
-                  builder: (_) => Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Döviz Tipi",
-                          controller: dovizTipiController,
-                          isMust: true,
-                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.kalemModel.dovizKodu);
-                            if (result != null) {
-                              viewModel.kalemModel.dovizTipi = result.dovizKodu;
-                              viewModel.kalemModel.dovizKodu = result.dovizKodu;
-                              viewModel.setDovizAdi(result.isim ?? mainCurrency);
-                              dovizTipiController.text = result.isim ?? "";
-                              viewModel.setShowDovizBilgileri(result.dovizTipi != 0);
-                              await getDovizData();
-                            }
-                          },
-                        ),
-                      ).yetkiVarMi((viewModel.model?.dovizliMi ?? false) && !transferMi),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Döviz Kuru",
-                          isMust: true,
-                          controller: dovizKuruController,
-                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          onChanged: (value) {
-                            viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
-                            viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
-                            fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
-                          },
-                        ),
-                      ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
-                    ],
+                if (editTipi?.fiyatGor == true)
+                  Observer(
+                    builder: (_) => Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Döviz Tipi",
+                            controller: dovizTipiController,
+                            isMust: true,
+                            enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                            readOnly: true,
+                            suffixMore: true,
+                            valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? "")),
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.kalemModel.dovizKodu);
+                              if (result != null) {
+                                viewModel.kalemModel.dovizTipi = result.dovizKodu;
+                                viewModel.kalemModel.dovizKodu = result.dovizKodu;
+                                viewModel.setDovizAdi(result.isim ?? mainCurrency);
+                                dovizTipiController.text = result.isim ?? "";
+                                viewModel.setShowDovizBilgileri(result.dovizTipi != 0);
+                                await getDovizData();
+                              }
+                            },
+                          ),
+                        ).yetkiVarMi((viewModel.model?.dovizliMi ?? false) && !transferMi),
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Döviz Kuru",
+                            isMust: true,
+                            controller: dovizKuruController,
+                            enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                            isFormattedString: true,
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            onChanged: (value) {
+                              viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
+                              viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
+                              fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                            },
+                          ),
+                        ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
+                      ],
+                    ),
                   ),
-                ),
-                if (editTipi?.fiyatGor == true) Observer(
-                  builder: (_) => CustomTextField(
-                    labelText: "Döviz Fiyatı",
-                    isMust: true,
-                    controller: dovizFiyatiController,
-                    enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    isFormattedString: true,
-                    onChanged: (p0) {
-                      viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
-                      viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
-                      log(viewModel.kalemModel.brutFiyat.toString());
-                      log(viewModel.kalemModel.dovizliFiyat.toString());
-                      fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
-                    },
-                  ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
-                ),
+                if (editTipi?.fiyatGor == true)
+                  Observer(
+                    builder: (_) => CustomTextField(
+                      labelText: "Döviz Fiyatı",
+                      isMust: true,
+                      controller: dovizFiyatiController,
+                      enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      isFormattedString: true,
+                      onChanged: (p0) {
+                        viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
+                        viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
+                        log(viewModel.kalemModel.brutFiyat.toString());
+                        log(viewModel.kalemModel.dovizliFiyat.toString());
+                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                      },
+                    ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
+                  ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -757,22 +759,23 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ),
                       ),
                     ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
-                    if (editTipi?.fiyatGor == true) Expanded(
-                      child: CustomTextField(
-                        labelText: "Fiyat",
-                        controller: fiyatController,
-                        enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (p0) {
-                          viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
-                          if (viewModel.model?.dovizliMi ?? false) {
-                            viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                            dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
-                          }
-                        },
+                    if (editTipi?.fiyatGor == true)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Fiyat",
+                          controller: fiyatController,
+                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          isFormattedString: true,
+                          onChanged: (p0) {
+                            viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
+                            if (viewModel.model?.dovizliMi ?? false) {
+                              viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                              dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                            }
+                          },
+                        ),
                       ),
-                    ),
                   ],
                 ),
                 Observer(
