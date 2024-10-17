@@ -136,6 +136,8 @@ mixin _$SiparisEditRequestModel {
   set arrBelgeNo(String? value) => throw _privateConstructorUsedError;
   String? get bakiyeDurumu => throw _privateConstructorUsedError;
   set bakiyeDurumu(String? value) => throw _privateConstructorUsedError;
+  bool? get isNew => throw _privateConstructorUsedError;
+  set isNew(bool? value) => throw _privateConstructorUsedError;
 
   /// Serializes this SiparisEditRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -205,7 +207,8 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
       String? refBelgeTuru,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? bakiyeDurumu});
+      String? bakiyeDurumu,
+      bool? isNew});
 }
 
 /// @nodoc
@@ -276,6 +279,7 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
     Object? arrBelgeTipi = freezed,
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
+    Object? isNew = freezed,
   }) {
     return _then(_value.copyWith(
       ekranTipi: freezed == ekranTipi
@@ -486,6 +490,10 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
           ? _value.bakiyeDurumu
           : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
               as String?,
+      isNew: freezed == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -551,7 +559,8 @@ abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
       String? refBelgeTuru,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? bakiyeDurumu});
+      String? bakiyeDurumu,
+      bool? isNew});
 }
 
 /// @nodoc
@@ -621,6 +630,7 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     Object? arrBelgeTipi = freezed,
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
+    Object? isNew = freezed,
   }) {
     return _then(_$SiparisEditRequestModelImpl(
       ekranTipi: freezed == ekranTipi
@@ -831,6 +841,10 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
           ? _value.bakiyeDurumu
           : bakiyeDurumu // ignore: cast_nullable_to_non_nullable
               as String?,
+      isNew: freezed == isNew
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -891,7 +905,8 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
       this.refBelgeTuru,
       this.arrBelgeTipi,
       this.arrBelgeNo,
-      this.bakiyeDurumu})
+      this.bakiyeDurumu,
+      this.isNew})
       : super._();
 
   factory _$SiparisEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1006,6 +1021,8 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   String? arrBelgeNo;
   @override
   String? bakiyeDurumu;
+  @override
+  bool? isNew;
 
   /// Create a copy of SiparisEditRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1077,7 +1094,8 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
       String? refBelgeTuru,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? bakiyeDurumu}) = _$SiparisEditRequestModelImpl;
+      String? bakiyeDurumu,
+      bool? isNew}) = _$SiparisEditRequestModelImpl;
   _SiparisEditRequestModel._() : super._();
 
   factory _SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1247,6 +1265,9 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   String? get bakiyeDurumu;
   set bakiyeDurumu(String? value);
+  @override
+  bool? get isNew;
+  set isNew(bool? value);
 
   /// Create a copy of SiparisEditRequestModel
   /// with the given fields replaced by the non-null parameter values.

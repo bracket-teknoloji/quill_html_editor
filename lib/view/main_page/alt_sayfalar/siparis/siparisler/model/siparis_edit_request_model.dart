@@ -69,6 +69,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? arrBelgeTipi,
     String? arrBelgeNo,
     String? bakiyeDurumu,
+    bool? isNew,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();
@@ -100,6 +101,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         filtreKodu: 2,
         tipi: model.tipi,
         tempBelgeId: model.tempBelgeId,
+        isNew: model.isNew,
       );
 
   factory SiparisEditRequestModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => SiparisEditRequestModel(

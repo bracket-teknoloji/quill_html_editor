@@ -92,7 +92,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
+        final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showError: model.model?.isNew != true, showLoading: true);
         if (result.isSuccess) {
           // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.dataList.first);
