@@ -706,8 +706,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     return null;
   }
 
-
-
   YetkiController get _yetkiController => YetkiController();
 
   bool get otvliKalemVarMi => kalemList?.any((element) => element.otvVarmi == true) ?? false;
@@ -1013,7 +1011,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam;
     } else {
       //? getToplamEkMaliyet ekleme sebebim GetToplamIskonto İçinde zaten bulunuyor olması
-      genelToplam = getAraToplam + kdvTutari + getToplamEkMaliyet + getOTVToplam;
+      genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam + kdvTutari ;
     }
     return genelToplam ?? 0;
   }
@@ -1046,25 +1044,28 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   double get dovizKuru => ((genelToplam ?? 0) / (dovizTutari ?? 0)).toNotNaN;
 
   double iskontoChecker(double result) {
-    if (genIsk1o != null && genIsk1o != 0.0) {
-      genelIskonto1 = result * (genIsk1o ?? 0) / 100;
-      genIsk1t = genelIskonto1;
+    if (genIsk1o != null && genIsk1o! >= 0.0) {
+      // genelIskonto1 = result2 * (genIsk1o ?? 0) / 100;
+      // genIsk1t = genelIskonto1;
+      log("Genel iskonto 1: $genIsk1t");
       result = result - result * ((genIsk1o ?? 0) / 100);
     } else {
       genelIskonto1 = 0;
       genIsk1t = 0;
     }
-    if (genIsk2o != null && genIsk2o != 0.0) {
-      genelIskonto2 = result * (genIsk2o ?? 0) / 100;
-      genIsk2t = genelIskonto2;
+    if (genIsk2o != null && genIsk2o! >= 0.0) {
+      log("Genel iskonto 2 : $genIsk2t");
+      // genelIskonto2 = result2 * (genIsk2o ?? 0) / 100;
+      // genIsk2t = genelIskonto2;
       result = result - result * ((genIsk2o ?? 0) / 100);
     } else {
       genelIskonto2 = 0;
       genIsk2t = 0;
     }
-    if (genIsk3o != null && genIsk3o != 0.0) {
-      genelIskonto3 = result * (genIsk3o ?? 0) / 100;
-      genIsk3t = genelIskonto3;
+    if (genIsk3o != null && genIsk3o! >= 0.0) {
+      // genelIskonto3 = result2 * (genIsk3o ?? 0) / 100;
+      // genIsk3t = genelIskonto3;
+      log("Genel iskonto 3: $genIsk3t");
       result = result - result * ((genIsk3o ?? 0) / 100);
     } else {
       genelIskonto3 = 0;
