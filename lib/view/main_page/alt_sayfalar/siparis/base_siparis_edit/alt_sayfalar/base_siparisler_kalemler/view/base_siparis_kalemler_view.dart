@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -247,23 +248,14 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
             ),
           ],
         ),
-        subtitle: LayoutBuilder(
-          builder: (context, constrains) => Wrap(
-            children: [
-              Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-              Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
-              // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-              Text("KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
-              Text("Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-            ]
-                .map(
-                  (e) => SizedBox(
-                    width: constrains.maxWidth / 2,
-                    child: e,
-                  ),
-                )
-                .toList(),
-          ),
+        subtitle: CustomLayoutBuilder.divideInHalf(
+          children: [
+            Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
+            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+            // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+            Text("KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
+            Text("Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+          ],
         ),
         // title: Text("${stokList?.stokKodu ?? ""}-${stokList?.stokAdi ?? ""}"),
         // subtitle: Text("${viewModel.kalemList?[index].kalemList?[index].miktar ?? ""} ${viewModel.kalemList?[index].kalemList?[index].olcuBirimAdi ?? ""}"),
