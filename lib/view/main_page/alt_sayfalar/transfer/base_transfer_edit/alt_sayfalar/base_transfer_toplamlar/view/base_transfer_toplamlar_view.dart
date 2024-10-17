@@ -495,9 +495,9 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
       );
 
   void initControllers() {
-    genelIskonto1Controller = TextEditingController(text: model.genIsk1o.toIntIfDouble.toStringIfNotNull);
-    genelIskonto2Controller = TextEditingController(text: model.genIsk2o.toIntIfDouble.toStringIfNotNull);
-    genelIskonto3Controller = TextEditingController(text: model.genIsk3o.toIntIfDouble.toStringIfNotNull);
+    genelIskonto1Controller = TextEditingController(text: model.genIsk1o.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    genelIskonto2Controller = TextEditingController(text: model.genIsk2o.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    genelIskonto3Controller = TextEditingController(text: model.genIsk3o.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     iskontoTipi1Controller = TextEditingController(text: model.genisk1Tipi.toStringIfNotNull);
     iskontoTipi2Controller = TextEditingController(text: model.genisk2Tipi.toStringIfNotNull);
     iskontoTipi3Controller = TextEditingController(text: model.genisk3Tipi.toStringIfNotNull);
