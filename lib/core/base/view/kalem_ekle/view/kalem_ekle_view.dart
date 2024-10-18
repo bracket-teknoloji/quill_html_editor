@@ -708,7 +708,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             onChanged: (value) {
                               viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
                               viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
-                              fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                              fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
                             },
                           ),
                         ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
@@ -771,7 +771,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
                             if (viewModel.model?.dovizliMi ?? false) {
                               viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                              dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                              dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
                             }
                           },
                         ),
@@ -1019,7 +1019,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     isk5TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk5Tipi.toIntIfDouble);
     isk6YuzdeController?.text = viewModel.kalemModel.iskonto6.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk6TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk6Tipi.toIntIfDouble);
-    fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+    fiyatController.text = (viewModel.kalemModel.brutFiyat.toIntIfDouble ?? viewModel.model?.bulunanFiyat.toIntIfDouble)?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
     miktarController.text = viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     miktar2Controller.text = viewModel.kalemModel.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     muhKoduController.text = viewModel.kalemModel.muhasebeTanimi ?? viewModel.kalemModel.muhasebeKodu ?? "";
