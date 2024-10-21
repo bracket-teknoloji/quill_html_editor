@@ -157,6 +157,7 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
       sartliAdet: (json['SARTLI_ADET'] as num?)?.toDouble(),
       retAdet: (json['RET_ADET'] as num?)?.toDouble(),
       seriNo: json['SERI_NO'] as String?,
+      tamamlandi: json['TAMAMLANDI'] as String?,
     );
 
 Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
@@ -182,6 +183,7 @@ Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
   writeNotNull('SARTLI_ADET', instance.sartliAdet);
   writeNotNull('RET_ADET', instance.retAdet);
   writeNotNull('SERI_NO', instance.seriNo);
+  writeNotNull('TAMAMLANDI', instance.tamamlandi);
   return val;
 }
 

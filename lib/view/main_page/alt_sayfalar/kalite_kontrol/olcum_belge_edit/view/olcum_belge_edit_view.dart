@@ -600,13 +600,16 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                   title: Row(
                                     children: [
                                       Expanded(child: Text(title)),
-                                      Row(
-                                        children: [
-                                          const ColorfulBadge(label: Text("Kabul"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) <= 0),
-                                          const ColorfulBadge(label: Text("Şartlı Kabul"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) > 0),
-                                          const ColorfulBadge(label: Text("Ret"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi((item?.retAdet ?? 0) > 0),
-                                        ],
-                                      ),
+                                      if (item?.tamamlandi == "H")
+                                        const ColorfulBadge(label: Text("Devam ediyor"), badgeColorEnum: BadgeColorEnum.uyari)
+                                      else
+                                        Row(
+                                          children: [
+                                            const ColorfulBadge(label: Text("Kabul"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) <= 0),
+                                            const ColorfulBadge(label: Text("Şartlı Kabul"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) > 0),
+                                            const ColorfulBadge(label: Text("Ret"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi((item?.retAdet ?? 0) > 0),
+                                          ],
+                                        ),
                                     ],
                                   ),
                                   subtitle: CustomLayoutBuilder(

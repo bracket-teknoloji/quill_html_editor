@@ -1223,6 +1223,8 @@ mixin _$OlcumOlcumlerModel {
   set retAdet(double? value) => throw _privateConstructorUsedError;
   String? get seriNo => throw _privateConstructorUsedError;
   set seriNo(String? value) => throw _privateConstructorUsedError;
+  String? get tamamlandi => throw _privateConstructorUsedError;
+  set tamamlandi(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this OlcumOlcumlerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1253,7 +1255,8 @@ abstract class $OlcumOlcumlerModelCopyWith<$Res> {
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? seriNo});
+      String? seriNo,
+      String? tamamlandi});
 }
 
 /// @nodoc
@@ -1284,6 +1287,7 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
     Object? seriNo = freezed,
+    Object? tamamlandi = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -1338,6 +1342,10 @@ class _$OlcumOlcumlerModelCopyWithImpl<$Res, $Val extends OlcumOlcumlerModel>
           ? _value.seriNo
           : seriNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      tamamlandi: freezed == tamamlandi
+          ? _value.tamamlandi
+          : tamamlandi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -1363,7 +1371,8 @@ abstract class _$$OlcumOlcumlerModelImplCopyWith<$Res>
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? seriNo});
+      String? seriNo,
+      String? tamamlandi});
 }
 
 /// @nodoc
@@ -1392,6 +1401,7 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
     Object? sartliAdet = freezed,
     Object? retAdet = freezed,
     Object? seriNo = freezed,
+    Object? tamamlandi = freezed,
   }) {
     return _then(_$OlcumOlcumlerModelImpl(
       id: freezed == id
@@ -1446,6 +1456,10 @@ class __$$OlcumOlcumlerModelImplCopyWithImpl<$Res>
           ? _value.seriNo
           : seriNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      tamamlandi: freezed == tamamlandi
+          ? _value.tamamlandi
+          : tamamlandi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1466,7 +1480,8 @@ class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
       this.kabulAdet,
       this.sartliAdet,
       this.retAdet,
-      this.seriNo})
+      this.seriNo,
+      this.tamamlandi})
       : super._();
 
   factory _$OlcumOlcumlerModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1498,6 +1513,8 @@ class _$OlcumOlcumlerModelImpl extends _OlcumOlcumlerModel {
   double? retAdet;
   @override
   String? seriNo;
+  @override
+  String? tamamlandi;
 
   /// Create a copy of OlcumOlcumlerModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1530,7 +1547,8 @@ abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
       double? kabulAdet,
       double? sartliAdet,
       double? retAdet,
-      String? seriNo}) = _$OlcumOlcumlerModelImpl;
+      String? seriNo,
+      String? tamamlandi}) = _$OlcumOlcumlerModelImpl;
   _OlcumOlcumlerModel._() : super._();
 
   factory _OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) =
@@ -1575,6 +1593,9 @@ abstract class _OlcumOlcumlerModel extends OlcumOlcumlerModel {
   @override
   String? get seriNo;
   set seriNo(String? value);
+  @override
+  String? get tamamlandi;
+  set tamamlandi(String? value);
 
   /// Create a copy of OlcumOlcumlerModel
   /// with the given fields replaced by the non-null parameter values.

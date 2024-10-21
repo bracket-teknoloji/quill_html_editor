@@ -92,6 +92,7 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
     double? sartliAdet,
     double? retAdet,
     String? seriNo,
+    String? tamamlandi,
   }) = _OlcumOlcumlerModel;
 
   factory OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
