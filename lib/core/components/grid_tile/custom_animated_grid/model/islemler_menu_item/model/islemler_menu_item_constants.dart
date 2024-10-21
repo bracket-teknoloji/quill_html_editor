@@ -1229,10 +1229,9 @@ class IslemlerMenuItemConstants<T> {
                 if (kalemList == null) {
                   return;
                 }
-                siparisModel.kalemList = kalemList;
                 return await Get.toNamed(
                   "mainPage/faturaEdit",
-                  arguments: BaseEditModel(model: result, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
+                  arguments: BaseEditModel(model: result.copyWith(kalemList: kalemList), baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: result.belgeNo),
                 );
               }
             } else {
