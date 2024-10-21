@@ -31,7 +31,7 @@ dependencies:
 
   #Info Dependencies
   device_info_plus: ^10.1.0
-  package_info_plus: ^6.0.0
+  package_info_plus: ^8.1.0
   connectivity_plus: ^6.0.1
   # platform_device_id: ^1.0.1
   android_id: ^0.4.0
@@ -53,7 +53,7 @@ dependencies:
   path_provider: ^2.1.1
   open_file_plus: ^3.4.1
   permission_handler: ^11.0.1
-  share_plus: ^8.0.3
+  share_plus: ^10.1.0
 
   # Component  Dependencies
   awesome_dialog: ^3.1.0
@@ -82,7 +82,7 @@ dependencies:
 
   #QR
   # qr_code_scanner: ^1.0.1
-  mobile_scanner: ^5.2.3
+  mobile_scanner: ^6.0.1
   flutter_image_compress: ^2.0.3
   timezone: ^0.9.1
   syncfusion_flutter_pdfviewer: ^27.1.52
