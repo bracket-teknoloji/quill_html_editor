@@ -46,6 +46,8 @@ mixin _$OlcumEkleModel {
   set miktar(double? value) => throw _privateConstructorUsedError;
   int? get belgeId => throw _privateConstructorUsedError;
   set belgeId(int? value) => throw _privateConstructorUsedError;
+  bool? get tamamlandi => throw _privateConstructorUsedError;
+  set tamamlandi(bool? value) => throw _privateConstructorUsedError;
   List<OlcumProsesModel>? get prosesler => throw _privateConstructorUsedError;
   set prosesler(List<OlcumProsesModel>? value) =>
       throw _privateConstructorUsedError;
@@ -80,6 +82,7 @@ abstract class $OlcumEkleModelCopyWith<$Res> {
       String? seriNo,
       double? miktar,
       int? belgeId,
+      bool? tamamlandi,
       List<OlcumProsesModel>? prosesler});
 }
 
@@ -111,6 +114,7 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
     Object? seriNo = freezed,
     Object? miktar = freezed,
     Object? belgeId = freezed,
+    Object? tamamlandi = freezed,
     Object? prosesler = freezed,
   }) {
     return _then(_value.copyWith(
@@ -166,6 +170,10 @@ class _$OlcumEkleModelCopyWithImpl<$Res, $Val extends OlcumEkleModel>
           ? _value.belgeId
           : belgeId // ignore: cast_nullable_to_non_nullable
               as int?,
+      tamamlandi: freezed == tamamlandi
+          ? _value.tamamlandi
+          : tamamlandi // ignore: cast_nullable_to_non_nullable
+              as bool?,
       prosesler: freezed == prosesler
           ? _value.prosesler
           : prosesler // ignore: cast_nullable_to_non_nullable
@@ -196,6 +204,7 @@ abstract class _$$OlcumEkleModelImplCopyWith<$Res>
       String? seriNo,
       double? miktar,
       int? belgeId,
+      bool? tamamlandi,
       List<OlcumProsesModel>? prosesler});
 }
 
@@ -225,6 +234,7 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
     Object? seriNo = freezed,
     Object? miktar = freezed,
     Object? belgeId = freezed,
+    Object? tamamlandi = freezed,
     Object? prosesler = freezed,
   }) {
     return _then(_$OlcumEkleModelImpl(
@@ -280,6 +290,10 @@ class __$$OlcumEkleModelImplCopyWithImpl<$Res>
           ? _value.belgeId
           : belgeId // ignore: cast_nullable_to_non_nullable
               as int?,
+      tamamlandi: freezed == tamamlandi
+          ? _value.tamamlandi
+          : tamamlandi // ignore: cast_nullable_to_non_nullable
+              as bool?,
       prosesler: freezed == prosesler
           ? _value.prosesler
           : prosesler // ignore: cast_nullable_to_non_nullable
@@ -305,6 +319,7 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
       this.seriNo,
       this.miktar,
       this.belgeId,
+      this.tamamlandi,
       this.prosesler})
       : super._();
 
@@ -337,6 +352,8 @@ class _$OlcumEkleModelImpl extends _OlcumEkleModel {
   double? miktar;
   @override
   int? belgeId;
+  @override
+  bool? tamamlandi;
   @override
   List<OlcumProsesModel>? prosesler;
 
@@ -372,6 +389,7 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
       String? seriNo,
       double? miktar,
       int? belgeId,
+      bool? tamamlandi,
       List<OlcumProsesModel>? prosesler}) = _$OlcumEkleModelImpl;
   _OlcumEkleModel._() : super._();
 
@@ -417,6 +435,9 @@ abstract class _OlcumEkleModel extends OlcumEkleModel {
   @override
   int? get belgeId;
   set belgeId(int? value);
+  @override
+  bool? get tamamlandi;
+  set tamamlandi(bool? value);
   @override
   List<OlcumProsesModel>? get prosesler;
   set prosesler(List<OlcumProsesModel>? value);

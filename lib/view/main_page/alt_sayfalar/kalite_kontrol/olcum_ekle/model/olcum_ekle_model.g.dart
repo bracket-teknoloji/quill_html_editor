@@ -23,6 +23,7 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
       seriNo: json['SERI_NO'] as String?,
       miktar: (json['MIKTAR'] as num?)?.toDouble(),
       belgeId: (json['BELGE_ID'] as num?)?.toInt(),
+      tamamlandi: json['TAMAMLANDI'] as bool?,
       prosesler: (json['PROSESLER'] as List<dynamic>?)
           ?.map((e) => OlcumProsesModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -51,6 +52,7 @@ Map<String, dynamic> _$$OlcumEkleModelImplToJson(
   writeNotNull('SERI_NO', instance.seriNo);
   writeNotNull('MIKTAR', instance.miktar);
   writeNotNull('BELGE_ID', instance.belgeId);
+  writeNotNull('TAMAMLANDI', instance.tamamlandi);
   writeNotNull(
       'PROSESLER', instance.prosesler?.map((e) => e.toJson()).toList());
   return val;

@@ -24,6 +24,7 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
     String? seriNo,
     double? miktar,
     int? belgeId,
+    bool? tamamlandi,
     List<OlcumProsesModel>? prosesler,
   }) = _OlcumEkleModel;
 
