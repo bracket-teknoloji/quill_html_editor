@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_olcu_birimleri_model.dart";
 
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
@@ -55,20 +58,77 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
             labelText: "Barkod 1",
             maxLength: 35,
             controller: barkod1Controller,
+            suffix: Row(
+              children: [
+                barkodUretSuffix(1),
+                qrSuffix(1),
+              ],
+            ),
             onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B1")),
           CustomTextField(
             labelText: "Barkod 2",
             maxLength: 35,
             controller: barkod2Controller,
+            suffix: Row(
+              children: [
+                barkodUretSuffix(2),
+                qrSuffix(2),
+              ],
+            ),
             onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B2")),
           CustomTextField(
             labelText: "Barkod 3",
             maxLength: 35,
             controller: barkod3Controller,
+            suffix: Row(
+              children: [
+                barkodUretSuffix(3),
+                qrSuffix(3),
+              ],
+            ),
             onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
           ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B3")),
         ],
       );
+
+  Widget qrSuffix(int index) => IconButton(onPressed: () => getQR(index), icon: const Icon(Icons.qr_code_scanner_outlined));
+
+  Future<void> getQR(int index) async {
+    final result = await Get.toNamed("qr");
+    if (result is String) {
+      switch (index) {
+        case 1:
+          barkod1Controller.text = result;
+          widget.onChanged.call(widget.model?.copyWith(barkod1: result));
+        case 2:
+          barkod2Controller.text = result;
+          widget.onChanged.call(widget.model?.copyWith(barkod2: result));
+        case 3:
+          barkod3Controller.text = result;
+          widget.onChanged.call(widget.model?.copyWith(barkod3: result));
+      }
+    }
+  }
+
+  Widget barkodUretSuffix(int index) => IconButton(onPressed: () => barkodUret(index), icon: const Icon(Icons.format_list_numbered_rtl_outlined));
+
+  Future<void> barkodUret(int index) async {
+    final result = await networkManager.dioPost(path: ApiUrls.barkodUret, bodyModel: StokOlcuBirimleriModel(), data: {"BarkodSira": index}, showLoading: true);
+    if (result.isSuccess) {
+      final String barkod = result.paramData?["URETILEN_BARKOD"];
+      switch (index) {
+        case 1:
+          barkod1Controller.text = barkod;
+          widget.onChanged.call(widget.model?.copyWith(barkod1: barkod));
+        case 2:
+          barkod2Controller.text = barkod;
+          widget.onChanged.call(widget.model?.copyWith(barkod2: barkod));
+        case 3:
+          barkod3Controller.text = barkod;
+          widget.onChanged.call(widget.model?.copyWith(barkod3: barkod));
+      }
+    }
+  }
 }
