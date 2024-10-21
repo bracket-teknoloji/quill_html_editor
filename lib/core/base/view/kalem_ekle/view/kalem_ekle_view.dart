@@ -86,6 +86,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     initControllers();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
+
       viewModel.setIskonto1OranMi(widget.kalemModel?.iskonto1OranMi ?? true);
       await controllerFiller();
     });
@@ -911,6 +912,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController = TextEditingController();
     muhRefKoduController = TextEditingController();
     serilerController = TextEditingController();
+
+    viewModel.setShowDovizBilgileri(widget.kalemModel?.dovizliMi ?? widget.stokListesiModel?.dovizliMi ?? false);
   }
 
   Future<void> getData() async {
