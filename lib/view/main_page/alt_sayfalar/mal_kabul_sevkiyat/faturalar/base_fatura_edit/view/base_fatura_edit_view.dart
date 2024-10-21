@@ -1,4 +1,5 @@
 import "dart:convert";
+import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -162,30 +163,37 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           } else if (widget.model.baseEditEnum.kopyalaMi) {
             // if (widget.model.baseEditEnum?.)
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.resmiBelgeNo = null;
+            BaseSiparisEditModel.instance.resmiBelgeNo = widget.model.belgeNo;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList
-                ?.map(
-                  (e) => e
-                    ..belgeTipi = BaseSiparisEditModel.instance.belgeTuru
-                    ..siparisNo = e.belgeNo
-                    ..kalan = null
-                    ..kapali = null
-                    ..tempBarkodList = null
-                    ..hucreList = null
-                    ..inckeyno = null
-                    ..stokSatisKdv = null
-                    ..stokAlisKdv = null
-                    ..belgeNo = null,
-                )
-                .toList();
-            if ((widget.model.model.kalemList as List?).ext.isNotNullOrEmpty) {
-              BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
+            if (widget.model.model is BaseSiparisEditModel) {
+              BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
+            } else {
+              BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList
+                  ?.map(
+                    (e) => e
+                      ..belgeTipi = BaseSiparisEditModel.instance.belgeTuru
+                      ..siparisNo = e.belgeNo
+                      ..kalan = null
+                      ..kapali = null
+                      ..tempBarkodList = null
+                      ..hucreList = null
+                      ..inckeyno = null
+                      ..stokSatisKdv = null
+                      ..stokAlisKdv = null
+                      ..belgeNo = null,
+                  )
+                  .toList();
             }
             if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-              BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisNo = null).toList();
+              BaseSiparisEditModel.instance.tarih = model.model?.belgeTarihi.toDateTimeDDMMYYYY();
             }
-            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            if ((widget.model.model.kalemList as List?).ext.isNotNullOrEmpty) {
+              BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
+            } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
+              BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList;
+            } else {
+              BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            }
             BaseSiparisEditModel.instance.belgeKodu = null;
             BaseSiparisEditModel.instance.teslimTarihi = null;
             BaseSiparisEditModel.instance.kapatilmis = null;
@@ -286,6 +294,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
+    log("resmi belge no: ${widget.model.model?.belgeNo}");
     super.initState();
   }
 

@@ -189,7 +189,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: "Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"}"),
+                        TextSpan(text: "Fiyat: ${kalemModel?.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "0.00"}"),
                         TextSpan(text: "\n(${kalemModel?.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? "0.00"} ${kalemModel?.dovizAdi ?? mainCurrency})")
                             .yetkiVarMi(kalemModel?.dovizliMi),
                       ],
@@ -251,7 +251,7 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
         subtitle: CustomLayoutBuilder.divideInHalf(
           children: [
             Text("Miktar: ${(kalemList?.getSelectedMiktar.toIntIfDouble ?? 0).toIntIfDouble.toStringIfNotNull ?? ""}"),
-            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}"),
+            Text("Fiyat: ${kalemList?.brutFiyat.toIntIfDouble.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? ""}"),
             // Text("KDV %: ${(kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("KDV %: ${((model.getEditTipiEnum?.satisMi == true ? kalemList?.stokSatisKdv : kalemList?.stokAlisKdv) ?? kalemList?.kdvOrani).toIntIfDouble ?? ""}"),
             Text("Tutar: ${(kalemList?.araToplamTutari.toIntIfDouble ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),

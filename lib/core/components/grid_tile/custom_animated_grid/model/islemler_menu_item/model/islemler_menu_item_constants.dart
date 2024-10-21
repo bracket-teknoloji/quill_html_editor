@@ -119,7 +119,8 @@ class IslemlerMenuItemConstants<T> {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
         islemlerList.add(siparisPDFGoruntule);
-        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, satisIrsaliyeOlustur);
+        if (siparisModel.getEditTipiEnum?.musteriMi ?? false) islemlerList.addIfConditionTrue(!siparisModel.onaydaMi && _yetkiController.satisIrsEkle, satisIrsaliyeOlustur);
+        if (siparisModel.getEditTipiEnum?.saticiMi ?? false) islemlerList.addIfConditionTrue(!siparisModel.onaydaMi && _yetkiController.alisIrsEkle, alisIrsaliyeOlustur);
         islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
         islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
         islemlerList.add(belgeNoDegistir);
@@ -1242,6 +1243,57 @@ class IslemlerMenuItemConstants<T> {
               return await Get.toNamed(
                 "mainPage/faturaEdit",
                 arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: siparisModel.belgeNo),
+              );
+            }
+          }
+        },
+      );
+  GridItemModel get alisIrsaliyeOlustur => GridItemModel.islemler(
+        title: "Alış İrsaliyesi Oluştur",
+        isEnabled: EditTipiEnum.alisIrsaliye.eklensinMi,
+        iconData: Icons.list_alt_outlined,
+        onTap: () async {
+          if (model is BaseSiparisEditModel) {
+            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            siparisModel.resmiBelgeNo = siparisModel.belgeNo;
+            if (siparisModel.getEditTipiEnum.talepTeklifMi) {
+              final result =
+                  await _bottomSheetDialogManager.showBelgeBaglantilariBottomSheetDialog(context, cariKodu: siparisModel.cariKodu, belgeTipi: siparisModel.belgeTuru, belgeNo: siparisModel.belgeNo);
+              if (result != null) {
+                final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
+                if (kalemList == null) {
+                  return;
+                }
+                siparisModel.kalemList = kalemList;
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.alisIrsaliye, belgeNo: result.belgeNo),
+                );
+              } else {
+                return;
+              }
+            } else if (siparisModel.getEditTipiEnum.siparisMi) {
+              final result = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
+              if (result == null) {
+                return;
+              } else {
+                final kalemList = await getKalemRehberi(result);
+                if (kalemList == null) {
+                  return;
+                }
+                return await Get.toNamed(
+                  "mainPage/faturaEdit",
+                  arguments: BaseEditModel(model: result.copyWith(kalemList: kalemList), baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.alisIrsaliye, belgeNo: result.belgeNo),
+                );
+              }
+            } else {
+              siparisModel.teslimCari = null;
+              siparisModel.teslimCariAdi = null;
+              siparisModel.teslimTarihi = null;
+              siparisModel.istenilenTeslimTarihi = null;
+              return await Get.toNamed(
+                "mainPage/faturaEdit",
+                arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.alisIrsaliye, belgeNo: siparisModel.belgeNo),
               );
             }
           }

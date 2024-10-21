@@ -51,7 +51,8 @@ class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                 if (viewModel.selectedKalemList.isEmpty) {
                   dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
                 } else {
-                  if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi) {
+                  if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi ||
+                      EditTipiEnum.satisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).siparisMi) {
                     Get.back(
                       result: viewModel.selectedKalemList
                           .map(

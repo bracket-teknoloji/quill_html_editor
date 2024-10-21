@@ -65,6 +65,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
         belgeNo: model.belgeNo ?? "",
         arrBelgeNo: model.arrBelgeNo,
         cariKodu: model.cariKodu ?? "",
+        
         // refBelgeTuru: model.belgeTuru,
         projeKodu: model.projeKodu,
       );

@@ -1,5 +1,6 @@
 import "package:freezed_annotation/freezed_annotation.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -97,6 +98,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         pickerBelgeTuru: model.belgeTuru,
         belgeTuru: model.belgeTuru,
         belgeTipi: model.belgeTipi.toStringIfNotNull,
+        belgeTarihi: model.tarih?.toDateString,
         cariKodu: model.cariKodu,
         filtreKodu: 2,
         tipi: model.tipi,
