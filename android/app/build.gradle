@@ -37,7 +37,7 @@ if (keystorePropertiesFile.exists()) {
 }
 android {
     namespace 'com.bracket23.picker'
-    compileSdk 34
+    compileSdk 35
     ndkVersion "27.0.12077973"
 
     signingConfigs {
@@ -94,7 +94,7 @@ android {
             // ndk.debugSymbolLevel = 'FULL'
         }
     }
-    buildToolsVersion '34.0.0'
+    buildToolsVersion '35.0.0'
 }
 
 flutter {
