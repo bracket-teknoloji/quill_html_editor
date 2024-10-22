@@ -37,8 +37,8 @@ if (keystorePropertiesFile.exists()) {
 }
 android {
     namespace 'com.bracket23.picker'
-    compileSdkVersion 34
-    ndkVersion "25.1.8937393"
+    compileSdk 34
+    ndkVersion "27.0.12077973"
 
     signingConfigs {
         release {
@@ -50,8 +50,8 @@ android {
     }
     compileOptions {
         // coreLibraryDesugaringEnabled true
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
@@ -94,6 +94,7 @@ android {
             // ndk.debugSymbolLevel = 'FULL'
         }
     }
+    buildToolsVersion '34.0.0'
 }
 
 flutter {

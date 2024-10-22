@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Upload symbols to Crashlytics
 
+### ios toTestFlight
+
+```sh
+[bundle exec] fastlane ios toTestFlight
+```
+
+Upload to TestFlight
+
 ### ios increaseBuildNumber
 
 ```sh
