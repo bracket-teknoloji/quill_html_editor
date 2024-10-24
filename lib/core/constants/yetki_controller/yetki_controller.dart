@@ -569,6 +569,8 @@ final class YetkiController {
       return alisIrsaliyeAciklamaAlanlari(index);
     } else if (editTipi.alisFaturasiMi) {
       return alisFaturaAciklamaAlanlari(index);
+    } else if (editTipi.satisIrsaliyesiMi) {
+      return satisIrsaliyeAciklamaAlanlari(index);
     }
     return false;
   }
@@ -576,6 +578,7 @@ final class YetkiController {
   bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)));
   bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)));
   bool satisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)));
+  bool satisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisIrsAciklamaAlanlari?.contains(index)));
 
   //! TRANSFER
 

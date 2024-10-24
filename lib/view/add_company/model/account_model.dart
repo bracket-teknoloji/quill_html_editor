@@ -11,7 +11,6 @@ import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
-import "package:package_info_plus/package_info_plus.dart";
 
 import "../../../core/base/model/base_network_mixin.dart";
 import "../../../core/constants/extensions/date_time_extensions.dart";
@@ -164,7 +163,7 @@ class AccountModel with NetworkManagerMixin {
 
     final AccountResponseModel? account = CacheManager.getAccounts(uyeEmail ?? "");
     uzakErisim = CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? "E" : "H";
-
+  
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.
@@ -174,7 +173,7 @@ class AccountModel with NetworkManagerMixin {
     if (kIsWeb) {
       paketAdi = "com.bracket23.picker";
     } else {
-      paketAdi = (await PackageInfo.fromPlatform()).packageName;
+      paketAdi = CustomPlatform.instance.packageName;
     }
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)

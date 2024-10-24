@@ -1,4 +1,6 @@
-import "package:package_info_plus/package_info_plus.dart";
+import "dart:developer";
+
+import "package:kartal/kartal.dart";
 
 class AppInfoModel {
   String? appName;
@@ -12,10 +14,14 @@ class AppInfoModel {
   AppInfoModel._init();
 
   Future<void> init() async {
-    final packageInfo = await PackageInfo.fromPlatform();
-    appName = packageInfo.buildSignature;
-    packageName = packageInfo.packageName;
-    version = packageInfo.version;
-    buildNumber = packageInfo.buildNumber;
+    try {
+      await DeviceUtility.instance.initPackageInfo();
+      appName = CustomPlatform.instance.appName;
+      packageName = CustomPlatform.instance.packageName;
+      version = CustomPlatform.instance.version;
+      buildNumber = CustomPlatform.instance.buildNumber;
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }

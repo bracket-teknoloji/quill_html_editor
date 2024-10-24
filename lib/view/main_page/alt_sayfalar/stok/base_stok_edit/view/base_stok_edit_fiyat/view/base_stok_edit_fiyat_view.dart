@@ -368,7 +368,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                       Expanded(
                         child: CustomTextField(
                           enabled: isEnabled,
-                          labelText: "Alış Fiyatı",
+                          labelText: "Satış Fiyatı",
                           isFormattedString: true,
                           controller: satisDovizFiyatiController,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),

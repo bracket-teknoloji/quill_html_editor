@@ -163,7 +163,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           } else if (widget.model.baseEditEnum.kopyalaMi) {
             // if (widget.model.baseEditEnum?.)
             BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.resmiBelgeNo = widget.model.belgeNo;
+            // BaseSiparisEditModel.instance.resmiBelgeNo = widget.model.belgeNo;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             if (widget.model.model is BaseSiparisEditModel) {
               BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;

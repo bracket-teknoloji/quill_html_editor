@@ -22,11 +22,15 @@ import "view/add_company/model/account_model.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
-  await AppInfoModel.instance.init();
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async {
+  try {
+    await AppInfoModel.instance.init();
+  } catch (e) {
+    log(e.toString());
+  }
     await firebaseInitialized();
     await EasyLocalization.ensureInitialized();
   });

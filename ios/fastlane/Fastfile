@@ -14,8 +14,18 @@ end
 
 platform :ios do
   desc 'Upload to TestFlight'
-  lane :toTestFlight do
+  lane :beta do
     build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
+    upload_to_testflight(
+      ipa: "Runner.ipa",
+      apple_id: "6451071838",
+      skip_waiting_for_build_processing: true,
+    )
+  end
+end
+platform :ios do
+  desc 'Upload to TestFlight'
+  lane :toTestFlight do
     upload_to_testflight(
       ipa: "Runner.ipa",
       apple_id: "6451071838",
