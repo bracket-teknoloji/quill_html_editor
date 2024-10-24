@@ -685,6 +685,10 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           (json['sevkiyat_SatisFat_AciklamaAlanlari'] as List<dynamic>?)
               ?.map((e) => (e as num).toInt())
               .toList()
+      ..sevkiyatSatisIrsAciklamaAlanlari =
+          (json['sevkiyat_SatisIrs_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..sevkiyatSatisFatBosGecilmeyecekAlanlar =
           (json['sevkiyat_SatisFat_BosGecilmeyecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -2373,6 +2377,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) {
       'sevkiyat_SatisFat_OlcuBirimi', instance.sevkiyatSatisFatOlcuBirimi);
   writeNotNull('sevkiyat_SatisFat_AciklamaAlanlari',
       instance.sevkiyatSatisFatAciklamaAlanlari);
+  writeNotNull('sevkiyat_SatisIrs_AciklamaAlanlari',
+      instance.sevkiyatSatisIrsAciklamaAlanlari);
   writeNotNull('sevkiyat_SatisFat_BosGecilmeyecekAlanlar',
       instance.sevkiyatSatisFatBosGecilmeyecekAlanlar);
   writeNotNull('sevkiyat_SatisIrs_BosGecilmeyecekAlanlar',

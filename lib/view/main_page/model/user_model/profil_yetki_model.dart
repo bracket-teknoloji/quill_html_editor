@@ -703,6 +703,8 @@ class ProfilYetkiModel {
   int? sevkiyatSatisFatOlcuBirimi;
   @JsonKey(name: "sevkiyat_SatisFat_AciklamaAlanlari")
   List<int>? sevkiyatSatisFatAciklamaAlanlari;
+  @JsonKey(name: "sevkiyat_SatisIrs_AciklamaAlanlari")
+  List<int>? sevkiyatSatisIrsAciklamaAlanlari;
   @JsonKey(name: "sevkiyat_SatisFat_BosGecilmeyecekAlanlar")
   List<String>? sevkiyatSatisFatBosGecilmeyecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisIrs_BosGecilmeyecekAlanlar")
