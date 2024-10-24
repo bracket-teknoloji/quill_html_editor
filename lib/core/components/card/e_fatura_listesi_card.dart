@@ -59,7 +59,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 faturaGoruntule.yetkiKontrol((model.belgeIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
                 cariOlustur.yetkiKontrol(!model.cariKayitliMi && yetkiController.cariKartiYeniKayit),
                 alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
-                yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
+                if (model.gelenMi) yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
                 dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
                 eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.belgeIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
                 eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.belgeIslendiMi && model.eFaturaMi),
