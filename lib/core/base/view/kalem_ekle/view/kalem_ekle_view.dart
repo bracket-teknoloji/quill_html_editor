@@ -1067,7 +1067,13 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0);
       viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
     }
-    viewModel.kalemModel.depoKodu ??= model.topluDepo ?? viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu;
+    if (editTipi?.depoTransferiMi == true) {
+      viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu ;
+      viewModel.kalemModel.hedefDepo ??= model.girisDepoKodu;
+    viewModel.kalemModel.hedefDepoAdi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.hedefDepo).firstOrNull?.depoTanimi ?? "";
+    } else {
+    viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? model.topluDepo ?? viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu;
+    }
     viewModel.kalemModel.depoTanimi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.depoKodu).firstOrNull?.depoTanimi ?? "";
     depoController.text = viewModel.kalemModel.depoTanimi ?? "";
     viewModel.kalemModel.depoTanimi ??= depoController.text;
