@@ -48,14 +48,14 @@ dependencies:
   flutter_svg: ^2.0.8
   google_fonts: ^6.1.0
   path: ^1.8.6
-  kartal: ^4.0.4
+  kartal: ^4.1.0
   path_provider: ^2.1.1
-  open_file_plus: ^3.4.1
+  open_file_plus: ^3.4.1+1
   permission_handler: ^11.0.1
   share_plus: ^10.1.1
 
   # Component  Dependencies
-  awesome_dialog: ^3.1.0
+  awesome_dialog: ^3.2.1
   shimmer: ^3.0.0
   fl_chart: ^0.69.0
   flutter_staggered_animations: ^1.1.1
@@ -93,6 +93,7 @@ dependencies:
   firebase_core: ^3.6.0
   firebase_crashlytics: ^4.1.3
   firebase_messaging: ^15.1.3
+  firebase_app_check: ^0.3.1+4
 
   quill_html_editor: ^2.2.8
   freezed_annotation: ^2.4.1
@@ -101,7 +102,7 @@ dependencies:
   number_text_input_formatter: ^1.0.0+7
   talker_dio_logger: ^4.0.2
   stack_trace: ^1.11.0
-  location: ^7.0.0
+  location: ^7.0.1
   google_maps_flutter: ^2.5.3
   encrypt: ^5.0.3
   pointycastle: ^3.7.4
@@ -109,7 +110,6 @@ dependencies:
   # cryptography_flutter: ^2.3.2
   label_marker: ^1.0.1
   url_launcher: ^6.3.0
-  firebase_app_check: ^0.3.0+2
   # url_strategy: ^0.3.0
   json: ^0.20.2
   syncfusion_localizations: ^27.1.52
