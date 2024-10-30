@@ -47,6 +47,8 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       arrBelgeTipi: json['ArrBelgeTipi'] as String?,
       arrBelgeNo: json['ArrBelgeNo'] as String?,
       lokalDAT: json['LokalDAT'] as String?,
+      faturalanmisIrsaliyelerGelsin:
+          json['FaturalanmisIrsaliyelerGelsin'] as bool?,
     );
 
 Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
@@ -98,5 +100,7 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
   writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
   writeNotNull('ArrBelgeNo', instance.arrBelgeNo);
   writeNotNull('LokalDAT', instance.lokalDAT);
+  writeNotNull(
+      'FaturalanmisIrsaliyelerGelsin', instance.faturalanmisIrsaliyelerGelsin);
   return val;
 }

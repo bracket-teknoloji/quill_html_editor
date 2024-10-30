@@ -102,6 +102,9 @@ mixin _$SiparislerRequestModel {
   set arrBelgeNo(String? value) => throw _privateConstructorUsedError;
   String? get lokalDAT => throw _privateConstructorUsedError;
   set lokalDAT(String? value) => throw _privateConstructorUsedError;
+  bool? get faturalanmisIrsaliyelerGelsin => throw _privateConstructorUsedError;
+  set faturalanmisIrsaliyelerGelsin(bool? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this SiparislerRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -157,7 +160,8 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       bool? kisitYok,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? lokalDAT});
+      String? lokalDAT,
+      bool? faturalanmisIrsaliyelerGelsin});
 }
 
 /// @nodoc
@@ -214,6 +218,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? arrBelgeTipi = freezed,
     Object? arrBelgeNo = freezed,
     Object? lokalDAT = freezed,
+    Object? faturalanmisIrsaliyelerGelsin = freezed,
   }) {
     return _then(_value.copyWith(
       pickerBelgeTuru: freezed == pickerBelgeTuru
@@ -368,6 +373,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
           ? _value.lokalDAT
           : lokalDAT // ignore: cast_nullable_to_non_nullable
               as String?,
+      faturalanmisIrsaliyelerGelsin: freezed == faturalanmisIrsaliyelerGelsin
+          ? _value.faturalanmisIrsaliyelerGelsin
+          : faturalanmisIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -419,7 +428,8 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       bool? kisitYok,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? lokalDAT});
+      String? lokalDAT,
+      bool? faturalanmisIrsaliyelerGelsin});
 }
 
 /// @nodoc
@@ -475,6 +485,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? arrBelgeTipi = freezed,
     Object? arrBelgeNo = freezed,
     Object? lokalDAT = freezed,
+    Object? faturalanmisIrsaliyelerGelsin = freezed,
   }) {
     return _then(_$SiparislerRequestModelImpl(
       pickerBelgeTuru: freezed == pickerBelgeTuru
@@ -629,6 +640,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
           ? _value.lokalDAT
           : lokalDAT // ignore: cast_nullable_to_non_nullable
               as String?,
+      faturalanmisIrsaliyelerGelsin: freezed == faturalanmisIrsaliyelerGelsin
+          ? _value.faturalanmisIrsaliyelerGelsin
+          : faturalanmisIrsaliyelerGelsin // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -675,7 +690,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.kisitYok,
       this.arrBelgeTipi,
       this.arrBelgeNo,
-      this.lokalDAT});
+      this.lokalDAT,
+      this.faturalanmisIrsaliyelerGelsin});
 
   factory _$SiparislerRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SiparislerRequestModelImplFromJson(json);
@@ -760,10 +776,12 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   String? arrBelgeNo;
   @override
   String? lokalDAT;
+  @override
+  bool? faturalanmisIrsaliyelerGelsin;
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
   }
 
   /// Create a copy of SiparislerRequestModel
@@ -822,7 +840,8 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       bool? kisitYok,
       String? arrBelgeTipi,
       String? arrBelgeNo,
-      String? lokalDAT}) = _$SiparislerRequestModelImpl;
+      String? lokalDAT,
+      bool? faturalanmisIrsaliyelerGelsin}) = _$SiparislerRequestModelImpl;
 
   factory _SiparislerRequestModel.fromJson(Map<String, dynamic> json) =
       _$SiparislerRequestModelImpl.fromJson;
@@ -943,6 +962,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get lokalDAT;
   set lokalDAT(String? value);
+  @override
+  bool? get faturalanmisIrsaliyelerGelsin;
+  set faturalanmisIrsaliyelerGelsin(bool? value);
 
   /// Create a copy of SiparislerRequestModel
   /// with the given fields replaced by the non-null parameter values.
