@@ -48,9 +48,9 @@ mixin _$IrsaliyeFaturalastirViewModel
       context: context);
 
   @override
-  Future<String?> getSiradakiBelgeNo(EditTipiEnum value) {
+  Future<String?> getSiradakiBelgeNo(EditTipiEnum value, String? seri) {
     return _$getSiradakiBelgeNoAsyncAction
-        .run(() => super.getSiradakiBelgeNo(value));
+        .run(() => super.getSiradakiBelgeNo(value, seri));
   }
 
   late final _$sendFaturaAsyncAction = AsyncAction(

@@ -42,14 +42,14 @@ abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
   void setResmiFaturaNo(String? value) => requestModel = requestModel.copyWith(resmiBelgeNo: value);
 
   @action
-  Future<String?> getSiradakiBelgeNo(EditTipiEnum value) async {
+  Future<String?> getSiradakiBelgeNo(EditTipiEnum value, String? seri) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
       queryParameters: {
-        "Seri": null,
+        "Seri": seri,
         "BelgeTipi": value.rawValue,
-        "EIrsaliye": value.irsaliyeMi ? "E" : "H",
+        "EIrsaliye": "E",
         "CariKodu": model?.cariKodu ?? "",
       },
       showLoading: true,

@@ -40,11 +40,11 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
     viewModel.setBasiSiparisEditModel(widget.model.model);
     cariController = TextEditingController(text: model.cariAdi ?? "");
     irsaliyeNoController = TextEditingController(text: model.belgeNo ?? "");
-    irsaliyeTarihiController = TextEditingController(text: model.belgeNo ?? "");
-    faturaTarihiController = TextEditingController(text: model.tarih.toDateString);
-    faturaNoController = TextEditingController(text: model.belgeNo ?? "");
-    resmiFaturaNoController = TextEditingController(text: model.belgeNo ?? "");
-    istisnaKoduNoController = TextEditingController(text: model.belgeNo ?? "");
+    irsaliyeTarihiController = TextEditingController(text: model.tarih.toDateString);
+    faturaTarihiController = TextEditingController(text: DateTime.now().toDateStringIfNull);
+    faturaNoController = TextEditingController();
+    resmiFaturaNoController = TextEditingController();
+    istisnaKoduNoController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getSiradakiKod();
     });
@@ -165,9 +165,8 @@ class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView>
           ),
         ),
       );
-
   Future<void> getSiradakiKod() async {
-    final result = await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!);
+    final result = await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!, faturaNoController.text);
     if (result != "") {
       faturaNoController.text = result ?? "";
       viewModel.setResmiFaturaNo(
