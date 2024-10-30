@@ -106,6 +106,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                     final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: p0));
                     if (result != null) {
                       viewModel.setStokListesiModel(result);
+                      stokController.text = result.stokAdi ?? "";
                     }
                     getData();
                   },
