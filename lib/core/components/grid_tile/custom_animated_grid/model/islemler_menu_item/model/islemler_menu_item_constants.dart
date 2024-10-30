@@ -1167,12 +1167,14 @@ class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is BaseSiparisEditModel) {
             final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+            final detayModel = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
             return await Get.toNamed(
               "mainPage/faturaEdit",
               arguments: BaseEditModel(
                 model: siparisModel.copyWith(
                   efaturaDurumAciklama: null,
                   efaturaGibDurumKodu: null,
+                  kalemList: detayModel?.kalemList,
                   efaturaMi: null,
                   kasaKodu: null,
                 ),
@@ -1183,20 +1185,27 @@ class IslemlerMenuItemConstants<T> {
           }
         },
       );
-  GridItemModel get irsaliyeFaturalastir => GridItemModel.islemler(
-        title: "Fatura Oluştur",
-        isEnabled: siparisTipi?.satisMi == true ? EditTipiEnum.satisFatura.eklensinMi : EditTipiEnum.alisFatura.eklensinMi,
-        iconData: Icons.list_alt_outlined,
-        onTap: () async {
-          if (model is BaseSiparisEditModel) {
-            final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-            return await Get.toNamed(
-              "mainPage/irsaliyeFaturalastir",
-              arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: siparisTipi?.satisMi == true ? EditTipiEnum.satisFatura : EditTipiEnum.alisFatura),
-            );
-          }
-        },
-      );
+  GridItemModel get irsaliyeFaturalastir {
+    final siparisModel = model as BaseSiparisEditModel;
+    return GridItemModel.islemler(
+      title: "Fatura Oluştur",
+      isEnabled: siparisModel.getEditTipiEnum?.satisMi == true ? EditTipiEnum.satisFatura.eklensinMi : EditTipiEnum.alisFatura.eklensinMi,
+      iconData: Icons.list_alt_outlined,
+      onTap: () async {
+        if (model is BaseSiparisEditModel) {
+          return await Get.toNamed(
+            "mainPage/irsaliyeFaturalastir",
+            arguments: BaseEditModel(
+              model: siparisModel,
+              baseEditEnum: BaseEditEnum.kopyala,
+              editTipiEnum: siparisModel.getEditTipiEnum?.satisMi == true ? EditTipiEnum.satisFatura : EditTipiEnum.alisFatura,
+            ),
+          );
+        }
+      },
+    );
+  }
+
   GridItemModel get satisIrsaliyeOlustur => GridItemModel.islemler(
         title: "Satış İrsaliyesi Oluştur",
         isEnabled: EditTipiEnum.satisIrsaliye.eklensinMi,

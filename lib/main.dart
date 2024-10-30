@@ -26,34 +26,33 @@ void main() async {
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async {
-  try {
-    await AppInfoModel.instance.init();
-  } catch (e) {
-    log(e.toString());
-  }
+    try {
+      await AppInfoModel.instance.init();
+    } catch (e) {
+      log(e.toString());
+    }
     await firebaseInitialized();
     await EasyLocalization.ensureInitialized();
   });
 
   if (kIsWeb) {
     setUrl();
+  } else {
+    //* Screen Orientation
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
   }
-
-  //* Screen Orientation
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]).then((_) {
-    runApp(const PickerApp());
-    //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
-    NetworkDependencyInjection.init();
-  });
+  runApp(const PickerApp());
+  //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
+  NetworkDependencyInjection.init();
 }
 
 Future<void> firebaseInitialized() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
-  await FirebaseAppCheck.instance.activate(
-    webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
-    androidProvider: AndroidProvider.playIntegrity,
-    appleProvider: AppleProvider.appAttest,
-  );
+    await FirebaseAppCheck.instance.activate(
+      webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
+      androidProvider: AndroidProvider.playIntegrity,
+      appleProvider: AppleProvider.appAttest,
+    );
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);

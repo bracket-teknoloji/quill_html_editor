@@ -160,7 +160,7 @@ extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.lastOrNull;
 
   // bool get karisikMi => true;
-  bool get karisikMi => olcumler?.map((e) => e.kabulMu).toSet().length != 1;
+  bool get karisikMi => olcumler?.any((e) => e.karisikMi) == true;
 
   bool get kabulMu => olcumler?.every((e) => e.kabulMu) == true;
 
