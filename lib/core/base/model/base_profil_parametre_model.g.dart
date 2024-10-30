@@ -60,6 +60,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           json['URUN_GRUBUNA_GORE_GRUPLANSIN'] as bool? ?? false,
       cariListesiSirala: json['CARI_LISTESI_SIRALA'] as String? ?? "AZ",
       stokListesiSirala: json['STOK_LISTESI_SIRALA'] as String? ?? "AZ",
+      irsFaturalasanIrsaliyelerGelsin:
+          json['IRS_FATURALASAN_IRSALIYELER_GELSIN'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -105,6 +107,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   val['URUN_GRUBUNA_GORE_GRUPLANSIN'] = instance.urunGrubunaGoreGruplansin;
   val['CARI_LISTESI_SIRALA'] = instance.cariListesiSirala;
   val['STOK_LISTESI_SIRALA'] = instance.stokListesiSirala;
+  val['IRS_FATURALASAN_IRSALIYELER_GELSIN'] =
+      instance.irsFaturalasanIrsaliyelerGelsin;
   return val;
 }
 
