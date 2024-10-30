@@ -215,6 +215,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
               Row(
                 children: <Widget>[
                   ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
+                  const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak).yetkiVarMi(model.faturalasmisAIrsMi || model.faturalasmisSIrsMi),
                   const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
                   const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.eirsaliyeMi == "E"),
                   const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.earsivMi == "E"),

@@ -462,6 +462,28 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
+  void setFaturalasmaGoster(bool value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setFaturalasmaGoster');
+    try {
+      return super.setFaturalasmaGoster(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setKapaliBelgelerListelenmesin(bool value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setKapaliBelgelerListelenmesin');
+    try {
+      return super.setKapaliBelgelerListelenmesin(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setObservableList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.setObservableList');

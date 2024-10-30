@@ -4,6 +4,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -353,6 +355,30 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     },
                   ),
                 ).yetkiVarMi(yetkiController.cariListesi),
+              ],
+            ),
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                CustomWidgetWithLabel(
+                  text: "Kapalı belgeler listelenmesin",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
+                      onChanged: (bool value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                    ),
+                  ),
+                ),
+                if (widget.editTipiEnum.irsaliyeMi) CustomWidgetWithLabel(
+                  text: "Faturalananları göster",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
+                      onChanged: (bool value) => viewModel.setFaturalasmaGoster(value),
+                    ),
+                  ),
+                ),
               ],
             ),
             Row(

@@ -27,6 +27,8 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
       faturalasmaGoster: pickerBelgeTuru == "SF" ? true : null,
       miktarGetir: pickerBelgeTuru == "AF" ? "E" : null,
       belgeNo: pickerBelgeTuru == "AF" ? null : "",
+      kapaliBelgelerListelenmesin: CacheManager.getProfilParametre.kapaliBelgelerListelenmesinMi,
+      faturalanmisIrsaliyelerGelsin: CacheManager.getProfilParametre.irsFaturalasanIrsaliyelerGelsin,
     );
   }
 
@@ -199,6 +201,17 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   @action
   void setSearchText(String? value) => faturaRequestModel = faturaRequestModel.copyWith(searchText: value);
 
+  @action
+  void setFaturalasmaGoster(bool value) {
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(irsFaturalasanIrsaliyelerGelsin: value));
+    faturaRequestModel = faturaRequestModel.copyWith(faturalanmisIrsaliyelerGelsin: value);
+  }
+
+  @action
+  void setKapaliBelgelerListelenmesin(bool value) {
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value));
+    faturaRequestModel = faturaRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
+  }
   @override
   @action
   void setObservableList(List<BaseSiparisEditModel>? value) => observableList = value?.asObservable();

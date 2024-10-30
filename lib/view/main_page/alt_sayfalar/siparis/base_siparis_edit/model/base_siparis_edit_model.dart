@@ -829,6 +829,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get stalMi => belgeTuru == "STAL";
 
+  bool get faturalasmisSIrsMi => belgeTuru == "FSI";
+
+  bool get faturalasmisAIrsMi => belgeTuru == "FAI";
+
   bool get atalMi => belgeTuru == "ATAL";
 
   bool get aIrsMi => belgeTuru == "AI";
@@ -1666,7 +1670,7 @@ class KalemModel with NetworkManagerMixin {
   String get faturaKalemAciklama {
     String value = "";
     if (seriliMi && BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == false) {
-      value = "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).sum).toIntIfDouble}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
+      value = "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).sum).toIntIfDouble ?? 0}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     }
     if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
       value = "$value\nSipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
