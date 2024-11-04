@@ -19,7 +19,6 @@ default_platform(:android)
 platform :android do
   desc "Firebase deploy"
   lane :firebase do
-    sh("fb_apk")
     firebase_app_distribution(
       app: "com.bracket23.picker",
       groups: "com.bracket23.picker",

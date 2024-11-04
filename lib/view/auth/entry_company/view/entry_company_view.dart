@@ -64,8 +64,12 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       viewModel.userData = CacheManager.getIsletmeSube.asObservable();
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      if (await viewModel.getData()) {
-        await sirketDialog(context);
+      try {
+        if (await viewModel.getData()) {
+          await sirketDialog(context);
+        }
+      } catch (e) {
+        Get.toNamed("login");
       }
     });
   }
