@@ -807,11 +807,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get hataliMi {
     if (eFaturaMi) {
-      return efaturaDurumu == "HAT";
+      return !taslakMi && !uyariMi && !basariliMi && efaturaDurumu != null;
     } else if (eIrsaliyeMi) {
-      return eirsaliyeDurumu == "HAT";
+      return !taslakMi && !uyariMi && !basariliMi && eirsaliyeDurumu != null;
     } else if (eArsivMi) {
-      return earsivDurumu == "HAT";
+      return !taslakMi && !uyariMi && !basariliMi && earsivDurumu != null;
     } else {
       return false;
     }
