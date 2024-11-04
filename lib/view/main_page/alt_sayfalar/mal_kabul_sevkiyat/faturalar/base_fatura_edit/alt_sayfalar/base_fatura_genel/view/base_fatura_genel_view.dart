@@ -240,20 +240,20 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       ),
                     );
                     if (result is CariListesiModel) {
-                      result = await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(result));
-                      _cariController.text = result.cariAdi ?? "";
+                      final cariModel = await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(result));
+                      _cariController.text = cariModel!.cariAdi ?? "";
                       // _plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
+                      viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
                           ? "E-Fatura"
-                          : result.efaturaCarisi == "H"
+                          : cariModel.efaturaCarisi == "H"
                               ? "E-Arşiv"
                               : null;
-                      viewModel.setCariAdi(result.cariAdi);
-                      viewModel.setCariKodu(result.cariKodu);
-                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
-                      viewModel.model.vadeGunu = result.vadeGunu;
-                      viewModel.model.efaturaTipi = result.efaturaTipi;
-                      _plasiyerController.text = result.plasiyerAciklama;
+                      viewModel.setCariAdi(cariModel.cariAdi);
+                      viewModel.setCariKodu(cariModel.cariKodu);
+                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu));
+                      viewModel.model.vadeGunu = cariModel.vadeGunu;
+                      viewModel.model.efaturaTipi = cariModel.efaturaTipi;
+                      _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
                       _belgeNoController.clear();
                       await getBelgeNo();
                     }

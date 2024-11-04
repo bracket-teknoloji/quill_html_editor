@@ -214,6 +214,15 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             if (cariModel is CariListesiModel) {
               viewModel.setLoading(true);
               BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+              BaseSiparisEditModel.instance.resmiBelgeNo = null;
+              BaseSiparisEditModel.instance.efaturaMi = null;
+              BaseSiparisEditModel.instance.efatOzelkod = null;
+              BaseSiparisEditModel.instance.efaturaGibDurumKodu = null;
+              BaseSiparisEditModel.instance.earsivGibDurumKodu = null;
+              BaseSiparisEditModel.instance.eirsaliyeGibDurumKodu = null;
+              BaseSiparisEditModel.instance.earsivDurumAciklama = null;
+              BaseSiparisEditModel.instance.eirsaliyeDurumAciklama = null;
+              BaseSiparisEditModel.instance.efaturaDurumAciklama = null;
               BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
               BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
               BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
