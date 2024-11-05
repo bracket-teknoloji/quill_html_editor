@@ -137,7 +137,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
               siparisKarsilanmaDurumu: null,
             ),
           );
-          if (result.muhtelifMi) {
+          if ((result as CariListesiModel?)?.muhtelifMi ?? false) {
             BaseSiparisEditModel.instance.muhtelifCariModel = result;
             cariModel = result;
           } else if (result is CariListesiModel) {

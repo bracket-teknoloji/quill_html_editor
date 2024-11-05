@@ -232,7 +232,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ).yetkiVarMi(isEkle),
                   onTap: () async {
-                    var result = await Get.toNamed(
+                    final result = await Get.toNamed(
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(
                         menuKodu: "CARI_CREH",

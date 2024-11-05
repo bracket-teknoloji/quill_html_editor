@@ -88,7 +88,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   void setKalemList(List<KalemModel?>? value) => kalemList = value?.asObservable();
 
   @action
-  void addKalemList(List<KalemModel?>? value) => kalemList = (kalemList! + value!.asObservable()) as ObservableList<KalemModel?>?;
+  void addKalemList(List<KalemModel?>? value) => kalemList = ((kalemList ?? []) + (value ?? []).asObservable()) as ObservableList<KalemModel?>?;
 
   @action
   void setSiralama(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);

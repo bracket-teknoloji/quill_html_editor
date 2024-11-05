@@ -173,7 +173,7 @@ class AccountModel with NetworkManagerMixin {
     if (kIsWeb) {
       paketAdi = "com.bracket23.picker";
     } else {
-      paketAdi = CustomPlatform.instance.packageName;
+      paketAdi = AppInfoModel.instance.packageName;
     }
     log(toJson().toString(), name: runtimeType.toString());
     //* Network Bilgileri (Connectivity Plus)

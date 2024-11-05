@@ -91,8 +91,14 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
                   ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
                   const Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
+                  ColorfulBadge(
+                    label: const Text("Hata"),
+                    badgeColorEnum: BadgeColorEnum.hata,
+                    onTap: () {
+                      dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
+                    },
+                  ).yetkiVarMi(model.basariylaGonderildi != "E"),
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
-                // const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.basariylaGonderildi != "E"),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
               Text(model.faturaAciklama).yetkiVarMi(model.belgeIslendiMi),
               LayoutBuilder(
