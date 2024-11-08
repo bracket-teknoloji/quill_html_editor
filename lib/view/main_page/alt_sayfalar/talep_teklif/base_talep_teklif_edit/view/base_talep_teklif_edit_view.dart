@@ -92,7 +92,9 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
       model.model?.kayitModu = null;
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
+      if (model.model?.isNew ?? false) {
+        BaseSiparisEditModel.setInstance(widget.model.model);
+      } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.isSuccess) {
           viewModel.changeFuture();
@@ -172,15 +174,25 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           BaseSiparisEditModel.instance.tag = "FaturaModel";
           BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
           // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+          BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+          BaseSiparisEditModel.instance.resmiBelgeNo = null;
+          BaseSiparisEditModel.instance.efaturaMi = null;
+          BaseSiparisEditModel.instance.efatOzelkod = null;
+          BaseSiparisEditModel.instance.efaturaGibDurumKodu = null;
+          BaseSiparisEditModel.instance.earsivGibDurumKodu = null;
+          BaseSiparisEditModel.instance.eirsaliyeGibDurumKodu = null;
+          BaseSiparisEditModel.instance.earsivDurumAciklama = null;
+          BaseSiparisEditModel.instance.eirsaliyeDurumAciklama = null;
+          BaseSiparisEditModel.instance.efaturaDurumAciklama = null;
           BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
           BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
+          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
           BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
           BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
           BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
           BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+          BaseSiparisEditModel.instance.tipi = 2;
+          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
         if (widget.model.editTipiEnum?.satisMi == true) {
@@ -534,6 +546,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
       showLoading: true,
     );
     if (result.isSuccess) {
+      CacheManager.removeTaltekEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
 
       return true;

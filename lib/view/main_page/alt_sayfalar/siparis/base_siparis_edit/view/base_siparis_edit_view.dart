@@ -488,6 +488,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       showLoading: true,
     );
     if (result.isSuccess) {
+      CacheManager.removeSiparisEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;
     } else {

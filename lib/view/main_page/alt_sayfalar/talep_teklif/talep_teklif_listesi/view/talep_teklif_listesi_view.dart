@@ -196,6 +196,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               ),
             );
             if (result == true) {
+              
               viewModel.resetList();
             }
           },

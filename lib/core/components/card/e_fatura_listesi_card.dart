@@ -97,7 +97,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     onTap: () {
                       dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
                     },
-                  ).yetkiVarMi(model.basariylaGonderildi != "E"),
+                  ).yetkiVarMi(model.basariylaGonderildi != "E" && !model.gelenMi),
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
               Text(model.faturaAciklama).yetkiVarMi(model.belgeIslendiMi),

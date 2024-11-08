@@ -50,6 +50,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                     CacheManager.getVerifiedUser.account?.firma ?? "",
                     style: theme.textTheme.bodyMedium,
                     maxLines: 3,
+                    textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),

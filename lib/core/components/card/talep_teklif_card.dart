@@ -115,12 +115,12 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           );
                           if (result != null) {
                             if (widget.model.isNew == true) {
-                              CacheManager.removeTaltekEditList(model.index!);
+                              CacheManager.removeTaltekEditList(model.belgeNo ?? "");
                             }
                             widget.onUpdated?.call(result ?? false);
                           }
                         },
-                      ).yetkiKontrol((yetkiController.siparisDuzelt && widget.model.tipi != 1) || widget.model.isNew == true),
+                      ).yetkiKontrol(yetkiController.siparisDuzelt && (widget.model.tipi != 1 || widget.model.isNew == true)),
                       BottomSheetModel(
                         title: loc.generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
@@ -129,7 +129,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           return dialogManager.showAreYouSureDialog(() async {
                             if (model.isNew == true) {
                               try {
-                                CacheManager.removeTaltekEditList(model.index!);
+                                CacheManager.removeTaltekEditList(model.belgeNo ?? "");
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
                               } catch (e) {

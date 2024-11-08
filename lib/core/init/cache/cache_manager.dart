@@ -344,7 +344,16 @@ class CacheManager {
   static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
-  static void removeSiparisEditList(int index) => siparisEditListBox.deleteAt(index);
+  static void removeSiparisEditList(String belgeNo) {    
+    final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
+    if (list != null) {
+      list.removeWhere((element) => element.belgeNo == belgeNo);
+    }
+    siparisEditListBox.put(
+      StaticVariables.getSiparisString,
+      ListSiparisEditModel(list: list),
+    );
+  }
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
     final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
@@ -359,10 +368,10 @@ class CacheManager {
   }
 
   static void removeFaturaEdit(String key) => faturaEditBox.delete(key);
-  static void removeFaturaEditList(int index) {
+  static void removeFaturaEditList(String belgeNo) {
     final list = faturaEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
-      list.removeAt(index);
+      list.removeWhere((element) => element.belgeNo == belgeNo);
     }
     faturaEditListBox.put(
       StaticVariables.getSiparisString,
@@ -382,10 +391,10 @@ class CacheManager {
     return true;
   }
   static void removeTransferEdit(String key) => transferEditBox.delete(key);
-  static void removeTransferEditList(int index) {
+  static void removeTransferEditList(String belgeNo) {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
-      list.removeAt(index);
+      list.removeWhere((element) => element.belgeNo == belgeNo);
     }
     transferEditListBox.put(
       StaticVariables.getSiparisString,
@@ -406,10 +415,10 @@ class CacheManager {
   }
 
   static void removeTaltekEdit(String key) => talepTeklifEditBox.delete(key);
-  static void removeTaltekEditList(int index) {
+  static void removeTaltekEditList(String belgeNo) {
     final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
-      list.removeAt(index);
+      list.removeWhere((element) => element.belgeNo == belgeNo);
     }
     talepTeklifEditListBox.put(
       StaticVariables.getSiparisString,

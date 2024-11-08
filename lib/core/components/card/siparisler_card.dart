@@ -116,7 +116,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           );
                           if (result == true) {
                             if (widget.model.isNew == true) {
-                              CacheManager.removeSiparisEditList(widget.model.index ?? 0);
+                                CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
                             }
                             widget.onUpdated?.call(true);
                           }
@@ -130,7 +130,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           return dialogManager.showAreYouSureDialog(() async {
                             if (widget.model.isNew == true) {
                               try {
-                                CacheManager.removeSiparisEditList(widget.index);
+                                CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
                               } catch (e) {

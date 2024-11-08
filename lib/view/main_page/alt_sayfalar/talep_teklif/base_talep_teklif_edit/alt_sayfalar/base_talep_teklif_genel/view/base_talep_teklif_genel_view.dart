@@ -293,7 +293,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
+                          final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.tipi);
                           if (result is BelgeTipiModel) {
                             _belgeTipiController.text = result.belgeTipi ?? "";
                             viewModel.setBelgeTipi(result.belgeTipiId);

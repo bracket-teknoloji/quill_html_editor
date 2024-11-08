@@ -90,7 +90,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                     if (result == true) {
                       if (widget.model.isNew == true) {
-                        CacheManager.removeFaturaEditList(model.index!);
+                        CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                       }
                       widget.onUpdated?.call(result);
                     }
@@ -104,7 +104,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     return dialogManager.showAreYouSureDialog(() async {
                       if (widget.model.isNew == true) {
                         try {
-                          CacheManager.removeFaturaEditList(model.index!);
+                          CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                           dialogManager.showSuccessSnackBar("Silindi");
                           widget.onDeleted?.call();
                         } catch (e) {

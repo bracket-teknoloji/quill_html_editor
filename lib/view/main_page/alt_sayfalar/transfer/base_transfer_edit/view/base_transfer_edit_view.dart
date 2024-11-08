@@ -104,7 +104,9 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
       model.model?.kayitModu = null;
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (!widget.model.baseEditEnum.ekleMi) {
+      if (model.model?.isNew ?? false) {
+        BaseSiparisEditModel.setInstance(widget.model.model);
+      } else if (!widget.model.baseEditEnum.ekleMi) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.isSuccess) {
           BaseSiparisEditModel.setInstance(result.dataList.first);
@@ -533,6 +535,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
       showLoading: true,
     );
     if (result.isSuccess) {
+      CacheManager.removeTransferEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
 
       return true;

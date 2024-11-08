@@ -119,7 +119,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       model.model?.siparisSevkEdilenGoster = true;
     }
     WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
-      if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
+      if (model.model?.isNew ?? false) {
+        BaseSiparisEditModel.setInstance(widget.model.model);
+      } else if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
         BaseSiparisEditModel.resetInstance();
         BaseSiparisEditModel.setInstance(widget.model.model);
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList
@@ -651,6 +653,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       showLoading: true,
     );
     if (result.isSuccess) {
+      CacheManager.removeFaturaEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       return true;
     } else {
