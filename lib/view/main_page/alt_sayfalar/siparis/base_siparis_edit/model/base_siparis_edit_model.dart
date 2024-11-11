@@ -1672,7 +1672,7 @@ class KalemModel with NetworkManagerMixin {
     if (seriliMi && BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == false) {
       value = "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).sum).toIntIfDouble ?? 0}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     }
-    if (siparisNo != null && (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == true)) {
+    if (siparisNo != null) {
       value = "$value\nSipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
     }
     if (teklifNo != null) {

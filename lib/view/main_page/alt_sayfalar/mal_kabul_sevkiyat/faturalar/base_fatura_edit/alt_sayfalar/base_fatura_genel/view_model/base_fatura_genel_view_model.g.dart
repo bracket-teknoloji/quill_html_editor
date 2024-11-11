@@ -205,11 +205,11 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
-  void setBelgeNo(String? value) {
+  void setBelgeNo(String? value, bool? siparistenKopyalaMi) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setBelgeNo');
     try {
-      return super.setBelgeNo(value);
+      return super.setBelgeNo(value, siparistenKopyalaMi);
     } finally {
       _$_BaseFaturaGenelViewModelBaseActionController.endAction(_$actionInfo);
     }

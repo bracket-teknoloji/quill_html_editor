@@ -109,7 +109,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (model.belgeNo == null) {
-        await getBelgeNo();
+        await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi);
       }
     });
     super.initState();
@@ -187,7 +187,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   maxLength: 15,
                   suffix: IconButton(
                     onPressed: () async {
-                      await getBelgeNo();
+                      await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi);
                     },
                     icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                   ),
@@ -255,7 +255,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.model.efaturaTipi = cariModel.efaturaTipi;
                       _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
                       _belgeNoController.clear();
-                      await getBelgeNo();
+                      await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi);
                     }
                   },
                 ),
@@ -634,7 +634,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     }
   }
 
-  Future<void> getBelgeNo({String? seri}) async {
+  Future<void> getBelgeNo(bool? siparistenKopyalaMi, {String? seri}) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
@@ -647,7 +647,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       showLoading: true,
     );
     if (result.isSuccess) {
-      viewModel.setBelgeNo(result.dataList.firstOrNull?.belgeNo);
+      viewModel.setBelgeNo(result.dataList.firstOrNull?.belgeNo, siparistenKopyalaMi);
+      if (siparistenKopyalaMi ?? false) {}
       _belgeNoController.text = model.belgeNo ?? "";
     }
   }

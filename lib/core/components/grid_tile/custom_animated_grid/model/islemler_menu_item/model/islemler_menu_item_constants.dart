@@ -1357,16 +1357,15 @@ class IslemlerMenuItemConstants<T> {
                 // }
 
                 result.depoTanimi ??= siparisModel.depoTanimi;
-                result = result.copyWith(kalemList: kalemList);
+                result = result.copyWith(kalemList: kalemList.map((e) => e..siparisNo = null).toList());
                 BaseSiparisEditModel.resetInstance();
-                siparisModel.kalemList = kalemList.map((e) => e..siparisNo = siparisModel.belgeNo).toList();
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(
                     model: result,
                     baseEditEnum: BaseEditEnum.siparistenKopyala,
                     editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
-                    belgeNo: result.belgeNo,
+                    belgeNo: null,
                   ),
                 );
                 if (boolean == true) {
@@ -1456,13 +1455,7 @@ class IslemlerMenuItemConstants<T> {
     final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(model));
     if (result is List) {
       final List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
-      return list
-          .map(
-            (KalemModel e) => e
-              ..miktar = e.kalan
-              ..kalan = null,
-          )
-          .toList();
+      return list;
     }
     return null;
   }
