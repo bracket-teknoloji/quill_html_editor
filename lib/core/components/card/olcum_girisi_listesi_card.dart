@@ -42,7 +42,7 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
             children: [
               Row(
                 children: [
-                  if (model.olcumAdedi case (null || 0 || 0.0))
+                  if (model.olcumAdedi case (!= null && != 0 && != 0.0))
                     ColorfulBadge(
                       label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.olcumAdedi != null),
                       badgeColorEnum: BadgeColorEnum.esYap,
