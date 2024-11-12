@@ -7,6 +7,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../view/add_company/model/account_model.dart";
@@ -1176,6 +1177,7 @@ class IslemlerMenuItemConstants<T> {
                   efaturaGibDurumKodu: null,
                   kalemList: detayModel?.kalemList,
                   efaturaMi: null,
+                  tarih: DateTime.now().dateTimeWithoutTime,
                   kasaKodu: null,
                 ),
                 baseEditEnum: BaseEditEnum.kopyala,
