@@ -51,7 +51,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                           final double? fontSize = isTouched ? 16.0 : null;
                           final double radius = isTouched ? 40.0 : 35.0;
                           return PieChartSectionData(
-                            color: Colors.primaries[index],
+                            color: Colors.primaries[index % 17],
                             titlePositionPercentageOffset: 0.5,
                             showTitle: true,
                             value: widget.pieChartValue?[index] ?? 0,

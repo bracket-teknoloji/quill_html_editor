@@ -389,7 +389,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                             },
                             icon: const Icon(Icons.add),
                           ),
-                          IconButton(onPressed: () async => barkod1Controller.text = await Get.toNamed("qr"), icon: const Icon(Icons.qr_code_scanner)),
+                          IconButton(onPressed: () async => barkod1Controller.text = await Get.toNamed("qr") ?? "", icon: const Icon(Icons.qr_code_scanner)),
                         ],
                       ),
                     ),
