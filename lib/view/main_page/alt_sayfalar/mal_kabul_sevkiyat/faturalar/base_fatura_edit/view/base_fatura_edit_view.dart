@@ -188,11 +188,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
               BaseSiparisEditModel.instance.tarih = model.model?.belgeTarihi.toDateTimeDDMMYYYY();
             }
-            if ((widget.model.model.kalemList as List?).ext.isNotNullOrEmpty) {
-              BaseSiparisEditModel.instance.kalemList = widget.model.model.kalemList;
-            } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-              BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList;
-            } else {
+            if (widget.model.baseEditEnum.kopyalaMi) {
               BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             }
             if (widget.model.baseEditEnum == BaseEditEnum.siparistenKopyala) {

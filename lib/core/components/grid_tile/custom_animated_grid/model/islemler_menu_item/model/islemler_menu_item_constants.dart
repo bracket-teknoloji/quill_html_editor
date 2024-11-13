@@ -1326,19 +1326,15 @@ class IslemlerMenuItemConstants<T> {
               );
               if (result != null) {
                 final kalemList = await getKalemRehberi(siparisModel.copyWith(cariKodu: result.cariKodu, belgeNo: result.belgeNo));
-                if (kalemList == null) {
-                  return;
-                }
-                siparisModel.kalemList = kalemList
-                    .map(
-                      (e) => e
-                        ..siparisNo = siparisModel.belgeNo
-                        ..miktar = e.kalan,
-                    )
-                    .toList();
+                if (kalemList == null) return;
                 return await Get.toNamed(
                   "mainPage/faturaEdit",
-                  arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.siparistenKopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+                  arguments: BaseEditModel(model: siparisModel..kalemList = kalemList
+                    .map(
+                      (e) => e
+                        ..miktar = e.kalan,
+                    )
+                    .toList(), baseEditEnum: BaseEditEnum.siparistenKopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
                 );
               } else {
                 return;
@@ -1352,19 +1348,12 @@ class IslemlerMenuItemConstants<T> {
                 if (kalemList == null) {
                   return;
                 }
-                // for (var element in kalemList) {
-                //   element.siparisNo = element.belgeNo;
-                //   element.miktar = element.kalan;
-                //   element.siparisSira = element.sira;
-                // }
-
                 result.depoTanimi ??= siparisModel.depoTanimi;
-                // result = result.copyWith(kalemList: kalemList.map((e) => e..siparisNo = null).toList());
                 BaseSiparisEditModel.resetInstance();
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(
-                    model: result,
+                    model: result..kalemList = kalemList,
                     baseEditEnum: BaseEditEnum.siparistenKopyala,
                     editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
                     belgeNo: null,
