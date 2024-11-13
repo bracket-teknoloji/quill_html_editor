@@ -174,7 +174,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                   ?.map(
                     (e) => e
                       ..belgeTipi = BaseSiparisEditModel.instance.belgeTuru
-                      ..siparisNo = e.belgeNo
                       ..kalan = null
                       ..kapali = null
                       ..tempBarkodList = null
@@ -650,7 +649,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         kalemler: BaseSiparisEditModel.instance.kalemList
             ?.map(
               (e) => e
-                ..siparisNo ??= e.belgeNo
                 ..belgeNo = null,
             )
             .toList(),

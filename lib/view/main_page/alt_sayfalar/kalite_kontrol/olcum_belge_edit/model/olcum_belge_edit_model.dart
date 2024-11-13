@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -160,11 +162,21 @@ extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.lastOrNull;
 
   // bool get karisikMi => true;
-  bool get karisikMi => !kabulMu && !retMi;
+  bool get karisikMi => kabulVarMi && retVarMi;
 
   bool get kabulMu => olcumler?.every((e) => e.kabulMu) == true;
 
-  bool get kabulVarMi => olcumler?.any((e) => e.kabulMu) == true;
+  bool get kabulVarMi =>
+      olcumler?.any((e) {
+        // print("${e.seriNo}");
+        log("--------------------");
+        log("Kabul: ${e.kabulMu}");
+        log("Ret: ${e.retMi}");
+        log("Karışık: ${e.karisikMi}");
+        log("--------------------");
+        return e.kabulMu;
+      }) ==
+      true;
 
   bool get retVarMi => olcumler?.any((e) => e.retMi) == true;
 
@@ -253,7 +265,7 @@ extension OlcumEkleProsesExtensions on OlcumProsesModel? {
 extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {
   bool get retMi => (this?.retAdet ?? 0) > 0;
 
-  bool get kabulMu => (toplamKabul?? 0) > 0;
+  bool get kabulMu => (toplamKabul ?? 0) > 0;
 
   double? get toplamKabul => (this?.kabulAdet ?? 0) + (this?.sartliAdet ?? 0);
 

@@ -1344,7 +1344,7 @@ class IslemlerMenuItemConstants<T> {
                 return;
               }
             } else {
-              BaseSiparisEditModel? result = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
+              final BaseSiparisEditModel? result = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(siparisModel));
               if (result == null) {
                 return;
               } else {
@@ -1359,7 +1359,7 @@ class IslemlerMenuItemConstants<T> {
                 // }
 
                 result.depoTanimi ??= siparisModel.depoTanimi;
-                result = result.copyWith(kalemList: kalemList.map((e) => e..siparisNo = null).toList());
+                // result = result.copyWith(kalemList: kalemList.map((e) => e..siparisNo = null).toList());
                 BaseSiparisEditModel.resetInstance();
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",

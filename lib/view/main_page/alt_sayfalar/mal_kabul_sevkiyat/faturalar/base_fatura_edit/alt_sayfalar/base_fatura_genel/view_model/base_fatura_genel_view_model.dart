@@ -110,9 +110,9 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   @action
   void setBelgeNo(String? value, bool? siparistenKopyalaMi) {
     model = model.copyWith(belgeNo: value);
-    if (siparistenKopyalaMi ?? false) {
-      model = model.copyWith(kalemList: model.kalemList?.map((e) => e.copyWith(siparisNo: value)).toList());
-    }
+    // if (siparistenKopyalaMi ?? false) {
+    //   model = model.copyWith(kalemList: model.kalemList?.map((e) => e.copyWith(siparisNo: value)).toList());
+    // }
     BaseSiparisEditModel.setInstance(model);
   }
 

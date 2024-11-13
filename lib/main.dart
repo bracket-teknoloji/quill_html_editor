@@ -1,4 +1,5 @@
 import "dart:developer";
+import "dart:io";
 
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:easy_localization/easy_localization.dart";
@@ -31,6 +32,11 @@ void main() async {
     } catch (e) {
       log(e.toString());
     }
+    if (!kIsWeb){
+      if (Platform.isAndroid) {
+      await AccountModel.instance.init();
+      }
+    }
     await firebaseInitialized();
     await EasyLocalization.ensureInitialized();
   });
@@ -48,11 +54,11 @@ void main() async {
 
 Future<void> firebaseInitialized() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
-    await FirebaseAppCheck.instance.activate(
-      webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
-      androidProvider: AndroidProvider.playIntegrity,
-      appleProvider: AppleProvider.appAttest,
-    );
+  await FirebaseAppCheck.instance.activate(
+    webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
+    androidProvider: AndroidProvider.playIntegrity,
+    appleProvider: AppleProvider.appAttest,
+  );
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);
