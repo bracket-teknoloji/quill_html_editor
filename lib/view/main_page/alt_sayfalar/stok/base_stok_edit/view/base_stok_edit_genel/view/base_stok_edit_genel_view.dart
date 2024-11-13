@@ -70,7 +70,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
   // StokDetayModel? model;
-  String? siradakiKod;
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
   bool get enable => widget.model != BaseEditEnum.goruntule;
 
@@ -113,7 +112,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala) {
         if (stokModel.stokKodu == null) {
-          stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
+          stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
           stokModel.stokKodu = stokKoduController.text;
         }
       }
@@ -200,42 +199,44 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                         labelText: "Kodu",
                         isMust: true,
                         controller: stokKoduController,
-                        onChanged: (value) => siradakiKod = value,
+                        onChanged: (value) {
+                          stokModel.stokKodu = value;
+                        },
                         suffix: Wrap(
                           children: [
                             IconButton(
                               onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                                  context,
-                                  title: loc.generalStrings.options,
-                                  children: [
-                                    BottomSheetModel(
-                                      title: "Kodu Rehberden Seç",
-                                      iconWidget: Icons.list_alt_outlined,
-                                      onTap: () async {
-                                        Get.back();
-                                        final result = await Get.toNamed("/mainPage/stokListesiOzel");
-                                        if (result != null) {
-                                          stokKoduController.text = result.stokKodu;
-                                          stokModel.stokKodu = stokKoduController.text;
-                                        }
-                                      },
-                                    ),
-                                    BottomSheetModel(
-                                      title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
-                                      iconWidget: Icons.add,
-                                      onTap: () async {
-                                        Get.back();
-                                        stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true, sonKoduGetir: true) ?? "";
+                                context,
+                                title: loc.generalStrings.options,
+                                children: [
+                                  BottomSheetModel(
+                                    title: "Kodu Rehberden Seç",
+                                    iconWidget: Icons.list_alt_outlined,
+                                    onTap: () async {
+                                      Get.back();
+                                      final result = await Get.toNamed("/mainPage/stokListesiOzel");
+                                      if (result != null) {
+                                        stokKoduController.text = result.stokKodu;
                                         stokModel.stokKodu = stokKoduController.text;
-                                      },
-                                    ),
-                                  ],
-                                ),
+                                      }
+                                    },
+                                  ),
+                                  BottomSheetModel(
+                                    title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
+                                    iconWidget: Icons.add,
+                                    onTap: () async {
+                                      Get.back();
+                                      stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true, sonKoduGetir: true) ?? "";
+                                      stokModel.stokKodu = stokKoduController.text;
+                                    },
+                                  ),
+                                ],
+                              ),
                               icon: const Icon(Icons.more_horiz_outlined),
                             ),
                             IconButton(
                               onPressed: () async {
-                                stokKoduController.text = await getSiradakiKod(kod: siradakiKod, isOnBuild: true) ?? "";
+                                stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
                                 stokModel.stokKodu = stokKoduController.text;
                               },
                               icon: const Icon(Icons.add),
@@ -389,7 +390,15 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                             },
                             icon: const Icon(Icons.add),
                           ),
-                          IconButton(onPressed: () async => barkod1Controller.text = await Get.toNamed("qr") ?? "", icon: const Icon(Icons.qr_code_scanner)),
+                          IconButton(
+                            onPressed: () async {
+                              final result = await Get.toNamed("qr");
+                              if (result case ("" || null)) return;
+                              barkod1Controller.text = result;
+                              stokModel.barkod1 = result;
+                            },
+                            icon: const Icon(Icons.qr_code_scanner),
+                          ),
                         ],
                       ),
                     ),
@@ -407,7 +416,15 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                             },
                             icon: const Icon(Icons.add),
                           ),
-                          IconButton(onPressed: () async => barkod2Controller.text = await Get.toNamed("qr"), icon: const Icon(Icons.qr_code_scanner)),
+                          IconButton(
+                            onPressed: () async {
+                              final result = await Get.toNamed("qr");
+                              if (result case ("" || null)) return;
+                              barkod2Controller.text = result;
+                              stokModel.barkod2 = result;
+                            },
+                            icon: const Icon(Icons.qr_code_scanner),
+                          ),
                         ],
                       ),
                     ),
@@ -425,7 +442,15 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                             },
                             icon: const Icon(Icons.add),
                           ),
-                          IconButton(onPressed: () async => barkod3Controller.text = await Get.toNamed("qr"), icon: const Icon(Icons.qr_code_scanner)),
+                          IconButton(
+                            onPressed: () async {
+                              final result = await Get.toNamed("qr");
+                              if (result case ("" || null)) return;
+                              barkod3Controller.text = result;
+                              stokModel.barkod3 = result;
+                            },
+                            icon: const Icon(Icons.qr_code_scanner),
+                          ),
                         ],
                       ),
                     ),
@@ -789,12 +814,12 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
       },
     );
     if (result.isSuccess) {
-      siradakiKod = result.paramData!["SIRADAKI_NO"];
+      stokKoduController.text = result.paramData!["SIRADAKI_NO"];
       if (isOnBuild == true) {
         // dialogManager.hideAlertDialog;
-        stokModel.stokKodu = siradakiKod;
+        stokModel.stokKodu = stokKoduController.text;
       } else {
-        stokModel.stokKodu ??= siradakiKod;
+        stokModel.stokKodu ??= stokKoduController.text;
         // model?.stokKodu = siradakiKod;
       }
       return result.paramData!["SIRADAKI_NO"];
