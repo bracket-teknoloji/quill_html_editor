@@ -21,7 +21,6 @@ import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../core/constants/extensions/iterable_extensions.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
@@ -174,7 +173,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       iconWidget: Icons.list_alt_outlined,
                       onTap: () async {
                         Get.back();
-                        dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.stokKodu)));
+                        dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.belge?.firstOrNull?.stokKodu)));
                       },
                     ).yetkiKontrol(yetkiController.stokListesi),
                     BottomSheetModel(
@@ -339,7 +338,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 (e) => SeriList(
                   seriNo: e.seriNo,
                   depoKodu: viewModel.seriRequestModel.kabulGirisDepo,
-                  miktar: 1,
+                  miktar: viewModel.olcumDatResponseListesi?.firstWhereOrNull((element) => element.seriNo == e.seriNo)?.miktar ?? 0.0,
                 ),
               )
               .toList()
@@ -358,7 +357,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 (e) => SeriList(
                   seriNo: e.seriNo,
                   depoKodu: viewModel.seriRequestModel.redGirisDepo,
-                  miktar: 1,
+                  miktar: viewModel.olcumDatResponseListesi?.firstWhereOrNull((element) => element.seriNo == e.seriNo)?.miktar ?? 0.0,
                 ),
               )
               .toList()
@@ -426,6 +425,10 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     if (!viewModel.depolarValidation) return dialogManager.showAlertDialog("Depolar aynı olamaz.");
     viewModel.setSeriListe(viewModel.model?.olcumler?.map((e) => e.seriNo).toList().nullCheckWithGeneric ?? []);
     await viewModel.getDatMiktar();
+    if (viewModel.olcumDatResponseListesi.ext.isNullOrEmpty) {
+      await dialogManager.showAlertDialog("Seri numaraları bulunamadı.");
+      Get.back(result: false);
+    }
     Get.back(result: true);
   }
 

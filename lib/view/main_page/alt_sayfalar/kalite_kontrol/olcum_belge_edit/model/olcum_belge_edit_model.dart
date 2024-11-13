@@ -160,7 +160,7 @@ extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
   OlcumBelgeModel? get olcumModel => belge?.lastOrNull;
 
   // bool get karisikMi => true;
-  bool get karisikMi => olcumler?.any((e) => e.karisikMi) == true;
+  bool get karisikMi => !kabulMu && !retMi;
 
   bool get kabulMu => olcumler?.every((e) => e.kabulMu) == true;
 
@@ -253,7 +253,7 @@ extension OlcumEkleProsesExtensions on OlcumProsesModel? {
 extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {
   bool get retMi => (this?.retAdet ?? 0) > 0;
 
-  bool get kabulMu => ((this?.kabulAdet ?? 0) + (this?.sartliAdet ?? 0)) > 0;
+  bool get kabulMu => (toplamKabul?? 0) > 0;
 
   double? get toplamKabul => (this?.kabulAdet ?? 0) + (this?.sartliAdet ?? 0);
 
