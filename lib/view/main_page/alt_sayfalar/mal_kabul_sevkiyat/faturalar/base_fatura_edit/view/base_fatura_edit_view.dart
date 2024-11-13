@@ -196,6 +196,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             } else {
               BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             }
+            if (widget.model.baseEditEnum == BaseEditEnum.siparistenKopyala) {
+              BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            }
             BaseSiparisEditModel.instance.belgeKodu = null;
             BaseSiparisEditModel.instance.teslimTarihi = null;
             BaseSiparisEditModel.instance.kapatilmis = null;
@@ -258,51 +261,57 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
+
+        BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         //TODO parametre ekle
-        final result = await getSiparisBaglantisi();
-        if (model.editTipiEnum.irsaliyeMi) {
-          BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
-        }
-        if (result != true) {
-          BaseSiparisEditModel.resetInstance();
-          BaseSiparisEditModel.instance.belgeTipi = 2;
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
+        if (widget.model.editTipiEnum?.siparisBaglantisiVarMi ?? false) {
+          final result = await getSiparisBaglantisi();
+          if (model.editTipiEnum.irsaliyeMi) {
+            BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
+          }
+          if (result != true) {
+            BaseSiparisEditModel.resetInstance();
+            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
 
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.isNew = true;
-        } else {
-          BaseSiparisEditModel.instance.belgeTipi = 2;
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.isNew = true;
-          final cariModel = await getCari();
+            BaseSiparisEditModel.instance.belgeTipi = 2;
+            BaseSiparisEditModel.instance.tipi = 2;
+            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            BaseSiparisEditModel.instance.tag = "FaturaModel";
 
-          if (cariModel is CariListesiModel) {
-            viewModel.setLoading(true);
-            BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
-                ? "E-Fatura"
-                : cariModel.efaturaCarisi == "H"
-                    ? "E-Arşiv"
-                    : null;
-            BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-            BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-            BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-            BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-            BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-            BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-            BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+            BaseSiparisEditModel.instance.isNew = true;
+          } else {
+            BaseSiparisEditModel.instance.belgeTipi = 2;
+            BaseSiparisEditModel.instance.tipi = 2;
+            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            BaseSiparisEditModel.instance.tag = "FaturaModel";
+            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+            BaseSiparisEditModel.instance.isNew = true;
+            final cariModel = await getCari();
+
+            if (cariModel is CariListesiModel) {
+              viewModel.setLoading(true);
+              BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
+                  ? "E-Fatura"
+                  : cariModel.efaturaCarisi == "H"
+                      ? "E-Arşiv"
+                      : null;
+              BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
+              BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
+              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
+              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
+              BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
+              BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
+              BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+            }
           }
         }
       }
 
-      BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
     log("resmi belge no: ${widget.model.model?.belgeNo}");
@@ -602,6 +611,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e.copyWith(teklifKalemSira: null, teklifNo: null)).toList();
+      BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
     }
     const Uuid uuid = Uuid();
     BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(

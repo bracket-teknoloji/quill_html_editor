@@ -559,6 +559,8 @@ final class YetkiController {
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 
   //! FATURA
+  bool get alistaSiparisKullan => _isTrue(_paramModel?.alistaSiparisKullan, skipAdmin: true);
+  bool get satistaSiparisKullan => _isTrue(_paramModel?.satistaSiparisKullan, skipAdmin: true);
 
   bool get sevkiyatFiyatDegistirilmesin => _isTrue(_yetkiModel?.sevkiyatFiyatDegistirilmesin, skipAdmin: true);
 
@@ -574,6 +576,16 @@ final class YetkiController {
     }
     return false;
   }
+
+  bool get alisFaturaSiparisBaglantisi => _isTrue(_yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "E" || _yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O");
+  bool get satisFaturaSiparisBaglantisi => _isTrue(_yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "E" || _yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O");
+  bool get alisIrsaliyesiSiparisBaglantisi => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagSecenegi == "E" || _yetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
+  bool get satisIrsaliyesiSiparisBaglantisi => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "E" || _yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O");
+
+  bool get alisFaturasiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O");
+  bool get satisFaturasiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O");
+  bool get alisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
+  bool get satisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O");
 
   bool alisFaturaAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)));
   bool alisIrsaliyeAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)));
@@ -628,7 +640,7 @@ final class YetkiController {
   String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
   bool get transferLokalDatHarTuruDegismesin => _isTrue(_yetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
 
-  bool get transferLokalDatSiparisBaglantisi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "E" || _yetkiModel?.transferDatSipBagSecenegi == "O");
+  bool get transferLokalDatSiparisBaglantisi => _isTrue(_paramModel?.satisDatSiparisTakibi == "E" && _yetkiModel?.transferDatSipBagSecenegi != "H", skipAdmin: true);
   bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "O");
 
   DepoList? get transferLokalDatCikisDepo => _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo).firstOrNull;

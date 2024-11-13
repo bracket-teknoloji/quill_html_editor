@@ -137,11 +137,13 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           BaseSiparisEditModel.instance.olcumBelgeRefKey = (widget.model.model as BaseSiparisEditModel).olcumBelgeRefKey;
           BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;
         } else {
-          final result = await getSiparisBaglantisi();
-          if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
-            Get.back();
-          } else if (result != true) {
-            BaseSiparisEditModel.resetInstance();
+          if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiVarMi ?? false) {
+            final result = await getSiparisBaglantisi();
+            if (result != true && !(BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiOpsiyonelMi ?? false)) {
+              Get.back();
+            } else if (result != true) {
+              BaseSiparisEditModel.resetInstance();
+            }
           }
         }
         BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;

@@ -395,7 +395,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
     );
     if (result.isSuccess) {
       viewModel.setKdvOraniList(
-        jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]).cast<double>(),
+        jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"] ?? "0").cast<double>(),
       );
     } else {
       dialogManager.showAlertDialog("KDV listesine erişilemedi.${result.message ?? ""}");

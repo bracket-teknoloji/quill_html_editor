@@ -421,6 +421,27 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  bool get siparisBaglantisiVarMi {
+    if (transferMi) {
+      return yetkiController.transferLokalDatSiparisBaglantisi;
+    }
+    if (satisMi && yetkiController.satistaSiparisKullan) {
+      return switch (this) {
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiSiparisBaglantisi,
+        EditTipiEnum.satisFatura => yetkiController.satisFaturaSiparisBaglantisi,
+        _ => false,
+      };
+    }
+    if (!satisMi && yetkiController.alistaSiparisKullan) {
+      return switch (this) {
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiSiparisBaglantisi,
+        EditTipiEnum.alisFatura => yetkiController.alisFaturaSiparisBaglantisi,
+        _ => false,
+      };
+    }
+    return false;
+  }
+
   bool get siparisBaglantisiOpsiyonelMi {
     switch (this) {
       case EditTipiEnum.depoTransferi:
