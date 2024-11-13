@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
@@ -328,19 +329,39 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
       kalemListesi.add(
         KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
           // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "G").toList()
-          ..hedefDepo = viewModel.seriRequestModel.redGirisDepo
+          ..hedefDepo = viewModel.seriRequestModel.kabulGirisDepo
           ..sira = 1
           ..kabulMu = true
-          ..miktar = viewModel.model?.olcumler?.map((element) => !element.kabulMu ? (element.retAdet ?? 0) : 0.toDouble()).sum ?? 0
+          ..miktar = viewModel.model?.olcumler?.where((element) => !element.retMi).length.toDouble() ?? 0.0
+          ..seriList = viewModel.model?.olcumler
+              ?.where((element) => !element.retMi)
+              .map(
+                (e) => SeriList(
+                  seriNo: e.seriNo,
+                  depoKodu: viewModel.seriRequestModel.kabulGirisDepo,
+                  miktar: 1,
+                ),
+              )
+              .toList()
           ..seriCikislardaAcik = viewModel.seriRequestModel.kabulGirisDepo != null,
       );
       kalemListesi.add(
         KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
           // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "C").toList()
-          ..hedefDepo = viewModel.seriRequestModel.kabulGirisDepo
+          ..hedefDepo = viewModel.seriRequestModel.redGirisDepo
           ..sira = 2
-          ..miktar = viewModel.model?.olcumler?.map((element) => element.kabulMu ? (element.toplamKabul ?? 0) : 0.toDouble()).sum ?? 0
+          ..miktar = viewModel.model?.olcumler?.where((element) => element.retMi).length.toDouble() ?? 0.0
           ..kabulMu = false
+          ..seriList = viewModel.model?.olcumler
+              ?.where((element) => element.retMi)
+              .map(
+                (e) => SeriList(
+                  seriNo: e.seriNo,
+                  depoKodu: viewModel.seriRequestModel.redGirisDepo,
+                  miktar: 1,
+                ),
+              )
+              .toList()
           ..seriCikislardaAcik = viewModel.seriRequestModel.redGirisDepo != null,
       );
     }
@@ -404,7 +425,6 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     if (_formKey.currentState?.validate() == false) return;
     if (!viewModel.depolarValidation) return dialogManager.showAlertDialog("Depolar aynı olamaz.");
     viewModel.setSeriListe(viewModel.model?.olcumler?.map((e) => e.seriNo).toList().nullCheckWithGeneric ?? []);
-    // Get.back();
     await viewModel.getDatMiktar();
     Get.back(result: true);
   }
