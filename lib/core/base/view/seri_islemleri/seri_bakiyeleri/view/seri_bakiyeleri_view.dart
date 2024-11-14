@@ -117,7 +117,7 @@ class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                         return Card(
                           color: UIHelper.getColorWithValue(seriModel.miktar ?? 0).withOpacity(0.5),
                           child: ListTile(
-                            title: Text(seriModel.depoTanimi ?? ""),
+                            title: Text(seriModel.seriNo ?? ""),
                             subtitle: CustomLayoutBuilder(
                               splitCount: 2,
                               children: [
