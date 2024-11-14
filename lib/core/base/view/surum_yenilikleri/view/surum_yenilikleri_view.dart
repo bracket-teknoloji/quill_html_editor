@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/init/app_info/app_info.dart";
 
 import "../../../../../view/add_company/model/account_model.dart";
 import "../../../../components/list_view/refreshable_list_view.dart";
@@ -44,7 +45,7 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
           title: Observer(
             builder: (_) => viewModel.searchBar
                 ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
-                : AppBarTitle(title: "Sürüm Yenilikleri", subtitle: "Versiyon Kodunuz: ${AccountModel.instance.uygulamaSurumu}"),
+                : AppBarTitle(title: "Sürüm Yenilikleri", subtitle: "Versiyon Kodunuz: ${AppInfoModel.instance.version}"),
           ),
           actions: [
             IconButton(

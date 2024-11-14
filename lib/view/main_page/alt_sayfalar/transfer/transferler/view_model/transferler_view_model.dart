@@ -108,8 +108,6 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @override
   Future<void> resetList() async {
-    super.resetList();
-    setDahaVarMi(true);
     resetPage();
     await getData();
   }

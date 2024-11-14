@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -375,7 +376,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           cikisDepoKodu: viewModel.seriRequestModel.cikisDepo,
           topluGirisDepoTanimi: girisDepoController.text,
           topluCikisDepoTanimi: cikisDepoController.text,
-          kalemList: kalemListesi,
+          kalemList: kalemListesi.map((e) => e..miktar = e.seriList?.map((e) => e.miktar).sum).toList(),
           olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
         ),
       ),

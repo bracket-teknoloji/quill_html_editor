@@ -212,6 +212,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
     CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value));
     faturaRequestModel = faturaRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
   }
+
   @override
   @action
   void setObservableList(List<BaseSiparisEditModel>? value) => observableList = value?.asObservable();
