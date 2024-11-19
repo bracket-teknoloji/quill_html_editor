@@ -1353,7 +1353,7 @@ class IslemlerMenuItemConstants<T> {
                 final boolean = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(
-                    model: result..kalemList = kalemList,
+                    model: result..kalemList = kalemList.map((e) => e..miktar = e.kalan).toList(),
                     baseEditEnum: BaseEditEnum.siparistenKopyala,
                     editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
                     belgeNo: null,
