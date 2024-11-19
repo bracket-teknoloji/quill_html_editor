@@ -1329,12 +1329,17 @@ class IslemlerMenuItemConstants<T> {
                 if (kalemList == null) return;
                 return await Get.toNamed(
                   "mainPage/faturaEdit",
-                  arguments: BaseEditModel(model: siparisModel..kalemList = kalemList
-                    .map(
-                      (e) => e
-                        ..miktar = e.kalan,
-                    )
-                    .toList(), baseEditEnum: BaseEditEnum.siparistenKopyala, editTipiEnum: EditTipiEnum.satisFatura, belgeNo: result.belgeNo),
+                  arguments: BaseEditModel(
+                    model: siparisModel
+                      ..kalemList = kalemList
+                          .map(
+                            (e) => e..miktar = e.kalan,
+                          )
+                          .toList(),
+                    baseEditEnum: BaseEditEnum.siparistenKopyala,
+                    editTipiEnum: EditTipiEnum.satisFatura,
+                    belgeNo: result.belgeNo,
+                  ),
                 );
               } else {
                 return;

@@ -40,51 +40,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDJju4WmLMseTy43xGzs_jpz88PNWAzKrM',
-    appId: '1:9609536428:web:efedff6e607b9f58579009',
-    messagingSenderId: '9609536428',
-    projectId: 'flutter-picker',
-    authDomain: 'flutter-picker.firebaseapp.com',
-    storageBucket: 'flutter-picker.firebasestorage.app',
-    measurementId: 'G-E5TVWFV72N',
+    apiKey: "AIzaSyDJju4WmLMseTy43xGzs_jpz88PNWAzKrM",
+    appId: "1:9609536428:web:efedff6e607b9f58579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    authDomain: "flutter-picker.firebaseapp.com",
+    storageBucket: "flutter-picker.firebasestorage.app",
+    measurementId: "G-E5TVWFV72N",
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBaCY9dnWAUBvbsdwSlWt-7XmU0eyfBWt8',
-    appId: '1:9609536428:android:5a7b2c579d031d2e579009',
-    messagingSenderId: '9609536428',
-    projectId: 'flutter-picker',
-    storageBucket: 'flutter-picker.firebasestorage.app',
+    apiKey: "AIzaSyBaCY9dnWAUBvbsdwSlWt-7XmU0eyfBWt8",
+    appId: "1:9609536428:android:5a7b2c579d031d2e579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    storageBucket: "flutter-picker.firebasestorage.app",
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI',
-    appId: '1:9609536428:ios:533cdc2b1a920cd3579009',
-    messagingSenderId: '9609536428',
-    projectId: 'flutter-picker',
-    storageBucket: 'flutter-picker.firebasestorage.app',
-    iosClientId: '9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com',
-    iosBundleId: 'com.bracket23.picker',
+    apiKey: "AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI",
+    appId: "1:9609536428:ios:533cdc2b1a920cd3579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    storageBucket: "flutter-picker.firebasestorage.app",
+    iosClientId: "9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com",
+    iosBundleId: "com.bracket23.picker",
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI',
-    appId: '1:9609536428:ios:533cdc2b1a920cd3579009',
-    messagingSenderId: '9609536428',
-    projectId: 'flutter-picker',
-    storageBucket: 'flutter-picker.firebasestorage.app',
-    iosClientId: '9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com',
-    iosBundleId: 'com.bracket23.picker',
+    apiKey: "AIzaSyCxbZwOpp9ufLwjqnlBFvrBQGG0efF-ftI",
+    appId: "1:9609536428:ios:533cdc2b1a920cd3579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    storageBucket: "flutter-picker.firebasestorage.app",
+    iosClientId: "9609536428-t6vi28fbgma6pi36m4sl9dus3le6d8bp.apps.googleusercontent.com",
+    iosBundleId: "com.bracket23.picker",
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAMOnb94n7b7wbUnHkBDFzxjV13hZ4nJIk',
-    appId: '1:9609536428:web:f6a8b61dc8962d73579009',
-    messagingSenderId: '9609536428',
-    projectId: 'flutter-picker',
-    authDomain: 'flutter-picker.firebaseapp.com',
-    storageBucket: 'flutter-picker.firebasestorage.app',
-    measurementId: 'G-63F158PCGQ',
+    apiKey: "AIzaSyAMOnb94n7b7wbUnHkBDFzxjV13hZ4nJIk",
+    appId: "1:9609536428:web:f6a8b61dc8962d73579009",
+    messagingSenderId: "9609536428",
+    projectId: "flutter-picker",
+    authDomain: "flutter-picker.firebaseapp.com",
+    storageBucket: "flutter-picker.firebasestorage.app",
+    measurementId: "G-63F158PCGQ",
   );
-
 }
