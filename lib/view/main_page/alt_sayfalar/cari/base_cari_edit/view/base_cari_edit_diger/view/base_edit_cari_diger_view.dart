@@ -699,6 +699,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Future<void> dataChecker() async {
     if (list.ext.isNullOrEmpty && StaticVariables.grupKodlari.ext.isNullOrEmpty) {
       final data = await CariNetworkManager.getKod();
+      if (!data.isSuccess) return;
       list = data.dataList;
       if (list != null) {
         StaticVariables.grupKodlari = list!;

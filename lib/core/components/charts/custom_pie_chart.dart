@@ -38,10 +38,10 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                               });
                               return;
                             }
-                            touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
+                            touchedIndex = pieTouchResponse.touchedSection?.touchedSectionIndex ?? 0;
                             if (touchedIndex >= 0) {
                               dialogManager.showInfoSnackBar(
-                                "${widget.pieChartTitle?[pieTouchResponse.touchedSection!.touchedSectionIndex] ?? widget.pieChartSelectedValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ''}\n${widget.pieChartValue?[pieTouchResponse.touchedSection!.touchedSectionIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                "${widget.pieChartTitle?[touchedIndex] ?? widget.pieChartSelectedValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ''}\n${widget.pieChartValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               );
                             }
                           },

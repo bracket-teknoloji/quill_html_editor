@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -152,8 +153,9 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   iconWidget: Icons.list_alt_outlined,
                   onTap: () async {
                     Get.back();
+                    final result = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model));
                     await dialogManager.showFaturaGridViewDialog(
-                      model: widget.model,
+                      model: result,
                       onSelected: (value) {
                         widget.onUpdated?.call(value);
                       },
