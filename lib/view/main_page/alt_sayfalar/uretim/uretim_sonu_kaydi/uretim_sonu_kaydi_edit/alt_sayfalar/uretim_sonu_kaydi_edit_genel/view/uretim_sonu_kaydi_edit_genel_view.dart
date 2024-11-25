@@ -437,9 +437,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         valueWidget: Observer(
           builder: (_) => Text(viewModel.kalem?.seriList != null ? "(${viewModel.kalem?.seriList?.length.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)})" : ""),
         ),
-        onTap: () {
-          getSeriler();
-        },
+        onTap: getSeriler,
       );
 
   CustomTextField maliyetFiyatiField() => CustomTextField(

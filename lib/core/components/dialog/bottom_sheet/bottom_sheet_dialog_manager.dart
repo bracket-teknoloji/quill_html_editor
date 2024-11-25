@@ -81,7 +81,7 @@ class BottomSheetDialogManager {
       context: context,
       builder: (context) => Padding(
         padding: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
+          bottom: MediaQuery.viewInsetsOf(context).bottom,
         ),
         child: SafeArea(
           child: Column(
@@ -260,7 +260,7 @@ class BottomSheetDialogManager {
       ),
       builder: (BuildContext context) => SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
           child: Observer(
             builder: (_) => Wrap(
               children: <Widget>[

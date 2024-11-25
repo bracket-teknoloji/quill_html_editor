@@ -282,7 +282,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 );
                                 if (token != null) {
                                   CacheManager.setVerifiedUser(CacheManager.getVerifiedUser);
-                                  CacheManager.setToken(token.accessToken!);
+                                  if (token.accessToken != null) {
+                                    CacheManager.setToken(token.accessToken!);
+                                  }
                                 }
                                 final response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,

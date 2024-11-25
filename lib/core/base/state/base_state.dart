@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 import "../../../generated/locale_base.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -21,8 +22,8 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
   UserModel get userModel => CacheManager.getAnaVeri?.userModel ?? UserModel();
   ProfilYetkiModel get profilYetkiModel => CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
   String get mainCurrency => parametreModel.paraBirimi ?? "TL";
-  double get width => MediaQuery.sizeOf(context).width;
-  double get height => MediaQuery.sizeOf(context).height;
+  double get width => Get.width;
+  double get height => Get.height;
   ThemeData get theme => Theme.of(context);
   LocaleBase get loc => Localizations.of<LocaleBase>(context, LocaleBase)!;
   // NavigatorState navigator(BuildContext context) => Navigator.of(context);

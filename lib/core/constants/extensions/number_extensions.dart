@@ -53,6 +53,7 @@ extension NumExtensionWithFixedDigits on num? {
 
 extension NumExtensionWithFormattedStringToDouble on String? {
   double get toDoubleWithFormattedString {
+    if (this == null) return 0;
     if (ext.isNotNullOrNoEmpty) {
       return double.parse(this!.replaceAll(".", "").replaceAll(",", "."));
     } else {

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/base/view/genel_rehber/view/genel_rehber_view.dart";
 
 import "../core/base/view/base_scaffold.dart";
 import "picker_app_imports.dart";
@@ -91,6 +92,7 @@ class PickerMaterialApp extends StatelessWidget {
             page: () => const MainPageView(),
             popGesture: false,
             children: <GetPage>[
+              GetPage(name: "/genelRehber", page: () => GenelRehberView(model: Get.arguments)),
               GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
               GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
               GetPage(name: "/eIrsaliyeEkBilgiler", page: () => EIrsaliyeEkBilgilerView(model: Get.arguments)),

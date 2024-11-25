@@ -28,12 +28,12 @@ class CustomTextField extends StatefulWidget {
   final int? maxLength;
   final String? controllerText;
   final List<TextInputFormatter>? inputFormatter;
-  final Function()? onTap;
+  final void Function()? onTap;
   final String? Function(String? value)? validator;
-  final Function(String value)? onChanged;
-  final Function(String value)? onSubmitted;
-  final Function(DateTime? value)? onDateChange;
-  final Function()? onClear;
+  final void Function(String value)? onChanged;
+  final void Function(String value)? onSubmitted;
+  final void Function(DateTime? value)? onDateChange;
+  final void Function()? onClear;
   final bool? suffixMore;
   final bool? isFormattedString;
   final bool? isDateTime;
