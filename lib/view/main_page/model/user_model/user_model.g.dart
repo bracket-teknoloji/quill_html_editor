@@ -117,7 +117,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
   ..admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?
   ..plasiyerTanimi = json['PLASIYER_TANIMI'] as String?
-  ..plasiyerKodu = json['PLASIYER_KODU'] as String?;
+  ..plasiyerKodu = json['PLASIYER_KODU'] as String?
+  ..ekRehberler = (json['EKREHBERLER'] as List<dynamic>?)
+      ?.map((e) => EkRehberlerModel.fromJson(e as Map<String, dynamic>))
+      .toList();
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   final val = <String, dynamic>{};
@@ -148,5 +151,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) {
   writeNotNull('ADMIN_MI', instance.adminMi);
   writeNotNull('PLASIYER_TANIMI', instance.plasiyerTanimi);
   writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
+  writeNotNull(
+      'EKREHBERLER', instance.ekRehberler?.map((e) => e.toJson()).toList());
   return val;
 }
