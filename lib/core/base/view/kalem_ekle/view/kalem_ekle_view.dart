@@ -4,6 +4,9 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/ek_rehber_request_model.dart";
+import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 import "package:text_scroll/text_scroll.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -67,6 +70,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController muhKoduController;
   late final TextEditingController muhRefKoduController;
   late final TextEditingController serilerController;
+  late final TextEditingController aciklama1Controller;
+  late final TextEditingController aciklama2Controller;
+  late final TextEditingController aciklama3Controller;
+  late final TextEditingController aciklama4Controller;
+  late final TextEditingController aciklama5Controller;
+  late final TextEditingController aciklama6Controller;
+  late final TextEditingController aciklama7Controller;
+  late final TextEditingController aciklama8Controller;
+  late final TextEditingController aciklama9Controller;
+  late final TextEditingController aciklama10Controller;
   TextEditingController? isk1Controller;
   TextEditingController? isk1TipiController;
   TextEditingController? isk2TipiController;
@@ -370,6 +383,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 CustomTextField(
                   labelText: "Ek Alan 1",
                   controller: ekAlan1Controller,
+                  readOnly: getEkRehberModel("EKALAN1") != null,
+                  suffixMore: getEkRehberModel("EKALAN1") != null,
                   onChanged: (p0) {
                     viewModel.kalemModel.ekalan1 = p0;
                     if (viewModel.kalemModel.kalemAdiDegisti ?? false) {
@@ -381,9 +396,20 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     if (viewModel.kalemModel.kalemAdiDegistimi ?? false) {
                       dialogManager.showInfoDialog("Alan 1 açıkken Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
                     }
+                    getGenelRehberModel("EKALAN1");
                   },
+
+                  valueWidget: getEkRehberModel("EKALAN1") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? "")),
                 ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false),
-                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                CustomTextField(
+                  labelText: "Ek Alan 2",
+                  controller: ekAlan2Controller,
+                  readOnly: getEkRehberModel("EKALAN2") != null,
+                  suffixMore: getEkRehberModel("EKALAN2") != null,
+                  onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0,
+                  onTap: () => getGenelRehberModel("EKALAN2"),
+                  valueWidget: getEkRehberModel("EKALAN2") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.ekalan2 ?? "")),
+                ).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
                 CustomTextField(
                   labelText: "İş Emri",
                   controller: isEmriController,
@@ -843,26 +869,106 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 const Text("Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
                     .paddingSymmetric(vertical: UIHelper.lowSize)
                     .yetkiVarMi(yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(1), controllerText: widget.kalemModel?.aciklama1, onChanged: (value) => viewModel.kalemModel.aciklama1 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(2), controllerText: widget.kalemModel?.aciklama2, onChanged: (value) => viewModel.kalemModel.aciklama2 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(2) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(3), controllerText: widget.kalemModel?.aciklama3, onChanged: (value) => viewModel.kalemModel.aciklama3 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(3) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(4), controllerText: widget.kalemModel?.aciklama4, onChanged: (value) => viewModel.kalemModel.aciklama4 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(4) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(5), controllerText: widget.kalemModel?.aciklama5, onChanged: (value) => viewModel.kalemModel.aciklama5 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(5) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(6), controllerText: widget.kalemModel?.aciklama6, onChanged: (value) => viewModel.kalemModel.aciklama6 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(6) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(7), controllerText: widget.kalemModel?.aciklama7, onChanged: (value) => viewModel.kalemModel.aciklama7 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(7) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(8), controllerText: widget.kalemModel?.aciklama8, onChanged: (value) => viewModel.kalemModel.aciklama8 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(8) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(9), controllerText: widget.kalemModel?.aciklama9, onChanged: (value) => viewModel.kalemModel.aciklama9 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(9) && !transferMi),
-                CustomTextField(labelText: getAciklamaLabel(10), controllerText: widget.kalemModel?.aciklama10, onChanged: (value) => viewModel.kalemModel.aciklama10 = value)
-                    .yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(10) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(1),
+                  readOnly: getEkRehberModel("SATIR_ACIK1") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK1") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK1"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK1") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama1 ?? "")),
+                  onClear: () => viewModel.setAciklama1(null),
+                  controller: aciklama1Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama1 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(2),
+                  readOnly: getEkRehberModel("SATIR_ACIK2") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK2") != null,
+                  onClear: () => viewModel.setAciklama2(null),
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK2"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK2") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama2 ?? "")),
+                  controller: aciklama2Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama2 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(2) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(3),
+                  readOnly: getEkRehberModel("SATIR_ACIK3") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK3") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK3"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK3") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama3 ?? "")),
+                  onClear: () => viewModel.setAciklama3(null),
+                  controller: aciklama3Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama3 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(3) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(4),
+                  readOnly: getEkRehberModel("SATIR_ACIK4") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK4") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK4"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK4") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama4 ?? "")),
+                  onClear: () => viewModel.setAciklama4(null),
+                  controller: aciklama4Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama4 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(4) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(5),
+                  readOnly: getEkRehberModel("SATIR_ACIK5") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK5") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK5"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK5") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama5 ?? "")),
+                  onClear: () => viewModel.setAciklama5(null),
+                  controller: aciklama5Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama5 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(5) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(6),
+                  readOnly: getEkRehberModel("SATIR_ACIK6") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK6") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK6"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK6") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama6 ?? "")),
+                  onClear: () => viewModel.setAciklama6(null),
+                  controller: aciklama6Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama6 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(6) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(7),
+                  readOnly: getEkRehberModel("SATIR_ACIK7") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK7") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK7"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK7") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama7 ?? "")),
+                  onClear: () => viewModel.setAciklama7(null),
+                  controller: aciklama7Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama7 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(7) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(8),
+                  readOnly: getEkRehberModel("SATIR_ACIK8") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK8") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK8"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK8") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama8 ?? "")),
+                  onClear: () => viewModel.setAciklama8(null),
+                  controller: aciklama8Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama8 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(8) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(9),
+                  readOnly: getEkRehberModel("SATIR_ACIK9") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK9") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK9"),
+                  valueWidget: getEkRehberModel("SATIR_ACIK9") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama9 ?? "")),
+                  onClear: () => viewModel.setAciklama9(null),
+                  controller: aciklama9Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama9 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(9) && !transferMi),
+                CustomTextField(
+                  labelText: getAciklamaLabel(10),
+                  readOnly: getEkRehberModel("SATIR_ACIK10") != null,
+                  suffixMore: getEkRehberModel("SATIR_ACIK10") != null,
+                  onTap: () async => getGenelRehberModel("SATIR_ACIK10"),
+                  onClear: () => viewModel.setAciklama10(null),
+                  valueWidget: getEkRehberModel("SATIR_ACIK10") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama10 ?? "")),
+                  controller: aciklama10Controller,
+                  onChanged: (value) => viewModel.kalemModel.aciklama10 = value,
+                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(10) && !transferMi),
                 const SizedBox(height: 50),
               ],
             ),
@@ -871,7 +977,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       );
 
   bool get seriliMi =>
-      (model.getEditTipiEnum!.satisMi ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
+      ((model.getEditTipiEnum?.satisMi ?? false) ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
       !editTipi.siparisMi &&
       !editTipi.talepTeklifMi &&
       yetkiController.seriUygulamasiAcikMi &&
@@ -888,7 +994,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     return null;
   }
 
-  String getAciklamaLabel(int index) => "${editTipi?.rawValue} $index";
+  String getAciklamaLabel(int index) {
+    if (getEkRehberModel("SATIR_ACIK$index") != null) {
+      return getEkRehberModel("SATIR_ACIK$index")?.baslik ?? "";
+    }
+    return "${editTipi?.rawValue} $index";
+  }
 
   void initControllers() {
     kalemAdiController = TextEditingController();
@@ -912,7 +1023,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController = TextEditingController();
     muhRefKoduController = TextEditingController();
     serilerController = TextEditingController();
-
+    aciklama1Controller = TextEditingController();
+    aciklama2Controller = TextEditingController();
+    aciklama3Controller = TextEditingController();
+    aciklama4Controller = TextEditingController();
+    aciklama5Controller = TextEditingController();
+    aciklama6Controller = TextEditingController();
+    aciklama7Controller = TextEditingController();
+    aciklama8Controller = TextEditingController();
+    aciklama9Controller = TextEditingController();
+    aciklama10Controller = TextEditingController();
     viewModel.setShowDovizBilgileri(widget.kalemModel?.dovizliMi ?? widget.stokListesiModel?.dovizliMi ?? false);
   }
 
@@ -1038,6 +1158,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     dovizTipiController.text =
         viewModel.kalemModel.dovizliMi ? (viewModel.kalemModel.dovizAdi ?? (editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi) ?? "") : mainCurrency;
     dovizFiyatiController.text = (viewModel.kalemModel.dovizliFiyat ?? viewModel.model?.dovAlisFiat).commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
+    aciklama1Controller.text = viewModel.kalemModel.aciklama1 ?? "";
+    aciklama2Controller.text = viewModel.kalemModel.aciklama2 ?? "";
+    aciklama3Controller.text = viewModel.kalemModel.aciklama3 ?? "";
+    aciklama4Controller.text = viewModel.kalemModel.aciklama4 ?? "";
+    aciklama5Controller.text = viewModel.kalemModel.aciklama5 ?? "";
+    aciklama6Controller.text = viewModel.kalemModel.aciklama6 ?? "";
+    aciklama7Controller.text = viewModel.kalemModel.aciklama7 ?? "";
+    aciklama8Controller.text = viewModel.kalemModel.aciklama8 ?? "";
+    aciklama9Controller.text = viewModel.kalemModel.aciklama9 ?? "";
+    aciklama10Controller.text = viewModel.kalemModel.aciklama10 ?? "";
     if (yetkiController.projeUygulamasiAcikMi) {
       projeController.text = model.projeAciklama ?? model.projeKodu ?? "";
       viewModel.kalemModel.projeKodu = model.projeKodu;
@@ -1068,11 +1198,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
     }
     if (editTipi?.depoTransferiMi == true) {
-      viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu ;
+      viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu;
       viewModel.kalemModel.hedefDepo ??= model.girisDepoKodu;
-    viewModel.kalemModel.hedefDepoAdi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.hedefDepo).firstOrNull?.depoTanimi ?? "";
+      viewModel.kalemModel.hedefDepoAdi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.hedefDepo).firstOrNull?.depoTanimi ?? "";
     } else {
-    viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? model.topluDepo ?? viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu;
+      viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? model.topluDepo ?? viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu;
     }
     viewModel.kalemModel.depoTanimi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.depoKodu).firstOrNull?.depoTanimi ?? "";
     depoController.text = viewModel.kalemModel.depoTanimi ?? "";
@@ -1124,6 +1254,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController.dispose();
     muhRefKoduController.dispose();
     serilerController.dispose();
+    aciklama1Controller.dispose();
+    aciklama2Controller.dispose();
+    aciklama3Controller.dispose();
+    aciklama4Controller.dispose();
+    aciklama5Controller.dispose();
+    aciklama6Controller.dispose();
+    aciklama7Controller.dispose();
+    aciklama8Controller.dispose();
+    aciklama9Controller.dispose();
+    aciklama10Controller.dispose();
   }
 
   String getIskTipiAciklama(num? value) => parametreModel.listIskTip?.firstWhereOrNull((element) => element.iskontoTipi == value)?.aciklama ?? "";
@@ -1253,6 +1393,68 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.kalemModel.seriList = result;
         // viewModel.setMiktar(result.map((e) => e.miktar).sum);
       }
+    }
+  }
+
+  EkRehberlerModel? getEkRehberModel(String? name) {
+    if (name == null) return null;
+    return userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == name && element.ekran == editTipi?.rawValue);
+  }
+
+  Future<void> getGenelRehberModel(String? name) async {
+    final ekRehberModel = getEkRehberModel(name);
+    if (ekRehberModel == null) return;
+    var result = await Get.toNamed(
+      "mainPage/genelRehber",
+      arguments: EkRehberRequestModel(
+        belgeNo: model.belgeNo,
+        belgeTipi: model.getEditTipiEnum?.rawValue,
+        belgeTarihi: model.tarih,
+        id: ekRehberModel.id,
+        cariKodu: model.cariKodu,
+        baslik: ekRehberModel.baslik,
+        rehberKodu: 8,
+      ),
+    );
+    if (result == null) return;
+    result = result as GenelRehberModel;
+    switch (name) {
+      case "EKALAN1":
+        viewModel.setAciklama1(result.kodu);
+        ekAlan1Controller.text = result.adi ?? result.kodu ?? "";
+      case "EKALAN2":
+        viewModel.setAciklama2(result.kodu);
+        ekAlan2Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK1":
+        viewModel.setAciklama3(result.kodu);
+        aciklama1Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK2":
+        viewModel.setAciklama2(result.kodu);
+        aciklama2Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK3":
+        viewModel.setAciklama3(result.kodu);
+        aciklama3Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK4":
+        viewModel.setAciklama4(result.kodu);
+        aciklama4Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK5":
+        viewModel.setAciklama5(result.kodu);
+        aciklama5Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK6":
+        viewModel.setAciklama6(result.kodu);
+        aciklama6Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK7":
+        viewModel.setAciklama7(result.kodu);
+        aciklama7Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK8":
+        viewModel.setAciklama8(result.kodu);
+        aciklama8Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK9":
+        viewModel.setAciklama9(result.kodu);
+        aciklama9Controller.text = result.adi ?? result.kodu ?? "";
+      case "SATIR_ACIK10":
+        viewModel.setAciklama10(result.kodu);
+        aciklama10Controller.text = result.adi ?? result.kodu ?? "";
     }
   }
 }

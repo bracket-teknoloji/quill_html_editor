@@ -199,7 +199,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                         belgeTuru: model.getEditTipiEnum?.rawValue,
                       ),
                     );
-                    if (cariModel == null) return null;
+                    if (cariModel == null) return;
                     final result = await networkManager.getCariModel(
                       CariRequestModel.fromCariListesiModel(cariModel)
                         ..secildi = "E"

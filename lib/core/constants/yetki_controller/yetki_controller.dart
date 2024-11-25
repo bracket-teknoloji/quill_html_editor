@@ -573,6 +573,10 @@ final class YetkiController {
       return alisFaturaAciklamaAlanlari(index);
     } else if (editTipi.satisIrsaliyesiMi) {
       return satisIrsaliyeAciklamaAlanlari(index);
+    } else if (editTipi.musteriMi) {
+      return siparisMSAciklamaAlanlari(index);
+    // } else if (editTipi.saticiMi) {
+    //   return siparisSSaciklamaAlanlari(index);
     }
     return false;
   }
@@ -601,7 +605,6 @@ final class YetkiController {
   bool get transferAGGoruntule => _isTrue(_yetkiModel?.transferAg);
   bool get transferACGoruntule => _isTrue(_yetkiModel?.transferAc);
 
-
   //* Ekle
   bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
   bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);
@@ -621,7 +624,6 @@ final class YetkiController {
   bool get transferDatFiyatGor => _isTrue(_yetkiModel?.transferDatFiyatGor);
   bool get transferAGFiyatGor => _isTrue(_yetkiModel?.transferAgFiyatGor);
   bool get transferACFiyatGor => _isTrue(_yetkiModel?.transferAcFiyatGor);
-
 
   bool get transferEkMaliyet1GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get transferEkMaliyet2GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);

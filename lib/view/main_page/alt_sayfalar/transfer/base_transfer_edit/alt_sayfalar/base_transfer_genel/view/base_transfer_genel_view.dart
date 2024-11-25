@@ -267,7 +267,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           belgeTuru: model.getEditTipiEnum?.rawValue,
                         ),
                       );
-                      if (cariModel == null) return null;
+                      if (cariModel == null) return;
                       final result = await networkManager.getCariModel(
                         CariRequestModel.fromCariListesiModel(cariModel)
                           ..secildi = "E"
@@ -389,7 +389,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                                 belgeTuru: model.getEditTipiEnum?.rawValue,
                               ),
                             );
-                            if (cariModel == null) return null;
+                            if (cariModel == null) return;
                             final result = await networkManager.getCariModel(
                               CariRequestModel.fromCariListesiModel(cariModel)
                                 ..secildi = "E"

@@ -144,6 +144,18 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setAciklama(int index, String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setAciklama');
+    try {
+      return super.setAciklama(index, value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 kdvDahil: ${kdvDahil},

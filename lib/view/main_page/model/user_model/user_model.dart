@@ -1,5 +1,6 @@
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
 import "kullanici_yetki_model.dart";
 import "profil_yetki_model.dart";
@@ -54,6 +55,8 @@ class UserModel {
   String? plasiyerTanimi;
   @HiveField(20)
   String? plasiyerKodu;
+  @JsonKey(name: "EKREHBERLER")
+  List<EkRehberlerModel>? ekRehberler;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
   Map<String, dynamic> toJson() => _$UserModelToJson(this);

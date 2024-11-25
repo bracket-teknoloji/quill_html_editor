@@ -157,6 +157,27 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setIskonto6(double? value) => kalemModel = kalemModel.copyWith(iskonto6: value != 0 ? value : null);
 
   @action
+  void setAciklama1(String? value) => kalemModel = kalemModel.copyWith(aciklama1: value);
+  @action
+  void setAciklama2(String? value) => kalemModel = kalemModel.copyWith(aciklama2: value);
+  @action
+  void setAciklama3(String? value) => kalemModel = kalemModel.copyWith(aciklama3: value);
+  @action
+  void setAciklama4(String? value) => kalemModel = kalemModel.copyWith(aciklama4: value);
+  @action
+  void setAciklama5(String? value) => kalemModel = kalemModel.copyWith(aciklama5: value);
+  @action
+  void setAciklama6(String? value) => kalemModel = kalemModel.copyWith(aciklama6: value);
+  @action
+  void setAciklama7(String? value) => kalemModel = kalemModel.copyWith(aciklama7: value);
+  @action
+  void setAciklama8(String? value) => kalemModel = kalemModel.copyWith(aciklama8: value);
+  @action
+  void setAciklama9(String? value) => kalemModel = kalemModel.copyWith(aciklama9: value);
+  @action
+  void setAciklama10(String? value) => kalemModel = kalemModel.copyWith(aciklama10: value);
+
+  @action
   void setKalemList(List<KalemModel>? list) => kalemModel = kalemModel.copyWith(kalemList: list);
 
   @action

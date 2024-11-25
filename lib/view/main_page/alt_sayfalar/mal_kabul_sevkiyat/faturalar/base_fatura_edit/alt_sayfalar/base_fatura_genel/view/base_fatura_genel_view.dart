@@ -1,7 +1,12 @@
+import "dart:async";
+
 import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/base/model/ek_rehber_request_model.dart";
+import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
@@ -509,98 +514,193 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     children: <Widget>[
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(1) != null,
+                        suffixMore: getEkRehberById(1) != null,
+                        onTap: () async => await getGenelRehber(1),
+                        onClear: () => viewModel.setAciklama(1, null),
                         onChanged: (value) => viewModel.setAciklama(1, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
+                        labelText: getEkRehberById(1)?.alan == "ACIK1"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK1")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
                         controller: _aciklama1Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(2) != null,
+                        onClear: () => viewModel.setAciklama(2, null),
+                        suffixMore: getEkRehberById(2) != null,
+                        onTap: () async => await getGenelRehber(2),
                         onChanged: (value) => viewModel.setAciklama(2, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
+                        labelText: getEkRehberById(2)?.alan == "ACIK2"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK2")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
                         controller: _aciklama2Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(3) != null,
+                        suffixMore: getEkRehberById(3) != null,
+                        onClear: () => viewModel.setAciklama(3, null),
                         onChanged: (value) => viewModel.setAciklama(3, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
+                        labelText: getEkRehberById(3)?.alan == "ACIK3"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK3")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
                         controller: _aciklama3Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(4) != null,
+                        suffixMore: getEkRehberById(4) != null,
+                        onClear: () => viewModel.setAciklama(4, null),
+                        onTap: () async => await getGenelRehber(4),
                         onChanged: (value) => viewModel.setAciklama(4, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
+                        labelText: getEkRehberById(4)?.alan == "ACIK4"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK4")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
                         controller: _aciklama4Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(5) != null,
+                        suffixMore: getEkRehberById(5) != null,
+                        onTap: () async => await getGenelRehber(5),
+                        onClear: () => viewModel.setAciklama(5, null),
                         onChanged: (value) => viewModel.setAciklama(5, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
+                        labelText: getEkRehberById(5)?.alan == "ACIK5"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK5")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
                         controller: _aciklama5Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(6) != null,
+                        suffixMore: getEkRehberById(6) != null,
+                        onTap: () async => await getGenelRehber(6),
+                        onClear: () => viewModel.setAciklama(6, null),
                         onChanged: (value) => viewModel.setAciklama(6, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
+                        labelText: getEkRehberById(6)?.alan == "ACIK6"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK6")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
                         controller: _aciklama6Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(7) != null,
+                        suffixMore: getEkRehberById(7) != null,
+                        onTap: () async => await getGenelRehber(7),
+                        onClear: () => viewModel.setAciklama(7, null),
                         onChanged: (value) => viewModel.setAciklama(7, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
+                        labelText: getEkRehberById(7)?.alan == "ACIK7"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK7")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
                         controller: _aciklama7Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(8) != null,
+                        suffixMore: getEkRehberById(8) != null,
+                        onClear: () => viewModel.setAciklama(8, null),
+                        onTap: () async => await getGenelRehber(8),
                         onChanged: (value) => viewModel.setAciklama(8, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
+                        labelText: getEkRehberById(8)?.alan == "ACIK8"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK8")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
                         controller: _aciklama8Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(9) != null,
+                        suffixMore: getEkRehberById(9) != null,
+                        onTap: () async => await getGenelRehber(9),
+                        onClear: () => viewModel.setAciklama(9, null),
                         onChanged: (value) => viewModel.setAciklama(9, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
+                        labelText: getEkRehberById(9)?.alan == "ACIK9"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK9")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
                         controller: _aciklama9Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(10) != null,
+                        suffixMore: getEkRehberById(10) != null,
+                        onTap: () async => await getGenelRehber(10),
+                        onClear: () => viewModel.setAciklama(10, null),
                         onChanged: (value) => viewModel.setAciklama(10, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
+                        labelText: getEkRehberById(10)?.alan == "ACIK10"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK10")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
                         controller: _aciklama10Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(11) != null,
+                        suffixMore: getEkRehberById(11) != null,
+                        onTap: () async => await getGenelRehber(11),
+                        onClear: () => viewModel.setAciklama(11, null),
                         onChanged: (value) => viewModel.setAciklama(11, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
+                        labelText: getEkRehberById(11)?.alan == "ACIK11"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK11")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
                         controller: _aciklama11Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(12) != null,
+                        suffixMore: getEkRehberById(12) != null,
+                        onTap: () async => await getGenelRehber(12),
+                        onClear: () => viewModel.setAciklama(12, null),
                         onChanged: (value) => viewModel.setAciklama(12, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
+                        labelText: getEkRehberById(12)?.alan == "ACIK12"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK12")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
                         controller: _aciklama12Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(13) != null,
+                        suffixMore: getEkRehberById(13) != null,
+                        onTap: () async => await getGenelRehber(13),
+                        onClear: () => viewModel.setAciklama(13, null),
                         onChanged: (value) => viewModel.setAciklama(13, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
+                        labelText: getEkRehberById(13)?.alan == "ACIK13"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK13")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
                         controller: _aciklama13Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(14) != null,
+                        suffixMore: getEkRehberById(14) != null,
+                        onTap: () async => await getGenelRehber(14),
+                        onClear: () => viewModel.setAciklama(14, null),
                         onChanged: (value) => viewModel.setAciklama(14, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
+                        labelText: getEkRehberById(14)?.alan == "ACIK14"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK14")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
                         controller: _aciklama14Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(15) != null,
+                        suffixMore: getEkRehberById(15) != null,
+                        onTap: () async => await getGenelRehber(15),
+                        onClear: () => viewModel.setAciklama(15, null),
                         onChanged: (value) => viewModel.setAciklama(15, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
+                        labelText: getEkRehberById(15)?.alan == "ACIK15"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK15")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
                         controller: _aciklama15Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
                       CustomTextField(
                         enabled: enable,
+                        readOnly: getEkRehberById(16) != null,
+                        suffixMore: getEkRehberById(16) != null,
+                        onTap: () async => await getGenelRehber(16),
+                        onClear: () => viewModel.setAciklama(16, null),
                         onChanged: (value) => viewModel.setAciklama(16, value),
-                        labelText: (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
+                        labelText: getEkRehberById(16)?.alan == "ACIK16"
+                            ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK16")?.baslik
+                            : (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
                         controller: _aciklama16Controller,
                       ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16)),
                     ],
@@ -651,5 +751,91 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       if (siparistenKopyalaMi ?? false) {}
       _belgeNoController.text = model.belgeNo ?? "";
     }
+  }
+
+  EkRehberlerModel? getEkRehberById(int? id) =>
+      userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK${id ?? ""}" && element.ekran == BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue);
+
+  Future<void> getGenelRehber(int? id) async {
+    if (id == null) {
+      dialogManager.showErrorSnackBar("ID bulunamadı.");
+      return;
+    }
+    final siparisModel = BaseSiparisEditModel.instance;
+    final ekRehberModel = getEkRehberById(id);
+    if (ekRehberModel != null) {
+      var result = await Get.toNamed(
+        "mainPage/genelRehber",
+        arguments: EkRehberRequestModel(
+          belgeNo: siparisModel.belgeNo,
+          belgeTipi: siparisModel.getEditTipiEnum?.rawValue,
+          belgeTarihi: siparisModel.tarih,
+          id: ekRehberModel.id,
+          cariKodu: siparisModel.cariKodu,
+          baslik: ekRehberModel.baslik,
+          rehberKodu: 8,
+        ),
+      );
+      if (result == null) return;
+      result = result as GenelRehberModel;
+      switch (id) {
+        case 1:
+          _aciklama1Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(1, result.kodu);
+        case 2:
+          _aciklama2Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(2, result.kodu);
+        case 3:
+          _aciklama3Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(3, result.kodu);
+        case 4:
+          _aciklama4Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(4, result.kodu);
+        case 5:
+          _aciklama5Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(5, result.kodu);
+        case 6:
+          _aciklama6Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(6, result.kodu);
+        case 7:
+          _aciklama7Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(7, result.kodu);
+        case 8:
+          _aciklama8Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(8, result.kodu);
+        case 9:
+          _aciklama9Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(9, result.kodu);
+        case 10:
+          _aciklama10Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(10, result.kodu);
+        case 11:
+          _aciklama11Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(11, result.kodu);
+        case 12:
+          _aciklama12Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(12, result.kodu);
+        case 13:
+          _aciklama13Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(13, result.kodu);
+        case 14:
+          _aciklama14Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(14, result.kodu);
+        case 15:
+          _aciklama15Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(15, result.kodu);
+        case 16:
+          _aciklama16Controller.text = result.adi ?? result.kodu ?? "";
+          viewModel.setAciklama(16, result.kodu);
+
+        default:
+      }
+    }
+  }
+
+  String? getAciklama(int? id) {
+    // TODO: Bu eklenebilir ama şu anlık işlevsiz. GetGenelRehber isteği atılması lazım.
+    if (getEkRehberById(id) == null) return null;
+    return getEkRehberById(id)!.baslik;
   }
 }

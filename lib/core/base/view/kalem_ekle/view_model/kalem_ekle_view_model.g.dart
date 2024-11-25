@@ -401,6 +401,116 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   }
 
   @override
+  void setAciklama1(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama1');
+    try {
+      return super.setAciklama1(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama2(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama2');
+    try {
+      return super.setAciklama2(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama3(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama3');
+    try {
+      return super.setAciklama3(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama4(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama4');
+    try {
+      return super.setAciklama4(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama5(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama5');
+    try {
+      return super.setAciklama5(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama6(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama6');
+    try {
+      return super.setAciklama6(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama7(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama7');
+    try {
+      return super.setAciklama7(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama8(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama8');
+    try {
+      return super.setAciklama8(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama9(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama9');
+    try {
+      return super.setAciklama9(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAciklama10(String? value) {
+    final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
+        name: '_KalemEkleViewModelBase.setAciklama10');
+    try {
+      return super.setAciklama10(value);
+    } finally {
+      _$_KalemEkleViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setKalemList(List<KalemModel>? list) {
     final _$actionInfo = _$_KalemEkleViewModelBaseActionController.startAction(
         name: '_KalemEkleViewModelBase.setKalemList');
