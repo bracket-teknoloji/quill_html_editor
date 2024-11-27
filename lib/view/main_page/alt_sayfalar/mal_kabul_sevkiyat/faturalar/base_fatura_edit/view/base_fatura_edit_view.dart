@@ -150,22 +150,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
             BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi ?? 2;
             BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
-
-            // final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-            // if (cariModel is CariListesiModel) {
-            //   viewModel.setLoading(true);
-            //   BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-            //   BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-            // }
-            if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.otvVarmi == true) ?? false) {
+            if ((BaseSiparisEditModel.instance.kalemList?.any((element) => element.otvVarmi == true) ?? false) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false)) {
               for (final item in BaseSiparisEditModel.instance.kalemList!) {
                 item.otvHesapla();
               }
             }
           } else if (widget.model.baseEditEnum.kopyalaMi) {
-            // if (widget.model.baseEditEnum?.)
             BaseSiparisEditModel.instance.belgeNo = null;
-            // BaseSiparisEditModel.instance.resmiBelgeNo = widget.model.belgeNo;
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             if (widget.model.model is BaseSiparisEditModel) {
               BaseSiparisEditModel.instance.kalemList = (widget.model.model as BaseSiparisEditModel).kalemList;

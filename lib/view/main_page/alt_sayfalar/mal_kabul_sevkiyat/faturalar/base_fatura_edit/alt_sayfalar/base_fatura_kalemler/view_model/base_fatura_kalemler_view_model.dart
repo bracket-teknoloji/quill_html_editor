@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -20,7 +21,7 @@ abstract class BaseFaturaKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
-    BaseSiparisEditModel.instance.kalemlerOTVHesapla();
+    if (!(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false)) BaseSiparisEditModel.instance.kalemlerOTVHesapla();
     kalemList = List.generate(
       BaseSiparisEditModel.instance.kalemList?.length ?? 0,
       (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
