@@ -575,8 +575,8 @@ final class YetkiController {
       return satisIrsaliyeAciklamaAlanlari(index);
     } else if (editTipi.musteriMi) {
       return siparisMSAciklamaAlanlari(index);
-    // } else if (editTipi.saticiMi) {
-    //   return siparisSSaciklamaAlanlari(index);
+    } else if (editTipi.saticiMi) {
+      return true;
     }
     return false;
   }
