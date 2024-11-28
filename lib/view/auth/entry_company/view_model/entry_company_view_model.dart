@@ -86,7 +86,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       // set isletmeList with unique isletmeAdi values
       final List<IsletmeModel> data = [];
       for (final element in isletmeModelList) {
-        if (data.any((element) => element.isletmeKodu == element.isletmeKodu)) {
+        if (data.any((element2) => element.isletmeKodu == element2.isletmeKodu)) {
           continue;
         } else {
           data.add(element);
