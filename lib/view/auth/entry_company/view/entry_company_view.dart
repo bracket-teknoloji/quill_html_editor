@@ -81,18 +81,22 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       viewModel.selectedSube(viewModel.subeList?[0]);
       return;
     }
+    final list = viewModel.subeList?.where((element) => element.isletmeKodu == viewModel.selected["İşletme"]).toList();
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Şube Seçiniz",
       groupValue: viewModel.selected["Şube"],
       children: List.generate(
-        viewModel.subeList?.length ?? 0,
-        (index) => BottomSheetModel(
-          title: viewModel.subeList?[index].subeAdi ?? "",
-          value: viewModel.subeList?[index],
-          description: viewModel.subeList?[index].subeKodu.toStringIfNotNull,
-          groupValue: viewModel.subeList?[index].subeKodu,
-        ),
+        list?.length ?? 0,
+        (index) {
+          final item = list?[index];
+          return BottomSheetModel(
+          title: item?.subeAdi ?? "",
+          value: item,
+          description: item?.subeKodu.toStringIfNotNull,
+          groupValue: item?.subeKodu,
+        );
+        },
       ),
     );
     if (result is IsletmeModel) {
