@@ -76,7 +76,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   Future subeDialog(BuildContext context) async {
     if (viewModel.subeList?.length == 1) {
-      subeController.text = viewModel.subeList?[0].subeAdi ?? "";
+      subeController.text = "${viewModel.subeList?[0].subeKodu} - ${viewModel.subeList?[0].subeAdi}";
 
       viewModel.selectedSube(viewModel.subeList?[0]);
       return;
@@ -100,7 +100,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       ),
     );
     if (result is IsletmeModel) {
-      subeController.text = result.subeAdi ?? "";
+      subeController.text = "${result.subeKodu} - ${result.subeAdi}";
       viewModel.selectedSube(result);
     }
   }
@@ -152,7 +152,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   Future isletmeDialog(BuildContext context, {bool isTapOnIsletme = false}) async {
     if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
-      isletmeController.text = "${viewModel.isletmeList?[0].isletmeAdi ?? ""} - ${viewModel.isletmeList?[0].isletmeKodu}";
+      isletmeController.text = "${viewModel.isletmeList?[0].isletmeKodu} - ${viewModel.isletmeList?[0].isletmeAdi ?? ""}";
       viewModel.selectedIsletme(viewModel.isletmeList?[0]);
       await subeDialog(context);
       return;
@@ -172,7 +172,7 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       ),
     );
     if (result is IsletmeModel) {
-      isletmeController.text = "${result.isletmeAdi} - ${result.isletmeKodu}";
+      isletmeController.text = "${result.isletmeKodu} - ${result.isletmeAdi}";
       subeController.clear();
       viewModel.selectedIsletme(result);
       await subeDialog(context);

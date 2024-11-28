@@ -398,7 +398,6 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     }
                     getGenelRehberModel("EKALAN1");
                   },
-
                   valueWidget: getEkRehberModel("EKALAN1") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? "")),
                 ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false),
                 CustomTextField(
@@ -1420,41 +1419,41 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     result = result as GenelRehberModel;
     switch (name) {
       case "EKALAN1":
-        viewModel.setAciklama1(result.kodu);
-        ekAlan1Controller.text = result.adi ?? result.kodu ?? "";
+        viewModel.kalemModel.ekalan1 = result.kodu;
+        ekAlan1Controller.text = result.kodu ?? "";
       case "EKALAN2":
-        viewModel.setAciklama2(result.kodu);
-        ekAlan2Controller.text = result.adi ?? result.kodu ?? "";
+        viewModel.kalemModel.ekalan2 = result.kodu;
+        ekAlan2Controller.text = result.kodu ?? "";
       case "SATIR_ACIK1":
-        viewModel.setAciklama3(result.kodu);
-        aciklama1Controller.text = result.adi ?? result.kodu ?? "";
+        viewModel.setAciklama1(result.kodu);
+        aciklama1Controller.text = result.kodu ?? "";
       case "SATIR_ACIK2":
         viewModel.setAciklama2(result.kodu);
-        aciklama2Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama2Controller.text = result.kodu ?? "";
       case "SATIR_ACIK3":
         viewModel.setAciklama3(result.kodu);
-        aciklama3Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama3Controller.text = result.kodu ?? "";
       case "SATIR_ACIK4":
         viewModel.setAciklama4(result.kodu);
-        aciklama4Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama4Controller.text = result.kodu ?? "";
       case "SATIR_ACIK5":
         viewModel.setAciklama5(result.kodu);
-        aciklama5Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama5Controller.text = result.kodu ?? "";
       case "SATIR_ACIK6":
         viewModel.setAciklama6(result.kodu);
-        aciklama6Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama6Controller.text = result.kodu ?? "";
       case "SATIR_ACIK7":
         viewModel.setAciklama7(result.kodu);
-        aciklama7Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama7Controller.text = result.kodu ?? "";
       case "SATIR_ACIK8":
         viewModel.setAciklama8(result.kodu);
-        aciklama8Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama8Controller.text = result.kodu ?? "";
       case "SATIR_ACIK9":
         viewModel.setAciklama9(result.kodu);
-        aciklama9Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama9Controller.text = result.kodu ?? "";
       case "SATIR_ACIK10":
         viewModel.setAciklama10(result.kodu);
-        aciklama10Controller.text = result.adi ?? result.kodu ?? "";
+        aciklama10Controller.text = result.kodu ?? "";
     }
   }
 }
