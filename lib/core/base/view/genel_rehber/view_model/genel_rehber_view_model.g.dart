@@ -13,9 +13,10 @@ mixin _$GenelRehberViewModel on _GenelRehberViewModelBase, Store {
 
   @override
   ObservableList<GenelRehberModel>? get filteredObservableList =>
-      (_$filteredObservableListComputed ??= Computed<ObservableList<GenelRehberModel>?>(
-              () => super.filteredObservableList,
-              name: '_GenelRehberViewModelBase.filteredObservableList'))
+      (_$filteredObservableListComputed ??=
+              Computed<ObservableList<GenelRehberModel>?>(
+                  () => super.filteredObservableList,
+                  name: '_GenelRehberViewModelBase.filteredObservableList'))
           .value;
 
   late final _$requestModelAtom =

@@ -518,7 +518,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(1) != null,
                         onTap: () async => await getGenelRehber(1),
                         onClear: () => viewModel.setAciklama(1, null),
-                        onChanged: (value) => viewModel.setAciklama(1, value),
+                        onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama1Adi ?? "")),
                         labelText: getEkRehberById(1)?.alan == "ACIK1"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK1")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
@@ -530,7 +531,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         onClear: () => viewModel.setAciklama(2, null),
                         suffixMore: getEkRehberById(2) != null,
                         onTap: () async => await getGenelRehber(2),
-                        onChanged: (value) => viewModel.setAciklama(2, value),
+                        onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama2Adi ?? "")),
                         labelText: getEkRehberById(2)?.alan == "ACIK2"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK2")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
@@ -541,7 +543,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         readOnly: getEkRehberById(3) != null,
                         suffixMore: getEkRehberById(3) != null,
                         onClear: () => viewModel.setAciklama(3, null),
-                        onChanged: (value) => viewModel.setAciklama(3, value),
+                        onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama3Adi ?? "")),
                         labelText: getEkRehberById(3)?.alan == "ACIK3"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK3")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
@@ -553,7 +556,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(4) != null,
                         onClear: () => viewModel.setAciklama(4, null),
                         onTap: () async => await getGenelRehber(4),
-                        onChanged: (value) => viewModel.setAciklama(4, value),
+                        onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama4Adi ?? "")),
                         labelText: getEkRehberById(4)?.alan == "ACIK4"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK4")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
@@ -565,7 +569,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(5) != null,
                         onTap: () async => await getGenelRehber(5),
                         onClear: () => viewModel.setAciklama(5, null),
-                        onChanged: (value) => viewModel.setAciklama(5, value),
+                        onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
                         labelText: getEkRehberById(5)?.alan == "ACIK5"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK5")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
@@ -577,7 +582,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(6) != null,
                         onTap: () async => await getGenelRehber(6),
                         onClear: () => viewModel.setAciklama(6, null),
-                        onChanged: (value) => viewModel.setAciklama(6, value),
+                        onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
                         labelText: getEkRehberById(6)?.alan == "ACIK6"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK6")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
@@ -589,7 +595,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(7) != null,
                         onTap: () async => await getGenelRehber(7),
                         onClear: () => viewModel.setAciklama(7, null),
-                        onChanged: (value) => viewModel.setAciklama(7, value),
+                        onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama7Adi ?? "")),
                         labelText: getEkRehberById(7)?.alan == "ACIK7"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK7")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
@@ -601,7 +608,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(8) != null,
                         onClear: () => viewModel.setAciklama(8, null),
                         onTap: () async => await getGenelRehber(8),
-                        onChanged: (value) => viewModel.setAciklama(8, value),
+                        onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama8Adi ?? "")),
                         labelText: getEkRehberById(8)?.alan == "ACIK8"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK8")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
@@ -613,7 +621,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(9) != null,
                         onTap: () async => await getGenelRehber(9),
                         onClear: () => viewModel.setAciklama(9, null),
-                        onChanged: (value) => viewModel.setAciklama(9, value),
+                        onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama9Adi ?? "")),
                         labelText: getEkRehberById(9)?.alan == "ACIK9"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK9")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
@@ -625,7 +634,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(10) != null,
                         onTap: () async => await getGenelRehber(10),
                         onClear: () => viewModel.setAciklama(10, null),
-                        onChanged: (value) => viewModel.setAciklama(10, value),
+                        onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama10Adi ?? "")),
                         labelText: getEkRehberById(10)?.alan == "ACIK10"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK10")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
@@ -637,7 +647,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(11) != null,
                         onTap: () async => await getGenelRehber(11),
                         onClear: () => viewModel.setAciklama(11, null),
-                        onChanged: (value) => viewModel.setAciklama(11, value),
+                        onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama11Adi ?? "")),
                         labelText: getEkRehberById(11)?.alan == "ACIK11"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK11")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
@@ -649,7 +660,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(12) != null,
                         onTap: () async => await getGenelRehber(12),
                         onClear: () => viewModel.setAciklama(12, null),
-                        onChanged: (value) => viewModel.setAciklama(12, value),
+                        onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama12Adi ?? "")),
                         labelText: getEkRehberById(12)?.alan == "ACIK12"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK12")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
@@ -661,7 +673,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(13) != null,
                         onTap: () async => await getGenelRehber(13),
                         onClear: () => viewModel.setAciklama(13, null),
-                        onChanged: (value) => viewModel.setAciklama(13, value),
+                        onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama13Adi ?? "")),
                         labelText: getEkRehberById(13)?.alan == "ACIK13"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK13")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
@@ -673,7 +686,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(14) != null,
                         onTap: () async => await getGenelRehber(14),
                         onClear: () => viewModel.setAciklama(14, null),
-                        onChanged: (value) => viewModel.setAciklama(14, value),
+                        onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama14Adi ?? "")),
                         labelText: getEkRehberById(14)?.alan == "ACIK14"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK14")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
@@ -685,7 +699,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(15) != null,
                         onTap: () async => await getGenelRehber(15),
                         onClear: () => viewModel.setAciklama(15, null),
-                        onChanged: (value) => viewModel.setAciklama(15, value),
+                        onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
                         labelText: getEkRehberById(15)?.alan == "ACIK15"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK15")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
@@ -697,7 +712,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         suffixMore: getEkRehberById(16) != null,
                         onTap: () async => await getGenelRehber(16),
                         onClear: () => viewModel.setAciklama(16, null),
-                        onChanged: (value) => viewModel.setAciklama(16, value),
+                        onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
                         labelText: getEkRehberById(16)?.alan == "ACIK16"
                             ? userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == "ACIK16")?.baslik
                             : (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
@@ -780,53 +796,53 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
       result = result as GenelRehberModel;
       switch (id) {
         case 1:
-          _aciklama1Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(1, result.kodu);
+          _aciklama1Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(1, result);
         case 2:
-          _aciklama2Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(2, result.kodu);
+          _aciklama2Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(2, result);
         case 3:
-          _aciklama3Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(3, result.kodu);
+          _aciklama3Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(3, result);
         case 4:
-          _aciklama4Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(4, result.kodu);
+          _aciklama4Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(4, result);
         case 5:
-          _aciklama5Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(5, result.kodu);
+          _aciklama5Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(5, result);
         case 6:
-          _aciklama6Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(6, result.kodu);
+          _aciklama6Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(6, result);
         case 7:
-          _aciklama7Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(7, result.kodu);
+          _aciklama7Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(7, result);
         case 8:
-          _aciklama8Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(8, result.kodu);
+          _aciklama8Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(8, result);
         case 9:
-          _aciklama9Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(9, result.kodu);
+          _aciklama9Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(9, result);
         case 10:
-          _aciklama10Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(10, result.kodu);
+          _aciklama10Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(10, result);
         case 11:
-          _aciklama11Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(11, result.kodu);
+          _aciklama11Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(11, result);
         case 12:
-          _aciklama12Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(12, result.kodu);
+          _aciklama12Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(12, result);
         case 13:
-          _aciklama13Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(13, result.kodu);
+          _aciklama13Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(13, result);
         case 14:
-          _aciklama14Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(14, result.kodu);
+          _aciklama14Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(14, result);
         case 15:
-          _aciklama15Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(15, result.kodu);
+          _aciklama15Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(15, result);
         case 16:
-          _aciklama16Controller.text = result.adi ?? result.kodu ?? "";
-          viewModel.setAciklama(16, result.kodu);
+          _aciklama16Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(16, result);
 
         default:
       }

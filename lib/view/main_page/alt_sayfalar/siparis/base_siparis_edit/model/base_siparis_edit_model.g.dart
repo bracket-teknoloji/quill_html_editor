@@ -385,6 +385,38 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel index(int? index);
 
+  BaseSiparisEditModel aciklama1Adi(String? aciklama1Adi);
+
+  BaseSiparisEditModel aciklama2Adi(String? aciklama2Adi);
+
+  BaseSiparisEditModel aciklama3Adi(String? aciklama3Adi);
+
+  BaseSiparisEditModel aciklama4Adi(String? aciklama4Adi);
+
+  BaseSiparisEditModel aciklama5Adi(String? aciklama5Adi);
+
+  BaseSiparisEditModel aciklama6Adi(String? aciklama6Adi);
+
+  BaseSiparisEditModel aciklama7Adi(String? aciklama7Adi);
+
+  BaseSiparisEditModel aciklama8Adi(String? aciklama8Adi);
+
+  BaseSiparisEditModel aciklama9Adi(String? aciklama9Adi);
+
+  BaseSiparisEditModel aciklama10Adi(String? aciklama10Adi);
+
+  BaseSiparisEditModel aciklama11Adi(String? aciklama11Adi);
+
+  BaseSiparisEditModel aciklama12Adi(String? aciklama12Adi);
+
+  BaseSiparisEditModel aciklama13Adi(String? aciklama13Adi);
+
+  BaseSiparisEditModel aciklama14Adi(String? aciklama14Adi);
+
+  BaseSiparisEditModel aciklama15Adi(String? aciklama15Adi);
+
+  BaseSiparisEditModel aciklama16Adi(String? aciklama16Adi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -581,6 +613,22 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? hedefDepoAdi,
     double? otvTutari,
     int? index,
+    String? aciklama1Adi,
+    String? aciklama2Adi,
+    String? aciklama3Adi,
+    String? aciklama4Adi,
+    String? aciklama5Adi,
+    String? aciklama6Adi,
+    String? aciklama7Adi,
+    String? aciklama8Adi,
+    String? aciklama9Adi,
+    String? aciklama10Adi,
+    String? aciklama11Adi,
+    String? aciklama12Adi,
+    String? aciklama13Adi,
+    String? aciklama14Adi,
+    String? aciklama15Adi,
+    String? aciklama16Adi,
   });
 }
 
@@ -1276,6 +1324,70 @@ class _$BaseSiparisEditModelCWProxyImpl
   BaseSiparisEditModel index(int? index) => this(index: index);
 
   @override
+  BaseSiparisEditModel aciklama1Adi(String? aciklama1Adi) =>
+      this(aciklama1Adi: aciklama1Adi);
+
+  @override
+  BaseSiparisEditModel aciklama2Adi(String? aciklama2Adi) =>
+      this(aciklama2Adi: aciklama2Adi);
+
+  @override
+  BaseSiparisEditModel aciklama3Adi(String? aciklama3Adi) =>
+      this(aciklama3Adi: aciklama3Adi);
+
+  @override
+  BaseSiparisEditModel aciklama4Adi(String? aciklama4Adi) =>
+      this(aciklama4Adi: aciklama4Adi);
+
+  @override
+  BaseSiparisEditModel aciklama5Adi(String? aciklama5Adi) =>
+      this(aciklama5Adi: aciklama5Adi);
+
+  @override
+  BaseSiparisEditModel aciklama6Adi(String? aciklama6Adi) =>
+      this(aciklama6Adi: aciklama6Adi);
+
+  @override
+  BaseSiparisEditModel aciklama7Adi(String? aciklama7Adi) =>
+      this(aciklama7Adi: aciklama7Adi);
+
+  @override
+  BaseSiparisEditModel aciklama8Adi(String? aciklama8Adi) =>
+      this(aciklama8Adi: aciklama8Adi);
+
+  @override
+  BaseSiparisEditModel aciklama9Adi(String? aciklama9Adi) =>
+      this(aciklama9Adi: aciklama9Adi);
+
+  @override
+  BaseSiparisEditModel aciklama10Adi(String? aciklama10Adi) =>
+      this(aciklama10Adi: aciklama10Adi);
+
+  @override
+  BaseSiparisEditModel aciklama11Adi(String? aciklama11Adi) =>
+      this(aciklama11Adi: aciklama11Adi);
+
+  @override
+  BaseSiparisEditModel aciklama12Adi(String? aciklama12Adi) =>
+      this(aciklama12Adi: aciklama12Adi);
+
+  @override
+  BaseSiparisEditModel aciklama13Adi(String? aciklama13Adi) =>
+      this(aciklama13Adi: aciklama13Adi);
+
+  @override
+  BaseSiparisEditModel aciklama14Adi(String? aciklama14Adi) =>
+      this(aciklama14Adi: aciklama14Adi);
+
+  @override
+  BaseSiparisEditModel aciklama15Adi(String? aciklama15Adi) =>
+      this(aciklama15Adi: aciklama15Adi);
+
+  @override
+  BaseSiparisEditModel aciklama16Adi(String? aciklama16Adi) =>
+      this(aciklama16Adi: aciklama16Adi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1473,6 +1585,22 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? hedefDepoAdi = const $CopyWithPlaceholder(),
     Object? otvTutari = const $CopyWithPlaceholder(),
     Object? index = const $CopyWithPlaceholder(),
+    Object? aciklama1Adi = const $CopyWithPlaceholder(),
+    Object? aciklama2Adi = const $CopyWithPlaceholder(),
+    Object? aciklama3Adi = const $CopyWithPlaceholder(),
+    Object? aciklama4Adi = const $CopyWithPlaceholder(),
+    Object? aciklama5Adi = const $CopyWithPlaceholder(),
+    Object? aciklama6Adi = const $CopyWithPlaceholder(),
+    Object? aciklama7Adi = const $CopyWithPlaceholder(),
+    Object? aciklama8Adi = const $CopyWithPlaceholder(),
+    Object? aciklama9Adi = const $CopyWithPlaceholder(),
+    Object? aciklama10Adi = const $CopyWithPlaceholder(),
+    Object? aciklama11Adi = const $CopyWithPlaceholder(),
+    Object? aciklama12Adi = const $CopyWithPlaceholder(),
+    Object? aciklama13Adi = const $CopyWithPlaceholder(),
+    Object? aciklama14Adi = const $CopyWithPlaceholder(),
+    Object? aciklama15Adi = const $CopyWithPlaceholder(),
+    Object? aciklama16Adi = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2235,6 +2363,70 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.index
           // ignore: cast_nullable_to_non_nullable
           : index as int?,
+      aciklama1Adi: aciklama1Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama1Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama1Adi as String?,
+      aciklama2Adi: aciklama2Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama2Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama2Adi as String?,
+      aciklama3Adi: aciklama3Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama3Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama3Adi as String?,
+      aciklama4Adi: aciklama4Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama4Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama4Adi as String?,
+      aciklama5Adi: aciklama5Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama5Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama5Adi as String?,
+      aciklama6Adi: aciklama6Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama6Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama6Adi as String?,
+      aciklama7Adi: aciklama7Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama7Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama7Adi as String?,
+      aciklama8Adi: aciklama8Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama8Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama8Adi as String?,
+      aciklama9Adi: aciklama9Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama9Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama9Adi as String?,
+      aciklama10Adi: aciklama10Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama10Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama10Adi as String?,
+      aciklama11Adi: aciklama11Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama11Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama11Adi as String?,
+      aciklama12Adi: aciklama12Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama12Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama12Adi as String?,
+      aciklama13Adi: aciklama13Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama13Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama13Adi as String?,
+      aciklama14Adi: aciklama14Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama14Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama14Adi as String?,
+      aciklama15Adi: aciklama15Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama15Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama15Adi as String?,
+      aciklama16Adi: aciklama16Adi == const $CopyWithPlaceholder()
+          ? _value.aciklama16Adi
+          // ignore: cast_nullable_to_non_nullable
+          : aciklama16Adi as String?,
     );
   }
 }

@@ -494,6 +494,38 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(187)
   double? otvTutari;
   int? index;
+    @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama1Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama2Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama3Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama4Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama5Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama6Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama7Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama8Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama9Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama10Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama11Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama12Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama13Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama14Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama15Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? aciklama16Adi;
 
   BaseSiparisEditModel({
     this.duzeltmetarihi,
@@ -685,6 +717,22 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     this.hedefDepoAdi,
     this.otvTutari,
     this.index,
+    this.aciklama1Adi,
+    this.aciklama2Adi,
+    this.aciklama3Adi,
+    this.aciklama4Adi,
+    this.aciklama5Adi,
+    this.aciklama6Adi,
+    this.aciklama7Adi,
+    this.aciklama8Adi,
+    this.aciklama9Adi,
+    this.aciklama10Adi,
+    this.aciklama11Adi,
+    this.aciklama12Adi,
+    this.aciklama13Adi,
+    this.aciklama14Adi,
+    this.aciklama15Adi,
+    this.aciklama16Adi,
   });
 
   BaseSiparisEditModel._init();

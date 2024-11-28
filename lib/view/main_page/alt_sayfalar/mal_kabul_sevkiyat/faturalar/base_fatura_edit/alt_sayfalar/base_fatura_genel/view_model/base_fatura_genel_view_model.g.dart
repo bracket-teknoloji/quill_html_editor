@@ -227,7 +227,7 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
   }
 
   @override
-  void setAciklama(int index, String? value) {
+  void setAciklama(int index, GenelRehberModel? value) {
     final _$actionInfo = _$_BaseFaturaGenelViewModelBaseActionController
         .startAction(name: '_BaseFaturaGenelViewModelBase.setAciklama');
     try {

@@ -144,7 +144,7 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
-  void setAciklama(int index, String? value) {
+  void setAciklama(int index, GenelRehberModel? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setAciklama');
     try {
