@@ -1401,6 +1401,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> getGenelRehberModel(String? name) async {
+    if (viewModel.kalemModel.stokKodu == null) return dialogManager.showErrorSnackBar("Stok seçiniz.");
     final ekRehberModel = getEkRehberModel(name);
     if (ekRehberModel == null) return;
     var result = await Get.toNamed(
@@ -1411,6 +1412,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         belgeTarihi: model.tarih,
         id: ekRehberModel.id,
         cariKodu: model.cariKodu,
+        stokKodu: viewModel.kalemModel.stokKodu,
+        yapkod: viewModel.kalemModel.yapkod,
         baslik: ekRehberModel.baslik,
         rehberKodu: 8,
       ),

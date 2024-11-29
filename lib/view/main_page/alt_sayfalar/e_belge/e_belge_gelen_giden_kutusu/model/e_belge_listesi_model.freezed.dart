@@ -160,6 +160,9 @@ mixin _$EBelgeListesiModel {
   set dovizliOlustur(bool? value) => throw _privateConstructorUsedError;
   bool? get internetFaturasi => throw _privateConstructorUsedError;
   set internetFaturasi(bool? value) => throw _privateConstructorUsedError;
+  EIrsaliyeBilgiModel? get eirsBilgi => throw _privateConstructorUsedError;
+  set eirsBilgi(EIrsaliyeBilgiModel? value) =>
+      throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get dizaynAdi => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -251,8 +254,11 @@ abstract class $EBelgeListesiModelCopyWith<$Res> {
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? internetFaturasi,
+      EIrsaliyeBilgiModel? eirsBilgi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? dizaynAdi});
+
+  $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi;
 }
 
 /// @nodoc
@@ -339,6 +345,7 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
     Object? dizaynNo = freezed,
     Object? dovizliOlustur = freezed,
     Object? internetFaturasi = freezed,
+    Object? eirsBilgi = freezed,
     Object? dizaynAdi = freezed,
   }) {
     return _then(_value.copyWith(
@@ -618,11 +625,29 @@ class _$EBelgeListesiModelCopyWithImpl<$Res, $Val extends EBelgeListesiModel>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      eirsBilgi: freezed == eirsBilgi
+          ? _value.eirsBilgi
+          : eirsBilgi // ignore: cast_nullable_to_non_nullable
+              as EIrsaliyeBilgiModel?,
       dizaynAdi: freezed == dizaynAdi
           ? _value.dizaynAdi
           : dizaynAdi // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  /// Create a copy of EBelgeListesiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi {
+    if (_value.eirsBilgi == null) {
+      return null;
+    }
+
+    return $EIrsaliyeBilgiModelCopyWith<$Res>(_value.eirsBilgi!, (value) {
+      return _then(_value.copyWith(eirsBilgi: value) as $Val);
+    });
   }
 }
 
@@ -704,8 +729,12 @@ abstract class _$$EBelgeListesiModelImplCopyWith<$Res>
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? internetFaturasi,
+      EIrsaliyeBilgiModel? eirsBilgi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? dizaynAdi});
+
+  @override
+  $EIrsaliyeBilgiModelCopyWith<$Res>? get eirsBilgi;
 }
 
 /// @nodoc
@@ -790,6 +819,7 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
     Object? dizaynNo = freezed,
     Object? dovizliOlustur = freezed,
     Object? internetFaturasi = freezed,
+    Object? eirsBilgi = freezed,
     Object? dizaynAdi = freezed,
   }) {
     return _then(_$EBelgeListesiModelImpl(
@@ -1069,6 +1099,10 @@ class __$$EBelgeListesiModelImplCopyWithImpl<$Res>
           ? _value.internetFaturasi
           : internetFaturasi // ignore: cast_nullable_to_non_nullable
               as bool?,
+      eirsBilgi: freezed == eirsBilgi
+          ? _value.eirsBilgi
+          : eirsBilgi // ignore: cast_nullable_to_non_nullable
+              as EIrsaliyeBilgiModel?,
       dizaynAdi: freezed == dizaynAdi
           ? _value.dizaynAdi
           : dizaynAdi // ignore: cast_nullable_to_non_nullable
@@ -1150,6 +1184,7 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
       this.dizaynNo,
       this.dovizliOlustur,
       this.internetFaturasi,
+      this.eirsBilgi,
       @JsonKey(includeFromJson: false, includeToJson: false) this.dizaynAdi})
       : super._();
 
@@ -1295,6 +1330,8 @@ class _$EBelgeListesiModelImpl extends _EBelgeListesiModel {
   @override
   bool? internetFaturasi;
   @override
+  EIrsaliyeBilgiModel? eirsBilgi;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? dizaynAdi;
 
@@ -1386,6 +1423,7 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
       int? dizaynNo,
       bool? dovizliOlustur,
       bool? internetFaturasi,
+      EIrsaliyeBilgiModel? eirsBilgi,
       @JsonKey(includeFromJson: false, includeToJson: false)
       String? dizaynAdi}) = _$EBelgeListesiModelImpl;
   _EBelgeListesiModel._() : super._();
@@ -1600,6 +1638,9 @@ abstract class _EBelgeListesiModel extends EBelgeListesiModel {
   @override
   bool? get internetFaturasi;
   set internetFaturasi(bool? value);
+  @override
+  EIrsaliyeBilgiModel? get eirsBilgi;
+  set eirsBilgi(EIrsaliyeBilgiModel? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   String? get dizaynAdi;

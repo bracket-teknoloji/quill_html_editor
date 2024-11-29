@@ -24,9 +24,13 @@ mixin _$EkRehberRequestModel {
   DateTime? get belgeTarihi => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
+  String? get stokKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "ID")
   int? get id => throw _privateConstructorUsedError;
   int? get rehberKodu => throw _privateConstructorUsedError;
+  String? get yapkod => throw _privateConstructorUsedError;
+  @JsonKey(name: "PARAMS")
+  Map<String, dynamic>? get params => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get baslik => throw _privateConstructorUsedError;
 
@@ -51,8 +55,11 @@ abstract class $EkRehberRequestModelCopyWith<$Res> {
       DateTime? belgeTarihi,
       String? belgeTipi,
       String? cariKodu,
+      String? stokKodu,
       @JsonKey(name: "ID") int? id,
       int? rehberKodu,
+      String? yapkod,
+      @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
       @JsonKey(includeToJson: false, includeFromJson: false) String? baslik});
 }
 
@@ -76,8 +83,11 @@ class _$EkRehberRequestModelCopyWithImpl<$Res,
     Object? belgeTarihi = freezed,
     Object? belgeTipi = freezed,
     Object? cariKodu = freezed,
+    Object? stokKodu = freezed,
     Object? id = freezed,
     Object? rehberKodu = freezed,
+    Object? yapkod = freezed,
+    Object? params = freezed,
     Object? baslik = freezed,
   }) {
     return _then(_value.copyWith(
@@ -97,6 +107,10 @@ class _$EkRehberRequestModelCopyWithImpl<$Res,
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -105,6 +119,14 @@ class _$EkRehberRequestModelCopyWithImpl<$Res,
           ? _value.rehberKodu
           : rehberKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      params: freezed == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       baslik: freezed == baslik
           ? _value.baslik
           : baslik // ignore: cast_nullable_to_non_nullable
@@ -126,8 +148,11 @@ abstract class _$$EkRehberRequestModelImplCopyWith<$Res>
       DateTime? belgeTarihi,
       String? belgeTipi,
       String? cariKodu,
+      String? stokKodu,
       @JsonKey(name: "ID") int? id,
       int? rehberKodu,
+      String? yapkod,
+      @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
       @JsonKey(includeToJson: false, includeFromJson: false) String? baslik});
 }
 
@@ -148,8 +173,11 @@ class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
     Object? belgeTarihi = freezed,
     Object? belgeTipi = freezed,
     Object? cariKodu = freezed,
+    Object? stokKodu = freezed,
     Object? id = freezed,
     Object? rehberKodu = freezed,
+    Object? yapkod = freezed,
+    Object? params = freezed,
     Object? baslik = freezed,
   }) {
     return _then(_$EkRehberRequestModelImpl(
@@ -169,6 +197,10 @@ class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -177,6 +209,14 @@ class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
           ? _value.rehberKodu
           : rehberKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      params: freezed == params
+          ? _value._params
+          : params // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       baslik: freezed == baslik
           ? _value.baslik
           : baslik // ignore: cast_nullable_to_non_nullable
@@ -194,9 +234,13 @@ class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
       this.belgeTarihi,
       this.belgeTipi,
       this.cariKodu,
+      this.stokKodu,
       @JsonKey(name: "ID") this.id,
       this.rehberKodu,
-      @JsonKey(includeToJson: false, includeFromJson: false) this.baslik});
+      this.yapkod,
+      @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
+      @JsonKey(includeToJson: false, includeFromJson: false) this.baslik})
+      : _params = params;
 
   factory _$EkRehberRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EkRehberRequestModelImplFromJson(json);
@@ -210,17 +254,32 @@ class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
   @override
   final String? cariKodu;
   @override
+  final String? stokKodu;
+  @override
   @JsonKey(name: "ID")
   final int? id;
   @override
   final int? rehberKodu;
+  @override
+  final String? yapkod;
+  final Map<String, dynamic>? _params;
+  @override
+  @JsonKey(name: "PARAMS")
+  Map<String, dynamic>? get params {
+    final value = _params;
+    if (value == null) return null;
+    if (_params is EqualUnmodifiableMapView) return _params;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   final String? baslik;
 
   @override
   String toString() {
-    return 'EkRehberRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, id: $id, rehberKodu: $rehberKodu, baslik: $baslik)';
+    return 'EkRehberRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, stokKodu: $stokKodu, id: $id, rehberKodu: $rehberKodu, yapkod: $yapkod, params: $params, baslik: $baslik)';
   }
 
   @override
@@ -235,16 +294,30 @@ class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
                 other.belgeTipi == belgeTipi) &&
             (identical(other.cariKodu, cariKodu) ||
                 other.cariKodu == cariKodu) &&
+            (identical(other.stokKodu, stokKodu) ||
+                other.stokKodu == stokKodu) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.rehberKodu, rehberKodu) ||
                 other.rehberKodu == rehberKodu) &&
+            (identical(other.yapkod, yapkod) || other.yapkod == yapkod) &&
+            const DeepCollectionEquality().equals(other._params, _params) &&
             (identical(other.baslik, baslik) || other.baslik == baslik));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, belgeNo, belgeTarihi, belgeTipi,
-      cariKodu, id, rehberKodu, baslik);
+  int get hashCode => Object.hash(
+      runtimeType,
+      belgeNo,
+      belgeTarihi,
+      belgeTipi,
+      cariKodu,
+      stokKodu,
+      id,
+      rehberKodu,
+      yapkod,
+      const DeepCollectionEquality().hash(_params),
+      baslik);
 
   /// Create a copy of EkRehberRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -270,8 +343,11 @@ abstract class _EkRehberRequestModel implements EkRehberRequestModel {
       final DateTime? belgeTarihi,
       final String? belgeTipi,
       final String? cariKodu,
+      final String? stokKodu,
       @JsonKey(name: "ID") final int? id,
       final int? rehberKodu,
+      final String? yapkod,
+      @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
       @JsonKey(includeToJson: false, includeFromJson: false)
       final String? baslik}) = _$EkRehberRequestModelImpl;
 
@@ -287,10 +363,17 @@ abstract class _EkRehberRequestModel implements EkRehberRequestModel {
   @override
   String? get cariKodu;
   @override
+  String? get stokKodu;
+  @override
   @JsonKey(name: "ID")
   int? get id;
   @override
   int? get rehberKodu;
+  @override
+  String? get yapkod;
+  @override
+  @JsonKey(name: "PARAMS")
+  Map<String, dynamic>? get params;
   @override
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? get baslik;

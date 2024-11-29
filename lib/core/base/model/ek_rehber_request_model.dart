@@ -11,8 +11,11 @@ class EkRehberRequestModel with _$EkRehberRequestModel {
     DateTime? belgeTarihi,
     String? belgeTipi,
     String? cariKodu,
+    String? stokKodu,
     @JsonKey(name: "ID") int? id,
     int? rehberKodu,
+    String? yapkod,
+    @JsonKey(name: "PARAMS") Map<String,dynamic>? params,
     @JsonKey(includeToJson: false, includeFromJson: false) String? baslik,
   }) = _EkRehberRequestModel;
 

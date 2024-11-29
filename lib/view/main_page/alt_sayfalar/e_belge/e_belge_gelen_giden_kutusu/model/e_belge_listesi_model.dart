@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/constants/enum/e_belge_turu_enum.dart";
@@ -82,6 +83,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
     int? dizaynNo,
     bool? dovizliOlustur,
     bool? internetFaturasi,
+    EIrsaliyeBilgiModel? eirsBilgi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? dizaynAdi,
   }) = _EBelgeListesiModel;
 
@@ -126,6 +128,7 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
         cariKodu: model.cariKodu,
         senaryoTipi: model.efaturaTipi,
         kutuTuru: "GIK",
+        eirsBilgi: model.eirsBilgiModel,
         islemKodu: 3,
       );
 

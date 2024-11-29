@@ -54,7 +54,7 @@ class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
     if (widget.model != null) {
       viewModel.setModel(widget.model!);
     } else {
-      viewModel.setSevkTarihi(DateTime.now());
+      viewModel.setSevkTarihi(DateTime.now().dateTimeWithoutTime);
       viewModel.setSevkSaati(TimeOfDay.now());
     }
     _plakaController = TextEditingController(text: viewModel.model.plaka ?? "");

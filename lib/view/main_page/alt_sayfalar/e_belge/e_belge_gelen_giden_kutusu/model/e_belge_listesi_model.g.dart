@@ -88,6 +88,10 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
       dizaynNo: (json['DIZAYN_NO'] as num?)?.toInt(),
       dovizliOlustur: json['DOVIZLI_OLUSTUR'] as bool?,
       internetFaturasi: json['INTERNET_FATURASI'] as bool?,
+      eirsBilgi: json['EIRS_BILGI'] == null
+          ? null
+          : EIrsaliyeBilgiModel.fromJson(
+              json['EIRS_BILGI'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
@@ -171,5 +175,6 @@ Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
   writeNotNull('DIZAYN_NO', instance.dizaynNo);
   writeNotNull('DOVIZLI_OLUSTUR', instance.dovizliOlustur);
   writeNotNull('INTERNET_FATURASI', instance.internetFaturasi);
+  writeNotNull('EIRS_BILGI', instance.eirsBilgi?.toJson());
   return val;
 }

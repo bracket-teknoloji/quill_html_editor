@@ -15,8 +15,11 @@ _$EkRehberRequestModelImpl _$$EkRehberRequestModelImplFromJson(
           : DateTime.parse(json['BelgeTarihi'] as String),
       belgeTipi: json['BelgeTipi'] as String?,
       cariKodu: json['CariKodu'] as String?,
+      stokKodu: json['StokKodu'] as String?,
       id: (json['ID'] as num?)?.toInt(),
       rehberKodu: (json['RehberKodu'] as num?)?.toInt(),
+      yapkod: json['Yapkod'] as String?,
+      params: json['PARAMS'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$$EkRehberRequestModelImplToJson(
@@ -33,7 +36,10 @@ Map<String, dynamic> _$$EkRehberRequestModelImplToJson(
   writeNotNull('BelgeTarihi', instance.belgeTarihi?.toIso8601String());
   writeNotNull('BelgeTipi', instance.belgeTipi);
   writeNotNull('CariKodu', instance.cariKodu);
+  writeNotNull('StokKodu', instance.stokKodu);
   writeNotNull('ID', instance.id);
   writeNotNull('RehberKodu', instance.rehberKodu);
+  writeNotNull('Yapkod', instance.yapkod);
+  writeNotNull('PARAMS', instance.params);
   return val;
 }

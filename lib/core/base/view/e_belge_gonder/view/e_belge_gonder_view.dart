@@ -9,6 +9,7 @@ import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/e_belge_gonder/model/model/dizayn_model.dart";
 import "package:picker/core/base/view/e_belge_gonder/view_model/e_belge_gonder_view_model.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -268,28 +269,50 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     ),
                   ),
                 ),
-                Observer(
-                  builder: (_) => ElevatedButton.icon(
-                    onPressed: () async {
-                      if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
-                        dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
-                        return;
-                      }
-                      dialogManager.showAreYouSureDialog(() async {
-                        final result = await viewModel.sendTaslak();
-                        if (result.isSuccess) {
-                          final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                          if (siparisModel != null) {
-                            viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
-                            viewModel.setSiparisModel(siparisModel);
-                            dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                          }
-                        }
-                      });
-                    },
-                    label: const Text("Taslak Oluştur"),
-                    icon: const Icon(Icons.add),
-                  ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Observer(
+                        builder: (_) => ElevatedButton.icon(
+                          onPressed: () async => await getEIrsaliyeBilgiler(),
+                          label: const Text("E-İrsaliye Bilgileri"),
+                          icon: const Icon(Icons.save_outlined),
+                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eIrsaliyeSerisindenMi),
+                      ),
+                    ),
+                    Expanded(
+                      child: Observer(
+                        builder: (_) => ElevatedButton.icon(
+                          onPressed: () async {
+                            if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
+                              dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
+                              return;
+                            }
+                            if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null && viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
+                              bool isOk = false;
+                              await dialogManager.showAreYouSureDialog(() => isOk = true, title: "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?");
+                              if (isOk) {
+                                await getEIrsaliyeBilgiler();
+                              }
+                            }
+                            dialogManager.showAreYouSureDialog(() async {
+                              final result = await viewModel.sendTaslak();
+                              if (result.isSuccess) {
+                                final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
+                                if (siparisModel != null) {
+                                  viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
+                                  viewModel.setSiparisModel(siparisModel);
+                                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                                }
+                              }
+                            });
+                          },
+                          label: const Text("Taslak Oluştur"),
+                          icon: const Icon(Icons.add),
+                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                      ),
+                    ),
+                  ],
                 ),
                 Observer(
                   builder: (_) => Row(
@@ -355,6 +378,17 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
           ),
         ),
       );
+
+  Future<void> getEIrsaliyeBilgiler() async {
+    if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null) {
+      viewModel.siparisEditModel.eirsBilgiModel = null;
+    }
+    final result = await Get.toNamed("mainPage/eIrsaliyeEkBilgiler", arguments: viewModel.siparisEditModel.eirsBilgiModel);
+    if (result is EIrsaliyeBilgiModel) {
+      viewModel.siparisEditModel.eirsBilgiModel = result;
+      viewModel.model.eirsBilgi = result;
+    }
+  }
 
   Future<void> getDizayn({bool? otomatikSec}) async {
     final result = await viewModel.getDizayn();
