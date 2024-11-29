@@ -77,64 +77,9 @@ class NetworkManager {
               handler
                   .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
           }
-          // if (e.type == DioExceptionType.connectionError) {
-          //   return
-          // } else if (e.type == DioExceptionType.unknown) {
-          //   print(e);
-          //   return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
-          // } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
-          //   if (e.requestOptions.path == ApiUrls.token) {
-          //     return handler
-          //         .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
-          //   } else {
-          //     return handler
-          //         .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
-          //   }
-          // } else {
-          //   handler.next(e);
-          // }
         },
       ),
     );
-    eBelgeDio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) => handler.next(options),
-        onError: (e, handler) {
-          switch (e.type) {
-            case DioExceptionType.connectionError:
-              handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}"));
-            case DioExceptionType.unknown:
-              handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
-            case DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout:
-              handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
-            default:
-              handler
-                  .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
-          }
-          // if (e.type == DioExceptionType.connectionError) {
-          //   return
-          // } else if (e.type == DioExceptionType.unknown) {
-          //   print(e);
-          //   return handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
-          // } else if (e.type case (DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout)) {
-          //   if (e.requestOptions.path == ApiUrls.token) {
-          //     return handler
-          //         .resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
-          //   } else {
-          //     return handler
-          //         .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
-          //   }
-          // } else {
-          //   handler.next(e);
-          // }
-        },
-      ),
-    );
-    // if (!kIsWeb) {
-    //   dio.httpClientAdapter = IOHttpClientAdapter();
-    // } else {
-    //   dio.httpClientAdapter = BrowserHttpClientAdapter();
-    // }
     if (kDebugMode) {
       dio.interceptors.add(
         TalkerDioLogger(
@@ -148,50 +93,35 @@ class NetworkManager {
         ),
       );
     }
-    if (kDebugMode) {
-      eBelgeDio.interceptors.add(
-        TalkerDioLogger(
-          settings: TalkerDioLoggerSettings(
-            printResponseMessage: true,
-            printResponseData: false,
-            printErrorData: true,
-            requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
-            responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
-          ),
-        ),
-      );
-    }
   }
 
-  Dio dio = Dio(
-    BaseOptions(
-      baseUrl: getBaseUrl,
-      preserveHeaderCase: true,
-      followRedirects: false,
-      validateStatus: (status) => status! < 500,
-      receiveTimeout: const Duration(minutes: 2),
-      connectTimeout: const Duration(seconds: 20),
-      sendTimeout: const Duration(minutes: 2),
-      receiveDataWhenStatusError: true,
-      persistentConnection: true,
-      contentType: Headers.jsonContentType,
-      responseType: ResponseType.json,
-    ),
-  );
+  final Dio dio = Dio();
 
-  Dio eBelgeDio = Dio(
-    BaseOptions(
-      baseUrl: getBaseUrl,
-      preserveHeaderCase: true,
-      followRedirects: false,
-      validateStatus: (status) => status! < 500,
-      receiveTimeout: const Duration(minutes: 2),
-      receiveDataWhenStatusError: true,
-      persistentConnection: true,
-      contentType: Headers.jsonContentType,
-      responseType: ResponseType.json,
-    ),
-  );
+  BaseOptions get dioOptions => BaseOptions(
+        baseUrl: getBaseUrl,
+        preserveHeaderCase: true,
+        followRedirects: false,
+        validateStatus: (status) => status! < 500,
+        receiveTimeout: const Duration(minutes: 2),
+        connectTimeout: const Duration(seconds: 20),
+        sendTimeout: const Duration(minutes: 2),
+        receiveDataWhenStatusError: true,
+        persistentConnection: true,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
+      );
+
+  BaseOptions get eBelgeDioOptions => BaseOptions(
+        baseUrl: getBaseUrl,
+        preserveHeaderCase: true,
+        followRedirects: false,
+        validateStatus: (status) => status! < 500,
+        receiveTimeout: const Duration(minutes: 2),
+        receiveDataWhenStatusError: true,
+        persistentConnection: true,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
+      );
 
   Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     // final FormData formData = FormData.fromMap(data);
@@ -241,8 +171,14 @@ class NetworkManager {
       final Map<String, dynamic> queries = getStandardQueryParameters();
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
-      final selectedDio = path.startsWith("EBelge") ? eBelgeDio : dio;
-      response = await selectedDio.get(
+
+      if (path.startsWith("EBelge")) {
+        dio.options = eBelgeDioOptions;
+      } else {
+        dio.options = dioOptions;
+      }
+      // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
+      response = await dio.get(
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
@@ -302,9 +238,13 @@ class NetworkManager {
       final Map<String, dynamic> queries = getStandardQueryParameters();
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
-      final selectedDio = path.startsWith("EBelge") ? eBelgeDio : dio;
+      if (path.startsWith("EBelge")) {
+        dio.options = eBelgeDioOptions;
+      } else {
+        dio.options = dioOptions;
+      }
       // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
-      response = await selectedDio.post(
+      response = await dio.post(
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
