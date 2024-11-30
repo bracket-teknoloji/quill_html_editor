@@ -129,9 +129,7 @@ class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
                 return;
               }
               if (_formKey.currentState!.validate()) {
-                dialogManager.showAreYouSureDialog(() {
                   Get.back(result: viewModel.model);
-                });
               }
             },
             icon: const Icon(Icons.check_outlined),

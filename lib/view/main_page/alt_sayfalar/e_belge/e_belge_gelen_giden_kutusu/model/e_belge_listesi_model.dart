@@ -182,12 +182,24 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   EBelgeListesiModel get eArsivTaslakSil => copyWith(islemKodu: 8);
 
+  EBelgeListesiModel get eIrsaliyeTaslakSil => copyWith(islemKodu: 15);
+
   EBelgeListesiModel get eFaturaTaslakSil => copyWith(islemKodu: 9);
 
   EBelgeListesiModel get eBelgeEslestir => copyWith(islemKodu: 20);
 
   bool get yanitBekliyorMu => onayAciklama == "Yanıt Bekliyor";
-  EBelgeListesiModel get taslakSil => eArsivMi ? eArsivTaslakSil : eFaturaTaslakSil;
+  EBelgeListesiModel get taslakSil {
+    if (eIrsaliyeMi) {
+      return eIrsaliyeTaslakSil;
+    } else if (eArsivMi) {
+      return eArsivTaslakSil;
+    } else {
+      return eFaturaTaslakSil;
+    }
+    //   return
+    // return eArsivMi ? eArsivTaslakSil : eFaturaTaslakSil;
+  }
 
   EBelgeRequestModel get durumSorgula => EBelgeRequestModel(
         baslamaTarihi: tarih?.toDateString,

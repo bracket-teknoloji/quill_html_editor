@@ -269,66 +269,71 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Observer(
-                        builder: (_) => ElevatedButton.icon(
-                          onPressed: () async => await getEIrsaliyeBilgiler(),
-                          label: const Text("E-İrsaliye Bilgileri"),
-                          icon: const Icon(Icons.save_outlined),
-                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eIrsaliyeSerisindenMi),
-                      ),
-                    ),
-                    Expanded(
-                      child: Observer(
-                        builder: (_) => ElevatedButton.icon(
-                          onPressed: () async {
-                            if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
-                              dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
-                              return;
-                            }
-                            if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null && viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
-                              bool isOk = false;
-                              await dialogManager.showAreYouSureDialog(() => isOk = true, title: "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?");
-                              if (isOk) {
-                                await getEIrsaliyeBilgiler();
+                Observer(
+                  builder: (_) => Row(
+                    children: [
+                      if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eIrsaliyeSerisindenMi)
+                        Expanded(
+                          child: Observer(
+                            builder: (_) => ElevatedButton.icon(
+                              onPressed: () async => await getEIrsaliyeBilgiler(),
+                              label: const Text("E-İrsaliye Bilgileri"),
+                              icon: const Icon(Icons.save_outlined),
+                            ).paddingAll(UIHelper.lowSize),
+                          ),
+                        ),
+                      Expanded(
+                        child: Observer(
+                          builder: (_) => ElevatedButton.icon(
+                            onPressed: () async {
+                              if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
+                                dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
+                                return;
                               }
-                            }
-                            dialogManager.showAreYouSureDialog(() async {
-                              final result = await viewModel.sendTaslak();
-                              if (result.isSuccess) {
-                                final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                                if (siparisModel != null) {
-                                  viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
-                                  viewModel.setSiparisModel(siparisModel);
-                                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                              if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null && viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
+                                bool isOk = false;
+                                await dialogManager.showAreYouSureDialog(() => isOk = true, title: "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?");
+                                if (isOk) {
+                                  await getEIrsaliyeBilgiler();
                                 }
                               }
-                            });
-                          },
-                          label: const Text("Taslak Oluştur"),
-                          icon: const Icon(Icons.add),
-                        ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                              dialogManager.showAreYouSureDialog(() async {
+                                final result = await viewModel.sendTaslak();
+                                if (result.isSuccess) {
+                                  final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
+                                  if (siparisModel != null) {
+                                    viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
+                                    viewModel.setSiparisModel(siparisModel);
+                                    dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                                  }
+                                }
+                              });
+                            },
+                            label: const Text("Taslak Oluştur"),
+                            icon: const Icon(Icons.add),
+                          ).paddingAll(UIHelper.lowSize).yetkiVarMi(!viewModel.siparisEditModel.taslakMi),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Observer(
                   builder: (_) => Row(
                     children: [
                       ElevatedButton(
                         onPressed: () async {
-                          final result = await viewModel.deleteTaslak();
-                          if (result.isSuccess) {
-                            final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                            if (siparisModel != null) {
-                              dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                              viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
+                          dialogManager.showAreYouSureDialog(() async {
+                            final result = await viewModel.deleteTaslak();
+                            if (result.isSuccess) {
+                              final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
+                              if (siparisModel != null) {
+                                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                                viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
 
-                              viewModel.setSiparisModel(siparisModel);
+                                viewModel.setSiparisModel(siparisModel);
+                              }
                             }
-                          }
+                          });
                         },
                         style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
                         child: const Column(
