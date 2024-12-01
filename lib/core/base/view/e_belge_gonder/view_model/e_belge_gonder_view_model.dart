@@ -1,6 +1,7 @@
 import "dart:developer";
 
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view/e_irsaliye_ek_bilgiler/model/e_irsaliye_bilgi_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -32,6 +33,9 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   CariListesiModel? cariModel;
 
   @observable
+  EIrsaliyeBilgiModel? eIrsaliyeModel;
+
+  @observable
   BaseSiparisEditModel siparisEditModel;
 
   @computed
@@ -42,6 +46,9 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       return cariModel = await getCari();
     }
   }
+
+  @action
+  void setEIrsaliyeModel(EIrsaliyeBilgiModel? value) => eIrsaliyeModel = value;
 
   @action
   void setModel(EBelgeListesiModel value) => model = value.copyWith(dizaynNo: model.dizaynNo);
@@ -102,11 +109,11 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendTaslak() async {
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakGonder.toJson(), showLoading: true);
+    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakGonder.copyWith(eirsBilgi: eIrsaliyeModel).toJson(), showLoading: true);
     if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
-      log("EBelge gönderilemedi");
+      log("EBelge gönderilemedi: ${result.errorDetails}");
     }
     return result;
   }

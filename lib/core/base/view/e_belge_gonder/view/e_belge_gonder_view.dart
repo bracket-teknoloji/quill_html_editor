@@ -54,6 +54,10 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   void initState() {
     BaseSiparisEditModel.setInstance(widget.model..kdvDahil = (widget.model.kdvDahilMi ?? false) ? "E" : "H");
     viewModel = EBelgeGonderViewModel(model: EBelgeListesiModel.faturaGonder(widget.model), siparisEditModel: widget.model);
+    // if (widget.model.eirsBilgiModel != null && widget.model.eIrsaliyeSerisindenMi) {
+    //   viewModel.setEIrsaliyeModel(widget.model.eirsBilgiModel);
+    //   viewModel.siparisEditModel.eirsBilgiModel = null;
+    // }
     _cariController = TextEditingController(text: widget.model.cariAdi);
     _belgeNoController = TextEditingController(text: widget.model.belgeNo);
     _resmiBelgeNoController = TextEditingController(text: widget.model.resmiBelgeNo);
@@ -385,13 +389,12 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       );
 
   Future<void> getEIrsaliyeBilgiler() async {
-    if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null) {
-      viewModel.siparisEditModel.eirsBilgiModel = null;
+    if (viewModel.eIrsaliyeModel?.sevktar == null) {
+      viewModel.eIrsaliyeModel = null;
     }
-    final result = await Get.toNamed("mainPage/eIrsaliyeEkBilgiler", arguments: viewModel.siparisEditModel.eirsBilgiModel);
+    final result = await Get.toNamed("mainPage/eIrsaliyeEkBilgiler", arguments: viewModel.eIrsaliyeModel);
     if (result is EIrsaliyeBilgiModel) {
-      viewModel.siparisEditModel.eirsBilgiModel = result;
-      viewModel.model.eirsBilgi = result;
+      viewModel.setEIrsaliyeModel(result);
     }
   }
 

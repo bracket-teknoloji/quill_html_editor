@@ -494,7 +494,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(187)
   double? otvTutari;
   int? index;
-    @JsonKey(includeToJson: false, includeFromJson: false)
+  @JsonKey(includeToJson: false, includeFromJson: false)
   String? aciklama1Adi;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? aciklama2Adi;
@@ -820,11 +820,11 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   String get gibDurumKodu {
     final String value;
     if (eArsivMi) {
-      value = "$earsivGibDurumKodu\n$earsivDurumAciklama";
+      value = "${earsivGibDurumKodu ?? 0}\n$earsivDurumAciklama";
     } else if (eFaturaMi) {
-      value = "$efaturaGibDurumKodu\n$efaturaDurumAciklama";
+      value = "${efaturaGibDurumKodu ?? 0}\n$efaturaDurumAciklama";
     } else if (eIrsaliyeMi) {
-      value = "$eirsaliyeGibDurumKodu\n$eirsaliyeDurumAciklama";
+      value = "${eirsaliyeGibDurumKodu ?? 0}\n$eirsaliyeDurumAciklama";
     } else {
       value = "";
     }
@@ -1063,7 +1063,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam;
     } else {
       //? getToplamEkMaliyet ekleme sebebim GetToplamIskonto İçinde zaten bulunuyor olması
-      genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam + kdvTutari ;
+      genelToplam = toplamBrutTutar - getToplamIskonto + getOTVToplam + kdvTutari;
     }
     return genelToplam ?? 0;
   }
