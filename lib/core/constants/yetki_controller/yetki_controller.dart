@@ -402,10 +402,12 @@ final class YetkiController {
   bool get satisFatEkle => _isTrue(_yetkiModel?.sevkiyatSatisFatKaydet);
   bool get satisFatDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatDuzelt);
   bool get satisFatSil => _isTrue(_yetkiModel?.sevkiyatSatisFatSil);
+  bool get satisFatBirim1denKaydet => _isTrue(_yetkiModel?.sevkiyatSatisFatBirim1DenKaydet, skipAdmin: true);
 
   bool get satisIrsEkle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiKayit);
   bool get satisIrsDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDuzeltme);
   bool get satisIrsSil => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSilme);
+  bool get satisIrsBirim1denKaydet => _isTrue(_yetkiModel?.sevkiyatSatisIrsBirim1DenKaydet, skipAdmin: true);
 
   bool satisIrsDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar?.contains(index)));
   bool satisFatDegistirilmeyecekAlanlar(String? index) => _isTrue(!_isTrue(_yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index)));
@@ -440,10 +442,12 @@ final class YetkiController {
   bool get alisFatEkle => _isTrue(_yetkiModel?.malKabulAlisFaturasiKaydet);
   bool get alisFatDuzenle => _isTrue(_yetkiModel?.malKabulAlisFaturasiDuzelt);
   bool get alisFatSil => _isTrue(_yetkiModel?.malKabulAlisFaturasiSil);
+  bool get alisFatBirim1denKaydet => _isTrue(_yetkiModel?.malKabulAlisFatBirim1DenKaydet, skipAdmin: true);
 
   bool get alisIrsEkle => _isTrue(_yetkiModel?.malKabulSatinAlmaKaydet);
   bool get alisIrsDuzenle => _isTrue(_yetkiModel?.malKabulSatinAlmaDuzelt);
   bool get alisIrsSil => _isTrue(_yetkiModel?.malKabulSatinAlmaSil);
+  bool get alisIrsBirim1denKaydet => _isTrue(_yetkiModel?.malKabulAlisIrsBirim1DenKaydet, skipAdmin: true);
 
   bool get alisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.malKabulAlisFatDigerSekmesiGoster);
   bool get alisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.malKabulAlisFatDigerSekmesiGoster);
@@ -619,6 +623,12 @@ final class YetkiController {
   bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
   bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
   bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
+
+  //* Birim1den Kaydet
+  bool get transferDatBirim1Kaydet => _isTrue(_yetkiModel?.transferDatBirim1DenKaydet, skipAdmin: true);
+  bool get transferAGBirim1Kaydet => _isTrue(_yetkiModel?.transferAgBirim1DenKaydet, skipAdmin: true);
+  bool get transferACBirim1Kaydet => _isTrue(_yetkiModel?.transferAcBirim1DenKaydet, skipAdmin: true);
+
 
   //* Fiyat Gör
   bool get transferDatFiyatGor => _isTrue(_yetkiModel?.transferDatFiyatGor);

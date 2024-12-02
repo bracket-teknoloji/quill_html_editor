@@ -247,7 +247,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
-
         BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
         BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
@@ -296,6 +295,18 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             }
           }
         }
+
+        BaseSiparisEditModel.instance.ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
+      }
+
+      if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
+          if (element.olcuBirimCarpani != null) {
+            element.gercekMiktar = element.miktar;
+            element.miktar = (element.miktar ?? 0) * (element.olcuBirimCarpani ?? 1);
+          }
+          return element;
+        }).toList();
       }
 
       viewModel.setLoading(false);
@@ -589,24 +600,36 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
   }
 
   Future<bool> postData() async {
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (BaseSiparisEditModel.instance.isNew ?? false)) {
-      BaseSiparisEditModel.instance.yeniKayit = true;
+    final instance = BaseSiparisEditModel.instance;
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (instance.isNew ?? false)) {
+      instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
+        instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance) ? true : null;
       }
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
-      BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) => e.copyWith(teklifKalemSira: null, teklifNo: null)).toList();
-      BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+      instance.kalemList = instance.kalemList?.map((e) => e.copyWith(teklifKalemSira: null, teklifNo: null)).toList();
+      instance.tarih = DateTime.now().dateTimeWithoutTime;
+    }
+    if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
+      instance.kalemList = instance.kalemList
+          ?.map(
+            (e) => e
+              ..olcuBirimKodu = 1
+              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..gercekMiktar = null
+              ..olcuBirimCarpani = null,
+          )
+          .toList();
     }
     const Uuid uuid = Uuid();
-    BaseSiparisEditModel newInstance = BaseSiparisEditModel.instance.copyWith(
+    BaseSiparisEditModel newInstance = instance.copyWith(
       islemId: uuid.v4(),
       cariModel: null,
       kalemList: null,
-      otvTutari: BaseSiparisEditModel.instance.getOTVToplam,
+      otvTutari: instance.getOTVToplam,
       belgeTuru: widget.model.editTipiEnum?.rawValue,
-      kalemler: BaseSiparisEditModel.instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),
+      kalemler: instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),
     );
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance.mevcutBelgeNo = widget.model.model?.belgeNo;
@@ -633,10 +656,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       newInstance = newInstance.copyWith(
-        kalemler: BaseSiparisEditModel.instance.kalemList
+        kalemler: instance.kalemList
             ?.map(
-              (e) => e
-                ..belgeNo = null,
+              (e) => e..belgeNo = null,
             )
             .toList(),
       );
@@ -648,7 +670,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       showLoading: true,
     );
     if (result.isSuccess) {
-      CacheManager.removeFaturaEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
+      CacheManager.removeFaturaEditList(instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       return true;
     } else {

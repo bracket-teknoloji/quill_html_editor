@@ -532,21 +532,33 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
   }
 
   Future<bool> postData() async {
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
-      BaseSiparisEditModel.instance.yeniKayit = true;
+    final instance = BaseSiparisEditModel.instance;
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (instance.isNew ?? false)) {
+      instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
+        instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance) ? true : null;
       }
+    }
+     if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
+      instance.kalemList = instance.kalemList
+          ?.map(
+            (e) => e
+              ..olcuBirimKodu = 1
+              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..gercekMiktar = null
+              ..olcuBirimCarpani = null,
+          )
+          .toList();
     }
     const uuid = Uuid();
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(),
+      data: (instance..islemId = uuid.v4()).toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {
-      CacheManager.removeTaltekEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
+      CacheManager.removeTaltekEditList(instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
 
       return true;

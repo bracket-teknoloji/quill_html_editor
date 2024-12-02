@@ -1519,6 +1519,8 @@ class KalemModel with NetworkManagerMixin {
   double? otvDegeri;
   @HiveField(137)
   DateTime? vadeTarihi;
+  @HiveField(138)
+  double? gercekMiktar;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1659,6 +1661,7 @@ class KalemModel with NetworkManagerMixin {
     this.otvOranmi,
     this.otvDegeri,
     this.vadeTarihi,
+    this.gercekMiktar,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1754,9 +1757,9 @@ class KalemModel with NetworkManagerMixin {
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
-  double toplamKalemMiktari([bool miktar2EklensinMi = false]) => ((miktar != null ? (miktar ?? 0) * (olcuBirimCarpani ?? 1) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
+  double toplamKalemMiktari([bool miktar2EklensinMi = false]) => ((miktar != null ? (miktar ?? 0) / (olcuBirimCarpani ?? 1) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
 
-  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) * (olcuBirimCarpani ?? 1);
+  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / (olcuBirimCarpani ?? 1);
 
   double get getSelectedMalFazlasizMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
 

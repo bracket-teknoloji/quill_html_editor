@@ -176,7 +176,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
                 children: <Widget>[
-                  Text("Miktar: ${(kalemModel?.miktar ?? kalemModel?.miktar2).toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}  ${kalemModel?.olcuBirimCarpani != null ? "(${kalemModel?.gercekMiktar} ${kalemModel?.stokOlcuBirimi})" : ""}")
                       .yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
                   Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
@@ -229,7 +229,7 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-             Expanded(
+            Expanded(
               child: Text("${kalemList?.stokKodu ?? ""} - ${kalemList?.stokAdi ?? ""}", softWrap: true).paddingOnly(bottom: UIHelper.lowSize),
             ),
             IconButton(

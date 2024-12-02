@@ -186,7 +186,7 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
                 children: <Widget>[
-                  Text("Miktar: ${(kalemModel?.miktar ?? kalemModel?.miktar2).toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}")
+                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}  ${kalemModel?.olcuBirimCarpani != null ? "(${kalemModel?.gercekMiktar} ${kalemModel?.stokOlcuBirimi})" : ""}")
                       .yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
                   Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? "0"} ${kalemModel?.olcuBirimAdi ?? ""}"),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),

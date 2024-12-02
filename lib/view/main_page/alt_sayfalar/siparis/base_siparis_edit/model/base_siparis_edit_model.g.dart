@@ -2717,6 +2717,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel vadeTarihi(DateTime? vadeTarihi);
 
+  KalemModel gercekMiktar(double? gercekMiktar);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2862,6 +2864,7 @@ abstract class _$KalemModelCWProxy {
     bool? otvOranmi,
     double? otvDegeri,
     DateTime? vadeTarihi,
+    double? gercekMiktar,
   });
 }
 
@@ -3337,6 +3340,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel vadeTarihi(DateTime? vadeTarihi) => this(vadeTarihi: vadeTarihi);
 
   @override
+  KalemModel gercekMiktar(double? gercekMiktar) =>
+      this(gercekMiktar: gercekMiktar);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3483,6 +3490,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? otvOranmi = const $CopyWithPlaceholder(),
     Object? otvDegeri = const $CopyWithPlaceholder(),
     Object? vadeTarihi = const $CopyWithPlaceholder(),
+    Object? gercekMiktar = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4040,6 +4048,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.vadeTarihi
           // ignore: cast_nullable_to_non_nullable
           : vadeTarihi as DateTime?,
+      gercekMiktar: gercekMiktar == const $CopyWithPlaceholder()
+          ? _value.gercekMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : gercekMiktar as double?,
     );
   }
 }
@@ -4832,13 +4844,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       otvOranmi: fields[135] as bool?,
       otvDegeri: fields[136] as double?,
       vadeTarihi: fields[137] as DateTime?,
+      gercekMiktar: fields[138] as double?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(138)
+      ..writeByte(139)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5114,7 +5127,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(136)
       ..write(obj.otvDegeri)
       ..writeByte(137)
-      ..write(obj.vadeTarihi);
+      ..write(obj.vadeTarihi)
+      ..writeByte(138)
+      ..write(obj.gercekMiktar);
   }
 
   @override
@@ -5716,6 +5731,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       vadeTarihi: json['VADE_TARIHI'] == null
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String),
+      gercekMiktar: (json['GERCEK_MIKTAR'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -5868,5 +5884,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('OTV_ORANMI', instance.otvOranmi);
   writeNotNull('OTV_DEGERI', instance.otvDegeri);
   writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
+  writeNotNull('GERCEK_MIKTAR', instance.gercekMiktar);
   return val;
 }

@@ -184,6 +184,16 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
+
+      if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
+          if (element.olcuBirimCarpani != null) {
+            element.gercekMiktar = element.miktar;
+            element.miktar = (element.miktar ?? 0) * (element.olcuBirimCarpani ?? 1);
+          }
+          return element;
+        }).toList();
+      }
       viewModel.setLoading(false);
     });
     super.initState();
@@ -526,18 +536,30 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
   }
 
   Future<bool> postData() async {
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
-      BaseSiparisEditModel.instance.yeniKayit = true;
+    final instance = BaseSiparisEditModel.instance;
+    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (instance.isNew ?? false)) {
+      instance.yeniKayit = true;
+    }
+    if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
+      instance.kalemList = instance.kalemList
+          ?.map(
+            (e) => e
+              ..olcuBirimKodu = 1
+              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..gercekMiktar = null
+              ..olcuBirimCarpani = null,
+          )
+          .toList();
     }
     const uuid = Uuid();
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(),
+      data: (instance..islemId = uuid.v4()).toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {
-      CacheManager.removeTransferEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
+      CacheManager.removeTransferEditList(instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
 
       return true;

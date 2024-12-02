@@ -56,7 +56,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     if (widget.model.model is BaseSiparisEditModel) {
       BaseSiparisEditModel.instance = widget.model.model;
     }
-    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false) ? 4 : 3, vsync: this);
+    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false) ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
         final result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
@@ -65,7 +65,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           tabController.animateTo(tabController.previousIndex);
         }
       }
-      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false) ? 3 : 2) &&
+      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false) ? 3 : 2) &&
           BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty &&
           widget.model.baseEditEnum != BaseEditEnum.goruntule) {
         viewModel.changeIsLastPage(true);
@@ -159,7 +159,15 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
       }
-
+      if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
+          if (element.olcuBirimCarpani != null) {
+            element.gercekMiktar = element.miktar;
+            element.miktar = (element.miktar ?? 0) * (element.olcuBirimCarpani ?? 1);
+          }
+          return element;
+        }).toList();
+      }
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
       BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
@@ -342,7 +350,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               controller: tabController,
               tabs: [
                 Tab(child: Text(loc.generalStrings.general)),
-                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false)) Tab(child: Text(loc.generalStrings.other)),
+                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false)) Tab(child: Text(loc.generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
@@ -362,7 +370,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     }
                   },
                 ),
-                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false)) BaseSiparislerDigerView(model: model),
+                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false)) BaseSiparislerDigerView(model: model),
                 BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
               ].whereType<Widget>().toList(),
@@ -493,15 +501,21 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     instance.kalemList = instance.kalemList
         ?.map(
-          (e) => e
-            ..netFiyat = (instance.iskontoChecker(e.brutTutar - e.iskontoTutari)) / (e.getSelectedMiktar ?? 1)
-            ..miktar = (e.miktar ?? 0) * (e.olcuBirimCarpani ?? 1)
-            ..olcuBirimKodu = 1
-            ..olcuBirimCarpani = null
-            ..olcuBirimAdi = null,
+          (e) => e..netFiyat = (instance.iskontoChecker(e.brutTutar - e.iskontoTutari)) / (e.getSelectedMiktar ?? 1),
         )
         .toList();
 
+    if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
+      instance.kalemList = instance.kalemList
+          ?.map(
+            (e) => e
+              ..olcuBirimKodu = 1
+              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..gercekMiktar = null
+              ..olcuBirimCarpani = null,
+          )
+          .toList();
+    }
     if (instance.isTempBelge) {
       instance
         ..mevcutBelgeNo = model.model?.tempBelgeId.toStringIfNotNull

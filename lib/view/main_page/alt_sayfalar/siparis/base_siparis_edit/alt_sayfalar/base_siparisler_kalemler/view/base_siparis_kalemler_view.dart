@@ -170,7 +170,8 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
               builder: (context, constrains) => Wrap(
                 children: [
                   Text("Koşul: ${kalemModel?.kosulKodu ?? ""}").yetkiVarMi(kalemModel?.kosulKodu != null && kalemModel?.kosulKodu != ""),
-                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
+                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}  ${kalemModel?.olcuBirimCarpani != null ? "(${kalemModel?.gercekMiktar} ${kalemModel?.stokOlcuBirimi})" : ""}")
+                      .yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
                   Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),
                   Text("Mal Fazlası Miktar: ${kalemModel?.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.malFazlasiMiktar != null),

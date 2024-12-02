@@ -163,8 +163,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 //   Get.back(result: viewModel.kalemModel);
                 // }
                 viewModel.kalemModel.sira = widget.kalemModel?.sira ?? (model.kalemList?.length ?? 0) + 1;
-
-                log(viewModel.kalemModel.dovizliFiyat.toString());
+                if (viewModel.kalemModel.olcuBirimCarpani != null) {
+                  viewModel.kalemModel.stokOlcuBirimi = viewModel.model?.olcuBirimi;
+                  viewModel.kalemModel.gercekMiktar = (viewModel.kalemModel.miktar??0) / (viewModel.kalemModel.olcuBirimCarpani??1);
+                }
+                 log(viewModel.kalemModel.dovizliFiyat.toString());
                 if (widget.kalemModel != null) {
                   Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
                   dialogManager.showSuccessSnackBar("Kalem düzenlendi.");

@@ -191,6 +191,20 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.belgesizIslem => "Belgesiz İşlem"
       };
 
+  bool get birim1denGelsin => switch (this) {
+    EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
+        EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,
+        EditTipiEnum.satisFatura => yetkiController.satisFatBirim1denKaydet,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBirim1denKaydet,
+        EditTipiEnum.alisFatura => yetkiController.alisFatBirim1denKaydet,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBirim1denKaydet,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAGBirim1Kaydet,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACBirim1Kaydet,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBirim1Kaydet,
+        _ => false
+
+  };
+
   String get getPrintValue => switch (this) {
         EditTipiEnum.musteri => "MusteriSiparisi",
         EditTipiEnum.satici => "SaticiSiparisi",
