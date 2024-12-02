@@ -544,7 +544,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           ?.map(
             (e) => e
               ..olcuBirimKodu = 1
-              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!) 
               ..gercekMiktar = null
               ..olcuBirimCarpani = null,
           )

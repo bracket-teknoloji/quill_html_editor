@@ -189,7 +189,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
           if (element.olcuBirimCarpani != null) {
             element.gercekMiktar = element.miktar;
-            element.miktar = (element.miktar ?? 0) * (element.olcuBirimCarpani ?? 1);
+            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!) ;
           }
           return element;
         }).toList();
@@ -545,7 +545,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           ?.map(
             (e) => e
               ..olcuBirimKodu = 1
-              ..miktar = (e.miktar ?? 0) / (e.olcuBirimCarpani ?? 1)
+              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!) 
               ..gercekMiktar = null
               ..olcuBirimCarpani = null,
           )

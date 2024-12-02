@@ -186,7 +186,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constrains) => Wrap(
                 children: <Widget>[
-                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}  ${kalemModel?.olcuBirimCarpani != null ? "(${kalemModel?.gercekMiktar} ${kalemModel?.stokOlcuBirimi})" : ""}")
+                  Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}  ${kalemModel?.olcuBirimCarpani != null ? "(${kalemModel?.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel?.stokOlcuBirimi})" : ""}")
                       .yetkiVarMi(!(kalemModel?.miktar == null || kalemModel?.miktar == 0.0)),
                   Text("Miktar2: ${kalemModel?.miktar2.toIntIfDouble ?? ""} ${kalemModel?.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel?.miktar2 != null),
                   Text("KDV: %${kalemModel?.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel?.kdvOrani != null),

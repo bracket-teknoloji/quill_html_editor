@@ -260,7 +260,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.model.efaturaTipi = cariModel.efaturaTipi;
                       _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
                       _belgeNoController.clear();
-                      await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi);
+                      await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi, seri: viewModel.model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null);
                     }
                   },
                 ),
@@ -508,7 +508,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                                   if (value) {
                                     await getBelgeNo(false, seri: parametreModel.seriEIrsaliye ?? "");
                                   } else {
-                                    await getBelgeNo(false, seri:  "");
+                                    await getBelgeNo(false, seri: "");
                                   }
                                 }
                               : null,

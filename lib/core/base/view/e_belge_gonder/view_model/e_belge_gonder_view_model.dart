@@ -109,7 +109,13 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendTaslak() async {
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakGonder.copyWith(eirsBilgi: eIrsaliyeModel).toJson(), showLoading: true);
+    final newModel = model.taslakGonder;
+    if (siparisEditModel.eirsBilgiModel?.sevktar == null && siparisEditModel.eIrsaliyeSerisindenMi) {
+      newModel.eirsBilgi = eIrsaliyeModel;
+    } else {
+      newModel.eirsBilgi = null;
+    }
+    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: newModel.toJson(), showLoading: true);
     if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {

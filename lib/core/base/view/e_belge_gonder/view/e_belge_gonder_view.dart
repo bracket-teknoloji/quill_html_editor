@@ -392,7 +392,10 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     if (viewModel.eIrsaliyeModel?.sevktar == null) {
       viewModel.eIrsaliyeModel = null;
     }
-    final result = await Get.toNamed("mainPage/eIrsaliyeEkBilgiler", arguments: viewModel.eIrsaliyeModel);
+    final result = await Get.toNamed(
+      "mainPage/eIrsaliyeEkBilgiler",
+      arguments: viewModel.eIrsaliyeModel ?? (viewModel.siparisEditModel.eirsBilgiModel?.sevktar != null ? viewModel.siparisEditModel.eirsBilgiModel : null),
+    );
     if (result is EIrsaliyeBilgiModel) {
       viewModel.setEIrsaliyeModel(result);
     }

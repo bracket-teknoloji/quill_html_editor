@@ -1757,9 +1757,10 @@ class KalemModel with NetworkManagerMixin {
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
-  double toplamKalemMiktari([bool miktar2EklensinMi = false]) => ((miktar != null ? (miktar ?? 0) / (olcuBirimCarpani ?? 1) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
+  double toplamKalemMiktari([bool miktar2EklensinMi = false]) =>
+      ((miktar != null ? (miktar ?? 0) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
 
-  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / (olcuBirimCarpani ?? 1);
+  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!) ;
 
   double get getSelectedMalFazlasizMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
 
