@@ -114,7 +114,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (model.belgeNo == null) {
-        await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi);
+        await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi, seri: model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null);
       }
     });
     super.initState();
@@ -502,7 +502,16 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       child: Observer(
                         builder: (_) => Switch.adaptive(
                           value: viewModel.ebelgeCheckbox,
-                          onChanged: enable ? (bool value) => viewModel.changeEbelgeCheckBox(value) : null,
+                          onChanged: enable
+                              ? (bool value) async {
+                                  viewModel.changeEbelgeCheckBox(value);
+                                  if (value) {
+                                    await getBelgeNo(false, seri: parametreModel.seriEIrsaliye ?? "");
+                                  } else {
+                                    await getBelgeNo(false, seri:  "");
+                                  }
+                                }
+                              : null,
                         ),
                       ),
                     ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),

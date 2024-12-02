@@ -1,5 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -70,6 +71,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   void changeEbelgeCheckBox(bool value) {
     ebelgeCheckbox = value;
     BaseSiparisEditModel.instance.ebelgeCheckbox = value ? "E" : "H";
+    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(eIrsaliyeSeciliGelsin: value));
   }
 
   @action
