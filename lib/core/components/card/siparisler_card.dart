@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
+import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -116,7 +118,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           );
                           if (result == true) {
                             if (widget.model.isNew == true) {
-                                CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
+                              CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
                             }
                             widget.onUpdated?.call(true);
                           }
@@ -146,6 +148,29 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           });
                         },
                       ).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
+                      BottomSheetModel(
+                        title: "PDF Görüntüle",
+                        iconWidget: Icons.picture_as_pdf_outlined,
+                        onTap: () async {
+                          Get.back();
+
+                          final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, ozelKod: DizaynOzelKodEnum.musteriSiparisi, editTipi: widget.model.getEditTipiEnum);
+                          if (dizayn == null) {
+                            return;
+                          }
+                          final PdfModel pdfModel = PdfModel(
+                            raporOzelKod: widget.editTipiEnum.getPrintValue,
+                            dizaynId: dizayn.id,
+                            dicParams: DicParams(
+                              belgeNo: widget.model.isTempBelge ? null : widget.model.belgeNo,
+                              belgeTipi: widget.model.getEditTipiEnum?.rawValue,
+                              cariKodu: widget.model.cariKodu,
+                              tempBelgeId: widget.model.isTempBelge ? widget.model.tempBelgeId.toStringIfNotNull : null,
+                            ),
+                          );
+                          await Get.to(() => PDFViewerView(title: dizayn.dizaynAdi ?? "", pdfData: pdfModel));
+                        },
+                      ),
                       BottomSheetModel(
                         title: loc.generalStrings.print,
                         iconWidget: Icons.print_outlined,

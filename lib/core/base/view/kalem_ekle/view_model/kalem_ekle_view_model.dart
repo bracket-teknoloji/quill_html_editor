@@ -94,7 +94,8 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setDovizFiyati(double? value) => kalemModel = kalemModel.copyWith(dovizliFiyat: value, dovizFiyati: value);
 
   @action
-  void setOlcuBirimi(MapEntry<Olculer, int>? value) => kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key.adi);
+  void setOlcuBirimi(MapEntry<Olculer, int>? value) =>
+      kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key.adi, olcuBirimCarpani: (value?.key.payda ?? 0) / (value?.key.pay ?? 1));
 
   @action
   void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);

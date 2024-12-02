@@ -109,7 +109,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                 //   ),
                 // ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                 Visibility(
-                  visible: model.isRemoteTempBelgeNull,
+                  visible: model.isRemoteTempBelgeNull && !yetkiController.kontrolluBelgeAktarimAktif,
                   child: CustomTextField(
                     enabled: enable,
                     labelText: "Belge No",
@@ -659,7 +659,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
   Future<void> init() async {
     controllerFiller();
 
-    if (BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) {
+    if ((BaseSiparisEditModel.instance.belgeNo == null || widget.model.isKopyala) && !yetkiController.kontrolluBelgeAktarimAktif) {
       await getBelgeNo();
     }
     controllerFiller();

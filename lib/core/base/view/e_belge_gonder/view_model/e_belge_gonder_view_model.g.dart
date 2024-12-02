@@ -49,6 +49,22 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
+  late final _$eIrsaliyeModelAtom =
+      Atom(name: '_EBelgeGonderViewModelBase.eIrsaliyeModel', context: context);
+
+  @override
+  EIrsaliyeBilgiModel? get eIrsaliyeModel {
+    _$eIrsaliyeModelAtom.reportRead();
+    return super.eIrsaliyeModel;
+  }
+
+  @override
+  set eIrsaliyeModel(EIrsaliyeBilgiModel? value) {
+    _$eIrsaliyeModelAtom.reportWrite(value, super.eIrsaliyeModel, () {
+      super.eIrsaliyeModel = value;
+    });
+  }
+
   late final _$siparisEditModelAtom = Atom(
       name: '_EBelgeGonderViewModelBase.siparisEditModel', context: context);
 
@@ -115,6 +131,17 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
 
   late final _$_EBelgeGonderViewModelBaseActionController =
       ActionController(name: '_EBelgeGonderViewModelBase', context: context);
+
+  @override
+  void setEIrsaliyeModel(EIrsaliyeBilgiModel? value) {
+    final _$actionInfo = _$_EBelgeGonderViewModelBaseActionController
+        .startAction(name: '_EBelgeGonderViewModelBase.setEIrsaliyeModel');
+    try {
+      return super.setEIrsaliyeModel(value);
+    } finally {
+      _$_EBelgeGonderViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setModel(EBelgeListesiModel value) {
@@ -209,6 +236,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     return '''
 model: ${model},
 cariModel: ${cariModel},
+eIrsaliyeModel: ${eIrsaliyeModel},
 siparisEditModel: ${siparisEditModel},
 getCariModel: ${getCariModel}
     ''';

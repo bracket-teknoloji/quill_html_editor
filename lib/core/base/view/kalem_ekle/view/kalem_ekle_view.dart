@@ -1177,7 +1177,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
     viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi == true) && yetkiController.siparisSatirdaTeslimTarihiSor ? model.teslimTarihi : null;
     // viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
-    viewModel.setOlcuBirimi(MapEntry<Olculer, int>((adi: widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", pay: 0.0, payda: 0.0), 1));
+    // viewModel.setOlcuBirimi(MapEntry<Olculer, int>((adi: widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", pay: 0.0, payda: 0.0), 1));
     if (widget.kalemModel == null) {
       viewModel.setKosul(model.kosulKodu ?? "");
       if (yetkiController.projeUygulamasiAcikMi) {

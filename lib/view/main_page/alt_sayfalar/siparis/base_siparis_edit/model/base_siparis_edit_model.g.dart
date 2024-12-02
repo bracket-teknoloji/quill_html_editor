@@ -21,7 +21,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel projeAciklama(String? projeAciklama);
 
-  BaseSiparisEditModel tempJsonData(BaseSiparisEditModel? tempJsonData);
+  BaseSiparisEditModel tempJsonData(String? tempJsonData);
 
   BaseSiparisEditModel teslimCariAdi(String? teslimCariAdi);
 
@@ -431,7 +431,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? duzeltmeyapankul,
     String? plasiyerAciklama,
     String? projeAciklama,
-    BaseSiparisEditModel? tempJsonData,
+    String? tempJsonData,
     String? teslimCariAdi,
     bool? kdvDahilmi,
     bool? remoteTempBelge,
@@ -667,7 +667,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(projeAciklama: projeAciklama);
 
   @override
-  BaseSiparisEditModel tempJsonData(BaseSiparisEditModel? tempJsonData) =>
+  BaseSiparisEditModel tempJsonData(String? tempJsonData) =>
       this(tempJsonData: tempJsonData);
 
   @override
@@ -1634,7 +1634,7 @@ class _$BaseSiparisEditModelCWProxyImpl
       tempJsonData: tempJsonData == const $CopyWithPlaceholder()
           ? _value.tempJsonData
           // ignore: cast_nullable_to_non_nullable
-          : tempJsonData as BaseSiparisEditModel?,
+          : tempJsonData as String?,
       teslimCariAdi: teslimCariAdi == const $CopyWithPlaceholder()
           ? _value.teslimCariAdi
           // ignore: cast_nullable_to_non_nullable
@@ -2715,6 +2715,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel otvDegeri(double? otvDegeri);
 
+  KalemModel vadeTarihi(DateTime? vadeTarihi);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2859,6 +2861,7 @@ abstract class _$KalemModelCWProxy {
     bool? otvVarmi,
     bool? otvOranmi,
     double? otvDegeri,
+    DateTime? vadeTarihi,
   });
 }
 
@@ -3331,6 +3334,9 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel otvDegeri(double? otvDegeri) => this(otvDegeri: otvDegeri);
 
   @override
+  KalemModel vadeTarihi(DateTime? vadeTarihi) => this(vadeTarihi: vadeTarihi);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3476,6 +3482,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? otvVarmi = const $CopyWithPlaceholder(),
     Object? otvOranmi = const $CopyWithPlaceholder(),
     Object? otvDegeri = const $CopyWithPlaceholder(),
+    Object? vadeTarihi = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4029,6 +4036,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.otvDegeri
           // ignore: cast_nullable_to_non_nullable
           : otvDegeri as double?,
+      vadeTarihi: vadeTarihi == const $CopyWithPlaceholder()
+          ? _value.vadeTarihi
+          // ignore: cast_nullable_to_non_nullable
+          : vadeTarihi as DateTime?,
     );
   }
 }
@@ -4095,7 +4106,7 @@ class BaseSiparisEditModelAdapter extends TypeAdapter<BaseSiparisEditModel> {
       duzeltmeyapankul: fields[4] as String?,
       plasiyerAciklama: fields[5] as String?,
       projeAciklama: fields[6] as String?,
-      tempJsonData: fields[7] as BaseSiparisEditModel?,
+      tempJsonData: fields[7] as String?,
       teslimCariAdi: fields[8] as String?,
       kdvDahilmi: fields[9] as bool?,
       remoteTempBelge: fields[10] as bool?,
@@ -4820,13 +4831,14 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       otvVarmi: fields[134] as bool?,
       otvOranmi: fields[135] as bool?,
       otvDegeri: fields[136] as double?,
+      vadeTarihi: fields[137] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(137)
+      ..writeByte(138)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5100,7 +5112,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(135)
       ..write(obj.otvOranmi)
       ..writeByte(136)
-      ..write(obj.otvDegeri);
+      ..write(obj.otvDegeri)
+      ..writeByte(137)
+      ..write(obj.vadeTarihi);
   }
 
   @override
@@ -5130,9 +5144,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       duzeltmeyapankul: json['DUZELTMEYAPANKUL'] as String?,
       plasiyerAciklama: json['PLASIYER_ACIKLAMA'] as String?,
       projeAciklama: json['PROJE_ACIKLAMA'] as String?,
-      tempJsonData: json['TEMP_JSON_DATA'] == null
-          ? null
-          : BaseSiparisEditModel.fromJson(json['TEMP_JSON_DATA'] as String),
+      tempJsonData: json['TEMP_JSON_DATA'] as String?,
       teslimCariAdi: json['TESLIM_CARI_ADI'] as String?,
       remoteTempBelge: json['REMOTE_TEMP_BELGE'] as bool?,
       tempBelgeMi: json['TEMP_BELGE_MI'] as bool?,
@@ -5365,7 +5377,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
   writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
   writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
   writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
-  writeNotNull('TEMP_JSON_DATA', instance.tempJsonData?.toJson());
+  writeNotNull('TEMP_JSON_DATA', instance.tempJsonData);
   writeNotNull('TESLIM_CARI_ADI', instance.teslimCariAdi);
   writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);
   writeNotNull('TEMP_BELGE_MI', instance.tempBelgeMi);
@@ -5701,6 +5713,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       otvVarmi: json['OTV_VARMI'] as bool?,
       otvOranmi: json['OTV_ORANMI'] as bool?,
       otvDegeri: (json['OTV_DEGERI'] as num?)?.toDouble(),
+      vadeTarihi: json['VADE_TARIHI'] == null
+          ? null
+          : DateTime.parse(json['VADE_TARIHI'] as String),
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
@@ -5852,5 +5867,6 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) {
   writeNotNull('OTV_VARMI', instance.otvVarmi);
   writeNotNull('OTV_ORANMI', instance.otvOranmi);
   writeNotNull('OTV_DEGERI', instance.otvDegeri);
+  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
   return val;
 }

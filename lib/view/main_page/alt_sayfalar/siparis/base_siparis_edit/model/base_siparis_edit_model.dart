@@ -103,7 +103,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
   @HiveField(6)
   String? projeAciklama;
   @HiveField(7)
-  BaseSiparisEditModel? tempJsonData;
+  String? tempJsonData;
   @HiveField(8)
   String? teslimCariAdi;
   @HiveField(9)
@@ -1102,8 +1102,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       log("Genel iskonto 1: $genIsk1t");
       result = result - result * ((genIsk1o ?? 0) / 100);
     } else {
-      genelIskonto1 = 0;
-      genIsk1t = 0;
+      genelIskonto1 = null;
+      genIsk1t = null;
     }
     if (genIsk2o != null && genIsk2o! >= 0.0) {
       log("Genel iskonto 2 : $genIsk2t");
@@ -1111,8 +1111,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       // genIsk2t = genelIskonto2;
       result = result - result * ((genIsk2o ?? 0) / 100);
     } else {
-      genelIskonto2 = 0;
-      genIsk2t = 0;
+      genelIskonto2 = null;
+      genIsk2t = null;
     }
     if (genIsk3o != null && genIsk3o! >= 0.0) {
       // genelIskonto3 = result2 * (genIsk3o ?? 0) / 100;
@@ -1120,8 +1120,8 @@ class BaseSiparisEditModel with NetworkManagerMixin {
       log("Genel iskonto 3: $genIsk3t");
       result = result - result * ((genIsk3o ?? 0) / 100);
     } else {
-      genelIskonto3 = 0;
-      genIsk3t = 0;
+      genelIskonto3 = null;
+      genIsk3t = null;
     }
     return result + (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
   }
@@ -1517,6 +1517,8 @@ class KalemModel with NetworkManagerMixin {
   bool? otvOranmi;
   @HiveField(136)
   double? otvDegeri;
+  @HiveField(137)
+  DateTime? vadeTarihi;
 
   KalemModel({
     this.iskonto1OranMi,
@@ -1656,6 +1658,7 @@ class KalemModel with NetworkManagerMixin {
     this.otvVarmi,
     this.otvOranmi,
     this.otvDegeri,
+    this.vadeTarihi,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1751,9 +1754,9 @@ class KalemModel with NetworkManagerMixin {
   //koli mi
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
-  double toplamKalemMiktari([bool miktar2EklensinMi = false]) => ((miktar ?? (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
+  double toplamKalemMiktari([bool miktar2EklensinMi = false]) => ((miktar != null ? (miktar ?? 0) * (olcuBirimCarpani ?? 1) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
 
-  double? get getSelectedMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
+  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) * (olcuBirimCarpani ?? 1);
 
   double get getSelectedMalFazlasizMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
 
