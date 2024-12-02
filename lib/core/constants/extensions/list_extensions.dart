@@ -40,26 +40,17 @@ extension ListGenericNullCheck<T> on List<T?> {
 extension DizaynListExtensions on List<NetFectDizaynList> {
   List<NetFectDizaynList> filteredDizaynList(EditTipiEnum? editTipiEnum) {
     final ProfilYetkiModel profilYetkiModel = CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
-    if (AccountModel.instance.admin == "E") {
-      return this;
-    }
-    switch (editTipiEnum) {
-      case EditTipiEnum.satisTeklifi:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? true).toList();
-      case EditTipiEnum.satisIrsaliye:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.aktifMi) ?? true).toList();
-      case EditTipiEnum.satisFatura:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.aktifMi) ?? true).toList();
-      case EditTipiEnum.alisIrsaliye:
-        return where((element) => profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.aktifMi) ?? true).toList();
-      case EditTipiEnum.alisFatura:
-        return where((element) => profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.aktifMi) ?? true).toList();
-      case EditTipiEnum.satisTalebi:
-        return where((element) => profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.aktifMi) ?? true).toList();
-      // case EditTipiEnum.alis:
-      //   return where((element) => profilYetkiModel.yazdirmaDizaynAli?.any((element2) => element.aktifMi) ??true ).toList();
-      default:
-        return this;
-    }
+    if (AccountModel.instance.adminMi) return this;
+    return switch (editTipiEnum) {
+      EditTipiEnum.satisTeklifi => where((element) => profilYetkiModel.yazdirmaDizaynSatisTeklifi?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.satisIrsaliye => where((element) => profilYetkiModel.yazdirmaDizaynSatisIrs?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.satisFatura => where((element) => profilYetkiModel.yazdirmaDizaynSatisFat?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.alisIrsaliye => where((element) => profilYetkiModel.yazdirmaDizaynAlisIrs?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.alisFatura => where((element) => profilYetkiModel.yazdirmaDizaynAlisFat?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.satisTalebi => where((element) => profilYetkiModel.yazdirmaDizaynSatisTalebi?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.musteri => where((element) => profilYetkiModel.yazdirmaDizaynMusSip?.any((element2) => element.id == element2) ?? true).toList(),
+      EditTipiEnum.satici => where((element) => profilYetkiModel.yazdirmaDizaynSaticiSip?.any((element2) => element.id == element2) ?? true).toList(),
+      _ => [],
+    };
   }
 }

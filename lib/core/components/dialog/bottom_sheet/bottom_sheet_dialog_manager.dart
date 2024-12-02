@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import "dart:developer";
+
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_image_compress/flutter_image_compress.dart";
@@ -725,14 +727,15 @@ class BottomSheetDialogManager {
     return null;
   }
 
-  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue, {DizaynOzelKodEnum? ozelKod}) async {
-    final List<NetFectDizaynList> netFectDizaynList = _paramModel?.netFectDizaynList ?? <NetFectDizaynList>[];
+  Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue, {DizaynOzelKodEnum? ozelKod, EditTipiEnum? editTipi}) async {
+    final List<NetFectDizaynList> netFectDizaynList =
+        (_paramModel?.netFectDizaynList ?? <NetFectDizaynList>[]).where((element) => element.ozelKod == ozelKod?.ozelKodAdi).toList().filteredDizaynList(editTipi);
+    log(netFectDizaynList.toString());
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,
       title: "Dizayn Seçiniz",
       groupValue: groupValue,
       children: netFectDizaynList
-          .where((element) => ozelKod != null ? element.ozelKod == ozelKod.ozelKodAdi : true)
           .map(
             (NetFectDizaynList e) => BottomSheetModel(
               title: e.dizaynAdi ?? e.detayKod ?? "",
@@ -1218,7 +1221,7 @@ class BottomSheetDialogManager {
           return null;
         }
       } else {
-        final NetFectDizaynList? dizaynList = await showDizaynBottomSheetDialog(context, null);
+        final NetFectDizaynList? dizaynList = await showDizaynBottomSheetDialog(context, null, editTipi: editTipiEnum);
         if (dizaynList != null) {
           printModel = printModel.copyWith(dizaynId: dizaynList.id);
         } else {

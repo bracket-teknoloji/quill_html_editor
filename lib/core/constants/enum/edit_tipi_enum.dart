@@ -394,7 +394,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       };
 
   bool get digerSekmesiGoster => switch (this) {
-        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisDigerSekmesiGoster,
+        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisDigerSekmesiGoster(this == EditTipiEnum.musteri),
         EditTipiEnum.satisFatura => yetkiController.satisFatDigerSekmesiGelsin,
         EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDigerSekmesiGelsin,
         EditTipiEnum.alisFatura => yetkiController.alisFatDigerSekmesiGelsin,

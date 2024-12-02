@@ -53,7 +53,10 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   @override
   void initState() {
     viewModel.setLoading(true);
-    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster ? 4 : 3, vsync: this);
+    if (widget.model.model is BaseSiparisEditModel) {
+      BaseSiparisEditModel.instance = widget.model.model;
+    }
+    tabController = TabController(length: yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false) ? 4 : 3, vsync: this);
     tabController.addListener(() {
       if (tabController.indexIsChanging && tabController.previousIndex == 0) {
         final result = StaticVariables.instance.siparisGenelFormKey.currentState?.validate();
@@ -62,7 +65,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
           tabController.animateTo(tabController.previousIndex);
         }
       }
-      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster ? 3 : 2) &&
+      if (tabController.index == (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false) ? 3 : 2) &&
           BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty &&
           widget.model.baseEditEnum != BaseEditEnum.goruntule) {
         viewModel.changeIsLastPage(true);
@@ -92,7 +95,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
-        final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showError: model.model?.isNew != true, showLoading: true);
+        final result = await networkManager.dioPost<BaseSiparisEditModel>(
+          path: ApiUrls.getFaturaDetay,
+          bodyModel: BaseSiparisEditModel(),
+          data: model.model?.toJson(),
+          showError: model.model?.isNew != true,
+          showLoading: true,
+        );
         if (result.isSuccess) {
           // viewModel.changeFuture();
           BaseSiparisEditModel.setInstance(result.dataList.first);
@@ -152,6 +161,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       }
 
       BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
@@ -332,7 +342,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
               controller: tabController,
               tabs: [
                 Tab(child: Text(loc.generalStrings.general)),
-                if (yetkiController.siparisDigerSekmesiGoster) Tab(child: Text(loc.generalStrings.other)),
+                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false)) Tab(child: Text(loc.generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
               ].whereType<Widget>().toList(),
@@ -352,7 +362,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                     }
                   },
                 ),
-                if (yetkiController.siparisDigerSekmesiGoster) BaseSiparislerDigerView(model: model),
+                if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster??false)) BaseSiparislerDigerView(model: model),
                 BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
               ].whereType<Widget>().toList(),
@@ -474,17 +484,43 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
   }
 
   Future<bool> postData() async {
+    final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
-      BaseSiparisEditModel.instance.yeniKayit = true;
+      instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
+        instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance) ? true : null;
       }
     }
-    const uuid = Uuid();
+    instance.kalemList = instance.kalemList
+        ?.map(
+          (e) => e
+            ..netFiyat = (instance.iskontoChecker(e.brutTutar - e.iskontoTutari)) / (e.getSelectedMiktar ?? 1)
+            ..miktar = (e.miktar ?? 0) * (e.olcuBirimCarpani ?? 1)
+            ..olcuBirimKodu = 1
+            ..olcuBirimCarpani = null
+            ..olcuBirimAdi = null,
+        )
+        .toList();
+
+    if (instance.isTempBelge) {
+      instance
+        ..mevcutBelgeNo = model.model?.tempBelgeId.toStringIfNotNull
+        ..kalemList = instance.kalemList
+            ?.map(
+              (element) => element..vadeTarihi = DateTime.now().dateTimeWithoutTime,
+            )
+            .toList()
+        ..kalemler = instance.kalemList;
+    }
+    if (instance.isNew == true || (instance.isTempBelge && instance.islemId == null)) {
+      const uuid = Uuid();
+      instance.islemId = uuid.v4();
+    }
+    instance.tag = "FaturaModel";
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,
       bodyModel: BaseSiparisEditModel(),
-      data: (BaseSiparisEditModel.instance..islemId = uuid.v4()).toJson(),
+      data: instance.toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {
