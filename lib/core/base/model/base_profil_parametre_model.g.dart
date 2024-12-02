@@ -62,6 +62,7 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       stokListesiSirala: json['STOK_LISTESI_SIRALA'] as String? ?? "AZ",
       irsFaturalasanIrsaliyelerGelsin:
           json['IRS_FATURALASAN_IRSALIYELER_GELSIN'] as bool? ?? false,
+      eIrsaliyeSeciliGelsin: json['E_IRSALIYE_SECILI_GELSIN'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -109,6 +110,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
   val['STOK_LISTESI_SIRALA'] = instance.stokListesiSirala;
   val['IRS_FATURALASAN_IRSALIYELER_GELSIN'] =
       instance.irsFaturalasanIrsaliyelerGelsin;
+  val['E_IRSALIYE_SECILI_GELSIN'] = instance.eIrsaliyeSeciliGelsin;
   return val;
 }
 
