@@ -479,7 +479,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                       }
                     },
               child: const Text("E-İrsaliye Ek Bilgiler"),
-            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E"),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E" && (model.getEditTipiEnum?.satisIrsaliyesiMi ?? false)),
           ],
         ),
       );

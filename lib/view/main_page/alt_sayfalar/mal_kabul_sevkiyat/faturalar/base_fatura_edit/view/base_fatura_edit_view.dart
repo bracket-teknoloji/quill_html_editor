@@ -176,13 +176,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                   )
                   .toList();
             }
-            if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-              BaseSiparisEditModel.instance.tarih = model.model?.belgeTarihi.toDateTimeDDMMYYYY();
-            }
             if (widget.model.baseEditEnum.kopyalaMi) {
-              BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-            }
-            if (widget.model.baseEditEnum == BaseEditEnum.siparistenKopyala) {
               BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             }
             BaseSiparisEditModel.instance.belgeKodu = null;
@@ -255,25 +249,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           if (model.editTipiEnum.irsaliyeMi) {
             BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
           }
-          if (result != true) {
-            BaseSiparisEditModel.resetInstance();
             BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
             BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
-
-            BaseSiparisEditModel.instance.belgeTipi = 2;
-            BaseSiparisEditModel.instance.tipi = 2;
-            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-            BaseSiparisEditModel.instance.tag = "FaturaModel";
-
-            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-            BaseSiparisEditModel.instance.isNew = true;
+          if (result != true) {
+            BaseSiparisEditModel.resetInstance();
           } else {
-            BaseSiparisEditModel.instance.belgeTipi = 2;
-            BaseSiparisEditModel.instance.tipi = 2;
-            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-            BaseSiparisEditModel.instance.tag = "FaturaModel";
-            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-            BaseSiparisEditModel.instance.isNew = true;
             final cariModel = await getCari();
 
             if (cariModel is CariListesiModel) {
@@ -292,6 +272,12 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
               BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
             }
           }
+            BaseSiparisEditModel.instance.belgeTipi = 2;
+            BaseSiparisEditModel.instance.tipi = 2;
+            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+            BaseSiparisEditModel.instance.tag = "FaturaModel";
+            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
+            BaseSiparisEditModel.instance.isNew = true;
         }
 
         BaseSiparisEditModel.instance.ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
@@ -600,7 +586,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
 
   Future<bool> postData() async {
     final instance = BaseSiparisEditModel.instance;
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || widget.model.baseEditEnum.kopyalaMi || (instance.isNew ?? false)) {
+    if (widget.model.baseEditEnum.ekleMi || widget.model.baseEditEnum.kopyalaMi || (instance.isNew ?? false)) {
       instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
         instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance) ? true : null;

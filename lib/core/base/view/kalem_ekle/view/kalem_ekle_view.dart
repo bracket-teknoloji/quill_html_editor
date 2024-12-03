@@ -232,92 +232,99 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   ],
                                 ),
                               ),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "Brüt Tutar: "),
-                                    TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "MF Tutarı: "),
-                                    TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "İsk. Tutarı: "),
-                                    TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ).yetkiVarMi(!transferMi),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "Ara Toplam: "),
-                                    TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.getAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getKdvsizDovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Observer(
-                                builder: (_) => Text.rich(
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
                                   TextSpan(
                                     children: [
-                                      const TextSpan(text: "ÖTV Tutar: "),
+                                      const TextSpan(text: "Brüt Tutar: "),
                                       TextSpan(
                                         text:
-                                            "${viewModel.kalemModel.otvTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizliOTVTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                            "${viewModel.kalemModel.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
                                         style: const TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ).yetkiVarMi(viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "KDV Tutarı: "),
-                                    TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizKdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "MF Tutarı: "),
+                                      TextSpan(
+                                        text:
+                                            "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "İsk. Tutarı: "),
+                                      TextSpan(
+                                        text:
+                                            "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ).yetkiVarMi(!transferMi),
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "Ara Toplam: "),
+                                      TextSpan(
+                                        text:
+                                            "${viewModel.kalemModel.getAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getKdvsizDovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(text: "Genel Toplam: "),
+                              if (editTipi?.fiyatGor == true)
+                                Observer(
+                                  builder: (_) => Text.rich(
                                     TextSpan(
-                                      text:
-                                          "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                      children: [
+                                        const TextSpan(text: "ÖTV Tutar: "),
+                                        TextSpan(
+                                          text:
+                                              "${viewModel.kalemModel.otvTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizliOTVTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                          style: const TextStyle(fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
                                     ),
-                                  ],
+                                  ),
+                                ).yetkiVarMi(viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "KDV Tutarı: "),
+                                      TextSpan(
+                                        text:
+                                            "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizKdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
+                              if (editTipi?.fiyatGor == true)
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "Genel Toplam: "),
+                                      TextSpan(
+                                        text:
+                                            "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
+                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
                             ].where((element) => element is! SizedBox).toList(),
                           ),
                           Card(
