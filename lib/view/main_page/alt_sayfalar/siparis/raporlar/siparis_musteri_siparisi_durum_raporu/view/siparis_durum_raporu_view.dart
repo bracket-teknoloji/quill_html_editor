@@ -50,7 +50,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
     viewModel = SiparisDurumRaporuViewModel(widget.editTipiEnum);
     belgeNoController = TextEditingController();
     stokController = TextEditingController();
-    cariController = TextEditingController();
+    cariController = TextEditingController(text: viewModel.siparislerRequestModel.cariKodu);
     gorunecekAlanlarController = TextEditingController();
     baslangicTarihiController = TextEditingController(text: viewModel.siparislerRequestModel.baslamaTarihi ?? "");
     bitisTarihiController = TextEditingController(text: viewModel.siparislerRequestModel.bitisTarihi ?? "");
@@ -299,7 +299,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   valueWidget: Observer(builder: (_) => Text(viewModel.siparislerRequestModel.cariKodu ?? "")),
                   suffix: IconButton(
                     onPressed: () {
-                      if (viewModel.siparislerRequestModel.cariKodu != null) {
+                      if (viewModel.siparislerRequestModel.cariKodu case (null || "")) {
                         dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.siparislerRequestModel.cariKodu);
                       } else {
                         dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
