@@ -247,8 +247,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
-        BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         //TODO parametre ekle
@@ -303,12 +301,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
           if (element.olcuBirimCarpani != null) {
             element.gercekMiktar = element.miktar;
-            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!) ;
+            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!);
           }
           return element;
         }).toList();
       }
-
+      BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
     log("resmi belge no: ${widget.model.model?.belgeNo}");
@@ -616,7 +615,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           ?.map(
             (e) => e
               ..olcuBirimKodu = 1
-              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!) 
+              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!)
               ..gercekMiktar = null
               ..olcuBirimCarpani = null,
           )
