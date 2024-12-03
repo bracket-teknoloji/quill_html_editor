@@ -5,7 +5,6 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "../../../../../../core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
@@ -596,8 +595,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                                             Get.back();
                                             dialogManager.showAreYouSureDialog(() async {
                                               final result = await viewModel.deleteOlcum(item?.id);
-                                              if (result.isSuccessAndNotNull) {
-                                                dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
+                                              if (result.isSuccess) {
+                                                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                                                 await viewModel.getData();
                                               }
                                             });

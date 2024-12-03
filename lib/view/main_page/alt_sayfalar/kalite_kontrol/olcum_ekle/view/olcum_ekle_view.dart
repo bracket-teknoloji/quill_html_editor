@@ -3,7 +3,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
-import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/genel_pdf/view/genel_pdf_view.dart";
 import "../../../../../../core/components/badge/colorful_badge.dart";
@@ -164,8 +163,8 @@ class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                 dialogManager.showAreYouSureDialog(() async {
                   if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" || (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
                     final result = await viewModel.sendData(widget.baseEditEnum);
-                    if (result.isSuccessAndNotNull) {
-                      dialogManager.showSuccessSnackBar(result?.message ?? loc.generalStrings.success);
+                    if (result.isSuccess) {
+                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                       Get.back(result: true);
                     }
                   } else {

@@ -154,7 +154,7 @@ mixin _$OlcumBelgeEditViewModel on _OlcumBelgeEditViewModelBase, Store {
       AsyncAction('_OlcumBelgeEditViewModelBase.deleteOlcum', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>?> deleteOlcum(int? id) {
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteOlcum(int? id) {
     return _$deleteOlcumAsyncAction.run(() => super.deleteOlcum(id));
   }
 

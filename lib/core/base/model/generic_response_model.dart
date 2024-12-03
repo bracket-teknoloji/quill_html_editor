@@ -53,7 +53,3 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
 
   T get dataItem => _data as T;
 }
-
-extension GenericResponseModelExtensions on GenericResponseModel? {
-  bool get isSuccessAndNotNull => this?._success == true;
-}

@@ -148,6 +148,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
           IconButton(
             onPressed: () async {
               if (formKey.currentState!.validate()) {
+                if (viewModel.model.tutar case (null || 0.0)) {
+                  dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                  return;
+                }
                 viewModel.setAciklama(_aciklamaController.text);
                 await dialogManager.showAreYouSureDialog(() async {
                   final result = await viewModel.postData();

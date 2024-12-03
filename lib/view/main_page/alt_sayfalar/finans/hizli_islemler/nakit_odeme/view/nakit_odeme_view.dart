@@ -110,6 +110,10 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
             IconButton(
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
+                  if (viewModel.model.tutar case (null || 0.0)) {
+                    dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                    return;
+                  }
                   viewModel.setAciklama(_kasaHareketiAciklamaController.text);
                   await dialogManager.showAreYouSureDialog(() async {
                     final result = await viewModel.postData();

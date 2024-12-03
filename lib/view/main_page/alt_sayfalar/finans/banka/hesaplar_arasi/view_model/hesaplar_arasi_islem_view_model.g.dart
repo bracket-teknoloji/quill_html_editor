@@ -109,7 +109,7 @@ mixin _$HesaplarArasiIslemViewModel on _HesaplarArasiIslemViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>?> saveTahsilat() {
+  Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() {
     return _$saveTahsilatAsyncAction.run(() => super.saveTahsilat());
   }
 

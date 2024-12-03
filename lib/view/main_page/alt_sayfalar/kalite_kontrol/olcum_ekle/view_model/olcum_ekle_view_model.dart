@@ -40,7 +40,7 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>?> sendData(BaseEditEnum baseEditEnum) async {
+  Future<GenericResponseModel<NetworkManagerMixin>> sendData(BaseEditEnum baseEditEnum) async {
     OlcumEkleModel newReqModel = requestModel;
     if (baseEditEnum.ekleMi) {
       newReqModel = newReqModel.copyWith(belgeId: 0, prosesler: newReqModel.prosesler?.map((e) => e..detayId = 0).toList());

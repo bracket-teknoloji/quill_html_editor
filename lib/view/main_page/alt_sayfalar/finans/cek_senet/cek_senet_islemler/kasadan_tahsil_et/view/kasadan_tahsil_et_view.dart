@@ -85,6 +85,10 @@ class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   dialogManager.showAreYouSureDialog(() async {
+                    if (viewModel.model.tutar case (null || 0.0)) {
+                      dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                      return;
+                    }
                     viewModel.model.guid = const Uuid().v4();
                     final result = await viewModel.postData();
                     if (result.isSuccess) {

@@ -119,6 +119,6 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>?> saveTahsilat() async =>
+  Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() async =>
       await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveTahsilat, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
 }

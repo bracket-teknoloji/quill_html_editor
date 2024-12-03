@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -101,10 +100,14 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
                   await dialogManager.showAreYouSureDialog(() async {
+                    if (viewModel.model.tutar case (null || 0.0)) {
+                      dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                      return;
+                    }
                     viewModel.setGuid(const Uuid().v4());
                     final result = await viewModel.saveTahsilat();
-                    if (result.isSuccessAndNotNull) {
-                      dialogManager.showSuccessSnackBar(result?.message ?? "");
+                    if (result.isSuccess) {
+                      dialogManager.showSuccessSnackBar(result.message ?? "");
                       Get.back(result: true);
                     }
                   });

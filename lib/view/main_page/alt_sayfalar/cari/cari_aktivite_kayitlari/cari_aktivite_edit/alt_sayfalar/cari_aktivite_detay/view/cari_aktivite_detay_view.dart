@@ -54,7 +54,7 @@ class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
                       if (widget.baseEditEnum.duzenleMi) {
                         result = await viewModel.deleteDetay(item.id);
                       }
-                      if (result.isSuccessAndNotNull || (widget.baseEditEnum.ekleMi)) {
+                      if ((result?.isSuccess?? false) || (widget.baseEditEnum.ekleMi)) {
                         viewModel.deleteAktivite(item);
                       }
                     },

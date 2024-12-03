@@ -113,6 +113,6 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>?> saveTahsilat() async =>
+  Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() async =>
       await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveDekont, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
 }
