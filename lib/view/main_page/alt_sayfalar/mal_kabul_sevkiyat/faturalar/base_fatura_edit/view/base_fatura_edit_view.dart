@@ -272,8 +272,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
               BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
             }
           }
-            BaseSiparisEditModel.instance.belgeTipi = 2;
-            BaseSiparisEditModel.instance.tipi = 2;
             BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             BaseSiparisEditModel.instance.tag = "FaturaModel";
             BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
@@ -589,7 +587,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     if (widget.model.baseEditEnum.ekleMi || widget.model.baseEditEnum.kopyalaMi || (instance.isNew ?? false)) {
       instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
-        instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance) ? true : null;
+        instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance.getEditTipiEnum?.rawValue) ? true : null;
       }
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {

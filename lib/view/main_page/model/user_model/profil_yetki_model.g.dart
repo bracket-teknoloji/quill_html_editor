@@ -533,7 +533,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..hucreHareketleri = json['hucre_Hareketleri'] as bool?
       ..hucreHareketleriSil = json['hucre_Hareketleri_Sil'] as bool?
       ..sevkiyatSatisIrsaliyesiBelgeTipleri =
-          json['sevkiyat_SatisIrsaliyesi_BelgeTipleri'] as List<dynamic>?
+          (json['sevkiyat_SatisIrsaliyesi_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..sevkiyatSatisIrsaliyesiGizlenecekAlanlar =
           (json['sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -648,7 +650,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..sevkiyatSatisIrsKalemRaporu =
           json['sevkiyat_SatisIrs_KalemRaporu'] as bool?
       ..sevkiyatSatisFatBelgeTipleri =
-          json['sevkiyat_SatisFat_BelgeTipleri'] as List<dynamic>?
+          (json['sevkiyat_SatisFat_BelgeTipleri'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
       ..sevkiyatSatisFatVarsayilanBelgeTipi =
           (json['sevkiyat_SatisFat_VarsayilanBelgeTipi'] as num?)?.toInt()
       ..sevkiyatSatisFat = json['sevkiyat_SatisFat'] as bool?

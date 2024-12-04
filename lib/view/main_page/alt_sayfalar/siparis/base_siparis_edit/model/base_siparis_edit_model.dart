@@ -922,6 +922,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     final Map<String, int> belgeTipiMap = <String, int>{
       "Kapalı": 1,
       "Açık": 2,
+      "Muhtelif": 3,
       "İade": 4,
       "Zayi İade": 5,
       "İhracat": 6,
@@ -1760,7 +1761,7 @@ class KalemModel with NetworkManagerMixin {
   double toplamKalemMiktari([bool miktar2EklensinMi = false]) =>
       ((miktar != null ? (miktar ?? 0) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
 
-  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!) ;
+  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!);
 
   double get getSelectedMalFazlasizMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
 

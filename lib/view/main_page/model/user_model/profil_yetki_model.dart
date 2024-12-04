@@ -554,7 +554,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "hucre_Hareketleri_Sil")
   bool? hucreHareketleriSil;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_BelgeTipleri")
-  List<dynamic>? sevkiyatSatisIrsaliyesiBelgeTipleri;
+  List<int>? sevkiyatSatisIrsaliyesiBelgeTipleri;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_GizlenecekAlanlar")
   List<String>? sevkiyatSatisIrsaliyesiGizlenecekAlanlar;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesi_DegismeyecekAlanlar")
@@ -664,7 +664,7 @@ class ProfilYetkiModel {
   @JsonKey(name: "sevkiyat_SatisIrs_KalemRaporu")
   bool? sevkiyatSatisIrsKalemRaporu;
   @JsonKey(name: "sevkiyat_SatisFat_BelgeTipleri")
-  List<dynamic>? sevkiyatSatisFatBelgeTipleri;
+  List<int>? sevkiyatSatisFatBelgeTipleri;
   @JsonKey(name: "sevkiyat_SatisFat_VarsayilanBelgeTipi")
   int? sevkiyatSatisFatVarsayilanBelgeTipi;
   @JsonKey(name: "sevkiyat_SatisFat")
@@ -1963,6 +1963,8 @@ class ProfilYetkiModel {
   bool? finansKasaNakitOdemeKasaBakGizle;
   @JsonKey(name: "finans_Kasa_KacGunlukKayitlarListelensin")
   int? finansKasaKacGunlukKayitlarListelensin;
+
+
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 

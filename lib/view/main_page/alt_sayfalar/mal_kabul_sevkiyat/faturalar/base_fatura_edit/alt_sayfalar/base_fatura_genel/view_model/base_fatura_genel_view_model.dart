@@ -3,6 +3,7 @@ import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
+import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../model/param_model.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -12,13 +13,16 @@ part "base_fatura_genel_view_model.g.dart";
 class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
 
 abstract class _BaseFaturaGenelViewModelBase with Store {
-  final Map<String, int> belgeTipi = <String, int>{
+  final Map<String, int> _belgeTipi = <String, int>{
     "Kapalı": 1,
     "Açık": 2,
+    "Muhtelif": 3,
     "İade": 4,
     "Zayi İade": 5,
     "İhracat": 6,
   };
+
+  List<MapEntry<String, int>> get belgeTipi => _belgeTipi.entries.where((element) => model.getEditTipiEnum?.belgeTipleriVarMi(element.value) ?? false).toList();
 
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;

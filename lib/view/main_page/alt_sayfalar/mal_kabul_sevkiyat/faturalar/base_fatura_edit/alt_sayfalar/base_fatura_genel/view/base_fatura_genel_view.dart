@@ -86,7 +86,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _cariController = TextEditingController(text: model.cariAdi);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
-    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.belgeTipi));
+    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.firstOrNull?.key);
+    if (viewModel.model.belgeTipi == null) viewModel.setBelgeTipi(viewModel.belgeTipi.firstOrNull?.value);
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
@@ -354,9 +355,9 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                             children: List.generate(
                               viewModel.belgeTipi.length,
                               (int index) => BottomSheetModel(
-                                title: viewModel.belgeTipi.keys.toList()[index],
-                                description: viewModel.belgeTipi.values.toList()[index].toStringIfNotNull,
-                                value: viewModel.belgeTipi.entries.toList()[index],
+                                title: viewModel.belgeTipi[index].key,
+                                description: viewModel.belgeTipi[index].value.toStringIfNotNull,
+                                value: viewModel.belgeTipi.toList()[index],
                               ),
                             ),
                           );

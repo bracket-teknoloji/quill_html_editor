@@ -192,7 +192,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       };
 
   bool get birim1denGelsin => switch (this) {
-    EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
+        EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
         EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,
         EditTipiEnum.satisFatura => yetkiController.satisFatBirim1denKaydet,
         EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBirim1denKaydet,
@@ -202,8 +202,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.ambarCikisi => yetkiController.transferACBirim1Kaydet,
         EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBirim1Kaydet,
         _ => false
-
-  };
+      };
 
   String get getPrintValue => switch (this) {
         EditTipiEnum.musteri => "MusteriSiparisi",
@@ -493,6 +492,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
       return yetkiController.alisEkAlan2AktifMi;
     }
   }
+
+  bool belgeTipleriVarMi(int value) => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatBelgeTipleri(value),
+        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsBelgeTipleri(value),
+        EditTipiEnum.alisFatura => yetkiController.malKabulAlisFatBelgeTipleri(value),
+        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsBelgeTipleri(value),
+        _ => false
+      };
 
   bool get eklensinMi {
     switch (this) {
