@@ -643,6 +643,15 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
+  int? get varsayilanBelgeTipi {
+    final paramModel = CacheManager.getAnaVeri?.userModel?.profilYetki;
+    return switch (this) {
+      EditTipiEnum.satisFatura => paramModel?.sevkiyatSatisFatVarsayilanBelgeTipi ?? 0,
+      EditTipiEnum.satisIrsaliye => paramModel?.sevkiyatSatisIrsVarsayilanBelgeTipi ?? 0,
+      _ => null,
+    };
+  }
+
   bool get faturaMi {
     switch (this) {
       case EditTipiEnum.satisFatura:

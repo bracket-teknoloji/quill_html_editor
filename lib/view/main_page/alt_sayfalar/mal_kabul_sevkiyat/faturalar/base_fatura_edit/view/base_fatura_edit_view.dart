@@ -131,13 +131,14 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                 ..teslimTarihi = null,
             )
             .toList();
-        BaseSiparisEditModel.instance.isNew = true;
-        BaseSiparisEditModel.instance.efattanAlisFat = true;
-        BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.tarih ??= DateTime.now().dateTimeWithoutTime;
-        BaseSiparisEditModel.instance.tag = "FaturaModel";
-        BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
+        BaseSiparisEditModel.instance
+          ..isNew = true
+          ..efattanAlisFat = true
+          ..belgeTuru = widget.model.editTipiEnum?.rawValue
+          ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
+          ..tarih ??= DateTime.now().dateTimeWithoutTime
+          ..tag = "FaturaModel"
+          ..islemeBaslamaTarihi = DateTime.now();
       } else if (widget.model.baseEditEnum != BaseEditEnum.ekle) {
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.isSuccess) {
@@ -179,50 +180,53 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             if (widget.model.baseEditEnum.kopyalaMi) {
               BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
             }
-            BaseSiparisEditModel.instance.belgeKodu = null;
-            BaseSiparisEditModel.instance.teslimTarihi = null;
-            BaseSiparisEditModel.instance.kapatilmis = null;
-            BaseSiparisEditModel.instance.vadeGunu = null;
-            BaseSiparisEditModel.instance.tempSipList = null;
-            BaseSiparisEditModel.instance.onaylayankul = null;
-            BaseSiparisEditModel.instance.onaytarihi = null;
-            BaseSiparisEditModel.instance.kayittarihi = null;
-            BaseSiparisEditModel.instance.vadeTarihi = null;
-            BaseSiparisEditModel.instance.teslimTarihi = null;
-            BaseSiparisEditModel.instance.teslimCari = null;
-            BaseSiparisEditModel.instance.teslimCariAdi = null;
-            BaseSiparisEditModel.instance.istenilenTeslimTarihi = null;
-            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
-            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
-            BaseSiparisEditModel.instance.depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
+            BaseSiparisEditModel.instance
+              ..belgeKodu = null
+              ..teslimTarihi = null
+              ..kapatilmis = null
+              ..vadeGunu = null
+              ..tempSipList = null
+              ..onaylayankul = null
+              ..onaytarihi = null
+              ..kayittarihi = null
+              ..vadeTarihi = null
+              ..teslimTarihi = null
+              ..teslimCari = null
+              ..teslimCariAdi = null
+              ..istenilenTeslimTarihi = null
+              ..vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu
+              ..vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi
+              ..depoTanimi ??= parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.topluDepo)?.depoTanimi;
             final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
             if (cariModel is CariListesiModel) {
               viewModel.setLoading(true);
-              BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-              BaseSiparisEditModel.instance.resmiBelgeNo = null;
-              BaseSiparisEditModel.instance.efaturaMi = null;
-              BaseSiparisEditModel.instance.efatOzelkod = null;
-              BaseSiparisEditModel.instance.efaturaGibDurumKodu = null;
-              BaseSiparisEditModel.instance.earsivGibDurumKodu = null;
-              BaseSiparisEditModel.instance.eirsaliyeGibDurumKodu = null;
-              BaseSiparisEditModel.instance.earsivDurumAciklama = null;
-              BaseSiparisEditModel.instance.eirsaliyeDurumAciklama = null;
-              BaseSiparisEditModel.instance.efaturaDurumAciklama = null;
-              BaseSiparisEditModel.instance.vadeGunu ??= cariModel.vadeGunu;
-              BaseSiparisEditModel.instance.vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
-              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-              BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-              BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-              BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-              BaseSiparisEditModel.instance.belgeTipi ??= BaseSiparisEditModel.instance.tipi;
+              BaseSiparisEditModel.instance
+                ..efaturaTipi = cariModel.efaturaTipi
+                ..resmiBelgeNo = null
+                ..efaturaMi = null
+                ..efatOzelkod = null
+                ..efaturaGibDurumKodu = null
+                ..earsivGibDurumKodu = null
+                ..eirsaliyeGibDurumKodu = null
+                ..earsivDurumAciklama = null
+                ..eirsaliyeDurumAciklama = null
+                ..efaturaDurumAciklama = null
+                ..vadeGunu ??= cariModel.vadeGunu
+                ..vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+                ..plasiyerAciklama = cariModel.plasiyerAciklama
+                ..plasiyerKodu = cariModel.plasiyerKodu
+                ..cariAdi = cariModel.cariAdi
+                ..cariKodu = cariModel.cariKodu
+                ..kosulKodu = cariModel.kosulKodu
+                ..belgeTipi ??= BaseSiparisEditModel.instance.tipi;
             }
-            BaseSiparisEditModel.instance.tag = "FaturaModel";
-            BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-            BaseSiparisEditModel.instance.isNew = true;
-            BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+            BaseSiparisEditModel.instance
+              ..tag = "FaturaModel"
+              ..islemeBaslamaTarihi = DateTime.now()
+              ..isNew = true
+              ..belgeNo = null
+              ..belgeTuru = widget.model.editTipiEnum?.rawValue
+              ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           }
         } else {
           Get.back();
@@ -249,8 +253,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           if (model.editTipiEnum.irsaliyeMi) {
             BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
           }
-            BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-            BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+          BaseSiparisEditModel.instance
+            ..belgeTuru = widget.model.editTipiEnum?.rawValue
+            ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           if (result != true) {
             BaseSiparisEditModel.resetInstance();
           } else {
@@ -258,24 +263,28 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
 
             if (cariModel is CariListesiModel) {
               viewModel.setLoading(true);
-              BaseSiparisEditModel.instance.cariTitle = cariModel.efaturaCarisi == "E"
-                  ? "E-Fatura"
-                  : cariModel.efaturaCarisi == "H"
-                      ? "E-Arşiv"
-                      : null;
-              BaseSiparisEditModel.instance.efaturaTipi = cariModel.efaturaTipi;
-              BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-              BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-              BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-              BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-              BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-              BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
+              BaseSiparisEditModel.instance
+                ..cariTitle = cariModel.efaturaCarisi == "E"
+                    ? "E-Fatura"
+                    : cariModel.efaturaCarisi == "H"
+                        ? "E-Arşiv"
+                        : null
+                ..efaturaTipi = cariModel.efaturaTipi
+                ..vadeGunu = cariModel.vadeGunu
+                ..plasiyerAciklama = cariModel.plasiyerAciklama
+                ..plasiyerKodu = cariModel.plasiyerKodu
+                ..cariAdi = cariModel.cariAdi
+                ..cariKodu = cariModel.cariKodu
+                ..belgeTipi = widget.model.editTipiEnum?.varsayilanBelgeTipi
+                ..tipi = BaseSiparisEditModel.instance.belgeTipi
+                ..kosulKodu = cariModel.kosulKodu;
             }
           }
-            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-            BaseSiparisEditModel.instance.tag = "FaturaModel";
-            BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-            BaseSiparisEditModel.instance.isNew = true;
+          BaseSiparisEditModel.instance
+            ..tarih = DateTime.now().dateTimeWithoutTime
+            ..tag = "FaturaModel"
+            ..siparisTipi = model.editTipiEnum
+            ..isNew = true;
         }
 
         BaseSiparisEditModel.instance.ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
@@ -290,8 +299,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
           return element;
         }).toList();
       }
-      BaseSiparisEditModel.instance.belgeTuru = widget.model.editTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance
+        ..belgeTuru = widget.model.editTipiEnum?.rawValue
+        ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
     log("resmi belge no: ${widget.model.model?.belgeNo}");
