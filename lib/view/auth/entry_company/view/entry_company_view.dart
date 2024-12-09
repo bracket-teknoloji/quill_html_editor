@@ -310,8 +310,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   await CacheManager.setAnaVeri(model);
                                   Get.offAllNamed("/mainPage");
-                                  if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji != null) {
-                                    dialogManager.showInfoSnackBar(CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji ?? "");
+                                  final account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
+                                  if (account?.karsilamaMesaji != null) {
+                                    dialogManager.showInfoSnackBar(account?.karsilamaMesaji ?? "", duration: Duration(seconds: account?.karsilamaSaniye ?? 0));
                                   }
                                   if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
                                 }

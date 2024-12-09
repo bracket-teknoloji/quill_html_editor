@@ -57,9 +57,9 @@ class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarError(message));
   }
 
-  void showInfoSnackBar(String message) {
+  void showInfoSnackBar(String message, {Duration? duration}) {
     hideSnackBar;
-    ScaffoldMessenger.of(context).showSnackBar(_snackBarInfo(message));
+    ScaffoldMessenger.of(context).showSnackBar(_snackBarInfo(message, duration: duration));
   }
 
   void showSuccessSnackBar(String message) {
@@ -466,7 +466,12 @@ class DialogManager {
 
   SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.mantis);
 
-  SnackBar _snackBarInfo(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.marineBlue);
+  SnackBar _snackBarInfo(String message, {Duration? duration}) => SnackBar(
+        content: Text(message, style: const TextStyle(color: Colors.white)),
+        behavior: SnackBarBehavior.fixed,
+        backgroundColor: ColorPalette.marineBlue,
+        duration: duration ?? const Duration(milliseconds: 4000),
+      );
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
         title: "Uyarı",
