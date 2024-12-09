@@ -5,7 +5,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 
-import "../../../core/base/model/generic_response_model.dart";
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/wave/login_wave_widget.dart";
 import "../../../core/constants/ui_helper/ui_helper.dart";
@@ -17,15 +16,15 @@ import "../../add_company/model/account_model.dart";
 import "../../main_page/model/main_page_model.dart";
 import "../view_model/splash_auth_view_model.dart";
 
-class SplashAuthView extends StatefulWidget {
+final class SplashAuthView extends StatefulWidget {
   const SplashAuthView({super.key});
 
   @override
   State<SplashAuthView> createState() => _SplashAuthViewState();
 }
 
-class _SplashAuthViewState extends BaseState<SplashAuthView> {
-  SplashAuthViewModel viewModel = SplashAuthViewModel();
+final class _SplashAuthViewState extends BaseState<SplashAuthView> {
+  final SplashAuthViewModel viewModel = SplashAuthViewModel();
 
   @override
   void initState() {
@@ -97,9 +96,27 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
             ),
             Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Observer(
+                    builder: (_) => viewModel.accountResponseModel != null
+                        ? SizedBox(
+                            width: width * 0.7,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.network(viewModel.accountResponseModel?.karsilamaResimUrl ?? "", errorBuilder: (context, error, stackTrace) => const Icon(Icons.error_outline_outlined)),
+                                Text(
+                                  viewModel.accountResponseModel?.karsilamaMesaji ?? "",
+                                  textAlign: TextAlign.justify,
+                                  textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false, applyHeightToLastDescent: false),
+                                ).paddingAll(20),
+                              ],
+                            ),
+                          )
+                        : const SizedBox.shrink(),
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,11 +145,15 @@ class _SplashAuthViewState extends BaseState<SplashAuthView> {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
       viewModel.setTitle("Lisans bilgileri alınıyor...");
-      final GenericResponseModel lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
+      final lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
+      viewModel.setAccountResponseModel(lisansResponse.dataList.firstOrNull);
       if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
         viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
         viewModel.setIsError(true);
         return;
+      }
+      if (viewModel.accountResponseModel?.karsilamaMesaji != null) {
+        await Future.delayed(Duration(seconds: viewModel.accountResponseModel?.karsilamaSaniye ?? 3));
       }
 
       AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));

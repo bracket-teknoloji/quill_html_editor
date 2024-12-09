@@ -91,11 +91,11 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
         (index) {
           final item = list?[index];
           return BottomSheetModel(
-          title: item?.subeAdi ?? "",
-          value: item,
-          description: item?.subeKodu.toStringIfNotNull,
-          groupValue: item?.subeKodu,
-        );
+            title: item?.subeAdi ?? "",
+            value: item,
+            description: item?.subeKodu.toStringIfNotNull,
+            groupValue: item?.subeKodu,
+          );
         },
       ),
     );
@@ -310,6 +310,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   CacheManager.setLogout(true);
                                   await CacheManager.setAnaVeri(model);
                                   Get.offAllNamed("/mainPage");
+                                  if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji != null) {
+                                    dialogManager.showInfoSnackBar(CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji ?? "");
+                                  }
                                   if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
                                 }
                               } else {

@@ -33,9 +33,9 @@ class AccountResponseModel with NetworkManagerMixin {
   @HiveField(11)
   int? sozlesmeBitisKalanGun;
   @HiveField(12)
-  dynamic karsilamaMesaji;
+  String? karsilamaMesaji;
   @HiveField(13)
-  dynamic karsilamaResimUrl;
+  String? karsilamaResimUrl;
   @HiveField(14)
   int? karsilamaSaniye;
   @HiveField(15)
@@ -49,6 +49,16 @@ class AccountResponseModel with NetworkManagerMixin {
   @HiveField(19)
   @JsonKey(defaultValue: true)
   bool? uzaktanMi;
+  @HiveField(20)
+  bool? serviceDebug;
+  @HiveField(21)
+  dynamic bayiKodu;
+  @HiveField(22)
+  dynamic bayiEmail;
+  @HiveField(23)
+  dynamic bayiUnvan;
+  @HiveField(24)
+  bool? bracketCihazi;
 
   AccountResponseModel();
 

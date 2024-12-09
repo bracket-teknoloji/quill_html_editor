@@ -41,6 +41,23 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
     });
   }
 
+  late final _$accountResponseModelAtom = Atom(
+      name: '_SplashAuthViewModelBase.accountResponseModel', context: context);
+
+  @override
+  AccountResponseModel? get accountResponseModel {
+    _$accountResponseModelAtom.reportRead();
+    return super.accountResponseModel;
+  }
+
+  @override
+  set accountResponseModel(AccountResponseModel? value) {
+    _$accountResponseModelAtom.reportWrite(value, super.accountResponseModel,
+        () {
+      super.accountResponseModel = value;
+    });
+  }
+
   late final _$_SplashAuthViewModelBaseActionController =
       ActionController(name: '_SplashAuthViewModelBase', context: context);
 
@@ -50,6 +67,17 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
         name: '_SplashAuthViewModelBase.setTitle');
     try {
       return super.setTitle(value);
+    } finally {
+      _$_SplashAuthViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setAccountResponseModel(AccountResponseModel? value) {
+    final _$actionInfo = _$_SplashAuthViewModelBaseActionController.startAction(
+        name: '_SplashAuthViewModelBase.setAccountResponseModel');
+    try {
+      return super.setAccountResponseModel(value);
     } finally {
       _$_SplashAuthViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -70,7 +98,8 @@ mixin _$SplashAuthViewModel on _SplashAuthViewModelBase, Store {
   String toString() {
     return '''
 title: ${title},
-isError: ${isError}
+isError: ${isError},
+accountResponseModel: ${accountResponseModel}
     ''';
   }
 }

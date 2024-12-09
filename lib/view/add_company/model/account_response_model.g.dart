@@ -29,20 +29,25 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..firmaKisaAdi = fields[9] as String?
       ..sozlesmeBitisTarihi = fields[10] as dynamic
       ..sozlesmeBitisKalanGun = fields[11] as int?
-      ..karsilamaMesaji = fields[12] as dynamic
-      ..karsilamaResimUrl = fields[13] as dynamic
+      ..karsilamaMesaji = fields[12] as String?
+      ..karsilamaResimUrl = fields[13] as String?
       ..karsilamaSaniye = fields[14] as int?
       ..guncellemeVarmi = fields[15] as bool?
       ..maxApkVersion = fields[16] as int?
       ..maxWsVersion = fields[17] as String?
       ..demoBitisTarihi = fields[18] as dynamic
-      ..uzaktanMi = fields[19] as bool?;
+      ..uzaktanMi = fields[19] as bool?
+      ..serviceDebug = fields[20] as bool?
+      ..bayiKodu = fields[21] as dynamic
+      ..bayiEmail = fields[22] as dynamic
+      ..bayiUnvan = fields[23] as dynamic
+      ..bracketCihazi = fields[24] as bool?;
   }
 
   @override
   void write(BinaryWriter writer, AccountResponseModel obj) {
     writer
-      ..writeByte(20)
+      ..writeByte(25)
       ..writeByte(0)
       ..write(obj.firma)
       ..writeByte(1)
@@ -82,7 +87,17 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..writeByte(18)
       ..write(obj.demoBitisTarihi)
       ..writeByte(19)
-      ..write(obj.uzaktanMi);
+      ..write(obj.uzaktanMi)
+      ..writeByte(20)
+      ..write(obj.serviceDebug)
+      ..writeByte(21)
+      ..write(obj.bayiKodu)
+      ..writeByte(22)
+      ..write(obj.bayiEmail)
+      ..writeByte(23)
+      ..write(obj.bayiUnvan)
+      ..writeByte(24)
+      ..write(obj.bracketCihazi);
   }
 
   @override
@@ -116,14 +131,19 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
       ..sozlesmeBitisKalanGun =
           (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
-      ..karsilamaMesaji = json['KARSILAMA_MESAJI']
-      ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL']
+      ..karsilamaMesaji = json['KARSILAMA_MESAJI'] as String?
+      ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL'] as String?
       ..karsilamaSaniye = (json['KARSILAMA_SANIYE'] as num?)?.toInt()
       ..guncellemeVarmi = json['GUNCELLEME_VARMI'] as bool?
       ..maxApkVersion = (json['MAX_APK_VERSION'] as num?)?.toInt()
       ..maxWsVersion = json['MAX_WS_VERSION'] as String?
       ..demoBitisTarihi = json['DEMO_BITIS_TARIHI']
-      ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true;
+      ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true
+      ..serviceDebug = json['SERVICE_DEBUG'] as bool?
+      ..bayiKodu = json['BAYI_KODU']
+      ..bayiEmail = json['BAYI_EMAIL']
+      ..bayiUnvan = json['BAYI_UNVAN']
+      ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
     AccountResponseModel instance) {
@@ -155,5 +175,10 @@ Map<String, dynamic> _$AccountResponseModelToJson(
   writeNotNull('MAX_WS_VERSION', instance.maxWsVersion);
   writeNotNull('DEMO_BITIS_TARIHI', instance.demoBitisTarihi);
   writeNotNull('UZAKTAN_MI', instance.uzaktanMi);
+  writeNotNull('SERVICE_DEBUG', instance.serviceDebug);
+  writeNotNull('BAYI_KODU', instance.bayiKodu);
+  writeNotNull('BAYI_EMAIL', instance.bayiEmail);
+  writeNotNull('BAYI_UNVAN', instance.bayiUnvan);
+  writeNotNull('BRACKET_CIHAZI', instance.bracketCihazi);
   return val;
 }
