@@ -23,8 +23,8 @@ platform :ios do
       }
     )
     cocoapods(
-      clean_install: true,
-      podfile: "./Podfile"
+      clean: true,
+      use_bundle_exec: false
     )
     build_app(workspace: "Runner.xcworkspace", scheme: "Runner", clean: true)
     upload_to_testflight(

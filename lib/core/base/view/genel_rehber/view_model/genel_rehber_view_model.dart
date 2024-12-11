@@ -22,7 +22,7 @@ abstract class _GenelRehberViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @observable
   @override
-  bool isSearchBarOpen = false;
+  bool isSearchBarOpen = true;
 
   @observable
   @override
