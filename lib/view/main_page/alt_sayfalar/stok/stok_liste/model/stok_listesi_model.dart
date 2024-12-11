@@ -228,8 +228,8 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     ..paketMi = model.paketMi
     ..alisKdv = model.kdvOrani
     ..satisKdv = model.kdvOrani
-    ..alisDovTip = model.dovizKodu ?? 0
-    ..satDovTip = model.dovizKodu ?? 0
+    ..alisDovTip = model.dovizTipi ?? 0
+    ..satDovTip = model.dovizTipi ?? 0
     ..alisDovizAdi = model.dovizAdi
     ..satisDovizAdi = model.dovizAdi
     ..alisFiat1 = model.brutFiyat

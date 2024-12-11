@@ -38,6 +38,16 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   @override
   void initState() {
     viewModel.setStokListesiModel(widget.model?.model);
+    if (viewModel.stokListesiModel?.alisDovTip case (null || 0)) {
+      viewModel.stokListesiModel
+        ?..alisDovTip = 0
+        ..alisDovizAdi = mainCurrency;
+    }
+    if (viewModel.stokListesiModel?.satDovTip case (null || 0)) {
+      viewModel.stokListesiModel
+        ?..satDovTip = 0
+        ..satisDovizAdi = mainCurrency;
+    }
     viewModel.stokListesiModel?.subeKodu ??= -1;
 
     _tabController = TabController(length: tabLength, vsync: this);

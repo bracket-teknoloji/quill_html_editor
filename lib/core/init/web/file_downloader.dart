@@ -9,7 +9,7 @@ void fileDownload(Uint8List data, String fileName) {
     web_file.AnchorElement(
       href: web_file.Url.createObjectUrlFromBlob(blob),
     )
-      ..setAttribute("download", "$fileName.pdf")
+      ..setAttribute("download", fileName)
       ..click();
   }
 }

@@ -100,7 +100,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Observer(
-                    builder: (_) => viewModel.accountResponseModel != null
+                    builder: (_) => viewModel.accountResponseModel?.karsilamaMesaji != null
                         ? SizedBox(
                             width: width * 0.7,
                             child: Column(

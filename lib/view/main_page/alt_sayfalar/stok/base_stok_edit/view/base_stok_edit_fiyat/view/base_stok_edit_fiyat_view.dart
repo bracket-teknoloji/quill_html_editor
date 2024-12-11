@@ -217,6 +217,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Döviz Tipi",
+                          isMust: true,
                           controller: alisDovizTipiController,
                           readOnly: true,
                           onTap: () async {
@@ -350,6 +351,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                         child: CustomTextField(
                           enabled: isEnabled,
                           labelText: "Döviz Tipi",
+                          isMust: true,
                           controller: satisDovizTipiController,
                           readOnly: true,
                           onTap: () async {
